@@ -13498,7 +13498,7 @@ GALGAS_classDeclarationAST GALGAS_classDeclarationAST::constructor_default (LOCA
                                                       GALGAS_lstring::constructor_default (HERE),
                                                       GALGAS_lstring::constructor_default (HERE),
                                                       GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                      GALGAS_attributeInCollectionListAST::constructor_emptyList (HERE)
+                                                      GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE)
                                                       COMMA_THERE) ;
 }
 
@@ -13516,7 +13516,7 @@ GALGAS_classDeclarationAST GALGAS_classDeclarationAST::constructor_new (const GA
                                                                         const GALGAS_lstring & inAttribute_mClassTypeName,
                                                                         const GALGAS_lstring & inAttribute_mSuperClassName,
                                                                         const GALGAS_lstringlist & inAttribute_mClassFeatureList,
-                                                                        const GALGAS_attributeInCollectionListAST & inAttribute_mAttributeList
+                                                                        const GALGAS_propertyInCollectionListAST & inAttribute_mAttributeList
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_classDeclarationAST result ;
   if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClassName.isValid () && inAttribute_mClassFeatureList.isValid () && inAttribute_mAttributeList.isValid ()) {
@@ -13534,7 +13534,7 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPr
                                                     const GALGAS_lstring & in_mClassTypeName,
                                                     const GALGAS_lstring & in_mSuperClassName,
                                                     const GALGAS_lstringlist & in_mClassFeatureList,
-                                                    const GALGAS_attributeInCollectionListAST & in_mAttributeList
+                                                    const GALGAS_propertyInCollectionListAST & in_mAttributeList
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mIsAbstract (in_mIsAbstract),
@@ -16809,7 +16809,7 @@ GALGAS_semanticDeclarationAST () {
 GALGAS_listDeclarationAST GALGAS_listDeclarationAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_listDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                      GALGAS_lstring::constructor_default (HERE),
-                                                     GALGAS_attributeInCollectionListAST::constructor_emptyList (HERE)
+                                                     GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE)
                                                      COMMA_THERE) ;
 }
 
@@ -16824,7 +16824,7 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_listDeclarationAST GALGAS_listDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                       const GALGAS_lstring & inAttribute_mListTypeName,
-                                                                      const GALGAS_attributeInCollectionListAST & inAttribute_mAttributeList
+                                                                      const GALGAS_propertyInCollectionListAST & inAttribute_mAttributeList
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_listDeclarationAST result ;
   if (inAttribute_mIsPredefined.isValid () && inAttribute_mListTypeName.isValid () && inAttribute_mAttributeList.isValid ()) {
@@ -16839,7 +16839,7 @@ GALGAS_listDeclarationAST GALGAS_listDeclarationAST::constructor_new (const GALG
 
 cPtr_listDeclarationAST::cPtr_listDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                   const GALGAS_lstring & in_mListTypeName,
-                                                  const GALGAS_attributeInCollectionListAST & in_mAttributeList
+                                                  const GALGAS_propertyInCollectionListAST & in_mAttributeList
                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mListTypeName (in_mListTypeName),
@@ -17125,6 +17125,9 @@ typeComparisonResult cPtr_mapDeclarationAST::dynamicObjectCompare (const acPtr_c
     result = mAttribute_mAttributeList.objectCompare (p->mAttribute_mAttributeList) ;
   }
   if (kOperandEqual == result) {
+    result = mAttribute_mPropertyList.objectCompare (p->mAttribute_mPropertyList) ;
+  }
+  if (kOperandEqual == result) {
     result = mAttribute_mInsertMethodList.objectCompare (p->mAttribute_mInsertMethodList) ;
   }
   if (kOperandEqual == result) {
@@ -17169,7 +17172,8 @@ GALGAS_semanticDeclarationAST () {
 GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_mapDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                     GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_attributeInCollectionListAST::constructor_emptyList (HERE),
+                                                    GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                    GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE),
                                                     GALGAS_insertMethodListAST::constructor_emptyList (HERE),
                                                     GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
                                                     GALGAS_mapRemoveMethodListAST::constructor_emptyList (HERE),
@@ -17188,15 +17192,16 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                     const GALGAS_lstring & inAttribute_mMapTypeName,
-                                                                    const GALGAS_attributeInCollectionListAST & inAttribute_mAttributeList,
+                                                                    const GALGAS_lstringlist & inAttribute_mAttributeList,
+                                                                    const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList,
                                                                     const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
                                                                     const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
                                                                     const GALGAS_mapRemoveMethodListAST & inAttribute_mRemoveMethodList,
                                                                     const GALGAS_insertOrReplaceDeclarationListAST & inAttribute_mInsertOrReplaceDeclarationListAST
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_mapDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mRemoveMethodList.isValid () && inAttribute_mInsertOrReplaceDeclarationListAST.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mRemoveMethodList.isValid () && inAttribute_mInsertOrReplaceDeclarationListAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mPropertyList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
   }
   return result ;
 }
@@ -17221,8 +17226,8 @@ GALGAS_lstring cPtr_mapDeclarationAST::reader_mMapTypeName (UNUSED_LOCATION_ARGS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST GALGAS_mapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_attributeInCollectionListAST result ;
+GALGAS_lstringlist GALGAS_mapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapDeclarationAST * p = (const cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
@@ -17233,8 +17238,26 @@ GALGAS_attributeInCollectionListAST GALGAS_mapDeclarationAST::reader_mAttributeL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST cPtr_mapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist cPtr_mapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_propertyInCollectionListAST GALGAS_mapDeclarationAST::reader_mPropertyList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_mapDeclarationAST * p = (const cPtr_mapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
+    result = p->mAttribute_mPropertyList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_propertyInCollectionListAST cPtr_mapDeclarationAST::reader_mPropertyList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPropertyList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17315,7 +17338,8 @@ GALGAS_insertOrReplaceDeclarationListAST cPtr_mapDeclarationAST::reader_mInsertO
 
 cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                 const GALGAS_lstring & in_mMapTypeName,
-                                                const GALGAS_attributeInCollectionListAST & in_mAttributeList,
+                                                const GALGAS_lstringlist & in_mAttributeList,
+                                                const GALGAS_propertyInCollectionListAST & in_mPropertyList,
                                                 const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                 const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                 const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
@@ -17324,6 +17348,7 @@ cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GALGAS_bool & in_mIsPredef
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mMapTypeName (in_mMapTypeName),
 mAttribute_mAttributeList (in_mAttributeList),
+mAttribute_mPropertyList (in_mPropertyList),
 mAttribute_mInsertMethodList (in_mInsertMethodList),
 mAttribute_mSearchMethodList (in_mSearchMethodList),
 mAttribute_mRemoveMethodList (in_mRemoveMethodList),
@@ -17345,6 +17370,8 @@ void cPtr_mapDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mAttributeList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
+  mAttribute_mPropertyList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
   mAttribute_mInsertMethodList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mSearchMethodList.description (ioString, inIndentation+1) ;
@@ -17359,7 +17386,7 @@ void cPtr_mapDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_mapDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_mapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mRemoveMethodList, mAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mPropertyList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mRemoveMethodList, mAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
   return ptr ;
 }
 

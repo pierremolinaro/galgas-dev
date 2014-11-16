@@ -60,8 +60,8 @@ proc compileBeforeClause
       !inAnalysisContext
       !@formalParameterListAST. emptyList # Routine signature : no argument
       !@localConstantList. emptyList # No local constant
-      !@typedAttributeList. emptyList # No attribute (not a method)
-      !@typedAttributeList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -97,8 +97,8 @@ proc compileBeforeClauseGalgas3
       !inAnalysisContext
       !@formalParameterListAST. emptyList # Routine signature : no argument
       !@localConstantList. emptyList # No local constant
-      !@typedAttributeList. emptyList # No attribute (not a method)
-      !@typedAttributeList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -131,7 +131,7 @@ proc compileProgramRules
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
   ?!@bool ioHasIndexing {
   @uint ruleIndex = 0
-  for () in  inProgramRules do
+  for () in inProgramRules do
     if mIndexingGrammar.string != "" then
       ioHasIndexing = true
       [inAnalysisContext.mSemanticContext.mGrammarMap searchKey !mIndexingGrammar ?* ?let @bool hasIndexing ?*]
@@ -152,8 +152,8 @@ proc compileProgramRules
       !inAnalysisContext
       !argumentList
       !@localConstantList. emptyList # No local constant
-      !@typedAttributeList. emptyList # No attribute (not a method)
-      !@typedAttributeList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -182,7 +182,7 @@ private proc compileProgramRulesGalgas3
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
   ?!@bool ioHasIndexing {
   @uint ruleIndex = 0
-  for () in  inProgramRules do
+  for () in inProgramRules do
     if mIndexingGrammar.string != "" then
       ioHasIndexing = true
       [inAnalysisContext.mSemanticContext.mGrammarMap searchKey !mIndexingGrammar ?* ?let @bool hasIndexing ?*]
@@ -203,8 +203,8 @@ private proc compileProgramRulesGalgas3
       !inAnalysisContext
       !argumentList
       !@localConstantList. emptyList # No local constant
-      !@typedAttributeList. emptyList # No attribute (not a method)
-      !@typedAttributeList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -240,8 +240,8 @@ proc compileAfterClause
       !inAnalysisContext
       !@formalParameterListAST. emptyList # Routine signature : no argument
       !@localConstantList. emptyList # No local constant
-      !@typedAttributeList. emptyList # No attribute (not a method)
-      !@typedAttributeList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -277,8 +277,8 @@ proc compileAfterClauseGalgas3
       !inAnalysisContext
       !@formalParameterListAST. emptyList # Routine signature : no argument
       !@localConstantList. emptyList # No local constant
-      !@typedAttributeList. emptyList # No attribute (not a method)
-      !@typedAttributeList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@typedPropertyList. emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -403,12 +403,12 @@ proc compileProgramComponentFromAST
       ![componentName string]
       !headerIncludeList
     ]
-    for () in  decoratedDeclarationListForGeneration do
+    for () in decoratedDeclarationListForGeneration do
       var unusedInclusionSet = @stringset. emptySet
       [mDeclaration appendDeclaration1 !?unusedInclusionSet ?let @string code]
       headerString += code
     end
-    for () in  decoratedDeclarationListForGeneration do
+    for () in decoratedDeclarationListForGeneration do
       var inclusionSet2 = @stringset. emptySet
       [mDeclaration appendDeclaration2 !false !inProductDirectory !?inclusionSet2 ?let @string headerString2]
       headerString += headerString2
@@ -426,7 +426,7 @@ proc compileProgramComponentFromAST
 #------ Generate Implementation File
   if @uint. errorCount == 0 then
     var beforAfterRulesImplementationString = ""
-    for () in  decoratedDeclarationListForGeneration do
+    for () in decoratedDeclarationListForGeneration do
       beforAfterRulesImplementationString += [mDeclaration appendTypeGenericImplementation]
       var unusedInclusionSet = @stringset. emptySet
       [mDeclaration appendSpecificImplementation !semanticContext.mTypeMap !?unusedInclusionSet ?let @string code]
@@ -520,7 +520,7 @@ proc compileProgramComponentGalgas3
 #------------ Build Implementation File
   @stringset inclusionSet = {}
   var beforeAfterRulesString = ""
-  for () in  decoratedDeclarationListForGeneration do
+  for () in decoratedDeclarationListForGeneration do
     beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation]
     [mDeclaration appendSpecificImplementation !inSemanticContext.mTypeMap !?inclusionSet ?let @string code]
     beforeAfterRulesString += code

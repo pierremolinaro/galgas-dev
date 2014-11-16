@@ -350,11 +350,11 @@ proc checkCategoryModifierDefinitionForClass
   ?let @genericCategoryMethodListMap inOverridingCategoryMethodListMap
   ?let @unifiedTypeMap inUnifiedTypeMap {
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
-  for () in  descendantClasses do
+  for () in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
     @lstringlist overridingMethods = [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]]
     @bool found = false
-    for () in  overridingMethods while not found do
+    for () in overridingMethods while not found do
       found = [inAbstractCategoryModifierName string] == [mValue string]
     end
     if not found then
@@ -386,11 +386,11 @@ proc checkCategoryMethodDefinitionForClass
   ?let @genericCategoryMethodListMap inOverridingCategoryMethodListMap
   ?let @unifiedTypeMap inUnifiedTypeMap {
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
-  for () in  descendantClasses do
+  for () in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
     @lstringlist overridingMethods = [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]]
     @bool found = false
-    for () in  overridingMethods while not found do
+    for () in overridingMethods while not found do
       found = [inAbstractCategoryMethodName string] == [mValue string]
     end
     if not found then
@@ -422,11 +422,11 @@ proc checkCategoryReaderDefinitionForClass
   ?let @genericCategoryMethodListMap inOverridingCategoryReaderListMap
   ?let @unifiedTypeMap inUnifiedTypeMap {
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
-  for () in  descendantClasses do
+  for () in descendantClasses do
     @lstring descendantClassName = [mType lkey]
     @lstringlist overridingReaders = [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]]
     @bool found = false
-    for () in  overridingReaders while not found do
+    for () in overridingReaders while not found do
       found = [inAbstractCategoryReaderName string] == [mValue string]
     end
     if not found then
@@ -457,13 +457,13 @@ proc performProjectGlobalCheckings
 #------ Add predefined types to semantics declarations
   appendPredefinedTypesASTs ( !?semanticDeclarationList )
 #--- Build all declaration list
-  for () in  [inParsedComponentStruct mParsedSemanticsComponentMap] do
+  for () in [inParsedComponentStruct mParsedSemanticsComponentMap] do
     semanticDeclarationList += [mSemanticComponentRoot mSemanticDeclarationList]
   end
-  for () in  [inParsedComponentStruct mParsedSyntaxComponentMap] do
+  for () in [inParsedComponentStruct mParsedSyntaxComponentMap] do
     semanticDeclarationList += [mSyntaxComponentRoot mSemanticDeclarationList]
   end
-  for () in  [inParsedComponentStruct mParsedProgramComponentMap] do
+  for () in [inParsedComponentStruct mParsedProgramComponentMap] do
     semanticDeclarationList += [mProgramComponentAST mSemanticDeclarationList]
   end
 #------ Generate declarations
@@ -474,7 +474,7 @@ proc performProjectGlobalCheckings
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
   var descendantClassListMap =@descendantClassListMap.emptyMap{}
-  for () in  semanticContext.mTypeMap do
+  for () in semanticContext.mTypeMap do
      if not [mSuperType isNull] then
        descendantClassListMap +=
          ![mSuperType key]
@@ -494,7 +494,7 @@ proc performProjectGlobalCheckings
   var categoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
   var overridingCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
   var overridingAbstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
-  for () in  semanticDeclarationList do
+  for () in semanticDeclarationList do
     [mSemanticDeclaration buildCategoryListMaps
       !?abstractCategoryModifierListMap
       !?categoryModifierListMap
@@ -513,36 +513,36 @@ proc performProjectGlobalCheckings
 #------ Check Category
   if @uint. errorCount == 0 then
   #--- A given abstract category modifier is defined only once for a class
-    for () in  abstractCategoryModifierListMap do
+    for () in abstractCategoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given base category modifier is defined only once for a class
-    for () in  categoryModifierListMap do
+    for () in categoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given overriding category modifier is defined only once for a class
-    for () in  overridingCategoryModifierListMap do
+    for () in overridingCategoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given overriding abstract category modifier is defined only once for a class
-    for () in  overridingAbstractCategoryMethodListMap do
+    for () in overridingAbstractCategoryMethodListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #------ Check that for every abstract category modifier, an overridden category modifier defined in an concrete subclass
-    for () in  abstractCategoryModifierListMap do
-      for () in  mList do
+    for () in abstractCategoryModifierListMap do
+      for () in mList do
         checkCategoryModifierDefinitionForClass (
           !key
           !key
@@ -554,8 +554,8 @@ proc performProjectGlobalCheckings
       end
     end
   #------ Check that for every overriding abstract category modifier, an overridden category modifier defined in an concrete subclass
-    for () in  overridingAbstractCategoryModifierListMap do
-      for () in  mList do
+    for () in overridingAbstractCategoryModifierListMap do
+      for () in mList do
         checkCategoryModifierDefinitionForClass (
           !key
           !key
@@ -567,36 +567,36 @@ proc performProjectGlobalCheckings
       end
     end
   #--- A given abstract category method is defined only once for a class
-    for () in  abstractCategoryMethodListMap do
+    for () in abstractCategoryMethodListMap do
       var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given base category method is defined only once for a class
-    for () in  categoryMethodListMap do
+    for () in categoryMethodListMap do
       var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given overriding category method is defined only once for a class
-    for () in  overridingCategoryMethodListMap do
+    for () in overridingCategoryMethodListMap do
       var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given overriding abstract category method is defined only once for a class
-    for () in  overridingAbstractCategoryMethodListMap do
+    for () in overridingAbstractCategoryMethodListMap do
       var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
-    for () in  abstractCategoryMethodListMap do
-      for () in  mList do
+    for () in abstractCategoryMethodListMap do
+      for () in mList do
         checkCategoryMethodDefinitionForClass (
           !key
           !key
@@ -608,8 +608,8 @@ proc performProjectGlobalCheckings
       end
     end
   #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
-    for () in  overridingAbstractCategoryMethodListMap do
-      for () in  mList do
+    for () in overridingAbstractCategoryMethodListMap do
+      for () in mList do
         checkCategoryMethodDefinitionForClass (
           !key
           !key
@@ -624,29 +624,29 @@ proc performProjectGlobalCheckings
 ##--- Check that for every abstract category reader, an overridden category reader
 ##    defined in an concrete subclass
   #--- A given abstract category reader is defined only once for a class
-    for () in  abstractCategoryReaderListMap do
+    for () in abstractCategoryReaderListMap do
       var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
   #--- A given base category reader is defined only once for a class
-    for () in  categoryReaderListMap do
+    for () in categoryReaderListMap do
       var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
   #--- A given overriding category reader is defined only once for a class
-    for () in  overridingCategoryReaderListMap do
+    for () in overridingCategoryReaderListMap do
       var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
   #--- Check every abstract category reader is implemented by every inherited concrete type
-    for () in  abstractCategoryReaderListMap do
-      for () in  mList do
+    for () in abstractCategoryReaderListMap do
+      for () in mList do
         checkCategoryReaderDefinitionForClass (
           !key
           !key
@@ -658,8 +658,8 @@ proc performProjectGlobalCheckings
       end
     end
   #--- Check every abstract category reader is implemented by every inherited concrete type
-    for () in  overridingAbstractCategoryReaderListMap do
-      for () in  mList do
+    for () in overridingAbstractCategoryReaderListMap do
+      for () in mList do
         checkCategoryReaderDefinitionForClass (
           !key
           !key
@@ -675,12 +675,12 @@ proc performProjectGlobalCheckings
   let @string typeDumpFilePath = inProjectSourceFilePath + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var firstLetterSet =@stringset.emptySet{}
-    for () in  semanticContext.mTypeMap do
+    for () in semanticContext.mTypeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
     @string tableOfTypeString = ""
     @char currentFirstLetter = ' '
-    for () type_ in  semanticContext.mTypeMap do
+    for () type_ in semanticContext.mTypeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
         tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"
@@ -710,7 +710,7 @@ proc performGalgas3ProjectGlobalCheckings
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
   var descendantClassListMap =@descendantClassListMap.emptyMap{}
-  for () in  inSemanticContext.mTypeMap do
+  for () in inSemanticContext.mTypeMap do
      if not [mSuperType isNull] then
        descendantClassListMap +=
          ![mSuperType key]
@@ -730,7 +730,7 @@ proc performGalgas3ProjectGlobalCheckings
   var categoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
   var overridingCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
   var overridingAbstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
-  for () in  inSemanticDeclarationList do
+  for () in inSemanticDeclarationList do
     [mSemanticDeclaration buildCategoryListMaps
       !?abstractCategoryModifierListMap
       !?categoryModifierListMap
@@ -749,36 +749,36 @@ proc performGalgas3ProjectGlobalCheckings
 #------ Check Category
   if @uint. errorCount == 0 then
   #--- A given abstract category modifier is defined only once for a class
-    for () in  abstractCategoryModifierListMap do
+    for () in abstractCategoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given base category modifier is defined only once for a class
-    for () in  categoryModifierListMap do
+    for () in categoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given overriding category modifier is defined only once for a class
-    for () in  overridingCategoryModifierListMap do
+    for () in overridingCategoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given overriding abstract category modifier is defined only once for a class
-    for () in  overridingAbstractCategoryMethodListMap do
+    for () in overridingAbstractCategoryMethodListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #------ Check that for every abstract category modifier, an overridden category modifier defined in an concrete subclass
-    for () in  abstractCategoryModifierListMap do
-      for () in  mList do
+    for () in abstractCategoryModifierListMap do
+      for () in mList do
         checkCategoryModifierDefinitionForClass (
           !key
           !key
@@ -790,8 +790,8 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #------ Check that for every overriding abstract category modifier, an overridden category modifier defined in an concrete subclass
-    for () in  overridingAbstractCategoryModifierListMap do
-      for () in  mList do
+    for () in overridingAbstractCategoryModifierListMap do
+      for () in mList do
         checkCategoryModifierDefinitionForClass (
           !key
           !key
@@ -803,36 +803,36 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #--- A given abstract category method is defined only once for a class
-    for () in  abstractCategoryMethodListMap do
+    for () in abstractCategoryMethodListMap do
       var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given base category method is defined only once for a class
-    for () in  categoryMethodListMap do
+    for () in categoryMethodListMap do
       var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given overriding category method is defined only once for a class
-    for () in  overridingCategoryMethodListMap do
+    for () in overridingCategoryMethodListMap do
       var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given overriding abstract category method is defined only once for a class
-    for () in  overridingAbstractCategoryMethodListMap do
+    for () in overridingAbstractCategoryMethodListMap do
       var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
-    for () in  abstractCategoryMethodListMap do
-      for () in  mList do
+    for () in abstractCategoryMethodListMap do
+      for () in mList do
         checkCategoryMethodDefinitionForClass (
           !key
           !key
@@ -844,8 +844,8 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
-    for () in  overridingAbstractCategoryMethodListMap do
-      for () in  mList do
+    for () in overridingAbstractCategoryMethodListMap do
+      for () in mList do
         checkCategoryMethodDefinitionForClass (
           !key
           !key
@@ -860,29 +860,29 @@ proc performGalgas3ProjectGlobalCheckings
 ##--- Check that for every abstract category reader, an overridden category reader
 ##    defined in an concrete subclass
   #--- A given abstract category reader is defined only once for a class
-    for () in  abstractCategoryReaderListMap do
+    for () in abstractCategoryReaderListMap do
       var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
   #--- A given base category reader is defined only once for a class
-    for () in  categoryReaderListMap do
+    for () in categoryReaderListMap do
       var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
   #--- A given overriding category reader is defined only once for a class
-    for () in  overridingCategoryReaderListMap do
+    for () in overridingCategoryReaderListMap do
       var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
-      for () in  mList do
+      for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
   #--- Check every abstract category reader is implemented by every inherited concrete type
-    for () in  abstractCategoryReaderListMap do
-      for () in  mList do
+    for () in abstractCategoryReaderListMap do
+      for () in mList do
         checkCategoryReaderDefinitionForClass (
           !key
           !key
@@ -894,8 +894,8 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #--- Check every abstract category reader is implemented by every inherited concrete type
-    for () in  overridingAbstractCategoryReaderListMap do
-      for () in  mList do
+    for () in overridingAbstractCategoryReaderListMap do
+      for () in mList do
         checkCategoryReaderDefinitionForClass (
           !key
           !key

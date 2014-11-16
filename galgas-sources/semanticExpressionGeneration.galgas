@@ -193,7 +193,7 @@ override method @constructorExpressionForGeneration generateExpression
   !@string outCppExpression {
   [mResultType addHeaderFileName !?ioInclusionSet]
   var parameterList =@stringlist.emptyList{}
-  for () in  mEffectiveParameterList do
+  for () in mEffectiveParameterList do
     @string parameter
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
     parameterList += !parameter  
@@ -201,7 +201,7 @@ override method @constructorExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_"  + [mConstructorType identifierRepresentation]
                    + "::constructor_" + [mConstructorName identifierRepresentation]
                    + " ("
-  for () in  parameterList
+  for () in parameterList
     do outCppExpression += mValue
     between outCppExpression += ", "
   end
@@ -950,7 +950,7 @@ override method @readerCallExpressionForGeneration generateExpression
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
 #--- Reader operands
   var readerArgumentCppNameList =@stringlist.emptyList{}
-  for () in  mExpressions do
+  for () in mExpressions do
     @string argumentCppName
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?argumentCppName]
     readerArgumentCppNameList += !argumentCppName
@@ -983,13 +983,13 @@ override method @readerCallExpressionForGeneration generateExpression
     end
   case definedAsMember :
     outCppExpression = receiverCppName
-    for () in  mFieldList do
+    for () in mFieldList do
       outCppExpression += ".mAttribute_" + [mValue identifierRepresentation]
     end
     [mResultType addHeaderFileName !?ioInclusionSet]
     outCppExpression +=  ".reader_" + [mReaderName identifierRepresentation] + " ("
   end
-  for () in  readerArgumentCppNameList
+  for () in readerArgumentCppNameList
     do outCppExpression += mValue
     between outCppExpression += ", "
   end
@@ -1021,13 +1021,13 @@ override method @functionCallExpressionForGeneration generateExpression
   ioInclusionSet += !"func-" + mFunctionName
 #---
   var parameterList =@stringlist.emptyList{}
-  for () in  mExpressions do
+  for () in mExpressions do
     @string parameter
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
     parameterList += !parameter  
   end
   outCppExpression = "function_" + [mFunctionName identifierRepresentation] + " ("
-  for () in  parameterList
+  for () in parameterList
     do outCppExpression += mValue + ", "
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
@@ -1060,7 +1060,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
 #---
   ioInclusionSet += !"filewrapper-" + mFilewrapperName
   var parameterList =@stringlist.emptyList{}
-  for () in  mActualOutputParameterList do
+  for () in mActualOutputParameterList do
     @string parameter
     [mExpression generateExpression
       !?ioGeneratedCode
@@ -1073,7 +1073,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   end
   outCppExpression = "GALGAS_string (filewrapperTemplate_" + [mFilewrapperName identifierRepresentation] + "_" + [mFilewrapperTemplateName identifierRepresentation]
                   + " (" + compilerCppName ()
-  for () in  parameterList do
+  for () in parameterList do
     outCppExpression += ", " + mValue
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
@@ -1154,7 +1154,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
   ?let @string inCppTargetVar {
 #--- Parameters
   var parameterList = @stringlist {}
-  for () in  mExpressionList do
+  for () in mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -1168,7 +1168,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
   ioGeneratedCode += inCppTargetVar
 #--- Call add assign (+=) operator
   ioGeneratedCode += ".addAssign_operation ("
-  for () in  parameterList
+  for () in parameterList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end

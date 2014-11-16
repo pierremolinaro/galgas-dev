@@ -83,9 +83,9 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-proxy. null
       kind = @methodKind. definedAsMember
-      for () in  [receiverType mCurrentTypedAttributeList] do
+      for () in [receiverType mCurrentTypedAttributeList] do
         let @readerMap aMap = [mAttributeTypeProxy mReaderMap]
-        with [mReaderName string] in  aMap  do
+        with [mReaderName string] in aMap  do
           matchingReaderCount ++
           readerFormalArgumentTypeList = mArgumentTypeList
           hasCompilerArgument = mHasCompilerArgument
@@ -101,7 +101,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
         : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
         @string s = ""
-        for () in  fieldList
+        for () in fieldList
           do s += mValue
           between s += ", "
         end
@@ -116,9 +116,9 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     else
       @string s = ""
-      for () in  readerMap do
+      for () in readerMap do
         s += "\n  - " + lkey
-        for () in  mArgumentTypeList do
+        for () in mArgumentTypeList do
           s += " ?@" + [mFormalArgumentType key]
         end
         s += " -> @" + [mReturnedType key]
@@ -137,7 +137,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
     + [[mExpressionList length] string] + " parameter(s)" : outExpression
   else
     var constructorEffectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
-    for () in  mExpressionList, () in  readerFormalArgumentTypeList do
+    for () in mExpressionList, () in readerFormalArgumentTypeList do
       [mExpression templateExpressionAnalysis !inAnalysisContext ?let @semanticExpressionForGeneration exp]
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
@@ -171,7 +171,7 @@ override method @templateConstructorAST templateExpressionAnalysis
   @unifiedTypeMap-proxy returnedType
   @bool hasCompilerArgument
   @functionSignature constructorFormalArgumentTypeList
-  with [mConstructorName string] in  constructorMap  do
+  with [mConstructorName string] in constructorMap  do
     constructorFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
     returnedType = mReturnedType
@@ -182,9 +182,9 @@ override method @templateConstructorAST templateExpressionAnalysis
       : constructorFormalArgumentTypeList, hasCompilerArgument, returnedType
     else
       @string s = ""
-      for () in  constructorMap do
+      for () in constructorMap do
         s += "\n  - " + lkey
-        for () in  mArgumentTypeList do
+        for () in mArgumentTypeList do
           s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
         end
         s += " -> @" + [mReturnedType key]
@@ -206,7 +206,7 @@ override method @templateConstructorAST templateExpressionAnalysis
     : constructorEffectiveParameterList
   else
     constructorEffectiveParameterList = @semanticExpressionListForGeneration. emptyList
-    for () in  mExpressionList, () in  constructorFormalArgumentTypeList do
+    for () in mExpressionList, () in constructorFormalArgumentTypeList do
       @semanticExpressionForGeneration exp
       [mExpression templateExpressionAnalysis !inAnalysisContext ?exp]
       if mFormalSelector.string != mActualSelector.string then
@@ -357,7 +357,7 @@ override method @templateLiteralStringExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
   @string s = ""
-  for () in  mLiteralStringList do
+  for () in mLiteralStringList do
     s += mValue
   end
   outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
@@ -568,13 +568,13 @@ override method @templateOptionAccessAST templateExpressionAnalysis
     end
   else
     @string s = ""
-    for () in  boolOptionMap do
+    for () in boolOptionMap do
       s += "\n-  '" + lkey + "' @bool option;"
     end
-    for () in  uintOptionMap do
+    for () in uintOptionMap do
       s += "\n-  '" + lkey + "' @uint option;"
     end
-    for () in  stringOptionMap do
+    for () in stringOptionMap do
       s += "\n-  '" + lkey + "' @string option;"
     end
     error mOptionName
@@ -613,7 +613,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
     : outExpression
   else
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration.emptyList{}
-    for () in  functionSignature, () in  mExpressionList do
+    for () in functionSignature, () in mExpressionList do
       [mExpression templateExpressionAnalysis !inAnalysisContext ?let @semanticExpressionForGeneration expression]
       checkAssignmentTypes ( !mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation )
       semanticExpressionListForGeneration += !expression
@@ -1149,7 +1149,7 @@ proc templateInstructionListAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   ?let @templateInstructionListAST inInstructionList
   ?!@templateInstructionListForGeneration ioInstructionList {
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction templateInstructionAnalysis !inAnalysisContext !?ioInstructionList]
   end
 }
@@ -1229,7 +1229,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   if [mIndexIdentifier string] != "" then
     [!?doVariableMap insertKey !mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName]
   end
-  for () in  enumerationDescriptor do
+  for () in enumerationDescriptor do
     [!?doVariableMap insertKey
       !@lstring.new {!mPrefix + mEnumerationName ![expression mLocation]}
       !mEnumeratedType
@@ -1266,7 +1266,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList {
   var templateInstructionIfBranchList =@templateInstructionIfBranchListForGeneration.emptyList{}
-  for () in  mTemplateInstructionIfBranchList do
+  for () in mTemplateInstructionIfBranchList do
     @semanticExpressionForGeneration expression
     [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
     if [[expression mResultType] key] != "bool" then
@@ -1300,8 +1300,8 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 #---
   var templateInstructionSwitchBranchList =@templateInstructionSwitchBranchListForGeneration.emptyList{}
   var namedConstantSet =@stringset.emptySet{}
-  for () in  mTemplateInstructionSwitchBranchList do
-    for () in  mConstantList do
+  for () in mTemplateInstructionSwitchBranchList do
+    for () in mConstantList do
       if not [enumConstantMap hasKey ![mValue string]] then
         error mValue : "the '" + mValue + "' is not a contant of '@" + [[switchExpression mResultType] key] + "' enumeration type"
       end
@@ -1318,7 +1318,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   @stringset missingConstants = [enumConstantMap keySet] - namedConstantSet
   if [missingConstants count] > 0 then
     @string m = "all constants should be named in a switch instruction; the following constants are missing:"
-    for () in  missingConstants do
+    for () in missingConstants do
       m += "\n  - '" + key + "'"
     end
     error mSwitchExpressionEndLocation : m

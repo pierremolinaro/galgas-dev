@@ -1285,7 +1285,7 @@ list @mapOverrideList {
 class @mapTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mElementTypeProxy
   @lstring mMapTypeName
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @insertMethodListAST mInsertMethodList
   @mapSearchMethodListAST mSearchMethodList
   @mapRemoveMethodListAST mRemoveMethodList
@@ -1297,7 +1297,7 @@ class @mapTypeForGeneration : @semanticTypeForGeneration {
 
 class @uniqueMapTypeForGeneration : @semanticTypeForGeneration {
   @lstring mMapTypeName
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @insertMethodListAST mInsertMethodList
   @mapSearchMethodListAST mSearchMethodList
 #  @withAccessorMap mWithAccessorMap ; # Method for with accessor
@@ -1326,7 +1326,7 @@ class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
 class @mapProxyTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mAssociatedMapTypeProxy
-  @typedAttributeList mAssociatedMapTypedAttributeList
+  @typedPropertyList mAssociatedMapTypedAttributeList
   @mapSearchMethodListAST mSearchMethodList
 }
 
@@ -1357,8 +1357,8 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
   @bool mIsAbstract
   @lstring mClassTypeName
   @unifiedTypeMap-proxy mSuperClass # Null if no super class
-  @typedAttributeList mAllTypedAttributeList # Inherited followed by current attributes
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
+  @typedPropertyList mTypedAttributeList
   @bool mGenerateHeaderInSeparateFile # Significant only for classes
 }
 
@@ -1370,7 +1370,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
 
 class @listmapTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mAssociatedListTypeIndex
-  @typedAttributeList mAssociatedListTypedAttributeList
+  @typedPropertyList mAssociatedListTypedAttributeList
   @unifiedTypeMap-proxy mAssociatedListMapElementTypeIndex
 }
 
@@ -1393,7 +1393,7 @@ class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
 class @listTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mListElementTypeIndex
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1403,7 +1403,7 @@ class @listTypeForGeneration : @semanticTypeForGeneration {
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @structTypeForGeneration : @semanticTypeForGeneration {
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1422,7 +1422,7 @@ list @sortDescriptorListForGeneration {
 
 class @sortedListTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mListElementTypeIndex
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @sortDescriptorListForGeneration mSortDescriptorList
 }
 
@@ -1490,7 +1490,7 @@ class @categoryMethodForGeneration : @semanticDeclarationWithHeaderForGeneration
   @string mCategoryMethodName
   @bool mImplementedAsFunction
   @formalParameterListForGeneration mCategoryMethodFormalParameterList
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
@@ -1505,7 +1505,7 @@ class @overridingCategoryMethodForGeneration : @semanticDeclarationWithHeaderFor
   @string mBaseTypeName
   @string mCategoryMethodName
   @formalParameterListForGeneration mCategoryMethodFormalParameterList
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
@@ -1532,7 +1532,7 @@ class @categoryModifierForGeneration : @semanticDeclarationWithHeaderForGenerati
   @string mCategoryModifierName
   @bool mImplementedAsFunction
   @formalParameterListForGeneration mCategoryModifierFormalParameterList
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
@@ -1547,7 +1547,7 @@ class @overridingCategoryModifierForGeneration : @semanticDeclarationWithHeaderF
   @string mBaseTypeName
   @string mCategoryModifierName
   @formalParameterListForGeneration mCategoryModifierFormalParameterList
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
@@ -1577,7 +1577,7 @@ class @categoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration
   @unifiedTypeMap-proxy mResultType
   @string mResultVarCppName
   @formalInputParameterListForGeneration mCategoryReaderFormalParameterList
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
@@ -1594,7 +1594,7 @@ class @overrideCategoryReaderForGeneration : @semanticDeclarationWithHeaderForGe
   @unifiedTypeMap-proxy mResultType
   @string mResultVarCppName
   @formalInputParameterListForGeneration mOverridingCategoryReaderFormalParameterList
-  @typedAttributeList mTypedAttributeList
+  @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 

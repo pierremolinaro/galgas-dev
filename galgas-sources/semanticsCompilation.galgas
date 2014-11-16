@@ -76,7 +76,7 @@ proc recursivelyImportSemanticComponent
     !@lstring.new {![inFilePath lastPathComponent] ![inFilePath location]}
     ![inFilePath lastPathComponent]
   ]
-  for () in  inListOfFilesToParse do
+  for () in inListOfFilesToParse do
     let filePath = @lstring.new {
       ![mValue absolutePathFromPath !inDirectory]
       ![mValue location]}
@@ -109,7 +109,7 @@ proc recursivelyImportSemanticComponent
         )
         ioHeaderIncludeList += ![[semanticsComponentRoot mSemanticsComponentName] string]
       #--- Add declaration to declaration list (only if global)
-        for () in  [semanticsComponentRoot mSemanticDeclarationList] do
+        for () in [semanticsComponentRoot mSemanticDeclarationList] do
           ioSemanticDeclarationList += !mSemanticDeclaration
         end
       #--- Import semantic components named in this file
@@ -169,11 +169,11 @@ proc recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
   [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList]
   if [circularityList length] > 0 then
     @string s = "theses components are involved in a circular import:"
-    for () in  circularityList do
+    for () in circularityList do
       s += "\n  - '" + mValue + "'"
     end
     error @location.here : s
-    for () in  circularityList do
+    for () in circularityList do
       error mValue : "import was here"
     end
   end
@@ -185,7 +185,7 @@ proc buildLexiqueComponentMapForSemanticAnalysis
   ?let @parsedComponentStruct inParsedComponentStruct
   !@lexiqueComponentMapForSemanticAnalysis outLexiqueComponentMapForSemanticAnalysis {
   outLexiqueComponentMapForSemanticAnalysis = @lexiqueComponentMapForSemanticAnalysis. emptyMap
-  for () in  inParsedComponentStruct.mParsedLexiqueComponentMap do
+  for () in inParsedComponentStruct.mParsedLexiqueComponentMap do
     buildTerminalMap ( !mLexiqueComponentAST ?let @terminalMap terminalMap )
     [!?outLexiqueComponentMapForSemanticAnalysis insertKey
       !lkey
@@ -202,7 +202,7 @@ proc buildOptionComponentMapForSemanticAnalysis
   ?let @lstringlist inOptionComponentFileNameList
   ?!@parsedComponentStruct ioParsedComponentStruct
   ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis {
-  for () in  inOptionComponentFileNameList do
+  for () in inOptionComponentFileNameList do
     @lstring optionComponentName
     @commandLineOptionMap boolOptionMap
     @commandLineOptionMap uintOptionMap
@@ -227,7 +227,7 @@ proc buildOptionComponentMapForSemanticAnalysis
   if not [ioOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
     @2stringlist optionNameList = @application. boolOptionNameList
     var boolOptionMap =@commandLineOptionMap.emptyMap{}
-    for () in  optionNameList do
+    for () in optionNameList do
       [!?boolOptionMap insertKey
         !@lstring.new {!mValue1 !@location.here}
         !@application. boolOptionInvocationLetter { !mValue0 !mValue1}
@@ -239,7 +239,7 @@ proc buildOptionComponentMapForSemanticAnalysis
   #--- 
     optionNameList = @application. uintOptionNameList
     var uintOptionMap =@commandLineOptionMap.emptyMap{}
-    for () in  optionNameList do
+    for () in optionNameList do
       [!?uintOptionMap insertKey
         !@lstring.new {!mValue1 !@location.here}
         !@application. uintOptionInvocationLetter { !mValue0 !mValue1}
@@ -251,7 +251,7 @@ proc buildOptionComponentMapForSemanticAnalysis
   #--- 
     optionNameList = @application. stringOptionNameList
     var stringOptionMap =@commandLineOptionMap.emptyMap{}
-    for () in  optionNameList do
+    for () in optionNameList do
       [!?stringOptionMap insertKey
         !@lstring.new {!mValue1 !@location.here}
         !@application. stringOptionInvocationLetter { !mValue0 !mValue1}
@@ -277,13 +277,13 @@ proc buildGrammarComponentMapForSemanticAnalysis
   ?let @grammarComponentASTList inGrammarComponentASTList
   ?!@semanticContext ioSemanticContext {
 #--- Perform semantic analysis of grammar components
-  for () in  inGrammarComponentASTList do
+  for () in inGrammarComponentASTList do
   #--- Analyze start symbol labels
     var grammarLabelMap =@grammarLabelMap.emptyMap{}
-    for () in  [mGrammarComponentAST mStartSymbolLabelList] do
+    for () in [mGrammarComponentAST mStartSymbolLabelList] do
     #--- Analyze signature
       var formalArgumentList =@formalParameterSignature.emptyList{}
-      for () in  mFormalArgumentList do
+      for () in mFormalArgumentList do
         formalArgumentList +=
           !mFormalSelector
           !@unifiedTypeMap-proxy. searchKey { !ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -384,12 +384,12 @@ proc compileSemanticsComponentAST
       ![componentName string]
       !headerIncludeList
     ]
-    for () in  decoratedDeclarationListForGeneration do
+    for () in decoratedDeclarationListForGeneration do
       var unusedInclusionSet = @stringset. emptySet
       [mDeclaration appendDeclaration1 !?unusedInclusionSet ?let @string code]
       headerString += code
     end
-    for () in  decoratedDeclarationListForGeneration do
+    for () in decoratedDeclarationListForGeneration do
       var inclusionSet2 = @stringset. emptySet
       [mDeclaration appendDeclaration2 !false !inOutputDirectory !?inclusionSet2 ?let @string headerString2]
       headerString += headerString2
@@ -410,7 +410,7 @@ proc compileSemanticsComponentAST
     var implementationString = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !implementationIncludeList
     ]
-    for () in  decoratedDeclarationListForGeneration do
+    for () in decoratedDeclarationListForGeneration do
       var unusedInclusionSet = @stringset. emptySet
       [mDeclaration appendSpecificImplementation !semanticContext.mTypeMap !?unusedInclusionSet ?let @string code]
       implementationString += code

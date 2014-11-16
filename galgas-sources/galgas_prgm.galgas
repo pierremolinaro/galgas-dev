@@ -255,7 +255,7 @@ indexing with projectLL1grammar
   end
 #--- Build qualified feature map
   var projectQualifiedFeatureMap =@projectQualifiedFeatureMap.emptyMap{}
-  for () in  projectComponentAST.mQualifiedFeatureList do
+  for () in projectComponentAST.mQualifiedFeatureList do
     [!?projectQualifiedFeatureMap insertKey
       !mFeatureName
       !mFeatureValue
@@ -272,7 +272,7 @@ indexing with projectLL1grammar
     !@parsedGuiComponentMap. emptyMap
   }
 #---------------------------------- Parse sources
-  for () in  [projectComponentAST mProjectSourceList] do
+  for () in [projectComponentAST mProjectSourceList] do
     let pathExtension = [mFilePath pathExtension]
     let componentName = @lstring.new {
       ![[mFilePath lastPathComponent] stringByDeletingPathExtension]
@@ -422,7 +422,7 @@ indexing with projectLL1grammar
   var handledExtensionSet =@stringset.emptySet{}
   if @uint.errorCount == 0 then
   #--- Lexique components
-    for () in  parsedComponentStruct.mParsedLexiqueComponentMap do
+    for () in parsedComponentStruct.mParsedLexiqueComponentMap do
       if [option .verbose_output value] then
         message "*** Compiling '" + lkey + ".gLexique'\n"
       end
@@ -433,7 +433,7 @@ indexing with projectLL1grammar
       )
     end
   #--- GUI components
-    for () in  parsedComponentStruct.mParsedGuiComponentMap do
+    for () in parsedComponentStruct.mParsedGuiComponentMap do
       if [option .verbose_output value] then
         message "*** Compiling '" + lkey + ".gGui'\n"
       end
@@ -445,7 +445,7 @@ indexing with projectLL1grammar
       )
     end
   #--- Option components
-    for () in  parsedComponentStruct.mParsedOptionComponentMap do
+    for () in parsedComponentStruct.mParsedOptionComponentMap do
       if [option .verbose_output value] then
         message "*** Compiling '" + lkey + ".gOption'\n"
       end
@@ -458,7 +458,7 @@ indexing with projectLL1grammar
       )
     end
   #--- Semantic components
-    for () in  parsedComponentStruct.mParsedSemanticsComponentMap do
+    for () in parsedComponentStruct.mParsedSemanticsComponentMap do
       if [option .verbose_output value] then
         message "*** Compiling '" + lkey + ".gSemantics'\n"
       end
@@ -470,7 +470,7 @@ indexing with projectLL1grammar
       )
     end
   #--- Syntax components
-    for () in  parsedComponentStruct.mParsedSyntaxComponentMap do
+    for () in parsedComponentStruct.mParsedSyntaxComponentMap do
       if [option .verbose_output value] then
         message "*** Compiling '" + lkey + ".gSyntax'\n"
       end
@@ -482,7 +482,7 @@ indexing with projectLL1grammar
       )
     end
   #--- Grammar components
-    for () in  parsedComponentStruct.mParsedGrammarComponentMap do
+    for () in parsedComponentStruct.mParsedGrammarComponentMap do
       if [option .verbose_output value] then
         message "*** Compiling '" + lkey + ".gGrammar'\n"
       end
@@ -494,8 +494,8 @@ indexing with projectLL1grammar
       )
     end
   #--- Program components
-    for () in  parsedComponentStruct.mParsedProgramComponentMap do
-      for () in  mProgramComponentAST.mProgramRules do
+    for () in parsedComponentStruct.mParsedProgramComponentMap do
+      for () in mProgramComponentAST.mProgramRules do
         handledExtensionSet += !mSourceFileExtension.string
       end
       if [option .verbose_output value] then
@@ -548,7 +548,7 @@ proc compileProject
   end
   grammar galgas3ProjectGrammar in inProjectSourceFile ?let @galgas3ProjectComponentAST projectComponentAST
   var declarationAST = @galgas3DeclarationAST.default 
-  for () in  projectComponentAST.mProjectSourceList do
+  for () in projectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
       grammar galgas3Grammar in @lstring.new {!absoluteSourcePath !mValue.location} !?declarationAST
@@ -652,12 +652,12 @@ proc compileProject
   let @string typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var firstLetterSet =@stringset.emptySet{}
-    for () in  semanticContext.mTypeMap do
+    for () in semanticContext.mTypeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
     @string tableOfTypeString = ""
     @char currentFirstLetter = ' '
-    for () type_ in  semanticContext.mTypeMap do
+    for () type_ in semanticContext.mTypeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
         tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"
@@ -762,7 +762,7 @@ proc projectGeneration
     ignoredFeatureSet += !"tool-source"
     ignoredFeatureSet += !"app-source"
     var projectQualifiedFeatureMap =@projectQualifiedFeatureMap.emptyMap{}
-    for () in  inProjectComponentAST.mQualifiedFeatureList do
+    for () in inProjectComponentAST.mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !mFeatureName.string] then
         [!?projectQualifiedFeatureMap insertKey
           !mFeatureName
@@ -792,11 +792,11 @@ proc projectGeneration
 #---------------------------------- Remove useless files
   if 0 == @uint.errorCount then
     var allActualFileSet = @stringset. emptySet
-    for () in  [inProductDirectory regularFiles !false] do
+    for () in [inProductDirectory regularFiles !false] do
       allActualFileSet += !mValue
     end
     let uselessFileSet = allActualFileSet - allProductFileSet
-    for () in  uselessFileSet do
+    for () in uselessFileSet do
       [@string deleteFile !inProductDirectory + "/" + key]
     end
   end

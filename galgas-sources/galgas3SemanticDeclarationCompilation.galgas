@@ -27,7 +27,7 @@ proc compileSemanticDeclarationsGalgas3
   appendPredefinedTypesASTs ( !?semanticDeclarationListWithPredefinedTypes )
 #---- Add predefined option component
   @commandLineOptionListAST options = {}
-  for () in  @application. boolOptionNameList do
+  for () in @application. boolOptionNameList do
     options +=
       !["bool" nowhere]
       !@lstring.new {!mValue1 !@location.here}
@@ -37,7 +37,7 @@ proc compileSemanticDeclarationsGalgas3
       !["" nowhere]
       !@optionDefaultValueEnumAST. noDefaultValue
   end
-  for () in  @application. uintOptionNameList do
+  for () in @application. uintOptionNameList do
     options +=
       !["uint" nowhere]
       !@lstring.new {!mValue1 !@location.here}
@@ -47,7 +47,7 @@ proc compileSemanticDeclarationsGalgas3
       !["" nowhere]
       !@optionDefaultValueEnumAST. noDefaultValue
   end
-  for () in  @application. stringOptionNameList do
+  for () in @application. stringOptionNameList do
     options +=
       !["string" nowhere]
       !@lstring.new {!mValue1 !@location.here}
@@ -74,14 +74,14 @@ proc compileSemanticDeclarationsGalgas3
     message "*** Semantic analysis\n"
   end
 #------ Check there is no undefined types
-  for () in  [outSemanticContext.mTypeMap unsolvedProxyList] do
+  for () in [outSemanticContext.mTypeMap unsolvedProxyList] do
     error mValue : "the '@" + mValue + "' type is undefined"
   end
 #------ Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = @semanticDeclarationSortedListForGeneration. emptySortedList
   if @uint. errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outSemanticContext)
-    for () in  sortedSemanticDeclarationListAST do
+    for () in sortedSemanticDeclarationListAST do
       [mSemanticDeclaration semanticAnalysis
         !inProductDirectory
         !outSemanticContext
@@ -117,7 +117,7 @@ proc buildGalgas3SemanticContext
   var categoryReaderMapForBuildingContext = @categoryReaderMapForBuildingContext.emptyMap{}
   var categoryModifierMapForBuildingContext = @categoryModifierMapForBuildingContext.emptyMap{}
   var categoryOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
-  for () in  semanticDeclarationList do
+  for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
       !?categoryMethodMapForBuildingContext
@@ -127,7 +127,7 @@ proc buildGalgas3SemanticContext
     ]  
   end
 #--- Add optional declarations
-  for () in  [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+  for () in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
     log mValue
     if [mValue lastCharacter] == '?' then
       message "Optional '" + mValue + "'\n"
@@ -135,7 +135,7 @@ proc buildGalgas3SemanticContext
   end
 #---
   if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
-    for () in  [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+    for () in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
       error mValue : "the '@" + mValue + "' type is not defined"
     end
     error inEndOfProjectSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext, outSortedSemanticDeclarationListAST
@@ -148,7 +148,7 @@ proc buildGalgas3SemanticContext
     ]
     if [unsortedSemanticDeclarationListAST length] > 0 then
       @string s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST length] string] + " declarations are involved in circular definition:"
-      for () in  unsortedSemanticDeclarationListAST do
+      for () in unsortedSemanticDeclarationListAST do
         s += "\n-  " + [mSemanticDeclaration keyRepresentation]
       end
       error inEndOfProjectSourceFile : s : outSemanticContext
@@ -158,7 +158,7 @@ proc buildGalgas3SemanticContext
     #--- Build initial semantic context
       outSemanticContext = @semanticContext.default
     #--- Loop throught all declarations
-      for () in  outSortedSemanticDeclarationListAST do
+      for () in outSortedSemanticDeclarationListAST do
         [mSemanticDeclaration enterInSemanticContext
           !categoryMethodMapForBuildingContext
           !categoryReaderMapForBuildingContext
@@ -279,7 +279,7 @@ private proc generateManyHeaders
 #--- Header files
   var headerInclusionList1 = @stringlist. emptyList
   var headerInclusionList2 = @stringlist. emptyList
-  for () in  inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       var inclusionSet1 = @stringset. emptySet
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerDef1]
@@ -394,7 +394,7 @@ private proc generateOneBigHeader
     !@stringlist. emptyList
   ]
 #--- Declaration 1
-  for () in  inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       var inclusionSet1 = @stringset. emptySet
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
@@ -402,7 +402,7 @@ private proc generateOneBigHeader
     end
   end
 #--- Declaration 2
-  for () in  inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       var inclusionSet2 = @stringset. emptySet
       [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ?let @string headerString2]
@@ -483,7 +483,7 @@ private proc generateFewImplementationFiles
   var fileIdx = 0
   var implementationString = ""
   @stringset inclusionSet = {}
-  for () in  inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
       if [inclusionSet hasKey !""] then
@@ -548,7 +548,7 @@ private proc generateFewImplementationFilesWithFewHeaders
   ?!@stringlist ioToolHeaderFileList {
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
   @headerCompositionMap headerCompositionMap = {}
-  for () in  inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       var inclusionSet1 = @stringset. emptySet
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
@@ -578,7 +578,7 @@ private proc generateFewImplementationFilesWithFewHeaders
   var headerString = ""
   @stringset inclusionSet = {}
   var headerFileName = "all-declarations-" + fileIdx
-  for () in  inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       if not [mDeclaration isPredefined] then
         if [mDeclaration headerKind] == @headerKind. twoHeaders then
@@ -684,7 +684,7 @@ private proc generateManyImplementationFiles
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet {
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
-  for () in  inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationSortedListForGeneration do
     var inclusionSet = @stringset. emptySet
     if not [mDeclaration isPredefined] then
       [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?var @string implementationString]

@@ -220,7 +220,7 @@ proc updateGalgas3Targets
   ioAllProductFileSet += !"project_header.h"
 #----------------------------------------------------------- Update LIBPM
   @string libpmPath
-  with "libpmAtPath" in  inProjectQualifiedFeatureMap  do
+  with "libpmAtPath" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
       error mFeatureValue:"the libpm path should not be empty" : libpmPath
     else
@@ -257,7 +257,7 @@ proc updateGalgas3Targets
   @string SDK = ""
 #  @string SDKForToolLink := "" ;
   @bool usesARC = false
-  for () in  inTargetFeatureList do
+  for () in inTargetFeatureList do
     if [availableGenerationFeatures hasKey !mValue.string] then
       if [generationFeatures hasKey !mValue.string] then
         error mValue: "duplicate '" + mValue + "' feature"
@@ -314,7 +314,7 @@ proc updateGalgas3Targets
       end
     else
       @string s = ""
-      for () in  availableGenerationFeatures do
+      for () in availableGenerationFeatures do
         s += "\n  - '" + key + "'"
       end
       error mValue: "unknown '" + mValue + "' feature; available features are:" + s
@@ -379,7 +379,7 @@ proc updateGalgas3Targets
     [dir makeDirectory]
   #--- Info.plist
     @string applicationBundleBase
-    with "applicationBundleBase" in  inProjectQualifiedFeatureMap  do
+    with "applicationBundleBase" in inProjectQualifiedFeatureMap  do
       applicationBundleBase = mFeatureValue.string
     else
       applicationBundleBase = "fr.irccyn"
@@ -404,7 +404,7 @@ proc updateGalgas3Targets
       [[filewrapper targetGalgas3GenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
     end
   #--- Application update files
-    with "repositoryURL" in  inProjectQualifiedFeatureMap  do
+    with "repositoryURL" in inProjectQualifiedFeatureMap  do
       let @string applicationUpdateDir = projectDirectory + "/xcode-project/cocoa-application-update/application"
       [applicationUpdateDir makeDirectory]
       [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_header ] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMApplicationUpdate.h" ?*]
@@ -424,7 +424,7 @@ proc updateGalgas3Targets
       [[filewrapper applicationGalgas3UpdateFileWrapper.compatibility_header] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMSnowLeopardLionCompatibility.h" ?*]
     #--- Updater tool
       @string codeSignIdentity
-      with "codeSigning" in  inProjectQualifiedFeatureMap  do
+      with "codeSigning" in inProjectQualifiedFeatureMap  do
         codeSignIdentity = mFeatureValue.string
       else
         codeSignIdentity = ""

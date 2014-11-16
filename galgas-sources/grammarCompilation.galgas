@@ -23,9 +23,9 @@ func transformLabelMap
   -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
 {
   outNonterminalSymbolLabelMapForGrammarAnalysis = @nonterminalSymbolLabelMapForGrammarAnalysis. emptyMap
-  for () in  inLabels do
+  for () in inLabels do
     var formalParametersList =@signatureForGrammarAnalysis.emptyList{}
-    for () in  mFormalArgumentList do
+    for () in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
     [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
@@ -44,7 +44,7 @@ proc checkLabelMap
   ?let @location inOriginalNonTerminalLocation
   ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis {
   var labelStringSet =@stringset.emptySet{}
-  for () in  inLabels do
+  for () in inLabels do
     labelStringSet += ![mLabelName string]
     @signatureForGrammarAnalysis formalParametersList
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?formalParametersList]
@@ -57,7 +57,7 @@ proc checkLabelMap
         + " names " + [[formalParametersList length] string] + " parameter"
         + if [formalParametersList length] > 1 then "s" else "" end
     else
-      for () in  mFormalArgumentList, () in  formalParametersList do
+      for () in mFormalArgumentList, () in formalParametersList do
         if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
           error mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared with "
@@ -78,7 +78,7 @@ proc checkLabelMap
     end
   end
 #---
-  for () in  inNonterminalSymbolLabelMapForGrammarAnalysis do
+  for () in inNonterminalSymbolLabelMapForGrammarAnalysis do
     if not [labelStringSet hasKey ![lkey string]] then
       error inNonTerminalLocation :
         "this non terminal does not declare the '" + lkey + "' label, but declaration at "
@@ -93,8 +93,8 @@ proc checkLabelMap
 proc handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList {
-  for () in  inNonterminalDeclarationList do
-    with [mNonterminalName string] in  ioNonTerminalMapForGrammarAnalysis  do
+  for () in inNonterminalDeclarationList do
+    with [mNonterminalName string] in ioNonTerminalMapForGrammarAnalysis  do
       checkLabelMap (
         ![mNonterminalName location]
         !mLabels
@@ -116,15 +116,15 @@ proc handleNonTerminalDeclarations
 proc handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @syntaxRuleListAST inRuleList {
-  for () in  inRuleList do
+  for () in inRuleList do
     var nonTerminalLabelListAST =@nonTerminalLabelListAST.emptyList{}
-    for () in  mLabelList do
+    for () in mLabelList do
       nonTerminalLabelListAST += 
         !mLabelName
         !mFormalArguments
         !mEndOfArgumentLocation
     end
-    with [mNonterminalName string] in  ioNonTerminalMapForGrammarAnalysis  do
+    with [mNonterminalName string] in ioNonTerminalMapForGrammarAnalysis  do
       checkLabelMap (
         ![mNonterminalName location]
         !nonTerminalLabelListAST
@@ -168,7 +168,7 @@ proc transformInstructionList
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction transformInstruction
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
       !nonTerminalSymbolMap:inNonTerminalSymbolMap
@@ -195,7 +195,7 @@ override method @terminalCheckInstruction transformInstruction
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   @uint terminalSymbolIndex
-  with [mTerminalName string] in  ioActuallyUsedTerminalSymbolMap  do
+  with [mTerminalName string] in ioActuallyUsedTerminalSymbolMap  do
     terminalSymbolIndex = mTerminalIndex
   else
     terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
@@ -242,7 +242,7 @@ override method @repeatInstruction transformInstruction
   )
   var repeatBranchList =@branchListForGrammarAnalysis.listWithValue{ !repeatedInstructionList}
 
-  for () in  mRepeatBranchList do
+  for () in mRepeatBranchList do
     var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis.emptyList{}
     transformInstructionList (
       !mSyntaxInstructionList
@@ -271,7 +271,7 @@ override method @selectInstruction transformInstruction
   ioAddedNonTerminalIndex ++
 
   var selectBranchList =@branchListForGrammarAnalysis.emptyList{}
-  for () in  mSelectBranchList do
+  for () in mSelectBranchList do
     var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis.emptyList{}
     transformInstructionList (
       !mSyntaxInstructionList
@@ -350,7 +350,7 @@ proc buildRuleList
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis
   ?!@uint ioAddedNonTerminalCount {
   var productionRulesList =@productionRuleListForGrammarAnalysis.emptyList{}
-  for () in  inRuleList do
+  for () in inRuleList do
     @uint nonTerminalIndex
     @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap
     [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?nonTerminalIndex ?nonterminalSymbolParametersMap]
@@ -418,7 +418,7 @@ proc parseGrammarComponent
   ?!@parsedComponentStruct ioParsedComponentStruct
   !@galgas3GrammarComponentListAST-element outGrammarComponentRoot {
   let @string basename = [[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-  with basename in  ioParsedComponentStruct.mParsedGrammarComponentMap  do
+  with basename in ioParsedComponentStruct.mParsedGrammarComponentMap  do
     outGrammarComponentRoot = mGrammarComponentRoot
   else
     grammar grammarLL1grammar in inSourceFile ?outGrammarComponentRoot
@@ -480,7 +480,7 @@ proc compileGrammarComponentFromAST
   var syntaxComponentListForGrammarAnalysis =@syntaxComponentListForGrammarAnalysis.emptyList{}
   var nonTerminalToAddList =@nonTerminalToAddList.emptyList{}
   @uint addedNonTerminalCount = 0
-  for () in  [inGrammarComponentRoot mSyntaxComponents] do
+  for () in [inGrammarComponentRoot mSyntaxComponents] do
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
     if [mValue pathExtension] != "gSyntax" then
       error mValue: "a syntax component file should have '.gSyntax' path extension"
@@ -564,14 +564,14 @@ proc compileGrammarComponentFromAST
   )
 #---------------------------------------------------------- Unused Non Terminal Symbols
   var unusedNonTerminalSymbolsForGrammar =@unusedNonTerminalSymbolMapForGrammarAnalysis.emptyMap{}
-  for () in  [inGrammarComponentRoot mUnusedNonterminalList] do
+  for () in [inGrammarComponentRoot mUnusedNonterminalList] do
     @uint nonterminalIndex
     [nonTerminalMapForGrammarAnalysis searchKey !mValue ?nonterminalIndex ?*]
     [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex]
   end
 #---------------------------------------------------------- Non terminal symbols, sorted by index
   var nonTerminalSymbolSortedListForGrammarAnalysis =@nonTerminalSymbolSortedListForGrammarAnalysis.emptySortedList{}
-  for () in  nonTerminalMapForGrammarAnalysis do
+  for () in nonTerminalMapForGrammarAnalysis do
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap
   end
 #---------------------------------------------------------- Analyze grammar

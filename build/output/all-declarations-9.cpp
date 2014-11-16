@@ -20698,7 +20698,7 @@ void cGrammar_syntaxSLRgrammar::nt_attribute_5F_declaration_indexing (C_Lexique_
   }
 }
 
-void cGrammar_syntaxSLRgrammar::nt_attribute_5F_declaration_ (GALGAS_attributeInCollectionListAST &  parameter_1,
+void cGrammar_syntaxSLRgrammar::nt_attribute_5F_declaration_ (GALGAS_propertyInCollectionListAST &  parameter_1,
                                 C_String & ioSyntaxDirectedTranslationResult,
                                 C_Lexique_galgas_5F_scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {

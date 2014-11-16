@@ -382,7 +382,7 @@ method @Xcode_PBXFrameworksBuildPhase buildXcodeProject ?!@string outString {
   + "\t\t\tisa = PBXFrameworksBuildPhase;\n"
   + "\t\t\tbuildActionMask = 2147483647;\n"
   + "\t\t\tfiles = (\n"
-  for () in  mFileReferenceList do
+  for () in mFileReferenceList do
     outString += "\t\t\t\t" + getPBXFileReferenceKey (!seq:[mFile mSequenceNumber]) + " /* "
     + [[mFile mSourceFile] mFileName] + " */,\n"
   end
@@ -774,7 +774,7 @@ proc enter_files_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @stringlist inFileList
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  for () in  inFileList do
+  for () in inFileList do
     enter_file_in_group ( !?ioXcodeProjectDescription !mValue !?ioFileListForGroup )
   end
 }
@@ -848,7 +848,7 @@ proc enter_file_list_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @stringlist in_fileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
-  for () in  in_fileList do
+  for () in in_fileList do
     enter_file_for_sources_build_phase (
       !?ioXcodeProjectDescription
       !mValue
@@ -863,7 +863,7 @@ proc enter_files_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @stringlist in_fileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
-  for () in  in_fileList do
+  for () in in_fileList do
     var key =@lstring.new{ !mValue !@location.here}
     @Xcode_PBXFileReference_abstract ref
     [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref]
@@ -880,7 +880,7 @@ proc enter_files_for_frameworks_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @stringlist in_framework_fileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
-  for () in  in_framework_fileList do
+  for () in in_framework_fileList do
     var key =@lstring.new{ !mValue !@location.here}
     @Xcode_PBXFileReference_abstract ref
     [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref]
@@ -1038,7 +1038,7 @@ proc add_app_target
   inTargetSettings += !"PRODUCT_NAME = \"" + inProductFileName + "\";"
 #--- Define dependency data
   var targetDependencyKeyList =@stringlist.emptyList{}
-  for () in  inDirectDependencyList do
+  for () in inDirectDependencyList do
     var d =@Xcode_targetDependencyDescription.new{ ![ioXcodeProjectDescription mSequenceNumber] !mValue}
     ioXcodeProjectDescription.mSequenceNumber ++
     targetDependencyKeyList += !getPBXFileReferenceKey (!seq:[d mSequenceNumber])
@@ -1075,7 +1075,7 @@ proc enterProjectDefaultSettings
   ?let @bool inUsesARC {
 #-------------------------------------------------- Define project default configuration
   @string pathString = ""
-  for () in  inHeaderSearchPathList
+  for () in inHeaderSearchPathList
   do pathString += "\t\t\t\t\t\"" + mValue + "\",\n"
   end
   outProjectDefaultSettings = @stringlist. emptyList
@@ -1138,26 +1138,26 @@ proc buildXcodeProjectString
   + "\tobjectVersion = 42;\n"
   + "\tobjects = {\n\n"
 #--- PBXBuildFile section
-  for () in  [inXcodeProjectDescription mAllBuildFileList]
+  for () in [inXcodeProjectDescription mAllBuildFileList]
   before outString += "/* Begin PBXBuildFile section */\n"
   do [mFile buildXcodeProject !?outString]
   after outString += "/* End PBXBuildFile section */\n\n"
   end
 #--- PBXFileReference section
-  for () in  [inXcodeProjectDescription mFileReferenceMap]
+  for () in [inXcodeProjectDescription mFileReferenceMap]
   before outString += "/* Begin PBXFileReference section */\n"
   do [mFileReference buildXcodeProject !?outString]
   after outString += "/* End PBXFileReference section */\n"
   end
 #--- PBXFrameworksBuildPhase section
-  for () in  [inXcodeProjectDescription mPBXFrameworksBuildPhase_list]
+  for () in [inXcodeProjectDescription mPBXFrameworksBuildPhase_list]
   before outString += "/* Begin PBXFrameworksBuildPhase section */\n"
   do [mBuildPhase buildXcodeProject !?outString]
   after outString += "/* End PBXFrameworksBuildPhase section */\n"
   end
 #--- PBXGroup section
   outString += "/* Begin PBXGroup section */\n"
-  for () in  [inXcodeProjectDescription mProjectGroupList] do
+  for () in [inXcodeProjectDescription mProjectGroupList] do
     outString += "\t\t" + getPBXFileReferenceKey (!seq:[mGroup mSequenceNumber])
     if [mGroup mGroupName] != "" then
       outString += " /* " + [mGroup mGroupName] + " */"
@@ -1165,7 +1165,7 @@ proc buildXcodeProjectString
     outString += " = {\n"
     + "\t\t\tisa = PBXGroup;\n"
     + "\t\t\tchildren = (\n"
-    for () in  [mGroup mChildrenGroupList] do
+    for () in [mGroup mChildrenGroupList] do
       outString += "\t\t\t\t" + mRefString + " /* " + mComment + " */,\n"
     end
     outString += "\t\t\t);\n"
@@ -1184,14 +1184,14 @@ proc buildXcodeProjectString
   end
   outString += "/* End PBXGroup section */\n\n"
 #--- PBXNativeTarget section
-  for () in  [inXcodeProjectDescription mTargetList]
+  for () in [inXcodeProjectDescription mTargetList]
   before outString += "/* Begin PBXNativeTarget section */\n"
   do
     outString += "\t\t" + mTargetKey + " /* " + mTargetName + " */ = {\n"
     + "\t\t\tisa = PBXNativeTarget;\n"
     + "\t\t\tbuildConfigurationList = " + getPBXFileReferenceKey (!seq:[mTargetConfiguration mSequenceNumber2]) + " /* Build configuration list for PBXNativeTarget \"" + mTargetName + "\" */;\n"
     + "\t\t\tbuildPhases = (\n"
-    for () in  mBuildPhaseKeyList do
+    for () in mBuildPhaseKeyList do
       outString += "\t\t\t\t" + mValue + " ,\n"
     end
     @string productExtension [mProduct productExtension ?extension:productExtension] 
@@ -1199,7 +1199,7 @@ proc buildXcodeProjectString
     + "\t\t\tbuildRules = (\n"
     + "\t\t\t);\n"
     + "\t\t\tdependencies = (\n"
-    for () in  mDependencyKeyList do
+    for () in mDependencyKeyList do
       outString += "\t\t\t\t" + mValue + " /*  */,\n"
     end
     outString += "\t\t\t);\n"
@@ -1223,14 +1223,14 @@ proc buildXcodeProjectString
   + "\t\t\tprojectDirPath = \"\";\n"
   + "\t\t\tprojectRoot = \"\";\n"
   + "\t\t\ttargets = (\n"
-  for () in  [inXcodeProjectDescription mTargetList] do
+  for () in [inXcodeProjectDescription mTargetList] do
     outString += "\t\t\t\t" + mTargetKey + " /* " + mTargetName + " */,\n"
   end
   outString += "\t\t\t);\n"
   + "\t\t};\n"
   + "/* End PBXProject section */\n\n"
 #--- PBXResourcesBuildPhase section
-  for () in  [inXcodeProjectDescription mPBXResourcesBuildPhase_list]
+  for () in [inXcodeProjectDescription mPBXResourcesBuildPhase_list]
   before outString += "/* Begin PBXResourcesBuildPhase section */\n"
   do
     outString += "\t\t" + getPBXFileReferenceKey (!seq:[mBuildPhase mSequenceNumber])
@@ -1238,7 +1238,7 @@ proc buildXcodeProjectString
     + "\t\t\tisa = PBXResourcesBuildPhase;\n"
     + "\t\t\tbuildActionMask = 2147483647;\n"
     + "\t\t\tfiles = (\n"
-    for () in  [mBuildPhase mFileReferenceList] do
+    for () in [mBuildPhase mFileReferenceList] do
       outString += "\t\t\t\t" + getPBXFileReferenceKey (!seq:[mFile mSequenceNumber]) + " ,\n"
     end
     outString +=  "\t\t\t);\n"
@@ -1247,7 +1247,7 @@ proc buildXcodeProjectString
   after outString += "/* End PBXResourcesBuildPhase section */\n"
   end
 #--- PBXSourcesBuildPhase section
-  for () in  [inXcodeProjectDescription mPBXSourcesBuildPhase_list]
+  for () in [inXcodeProjectDescription mPBXSourcesBuildPhase_list]
   before outString += "/* Begin PBXSourcesBuildPhase section */\n"
   do
     outString += "\t\t" + getPBXFileReferenceKey (!seq:[mBuildPhase mSequenceNumber])
@@ -1255,7 +1255,7 @@ proc buildXcodeProjectString
     + "\t\t\tisa = PBXSourcesBuildPhase;\n"
     + "\t\t\tbuildActionMask = 2147483647;\n"
     + "\t\t\tfiles = (\n"
-    for () in  [mBuildPhase mFileReferenceList] do
+    for () in [mBuildPhase mFileReferenceList] do
       outString += "\t\t\t\t" + getPBXFileReferenceKey (!seq:[mFile mSequenceNumber]) + " ,\n"
     end
     outString +=  "\t\t\t);\n"
@@ -1264,7 +1264,7 @@ proc buildXcodeProjectString
   after outString += "/* End PBXSourcesBuildPhase section */\n"
   end
 #--- PBXCopyBuildPhase section
-  for () in  [inXcodeProjectDescription mPBXCopyBuildPhase_list]
+  for () in [inXcodeProjectDescription mPBXCopyBuildPhase_list]
   before outString += "/* Begin PBXCopyFilesBuildPhase section */\n"
   do
     outString += "\t\t" + getPBXFileReferenceKey (!seq:[mBuildPhase mSequenceNumber])
@@ -1274,7 +1274,7 @@ proc buildXcodeProjectString
     + "\t\t\tdstPath = \"" + [mBuildPhase mDestinationPath] + "\";\n"
     + "\t\t\tdstSubfolderSpec = " + [mBuildPhase mDestinationSubfolder] + ";\n"
     + "\t\t\tfiles = (\n"
-    for () in  [mBuildPhase mFileReferenceList] do
+    for () in [mBuildPhase mFileReferenceList] do
       outString += "\t\t\t\t" + getPBXFileReferenceKey (!seq:[mFile mSequenceNumber]) + " ,\n"
     end
     outString +=  "\t\t\t);\n"
@@ -1283,7 +1283,7 @@ proc buildXcodeProjectString
   after outString += "/* End PBXCopyFilesBuildPhase section */\n"
   end
 #--- PBXTargetDependency section
-  for () in  [inXcodeProjectDescription mDependencyList]
+  for () in [inXcodeProjectDescription mDependencyList]
   before outString += "/* Begin PBXTargetDependency section */\n"
   do
     outString += "\t\t" + getPBXFileReferenceKey (!seq:[mDependency mSequenceNumber])
@@ -1294,7 +1294,7 @@ proc buildXcodeProjectString
   after outString += "/* End PBXTargetDependency section */\n"
   end
 #--- PBXVariantGroup section
-  for () in  [inXcodeProjectDescription mPBXVariantGroup_list]
+  for () in [inXcodeProjectDescription mPBXVariantGroup_list]
   before outString += "/* Begin PBXVariantGroup section */\n"
   do
     outString += "\t\t" + mPBXVariantKey
@@ -1309,13 +1309,13 @@ proc buildXcodeProjectString
   after outString += "/* End PBXVariantGroup section */\n"
   end
 #--- XCBuildConfiguration section
-  for () in  [inXcodeProjectDescription mBuildConfigurationList]
+  for () in [inXcodeProjectDescription mBuildConfigurationList]
   before outString += "/* Begin XCBuildConfiguration section */\n"
   do
     outString += "\t\t" + getPBXFileReferenceKey (!seq:[mBuildConfig mSequenceNumber1]) + " /* Default */ = {\n"
     + "\t\t\tisa = XCBuildConfiguration;\n"
     + "\t\t\tbuildSettings = {\n"
-    for () in  [mBuildConfig mSettings] do
+    for () in [mBuildConfig mSettings] do
       outString += "\t\t\t\t" + mValue + "\n"
     end
     outString +=  "\t\t\t};\n"
@@ -1324,7 +1324,7 @@ proc buildXcodeProjectString
   after outString += "/* End XCBuildConfiguration section */\n\n"
   end
 #--- XCConfigurationList section
-  for () in  [inXcodeProjectDescription mBuildConfigurationList]
+  for () in [inXcodeProjectDescription mBuildConfigurationList]
   before outString += "/* Begin XCConfigurationList section */\n"
   do
     outString += "\t\t" + getPBXFileReferenceKey (!seq:[mBuildConfig mSequenceNumber2]) + " /* Build configuration list for PBXProject \""
@@ -1392,7 +1392,7 @@ proc generateXCodeFile
       [fileNewContents writeToFileWhenDifferentContents !pbxprojFilePath ?*]
   #--- Delete all XXX.pbxuser files in this directory
       @stringlist pbxuser_files = [in_xcodeproj_filePath regularFilesWithExtensions !false !@stringlist. listWithValue { !"pbxuser"}]
-      for () in  pbxuser_files do
+      for () in pbxuser_files do
         @string fullPath = in_xcodeproj_filePath + "/" + mValue
         [@string deleteFile !fullPath]
       end

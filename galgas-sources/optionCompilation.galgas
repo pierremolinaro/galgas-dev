@@ -63,7 +63,7 @@ proc semanticAnalysisOfOptionComponent
   outUIntOptionMap = @commandLineOptionMap. emptyMap
   outStringOptionMap = @commandLineOptionMap. emptyMap
   var optionNameSet =@stringset.emptySet{}
-  for () in  [inOptionComponentRoot mOptions] do
+  for () in [inOptionComponentRoot mOptions] do
     if [optionNameSet hasKey ![mOptionInternalName string]] then
       error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared"
     elsif [mOptionTypeName string] == "bool" then

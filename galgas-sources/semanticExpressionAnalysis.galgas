@@ -525,7 +525,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
   @string s = ""
-  for () in  mStringSequence do
+  for () in mStringSequence do
     s += mValue
   end
   outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
@@ -643,7 +643,7 @@ proc analyzeConstructorInvocation
     let @constructorMap constructorMap = [outConstructorType mConstructorMap]
   #--- Search contructor
     @functionSignature constructorFormalArgumentTypeList
-    with [inConstructorName string] in  constructorMap  do
+    with [inConstructorName string] in constructorMap  do
       constructorFormalArgumentTypeList = mArgumentTypeList
       outHasCompilerArgument = mHasCompilerArgument
       outReturnedType = mReturnedType
@@ -654,9 +654,9 @@ proc analyzeConstructorInvocation
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       else
         @string s = ""
-        for () in  constructorMap do
+        for () in constructorMap do
           s += "\n  - " + lkey
-          for () in  mArgumentTypeList do
+          for () in mArgumentTypeList do
             s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
           end
           s += " -> @" + [mReturnedType key]
@@ -676,7 +676,7 @@ proc analyzeConstructorInvocation
       + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
     end
     outConstructorEffectiveParameterList = @semanticExpressionListForGeneration. emptyList
-    for () in  inConstuctorEffectiveParameterExpressions, () in  constructorFormalArgumentTypeList do
+    for () in inConstuctorEffectiveParameterExpressions, () in constructorFormalArgumentTypeList do
       @semanticExpressionForGeneration exp
       [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?exp]
       checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
@@ -793,7 +793,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   @bool hasCompilerArgument
   @unifiedTypeMap-proxy returnedType
   var fieldList =@stringlist.emptyList{}
-  with [mReaderName string] in  readerMap  do
+  with [mReaderName string] in readerMap  do
     readerFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
     returnedType = mReturnedType
@@ -808,10 +808,10 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-proxy. null
       kind = @methodKind. definedAsCategory
-      for () in  [receiverType mCurrentTypedAttributeList] do
+      for () in [receiverType mCurrentTypedAttributeList] do
         let attributeType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {![mAttributeTypeProxy key] !@location.here}}
         let aMap = [attributeType mReaderMap]
-        with [mReaderName string] in  aMap  do
+        with [mReaderName string] in aMap  do
           matchingReaderCount ++
           readerFormalArgumentTypeList = mArgumentTypeList
           hasCompilerArgument = mHasCompilerArgument
@@ -830,7 +830,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
         : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
         @string s = ""
-        for () in  fieldList
+        for () in fieldList
           do s += mValue
           between s += ", "
         end
@@ -845,9 +845,9 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     else
       @string s = ""
-      for () in  readerMap do
+      for () in readerMap do
         s += "\n  - " + lkey
-        for () in  mArgumentTypeList do
+        for () in mArgumentTypeList do
           s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
         end
         s += " -> @" + [mReturnedType key]
@@ -866,7 +866,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
     + [[mExpressions length] string] + " parameter(s)" : outExpression
   else
     var constructorEffectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
-    for () in  mExpressions, () in  readerFormalArgumentTypeList do
+    for () in mExpressions, () in readerFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
@@ -976,13 +976,13 @@ override method @optionExpressionAST analyzeSemanticExpression
     end
   else
     @string s = ""
-    for () in  boolOptionMap do
+    for () in boolOptionMap do
       s += "\n-  '" + lkey + "' @bool option;"
     end
-    for () in  uintOptionMap do
+    for () in uintOptionMap do
       s += "\n-  '" + lkey + "' @uint option;"
     end
-    for () in  stringOptionMap do
+    for () in stringOptionMap do
       s += "\n-  '" + lkey + "' @string option;"
     end
     error mOptionEntryName
@@ -2645,7 +2645,7 @@ override method @expressionListCollectionValue analyze
     + [mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
   else
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
-    for () in  mExpressionList, () in  formalParameterTypeList do
+    for () in mExpressionList, () in formalParameterTypeList do
       [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"

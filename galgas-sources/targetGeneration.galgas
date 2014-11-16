@@ -201,7 +201,7 @@ proc updateTargets
   ]
 #--- Update LIBPM
   @string libpmPath
-  with "libpmAtPath" in  inProjectQualifiedFeatureMap  do
+  with "libpmAtPath" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
       error mFeatureValue:"the libpm path should not be empty" : libpmPath
     else
@@ -232,7 +232,7 @@ proc updateTargets
   var generatedFileListForMakefile =@stringlist.emptyList{}
   var handCodedSourceList =@stringlist.emptyList{}
   var handCodedSourceDirectorySet =@stringset.emptySet{}
-  for () in  inProjectSourceList do
+  for () in inProjectSourceList do
     let @string baseName = [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension]
     let @string pathExtension = [mFilePath pathExtension]
     let @string cppFile = baseName + ".cpp"
@@ -329,7 +329,7 @@ proc updateTargets
 #--- Check xcode target architectures
   @string SDK = ""
   @bool usesARC = false
-  for () in  inTargetFeatureList do
+  for () in inTargetFeatureList do
     if [availableGenerationFeatures hasKey ![mValue string]] then
       if [generationFeatures hasKey ![mValue string]] then
         error mValue: "duplicate '" + mValue + "' feature"
@@ -386,7 +386,7 @@ proc updateTargets
       end
     else
       @string s = ""
-      for () in  availableGenerationFeatures do
+      for () in availableGenerationFeatures do
         s += "\n  - '" + key + "'"
       end
       error mValue: "unknown '" + mValue + "' feature; available features are:" + s
@@ -436,7 +436,7 @@ proc updateTargets
     [[filewrapper targetGenerationFileWrapper."project_xcode/adding-icons-to-your-application.rtf"] writeToFileWhenDifferentContents !icon_help_file_path ?*]
   #--- Info.plist
     @string applicationBundleBase
-    with "applicationBundleBase" in  inProjectQualifiedFeatureMap  do
+    with "applicationBundleBase" in inProjectQualifiedFeatureMap  do
       applicationBundleBase = mFeatureValue.string
     else
       applicationBundleBase = "fr.irccyn"
@@ -461,7 +461,7 @@ proc updateTargets
       [[filewrapper targetGenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
     end
   #--- Application update files
-    with "repositoryURL" in  inProjectQualifiedFeatureMap  do
+    with "repositoryURL" in inProjectQualifiedFeatureMap  do
       let @string applicationUpdateDir = projectDirectory + "/project_xcode/cocoa-application-update/application"
       [applicationUpdateDir makeDirectory]
       [[filewrapper applicationUpdateFileWrapper.application_update_header ] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMApplicationUpdate.h" ?*]
@@ -481,7 +481,7 @@ proc updateTargets
       [[filewrapper applicationUpdateFileWrapper.compatibility_header] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMSnowLeopardLionCompatibility.h" ?*]
     #--- Updater tool
       @string codeSignIdentity
-      with "codeSigning" in  inProjectQualifiedFeatureMap  do
+      with "codeSigning" in inProjectQualifiedFeatureMap  do
         codeSignIdentity = mFeatureValue.string
       else
         codeSignIdentity = ""

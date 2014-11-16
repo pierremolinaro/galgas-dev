@@ -554,9 +554,9 @@ proc addCategories
   if [inCategoryMethodMapForBuildingContext hasKey ![inTypeName string]] then
     @categoryMethodMapForType categoryMethodMapForType
     [inCategoryMethodMapForBuildingContext searchKey !inTypeName ?categoryMethodMapForType]
-    for () in  categoryMethodMapForType do
+    for () in categoryMethodMapForType do
       var formalArgumentList =@formalParameterSignature.emptyList{}
-      for () in  mFormalParameterList do
+      for () in mFormalParameterList do
         [@unifiedTypeMap-proxy makeProxy
           !?ioSemanticContext.mTypeMap
           !mFormalArgumentTypeName
@@ -579,9 +579,9 @@ proc addCategories
   if [inCategoryReaderMapForBuildingContext hasKey ![inTypeName string]] then
     @categoryReaderMapForType categoryReaderMapForType
     [inCategoryReaderMapForBuildingContext searchKey !inTypeName ?categoryReaderMapForType]
-    for () in  categoryReaderMapForType do
+    for () in categoryReaderMapForType do
       var formalArgumentList =@functionSignature.emptyList{}
-      for () in  mInputFormalParameterList do
+      for () in mInputFormalParameterList do
         @unifiedTypeMap-proxy typeIndex
         [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
@@ -604,9 +604,9 @@ proc addCategories
   if [inCategoryModifierMapForBuildingContext hasKey ![inTypeName string]] then
     @categoryModifierMapForType categoryModifierMapForType
     [inCategoryModifierMapForBuildingContext searchKey !inTypeName ?categoryModifierMapForType]
-    for () in  categoryModifierMapForType do
+    for () in categoryModifierMapForType do
       var formalArgumentList =@formalParameterSignature.emptyList{}
-      for () in  mFormalParameterList do
+      for () in mFormalParameterList do
         @unifiedTypeMap-proxy typeIndex
         [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -814,9 +814,9 @@ override method @predefinedTypeAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. predefinedType
     !mPredefinedTypeName == "stringset" # Only @stringset supports collection value
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !@attributeMap. emptyMap
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !constructorMap
     !readerMap
     !modifierMap
@@ -867,10 +867,22 @@ override method @mapDeclarationAST enterInSemanticContext
   @unifiedTypeMap-proxy currentMapTypeIndex
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapTypeName ?currentMapTypeIndex]
 #--- Enumeration description
-  var enumerationDescriptor =@enumerationDescriptorList.listWithValue{ !lstringTypeIndex !"lkey"}
+  var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!lstringTypeIndex !"lkey"}
   var enumerationVariants =@stringlist.emptyList{}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
+#--- Attributes
+  @bool usesSelectorsInInsertAndSearch = false
+  for (s) in mAttributeList do
+    if s.string == "selectors" then
+      if usesSelectorsInInsertAndSearch then
+        error s : "duplicated attribute"
+      end
+      usesSelectorsInInsertAndSearch = true
+    else
+      error s : "unknown attribute"
+    end
+  end
 #---
   var constructorMap =@constructorMap.emptyMap{}
   commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
@@ -888,34 +900,50 @@ override method @mapDeclarationAST enterInSemanticContext
   enterInheritedReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"locationForKey" !"string" !"inKey" !returnedTypeName:"location" !true )
   enterBaseReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
   enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
-#--- Handle attributes
-  var insertMethodFormalArgumentList =@formalParameterSignature.emptyList{}
-  var typedAttributeList =@typedAttributeList.emptyList{}
+#--- Handle properties
+  var insertMethodFormalArgumentList = @formalParameterSignature.emptyList{}
+  var typedPropertyList = @typedPropertyList.emptyList{}
   @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
   argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !lstringTypeIndex !"lkey"
-  insertMethodFormalArgumentList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inLKey"
+  insertMethodFormalArgumentList +=
+    ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
+    !lstringTypeIndex
+    !@formalArgumentPassingModeAST.argumentConstantIn
+    !"inLKey"
   var removeMethodFormalArgumentList =@formalParameterSignature.emptyList{}
-  removeMethodFormalArgumentList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inLKey"
+  removeMethodFormalArgumentList +=
+    ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
+    !lstringTypeIndex
+    !@formalArgumentPassingModeAST. argumentConstantIn
+    !"inLKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList. emptyList
-  for () in  mAttributeList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+  for () in mPropertyList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     @bool hasGetter = true
     @bool hasSetter = true
-    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mAttributeName.string
-    typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter
+    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
-    enumerationDescriptor += !attributeTypeIndex ![mAttributeName string]
-    insertMethodFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
-    removeMethodFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentOut !mAttributeName.string
+    enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
+    insertMethodFormalArgumentList +=
+      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !@formalArgumentPassingModeAST.argumentConstantIn
+      !mPropertyName.string
+    removeMethodFormalArgumentList +=
+      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !@formalArgumentPassingModeAST.argumentOut
+      !mPropertyName.string
   end
 #--- Handle insert modifiers
-  for () in  mInsertMethodList do
+  for () in mInsertMethodList do
     if [modifierMap hasKey ![mInsertMethodName string]] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
       [!?modifierMap insertOrReplace
         !mInsertMethodName
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !insertMethodFormalArgumentList
         !true
         !@methodQualifier.isBasic
@@ -924,13 +952,13 @@ override method @mapDeclarationAST enterInSemanticContext
     end
   end
 #--- Handle remove modifiers
-  for () in  mRemoveMethodList do
+  for () in mRemoveMethodList do
     if [modifierMap hasKey ![mMethodName string]] then
       error mMethodName:"the '" + mMethodName + "' method is already declared as an insert setter or a remove setter"
     else
       [!?modifierMap insertOrReplace
         !mMethodName
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !removeMethodFormalArgumentList
         !true
         !@methodQualifier.isBasic
@@ -939,10 +967,10 @@ override method @mapDeclarationAST enterInSemanticContext
     end
   end
 #--- Handle search methods (methods if no state, modifiers if states)
-  for () in  mSearchMethodList do
+  for () in mSearchMethodList do
     [!?instanceMethodMap insertKey
       !mSearchMethodName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !removeMethodFormalArgumentList
       ![mSearchMethodName location]
       !true
@@ -951,10 +979,10 @@ override method @mapDeclarationAST enterInSemanticContext
     ]
   end
 #--- Enter "attributeForKey" readers
-  for () in  mAttributeList do
-    let accessorName = @lstring.new {![mAttributeName string] + "ForKey" ![mAttributeName location]}
+  for () in mPropertyList do
+    let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
     [!?readerMap insertOrReplace
       !accessorName
       !@methodKind. definedAsMember
@@ -980,12 +1008,12 @@ override method @mapDeclarationAST enterInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor
-  for () in  mAttributeList do
-    let accessorName = @lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mAttributeName location]}
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+  for () in mPropertyList do
+    let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
-    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
-    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mPropertyName.string
     [!?modifierMap insertOrReplace
       !accessorName
       !@methodKind. definedAsMember
@@ -1020,9 +1048,9 @@ override method @mapDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. mapType
     !true # Support collection value
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !@attributeMap. emptyMap
-    !typedAttributeList
+    !typedPropertyList
     !constructorMap
     !readerMap
     !modifierMap
@@ -1071,6 +1099,18 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   var enumerationVariants =@stringlist.emptyList{}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
+#--- Attributes
+  @bool usesSelectorsInInsertAndSearch = false
+  for (s) in mAttributeList do
+    if s.string == "selectors" then
+      if usesSelectorsInInsertAndSearch then
+        error s : "duplicated attribute"
+      end
+      usesSelectorsInInsertAndSearch = true
+    else
+      error s : "unknown attribute"
+    end
+  end
 #---
   var constructorMap =@constructorMap.emptyMap{}
   commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
@@ -1088,23 +1128,39 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"unsolvedProxyList" !returnedTypeName:"lstringlist" !false )
   enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"edgeGraphvizRepresentation" !returnedTypeName:"string" !false )
 #--- Handle attributes
-  var typedAttributeList =@typedAttributeList.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
   var insertMethodFormalArgumentList =@formalParameterSignature.emptyList{}
-  insertMethodFormalArgumentList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inLKey"
+  insertMethodFormalArgumentList +=
+    ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
+    !lstringTypeIndex
+    !@formalArgumentPassingModeAST.argumentConstantIn
+    !"inLKey"
   var removeMethodFormalArgumentList =@formalParameterSignature.emptyList{}
-  removeMethodFormalArgumentList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inLKey"
-  for () in  mAttributeList do
+  removeMethodFormalArgumentList +=
+    ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
+    !lstringTypeIndex
+    !@formalArgumentPassingModeAST.argumentConstantIn
+    !"inLKey"
+  for () in mPropertyList do
     @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
     @bool hasGetter = true
     @bool hasSetter = true
-    typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter
-    enumerationDescriptor += !attributeTypeIndex ![mAttributeName string]
-    insertMethodFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
-    removeMethodFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentOut !mAttributeName.string
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
+    insertMethodFormalArgumentList +=
+      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex 
+      !@formalArgumentPassingModeAST.argumentConstantIn
+      !mPropertyName.string
+    removeMethodFormalArgumentList +=
+      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !@formalArgumentPassingModeAST. argumentOut
+      !mPropertyName.string
   end
 #-------------------------- Insert Modifiers
-  for () in  mInsertMethodList do
+  for () in mInsertMethodList do
     if [modifierMap hasKey ![mInsertMethodName string]] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
@@ -1145,7 +1201,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   ]
 #--- Handle search methods (methods if no state, modifiers if states)
   if [mMapStateList length] == 0 then
-    for () in  mSearchMethodList do
+    for () in mSearchMethodList do
       [!?instanceMethodMap insertKey
         !mSearchMethodName
         !@methodKind. definedAsMember
@@ -1157,7 +1213,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       ]
     end
   else
-    for () in  mSearchMethodList do
+    for () in mSearchMethodList do
       [!?modifierMap insertKey
         !mSearchMethodName
         !@methodKind. definedAsMember
@@ -1205,7 +1261,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !@methodQualifier.isBasic
       !"" # No error message
     ]
-    for () in  mMapOverrideBlockListAST do
+    for () in mMapOverrideBlockListAST do
       [!?modifierMap insertKey
         !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind. definedAsMember
@@ -1217,10 +1273,10 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     end
   end
 #--- Enter "attributeForKey" readers
-  for () in  mAttributeList do
-    let accessorName = @lstring.new {![mAttributeName string] + "ForKey" ![mAttributeName location]}
+  for () in mPropertyList do
+    let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
     [!?readerMap insertOrReplace
       !accessorName
       !@methodKind. definedAsMember
@@ -1233,12 +1289,12 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor parameter
-  for () in  mAttributeList do
-    let accessorName = @lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mAttributeName location]}
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+  for () in mPropertyList do
+    let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
-    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
-    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mPropertyName.string
     [!?modifierMap insertOrReplace
       !accessorName
       !@methodKind. definedAsMember
@@ -1267,7 +1323,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. uniqueMapType
     !false # Does not support collection value
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !@attributeMap. emptyMap
     !typedAttributeList
     !constructorMap
@@ -1304,14 +1360,14 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?3*
     ?var @typeKindEnum typeKindEnum
     ?3*
-    ?var @typedAttributeList mapTypedAttributeList
+    ?var @typedPropertyList mapTypedAttributeList
     ?11*
     ?var @mapSearchMethodListAST searchMethodList
     ?6*
   ]
   if typeKindEnum != @typeKindEnum. uniqueMapType then
     error mAssociatedMapTypeName : "the @" + mAssociatedMapTypeName + " should be an unique map type"
-    mapTypedAttributeList = @typedAttributeList. emptyList
+    mapTypedAttributeList = @typedPropertyList. emptyList
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
@@ -1356,7 +1412,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   var constructorAttributeTypeList =@functionSignature.emptyList{}
   constructorAttributeTypeList += !["" nowhere] !associatedMapTypeIndex !"inMap"
   constructorAttributeTypeList += !["" nowhere] !lstringTypeIndex !"inLKey"
-  for () in  searchMethodList do
+  for () in searchMethodList do
     [!?constructorMap insertKey
       !mSearchMethodName
       !constructorAttributeTypeList
@@ -1373,10 +1429,10 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"identifierRepresentation" !returnedTypeName:"string" !true )
 #--- Enter associated map attribute names as readers
   let @readerMap inheritedReaderMap = readerMap
-  for () in  mapTypedAttributeList do
+  for () in mapTypedAttributeList do
     if [inheritedReaderMap hasKey ![mAttributeName string]] then
       @string s = ""
-      for () in  [inheritedReaderMap keySet]
+      for () in [inheritedReaderMap keySet]
         do s += "'" + key + "'"
         between s += ", "
       end
@@ -1414,7 +1470,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. mapProxyType
     !false # Does not support collection value
-    !mapTypedAttributeList #[@typedAttributeList emptyList]
+    !mapTypedAttributeList #[@typedPropertyList emptyList]
     !@attributeMap. emptyMap
     !mapTypedAttributeList
     !constructorMap
@@ -1452,12 +1508,12 @@ override method @externTypeDeclarationAST enterInSemanticContext
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Constructors
-  for () in  mExternTypeConstructorList do
+  for () in mExternTypeConstructorList do
     @unifiedTypeMap-proxy returnedTypeProxy
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedTypeProxy]
   #---
     var arguments =@functionSignature.emptyList{}
-    for () in  mParameterList do
+    for () in mParameterList do
       @unifiedTypeMap-proxy argumentTypeProxy
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?argumentTypeProxy]
       arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
@@ -1471,12 +1527,12 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ]
   end
 #--- Readers
-  for () in  mExternTypeReaderList do
+  for () in mExternTypeReaderList do
     @unifiedTypeMap-proxy returnedTypeProxy
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedTypeProxy]
   #---
     @functionSignature arguments = {}
-    for () in  mParameterList do
+    for () in mParameterList do
       @unifiedTypeMap-proxy argumentTypeProxy
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?argumentTypeProxy]
       arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
@@ -1494,9 +1550,9 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ]
   end
 #--- Modifiers
-  for () in  mExternTypeModifierList do
+  for () in mExternTypeModifierList do
     var routineSignature =@formalParameterSignature.emptyList{}
-    for () in  mFormalParameterList do
+    for () in mFormalParameterList do
       [@unifiedTypeMap-proxy makeProxy
         !?ioSemanticContext.mTypeMap
         !mFormalArgumentTypeName
@@ -1515,9 +1571,9 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ]
   end
 #--- Methods
-  for () in  mExternTypeMethodList do
+  for () in mExternTypeMethodList do
     var routineSignature =@formalParameterSignature.emptyList{}
-    for () in  mFormalParameterList do
+    for () in mFormalParameterList do
       @unifiedTypeMap-proxy parameterTypeIndex
       [@unifiedTypeMap-proxy makeProxy
         !?ioSemanticContext.mTypeMap
@@ -1545,9 +1601,9 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. externType
     !false # Does not support collection value
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !@attributeMap. emptyMap
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !constructorMap
     !readerMap
     !modifierMap
@@ -1736,10 +1792,10 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- setter 'enterNode'
   formalParameterList = @formalParameterSignature. emptyList
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inLKey"
-  for () in  [associatedListTypeProxy mAddAssignOperatorArguments] do
+  for () in [associatedListTypeProxy mAddAssignOperatorArguments] do
     formalParameterList += !["" nowhere] !mFormalArgumentType !@formalArgumentPassingModeAST. argumentIn !mFormalArgumentName
   end
-  for () in  mInsertModifierList do
+  for () in mInsertModifierList do
     [!?modifierMap insertOrReplace
       !mInsertModifierName
       !@methodKind. definedAsMember
@@ -1815,9 +1871,9 @@ override method @graphDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. graphType
     !false # Does not support collection value
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !@attributeMap. emptyMap
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !constructorMap
     !readerMap
     !modifierMap
@@ -1856,7 +1912,7 @@ override method @enumDeclarationAST enterInSemanticContext
 #--- Constructors
   var constantMap =@constantIndexMap.emptyMap{}
   @bool hasAssociatedValues = false
-  for () in  mConstantList do
+  for () in mConstantList do
     @unifiedTypeMapProxyList associatedTypeList = {}
     @functionSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
@@ -1875,7 +1931,7 @@ override method @enumDeclarationAST enterInSemanticContext
   end
 #--- readers
   commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap  )
-  for () in  mConstantList do
+  for () in mConstantList do
     enterBaseReaderWithoutArgument (
       !?readerMap
       !?ioSemanticContext.mTypeMap
@@ -1903,9 +1959,9 @@ override method @enumDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. enumType
     !false # Does not support collection value
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !@attributeMap. emptyMap
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !constructorMap
     !readerMap
     !modifierMap
@@ -1949,7 +2005,7 @@ proc recursivelyEnumerateDirectories
 #--- Enumerates regular files
   @stringlist files = [inAbsoluteSourcePath regularFiles !false]
   outWrapperFileMap = @wrapperFileMap. emptyMap
-  for () in  files do
+  for () in files do
     if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
       @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
@@ -1975,7 +2031,7 @@ proc recursivelyEnumerateDirectories
 #--- Enumerates regular directories
   @stringlist directories = [inAbsoluteSourcePath directories !false]
   outWrapperDirectoryMap = @wrapperDirectoryMap. emptyMap
-  for () in  directories do
+  for () in directories do
     @wrapperFileMap internalWrapperFileMap
     @wrapperDirectoryMap internalWrapperDirectoryMap
     @uint theDirectoryIndex = ioWrapperDirectoryIndex
@@ -2007,9 +2063,9 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Templates
   var filewrapperTemplateMap =@filewrapperTemplateMap.emptyMap{}
-  for () in  mFilewrapperTemplateList do
+  for () in mFilewrapperTemplateList do
     var templateSignature =@functionSignature.emptyList{}
-    for () in  mFilewrapperTemplateFormalInputParameters do
+    for () in mFilewrapperTemplateFormalInputParameters do
       @unifiedTypeMap-proxy parameterTypeIndex
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex]
       templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string
@@ -2022,12 +2078,12 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   end
 #--- Build text file extension map
   var textExtensionMap =@wrapperExtensionMap.emptyMap{}
-  for () in  mFilewrapperTextFileExtensionList do
+  for () in mFilewrapperTextFileExtensionList do
     [!?textExtensionMap insertKey !mValue]
   end
 #--- Build binary file extension map
   var binaryFileExtensionMap =@wrapperExtensionMap.emptyMap{}
-  for () in  mFilewrapperBinaryFileExtensionList do
+  for () in mFilewrapperBinaryFileExtensionList do
     if [textExtensionMap hasKey !mValue.string] then
       error mValue:"the '" + mValue + "' extension is already used for text files"
     else
@@ -2084,7 +2140,7 @@ override method @optionComponentDeclarationAST enterInSemanticContext
   @commandLineOptionMap uintOptionMap ={}
   @commandLineOptionMap stringOptionMap ={}
   var optionNameSet =@stringset.emptySet{}
-  for () in  mOptions do
+  for () in mOptions do
     if [optionNameSet hasKey ![mOptionInternalName string]] then
       error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared"
     elsif [mOptionTypeName string] == "bool" then
@@ -2143,19 +2199,19 @@ override method @listDeclarationAST enterInSemanticContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Handle attributes
-  var typedAttributeList =@typedAttributeList.emptyList{}
-  for () in  mAttributeList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  for () in mAttributeList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     @bool hasGetter = true
     @bool hasSetter = false
-    for () in  mFeatureList do
+    for () in mFeatureList do
       if mValue.string == "nogetter" then
         hasGetter = false
       elsif mValue.string == "setter" then
         hasSetter = true
       end
     end
-    typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
   end
 #--- uint type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?let @unifiedTypeMap-proxy uintType]
@@ -2167,12 +2223,12 @@ override method @listDeclarationAST enterInSemanticContext
     !@lstring.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
-#--- Attribute description
+#--- Property description
   var enumerationDescriptor =@enumerationDescriptorList.emptyList{}
   var constructorAttributeTypeList =@functionSignature.emptyList{}
   var modifierOutputFormalArgumentList =@formalParameterSignature.emptyList{}
   var modifierInputFormalArgumentList =@formalParameterSignature.emptyList{}
-  for () in  typedAttributeList do
+  for () in typedAttributeList do
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string]
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
     modifierOutputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentOut !mAttributeName.string
@@ -2193,7 +2249,7 @@ override method @listDeclarationAST enterInSemanticContext
   enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"range" !returnedTypeName:"range" !false )
   enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" !"inIndex" !returnedTypeName:[mListTypeName string] !true )
   enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"range" !"inRange" !returnedTypeName:[mListTypeName string] !true )
-  for () in  typedAttributeList do
+  for () in typedAttributeList do
     if mHasGetter then
       [!?readerMap insertOrReplace
         !@lstring.new {![mAttributeName string] + "AtIndex" ![mAttributeName location]}
@@ -2255,7 +2311,7 @@ override method @listDeclarationAST enterInSemanticContext
     !""
   ]
   drop modifierOutputFormalArgumentList
-  for () in  typedAttributeList do
+  for () in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList =@formalParameterSignature.emptyList{}
       setterFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
@@ -2306,7 +2362,7 @@ override method @listDeclarationAST enterInSemanticContext
     !true # Support collection value
     !typedAttributeList
     !@attributeMap. emptyMap
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !constructorMap
     !readerMap
     !modifierMap
@@ -2347,15 +2403,15 @@ override method @sortedListDeclarationAST enterInSemanticContext
   var enumerationDescriptor =@enumerationDescriptorList.emptyList{}
   var constructorAttributeTypeList =@functionSignature.emptyList{}
   var modifierFormalArgumentList =@formalParameterSignature.emptyList{}
-  var typedAttributeList =@typedAttributeList.emptyList{}
-  for () in  mAttributeList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  for () in mAttributeList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     @bool hasGetter = true
     @bool hasSetter = true
-    typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter
-    enumerationDescriptor += !attributeTypeIndex !mAttributeName.string
-    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mAttributeName.string
-    modifierFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentOut !mAttributeName.string
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
+    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    modifierFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentOut !mPropertyName.string
   end
 #--- Constructors
   var constructorMap =@constructorMap.emptyMap{}
@@ -2432,7 +2488,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !true # Support collection value
     !typedAttributeList
     !@attributeMap. emptyMap
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !constructorMap
     !readerMap
     !modifierMap
@@ -2470,17 +2526,17 @@ override method @structDeclarationAST enterInSemanticContext
   var attributeMap =@attributeMap.emptyMap{}
   var constructorMap =@constructorMap.emptyMap{}
   var constructorAttributeTypeList =@functionSignature.emptyList{}
-  var typedAttributeList =@typedAttributeList.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList. emptyList
-  for () in  mAttributeList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
-    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mAttributeName.string
+  for () in mAttributeList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     @bool hasSetter = false
     @bool hasGetter = true
-    typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     [!?attributeMap insertKey
-      !mAttributeName
+      !mPropertyName
 #      !mIsPrivate
       !attributeTypeIndex
     ]
@@ -2494,7 +2550,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Readers
   @readerMap readerMap
   commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?readerMap )
-  for () in  typedAttributeList do
+  for () in typedAttributeList do
     enterBaseFinalReaderWithoutArgument (
       !?readerMap
       !?ioSemanticContext.mTypeMap 
@@ -2531,7 +2587,7 @@ override method @structDeclarationAST enterInSemanticContext
   end
 #--- Generate a "default" constructor ?
   @string defaultConstructorName = "default"
-  for () in  typedAttributeList while defaultConstructorName != "" do
+  for () in typedAttributeList while defaultConstructorName != "" do
     if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
       defaultConstructorName = ""
     end
@@ -2581,7 +2637,7 @@ override method @classDeclarationAST enterInSemanticContext
   @readerMap readerMap
   @modifierMap modifierMap
   @instanceMethodMap instanceMethodMap
-  @typedAttributeList inheritedTypedAttributeList
+  @typedPropertyList inheritedTypedAttributeList
   var attributeMap =@attributeMap.emptyMap{}
 #--- Handle super class
   @unifiedTypeMap-proxy superClassIndex
@@ -2591,10 +2647,10 @@ override method @classDeclarationAST enterInSemanticContext
     commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?readerMap )
     modifierMap = @modifierMap. emptyMap
     instanceMethodMap = @instanceMethodMap. emptyMap
-    inheritedTypedAttributeList = @typedAttributeList. emptyList
+    inheritedTypedAttributeList = @typedPropertyList. emptyList
     attributeMap = @attributeMap. emptyMap
     generateHeaderInSeparateFile = false
-    for () in  mClassFeatureList do
+    for () in mClassFeatureList do
       if [mValue string] == "generatedInSeparateFile" then
         generateHeaderInSeparateFile = true
       end
@@ -2626,7 +2682,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all modifiers as inherited
     modifierMap = @modifierMap. emptyMap
-    for () in  inheritedModifierMap do
+    for () in inheritedModifierMap do
       [!?modifierMap insertKey
         !lkey
         !mKind
@@ -2638,7 +2694,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all readers as inherited
     readerMap = @readerMap. emptyMap
-    for () in  inheritedReaderMap do
+    for () in inheritedReaderMap do
       [!?readerMap insertKey
         !lkey
         !mKind
@@ -2652,7 +2708,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all methods as inherited
     instanceMethodMap = @instanceMethodMap. emptyMap
-    for () in  inheritedMethodMap do
+    for () in inheritedMethodMap do
       [!?instanceMethodMap insertKey
         !lkey
         !mKind
@@ -2666,20 +2722,20 @@ override method @classDeclarationAST enterInSemanticContext
   end
 #--- Build attribute Map and constructor argument list
   var constructorAttributeTypeList =@functionSignature.emptyList{}
-  for () in  inheritedTypedAttributeList do
+  for () in inheritedTypedAttributeList do
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
   end
-  for () in  mAttributeList do
+  for () in mAttributeList do
     @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?attributeTypeIndex]
-    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mAttributeName.string
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     [!?attributeMap insertKey
-      !mAttributeName
+      !mPropertyName
 #      !mIsPrivate
       !attributeTypeIndex
     ]
-    if [readerMap hasKey ![mAttributeName string]] then
-      error mAttributeName: "'" + mAttributeName + "' is the name of a prefefined or a user defined reader"
+    if [readerMap hasKey ![mPropertyName string]] then
+      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined reader"
     end
   end
 #--- Current class Index
@@ -2699,25 +2755,25 @@ override method @classDeclarationAST enterInSemanticContext
     ]
   end
 #--- Typed attribute list
-  var currentClassTypedAttributeList =@typedAttributeList.emptyList{}
-  @typedAttributeList allTypedAttributeList = inheritedTypedAttributeList
-  for () in  mAttributeList do
+  var currentClassTypedAttributeList =@typedPropertyList.emptyList{}
+  @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
+  for () in mAttributeList do
     @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
     @bool hasSetter = false
     @bool hasGetter = true
-    for () in  mFeatureList do
+    for () in mFeatureList do
       if [mValue string] == "setter" then
         hasSetter = true
       elsif [mValue string] == "nogetter" then
         hasGetter = false
       end
     end
-    currentClassTypedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter
-    allTypedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter
+    currentClassTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     if hasGetter then
       [!?readerMap insertKey
-        !mAttributeName
+        !mPropertyName
         !@methodKind. definedAsMember
         !@functionSignature {} # No argument
         !@location.here
@@ -2729,7 +2785,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- set...attribute setter
-  for () in  currentClassTypedAttributeList do
+  for () in currentClassTypedAttributeList do
     if mHasSetter then
       [!?modifierMap insertKey
         !@lstring.new {!"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
@@ -2759,7 +2815,7 @@ override method @classDeclarationAST enterInSemanticContext
   else
     defaultConstructorName = [superClassIndex mDefaultConstructorName]
   end
-  for () in  currentClassTypedAttributeList while defaultConstructorName != "" do
+  for () in currentClassTypedAttributeList while defaultConstructorName != "" do
     if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
       defaultConstructorName = ""
     end
@@ -2849,7 +2905,7 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var functionSignature =@functionSignature.emptyList{}
-  for () in  mFormalArgumentList do
+  for () in mFormalArgumentList do
     @unifiedTypeMap-proxy parameterTypeIndex
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
@@ -3005,9 +3061,9 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. listMapType
     !false # Does not support collection value
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !@attributeMap. emptyMap
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !constructorMap
     !readerMap
     !modifierMap
@@ -3042,12 +3098,12 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?3*
     ?var @typeKindEnum typeKindEnum
     ?*
-    ?var @typedAttributeList listTypedAttributeList
+    ?var @typedPropertyList listTypedAttributeList
     ?20*
   ]
   if typeKindEnum != @typeKindEnum. listType then
     error mAssociatedListTypeName : "the '@" + mAssociatedListTypeName + "' type should be a list type"
-    listTypedAttributeList = @typedAttributeList. emptyList
+    listTypedAttributeList = @typedPropertyList. emptyList
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
@@ -3072,7 +3128,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- Add assign operator description
   var addAssignOperatorDescription =@functionSignature.emptyList{}
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
-  for () in  listTypedAttributeList do
+  for () in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
   end
 #--- Enumeration variants
@@ -3104,7 +3160,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. arrayType
     !true # Support collection value
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !@attributeMap. emptyMap
     !listTypedAttributeList
     !constructorMap
@@ -3153,10 +3209,10 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Analyze start symbol labels
   var grammarLabelMap =@grammarLabelMap.emptyMap{}
-  for () in  mStartSymbolLabelList do
+  for () in mStartSymbolLabelList do
   #--- Analyze signature
     var formalArgumentList =@formalParameterSignature.emptyList{}
-    for () in  mFormalArgumentList do
+    for () in mFormalArgumentList do
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let @unifiedTypeMap-proxy argumentType]
       formalArgumentList +=
         !mFormalSelector
@@ -3195,9 +3251,9 @@ override method @lexiqueComponentAST enterInSemanticContext
   )
 #--------------------------------------- 
   @terminalMap terminalMap = {}
-  for () in  mTerminalDeclarationList do
+  for () in mTerminalDeclarationList do
     var argumentTypeList =@lexicalSentValueList.emptyList{}
-    for () in  mSentAttributeList do
+    for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -3205,14 +3261,14 @@ override method @lexiqueComponentAST enterInSemanticContext
     [!?terminalMap insertKey !mName !argumentTypeList]
   end
 #---
-  for () in  mLexicalListDeclarationList do
+  for () in mLexicalListDeclarationList do
     var argumentTypeList =@lexicalSentValueList.emptyList{}
-    for () in  mSentAttributeList do
+    for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    for () in  mEntryList do
+    for () in mEntryList do
       [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList]
     end
   end
@@ -3323,8 +3379,8 @@ override method @classDeclarationAST enterDeclarationInGraph
   if mSuperClassName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mSuperClassName !mSuperClassName.location}]
   end
-  for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAttributeTypeName !mSuperClassName.location}]
+  for () in mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName !mSuperClassName.location}]
   end
 }
 
@@ -3338,8 +3394,8 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mListTypeName ![mListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+  for () in mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
 
@@ -3353,8 +3409,8 @@ override method @structDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mStructTypeName ![mStructTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+  for () in mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
 
@@ -3385,8 +3441,8 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mSortedListTypeName ![mSortedListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+  for () in mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
 
@@ -3426,8 +3482,8 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+  for () in mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
 
@@ -3441,8 +3497,8 @@ override method @uniqueMapDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+  for () in mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
 
@@ -3773,17 +3829,17 @@ method @semanticDeclarationAST addAssociatedElement
 
 override method @mapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@attributeInCollectionListAST.emptyList{}
+  var structAttributeList =@propertyInCollectionListAST.emptyList{}
   structAttributeList +=
 #    !false # Is not private
     !["lstring" nowhere]
     !["lkey" nowhere]
     !@lstringlist. emptyList
-  for () in  mAttributeList do
+  for () in mPropertyList do
     structAttributeList +=
 #      !mIsPrivate
-      !mAttributeTypeName
-      !mAttributeName
+      !mPropertyTypeName
+      !mPropertyName
       !@lstringlist. emptyList
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
@@ -3797,12 +3853,12 @@ override method @mapDeclarationAST addAssociatedElement
 
 override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@attributeInCollectionListAST.emptyList{}
-  for () in  mAttributeList do
+  var structAttributeList =@propertyInCollectionListAST.emptyList{}
+  for () in mAttributeList do
     structAttributeList +=
 #      !mIsPrivate
-      !mAttributeTypeName
-      !mAttributeName
+      !mPropertyTypeName
+      !mPropertyName
       !@lstringlist. emptyList
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
@@ -3816,12 +3872,12 @@ override method @listDeclarationAST addAssociatedElement
 
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@attributeInCollectionListAST.emptyList{}
-  for () in  mAttributeList do
+  var structAttributeList =@propertyInCollectionListAST.emptyList{}
+  for () in mAttributeList do
     structAttributeList +=
 #      !mIsPrivate
-      !mAttributeTypeName
-      !mAttributeName
+      !mPropertyTypeName
+      !mPropertyName
       !@lstringlist. emptyList
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
@@ -3835,7 +3891,7 @@ override method @sortedListDeclarationAST addAssociatedElement
 
 override method @listmapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@attributeInCollectionListAST.emptyList{}
+  var structAttributeList =@propertyInCollectionListAST.emptyList{}
   structAttributeList +=
 #    !false # Is not private
     !["string" nowhere]
@@ -3865,7 +3921,7 @@ proc buildSemanticContext
   !@semanticContext outSemanticContext {
 #------ Create associated type (@TYPE.element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
-  for () in  inSemanticDeclarationList do
+  for () in inSemanticDeclarationList do
     [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
   end
 #------ Build ordered types list, so that
@@ -3877,7 +3933,7 @@ proc buildSemanticContext
   var categoryReaderMapForBuildingContext =@categoryReaderMapForBuildingContext.emptyMap{}
   var categoryModifierMapForBuildingContext =@categoryModifierMapForBuildingContext.emptyMap{}
   var categoryOverrideDefinitionList =@semanticDeclarationListAST.emptyList{}
-  for () in  semanticDeclarationList do
+  for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
       !?categoryMethodMapForBuildingContext
@@ -3888,7 +3944,7 @@ proc buildSemanticContext
   end
   if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
     outSemanticContext = @semanticContext.default
-    for () in  [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+    for () in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
       error mValue : "the '" + mValue + "' type is not defined" : outSemanticContext
     end
   else
@@ -3900,7 +3956,7 @@ proc buildSemanticContext
     ]
     if [unsortedSemanticDeclarationListAST length] > 0 then
       @string s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST length] string] + " declarations are involved in circular definition:"
-      for () in  unsortedSemanticDeclarationListAST do
+      for () in unsortedSemanticDeclarationListAST do
         s += "\n-  " + [mSemanticDeclaration keyRepresentation]
       end
       error ["" nowhere] : s : outSemanticContext
@@ -3910,7 +3966,7 @@ proc buildSemanticContext
     #--- Build initial semantic context
       outSemanticContext = @semanticContext.default
     #--- Loop throught all declarations
-      for () in  sortedSemanticDeclarationListAST do
+      for () in sortedSemanticDeclarationListAST do
         [mSemanticDeclaration enterInSemanticContext
           !categoryMethodMapForBuildingContext
           !categoryReaderMapForBuildingContext

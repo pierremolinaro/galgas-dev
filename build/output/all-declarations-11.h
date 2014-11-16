@@ -2993,8 +2993,8 @@ void routine_buildLocalVariableMapAndSignature (const class GALGAS_semanticConte
 void routine_analyzeRoutineBody (const class GALGAS_analysisContext constinArgument0,
                                  const class GALGAS_formalParameterListAST constinArgument1,
                                  const class GALGAS_localConstantList constinArgument2,
-                                 const class GALGAS_typedAttributeList constinArgument3,
-                                 const class GALGAS_typedAttributeList constinArgument4,
+                                 const class GALGAS_typedPropertyList constinArgument3,
+                                 const class GALGAS_typedPropertyList constinArgument4,
                                  const class GALGAS_string constinArgument5,
                                  const class GALGAS_semanticInstructionListAST constinArgument6,
                                  const class GALGAS_location constinArgument7,
@@ -3011,7 +3011,7 @@ void routine_analyzeRoutineBody (const class GALGAS_analysisContext constinArgum
 
 void routine_analyzeFunctionBody (const class GALGAS_analysisContext constinArgument0,
                                   const class GALGAS_formalInputParameterListAST constinArgument1,
-                                  const class GALGAS_typedAttributeList constinArgument2,
+                                  const class GALGAS_typedPropertyList constinArgument2,
                                   const class GALGAS_string constinArgument3,
                                   const class GALGAS_semanticInstructionListAST constinArgument4,
                                   const class GALGAS_lstring constinArgument5,
@@ -3442,7 +3442,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementati
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_structTypeHeader_31_ (class C_Compiler * inCompiler,
                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                               const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST,
+                                                                               const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                                COMMA_LOCATION_ARGS) ;
 
@@ -3455,7 +3455,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_structTypeHeader_31_ (c
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_structTypeSpecificImplementation (class C_Compiler * inCompiler,
                                                                                            const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                            const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                           const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST,
+                                                                                           const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                            const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                                            COMMA_LOCATION_ARGS) ;
 
@@ -3543,7 +3543,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImplementation (class C_Compiler * inCompiler,
                                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                             const class GALGAS_string & in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER,
-                                                                                            const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST
+                                                                                            const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
                                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3555,7 +3555,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_listTypeHeader_31_ (class C_Compiler * inCompiler,
                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                             const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST
+                                                                             const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
                                                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3567,7 +3567,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listTypeHeader_31_ (cla
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_listTypeSpecificImplementation (class C_Compiler * inCompiler,
                                                                                          const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                         const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST
+                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3579,7 +3579,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listTypeSpecificImpleme
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_sortedlistTypeHeader_31_ (class C_Compiler * inCompiler,
                                                                                    const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                    const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                   const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST
+                                                                                   const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3590,7 +3590,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_sortedlistTypeHeader_31
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_sortedlistTypeSpecificImplementation (class C_Compiler * inCompiler,
                                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                               const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST,
+                                                                                               const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                                const class GALGAS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST
                                                                                                COMMA_LOCATION_ARGS) ;
 
@@ -3654,7 +3654,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapProxyTypeSpecificImp
                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                              const class GALGAS_string & in_ASSOCIATED_5F_MAP_5F_TYPE_5F_IDENTIFIER,
-                                                                                             const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST,
+                                                                                             const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                              const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
                                                                                              COMMA_LOCATION_ARGS) ;
 
@@ -3667,7 +3667,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapProxyTypeSpecificImp
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (class C_Compiler * inCompiler,
                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                            const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST,
+                                                                            const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                             const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
                                                                             COMMA_LOCATION_ARGS) ;
 
@@ -3680,7 +3680,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (clas
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (class C_Compiler * inCompiler,
                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                            const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST
+                                                                            const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3691,7 +3691,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (clas
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplementation (class C_Compiler * inCompiler,
                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                        const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST,
+                                                                                        const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                         const class GALGAS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
                                                                                         const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST,
                                                                                         const class GALGAS_mapRemoveMethodListAST & in_REMOVE_5F_METHOD_5F_LIST,
@@ -3707,7 +3707,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_uniqueMapTypeHeader_31_ (class C_Compiler * inCompiler,
                                                                                   const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST,
+                                                                                  const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                   const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
                                                                                   COMMA_LOCATION_ARGS) ;
 
@@ -3720,7 +3720,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_uniqueMapTypeHeader_31_
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_uniqueMapTypeHeader_32_ (class C_Compiler * inCompiler,
                                                                                   const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST
+                                                                                  const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3731,7 +3731,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_uniqueMapTypeHeader_32_
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_uniqueMapTypeSpecificImplementation (class C_Compiler * inCompiler,
                                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                              const class GALGAS_typedAttributeList & in_ATTRIBUTE_5F_LIST,
+                                                                                              const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
                                                                                               const class GALGAS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
                                                                                               const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST,
                                                                                               const class GALGAS_mapAutomatonStateMap & in_MAP_5F_AUTOMATON_5F_STATE_5F_MAP,
@@ -3751,7 +3751,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_31_ (cl
                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                               const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                              const class GALGAS_typedAttributeList & in_ALL_5F_ATTRIBUTE_5F_LIST,
+                                                                              const class GALGAS_typedPropertyList & in_ALL_5F_ATTRIBUTE_5F_LIST,
                                                                               const class GALGAS_bool & in_IS_5F_ABSTRACT,
                                                                               const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                               COMMA_LOCATION_ARGS) ;
@@ -3766,8 +3766,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_32_part
                                                                                       const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                       const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                       const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                      const class GALGAS_typedAttributeList & in_CURRENT_5F_ATTRIBUTE_5F_LIST,
-                                                                                      const class GALGAS_typedAttributeList & in_ALL_5F_ATTRIBUTE_5F_LIST,
+                                                                                      const class GALGAS_typedPropertyList & in_CURRENT_5F_ATTRIBUTE_5F_LIST,
+                                                                                      const class GALGAS_typedPropertyList & in_ALL_5F_ATTRIBUTE_5F_LIST,
                                                                                       const class GALGAS_bool & in_IS_5F_ABSTRACT
                                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -3781,8 +3781,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_32_part
                                                                                       const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                       const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                       const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                      const class GALGAS_typedAttributeList & in_CURRENT_5F_ATTRIBUTE_5F_LIST,
-                                                                                      const class GALGAS_typedAttributeList & in_ALL_5F_ATTRIBUTE_5F_LIST,
+                                                                                      const class GALGAS_typedPropertyList & in_CURRENT_5F_ATTRIBUTE_5F_LIST,
+                                                                                      const class GALGAS_typedPropertyList & in_ALL_5F_ATTRIBUTE_5F_LIST,
                                                                                       const class GALGAS_bool & in_IS_5F_ABSTRACT
                                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -3796,9 +3796,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
                                                                                           const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                           const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                           const class GALGAS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                          const class GALGAS_typedAttributeList & in_CURRENT_5F_ATTRIBUTE_5F_LIST,
-                                                                                          const class GALGAS_typedAttributeList & in_ALL_5F_ATTRIBUTE_5F_LIST,
-                                                                                          const class GALGAS_typedAttributeList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
+                                                                                          const class GALGAS_typedPropertyList & in_CURRENT_5F_ATTRIBUTE_5F_LIST,
+                                                                                          const class GALGAS_typedPropertyList & in_ALL_5F_ATTRIBUTE_5F_LIST,
+                                                                                          const class GALGAS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
                                                                                           const class GALGAS_bool & in_IS_5F_ABSTRACT,
                                                                                           const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                                           COMMA_LOCATION_ARGS) ;

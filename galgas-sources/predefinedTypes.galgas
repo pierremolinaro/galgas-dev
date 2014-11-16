@@ -22,7 +22,7 @@
 private proc appendPredefinedListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ?let @string inElementTypeName {
-  var attributeList =@attributeInCollectionListAST.emptyList{}
+  var attributeList =@propertyInCollectionListAST.emptyList{}
   var attributeFeatureList =@lstringlist.emptyList{}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
@@ -40,7 +40,7 @@ private proc appendPredefinedListTypeAST
 
 private proc appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
-  var attributeList =@attributeInCollectionListAST.emptyList{}
+  var attributeList =@propertyInCollectionListAST.emptyList{}
   var attributeFeatureList =@lstringlist.emptyList{}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
@@ -64,7 +64,7 @@ private proc appendPredefined2StringListTypeAST
 
 private proc appendPredefined2LStringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
-  var attributeList =@attributeInCollectionListAST.emptyList{}
+  var attributeList =@propertyInCollectionListAST.emptyList{}
   var attributeFeatureList =@lstringlist.emptyList{}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
@@ -90,7 +90,7 @@ private proc appendStructASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ?let @string inElementTypeName {
   var featureList =@lstringlist.emptyList{}
-  var attributeList =@attributeInCollectionListAST.emptyList{}
+  var attributeList =@propertyInCollectionListAST.emptyList{}
   attributeList += 
 #    !false # Is not private
     !@lstring.new {!inElementTypeName !@location.here}
@@ -113,7 +113,7 @@ private proc appendStructASTForTypeWithLocation
 proc appendStructASTForRangeType
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
   var featureList =@lstringlist.emptyList{}
-  var attributeList =@attributeInCollectionListAST.emptyList{}
+  var attributeList =@propertyInCollectionListAST.emptyList{}
   attributeList +=
 #    !false # Is not private
     !@lstring.new {!"uint" !@location.here}
@@ -193,7 +193,7 @@ proc appendPredefinedTypesASTs
 #  ] ;
 
 #--- Sorted list predefined type (used only for testing type generation)
-#  @attributeInCollectionListAST sortedListAttributeList [emptyList] ;
+#  @propertyInCollectionListAST sortedListAttributeList [emptyList] ;
 #  sortedListAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
 #  sortedListAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
 #  sortedListAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
@@ -207,7 +207,7 @@ proc appendPredefinedTypesASTs
 #  ] ;
 
 #--- Map predefined type (used only for testing type generation)
-#  @attributeInCollectionListAST mapAttributeList [emptyList] ;
+#  @propertyInCollectionListAST mapAttributeList [emptyList] ;
 #  mapAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
 #  mapAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
 #  mapAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
@@ -246,7 +246,7 @@ proc appendPredefinedTypesASTs
 proc printFeaturesOfType
   ?let @string inTypeName
   ?let @typeKindEnum inTypeKindEnum
-  ?let @typedAttributeList inAllTypedAttributeList
+  ?let @typedPropertyList inAllTypedAttributeList
   ?let @constructorMap inConstructorMap
   ?let @readerMap inReaderMap
   ?let @modifierMap inModifierMap
@@ -257,63 +257,63 @@ proc printFeaturesOfType
   @string s = "Features of @" + inTypeName + " type:\n"
   s += " - kind: " + [inTypeKindEnum kind] +";\n"
 #---
-  for () in  inAllTypedAttributeList
+  for () in inAllTypedAttributeList
   before
     s += " - attribute(s):\n"
   do
     s += "    @" + [mAttributeTypeProxy key] + " " + mAttributeName + "\n"
   end
 #---
-  for () in  inConstructorMap
+  for () in inConstructorMap
   before
     s += " - constructor(s):\n"
   do
     s += "    " + lkey
-    for () in  mArgumentTypeList do
+    for () in mArgumentTypeList do
       s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
     end
     s += " -> @" + [mReturnedType key] + "\n"
   end
 #---
-  for () in  inReaderMap
+  for () in inReaderMap
   before
     s += " - readers(s):\n"
   do
     s += "    " + lkey
-    for () in  mArgumentTypeList do
+    for () in mArgumentTypeList do
       s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
     end
     s += " -> @" + [mReturnedType key] + "\n"
   end
 #---
-  for () in  inModifierMap
+  for () in inModifierMap
   before
     s += " - modifiers(s):\n"
   do
     s += "    " + lkey
-    for () in  mParameterList do
+    for () in mParameterList do
       s += " " + [mFormalArgumentPassingMode string] + "@" + [mFormalArgumentType key]
     end
     s += "\n"
   end
 #---
-  for () in  inInstanceMethodMap
+  for () in inInstanceMethodMap
   before
     s += " - method(s):\n"
   do
     s += "    " + lkey
-    for () in  mParameterList do
+    for () in mParameterList do
       s += " " + [mFormalArgumentPassingMode string] + "@" + [mFormalArgumentType key]
     end
     s += "\n"
   end
 #---
-  for () in  inClassMethodMap
+  for () in inClassMethodMap
   before
     s += " - type proc(s):\n"
   do
     s += "    " + lkey
-    for () in  mParameterList do
+    for () in mParameterList do
       s += " " + [mFormalArgumentPassingMode string] + "@" + [mFormalArgumentType key]
     end
     s += "\n"
@@ -367,7 +367,7 @@ proc printFeaturesOfType
     s += "    @" + inTypeName + " ++ -> @" + inTypeName + "\n"
     s += "    @" + inTypeName + " -- -> @" + inTypeName + "\n"
   end
-  for () in  inAddAssignOperatorArguments
+  for () in inAddAssignOperatorArguments
   before
     s += "    @" + inTypeName + " +="
   do

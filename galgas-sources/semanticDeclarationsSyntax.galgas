@@ -35,7 +35,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList {
+rule <attribute_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
 #  @bool isPrivate ;
 #  select
 #    isPrivate := false ;
@@ -160,7 +160,7 @@ rule <semantic_declaration>
   $type_name$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
 #--- Map properties
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mAttributeList =@propertyInCollectionListAST.emptyList{}
   var mInsertMethodList =@insertMethodListAST.emptyList{}
   var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
   var mRemoveMethodList =@mapRemoveMethodListAST.emptyList{}
@@ -203,6 +203,7 @@ rule <semantic_declaration>
   ioSemanticDeclarations += !@mapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
+    !{}
     !mAttributeList
     !mInsertMethodList
     !mSearchMethodList
@@ -220,7 +221,7 @@ rule <semantic_declaration>
   let mapProxyTypeName = @lstring.new {!mMapTypeName.string + "-proxy" !mMapTypeName.location}
 #--- Map properties
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var propertyList =@propertyInCollectionListAST.emptyList{}
   var mInsertMethodList =@insertMethodListAST.emptyList{}
   var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
   var mapStateList =@mapStateList.emptyList{}
@@ -277,7 +278,7 @@ rule <semantic_declaration>
       !transitionList
     $}$
   while
-    <attribute_declaration> !? mAttributeList
+    <attribute_declaration> !? propertyList
   while
     $insert$
     <insert_method_declaration> !? mInsertMethodList
@@ -361,7 +362,8 @@ rule <semantic_declaration>
   ioSemanticDeclarations += !@uniqueMapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
-    !mAttributeList
+    !{}
+    !propertyList
     !mInsertMethodList
     !mSearchMethodList
     !mapStateList
@@ -420,13 +422,13 @@ rule <semantic_declaration>
   ${$
   @string mClassMessage = ""
 #--- Class properties
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mAttributeList =@propertyInCollectionListAST.emptyList{}
   repeat
   while
     <attribute_declaration> !? mAttributeList
   end
   $}$
-  for () in  classNameList do
+  for () in classNameList do
     ioSemanticDeclarations += !@classDeclarationAST.new {
       !false # Is not predefined
       !mIsAbstract
@@ -449,7 +451,7 @@ rule <semantic_declaration>
   $struct$
   $type_name$ ?var @lstring mListTypeName indexing structDefinition
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mAttributeList =@propertyInCollectionListAST.emptyList{}
   repeat
   while
     <attribute_declaration> !? mAttributeList
@@ -473,7 +475,7 @@ rule <semantic_declaration>
   $list$
   $type_name$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mAttributeList =@propertyInCollectionListAST.emptyList{}
   repeat
   while
     <attribute_declaration> !? mAttributeList
@@ -513,7 +515,7 @@ rule <semantic_declaration>
   $sortedlist$
   $type_name$ ?var @lstring mSortedListTypeName indexing sortedListDefinition, structDefinition "-element"
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mAttributeList =@propertyInCollectionListAST.emptyList{}
   repeat
   while
     <attribute_declaration> !? mAttributeList

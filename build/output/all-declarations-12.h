@@ -2447,7 +2447,7 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 void routine_printFeaturesOfType (const class GALGAS_string constinArgument0,
                                   const class GALGAS_typeKindEnum constinArgument1,
-                                  const class GALGAS_typedAttributeList constinArgument2,
+                                  const class GALGAS_typedPropertyList constinArgument2,
                                   const class GALGAS_constructorMap constinArgument3,
                                   const class GALGAS_readerMap constinArgument4,
                                   const class GALGAS_modifierMap constinArgument5,
