@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  GALGAS_function : this class implements introspection for GALGAS functions *
+//  GALGAS_function : this class implements introspection for GALGAS functions                                         *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2002, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 2002, ..., 2011 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -28,7 +28,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     'GALGAS_function' class                                 *
+//                     'GALGAS_function' class                                                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

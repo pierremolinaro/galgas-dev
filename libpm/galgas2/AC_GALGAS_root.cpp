@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  AC_GALGAS_root : root type for all GALGAS types                            *
+//  AC_GALGAS_root : root type for all GALGAS types                                                                    *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2010, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 2010, ..., 2011 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *

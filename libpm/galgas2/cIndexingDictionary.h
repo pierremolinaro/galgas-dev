@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'cIndexingDictionary': dictionary for indexing soures                      *
+//  'cIndexingDictionary': dictionary for indexing soures                                                              *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -34,7 +34,7 @@ class cIndexEntryNode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 cIndexingDictionary                                       *
+//                 cIndexingDictionary                                                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

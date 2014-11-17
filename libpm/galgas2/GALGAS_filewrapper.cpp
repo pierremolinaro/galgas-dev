@@ -1,12 +1,12 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  GALGAS_filewrapper : class for GALGAS file wrappers                        *
+//  GALGAS_filewrapper : class for GALGAS file wrappers                                                                *
 //                                                                                                                     *
-//  Started february 23th, 2008.                                               *
+//  Started february 23th, 2008.                                                                                       *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *

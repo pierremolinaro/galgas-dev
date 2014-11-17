@@ -67,7 +67,7 @@ static const utf32 kEmptyUTF32String [1] = {TO_UNICODE (0)} ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEmbeddedString : public C_SharedObject {
-  public : int32_t mRegisteringEnableCount ; // > 0 : registering, <= à: no registering (initial : 1)
+  public : int32_t mRegisteringEnableCount ; // > 0 : registering, <= 0: no registering (initial : 1)
   public : uint32_t mCapacity ; // Maximun allowed length of the following C string
   public : uint32_t mLength ; // Current length of the following C string
   public : char * mEncodedCString ;

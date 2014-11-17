@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  AC_GALGAS_sortedlist : base class for GALGAS sorted list                   *
+//  AC_GALGAS_sortedlist : base class for GALGAS sorted list                                                           *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2005, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 2005, ..., 2010 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *

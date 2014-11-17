@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  AC_GALGAS_uniqueMap : Base class for GALGAS map                            *
+//  AC_GALGAS_uniqueMap : Base class for GALGAS map                                                                    *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *

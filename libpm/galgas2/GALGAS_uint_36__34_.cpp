@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'GALGAS_uint_36__34_' : galgas uint64                                      *
+//  'GALGAS_uint_36__34_' : galgas uint64                                                                              *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2006, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 2006, ..., 2010 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
