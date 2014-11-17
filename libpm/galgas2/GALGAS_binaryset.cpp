@@ -1,12 +1,12 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  GALGAS_binaryset                                                           *
+//  GALGAS_binaryset                                                                                                   *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Created january 22, 2007.                                                  *
+//  Created january 22, 2007.                                                                                          *
 //                                                                                                                     *
-//  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *

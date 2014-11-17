@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   GALGAS_data : this class implements the GALGAS 'data' native type         *
+//   GALGAS_data : this class implements the GALGAS 'data' native type                                                 *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                             *
+//  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -34,7 +34,7 @@
 #include <ctype.h>
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   GALGAS_data                                                               *
+//   GALGAS_data                                                                                                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_data::GALGAS_data (void) :

@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'C_Compiler' : the compiler base class ;                                   *
+//  'C_Compiler' : the compiler base class ;                                                                           *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -31,7 +31,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Syntax error message for 'end of source':                            *
+//        Syntax error message for 'end of source':                                                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -72,7 +72,7 @@ bool C_Compiler::performLogFileRead (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Constructor and destructor                                           *
+//        Constructor and destructor                                                                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
