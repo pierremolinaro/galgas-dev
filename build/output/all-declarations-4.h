@@ -4155,25 +4155,25 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodKind ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                                   @readerMap map                                                    *
+//                                                   @getterMap map                                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_readerMap ;
+class cMapElement_getterMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const char * kSearchErrorMessage_readerMap_searchKey ;
+extern const char * kSearchErrorMessage_getterMap_searchKey ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_readerMap : public AC_GALGAS_map {
+class GALGAS_getterMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public : GALGAS_readerMap (void) ;
+  public : GALGAS_getterMap (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_readerMap (const GALGAS_readerMap & inSource) ;
-  public : GALGAS_readerMap & operator = (const GALGAS_readerMap & inSource) ;
+  public : GALGAS_getterMap (const GALGAS_getterMap & inSource) ;
+  public : GALGAS_getterMap & operator = (const GALGAS_getterMap & inSource) ;
 
 //-- Start of generic part --*
 
@@ -4181,14 +4181,14 @@ class GALGAS_readerMap : public AC_GALGAS_map {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_readerMap extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_getterMap extractObject (const GALGAS_object & inObject,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_readerMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_getterMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_readerMap constructor_mapWithMapToOverride (const class GALGAS_readerMap & inOperand0
+  public : static GALGAS_getterMap constructor_mapWithMapToOverride (const class GALGAS_getterMap & inOperand0
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -4304,28 +4304,28 @@ class GALGAS_readerMap : public AC_GALGAS_map {
                                                                                              C_Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_readerMap reader_overriddenMap (C_Compiler * inCompiler
+  public : VIRTUAL_IN_DEBUG class GALGAS_getterMap reader_overriddenMap (C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_readerMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public : VIRTUAL_IN_DEBUG cMapElement_getterMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                        const GALGAS_string & inKey
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_readerMap ;
+  friend class cEnumerator_getterMap ;
  
-} ; // End of GALGAS_readerMap class
+} ; // End of GALGAS_getterMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_readerMap : public cGenericAbstractEnumerator {
-  public : cEnumerator_readerMap (const GALGAS_readerMap & inEnumeratedObject,
+class cEnumerator_getterMap : public cGenericAbstractEnumerator {
+  public : cEnumerator_getterMap (const GALGAS_getterMap & inEnumeratedObject,
                                   const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
@@ -4338,20 +4338,20 @@ class cEnumerator_readerMap : public cGenericAbstractEnumerator {
   public : class GALGAS_methodQualifier current_mQualifier (LOCATION_ARGS) const ;
   public : class GALGAS_string current_mErrorMessage (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_readerMap_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_getterMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readerMap ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        Class for element of '@readerMap' map                                        *
+//                                        Class for element of '@getterMap' map                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_readerMap : public cMapElement {
+class cMapElement_getterMap : public cMapElement {
 //--- Map attributes
   public : GALGAS_methodKind mAttribute_mKind ;
   public : GALGAS_functionSignature mAttribute_mArgumentTypeList ;
@@ -4362,7 +4362,7 @@ class cMapElement_readerMap : public cMapElement {
   public : GALGAS_string mAttribute_mErrorMessage ;
 
 //--- Constructor
-  public : cMapElement_readerMap (const GALGAS_lstring & inKey,
+  public : cMapElement_getterMap (const GALGAS_lstring & inKey,
                                   const GALGAS_methodKind & in_mKind,
                                   const GALGAS_functionSignature & in_mArgumentTypeList,
                                   const GALGAS_location & in_mDeclarationLocation,
@@ -4387,11 +4387,11 @@ class cMapElement_readerMap : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            @readerMap_2D_element struct                                             *
+//                                            @getterMap_2D_element struct                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_readerMap_2D_element : public AC_GALGAS_root {
+class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
   public : GALGAS_methodKind mAttribute_mKind ;
@@ -4408,13 +4408,13 @@ class GALGAS_readerMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_readerMap_2D_element (void) ;
+  public : GALGAS_getterMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_readerMap_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_getterMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_readerMap_2D_element (const GALGAS_lstring & in_lkey,
+  public : GALGAS_getterMap_2D_element (const GALGAS_lstring & in_lkey,
                                         const GALGAS_methodKind & in_mKind,
                                         const GALGAS_functionSignature & in_mArgumentTypeList,
                                         const GALGAS_location & in_mDeclarationLocation,
@@ -4429,12 +4429,12 @@ class GALGAS_readerMap_2D_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_readerMap_2D_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_getterMap_2D_element extractObject (const GALGAS_object & inObject,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_readerMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+  public : static GALGAS_getterMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                const class GALGAS_methodKind & inOperand1,
                                                                const class GALGAS_functionSignature & inOperand2,
                                                                const class GALGAS_location & inOperand3,
@@ -4448,7 +4448,7 @@ class GALGAS_readerMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_readerMap_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_getterMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4476,12 +4476,12 @@ class GALGAS_readerMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_readerMap_2D_element class
+} ; // End of GALGAS_getterMap_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readerMap_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4727,25 +4727,25 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterSign
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                                  @modifierMap map                                                   *
+//                                                   @setterMap map                                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_modifierMap ;
+class cMapElement_setterMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const char * kSearchErrorMessage_modifierMap_searchKey ;
+extern const char * kSearchErrorMessage_setterMap_searchKey ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_modifierMap : public AC_GALGAS_map {
+class GALGAS_setterMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public : GALGAS_modifierMap (void) ;
+  public : GALGAS_setterMap (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_modifierMap (const GALGAS_modifierMap & inSource) ;
-  public : GALGAS_modifierMap & operator = (const GALGAS_modifierMap & inSource) ;
+  public : GALGAS_setterMap (const GALGAS_setterMap & inSource) ;
+  public : GALGAS_setterMap & operator = (const GALGAS_setterMap & inSource) ;
 
 //-- Start of generic part --*
 
@@ -4753,15 +4753,15 @@ class GALGAS_modifierMap : public AC_GALGAS_map {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_modifierMap extractObject (const GALGAS_object & inObject,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_setterMap extractObject (const GALGAS_object & inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_modifierMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_setterMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_modifierMap constructor_mapWithMapToOverride (const class GALGAS_modifierMap & inOperand0
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_setterMap constructor_mapWithMapToOverride (const class GALGAS_setterMap & inOperand0
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -4850,29 +4850,29 @@ class GALGAS_modifierMap : public AC_GALGAS_map {
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_modifierMap reader_overriddenMap (C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_setterMap reader_overriddenMap (C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_modifierMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                         const GALGAS_string & inKey
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG cMapElement_setterMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                       const GALGAS_string & inKey
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_modifierMap ;
+  friend class cEnumerator_setterMap ;
  
-} ; // End of GALGAS_modifierMap class
+} ; // End of GALGAS_setterMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_modifierMap : public cGenericAbstractEnumerator {
-  public : cEnumerator_modifierMap (const GALGAS_modifierMap & inEnumeratedObject,
-                                    const typeEnumerationOrder inOrder) ;
+class cEnumerator_setterMap : public cGenericAbstractEnumerator {
+  public : cEnumerator_setterMap (const GALGAS_setterMap & inEnumeratedObject,
+                                  const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -4882,20 +4882,20 @@ class cEnumerator_modifierMap : public cGenericAbstractEnumerator {
   public : class GALGAS_methodQualifier current_mQualifier (LOCATION_ARGS) const ;
   public : class GALGAS_string current_mErrorMessage (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_modifierMap_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_setterMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_modifierMap ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Class for element of '@modifierMap' map                                       *
+//                                        Class for element of '@setterMap' map                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_modifierMap : public cMapElement {
+class cMapElement_setterMap : public cMapElement {
 //--- Map attributes
   public : GALGAS_methodKind mAttribute_mKind ;
   public : GALGAS_formalParameterSignature mAttribute_mParameterList ;
@@ -4904,13 +4904,13 @@ class cMapElement_modifierMap : public cMapElement {
   public : GALGAS_string mAttribute_mErrorMessage ;
 
 //--- Constructor
-  public : cMapElement_modifierMap (const GALGAS_lstring & inKey,
-                                    const GALGAS_methodKind & in_mKind,
-                                    const GALGAS_formalParameterSignature & in_mParameterList,
-                                    const GALGAS_bool & in_mHasCompilerArgument,
-                                    const GALGAS_methodQualifier & in_mQualifier,
-                                    const GALGAS_string & in_mErrorMessage
-                                    COMMA_LOCATION_ARGS) ;
+  public : cMapElement_setterMap (const GALGAS_lstring & inKey,
+                                  const GALGAS_methodKind & in_mKind,
+                                  const GALGAS_formalParameterSignature & in_mParameterList,
+                                  const GALGAS_bool & in_mHasCompilerArgument,
+                                  const GALGAS_methodQualifier & in_mQualifier,
+                                  const GALGAS_string & in_mErrorMessage
+                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -4927,11 +4927,11 @@ class cMapElement_modifierMap : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           @modifierMap_2D_element struct                                            *
+//                                            @setterMap_2D_element struct                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_modifierMap_2D_element : public AC_GALGAS_root {
+class GALGAS_setterMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
   public : GALGAS_methodKind mAttribute_mKind ;
@@ -4946,18 +4946,18 @@ class GALGAS_modifierMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_modifierMap_2D_element (void) ;
+  public : GALGAS_setterMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_modifierMap_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_setterMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_modifierMap_2D_element (const GALGAS_lstring & in_lkey,
-                                          const GALGAS_methodKind & in_mKind,
-                                          const GALGAS_formalParameterSignature & in_mParameterList,
-                                          const GALGAS_bool & in_mHasCompilerArgument,
-                                          const GALGAS_methodQualifier & in_mQualifier,
-                                          const GALGAS_string & in_mErrorMessage) ;
+  public : GALGAS_setterMap_2D_element (const GALGAS_lstring & in_lkey,
+                                        const GALGAS_methodKind & in_mKind,
+                                        const GALGAS_formalParameterSignature & in_mParameterList,
+                                        const GALGAS_bool & in_mHasCompilerArgument,
+                                        const GALGAS_methodQualifier & in_mQualifier,
+                                        const GALGAS_string & in_mErrorMessage) ;
 
 //-- Start of generic part --*
 
@@ -4965,24 +4965,24 @@ class GALGAS_modifierMap_2D_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_modifierMap_2D_element extractObject (const GALGAS_object & inObject,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_setterMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_modifierMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                 const class GALGAS_methodKind & inOperand1,
-                                                                 const class GALGAS_formalParameterSignature & inOperand2,
-                                                                 const class GALGAS_bool & inOperand3,
-                                                                 const class GALGAS_methodQualifier & inOperand4,
-                                                                 const class GALGAS_string & inOperand5
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_setterMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                               const class GALGAS_methodKind & inOperand1,
+                                                               const class GALGAS_formalParameterSignature & inOperand2,
+                                                               const class GALGAS_bool & inOperand3,
+                                                               const class GALGAS_methodQualifier & inOperand4,
+                                                               const class GALGAS_string & inOperand5
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_modifierMap_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_setterMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5006,12 +5006,12 @@ class GALGAS_modifierMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_modifierMap_2D_element class
+} ; // End of GALGAS_setterMap_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_modifierMap_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6816,8 +6816,8 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                      class GALGAS_attributeMap constinArgument7,
                                                      class GALGAS_typedPropertyList constinArgument8,
                                                      class GALGAS_constructorMap constinArgument9,
-                                                     class GALGAS_readerMap constinArgument10,
-                                                     class GALGAS_modifierMap constinArgument11,
+                                                     class GALGAS_getterMap constinArgument10,
+                                                     class GALGAS_setterMap constinArgument11,
                                                      class GALGAS_instanceMethodMap constinArgument12,
                                                      class GALGAS_classMethodMap constinArgument13,
                                                      class GALGAS_enumerationDescriptorList constinArgument14,
@@ -6936,12 +6936,12 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMModifierMapForKey (class GALGAS_modifierMap constinArgument0,
+  public : VIRTUAL_IN_DEBUG void modifier_setMModifierMapForKey (class GALGAS_setterMap constinArgument0,
                                                                  class GALGAS_string constinArgument1,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMReaderMapForKey (class GALGAS_readerMap constinArgument0,
+  public : VIRTUAL_IN_DEBUG void modifier_setMReaderMapForKey (class GALGAS_getterMap constinArgument0,
                                                                class GALGAS_string constinArgument1,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
@@ -6978,8 +6978,8 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                    class GALGAS_attributeMap & outArgument7,
                                                    class GALGAS_typedPropertyList & outArgument8,
                                                    class GALGAS_constructorMap & outArgument9,
-                                                   class GALGAS_readerMap & outArgument10,
-                                                   class GALGAS_modifierMap & outArgument11,
+                                                   class GALGAS_getterMap & outArgument10,
+                                                   class GALGAS_setterMap & outArgument11,
                                                    class GALGAS_instanceMethodMap & outArgument12,
                                                    class GALGAS_classMethodMap & outArgument13,
                                                    class GALGAS_enumerationDescriptorList & outArgument14,
@@ -7081,11 +7081,11 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                                    C_Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_modifierMap reader_mModifierMapForKey (const class GALGAS_string & constinOperand0,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_setterMap reader_mModifierMapForKey (const class GALGAS_string & constinOperand0,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_readerMap reader_mReaderMapForKey (const class GALGAS_string & constinOperand0,
+  public : VIRTUAL_IN_DEBUG class GALGAS_getterMap reader_mReaderMapForKey (const class GALGAS_string & constinOperand0,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
 
@@ -7137,8 +7137,8 @@ class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
   public : class GALGAS_attributeMap current_mAttributeMap (LOCATION_ARGS) const ;
   public : class GALGAS_typedPropertyList current_mCurrentTypedAttributeList (LOCATION_ARGS) const ;
   public : class GALGAS_constructorMap current_mConstructorMap (LOCATION_ARGS) const ;
-  public : class GALGAS_readerMap current_mReaderMap (LOCATION_ARGS) const ;
-  public : class GALGAS_modifierMap current_mModifierMap (LOCATION_ARGS) const ;
+  public : class GALGAS_getterMap current_mReaderMap (LOCATION_ARGS) const ;
+  public : class GALGAS_setterMap current_mModifierMap (LOCATION_ARGS) const ;
   public : class GALGAS_instanceMethodMap current_mInstanceMethodMap (LOCATION_ARGS) const ;
   public : class GALGAS_classMethodMap current_mClassMethodMap (LOCATION_ARGS) const ;
   public : class GALGAS_enumerationDescriptorList current_mEnumerationDescriptor (LOCATION_ARGS) const ;
@@ -7177,8 +7177,8 @@ class cMapElement_unifiedTypeMap : public cMapElement {
   public : GALGAS_attributeMap mAttribute_mAttributeMap ;
   public : GALGAS_typedPropertyList mAttribute_mCurrentTypedAttributeList ;
   public : GALGAS_constructorMap mAttribute_mConstructorMap ;
-  public : GALGAS_readerMap mAttribute_mReaderMap ;
-  public : GALGAS_modifierMap mAttribute_mModifierMap ;
+  public : GALGAS_getterMap mAttribute_mReaderMap ;
+  public : GALGAS_setterMap mAttribute_mModifierMap ;
   public : GALGAS_instanceMethodMap mAttribute_mInstanceMethodMap ;
   public : GALGAS_classMethodMap mAttribute_mClassMethodMap ;
   public : GALGAS_enumerationDescriptorList mAttribute_mEnumerationDescriptor ;
@@ -7206,8 +7206,8 @@ class cMapElement_unifiedTypeMap : public cMapElement {
                                        const GALGAS_attributeMap & in_mAttributeMap,
                                        const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
                                        const GALGAS_constructorMap & in_mConstructorMap,
-                                       const GALGAS_readerMap & in_mReaderMap,
-                                       const GALGAS_modifierMap & in_mModifierMap,
+                                       const GALGAS_getterMap & in_mReaderMap,
+                                       const GALGAS_setterMap & in_mModifierMap,
                                        const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
                                        const GALGAS_classMethodMap & in_mClassMethodMap,
                                        const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,

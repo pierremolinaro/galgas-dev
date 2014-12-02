@@ -10020,7 +10020,7 @@ void enterCategoryMethod_getReaderMap (const int32_t inClassIndex,
 
 void callCategoryMethod_getReaderMap (const cPtr_predefinedTypeAST * inObject,
                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                      GALGAS_readerMap & out_outReaderMap,
+                                      GALGAS_getterMap & out_outReaderMap,
                                       C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
   out_outReaderMap.drop () ;
@@ -10054,10 +10054,10 @@ void callCategoryMethod_getReaderMap (const cPtr_predefinedTypeAST * inObject,
 
 static void categoryMethod_predefinedTypeAST_getReaderMap (const cPtr_predefinedTypeAST * /* inObject */,
                                                            GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                           GALGAS_readerMap & outArgument_outReaderMap,
+                                                           GALGAS_getterMap & outArgument_outReaderMap,
                                                            C_Compiler * /* inCompiler */
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outReaderMap = GALGAS_readerMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 435)) ;
+  outArgument_outReaderMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 435)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10096,7 +10096,7 @@ void enterCategoryMethod_getModifierMap (const int32_t inClassIndex,
 
 void callCategoryMethod_getModifierMap (const cPtr_predefinedTypeAST * inObject,
                                         GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                        GALGAS_modifierMap & out_outModifierMap,
+                                        GALGAS_setterMap & out_outModifierMap,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   out_outModifierMap.drop () ;
@@ -10130,10 +10130,10 @@ void callCategoryMethod_getModifierMap (const cPtr_predefinedTypeAST * inObject,
 
 static void categoryMethod_predefinedTypeAST_getModifierMap (const cPtr_predefinedTypeAST * /* inObject */,
                                                              GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                             GALGAS_modifierMap & outArgument_outModifierMap,
+                                                             GALGAS_setterMap & outArgument_outModifierMap,
                                                              C_Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outModifierMap = GALGAS_modifierMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 443)) ;
+  outArgument_outModifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 443)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 

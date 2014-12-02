@@ -6531,7 +6531,7 @@ GALGAS_methodKind GALGAS_methodKind::extractObject (const GALGAS_object & inObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_readerMap::cMapElement_readerMap (const GALGAS_lstring & inKey,
+cMapElement_getterMap::cMapElement_getterMap (const GALGAS_lstring & inKey,
                                               const GALGAS_methodKind & in_mKind,
                                               const GALGAS_functionSignature & in_mArgumentTypeList,
                                               const GALGAS_location & in_mDeclarationLocation,
@@ -6552,21 +6552,21 @@ mAttribute_mErrorMessage (in_mErrorMessage) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cMapElement_readerMap::isValid (void) const {
+bool cMapElement_getterMap::isValid (void) const {
   return mAttribute_lkey.isValid () && mAttribute_mKind.isValid () && mAttribute_mArgumentTypeList.isValid () && mAttribute_mDeclarationLocation.isValid () && mAttribute_mHasCompilerArgument.isValid () && mAttribute_mReturnedType.isValid () && mAttribute_mQualifier.isValid () && mAttribute_mErrorMessage.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement * cMapElement_readerMap::copy (void) {
+cMapElement * cMapElement_getterMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_readerMap (mAttribute_lkey, mAttribute_mKind, mAttribute_mArgumentTypeList, mAttribute_mDeclarationLocation, mAttribute_mHasCompilerArgument, mAttribute_mReturnedType, mAttribute_mQualifier, mAttribute_mErrorMessage COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_getterMap (mAttribute_lkey, mAttribute_mKind, mAttribute_mArgumentTypeList, mAttribute_mDeclarationLocation, mAttribute_mHasCompilerArgument, mAttribute_mReturnedType, mAttribute_mQualifier, mAttribute_mErrorMessage COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cMapElement_readerMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_getterMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mKind" ":" ;
@@ -6599,8 +6599,8 @@ void cMapElement_readerMap::description (C_String & ioString, const int32_t inIn
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cMapElement_readerMap::compare (const cCollectionElement * inOperand) const {
-  cMapElement_readerMap * operand = (cMapElement_readerMap *) inOperand ;
+typeComparisonResult cMapElement_getterMap::compare (const cCollectionElement * inOperand) const {
+  cMapElement_getterMap * operand = (cMapElement_getterMap *) inOperand ;
   typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mKind.objectCompare (operand->mAttribute_mKind) ;
@@ -6628,52 +6628,52 @@ typeComparisonResult cMapElement_readerMap::compare (const cCollectionElement * 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap::GALGAS_readerMap (void) :
+GALGAS_getterMap::GALGAS_getterMap (void) :
 AC_GALGAS_map () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap::GALGAS_readerMap (const GALGAS_readerMap & inSource) :
+GALGAS_getterMap::GALGAS_getterMap (const GALGAS_getterMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap & GALGAS_readerMap::operator = (const GALGAS_readerMap & inSource) {
+GALGAS_getterMap & GALGAS_getterMap::operator = (const GALGAS_getterMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap GALGAS_readerMap::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_readerMap result ;
+GALGAS_getterMap GALGAS_getterMap::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_getterMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap GALGAS_readerMap::constructor_mapWithMapToOverride (const GALGAS_readerMap & inMapToOverride
+GALGAS_getterMap GALGAS_getterMap::constructor_mapWithMapToOverride (const GALGAS_getterMap & inMapToOverride
                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_readerMap result ;
+  GALGAS_getterMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap GALGAS_readerMap::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_getterMap GALGAS_getterMap::reader_overriddenMap (C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  GALGAS_readerMap result ;
+  GALGAS_getterMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::addAssign_operation (const GALGAS_lstring & inKey,
+void GALGAS_getterMap::addAssign_operation (const GALGAS_lstring & inKey,
                                             const GALGAS_methodKind & inArgument0,
                                             const GALGAS_functionSignature & inArgument1,
                                             const GALGAS_location & inArgument2,
@@ -6683,19 +6683,19 @@ void GALGAS_readerMap::addAssign_operation (const GALGAS_lstring & inKey,
                                             const GALGAS_string & inArgument6,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
-  cMapElement_readerMap * p = NULL ;
-  macroMyNew (p, cMapElement_readerMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
+  cMapElement_getterMap * p = NULL ;
+  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@readerMap insert error: '%K' already in map" ;
+  const char * kInsertErrorMessage = "@getterMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_insertKey (GALGAS_lstring inKey,
+void GALGAS_getterMap::modifier_insertKey (GALGAS_lstring inKey,
                                            GALGAS_methodKind inArgument0,
                                            GALGAS_functionSignature inArgument1,
                                            GALGAS_location inArgument2,
@@ -6705,8 +6705,8 @@ void GALGAS_readerMap::modifier_insertKey (GALGAS_lstring inKey,
                                            GALGAS_string inArgument6,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  cMapElement_readerMap * p = NULL ;
-  macroMyNew (p, cMapElement_readerMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
+  cMapElement_getterMap * p = NULL ;
+  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -6717,11 +6717,11 @@ void GALGAS_readerMap::modifier_insertKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const char * kSearchErrorMessage_readerMap_searchKey = "the '%K' reader is not declared" ;
+const char * kSearchErrorMessage_getterMap_searchKey = "the '%K' reader is not declared" ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::method_searchKey (GALGAS_lstring inKey,
+void GALGAS_getterMap::method_searchKey (GALGAS_lstring inKey,
                                          GALGAS_methodKind & outArgument0,
                                          GALGAS_functionSignature & outArgument1,
                                          GALGAS_location & outArgument2,
@@ -6731,9 +6731,9 @@ void GALGAS_readerMap::method_searchKey (GALGAS_lstring inKey,
                                          GALGAS_string & outArgument6,
                                          C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) performSearch (inKey,
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) performSearch (inKey,
                                                                                      inCompiler,
-                                                                                     kSearchErrorMessage_readerMap_searchKey
+                                                                                     kSearchErrorMessage_getterMap_searchKey
                                                                                      COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
@@ -6744,7 +6744,7 @@ void GALGAS_readerMap::method_searchKey (GALGAS_lstring inKey,
     outArgument5.drop () ;
     outArgument6.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     outArgument0 = p->mAttribute_mKind ;
     outArgument1 = p->mAttribute_mArgumentTypeList ;
     outArgument2 = p->mAttribute_mDeclarationLocation ;
@@ -6757,7 +6757,7 @@ void GALGAS_readerMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_insertOrReplace (GALGAS_lstring inKey,
+void GALGAS_getterMap::modifier_insertOrReplace (GALGAS_lstring inKey,
                                                  GALGAS_methodKind inArgument0,
                                                  GALGAS_functionSignature inArgument1,
                                                  GALGAS_location inArgument2,
@@ -6766,8 +6766,8 @@ void GALGAS_readerMap::modifier_insertOrReplace (GALGAS_lstring inKey,
                                                  GALGAS_methodQualifier inArgument5,
                                                  GALGAS_string inArgument6
                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  cMapElement_readerMap * p = NULL ;
-  macroMyNew (p, cMapElement_readerMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
+  cMapElement_getterMap * p = NULL ;
+  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -6776,14 +6776,14 @@ void GALGAS_readerMap::modifier_insertOrReplace (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodKind GALGAS_readerMap::reader_mKindForKey (const GALGAS_string & inKey,
+GALGAS_methodKind GALGAS_getterMap::reader_mKindForKey (const GALGAS_string & inKey,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) attributes ;
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) attributes ;
   GALGAS_methodKind result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     result = p->mAttribute_mKind ;
   }
   return result ;
@@ -6791,14 +6791,14 @@ GALGAS_methodKind GALGAS_readerMap::reader_mKindForKey (const GALGAS_string & in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionSignature GALGAS_readerMap::reader_mArgumentTypeListForKey (const GALGAS_string & inKey,
+GALGAS_functionSignature GALGAS_getterMap::reader_mArgumentTypeListForKey (const GALGAS_string & inKey,
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) attributes ;
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) attributes ;
   GALGAS_functionSignature result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     result = p->mAttribute_mArgumentTypeList ;
   }
   return result ;
@@ -6806,14 +6806,14 @@ GALGAS_functionSignature GALGAS_readerMap::reader_mArgumentTypeListForKey (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_readerMap::reader_mDeclarationLocationForKey (const GALGAS_string & inKey,
+GALGAS_location GALGAS_getterMap::reader_mDeclarationLocationForKey (const GALGAS_string & inKey,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) attributes ;
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) attributes ;
   GALGAS_location result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     result = p->mAttribute_mDeclarationLocation ;
   }
   return result ;
@@ -6821,14 +6821,14 @@ GALGAS_location GALGAS_readerMap::reader_mDeclarationLocationForKey (const GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_readerMap::reader_mHasCompilerArgumentForKey (const GALGAS_string & inKey,
+GALGAS_bool GALGAS_getterMap::reader_mHasCompilerArgumentForKey (const GALGAS_string & inKey,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) attributes ;
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) attributes ;
   GALGAS_bool result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     result = p->mAttribute_mHasCompilerArgument ;
   }
   return result ;
@@ -6836,14 +6836,14 @@ GALGAS_bool GALGAS_readerMap::reader_mHasCompilerArgumentForKey (const GALGAS_st
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_readerMap::reader_mReturnedTypeForKey (const GALGAS_string & inKey,
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_getterMap::reader_mReturnedTypeForKey (const GALGAS_string & inKey,
                                                                              C_Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) attributes ;
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) attributes ;
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     result = p->mAttribute_mReturnedType ;
   }
   return result ;
@@ -6851,14 +6851,14 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_readerMap::reader_mReturnedTypeForKey (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodQualifier GALGAS_readerMap::reader_mQualifierForKey (const GALGAS_string & inKey,
+GALGAS_methodQualifier GALGAS_getterMap::reader_mQualifierForKey (const GALGAS_string & inKey,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) attributes ;
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) attributes ;
   GALGAS_methodQualifier result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     result = p->mAttribute_mQualifier ;
   }
   return result ;
@@ -6866,14 +6866,14 @@ GALGAS_methodQualifier GALGAS_readerMap::reader_mQualifierForKey (const GALGAS_s
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_readerMap::reader_mErrorMessageForKey (const GALGAS_string & inKey,
+GALGAS_string GALGAS_getterMap::reader_mErrorMessageForKey (const GALGAS_string & inKey,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) attributes ;
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) attributes ;
   GALGAS_string result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     result = p->mAttribute_mErrorMessage ;
   }
   return result ;
@@ -6881,115 +6881,115 @@ GALGAS_string GALGAS_readerMap::reader_mErrorMessageForKey (const GALGAS_string 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_setMKindForKey (GALGAS_methodKind inAttributeValue,
+void GALGAS_getterMap::modifier_setMKindForKey (GALGAS_methodKind inAttributeValue,
                                                 GALGAS_string inKey,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_readerMap * p = (cMapElement_readerMap *) attributes ;
+  cMapElement_getterMap * p = (cMapElement_getterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     p->mAttribute_mKind = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_setMArgumentTypeListForKey (GALGAS_functionSignature inAttributeValue,
+void GALGAS_getterMap::modifier_setMArgumentTypeListForKey (GALGAS_functionSignature inAttributeValue,
                                                             GALGAS_string inKey,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_readerMap * p = (cMapElement_readerMap *) attributes ;
+  cMapElement_getterMap * p = (cMapElement_getterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     p->mAttribute_mArgumentTypeList = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_setMDeclarationLocationForKey (GALGAS_location inAttributeValue,
+void GALGAS_getterMap::modifier_setMDeclarationLocationForKey (GALGAS_location inAttributeValue,
                                                                GALGAS_string inKey,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_readerMap * p = (cMapElement_readerMap *) attributes ;
+  cMapElement_getterMap * p = (cMapElement_getterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     p->mAttribute_mDeclarationLocation = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_setMHasCompilerArgumentForKey (GALGAS_bool inAttributeValue,
+void GALGAS_getterMap::modifier_setMHasCompilerArgumentForKey (GALGAS_bool inAttributeValue,
                                                                GALGAS_string inKey,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_readerMap * p = (cMapElement_readerMap *) attributes ;
+  cMapElement_getterMap * p = (cMapElement_getterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     p->mAttribute_mHasCompilerArgument = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_setMReturnedTypeForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
+void GALGAS_getterMap::modifier_setMReturnedTypeForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
                                                         GALGAS_string inKey,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_readerMap * p = (cMapElement_readerMap *) attributes ;
+  cMapElement_getterMap * p = (cMapElement_getterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     p->mAttribute_mReturnedType = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_setMQualifierForKey (GALGAS_methodQualifier inAttributeValue,
+void GALGAS_getterMap::modifier_setMQualifierForKey (GALGAS_methodQualifier inAttributeValue,
                                                      GALGAS_string inKey,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_readerMap * p = (cMapElement_readerMap *) attributes ;
+  cMapElement_getterMap * p = (cMapElement_getterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     p->mAttribute_mQualifier = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_readerMap::modifier_setMErrorMessageForKey (GALGAS_string inAttributeValue,
+void GALGAS_getterMap::modifier_setMErrorMessageForKey (GALGAS_string inAttributeValue,
                                                         GALGAS_string inKey,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_readerMap * p = (cMapElement_readerMap *) attributes ;
+  cMapElement_getterMap * p = (cMapElement_getterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_readerMap) ;
+    macroValidSharedObject (p, cMapElement_getterMap) ;
     p->mAttribute_mErrorMessage = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_readerMap * GALGAS_readerMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+cMapElement_getterMap * GALGAS_getterMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                              const GALGAS_string & inKey
                                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_readerMap * result = (cMapElement_readerMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_readerMap) ;
+  cMapElement_getterMap * result = (cMapElement_getterMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_getterMap) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cEnumerator_readerMap::cEnumerator_readerMap (const GALGAS_readerMap & inEnumeratedObject,
+cEnumerator_getterMap::cEnumerator_getterMap (const GALGAS_getterMap & inEnumeratedObject,
                                               const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
@@ -6997,15 +6997,15 @@ cGenericAbstractEnumerator () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap_2D_element cEnumerator_readerMap::current (LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_readerMap) ;
-  return GALGAS_readerMap_2D_element (p->mAttribute_lkey, p->mAttribute_mKind, p->mAttribute_mArgumentTypeList, p->mAttribute_mDeclarationLocation, p->mAttribute_mHasCompilerArgument, p->mAttribute_mReturnedType, p->mAttribute_mQualifier, p->mAttribute_mErrorMessage) ;
+GALGAS_getterMap_2D_element cEnumerator_getterMap::current (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
+  return GALGAS_getterMap_2D_element (p->mAttribute_lkey, p->mAttribute_mKind, p->mAttribute_mArgumentTypeList, p->mAttribute_mDeclarationLocation, p->mAttribute_mHasCompilerArgument, p->mAttribute_mReturnedType, p->mAttribute_mQualifier, p->mAttribute_mErrorMessage) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_readerMap::current_lkey (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_getterMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mAttribute_lkey ;
@@ -7013,57 +7013,57 @@ GALGAS_lstring cEnumerator_readerMap::current_lkey (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodKind cEnumerator_readerMap::current_mKind (LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_readerMap) ;
+GALGAS_methodKind cEnumerator_getterMap::current_mKind (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
   return p->mAttribute_mKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionSignature cEnumerator_readerMap::current_mArgumentTypeList (LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_readerMap) ;
+GALGAS_functionSignature cEnumerator_getterMap::current_mArgumentTypeList (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
   return p->mAttribute_mArgumentTypeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cEnumerator_readerMap::current_mDeclarationLocation (LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_readerMap) ;
+GALGAS_location cEnumerator_getterMap::current_mDeclarationLocation (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
   return p->mAttribute_mDeclarationLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cEnumerator_readerMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_readerMap) ;
+GALGAS_bool cEnumerator_getterMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
   return p->mAttribute_mHasCompilerArgument ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cEnumerator_readerMap::current_mReturnedType (LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_readerMap) ;
+GALGAS_unifiedTypeMap_2D_proxy cEnumerator_getterMap::current_mReturnedType (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
   return p->mAttribute_mReturnedType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodQualifier cEnumerator_readerMap::current_mQualifier (LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_readerMap) ;
+GALGAS_methodQualifier cEnumerator_getterMap::current_mQualifier (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
   return p->mAttribute_mQualifier ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cEnumerator_readerMap::current_mErrorMessage (LOCATION_ARGS) const {
-  const cMapElement_readerMap * p = (const cMapElement_readerMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_readerMap) ;
+GALGAS_string cEnumerator_getterMap::current_mErrorMessage (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
   return p->mAttribute_mErrorMessage ;
 }
 
@@ -7071,42 +7071,42 @@ GALGAS_string cEnumerator_readerMap::current_mErrorMessage (LOCATION_ARGS) const
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                                   @readerMap type                                                   *
+//                                                   @getterMap type                                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_readerMap ("readerMap",
+kTypeDescriptor_GALGAS_getterMap ("getterMap",
                                   NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_readerMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_readerMap ;
+const C_galgas_type_descriptor * GALGAS_getterMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_getterMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_readerMap::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_getterMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_readerMap (*this)) ;
+    macroMyNew (result, GALGAS_getterMap (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap GALGAS_readerMap::extractObject (const GALGAS_object & inObject,
+GALGAS_getterMap GALGAS_getterMap::extractObject (const GALGAS_object & inObject,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_readerMap result ;
-  const GALGAS_readerMap * p = (const GALGAS_readerMap *) inObject.embeddedObject () ;
+  GALGAS_getterMap result ;
+  const GALGAS_getterMap * p = (const GALGAS_getterMap *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_readerMap *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_getterMap *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("readerMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("getterMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -7627,13 +7627,13 @@ GALGAS_formalParameterSignature GALGAS_formalParameterSignature::extractObject (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_modifierMap::cMapElement_modifierMap (const GALGAS_lstring & inKey,
-                                                  const GALGAS_methodKind & in_mKind,
-                                                  const GALGAS_formalParameterSignature & in_mParameterList,
-                                                  const GALGAS_bool & in_mHasCompilerArgument,
-                                                  const GALGAS_methodQualifier & in_mQualifier,
-                                                  const GALGAS_string & in_mErrorMessage
-                                                  COMMA_LOCATION_ARGS) :
+cMapElement_setterMap::cMapElement_setterMap (const GALGAS_lstring & inKey,
+                                              const GALGAS_methodKind & in_mKind,
+                                              const GALGAS_formalParameterSignature & in_mParameterList,
+                                              const GALGAS_bool & in_mHasCompilerArgument,
+                                              const GALGAS_methodQualifier & in_mQualifier,
+                                              const GALGAS_string & in_mErrorMessage
+                                              COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mAttribute_mKind (in_mKind),
 mAttribute_mParameterList (in_mParameterList),
@@ -7644,21 +7644,21 @@ mAttribute_mErrorMessage (in_mErrorMessage) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cMapElement_modifierMap::isValid (void) const {
+bool cMapElement_setterMap::isValid (void) const {
   return mAttribute_lkey.isValid () && mAttribute_mKind.isValid () && mAttribute_mParameterList.isValid () && mAttribute_mHasCompilerArgument.isValid () && mAttribute_mQualifier.isValid () && mAttribute_mErrorMessage.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement * cMapElement_modifierMap::copy (void) {
+cMapElement * cMapElement_setterMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_modifierMap (mAttribute_lkey, mAttribute_mKind, mAttribute_mParameterList, mAttribute_mHasCompilerArgument, mAttribute_mQualifier, mAttribute_mErrorMessage COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_setterMap (mAttribute_lkey, mAttribute_mKind, mAttribute_mParameterList, mAttribute_mHasCompilerArgument, mAttribute_mQualifier, mAttribute_mErrorMessage COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cMapElement_modifierMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_setterMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mKind" ":" ;
@@ -7683,8 +7683,8 @@ void cMapElement_modifierMap::description (C_String & ioString, const int32_t in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cMapElement_modifierMap::compare (const cCollectionElement * inOperand) const {
-  cMapElement_modifierMap * operand = (cMapElement_modifierMap *) inOperand ;
+typeComparisonResult cMapElement_setterMap::compare (const cCollectionElement * inOperand) const {
+  cMapElement_setterMap * operand = (cMapElement_setterMap *) inOperand ;
   typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mKind.objectCompare (operand->mAttribute_mKind) ;
@@ -7706,107 +7706,107 @@ typeComparisonResult cMapElement_modifierMap::compare (const cCollectionElement 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap::GALGAS_modifierMap (void) :
+GALGAS_setterMap::GALGAS_setterMap (void) :
 AC_GALGAS_map () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap::GALGAS_modifierMap (const GALGAS_modifierMap & inSource) :
+GALGAS_setterMap::GALGAS_setterMap (const GALGAS_setterMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap & GALGAS_modifierMap::operator = (const GALGAS_modifierMap & inSource) {
+GALGAS_setterMap & GALGAS_setterMap::operator = (const GALGAS_setterMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap GALGAS_modifierMap::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_modifierMap result ;
+GALGAS_setterMap GALGAS_setterMap::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_setterMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap GALGAS_modifierMap::constructor_mapWithMapToOverride (const GALGAS_modifierMap & inMapToOverride
-                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_modifierMap result ;
+GALGAS_setterMap GALGAS_setterMap::constructor_mapWithMapToOverride (const GALGAS_setterMap & inMapToOverride
+                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_setterMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap GALGAS_modifierMap::reader_overriddenMap (C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_modifierMap result ;
+GALGAS_setterMap GALGAS_setterMap::reader_overriddenMap (C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GALGAS_setterMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_modifierMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                              const GALGAS_methodKind & inArgument0,
-                                              const GALGAS_formalParameterSignature & inArgument1,
-                                              const GALGAS_bool & inArgument2,
-                                              const GALGAS_methodQualifier & inArgument3,
-                                              const GALGAS_string & inArgument4,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  cMapElement_modifierMap * p = NULL ;
-  macroMyNew (p, cMapElement_modifierMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
+void GALGAS_setterMap::addAssign_operation (const GALGAS_lstring & inKey,
+                                            const GALGAS_methodKind & inArgument0,
+                                            const GALGAS_formalParameterSignature & inArgument1,
+                                            const GALGAS_bool & inArgument2,
+                                            const GALGAS_methodQualifier & inArgument3,
+                                            const GALGAS_string & inArgument4,
+                                            C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  cMapElement_setterMap * p = NULL ;
+  macroMyNew (p, cMapElement_setterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@modifierMap insert error: '%K' already in map" ;
+  const char * kInsertErrorMessage = "@setterMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_modifierMap::modifier_insertKey (GALGAS_lstring inKey,
-                                             GALGAS_methodKind inArgument0,
-                                             GALGAS_formalParameterSignature inArgument1,
-                                             GALGAS_bool inArgument2,
-                                             GALGAS_methodQualifier inArgument3,
-                                             GALGAS_string inArgument4,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  cMapElement_modifierMap * p = NULL ;
-  macroMyNew (p, cMapElement_modifierMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' modifier is already declared" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const char * kSearchErrorMessage_modifierMap_searchKey = "the '%K' modifier is not declared" ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_modifierMap::method_searchKey (GALGAS_lstring inKey,
-                                           GALGAS_methodKind & outArgument0,
-                                           GALGAS_formalParameterSignature & outArgument1,
-                                           GALGAS_bool & outArgument2,
-                                           GALGAS_methodQualifier & outArgument3,
-                                           GALGAS_string & outArgument4,
+void GALGAS_setterMap::modifier_insertKey (GALGAS_lstring inKey,
+                                           GALGAS_methodKind inArgument0,
+                                           GALGAS_formalParameterSignature inArgument1,
+                                           GALGAS_bool inArgument2,
+                                           GALGAS_methodQualifier inArgument3,
+                                           GALGAS_string inArgument4,
                                            C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) performSearch (inKey,
-                                                                                         inCompiler,
-                                                                                         kSearchErrorMessage_modifierMap_searchKey
-                                                                                         COMMA_THERE) ;
+                                           COMMA_LOCATION_ARGS) {
+  cMapElement_setterMap * p = NULL ;
+  macroMyNew (p, cMapElement_setterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "the '%K' setter is already declared" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const char * kSearchErrorMessage_setterMap_searchKey = "the '%K' setter is not declared" ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_setterMap::method_searchKey (GALGAS_lstring inKey,
+                                         GALGAS_methodKind & outArgument0,
+                                         GALGAS_formalParameterSignature & outArgument1,
+                                         GALGAS_bool & outArgument2,
+                                         GALGAS_methodQualifier & outArgument3,
+                                         GALGAS_string & outArgument4,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const {
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) performSearch (inKey,
+                                                                                     inCompiler,
+                                                                                     kSearchErrorMessage_setterMap_searchKey
+                                                                                     COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;
@@ -7814,7 +7814,7 @@ void GALGAS_modifierMap::method_searchKey (GALGAS_lstring inKey,
     outArgument3.drop () ;
     outArgument4.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     outArgument0 = p->mAttribute_mKind ;
     outArgument1 = p->mAttribute_mParameterList ;
     outArgument2 = p->mAttribute_mHasCompilerArgument ;
@@ -7825,15 +7825,15 @@ void GALGAS_modifierMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_modifierMap::modifier_insertOrReplace (GALGAS_lstring inKey,
-                                                   GALGAS_methodKind inArgument0,
-                                                   GALGAS_formalParameterSignature inArgument1,
-                                                   GALGAS_bool inArgument2,
-                                                   GALGAS_methodQualifier inArgument3,
-                                                   GALGAS_string inArgument4
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  cMapElement_modifierMap * p = NULL ;
-  macroMyNew (p, cMapElement_modifierMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
+void GALGAS_setterMap::modifier_insertOrReplace (GALGAS_lstring inKey,
+                                                 GALGAS_methodKind inArgument0,
+                                                 GALGAS_formalParameterSignature inArgument1,
+                                                 GALGAS_bool inArgument2,
+                                                 GALGAS_methodQualifier inArgument3,
+                                                 GALGAS_string inArgument4
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  cMapElement_setterMap * p = NULL ;
+  macroMyNew (p, cMapElement_setterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -7842,14 +7842,14 @@ void GALGAS_modifierMap::modifier_insertOrReplace (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodKind GALGAS_modifierMap::reader_mKindForKey (const GALGAS_string & inKey,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
+GALGAS_methodKind GALGAS_setterMap::reader_mKindForKey (const GALGAS_string & inKey,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) attributes ;
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) attributes ;
   GALGAS_methodKind result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     result = p->mAttribute_mKind ;
   }
   return result ;
@@ -7857,14 +7857,14 @@ GALGAS_methodKind GALGAS_modifierMap::reader_mKindForKey (const GALGAS_string & 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterSignature GALGAS_modifierMap::reader_mParameterListForKey (const GALGAS_string & inKey,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
+GALGAS_formalParameterSignature GALGAS_setterMap::reader_mParameterListForKey (const GALGAS_string & inKey,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) attributes ;
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) attributes ;
   GALGAS_formalParameterSignature result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     result = p->mAttribute_mParameterList ;
   }
   return result ;
@@ -7872,14 +7872,14 @@ GALGAS_formalParameterSignature GALGAS_modifierMap::reader_mParameterListForKey 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_modifierMap::reader_mHasCompilerArgumentForKey (const GALGAS_string & inKey,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_setterMap::reader_mHasCompilerArgumentForKey (const GALGAS_string & inKey,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) attributes ;
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) attributes ;
   GALGAS_bool result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     result = p->mAttribute_mHasCompilerArgument ;
   }
   return result ;
@@ -7887,14 +7887,14 @@ GALGAS_bool GALGAS_modifierMap::reader_mHasCompilerArgumentForKey (const GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodQualifier GALGAS_modifierMap::reader_mQualifierForKey (const GALGAS_string & inKey,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
+GALGAS_methodQualifier GALGAS_setterMap::reader_mQualifierForKey (const GALGAS_string & inKey,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) attributes ;
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) attributes ;
   GALGAS_methodQualifier result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     result = p->mAttribute_mQualifier ;
   }
   return result ;
@@ -7902,14 +7902,14 @@ GALGAS_methodQualifier GALGAS_modifierMap::reader_mQualifierForKey (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_modifierMap::reader_mErrorMessageForKey (const GALGAS_string & inKey,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
+GALGAS_string GALGAS_setterMap::reader_mErrorMessageForKey (const GALGAS_string & inKey,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) attributes ;
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) attributes ;
   GALGAS_string result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     result = p->mAttribute_mErrorMessage ;
   }
   return result ;
@@ -7917,103 +7917,103 @@ GALGAS_string GALGAS_modifierMap::reader_mErrorMessageForKey (const GALGAS_strin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_modifierMap::modifier_setMKindForKey (GALGAS_methodKind inAttributeValue,
-                                                  GALGAS_string inKey,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+void GALGAS_setterMap::modifier_setMKindForKey (GALGAS_methodKind inAttributeValue,
+                                                GALGAS_string inKey,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_modifierMap * p = (cMapElement_modifierMap *) attributes ;
+  cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     p->mAttribute_mKind = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_modifierMap::modifier_setMParameterListForKey (GALGAS_formalParameterSignature inAttributeValue,
-                                                           GALGAS_string inKey,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_setterMap::modifier_setMParameterListForKey (GALGAS_formalParameterSignature inAttributeValue,
+                                                         GALGAS_string inKey,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_modifierMap * p = (cMapElement_modifierMap *) attributes ;
+  cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     p->mAttribute_mParameterList = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_modifierMap::modifier_setMHasCompilerArgumentForKey (GALGAS_bool inAttributeValue,
-                                                                 GALGAS_string inKey,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_setterMap::modifier_setMHasCompilerArgumentForKey (GALGAS_bool inAttributeValue,
+                                                               GALGAS_string inKey,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_modifierMap * p = (cMapElement_modifierMap *) attributes ;
+  cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     p->mAttribute_mHasCompilerArgument = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_modifierMap::modifier_setMQualifierForKey (GALGAS_methodQualifier inAttributeValue,
-                                                       GALGAS_string inKey,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_setterMap::modifier_setMQualifierForKey (GALGAS_methodQualifier inAttributeValue,
+                                                     GALGAS_string inKey,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_modifierMap * p = (cMapElement_modifierMap *) attributes ;
+  cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     p->mAttribute_mQualifier = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_modifierMap::modifier_setMErrorMessageForKey (GALGAS_string inAttributeValue,
-                                                          GALGAS_string inKey,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_setterMap::modifier_setMErrorMessageForKey (GALGAS_string inAttributeValue,
+                                                        GALGAS_string inKey,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_modifierMap * p = (cMapElement_modifierMap *) attributes ;
+  cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_modifierMap) ;
+    macroValidSharedObject (p, cMapElement_setterMap) ;
     p->mAttribute_mErrorMessage = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_modifierMap * GALGAS_modifierMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                 const GALGAS_string & inKey
-                                                                                 COMMA_LOCATION_ARGS) {
-  cMapElement_modifierMap * result = (cMapElement_modifierMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_modifierMap) ;
+cMapElement_setterMap * GALGAS_setterMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                             const GALGAS_string & inKey
+                                                                             COMMA_LOCATION_ARGS) {
+  cMapElement_setterMap * result = (cMapElement_setterMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_setterMap) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cEnumerator_modifierMap::cEnumerator_modifierMap (const GALGAS_modifierMap & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) :
+cEnumerator_setterMap::cEnumerator_setterMap (const GALGAS_setterMap & inEnumeratedObject,
+                                              const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap_2D_element cEnumerator_modifierMap::current (LOCATION_ARGS) const {
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_modifierMap) ;
-  return GALGAS_modifierMap_2D_element (p->mAttribute_lkey, p->mAttribute_mKind, p->mAttribute_mParameterList, p->mAttribute_mHasCompilerArgument, p->mAttribute_mQualifier, p->mAttribute_mErrorMessage) ;
+GALGAS_setterMap_2D_element cEnumerator_setterMap::current (LOCATION_ARGS) const {
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_setterMap) ;
+  return GALGAS_setterMap_2D_element (p->mAttribute_lkey, p->mAttribute_mKind, p->mAttribute_mParameterList, p->mAttribute_mHasCompilerArgument, p->mAttribute_mQualifier, p->mAttribute_mErrorMessage) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_modifierMap::current_lkey (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_setterMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mAttribute_lkey ;
@@ -8021,41 +8021,41 @@ GALGAS_lstring cEnumerator_modifierMap::current_lkey (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodKind cEnumerator_modifierMap::current_mKind (LOCATION_ARGS) const {
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_modifierMap) ;
+GALGAS_methodKind cEnumerator_setterMap::current_mKind (LOCATION_ARGS) const {
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_setterMap) ;
   return p->mAttribute_mKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterSignature cEnumerator_modifierMap::current_mParameterList (LOCATION_ARGS) const {
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_modifierMap) ;
+GALGAS_formalParameterSignature cEnumerator_setterMap::current_mParameterList (LOCATION_ARGS) const {
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_setterMap) ;
   return p->mAttribute_mParameterList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cEnumerator_modifierMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_modifierMap) ;
+GALGAS_bool cEnumerator_setterMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_setterMap) ;
   return p->mAttribute_mHasCompilerArgument ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodQualifier cEnumerator_modifierMap::current_mQualifier (LOCATION_ARGS) const {
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_modifierMap) ;
+GALGAS_methodQualifier cEnumerator_setterMap::current_mQualifier (LOCATION_ARGS) const {
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_setterMap) ;
   return p->mAttribute_mQualifier ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cEnumerator_modifierMap::current_mErrorMessage (LOCATION_ARGS) const {
-  const cMapElement_modifierMap * p = (const cMapElement_modifierMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_modifierMap) ;
+GALGAS_string cEnumerator_setterMap::current_mErrorMessage (LOCATION_ARGS) const {
+  const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_setterMap) ;
   return p->mAttribute_mErrorMessage ;
 }
 
@@ -8063,42 +8063,42 @@ GALGAS_string cEnumerator_modifierMap::current_mErrorMessage (LOCATION_ARGS) con
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                                  @modifierMap type                                                  *
+//                                                   @setterMap type                                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_modifierMap ("modifierMap",
-                                    NULL) ;
+kTypeDescriptor_GALGAS_setterMap ("setterMap",
+                                  NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_modifierMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_modifierMap ;
+const C_galgas_type_descriptor * GALGAS_setterMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_setterMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_modifierMap::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_setterMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_modifierMap (*this)) ;
+    macroMyNew (result, GALGAS_setterMap (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap GALGAS_modifierMap::extractObject (const GALGAS_object & inObject,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_modifierMap result ;
-  const GALGAS_modifierMap * p = (const GALGAS_modifierMap *) inObject.embeddedObject () ;
+GALGAS_setterMap GALGAS_setterMap::extractObject (const GALGAS_object & inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_setterMap result ;
+  const GALGAS_setterMap * p = (const GALGAS_setterMap *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_modifierMap *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_setterMap *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("modifierMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("setterMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11216,8 +11216,8 @@ cMapElement_unifiedTypeMap::cMapElement_unifiedTypeMap (const GALGAS_lstring & i
                                                         const GALGAS_attributeMap & in_mAttributeMap,
                                                         const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
                                                         const GALGAS_constructorMap & in_mConstructorMap,
-                                                        const GALGAS_readerMap & in_mReaderMap,
-                                                        const GALGAS_modifierMap & in_mModifierMap,
+                                                        const GALGAS_getterMap & in_mReaderMap,
+                                                        const GALGAS_setterMap & in_mModifierMap,
                                                         const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
                                                         const GALGAS_classMethodMap & in_mClassMethodMap,
                                                         const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
@@ -11541,8 +11541,8 @@ void GALGAS_unifiedTypeMap::modifier_insertKey (GALGAS_lstring inKey,
                                                 GALGAS_attributeMap inArgument6,
                                                 GALGAS_typedPropertyList inArgument7,
                                                 GALGAS_constructorMap inArgument8,
-                                                GALGAS_readerMap inArgument9,
-                                                GALGAS_modifierMap inArgument10,
+                                                GALGAS_getterMap inArgument9,
+                                                GALGAS_setterMap inArgument10,
                                                 GALGAS_instanceMethodMap inArgument11,
                                                 GALGAS_classMethodMap inArgument12,
                                                 GALGAS_enumerationDescriptorList inArgument13,
@@ -11592,8 +11592,8 @@ void GALGAS_unifiedTypeMap::method_searchKey (GALGAS_lstring inKey,
                                               GALGAS_attributeMap & outArgument6,
                                               GALGAS_typedPropertyList & outArgument7,
                                               GALGAS_constructorMap & outArgument8,
-                                              GALGAS_readerMap & outArgument9,
-                                              GALGAS_modifierMap & outArgument10,
+                                              GALGAS_getterMap & outArgument9,
+                                              GALGAS_setterMap & outArgument10,
                                               GALGAS_instanceMethodMap & outArgument11,
                                               GALGAS_classMethodMap & outArgument12,
                                               GALGAS_enumerationDescriptorList & outArgument13,
@@ -11810,12 +11810,12 @@ GALGAS_constructorMap GALGAS_unifiedTypeMap::reader_mConstructorMapForKey (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap GALGAS_unifiedTypeMap::reader_mReaderMapForKey (const GALGAS_string & inKey,
+GALGAS_getterMap GALGAS_unifiedTypeMap::reader_mReaderMapForKey (const GALGAS_string & inKey,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) attributes ;
-  GALGAS_readerMap result ;
+  GALGAS_getterMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
     result = p->mAttribute_mReaderMap ;
@@ -11825,12 +11825,12 @@ GALGAS_readerMap GALGAS_unifiedTypeMap::reader_mReaderMapForKey (const GALGAS_st
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap GALGAS_unifiedTypeMap::reader_mModifierMapForKey (const GALGAS_string & inKey,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
+GALGAS_setterMap GALGAS_unifiedTypeMap::reader_mModifierMapForKey (const GALGAS_string & inKey,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) attributes ;
-  GALGAS_modifierMap result ;
+  GALGAS_setterMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
     result = p->mAttribute_mModifierMap ;
@@ -12191,7 +12191,7 @@ void GALGAS_unifiedTypeMap::modifier_setMConstructorMapForKey (GALGAS_constructo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_unifiedTypeMap::modifier_setMReaderMapForKey (GALGAS_readerMap inAttributeValue,
+void GALGAS_unifiedTypeMap::modifier_setMReaderMapForKey (GALGAS_getterMap inAttributeValue,
                                                           GALGAS_string inKey,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -12205,7 +12205,7 @@ void GALGAS_unifiedTypeMap::modifier_setMReaderMapForKey (GALGAS_readerMap inAtt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_unifiedTypeMap::modifier_setMModifierMapForKey (GALGAS_modifierMap inAttributeValue,
+void GALGAS_unifiedTypeMap::modifier_setMModifierMapForKey (GALGAS_setterMap inAttributeValue,
                                                             GALGAS_string inKey,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
@@ -12527,7 +12527,7 @@ GALGAS_constructorMap cEnumerator_unifiedTypeMap::current_mConstructorMap (LOCAT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerMap cEnumerator_unifiedTypeMap::current_mReaderMap (LOCATION_ARGS) const {
+GALGAS_getterMap cEnumerator_unifiedTypeMap::current_mReaderMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
   return p->mAttribute_mReaderMap ;
@@ -12535,7 +12535,7 @@ GALGAS_readerMap cEnumerator_unifiedTypeMap::current_mReaderMap (LOCATION_ARGS) 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_modifierMap cEnumerator_unifiedTypeMap::current_mModifierMap (LOCATION_ARGS) const {
+GALGAS_setterMap cEnumerator_unifiedTypeMap::current_mModifierMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
   return p->mAttribute_mModifierMap ;

@@ -20,7 +20,7 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseFinalReaderWithoutArgument
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?returnedTypeName:let @string inReturnedTypeName
@@ -42,7 +42,7 @@ proc enterBaseFinalReaderWithoutArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInheritedReaderWithoutArgument
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?returnedTypeName:let @string inReturnedTypeName
@@ -64,7 +64,7 @@ proc enterInheritedReaderWithoutArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInheritedReaderWithArgument
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?let @string inArgument1TypeName
@@ -92,7 +92,7 @@ proc enterInheritedReaderWithArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInheritedReaderWith2Arguments
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?let @string inArgument1TypeName
@@ -124,7 +124,7 @@ proc enterInheritedReaderWith2Arguments
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseReaderWithoutArgument
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?returnedTypeName:let @string inReturnedTypeName
@@ -146,7 +146,7 @@ proc enterBaseReaderWithoutArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseReaderWithArgument
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?let @string inArgument1TypeName
@@ -174,7 +174,7 @@ proc enterBaseReaderWithArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 #routine enterBaseReaderWithArgumentAndMessage
-#  ?!@readerMap ioReaderMap
+#  ?!@getterMap ioReaderMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
 #  ??@string inReaderName
 #  ??@string inArgument1TypeName
@@ -204,7 +204,7 @@ proc enterBaseReaderWithArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseFinalReaderWithArgument
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?let @string inArgument1TypeName
@@ -232,7 +232,7 @@ proc enterBaseFinalReaderWithArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseReaderWith2Arguments
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?let @string inArgument1TypeName
@@ -264,7 +264,7 @@ proc enterBaseReaderWith2Arguments
 #----------------------------------------------------------------------------------------------------------------------*
 
 #routine enterBaseReaderWith2ArgumentsAndMessage
-#  ?!@readerMap ioReaderMap
+#  ?!@getterMap ioReaderMap
 #  ?!@unifiedTypeMap ioUnifiedTypeMap
 #  ??@string inReaderName
 #  ??@string inArgument1TypeName
@@ -298,7 +298,7 @@ proc enterBaseReaderWith2Arguments
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseFinalReaderWith2Arguments
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?let @string inArgument1TypeName
@@ -330,7 +330,7 @@ proc enterBaseFinalReaderWith2Arguments
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseReaderWith3Arguments
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?let @string inArgument1TypeName
@@ -366,7 +366,7 @@ proc enterBaseReaderWith3Arguments
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseFinalReaderWith3Arguments
-  ?!@readerMap ioReaderMap
+  ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inReaderName
   ?let @string inArgument1TypeName
@@ -403,8 +403,8 @@ proc enterBaseFinalReaderWith3Arguments
 
 proc commonReaderMapForAllTypes
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
-  outMap = @readerMap. emptyMap
+  !@getterMap outMap {
+  outMap = @getterMap. emptyMap
   enterInheritedReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"description" !returnedTypeName:"string" !false )
   enterInheritedReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"staticType" !returnedTypeName:"type" !false )
   enterInheritedReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"dynamicType" !returnedTypeName:"type" !false )
@@ -415,7 +415,7 @@ proc commonReaderMapForAllTypes
 
 override method @locationPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"locationString" !returnedTypeName:"string" !true )
   enterBaseReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"locationIndex" !returnedTypeName:"uint" !true )
@@ -429,7 +429,7 @@ override method @locationPredefinedTypeAST getReaderMap
 
 override method @stringPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap )
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"lastCharacter" !returnedTypeName:"char" !true)
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"nowhere" !returnedTypeName:"lstring" !false )
@@ -488,7 +488,7 @@ override method @stringPredefinedTypeAST getReaderMap
 
 override method @charPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"string" !returnedTypeName:"string" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"utf32CharConstantRepresentation" !returnedTypeName:"string" !false )
@@ -516,7 +516,7 @@ override method @charPredefinedTypeAST getReaderMap
 
 override method @boolPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"cString" !returnedTypeName:"string" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"ocString" !returnedTypeName:"string" !false )
@@ -530,7 +530,7 @@ override method @boolPredefinedTypeAST getReaderMap
 
 override method @uintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"double" !returnedTypeName:"double" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"sint" !returnedTypeName:"sint" !true )
@@ -550,7 +550,7 @@ override method @uintPredefinedTypeAST getReaderMap
 
 override method @sintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"double" !returnedTypeName:"double" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"uint64" !returnedTypeName:"uint64" !true )
@@ -563,7 +563,7 @@ override method @sintPredefinedTypeAST getReaderMap
 
 override method @uint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"double" !returnedTypeName:"double" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"sint" !returnedTypeName:"sint" !true )
@@ -579,7 +579,7 @@ override method @uint64PredefinedTypeAST getReaderMap
 
 override method @sint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"double" !returnedTypeName:"double" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"uint64" !returnedTypeName:"uint64" !true )
@@ -592,7 +592,7 @@ override method @sint64PredefinedTypeAST getReaderMap
 
 override method @doublePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"string" !returnedTypeName:"string" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"uint" !returnedTypeName:"uint" !true )
@@ -618,7 +618,7 @@ override method @doublePredefinedTypeAST getReaderMap
 
 override method @stringsetPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithArgument ( !?outMap !?ioUnifiedTypeMap !"hasKey" !"string" !"inString" !returnedTypeName:"bool" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"count" !returnedTypeName:"uint" !false )
@@ -630,7 +630,7 @@ override method @stringsetPredefinedTypeAST getReaderMap
 
 override method @binarysetPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"isFull" !returnedTypeName:"bool" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"isEmpty" !returnedTypeName:"bool" !false )
@@ -671,7 +671,7 @@ override method @binarysetPredefinedTypeAST getReaderMap
 
 override method @typePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"name" !returnedTypeName:"string" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"hasSuperclass" !returnedTypeName:"bool" !false )
@@ -682,7 +682,7 @@ override method @typePredefinedTypeAST getReaderMap
 
 override method @dataPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"length" !returnedTypeName:"uint" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"cStringRepresentation" !returnedTypeName:"string" !false )
@@ -692,7 +692,7 @@ override method @dataPredefinedTypeAST getReaderMap
 
 override method @functionPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"name" !returnedTypeName:"string" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"resultType" !returnedTypeName:"type" !false )
@@ -704,7 +704,7 @@ override method @functionPredefinedTypeAST getReaderMap
 
 override method @objectPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"objectStaticType" !returnedTypeName:"type" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"objectDynamicType" !returnedTypeName:"type" !false )
@@ -714,7 +714,7 @@ override method @objectPredefinedTypeAST getReaderMap
 
 override method @filewrapperPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@readerMap outMap {
+  !@getterMap outMap {
   commonReaderMapForAllTypes ( !?ioUnifiedTypeMap ?outMap )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"allTextFilePathes" !returnedTypeName:"stringlist" !false )
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"allBinaryFilePathes" !returnedTypeName:"stringlist" !false )

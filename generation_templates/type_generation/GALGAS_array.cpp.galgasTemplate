@@ -450,7 +450,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSizeForAxis (%?^%GALGAS_uint inNewSi
     const uint32_t axisIndex = inAxisIndex.uintValue () ;
     if (axisIndex >= %![DIMENSION string]%) {
       C_String s ;
-      s << "modifier @ptrint setSizeForAxis: axis index ("
+      s << "setter @ptrint setSizeForAxis: axis index ("
         << cStringWithUnsigned (axisIndex) << ") >= dimension (%![DIMENSION string]%)" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{

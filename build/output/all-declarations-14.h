@@ -853,7 +853,7 @@ void categoryMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor in
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category modifier '@XcodeProjectDescriptor addAppTarget'                               *
+//                               Category setter '@XcodeProjectDescriptor addAppTarget'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -872,7 +872,7 @@ void categoryModifier_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Category modifier '@XcodeProjectDescriptor addGroup'                                 *
+//                                 Category setter '@XcodeProjectDescriptor addGroup'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -886,7 +886,7 @@ void categoryModifier_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Category modifier '@XcodeProjectDescriptor addGroupWithFiles'                            *
+//                             Category setter '@XcodeProjectDescriptor addGroupWithFiles'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -905,7 +905,7 @@ void categoryModifier_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Category modifier '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                    *
+//                     Category setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -916,7 +916,7 @@ void categoryModifier_addSettingsToDefaultConfiguration (class GALGAS_XcodeProje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category modifier '@XcodeProjectDescriptor addToolTarget'                              *
+//                               Category setter '@XcodeProjectDescriptor addToolTarget'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -933,7 +933,7 @@ void categoryModifier_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObj
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Category modifier '@XcodeProjectDescriptor placeGroupAsMainGroup'                          *
+//                           Category setter '@XcodeProjectDescriptor placeGroupAsMainGroup'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

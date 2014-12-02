@@ -410,7 +410,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   ]
 #--- Analyze "self", as receiver expression
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category modifiers"
+    error mInstructionLocation: "'self' can be used only in category setters"
   elsif [inAnalysisContext.mSelfTypeProxy mTypeKindEnum] == @typeKindEnum. classType then
     error mInstructionLocation: "'self' assignment is not allowed for class instances"
   end
@@ -447,8 +447,8 @@ private proc analyzeErrorOrWarningInstruction
 #--- Check location expression type is either @location either has a correct location reader
   outUseLocationReader = [outLocationExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLocationType
   if outUseLocationReader then
-    let readerMap = [[outLocationExpression mResultType] mReaderMap]
-    with "location" in readerMap  do
+    let getterMap = [[outLocationExpression mResultType] mReaderMap]
+    with "location" in getterMap  do
       if [mArgumentTypeList length] != 0 then
         error inErrorLocation
         :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
@@ -1254,7 +1254,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   analyzeRoutineArguments (
     !inAnalysisContext
     !mModifierName
-    !"'" + mModifierName + "' modifier header"
+    !"'" + mModifierName + "' setter header"
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
@@ -1311,7 +1311,7 @@ override method @selfModifierCallInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mModifierName: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+    error mModifierName: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
@@ -1437,7 +1437,7 @@ override method @selfConcatInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
@@ -1610,7 +1610,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
@@ -1670,7 +1670,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
@@ -1757,7 +1757,7 @@ override method @selfIncrementInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
@@ -1833,7 +1833,7 @@ override method @selfDecrementInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy

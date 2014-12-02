@@ -285,7 +285,7 @@ map @categoryModifierMapForBuildingContext {
 map @categoryReaderMapForType {
   @lstring mResultTypeName
   @formalInputParameterListAST mInputFormalParameterList
-  insert insertKey error message "the '%K' reader has been already declared in %L"
+  insert insertKey error message "the '%K' getter has been already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -385,28 +385,28 @@ override getter @overridingAbstractCategoryMethodAST keyRepresentation
 
 override getter @abstractCategoryReaderAST keyRepresentation
   ->@string outString {
-  outString = "abstract category reader @" + mTypeName + " " + mAbstractCategoryReaderName
+  outString = "abstract category getter @" + mTypeName + " " + mAbstractCategoryReaderName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @categoryReaderAST keyRepresentation
   ->@string outString {
-  outString = "category reader @" + mTypeName + " " + mCategoryReaderName
+  outString = "category getter @" + mTypeName + " " + mCategoryReaderName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingCategoryReaderAST keyRepresentation
   ->@string outString {
-  outString = "overriding category reader @" + mTypeName + " " + mOverridingCategoryReaderName
+  outString = "overriding category getter @" + mTypeName + " " + mOverridingCategoryReaderName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingAbstractCategoryReaderAST keyRepresentation
   ->@string outString {
-  outString = "overriding category reader @" + mTypeName + " " + mAbstractCategoryReaderName
+  outString = "overriding category getter @" + mTypeName + " " + mAbstractCategoryReaderName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -547,8 +547,8 @@ proc addCategories
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
   ?let @lstring inTypeName
-  ?!@readerMap ioReaderMap
-  ?!@modifierMap ioModifierMap
+  ?!@getterMap ioReaderMap
+  ?!@setterMap ioModifierMap
   ?!@instanceMethodMap ioInstanceMethodMap {
 #------------------------  Category methods
   if [inCategoryMethodMapForBuildingContext hasKey ![inTypeName string]] then
@@ -772,8 +772,8 @@ override method @predefinedTypeAST enterInSemanticContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
   [self getConstructorMap !?ioSemanticContext.mTypeMap ?var @constructorMap constructorMap]
-  [self getReaderMap !?ioSemanticContext.mTypeMap ?var @readerMap readerMap]
-  [self getModifierMap !?ioSemanticContext.mTypeMap ?var @modifierMap modifierMap]
+  [self getReaderMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
+  [self getModifierMap !?ioSemanticContext.mTypeMap ?var @setterMap modifierMap]
   [self getInstanceMethodMap !?ioSemanticContext.mTypeMap ?var @instanceMethodMap instanceMethodMap]
   [self getClassMethodMap !?ioSemanticContext.mTypeMap ?var @classMethodMap classMethodMap]
   [self getAddAssignArgumentList !?ioSemanticContext.mTypeMap ?var @functionSignature addAssignArgumentList]
@@ -802,7 +802,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !@lstring.new {!mPredefinedTypeName !@location.here}
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -818,7 +818,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !@attributeMap. emptyMap
     !@typedPropertyList. emptyList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !classMethodMap
@@ -885,21 +885,21 @@ override method @mapDeclarationAST enterInSemanticContext
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
-  var modifierMap =@modifierMap.emptyMap{}
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Constructors
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false )
   enterConstructorWithArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] !"inMap" ![mMapTypeName string] !false )
 #--- Readers
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"levels" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWith2Arguments ( !?readerMap !?ioSemanticContext.mTypeMap !"hasKeyAtLevel" !"string" !"inKey" !"uint" !"inLevel" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"keySet" !returnedTypeName:"stringset" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"keyList" !returnedTypeName:"lstringlist" !false )
-  enterInheritedReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"hasKey" !"string" !"inKey" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"locationForKey" !"string" !"inKey" !returnedTypeName:"location" !true )
-  enterBaseReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"levels" !returnedTypeName:"uint" !false )
+  enterInheritedReaderWith2Arguments ( !?getterMap !?ioSemanticContext.mTypeMap !"hasKeyAtLevel" !"string" !"inKey" !"uint" !"inLevel" !returnedTypeName:"bool" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"keySet" !returnedTypeName:"stringset" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"keyList" !returnedTypeName:"lstringlist" !false )
+  enterInheritedReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"hasKey" !"string" !"inKey" !returnedTypeName:"bool" !false )
+  enterInheritedReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"locationForKey" !"string" !"inKey" !returnedTypeName:"location" !true )
+  enterBaseReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
 #--- Handle properties
   var insertMethodFormalArgumentList = @formalParameterSignature.emptyList{}
   var typedPropertyList = @typedPropertyList.emptyList{}
@@ -983,7 +983,7 @@ override method @mapDeclarationAST enterInSemanticContext
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     @unifiedTypeMap-proxy attributeTypeIndex
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
-    [!?readerMap insertOrReplace
+    [!?getterMap insertOrReplace
       !accessorName
       !@methodKind. definedAsMember
       !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey"}
@@ -1030,7 +1030,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mMapTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -1052,7 +1052,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !typedPropertyList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -1113,20 +1113,20 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
-  var modifierMap =@modifierMap.emptyMap{}
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Constructors
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false )
 #--- Readers
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"allKeys" !returnedTypeName:"stringset" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"allKeyList" !returnedTypeName:"lstringlist" !false )
-  enterInheritedReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"hasKey" !"string" !"inKey" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"locationForKey" !"string" !"inKey" !returnedTypeName:"location" !true )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"unsolvedProxyCount" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"unsolvedProxyList" !returnedTypeName:"lstringlist" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"edgeGraphvizRepresentation" !returnedTypeName:"string" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"allKeys" !returnedTypeName:"stringset" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"allKeyList" !returnedTypeName:"lstringlist" !false )
+  enterInheritedReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"hasKey" !"string" !"inKey" !returnedTypeName:"bool" !false )
+  enterInheritedReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"locationForKey" !"string" !"inKey" !returnedTypeName:"location" !true )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"unsolvedProxyCount" !returnedTypeName:"uint" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"unsolvedProxyList" !returnedTypeName:"lstringlist" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"edgeGraphvizRepresentation" !returnedTypeName:"string" !false )
 #--- Handle attributes
   var typedAttributeList =@typedPropertyList.emptyList{}
   var insertMethodFormalArgumentList =@formalParameterSignature.emptyList{}
@@ -1277,7 +1277,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     @unifiedTypeMap-proxy attributeTypeIndex
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
-    [!?readerMap insertOrReplace
+    [!?getterMap insertOrReplace
       !accessorName
       !@methodKind. definedAsMember
       !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey"}
@@ -1311,7 +1311,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mMapTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -1327,7 +1327,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !typedAttributeList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -1371,8 +1371,8 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
-  var modifierMap =@modifierMap.emptyMap{}
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Associated map type index
@@ -1421,14 +1421,14 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ]
   end
 #--- readers
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"isSolved" !returnedTypeName:"bool" !true )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"isNull" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"isRegular" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"lkey" !returnedTypeName:"lstring" !true )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"key" !returnedTypeName:"string" !true )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"identifierRepresentation" !returnedTypeName:"string" !true )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"isSolved" !returnedTypeName:"bool" !true )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"isNull" !returnedTypeName:"bool" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"isRegular" !returnedTypeName:"bool" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"lkey" !returnedTypeName:"lstring" !true )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"key" !returnedTypeName:"string" !true )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"identifierRepresentation" !returnedTypeName:"string" !true )
 #--- Enter associated map attribute names as readers
-  let @readerMap inheritedReaderMap = readerMap
+  let @getterMap inheritedReaderMap = getterMap
   for () in mapTypedAttributeList do
     if [inheritedReaderMap hasKey ![mAttributeName string]] then
       @string s = ""
@@ -1439,7 +1439,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
       error mAttributeName : "the map has a associated map proxy, which has predefined readers: " + s
        + "; you cannot use theses names for naming an attribute of this map"
     else
-      [!?readerMap insertKey
+      [!?getterMap insertKey
         !mAttributeName
         !@methodKind. definedAsMember
         !@functionSignature {}
@@ -1458,7 +1458,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mMapProxyTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -1474,7 +1474,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !mapTypedAttributeList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !classMethodMap
@@ -1502,9 +1502,9 @@ override method @externTypeDeclarationAST enterInSemanticContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var constructorMap =@constructorMap.emptyMap{}
-  var modifierMap =@modifierMap.emptyMap{}
+  var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Constructors
@@ -1538,7 +1538,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
       arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
     end
   #---
-    [!?readerMap insertKey
+    [!?getterMap insertKey
       !mReaderName
       !@methodKind. definedAsMember
       !arguments
@@ -1605,7 +1605,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !@typedPropertyList. emptyList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -1643,9 +1643,9 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- @lstringlist type proxy
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let @unifiedTypeMap-proxy lstringListTypeProxy]
 #---
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var constructorMap =@constructorMap.emptyMap{}
-  var modifierMap =@modifierMap.emptyMap{}
+  var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
@@ -1698,7 +1698,7 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList
 #--- Reader 'reversedGraph'
   enterBaseFinalReaderWithoutArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"reversedGraph"
     !returnedTypeName:mGraphTypeName.string
@@ -1706,7 +1706,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'undefinedNodeCount'
   enterInheritedReaderWithoutArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"undefinedNodeCount"
     !returnedTypeName:"uint"
@@ -1714,7 +1714,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'undefinedNodeKeyList'
   enterInheritedReaderWithoutArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"undefinedNodeKeyList"
     !returnedTypeName:"stringlist"
@@ -1722,7 +1722,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'undefinedNodeReferenceList'
   enterInheritedReaderWithoutArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"undefinedNodeReferenceList"
     !returnedTypeName:"lstringlist"
@@ -1730,7 +1730,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'graphviz'
   enterInheritedReaderWithoutArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"graphviz"
     !returnedTypeName:"string"
@@ -1738,7 +1738,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'keyList'
   enterInheritedReaderWithoutArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"keyList"
     !returnedTypeName:"stringlist"
@@ -1746,7 +1746,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'keyList'
   enterInheritedReaderWithoutArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"lkeyList"
     !returnedTypeName:"lstringlist"
@@ -1754,7 +1754,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'egdes'
   enterInheritedReaderWithoutArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"edges"
     !returnedTypeName:"2stringlist"
@@ -1762,7 +1762,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'subgraphFromNodes'
   enterBaseReaderWith2Arguments (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"subgraphFromNodes"
     !"lstringlist"
@@ -1774,7 +1774,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Reader 'accessibleNodesFromNodes'
   enterBaseReaderWithArgument (
-    !?readerMap
+    !?getterMap
     !?ioSemanticContext.mTypeMap
     !"accessibleNodesFromNodes"
     !"lstringlist"
@@ -1859,7 +1859,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mGraphTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -1875,7 +1875,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !@typedPropertyList. emptyList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -1904,7 +1904,7 @@ override method @enumDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  var modifierMap =@modifierMap.emptyMap{}
+  var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- currentType type index
@@ -1930,10 +1930,10 @@ override method @enumDeclarationAST enterInSemanticContext
     ]
   end
 #--- readers
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap  )
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap  )
   for () in mConstantList do
     enterBaseReaderWithoutArgument (
-      !?readerMap
+      !?getterMap
       !?ioSemanticContext.mTypeMap
       !"is" + [mConstantName stringByCapitalizingFirstCharacter]
       !returnedTypeName:"bool"
@@ -1947,7 +1947,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mEnumTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -1963,7 +1963,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !@typedPropertyList. emptyList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -2244,14 +2244,14 @@ override method @listDeclarationAST enterInSemanticContext
     !listTypeIndex
   ]
 #--- Readers
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"length" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"range" !returnedTypeName:"range" !false )
-  enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" !"inIndex" !returnedTypeName:[mListTypeName string] !true )
-  enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"range" !"inRange" !returnedTypeName:[mListTypeName string] !true )
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"length" !returnedTypeName:"uint" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"range" !returnedTypeName:"range" !false )
+  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" !"inIndex" !returnedTypeName:[mListTypeName string] !true )
+  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"range" !"inRange" !returnedTypeName:[mListTypeName string] !true )
   for () in typedAttributeList do
     if mHasGetter then
-      [!?readerMap insertOrReplace
+      [!?getterMap insertOrReplace
         !@lstring.new {![mAttributeName string] + "AtIndex" ![mAttributeName location]}
         !@methodKind. definedAsMember
         !@functionSignature {!["" nowhere] !uintType !"inIndex"}
@@ -2284,7 +2284,7 @@ override method @listDeclarationAST enterInSemanticContext
     !""
   ]
 #----------------------------------------- Modifiers
-  var modifierMap =@modifierMap.emptyMap{}
+  var modifierMap =@setterMap.emptyMap{}
   [!?modifierMap insertOrReplace
     !@lstring.new {!"popFirst" !@location.here}
     !@methodKind. definedAsMember
@@ -2348,7 +2348,7 @@ override method @listDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mListTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -2364,7 +2364,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !@typedPropertyList. emptyList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -2423,10 +2423,10 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !listTypeIndex
   ]
 #--- Readers
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"length" !returnedTypeName:"uint" !false )
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"length" !returnedTypeName:"uint" !false )
 #--- Modifiers
-  var modifierMap =@modifierMap.emptyMap{}
+  var modifierMap =@setterMap.emptyMap{}
   [!?modifierMap insertOrReplace
     !@lstring.new {!"popGreatest" !@location.here}
     !@methodKind. definedAsMember
@@ -2474,7 +2474,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mSortedListTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -2490,7 +2490,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !@typedPropertyList. emptyList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -2548,11 +2548,11 @@ override method @structDeclarationAST enterInSemanticContext
     !structTypeIndex
   ]
 #--- Readers
-  @readerMap readerMap
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?readerMap )
+  @getterMap getterMap
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
   for () in typedAttributeList do
     enterBaseFinalReaderWithoutArgument (
-      !?readerMap
+      !?getterMap
       !?ioSemanticContext.mTypeMap 
       ![mAttributeName string]
       !returnedTypeName:[mAttributeTypeProxy key]
@@ -2560,7 +2560,7 @@ override method @structDeclarationAST enterInSemanticContext
     )
   end
 #--- Modifiers
-  var modifierMap =@modifierMap.emptyMap{}
+  var modifierMap =@setterMap.emptyMap{}
 #--- Instance methods
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Add Categories
@@ -2570,7 +2570,7 @@ override method @structDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mStructTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -2604,7 +2604,7 @@ override method @structDeclarationAST enterInSemanticContext
     !attributeMap
     !typedAttributeList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -2634,8 +2634,8 @@ override method @classDeclarationAST enterInSemanticContext
   @unifiedTypeMap-proxy uintType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
 #---
-  @readerMap readerMap
-  @modifierMap modifierMap
+  @getterMap getterMap
+  @setterMap modifierMap
   @instanceMethodMap instanceMethodMap
   @typedPropertyList inheritedTypedAttributeList
   var attributeMap =@attributeMap.emptyMap{}
@@ -2644,8 +2644,8 @@ override method @classDeclarationAST enterInSemanticContext
   @bool generateHeaderInSeparateFile
   if [mSuperClassName string] == "" then
     superClassIndex = @unifiedTypeMap-proxy. null
-    commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?readerMap )
-    modifierMap = @modifierMap. emptyMap
+    commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
+    modifierMap = @setterMap. emptyMap
     instanceMethodMap = @instanceMethodMap. emptyMap
     inheritedTypedAttributeList = @typedPropertyList. emptyList
     attributeMap = @attributeMap. emptyMap
@@ -2658,8 +2658,8 @@ override method @classDeclarationAST enterInSemanticContext
   else
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSuperClassName ?superClassIndex]
     @typeKindEnum typeKindEnum
-    @readerMap inheritedReaderMap
-    @modifierMap inheritedModifierMap
+    @getterMap inheritedReaderMap
+    @setterMap inheritedModifierMap
     @instanceMethodMap inheritedMethodMap
     [ioSemanticContext.mTypeMap searchKey
       !mSuperClassName
@@ -2681,7 +2681,7 @@ override method @classDeclarationAST enterInSemanticContext
       error mSuperClassName : "the @" + mSuperClassName + " should be a class type"
     end
   #--- Mark all modifiers as inherited
-    modifierMap = @modifierMap. emptyMap
+    modifierMap = @setterMap. emptyMap
     for () in inheritedModifierMap do
       [!?modifierMap insertKey
         !lkey
@@ -2693,9 +2693,9 @@ override method @classDeclarationAST enterInSemanticContext
       ] 
     end
   #--- Mark all readers as inherited
-    readerMap = @readerMap. emptyMap
+    getterMap = @getterMap. emptyMap
     for () in inheritedReaderMap do
-      [!?readerMap insertKey
+      [!?getterMap insertKey
         !lkey
         !mKind
         !mArgumentTypeList
@@ -2734,8 +2734,8 @@ override method @classDeclarationAST enterInSemanticContext
 #      !mIsPrivate
       !attributeTypeIndex
     ]
-    if [readerMap hasKey ![mPropertyName string]] then
-      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined reader"
+    if [getterMap hasKey ![mPropertyName string]] then
+      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
     end
   end
 #--- Current class Index
@@ -2772,7 +2772,7 @@ override method @classDeclarationAST enterInSemanticContext
     currentClassTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     if hasGetter then
-      [!?readerMap insertKey
+      [!?getterMap insertKey
         !mPropertyName
         !@methodKind. definedAsMember
         !@functionSignature {} # No argument
@@ -2804,7 +2804,7 @@ override method @classDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mClassTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -2832,7 +2832,7 @@ override method @classDeclarationAST enterInSemanticContext
     !attributeMap
     !currentClassTypedAttributeList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -2954,8 +2954,8 @@ override method @arrayDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mElementTypeName ?elementTypeIndex]
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
-  var modifierMap =@modifierMap.emptyMap{}
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- 
   @unifiedTypeMap-proxy boolType
@@ -2978,10 +2978,10 @@ override method @arrayDeclarationAST enterInSemanticContext
     !arrayTypeIndex
   ]
 #--- Readers
-  enterBaseReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"axisCount" !returnedTypeName:"uint" !false )
-  enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"uint" !true )
-  enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
-  [!?readerMap insertOrReplace
+  enterBaseReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"axisCount" !returnedTypeName:"uint" !false )
+  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"uint" !true )
+  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
+  [!?getterMap insertOrReplace
     !@lstring.new {!"isValueValidAtIndex" !@location.here}
     !@methodKind. definedAsMember
     !uintArgs
@@ -2991,7 +2991,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@methodQualifier.isBasicFinal
     !"" # No Error message
   ]
-  [!?readerMap insertOrReplace
+  [!?getterMap insertOrReplace
     !@lstring.new {!"valueAtIndex" !@location.here}
     !@methodKind. definedAsMember
     !uintArgs
@@ -3065,7 +3065,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !@typedPropertyList. emptyList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
@@ -3107,18 +3107,18 @@ override method @listmapDeclarationAST enterInSemanticContext
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @readerMap readerMap )
-  var modifierMap =@modifierMap.emptyMap{}
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Associated map type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let @unifiedTypeMap-proxy associatedListTypeIndex]
 #--- currentType type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
 #--- readers
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"allKeys" !returnedTypeName:"stringset" !false )
-  enterInheritedReaderWithoutArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"keyList" !returnedTypeName:"stringlist" !false )
-  enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"listForKey" !"string" !"inKey" !returnedTypeName:[mAssociatedListTypeName string] !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"allKeys" !returnedTypeName:"stringset" !false )
+  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"keyList" !returnedTypeName:"stringlist" !false )
+  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"listForKey" !"string" !"inKey" !returnedTypeName:[mAssociatedListTypeName string] !false )
 #--- Constructors
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mListmapTypeName string] !false )
 #--- Enumerator description
@@ -3142,7 +3142,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mListmapTypeName
-    !?readerMap
+    !?getterMap
     !?modifierMap
     !?instanceMethodMap
   )
@@ -3164,7 +3164,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !@attributeMap. emptyMap
     !listTypedAttributeList
     !constructorMap
-    !readerMap
+    !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap

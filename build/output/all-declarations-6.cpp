@@ -15544,7 +15544,7 @@ void GALGAS_categoryModifierMapForGlobalCheckings::modifier_insertKey (GALGAS_ls
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' category modifier is already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' category setter is already declared in %L" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
@@ -15732,7 +15732,7 @@ void GALGAS_categoryReaderMapForGlobalCheckings::modifier_insertKey (GALGAS_lstr
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' category reader is already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' category getter is already declared in %L" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }

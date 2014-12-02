@@ -77,7 +77,7 @@ enum @methodKind {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @readerMap {
+map @getterMap {
   @methodKind mKind
   @functionSignature mArgumentTypeList
   @location mDeclarationLocation
@@ -107,15 +107,15 @@ list @formalParameterSignature {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @modifierMap {
+map @setterMap {
   @methodKind mKind
   @formalParameterSignature mParameterList
   @bool mHasCompilerArgument
   @methodQualifier mQualifier
-  @string mErrorMessage # If not empty, calling the modifier raises an error ith this message
+  @string mErrorMessage # If not empty, calling the setter raises an error ith this message
   insert or replace
-  insert insertKey error message "the '%K' modifier is already declared"
-  search searchKey error message "the '%K' modifier is not declared"
+  insert insertKey error message "the '%K' setter is already declared"
+  search searchKey error message "the '%K' setter is not declared"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -317,8 +317,8 @@ sharedmap @unifiedTypeMap {
   @attributeMap mAttributeMap # struct, class
   @typedPropertyList mCurrentTypedAttributeList
   @constructorMap mConstructorMap
-  @readerMap mReaderMap
-  @modifierMap mModifierMap
+  @getterMap mReaderMap
+  @setterMap mModifierMap
   @instanceMethodMap mInstanceMethodMap
   @classMethodMap mClassMethodMap
   @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
@@ -431,16 +431,16 @@ method @predefinedTypeAST getConstructorMap
 
 method @predefinedTypeAST getReaderMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@readerMap outReaderMap {
-  outReaderMap = @readerMap. emptyMap
+  !@getterMap outReaderMap {
+  outReaderMap = @getterMap. emptyMap
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 method @predefinedTypeAST getModifierMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@modifierMap outModifierMap {
-  outModifierMap = @modifierMap. emptyMap
+  !@setterMap outModifierMap {
+  outModifierMap = @setterMap. emptyMap
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

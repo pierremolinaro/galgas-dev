@@ -6315,10 +6315,10 @@ class GALGAS_unifiedTypeMap_2D_proxy : public AC_GALGAS_uniqueMapProxy {
   public : VIRTUAL_IN_DEBUG class GALGAS_mapSearchMethodListAST reader_mMapSearchMethodList (C_Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_modifierMap reader_mModifierMap (C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_setterMap reader_mModifierMap (C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_readerMap reader_mReaderMap (C_Compiler * inCompiler
+  public : VIRTUAL_IN_DEBUG class GALGAS_getterMap reader_mReaderMap (C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSuperType (C_Compiler * inCompiler

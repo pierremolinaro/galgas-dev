@@ -63,10 +63,10 @@ override method @dataPredefinedTypeAST getEnumerationList
 
 override method @stringsetPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@modifierMap outModifierMap {
+  !@setterMap outModifierMap {
   @unifiedTypeMap-proxy stringType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
-  outModifierMap = @modifierMap. emptyMap
+  outModifierMap = @setterMap. emptyMap
   [!?outModifierMap insertKey
     !@lstring.new {!"removeKey" !@location.here}
     !@methodKind. definedAsMember

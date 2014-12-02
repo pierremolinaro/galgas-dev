@@ -793,8 +793,8 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@bool IS_CONCRETE # false if abstract class
     ?@constructorMap CONSTRUCTOR_MAP
-    ?@readerMap READER_MAP
-    ?@modifierMap MODIFIER_MAP
+    ?@getterMap READER_MAP
+    ?@setterMap MODIFIER_MAP
     ?@instanceMethodMap INSTANCE_METHOD_MAP
     ?@classMethodMap CLASS_METHOD_MAP
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated

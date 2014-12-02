@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//%!["Abstract category modifier '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//%!["Abstract category setter '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

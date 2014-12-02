@@ -67,7 +67,7 @@ void callCategoryMethod_generateActualParameter (const class cPtr_actualParamete
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category modifier '@XcodeProjectDescriptor addTIFF_file'                               *
+//                               Category setter '@XcodeProjectDescriptor addTIFF_file'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -79,7 +79,7 @@ void categoryModifier_addTIFF_5F_file (class GALGAS_XcodeProjectDescriptor & ioO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category modifier '@XcodeProjectDescriptor getReferenceKey'                             *
+//                              Category setter '@XcodeProjectDescriptor getReferenceKey'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -90,7 +90,7 @@ void categoryModifier_getReferenceKey (class GALGAS_XcodeProjectDescriptor & ioO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Category modifier '@XcodeProjectDescriptor addInfoPlistFile'                             *
+//                             Category setter '@XcodeProjectDescriptor addInfoPlistFile'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -102,7 +102,7 @@ void categoryModifier_addInfoPlistFile (class GALGAS_XcodeProjectDescriptor & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category modifier '@XcodeProjectDescriptor addXIBFile'                                *
+//                                Category setter '@XcodeProjectDescriptor addXIBFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -114,7 +114,7 @@ void categoryModifier_addXIBFile (class GALGAS_XcodeProjectDescriptor & ioObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Category modifier '@XcodeProjectDescriptor addFrameworkFile'                             *
+//                             Category setter '@XcodeProjectDescriptor addFrameworkFile'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -126,7 +126,7 @@ void categoryModifier_addFrameworkFile (class GALGAS_XcodeProjectDescriptor & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Category modifier '@XcodeProjectDescriptor addMFile'                                 *
+//                                 Category setter '@XcodeProjectDescriptor addMFile'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -138,7 +138,7 @@ void categoryModifier_addMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Category modifier '@XcodeProjectDescriptor addMMFile'                                *
+//                                 Category setter '@XcodeProjectDescriptor addMMFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -150,7 +150,7 @@ void categoryModifier_addMMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category modifier '@XcodeProjectDescriptor addCppFile'                                *
+//                                Category setter '@XcodeProjectDescriptor addCppFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -162,7 +162,7 @@ void categoryModifier_addCppFile (class GALGAS_XcodeProjectDescriptor & ioObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category modifier '@XcodeProjectDescriptor addHeaderFile'                              *
+//                               Category setter '@XcodeProjectDescriptor addHeaderFile'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -174,7 +174,7 @@ void categoryModifier_addHeaderFile (class GALGAS_XcodeProjectDescriptor & ioObj
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category modifier '@XcodeProjectDescriptor addBuildFile'                               *
+//                               Category setter '@XcodeProjectDescriptor addBuildFile'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -187,7 +187,7 @@ void categoryModifier_addBuildFile (class GALGAS_XcodeProjectDescriptor & ioObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category modifier '@XcodeProjectDescriptor addICNS_file'                               *
+//                               Category setter '@XcodeProjectDescriptor addICNS_file'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
