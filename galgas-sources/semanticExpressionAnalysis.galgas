@@ -190,9 +190,9 @@ sharedmap @variableMap {
   state currentInstanceAttribute {
     neutralAccess   -> currentInstanceAttribute
     readAccess      -> currentInstanceAttribute
-    writeAccess     -> currentInstanceAttribute error "an attribute cannot be written within a method or a reader"
-    readWriteAccess -> currentInstanceAttribute error "an attribute cannot be modified within a method or a reader"
-    dropAccess      -> currentInstanceAttribute error "an attribute cannot be dropped within a method or a reader"
+    writeAccess     -> currentInstanceAttribute error "an attribute cannot be written within a method or a getter"
+    readWriteAccess -> currentInstanceAttribute error "an attribute cannot be modified within a method or a getter"
+    dropAccess      -> currentInstanceAttribute error "an attribute cannot be dropped within a method or a getter"
   }
 
 #--- Current instance attribute in a modifier
@@ -204,7 +204,7 @@ sharedmap @variableMap {
     dropAccess      -> currentInstanceDroppedAttributeInModifier
   }
 
-  state currentInstanceDroppedAttributeInModifier warning "the '%K' attribute is in the dropped state at the end of the modifier" {
+  state currentInstanceDroppedAttributeInModifier warning "the '%K' attribute is in the dropped state at the end of the setter" {
     neutralAccess   -> currentInstanceDroppedAttributeInModifier
     readAccess      -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read, it has been dropped"
     writeAccess     -> currentInstanceAttributeInModifier
@@ -786,14 +786,14 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   [mReceiver analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?receiverExpression]
   let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
 #--- Get reader map
-  let @readerMap readerMap = [receiverType mReaderMap]
+  let @getterMap getterMap = [receiverType mReaderMap]
 #--- Search reader
   @functionSignature readerFormalArgumentTypeList
   @methodKind kind
   @bool hasCompilerArgument
   @unifiedTypeMap-proxy returnedType
   var fieldList =@stringlist.emptyList{}
-  with [mReaderName string] in readerMap  do
+  with [mReaderName string] in getterMap  do
     readerFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
     returnedType = mReturnedType
@@ -826,7 +826,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       if matchingReaderCount == 0 then
         error mReaderName
         : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mReaderName string]
-        + "' reader, and none of its fields defines it"
+        + "' getter, and none of its fields defines it"
         : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
         @string s = ""
@@ -836,16 +836,16 @@ override method @readerCallExpressionAST analyzeSemanticExpression
         end
         error mReaderName
         : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mReaderName string]
-        + "' reader, and several of its fields defines it:" + s + " (exactly one field should define it)"
+        + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
         : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       end
-    elsif [readerMap count] == 0 then
+    elsif [getterMap count] == 0 then
       error mReaderName
-      : "the '@"+ [receiverType key] + "' type does not define any reader"
+      : "the '@"+ [receiverType key] + "' type does not define any getter"
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     else
       @string s = ""
-      for () in readerMap do
+      for () in getterMap do
         s += "\n  - " + lkey
         for () in mArgumentTypeList do
           s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
@@ -854,7 +854,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       end
       error mReaderName
       : "the '@"+ [receiverType key] + "' type does not define the '" + mReaderName + "' reader; available "
-      + if [readerMap count] > 1 then "readers are" else "reader is" end
+      + if [getterMap count] > 1 then "readers are" else "reader is" end
       + ":" + s
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     end
@@ -972,7 +972,7 @@ override method @optionExpressionAST analyzeSemanticExpression
         ![mOptionComponentName string]
         ![mOptionEntryName string]}
     else
-      error mOptionReaderName:"only the 'value', 'char', 'string' and 'comment' readers are defined for an option" :outExpression
+      error mOptionReaderName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
     @string s = ""
@@ -1012,7 +1012,7 @@ proc checkDiadicOperator
     end
     
     if not ok then
-    #--- Check if there is a conversion reader
+    #--- Check if there is a conversion getter
       if [[inRightType mReaderMap] hasKey ![inLeftType key]] then
         @bool hasCompilerArgument
         @unifiedTypeMap-proxy returnedType
@@ -1044,7 +1044,7 @@ proc checkDiadicOperator
         : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inLeftType key]
         + "', right operand type is '@" + [inRightType key]
         + "', it should be either the same, either inherits from left operand type, either have a '"
-        + [inLeftType key] + "' reader without argument that returns a '@" + [inLeftType key] + "' object"
+        + [inLeftType key] + "' getter without argument that returns a '@" + [inLeftType key] + "' object"
       end
     end
   end

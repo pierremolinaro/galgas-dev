@@ -1157,7 +1157,7 @@ void callCategoryMethod_getConstructorMap (const class cPtr_predefinedTypeAST * 
 
 typedef void (*categoryMethodSignature_predefinedTypeAST_getReaderMap) (const class cPtr_predefinedTypeAST * inObject,
                                                                         class GALGAS_unifiedTypeMap & ioArgument0,
-                                                                        class GALGAS_readerMap & outArgument1,
+                                                                        class GALGAS_getterMap & outArgument1,
                                                                         class C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
@@ -1170,7 +1170,7 @@ void enterCategoryMethod_getReaderMap (const int32_t inClassIndex,
 
 void callCategoryMethod_getReaderMap (const class cPtr_predefinedTypeAST * inObject,
                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                      GALGAS_readerMap & out_outReaderMap,
+                                      GALGAS_getterMap & out_outReaderMap,
                                       C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
@@ -1182,7 +1182,7 @@ void callCategoryMethod_getReaderMap (const class cPtr_predefinedTypeAST * inObj
 
 typedef void (*categoryMethodSignature_predefinedTypeAST_getModifierMap) (const class cPtr_predefinedTypeAST * inObject,
                                                                           class GALGAS_unifiedTypeMap & ioArgument0,
-                                                                          class GALGAS_modifierMap & outArgument1,
+                                                                          class GALGAS_setterMap & outArgument1,
                                                                           class C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
@@ -1195,7 +1195,7 @@ void enterCategoryMethod_getModifierMap (const int32_t inClassIndex,
 
 void callCategoryMethod_getModifierMap (const class cPtr_predefinedTypeAST * inObject,
                                         GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                        GALGAS_modifierMap & out_outModifierMap,
+                                        GALGAS_setterMap & out_outModifierMap,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 

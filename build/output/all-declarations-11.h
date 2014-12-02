@@ -1831,7 +1831,7 @@ void routine_enterConstructorWith_33_Arguments (class GALGAS_constructorMap & io
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWithoutArgument (class GALGAS_readerMap & ioArgument0,
+void routine_enterBaseFinalReaderWithoutArgument (class GALGAS_getterMap & ioArgument0,
                                                   class GALGAS_unifiedTypeMap & ioArgument1,
                                                   const class GALGAS_string constinArgument2,
                                                   const class GALGAS_string constinArgument3,
@@ -1845,7 +1845,7 @@ void routine_enterBaseFinalReaderWithoutArgument (class GALGAS_readerMap & ioArg
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithoutArgument (class GALGAS_readerMap & ioArgument0,
+void routine_enterInheritedReaderWithoutArgument (class GALGAS_getterMap & ioArgument0,
                                                   class GALGAS_unifiedTypeMap & ioArgument1,
                                                   const class GALGAS_string constinArgument2,
                                                   const class GALGAS_string constinArgument3,
@@ -1859,7 +1859,7 @@ void routine_enterInheritedReaderWithoutArgument (class GALGAS_readerMap & ioArg
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithArgument (class GALGAS_readerMap & ioArgument0,
+void routine_enterInheritedReaderWithArgument (class GALGAS_getterMap & ioArgument0,
                                                class GALGAS_unifiedTypeMap & ioArgument1,
                                                const class GALGAS_string constinArgument2,
                                                const class GALGAS_string constinArgument3,
@@ -1875,7 +1875,7 @@ void routine_enterInheritedReaderWithArgument (class GALGAS_readerMap & ioArgume
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWith_32_Arguments (class GALGAS_readerMap & ioArgument0,
+void routine_enterInheritedReaderWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
                                                     class GALGAS_unifiedTypeMap & ioArgument1,
                                                     const class GALGAS_string constinArgument2,
                                                     const class GALGAS_string constinArgument3,
@@ -1893,7 +1893,7 @@ void routine_enterInheritedReaderWith_32_Arguments (class GALGAS_readerMap & ioA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithoutArgument (class GALGAS_readerMap & ioArgument0,
+void routine_enterBaseReaderWithoutArgument (class GALGAS_getterMap & ioArgument0,
                                              class GALGAS_unifiedTypeMap & ioArgument1,
                                              const class GALGAS_string constinArgument2,
                                              const class GALGAS_string constinArgument3,
@@ -1907,7 +1907,7 @@ void routine_enterBaseReaderWithoutArgument (class GALGAS_readerMap & ioArgument
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithArgument (class GALGAS_readerMap & ioArgument0,
+void routine_enterBaseReaderWithArgument (class GALGAS_getterMap & ioArgument0,
                                           class GALGAS_unifiedTypeMap & ioArgument1,
                                           const class GALGAS_string constinArgument2,
                                           const class GALGAS_string constinArgument3,
@@ -1923,7 +1923,7 @@ void routine_enterBaseReaderWithArgument (class GALGAS_readerMap & ioArgument0,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWithArgument (class GALGAS_readerMap & ioArgument0,
+void routine_enterBaseFinalReaderWithArgument (class GALGAS_getterMap & ioArgument0,
                                                class GALGAS_unifiedTypeMap & ioArgument1,
                                                const class GALGAS_string constinArgument2,
                                                const class GALGAS_string constinArgument3,
@@ -1939,7 +1939,7 @@ void routine_enterBaseFinalReaderWithArgument (class GALGAS_readerMap & ioArgume
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith_32_Arguments (class GALGAS_readerMap & ioArgument0,
+void routine_enterBaseReaderWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
                                                class GALGAS_unifiedTypeMap & ioArgument1,
                                                const class GALGAS_string constinArgument2,
                                                const class GALGAS_string constinArgument3,
@@ -1957,7 +1957,7 @@ void routine_enterBaseReaderWith_32_Arguments (class GALGAS_readerMap & ioArgume
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWith_32_Arguments (class GALGAS_readerMap & ioArgument0,
+void routine_enterBaseFinalReaderWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
                                                     class GALGAS_unifiedTypeMap & ioArgument1,
                                                     const class GALGAS_string constinArgument2,
                                                     const class GALGAS_string constinArgument3,
@@ -1975,7 +1975,7 @@ void routine_enterBaseFinalReaderWith_32_Arguments (class GALGAS_readerMap & ioA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith_33_Arguments (class GALGAS_readerMap & ioArgument0,
+void routine_enterBaseReaderWith_33_Arguments (class GALGAS_getterMap & ioArgument0,
                                                class GALGAS_unifiedTypeMap & ioArgument1,
                                                const class GALGAS_string constinArgument2,
                                                const class GALGAS_string constinArgument3,
@@ -1995,7 +1995,7 @@ void routine_enterBaseReaderWith_33_Arguments (class GALGAS_readerMap & ioArgume
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWith_33_Arguments (class GALGAS_readerMap & ioArgument0,
+void routine_enterBaseFinalReaderWith_33_Arguments (class GALGAS_getterMap & ioArgument0,
                                                     class GALGAS_unifiedTypeMap & ioArgument1,
                                                     const class GALGAS_string constinArgument2,
                                                     const class GALGAS_string constinArgument3,
@@ -2016,7 +2016,7 @@ void routine_enterBaseFinalReaderWith_33_Arguments (class GALGAS_readerMap & ioA
 //---------------------------------------------------------------------------------------------------------------------*
 
 void routine_commonReaderMapForAllTypes (class GALGAS_unifiedTypeMap & ioArgument0,
-                                         class GALGAS_readerMap & outArgument1,
+                                         class GALGAS_getterMap & outArgument1,
                                          class C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
@@ -2026,7 +2026,7 @@ void routine_commonReaderMapForAllTypes (class GALGAS_unifiedTypeMap & ioArgumen
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterModifierWithInputArgument (class GALGAS_modifierMap & ioArgument0,
+void routine_enterModifierWithInputArgument (class GALGAS_setterMap & ioArgument0,
                                              class GALGAS_unifiedTypeMap & ioArgument1,
                                              const class GALGAS_string constinArgument2,
                                              const class GALGAS_string constinArgument3,
@@ -2041,7 +2041,7 @@ void routine_enterModifierWithInputArgument (class GALGAS_modifierMap & ioArgume
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterModifierWithOutputArgument (class GALGAS_modifierMap & ioArgument0,
+void routine_enterModifierWithOutputArgument (class GALGAS_setterMap & ioArgument0,
                                               class GALGAS_unifiedTypeMap & ioArgument1,
                                               const class GALGAS_string constinArgument2,
                                               const class GALGAS_string constinArgument3,
@@ -2056,7 +2056,7 @@ void routine_enterModifierWithOutputArgument (class GALGAS_modifierMap & ioArgum
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterModifierWith_32_InputArguments (class GALGAS_modifierMap & ioArgument0,
+void routine_enterModifierWith_32_InputArguments (class GALGAS_setterMap & ioArgument0,
                                                   class GALGAS_unifiedTypeMap & ioArgument1,
                                                   const class GALGAS_string constinArgument2,
                                                   const class GALGAS_string constinArgument3,
@@ -2073,7 +2073,7 @@ void routine_enterModifierWith_32_InputArguments (class GALGAS_modifierMap & ioA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterModifierWithoutArgument (class GALGAS_modifierMap & ioArgument0,
+void routine_enterModifierWithoutArgument (class GALGAS_setterMap & ioArgument0,
                                            const class GALGAS_string constinArgument1,
                                            const class GALGAS_bool constinArgument2,
                                            class C_Compiler * inCompiler
@@ -2164,8 +2164,8 @@ void routine_addCategories (const class GALGAS_categoryMethodMapForBuildingConte
                             const class GALGAS_categoryModifierMapForBuildingContext constinArgument2,
                             class GALGAS_semanticContext & ioArgument3,
                             const class GALGAS_lstring constinArgument4,
-                            class GALGAS_readerMap & ioArgument5,
-                            class GALGAS_modifierMap & ioArgument6,
+                            class GALGAS_getterMap & ioArgument5,
+                            class GALGAS_setterMap & ioArgument6,
                             class GALGAS_instanceMethodMap & ioArgument7,
                             class C_Compiler * inCompiler
                             COMMA_LOCATION_ARGS) ;
@@ -3410,8 +3410,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                   const class GALGAS_bool & in_IS_5F_CONCRETE,
                                                                                   const class GALGAS_constructorMap & in_CONSTRUCTOR_5F_MAP,
-                                                                                  const class GALGAS_readerMap & in_READER_5F_MAP,
-                                                                                  const class GALGAS_modifierMap & in_MODIFIER_5F_MAP,
+                                                                                  const class GALGAS_getterMap & in_READER_5F_MAP,
+                                                                                  const class GALGAS_setterMap & in_MODIFIER_5F_MAP,
                                                                                   const class GALGAS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
                                                                                   const class GALGAS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
                                                                                   const class GALGAS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,

@@ -248,8 +248,8 @@ proc printFeaturesOfType
   ?let @typeKindEnum inTypeKindEnum
   ?let @typedPropertyList inAllTypedAttributeList
   ?let @constructorMap inConstructorMap
-  ?let @readerMap inReaderMap
-  ?let @modifierMap inModifierMap
+  ?let @getterMap inReaderMap
+  ?let @setterMap inSetterMap
   ?let @instanceMethodMap inInstanceMethodMap
   ?let @classMethodMap inClassMethodMap
   ?let @uint inHandledOperatorFlags
@@ -277,7 +277,7 @@ proc printFeaturesOfType
 #---
   for () in inReaderMap
   before
-    s += " - readers(s):\n"
+    s += " - getters(s):\n"
   do
     s += "    " + lkey
     for () in mArgumentTypeList do
@@ -286,9 +286,9 @@ proc printFeaturesOfType
     s += " -> @" + [mReturnedType key] + "\n"
   end
 #---
-  for () in inModifierMap
+  for () in inSetterMap
   before
-    s += " - modifiers(s):\n"
+    s += " - setter(s):\n"
   do
     s += "    " + lkey
     for () in mParameterList do

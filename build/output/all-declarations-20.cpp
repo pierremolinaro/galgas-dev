@@ -7550,19 +7550,19 @@ GALGAS_unifiedTypeMap_2D_proxy categoryReader_baseType (const GALGAS_unifiedType
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   result_outBaseType = temp_0 ;
   if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 346)).isValid ()) {
-    uint32_t variant_18809 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 346)).uintValue () ;
-    bool loop_18809 = true ;
-    while (loop_18809) {
-      loop_18809 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 346)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 346)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 346)).isValid () ;
-      if (loop_18809) {
-        loop_18809 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 346)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 346)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 346)).boolValue () ;
+    uint32_t variant_18799 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 346)).uintValue () ;
+    bool loop_18799 = true ;
+    while (loop_18799) {
+      loop_18799 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 346)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 346)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 346)).isValid () ;
+      if (loop_18799) {
+        loop_18799 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 346)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 346)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 346)).boolValue () ;
       }
-      if (loop_18809 && (0 == variant_18809)) {
-        loop_18809 = false ;
+      if (loop_18799 && (0 == variant_18799)) {
+        loop_18799 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 346)) ;
       }
-      if (loop_18809) {
-        variant_18809 -- ;
+      if (loop_18799) {
+        variant_18799 -- ;
         result_outBaseType = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 347)) ;
       }
     }

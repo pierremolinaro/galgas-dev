@@ -309,11 +309,11 @@ map @categoryMethodMapForGlobalCheckings {
 #                                                                                                                      *
 #  C A T E G O R Y    M O D I F I E R    M A P                              *
 #                                                                                                                      *
-# Used for checking a category-modifier is defined once for a type          *
+# Used for checking a category-setter is defined once for a type          *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @categoryModifierMapForGlobalCheckings {
-  insert insertKey error message "the '%K' category modifier is already declared in %L"
+  insert insertKey error message "the '%K' category setter is already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -324,7 +324,7 @@ map @categoryModifierMapForGlobalCheckings {
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @categoryReaderMapForGlobalCheckings {
-  insert insertKey error message "the '%K' category reader is already declared in %L"
+  insert insertKey error message "the '%K' category getter is already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -440,9 +440,9 @@ proc checkCategoryReaderDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error inAbstractCategoryReaderName: "an abstract category reader '" + inAbstractCategoryReaderName + "' is defined for abstract class '@"
+        error inAbstractCategoryReaderName: "an abstract category getter '" + inAbstractCategoryReaderName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this reader" 
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this getter" 
       end
     end
   end
@@ -512,28 +512,28 @@ proc performProjectGlobalCheckings
   end
 #------ Check Category
   if @uint. errorCount == 0 then
-  #--- A given abstract category modifier is defined only once for a class
+  #--- A given abstract category setter is defined only once for a class
     for () in abstractCategoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
-  #--- A given base category modifier is defined only once for a class
+  #--- A given base category setter is defined only once for a class
     for () in categoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
-  #--- A given overriding category modifier is defined only once for a class
+  #--- A given overriding category setter is defined only once for a class
     for () in overridingCategoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
-  #--- A given overriding abstract category modifier is defined only once for a class
+  #--- A given overriding abstract category setter is defined only once for a class
     for () in overridingAbstractCategoryMethodListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do

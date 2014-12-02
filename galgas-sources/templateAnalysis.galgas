@@ -60,15 +60,15 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
   [mReceiverExpression templateExpressionAnalysis !inAnalysisContext ?receiverExpression]
   let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
 #--- Get reader map
-  let @readerMap readerMap = [receiverType mReaderMap]
+  let @getterMap getterMap = [receiverType mReaderMap]
 #--- Search contructor
   @functionSignature readerFormalArgumentTypeList
   @methodKind kind
   @bool hasCompilerArgument
   @unifiedTypeMap-proxy returnedType
   var fieldList =@stringlist.emptyList{}
-  if [readerMap hasKey ![mReaderName string]] then
-    [readerMap searchKey !mReaderName
+  if [getterMap hasKey ![mReaderName string]] then
+    [getterMap searchKey !mReaderName
       ?kind
       ?readerFormalArgumentTypeList
       ?*
@@ -84,7 +84,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       returnedType = @unifiedTypeMap-proxy. null
       kind = @methodKind. definedAsMember
       for () in [receiverType mCurrentTypedAttributeList] do
-        let @readerMap aMap = [mAttributeTypeProxy mReaderMap]
+        let @getterMap aMap = [mAttributeTypeProxy mReaderMap]
         with [mReaderName string] in aMap  do
           matchingReaderCount ++
           readerFormalArgumentTypeList = mArgumentTypeList
@@ -110,13 +110,13 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
         + "' reader, and several of its fields defines it:" + s + " (exactly one field should define it)"
         : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       end
-    elsif [readerMap count] == 0 then
+    elsif [getterMap count] == 0 then
       error mReaderName
       : "the '@"+ [receiverType key] + "' type does not define any reader"
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     else
       @string s = ""
-      for () in readerMap do
+      for () in getterMap do
         s += "\n  - " + lkey
         for () in mArgumentTypeList do
           s += " ?@" + [mFormalArgumentType key]
@@ -125,7 +125,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       end
       error mReaderName
       : "the '@"+ [receiverType key] + "' type does not define the '" + mReaderName + "' reader; available "
-      + if [readerMap count] > 1 then "readers are" else "reader is" end
+      + if [getterMap count] > 1 then "readers are" else "reader is" end
       + ":" + s
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     end

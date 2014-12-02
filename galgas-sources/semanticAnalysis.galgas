@@ -284,7 +284,7 @@ override method @graphDeclarationAST semanticAnalysis
   reservedModifierNames += !"addArc"
   for () in mInsertModifierList do
     if [reservedModifierNames hasKey ![mInsertModifierName string]] then
-      error mInsertModifierName : "the '" + mInsertModifierName + "' modifier name is reserved for a graph type"
+      error mInsertModifierName : "the '" + mInsertModifierName + "' setter name is reserved for a graph type"
     end
     check_K_L_escapeCharacters ( !mInsertErrorMessage )
   end
@@ -408,7 +408,7 @@ override method @listmapDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @insertMethodMap {
-  insert insertKey error message "the '%K' insert modifier is already declared"
+  insert insertKey error message "the '%K' insert setter is already declared"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -495,7 +495,7 @@ override method @mapDeclarationAST semanticAnalysis
     end
     [!?attributeMap insertKey !mPropertyName !t]
   end
-#--- Enter insert modifiers
+#--- Enter insert setters
   var insertMethodMap =@insertMethodMap.emptyMap{}
   for () in mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
@@ -513,17 +513,17 @@ override method @mapDeclarationAST semanticAnalysis
     [!?insertMethodMap insertKey !mMethodName]
     check_K_escapeCharacters ( !mErrorMessage )
   end
-#--- Warn for duplicated declarations or 'insertOrReplace' modifier
+#--- Warn for duplicated declarations or 'insertOrReplace' setter
   for () in mInsertOrReplaceDeclarationListAST do(IDX)
     if IDX > 0 then
-      warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' modifier is already declared"
+      warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' setter is already declared"
     end
   end
   let @bool hasInsertOrReplaceModifier = [mInsertOrReplaceDeclarationListAST length] > 0
   if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
     @location insertOrReplaceDeclarationLocation
     [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceDeclarationLocation]
-    error insertOrReplaceDeclarationLocation : "the insertOrReplace' modifier cannot be declared : an insert modifier or a remove modifier has been declared with this name"
+    error insertOrReplaceDeclarationLocation : "the insertOrReplace' setter cannot be declared : an insert modifier or a remove modifier has been declared with this name"
   end
 #--- Enter 'with' accessors
 #  @withAccessorMap withAccessorMap [emptyMap] ;
@@ -1733,11 +1733,11 @@ override method @abstractCategoryModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractCategoryModifierName: "cannot declare a category modifier: '@" + [selfType key] + "' is not a class"
+    error mAbstractCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryModifierName: "cannot declare an abstract category modifier: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractCategoryModifierName: "cannot declare an abstract category setter: '@" + [selfType key] + "' is not an abstract class"
   end
-#--- Compute modifier signature
+#--- Compute setter signature
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
   for () in mAbstractCategoryModifierFormalParameterList do
     formalParameterListForGeneration +=
@@ -1828,7 +1828,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingCategoryModifierName: "cannot declare a category modifier: '@" + [selfType key] + "' is not a class"
+    error mOverridingCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1847,7 +1847,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingCategoryModifierName:"this modifier is not declared by a super class"
+    error mOverridingCategoryModifierName:"this setter is not declared by a super class"
   end
 #--- Analyze instruction list
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
@@ -1905,9 +1905,9 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingCategoryModifierName: "cannot declare a category modifier: '@" + [selfType key] + "' is not a class"
+    error mOverridingCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mOverridingCategoryModifierName: "cannot declare an abstract category modifier: '@" + [selfType key] + "' is not an abstract class"
+    error mOverridingCategoryModifierName: "cannot declare an abstract category setter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1926,7 +1926,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingCategoryModifierName:"this modifier is not declared by a super class"
+    error mOverridingCategoryModifierName:"this setter is not declared by a super class"
   end
 #--- Analyze formal argument list
   var variableMap =@variableMap.emptyMap{}
@@ -1959,9 +1959,9 @@ override method @abstractCategoryReaderAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractCategoryReaderName: "cannot declare a category reader: '@" + [selfType key] + "' is not a class"
+    error mAbstractCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryReaderName: "cannot declare an abstract category reader: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractCategoryReaderName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
   var formalParameterListForGeneration =@formalInputParameterListForGeneration.emptyList{}
@@ -2066,7 +2066,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingCategoryReaderName: "cannot declare a category reader: '@" + [selfType key] + "' is not a class"
+    error mOverridingCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -2161,9 +2161,9 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
   let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAbstractCategoryReaderReturnedTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractCategoryReaderName: "cannot declare a category reader: '@" + [selfType key] + "' is not a class"
+    error mAbstractCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryReaderName: "cannot declare an abstract category reader: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractCategoryReaderName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""

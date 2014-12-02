@@ -1122,7 +1122,7 @@ void GALGAS_categoryReaderMapForType::modifier_insertKey (GALGAS_lstring inKey,
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' reader has been already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' getter has been already declared in %L" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
@@ -14439,9 +14439,9 @@ static const cMapAutomatonTransition kMapTransitions_variableMap [23 * 5] = {
   {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'currentInstanceAttribute', index 20 
   {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be written within a method or a reader"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be modified within a method or a reader"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be dropped within a method or a reader"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be written within a method or a getter"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be modified within a method or a getter"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be dropped within a method or a getter"}, // for action 'dropAccess', (index 3)
   {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'currentInstanceAttributeInModifier', index 21 
   {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
@@ -14484,7 +14484,7 @@ static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_variableMap [23] = 
   {kMapAutomatonNoIssue, ""},// state 'inputFormalArgumentDeclaredAsUnused' (index 19)
   {kMapAutomatonNoIssue, ""},// state 'currentInstanceAttribute' (index 20)
   {kMapAutomatonNoIssue, ""},// state 'currentInstanceAttributeInModifier' (index 21)
-  {kMapAutomatonIssueWarning, "the '%K' attribute is in the dropped state at the end of the modifier"},// state 'currentInstanceDroppedAttributeInModifier' (index 22)
+  {kMapAutomatonIssueWarning, "the '%K' attribute is in the dropped state at the end of the setter"},// state 'currentInstanceDroppedAttributeInModifier' (index 22)
 } ;
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -17249,7 +17249,7 @@ void GALGAS_insertMethodMap::modifier_insertKey (GALGAS_lstring inKey,
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' insert modifier is already declared" ;
+  const char * kInsertErrorMessage = "the '%K' insert setter is already declared" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }

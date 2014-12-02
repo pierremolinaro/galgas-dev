@@ -20,7 +20,7 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWithInputArgument
-  ?!@modifierMap ioModifierMap
+  ?!@setterMap ioModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inInputArgumentTypeName
   ?let @string inInputArgumentName
@@ -43,7 +43,7 @@ proc enterModifierWithInputArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWithOutputArgument
-  ?!@modifierMap ioModifierMap
+  ?!@setterMap ioModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inOutputArgumentTypeName
   ?let @string inOutputArgumentName
@@ -66,7 +66,7 @@ proc enterModifierWithOutputArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWith2InputArguments
-  ?!@modifierMap ioModifierMap
+  ?!@setterMap ioModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inInputArgument1TypeName
   ?let @string inInputArgument1Name
@@ -93,7 +93,7 @@ proc enterModifierWith2InputArguments
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWithoutArgument
-  ?!@modifierMap ioModifierMap
+  ?!@setterMap ioModifierMap
   ?let @string inModifierName
   ?let @bool inHasCompilerArgument {
   [!?ioModifierMap insertOrReplace
@@ -110,8 +110,8 @@ proc enterModifierWithoutArgument
 
 override method @stringPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@modifierMap outModifierMap {
-  outModifierMap = @modifierMap. emptyMap
+  !@setterMap outModifierMap {
+  outModifierMap = @setterMap. emptyMap
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inCapacity" !"setCapacity" !true )
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !"incIndentation" !true )
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !"decIndentation" !true )
@@ -123,8 +123,8 @@ override method @stringPredefinedTypeAST getModifierMap
 
 override method @dataPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@modifierMap outModifierMap {
-  outModifierMap = @modifierMap. emptyMap
+  !@setterMap outModifierMap {
+  outModifierMap = @setterMap. emptyMap
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendByte" !true )
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendShortBE" !true )
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendShortLE" !true )
@@ -138,8 +138,8 @@ override method @dataPredefinedTypeAST getModifierMap
 
 override method @filewrapperPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@modifierMap outModifierMap {
-  outModifierMap = @modifierMap. emptyMap
+  !@setterMap outModifierMap {
+  outModifierMap = @setterMap. emptyMap
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inDirectoryPath" !"setCurrentDirectory" !true )
 }
 
