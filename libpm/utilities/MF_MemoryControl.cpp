@@ -522,7 +522,8 @@
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static uint32_t hashCodeForPointer (const void * inPointer) {
     const uintptr_t v = (uintptr_t) inPointer ;
-    return (uint32_t) (((v * 2654435761) % ROOT_TABLE_SIZE) & UINT32_MAX) ;
+ //   return (uint32_t) (((v * 2654435761) % ROOT_TABLE_SIZE) & UINT32_MAX) ;
+    return (uint32_t) ((v % ROOT_TABLE_SIZE) & UINT32_MAX) ;
   }
 #endif
 
