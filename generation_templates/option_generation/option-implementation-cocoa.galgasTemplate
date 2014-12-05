@@ -7,7 +7,8 @@
 
 void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (NSMutableArray * ioBoolOptionArray,
                                                        NSMutableArray * ioUIntOptionArray,
-                                                       NSMutableArray * ioStringOptionArray) {
+                                                       NSMutableArray * ioStringOptionArray,
+                                                       NSMutableArray * ioStringListOptionArray) {
 %if ([BOOL_OPTION_MAP count] + [UINT_OPTION_MAP count] + [STRING_OPTION_MAP count]) > 0 then
   %  OC_GGS_CommandLineOption * option ;\n%
 end
@@ -43,6 +44,17 @@ for () in STRING_OPTION_MAP do
   %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
   %  ] ;\n%
   %  [ioStringOptionArray addObject:option] ;\n%
+end
+for () in STRING_LIST_OPTION_MAP do
+  %  option = [[OC_GGS_CommandLineOption alloc]\n%
+  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
+  %    identifier:@%![lkey utf8Representation]%\n%
+  %    commandChar:%![[mOptionChar uint] string]%\n%
+  %    commandString:@%![mOptionString utf8Representation]%\n%
+  %    comment:@%![mComment utf8Representation]%\n%
+  %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
+  %  ] ;\n%
+  %  [ioStringListOptionArray addObject:option] ;\n%
 end
 %}
 

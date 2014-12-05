@@ -59,8 +59,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     mBoolOptionArray = [NSMutableArray new] ;
     mUIntOptionArray = [NSMutableArray new] ;
     mStringOptionArray = [NSMutableArray new] ;
+    mStringListOptionArray = [NSMutableArray new] ;
     enterDefaultCommandLineOptions (mBoolOptionArray, mUIntOptionArray, mStringOptionArray) ;
-    enterOptions (mBoolOptionArray, mUIntOptionArray, mStringOptionArray) ;
+    enterOptions (mBoolOptionArray, mUIntOptionArray, mStringOptionArray, mStringListOptionArray) ;
   }
   return self ;
 }

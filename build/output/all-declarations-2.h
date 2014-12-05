@@ -2084,6 +2084,7 @@ class GALGAS_parsedOptionComponentMap : public AC_GALGAS_map {
                                                       const class GALGAS_commandLineOptionMap & inOperand1,
                                                       const class GALGAS_commandLineOptionMap & inOperand2,
                                                       const class GALGAS_commandLineOptionMap & inOperand3,
+                                                      const class GALGAS_commandLineOptionMap & inOperand4,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -2092,6 +2093,7 @@ class GALGAS_parsedOptionComponentMap : public AC_GALGAS_map {
                                                      class GALGAS_commandLineOptionMap constinArgument1,
                                                      class GALGAS_commandLineOptionMap constinArgument2,
                                                      class GALGAS_commandLineOptionMap constinArgument3,
+                                                     class GALGAS_commandLineOptionMap constinArgument4,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -2099,6 +2101,11 @@ class GALGAS_parsedOptionComponentMap : public AC_GALGAS_map {
                                                                    class GALGAS_string constinArgument1,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_setMStringListOptionMapForKey (class GALGAS_commandLineOptionMap constinArgument0,
+                                                                         class GALGAS_string constinArgument1,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void modifier_setMStringOptionMapForKey (class GALGAS_commandLineOptionMap constinArgument0,
                                                                      class GALGAS_string constinArgument1,
@@ -2116,6 +2123,7 @@ class GALGAS_parsedOptionComponentMap : public AC_GALGAS_map {
                                                    class GALGAS_commandLineOptionMap & outArgument1,
                                                    class GALGAS_commandLineOptionMap & outArgument2,
                                                    class GALGAS_commandLineOptionMap & outArgument3,
+                                                   class GALGAS_commandLineOptionMap & outArgument4,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const ;
 
@@ -2125,6 +2133,10 @@ class GALGAS_parsedOptionComponentMap : public AC_GALGAS_map {
   public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionMap reader_mBoolOptionMapForKey (const class GALGAS_string & constinOperand0,
                                                                                            C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionMap reader_mStringListOptionMapForKey (const class GALGAS_string & constinOperand0,
+                                                                                                 C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionMap reader_mStringOptionMapForKey (const class GALGAS_string & constinOperand0,
                                                                                              C_Compiler * inCompiler
@@ -2163,6 +2175,7 @@ class cEnumerator_parsedOptionComponentMap : public cGenericAbstractEnumerator {
   public : class GALGAS_commandLineOptionMap current_mBoolOptionMap (LOCATION_ARGS) const ;
   public : class GALGAS_commandLineOptionMap current_mUIntOptionMap (LOCATION_ARGS) const ;
   public : class GALGAS_commandLineOptionMap current_mStringOptionMap (LOCATION_ARGS) const ;
+  public : class GALGAS_commandLineOptionMap current_mStringListOptionMap (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_parsedOptionComponentMap_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -2182,12 +2195,14 @@ class cMapElement_parsedOptionComponentMap : public cMapElement {
   public : GALGAS_commandLineOptionMap mAttribute_mBoolOptionMap ;
   public : GALGAS_commandLineOptionMap mAttribute_mUIntOptionMap ;
   public : GALGAS_commandLineOptionMap mAttribute_mStringOptionMap ;
+  public : GALGAS_commandLineOptionMap mAttribute_mStringListOptionMap ;
 
 //--- Constructor
   public : cMapElement_parsedOptionComponentMap (const GALGAS_lstring & inKey,
                                                  const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
                                                  const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                                 const GALGAS_commandLineOptionMap & in_mStringOptionMap
+                                                 const GALGAS_commandLineOptionMap & in_mStringOptionMap,
+                                                 const GALGAS_commandLineOptionMap & in_mStringListOptionMap
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -2215,6 +2230,7 @@ class GALGAS_parsedOptionComponentMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_commandLineOptionMap mAttribute_mBoolOptionMap ;
   public : GALGAS_commandLineOptionMap mAttribute_mUIntOptionMap ;
   public : GALGAS_commandLineOptionMap mAttribute_mStringOptionMap ;
+  public : GALGAS_commandLineOptionMap mAttribute_mStringListOptionMap ;
 
 
 //--------------------------------- Accessors
@@ -2234,7 +2250,8 @@ class GALGAS_parsedOptionComponentMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_parsedOptionComponentMap_2D_element (const GALGAS_lstring & in_lkey,
                                                        const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
                                                        const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                                       const GALGAS_commandLineOptionMap & in_mStringOptionMap) ;
+                                                       const GALGAS_commandLineOptionMap & in_mStringOptionMap,
+                                                       const GALGAS_commandLineOptionMap & in_mStringListOptionMap) ;
 
 //-- Start of generic part --*
 
@@ -2250,7 +2267,8 @@ class GALGAS_parsedOptionComponentMap_2D_element : public AC_GALGAS_root {
   public : static GALGAS_parsedOptionComponentMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                               const class GALGAS_commandLineOptionMap & inOperand1,
                                                                               const class GALGAS_commandLineOptionMap & inOperand2,
-                                                                              const class GALGAS_commandLineOptionMap & inOperand3
+                                                                              const class GALGAS_commandLineOptionMap & inOperand3,
+                                                                              const class GALGAS_commandLineOptionMap & inOperand4
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -2268,6 +2286,8 @@ class GALGAS_parsedOptionComponentMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_lkey (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionMap reader_mBoolOptionMap (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionMap reader_mStringListOptionMap (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionMap reader_mStringOptionMap (LOCATION_ARGS) const ;
 

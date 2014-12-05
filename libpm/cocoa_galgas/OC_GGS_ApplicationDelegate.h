@@ -115,6 +115,7 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   @private NSMutableArray * mBoolOptionArray ;
   @private NSMutableArray * mUIntOptionArray ;
   @private NSMutableArray * mStringOptionArray ;
+  @private NSMutableArray * mStringListOptionArray ;
   
 //---
   @private IBOutlet NSPopUpButton * mNewDocumentTypePopUpButton ;

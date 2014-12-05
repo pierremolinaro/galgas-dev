@@ -7305,6 +7305,9 @@ typeComparisonResult cPtr_optionComponentForGeneration::dynamicObjectCompare (co
   if (kOperandEqual == result) {
     result = mAttribute_mStringOptionMap.objectCompare (p->mAttribute_mStringOptionMap) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mStringListOptionMap.objectCompare (p->mAttribute_mStringListOptionMap) ;
+  }
   return result ;
 }
 
@@ -7342,6 +7345,7 @@ GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration::constru
                                                                GALGAS_string::constructor_default (HERE),
                                                                GALGAS_commandLineOptionMap::constructor_emptyMap (HERE),
                                                                GALGAS_commandLineOptionMap::constructor_emptyMap (HERE),
+                                                               GALGAS_commandLineOptionMap::constructor_emptyMap (HERE),
                                                                GALGAS_commandLineOptionMap::constructor_emptyMap (HERE)
                                                                COMMA_THERE) ;
 }
@@ -7361,11 +7365,12 @@ GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration::constru
                                                                                           const GALGAS_string & inAttribute_mOptionComponentName,
                                                                                           const GALGAS_commandLineOptionMap & inAttribute_mBoolOptionMap,
                                                                                           const GALGAS_commandLineOptionMap & inAttribute_mUIntOptionMap,
-                                                                                          const GALGAS_commandLineOptionMap & inAttribute_mStringOptionMap
+                                                                                          const GALGAS_commandLineOptionMap & inAttribute_mStringOptionMap,
+                                                                                          const GALGAS_commandLineOptionMap & inAttribute_mStringListOptionMap
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_optionComponentForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mIsPredefined.isValid () && inAttribute_mOptionComponentName.isValid () && inAttribute_mBoolOptionMap.isValid () && inAttribute_mUIntOptionMap.isValid () && inAttribute_mStringOptionMap.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_optionComponentForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mIsPredefined, inAttribute_mOptionComponentName, inAttribute_mBoolOptionMap, inAttribute_mUIntOptionMap, inAttribute_mStringOptionMap COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mIsPredefined.isValid () && inAttribute_mOptionComponentName.isValid () && inAttribute_mBoolOptionMap.isValid () && inAttribute_mUIntOptionMap.isValid () && inAttribute_mStringOptionMap.isValid () && inAttribute_mStringListOptionMap.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_optionComponentForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mIsPredefined, inAttribute_mOptionComponentName, inAttribute_mBoolOptionMap, inAttribute_mUIntOptionMap, inAttribute_mStringOptionMap, inAttribute_mStringListOptionMap COMMA_THERE)) ;
   }
   return result ;
 }
@@ -7461,6 +7466,24 @@ GALGAS_commandLineOptionMap cPtr_optionComponentForGeneration::reader_mStringOpt
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_commandLineOptionMap GALGAS_optionComponentForGeneration::reader_mStringListOptionMap (UNUSED_LOCATION_ARGS) const {
+  GALGAS_commandLineOptionMap result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_optionComponentForGeneration * p = (const cPtr_optionComponentForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
+    result = p->mAttribute_mStringListOptionMap ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_commandLineOptionMap cPtr_optionComponentForGeneration::reader_mStringListOptionMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mStringListOptionMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                Pointer class for @optionComponentForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7470,14 +7493,16 @@ cPtr_optionComponentForGeneration::cPtr_optionComponentForGeneration (const GALG
                                                                       const GALGAS_string & in_mOptionComponentName,
                                                                       const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
                                                                       const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                                                      const GALGAS_commandLineOptionMap & in_mStringOptionMap
+                                                                      const GALGAS_commandLineOptionMap & in_mStringOptionMap,
+                                                                      const GALGAS_commandLineOptionMap & in_mStringListOptionMap
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mIsPredefined (in_mIsPredefined),
 mAttribute_mOptionComponentName (in_mOptionComponentName),
 mAttribute_mBoolOptionMap (in_mBoolOptionMap),
 mAttribute_mUIntOptionMap (in_mUIntOptionMap),
-mAttribute_mStringOptionMap (in_mStringOptionMap) {
+mAttribute_mStringOptionMap (in_mStringOptionMap),
+mAttribute_mStringListOptionMap (in_mStringListOptionMap) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7502,6 +7527,8 @@ void cPtr_optionComponentForGeneration::description (C_String & ioString,
   mAttribute_mUIntOptionMap.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mStringOptionMap.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mStringListOptionMap.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7509,7 +7536,7 @@ void cPtr_optionComponentForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_optionComponentForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_optionComponentForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mIsPredefined, mAttribute_mOptionComponentName, mAttribute_mBoolOptionMap, mAttribute_mUIntOptionMap, mAttribute_mStringOptionMap COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionComponentForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mIsPredefined, mAttribute_mOptionComponentName, mAttribute_mBoolOptionMap, mAttribute_mUIntOptionMap, mAttribute_mStringOptionMap, mAttribute_mStringListOptionMap COMMA_THERE)) ;
   return ptr ;
 }
 

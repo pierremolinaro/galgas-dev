@@ -101,7 +101,7 @@ template <typename TYPE> class TC_UniqueArray {
                                        const int32_t inDataLength) ;
   
 //--- Get buffer pointer
-  public : const TYPE * bufferPointer (void) const { return mArray ; }
+  public : const TYPE * unsecureBufferPointer (void) const { return mArray ; }
 
 //--- Comparisons (based on == operator on objects)
   public : bool operator == (const TC_UniqueArray <TYPE> & inOperand) const ;

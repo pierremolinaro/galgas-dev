@@ -48,10 +48,11 @@ end
 
 void enterOptions (NSMutableArray * ioBoolOptionArray,
                    NSMutableArray * ioUIntOptionArray,
-                   NSMutableArray * ioStringOptionArray) {
+                   NSMutableArray * ioStringOptionArray,
+                   NSMutableArray * ioStringListOptionArray) {
 %
 for () in [GUI_CONTEXT mImportedOptionComponentList] do
-  %  enterOptionsFor_%![mValue identifierRepresentation]% (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray) ;\n%
+  %  enterOptionsFor_%![mValue identifierRepresentation]% (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray, ioStringListOptionArray) ;\n%
 end
 %}
 

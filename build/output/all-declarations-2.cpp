@@ -3840,25 +3840,27 @@ GALGAS_parsedLexiqueComponentMap GALGAS_parsedLexiqueComponentMap::extractObject
 cMapElement_parsedOptionComponentMap::cMapElement_parsedOptionComponentMap (const GALGAS_lstring & inKey,
                                                                             const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
                                                                             const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                                                            const GALGAS_commandLineOptionMap & in_mStringOptionMap
+                                                                            const GALGAS_commandLineOptionMap & in_mStringOptionMap,
+                                                                            const GALGAS_commandLineOptionMap & in_mStringListOptionMap
                                                                             COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mAttribute_mBoolOptionMap (in_mBoolOptionMap),
 mAttribute_mUIntOptionMap (in_mUIntOptionMap),
-mAttribute_mStringOptionMap (in_mStringOptionMap) {
+mAttribute_mStringOptionMap (in_mStringOptionMap),
+mAttribute_mStringListOptionMap (in_mStringListOptionMap) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_parsedOptionComponentMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mBoolOptionMap.isValid () && mAttribute_mUIntOptionMap.isValid () && mAttribute_mStringOptionMap.isValid () ;
+  return mAttribute_lkey.isValid () && mAttribute_mBoolOptionMap.isValid () && mAttribute_mUIntOptionMap.isValid () && mAttribute_mStringOptionMap.isValid () && mAttribute_mStringListOptionMap.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_parsedOptionComponentMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_parsedOptionComponentMap (mAttribute_lkey, mAttribute_mBoolOptionMap, mAttribute_mUIntOptionMap, mAttribute_mStringOptionMap COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_parsedOptionComponentMap (mAttribute_lkey, mAttribute_mBoolOptionMap, mAttribute_mUIntOptionMap, mAttribute_mStringOptionMap, mAttribute_mStringListOptionMap COMMA_HERE)) ;
   return result ;
 }
 
@@ -3877,6 +3879,10 @@ void cMapElement_parsedOptionComponentMap::description (C_String & ioString, con
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mStringOptionMap" ":" ;
   mAttribute_mStringOptionMap.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mStringListOptionMap" ":" ;
+  mAttribute_mStringListOptionMap.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3892,6 +3898,9 @@ typeComparisonResult cMapElement_parsedOptionComponentMap::compare (const cColle
   }
   if (kOperandEqual == result) {
     result = mAttribute_mStringOptionMap.objectCompare (operand->mAttribute_mStringOptionMap) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mStringListOptionMap.objectCompare (operand->mAttribute_mStringListOptionMap) ;
   }
   return result ;
 }
@@ -3947,10 +3956,11 @@ void GALGAS_parsedOptionComponentMap::addAssign_operation (const GALGAS_lstring 
                                                            const GALGAS_commandLineOptionMap & inArgument0,
                                                            const GALGAS_commandLineOptionMap & inArgument1,
                                                            const GALGAS_commandLineOptionMap & inArgument2,
+                                                           const GALGAS_commandLineOptionMap & inArgument3,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   cMapElement_parsedOptionComponentMap * p = NULL ;
-  macroMyNew (p, cMapElement_parsedOptionComponentMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_parsedOptionComponentMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -3965,10 +3975,11 @@ void GALGAS_parsedOptionComponentMap::modifier_insertKey (GALGAS_lstring inKey,
                                                           GALGAS_commandLineOptionMap inArgument0,
                                                           GALGAS_commandLineOptionMap inArgument1,
                                                           GALGAS_commandLineOptionMap inArgument2,
+                                                          GALGAS_commandLineOptionMap inArgument3,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   cMapElement_parsedOptionComponentMap * p = NULL ;
-  macroMyNew (p, cMapElement_parsedOptionComponentMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_parsedOptionComponentMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -3987,6 +3998,7 @@ void GALGAS_parsedOptionComponentMap::method_searchKey (GALGAS_lstring inKey,
                                                         GALGAS_commandLineOptionMap & outArgument0,
                                                         GALGAS_commandLineOptionMap & outArgument1,
                                                         GALGAS_commandLineOptionMap & outArgument2,
+                                                        GALGAS_commandLineOptionMap & outArgument3,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   const cMapElement_parsedOptionComponentMap * p = (const cMapElement_parsedOptionComponentMap *) performSearch (inKey,
@@ -3997,11 +4009,13 @@ void GALGAS_parsedOptionComponentMap::method_searchKey (GALGAS_lstring inKey,
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
+    outArgument3.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_parsedOptionComponentMap) ;
     outArgument0 = p->mAttribute_mBoolOptionMap ;
     outArgument1 = p->mAttribute_mUIntOptionMap ;
     outArgument2 = p->mAttribute_mStringOptionMap ;
+    outArgument3 = p->mAttribute_mStringListOptionMap ;
   }
 }
 
@@ -4052,6 +4066,21 @@ GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap::reader_mStringOptio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap::reader_mStringListOptionMapForKey (const GALGAS_string & inKey,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_parsedOptionComponentMap * p = (const cMapElement_parsedOptionComponentMap *) attributes ;
+  GALGAS_commandLineOptionMap result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_parsedOptionComponentMap) ;
+    result = p->mAttribute_mStringListOptionMap ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_parsedOptionComponentMap::modifier_setMBoolOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
                                                                         GALGAS_string inKey,
                                                                         C_Compiler * inCompiler
@@ -4094,6 +4123,20 @@ void GALGAS_parsedOptionComponentMap::modifier_setMStringOptionMapForKey (GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_parsedOptionComponentMap::modifier_setMStringListOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
+                                                                              GALGAS_string inKey,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_parsedOptionComponentMap * p = (cMapElement_parsedOptionComponentMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_parsedOptionComponentMap) ;
+    p->mAttribute_mStringListOptionMap = inAttributeValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 cMapElement_parsedOptionComponentMap * GALGAS_parsedOptionComponentMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                            const GALGAS_string & inKey
                                                                                                            COMMA_LOCATION_ARGS) {
@@ -4115,7 +4158,7 @@ cGenericAbstractEnumerator () {
 GALGAS_parsedOptionComponentMap_2D_element cEnumerator_parsedOptionComponentMap::current (LOCATION_ARGS) const {
   const cMapElement_parsedOptionComponentMap * p = (const cMapElement_parsedOptionComponentMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_parsedOptionComponentMap) ;
-  return GALGAS_parsedOptionComponentMap_2D_element (p->mAttribute_lkey, p->mAttribute_mBoolOptionMap, p->mAttribute_mUIntOptionMap, p->mAttribute_mStringOptionMap) ;
+  return GALGAS_parsedOptionComponentMap_2D_element (p->mAttribute_lkey, p->mAttribute_mBoolOptionMap, p->mAttribute_mUIntOptionMap, p->mAttribute_mStringOptionMap, p->mAttribute_mStringListOptionMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4148,6 +4191,14 @@ GALGAS_commandLineOptionMap cEnumerator_parsedOptionComponentMap::current_mStrin
   const cMapElement_parsedOptionComponentMap * p = (const cMapElement_parsedOptionComponentMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_parsedOptionComponentMap) ;
   return p->mAttribute_mStringOptionMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_commandLineOptionMap cEnumerator_parsedOptionComponentMap::current_mStringListOptionMap (LOCATION_ARGS) const {
+  const cMapElement_parsedOptionComponentMap * p = (const cMapElement_parsedOptionComponentMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_parsedOptionComponentMap) ;
+  return p->mAttribute_mStringListOptionMap ;
 }
 
 

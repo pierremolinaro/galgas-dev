@@ -389,6 +389,7 @@ struct @predefinedTypes {
   @unifiedTypeMap-proxy mLUInt64Type
   @unifiedTypeMap-proxy mLSInt64Type
   @unifiedTypeMap-proxy mLDoubleType
+  @unifiedTypeMap-proxy mStringListType
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -922,15 +923,13 @@ override method @optionExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  @commandLineOptionMap boolOptionMap
-  @commandLineOptionMap uintOptionMap
-  @commandLineOptionMap stringOptionMap
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
     ?let @bool optionComponentIsPredefined
-    ?boolOptionMap
-    ?uintOptionMap
-    ?stringOptionMap
+    ?let @commandLineOptionMap boolOptionMap
+    ?let @commandLineOptionMap uintOptionMap
+    ?let @commandLineOptionMap stringOptionMap
+    ?let @commandLineOptionMap stringListOptionMap
   ]
   @bool found = [boolOptionMap hasKey ![mOptionEntryName string]]
   @unifiedTypeMap-proxy returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
@@ -941,6 +940,10 @@ override method @optionExpressionAST analyzeSemanticExpression
   if not found then
     found = [stringOptionMap hasKey ![mOptionEntryName string]]
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
+  end
+  if not found then
+    found = [stringListOptionMap hasKey ![mOptionEntryName string]]
+    returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
     if [mOptionReaderName string] == "value" then

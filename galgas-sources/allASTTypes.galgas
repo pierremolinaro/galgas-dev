@@ -27,6 +27,7 @@ map @parsedOptionComponentMap {
   @commandLineOptionMap mBoolOptionMap
   @commandLineOptionMap mUIntOptionMap
   @commandLineOptionMap mStringOptionMap
+  @commandLineOptionMap mStringListOptionMap
   insert insertKey error message "the '%K' option component has already been parsed"
   search searchKey error message "the '%K' option component symbol is not parsed"
 }

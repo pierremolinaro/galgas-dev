@@ -112,7 +112,7 @@ proc compileGuiComponentFromAST
           ![[mValue string] absolutePathFromPath ![[inSourceFile string] stringByDeletingLastPathComponent]]
           ![mValue location]}
         !?ioParsedComponentStruct
-        ?4*
+        ?5*
       )
       context.mImportedOptionComponentList += ![[[mValue string] lastPathComponent] stringByDeletingPathExtension]
     end
@@ -297,25 +297,9 @@ private proc compileGuiComponentGalgas3
   for () in inGUIComponentAST.mImportedOptionList do
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
       !mValue
-      ?4*
-#      ??@bool isPredefined
-#      ??@commandLineOptionMap boolOptionMap
-#      ??@commandLineOptionMap uintOptionMap
-#      ??@commandLineOptionMap stringOptionMap
+      ?5*
     ]
-#    if [[mValue string] pathExtension] != "gOption" then
-#      error mValue: "only an option component (path extension '.gOption') can be imported here" ;
-#    else
-#      parseOptionComponent
-#        ![@lstring new
-#          ![[mValue string] absolutePathFromPath ![[inSourceFile string] stringByDeletingLastPathComponent]]
-#          ![mValue location]
-#        ]
-#        !?ioParsedComponentStruct
-#        ?4*
-#      ;
-      context.mImportedOptionComponentList += !mValue.string
-#    end if ;
+    context.mImportedOptionComponentList += !mValue.string
   end
 #--- Nib and main classes
   for () in inGUIComponentAST.mGlobalSimpleAttributeList do
@@ -335,30 +319,8 @@ private proc compileGuiComponentGalgas3
       ?var @terminalMap terminalMap
       ?2*
     ]
-#    @galgas3LexiqueComponentListAST-element lexiqueComponentRoot ;
-#    if [[mLexiqueFileName string] pathExtension] != "gLexique" then
-#      error mLexiqueFileName:"the file extension for a lexique component should be 'gLexique'" : lexiqueComponentRoot ;
-#    else
-#      @lstring lexiqueFullPathName [new
-#        ![[mLexiqueFileName string] absolutePathFromPath ![[inSourceFile string] stringByDeletingLastPathComponent]]
-#        ![mLexiqueFileName location]
-#      ] ;
-#      parseLexiqueComponent
-#        !lexiqueFullPathName
-#        !?ioParsedComponentStruct
-#        ?lexiqueComponentRoot
-#      ;
-#    end if ;
   #--- Build terminal symbol set
     let terminalSymbolSet = [terminalMap keySet]
-#    foreach [lexiqueComponentRoot mTerminalDeclarationList] do
-#      terminalSymbolSet += ![mName string] ;
-#    end foreach ;
-#    foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
-#      foreach mEntryList do
-#        terminalSymbolSet += ![mTerminalSpelling string] ;
-#      end foreach ;
-#    end foreach ;
   #--- Check labels
     for () in mLabels do
       for () in mTerminalList do

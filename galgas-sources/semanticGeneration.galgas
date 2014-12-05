@@ -2586,6 +2586,7 @@ override method @optionComponentForGeneration appendDeclaration1
       !mBoolOptionMap
       !mUIntOptionMap
       !mStringOptionMap
+      !mStringListOptionMap
     ]
   end
 }
@@ -2605,6 +2606,7 @@ override method @optionComponentForGeneration appendSpecificImplementation
       !mBoolOptionMap
       !mUIntOptionMap
       !mStringOptionMap
+      !mStringListOptionMap
     ]
   end
 }
@@ -2643,6 +2645,7 @@ override method @optionComponentForGeneration appendSpecificFiles
         !mBoolOptionMap
         !mUIntOptionMap
         !mStringOptionMap
+        !mStringListOptionMap
       ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # User Zone 3

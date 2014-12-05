@@ -47,6 +47,12 @@ extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOp
 extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_generatePredefinedTypes ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              String List options                                                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+//---------------------------------------------------------------------------------------------------------------------*
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -311,6 +317,7 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLUInt_36__34_Type ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLSInt_36__34_Type ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLDoubleType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mStringListType ;
 
 
 //--------------------------------- Accessors
@@ -343,7 +350,8 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mLSIntType,
                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mLUInt_36__34_Type,
                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mLSInt_36__34_Type,
-                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLDoubleType) ;
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLDoubleType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mStringListType) ;
 
 //-- Start of generic part --*
 
@@ -372,7 +380,8 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
                                                           const class GALGAS_unifiedTypeMap_2D_proxy & inOperand13,
                                                           const class GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
                                                           const class GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand16
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand16,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand17
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -414,6 +423,8 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSInt_36__34_Type (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSIntType (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mStringListType (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mStringType (LOCATION_ARGS) const ;
 
@@ -1334,7 +1345,8 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_
                                                                                   const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                   const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
                                                                                   const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
-                                                                                  const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP
+                                                                                  const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                  const class GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1347,7 +1359,8 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
                                                                                   const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                   const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
                                                                                   const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
-                                                                                  const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP
+                                                                                  const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                  const class GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1360,7 +1373,8 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
                                                                                             const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                             const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
                                                                                             const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
-                                                                                            const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP
+                                                                                            const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                            const class GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
                                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1394,7 +1408,8 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
                                                                                        const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                        const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
                                                                                        const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
-                                                                                       const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP
+                                                                                       const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                       const class GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1407,6 +1422,7 @@ void routine_semanticAnalysisOfOptionComponent (const class GALGAS_optionCompone
                                                 class GALGAS_commandLineOptionMap & outArgument1,
                                                 class GALGAS_commandLineOptionMap & outArgument2,
                                                 class GALGAS_commandLineOptionMap & outArgument3,
+                                                class GALGAS_commandLineOptionMap & outArgument4,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -1422,6 +1438,7 @@ void routine_parseOptionComponent (const class GALGAS_lstring constinArgument0,
                                    class GALGAS_commandLineOptionMap & outArgument3,
                                    class GALGAS_commandLineOptionMap & outArgument4,
                                    class GALGAS_commandLineOptionMap & outArgument5,
+                                   class GALGAS_commandLineOptionMap & outArgument6,
                                    class C_Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
@@ -1436,6 +1453,7 @@ void routine_compileOptionComponentAST (const class GALGAS_string constinArgumen
                                         const class GALGAS_commandLineOptionMap constinArgument2,
                                         const class GALGAS_commandLineOptionMap constinArgument3,
                                         const class GALGAS_commandLineOptionMap constinArgument4,
+                                        const class GALGAS_commandLineOptionMap constinArgument5,
                                         class C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 

@@ -20,7 +20,8 @@
 
 void enterOptions (NSMutableArray * ioBoolOptionArray,
                    NSMutableArray * ioUIntOptionArray,
-                   NSMutableArray * ioStringOptionArray) ;
+                   NSMutableArray * ioStringOptionArray,
+                   NSMutableArray * ioStringListOptionArray) ;
 
 //--- Nibs
 NSArray * nibsAndClasses (void) ;

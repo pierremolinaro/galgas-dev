@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Template semantics analysis                                              *
+#  Template semantics analysis                                                                                         *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -19,7 +19,7 @@
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   T E M P L A T E    A N A L Y S I S    C O N T E X T                     *
+#   T E M P L A T E    A N A L Y S I S    C O N T E X T                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -40,7 +40,7 @@ struct @templateAnalysisContext {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   E X P R E S S I O N                                                        *
+#   E X P R E S S I O N                                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -49,7 +49,7 @@ abstract method @templateExpressionAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   R E A D E R    C A L L    O P E R A N D                                 *
+#   R E A D E R    C A L L    O P E R A N D                                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateReaderCallInExpressionAST templateExpressionAnalysis
@@ -158,7 +158,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   C O N S T R U C T O R                                                   *
+#   C O N S T R U C T O R                                                                                              *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateConstructorAST templateExpressionAnalysis
@@ -227,7 +227,7 @@ override method @templateConstructorAST templateExpressionAnalysis
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H              *
+#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateFileWrapperWithStaticPathAST templateExpressionAnalysis
@@ -237,7 +237,7 @@ override method @templateFileWrapperWithStaticPathAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   F I L E W R A P P E R    T E M P L A T E     C A L L                    *
+#   F I L E W R A P P E R    T E M P L A T E     C A L L                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
@@ -247,7 +247,7 @@ override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   B O O L E A N    O P E R A T I O N S                                    *
+#   B O O L E A N    O P E R A T I O N S                                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateAndOperationAST templateExpressionAnalysis
@@ -514,15 +514,13 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
 override method @templateOptionAccessAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  @commandLineOptionMap boolOptionMap
-  @commandLineOptionMap uintOptionMap
-  @commandLineOptionMap stringOptionMap
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
     ?var @bool optionComponentIsPredefined
-    ?boolOptionMap
-    ?uintOptionMap
-    ?stringOptionMap
+    ?let @commandLineOptionMap boolOptionMap
+    ?let @commandLineOptionMap uintOptionMap
+    ?let @commandLineOptionMap stringOptionMap
+    ?let @commandLineOptionMap stringListOptionMap
   ]
   @bool found = [boolOptionMap hasKey ![mOptionName string]]
   @unifiedTypeMap-proxy returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
@@ -533,6 +531,10 @@ override method @templateOptionAccessAST templateExpressionAnalysis
   if not found then
     found = [stringOptionMap hasKey ![mOptionName string]]
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
+  end
+  if not found then
+    found = [stringListOptionMap hasKey ![mOptionName string]]
+    returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
     if [mReaderName string] == "value" then
@@ -584,7 +586,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   F U N C T I O N    C A L L                                              *
+#   F U N C T I O N    C A L L                                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateFunctionCallAST templateExpressionAnalysis
@@ -630,7 +632,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   T E M P L A T E    C A T E G O R Y                                      *
+#   T E M P L A T E    C A T E G O R Y                                                                                 *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateCategoryTemplateCallAST templateExpressionAnalysis
@@ -642,7 +644,7 @@ override method @templateCategoryTemplateCallAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   S I M P L E    V A R I A B L E                                          *
+#   S I M P L E    V A R I A B L E                                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateVarInExpressionAST templateExpressionAnalysis
@@ -659,7 +661,7 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   A D D I T I O N    O P E R A T I O N                                    *
+#   A D D I T I O N    O P E R A T I O N                                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateAddOperationAST templateExpressionAnalysis
@@ -690,7 +692,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   S U B S T R A C T I O N    O P E R A T I O N                            *
+#   S U B S T R A C T I O N    O P E R A T I O N                                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateSubOperationAST templateExpressionAnalysis
@@ -721,7 +723,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   M U L T I P L I C A T I O N    O P E R A T I O N                        *
+#   M U L T I P L I C A T I O N    O P E R A T I O N                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateMultiplyOperationAST templateExpressionAnalysis
@@ -752,7 +754,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   D I V I S I O N    O P E R A T I O N                                    *
+#   D I V I S I O N    O P E R A T I O N                                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateDivideOperationAST templateExpressionAnalysis
@@ -783,7 +785,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   M O D U L O    O P E R A T I O N                                        *
+#   M O D U L O    O P E R A T I O N                                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateModuloOperationAST templateExpressionAnalysis
@@ -814,7 +816,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   U N A R Y   -    O P E R A T I O N                                      *
+#   U N A R Y   -    O P E R A T I O N                                                                                 *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateUnaryMinusOperationAST templateExpressionAnalysis
@@ -839,7 +841,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   S T R U C T    F I E L D    A C C E S S    O P E R A T I O N            *
+#   S T R U C T    F I E L D    A C C E S S    O P E R A T I O N                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
@@ -870,7 +872,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#  ==    O P E R A T I O N                                                  *
+#  ==    O P E R A T I O N                                                                                             *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateEqualTestAST templateExpressionAnalysis
@@ -1135,7 +1137,7 @@ override method @templateClassToTypeOperandAST  templateExpressionAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    I N S T R U C T I O N S                                                *
+#    I N S T R U C T I O N S                                                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

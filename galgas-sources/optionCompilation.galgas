@@ -1,6 +1,7 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
+#                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
@@ -12,10 +13,17 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
+map @commandLineOptionMap { # the key is the option identifier
+  @char mOptionChar
+  @string mOptionString
+  @string mComment
+  @string mDefaultValue
+  insert insertKey error message "the '%K' command line option has been already declared in %L"
+  search searchKey error message "the '%K' command line option is not declared"
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
-#         G E N E R A T I O N    T E M P L A T E S                          *
+#         G E N E R A T I O N    T E M P L A T E S                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
@@ -23,46 +31,58 @@ filewrapper optionGenerationTemplates in "../generation_templates/option_generat
 }{
   template optionHeaderZone2 "option-header-zone2.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
+
   template optionHeaderZone3 "option-header-zone3.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP
     ?@commandLineOptionMap UINT_OPTION_MAP
     ?@commandLineOptionMap STRING_OPTION_MAP
+    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
+
   template optionImplementation "option-implementation.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP
     ?@commandLineOptionMap UINT_OPTION_MAP
     ?@commandLineOptionMap STRING_OPTION_MAP
+    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
+
   template optionImplementationGalgas3 "option-implementation-galgas3.cpp.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP
     ?@commandLineOptionMap UINT_OPTION_MAP
     ?@commandLineOptionMap STRING_OPTION_MAP
+    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
+
   template optionHeaderCocoaZone2 "option-header-cocoa-zone2.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
+
   template optionHeaderCocoaZone3 "option-header-cocoa-zone3.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
+
   template optionImplementationCocoa "option-implementation-cocoa.galgasTemplate"
     ?@string OPTION_HEADER_FILE_NAME
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP
     ?@commandLineOptionMap UINT_OPTION_MAP
     ?@commandLineOptionMap STRING_OPTION_MAP
+    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                  semanticAnalysisOfOptionComponent                        *
+#                  semanticAnalysisOfOptionComponent                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc semanticAnalysisOfOptionComponent
   ?let @optionComponentAST inOptionComponentRoot
   !@commandLineOptionMap outBoolOptionMap
   !@commandLineOptionMap outUIntOptionMap
-  !@commandLineOptionMap outStringOptionMap {
-  outBoolOptionMap = @commandLineOptionMap. emptyMap
-  outUIntOptionMap = @commandLineOptionMap. emptyMap
-  outStringOptionMap = @commandLineOptionMap. emptyMap
-  var optionNameSet =@stringset.emptySet{}
+  !@commandLineOptionMap outStringOptionMap
+  !@commandLineOptionMap outStringListOptionMap {
+  outBoolOptionMap = {}
+  outUIntOptionMap = {}
+  outStringOptionMap = {}
+  outStringListOptionMap = {}
+  var optionNameSet = @stringset.emptySet
   for () in [inOptionComponentRoot mOptions] do
     if [optionNameSet hasKey ![mOptionInternalName string]] then
       error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared"
@@ -99,15 +119,26 @@ proc semanticAnalysisOfOptionComponent
       if mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
         error mOptionDefaultValue:"an @string option default value cannot be an @uint value"      
       end
+    elsif [mOptionTypeName string] == "stringlist" then
+      [!?outStringListOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        ![mOptionDefaultValue string]
+      ]
+      if mOptionDefaultValueKind != .noDefaultValue then
+        error mOptionDefaultValue:"an @stringlist option cannot accept default value"      
+      end
     else
-      error mOptionTypeName: "only the @bool, @uint or @string types are allowed here"
+      error mOptionTypeName: "only the @bool, @uint, @string or @stringlist types are allowed here"
     end
     optionNameSet += ![mOptionInternalName string]
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         parseOptionComponent                              *
+#                         parseOptionComponent                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc parseOptionComponent
@@ -116,10 +147,17 @@ proc parseOptionComponent
   !@lstring outOptionComponentName
   !@commandLineOptionMap outBoolOptionMap
   !@commandLineOptionMap outUIntOptionMap
-  !@commandLineOptionMap outStringOptionMap {
+  !@commandLineOptionMap outStringOptionMap
+  !@commandLineOptionMap outStringListOptionMap {
   outOptionComponentName = @lstring.new {![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]}
   if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [outOptionComponentName string]] then
-    [ioParsedComponentStruct.mParsedOptionComponentMap searchKey !outOptionComponentName ?outBoolOptionMap ?outUIntOptionMap ?outStringOptionMap]
+    [ioParsedComponentStruct.mParsedOptionComponentMap searchKey
+      !outOptionComponentName
+      ?outBoolOptionMap
+      ?outUIntOptionMap
+      ?outStringOptionMap
+      ?outStringListOptionMap
+    ]
   else
     grammar optionLL1grammar in inSourceFile ?var @optionComponentAST optionComponentAST
   #--- Check component name
@@ -143,9 +181,16 @@ proc parseOptionComponent
       ?outBoolOptionMap
       ?outUIntOptionMap
       ?outStringOptionMap
+      ?outStringListOptionMap
     )
   #--- Enter option component in parsed option component map
-    [!?ioParsedComponentStruct.mParsedOptionComponentMap insertKey !outOptionComponentName !outBoolOptionMap !outUIntOptionMap !outStringOptionMap]
+    [!?ioParsedComponentStruct.mParsedOptionComponentMap insertKey
+      !outOptionComponentName
+      !outBoolOptionMap
+      !outUIntOptionMap
+      !outStringOptionMap
+      !outStringListOptionMap
+    ]
   end
 }
 
@@ -156,7 +201,8 @@ proc compileOptionComponentAST
   ?let @lstring inOptionComponentName
   ?let @commandLineOptionMap boolOptionMap
   ?let @commandLineOptionMap uintOptionMap
-  ?let @commandLineOptionMap stringOptionMap {
+  ?let @commandLineOptionMap stringOptionMap
+  ?let @commandLineOptionMap stringListOptionMap {
 #--- Generate header
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
@@ -173,6 +219,7 @@ proc compileOptionComponentAST
         !boolOptionMap
         !uintOptionMap
         !stringOptionMap
+        !stringListOptionMap
       ] + "\n#endif\n"
     ]
   end
@@ -188,6 +235,7 @@ proc compileOptionComponentAST
         !boolOptionMap
         !uintOptionMap
         !stringOptionMap
+        !stringListOptionMap
       ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # User Zone 3
@@ -222,6 +270,7 @@ proc compileOptionComponentAST
         !boolOptionMap
         !uintOptionMap
         !stringOptionMap
+        !stringListOptionMap
       ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # User Zone 3
@@ -236,17 +285,14 @@ proc compileOptionComponentFromSourceFile
   ?let @string inOutputDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct {
 #--- Parse option component
-  @commandLineOptionMap boolOptionMap
-  @commandLineOptionMap uintOptionMap
-  @commandLineOptionMap stringOptionMap
-  @lstring optionComponentName
   parseOptionComponent (
     !inSourceFile
     !?ioParsedComponentStruct
-    ?optionComponentName
-    ?boolOptionMap
-    ?uintOptionMap
-    ?stringOptionMap
+    ?let @lstring optionComponentName
+    ?let @commandLineOptionMap boolOptionMap
+    ?let @commandLineOptionMap uintOptionMap
+    ?let @commandLineOptionMap stringOptionMap
+    ?let @commandLineOptionMap stringListOptionMap
   )
 #---
   compileOptionComponentAST (
@@ -255,6 +301,7 @@ proc compileOptionComponentFromSourceFile
     !boolOptionMap
     !uintOptionMap
     !stringOptionMap
+    !stringListOptionMap
   )
 }
 
