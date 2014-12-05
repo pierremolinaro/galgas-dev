@@ -57,12 +57,10 @@ project (3:0:3) -> "galgas" {
   "galgas-sources/lexiqueCocoaGeneration.galgas"
   "galgas-sources/lexiqueCompilation.galgas"
 
-
 #--- Option Component
   "galgas-sources/optionTypesForAST.galgas"
   "galgas-sources/optionSyntax.galgas"
   "galgas-sources/optionLL1grammar.galgas"
-  "galgas-sources/optionSemantics.galgas"
   "galgas-sources/optionCompilation.galgas"
 
 #--- GUI component

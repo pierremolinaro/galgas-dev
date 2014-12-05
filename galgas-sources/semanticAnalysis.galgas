@@ -1475,6 +1475,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
     ?let @commandLineOptionMap boolOptionMap
     ?let @commandLineOptionMap uintOptionMap
     ?let @commandLineOptionMap stringOptionMap
+    ?let @commandLineOptionMap stringListOptionMap
   ] 
 #---- Enter filewrapper in generated list
   ioSemanticDeclarationListForGeneration +=
@@ -1486,7 +1487,9 @@ override method @optionComponentDeclarationAST semanticAnalysis
       !mOptionComponentName.string
       !boolOptionMap
       !uintOptionMap
-      !stringOptionMap}
+      !stringOptionMap
+      !stringListOptionMap
+    }
     !""
 }
 
@@ -2712,27 +2715,27 @@ override method @lexiqueComponentAST semanticAnalysis
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-func buildPredefinedTypes
-  ?let @semanticContext inSemanticContext
-  ->@predefinedTypes outPredefinedTypes {
-  outPredefinedTypes = @predefinedTypes.new {
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"location" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"bool" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"char" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"string" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"uint" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"sint" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"uint64" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"sint64" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"double" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lbool" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lchar" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lstring" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"luint" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lsint" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"luint64" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lsint64" !@location.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"ldouble" !@location.here}}}
+func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefinedTypes outPredefinedTypes {
+  outPredefinedTypes = .new {
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"location"  !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"bool"       !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"char"       !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"string"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"uint"       !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"sint"       !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"uint64"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"sint64"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"double"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lbool"      !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lchar"      !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lstring"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"luint"      !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lsint"      !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"luint64"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lsint64"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"ldouble"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"stringlist" !.here}}
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -40,5 +40,19 @@ end
   %                                         %![mDefaultValue utf8Representation]%) ;\n\n%
 end
 %//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              String List options                                                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+%for () in STRING_LIST_OPTION_MAP do
+  %C_StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![lkey utf8Representation]%,\n%
+  %                                         %![[mOptionChar uint] string]%,\n%
+  %                                         %![mOptionString utf8Representation]%,\n%
+  %                                         %![mComment utf8Representation]%,\n%
+  %                                         %![mDefaultValue utf8Representation]%) ;\n\n%
+end
+%//---------------------------------------------------------------------------------------------------------------------*
 
 

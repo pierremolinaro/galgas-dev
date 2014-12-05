@@ -176,6 +176,7 @@ map @optionComponentMapForSemanticAnalysis {
   @commandLineOptionMap mBoolOptionMap
   @commandLineOptionMap mUIntOptionMap
   @commandLineOptionMap mStringOptionMap
+  @commandLineOptionMap mStringListOptionMap
   insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
   search searchKey error message "the '%K' option component is not imported"
 }
@@ -2135,11 +2136,13 @@ override method @optionComponentDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
-  @commandLineOptionMap boolOptionMap ={}
-  @commandLineOptionMap uintOptionMap ={}
-  @commandLineOptionMap stringOptionMap ={}
-  var optionNameSet =@stringset.emptySet{}
+  ?!@semanticContext ioSemanticContext
+{
+  @commandLineOptionMap boolOptionMap = {}
+  @commandLineOptionMap uintOptionMap = {}
+  @commandLineOptionMap stringOptionMap = {}
+  @commandLineOptionMap stringListOptionMap = {}
+  var optionNameSet = @stringset.emptySet
   for () in mOptions do
     if [optionNameSet hasKey ![mOptionInternalName string]] then
       error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared"
@@ -2176,6 +2179,17 @@ override method @optionComponentDeclarationAST enterInSemanticContext
       if mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
         error mOptionDefaultValue:"an @string option default value cannot be an @uint value"      
       end
+    elsif [mOptionTypeName string] == "stringlist" then
+      [!?stringListOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        ![mOptionDefaultValue string]
+      ]
+      if mOptionDefaultValueKind != .noDefaultValue then
+        error mOptionDefaultValue:"an @stringlist option cannot accept default value"      
+      end
     else
       error mOptionTypeName: "only the @bool, @uint or @string types are allowed here"
     end
@@ -2188,6 +2202,7 @@ override method @optionComponentDeclarationAST enterInSemanticContext
     !boolOptionMap
     !uintOptionMap
     !stringOptionMap
+    !stringListOptionMap
   ]
 }
 

@@ -15592,26 +15592,28 @@ cMapElement_optionComponentMapForSemanticAnalysis::cMapElement_optionComponentMa
                                                                                                       const GALGAS_bool & in_mIsPredefined,
                                                                                                       const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
                                                                                                       const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                                                                                      const GALGAS_commandLineOptionMap & in_mStringOptionMap
+                                                                                                      const GALGAS_commandLineOptionMap & in_mStringOptionMap,
+                                                                                                      const GALGAS_commandLineOptionMap & in_mStringListOptionMap
                                                                                                       COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mAttribute_mIsPredefined (in_mIsPredefined),
 mAttribute_mBoolOptionMap (in_mBoolOptionMap),
 mAttribute_mUIntOptionMap (in_mUIntOptionMap),
-mAttribute_mStringOptionMap (in_mStringOptionMap) {
+mAttribute_mStringOptionMap (in_mStringOptionMap),
+mAttribute_mStringListOptionMap (in_mStringListOptionMap) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_optionComponentMapForSemanticAnalysis::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mBoolOptionMap.isValid () && mAttribute_mUIntOptionMap.isValid () && mAttribute_mStringOptionMap.isValid () ;
+  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mBoolOptionMap.isValid () && mAttribute_mUIntOptionMap.isValid () && mAttribute_mStringOptionMap.isValid () && mAttribute_mStringListOptionMap.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_optionComponentMapForSemanticAnalysis::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_optionComponentMapForSemanticAnalysis (mAttribute_lkey, mAttribute_mIsPredefined, mAttribute_mBoolOptionMap, mAttribute_mUIntOptionMap, mAttribute_mStringOptionMap COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_optionComponentMapForSemanticAnalysis (mAttribute_lkey, mAttribute_mIsPredefined, mAttribute_mBoolOptionMap, mAttribute_mUIntOptionMap, mAttribute_mStringOptionMap, mAttribute_mStringListOptionMap COMMA_HERE)) ;
   return result ;
 }
 
@@ -15634,6 +15636,10 @@ void cMapElement_optionComponentMapForSemanticAnalysis::description (C_String & 
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mStringOptionMap" ":" ;
   mAttribute_mStringOptionMap.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mStringListOptionMap" ":" ;
+  mAttribute_mStringListOptionMap.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15652,6 +15658,9 @@ typeComparisonResult cMapElement_optionComponentMapForSemanticAnalysis::compare 
   }
   if (kOperandEqual == result) {
     result = mAttribute_mStringOptionMap.objectCompare (operand->mAttribute_mStringOptionMap) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mStringListOptionMap.objectCompare (operand->mAttribute_mStringListOptionMap) ;
   }
   return result ;
 }
@@ -15708,10 +15717,11 @@ void GALGAS_optionComponentMapForSemanticAnalysis::addAssign_operation (const GA
                                                                         const GALGAS_commandLineOptionMap & inArgument1,
                                                                         const GALGAS_commandLineOptionMap & inArgument2,
                                                                         const GALGAS_commandLineOptionMap & inArgument3,
+                                                                        const GALGAS_commandLineOptionMap & inArgument4,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   cMapElement_optionComponentMapForSemanticAnalysis * p = NULL ;
-  macroMyNew (p, cMapElement_optionComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_optionComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -15727,10 +15737,11 @@ void GALGAS_optionComponentMapForSemanticAnalysis::modifier_insertKey (GALGAS_ls
                                                                        GALGAS_commandLineOptionMap inArgument1,
                                                                        GALGAS_commandLineOptionMap inArgument2,
                                                                        GALGAS_commandLineOptionMap inArgument3,
+                                                                       GALGAS_commandLineOptionMap inArgument4,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   cMapElement_optionComponentMapForSemanticAnalysis * p = NULL ;
-  macroMyNew (p, cMapElement_optionComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_optionComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -15750,6 +15761,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis::method_searchKey (GALGAS_lstr
                                                                      GALGAS_commandLineOptionMap & outArgument1,
                                                                      GALGAS_commandLineOptionMap & outArgument2,
                                                                      GALGAS_commandLineOptionMap & outArgument3,
+                                                                     GALGAS_commandLineOptionMap & outArgument4,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) performSearch (inKey,
@@ -15761,12 +15773,14 @@ void GALGAS_optionComponentMapForSemanticAnalysis::method_searchKey (GALGAS_lstr
     outArgument1.drop () ;
     outArgument2.drop () ;
     outArgument3.drop () ;
+    outArgument4.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
     outArgument0 = p->mAttribute_mIsPredefined ;
     outArgument1 = p->mAttribute_mBoolOptionMap ;
     outArgument2 = p->mAttribute_mUIntOptionMap ;
     outArgument3 = p->mAttribute_mStringOptionMap ;
+    outArgument4 = p->mAttribute_mStringListOptionMap ;
   }
 }
 
@@ -15832,6 +15846,21 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentMapForSemanticAnalysis::reader
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_commandLineOptionMap GALGAS_optionComponentMapForSemanticAnalysis::reader_mStringListOptionMapForKey (const GALGAS_string & inKey,
+                                                                                                             C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
+  GALGAS_commandLineOptionMap result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
+    result = p->mAttribute_mStringListOptionMap ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMIsPredefinedForKey (GALGAS_bool inAttributeValue,
                                                                                     GALGAS_string inKey,
                                                                                     C_Compiler * inCompiler
@@ -15888,6 +15917,20 @@ void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMStringOptionMapF
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMStringListOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
+                                                                                           GALGAS_string inKey,
+                                                                                           C_Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
+    p->mAttribute_mStringListOptionMap = inAttributeValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 cMapElement_optionComponentMapForSemanticAnalysis * GALGAS_optionComponentMapForSemanticAnalysis::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                                                      const GALGAS_string & inKey
                                                                                                                                      COMMA_LOCATION_ARGS) {
@@ -15909,7 +15952,7 @@ cGenericAbstractEnumerator () {
 GALGAS_optionComponentMapForSemanticAnalysis_2D_element cEnumerator_optionComponentMapForSemanticAnalysis::current (LOCATION_ARGS) const {
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-  return GALGAS_optionComponentMapForSemanticAnalysis_2D_element (p->mAttribute_lkey, p->mAttribute_mIsPredefined, p->mAttribute_mBoolOptionMap, p->mAttribute_mUIntOptionMap, p->mAttribute_mStringOptionMap) ;
+  return GALGAS_optionComponentMapForSemanticAnalysis_2D_element (p->mAttribute_lkey, p->mAttribute_mIsPredefined, p->mAttribute_mBoolOptionMap, p->mAttribute_mUIntOptionMap, p->mAttribute_mStringOptionMap, p->mAttribute_mStringListOptionMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15950,6 +15993,14 @@ GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::c
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
   return p->mAttribute_mStringOptionMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::current_mStringListOptionMap (LOCATION_ARGS) const {
+  const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
+  return p->mAttribute_mStringListOptionMap ;
 }
 
 

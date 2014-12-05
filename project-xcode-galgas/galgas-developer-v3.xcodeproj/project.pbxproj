@@ -182,6 +182,8 @@
 		CF8224D21937A7B500942F69 /* C_RelationConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8224CF1937A7B500942F69 /* C_RelationConfiguration.cpp */; };
 		CF82F11210BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */; };
 		CF82F11310BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */; };
+		CF873F6A1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF873F681A32333C0014C45A /* C_StringListCommandLineOption.cpp */; };
+		CF873F6B1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF873F681A32333C0014C45A /* C_StringListCommandLineOption.cpp */; };
 		CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
 		CF92AD0612578D3F003F16F7 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
 		CF92AD0712578D40003F16F7 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
@@ -541,6 +543,8 @@
 		CF825A7908536B780077AEAF /* TF_Swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TF_Swap.h; sourceTree = "<group>"; };
 		CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_CommandLineOption.cpp; sourceTree = "<group>"; };
 		CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_CommandLineOption.h; sourceTree = "<group>"; };
+		CF873F681A32333C0014C45A /* C_StringListCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_StringListCommandLineOption.cpp; sourceTree = "<group>"; };
+		CF873F691A32333C0014C45A /* C_StringListCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_StringListCommandLineOption.h; sourceTree = "<group>"; };
 		CF8A320F1278D21600E3EDC9 /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_Compiler.h; sourceTree = "<group>"; };
 		CF8A32101278D21600E3EDC9 /* C_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_Lexique.h; sourceTree = "<group>"; };
 		CF8A32111278D21600E3EDC9 /* cProductionNameDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cProductionNameDescriptor.h; sourceTree = "<group>"; };
@@ -1024,20 +1028,22 @@
 		CF31E0ED0598DF5400814123 /* command_line_interface */ = {
 			isa = PBXGroup;
 			children = (
-				CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */,
-				CF82599B08536A5B0077AEAF /* F_mainForLIBPM.h */,
-				CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */,
-				CF9F4E14092A70FF0055C8C3 /* C_builtin_CLI_Options.h */,
-				CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */,
-				CF82599908536A5B0077AEAF /* F_Analyze_CLI_Options.h */,
-				CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */,
-				CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */,
 				CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */,
 				CF074BC21000BB6E00F45986 /* C_BoolCommandLineOption.h */,
-				CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */,
-				CF074C2D1000E29F00F45986 /* C_UIntCommandLineOption.h */,
+				CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */,
+				CF9F4E14092A70FF0055C8C3 /* C_builtin_CLI_Options.h */,
+				CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */,
+				CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */,
 				CF074C9B1000EFF500F45986 /* C_StringCommandLineOption.cpp */,
 				CF074C9A1000EFF500F45986 /* C_StringCommandLineOption.h */,
+				CF873F681A32333C0014C45A /* C_StringListCommandLineOption.cpp */,
+				CF873F691A32333C0014C45A /* C_StringListCommandLineOption.h */,
+				CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */,
+				CF074C2D1000E29F00F45986 /* C_UIntCommandLineOption.h */,
+				CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */,
+				CF82599908536A5B0077AEAF /* F_Analyze_CLI_Options.h */,
+				CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */,
+				CF82599B08536A5B0077AEAF /* F_mainForLIBPM.h */,
 			);
 			path = command_line_interface;
 			sourceTree = "<group>";
@@ -1800,6 +1806,7 @@
 				CF6DF17009E3F23700506859 /* C_DateTime.cpp in Sources */,
 				CFB02C8419F3FC2F0011D03D /* all-declarations-24.cpp in Sources */,
 				CF6DF17109E3F23700506859 /* C_Timer.cpp in Sources */,
+				CF873F6A1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */,
 				CF6DF17409E3F23700506859 /* F_DisplayException.cpp in Sources */,
 				CF6DF17509E3F23700506859 /* F_GetPrime.cpp in Sources */,
 				CF6DF17609E3F23700506859 /* MF_Assert.cpp in Sources */,
@@ -1938,6 +1945,7 @@
 				CF6DF1EA09E3F30400506859 /* C_DateTime.cpp in Sources */,
 				CFB02C8519F3FC2F0011D03D /* all-declarations-24.cpp in Sources */,
 				CF6DF1EB09E3F30400506859 /* C_Timer.cpp in Sources */,
+				CF873F6B1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */,
 				CF6DF1EE09E3F30400506859 /* F_DisplayException.cpp in Sources */,
 				CF6DF1EF09E3F30400506859 /* F_GetPrime.cpp in Sources */,
 				CF6DF1F009E3F30400506859 /* MF_Assert.cpp in Sources */,

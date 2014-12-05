@@ -27,4 +27,13 @@ end
   %extern C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ;\n\n%
 end
 %//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              String List options                                                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+%for () in STRING_LIST_OPTION_MAP do
+  %extern C_StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ;\n\n%
+end
+%//---------------------------------------------------------------------------------------------------------------------*
 

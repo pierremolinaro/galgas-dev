@@ -1389,7 +1389,8 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
                                                                        const class GALGAS_string & inOperand3,
                                                                        const class GALGAS_commandLineOptionMap & inOperand4,
                                                                        const class GALGAS_commandLineOptionMap & inOperand5,
-                                                                       const class GALGAS_commandLineOptionMap & inOperand6
+                                                                       const class GALGAS_commandLineOptionMap & inOperand6,
+                                                                       const class GALGAS_commandLineOptionMap & inOperand7
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1406,6 +1407,8 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsPredefined (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mOptionComponentName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionMap reader_mStringListOptionMap (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionMap reader_mStringOptionMap (LOCATION_ARGS) const ;
 
@@ -1435,6 +1438,7 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   public : GALGAS_commandLineOptionMap mAttribute_mBoolOptionMap ;
   public : GALGAS_commandLineOptionMap mAttribute_mUIntOptionMap ;
   public : GALGAS_commandLineOptionMap mAttribute_mStringOptionMap ;
+  public : GALGAS_commandLineOptionMap mAttribute_mStringListOptionMap ;
 
 //--- Constructor
   public : cPtr_optionComponentForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -1443,7 +1447,8 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
                                               const GALGAS_string & in_mOptionComponentName,
                                               const GALGAS_commandLineOptionMap & in_mBoolOptionMap,
                                               const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
-                                              const GALGAS_commandLineOptionMap & in_mStringOptionMap
+                                              const GALGAS_commandLineOptionMap & in_mStringOptionMap,
+                                              const GALGAS_commandLineOptionMap & in_mStringListOptionMap
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1455,6 +1460,7 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mBoolOptionMap (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mUIntOptionMap (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mStringOptionMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mStringListOptionMap (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

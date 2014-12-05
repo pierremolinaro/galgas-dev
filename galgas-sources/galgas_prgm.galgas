@@ -330,20 +330,19 @@ indexing with projectLL1grammar
           [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*]
         end
       #--- Semantic Analysis of option component
-        @commandLineOptionMap boolOptionMap
-        @commandLineOptionMap UIntOptionMap
-        @commandLineOptionMap stringOptionMap
         semanticAnalysisOfOptionComponent (
           !optionComponentAST
-          ?boolOptionMap
-          ?UIntOptionMap
-          ?stringOptionMap
+          ?let @commandLineOptionMap boolOptionMap
+          ?let @commandLineOptionMap UIntOptionMap
+          ?let @commandLineOptionMap stringOptionMap
+          ?let @commandLineOptionMap stringListOptionMap
         )
         [!?parsedComponentStruct.mParsedOptionComponentMap insertKey
           !componentName
           !boolOptionMap
           !UIntOptionMap
           !stringOptionMap
+          !stringListOptionMap
         ]
       else
         error mFilePath:"extension of an option component should be '.gOption'."
@@ -455,6 +454,7 @@ indexing with projectLL1grammar
         !mBoolOptionMap
         !mUIntOptionMap
         !mStringOptionMap
+        !mStringListOptionMap
       )
     end
   #--- Semantic components

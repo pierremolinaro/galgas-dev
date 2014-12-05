@@ -203,17 +203,14 @@ proc buildOptionComponentMapForSemanticAnalysis
   ?!@parsedComponentStruct ioParsedComponentStruct
   ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis {
   for () in inOptionComponentFileNameList do
-    @lstring optionComponentName
-    @commandLineOptionMap boolOptionMap
-    @commandLineOptionMap uintOptionMap
-    @commandLineOptionMap stringOptionMap
     parseOptionComponent (
       !mValue
       !?ioParsedComponentStruct
-      ?optionComponentName
-      ?boolOptionMap
-      ?uintOptionMap
-      ?stringOptionMap
+      ?let @lstring optionComponentName
+      ?let @commandLineOptionMap boolOptionMap
+      ?let @commandLineOptionMap uintOptionMap
+      ?let @commandLineOptionMap stringOptionMap
+      ?let @commandLineOptionMap stringListOptionMap
     )
     [!?ioOptionComponentMapForSemanticAnalysis insertKey
       !optionComponentName
@@ -221,6 +218,7 @@ proc buildOptionComponentMapForSemanticAnalysis
       !boolOptionMap
       !uintOptionMap
       !stringOptionMap
+      !stringListOptionMap
     ]
   end
 #--- Add predefined option component
@@ -267,6 +265,7 @@ proc buildOptionComponentMapForSemanticAnalysis
       !boolOptionMap
       !uintOptionMap
       !stringOptionMap
+      !{}
     ]
   end
 }
