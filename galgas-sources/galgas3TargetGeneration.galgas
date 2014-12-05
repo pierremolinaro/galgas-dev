@@ -803,7 +803,9 @@ proc updateGalgas3Targets
         !"C_UIntCommandLineOption.cpp",
         !"C_UIntCommandLineOption.h",
         !"C_StringCommandLineOption.cpp",
-        !"C_StringCommandLineOption.h"
+        !"C_StringCommandLineOption.h",
+        !"C_StringListCommandLineOption.cpp",
+        !"C_StringListCommandLineOption.h"
       }
       !?cppFileRefs:buildFileRefListForTool
       !?mFileRefs:m_FileRefList

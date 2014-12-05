@@ -296,6 +296,7 @@ proc build_LIBPM_COMMAND_LINE_INTERFACE_group
   append_cpp_h_files ( !?fileList !"C_BoolCommandLineOption" )
   append_cpp_h_files ( !?fileList !"C_UIntCommandLineOption" )
   append_cpp_h_files ( !?fileList !"C_StringCommandLineOption" )
+  append_cpp_h_files ( !?fileList !"C_StringListCommandLineOption" )
   append_cpp_h_files ( !?fileList !"C_builtin_CLI_Options" )
   append_cpp_h_files ( !?fileList !"F_Analyze_CLI_Options" )
   append_cpp_h_files ( !?fileList !"F_mainForLIBPM" )
@@ -318,6 +319,7 @@ proc build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
   fileList += !"C_BoolCommandLineOption.cpp"
   fileList += !"C_UIntCommandLineOption.cpp"
   fileList += !"C_StringCommandLineOption.cpp"
+  fileList += !"C_StringListCommandLineOption.cpp"
   fileList += !"F_Analyze_CLI_Options.cpp"
   fileList += !"F_mainForLIBPM.cpp"
 #---
