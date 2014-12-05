@@ -52,8 +52,7 @@ end
   %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
   %                                         %![mOptionString utf8Representation]%,\n%
-  %                                         %![mComment utf8Representation]%,\n%
-  %                                         %![mDefaultValue utf8Representation]%) ;\n\n%
+  %                                         %![mComment utf8Representation]%) ;\n\n%
 end
 %//---------------------------------------------------------------------------------------------------------------------*
 
