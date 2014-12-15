@@ -73,6 +73,8 @@
 		CF337C9911C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
 		CF337CB311C3FAAF007E7736 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
 		CF337CB411C3FAAF007E7736 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
+		CF342F281A3F8B2100C3E510 /* C_StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF342F261A3F8B2100C3E510 /* C_StringListCommandLineOption.cpp */; };
+		CF342F291A3F8B2100C3E510 /* C_StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF342F261A3F8B2100C3E510 /* C_StringListCommandLineOption.cpp */; };
 		CF3CFB2E0FEBEA6C00CE4488 /* PMFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */; };
 		CF3D9FCC1257733E0037D473 /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */; };
 		CF3D9FCD1257733E0037D473 /* capSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC31257733E0037D473 /* capSortedListElement.cpp */; };
@@ -400,6 +402,8 @@
 		CF337C9711C3F8C7007E7736 /* capCollectionElementArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capCollectionElementArray.h; sourceTree = "<group>"; };
 		CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cCollectionElement.cpp; sourceTree = "<group>"; };
 		CF337CB211C3FAAF007E7736 /* cCollectionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCollectionElement.h; sourceTree = "<group>"; };
+		CF342F261A3F8B2100C3E510 /* C_StringListCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_StringListCommandLineOption.cpp; sourceTree = "<group>"; };
+		CF342F271A3F8B2100C3E510 /* C_StringListCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_StringListCommandLineOption.h; sourceTree = "<group>"; };
 		CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFontButton.h; sourceTree = "<group>"; };
 		CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFontButton.m; sourceTree = "<group>"; };
 		CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = capCollectionElement.cpp; sourceTree = "<group>"; };
@@ -882,20 +886,22 @@
 		CF31E0ED0598DF5400814123 /* command_line_interface */ = {
 			isa = PBXGroup;
 			children = (
-				CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */,
-				CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */,
-				CF9F4E14092A70FF0055C8C3 /* C_builtin_CLI_Options.h */,
-				CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */,
-				CF82599908536A5B0077AEAF /* F_Analyze_CLI_Options.h */,
-				CF82599B08536A5B0077AEAF /* F_mainForLIBPM.h */,
-				CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */,
-				CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */,
 				CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */,
 				CF074BC21000BB6E00F45986 /* C_BoolCommandLineOption.h */,
-				CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */,
-				CF074C2D1000E29F00F45986 /* C_UIntCommandLineOption.h */,
+				CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */,
+				CF9F4E14092A70FF0055C8C3 /* C_builtin_CLI_Options.h */,
+				CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */,
+				CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */,
 				CF074C9B1000EFF500F45986 /* C_StringCommandLineOption.cpp */,
 				CF074C9A1000EFF500F45986 /* C_StringCommandLineOption.h */,
+				CF342F261A3F8B2100C3E510 /* C_StringListCommandLineOption.cpp */,
+				CF342F271A3F8B2100C3E510 /* C_StringListCommandLineOption.h */,
+				CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */,
+				CF074C2D1000E29F00F45986 /* C_UIntCommandLineOption.h */,
+				CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */,
+				CF82599908536A5B0077AEAF /* F_Analyze_CLI_Options.h */,
+				CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */,
+				CF82599B08536A5B0077AEAF /* F_mainForLIBPM.h */,
 			);
 			path = command_line_interface;
 			sourceTree = "<group>";
@@ -1569,9 +1575,9 @@
 			productReference = 8D15AC370486D014006FF6A4 /* cocoaGalgas.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8DD76F620486A84900D96B5E /* GALGAS tool LL1 */ = {
+		8DD76F620486A84900D96B5E /* GALGAS tool */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CF0DA68F085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool LL1" */;
+			buildConfigurationList = CF0DA68F085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool" */;
 			buildPhases = (
 				8DD76F640486A84900D96B5E /* Sources */,
 			);
@@ -1579,15 +1585,15 @@
 			);
 			dependencies = (
 			);
-			name = "GALGAS tool LL1";
+			name = "GALGAS tool";
 			productInstallPath = "$(HOME)/bin";
 			productName = galgas;
 			productReference = CFF98D73058CCD4700176BCE /* galgas */;
 			productType = "com.apple.product-type.tool";
 		};
-		CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 Debug */ = {
+		CF7A1402058CEFE2007126C1 /* GALGAS tool Debug */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CF0DA692085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool LL1 Debug" */;
+			buildConfigurationList = CF0DA692085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool Debug" */;
 			buildPhases = (
 				CF7A1401058CEFE2007126C1 /* Sources */,
 			);
@@ -1595,7 +1601,7 @@
 			);
 			dependencies = (
 			);
-			name = "GALGAS tool LL1 Debug";
+			name = "GALGAS tool Debug";
 			productName = galgasDebug;
 			productReference = CF7A1403058CEFE2007126C1 /* galgas-debug */;
 			productType = "com.apple.product-type.tool";
@@ -1624,8 +1630,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DD76F620486A84900D96B5E /* GALGAS tool LL1 */,
-				CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 Debug */,
+				8DD76F620486A84900D96B5E /* GALGAS tool */,
+				CF7A1402058CEFE2007126C1 /* GALGAS tool Debug */,
 				8D15AC270486D014006FF6A4 /* GALGAS Cocoa */,
 			);
 		};
@@ -1825,6 +1831,7 @@
 				CF759A3D19F3FE90007E49A1 /* all-declarations-23.cpp in Sources */,
 				CF759A3F19F3FE90007E49A1 /* all-declarations-24.cpp in Sources */,
 				CF5DDE931A06B6CF0003F6F4 /* all-declarations-25.cpp in Sources */,
+				CF342F281A3F8B2100C3E510 /* C_StringListCommandLineOption.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1962,6 +1969,7 @@
 				CF759A3E19F3FE90007E49A1 /* all-declarations-23.cpp in Sources */,
 				CF759A4019F3FE90007E49A1 /* all-declarations-24.cpp in Sources */,
 				CF5DDE941A06B6CF0003F6F4 /* all-declarations-25.cpp in Sources */,
+				CF342F291A3F8B2100C3E510 /* C_StringListCommandLineOption.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1970,12 +1978,12 @@
 /* Begin PBXTargetDependency section */
 		CF3780780AE93C5400D69EDB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DD76F620486A84900D96B5E /* GALGAS tool LL1 */;
+			target = 8DD76F620486A84900D96B5E /* GALGAS tool */;
 			targetProxy = CF3780770AE93C5400D69EDB /* PBXContainerItemProxy */;
 		};
 		CF37807A0AE93C5400D69EDB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 Debug */;
+			target = CF7A1402058CEFE2007126C1 /* GALGAS tool Debug */;
 			targetProxy = CF3780790AE93C5400D69EDB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2138,7 +2146,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CF0DA68F085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool LL1" */ = {
+		CF0DA68F085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF0DA691085630E800F38E67 /* Default */,
@@ -2146,7 +2154,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		CF0DA692085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool LL1 Debug" */ = {
+		CF0DA692085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool Debug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF0DA694085630E800F38E67 /* Default */,
