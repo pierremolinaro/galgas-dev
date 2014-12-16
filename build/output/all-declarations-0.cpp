@@ -54,7 +54,7 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_5F_scanner::indexingDirectory (void) const {
-  return "GALGAS_INDEXES" ;
+  return "../build/indexes" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
