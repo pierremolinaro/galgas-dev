@@ -50,7 +50,7 @@ GALGAS_DEBUG_TOOL=${DIR}/galgas/project-xcode-galgas/build/Default/galgas-debug 
 CREATE_PROJECT_TEST_DIR=${DIR}/galgas/TEST_GALGAS &&
 PROJECT_NAME=TEST &&
 echo "---------------- CREATE PROJECT --------------------------" &&
-cd ${DIR} && ${GALGAS_DEBUG_TOOL} --note-file-access --create-project=${CREATE_PROJECT_TEST_DIR} &&
+cd ${DIR} && ${GALGAS_DEBUG_TOOL} --create-project=${CREATE_PROJECT_TEST_DIR} &&
 echo "---------------- GALGAS COMPILE --------------------------" &&
 ${GALGAS_DEBUG_TOOL} -v --Werror ${CREATE_PROJECT_TEST_DIR}/+${PROJECT_NAME}.galgasProject &&
 echo "---------------- XCODE BUILD --------------------------" &&
