@@ -8,6 +8,8 @@ rm -fr ${TEMP_DIR} &&
 mkdir ${TEMP_DIR} &&
 #-------------------- Importer galgas
 svn export https://galgas.rts-software.org/svn/ ${TEMP_DIR}/galgas | grep "Exported revision" | awk '{ print $3; }' | sed "s/\.//g" > ${TEMP_DIR}/version-repository.txt &&
+#-------------------- Supprimer le script de distribution
+rm ${TEMP_DIR}/galgas/-distribuer-galgas.command &&
 #-------------------- Obtenir l'annŽe
 ANNEE=`date | awk '{ print $4 ; }'`
 #-------------------- Obtenir le numŽro de version GALGAS
@@ -41,6 +43,36 @@ eolc -unix -D${DIR}/galgas -Eh -Ec -Ecpp -Em -Emm -Epy -Ebat -Emke -Fmakefile &&
 cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-lf.tar.bz2 &&
 eolc -dos -D${DIR}/galgas -Eh -Ec -Ecpp -Em -Emm -Epy -Ebat -Emke -Fmakefile &&
 cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-crlf.tar.bz2 &&
+#-------------------- Recompiler le projet Xcode
+cd ${DIR}/galgas/project-xcode-galgas && xcodebuild -project galgas-distribution.xcodeproj -target "GALGAS Cocoa" -configuration Default &&
+#-------------------- VŽrifier la crŽation de projet
+GALGAS_DEBUG_TOOL=${DIR}/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app &&
+CREATE_PROJECT_TEST_DIR=${DIR}/galgas/TEST_GALGAS &&
+PROJECT_NAME=TEST &&
+echo "---------------- CREATE PROJECT --------------------------" &&
+cd ${DIR} && ${GALGAS_DEBUG_TOOL} --note-file-access --create-project=${CREATE_PROJECT_TEST_DIR} &&
+echo "---------------- GALGAS COMPILE --------------------------" &&
+${GALGAS_DEBUG_TOOL} -v --Werror ${CREATE_PROJECT_TEST_DIR}/+${PROJECT_NAME}.galgasProject &&
+echo "---------------- XCODE BUILD --------------------------" &&
+cd ${CREATE_PROJECT_TEST_DIR}/xcode-project && xcodebuild -alltargets &&
+echo "---------------- MAKE i386 Linux --------------------------" &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-x86linux32-on-macosx && python ./build.py &&
+echo "---------------- MAKE x86_64 Linux --------------------------" &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-x86linux64-on-macosx && python ./build.py &&
+echo "---------------- MAKE Unix --------------------------" &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-unix && python ./build.py &&
+echo "---------------- MAKE win32 --------------------------" &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-win32-on-macosx && python ./build.py &&
+echo "---------------- MAKE --------------------------" &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-macosx && python ./build.py &&
+echo "---------------- EXECUTE NORMAL --------------------------" &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-macosx && ./${PROJECT_NAME} --help &&
+echo "---------------- EXECUTE DEBUG --------------------------" &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-macosx && ./${PROJECT_NAME}-debug --help &&
+echo "---------------- REMOVE PROJECT --------------------------" &&
+cd ${DIR} &&
+rm -fr ${CREATE_PROJECT_TEST_DIR} &&
+echo "---------------- SUCCES --------------------------"
 #-------------------- Construire la documentation Latex
 sed "s/GALGASCURRENTVERSION/${VERSION_GALGAS}/g" ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex > ${DIR}/temp &&
 cp ${DIR}/temp ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex &&
@@ -67,8 +99,6 @@ bzip2 -9 ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug &&
 cp ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug.bz2 ${DIR}/galgas-debug-x86-linux64.bz2 &&
 #-------------------- Copier changeLog
 mv ${DIR}/galgas/changeLog.html ${DIR}/changeLog.html &&
-#-------------------- Recompiler GALGAS ˆ partir de la ligne de commande
-cd ${DIR}/galgas/project-xcode-galgas && xcodebuild -project galgas-distribution.xcodeproj -target "GALGAS Cocoa" -configuration Default &&
 #-------------------- Creer l'archive BZ2 de cocoa galgas
 cp -r ${DIR}/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app ${DIR} &&
 cd ${DIR} && tar cv cocoaGalgas.app | bzip2 -9 > cocoaGalgas.app.tar.bz2 &&
