@@ -46,7 +46,7 @@ cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-crlf.tar.bz2 &&
 #-------------------- Recompiler le projet Xcode
 cd ${DIR}/galgas/project-xcode-galgas && xcodebuild -project galgas-distribution.xcodeproj -target "GALGAS Cocoa" -configuration Default &&
 #-------------------- Vérifier la création de projet
-GALGAS_DEBUG_TOOL=${DIR}/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app &&
+GALGAS_DEBUG_TOOL=${DIR}/galgas/project-xcode-galgas/build/Default/galgas-debug &&
 CREATE_PROJECT_TEST_DIR=${DIR}/galgas/TEST_GALGAS &&
 PROJECT_NAME=TEST &&
 echo "---------------- CREATE PROJECT --------------------------" &&
