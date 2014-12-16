@@ -88,7 +88,7 @@ gOption_galgas_5F_builtin_5F_options_max_5F_errors ("galgas_cli_options",
                                                 '\0',
                                                 "max-errors",
                                                 "Stop after the given number of errors has been reached",
-                                                10000) ;
+                                                100) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -98,7 +98,7 @@ gOption_galgas_5F_builtin_5F_options_max_5F_warnings ("galgas_cli_options",
                                                 '\0',
                                                 "max-warnings",
                                                 "Stop after the given number of warnings has been reached",
-                                                10000) ;
+                                                100) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -4935,7 +4935,7 @@ void routine_semanticAnalysisOfOptionComponent (const GALGAS_optionComponentAST 
         }
       }
     }
-    var_optionNameSet.addAssign_operation (enumerator_4844.current_mOptionInternalName (HERE).reader_string (SOURCE_FILE ("optionCompilation.galgas", 136))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 136)) ;
+    var_optionNameSet.addAssign_operation (enumerator_4844.current_mOptionInternalName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("optionCompilation.galgas", 136)) ;
     enumerator_4844.gotoNextObject () ;
   }
 }
@@ -4968,8 +4968,8 @@ void routine_parseOptionComponent (const GALGAS_lstring constinArgument_inSource
   }else if (kBoolFalse == test_0) {
     GALGAS_optionComponentAST var_optionComponentAST ;
     var_optionComponentAST.drop () ;
-    C_String syntaxDirectedTranslationResult_8307 ;
-    cGrammar_optionLL_31_grammar::_performSourceFileParsing_ (inCompiler, syntaxDirectedTranslationResult_8307, constinArgument_inSourceFile, var_optionComponentAST  COMMA_SOURCE_FILE ("optionCompilation.galgas", 162)) ;
+    C_String syntaxDirectedTranslationResult_8303 ;
+    cGrammar_optionLL_31_grammar::_performSourceFileParsing_ (inCompiler, syntaxDirectedTranslationResult_8303, constinArgument_inSourceFile, var_optionComponentAST  COMMA_SOURCE_FILE ("optionCompilation.galgas", 162)) ;
     GALGAS_lstring var_componentName = var_optionComponentAST.reader_mOptionComponentName (SOURCE_FILE ("optionCompilation.galgas", 164)) ;
     GALGAS_string var_basename = constinArgument_inSourceFile.reader_string (SOURCE_FILE ("optionCompilation.galgas", 165)).reader_lastPathComponent (SOURCE_FILE ("optionCompilation.galgas", 165)).reader_stringByDeletingPathExtension (SOURCE_FILE ("optionCompilation.galgas", 165)) ;
     const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_componentName.reader_string (SOURCE_FILE ("optionCompilation.galgas", 166)).objectCompare (var_basename)).boolEnum () ;

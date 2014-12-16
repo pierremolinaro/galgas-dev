@@ -134,6 +134,17 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioUIntOptionArray addObject:option] ;
+  
+
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"mode"
+    commandChar:'\0'
+    commandString:@"mode"
+    comment:@"Mode: empty, 'lexical-only' or 'syntax-only'"
+    defaultValue:@""
+  ] ;
+  [ioStringOptionArray addObject:option] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
