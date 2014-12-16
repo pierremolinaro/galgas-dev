@@ -47,12 +47,12 @@ cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-crlf.tar.bz2 &&
 cd ${DIR}/galgas/project-xcode-galgas && xcodebuild -project galgas-distribution.xcodeproj -target "GALGAS Cocoa" -configuration Default &&
 #-------------------- Vérifier la création de projet
 GALGAS_DEBUG_TOOL=${DIR}/galgas/project-xcode-galgas/build/Default/galgas-debug &&
-CREATE_PROJECT_TEST_DIR=${DIR}/galgas/TEST_GALGAS &&
-PROJECT_NAME=TEST &&
+TEST_PROJECT_NAME=TEST &&
+CREATE_PROJECT_TEST_DIR=${DIR}/galgas/${TEST_PROJECT_NAME} &&
 echo "---------------- CREATE PROJECT --------------------------" &&
 cd ${DIR} && ${GALGAS_DEBUG_TOOL} --create-project=${CREATE_PROJECT_TEST_DIR} &&
 echo "---------------- GALGAS COMPILE --------------------------" &&
-${GALGAS_DEBUG_TOOL} -v --Werror ${CREATE_PROJECT_TEST_DIR}/+${PROJECT_NAME}.galgasProject &&
+${GALGAS_DEBUG_TOOL} -v --Werror ${CREATE_PROJECT_TEST_DIR}/+${TEST_PROJECT_NAME}.galgasProject &&
 echo "---------------- XCODE BUILD --------------------------" &&
 cd ${CREATE_PROJECT_TEST_DIR}/xcode-project && xcodebuild -alltargets &&
 echo "---------------- MAKE i386 Linux --------------------------" &&
@@ -66,9 +66,9 @@ cd ${CREATE_PROJECT_TEST_DIR}/makefile-win32-on-macosx && python ./build.py &&
 echo "---------------- MAKE --------------------------" &&
 cd ${CREATE_PROJECT_TEST_DIR}/makefile-macosx && python ./build.py &&
 echo "---------------- EXECUTE NORMAL --------------------------" &&
-cd ${CREATE_PROJECT_TEST_DIR}/makefile-macosx && ./${PROJECT_NAME} --help &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-macosx && ./${TEST_PROJECT_NAME} --help &&
 echo "---------------- EXECUTE DEBUG --------------------------" &&
-cd ${CREATE_PROJECT_TEST_DIR}/makefile-macosx && ./${PROJECT_NAME}-debug --help &&
+cd ${CREATE_PROJECT_TEST_DIR}/makefile-macosx && ./${TEST_PROJECT_NAME}-debug --help &&
 echo "---------------- REMOVE PROJECT --------------------------" &&
 cd ${DIR} &&
 rm -fr ${CREATE_PROJECT_TEST_DIR} &&
