@@ -199,7 +199,7 @@ proc generateSemanticDeclarationsGalgas3
     ]
   end
 #---
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
     if [option galgas_cli_options.generateOneHeader value] & [option galgas_cli_options.generateManyFiles value] then
        generateOneBigHeader (
         !inProductDirectory
