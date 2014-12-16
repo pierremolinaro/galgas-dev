@@ -94,10 +94,10 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"outputAbstractSyntaxTree"
+    identifier:@"outputConcreteSyntaxTree"
     commandChar:'\0'
-    commandString:@"output-abstract-syntax-tree"
-    comment:@"Generate the abstract syntax tree, in .dot format (suitable for Graphviz)"
+    commandString:@"output-concrete-syntax-tree"
+    comment:@"Generate the concrete syntax tree, in .dot format (suitable for Graphviz)"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
