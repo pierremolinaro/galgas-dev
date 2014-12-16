@@ -248,7 +248,7 @@
 	<key>CFBundleSignature</key>
 	<string>GGSX</string>
 	<key>CFBundleVersion</key>
-	<string>BUILD_AND_LIBPM</string>
+	<string>GALGAS_BETA_VERSION</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

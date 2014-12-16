@@ -20,7 +20,7 @@ mv ${TEMP_DIR} ${DIR} &&
 sed "s/!AN!/${ANNEE}/g" ${DIR}/galgas/project-xcode-galgas/Info.plist > ${DIR}/temp &&
 sed "s/GALGAS_BETA_VERSION/${VERSION_GALGAS}/g" ${DIR}/temp > ${DIR}/galgas/project-xcode-galgas/Info.plist &&
 sed "s/!AN!/${ANNEE}/g" ${DIR}/galgas/project-xcode-galgas/English.lproj/InfoPlist.strings > ${DIR}/temp &&
-sed "s/GALGAS_BETA_VERSION/${VERSION_GALGAS}/g" ${DIR}/temp < ${DIR}/galgas/project-xcode-galgas/English.lproj/InfoPlist.strings &&
+sed "s/GALGAS_BETA_VERSION/${VERSION_GALGAS}/g" ${DIR}/temp > ${DIR}/galgas/project-xcode-galgas/English.lproj/InfoPlist.strings &&
 { 
   for fichier in ${DIR}/galgas/galgas-sources/*.galgas \
       ${DIR}/galgas/*.galgasProject \
