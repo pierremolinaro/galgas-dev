@@ -10232,13 +10232,13 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "#                                                                                                                      *\n"
     "# MAKEFILE for building \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\" 64-bits command line tools for Mac OS X   *\n"
+  result << "\" 64-bits command line tools for Mac OS X                                      *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                               Executables                                 *\n"
+    "#                               Executables                                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10251,7 +10251,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                         Object files directories                          *\n"
+    "#                         Object files directories                                                                     *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10260,7 +10260,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                  Install directory (for \"install\" goal)                   *\n"
+    "#                  Install directory (for \"install\" goal)                                                              *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10268,7 +10268,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                       Linker Options for Mac OS X                         *\n"
+    "#                       Linker Options for Mac OS X                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10276,7 +10276,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                        Include Common Definitions                         *\n"
+    "#                        Include Common Definitions                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10284,7 +10284,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                      Include gcc tools for MAC OS X                       *\n"
+    "#                      Include gcc tools for MAC OS X                                                                  *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10292,7 +10292,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                Include makefile that performs actual work                 *\n"
+    "#                Include makefile that performs actual work                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10371,13 +10371,13 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "#                                                                                                                      *\n"
     "# MAKEFILE for building \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\" 64-bits command line tools for Mac OS X   *\n"
+  result << "\" 64-bits command line tools for Mac OS X                                      *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                               Executables                                 *\n"
+    "#                               Executables                                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10390,7 +10390,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                         Object files directories                          *\n"
+    "#                         Object files directories                                                                     *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10399,7 +10399,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                       Linker Options for Mac OS X                         *\n"
+    "#                       Linker Options for Mac OS X                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10407,7 +10407,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                        Include Common Definitions                         *\n"
+    "#                        Include Common Definitions                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10415,7 +10415,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                   Include X86 Linux 32 tools for MAC OS X                 *\n"
+    "#                   Include X86 Linux 32 tools for MAC OS X                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10423,11 +10423,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                Include makefile that performs actual work                 *\n"
+    "#                Include makefile that performs actual work                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "include $(LIBPM_DIRECTORY_PATH)/included_makefiles/generic-makefile-wo-download.mak\n"
+    "include $(LIBPM_DIRECTORY_PATH)/included_makefiles/generic-makefile.mak\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;
@@ -10502,13 +10502,13 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "#                                                                                                                      *\n"
     "# MAKEFILE for building \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\" 64-bits command line tools for Mac OS X   *\n"
+  result << "\" 64-bits command line tools for Mac OS X                                      *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                               Executables                                 *\n"
+    "#                               Executables                                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10521,7 +10521,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                         Object files directories                          *\n"
+    "#                         Object files directories                                                                     *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10530,7 +10530,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                       Linker Options for Mac OS X                         *\n"
+    "#                       Linker Options for Mac OS X                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10538,7 +10538,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                        Include Common Definitions                         *\n"
+    "#                        Include Common Definitions                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10546,7 +10546,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                   Include Linux 64 tools for MAC OS X                     *\n"
+    "#                   Include Linux 64 tools for MAC OS X                                                                *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10554,11 +10554,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                Include makefile that performs actual work                 *\n"
+    "#                Include makefile that performs actual work                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "include $(LIBPM_DIRECTORY_PATH)/included_makefiles/generic-makefile-wo-download.mak\n"
+    "include $(LIBPM_DIRECTORY_PATH)/included_makefiles/generic-makefile.mak\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;
@@ -10633,13 +10633,13 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "#                                                                                                                      *\n"
     "# MAKEFILE for building \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\" 64-bits command line tools for Mac OS X   *\n"
+  result << "\" 64-bits command line tools for Mac OS X                                      *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                               Executables                                 *\n"
+    "#                               Executables                                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10652,7 +10652,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                         Object files directories                          *\n"
+    "#                         Object files directories                                                                     *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10661,7 +10661,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                       Linker Options for Mac OS X                         *\n"
+    "#                       Linker Options for Mac OS X                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10669,7 +10669,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                        Include Common Definitions                         *\n"
+    "#                        Include Common Definitions                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10677,7 +10677,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                   Include X86 Linux 32 tools for MAC OS X                 *\n"
+    "#                   Include X86 Linux 32 tools for MAC OS X                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10685,11 +10685,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                Include makefile that performs actual work                 *\n"
+    "#                Include makefile that performs actual work                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "include $(LIBPM_DIRECTORY_PATH)/included_makefiles/generic-makefile-wo-download.mak\n"
+    "include $(LIBPM_DIRECTORY_PATH)/included_makefiles/generic-makefile.mak\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;
@@ -10764,13 +10764,13 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "#                                                                                                                      *\n"
     "#MAKEFILE for building \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\" command line tools for Win32, built with MSYS*\n"
+  result << "\" command line tools for Win32, built with MSYS                                 *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                               Executables                                 *\n"
+    "#                               Executables                                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10783,7 +10783,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#              Install directory (for \"install\" goal)                       *\n"
+    "#              Install directory (for \"install\" goal)                                                                  *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10791,7 +10791,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                         Object files directories                          *\n"
+    "#                         Object files directories                                                                     *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10800,7 +10800,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                         Linker Options for Win32                          *\n"
+    "#                         Linker Options for Win32                                                                     *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10808,7 +10808,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                        Include Common Definitions                         *\n"
+    "#                        Include Common Definitions                                                                    *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10816,7 +10816,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                       Include MinGW tools for MSYS                        *\n"
+    "#                       Include MinGW tools for MSYS                                                                   *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10824,7 +10824,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "#                                                                                                                      *\n"
-    "#                Include makefile that performs actual work                 *\n"
+    "#                Include makefile that performs actual work                                                            *\n"
     "#                                                                                                                      *\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -16682,113 +16682,6 @@ GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::extra
       result = *p ;
     }else{
       inCompiler->castError ("expressionListCollectionValue", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-
-typeComparisonResult GALGAS_abstractCollectionValueElementForGeneration::objectCompare (const GALGAS_abstractCollectionValueElementForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractCollectionValueElementForGeneration::GALGAS_abstractCollectionValueElementForGeneration (void) :
-AC_GALGAS_class () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractCollectionValueElementForGeneration::GALGAS_abstractCollectionValueElementForGeneration (const cPtr_abstractCollectionValueElementForGeneration * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractCollectionValueElementForGeneration) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_abstractCollectionValueElementForGeneration::reader_mExpressionLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_abstractCollectionValueElementForGeneration * p = (const cPtr_abstractCollectionValueElementForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCollectionValueElementForGeneration) ;
-    result = p->mAttribute_mExpressionLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_abstractCollectionValueElementForGeneration::reader_mExpressionLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpressionLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                        Pointer class for @abstractCollectionValueElementForGeneration class                         *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_abstractCollectionValueElementForGeneration::cPtr_abstractCollectionValueElementForGeneration (const GALGAS_location & in_mExpressionLocation
-                                                                                                    COMMA_LOCATION_ARGS) :
-acPtr_class (THERE),
-mAttribute_mExpressionLocation (in_mExpressionLocation) {
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  @abstractCollectionValueElementForGeneration type                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractCollectionValueElementForGeneration ("abstractCollectionValueElementForGeneration",
-                                                                    NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_abstractCollectionValueElementForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractCollectionValueElementForGeneration ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_abstractCollectionValueElementForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_abstractCollectionValueElementForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractCollectionValueElementForGeneration GALGAS_abstractCollectionValueElementForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                      C_Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_abstractCollectionValueElementForGeneration result ;
-  const GALGAS_abstractCollectionValueElementForGeneration * p = (const GALGAS_abstractCollectionValueElementForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_abstractCollectionValueElementForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("abstractCollectionValueElementForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
