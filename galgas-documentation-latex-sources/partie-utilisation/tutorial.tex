@@ -10,34 +10,39 @@ Le but de ce tutorial est de construire en utilisant GALGAS un compilateur d’u
 
 Il est rédigé pour être réalisé sur Unix (Linux, Mac OS X).
 
-Vue d'ensemble du flux des informations :
+La génération des fichiers SVG à partir de GALGAS sera faite par un template.
 
-Les flèches horizontales représentent le flux des informations lors du déroulement normal des différentes étapes de la compilation, et les flèches verticales les erreurs qui peuvent se déclencher.
+Vous trouverez des informations sur le format SVG sur la page :
 
-La génération des fichiers SVG
-
-Engendrer un fichier SVG à partir de GALGAS sera fait par des templates.
-
-
-Pour des infos sur le format SVG, vous pouvez aller sur la page :
 \url{http://www.canarlake.org/index.cgi?theme=svg}
 
-Fichiers et compilateurs utilisés
-section {Présentation informelle du langage LOGO}
+\section{Présentation du langage LOGO}
 
-Vous trouverez une description précise du langage à la fin de ce document. Un programme LOGO décrit le déplacement d'une tortue dans un plan. Celle-ci peut effectuer des déplacements en ligne droite et des rotations sur place. La tortue est munie d'un crayon, qui peut être abaissé ou levé. Un déplacement provoque le tracé d'un segment de droite si le crayon est abaissé.
+Vous trouverez une description précise du langage à la fin de cette section. Un programme LOGO décrit le déplacement d'une tortue dans un plan. Celle-ci peut effectuer des déplacements en ligne droite et des rotations sur place. La tortue est munie d'un crayon, qui peut être abaissé ou levé. Un déplacement provoque le tracé d'un segment de droite si le crayon est abaissé.
 
-Un programme LOGO est contenu dans un fichier texte, d'extension .logo. Il comprend une liste (éventuellement vide) de sous-programmes, et une liste d'instructions. L'exécution du programme consiste à exécuter cette liste d'instructions, en appelant les sous-programmes qui y figurent. Initialement, la tortue est en (0, 0), sa direction est 0° (horizontale, vers la droite), et le crayon est levé.
+Un programme LOGO est contenu dans un fichier texte, d'extension \texttt{.logo}. Il comprend une liste (éventuellement vide) de sous-programmes, et une liste d'instructions. L'exécution du programme consiste à exécuter cette liste d'instructions, en appelant les sous-programmes qui y figurent. Initialement, la tortue est en (0, 0), sa direction est 0° (horizontale, vers la droite), et le crayon est levé.
 
 
-Le fichier exemples\_logo.zip disponible sur le serveur pédagogique est une archive contenant différents exemples de programmes logo. Voici un exemple de programme :
+\subsection{Quelques exemples}
 
+Voici quelques exemples de programmes LOGO (\refTableau{carreEtoilePentagoneLogo} et \refTableauPage{hexagoneOctogoneLogo}). Le \refTableauPage{logoErreurSemantiques} liste des programmes présentant des erreurs sémantiques : le compilateur qui va être écrit décelera ces erreurs.
+
+\begin{table}[t]
+  \centering
+  \small
+
+\begin{multicols}{3}
+
+\textbf{Dessin d'un carré}
+\begin{lstlisting}
 PROGRAM
+
   ROUTINE trace
   BEGIN
-  FORWARD 50 ;
-  ROTATE 90 ;
+    FORWARD 50 ;
+    ROTATE 90 ;
   END
+
 BEGIN
   FORWARD 100 ;
   ROTATE 90 ;
@@ -49,167 +54,491 @@ BEGIN
   CALL trace ;
   CALL trace ;
 END.
+\end{lstlisting}
 
-Grandes étapes du TP :
-I.téléchargement et recompilation de GALGAS ;
-II.création du squelette de votre compilateur ;
-III.écriture de l'analyseur lexical ;
-IV.écriture de l'analyseur syntaxique ;
-V.prise en compte de la sémantique statique ;
-VI.prise en compte de la sémantique dynamique ;
-VII.génération d'un fichier SVG.
+\columnbreak
 
-Toutes les compilations sont organisées par des makefiles : il suffit d'appeler l’utilitaire make dans le bon répertoire.
+\textbf{Dessin d'une étoile}
+\begin{lstlisting}
+PROGRAM
 
-Ces makefiles prennent en compte toutes les dépendances, y compris celles engendrées par les fichiers d'en tête.
+  ROUTINE trace
+  BEGIN
+    FORWARD 70;
+    ROTATE 160;
+  END
+
+  ROUTINE trace3
+  BEGIN
+    CALL trace;
+    CALL trace;
+    CALL trace;
+  END
+
+BEGIN
+  FORWARD 200;
+  ROTATE 90;
+  FORWARD 300;
+  ROTATE 270;
+  PEN DOWN;
+  CALL trace3;
+  CALL trace3;
+  CALL trace3;
+END.
+\end{lstlisting}
+
+\columnbreak
+
+\textbf{Dessin d'un pentagone}
+\begin{lstlisting}
+PROGRAM
+
+  ROUTINE trace
+  BEGIN
+    FORWARD 70;
+    ROTATE 72;
+  END
+
+BEGIN
+  FORWARD 200;
+  ROTATE 90;
+  FORWARD 300;
+  ROTATE 270;
+  PEN DOWN;
+  CALL trace;
+  CALL trace;
+  CALL trace;
+  CALL trace;
+  CALL trace;
+END.
+\end{lstlisting}
+
+\end{multicols}
+
+  \caption{Carré, étoile et pentagone en LOGO}
+  \labelTableau{carreEtoilePentagoneLogo}
+  \ligne
+\end{table}
+
+
+\begin{table}[t]
+  \centering
+  \small
+
+
+\begin{multicols}{2}
+
+\textbf{Dessin d'un hexagone}
+
+\begin{lstlisting}
+PROGRAM
+
+  ROUTINE trace
+  BEGIN
+    FORWARD 70 ;
+    ROTATE 60 ;
+  END
+
+BEGIN
+  FORWARD 100 ;
+  ROTATE 90;
+  FORWARD 100;
+  ROTATE 270;
+  PEN DOWN;
+  CALL trace;
+  CALL trace;
+  CALL trace;
+  CALL trace;
+  CALL trace;
+  CALL trace;
+END.
+\end{lstlisting}
+
+
+\columnbreak
+
+\textbf{Dessin d'un octogone}
+
+\begin{lstlisting}
+PROGRAM
+
+  ROUTINE trace
+  BEGIN
+    FORWARD 70;
+    ROTATE 45;
+  END
+
+  ROUTINE trace1
+  BEGIN
+  CALL trace;
+  CALL trace;
+  END
+
+  ROUTINE trace2
+  BEGIN
+  CALL trace1;
+  CALL trace1;
+  END
+
+  ROUTINE trace3
+  BEGIN
+  CALL trace2;
+  CALL trace2;
+  END
+
+BEGIN
+  FORWARD 100;
+  ROTATE 90;
+  FORWARD 100;
+  ROTATE 270;
+  PEN DOWN;
+  CALL trace3;
+END.
+\end{lstlisting}
+
+\end{multicols}
+
+  \caption{Hexagone et octogone en LOGO}
+  \labelTableau{hexagoneOctogoneLogo}
+  \ligne
+\end{table}
+
+
+
+
+\begin{table}[t]
+  \centering
+  \small
+
+\begin{multicols}{3}
+
+\textbf{Routine récursive}
+
+\begin{lstlisting}
+PROGRAM
+
+  ROUTINE routine
+  BEGIN
+    CALL routine;
+  END
+  
+BEGIN
+END.
+\end{lstlisting}
+
+\columnbreak
+
+\textbf{Routine indéfinie}
+
+\begin{lstlisting}
+PROGRAM
+
+BEGIN
+  CALL routine;
+END.
+\end{lstlisting}
+
+\columnbreak
+\textbf{Routine définie plusieurs fois}
+
+\begin{lstlisting}
+PROGRAM
+
+  ROUTINE routine
+  BEGIN
+  END
+  
+  ROUTINE routine
+  BEGIN
+  END
+  
+BEGIN
+END.
+\end{lstlisting}
+
+\end{multicols}
+
+  \caption{Programmes LOGO contenant des erreurs sémantiques}
+  \labelTableau{logoErreurSemantiques}
+  \ligne
+\end{table}
+
+\subsection{Définition lexicale}
+
+Les identificateurs sont constitués d'une séquence non vide de lettres minuscules ou majuscules. La casse est significative.
+
+Les mots réservés sont les identificateurs suivants : \texttt{PROGRAM}, \texttt{ROUTINE}, \texttt{BEGIN}, \texttt{END}, \texttt{FORWARD}, \texttt{ROTATE}, \texttt{PEN}, \texttt{UP}, \texttt{DOWN} et \texttt{CALL}.
+
+Les constantes littérales entières sont écrites en décimal (une séquence non vide de chiffres décimaux).
+
+Les séparateurs sont l'espace et la fin de ligne.
+
+Les délimiteurs sont le point ('.') et le point virgule (';').
+
+Un commentaire commence par le caractère dièse (\#) et s'étend jusqu'à la fin de la ligne courante.
+
+
+\subsection {Définition syntaxique}
+
+Un programme LOGO commence le mot réservé \texttt{PROGRAM}, est suivi d'une liste éventuellement vide de définition de routines, du mot réservé \texttt{BEGIN}, d'une liste éventuellement vide d'instructions, et se termine par le mot réservé \texttt{END} suivi d'un point.
+
+Une définition de routine est introduite par le mot réservé \texttt{ROUTINE}, est suivi d'un identificateur, du mot réservé \texttt{BEGIN}, d'une liste éventuellement vide d'instructions, et se termine par le mot réservé \texttt{END}.
+
+Une instruction LOGO est une des séquences suivantes :
+\begin{itemize}
+  \item le mot réservé \texttt{FORWARD} suivi d'un entier littéral et d'un point virgule ;
+  \item le mot réservé \texttt{ROTATE} suivi d'un entier littéral et d'un point virgule ;
+  \item le mot réservé \texttt{PEN} suivi du mot réservé \texttt{UP} et d'un point virgule ;
+  \item le mot réservé \texttt{PEN} suivi du mot réservé \texttt{DOWN} et d'un point virgule ;
+  \item le mot réservé \texttt{CALL} suivi d'un identificateur et d'un point virgule.
+\end{itemize}
+
+\subsection{Sémantique statique}
+
+Dans une définition de routine, l'identificateur qui suit le mot réservé \texttt{ROUTINE} est le nom de la routine définie. Dans une instruction \texttt{CALL}, l'identificateur est le nom de la routine appelée.
+
+Contraintes (voir le \refTableau{logoErreurSemantiques} pour des exemples de programmes contenant des erreurs sémantiques) :
+\begin{itemize}
+  \item le nom d'une routine est unique (on n'a pas le droit de définir plusieurs routines de même nom) ;
+  \item une instruction \texttt{CALL} ne peut nommer qu'une routine qui a été définie plus haut dans le texte ;
+  \item la routine courante ne peut pas être appelée récursivement.
+\end{itemize}
+
+\subsection{Sémantique dynamique}
+
+L'espace de déplacement de la tortue est un plan, muni du repère orthonormé direct habituel. À un instant donné, l'état de la tortue est caractérisé par :
+\begin{itemize}
+  \item sa position dans le plan ;
+  \item sa direction, mesuré en degrés à partir de l'axe horizontal, et dans le sens trigonométrique ;
+  \item la position du crayon (levé ou abaissé).
+\end{itemize}
+
+Initialement, la position de la tortue est (0, 0), sa direction est 0°, et le crayon est levé.
+
+L'exécution de chaque instruction a l'effet suivant :
+\begin{itemize}
+  \item l'instruction \texttt{FORWARD} avance la souris dans sa direction d'une longueur égale à la valeur de la constante entière contenue dans l'instruction ; si le crayon est abaissé, un segment de droite délimité par les positions de départ et d'arrivée de la tortue est tracé ;
+  \item l'instruction \texttt{ROTATE} fait tourner la tortue dans le sens trigonométrique d'un nombre de degrés égal à la constante contenue dans l'instruction ; aucun tracé n'a lieu, quelque l'état du crayon.
+  \item l'instruction \texttt{PEN UP} relève le crayon ;
+  \item l'instruction \texttt{PEN DOWN} abaisse le crayon ;
+  \item l'instruction \texttt{CALL} exécute le sous-programme nommé dans l'instruction.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
 
 \section{Installation de GALGAS}
 
 Aller sur la page \url{http://galgas.rts-software.org/download/}
 
-GALGAS est un utilitaire en ligne de commande (sauf sur Mac, voir plus loin). Vous pouvez :
+GALGAS est un utilitaire en ligne de commande (sauf sur Mac, pour lequel une application Cocoa est disponible). Vous pouvez :
+\begin{itemize}
+  \item soit télécharger le binaire correspondant à votre plateforme (pour l'installer, aller à la \refSubsectionPage{installerGalgas}) ;
+  \item soit télécharger les sources et les recompiler.
+\end{itemize}
 
-soit télécharger le binaire correspondant à votre plateforme ;
-soit télécharger les sources et les recompiler ;
 
-pour ceux qui travaillent sur Mac, vous pouvez utiliser l’application Cocoa disponible.
 
-Téléchargement d’un binaire et installation
 
-Télécharger le binaire et décompressez le.
-
-Pour pouvoir appeler GALGAS sans avoir besoin de mentionner un chemin, vous avez plusieurs possibilités :
-
-le copier dans le répertoire /bin
-
-sudo cp galgas /bin/
-
-le copier dans votre répertoire local bin :
-cp galgas ~/bin/
-
-Attention, le répertoire ~/bin n'existe peut-être pas pour votre compte : il faut alors le créer, et l'ajouter dans la variable \$PATH :
-sur Linux :
-
-mkdir ~/bin/
-%\verbatim{echo 'export PATH=$PATH:~/bin' >> /home/user/.bashrc}
-
-sur Mac :
-
-mkdir ~/bin/
-
-%\verbatim{echo 'export PATH=$PATH:~/bin' >> ~/.bash_profile}
-
-Téléchargement des sources, compilation et installation
+\subsection{Téléchargement des sources et compilation}
 
 Télécharger l’archive contenant les sources pour Unix et Mac.
 
 Décompressez cette archive et placer le répertoire obtenu (galgas) dans un répertoire dont le chemin ne contient ni espace ni caractère accentué. C'est important car les chemins utilisés dans les makefile de GALGAS sont relatifs.
 
-Dans la suite de la compilation GALGAS, tous les chemins sont indiqués relativement à ce répertoire, qui sera appelé constructionGALGAS.
+Dans la suite de la compilation GALGAS, tous les chemins sont indiqués relativement à ce répertoire, qui sera appelé \texttt{constructionGALGAS}.
 
-Donc, vous devez obtenir à la suite de la décompression le répertoire constructionGALGAS/galgas.
+Donc, vous devez obtenir à la suite de la décompression le répertoire \texttt{constructionGALGAS/galgas}.
 
-Nous allons maintenant compiler GALGAS. Avec le terminal :
-	cd constructionGALGAS/galgas/makefile-unix
-	make
+Nous allons maintenant compiler GALGAS. Avec le terminal, sur Linux :
+\begin{description}
+  \item[ ] \texttt{cd constructionGALGAS/galgas/makefile-unix}
+  \item[ ] \texttt{make}
+\end{description}
+
+Sur Mac :
+\begin{description}
+  \item[ ] \texttt{cd constructionGALGAS/galgas/makefile-macosx}
+  \item[ ] \texttt{make}
+\end{description}
+
 La compilation de GALGAS peut prendre une dizaine de minutes. Deux exécutables sont produits :
 
-1.	constructionGALGAS/galgas/makefile-unix/galgas ;
-
-2.	constructionGALGAS/galgas/makefile-unix/galgas-debug.
+\begin{itemize}
+  \item \texttt{constructionGALGAS/galgas/makefile-unix/galgas} ;
+  \item \texttt{constructionGALGAS/galgas/makefile-unix/galgas-debug}.
+\end{itemize}
 
 Les deux exécutables sont fonctionnellement identiques. Le premier est celui que vous utiliserez. Le second est la version debug du premier : il est exécuté avec de nombreuses vérifications internes, ce qui fait qu’il est beaucoup lent. Si le premier plante brutalement, on peut utiliser le second pour déceler si une erreur interne peut être mise en évidence.
 
-Pour pouvoir appeler GALGAS sans avoir besoin de mentionner un chemin, vous avez plusieurs possibilités :
+La section suivante indique comment installer les binaires obtenus.
 
-le copier dans le répertoire /bin
-sudo cp galgas /bin/
+\subsectionLabel{Installation}{installerGalgas}
 
-sudo cp galgas-debug /bin/
 
-le copier dans votre répertoire local bin :
+Pour pouvoir appeler les exécutables sans avoir besoin de mentionner un chemin, vous avez plusieurs possibilités :
+\begin{itemize}
+  \item le copier dans le répertoire \texttt{/bin} :  \texttt{sudo cp galgas /bin/}
+  \item le copier dans votre répertoire local \texttt{bin} : \texttt{cp galgas $\sim$/bin/}
+\end{itemize}
 
-cp galgas ~/bin/
+Attention, le répertoire \texttt{$\sim$/bin} n'existe peut-être pas pour votre compte : il faut alors le créer, et l'ajouter dans la variable \texttt{\$PATH}.
 
-cp galgas-debug ~/bin/
+Sur Linux :
+\begin{description}
+  \item[ ] \texttt{mkdir $\sim$/bin/}
+  \item[ ] \texttt{echo \textquotesingle export~PATH=\$PATH:$\sim$/bin\textquotesingle~\textgreater{}\textgreater~/home/user/.bashrc}
+\end{description}
 
-Attention, le répertoire ~/bin n'existe peut-être pas pour votre compte : il faut alors le créer, et l'ajouter dans la variable \$PATH :
+Sur Mac :
+\begin{description}
+  \item[ ] \texttt{mkdir $\sim$/bin/}
+  \item[ ] \texttt{echo \textquotesingle export~PATH=\$PATH:$\sim$/bin\textquotesingle~\textgreater{}\textgreater~$\sim$/.bash\_profile}
+\end{description}
 
-sur Linux :
 
-mkdir ~/bin/
 
-%\verbatim{echo 'export PATH=$PATH:~/bin' >> /home/user/.bashrc}
 
-sur Mac :
 
-mkdir ~/bin/
-%\verbatim{echo 'export PATH=$PATH:~/bin' >> ~/.bash_profile}
-section{Création du squelette de votre compilateur}
 
-Un projet GALGAS nécessite la mise en place de nombreux fichiers, de créer des makefile pour différentes plateformes, … Appeler galgas avec l'option --create-project permet de créer automatique un projet prêt à être utilisé.
 
-Pour tout le TP vous devez utiliser un répertoire dont le chemin ne contient ni espace ni caractère accentué. C'est important car les chemins utilisés dans les makefile de GALGAS sont relatifs.
 
-Dans toute la suite de ce TP, les chemins sont indiqués relativement à ce répertoire, qui sera appelé chezmoi.
 
-La création
-	cd chezmoi
-	galgas --create-project=logo
 
-Le message affiché durant cette création est :
-*** PERFORM PROJECT CREATION (--create-project=logo option) ***
-*** DONE ***
 
-L’affichage de « DONE » indique que la création s’est effectuée avec succès : un répertoire nommé logo a été créé dans le répertoire chezmoi.
-Visite guidée du répertoire créé
 
-Dans le répertoire chezmoi/logo, :
 
-le fichier +logo.galgasProject est le fichier projet, c’est lui que vous compilerez ;
-le répertoire galgas-sources contient les fichiers sources que vous allez compléter tout au long de ce TP ; son contenu est indiqué dans le tableau suivant
+\section{Création du squelette du compilateur LOGO}
 
-Première compilation du projet
+Un projet GALGAS nécessite la mise en place de nombreux fichiers, de créer des makefile pour différentes plateformes, … 
+
+Appeler galgas avec l'option \texttt{-{}-create-project} permet de créer automatique un projet prêt à être utilisé.
+
+Pour tout le tutorial vous devez utiliser un répertoire dont le chemin ne contient ni espace ni caractère accentué. C'est important car les chemins utilisés dans les makefile de GALGAS sont relatifs.
+
+Dans toute la suite de ce tutorial, les chemins sont indiqués relativement à ce répertoire, qui sera appelé \texttt{chezmoi}.
+
+La création :
+\begin{description}
+  \item[ ] \texttt{cd chezmoi}
+  \item[ ] \texttt{galgas -{}-create-project=logo}
+\end{description}
+
+Le message affiché par cette opération est :
+\begin{description}
+  \item[ ] \texttt{*** PERFORM PROJECT CREATION (-{}-create-project=logo option) ***}
+  \item[ ] \texttt{*** DONE ***}
+\end{description}
+
+L’affichage de \texttt{DONE} indique que la création s’est effectuée avec succès : un répertoire nommé \texttt{logo} a été créé dans le répertoire \texttt{chezmoi}.
+
+\subsection{Visite guidée du répertoire créé}
+
+Dans le répertoire \texttt{chezmoi/logo} :
+\begin{itemize}
+  \item le fichier \texttt{+logo.galgasProject} est le fichier projet, c’est lui que vous compilerez ;
+  \item le répertoire \texttt{galgas-sources} contient les fichiers sources que vous allez compléter tout au long de ce tutorial ; son contenu est indiqué dans le tableau suivant.
+\end{itemize}
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+    \textbf{Fichier} & \textbf{Description}\\
+    \texttt{logo-lexique.galgas} & Définit l'analyseur lexical\\
+    \texttt{logo-semantics.galgas} & Définit les types pour la sémantique\\
+    \texttt{logo-syntax.galgas} & Définit les règles de production de la grammaire \\
+    \texttt{logo-grammar.galgas} & Définit la grammaire (axiome, classe) \\
+    \texttt{logo-program.galgas} & Définit la routine principale \\
+    \texttt{logo-cocoa.galgas} & Définit l’interface pour Cocoa : utile uniquement sous Mac \\
+    \texttt{logo-options.galgas} & Définit les options de la ligne de commande \\
+  \end{tabular}
+  \caption{Contenu des sous-répertoires de \texttt{logo} après compilation GALGAS}
+  \labelTableau{tableauRepertoireLOGOapresCompGALGAS}
+  \ligne
+\end{table}
+
+
+
+
+
+
+\subsection{Première compilation du projet}
+
+Une compilation s'effectue en deux temps :
+\begin{enumerate}
+  \item d'abord une compilation GALGAS qui crée ou met à jour des fichiers C++ ;
+  \item ensuite une compilation C++.
+\end{enumerate}
+
+
+\subsubsection{Compilation GALGAS}
+
 Vous devez d'abord compiler les sources GALGAS :
+\begin{description}
+  \item[ ] \texttt{galgas -v chezmoi/logo/+logo.galgasProject}
+\end{description}
 
-	galgas -v chezmoi/logo/+logo.galgasProject
-L'option -v (verbose) provoque l'affichage de messages : observez ceux qui indiquent la création des fichiers C++. Ceux-ci sont rangés dans le répertoire chezmoi/logo/build/output et chezmoi/logo/build/libpm.
+L'option \texttt{-v} (verbose) provoque l'affichage de messages : observez ceux qui indiquent la création des fichiers C++. Ceux-ci sont rangés dans le répertoire \texttt{chezmoi/logo/build/output} et \texttt{chezmoi/logo/build/libpm}.
 
-Le répertoire logo devient :
+Le répertoire \texttt{logo} est complété par de nouveaux répertoires (\refFigure{}{figureRepertoireLOGOapresCompGALGAS} et \refTableau{tableauRepertoireLOGOapresCompGALGAS}).
+\begin{figure}[t]
+  \centering
+  \includegraphics{partie-utilisation/repertoire-logo.pdf}
+  \caption{Répertoire \texttt{logo} après compilation GALGAS}
+  \labelFigure{figureRepertoireLOGOapresCompGALGAS}
+  \ligne
+\end{figure}
 
-Les nouveaux répertoires crées sont :
-makefile-macosx	Contiennent des makefiles pour compiler sur Mac OS X.
 
-makefile-msys32-on-windows	Contient un makefile pour compiler sur Win 32.
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+    \textbf{Répertoire} & \textbf{Contenu} \\
+    \texttt{makefile-macosx} & Makefile pour compiler sur Mac OS X \\
+    \texttt{makefile-msys32-on-windows} & Makefile pour compiler sur Win 32 \\
+    \texttt{makefile-unix} & Makefile pour compiler sur Unix \\
+    \texttt{makefile-win32-on-macosx} & Makefile pour compiler sur Mac OS X pour Win 32 \\
+    \texttt{makefile-x86linux32-on-macosx} & Makefile pour compiler sur Mac OS X pour x86 Linux 32 bits \\
+    \texttt{makefile-x86linux64-on-macosx} & Makefile pour compiler sur Mac OS X pour x86 Linux 64 bits \\
+    \texttt{xcode-project} & Projet Xcode pour compiler sur Mac OS X
+  \end{tabular}
+  \caption{Contenu des sous-répertoires de \texttt{logo} après compilation GALGAS}
+  \labelTableau{tableauRepertoireLOGOapresCompGALGAS}
+  \ligne
+\end{table}
 
-makefile-unix	Contient un makefile pour compiler sur Unix.
-makefile-win32-on-macosx	Contient un makefile pour compiler sur Mac OS X pour Win 32 (vous pouvez supprimer ce répertoire).
 
-makefile-x86linux32-on-macosx	Contient un makefile pour compiler sur Mac OS X pour x86 Linux 32 bits.
 
-makefile-x86linux64-on-macosx	Contient un makefile pour compiler sur Mac OS X pour x86 Linux 64 bits.
-xcode-project	Contiennent un projet Xcode pour compiler sur Mac OS X.
-
-Choisissez le répertoire correspondant à votre plateforme (makefile-macosx ou makefile-unix) et lancer le script de compilation build.py. (soit via la ligne de commande, soit en double-cliquant).
+\subsubsection{Compilation C++}
+Choisissez le répertoire correspondant à votre plateforme (\texttt{makefile-macosx} ou \texttt{makefile-unix}) et lancer le script de compilation \texttt{build.py} (soit via la ligne de commande, soit en double-cliquant).
 
 Par exemple :
-	chezmoi/logo/makefile-unix/build.py
+\begin{description}
+  \item[ ] \texttt{chezmoi/logo/makefile-unix/build.py}
+\end{description}
 
 Vous obtenez deux exécutables :
-1.	chezmoi/logo/makefile-unix/logo ;
-2.	chezmoi/logo/makefile-unix/logo-debug.
+\begin{description}
+  \item[ ] \texttt{chezmoi/logo/makefile-unix/logo}
+  \item[ ] \texttt{chezmoi/logo/makefile-unix/logo-debug}
+\end{description}
 
-Sous Mac, vous pouvez utiliser le projet Xcode engendré, et ainsi créer une application Cocoa nommée CocoaLogo.
-section {Analyseur lexical}
+Sous Mac, vous pouvez utiliser le projet Xcode engendré, et ainsi créer une application Cocoa nommée \texttt{CocoaLogo}.
 
-Comme les analyseurs lexicaux et syntaxiques sont vides après la création, les exécutables ainsi obtenus ne sont pas exploitables.
+Dans tous les cas, comme les analyseurs lexicaux et syntaxiques sont vides après la création, les exécutables ainsi obtenus ne sont pas exploitables.
 
-Dans cette partie, vous allez écrire l’analyseur lexical du langage LOGO.
 
-Lire la définition lexicale du langage LOGO (annexe 1). Ensuite, suivez pas à pas les explications ci-dessous.
+\section {Analyseur lexical}
 
-Vous allez modifier le fichier 
-chezmoi/logo/galgas-sources/logo-lexique.galgas.
+
+Dans cette partie, vous allez écrire l’analyseur lexical du langage LOGO. Pour cela, vous allez modifier le fichier \texttt{chezmoi/logo/galgas-sources/logo-lexique.galgas}.
 
 Remarques préliminaires
 
@@ -229,19 +558,20 @@ Remarques préliminaires
 ;
 5.	ces informations de localisation sont à la base du signalement d'erreur.
 
-Analyse lexicale d'un identificateur et d'un mot réservé
+\subsection{Analyse lexicale d'un identificateur et d'un mot réservé}
 
 Par défaut, une analyse lexicale des identificateurs et une liste de mots réservés est présente. Tout ce que vous avez à faire est de modifier la liste des mots réservés pour y placer ceux du langage LOGO.
 
 Voici les lignes correspondantes :
+
+\begin{galgascode}
 @string tokenString
 style keywordsStyle -> "Keywords"
 $identifier$ ! tokenString error message "an identifier"
 
-\begin{galgascode}
 list keyWordList style keywordsStyle error message "the '%K' keyword" {
- "begin",
-"end"
+  "begin",
+  "end"
 }
 
 rule 'a'->'z' | 'A'->'Z' {
@@ -268,7 +598,8 @@ list keyWordList style keywordsStyle error message "the '%K' keyword" {
 }
 \end{galgascode}
 
-Analyse lexicale d'une constante entière
+\subsection{Analyse lexicale d'une constante entière}
+
 L’analyse lexicale d’une constante entière 32 bits non signée est présente par défaut, vous n’avez rien à ajouter.
 
 Voici l'écriture correspondante :
@@ -300,7 +631,7 @@ $integer$ !uint32value style integerStyle … déclare le terminal $integer$ qui
 message decimalNumberTooLarge : "decimal number too large" déclare un message d’erreur ;
 enfin rule '0'->'9' … définit l’analyse lexicale d’une contante entière non signé ; les caractères qui la composent sont accumulés dans tokenString, et la routine convertDecimalStringIntoUInt effectue la conversion de cette chaîne en entier ; pour finir, send $integer$ envoie le terminal vers l’analyseur syntaxique.
 
-Analyse des délimiteurs
+\subsection{Analyse des délimiteurs}
 Par défaut, un certain nombre de délimiteurs sont définis :
 
 \begin{galgascode}
@@ -318,7 +649,7 @@ L'analyse des délimiteurs est définit par la règle rule list delimitorsList.
 
 Travail à faire : remplacer la liste des délimiteurs par celle du langage LOGO.
 
-Analyse des chaînes de caractères
+\subsection{Analyse des chaînes de caractères}
 Une analyse des chaînes de caractères est disponible par défaut. Comme le langage LOGO n’utilise pas de chaînes de caractères, vous pouvez supprimer les définitions suivantes :
 
 \begin{galgascode}
@@ -341,13 +672,13 @@ rule '"' {
 }
 \end{galgascode}
 
-Analyse des séparateurs
+\subsection{Analyse des séparateurs}
 C'est une règle très simple, qui accepte tout caractère de code ASCII compris entre 0x01 et 0x20 (l'espace). Comme il n'y a pas d'instruction send dans la règle lexicale, l'occurrence d'un séparateur est complètement ignorée par l'analyseur syntaxique.
 rule '\u0001' -> ' ' :
 end rule ;
 La séquence d'échappement \u permet d'écrire directement des points de code Unicode sous la forme de quatre chiffres hexadécimaux.
 
-Analyse des commentaires
+\subsection{Analyse des commentaires}
 C'est un peu plus compliqué, il faut repérer la fin de la ligne courante. Or, celle-ci peut être un seul caractère LF (fichier Unix), un seul caractère CR (fichier Mac Classic), une séquence CRLF (fichier Windows). D'autre part, une ligne de commentaire peut être la dernière ligne du fichier : notez que GALGAS rajoute automatiquement le caractère \galgas{'\\0'} à la fin de la chaîne source. L'analyse d'un commentaire consiste donc, une fois le caractère initial \galgas{'\#'} repéré, à accepter silencieusement tous les caractères possibles, sauf '\\u000A' (LF), '\\u000D' (CR), '\\0'. L’écriture drop \galgas{$comment$} signifie que le terminal $comment$ n’est pas transmis à l’analyseur syntaxique.
 
 \begin{galgascode}
@@ -947,67 +1278,6 @@ rule <start_symbol> {
 Compiler et essayer l'exécutable : un fichier SVG doit être produit lors de chaque exécution.
 
 Le TP est terminé.
-
-\section{Annexe 1 : définition lexicale du langage LOGO}
-
-Les identificateurs sont constitués d'une séquence non vide de lettres minuscules ou majuscules. La casse est significative.
-
-Les mots réservés sont les identificateurs suivants : \texttt{PROGRAM}, \texttt{ROUTINE}, \texttt{BEGIN}, \texttt{END}, \texttt{FORWARD}, \texttt{ROTATE}, \texttt{PEN}, \texttt{UP}, \texttt{DOWN} et \texttt{CALL}.
-
-Les constantes littérales entières sont écrites en décimal (une séquence non vide de chiffres décimaux).
-
-Les séparateurs sont l'espace et la fin de ligne.
-
-Les délimiteurs sont le point ('.') et le point virgule (';').
-
-Un commentaire commence par le caractère dièse (\#) et s'étend jusqu'à la fin de la ligne courante.
-
-
-\section {Annexe 2 : définition syntaxique}
-
-Un programme LOGO commence le mot réservé \texttt{PROGRAM}, est suivi d'une liste éventuellement vide de définition de routines, du mot réservé \texttt{BEGIN}, d'une liste éventuellement vide d'instructions, et se termine par le mot réservé \texttt{END} suivi d'un point.
-
-Une définition de routine est introduite par le mot réservé \texttt{ROUTINE}, est suivi d'un identificateur, du mot réservé \texttt{BEGIN}, d'une liste éventuellement vide d'instructions, et se termine par le mot réservé \texttt{END}.
-
-Une instruction LOGO est une des séquences suivantes :
-\begin{itemize}
-  \item le mot réservé \texttt{FORWARD} suivi d'un entier littéral et d'un point virgule ;
-  \item le mot réservé \texttt{ROTATE} suivi d'un entier littéral et d'un point virgule ;
-  \item le mot réservé \texttt{PEN} suivi du mot réservé \texttt{UP} et d'un point virgule ;
-  \item le mot réservé \texttt{PEN} suivi du mot réservé \texttt{DOWN} et d'un point virgule ;
-  \item le mot réservé \texttt{CALL} suivi d'un identificateur et d'un point virgule.
-\end{itemize}
-
-\section{Annexe 3 : sémantique statique}
-
-Dans une définition de routine, l'identificateur qui suit le mot réservé \texttt{ROUTINE} est le nom de la routine définie. Dans une instruction \texttt{CALL}, l'identificateur est le nom de la routine appelée.
-
-Contraintes :
-\begin{itemize}
-  \item le nom d'une routine est unique (on n'a pas le droit de définir plusieurs routines de même nom) ;
-  \item une instruction \texttt{CALL} ne peut nommer qu'une routine qui a été définie plus haut dans le texte ;
-  \item la routine courante ne peut pas être appelée récursivement.
-\end{itemize}
-
-\section{Annexe 4 : sémantique dynamique de LOGO}
-
-L'espace de déplacement de la tortue est un plan, muni du repère orthonormé direct habituel. À un instant donné, l'état de la tortue est caractérisé par :
-\begin{itemize}
-  \item sa position dans le plan ;
-  \item sa direction, mesuré en degrés à partir de l'axe horizontal, et dans le sens trigonométrique ;
-  \item la position du crayon (levé ou abaissé).
-\end{itemize}
-
-Initialement, la position de la tortue est (0, 0), sa direction est 0°, et le crayon est levé.
-
-L'exécution de chaque instruction a l'effet suivant :
-\begin{itemize}
-  \item l'instruction \texttt{FORWARD} avance la souris dans sa direction d'une longueur égale à la valeur de la constante entière contenue dans l'instruction ; si le crayon est abaissé, un segment de droite délimité par les positions de départ et d'arrivée de la tortue est tracé ;
-  \item l'instruction \texttt{ROTATE} fait tourner la tortue dans le sens trigonométrique d'un nombre de degrés égal à la constante contenue dans l'instruction ; aucun tracé n'a lieu, quelque l'état du crayon.
-  \item l'instruction \texttt{PEN UP} relève le crayon ;
-  \item l'instruction \texttt{PEN DOWN} abaisse le crayon ;
-  \item l'instruction \texttt{CALL} exécute le sous-programme nommé dans l'instruction.
-\end{itemize}
 
 
 

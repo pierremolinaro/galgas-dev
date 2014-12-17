@@ -63,7 +63,7 @@ extern C_UIntCommandLineOption gOption_galgas_5F_builtin_5F_options_max_5F_warni
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern C_StringCommandLineOption gOption_generic_5F_cli_5F_options_mode ;
+extern C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_mode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

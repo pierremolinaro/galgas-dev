@@ -273,7 +273,7 @@ void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
   C_String errorMessage ;
 //--- Construct parsing error message
   errorMessage << (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ? "syntax " : "")
-               << "error #" << cStringWithSigned (mErrorTotalCount) << ": found " << inFoundTokenMessage <<", accepted:\n" ;
+               << "error #" << cStringWithSigned (mErrorTotalCount) << ": found " << inFoundTokenMessage <<", expected:\n" ;
   for (int32_t i=0 ; i<inAcceptedTokenNames.count () ; i++) {
     errorMessage << "-  " << inAcceptedTokenNames (i COMMA_HERE) << "\n" ;  
   }

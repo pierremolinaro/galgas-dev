@@ -65,7 +65,7 @@ indexing with galgas3Grammar
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    compileProject ( !@lstring.new {!projectFilePath !inSourceFile.location} !inSourceFile.string )
+    parseAndAnalyzeProject (!@lstring.new {!projectFilePath !inSourceFile.location} !inSourceFile.string )
   end
 }
 
@@ -92,7 +92,7 @@ case . "galgasProject"
 message "a GALGAS project source file"
 #indexing with galgas3ProjectGrammar
 ?sourceFilePath:@lstring inProjectSourceFile {
-  compileProject ( !inProjectSourceFile !"" )
+  parseAndAnalyzeProject (!inProjectSourceFile !"" )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -540,15 +540,27 @@ indexing with projectLL1grammar
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc compileProject
+proc parseAndAnalyzeProject
   ?let @lstring inProjectSourceFile
   ?let @string inSourceToAnalyze {
   if [option .verbose_output value] then
     message "*** Parsing project files\n"
   end
   grammar galgas3ProjectGrammar in inProjectSourceFile ?let @galgas3ProjectComponentAST projectComponentAST
+  if [option .mode value] == "" then
+    compileProject (!inProjectSourceFile !inSourceToAnalyze !projectComponentAST)
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc compileProject
+  ?let @lstring inProjectSourceFile
+  ?let @string inSourceToAnalyze
+  ?let @galgas3ProjectComponentAST inProjectComponentAST
+{
   var declarationAST = @galgas3DeclarationAST.default 
-  for () in projectComponentAST.mProjectSourceList do
+  for () in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
       grammar galgas3Grammar in @lstring.new {!absoluteSourcePath !mValue.location} !?declarationAST
@@ -562,7 +574,7 @@ proc compileProject
   var handCodedSourceToolFileList = @stringlist. emptyList
   @stringlist frameworkToolFileList = {}
   var handCodedSourceDirectorySet = @stringset. emptySet
-  for () in projectComponentAST.mQualifiedFeatureList do
+  for () in inProjectComponentAST.mQualifiedFeatureList do
     if mFeatureName.string == "tool-source" then
       handCodedSourceToolFileList += !mFeatureValue.string
       let directory = [mFeatureValue stringByDeletingLastPathComponent]
@@ -615,7 +627,7 @@ proc compileProject
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas3 (
       !productDirectory
-      !projectComponentAST.mEndOfSourceFile
+      !inProjectComponentAST.mEndOfSourceFile
       !declarationAST.mDeclarationList
       ?semanticContext
       ?semanticDeclarationSortedListForGeneration
@@ -690,7 +702,7 @@ proc compileProject
       !appProductFileList
       !semanticDeclarationSortedListForGeneration
       !declarationAST.mSourceRuleList
-      !projectComponentAST
+      !inProjectComponentAST
       !inProjectSourceFile.string
       !handCodedSourceDirectorySet
       !handCodedSourceToolFileList

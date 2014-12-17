@@ -1087,8 +1087,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Test if a given terminal symbol can be accepted for signaling an error    *
-//          (for bottom-up parsing)                                            *
+//   Test if a given terminal symbol can be accepted for signaling an error (for bottom-up parsing)                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
