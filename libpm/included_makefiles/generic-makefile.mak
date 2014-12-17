@@ -51,7 +51,7 @@ OCPP_COMPILER_CALL_DEBUG := $(COMPILER_TOOL) $(COMPILER_OPTIONS) $(COMPILER_OPTI
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#          Include pathes                                                    *
+#          Include pathes                                                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -59,7 +59,7 @@ INCLUDE_PATHS := -I$(LIBPM_DIRECTORY_PATH) $(patsubst %, -I%, $(SOURCES_DIR))
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#          Source directories from LIBPM                                     *
+#          Source directories from LIBPM                                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -122,7 +122,7 @@ clean:
 #----------------------------------------------------------------------------------------------------------------------*
 
 CURL_ARGUMENTS :=
-CURL_ARGUMENTS += $(shell $(LIBPM_DIRECTORY_PATH)/included_makefiles/get_system_ftp_proxy.py)
+CURL_ARGUMENTS += $(shell python $(LIBPM_DIRECTORY_PATH)/included_makefiles/get_system_ftp_proxy.py)
 CURL_ARGUMENTS += --fail
 CURL_ARGUMENTS += --location
 
