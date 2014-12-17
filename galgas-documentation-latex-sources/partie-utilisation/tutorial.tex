@@ -540,23 +540,16 @@ Dans tous les cas, comme les analyseurs lexicaux et syntaxiques sont vides aprè
 
 Dans cette partie, vous allez écrire l’analyseur lexical du langage LOGO. Pour cela, vous allez modifier le fichier \texttt{chezmoi/logo/galgas-sources/logo-lexique.galgas}.
 
-Remarques préliminaires
-
-1.	en GALGAS, tous les symboles terminaux sont notés par une chaîne de caractères non vide délimitée par deux caractères '\$' ; par exemple : \galgas{$identifier$}, \galgas{$integer$} 
-
-;
-2.	en GALGAS, un nom de type est un identificateur précédé du caractère '@' ; par exemple : @string, @uint, @lstring, @luint, … ;
-3.	le type @string définit une valeur chaîne de caractères 
-
-;
-4.	le type @uint définit une valeur entière non signée sur 32 bits ;
-3.	le type @lstring définit une valeur composée d'une chaîne de caractères et d'une information de localisation sur la position de la chaîne dans le texte source 
-
-;
-4.	le type @luint définit une valeur composée d'une valeur entière non signée et d'une information de localisation sur la position de la chaîne dans le texte source 
-
-;
-5.	ces informations de localisation sont à la base du signalement d'erreur.
+Remarques préliminaires :
+\begin{enumerate}
+  \item en GALGAS, tous les symboles terminaux sont notés par une chaîne de caractères non vide délimitée par deux caractères \galgas{$} ; par exemple : \galgas{$identifier$}, \galgas{$integer$}, … 
+  \item en GALGAS, un nom de type est un identificateur précédé du caractère \galgas{@} ; par exemple : \galgas{@string}, \galgas{@uint}, \galgas{@lstring}, \galgas{@luint}, … ;
+  \item le type \galgas{@string} définit une valeur chaîne de caractères ;
+  \item le type \galgas{@uint} définit une valeur entière non signée sur 32 bits ;
+  \item le type \galgas{@lstring} définit une valeur composée d'une chaîne de caractères et d'une information de localisation sur la position de la chaîne dans le texte source ;
+  \item le type \galgas{@luint} définit une valeur composée d'une valeur entière non signée et d'une information de localisation sur la position de la chaîne dans le texte source ;
+  \item ces informations de localisation sont à la base du signalement d'erreur.
+\end{enumerate}
 
 \subsection{Analyse lexicale d'un identificateur et d'un mot réservé}
 
@@ -584,19 +577,21 @@ rule 'a'->'z' | 'A'->'Z' {
 \end{galgascode}
 
 Explications :
-@string tokenString déclare l’attribut lexical tokenString de type chaîne de caractères ; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur chaîne vide ;
-style keywordsStyle -> "Keywords" déclare un style (uniquement utile pour l’application Cocoa engendrée (sur Mac uniquement, vous pouvez ignorer cette ligne) ;
-$identifier$ ! tokenString error message "an identifier" déclare le terminal $identifier$ qui sera transmis à l’analyseur syntaxique accompagné de la valeur de tokenString ;  le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique ;
-list keyWordList style keywordsStyle error … déclare une liste de mots réservés associés à un style d’affichage (pour l’application Cocoa sur Mac), un message d’erreur syntaxique ; telle qu’elle est présente, cette définition déclare les deux non terminaux $begin$ et $end$ ;
-enfin, rule 'a'->'z' | 'A'->'Z' … effectue l’analyse lexicale des identificateurs en accumulant dans tokenString les caractères rencontrés ; la ligne send search tokenString in keyWordList default $identifier$ recherche un mot réservé et par défaut retourne à l’analyseur syntaxique un identificateur.
+\begin{enumerate}
+  \item \galgas{@string tokenString} déclare l’attribut lexical tokenString de type chaîne de caractères ; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur chaîne vide ;
+  \item \galgas{style keywordsStyle -> "Keywords"} déclare un style (uniquement utile pour l’application Cocoa engendrée, vous pouvez ignorer cette ligne) ;
+  \item \galgas{$identifier$ ! tokenString error message "an identifier"} déclare le terminal \galgas{$identifier$} qui sera transmis à l’analyseur syntaxique accompagné de la valeur de \galgas{tokenString} ; le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique ;
+  \item \galgas{list keyWordList style keywordsStyle error ...} déclare une liste de mots réservés associés à un style d’affichage (pour l’application Cocoa sur Mac), un message d’erreur syntaxique ; telle qu’elle est présente, cette définition déclare les deux non terminaux \galgas{$begin$} et \galgas{$end$} ;
+  \item enfin, \galgas{rule 'a'->'z' | 'A'->'Z' ...} effectue l’analyse lexicale des identificateurs en accumulant dans \galgas{tokenString} les caractères rencontrés ; la recherche d'un mot réservé est effectuée par\galgas{send search tokenString in keyWordList default $identifier$} : par défaut si la chaîne entrée n'est pas un mot réservé, un identificateur est retourné à l’analyseur syntaxique.
+\end{enumerate}
 
-Vous n’avez donc qu’à modifier la liste des mots réservés en y plaçant ceux du langage LOGO :
-\begin{galgascode}
-list keyWordList style keywordsStyle error message "the '%K' keyword" {
-  "PROGRAM", "ROUTINE", "BEGIN", "END", "FORWARD",
-  "ROTATE",  "CALL",    "PEN",   "UP",  "DOWN"
-}
-\end{galgascode}
+\textbf{Travail à faire.} Modifier la liste des mots réservés en y plaçant ceux du langage LOGO.
+%\begin{galgascode}
+%list keyWordList style keywordsStyle error message "the '%K' keyword" {
+%  "PROGRAM", "ROUTINE", "BEGIN", "END", "FORWARD",
+%  "ROTATE",  "CALL",    "PEN",   "UP",  "DOWN"
+%}
+%\end{galgascode}
 
 \subsection{Analyse lexicale d'une constante entière}
 
@@ -606,7 +601,8 @@ Voici l'écriture correspondante :
 \begin{galgascode}
 style integerStyle -> "Integer Constants"
 @uint uint32value
-$integer$ !uint32value style integerStyle error message "a 32-bit unsigned decimal number"
+$integer$ !uint32value style integerStyle
+               error message "a 32-bit unsigned decimal number"
 
 message decimalNumberTooLarge : "decimal number too large"
 message internalError : "internal error"
@@ -618,18 +614,24 @@ rule '0'->'9' {
     enterCharacterIntoString (!?tokenString !*)
   while '_' :
   end
-  convertDecimalStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError)
+  convertDecimalStringIntoUInt (
+    !tokenString
+    !?uint32value
+    error decimalNumberTooLarge, internalError
+  )
   send $integer$
 }
 \end{galgascode}
 
 
 Explications :
-style integerStyle -> "Integer Constants" déclare un style (uniquement utile pour l’application Cocoa engendrée (sur Mac uniquement, vous pouvez ignorer cette ligne) ;
-@uint uint32value déclare l’attribut lexical uint32value de type entier 32 bits non signé ; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur zéro ;
-$integer$ !uint32value style integerStyle … déclare le terminal $integer$ qui sera transmis à l’analyseur syntaxique accompagné de la valeur de uint32value ;  le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique ;
-message decimalNumberTooLarge : "decimal number too large" déclare un message d’erreur ;
-enfin rule '0'->'9' … définit l’analyse lexicale d’une contante entière non signé ; les caractères qui la composent sont accumulés dans tokenString, et la routine convertDecimalStringIntoUInt effectue la conversion de cette chaîne en entier ; pour finir, send $integer$ envoie le terminal vers l’analyseur syntaxique.
+\begin{enumerate}
+  \item \galgas{style integerStyle -> "Integer Constants"} déclare un style (uniquement utile pour l’application Cocoa engendrée, vous pouvez ignorer cette ligne) ;
+  \item \galgas{@uint uint32value} déclare l’attribut lexical \galgas{uint32value} de type entier 32 bits non signé ; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur zéro ;
+  \item \galgas{$integer$ !uint32value style integerStyle ...} déclare le terminal \galgas{$integer$} qui sera transmis à l’analyseur syntaxique accompagné de la valeur de \galgas{uint32value} ;  le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique ;
+  \item \galgas{message decimalNumberTooLarge : "decimal number too large"} déclare un message d’erreur ;
+  \item enfin \galgas{rule '0'->'9' ...} définit l’analyse lexicale d’une contante entière non signé ; les caractères qui la composent sont accumulés dans \galgas{tokenString}, et la conversion de cette chaîne en entier est effectuée par la routine \galgas{convertDecimalStringIntoUInt} ; pour finir, \galgas{send $integer$} envoie le terminal vers l’analyseur syntaxique.
+\end{enumerate}
 
 \subsection{Analyse des délimiteurs}
 Par défaut, un certain nombre de délimiteurs sont définis :
@@ -643,9 +645,9 @@ list delimitorsList style delimitersStyle error message "the '%K' delimitor" {
 rule list delimitorsList
 \end{galgascode}
 
-La règle précédente déclare les terminaux \galgas{\$:\$}, \galgas{\$,\$}… Les messages d'erreur syntaxique sont définis en remplaçant la séquence \galgas{\%K} par l’épellation du délimiteur.
+La règle \galgas{list delimitorsList style delimitersStyle error ...} déclare les terminaux \galgas{$:$}, \galgas{$,$}… Les messages d'erreur syntaxique sont définis en remplaçant la séquence \texttt{\%K} par l’épellation du délimiteur.
 
-L'analyse des délimiteurs est définit par la règle rule list delimitorsList.
+L'analyse des délimiteurs est définit par la règle \galgas{rule list delimitorsList}.
 
 Travail à faire : remplacer la liste des délimiteurs par celle du langage LOGO.
 
@@ -654,7 +656,8 @@ Une analyse des chaînes de caractères est disponible par défaut. Comme le lan
 
 \begin{galgascode}
 style stringStyle -> "String Constants"
-$literal_string$ ! tokenString style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
+$literal_string$ ! tokenString style stringStyle %nonAtomicSelection
+                   error message "a character string constant \"...\""
 
 message incorrectStringEnd : "string does not end with '\"'"
 
@@ -673,13 +676,15 @@ rule '"' {
 \end{galgascode}
 
 \subsection{Analyse des séparateurs}
-C'est une règle très simple, qui accepte tout caractère de code ASCII compris entre 0x01 et 0x20 (l'espace). Comme il n'y a pas d'instruction send dans la règle lexicale, l'occurrence d'un séparateur est complètement ignorée par l'analyseur syntaxique.
+C'est une règle très simple, qui accepte tout caractère de code ASCII compris entre \texttt{0x01} et \texttt{0x20} (l'espace). Comme il n'y a pas d'instruction send dans la règle lexicale, l'occurrence d'un séparateur est complètement ignorée par l'analyseur syntaxique.
+\begin{galgascode}
 rule '\u0001' -> ' ' :
 end rule ;
-La séquence d'échappement \u permet d'écrire directement des points de code Unicode sous la forme de quatre chiffres hexadécimaux.
+\end{galgascode}
+La séquence d'échappement \texttt{\textbackslash u} permet d'écrire directement des points de code Unicode sous la forme de quatre chiffres hexadécimaux.
 
 \subsection{Analyse des commentaires}
-C'est un peu plus compliqué, il faut repérer la fin de la ligne courante. Or, celle-ci peut être un seul caractère LF (fichier Unix), un seul caractère CR (fichier Mac Classic), une séquence CRLF (fichier Windows). D'autre part, une ligne de commentaire peut être la dernière ligne du fichier : notez que GALGAS rajoute automatiquement le caractère \galgas{'\\0'} à la fin de la chaîne source. L'analyse d'un commentaire consiste donc, une fois le caractère initial \galgas{'\#'} repéré, à accepter silencieusement tous les caractères possibles, sauf '\\u000A' (LF), '\\u000D' (CR), '\\0'. L’écriture drop \galgas{$comment$} signifie que le terminal $comment$ n’est pas transmis à l’analyseur syntaxique.
+C'est un peu plus compliqué, il faut repérer la fin de la ligne courante. Or, celle-ci peut être un seul caractère \texttt{LF} (fichier Unix), un seul caractère \texttt{CR} (fichier Mac Classic), une séquence \texttt{CRLF} (fichier Windows). D'autre part, une ligne de commentaire peut être la dernière ligne du fichier : notez que GALGAS rajoute automatiquement le caractère \texttt{\textquotesingle\textbackslash 0\textquotesingle} à la fin de la chaîne source. L'analyse d'un commentaire consiste donc, une fois le caractère initial \texttt{\textquotesingle\textbackslash\#\textquotesingle} repéré, à accepter silencieusement tous les caractères possibles, sauf \texttt{\textquotesingle\textbackslash u000A\textquotesingle} (LF), \texttt{\textquotesingle\textbackslash u000D\textquotesingle} (CR), \texttt{\textquotesingle\textbackslash0\textquotesingle}. L’écriture \galgas{drop $comment$} signifie que le terminal \galgas{$comment$} n’est pas transmis à l’analyseur syntaxique.
 
 \begin{galgascode}
 style commentStyle -> "Comments"
@@ -692,25 +697,24 @@ rule '#' {
 }
 \end{galgascode}
 
-Remarquez que pour un fichier Windows, le caractère CR marque la fin du commentaire, et que le caractère LF qui suit est silencieusement absorbé comme délimiteur.
+Remarquez que pour un fichier Windows, le caractère \texttt{CR} marque la fin du commentaire, et que le caractère \texttt{LF} qui suit est silencieusement absorbé comme délimiteur.
 
 Travail à faire
-écrivez l'analyseur lexical du langage LOGO. Après compilations GALGAS et C++, les exécutables logo et logo-debug obtenus sont partiellement opérationnels (pas encore d’analyseur syntaxique) : avec l'option --mode=lexical-only, vous pouvez faire afficher la liste des symboles terminaux produite par l'analyse lexicale du fichier source passé en argument.
+écrivez l'analyseur lexical du langage LOGO. Après compilations GALGAS et C++, les exécutables \texttt{logo} et \texttt{logo-debug} obtenus sont partiellement opérationnels (pas encore d’analyseur syntaxique) : avec l'option \texttt{-{}-mode=lexical-only}, vous pouvez faire afficher la liste des symboles terminaux produite par l'analyse lexicale du fichier source passé en argument.
 
-Note : l'option --help permet d'afficher la liste des options de l'exécutable. 
+Note : l'option \texttt{-{}-help} permet d'afficher la liste des options de l'exécutable. 
 
 \section{Analyseur syntaxique}
 
 Deux fichiers sont concernés :
 \begin{itemize}
-  \item chezmoi/logo/galgas-sources/logo-syntax.galgas, et
-  \item chezmoi/logo/galgas-sources/logo-grammar.galgas.
+  \item \texttt{chezmoi/logo/galgas-sources/logo-syntax.galgas}, et
+  \item \texttt{chezmoi/logo/galgas-sources/logo-grammar.galgas}.
 \end{itemize}
 
-Le fichier logo-syntax.galgas contient une liste de règles de production. Le fichier logo-grammar.galgas définit une grammaire.
+Le fichier \texttt{logo-syntax.galgas} contient une liste de règles de production. Le fichier \texttt{logo-grammar.galgas} définit une grammaire.
 
-Le fichier logo-grammar.galgas
-Ce fichier a la composition suivante :
+Le fichier \texttt{logo-grammar.galgas} a la composition suivante :
 
 \begin{galgascode}
 grammar logo_grammar "LL1" {
@@ -720,9 +724,11 @@ grammar logo_grammar "LL1" {
 \end{galgascode}
 
 Explications :
-LL1 est la classe de la grammaire ;
-\galgas{syntax logo_syntax} : les règles de productions sont dans le composant syntaxique logo\_syntax, situé dans le fichier logo-syntax.galgas ; 
-\galgas{<start_symbol>} : l'axiome de la grammaire.
+\begin{enumerate}
+  \item \texttt{LL1} est la classe de la grammaire ;
+  \item \galgas{syntax logo_syntax} : les règles de productions sont dans le composant syntaxique \galgas{logo_syntax}, situé dans le fichier \texttt{logo-syntax.galgas} ; 
+  \item \galgas{<start_symbol>} : l'axiome de la grammaire.
+\end{enumerate}
 
 A priori, vous n'avez pas besoin de modifier le fichier logo-grammar.galgas au cours du TP. Vous pouvez cependant modifier l'analyse effectuée en suivant les indications du tableau suivant :
 Chaîne	Commentaire
