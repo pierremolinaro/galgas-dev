@@ -38,7 +38,41 @@ Où :
 
 
 
-\section{Instruction \texttt{select}}
+\sectionLabel{Instruction \texttt{select}}{instructionSelectSyntaxique}
+
+La syntaxe de l'instruction \galgas{select} syntaxique\footnote{Ne confondre avec l'instruction \galgas{select} lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionSelectLexical}).} est la suivante :
+\begin{galgascode}
+A
+select
+  I0
+or
+  I1
+or
+  I2
+...
+end
+B
+\end{galgascode}
+
+L'instruction est présentée avec trois branches \galgas{or} : l'instruction doit comporter au moins deux branches.
+
+Sa signification est la suivante : l'occurrence de chaque \galgas{select} syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \galgas{T}. La séquence précédente devient donc :
+\begin{galgascode}
+A
+<T>
+B
+\end{galgascode}
+
+Le non-terminal \galgas{T} se dérive de la façon suivante :
+\begin{galgascode}
+rule <T> { I0 }
+
+rule <T> { I1 }
+
+rule <T> { I2 }
+
+...
+\end{galgascode}
 
 
 
@@ -46,8 +80,42 @@ Où :
 
 
 
+\sectionLabel{Instruction \texttt{repeat}}{instructionRepeatSyntaxique}
 
-\section{Instruction \texttt{repeat}}
+La syntaxe de l'instruction \galgas{repeat} syntaxique\footnote{Ne confondre avec l'instruction \galgas{repeat} lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionRepeatLexical}).} est la suivante :
+\begin{galgascode}
+A
+repeat
+  I0
+while
+  I1
+while
+  I2
+...
+end
+B
+\end{galgascode}
+
+L'instruction est présentée avec deux branches \galgas{while} : l'instruction doit comporter au moins une branche.
+
+Sa signification est la suivante : l'occurrence de chaque \galgas{repeat} syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \galgas{T}. La séquence précédente devient donc :
+\begin{galgascode}
+A
+I0
+<T>
+B
+\end{galgascode}
+
+Le non-terminal \galgas{T} se dérive de la façon suivante :
+\begin{galgascode}
+rule <T> { I1 I0 <T> }
+
+rule <T> { I2 I0 <T> }
+
+...
+
+rule <T> {  }
+\end{galgascode}
 
 
 
