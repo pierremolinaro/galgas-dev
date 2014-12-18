@@ -278,7 +278,7 @@ Les délimiteurs sont le point ('.') et le point virgule (';').
 Un commentaire commence par le caractère dièse (\#) et s'étend jusqu'à la fin de la ligne courante.
 
 
-\subsection {Définition syntaxique}
+\subsectionLabel{Définition syntaxique}{definitionSyntaxiqueLOGO}
 
 Un programme LOGO commence le mot réservé \texttt{PROGRAM}, est suivi d'une liste éventuellement vide de définition de routines, du mot réservé \texttt{BEGIN}, d'une liste éventuellement vide d'instructions, et se termine par le mot réservé \texttt{END} suivi d'un point.
 
@@ -293,7 +293,7 @@ Une instruction LOGO est une des séquences suivantes :
   \item le mot réservé \texttt{CALL} suivi d'un identificateur et d'un point virgule.
 \end{itemize}
 
-\subsection{Sémantique statique}
+\subsectionLabel{Sémantique statique}{semantiqueStatiqueLOGO}
 
 Dans une définition de routine, l'identificateur qui suit le mot réservé \texttt{ROUTINE} est le nom de la routine définie. Dans une instruction \texttt{CALL}, l'identificateur est le nom de la routine appelée.
 
@@ -304,7 +304,7 @@ Contraintes (voir le \refTableau{logoErreurSemantiques} pour des exemples de pro
   \item la routine courante ne peut pas être appelée récursivement.
 \end{itemize}
 
-\subsection{Sémantique dynamique}
+\subsectionLabel{Sémantique dynamique}{semantiqueDynamiqueLOGO}
 
 L'espace de déplacement de la tortue est un plan, muni du repère orthonormé direct habituel. À un instant donné, l'état de la tortue est caractérisé par :
 \begin{itemize}
@@ -725,36 +725,44 @@ grammar logo_grammar "LL1" {
 
 Explications :
 \begin{enumerate}
-  \item \texttt{LL1} est la classe de la grammaire ;
+  \item \galgas{"LL1"} est la classe de la grammaire ;
   \item \galgas{syntax logo_syntax} : les règles de productions sont dans le composant syntaxique \galgas{logo_syntax}, situé dans le fichier \texttt{logo-syntax.galgas} ; 
   \item \galgas{<start_symbol>} : l'axiome de la grammaire.
 \end{enumerate}
 
-A priori, vous n'avez pas besoin de modifier le fichier logo-grammar.galgas au cours du TP. Vous pouvez cependant modifier l'analyse effectuée en suivant les indications du tableau suivant :
-Chaîne	Commentaire
-"LL1"	Effectue une analyse LL (1) de la grammaire ; échoue si la grammaire n'est pas LL (1).
-"SLR"	Effectue une analyse SLR de la grammaire ; échoue si la grammaire n'est pas SLR.
-"LR1"	Effectue une analyse LR (1) de la grammaire ; échoue si la grammaire n'est pas LR (1).
-""	Effectue une analyse LL (1) de la grammaire ; en cas d'échec, effectue une analyse SLR ; en cas de nouvel échec, effectue une analyse LR (1). 
-Rappel :
-toute grammaire LL(1) est SLR ;
-toute grammaire SLR est LR(1).
+A priori, vous n'avez pas besoin de modifier le fichier \texttt{logo-grammar.galgas} au cours de ce tutorial. Vous pouvez cependant modifier l'analyse effectuée en suivant les indications du \refTableauPage{tableauClasseGrammaire}\footnote{Rappel : toute grammaire LL(1) est SLR, toute grammaire SLR est LR(1).}.
 
-Le fichier \galgas{logo_syntax.galgas}
-Par défaut, seul le non terminal \galgas{<start_symbol>} est déclaré, et une règle de production vide est écrite.
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+    \textbf{Chaîne} & \textbf{Analyse effectuée} \\
+    \texttt{"LL1"} & Analyse LL (1) de la grammaire ; échoue si la grammaire n'est pas LL (1) \\
+    \texttt{"SLR"} & Analyse SLR de la grammaire ; échoue si la grammaire n'est pas SLR \\
+    \texttt{"LR1"} & Analyse LR (1) de la grammaire ; échoue si la grammaire n'est pas LR (1) \\
+    \texttt{""} & Analyse LL (1) ; en cas d'échec, analyse SLR ; en cas de nouvel échec, analyse LR (1) \\
+  \end{tabular}
+  \caption{Spécification de l'analyse de la grammaire}
+  \labelTableau{tableauClasseGrammaire}
+  \ligne
+\end{table}
 
-C'est à vous d'écrire les règles de production qui définissent le langage LOGO (voir sa définition syntaxique en annexe 2).
+
+
+Par défaut dans le fichier \galgas{logo_syntax.galgas}, seul le non terminal \galgas{<start_symbol>} est déclaré, et une règle de production vide est écrite.
+
+C'est à vous d'écrire les règles de production qui définissent le langage LOGO (voir sa définition syntaxique \refSubsectionPage{definitionSyntaxiqueLOGO}).
 
 Voici les indications qui vous permettront d'écrire ces règles :
 \begin{itemize}
   \item vous pouvez déclarer autant de non terminaux que vous voulez ;
-  \item la forme d'une règle de production est :
-				\galgas{rule <mon_non_terminal> { partie droite }}
+  \item la forme d'une règle de production est : \galgas{rule <mon_non_terminal> { partie droite }}
   \item la partie droite est une séquence éventuellement vide de :
-	terminaux ;
-	non-terminaux ;
-	d'instructions de répétition syntaxique (voir annexe 6) ;
-	d'instruction de sélection syntaxique (voir annexe 6).
+  \begin{itemize}
+    \item terminaux ;
+    \item non-terminaux ;
+    \item d'instructions de répétition syntaxique (\refSectionPage{instructionRepeatSyntaxique}) ;
+    \item d'instruction de sélection syntaxique (\refSectionPage{instructionSelectSyntaxique}).
+  \end{itemize}
   \item les règles de production peuvent apparaître dans un ordre quelquonque.
 \end{itemize}
 
@@ -788,99 +796,134 @@ rule <routine_definition> {
 }
 \end{galgascode}
 
-Noter l’écriture \galgas{$identifier$ ?*} : en effet, quand l’analyseur lexical envoie vers l’analyseur syntaxique le token $identifier$, celui-ci est accompagné d’une chaîne de caractère. On indique que la valeur de celle-ci n’est pas utilisée (pour le moment) par l’écriture ?*.
+Noter l’écriture \galgas{$identifier$ ?*} : en effet, quand l’analyseur lexical envoie vers l’analyseur syntaxique le token \galgas{$identifier$}, celui-ci est accompagné d’une chaîne de caractères. On indique que la valeur de celle-ci n’est pas utilisée (pour le moment) par l’écriture \galgas{\?*}.
 
-Il en est de même pour le token $integer$ qui est accompagné d’une valeur entière.
+Il en est de même pour le token \galgas{$integer$} qui est accompagné d’une valeur entière.
 
-Si des erreurs d'analyse de la grammaire surviennent, vous pouvez utiliser l'option --output-html-grammar dans la ligne de commande : celle-ci provoque la génération du fichier :
-	\galgas{chezmoi/logo/build/helpers/logo_grammar.html} 
-qui contient tous les détails de l'analyse de la grammaire.
+Si des erreurs d'analyse de la grammaire surviennent, vous pouvez utiliser l'option \texttt{-{}-output-html-grammar} dans la ligne de commande : celle-ci provoque la génération du fichier : \texttt{chezmoi/logo/build/helpers/logo\_grammar.html} qui contient tous les détails de l'analyse de la grammaire.
 
 À l'issue de ce travail, l'exécutable obtenu doit analyser correctement les programmes LOGO contenus sur le serveur pédagogique.
 
-Vous pouvez utiliser l'option --mode=syntax-only pour afficher la trace de l'analyse syntaxique.
+Vous pouvez utiliser l'option \texttt{-{}-mode=syntax-only} pour afficher la trace de l'analyse syntaxique.
 
-V - Sémantique statique
+\section{Sémantique statique}
 
-Le but de cette étape est d'enrichir les fichiers GALGAS de façon à vérifier la sémantique statique du langage LOGO (voir annexe 3).
+Le but de cette étape est d'enrichir les fichiers GALGAS de façon à vérifier la sémantique statique du langage LOGO (\refSubsectionPage{semantiqueStatiqueLOGO}).
 
-Préliminaire : obtenir la valeur des identificateurs
+\subsection{Préliminaire : obtenir la valeur des identificateurs}
 
-Dans l’analyseur syntaxique, pour chaque occurrence du token $identifier$, nous avons écrit $identifier$ ?* pour signifier que la valeur de la chaîne de caractères n’était pas utilisée.
+Dans l’analyseur syntaxique, pour chaque occurrence du token \galgas{$identifier$}, nous avons précédemment écrit \galgas{$identifier$ ?*} pour signifier que la valeur de la chaîne de caractères n’était pas utilisée.
 
 À partir de maintenant, nous avons besoin de cette valeur. Celle-ci est récupérée en écrivant :
+
+\begin{galgascode}
 $identifier$ ?let @lstring unNom
-Cette écriture déclare une constante locale, nommée unNom, de type @lstring.
+\end{galgascode}
 
-Notez que le type mentionné est @lstring, alors que dans l’analyseur lexicale une valeur de type @string est associée au terminal $identifier$. Le type @lstring est une structure composée d’une valeur de type @string et d’une valeur de type @location. Cette dernière désigne un point dans le texte source analysé. Lors de la transmission des informations de l’analyseur lexical vers l’analyseur syntaxique, la valeur de type @string est associée à la position de l’identificateur dans le texte source. Ceci permet de construire facilement des messages d’erreur qui désigne l’endroit dans le texte source où l’erreur est apparue.
 
-Pour le moment, on ne modifie pas les terminaux $integer$ :
+Cette écriture déclare une constante locale, nommée \galgas{unNom}, de type \galgas{@lstring}.
 
-Faire les modifications et recompiler. Comme les valeurs récupérées ne sont pas utilisées et perdues, vous obtenez un warning pour chaque constante.
+Notez que le type mentionné est \galgas{@lstring}, alors que dans l’analyseur lexical une valeur de type \galgas{@string} est associée au terminal \galgas{$identifier$}. Le type \galgas{@lstring} est une structure composée d’une valeur de type \galgas{@string} et d’une valeur de type \galgas{@location}. Cette dernière désigne un point dans le texte source analysé. Lors de la transmission des informations de l’analyseur lexical vers l’analyseur syntaxique, la valeur de type \galgas{@string} est associée à la position de l’identificateur dans le texte source. Ceci permet de construire facilement des messages d’erreur qui désigne l’endroit dans le texte source où une erreur est apparue.
 
-Vous pouvez afficher la valeur obtenue en ajoutant une instruction log à chacune des séquences précédentes :
+Pour le moment, on ne modifie pas les terminaux \galgas{$integer$}.
+
+Faire les modifications et recompiler. Comme les valeurs récupérées ne sont pas utilisées et perdues, vous obtenez un \emph{warning} pour chaque constante.
+
+Vous pouvez afficher la valeur obtenue en ajoutant une instruction \galgas{log} à chacune des séquences précédentes :
+\begin{galgascode}
 $identifier$ ?let @lstring unNom
 log unNom
-L'instruction log affiche la valeur d'une variable ou d’une constante. Elle est utilisable sur tous les types GALGAS.
+\end{galgascode}
 
-Principes d'écriture de la sémantique
-Le cadre général est celui des grammaires attribuées. Ceci revient à doter de paramètres formels les non terminaux de la partie gauche d'une règle, de la même façon que la définition d'une fonction C peut présenter des paramètres formels. En conséquence, un non-terminal apparaissant en partie droite d'une règle de production doit présenter des arguments effectifs, de la même façon qu'un appel de fonction doit citer des arguments effectifs en accord avec la déclaration du prototype de la fonction. Dès lors, vous pouvez établir les correspondances suivantes :
-En C	En GALGAS
-Le prototype d'une fonction cite la liste des arguments formels.	La déclaration d'un non-terminal cite la liste des attributs (au sens des grammaires attribuées).
-L'en tête de l'implémentation d'une fonction cite la liste des arguments formels.	Le non terminal de gauche d'une règle de production cite la liste des attributs (au sens des grammaires attribuées).
-L'appel d'une fonction cite des paramètres effectifs.	Un non terminal apparaissant dans la partie droite d'une règle de production cite une liste des attributs (au sens des grammaires attribuées).
+L'instruction \galgas{log} affiche la valeur d'une variable ou d’une constante. Elle est utilisable sur tous les types GALGAS.
 
-En GALGAS, nous utilisons plutôt le vocabulaire des langages de programmation : argument formel, paramètre effectif.
+\subsection{Principes d'écriture de la sémantique}
 
-Arguments formels en GALGAS
+Le cadre général est celui des grammaires attribuées. Ceci revient à doter de paramètres formels les non terminaux de la partie gauche d'une règle, de la même façon que la définition d'une fonction C peut présenter des paramètres formels. En conséquence, un non-terminal apparaissant en partie droite d'une règle de production doit présenter des arguments effectifs, de la même façon qu'un appel de fonction doit citer des arguments effectifs en accord avec la déclaration du prototype de la fonction. Dès lors, vous pouvez établir les correspondances listées dans le \refTableauPage{tableauComparaisonArgumentsFormels}.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{p{8cm}p{6.7cm}}
+    \textbf{En C} & \textbf{En GALGAS} \\
+     Le prototype d'une fonction cite la liste des arguments formels & La déclaration d'un non-terminal cite la liste des attributs (au sens des grammaires attribuées) \\
+     L'en tête de l'implémentation d'une fonction cite la liste des arguments formels & Le non terminal de gauche d'une règle de production cite la liste des attributs (au sens des grammaires attribuées) \\
+     L'appel d'une fonction cite des paramètres effectifs & Un non terminal apparaissant dans la partie droite d'une règle de production cite une liste des attributs (au sens des grammaires attribuées) \\
+  \end{tabular}
+  \caption{Arguments formels, paramètres effectifs en C et en GALGAS}
+  \labelTableau{tableauComparaisonArgumentsFormels}
+  \ligne
+\end{table}
+
+En GALGAS, nous utilisons plutôt le vocabulaire des langages de programmation : \emph{argument formel}, \emph{paramètre effectif}.
+
+\subsubsection{Arguments formels en GALGAS}
 Un argument formel cite :
 \begin{itemize}
   \item un délimiteur qui précise le sens de transmission de l'argument formel ;
-  \item son type (par exemple @lstring, @luint, …) ;
+  \item son type (par exemple \galgas{@lstring}, \galgas{@luint}, …) ;
   \item son nom.
 \end{itemize}
 
 
-Le sens de transmission d'un argument formel est défini dans le tableau suivant 
+Le sens de transmission d'un argument formel est défini dans le \refTableauPage{tableauSensTransmissionArgumentsFormels}. 
 
-:
-Délimiteur	Sens de transmission
-?	Entrée
-?let	Entrée constant
-!	Sortie
-?!	Entrée/sortie
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+    \textbf{Délimiteur} & \textbf{Sens de transmission} \\
+      \texttt{?} & Entrée \\
+      \texttt{?}\galgas{let} & Entrée constant \\
+      \texttt{!} & Sortie \\
+      \texttt{?!} & Entrée/sortie \\
+  \end{tabular}
+  \caption{Sens de transmission d'un argument formel}
+  \labelTableau{tableauSensTransmissionArgumentsFormels}
+  \ligne
+\end{table}
 
-Paramètres effectifs en GALGAS
+
+\subsubsection{Paramètres effectifs en GALGAS}
+
 Un paramètre effectif cite :
 \begin{itemize}
   \item un délimiteur qui précise le sens de transmission du paramètre effectif ;
   \item une variable locale ou un argument formel de la règle de production.
 \end{itemize}
 
-Le sens de transmission d'un paramètre effectif est défini dans le tableau suivant 
+Le sens de transmission d'un paramètre effectif est défini dans le t\refTableauPage{tableauSensTransmissionParametresEffectifs}. 
 
-:
-Délimiteur	Sens de transmission	Argument formel correspondant
-?	Entrée	! (argument formel en sortie)
-!	Sortie	? (argument formel en entrée) ou
-?let (argument formel en entrée constant)
-!?	Sortie/entrée	?! (argument formel en entrée/sortie)
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lll}
+    \textbf{Délimiteur} & \textbf{Sens de transmission} & \textbf{Argument formel correspondant} \\
+      \texttt{?} & Entrée & \texttt{!} (argument formel en sortie) \\
+      \texttt{!} & Sortie & \texttt{?} (argument formel en entrée) ou \\
+                 &        & \texttt{?}\galgas{let} (argument formel en entrée constant) \\
+      \texttt{!?} & Sortie/entrée & \texttt{?!} (argument formel en entrée/sortie) \\
+  \end{tabular}
+  \caption{Sens de transmission d'un paramètre effectif}
+  \labelTableau{tableauSensTransmissionParametresEffectifs}
+  \ligne
+\end{table}
 
-Les types en GALGAS
+\subsubsection{Les types en GALGAS}
+
 Il existe plusieurs sortes de types :
 \begin{itemize}
-  \item les types prédéfinis par le langage, comme @lstring, @luint, … ;
+  \item les types prédéfinis par le langage, comme \galgas{@lstring}, \galgas{@luint}, … ;
   \item les types définis par l'utilisateur, qui peuvent être :
-	des types table ;
-	des types liste ;
-	des types classe.
+  \begin{itemize}
+    \item des types \emph{table} ;
+    \item des types \emph{liste} ;
+    \item des types \emph{classe}.
+  \end{itemize}
 \end{itemize}
 
-écriture de la sémantique statique
-Pour décrire la sémantique statique (voir annexe 3), le plus simple est de créer un type table de symboles, dont une instance contiendra tous les noms de routines d'un programme LOGO.
+\subsection{Écriture de la sémantique statique}
+Pour décrire la sémantique statique (\refSubsectionPage{semantiqueStatiqueLOGO}), le plus simple est de créer un type table de symboles, dont une instance contiendra tous les noms de routines d'un programme LOGO.
 
-Ajout du type de table des routines
-éditez le fichier chezmoi/logo/galgas-sources/logo-semantics.galgas et ajouter la définition suivante :
+\subsubsection{Ajout du type de table des routines}
+éditez le fichier \texttt{chezmoi/logo/galgas-sources/logo-semantics.galgas} et ajouter la définition suivante :
 
 \begin{galgascode}
 map @routineMap {
@@ -889,11 +932,11 @@ map @routineMap {
 }
 \end{galgascode}
 
-Ceci déclare le type @routineMap, avec une méthode d'insertion insertKey accompagnée de son message d'erreur, et une méthode de recherche searchKey accompagnée de son message d'erreur. Implicitement, la clé de la table est du type @lstring.
+Ceci déclare le type \galgas{@routineMap}, avec une méthode d'insertion \galgas{insertKey} accompagnée de son message d'erreur, et une méthode de recherche \galgas{searchKey} accompagnée de son message d'erreur. Implicitement, la clé de la table est du type \galgas{@lstring}.
 
 Cette définition sera complétée dans l'étape suivante afin de prendre en compte les instructions des routines (on n'en a pas besoin pour le moment).
 
-À cet instant, vous pouvez recompiler le fichier logo-semantics.galgas.
+À cet instant, vous pouvez recompiler le fichier \texttt{logo-semantics.galgas}.
 
 Instructions sur les objets de type table
 Voici quatre instructions relatives aux tables dont vous allez avoir besoin :
@@ -905,24 +948,34 @@ Voici quatre instructions relatives aux tables dont vous allez avoir besoin :
 \end{itemize}
 
 La déclaration d'un objet de type table se fait simplement en nommant le type puis l'objet ; par exemple :
-	@routineMap maTable
+\begin{galgascode}
+@routineMap maTable
+\end{galgascode}
 
-L'initialisation d'un objet de type table s'effectue en appelant le constructeur emptyMap, qui crée une table vide :
-	maTable = {}
+L'initialisation d'un objet de type table s'effectue en créant une table vide :
+\begin{galgascode}
+maTable = {}
+\end{galgascode}
 
-Les deux écritures précédentes peuvent condensées en une seule par :
-	@routineMap maTable = {}
+Les deux écritures précédentes peuvent être condensées en une seule par :
+\begin{galgascode}
+@routineMap maTable = {}
+\end{galgascode}
 
 L'instruction d'insertion dans une table est :
-	[!?maTable insertKey !clef]
-où insertKey est le nom d'une méthode d'insertion déclarée dans le type table ; clef doit être une variable de type @lstring valuée. Si il existe déjà une entrée de même nom, le message d'erreur associé à la méthode d'insertion est affiché.
+\begin{galgascode}
+[!?maTable insertKey !clef]
+\end{galgascode}
+où \galgas{insertKey} est le nom d'une méthode d'insertion déclarée dans le type table ; clef doit être une variable de type \galgas{@lstring} valuée. Si il existe déjà une entrée de même nom, le message d'erreur associé à la méthode d'insertion est affiché.
 
 L'instruction de recherche dans une table est :
-	[maTable searchKey !clef]
-où searchKey est le nom d'une méthode de recherche déclarée dans le type table ; clef doit être une variable de type @lstring valuée. Si il n'existe pas d'entrée de même nom, le message d'erreur associé à la méthode de recherche est affiché.
+\begin{galgascode}
+[maTable searchKey !clef]
+\end{galgascode}
+où \galgas{searchKey} est le nom d'une méthode de recherche déclarée dans le type table ; \galgas{clef} doit être une variable de type \galgas{@lstring} valuée. Si il n'existe pas d'entrée de même nom, le message d'erreur associé à la méthode de recherche est affiché.
 
-Ajout de la sémantique dans les règles de productions
-éditer le fichier chezmoi/logo/galgas-sources/logo-syntax.galgas et modifiez la dérivation de l'axiome :
+\subsubsection{Ajout de la sémantique dans les règles de productions}
+Éditer le fichier \texttt{chezmoi/logo/galgas-sources/logo-syntax.galgas} et modifiez la dérivation de l'axiome :
 
 \begin{galgascode}
 rule <start_symbol> {
@@ -946,34 +999,32 @@ rule <routine_definition> ?!@routineMap ioTableRoutines {
 }
 \end{galgascode}
 
-Travail à faire
-Maintenant, à vous de compléter les règles de façon à prendre en compte toutes les contraintes édictées en annexe 3.
+\subsubsection{Travail à faire}
+Maintenant, à vous de compléter les règles de façon à prendre en compte toutes les contraintes édictées à la \refSubsectionPage{semantiqueStatiqueLOGO}.
 
-Vérifiez que votre analyseur détecte correctement les erreurs. Pour cela, vous pouvez utiliser les exemples suivants disponibles sur le serveur pédagogique :
-\begin{itemize}
-  \item erreur\_appel\_recursif.logo ;
-  \item erreur\_routine\_definie\_plusieurs fois.logo ;
-  \item erreur\_routine\_indefinie.logo.
-\end{itemize}
+Vérifiez que votre analyseur détecte correctement les erreurs. Pour cela, vous pouvez utiliser les exemples du \refTableauPage{logoErreurSemantiques}.
+
+
+
 
 \section{Sémantique dynamique}
 
-Dans la sémantique dynamique (annexe 4), nous allons prendre en compte la signification de l'exécution d'une instruction. En préliminaire, nous allons compléter l'analyseur lexical pour qu'il envoie la valeur d'une constante entière.
+Dans la sémantique dynamique (\refSubsectionPage{semantiqueDynamiqueLOGO}), nous allons prendre en compte la signification de l'exécution d'une instruction. En préliminaire, nous allons compléter l'analyseur lexical pour qu'il envoie la valeur d'une constante entière.
 
-Préliminaire : les constantes entières
+\subsubsection{Préliminaire : les constantes entières}
 
 Modifier maintenant l’analyse syntaxique des constantes entières, à l’image de ce qui a été fait pour les identificateurs :
 \begin{galgascode}
 $integer$ ?let @luint unNom
 \end{galgascode}
 
-Le type @luint est une structure composée d’une valeur de type @uint et d’une valeur de type @location.
+Le type \galgas{@luint} est une structure composée d’une valeur de type \galgas{@uint} et d’une valeur de type \galgas{@location}.
 
-Mise à plat de la liste des instructions
-Le but ultime est d'obtenir la liste des instructions du programme principal. Mais quelles sont les instructions qui devront apparaître dans cette liste ? A priori, toutes les instructions décrites dans l'annexe 4. En fait, vous pouvez vous passer de l'instruction CALL en insérant dans la liste des instructions non pas cette instruction, mais la liste des instructions de la routine correspondante. Il faut procéder de même lors de construction de la liste de chaque routine.
+\subsubsection{Mise à plat de la liste des instructions}
+Le but ultime est d'obtenir la liste des instructions du programme principal. Mais quelles sont les instructions qui devront apparaître dans cette liste ? A priori, toutes les instructions décrites dans la \refSubsectionPage{semantiqueDynamiqueLOGO}. En fait, vous pouvez vous passer de l'instruction \texttt{CALL} en insérant dans la liste des instructions non pas cette instruction, mais la liste des instructions de la routine correspondante. Il faut procéder de même lors de construction de la liste de chaque routine.
 
-Hiérarchie des classes des instructions
-Une solution classique pour ce type de situation est de définir une classe abstraite @instruction, et des classes concrètes @penUp, @penDown, @rotate et @forward qui héritent de cette classe abstraite :écriture des classes dans le composant sémantique éditez le fichier chezmoi/logo/galgas-sources/logo-semantics.galgas et insérer le texte suivant, avant la déclaration du type table :
+\subsubsection{Hiérarchie des classes des instructions}
+Une solution classique pour ce type de situation est de définir une classe abstraite \galgas{@instruction}, et des classes concrètes \galgas{@penUp}, \galgas{@penDown}, \galgas{@rotate} et \galgas{@forward} qui héritent de cette classe abstraite :écriture des classes dans le composant sémantique éditez le fichier \texttt{chezmoi/logo/galgas-sources/logo-semantics.galgas} et insérer le texte suivant (n’importe où, dans n’importe quel ordre, GALGAS est indifférent à l’ordre des déclarations) :
 
 \begin{galgascode}
 abstract class @instruction {
@@ -983,41 +1034,46 @@ class @penUp : @instruction {
 class @penDown : @instruction {
 }
 class @forward : @instruction {
-
-@luint mLength
+  @luint mLength
 }
 class @rotate : @instruction {
-
-@luint mAngle
+  @luint mAngle
 }
 \end{galgascode}
 
 
-Les trois premières classes n'ont pas d'attribut, et les deux dernières un attribut de type @luint.
+Les trois premières classes n'ont pas de propriété, et les deux dernières une propriété de type \galgas{@luint}.
 
-Instructions sur les objets de type class
+\subsubsection{Instructions sur les objets de type \texttt{class}}
+
 Vous avez besoin de deux instructions relatives aux classes :
 \begin{itemize}
   \item la déclaration d'une variable de type classe ;
-  \item l'instanciation d'un objet de type class.
+  \item l'instanciation d'un objet de type classe.
 \end{itemize}
 
 La déclaration d'un référence de type classe se fait simplement en nommant le type puis l'objet ; par exemple :
-	@instruction instruction
+\begin{galgascode}
+@instruction instruction
+\end{galgascode}
 
 L'instanciation d'un objet de type classe s'effectue en appelant le constructeur new d'une classe concrète avec les paramètres effectifs correspondants aux attributs de la classe, précédés des paramètres effectifs correspondants aux attributs des classes héritées :
-	instruction = @rotate.new {!valeurAngle}
+\begin{galgascode}
+instruction = @rotate.new {!valeurAngle}
+\end{galgascode}
 
 Les deux instructions peuvent réduites en :
-	@instruction instruction = @rotate.new {!valeurAngle}
+\begin{galgascode}
+@instruction instruction = @rotate.new {!valeurAngle}
+\end{galgascode}
 
-Travail à faire
-Compléter les règles de productions pour chaque instruction (sauf l'instruction CALL).
+\subsubsection{Travail à faire}
+Compléter les règles de productions pour chaque instruction (sauf l'instruction \texttt{CALL}).
 
-Le type liste d'instructions
+\subsubsection{Le type liste d'instructions}
 Pour construire la liste des instructions, il faut définir un nouveau type dont les valeurs sont des listes.
 
-éditez le fichier chezmoi/logo/galgas-sources/logo-semantics.galgas et insérer le texte suivant, après les déclarations de classes et avant la déclaration du type table :
+Éditez le fichier \texttt{chezmoi/logo/galgas-sources/logo-semantics.galgas} et insérer le texte suivant (n’importe où, GALGAS est indifférent à l’ordre des déclarations) :
 
 \begin{galgascode}
 list @instructionList {
@@ -1025,7 +1081,7 @@ list @instructionList {
 }
 \end{galgascode}
 
-Ceci déclare le type de liste @instructionList, dont chaque élément contient un objet instance d'une classe héritière de @instruction.
+Ceci déclare le type de liste \galgas{@instructionList}, dont chaque élément contient un objet instance d'une classe héritière de \galgas{@instruction}.
 
 Instructions sur les objets de type liste
 Voici trois instructions relatives aux listes dont vous allez avoir besoin :
@@ -1035,29 +1091,35 @@ Voici trois instructions relatives aux listes dont vous allez avoir besoin :
   \item l'instruction d'ajout d'une valeur à une liste.
 \end{itemize}
 
-La déclaration d'un objet de type liste se fait simplement en nommant le type puis l'objet 
+La déclaration d'un objet de type liste se fait simplement en nommant le type puis l'objet ; par exemple :
+\begin{galgascode}
+@instructionList maListe
+\end{galgascode}
 
-; par exemple :
-	@instructionList maListe
-
-L'initialisation d'un objet de type liste s'effectue en appelant le constructeur emptyList, qui crée une liste vide :
-	maListe = {}
+L'initialisation d'un objet de type liste s'effectue en créant une liste vide :
+\begin{galgascode}
+maListe = {}
+\end{galgascode}
 
 Les deux écritures précédentes peuvent condensées en une seule par :
-	@instructionList maListe := {}
+\begin{galgascode}
+@instructionList maListe = {}
+\end{galgascode}
 
 L'instruction d'ajout d'une valeur dans une liste est :
-	maListe += !instruction
+\begin{galgascode}
+maListe += !instruction
+\end{galgascode}
 L'ajout s'effectue toujours à la fin de la liste.
 
-Travail à faire
+\subsubsection{Travail à faire}
 Compléter les règles de productions construire la liste des instructions d'une routine et la liste des instructions du programme principal (les instructions CALL sont toujours ignorées).
 
-Modification du type table @routineMap
-Pour prendre en compte l’instruction CALL, nous allons procéder comme suit : d’abord, la définition du type table @routineMap va être modifier de façon à associer à chaque routine la liste mise à plat des instructions. Ensuite, nous prendrons en compte l’instruction CALL en extrayant de la table des routine la liste des instructions de la routine appelée, et en l’insérant à la fin de la liste courante des instructions.
+\subsubsection{L'instruction \texttt{CALL}}
+Pour prendre en compte l’instruction \texttt{CALL}, nous allons procéder comme suit : d’abord, la définition du type table \galgas{@routineMap} va être modifier de façon à associer à chaque routine la liste mise à plat des instructions. Ensuite, nous prendrons en compte l’instruction \texttt{CALL} en extrayant de la table des routines la liste des instructions de la routine appelée, et en l’insérant à la fin de la liste courante des instructions.
 
-Modification du type table @routineMap
-Il faut maintenant modifier la définition du type table @routineMap de façon qu'à chaque nom de routine soit associée sa liste d'instructions :
+\subsubsection{Modification du type table \texttt{@routineMap}}
+Il faut maintenant modifier la définition du type table \galgas{@routineMap} de façon qu'à chaque nom de routine soit associée sa liste d'instructions :
 
 \begin{galgascode}
 map @routineMap {
@@ -1069,28 +1131,34 @@ map @routineMap {
 
 Recompiler les sources GALGAS, et examiner les erreurs produites. Corrigez les en vous aidant des explications suivantes :
 \begin{itemize}
-  \item l'instruction d'insertion doit maintenant nommer un argument effectif en sortie supplémentaire, de type @instructionList :
-[!?maTable insertKey !clef !maListe] ;
-  \item l'instruction de recherche doit maintenant nommer un argument effectif en entrée, de type @instructionList :
-[maTable searchKey !clef ?maListe] ;
+  \item l'instruction d'insertion doit maintenant nommer un argument effectif en sortie supplémentaire, de type \galgas{@instructionList} :
+  \begin{description}
+    \item[ ] \galgas{[!?maTable insertKey !clef !maListe]}
+  \end{description}
+  \item l'instruction de recherche doit maintenant nommer un argument effectif en entrée, dont le type est \galgas{@instructionList} :
+  \begin{description}
+    \item[ ] \galgas{[maTable searchKey !clef ?maListe]}
+  \end{description}
 \end{itemize}
 
 Prise en compte de l'instruction CALL
 Il suffit d'ajouter à la liste courante des instructions toutes les instructions de la routine appelée par CALL :
-…
+\begin{galgascode}
+...
 [maTable searchKey !nomRoutine ?listeInstructionRoutine] ;
-for () in listeInstructionRoutine do
-
-listeCouranteInstructions += !mInstruction
+for i in listeInstructionRoutine do
+  listeCouranteInstructions += !i.mInstruction
 end
-…
-L'instruction for permet d’énumérer un objet de type liste. Le corps de la boucle (entre do et end) est exécuté une fois pour chaque élément de la liste. Une constante mInstruction y est implicitement déclarée et prend pour valeur la valeur de l’attribut de même nom de chaque élément de la liste.
+...
+\end{galgascode}
+
+L'instruction \galgas{for} permet d’énumérer un objet de type liste. Le corps de la boucle (entre \galgas{do} et \galgas{end}) est exécuté une fois pour chaque élément \galgas{i} de la liste.
 
 \section{Génération de code}
 
 Dans ce TP, la génération de code est divisée en deux étapes : d'abord, la succession des segments à tracer est simplement affichée sur le terminal ; dans un second temps, un fichier SVG est engendré au moyen d'un template.
 
-L'allure du calcul des tracés est la suivante (à placer à la fin de la règle \galgas{<start_symbol>}) dans logo-syntax.galgas :
+L'allure du calcul des tracés est la suivante (à placer à la fin de la règle \galgas{<start_symbol>}) dans \texttt{logo-syntax.galgas} :
 
 \begin{galgascode}
   ...
@@ -1098,15 +1166,15 @@ L'allure du calcul des tracés est la suivante (à placer à la fin de la règle
   @double x = 0.0
   @double y = 0.0
   @double angle = 0.0 # Angle en degres
-  for () in instructionList do
+  for i in instructionList do
     ...
   end
 \end{galgascode}
 
 Pour exprimer l'action à réaliser, des méthodes (définies et implémentées en dehors de leurs classes) vont être utilisées.
 
-Déclaration de la méthode abstraite
-Elle est nommée par exemple codeDisplay et doit être déclarée dans le fichier chezmoi/logo/galgas-sources/logo-semantics.galgas.
+\subsubsection{Déclaration de la méthode abstraite}
+Elle est nommée par exemple \galgas{codeDisplay} et doit être déclarée dans le fichier \texttt{chezmoi/logo/galgas-sources/logo-semantics.galgas}.
 
 \begin{galgascode}
 abstract method @instruction codeDisplay
@@ -1116,8 +1184,8 @@ abstract method @instruction codeDisplay
   ?!@double ioAngle
 \end{galgascode}
 
-Implémentation d'une héritière concrète
-Par exemple, pour la classe @penUp. Elle est implementée dans le fichier chezmoi/logo/galgas-sources/logo-semantics.galgas.
+\subsubsection{Implémentation d'une héritière concrète}
+Par exemple, pour la classe \galgas{@penUp}. Elle est implementée dans le fichier \texttt{chezmoi/logo/galgas-sources\-/logo-semantics.galgas}.
 
 \begin{galgascode}
 override method @penUp codeDisplay
@@ -1130,16 +1198,18 @@ override method @penUp codeDisplay
 }
 \end{galgascode}
 
-Implémentation de l'héritière concrète pour @penDown
-élémentaire !
+L'mplémentation de la méthode héritière concrète pour \galgas{@penDown} est élémentaire.
 
-Implémentation de l'héritière concrète pour @rotate
-Il faut accumuler l'angle de rotation dans l'argument ioAngle. Or l'attribut mAngle de la classe @rotate n'est pas du type @uint, mais du type @luint. Il faut donc écrire :
+\subsubsection{Implémentation de l'héritière concrète pour \texttt{@rotate}}
+Il faut accumuler l'angle de rotation dans l'argument \galgas{ioAngle}. Or l'attribut \galgas{mAngle} de la classe \galgas{@rotate} n'est pas du type \galgas{@uint}, mais du type \galgas{@luint}. Pour extraire la composante \galgas{@uint} d’un \galgas{@luint}, on écrit \galgas{[mAngle uint]}. Pour transformer un objet \galgas{unUint} de type \galgas{@uint} en \galgas{@double}, on écrit de la même façon \galgas{[unUint double]}. 
+
+
+ Il faut donc écrire :
 \begin{galgascode}
 ioAngle = ioAngle + [[mAngle uint] double]
 \end{galgascode}
 
-Implémentation de l'héritière concrète pour @forward
+\subsubsection{Implémentation de l'héritière concrète pour \texttt{@forward}}
 La méthode complète est alors :
 
 \begin{galgascode}
@@ -1152,30 +1222,30 @@ override method @forward codeDisplay
   let @double x = ioX + [mLength double] * [ioAngle cosDegree]
   let @double y = ioY + [mLength double] * [ioAngle sinDegree]
   if ioPenDown then
-    message "[" . ioX + ", " + ioY + "] -> ["+ x + ", " + y . "]\n"
+    message "[" + ioX + ", " + ioY + "] -> ["+ x + ", " + y + "]\n"
   end
   ioX = x
   ioY = y
 }
 \end{galgascode}
 
-Calcul des tracés
-Le calcul des tracés dans logo-syntax.galgas peut être complété par l'appel de la méhode codeDisplay pour chaque instruction.
+\subsubsection{Calcul des tracés}
+Le calcul des tracés dans \texttt{logo-syntax.galgas} peut être complété par l'appel de la méhode \galgas{codeDisplay} pour chaque instruction.
 \begin{galgascode}
   ...
   @bool pendown = false
   @double x = 0.0
   @double y = 0.0
   @double angle = 0.0 # Angle en degres
-  for () in instructionList do
-    [mInstruction codeDisplay !?penDown !?x !?y !?angle]
+  for i in instructionList do
+    [i.mInstruction codeDisplay !?penDown !?x !?y !?angle]
   end
 \end{galgascode}
 
 Maintenant vous pouvez effectuer la compilation GALGAS et la compilation C++.
 
-Exemple de fichier SVG
-Voici à titre d'exemple le fichier SVG qui doit être engendré par la compilation de l'exemple carre.logo :
+\subsubsection{Exemple de fichier SVG}
+Voici à titre d'exemple le fichier SVG qui doit être engendré par la compilation de l'exemple \texttt{carre.logo} :
 
 \begin{galgascode}
 <?xml version="1.0" standalone="no"?>
@@ -1190,41 +1260,41 @@ Voici à titre d'exemple le fichier SVG qui doit être engendré par la compilat
 </svg>
 \end{galgascode}
 
-Template de génération du fichier SVG
-Créer un fichier
+\subsubsection{Template de génération du fichier SVG}
+Créer un fichier \texttt{chezmoi/logo/galgas-sources/logo-svg.galgasTemplate} et y insérer le contenu suivant :
 
-
-chezmoi/logo/galgas-sources/logo-svg.galgasTemplate 
-et y insérer le contenu suivant :
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100\%" height="100\%" version="1.1" xmlns="http://www.w3.org/2000/svg">
-<title>%!TITLE%</title>
-%!DRAWINGS%</svg>
+\texttt{<?xml version="1.0" standalone="no"?>}\\
+\texttt{<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"}\\
+\texttt{\hspace*{5cm}"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">}\\
+\texttt{<svg width="100\textbackslash\%" height="100\textbackslash\%" version="1.1" xmlns="http://www.w3.org/2000/svg">}\\
+\texttt{<title>\%!TITLE\%</title>}\\
+\texttt{\%!DRAWINGS\%</svg>}\\
 
 Notez :
-l'échappement des caractères « % » à la ligne <svg width… > ;
-les deux symboles TITLE et DRAWINGS.
+\begin{itemize}
+  \item l'échappement des caractères \galgas{\%} à la ligne \texttt{<svg width ... >} ;
+  \item les deux symboles \galgas{TITLE} et \galgas{DRAWINGS}.
+\end{itemize}
 
-Déclarer un template en GALGAS
-Dans le fichier chezmoi/logo/galgas-sources/logo-semantics.galgas, insérer la déclaration du template :
+\subsubsection{Déclarer un template en GALGAS}
+Dans le fichier \texttt{chezmoi/logo/galgas-sources/logo-semantics.galgas}, insérer la déclaration du template :
+\begin{galgascode}
 filewrapper generationTemplate in "." {
 } {
 } {
 
 template svg "logo-svg.galgasTemplate"
-?@string TITLE
-?@string DRAWINGS
+  ?@string TITLE
+  ?@string DRAWINGS
 }
+\end{galgascode}
 
-En GALGAS, un filewrapper est une structure de données qui est l'image d'un répertoire contenant des fichiers et des sous répertoires. Un fichier particulier est un template ; la déclaration mentionne les symboles (ici TITLE et DRAWINGS) comme arguments d'entrée, et le contenu est analysé par GALGAS de façon à vérifier qu'il est bien formé (usage correct des caractère « 
+En GALGAS, un filewrapper est une structure de données qui est l'image d'un répertoire contenant des fichiers et des sous répertoires. Un fichier particulier est un template ; la déclaration mentionne les symboles (ici \galgas{TITLE} et \galgas{DRAWINGS}) comme arguments d'entrée, et le contenu est analysé par GALGAS de façon à vérifier qu'il est bien formé (usage correct des caractères \galgas{\%}).
 
-% »).
+\subsubsection{Construire la liste des instructions SVG}
+La liste des instructions de tracé est accumulée dans une chaîne de caractères. Modifier toutes les méthodes \galgas{codeDisplay} de façon à construire cette chaîne en ajoutant un argument formel en entrée/sortie : \texttt{?!@string SVG}.
 
-Construire la liste des instructions SVG
-La liste des instructions de tracé est accumulée dans une chaîne de caractères. Modifier les méthodes codeDisplay de façon à construire cette chaîne en ajoutant un argument formel en entrée/sortie : ?!@string SVG.
-
-Il faut modifier la méthode codeDisplay de la classe @forward pour ajouter la génération de code :
+Il faut modifier la méthode \galgas{codeDisplay} de la classe \galgas{@forward} pour ajouter la génération de code :
 
 \begin{galgascode}
 override method @forward codeDisplay
@@ -1268,8 +1338,8 @@ rule <start_symbol> {
   @double y = 0.0
   @double angle = 0.0 # Angle en degres
   @string SVG = ""
-  for () in instructions do
-    [mInstruction codeDisplay !?pendown !?x !?y !?angle !?SVG]
+  for i in instructions do
+    [i.mInstruction codeDisplay !?pendown !?x !?y !?angle !?SVG]
   end
 #--- Output file
   let @string sourceFilePath = @string.stringWithSourceFilePath
@@ -1283,79 +1353,4 @@ rule <start_symbol> {
 
 Compiler et essayer l'exécutable : un fichier SVG doit être produit lors de chaque exécution.
 
-Le TP est terminé.
-
-
-
-\section {Annexe 5 : instruction lexicale \texttt{repeat}}
-C1 ?
-I0
-I1
-C2 ?
-I2
-Cn ?
-In
-repeat
-
-I0
-while C1 :
-
-I1
-while C2 :
-
-I2
-…
-while Cn :
-
-In
-end
-oui
-oui
-oui
-non
-non
-non
-
-\section{Annexe 6 : instructions syntaxiques \texttt{select} et \texttt{repeat}}
-
-Les constructions impliquant les instructions syntaxiques select et repeat sont définies par leur traduction en BNF pure (les séquences I0, I1, I2, peuvent être vides).
-Construction	Traduction en BNF pure
-A
-select
-
-I0
-or
-
-I1
-or
-
-I2
-…
-end
-B	Déclaration implicite d'un non terminal unique <T>.
-
-Ajout des règles de productions :
-<T> ::= I0.
-<T> ::= I1.
-<T> ::= I2.
-…
-
-La séquence de gauche est traduite en : A <T> B
-A
-repeat
-
-I0
-while
-
-I1
-while
-
-I2
-…
-end
-B	Déclaration implicite d'un non terminal unique <T>.
-
-Ajout des règles de productions :
-\texttt{<T> ::= I1 I0 <T>.\\<T> ::= I2 I0 <T>.\\<T> ::= \^.}
-
-La séquence de gauche est traduite en : A I0 <T> B
+Le tutorial est terminé.
