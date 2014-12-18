@@ -77,6 +77,10 @@ bool executionModeIsSyntaxAnalysisOnly (void) ;
 
 bool executionModeIsIndexing (void) ;
 
+bool executionModeIsLatex (void) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 uint32_t contextHelpStartLocation (void) ;
 
 uint32_t contextHelpEndLocation (void) ;

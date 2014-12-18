@@ -104,7 +104,7 @@ void C_galgas_type_descriptor::rotateLeft (C_galgas_type_descriptor * & ioRootPt
   ioRootPtr = b ;
 }
 
-//---------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void C_galgas_type_descriptor::rotateRight (C_galgas_type_descriptor * & ioRootPtr) {
   C_galgas_type_descriptor * b = ioRootPtr->mPreviousType ;
