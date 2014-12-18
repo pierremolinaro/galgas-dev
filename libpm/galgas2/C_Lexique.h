@@ -228,6 +228,10 @@ class C_Lexique : public C_Compiler {
 //--- Execution array built during first pass, and used by second pass parsing
   private : TC_UniqueArray <int16_t> mArrayForSecondPassParsing ;
   private : int32_t mIndexForSecondPassParsing ;
+
+//--- Latex string (for --mode=latex command line option)
+  private : C_String mLatexOutputString ;
+  private : void generateLatexFile (void) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

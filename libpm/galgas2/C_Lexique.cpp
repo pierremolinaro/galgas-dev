@@ -105,7 +105,8 @@ mDebugDepthCounter (0),
 mDebugIsRunning (false),
 mLoop (false),
 mArrayForSecondPassParsing (),
-mIndexForSecondPassParsing (0) {
+mIndexForSecondPassParsing (0),
+mLatexOutputString () {
 //---
   if (inSourceFileName.length () > 0) {
     MF_Assert (UNICODE_VALUE (inSourceFileName (0 COMMA_HERE)) == '/',
@@ -161,7 +162,8 @@ mDebugDepthCounter (0),
 mDebugIsRunning (false),
 mLoop (false),
 mArrayForSecondPassParsing (),
-mIndexForSecondPassParsing (0) {
+mIndexForSecondPassParsing (0),
+mLatexOutputString () {
 //--- Init source string
   C_SourceTextInString * sourceTextPtr = NULL ;    
   macroMyNew (sourceTextPtr, C_SourceTextInString (inSourceString,
@@ -243,6 +245,14 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
       co << ", template '" << inToken->mTemplateStringBeforeToken << "'" ;
     }
     co << "\n" ;
+  }else if (executionModeIsLatex ()) {
+   // mLatexOutputString << getCurrentTokenString (inToken) ;
+    for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
+      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
+      if (UNICODE_VALUE (c) != '\0') {
+        mLatexOutputString.appendUnicodeCharacter (c COMMA_HERE) ;
+      }
+    }
   }
 }
 
@@ -293,7 +303,7 @@ int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter inTempla
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   performLexicalAnalysis                                                    *
+//   performLexicalAnalysis                                                                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -307,12 +317,14 @@ void C_Lexique::performLexicalAnalysis (void) {
   }
   if (executionModeIsLexicalAnalysisOnly ()) {
     co << "*** END OF LEXICAL ANALYSIS ***\n" ;
+  }else if (executionModeIsLatex ()) {
+    generateLatexFile () ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Methods for scanning                                                 *
+//        Methods for scanning                                                                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -429,8 +441,7 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Search in an ordered list                               *
-//          (used for searching into scanner generated tables)                 *
+//    Search in an ordered list (used for searching into scanner generated tables)                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -478,7 +489,7 @@ void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Lexical error                                                     *
+//           Lexical error                                                                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -513,7 +524,7 @@ void C_Lexique::lexicalErrorAtLocation (const C_String & inLexicalErrorMessage,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Signaler une erreur syntaxique                               *
+//                Signaler une erreur syntaxique                                                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -565,7 +576,7 @@ void C_Lexique::lexicalWarning (const C_String & inLexicalWarningMessage
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Test if a terminal symbol can be accepted in current context              *
+//   Test if a terminal symbol can be accepted in current context                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -671,7 +682,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Build expected terminals array on syntax error with LL (1) parser         *
+//   Build expected terminals array on syntax error with LL (1) parser                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -795,7 +806,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Perform top down parsing (called by LL (1) parser)                        *
+//   Perform top down parsing (called by LL (1) parser)                                                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1151,7 +1162,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int16_t inExpec
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Perform bottom up parsing (called by SLR and LR (1) parsers)              *
+//   Perform bottom up parsing (called by SLR and LR (1) parsers)                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1414,7 +1425,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Get next production index                           *
+//                         Get next production index                                                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1451,7 +1462,7 @@ C_String C_Lexique::tokenString (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Accept current token by shifting it                                       *
+//   Accept current token by shifting it                                                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1527,7 +1538,7 @@ void C_Lexique::generateIndexFile (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//Handling parsing context (for parse ... rewind ... end parse ; instruction)  *
+//Handling parsing context (for parse ... rewind ... end parse ; instruction)                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1561,7 +1572,7 @@ void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  For Debugging parser                                                       *
+//  For Debugging parser                                                                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1617,6 +1628,19 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
     message << "\n" ;
     ggs_printMessage (message COMMA_HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark ========= Generate Latex file
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_Lexique::generateLatexFile (void) {
+  const C_String latexFilePath = sourceText ()->sourceFilePath () + ".tex" ;
+  C_FileManager::writeStringToFile (mLatexOutputString, latexFilePath) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

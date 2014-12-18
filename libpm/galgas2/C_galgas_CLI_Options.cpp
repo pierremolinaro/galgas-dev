@@ -128,6 +128,8 @@ void setExecutionMode (C_String & outErrorMessage) {
     gMode = 2 ;
   }else if (mode == "indexing") {
     gMode = 3 ;
+  }else if (mode == "latex") {
+    gMode = 4 ;
   }else{
     outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
       "  --mode=                     default mode: perform compilation;\n"
@@ -158,6 +160,12 @@ bool executionModeIsSyntaxAnalysisOnly (void) {
 
 bool executionModeIsIndexing (void) {
   return gMode == 3 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool executionModeIsLatex (void) {
+  return gMode == 4 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
