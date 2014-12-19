@@ -271,7 +271,7 @@ Les mots réservés sont les identificateurs suivants : \texttt{PROGRAM}, \textt
 
 Les constantes littérales entières sont écrites en décimal (une séquence non vide de chiffres décimaux).
 
-Les séparateurs sont l'espace et la fin de ligne.
+Les séparateurs sont tous les caractères compris entre le point de code Unicode \galgas{'\u0001'} et l’espace (point de code Unicode \galgas{'\u0020'}), ce qui inclut la tabulation horizontale et les différentes formes de la fin de ligne.
 
 Les délimiteurs sont le point ('.') et le point virgule (';').
 
@@ -678,8 +678,8 @@ rule '"' {
 \subsection{Analyse des séparateurs}
 C'est une règle très simple, qui accepte tout caractère de code ASCII compris entre \texttt{0x01} et \texttt{0x20} (l'espace). Comme il n'y a pas d'instruction send dans la règle lexicale, l'occurrence d'un séparateur est complètement ignorée par l'analyseur syntaxique.
 \begin{galgascode}
-rule '\u0001' -> ' ' :
-end rule ;
+rule '\u0001' -> ' ' {
+}
 \end{galgascode}
 La séquence d'échappement \texttt{\textbackslash u} permet d'écrire directement des points de code Unicode sous la forme de quatre chiffres hexadécimaux.
 

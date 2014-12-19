@@ -718,6 +718,21 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                                               const class GALGAS_stringlist & in_TOOL_5F_CPP_5F_FILE_5F_LIST,
+                                                                                               const class GALGAS_string & in_LIBPM_5F_PATH,
+                                                                                               const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
+                                                                                               const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET,
+                                                                                               const class GALGAS_bool & in_GENERATE_5F_FOR_5F_WINDOWS
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -783,6 +798,36 @@ void routine_generateGalgas_33_MsysOnWin_33__32_Target (const class GALGAS_strin
                                                         const class GALGAS_string constinArgument1,
                                                         class C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Routine 'generateGalgasCodeBlocksWindowsTarget'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgasCodeBlocksWindowsTarget (const class GALGAS_string constinArgument0,
+                                                    const class GALGAS_string constinArgument1,
+                                                    const class GALGAS_stringlist constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_stringlist constinArgument4,
+                                                    const class GALGAS_stringset constinArgument5,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Routine 'generateGalgasCodeBlocksLinuxMacTarget'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgasCodeBlocksLinuxMacTarget (const class GALGAS_string constinArgument0,
+                                                     const class GALGAS_string constinArgument1,
+                                                     const class GALGAS_stringlist constinArgument2,
+                                                     const class GALGAS_string constinArgument3,
+                                                     const class GALGAS_stringlist constinArgument4,
+                                                     const class GALGAS_stringset constinArgument5,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

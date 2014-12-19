@@ -12,6 +12,190 @@
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_expressionListCollectionValue::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_expressionListCollectionValue * p = (const cPtr_expressionListCollectionValue *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_expressionListCollectionValue) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mExpressionList.objectCompare (p->mAttribute_mExpressionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfExpressionLocation.objectCompare (p->mAttribute_mEndOfExpressionLocation) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_expressionListCollectionValue::objectCompare (const GALGAS_expressionListCollectionValue & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_expressionListCollectionValue::GALGAS_expressionListCollectionValue (void) :
+GALGAS_abstractCollectionValueElement () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::constructor_default (LOCATION_ARGS) {
+  return GALGAS_expressionListCollectionValue::constructor_new (GALGAS_actualOutputExpressionList::constructor_emptyList (HERE),
+                                                                GALGAS_location::constructor_nowhere (HERE)
+                                                                COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_expressionListCollectionValue::GALGAS_expressionListCollectionValue (const cPtr_expressionListCollectionValue * inSourcePtr) :
+GALGAS_abstractCollectionValueElement (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionListCollectionValue) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::constructor_new (const GALGAS_actualOutputExpressionList & inAttribute_mExpressionList,
+                                                                                            const GALGAS_location & inAttribute_mEndOfExpressionLocation
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_expressionListCollectionValue result ;
+  if (inAttribute_mExpressionList.isValid () && inAttribute_mEndOfExpressionLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_expressionListCollectionValue (inAttribute_mExpressionList, inAttribute_mEndOfExpressionLocation COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualOutputExpressionList GALGAS_expressionListCollectionValue::reader_mExpressionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_actualOutputExpressionList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_expressionListCollectionValue * p = (const cPtr_expressionListCollectionValue *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_expressionListCollectionValue) ;
+    result = p->mAttribute_mExpressionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualOutputExpressionList cPtr_expressionListCollectionValue::reader_mExpressionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExpressionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_expressionListCollectionValue::reader_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_expressionListCollectionValue * p = (const cPtr_expressionListCollectionValue *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_expressionListCollectionValue) ;
+    result = p->mAttribute_mEndOfExpressionLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_expressionListCollectionValue::reader_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfExpressionLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                               Pointer class for @expressionListCollectionValue class                                *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_expressionListCollectionValue::cPtr_expressionListCollectionValue (const GALGAS_actualOutputExpressionList & in_mExpressionList,
+                                                                        const GALGAS_location & in_mEndOfExpressionLocation
+                                                                        COMMA_LOCATION_ARGS) :
+cPtr_abstractCollectionValueElement (THERE),
+mAttribute_mExpressionList (in_mExpressionList),
+mAttribute_mEndOfExpressionLocation (in_mEndOfExpressionLocation) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_expressionListCollectionValue::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_expressionListCollectionValue ;
+}
+
+void cPtr_expressionListCollectionValue::description (C_String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString << "[@expressionListCollectionValue:" ;
+  mAttribute_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfExpressionLocation.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_expressionListCollectionValue::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_expressionListCollectionValue (mAttribute_mExpressionList, mAttribute_mEndOfExpressionLocation COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         @expressionListCollectionValue type                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_expressionListCollectionValue ("expressionListCollectionValue",
+                                                      & kTypeDescriptor_GALGAS_abstractCollectionValueElement) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_expressionListCollectionValue::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_expressionListCollectionValue ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_expressionListCollectionValue::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_expressionListCollectionValue (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_expressionListCollectionValue result ;
+  const GALGAS_expressionListCollectionValue * p = (const GALGAS_expressionListCollectionValue *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_expressionListCollectionValue *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("expressionListCollectionValue", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 
 
 typeComparisonResult GALGAS_abstractCollectionValueElementForGeneration::objectCompare (const GALGAS_abstractCollectionValueElementForGeneration & inOperand) const {
