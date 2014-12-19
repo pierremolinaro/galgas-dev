@@ -8,6 +8,8 @@ project (0:0:1) -> %![PROJECT_NAME utf8Representation]% {
   \%makefile-msys32-on-windows
   \%LatestMacOS
   \%applicationBundleBase : "fr.what"
+  \%codeblocks-windows
+  \%codeblocks-linux-mac
 
 #--- Source files
   "galgas-sources/%!PROJECT_NAME%-lexique.galgas"

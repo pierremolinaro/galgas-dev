@@ -87,6 +87,14 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
 
   template makefile_msys32_on_windows_makefile "makefile-msys32-on-windows/makefile.galgasTemplate" ?@string PROJECT_NAME
 
+  template codeblocks_project "project-codeblocks.cbp.galgasTemplate"
+    ?@string PROJECT_NAME
+    ?@stringlist TOOL_CPP_FILE_LIST
+    ?@string LIBPM_PATH
+    ?@stringlist HAND_CODED_SOURCE_TOOL_FILE_LIST
+    ?@stringset HAND_CODED_SOURCE_TOOL_DIRECTORY_SET
+    ?windows:@bool GENERATE_FOR_WINDOWS
+
   template makefile_info_plist "project_xcode/Info.plist.txt"
     ?@string PROJECT_NAME
     ?@string APPLICATION_BUNDLE_BASE
@@ -120,6 +128,52 @@ private proc generateGalgas3MsysOnWin32Target
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile_msys_on_win32/clean.bat"] writeToFileWhenDifferentContents !dir +"/clean.bat" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile_msys_on_win32/install.bat"] writeToFileWhenDifferentContents !dir +"/install.bat" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.makefile_msys32_on_windows_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+private proc generateGalgasCodeBlocksWindowsTarget
+  ?let @string inProjectDirectory
+  ?let @string inProjectName
+  ?let @stringlist inToolCppFileList
+  ?let @string inLIBPMpath
+  ?let @stringlist inHandCodedSourceToolFileList
+  ?let @stringset inHandCodedSourceDirectorySet
+ {
+  let @string dir = inProjectDirectory + "/project-codeblocks-windows"
+  [dir makeDirectory]
+  let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+    !inProjectName
+    !inToolCppFileList
+    !inLIBPMpath
+    !inHandCodedSourceToolFileList
+    !inHandCodedSourceDirectorySet
+    !windows:true
+  ]
+  [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+private proc generateGalgasCodeBlocksLinuxMacTarget
+  ?let @string inProjectDirectory
+  ?let @string inProjectName
+  ?let @stringlist inToolCppFileList
+  ?let @string inLIBPMpath
+  ?let @stringlist inHandCodedSourceToolFileList
+  ?let @stringset inHandCodedSourceDirectorySet
+ {
+  let @string dir = inProjectDirectory + "/project-codeblocks-linux-mac"
+  [dir makeDirectory]
+  let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+    !inProjectName
+    !inToolCppFileList
+    !inLIBPMpath
+    !inHandCodedSourceToolFileList
+    !inHandCodedSourceDirectorySet
+    !windows:false
+  ]
+  [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -227,7 +281,7 @@ proc updateGalgas3Targets
       libpmPath = mFeatureValue.string
     end
   else
-    updateLIBPMatPath ( ![inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/libpm" )
+    updateLIBPMatPath (![inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/libpm" )
     libpmPath = "../build/libpm"
   end
 #--- 
@@ -238,6 +292,8 @@ proc updateGalgas3Targets
   var sourceFileSet =@stringset.emptySet{}
 #--- Parse features
   var availableGenerationFeatures =@stringset.emptySet{}
+  availableGenerationFeatures += !"codeblocks-windows"
+  availableGenerationFeatures += !"codeblocks-linux-mac"
   availableGenerationFeatures += !"makefile-macosx"
   availableGenerationFeatures += !"makefile-unix"
   availableGenerationFeatures += !"makefile-x86linux32-on-macosx"
@@ -326,23 +382,44 @@ proc updateGalgas3Targets
   end
 #--- Generation
   if [generationFeatures hasKey !"makefile-macosx"] then
-    generateGalgas3MakefileMacOSXTarget ( !projectDirectory !inTargetName )
+    generateGalgas3MakefileMacOSXTarget (!projectDirectory !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-unix"] then
-    generateGalgas3MakefileUnixTarget ( !projectDirectory !inTargetName )
+    generateGalgas3MakefileUnixTarget (!projectDirectory !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-x86linux32-on-macosx"] then
-    generateGalgas3Linux32OnMacOSXTarget ( !projectDirectory !inTargetName )
+    generateGalgas3Linux32OnMacOSXTarget (!projectDirectory !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-x86linux64-on-macosx"] then
-    generateGalgas3Linux64OnMacOSXTarget ( !projectDirectory !inTargetName )
+    generateGalgas3Linux64OnMacOSXTarget (!projectDirectory !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-win32-on-macosx"] then
-    generateGalgas3MinGWOnMacOSXTarget ( !projectDirectory !inTargetName )
+    generateGalgas3MinGWOnMacOSXTarget (!projectDirectory !inTargetName )
   end
   if [generationFeatures hasKey !"makefile-msys32-on-windows"] then
-    generateGalgas3MsysOnWin32Target ( !projectDirectory !inTargetName )
+    generateGalgas3MsysOnWin32Target (!projectDirectory !inTargetName )
   end
+  if [generationFeatures hasKey !"codeblocks-windows"] then
+    generateGalgasCodeBlocksWindowsTarget (
+      !projectDirectory
+      !inTargetName
+      !inToolCppFileList
+      !libpmPath
+      !inHandCodedSourceToolFileList
+      !inHandCodedSourceDirectorySet
+    )
+  end
+  if [generationFeatures hasKey !"codeblocks-linux-mac"] then
+    generateGalgasCodeBlocksLinuxMacTarget (
+      !projectDirectory
+      !inTargetName
+      !inToolCppFileList
+      !libpmPath
+      !inHandCodedSourceToolFileList
+      !inHandCodedSourceDirectorySet
+    )
+  end
+
 #--- Frameworks to link with tool
   @stringlist linkOptionForLinkingFrameworkWithTool = {}
   if [inFrameworkToolFileList length] > 0 then

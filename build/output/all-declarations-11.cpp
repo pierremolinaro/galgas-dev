@@ -143,6 +143,8 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project 
     "  %makefile-msys32-on-windows\n"
     "  %LatestMacOS\n"
     "  %applicationBundleBase : \"fr.what\"\n"
+    "  %codeblocks-windows\n"
+    "  %codeblocks-linux-mac\n"
     "\n"
     "#--- Source files\n"
     "  \"galgas-sources/" ;

@@ -25,17 +25,14 @@
 
 #ifndef LIBPM_MULTI_THREADING
   #error the LIBPM_MULTI_THREADING should be defined
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#if LIBPM_MULTI_THREADING_ENABLED == 1
+  #define LIBPM_MULTI_THREADING 0
+#elif LIBPM_MULTI_THREADING == 1
   #include <thread>
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#if LIBPM_MULTI_THREADING_ENABLED == 1
+#if LIBPM_MULTI_THREADING == 1
   #define macroDeclareStaticMutex(MUTEX_NAME) static std::mutex MUTEX_NAME ;
   #define macroDeclareMutex(MUTEX_NAME)              std::mutex MUTEX_NAME ;
   #define macroDeclareExternMutex(MUTEX_NAME) extern std::mutex MUTEX_NAME ;
@@ -47,7 +44,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#if LIBPM_MULTI_THREADING_ENABLED == 1
+#if LIBPM_MULTI_THREADING == 1
   #define macroMutexLock(MUTEX_NAME) MUTEX_NAME.lock () ;
 #else
   #define macroMutexLock(MUTEX_NAME)
@@ -55,7 +52,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#if LIBPM_MULTI_THREADING_ENABLED == 1
+#if LIBPM_MULTI_THREADING == 1
   #define macroMutexUnlock(MUTEX_NAME) MUTEX_NAME.unlock () ;
 #else
   #define macroMutexUnlock(MUTEX_NAME)
