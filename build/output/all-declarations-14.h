@@ -774,8 +774,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
                                                                                                   const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
                                                                                                   const class GALGAS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
                                                                                                   const class GALGAS_stringlist & in_TOOL_5F_LINK_5F_LIST,
-                                                                                                  const class GALGAS_string & in_LIBPM_5F_DIRECTORY_5F_PATH,
-                                                                                                  const class GALGAS_string & in_MULTI_5F_THREADING_5F_ENABLED
+                                                                                                  const class GALGAS_string & in_LIBPM_5F_DIRECTORY_5F_PATH
                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*

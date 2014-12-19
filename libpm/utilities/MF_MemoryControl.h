@@ -27,15 +27,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "utilities/MF_Assert.h"
-#include "utilities/M_Threads.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include <stdlib.h>
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-macroDeclareExternMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -45,18 +40,14 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
   #define macroMyNew(inPointer,instanciation) { \
-    macroMutexLock (gAllocationMutex) ; \
     macroVoidPointer (inPointer) ; \
     prologueForNew () ; \
     inPointer = new instanciation ; \
     registerPointer (inPointer COMMA_HERE) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyNew(inPointer,instanciation) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = new instanciation ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -64,18 +55,14 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
   #define macroMyNewArray(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     macroVoidPointer (inPointer) ; \
     prologueForNew () ; \
     inPointer = new type [size] ; \
     registerArray (inPointer COMMA_HERE) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyNewPODArray(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = (type *) malloc ((size) * sizeof (type)) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -83,16 +70,12 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
   #define macroMyNewPODArray(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     macroVoidPointer (inPointer) ; \
     inPointer = (type *) allocAndRegisterPODArray ((size) * sizeof (type) COMMA_HERE) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyReallocPODArray(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = (type *) realloc (inPointer, (size) * sizeof (type)) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -100,15 +83,11 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
   #define macroMyReallocPODArray(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = (type *) reallocAndRegisterPODArray (inPointer, (size) * sizeof (type) COMMA_HERE) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyNewArray(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = new type [size] ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -116,18 +95,14 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
   #define macroMyNewThere(inPointer,instanciation) { \
-    macroMutexLock (gAllocationMutex) ; \
     macroVoidPointerThere (inPointer) ; \
     prologueForNew () ; \
     inPointer = new instanciation ; \
     registerPointer (inPointer COMMA_THERE) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyNewThere(inPointer,instanciation) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = new instanciation ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -135,16 +110,12 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
   #define macroMyNewPODArrayThere(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     macroValidPointerThere (inPointer) ; \
     inPointer = (type *) allocAndRegisterPODArray ((size) * sizeof (type) COMMA_THERE) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyNewPODArrayThere(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = (type *) malloc ((size) * sizeof (type)) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -152,15 +123,11 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
   #define macroMyReallocPODArrayThere(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = (type *) reallocAndRegisterPODArray (inPointer, (size) * sizeof (type) COMMA_THERE) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyReallocPODArrayThere(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = (type *) realloc (inPointer, (size) * sizeof (type)) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -168,18 +135,14 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
   #define macroMyNewArrayThere(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     macroVoidPointerThere (inPointer) ; \
     prologueForNew () ; \
     inPointer = new type [size] ; \
     registerArray (inPointer COMMA_THERE) ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyNewArrayThere(inPointer,type,size) { \
-    macroMutexLock (gAllocationMutex) ; \
     inPointer = new type [size] ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -191,16 +154,12 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroMyDelete(inPointer) { \
-    macroMutexLock (gAllocationMutex) ; \
     routineFreePointer (inPointer COMMA_HERE) ; \
     delete (inPointer) ; inPointer = NULL ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyDelete(inPointer) { \
-    macroMutexLock (gAllocationMutex) ; \
     delete (inPointer) ; inPointer = NULL ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -208,15 +167,11 @@ macroDeclareExternMutex (gAllocationMutex)
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroMyDeletePODArray(inPointer) { \
-    macroMutexLock (gAllocationMutex) ; \
     routineFreePODArrayPointer (inPointer COMMA_HERE) ; inPointer = NULL ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyDeletePODArray(inPointer) { \
-    macroMutexLock (gAllocationMutex) ; \
     free (inPointer) ; inPointer = NULL ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 
@@ -226,13 +181,10 @@ macroDeclareExternMutex (gAllocationMutex)
   #define macroMyDeleteArray(inPointer) { \
     routineFreeArrayPointer (inPointer COMMA_HERE) ; \
     delete [] (inPointer) ; inPointer = NULL ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #else
   #define macroMyDeleteArray(inPointer) { \
-    macroMutexLock (gAllocationMutex) ; \
     delete [] (inPointer) ; inPointer = NULL ; \
-    macroMutexUnlock (gAllocationMutex) ; \
   }
 #endif
 

@@ -579,7 +579,6 @@
 		CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_CommandLineOption.m; sourceTree = "<group>"; };
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
 		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
-		CFAED8501598842900E485C7 /* M_Threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = M_Threads.h; sourceTree = "<group>"; };
 		CFB02C7719F3FC2F0011D03D /* all-declarations-20.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-20.cpp"; sourceTree = "<group>"; };
 		CFB02C7819F3FC2F0011D03D /* all-declarations-21.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-21.cpp"; sourceTree = "<group>"; };
 		CFB02C7919F3FC2F0011D03D /* all-declarations-22.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-22.cpp"; sourceTree = "<group>"; };
@@ -1595,7 +1594,6 @@
 				CF825A7008536B780077AEAF /* F_GetPrime.h */,
 				CF825A7108536B780077AEAF /* M_machine.h */,
 				CF825A7208536B780077AEAF /* M_SourceLocation.h */,
-				CFAED8501598842900E485C7 /* M_Threads.h */,
 				CF0676430E7EE037008B9D1F /* md5.cpp */,
 				CF0676080E7EDE29008B9D1F /* md5.h */,
 				CF825A7308536B780077AEAF /* MF_Assert.cpp */,
@@ -2198,7 +2196,7 @@
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = "LIBPM_MULTI_THREADING=1";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2247,10 +2245,7 @@
 				DEPLOYMENT_LOCATION = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"LIBPM_MULTI_THREADING=0",
-					DO_NOT_GENERATE_CHECKINGS,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
 				PRODUCT_NAME = "galgas-developer";
 			};
 			name = Default;
@@ -2260,7 +2255,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "LIBPM_MULTI_THREADING=0";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				LD_OPENMP_FLAGS = "";
 				OTHER_LDFLAGS = "";

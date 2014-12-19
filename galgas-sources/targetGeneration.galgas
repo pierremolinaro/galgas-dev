@@ -101,7 +101,6 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
     ?@stringlist MAKEFILE_FILE_LIST
     ?@string LIBPM_DIRECTORY_PATH
-    ?@string MULTI_THREADING_ENABLED
 
   template project_header "project.h.galgasTemplate"
     ?@string VERSION_STRING
@@ -323,9 +322,7 @@ proc updateTargets
   availableGenerationFeatures += !"Mavericks"
   availableGenerationFeatures += !"Yosemite"
   availableGenerationFeatures += !"LatestMacOS"
-  availableGenerationFeatures += !"multi-threading"
   var generationFeatures =@stringset.emptySet{}
-  @bool multiThreadingEnabled = false
 #--- Check xcode target architectures
   @string SDK = ""
   @bool usesARC = false
@@ -334,14 +331,8 @@ proc updateTargets
       if [generationFeatures hasKey ![mValue string]] then
         error mValue: "duplicate '" + mValue + "' feature"
       end
-    #--- Multi-threading
-      if mValue.string == "multi-threading" then
-        if multiThreadingEnabled then
-          error mValue: "duplicate '" + mValue + "' feature"
-        end
-        multiThreadingEnabled = true
     #--- SnowLeopard
-      elsif mValue.string == "SnowLeopard" then
+      if mValue.string == "SnowLeopard" then
         if (SDK != "") then
           error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive"
         end
@@ -421,7 +412,6 @@ proc updateTargets
     !handCodedSourceList
     !generatedFileListForMakefile
     !libpmPath
-    !if multiThreadingEnabled then "1" else "0" end
   ]
   let @string fileListPath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/GALGAS_OUTPUT/file_list.mak"
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*]
@@ -568,7 +558,6 @@ proc updateTargets
       !SDK
       !libpmPath
       !"" # No additional headers
-      !multiThreadingEnabled
       !usesARC
       !inProjectQualifiedFeatureMap
     )

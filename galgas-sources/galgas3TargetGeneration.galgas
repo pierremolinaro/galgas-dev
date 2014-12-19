@@ -111,7 +111,6 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
     ?@stringlist MAKEFILE_FILE_LIST
     ?@stringlist TOOL_LINK_LIST
     ?@string LIBPM_DIRECTORY_PATH
-    ?@string MULTI_THREADING_ENABLED
 
   template project_header "project.h.galgasTemplate"
     ?@string VERSION_STRING
@@ -445,7 +444,6 @@ proc updateGalgas3Targets
     !inToolCppFileList
     !linkOptionForLinkingFrameworkWithTool
     !libpmPath
-    !if multiThreadingEnabled then "1" else "0" end
   ]
   let fileListPath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list.mak"
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*]
@@ -1188,7 +1186,7 @@ proc updateGalgas3Targets
       !frameworkRefs:toolFrameworksFileRefList
       !buildConfigurationSettingList:{
         !"GCC_OPTIMIZATION_LEVEL = 2",
-        !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\", DO_NOT_GENERATE_CHECKINGS)",
+        !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
         !"GCC_WARN_UNUSED_PARAMETER = YES"
       }
       ?targetRef:let releaseTargetRef
@@ -1203,7 +1201,7 @@ proc updateGalgas3Targets
       !buildConfigurationSettingList:{
         !"GCC_OPTIMIZATION_LEVEL = 0",
         !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
-        !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")",
+        !"GCC_PREPROCESSOR_DEFINITIONS = ()",
         !"GCC_WARN_UNUSED_PARAMETER = YES"
       }
       ?targetRef:let debugTargetRef
@@ -1218,7 +1216,7 @@ proc updateGalgas3Targets
       !resourceFileRefs:resourceFileBuildRefs + m_HandCodedResourceFileRefForAppList
       !buildConfigurationSettingList:{
         !"GCC_OPTIMIZATION_LEVEL = 0",
-        !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")"
+        !"GCC_PREPROCESSOR_DEFINITIONS = ()"
       }
       !dependantTargetList:{!releaseTargetRef, !debugTargetRef}
       !productCopyList:{!releaseProductFileRef !inTargetName, !debugProductFileRef !inTargetName + "-debug"}

@@ -255,7 +255,6 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_sortedlist::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
   if ((mSharedRoot != NULL) && (mSharedRoot->retainCount () > 1)) {
     cSharedSortedListRoot * p = NULL ;
     macroMyNew (p, cSharedSortedListRoot (THERE)) ;
@@ -263,7 +262,6 @@ void AC_GALGAS_sortedlist::insulate (LOCATION_ARGS) {
     macroAssignSharedObject (mSharedRoot, p) ;
     macroDetachSharedObject (p) ;
   }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

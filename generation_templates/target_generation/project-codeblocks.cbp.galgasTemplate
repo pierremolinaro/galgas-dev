@@ -33,11 +33,7 @@
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
-     <Add option="-DLIBPM_MULTI_THREADING=0" />
     </Compiler>
-    <Environment>
-     <Variable name="LIBPM_MULTI_THREADING" value="0" />
-    </Environment>
    </Target>
    <Target title="Debug">
     <Option output="%!PROJECT_NAME%-debug% if GENERATE_FOR_WINDOWS then !".exe" else end%" prefix_auto="0" extension_auto="0" />
@@ -66,7 +62,6 @@
      <Add option="-std=c++98" />
      <Add option="-Wall" />
      <Add option="-W" />
-     <Add option="-DLIBPM_MULTI_THREADING=0" />
     </Compiler>
    </Target>
   </Build>

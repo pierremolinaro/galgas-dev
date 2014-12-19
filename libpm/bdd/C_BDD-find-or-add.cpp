@@ -22,7 +22,6 @@
 #include "bdd/C_BDD.h"
 #include "utilities/F_GetPrime.h"
 #include "utilities/C_PrologueEpilogue.h"
-#include "utilities/M_Threads.h"
 #include "strings/C_String.h"
 #include "bdd/C_BDD-node.h"
 #include "time/C_Timer.h"
@@ -250,37 +249,31 @@ static const int32_t kInitialCollisionMapPowerOfTwoSize = 20 ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-macroDeclareStaticMutex (semaphore)
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 uint32_t find_or_add (const uint32_t inBoolVar,
                       const uint32_t inELSEbranch,
                       const uint32_t inTHENbranch
                       COMMA_UNUSED_LOCATION_ARGS) {
   uint32_t result = inELSEbranch ;
   if (inELSEbranch != inTHENbranch) {
-    macroMutexLock (semaphore) ;
-      if (0 == gCollisionMapSize) {
-        reallocHashMap (getPrimeGreaterThan (1U << kInitialCollisionMapPowerOfTwoSize)) ;
-      }
-      const uint32_t complement = inELSEbranch & 1 ;
-      const uint32_t c1 = inTHENbranch ^ complement ;
-      const uint32_t c0 = inELSEbranch ^ complement ;
- //     const cBDDnode candidateNode = cBDDnode (c1, c0, inBoolVar) ;
-      const cBDDnode candidateNode = {c1, c0, inBoolVar, 0} ;
-      // printf ("candidateNode %llu gCollisionMapSize %u\n", candidateNode, gCollisionMapSize) ;
-      const uint64_t hashCode = nodeHashCode (candidateNode) ;
-      uint32_t nodeIndex = gCollisionMap [hashCode] ;
-      while ((0 != nodeIndex)
-         && ((bothBranches (gNodeArray [nodeIndex]) != bothBranches (candidateNode))
-          || (gNodeArray [nodeIndex].mVariableIndex != candidateNode.mVariableIndex))) {
-        nodeIndex = gNodeArray [nodeIndex].mAuxiliary ;
-      }
-      if (0 == nodeIndex) {
-        nodeIndex = addNewNode (candidateNode) ;
-      }
-    macroMutexUnlock (semaphore) ;
+    if (0 == gCollisionMapSize) {
+      reallocHashMap (getPrimeGreaterThan (1U << kInitialCollisionMapPowerOfTwoSize)) ;
+    }
+    const uint32_t complement = inELSEbranch & 1 ;
+    const uint32_t c1 = inTHENbranch ^ complement ;
+    const uint32_t c0 = inELSEbranch ^ complement ;
+//     const cBDDnode candidateNode = cBDDnode (c1, c0, inBoolVar) ;
+    const cBDDnode candidateNode = {c1, c0, inBoolVar, 0} ;
+    // printf ("candidateNode %llu gCollisionMapSize %u\n", candidateNode, gCollisionMapSize) ;
+    const uint64_t hashCode = nodeHashCode (candidateNode) ;
+    uint32_t nodeIndex = gCollisionMap [hashCode] ;
+    while ((0 != nodeIndex)
+       && ((bothBranches (gNodeArray [nodeIndex]) != bothBranches (candidateNode))
+        || (gNodeArray [nodeIndex].mVariableIndex != candidateNode.mVariableIndex))) {
+      nodeIndex = gNodeArray [nodeIndex].mAuxiliary ;
+    }
+    if (0 == nodeIndex) {
+      nodeIndex = addNewNode (candidateNode) ;
+    }
     result = (nodeIndex << 1) | complement ;
   }
   return result ;
@@ -473,32 +466,24 @@ mPtrToNextBDD (NULL) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-macroDeclareStaticMutex (semaphoreLink)
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 void C_BDD::initLinks (void) {
   mPtrToPreviousBDD = this ;
   mPtrToNextBDD = this ;
-  macroMutexLock (semaphoreLink) ;
-    C_BDD * suivantRacine = gBDDinstancesListRoot.mPtrToNextBDD ;
-    mPtrToPreviousBDD = & gBDDinstancesListRoot ;
-    suivantRacine->mPtrToPreviousBDD = this ;
-    mPtrToNextBDD = suivantRacine ;
-    gBDDinstancesListRoot.mPtrToNextBDD = this ;
-  macroMutexUnlock (semaphoreLink) ;
+  C_BDD * suivantRacine = gBDDinstancesListRoot.mPtrToNextBDD ;
+  mPtrToPreviousBDD = & gBDDinstancesListRoot ;
+  suivantRacine->mPtrToPreviousBDD = this ;
+  mPtrToNextBDD = suivantRacine ;
+  gBDDinstancesListRoot.mPtrToNextBDD = this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BDD::~C_BDD (void) {
   mBDDvalue = 0 ;
-  macroMutexLock (semaphoreLink) ;
-    C_BDD * suivant = mPtrToNextBDD ;
-    C_BDD * precedent = mPtrToPreviousBDD ;
-    precedent->mPtrToNextBDD = suivant ;
-    suivant->mPtrToPreviousBDD = precedent ;
-  macroMutexUnlock (semaphoreLink) ;
+  C_BDD * suivant = mPtrToNextBDD ;
+  C_BDD * precedent = mPtrToPreviousBDD ;
+  precedent->mPtrToNextBDD = suivant ;
+  suivant->mPtrToPreviousBDD = precedent ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -184,8 +184,7 @@ GALGAS_string filewrapperTemplate_targetGenerationFileWrapper_makefile_5F_file_5
                                                                                         const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
                                                                                         const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
                                                                                         const class GALGAS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
-                                                                                        const class GALGAS_string & in_LIBPM_5F_DIRECTORY_5F_PATH,
-                                                                                        const class GALGAS_string & in_MULTI_5F_THREADING_5F_ENABLED
+                                                                                        const class GALGAS_string & in_LIBPM_5F_DIRECTORY_5F_PATH
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -301,8 +300,7 @@ void routine_generateXcodeProject (const class GALGAS_stringset constinArgument0
                                    const class GALGAS_string constinArgument11,
                                    const class GALGAS_string constinArgument12,
                                    const class GALGAS_bool constinArgument13,
-                                   const class GALGAS_bool constinArgument14,
-                                   const class GALGAS_projectQualifiedFeatureMap constinArgument15,
+                                   const class GALGAS_projectQualifiedFeatureMap constinArgument14,
                                    class C_Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
@@ -2894,7 +2892,6 @@ extern const char * gWrapperFileContent_262_libpmFileWrapper ;
 extern const char * gWrapperFileContent_263_libpmFileWrapper ;
 extern const char * gWrapperFileContent_264_libpmFileWrapper ;
 extern const char * gWrapperFileContent_265_libpmFileWrapper ;
-extern const char * gWrapperFileContent_266_libpmFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3172,7 +3169,6 @@ extern const cRegularFileWrapper gWrapperFile_262_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_263_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_264_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_265_libpmFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_266_libpmFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

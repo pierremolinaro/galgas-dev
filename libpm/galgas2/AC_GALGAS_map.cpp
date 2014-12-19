@@ -663,7 +663,6 @@ void cSharedMapRoot::copyFrom (const cSharedMapRoot * inSource) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_map::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
   if ((NULL != mSharedMap) && (mSharedMap->retainCount () > 1)) {
     cSharedMapRoot * p = NULL ;
     macroMyNew (p, cSharedMapRoot (THERE)) ;
@@ -671,7 +670,6 @@ void AC_GALGAS_map::insulate (LOCATION_ARGS) {
     macroAssignSharedObject (mSharedMap, p) ;
     macroDetachSharedObject (p) ;
   }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
