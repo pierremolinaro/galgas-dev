@@ -321,7 +321,6 @@ void AC_GALGAS_graph::drop (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_graph::insulateGraph (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
   if ((mSharedGraph != NULL) && (mSharedGraph->retainCount () > 1)) {
     cSharedGraph * p = NULL ;
     macroMyNew (p, cSharedGraph (THERE)) ;
@@ -332,7 +331,6 @@ void AC_GALGAS_graph::insulateGraph (LOCATION_ARGS) {
       mSharedGraph->checkGraph (HERE) ;
     #endif
   }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

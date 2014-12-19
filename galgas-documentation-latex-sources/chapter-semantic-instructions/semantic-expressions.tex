@@ -39,7 +39,13 @@ getter @uint64 square -> @uint64 outResult {
 
 \lstset{emph={expression, conversion}, emphstyle=\galgasEmphStyle}
 
-La syntaxe de l'\emph{expression de conversion polymorphique inverse} est : \galgas{expression as @T}. Elle permet de renvoyer la valeur de \galgas{expression} sous la forme d'un objet de type statique \galgas{@T}. À l'exécution, la conversion échoue si le type dynamique de l'\galgas{expression} n'est pas \galgas{@T} ou une de ses classes héritières ; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
+La syntaxe de l'\emph{expression de conversion polymorphique inverse} est :
+
+\begin {galgascode}
+expression as @T
+\end{galgascode}
+
+Elle permet de renvoyer la valeur de \galgas{expression} sous la forme d'un objet de type statique \galgas{@T}. À l'exécution, la conversion échoue si le type dynamique de l'\galgas{expression} n'est pas \galgas{@T} ou une de ses classes héritières ; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
 
 Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \galgas{cast} (\refSectionPage{instructionCast}).
 

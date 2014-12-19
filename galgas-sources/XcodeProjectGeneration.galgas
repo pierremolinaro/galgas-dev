@@ -823,7 +823,6 @@ proc generateXcodeProject
   ?let @string inSDK
   ?let @string inLIBPMpath
   ?let @string inAdditionalPathForTool
-  ?let @bool inMultiThreadingEnabled
   ?let @bool inUsesARC
   ?let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap {
   let @bool handleUpdateFromInternet = [inProjectQualifiedFeatureMap hasKey !"repositoryURL"]
@@ -1293,10 +1292,7 @@ proc generateXcodeProject
 #--- Target settings
   var toolTargetSettings =@stringlist.emptyList{}
   toolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;"
-  toolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = ("
-  "\"LIBPM_MULTI_THREADING=" + if inMultiThreadingEnabled then "1" else "0" end + "\""
-  ", DO_NOT_GENERATE_CHECKINGS"
-  + ") ;"
+  toolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS) ;"
 #---
   @string toolTargetKey
   add_tool_target (
@@ -1376,8 +1372,7 @@ proc generateXcodeProject
   debugToolTargetSettings += !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES;"
   debugToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 0;"
   debugToolTargetSettings += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;"
-  debugToolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = "
-  "\"LIBPM_MULTI_THREADING=" + if inMultiThreadingEnabled then "1" else "0" end + "\";"
+  debugToolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = "";"
 #---
   @string toolDebugTargetKey
   add_tool_target (
