@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+ <FileVersion major="1" minor="6" />
+ <Project>
+  <Option title="galgas" />
+  <Option pch_mode="0" />
+  <Option compiler="gcc" />
+  <Build>
+   <Target title="Release">
+    <Option output="galgas" prefix_auto="0" extension_auto="0" />
+    <Option object_output="objects" />
+    <Option type="1" />
+    <Option compiler="gcc" />
+    <Option projectResourceIncludeDirsRelation="1" />
+    <Compiler>
+     <Add option="-fomit-frame-pointer" />
+     <Add option="-fexpensive-optimizations" />
+     <Add option="-O2" />
+     <Add option="-Wnon-virtual-dtor" />
+     <Add option="-Winit-self" />
+     <Add option="-Wredundant-decls" />
+     <Add option="-Wcast-align" />
+     <Add option="-Wundef" />
+     <Add option="-Wfloat-equal" />
+     <Add option="-Winline" />
+     <Add option="-Wunreachable-code" />
+     <Add option="-Wmissing-declarations" />
+     <Add option="-Wmissing-include-dirs" />
+     <Add option="-Wswitch-default" />
+     <Add option="-Weffc++" />
+     <Add option="-Wmain" />
+     <Add option="-std=c++98" />
+     <Add option="-Wall" />
+     <Add option="-W" />
+     <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
+    </Compiler>
+   </Target>
+   <Target title="Debug">
+    <Option output="galgas-debug" prefix_auto="0" extension_auto="0" />
+    <Option object_output="objects_debug" />
+    <Option deps_output=".deps_debug" />
+    <Option type="1" />
+    <Option compiler="gcc" />
+    <Option projectResourceIncludeDirsRelation="1" />
+    <Compiler>
+     <Add option="-fomit-frame-pointer" />
+     <Add option="-fexpensive-optimizations" />
+     <Add option="-O2" />
+     <Add option="-Wnon-virtual-dtor" />
+     <Add option="-Winit-self" />
+     <Add option="-Wredundant-decls" />
+     <Add option="-Wcast-align" />
+     <Add option="-Wundef" />
+     <Add option="-Wfloat-equal" />
+     <Add option="-Winline" />
+     <Add option="-Wunreachable-code" />
+     <Add option="-Wmissing-declarations" />
+     <Add option="-Wmissing-include-dirs" />
+     <Add option="-Wswitch-default" />
+     <Add option="-Weffc++" />
+     <Add option="-Wmain" />
+     <Add option="-std=c++98" />
+     <Add option="-Wall" />
+     <Add option="-W" />
+    </Compiler>
+   </Target>
+  </Build>
+  <VirtualTargets>
+   <Add alias="All" targets="Release;Debug;" />
+  </VirtualTargets>
+  <Compiler>
+   <Add directory="../libpm" />
+   <Add directory="../build/user-headers" />
+   <Add directory="../build/output" />
+  <Add directory="../hand_coded_sources" />
+  </Compiler>
+  <Linker>
+
+  </Linker>
+  <Unit filename="../libpm/all-libpm.cpp" />
+  <Unit filename="../libpm/galgas2/all-galgas.cpp" />
+  <Unit filename="../build/output/all-declarations-25.cpp" />
+  <Unit filename="../build/output/all-declarations-24.cpp" />
+  <Unit filename="../build/output/all-declarations-23.cpp" />
+  <Unit filename="../build/output/all-declarations-22.cpp" />
+  <Unit filename="../build/output/all-declarations-21.cpp" />
+  <Unit filename="../build/output/all-declarations-20.cpp" />
+  <Unit filename="../build/output/all-declarations-19.cpp" />
+  <Unit filename="../build/output/all-declarations-18.cpp" />
+  <Unit filename="../build/output/all-declarations-17.cpp" />
+  <Unit filename="../build/output/all-declarations-16.cpp" />
+  <Unit filename="../build/output/all-declarations-15.cpp" />
+  <Unit filename="../build/output/all-declarations-14.cpp" />
+  <Unit filename="../build/output/all-declarations-13.cpp" />
+  <Unit filename="../build/output/all-declarations-12.cpp" />
+  <Unit filename="../build/output/all-declarations-11.cpp" />
+  <Unit filename="../build/output/all-declarations-10.cpp" />
+  <Unit filename="../build/output/all-declarations-9.cpp" />
+  <Unit filename="../build/output/all-declarations-8.cpp" />
+  <Unit filename="../build/output/all-declarations-7.cpp" />
+  <Unit filename="../build/output/all-declarations-6.cpp" />
+  <Unit filename="../build/output/all-declarations-5.cpp" />
+  <Unit filename="../build/output/all-declarations-4.cpp" />
+  <Unit filename="../build/output/all-declarations-3.cpp" />
+  <Unit filename="../build/output/all-declarations-2.cpp" />
+  <Unit filename="../build/output/all-declarations-1.cpp" />
+  <Unit filename="../build/output/all-declarations-0.cpp" />
+  <Unit filename="../hand_coded_sources/cDecisionTableElement.cpp" />
+  <Unit filename="../hand_coded_sources/cVocabulary.cpp" />
+  <Unit filename="../hand_coded_sources/buildPureBNFgrammar.cpp" />
+  <Unit filename="../hand_coded_sources/empty_strings_computations.cpp" />
+  <Unit filename="../hand_coded_sources/follow_by_empty_computation.cpp" />
+  <Unit filename="../hand_coded_sources/grammarComputations.cpp" />
+  <Unit filename="../hand_coded_sources/printOriginalGrammar.cpp" />
+  <Unit filename="../hand_coded_sources/useful_symbols_computations.cpp" />
+  <Unit filename="../hand_coded_sources/FIRST_computations.cpp" />
+  <Unit filename="../hand_coded_sources/FOLLOW_computations.cpp" />
+  <Unit filename="../hand_coded_sources/LL1_computations.cpp" />
+  <Unit filename="../hand_coded_sources/LR1_computations.cpp" />
+  <Unit filename="../hand_coded_sources/SLR_computations.cpp" />
+  <Extensions>
+   <code_completion />
+   <envvars />
+   <debugger />
+   <lib_finder disable_auto="1" />
+  </Extensions>
+ </Project>
+</CodeBlocks_project_file>
