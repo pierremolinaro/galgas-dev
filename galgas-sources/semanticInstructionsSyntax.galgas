@@ -1268,16 +1268,25 @@ rule <semantic_instruction>
     $identifier$ ?var @lstring structAttribute
     mReceiverStructAttributes += !structAttribute
   end
+  @lstring typeNameForCasting
+  select
+    typeNameForCasting = ["" nowhere]
+  or
+    $:$
+    $type_name$ ?typeNameForCasting
+  end
   $identifier$ ?var @lstring mModifierName
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $]$
   $;$ :> ?* ?*
-  outInstruction = @modifierCallInstructionAST.new {
+  outInstruction = @setterCallInstructionAST.new {
     !instructionLocation
     !mReceiverName
     !mReceiverStructAttributes
+    !typeNameForCasting
     !mModifierName
-    !actualParameterList}
+    !actualParameterList
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

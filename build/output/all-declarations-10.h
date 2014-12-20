@@ -737,6 +737,8 @@ class cGrammar_programSLRgrammar : public cParser_expressionSyntax,
 
   public : virtual int32_t select_semanticInstructionsSyntax_66 (C_Lexique_galgas_5F_scanner *) ;
 
+  public : virtual int32_t select_semanticInstructionsSyntax_67 (C_Lexique_galgas_5F_scanner *) ;
+
   public : virtual int32_t select_programModelBuilder_0 (C_Lexique_galgas_5F_scanner *) ;
 
   public : virtual int32_t select_programModelBuilder_1 (C_Lexique_galgas_5F_scanner *) ;
@@ -1852,6 +1854,8 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public : virtual int32_t select_galgas_33_InstructionsSyntax_63 (C_Lexique_galgas_33_Scanner *) ;
 
   public : virtual int32_t select_galgas_33_InstructionsSyntax_64 (C_Lexique_galgas_33_Scanner *) ;
+
+  public : virtual int32_t select_galgas_33_InstructionsSyntax_65 (C_Lexique_galgas_33_Scanner *) ;
 
   public : virtual int32_t select_galgas_33_DeclarationsSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 

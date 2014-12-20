@@ -9160,17 +9160,17 @@ void routine_analyzeErrorOrWarningInstruction (const GALGAS_analysisContext cons
   const enumGalgasBool test_0 = outArgument_outUseLocationReader.boolEnum () ;
   if (kBoolTrue == test_0) {
     GALGAS_getterMap var_getterMap = outArgument_outLocationExpression.reader_mResultType (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 450)).reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 450)) ;
-    const cMapElement_getterMap * objectArray_19458 = (const cMapElement_getterMap *) var_getterMap.readAccessForWithInstruction (GALGAS_string ("location")) ;
-    if (NULL != objectArray_19458) {
-        macroValidSharedObject (objectArray_19458, cMapElement_getterMap) ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, objectArray_19458->mAttribute_mArgumentTypeList.reader_length (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 452)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    const cMapElement_getterMap * objectArray_19457 = (const cMapElement_getterMap *) var_getterMap.readAccessForWithInstruction (GALGAS_string ("location")) ;
+    if (NULL != objectArray_19457) {
+        macroValidSharedObject (objectArray_19457, cMapElement_getterMap) ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, objectArray_19457->mAttribute_mArgumentTypeList.reader_length (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 452)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_1) {
         inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the ").add_operation (constinArgument_inErrorOrWarningString, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 454)).add_operation (GALGAS_string (" location expression type is '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 454)).add_operation (outArgument_outLocationExpression.reader_mResultType (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 454)).reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 454)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 454)).add_operation (GALGAS_string ("' and defines a 'location' reader with arguments; it should be either of the '@location' type, either defines a 'location' reader without argument that"
           " returns an '@location' object"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 454))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 453)) ;
       }else if (kBoolFalse == test_1) {
-        const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, objectArray_19458->mAttribute_mReturnedType.objectCompare (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mLocationType)).boolEnum () ;
+        const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, objectArray_19457->mAttribute_mReturnedType.objectCompare (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mLocationType)).boolEnum () ;
         if (kBoolTrue == test_2) {
-          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the ").add_operation (constinArgument_inErrorOrWarningString, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).add_operation (GALGAS_string (" location expression type is '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).add_operation (outArgument_outLocationExpression.reader_mResultType (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).add_operation (GALGAS_string ("' and defines a 'location' reader that returns an '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).add_operation (objectArray_19458->mAttribute_mReturnedType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 459)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 459)).add_operation (GALGAS_string ("' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 459))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 457)) ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the ").add_operation (constinArgument_inErrorOrWarningString, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).add_operation (GALGAS_string (" location expression type is '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).add_operation (outArgument_outLocationExpression.reader_mResultType (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).add_operation (GALGAS_string ("' and defines a 'location' reader that returns an '@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 458)).add_operation (objectArray_19457->mAttribute_mReturnedType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 459)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 459)).add_operation (GALGAS_string ("' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 459))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 457)) ;
         }
       }
     }else{
@@ -9211,12 +9211,12 @@ void routine_analyzeRoutineArguments (const GALGAS_analysisContext constinArgume
   }else if (kBoolFalse == test_0) {
     outArgument_outActualParameterListForGeneration = GALGAS_actualParameterListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1014)) ;
     GALGAS_stringset var_exclusiveVariableSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1015)) ;
-    cEnumerator_formalParameterSignature enumerator_46646 (constinArgument_inRoutineSignature, kEnumeration_up) ;
-    cEnumerator_actualParameterListAST enumerator_46675 (constinArgument_inActualParameterList, kEnumeration_up) ;
-    while (enumerator_46646.hasCurrentObject () && enumerator_46675.hasCurrentObject ()) {
-      callCategoryMethod_checkAgainstFormalArgument ((const cPtr_actualParameterAST *) enumerator_46675.current_mActualParameter (HERE).ptr (), constinArgument_inAnalysisContext, enumerator_46646.current_mFormalSelector (HERE), enumerator_46646.current_mFormalArgumentType (HERE), enumerator_46646.current_mFormalArgumentPassingMode (HERE), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1017)) ;
-      enumerator_46646.gotoNextObject () ;
-      enumerator_46675.gotoNextObject () ;
+    cEnumerator_formalParameterSignature enumerator_46645 (constinArgument_inRoutineSignature, kEnumeration_up) ;
+    cEnumerator_actualParameterListAST enumerator_46674 (constinArgument_inActualParameterList, kEnumeration_up) ;
+    while (enumerator_46645.hasCurrentObject () && enumerator_46674.hasCurrentObject ()) {
+      callCategoryMethod_checkAgainstFormalArgument ((const cPtr_actualParameterAST *) enumerator_46674.current_mActualParameter (HERE).ptr (), constinArgument_inAnalysisContext, enumerator_46645.current_mFormalSelector (HERE), enumerator_46645.current_mFormalArgumentType (HERE), enumerator_46645.current_mFormalArgumentPassingMode (HERE), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1017)) ;
+      enumerator_46645.gotoNextObject () ;
+      enumerator_46674.gotoNextObject () ;
     }
   }
 }
@@ -9238,12 +9238,12 @@ GALGAS_string function_checkMethodImplementationInSuperClasses (const GALGAS_lst
     result_outResult = GALGAS_string::makeEmptyString () ;
   }else if (kBoolFalse == test_0) {
     GALGAS_methodQualifier var_qualifier ;
-    GALGAS_methodKind joker_53158 ; // Joker input parameter
-    GALGAS_formalParameterSignature joker_53161 ; // Joker input parameter
-    GALGAS_location joker_53164 ; // Joker input parameter
-    GALGAS_bool joker_53167 ; // Joker input parameter
-    GALGAS_string joker_53202 ; // Joker input parameter
-    constinArgument_inSuperClass.reader_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1199)).method_searchKey (constinArgument_inMethodName, joker_53158, joker_53161, joker_53164, joker_53167, var_qualifier, joker_53202, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1199)) ;
+    GALGAS_methodKind joker_53157 ; // Joker input parameter
+    GALGAS_formalParameterSignature joker_53160 ; // Joker input parameter
+    GALGAS_location joker_53163 ; // Joker input parameter
+    GALGAS_bool joker_53166 ; // Joker input parameter
+    GALGAS_string joker_53201 ; // Joker input parameter
+    constinArgument_inSuperClass.reader_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1199)).method_searchKey (constinArgument_inMethodName, joker_53157, joker_53160, joker_53163, joker_53166, var_qualifier, joker_53201, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1199)) ;
     switch (var_qualifier.enumValue ()) {
     case GALGAS_methodQualifier::kNotBuilt:
       break ;
@@ -9319,16 +9319,16 @@ GALGAS_string function_checkModifierImplementationInSuperClasses (const GALGAS_l
                                                                   C_Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
-  const enumGalgasBool test_0 = constinArgument_inSuperClass.reader_isNull (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1351)).boolEnum () ;
+  const enumGalgasBool test_0 = constinArgument_inSuperClass.reader_isNull (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1365)).boolEnum () ;
   if (kBoolTrue == test_0) {
     result_outResult = GALGAS_string::makeEmptyString () ;
   }else if (kBoolFalse == test_0) {
     GALGAS_methodQualifier var_qualifier ;
-    GALGAS_methodKind joker_58761_3 ; // Joker input parameter
-    GALGAS_formalParameterSignature joker_58761_2 ; // Joker input parameter
-    GALGAS_bool joker_58761_1 ; // Joker input parameter
-    GALGAS_string joker_58776 ; // Joker input parameter
-    constinArgument_inSuperClass.reader_mModifierMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1355)).method_searchKey (constinArgument_inModifierName, joker_58761_3, joker_58761_2, joker_58761_1, var_qualifier, joker_58776, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1355)) ;
+    GALGAS_methodKind joker_59093_3 ; // Joker input parameter
+    GALGAS_formalParameterSignature joker_59093_2 ; // Joker input parameter
+    GALGAS_bool joker_59093_1 ; // Joker input parameter
+    GALGAS_string joker_59108 ; // Joker input parameter
+    constinArgument_inSuperClass.reader_mModifierMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1369)).method_searchKey (constinArgument_inModifierName, joker_59093_3, joker_59093_2, joker_59093_1, var_qualifier, joker_59108, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1369)) ;
     switch (var_qualifier.enumValue ()) {
     case GALGAS_methodQualifier::kNotBuilt:
       break ;
@@ -9341,13 +9341,13 @@ GALGAS_string function_checkModifierImplementationInSuperClasses (const GALGAS_l
     case GALGAS_methodQualifier::kEnum_isBasicFinal:
     case GALGAS_methodQualifier::kEnum_isOverriding:
       {
-        result_outResult = constinArgument_inSuperClass.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1360)) ;
+        result_outResult = constinArgument_inSuperClass.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1374)) ;
       }
       break ;
     case GALGAS_methodQualifier::kEnum_isInherited:
     case GALGAS_methodQualifier::kEnum_isOverridingAbstract:
       {
-        result_outResult = function_checkModifierImplementationInSuperClasses (constinArgument_inModifierName, constinArgument_inSuperClass.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1362)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1362)) ;
+        result_outResult = function_checkModifierImplementationInSuperClasses (constinArgument_inModifierName, constinArgument_inSuperClass.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1376)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1376)) ;
       }
       break ;
     }
@@ -9406,86 +9406,86 @@ void routine_checkExpressionIsBoolean (const GALGAS_analysisContext constinArgum
                                        C_Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_unifiedTypeMap_2D_proxy var_expressionType = constinArgument_inExpression.reader_mResultType (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1955)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_expressionType = constinArgument_inExpression.reader_mResultType (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1969)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_boolType = constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_expressionType.objectCompare (var_boolType)).boolEnum () ;
   if (kBoolTrue == test_0) {
     outArgument_outExpression = constinArgument_inExpression ;
   }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_expressionType.reader_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1960)).objectCompare (GALGAS_typeKindEnum::constructor_structType (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1960)))).boolEnum () ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_expressionType.reader_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1974)).objectCompare (GALGAS_typeKindEnum::constructor_structType (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1974)))).boolEnum () ;
     if (kBoolTrue == test_1) {
-      const enumGalgasBool test_2 = var_expressionType.reader_mAttributeMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1961)).reader_hasKey (GALGAS_string ("bool") COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1961)).boolEnum () ;
+      const enumGalgasBool test_2 = var_expressionType.reader_mAttributeMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1975)).reader_hasKey (GALGAS_string ("bool") COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1975)).boolEnum () ;
       if (kBoolTrue == test_2) {
         GALGAS_unifiedTypeMap_2D_proxy var_attributeType ;
-        var_expressionType.reader_mAttributeMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1962)).method_searchKey (GALGAS_lstring::constructor_new (GALGAS_string ("bool"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1963))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1963)), var_attributeType, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1962)) ;
+        var_expressionType.reader_mAttributeMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1976)).method_searchKey (GALGAS_lstring::constructor_new (GALGAS_string ("bool"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1977))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1977)), var_attributeType, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1976)) ;
         const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, var_attributeType.objectCompare (var_boolType)).boolEnum () ;
         if (kBoolTrue == test_3) {
-          outArgument_outExpression = GALGAS_structFieldAccessExpressionForGeneration::constructor_new (var_boolType, constinArgument_inErrorLocation, constinArgument_inExpression, GALGAS_string ("bool")  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1971)) ;
+          outArgument_outExpression = GALGAS_structFieldAccessExpressionForGeneration::constructor_new (var_boolType, constinArgument_inErrorLocation, constinArgument_inExpression, GALGAS_string ("bool")  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1985)) ;
         }else if (kBoolFalse == test_3) {
-          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the '@").add_operation (var_expressionType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1978)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1978)).add_operation (GALGAS_string ("' struct type defines an attribute named 'bool', but its type is not '@bool'"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1978))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1977)) ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the '@").add_operation (var_expressionType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1992)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1992)).add_operation (GALGAS_string ("' struct type defines an attribute named 'bool', but its type is not '@bool'"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1992))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1991)) ;
           outArgument_outExpression.drop () ; // Release error dropped variable
         }
       }else if (kBoolFalse == test_2) {
-        inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the '@").add_operation (var_expressionType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1983)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1983)).add_operation (GALGAS_string ("' struct type does not define an attribute named 'bool'"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1983))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1982)) ;
+        inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the '@").add_operation (var_expressionType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1997)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1997)).add_operation (GALGAS_string ("' struct type does not define an attribute named 'bool'"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1997))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1996)) ;
         outArgument_outExpression.drop () ; // Release error dropped variable
       }
     }else if (kBoolFalse == test_1) {
-      const cMapElement_getterMap * objectArray_84361 = (const cMapElement_getterMap *) var_expressionType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1987)).readAccessForWithInstruction (GALGAS_string ("bool")) ;
-      if (NULL != objectArray_84361) {
-          macroValidSharedObject (objectArray_84361, cMapElement_getterMap) ;
-        const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, objectArray_84361->mAttribute_mReturnedType.objectCompare (var_boolType)).boolEnum () ;
+      const cMapElement_getterMap * objectArray_84693 = (const cMapElement_getterMap *) var_expressionType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2001)).readAccessForWithInstruction (GALGAS_string ("bool")) ;
+      if (NULL != objectArray_84693) {
+          macroValidSharedObject (objectArray_84693, cMapElement_getterMap) ;
+        const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, objectArray_84693->mAttribute_mReturnedType.objectCompare (var_boolType)).boolEnum () ;
         if (kBoolTrue == test_4) {
-          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the expression type is not @bool, it handles a 'bool' reader, but it does not return a '@bool' value")  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1989)) ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the expression type is not @bool, it handles a 'bool' reader, but it does not return a '@bool' value")  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2003)) ;
           outArgument_outExpression.drop () ; // Release error dropped variable
         }else if (kBoolFalse == test_4) {
-          const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, objectArray_84361->mAttribute_mArgumentTypeList.reader_length (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1990)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+          const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, objectArray_84693->mAttribute_mArgumentTypeList.reader_length (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2004)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
           if (kBoolTrue == test_5) {
-            inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the expression type is not @bool, it handles a 'bool' reader that requires argument(s)")  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1991)) ;
+            inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the expression type is not @bool, it handles a 'bool' reader that requires argument(s)")  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2005)) ;
             outArgument_outExpression.drop () ; // Release error dropped variable
           }else if (kBoolFalse == test_5) {
-            const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, objectArray_84361->mAttribute_mErrorMessage.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+            const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, objectArray_84693->mAttribute_mErrorMessage.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_6) {
-              inCompiler->emitSemanticError (constinArgument_inErrorLocation, objectArray_84361->mAttribute_mErrorMessage  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1993)) ;
+              inCompiler->emitSemanticError (constinArgument_inErrorLocation, objectArray_84693->mAttribute_mErrorMessage  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2007)) ;
               outArgument_outExpression.drop () ; // Release error dropped variable
             }else if (kBoolFalse == test_6) {
-              outArgument_outExpression = GALGAS_readerCallExpressionForGeneration::constructor_new (var_boolType, constinArgument_inErrorLocation, objectArray_84361->mAttribute_mKind, constinArgument_inExpression, GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2000)), GALGAS_string ("bool"), GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2002)), objectArray_84361->mAttribute_mHasCompilerArgument  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1995)) ;
+              outArgument_outExpression = GALGAS_readerCallExpressionForGeneration::constructor_new (var_boolType, constinArgument_inErrorLocation, objectArray_84693->mAttribute_mKind, constinArgument_inExpression, GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2014)), GALGAS_string ("bool"), GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2016)), objectArray_84693->mAttribute_mHasCompilerArgument  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2009)) ;
             }
           }
         }
       }else{
-        const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, var_expressionType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2006)).reader_count (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2006)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+        const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, var_expressionType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2020)).reader_count (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2020)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
         if (kBoolTrue == test_7) {
-          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the expression type is not '@bool', but '@").add_operation (var_expressionType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2008)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2008)).add_operation (GALGAS_string ("', and this type does not define the 'bool' reader"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2008))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2007)) ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the expression type is not '@bool', but '@").add_operation (var_expressionType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2022)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2022)).add_operation (GALGAS_string ("', and this type does not define the 'bool' reader"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2022))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2021)) ;
           outArgument_outExpression.drop () ; // Release error dropped variable
         }else if (kBoolFalse == test_7) {
           GALGAS_string var_s = GALGAS_string::makeEmptyString () ;
-          cEnumerator_getterMap enumerator_85524 (var_expressionType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2012)), kEnumeration_up) ;
-          while (enumerator_85524.hasCurrentObject ()) {
+          cEnumerator_getterMap enumerator_85856 (var_expressionType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2026)), kEnumeration_up) ;
+          while (enumerator_85856.hasCurrentObject ()) {
             var_s.dotAssign_operation (GALGAS_string ("\n"
-              "  - ").add_operation (enumerator_85524.current_lkey (HERE).reader_string (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2013)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2013))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2013)) ;
-            cEnumerator_functionSignature enumerator_85596 (enumerator_85524.current_mArgumentTypeList (HERE), kEnumeration_up) ;
-            while (enumerator_85596.hasCurrentObject ()) {
+              "  - ").add_operation (enumerator_85856.current_lkey (HERE).reader_string (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2027)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2027))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2027)) ;
+            cEnumerator_functionSignature enumerator_85928 (enumerator_85856.current_mArgumentTypeList (HERE), kEnumeration_up) ;
+            while (enumerator_85928.hasCurrentObject ()) {
               GALGAS_string temp_8 ;
-              const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, enumerator_85596.current_mFormalSelector (HERE).mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+              const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, enumerator_85928.current_mFormalSelector (HERE).mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
               if (kBoolTrue == test_9) {
-                temp_8 = enumerator_85596.current_mFormalSelector (HERE).mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2015)) ;
+                temp_8 = enumerator_85928.current_mFormalSelector (HERE).mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2029)) ;
               }else if (kBoolFalse == test_9) {
                 temp_8 = GALGAS_string::makeEmptyString () ;
               }
-              var_s.dotAssign_operation (GALGAS_string (" \?").add_operation (temp_8, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2015)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2015)).add_operation (enumerator_85596.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2015)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2015))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2015)) ;
-              enumerator_85596.gotoNextObject () ;
+              var_s.dotAssign_operation (GALGAS_string (" \?").add_operation (temp_8, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2029)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2029)).add_operation (enumerator_85928.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2029)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2029))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2029)) ;
+              enumerator_85928.gotoNextObject () ;
             }
-            var_s.dotAssign_operation (GALGAS_string (" -> @").add_operation (enumerator_85524.current_mReturnedType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2017)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2017))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2017)) ;
-            enumerator_85524.gotoNextObject () ;
+            var_s.dotAssign_operation (GALGAS_string (" -> @").add_operation (enumerator_85856.current_mReturnedType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2031)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2031))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2031)) ;
+            enumerator_85856.gotoNextObject () ;
           }
           GALGAS_string temp_10 ;
-          const enumGalgasBool test_11 = GALGAS_bool (kIsStrictSup, var_expressionType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2021)).reader_count (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2021)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+          const enumGalgasBool test_11 = GALGAS_bool (kIsStrictSup, var_expressionType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2035)).reader_count (SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2035)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
           if (kBoolTrue == test_11) {
             temp_10 = GALGAS_string ("readers are") ;
           }else if (kBoolFalse == test_11) {
             temp_10 = GALGAS_string ("reader is") ;
           }
-          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the expression type is not '@bool', but '@").add_operation (var_expressionType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2020)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2020)).add_operation (GALGAS_string ("', and this type does not define the 'bool' reader; available "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2020)).add_operation (temp_10, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2020)).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2021)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2022))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2019)) ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("the expression type is not '@bool', but '@").add_operation (var_expressionType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2034)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2034)).add_operation (GALGAS_string ("', and this type does not define the 'bool' reader; available "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2034)).add_operation (temp_10, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2034)).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2035)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2036))  COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 2033)) ;
           outArgument_outExpression.drop () ; // Release error dropped variable
         }
       }

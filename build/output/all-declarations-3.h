@@ -10612,6 +10612,8 @@ class cParser_semanticInstructionsSyntax {
 
   protected : virtual int32_t select_semanticInstructionsSyntax_66 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
+  protected : virtual int32_t select_semanticInstructionsSyntax_67 (C_Lexique_galgas_5F_scanner *) = 0 ;
+
 
 } ;
 
@@ -14228,110 +14230,6 @@ class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          @modifierCallInstructionAST class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_modifierCallInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
-  public : GALGAS_modifierCallInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_modifierCallInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_modifierCallInstructionAST * ptr (void) const { return (const cPtr_modifierCallInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_modifierCallInstructionAST (const cPtr_modifierCallInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_modifierCallInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_modifierCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_lstringlist & inOperand2,
-                                                                     const class GALGAS_lstring & inOperand3,
-                                                                     const class GALGAS_actualParameterListAST & inOperand4
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_modifierCallInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST reader_mActualParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mReceiverName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mReceiverStructAttributes (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_modifierCallInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_modifierCallInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Pointer class for @modifierCallInstructionAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_modifierCallInstructionAST : public cPtr_semanticInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mReceiverStructAttributes ;
-  public : GALGAS_lstring mAttribute_mModifierName ;
-  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
-
-//--- Constructor
-  public : cPtr_modifierCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                            const GALGAS_lstring & in_mReceiverName,
-                                            const GALGAS_lstringlist & in_mReceiverStructAttributes,
-                                            const GALGAS_lstring & in_mModifierName,
-                                            const GALGAS_actualParameterListAST & in_mActualParameterList
-                                            COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mReceiverName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mReceiverStructAttributes (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListAST reader_mActualParameterList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                          @onceFunctionDeclarationAST class                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15686,6 +15584,116 @@ class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructi
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST reader_mExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           @setterCallInstructionAST class                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
+//--- Constructor
+  public : GALGAS_setterCallInstructionAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_setterCallInstructionAST constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_setterCallInstructionAST * ptr (void) const { return (const cPtr_setterCallInstructionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_setterCallInstructionAST (const cPtr_setterCallInstructionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_setterCallInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_setterCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_lstring & inOperand1,
+                                                                   const class GALGAS_lstringlist & inOperand2,
+                                                                   const class GALGAS_lstring & inOperand3,
+                                                                   const class GALGAS_lstring & inOperand4,
+                                                                   const class GALGAS_actualParameterListAST & inOperand5
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_setterCallInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST reader_mActualParameterList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mReceiverName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mReceiverStructAttributes (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeNameForCasting (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_setterCallInstructionAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructionAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Pointer class for @setterCallInstructionAST class                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
+//--- Attributes
+  public : GALGAS_lstring mAttribute_mReceiverName ;
+  public : GALGAS_lstringlist mAttribute_mReceiverStructAttributes ;
+  public : GALGAS_lstring mAttribute_mTypeNameForCasting ;
+  public : GALGAS_lstring mAttribute_mModifierName ;
+  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
+
+//--- Constructor
+  public : cPtr_setterCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                          const GALGAS_lstring & in_mReceiverName,
+                                          const GALGAS_lstringlist & in_mReceiverStructAttributes,
+                                          const GALGAS_lstring & in_mTypeNameForCasting,
+                                          const GALGAS_lstring & in_mModifierName,
+                                          const GALGAS_actualParameterListAST & in_mActualParameterList
+                                          COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mReceiverName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mReceiverStructAttributes (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeNameForCasting (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListAST reader_mActualParameterList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

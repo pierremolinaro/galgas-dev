@@ -358,7 +358,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation )
+  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
 #--- Get target variable
   @string targetVariableCppName
   @string nameForCheckingFormalParameterUsing
@@ -1210,7 +1210,7 @@ func checkMethodImplementationInSuperClasses
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @modifierCallInstructionAST enterInstructionInSemanticContext
+override method @setterCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
 #  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -1221,15 +1221,17 @@ override method @modifierCallInstructionAST enterInstructionInSemanticContext
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @modifierCallInstructionAST analyzeSemanticInstruction
+override method @setterCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #--- Check receiver object
-  @unifiedTypeMap-proxy receiverType
-  @string receiverVariableCppName
-  @string receiverVariableBaseName
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?receiverVariableBaseName]
+  [!?ioVariableMap searchForReadWriteAccess
+     !mReceiverName
+     ?@unifiedTypeMap-proxy receiverType
+     ?let @string receiverVariableCppName
+     ?let @string receiverVariableBaseName
+  ]
   for () in mReceiverStructAttributes do
     let attributeMap = [receiverType mAttributeMap]
     [attributeMap searchKey
@@ -1240,6 +1242,15 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
 #    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
 #      error mValue : "this field is private" ;
 #    end if ;
+  end
+#--- Type cast ?
+  if mTypeNameForCasting.string != "" then
+    let castType = @unifiedTypeMap-proxy. searchKey {
+      !inAnalysisContext.mSemanticContext.mTypeMap
+      !mTypeNameForCasting
+    }
+    checkAssignmentTypes (!receiverType !castType !mTypeNameForCasting.location)
+    receiverType = castType
   end
 #--- Get modifier signature
   @formalParameterSignature routineSignature
@@ -1278,16 +1289,19 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Generate instructions
-  ioInstructionListForGeneration += !@modifierCallInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@setterCallInstructionForGeneration.new {
+    !mReceiverName.location
     !receiverVariableCppName
     !receiverVariableBaseName
     !mReceiverStructAttributes
+    !mTypeNameForCasting.string
     !receiverType
     !mModifierName
     !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
-    !baseType}
+    !baseType
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

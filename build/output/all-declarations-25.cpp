@@ -10,6 +10,96 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                  Overriding category reader '@overridingCategoryModifierForGeneration headerKind'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_headerKind categoryReader_overridingCategoryModifierForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                            C_Compiler * /* inCompiler */
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_headerKind result_outResult ; // Returned variable
+  result_outResult = GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticGeneration.galgas", 2338)) ;
+//---
+  return result_outResult ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryReader_overridingCategoryModifierForGeneration_headerKind (void) {
+  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_overridingCategoryModifierForGeneration.mSlotID,
+                                  categoryReader_overridingCategoryModifierForGeneration_headerKind) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gReader_overridingCategoryModifierForGeneration_headerKind (defineCategoryReader_overridingCategoryModifierForGeneration_headerKind, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//         Overriding category method '@overridingCategoryModifierForGeneration appendSpecificImplementation'          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_overridingCategoryModifierForGeneration_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                 const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
+                                                                                                 GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                                 GALGAS_string & outArgument_outImplementation,
+                                                                                                 C_Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_overridingCategoryModifierForGeneration * object = (const cPtr_overridingCategoryModifierForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_overridingCategoryModifierForGeneration) ;
+  GALGAS_string var_methodImplementation ;
+  {
+  routine_generateCategoryModifier (object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2348)), object->mAttribute_mBaseTypeName, object->mAttribute_mCategoryModifierName, ioArgument_ioInclusionSet, object->mAttribute_mCategoryModifierFormalParameterList, object->mAttribute_mSemanticInstructionListForGeneration, var_methodImplementation, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2347)) ;
+  }
+  GALGAS_unifiedTypeMap_2D_proxy var_baseType = object->mAttribute_mReceiverType ;
+  GALGAS_bool var_searching = GALGAS_bool (true) ;
+  if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticGeneration.galgas", 2358)).isValid ()) {
+    uint32_t variant_91458 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticGeneration.galgas", 2358)).uintValue () ;
+    bool loop_91458 = true ;
+    while (loop_91458) {
+      loop_91458 = var_searching.isValid () ;
+      if (loop_91458) {
+        loop_91458 = var_searching.boolValue () ;
+      }
+      if (loop_91458 && (0 == variant_91458)) {
+        loop_91458 = false ;
+        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticGeneration.galgas", 2358)) ;
+      }
+      if (loop_91458) {
+        variant_91458 -- ;
+        const enumGalgasBool test_0 = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2359)).reader_isNull (SOURCE_FILE ("semanticGeneration.galgas", 2359)).operator_not (SOURCE_FILE ("semanticGeneration.galgas", 2359)).boolEnum () ;
+        if (kBoolTrue == test_0) {
+          const enumGalgasBool test_1 = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2360)).reader_mModifierMap (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2360)).reader_hasKey (object->mAttribute_mCategoryModifierName COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2360)).boolEnum () ;
+          if (kBoolTrue == test_1) {
+            var_baseType = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2361)) ;
+          }else if (kBoolFalse == test_1) {
+            var_searching = GALGAS_bool (false) ;
+          }
+        }else if (kBoolFalse == test_0) {
+          var_searching = GALGAS_bool (false) ;
+        }
+      }
+    }
+  }
+  ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("setter-").add_operation (var_baseType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2369)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2369)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2369)).add_operation (object->mAttribute_mCategoryModifierName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2369))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2369)) ;
+  categoryMethod_addHeaderFileName (object->mAttribute_mReceiverType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2370)) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryModifierImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2372)), object->mAttribute_mCategoryModifierName, var_methodImplementation COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2371))) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_overridingCategoryModifierForGeneration_appendSpecificImplementation (void) {
+  enterCategoryMethod_appendSpecificImplementation (kTypeDescriptor_GALGAS_overridingCategoryModifierForGeneration.mSlotID,
+                                                    categoryMethod_overridingCategoryModifierForGeneration_appendSpecificImplementation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_overridingCategoryModifierForGeneration_appendSpecificImplementation (defineCategoryMethod_overridingCategoryModifierForGeneration_appendSpecificImplementation, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                    Overriding category reader '@abstractCategoryReaderForGeneration headerKind'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

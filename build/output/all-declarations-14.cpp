@@ -10879,7 +10879,6 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "     <Add option=\"-Wnon-virtual-dtor\" />\n"
     "     <Add option=\"-Winit-self\" />\n"
     "     <Add option=\"-Wredundant-decls\" />\n"
-    "     <Add option=\"-Wcast-align\" />\n"
     "     <Add option=\"-Wundef\" />\n"
     "     <Add option=\"-Wfloat-equal\" />\n"
     "     <Add option=\"-Winline\" />\n"
@@ -10917,7 +10916,6 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "     <Add option=\"-Wnon-virtual-dtor\" />\n"
     "     <Add option=\"-Winit-self\" />\n"
     "     <Add option=\"-Wredundant-decls\" />\n"
-    "     <Add option=\"-Wcast-align\" />\n"
     "     <Add option=\"-Wundef\" />\n"
     "     <Add option=\"-Wfloat-equal\" />\n"
     "     <Add option=\"-Winline\" />\n"
@@ -10942,15 +10940,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result << "\" />\n"
     "   <Add directory=\"../build/user-headers\" />\n"
     "   <Add directory=\"../build/output\" />\n" ;
-  GALGAS_uint index_2657_ (0) ;
+  GALGAS_uint index_2587_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_2657 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kEnumeration_up) ;
-    while (enumerator_2657.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_2587 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kEnumeration_up) ;
+    while (enumerator_2587.hasCurrentObject ()) {
       result << "  <Add directory=\"" ;
-      result << enumerator_2657.current_key (HERE).stringValue () ;
+      result << enumerator_2587.current_key (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2657_.increment () ;
-      enumerator_2657.gotoNextObject () ;
+      index_2587_.increment () ;
+      enumerator_2587.gotoNextObject () ;
     }
   }
   result << "  </Compiler>\n"
@@ -10968,26 +10966,26 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "  <Unit filename=\"" ;
   result << in_LIBPM_5F_PATH.stringValue () ;
   result << "/galgas2/all-galgas.cpp\" />\n" ;
-  GALGAS_uint index_2950_ (0) ;
+  GALGAS_uint index_2880_ (0) ;
   if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2950 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2950.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_2880 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2880.hasCurrentObject ()) {
       result << "  <Unit filename=\"../build/output/" ;
-      result << enumerator_2950.current_mValue (HERE).stringValue () ;
+      result << enumerator_2880.current_mValue (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2950_.increment () ;
-      enumerator_2950.gotoNextObject () ;
+      index_2880_.increment () ;
+      enumerator_2880.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_3052_ (0) ;
+  GALGAS_uint index_2982_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_3052 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_3052.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_2982 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2982.hasCurrentObject ()) {
       result << "  <Unit filename=\"../" ;
-      result << enumerator_3052.current_mValue (HERE).stringValue () ;
+      result << enumerator_2982.current_mValue (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_3052_.increment () ;
-      enumerator_3052.gotoNextObject () ;
+      index_2982_.increment () ;
+      enumerator_2982.gotoNextObject () ;
     }
   }
   result << "  <Extensions>\n"
