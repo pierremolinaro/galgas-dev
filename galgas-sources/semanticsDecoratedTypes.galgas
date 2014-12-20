@@ -875,10 +875,12 @@ class @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @modifierCallInstructionForGeneration : @semanticInstructionForGeneration {
+class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
   @string mReceiverCppName
   @string mReceiverBaseName
   @lstringlist mReceiverStructAttributes
+  @string mTypeNameForCasting
   @unifiedTypeMap-proxy mReceiverType
   @lstring mModifierName
   @methodKind mKind

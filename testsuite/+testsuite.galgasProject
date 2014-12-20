@@ -1,7 +1,7 @@
 project (1:0:0) -> "testsuite" {
   %makefile-macosx
   %makefile-win32-on-macosx
-  %SnowLeopard
+  %Mavericks
   %applicationBundleBase : "fr.what"
   "galgas-sources/testsuite_lexique.galgas"
   "galgas-sources/testsuite_syntax.galgas"

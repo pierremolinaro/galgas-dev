@@ -1631,7 +1631,11 @@ Aussi, elle peut être appelée par :
 \sectionLabel{L'instruction d'appel de \emph{setter}}{setterCallInstruction}
 
 
-En GALGAS, un \emph{setter} est un sous-programme qui s'applique à un objet, et qui peut modifier cet objet. La syntaxe de l'appel d'un  \emph{setter} est :
+En GALGAS, un \emph{setter} est un sous-programme qui s'applique à un objet, et qui peut modifier cet objet. L'instruction d'appel accepte deux formes différentes.
+
+\subsection{Appel simple}
+
+La première syntaxe de l'appel d'un  \emph{setter} est :
 \lstset{emph={nom_setter, cible, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 [!?cible nom_setter liste_parametres_effectifs]
@@ -1639,19 +1643,75 @@ En GALGAS, un \emph{setter} est un sous-programme qui s'applique à un objet, et
 
 Le délimiteur \galgast{!?} devant \galgas{cible} permet de distinguer syntaxiquement un appel de \emph{setter} d'un appel de méthode. \galgas{cible} désigne l'objet sur lequel le \emph{setter} est appelé, et peut être une variable, ou le champ d'une variable (\galgas{variable.champ}), ou le champ d'un champ d'une variable (\galgas{variable.champ.champ2}), ... \galgas{nom\_setter} est le nom du \emph{setter}, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête du \emph{setter}.
 
-Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les \emph{setters} sont listés. Par exemple, pour le type \galgas{@string}, le \emph{setter} \galgas{setCharacterAtIndex} est présenté comme suit :
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les \emph{setters} sont listées. Par exemple, pour le type \galgas{@string}, le \emph{setter} \galgas{setCharacterAtIndex} est présenté comme suit :
 
-\texttt{
-\textbf{setter} setCharacterAtIndex\\
-\hspace*{2cm}??@char inChar\\
-\hspace*{2cm}??@uint inIndex
+\begin{galgascode}
+setter setCharacterAtIndex
+  ??@char inChar
+  ??@uint inIndex
 }
+\end{galgascode}
 
 Aussi, ce \emph{setter} peut être appelée par :
 \begin{galgascode}
 @string s = ...
 [!?s setCharacterAtIndex !'a' !4]
 \end{galgascode}
+
+
+\subsection{Appel avec conversion de type}
+
+La seconde syntaxe de l'appel d'un  \emph{setter} est :
+
+\lstset{emph={nom_setter, cible, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
+\begin{galgascode}
+[!?cible as @T nom_setter liste_parametres_effectifs]
+\end{galgascode}
+
+Statiquement, le type \galgas{@T} doit être un type héritier du type statique de \galgas{cible}.
+
+À l'exécution, si le type dynamique est le type \galgas{@T} ou un de ses héritiers, l'instruction est exécutée. Sinon, une erreur d'exécution a lieu et le setter n'est pas appelé.
+
+Par exemple, on considère les déclarations de classe et le setter suivant :
+
+\begin{galgascode}
+class @a { }
+
+class @b : @a { }
+
+setter @b aSetter { }
+\end{galgascode}
+
+Si on écrit :
+\begin{galgascode}
+@a unObjet = ...
+[!?unObjet aSetter] # Erreur semantique
+\end{galgascode}
+
+L'instruction \galgas{[!?unObjet aSetter]} donne lieu à une erreur sémantique, puisque la classe \galgas{@a} ne définit pas le setter \galgas{aSetter}.
+
+L'écriture suivante est acceptée par le compilateur car la classe \galgas{@b} définit le setter \galgas{aSetter} :
+\begin{galgascode}
+@a unObjet = ...
+[!?unObjet as @b aSetter] # Compilation ok
+\end{galgascode}
+
+À l'exécution, le comportement dépend du type dynamique de \galgas{unObjet}. Si celui-ci est une instance de \galgas{@a}, une erreur d'exécution est déclenchée :
+\begin{galgascode}
+@a unObjet = @a.new
+[!?unObjet as @b aSetter] # Compilation ok, erreur d'execution
+\end{galgascode}
+
+
+Par contre, si \galgas{unObject} est une instance de \galgas{@b}, l'appel du setter d'effectue :
+\begin{galgascode}
+@a unObjet = @b.new
+[!?unObjet as @b aSetter] # Compilation ok, appel du setter
+\end{galgascode}
+
+
+
+
 
 
 

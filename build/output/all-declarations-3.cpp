@@ -16605,19 +16605,36 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
       break ;
     }
   }
+  GALGAS_lstring var_typeNameForCasting ;
+  switch (select_semanticInstructionsSyntax_37 (inCompiler)) {
+  case 1: {
+    var_typeNameForCasting = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1273)) ;
+  } break ;
+  case 2: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1275)) ;
+    var_typeNameForCasting = inCompiler->synthetizedAttribute_tokenString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1276)) ;
+  } break ;
+  default:
+    break ;
+  }
   GALGAS_lstring var_mModifierName = inCompiler->synthetizedAttribute_tokenString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1271)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1278)) ;
   GALGAS_actualParameterListAST var_actualParameterList ;
-  C_String syntaxDirectedTranslationResult_49451 ;
-  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_49451, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_49451 ;
+  C_String syntaxDirectedTranslationResult_49583 ;
+  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_49583, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_49583 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1273)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1274)) ;
-  outArgument_outInstruction = GALGAS_modifierCallInstructionAST::constructor_new (var_instructionLocation, var_mReceiverName, var_mReceiverStructAttributes, var_mModifierName, var_actualParameterList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1275)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1280)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1281)) ;
+  outArgument_outInstruction = GALGAS_setterCallInstructionAST::constructor_new (var_instructionLocation, var_mReceiverName, var_mReceiverStructAttributes, var_typeNameForCasting, var_mModifierName, var_actualParameterList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1282)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16649,18 +16666,32 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
       break ;
     }
   }
+  switch (select_semanticInstructionsSyntax_37 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1275)) ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1276)) ;
+  } break ;
+  default:
+    break ;
+  }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1271)) ;
-  C_String syntaxDirectedTranslationResult_49451 ;
-  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_49451, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_49451 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1278)) ;
+  C_String syntaxDirectedTranslationResult_49583 ;
+  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_49583, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_49583 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1273)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1280)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1274)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1281)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -16682,10 +16713,20 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1271)) ;
+  switch (select_semanticInstructionsSyntax_37 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1275)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1276)) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1278)) ;
   nt_actual_5F_parameter_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1273)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1274)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1280)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1281)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16696,33 +16737,33 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1295)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1296)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1304)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1305)) ;
   GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1297)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1306)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
     GALGAS_location location_1 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("The selector should be '!\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1299)) ;
+    inCompiler->emitSemanticError (location_1, GALGAS_string ("The selector should be '!\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1308)) ;
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1301)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1310)) ;
   GALGAS_lstring var_mModifierName = inCompiler->synthetizedAttribute_tokenString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1302)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1311)) ;
   GALGAS_actualParameterListAST var_actualParameterList ;
-  C_String syntaxDirectedTranslationResult_50755 ;
-  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_50755, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_50755 ;
+  C_String syntaxDirectedTranslationResult_50912 ;
+  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_50912, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_50912 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1304)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1305)) ;
-  outArgument_outInstruction = GALGAS_selfModifierCallInstructionAST::constructor_new (var_instructionLocation, var_mModifierName, var_actualParameterList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1306)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1313)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1314)) ;
+  outArgument_outInstruction = GALGAS_selfModifierCallInstructionAST::constructor_new (var_instructionLocation, var_mModifierName, var_actualParameterList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1315)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16731,38 +16772,38 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1295)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1304)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1297)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1306)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1301)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1310)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1302)) ;
-  C_String syntaxDirectedTranslationResult_50755 ;
-  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_50755, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_50755 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1311)) ;
+  C_String syntaxDirectedTranslationResult_50912 ;
+  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_50912, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_50912 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1304)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1313)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1305)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1314)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i44_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1295)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1297)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1301)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1302)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1304)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1306)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1310)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1311)) ;
   nt_actual_5F_parameter_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1304)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1305)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1313)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1314)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16773,39 +16814,39 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1324)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1325)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1333)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1334)) ;
   GALGAS_semanticExpressionAST var_mReceiverExpression ;
-  C_String syntaxDirectedTranslationResult_51845 ;
-  nt_expression_ (var_mReceiverExpression, syntaxDirectedTranslationResult_51845, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_51845 ;
+  C_String syntaxDirectedTranslationResult_52002 ;
+  nt_expression_ (var_mReceiverExpression, syntaxDirectedTranslationResult_52002, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_52002 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1327)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1336)) ;
   GALGAS_semanticExpressionAST var_mErrorExpression ;
-  C_String syntaxDirectedTranslationResult_51914 ;
-  nt_expression_ (var_mErrorExpression, syntaxDirectedTranslationResult_51914, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_51914 ;
-  GALGAS_lstringlist var_mBuiltVariableList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1329)) ;
-  switch (select_semanticInstructionsSyntax_37 (inCompiler)) {
+  C_String syntaxDirectedTranslationResult_52071 ;
+  nt_expression_ (var_mErrorExpression, syntaxDirectedTranslationResult_52071, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_52071 ;
+  GALGAS_lstringlist var_mBuiltVariableList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1338)) ;
+  switch (select_semanticInstructionsSyntax_38 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1332)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1341)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
       GALGAS_lstring var_builtVariableName = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1334)) ;
-      var_mBuiltVariableList.addAssign_operation (var_builtVariableName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1335)) ;
-      switch (select_semanticInstructionsSyntax_38 (inCompiler)) {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1343)) ;
+      var_mBuiltVariableList.addAssign_operation (var_builtVariableName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1344)) ;
+      switch (select_semanticInstructionsSyntax_39 (inCompiler)) {
       case 2: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1337)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1346)) ;
       } break ;
       default:
         repeatFlag_0 = false ;
@@ -16816,8 +16857,8 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1340)) ;
-  outArgument_outInstruction = GALGAS_errorInstructionAST::constructor_new (var_instructionLocation, var_mReceiverExpression, var_mErrorExpression, var_mBuiltVariableList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1341)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1349)) ;
+  outArgument_outInstruction = GALGAS_errorInstructionAST::constructor_new (var_instructionLocation, var_mReceiverExpression, var_mErrorExpression, var_mBuiltVariableList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1350)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16826,33 +16867,33 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1324)) ;
-  C_String syntaxDirectedTranslationResult_51845 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_51845, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_51845 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1333)) ;
+  C_String syntaxDirectedTranslationResult_52002 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_52002, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_52002 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1327)) ;
-  C_String syntaxDirectedTranslationResult_51914 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_51914, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_51914 ;
-  switch (select_semanticInstructionsSyntax_37 (inCompiler)) {
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1336)) ;
+  C_String syntaxDirectedTranslationResult_52071 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_52071, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_52071 ;
+  switch (select_semanticInstructionsSyntax_38 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1332)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1341)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1334)) ;
-      switch (select_semanticInstructionsSyntax_38 (inCompiler)) {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1343)) ;
+      switch (select_semanticInstructionsSyntax_39 (inCompiler)) {
       case 2: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1337)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1346)) ;
       } break ;
       default:
         repeatFlag_0 = false ;
@@ -16865,28 +16906,28 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1340)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1349)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i45_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1324)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1333)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1327)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1336)) ;
   nt_expression_indexing (inCompiler) ;
-  switch (select_semanticInstructionsSyntax_37 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_38 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1332)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1341)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1334)) ;
-      switch (select_semanticInstructionsSyntax_38 (inCompiler)) {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1343)) ;
+      switch (select_semanticInstructionsSyntax_39 (inCompiler)) {
       case 2: {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1337)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1346)) ;
       } break ;
       default:
         repeatFlag_0 = false ;
@@ -16897,7 +16938,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1340)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1349)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16908,21 +16949,21 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_warning) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1360)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1361)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_warning) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1369)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1370)) ;
   GALGAS_semanticExpressionAST var_mReceiverExpression ;
-  C_String syntaxDirectedTranslationResult_53228 ;
-  nt_expression_ (var_mReceiverExpression, syntaxDirectedTranslationResult_53228, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_53228 ;
+  C_String syntaxDirectedTranslationResult_53385 ;
+  nt_expression_ (var_mReceiverExpression, syntaxDirectedTranslationResult_53385, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_53385 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1363)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1372)) ;
   GALGAS_semanticExpressionAST var_mWarningExpression ;
-  C_String syntaxDirectedTranslationResult_53297 ;
-  nt_expression_ (var_mWarningExpression, syntaxDirectedTranslationResult_53297, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_53297 ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1365)) ;
-  outArgument_outInstruction = GALGAS_warningInstructionAST::constructor_new (var_instructionLocation, var_mReceiverExpression, var_mWarningExpression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1366)) ;
+  C_String syntaxDirectedTranslationResult_53454 ;
+  nt_expression_ (var_mWarningExpression, syntaxDirectedTranslationResult_53454, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_53454 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1374)) ;
+  outArgument_outInstruction = GALGAS_warningInstructionAST::constructor_new (var_instructionLocation, var_mReceiverExpression, var_mWarningExpression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1375)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16931,30 +16972,30 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_warning) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1360)) ;
-  C_String syntaxDirectedTranslationResult_53228 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_53228, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_53228 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_warning) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1369)) ;
+  C_String syntaxDirectedTranslationResult_53385 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_53385, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_53385 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1363)) ;
-  C_String syntaxDirectedTranslationResult_53297 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_53297, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_53297 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1372)) ;
+  C_String syntaxDirectedTranslationResult_53454 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_53454, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_53454 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1365)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1374)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i46_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_warning) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1360)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_warning) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1369)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1363)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1372)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1365)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1374)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16967,20 +17008,20 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1384)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1393)) ;
   if (GALGAS_string (" (").isValid ()) {
     ioSyntaxDirectedTranslationResult << GALGAS_string (" (").stringValue () ;
   }
   GALGAS_actualParameterListAST var_actualParameterList ;
-  C_String syntaxDirectedTranslationResult_54403 ;
-  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_54403, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_54403 ;
+  C_String syntaxDirectedTranslationResult_54560 ;
+  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_54560, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_54560 ;
   GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1387)) ;
-  if (var_sep.add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1388)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1388)).stringValue () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1396)) ;
+  if (var_sep.add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1397)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1397)).stringValue () ;
   }
-  outArgument_outInstruction = GALGAS_routineCallInstructionAST::constructor_new (var_mRoutineName.reader_location (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1390)), var_mRoutineName, var_actualParameterList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1389)) ;
+  outArgument_outInstruction = GALGAS_routineCallInstructionAST::constructor_new (var_mRoutineName.reader_location (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1399)), var_mRoutineName, var_actualParameterList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1398)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16990,13 +17031,13 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1384)) ;
-  C_String syntaxDirectedTranslationResult_54403 ;
-  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_54403, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_54403 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1393)) ;
+  C_String syntaxDirectedTranslationResult_54560 ;
+  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_54560, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_54560 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1387)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1396)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -17004,9 +17045,9 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i47_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall, "") ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1384)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1393)) ;
   nt_actual_5F_parameter_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1387)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1396)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17017,58 +17058,58 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1407)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1408)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1416)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1417)) ;
   GALGAS_semanticExpressionAST var_receiverExpression ;
-  C_String syntaxDirectedTranslationResult_55498 ;
-  nt_expression_ (var_receiverExpression, syntaxDirectedTranslationResult_55498, inCompiler) ;
-  const GALGAS_string var_receiverExpressionString (syntaxDirectedTranslationResult_55498) ;
-  GALGAS_location var_endOfReceiverExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1410)) ;
+  C_String syntaxDirectedTranslationResult_55655 ;
+  nt_expression_ (var_receiverExpression, syntaxDirectedTranslationResult_55655, inCompiler) ;
+  const GALGAS_string var_receiverExpressionString (syntaxDirectedTranslationResult_55655) ;
+  GALGAS_location var_endOfReceiverExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1419)) ;
   GALGAS_lstring var_searchMethodNameForErrorSignaling = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1411)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1420)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_searchMethodNameForErrorSignaling.mAttribute_string.objectCompare (GALGAS_string ("hasKey"))).boolEnum () ;
   if (kBoolTrue == test_0) {
     var_searchMethodNameForErrorSignaling.mAttribute_string = GALGAS_string::makeEmptyString () ;
   }
   GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1415)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1424)) ;
   const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_1) {
     GALGAS_location location_2 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
-    inCompiler->emitSemanticError (location_2, GALGAS_string ("the selector should be '!'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1417)) ;
+    inCompiler->emitSemanticError (location_2, GALGAS_string ("the selector should be '!'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1426)) ;
   }
   if (GALGAS_string (" ").isValid ()) {
     ioSyntaxDirectedTranslationResult << GALGAS_string (" ").stringValue () ;
   }
   GALGAS_semanticExpressionAST var_mKeyExpression ;
-  C_String syntaxDirectedTranslationResult_55966 ;
-  nt_expression_ (var_mKeyExpression, syntaxDirectedTranslationResult_55966, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_55966 ;
-  GALGAS_location var_endOfKeyExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1421)) ;
+  C_String syntaxDirectedTranslationResult_56123 ;
+  nt_expression_ (var_mKeyExpression, syntaxDirectedTranslationResult_56123, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_56123 ;
+  GALGAS_location var_endOfKeyExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1430)) ;
   GALGAS_lstring var_withPrefix ;
-  switch (select_semanticInstructionsSyntax_39 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_40 (inCompiler)) {
   case 1: {
-    var_withPrefix = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1424))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1424)) ;
+    var_withPrefix = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1433))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1433)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1426)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1435)) ;
     var_withPrefix = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1427)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1436)) ;
   } break ;
   default:
     break ;
   }
-  if (GALGAS_string (" in ").add_operation (var_receiverExpressionString, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1429)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1429)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << GALGAS_string (" in ").add_operation (var_receiverExpressionString, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1429)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1429)).stringValue () ;
+  if (GALGAS_string (" in ").add_operation (var_receiverExpressionString, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1438)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1438)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << GALGAS_string (" in ").add_operation (var_receiverExpressionString, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1438)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1438)).stringValue () ;
   }
   GALGAS_string temp_3 ;
   const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, var_searchMethodNameForErrorSignaling.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_4) {
-    temp_3 = GALGAS_string ("error message ").add_operation (var_searchMethodNameForErrorSignaling.reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1430)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1430)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1430)) ;
+    temp_3 = GALGAS_string ("error message ").add_operation (var_searchMethodNameForErrorSignaling.reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1439)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1439)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1439)) ;
   }else if (kBoolFalse == test_4) {
     temp_3 = GALGAS_string::makeEmptyString () ;
   }
@@ -17077,41 +17118,41 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1431)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1440)) ;
   GALGAS_semanticInstructionListAST var_mDoBranchInstructions ;
-  C_String syntaxDirectedTranslationResult_56400 ;
-  nt_semantic_5F_instruction_5F_list_ (var_mDoBranchInstructions, syntaxDirectedTranslationResult_56400, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_56400 ;
-  GALGAS_location var_endOfDoInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1433)) ;
+  C_String syntaxDirectedTranslationResult_56557 ;
+  nt_semantic_5F_instruction_5F_list_ (var_mDoBranchInstructions, syntaxDirectedTranslationResult_56557, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_56557 ;
+  GALGAS_location var_endOfDoInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1442)) ;
   GALGAS_semanticInstructionListAST var_mElseBranchInstructions ;
-  switch (select_semanticInstructionsSyntax_40 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_41 (inCompiler)) {
   case 1: {
-    var_mElseBranchInstructions = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1436)) ;
+    var_mElseBranchInstructions = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1445)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1438)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1447)) ;
     const enumGalgasBool test_5 = GALGAS_bool (kIsNotEqual, var_searchMethodNameForErrorSignaling.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_5) {
       GALGAS_location location_6 (var_searchMethodNameForErrorSignaling.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_6, GALGAS_string ("GALGAS 3 compatibility: no 'else' branch if method different than 'hasKey'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1440)) ;
+      inCompiler->emitSemanticError (location_6, GALGAS_string ("GALGAS 3 compatibility: no 'else' branch if method different than 'hasKey'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1449)) ;
     }
-    C_String syntaxDirectedTranslationResult_56870 ;
-    nt_semantic_5F_instruction_5F_list_ (var_mElseBranchInstructions, syntaxDirectedTranslationResult_56870, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_56870 ;
+    C_String syntaxDirectedTranslationResult_57027 ;
+    nt_semantic_5F_instruction_5F_list_ (var_mElseBranchInstructions, syntaxDirectedTranslationResult_57027, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_57027 ;
   } break ;
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_readAccessWithInstructionAST::constructor_new (var_instructionLocation, var_withPrefix, var_receiverExpression, var_endOfReceiverExpression, var_mKeyExpression, var_endOfKeyExpression, var_searchMethodNameForErrorSignaling, var_mDoBranchInstructions, var_endOfDoInstructions, var_mElseBranchInstructions, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1455))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1444)) ;
+  outArgument_outInstruction = GALGAS_readAccessWithInstructionAST::constructor_new (var_instructionLocation, var_withPrefix, var_receiverExpression, var_endOfReceiverExpression, var_mKeyExpression, var_endOfKeyExpression, var_searchMethodNameForErrorSignaling, var_mDoBranchInstructions, var_endOfDoInstructions, var_mElseBranchInstructions, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1464))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1453)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1456)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1457)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1458)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1465)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1466)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1467)) ;
   GALGAS_string temp_7 ;
-  const enumGalgasBool test_8 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1459)).boolEnum () ;
+  const enumGalgasBool test_8 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1468)).boolEnum () ;
   if (kBoolTrue == test_8) {
     temp_7 = GALGAS_string ("%with") ;
   }else if (kBoolFalse == test_8) {
@@ -17128,98 +17169,98 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1407)) ;
-  C_String syntaxDirectedTranslationResult_55498 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_55498, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_55498 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1416)) ;
+  C_String syntaxDirectedTranslationResult_55655 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_55655, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_55655 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1411)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1420)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1415)) ;
-  C_String syntaxDirectedTranslationResult_55966 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_55966, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_55966 ;
-  switch (select_semanticInstructionsSyntax_39 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1426)) ;
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1427)) ;
-  } break ;
-  default:
-    break ;
-  }
-  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1431)) ;
-  C_String syntaxDirectedTranslationResult_56400 ;
-  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_56400, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_56400 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1424)) ;
+  C_String syntaxDirectedTranslationResult_56123 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_56123, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_56123 ;
   switch (select_semanticInstructionsSyntax_40 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1438)) ;
-    C_String syntaxDirectedTranslationResult_56870 ;
-    nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_56870, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_56870 ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1435)) ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1436)) ;
   } break ;
   default:
     break ;
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1456)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1440)) ;
+  C_String syntaxDirectedTranslationResult_56557 ;
+  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_56557, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_56557 ;
+  switch (select_semanticInstructionsSyntax_41 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1447)) ;
+    C_String syntaxDirectedTranslationResult_57027 ;
+    nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_57027, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_57027 ;
+  } break ;
+  default:
+    break ;
+  }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1457)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1465)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1458)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1466)) ;
+  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1467)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i48_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1407)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1416)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1411)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1415)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1420)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1424)) ;
   nt_expression_indexing (inCompiler) ;
-  switch (select_semanticInstructionsSyntax_39 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1426)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1427)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1431)) ;
-  nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
   switch (select_semanticInstructionsSyntax_40 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1438)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1435)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1436)) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1440)) ;
+  nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
+  switch (select_semanticInstructionsSyntax_41 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1447)) ;
     nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1456)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1457)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1458)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1465)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1466)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1467)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17230,125 +17271,125 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1466)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1467)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1475)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1476)) ;
   GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1468)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1477)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
     GALGAS_location location_1 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("The selector should be '!\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1470)) ;
+    inCompiler->emitSemanticError (location_1, GALGAS_string ("The selector should be '!\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1479)) ;
   }
   if (GALGAS_string (" ").isValid ()) {
     ioSyntaxDirectedTranslationResult << GALGAS_string (" ").stringValue () ;
   }
   GALGAS_lstring var_mTargetObjectName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1473)) ;
-  GALGAS_lstringlist var_structAttributeList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1474)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1482)) ;
+  GALGAS_lstringlist var_structAttributeList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1483)) ;
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
-    switch (select_semanticInstructionsSyntax_41 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_42 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1477)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1486)) ;
       GALGAS_lstring var_mStructFieldName = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1478)) ;
-      var_structAttributeList.addAssign_operation (var_mStructFieldName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1479)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1487)) ;
+      var_structAttributeList.addAssign_operation (var_mStructFieldName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1488)) ;
     } break ;
     default:
       repeatFlag_2 = false ;
       break ;
     }
   }
-  GALGAS_location var_endOfReceiverExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1481)) ;
+  GALGAS_location var_endOfReceiverExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1490)) ;
   GALGAS_lstring var_searchMethodNameForErrorSignaling = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1482)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1491)) ;
   const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, var_searchMethodNameForErrorSignaling.mAttribute_string.objectCompare (GALGAS_string ("hasKey"))).boolEnum () ;
   if (kBoolTrue == test_3) {
     var_searchMethodNameForErrorSignaling.mAttribute_string = GALGAS_string::makeEmptyString () ;
   }
   GALGAS_lstring var_selector_32_ = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1486)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1495)) ;
   const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, var_selector_32_.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_4) {
     GALGAS_location location_5 (var_selector_32_.reader_location (HERE)) ; // Implicit use of 'location' reader
-    inCompiler->emitSemanticError (location_5, GALGAS_string ("the selector should be '!'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1488)) ;
+    inCompiler->emitSemanticError (location_5, GALGAS_string ("the selector should be '!'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1497)) ;
   }
   GALGAS_semanticExpressionAST var_mKeyExpression ;
-  C_String syntaxDirectedTranslationResult_58356 ;
-  nt_expression_ (var_mKeyExpression, syntaxDirectedTranslationResult_58356, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_58356 ;
-  GALGAS_location var_endOfKeyExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1491)) ;
+  C_String syntaxDirectedTranslationResult_58513 ;
+  nt_expression_ (var_mKeyExpression, syntaxDirectedTranslationResult_58513, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_58513 ;
+  GALGAS_location var_endOfKeyExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1500)) ;
   GALGAS_lstring var_withPrefix ;
-  switch (select_semanticInstructionsSyntax_42 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_43 (inCompiler)) {
   case 1: {
-    var_withPrefix = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1494))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1494)) ;
+    var_withPrefix = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1496)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1505)) ;
     var_withPrefix = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1497)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1506)) ;
   } break ;
   default:
     break ;
   }
   GALGAS_string var_s = GALGAS_string::makeEmptyString () ;
-  cEnumerator_lstringlist enumerator_58622 (var_structAttributeList, kEnumeration_up) ;
-  while (enumerator_58622.hasCurrentObject ()) {
-    var_s.dotAssign_operation (GALGAS_string (".").add_operation (enumerator_58622.current_mValue (HERE).reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1501)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1501))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1501)) ;
-    enumerator_58622.gotoNextObject () ;
+  cEnumerator_lstringlist enumerator_58779 (var_structAttributeList, kEnumeration_up) ;
+  while (enumerator_58779.hasCurrentObject ()) {
+    var_s.dotAssign_operation (GALGAS_string (".").add_operation (enumerator_58779.current_mValue (HERE).reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1510)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1510))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1510)) ;
+    enumerator_58779.gotoNextObject () ;
   }
   GALGAS_string temp_6 ;
   const enumGalgasBool test_7 = GALGAS_bool (kIsNotEqual, var_searchMethodNameForErrorSignaling.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_7) {
-    temp_6 = GALGAS_string (" error message ").add_operation (var_searchMethodNameForErrorSignaling.reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1504)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1504)) ;
+    temp_6 = GALGAS_string (" error message ").add_operation (var_searchMethodNameForErrorSignaling.reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1513)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1513)) ;
   }else if (kBoolFalse == test_7) {
     temp_6 = GALGAS_string::makeEmptyString () ;
   }
-  if (GALGAS_string (" in !\?").add_operation (var_mTargetObjectName.reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1504)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << GALGAS_string (" in !\?").add_operation (var_mTargetObjectName.reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1503)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1504)).stringValue () ;
+  if (GALGAS_string (" in !\?").add_operation (var_mTargetObjectName.reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1512)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1512)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1512)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1512)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1513)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << GALGAS_string (" in !\?").add_operation (var_mTargetObjectName.reader_string (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1512)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1512)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1512)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1512)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1513)).stringValue () ;
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1506)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1515)) ;
   GALGAS_semanticInstructionListAST var_mDoBranchInstructions ;
-  C_String syntaxDirectedTranslationResult_58867 ;
-  nt_semantic_5F_instruction_5F_list_ (var_mDoBranchInstructions, syntaxDirectedTranslationResult_58867, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_58867 ;
-  GALGAS_location var_endOf_5F_do_5F_instructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1508)) ;
+  C_String syntaxDirectedTranslationResult_59024 ;
+  nt_semantic_5F_instruction_5F_list_ (var_mDoBranchInstructions, syntaxDirectedTranslationResult_59024, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_59024 ;
+  GALGAS_location var_endOf_5F_do_5F_instructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1517)) ;
   GALGAS_semanticInstructionListAST var_mElseBranchInstructions ;
-  switch (select_semanticInstructionsSyntax_43 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_44 (inCompiler)) {
   case 1: {
-    var_mElseBranchInstructions = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1511)) ;
+    var_mElseBranchInstructions = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1520)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1513)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1522)) ;
     const enumGalgasBool test_8 = GALGAS_bool (kIsNotEqual, var_searchMethodNameForErrorSignaling.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_8) {
       GALGAS_location location_9 (var_searchMethodNameForErrorSignaling.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_9, GALGAS_string ("GALGAS 3 compatibility: no 'else' branch if method different than 'hasKey'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1515)) ;
+      inCompiler->emitSemanticError (location_9, GALGAS_string ("GALGAS 3 compatibility: no 'else' branch if method different than 'hasKey'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1524)) ;
     }
-    C_String syntaxDirectedTranslationResult_59339 ;
-    nt_semantic_5F_instruction_5F_list_ (var_mElseBranchInstructions, syntaxDirectedTranslationResult_59339, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_59339 ;
+    C_String syntaxDirectedTranslationResult_59496 ;
+    nt_semantic_5F_instruction_5F_list_ (var_mElseBranchInstructions, syntaxDirectedTranslationResult_59496, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_59496 ;
   } break ;
   default:
     break ;
   }
-  GALGAS_location var_endOf_5F_else_5F_instructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1519)) ;
-  outArgument_outInstruction = GALGAS_readWriteAccessWithInstructionAST::constructor_new (var_instructionLocation, var_withPrefix, var_mTargetObjectName, var_structAttributeList, var_endOfReceiverExpression, var_mKeyExpression, var_endOfKeyExpression, var_searchMethodNameForErrorSignaling, var_mDoBranchInstructions, var_endOf_5F_do_5F_instructions, var_mElseBranchInstructions, var_endOf_5F_else_5F_instructions  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1520)) ;
+  GALGAS_location var_endOf_5F_else_5F_instructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1528)) ;
+  outArgument_outInstruction = GALGAS_readWriteAccessWithInstructionAST::constructor_new (var_instructionLocation, var_withPrefix, var_mTargetObjectName, var_structAttributeList, var_endOfReceiverExpression, var_mKeyExpression, var_endOfKeyExpression, var_searchMethodNameForErrorSignaling, var_mDoBranchInstructions, var_endOf_5F_do_5F_instructions, var_mElseBranchInstructions, var_endOf_5F_else_5F_instructions  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1529)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1533)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1534)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1535)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1542)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1543)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1544)) ;
   GALGAS_string temp_10 ;
-  const enumGalgasBool test_11 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1536)).boolEnum () ;
+  const enumGalgasBool test_11 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1545)).boolEnum () ;
   if (kBoolTrue == test_11) {
     temp_10 = GALGAS_string ("%with") ;
   }else if (kBoolFalse == test_11) {
@@ -17365,23 +17406,23 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1466)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1475)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1468)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1477)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1473)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1482)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_41 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_42 (inCompiler)) {
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1477)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1486)) ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1478)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1487)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -17390,105 +17431,105 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1482)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1491)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1486)) ;
-  C_String syntaxDirectedTranslationResult_58356 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_58356, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_58356 ;
-  switch (select_semanticInstructionsSyntax_42 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1496)) ;
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1497)) ;
-  } break ;
-  default:
-    break ;
-  }
-  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1506)) ;
-  C_String syntaxDirectedTranslationResult_58867 ;
-  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_58867, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_58867 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1495)) ;
+  C_String syntaxDirectedTranslationResult_58513 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_58513, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_58513 ;
   switch (select_semanticInstructionsSyntax_43 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1513)) ;
-    C_String syntaxDirectedTranslationResult_59339 ;
-    nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_59339, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_59339 ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1505)) ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1506)) ;
   } break ;
   default:
     break ;
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1533)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1515)) ;
+  C_String syntaxDirectedTranslationResult_59024 ;
+  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_59024, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_59024 ;
+  switch (select_semanticInstructionsSyntax_44 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1522)) ;
+    C_String syntaxDirectedTranslationResult_59496 ;
+    nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_59496, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_59496 ;
+  } break ;
+  default:
+    break ;
+  }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1534)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1542)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1535)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1543)) ;
+  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1544)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i49_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1466)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1468)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1473)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1475)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1477)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1482)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_41 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_42 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1477)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1478)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1486)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1487)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1482)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1486)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1491)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1495)) ;
   nt_expression_indexing (inCompiler) ;
-  switch (select_semanticInstructionsSyntax_42 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1496)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1497)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1506)) ;
-  nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
   switch (select_semanticInstructionsSyntax_43 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1513)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1505)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1506)) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1515)) ;
+  nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
+  switch (select_semanticInstructionsSyntax_44 (inCompiler)) {
+  case 1: {
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1522)) ;
     nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1533)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1534)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1535)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1542)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1543)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1544)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17497,29 +17538,29 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
                                                                                                              C_String & ioSyntaxDirectedTranslationResult,
                                                                                                              C_Lexique_galgas_5F_scanner * inCompiler) {
   const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1550)) ;
-  if (var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1551)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1551)).stringValue () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1559)) ;
+  if (var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1560)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1560)).stringValue () ;
   }
   GALGAS_dynamicTypeComparisonKind var_kind ;
-  switch (select_semanticInstructionsSyntax_44 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_45 (inCompiler)) {
   case 1: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3D__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1554)) ;
-    var_kind = GALGAS_dynamicTypeComparisonKind::constructor_equal (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1554)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3D__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1563)) ;
+    var_kind = GALGAS_dynamicTypeComparisonKind::constructor_equal (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1563)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1556)) ;
-    var_kind = GALGAS_dynamicTypeComparisonKind::constructor_inherited (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1556)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1565)) ;
+    var_kind = GALGAS_dynamicTypeComparisonKind::constructor_inherited (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1565)) ;
   } break ;
   case 3: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1558)) ;
-    var_kind = GALGAS_dynamicTypeComparisonKind::constructor_strictlyInherited (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1558)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1567)) ;
+    var_kind = GALGAS_dynamicTypeComparisonKind::constructor_strictlyInherited (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1567)) ;
   } break ;
   default:
     break ;
@@ -17527,29 +17568,29 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
   GALGAS_lstring var_mTypeName = inCompiler->synthetizedAttribute_tokenString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1560)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1569)) ;
   GALGAS_lstring var_mConstantVarName ;
-  switch (select_semanticInstructionsSyntax_45 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_46 (inCompiler)) {
   case 1: {
     var_mConstantVarName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1563)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1572)) ;
   } break ;
   case 2: {
-    var_mConstantVarName = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1565))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1565)) ;
+    var_mConstantVarName = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1574))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1574)) ;
   } break ;
   default:
     break ;
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1567)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1576)) ;
   GALGAS_semanticInstructionListAST var_mCastBranchInstructionList ;
-  C_String syntaxDirectedTranslationResult_61281 ;
-  nt_semantic_5F_instruction_5F_list_ (var_mCastBranchInstructionList, syntaxDirectedTranslationResult_61281, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_61281 ;
-  ioArgument_ioCastInstructionBranchList.addAssign_operation (var_mTypeName, var_mConstantVarName, var_mCastBranchInstructionList, var_kind, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1574))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1569)) ;
+  C_String syntaxDirectedTranslationResult_61438 ;
+  nt_semantic_5F_instruction_5F_list_ (var_mCastBranchInstructionList, syntaxDirectedTranslationResult_61438, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_61438 ;
+  ioArgument_ioCastInstructionBranchList.addAssign_operation (var_mTypeName, var_mConstantVarName, var_mCastBranchInstructionList, var_kind, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1583))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1578)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17558,34 +17599,34 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
                                                                                                                   C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1550)) ;
-  switch (select_semanticInstructionsSyntax_44 (inCompiler)) {
-  case 1: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3D__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1554)) ;
-  } break ;
-  case 2: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1556)) ;
-  } break ;
-  case 3: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1558)) ;
-  } break ;
-  default:
-    break ;
-  }
-  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1560)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1559)) ;
   switch (select_semanticInstructionsSyntax_45 (inCompiler)) {
   case 1: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1563)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3D__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1563)) ;
+  } break ;
+  case 2: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1565)) ;
+  } break ;
+  case 3: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1567)) ;
+  } break ;
+  default:
+    break ;
+  }
+  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1569)) ;
+  switch (select_semanticInstructionsSyntax_46 (inCompiler)) {
+  case 1: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1572)) ;
   } break ;
   case 2: {
   } break ;
@@ -17594,41 +17635,41 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1567)) ;
-  C_String syntaxDirectedTranslationResult_61281 ;
-  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_61281, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_61281 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1576)) ;
+  C_String syntaxDirectedTranslationResult_61438 ;
+  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_61438, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_61438 ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F_instruction_5F_branch_i50_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1550)) ;
-  switch (select_semanticInstructionsSyntax_44 (inCompiler)) {
-  case 1: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3D__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1554)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1556)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1558)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1560)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1559)) ;
   switch (select_semanticInstructionsSyntax_45 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1563)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3D__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1563)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1565)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1567)) ;
+  } break ;
+  default:
+    break ;
+  }
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1569)) ;
+  switch (select_semanticInstructionsSyntax_46 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1572)) ;
   } break ;
   case 2: {
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1567)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1576)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
 }
 
@@ -17638,7 +17679,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
                                                                                                              C_String & /* ioSyntaxDirectedTranslationResult */,
                                                                                                              C_Lexique_galgas_5F_scanner * /* inCompiler */) {
   outArgument_outElseOrDefault.drop () ; // Release 'out' argument
-  outArgument_outElseOrDefault = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1580)) ;
+  outArgument_outElseOrDefault = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1589)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17661,10 +17702,10 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
   outArgument_outElseOrDefault.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1586)) ;
-  C_String syntaxDirectedTranslationResult_61974 ;
-  nt_semantic_5F_instruction_5F_list_ (outArgument_outElseOrDefault, syntaxDirectedTranslationResult_61974, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_61974 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1595)) ;
+  C_String syntaxDirectedTranslationResult_62131 ;
+  nt_semantic_5F_instruction_5F_list_ (outArgument_outElseOrDefault, syntaxDirectedTranslationResult_62131, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_62131 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17673,17 +17714,17 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
                                                                                                                   C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1586)) ;
-  C_String syntaxDirectedTranslationResult_61974 ;
-  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_61974, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_61974 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1595)) ;
+  C_String syntaxDirectedTranslationResult_62131 ;
+  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_62131, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_62131 ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i52_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1586)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1595)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
 }
 
@@ -17695,17 +17736,17 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
   outArgument_outElseOrDefault.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1593)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1594)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1602)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1603)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1595)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1604)) ;
   GALGAS_semanticExpressionAST var_errorLocationExpression ;
-  C_String syntaxDirectedTranslationResult_62274 ;
-  nt_expression_ (var_errorLocationExpression, syntaxDirectedTranslationResult_62274, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_62274 ;
-  outArgument_outElseOrDefault = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1597)) ;
-  outArgument_outElseOrDefault.addAssign_operation (GALGAS_errorInstructionAST::constructor_new (var_instructionLocation, var_errorLocationExpression, GALGAS_literalStringExpressionAST::constructor_new (var_instructionLocation, GALGAS_stringlist::constructor_listWithValue (GALGAS_string ("cast instruction run-time error")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1603))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1601)), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1604))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1598))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1598)) ;
+  C_String syntaxDirectedTranslationResult_62431 ;
+  nt_expression_ (var_errorLocationExpression, syntaxDirectedTranslationResult_62431, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_62431 ;
+  outArgument_outElseOrDefault = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1606)) ;
+  outArgument_outElseOrDefault.addAssign_operation (GALGAS_errorInstructionAST::constructor_new (var_instructionLocation, var_errorLocationExpression, GALGAS_literalStringExpressionAST::constructor_new (var_instructionLocation, GALGAS_stringlist::constructor_listWithValue (GALGAS_string ("cast instruction run-time error")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1612))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1610)), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1613))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1607))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1607)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17714,21 +17755,21 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F
                                                                                                                   C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1593)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1602)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1595)) ;
-  C_String syntaxDirectedTranslationResult_62274 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_62274, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_62274 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1604)) ;
+  C_String syntaxDirectedTranslationResult_62431 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_62431, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_62431 ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i53_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1593)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1595)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1602)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1604)) ;
   nt_expression_indexing (inCompiler) ;
 }
 
@@ -17740,19 +17781,19 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1611)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1612)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1620)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1621)) ;
   GALGAS_semanticExpressionAST var_expression ;
-  C_String syntaxDirectedTranslationResult_62923 ;
-  nt_expression_ (var_expression, syntaxDirectedTranslationResult_62923, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_62923 ;
-  GALGAS_castInstructionBranchListAST var_mCastInstructionBranchList = GALGAS_castInstructionBranchListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1614)) ;
+  C_String syntaxDirectedTranslationResult_63080 ;
+  nt_expression_ (var_expression, syntaxDirectedTranslationResult_63080, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63080 ;
+  GALGAS_castInstructionBranchListAST var_mCastInstructionBranchList = GALGAS_castInstructionBranchListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1623)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    C_String syntaxDirectedTranslationResult_63077 ;
-    nt_cast_5F_instruction_5F_branch_ (var_mCastInstructionBranchList, syntaxDirectedTranslationResult_63077, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63077 ;
-    switch (select_semanticInstructionsSyntax_46 (inCompiler)) {
+    C_String syntaxDirectedTranslationResult_63234 ;
+    nt_cast_5F_instruction_5F_branch_ (var_mCastInstructionBranchList, syntaxDirectedTranslationResult_63234, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63234 ;
+    switch (select_semanticInstructionsSyntax_47 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -17761,17 +17802,17 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     }
   }
   GALGAS_semanticInstructionListAST var_mElseOrDefault ;
-  C_String syntaxDirectedTranslationResult_63146 ;
-  nt_cast_5F_else_5F_or_5F_default_ (var_mElseOrDefault, syntaxDirectedTranslationResult_63146, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63146 ;
+  C_String syntaxDirectedTranslationResult_63303 ;
+  nt_cast_5F_else_5F_or_5F_default_ (var_mElseOrDefault, syntaxDirectedTranslationResult_63303, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63303 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1620)) ;
-  GALGAS_location var_endOfInstructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1621)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1622)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1623)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1629)) ;
+  GALGAS_location var_endOfInstructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1630)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1631)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1632)) ;
   GALGAS_string temp_1 ;
-  const enumGalgasBool test_2 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1624)).boolEnum () ;
+  const enumGalgasBool test_2 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1633)).boolEnum () ;
   if (kBoolTrue == test_2) {
     temp_1 = GALGAS_string ("%cast") ;
   }else if (kBoolFalse == test_2) {
@@ -17780,7 +17821,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   if (temp_1.isValid ()) {
     ioSyntaxDirectedTranslationResult << temp_1.stringValue () ;
   }
-  outArgument_outInstruction = GALGAS_structuredCastInstructionAST::constructor_new (var_instructionLocation, var_expression, var_mCastInstructionBranchList, var_mElseOrDefault, var_endOfInstructionLocation  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1625)) ;
+  outArgument_outInstruction = GALGAS_structuredCastInstructionAST::constructor_new (var_instructionLocation, var_expression, var_mCastInstructionBranchList, var_mElseOrDefault, var_endOfInstructionLocation  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1634)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17789,16 +17830,16 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1611)) ;
-  C_String syntaxDirectedTranslationResult_62923 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_62923, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_62923 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1620)) ;
+  C_String syntaxDirectedTranslationResult_63080 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_63080, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63080 ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    C_String syntaxDirectedTranslationResult_63077 ;
-    nt_cast_5F_instruction_5F_branch_parse (syntaxDirectedTranslationResult_63077, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63077 ;
-    switch (select_semanticInstructionsSyntax_46 (inCompiler)) {
+    C_String syntaxDirectedTranslationResult_63234 ;
+    nt_cast_5F_instruction_5F_branch_parse (syntaxDirectedTranslationResult_63234, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63234 ;
+    switch (select_semanticInstructionsSyntax_47 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -17806,30 +17847,30 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
       break ;
     }
   }
-  C_String syntaxDirectedTranslationResult_63146 ;
-  nt_cast_5F_else_5F_or_5F_default_parse (syntaxDirectedTranslationResult_63146, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63146 ;
+  C_String syntaxDirectedTranslationResult_63303 ;
+  nt_cast_5F_else_5F_or_5F_default_parse (syntaxDirectedTranslationResult_63303, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_63303 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1620)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1629)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1622)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1631)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1623)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1632)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i54_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1611)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1620)) ;
   nt_expression_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     nt_cast_5F_instruction_5F_branch_indexing (inCompiler) ;
-    switch (select_semanticInstructionsSyntax_46 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_47 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -17838,9 +17879,9 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     }
   }
   nt_cast_5F_else_5F_or_5F_default_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1620)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1622)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1623)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1629)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_cast) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1631)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1632)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17853,23 +17894,23 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   var_mReceiverName = inCompiler->synthetizedAttribute_tokenString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1646)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1647)) ;
-  GALGAS_lstringlist var_mStructAttributeList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1648)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1655)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1656)) ;
+  GALGAS_lstringlist var_mStructAttributeList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1657)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_47 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_48 (inCompiler)) {
     case 2: {
       GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1651)) ;
-      if (var_sep.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1652)).isValid ()) {
-        ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1652)).stringValue () ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1660)) ;
+      if (var_sep.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1661)).isValid ()) {
+        ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1661)).stringValue () ;
       }
       GALGAS_lstring var_attributeName = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1653)) ;
-      var_mStructAttributeList.addAssign_operation (var_attributeName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1654)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1662)) ;
+      var_mStructAttributeList.addAssign_operation (var_attributeName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1663)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -17878,26 +17919,26 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1656)) ;
-  switch (select_semanticInstructionsSyntax_48 (inCompiler)) {
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1665)) ;
+  switch (select_semanticInstructionsSyntax_49 (inCompiler)) {
   case 1: {
     GALGAS_actualOutputExpressionList var_expressionList ;
-    C_String syntaxDirectedTranslationResult_64715 ;
-    nt_output_5F_expression_5F_list_ (var_expressionList, syntaxDirectedTranslationResult_64715, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_64715 ;
-    outArgument_outInstruction = GALGAS_plusEqualElementsInstructionAST::constructor_new (var_instructionLocation, var_mReceiverName, var_mStructAttributeList, var_expressionList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1659)) ;
+    C_String syntaxDirectedTranslationResult_64872 ;
+    nt_output_5F_expression_5F_list_ (var_expressionList, syntaxDirectedTranslationResult_64872, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_64872 ;
+    outArgument_outInstruction = GALGAS_plusEqualElementsInstructionAST::constructor_new (var_instructionLocation, var_mReceiverName, var_mStructAttributeList, var_expressionList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1668)) ;
   } break ;
   case 2: {
     GALGAS_semanticExpressionAST var_expression ;
-    C_String syntaxDirectedTranslationResult_64944 ;
-    nt_expression_ (var_expression, syntaxDirectedTranslationResult_64944, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_64944 ;
-    outArgument_outInstruction = GALGAS_plusEqualExpressionInstructionAST::constructor_new (var_instructionLocation, var_mReceiverName, var_mStructAttributeList, var_expression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1666)) ;
+    C_String syntaxDirectedTranslationResult_65101 ;
+    nt_expression_ (var_expression, syntaxDirectedTranslationResult_65101, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_65101 ;
+    outArgument_outInstruction = GALGAS_plusEqualExpressionInstructionAST::constructor_new (var_instructionLocation, var_mReceiverName, var_mStructAttributeList, var_expression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1675)) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1672)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1681)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17906,17 +17947,17 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1646)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1655)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_47 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_48 (inCompiler)) {
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1651)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1660)) ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1653)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1662)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -17925,45 +17966,45 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1656)) ;
-  switch (select_semanticInstructionsSyntax_48 (inCompiler)) {
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1665)) ;
+  switch (select_semanticInstructionsSyntax_49 (inCompiler)) {
   case 1: {
-    C_String syntaxDirectedTranslationResult_64715 ;
-    nt_output_5F_expression_5F_list_parse (syntaxDirectedTranslationResult_64715, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_64715 ;
+    C_String syntaxDirectedTranslationResult_64872 ;
+    nt_output_5F_expression_5F_list_parse (syntaxDirectedTranslationResult_64872, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_64872 ;
   } break ;
   case 2: {
-    C_String syntaxDirectedTranslationResult_64944 ;
-    nt_expression_parse (syntaxDirectedTranslationResult_64944, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_64944 ;
+    C_String syntaxDirectedTranslationResult_65101 ;
+    nt_expression_parse (syntaxDirectedTranslationResult_65101, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_65101 ;
   } break ;
   default:
     break ;
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1672)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1681)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i55_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1646)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1655)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_47 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_48 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1651)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1653)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1660)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1662)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1656)) ;
-  switch (select_semanticInstructionsSyntax_48 (inCompiler)) {
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1665)) ;
+  switch (select_semanticInstructionsSyntax_49 (inCompiler)) {
   case 1: {
     nt_output_5F_expression_5F_list_indexing (inCompiler) ;
   } break ;
@@ -17973,7 +18014,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1672)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1681)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17984,17 +18025,17 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1687)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1688)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1696)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1697)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1689)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1698)) ;
   GALGAS_actualOutputExpressionList var_expressionList ;
-  C_String syntaxDirectedTranslationResult_66074 ;
-  nt_output_5F_expression_5F_list_ (var_expressionList, syntaxDirectedTranslationResult_66074, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_66074 ;
-  outArgument_outInstruction = GALGAS_selfPlusEqualElementsInstructionAST::constructor_new (var_instructionLocation, var_expressionList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1691)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1694)) ;
+  C_String syntaxDirectedTranslationResult_66231 ;
+  nt_output_5F_expression_5F_list_ (var_expressionList, syntaxDirectedTranslationResult_66231, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_66231 ;
+  outArgument_outInstruction = GALGAS_selfPlusEqualElementsInstructionAST::constructor_new (var_instructionLocation, var_expressionList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1700)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1703)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18003,26 +18044,26 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1687)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1696)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1689)) ;
-  C_String syntaxDirectedTranslationResult_66074 ;
-  nt_output_5F_expression_5F_list_parse (syntaxDirectedTranslationResult_66074, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_66074 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1698)) ;
+  C_String syntaxDirectedTranslationResult_66231 ;
+  nt_output_5F_expression_5F_list_parse (syntaxDirectedTranslationResult_66231, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_66231 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1694)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1703)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i56_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1687)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1689)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1696)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1698)) ;
   nt_output_5F_expression_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1694)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1703)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18033,17 +18074,17 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1701)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1702)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1710)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1711)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1703)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1712)) ;
   GALGAS_semanticExpressionAST var_expression ;
-  C_String syntaxDirectedTranslationResult_66516 ;
-  nt_expression_ (var_expression, syntaxDirectedTranslationResult_66516, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_66516 ;
-  outArgument_outInstruction = GALGAS_selfPlusEqualExpressionInstructionAST::constructor_new (var_instructionLocation, var_expression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1705)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1708)) ;
+  C_String syntaxDirectedTranslationResult_66673 ;
+  nt_expression_ (var_expression, syntaxDirectedTranslationResult_66673, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_66673 ;
+  outArgument_outInstruction = GALGAS_selfPlusEqualExpressionInstructionAST::constructor_new (var_instructionLocation, var_expression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1714)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1717)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18052,26 +18093,26 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1701)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1710)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1703)) ;
-  C_String syntaxDirectedTranslationResult_66516 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_66516, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_66516 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1712)) ;
+  C_String syntaxDirectedTranslationResult_66673 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_66673, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_66673 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1708)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1717)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i57_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1701)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1703)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1710)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2B__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1712)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1708)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1717)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18083,22 +18124,22 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   GALGAS_lstring var_mTargetVariableName = inCompiler->synthetizedAttribute_tokenString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1723)) ;
-  GALGAS_lstringlist var_mStructAttributeList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1724)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1732)) ;
+  GALGAS_lstringlist var_mStructAttributeList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1733)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_49 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_50 (inCompiler)) {
     case 2: {
       GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1727)) ;
-      if (var_sep.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1728)).isValid ()) {
-        ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1728)).stringValue () ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1736)) ;
+      if (var_sep.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1737)).isValid ()) {
+        ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1737)).stringValue () ;
       }
       GALGAS_lstring var_attributeName = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1729)) ;
-      var_mStructAttributeList.addAssign_operation (var_attributeName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1730)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1738)) ;
+      var_mStructAttributeList.addAssign_operation (var_attributeName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1739)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -18106,16 +18147,16 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     }
   }
   GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1732)) ;
-  if (var_sep.add_operation (GALGAS_string ("+="), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1733)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("+="), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1733)).stringValue () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1741)) ;
+  if (var_sep.add_operation (GALGAS_string ("+="), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1742)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("+="), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1742)).stringValue () ;
   }
   GALGAS_semanticExpressionAST var_mSourceExpression ;
-  C_String syntaxDirectedTranslationResult_67862 ;
-  nt_expression_ (var_mSourceExpression, syntaxDirectedTranslationResult_67862, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_67862 ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1736)) ;
-  outArgument_outInstruction = GALGAS_concatInstructionAST::constructor_new (var_mTargetVariableName.reader_location (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1738)), var_mTargetVariableName, var_mStructAttributeList, var_mSourceExpression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1737)) ;
+  C_String syntaxDirectedTranslationResult_68019 ;
+  nt_expression_ (var_mSourceExpression, syntaxDirectedTranslationResult_68019, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_68019 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1745)) ;
+  outArgument_outInstruction = GALGAS_concatInstructionAST::constructor_new (var_mTargetVariableName.reader_location (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1747)), var_mTargetVariableName, var_mStructAttributeList, var_mSourceExpression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1746)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18124,17 +18165,17 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1723)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1732)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_49 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_50 (inCompiler)) {
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1727)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1736)) ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1729)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1738)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -18143,35 +18184,35 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1732)) ;
-  C_String syntaxDirectedTranslationResult_67862 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_67862, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_67862 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1741)) ;
+  C_String syntaxDirectedTranslationResult_68019 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_68019, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_68019 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1736)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1745)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i58_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1723)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1732)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_49 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_50 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1727)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1729)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1736)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1738)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1732)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1741)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1736)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1745)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18182,19 +18223,19 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1756)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1757)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1765)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1766)) ;
   GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1758)) ;
-  if (var_sep.add_operation (GALGAS_string ("+="), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1759)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("+="), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1759)).stringValue () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1767)) ;
+  if (var_sep.add_operation (GALGAS_string ("+="), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1768)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("+="), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1768)).stringValue () ;
   }
   GALGAS_semanticExpressionAST var_mSourceExpression ;
-  C_String syntaxDirectedTranslationResult_69036 ;
-  nt_expression_ (var_mSourceExpression, syntaxDirectedTranslationResult_69036, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_69036 ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1762)) ;
-  outArgument_outInstruction = GALGAS_selfConcatInstructionAST::constructor_new (var_instructionLocation, var_mSourceExpression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1763)) ;
+  C_String syntaxDirectedTranslationResult_69193 ;
+  nt_expression_ (var_mSourceExpression, syntaxDirectedTranslationResult_69193, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_69193 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1771)) ;
+  outArgument_outInstruction = GALGAS_selfConcatInstructionAST::constructor_new (var_instructionLocation, var_mSourceExpression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1772)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18203,26 +18244,26 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1756)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1765)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1758)) ;
-  C_String syntaxDirectedTranslationResult_69036 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_69036, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_69036 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1767)) ;
+  C_String syntaxDirectedTranslationResult_69193 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_69193, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_69193 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1762)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1771)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i59_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1756)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1758)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_self) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1765)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__3D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1767)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1762)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1771)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18233,48 +18274,48 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1780)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1781)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1789)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1790)) ;
   if (GALGAS_string ("(").isValid ()) {
     ioSyntaxDirectedTranslationResult << GALGAS_string ("(").stringValue () ;
   }
   GALGAS_semanticExpressionAST var_mVariantExpression ;
-  C_String syntaxDirectedTranslationResult_70086 ;
-  nt_expression_ (var_mVariantExpression, syntaxDirectedTranslationResult_70086, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70086 ;
-  GALGAS_location var_mEndOfVariantExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1785)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1786)) ;
+  C_String syntaxDirectedTranslationResult_70243 ;
+  nt_expression_ (var_mVariantExpression, syntaxDirectedTranslationResult_70243, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70243 ;
+  GALGAS_location var_mEndOfVariantExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1794)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1795)) ;
   if (GALGAS_string (")").isValid ()) {
     ioSyntaxDirectedTranslationResult << GALGAS_string (")").stringValue () ;
   }
   GALGAS_semanticInstructionListAST var_mFirstInstructions ;
-  C_String syntaxDirectedTranslationResult_70243 ;
-  nt_semantic_5F_instruction_5F_list_ (var_mFirstInstructions, syntaxDirectedTranslationResult_70243, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70243 ;
-  GALGAS_location var_mEndOfFirstInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1791)) ;
+  C_String syntaxDirectedTranslationResult_70400 ;
+  nt_semantic_5F_instruction_5F_list_ (var_mFirstInstructions, syntaxDirectedTranslationResult_70400, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70400 ;
+  GALGAS_location var_mEndOfFirstInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1800)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1792)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1801)) ;
   GALGAS_semanticExpressionAST var_mLoopExpression ;
-  C_String syntaxDirectedTranslationResult_70413 ;
-  nt_expression_ (var_mLoopExpression, syntaxDirectedTranslationResult_70413, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70413 ;
-  GALGAS_location var_mEndOfLoopExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1795)) ;
+  C_String syntaxDirectedTranslationResult_70570 ;
+  nt_expression_ (var_mLoopExpression, syntaxDirectedTranslationResult_70570, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70570 ;
+  GALGAS_location var_mEndOfLoopExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1804)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1796)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1805)) ;
   GALGAS_semanticInstructionListAST var_mSecondInstructions ;
-  C_String syntaxDirectedTranslationResult_70562 ;
-  nt_semantic_5F_instruction_5F_list_ (var_mSecondInstructions, syntaxDirectedTranslationResult_70562, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70562 ;
-  GALGAS_location var_mEndOfSecondInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1799)) ;
+  C_String syntaxDirectedTranslationResult_70719 ;
+  nt_semantic_5F_instruction_5F_list_ (var_mSecondInstructions, syntaxDirectedTranslationResult_70719, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70719 ;
+  GALGAS_location var_mEndOfSecondInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1808)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1800)) ;
-  GALGAS_location var_mEndOfLoopInstruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1801)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1802)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1803)) ;
-  outArgument_outInstruction = GALGAS_loopInstructionAST::constructor_new (var_instructionLocation, var_mVariantExpression, var_mEndOfVariantExpression, var_mFirstInstructions, var_mEndOfFirstInstructions, var_mLoopExpression, var_mEndOfLoopExpression, var_mSecondInstructions, var_mEndOfSecondInstructions, var_mEndOfLoopInstruction  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1804)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1809)) ;
+  GALGAS_location var_mEndOfLoopInstruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1810)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1811)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1812)) ;
+  outArgument_outInstruction = GALGAS_loopInstructionAST::constructor_new (var_instructionLocation, var_mVariantExpression, var_mEndOfVariantExpression, var_mFirstInstructions, var_mEndOfFirstInstructions, var_mLoopExpression, var_mEndOfLoopExpression, var_mSecondInstructions, var_mEndOfSecondInstructions, var_mEndOfLoopInstruction  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1813)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18283,54 +18324,54 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1780)) ;
-  C_String syntaxDirectedTranslationResult_70086 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_70086, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70086 ;
-  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1786)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1789)) ;
   C_String syntaxDirectedTranslationResult_70243 ;
-  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_70243, inCompiler) ;
+  nt_expression_parse (syntaxDirectedTranslationResult_70243, inCompiler) ;
   ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70243 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1792)) ;
-  C_String syntaxDirectedTranslationResult_70413 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_70413, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70413 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1795)) ;
+  C_String syntaxDirectedTranslationResult_70400 ;
+  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_70400, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70400 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1796)) ;
-  C_String syntaxDirectedTranslationResult_70562 ;
-  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_70562, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70562 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1801)) ;
+  C_String syntaxDirectedTranslationResult_70570 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_70570, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70570 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1800)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1805)) ;
+  C_String syntaxDirectedTranslationResult_70719 ;
+  nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_70719, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_70719 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1802)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1809)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1803)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1811)) ;
+  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1812)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i60_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1780)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1789)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1786)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1795)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1792)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1801)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1796)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1805)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1800)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1802)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1803)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1809)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1811)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1812)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18341,14 +18382,14 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_message) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1829)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1830)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_message) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1838)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1839)) ;
   GALGAS_semanticExpressionAST var_expression ;
-  C_String syntaxDirectedTranslationResult_71921 ;
-  nt_expression_ (var_expression, syntaxDirectedTranslationResult_71921, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_71921 ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1832)) ;
-  outArgument_outInstruction = GALGAS_messageInstructionAST::constructor_new (var_instructionLocation, var_expression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1833)) ;
+  C_String syntaxDirectedTranslationResult_72078 ;
+  nt_expression_ (var_expression, syntaxDirectedTranslationResult_72078, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_72078 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1841)) ;
+  outArgument_outInstruction = GALGAS_messageInstructionAST::constructor_new (var_instructionLocation, var_expression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1842)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18357,22 +18398,22 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_message) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1829)) ;
-  C_String syntaxDirectedTranslationResult_71921 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_71921, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_71921 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_message) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1838)) ;
+  C_String syntaxDirectedTranslationResult_72078 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_72078, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_72078 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1832)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1841)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i61_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_message) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1829)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_message) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1838)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1832)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1841)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18383,49 +18424,49 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_log) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1850)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1851)) ;
-  GALGAS_logListAST var_logList = GALGAS_logListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1852)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_log) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1859)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1860)) ;
+  GALGAS_logListAST var_logList = GALGAS_logListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1861)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_51 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_52 (inCompiler)) {
     case 1: {
       GALGAS_lstring var_loggedVariableName = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1855)) ;
-      var_logList.addAssign_operation (var_loggedVariableName, GALGAS_varInExpressionAST::constructor_new (var_loggedVariableName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1856))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1856)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1864)) ;
+      var_logList.addAssign_operation (var_loggedVariableName, GALGAS_varInExpressionAST::constructor_new (var_loggedVariableName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1865))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1865)) ;
     } break ;
     case 2: {
       GALGAS_lstring var_logMessage = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1858)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1867)) ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1859)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1868)) ;
       GALGAS_semanticExpressionAST var_logExpression ;
-      C_String syntaxDirectedTranslationResult_73219 ;
-      nt_expression_ (var_logExpression, syntaxDirectedTranslationResult_73219, inCompiler) ;
-      ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_73219 ;
-      var_logList.addAssign_operation (var_logMessage, var_logExpression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1861)) ;
+      C_String syntaxDirectedTranslationResult_73376 ;
+      nt_expression_ (var_logExpression, syntaxDirectedTranslationResult_73376, inCompiler) ;
+      ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_73376 ;
+      var_logList.addAssign_operation (var_logMessage, var_logExpression  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1870)) ;
     } break ;
     default:
       break ;
     }
-    switch (select_semanticInstructionsSyntax_50 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_51 (inCompiler)) {
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1864)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1873)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1866)) ;
-  outArgument_outInstruction = GALGAS_logInstructionAST::constructor_new (var_instructionLocation, var_logList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1867)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1875)) ;
+  outArgument_outInstruction = GALGAS_logInstructionAST::constructor_new (var_instructionLocation, var_logList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1876)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18434,34 +18475,34 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_log) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1850)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_log) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1859)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_51 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_52 (inCompiler)) {
     case 1: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1855)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1864)) ;
     } break ;
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1858)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1867)) ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1859)) ;
-      C_String syntaxDirectedTranslationResult_73219 ;
-      nt_expression_parse (syntaxDirectedTranslationResult_73219, inCompiler) ;
-      ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_73219 ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1868)) ;
+      C_String syntaxDirectedTranslationResult_73376 ;
+      nt_expression_parse (syntaxDirectedTranslationResult_73376, inCompiler) ;
+      ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_73376 ;
     } break ;
     default:
       break ;
     }
-    switch (select_semanticInstructionsSyntax_50 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_51 (inCompiler)) {
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1864)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1873)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -18470,38 +18511,38 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1866)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1875)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i62_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_log) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1850)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_log) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1859)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_51 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_52 (inCompiler)) {
     case 1: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1855)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1864)) ;
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1858)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1859)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1867)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1868)) ;
       nt_expression_indexing (inCompiler) ;
     } break ;
     default:
       break ;
     }
-    switch (select_semanticInstructionsSyntax_50 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_51 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1864)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1873)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1866)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1875)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18510,60 +18551,31 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_syntax_
                                                                                                                            C_String & ioSyntaxDirectedTranslationResult,
                                                                                                                            C_Lexique_galgas_5F_scanner * inCompiler) {
   outArgument_outResult.drop () ; // Release 'out' argument
-  switch (select_semanticInstructionsSyntax_52 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_53 (inCompiler)) {
   case 1: {
     GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1890)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1899)) ;
     const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
       GALGAS_location location_1 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_1, GALGAS_string ("the selector should be '\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1892)) ;
+      inCompiler->emitSemanticError (location_1, GALGAS_string ("the selector should be '\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1901)) ;
     }
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1894)) ;
-    outArgument_outResult = GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1895))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1895)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1903)) ;
+    outArgument_outResult = GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1904))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1904)) ;
   } break ;
   case 2: {
     GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1897)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1906)) ;
     const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_2) {
       GALGAS_location location_3 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("the selector should be '\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1899)) ;
-    }
-    GALGAS_lstring var_actualParameterTypeName = inCompiler->synthetizedAttribute_tokenString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1901)) ;
-    GALGAS_lstring var_actualParameterName = inCompiler->synthetizedAttribute_tokenString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1902)) ;
-    outArgument_outResult = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1903)) ;
-  } break ;
-  case 3: {
-    GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
-    const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1905)) ;
-    const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_4) {
-      GALGAS_location location_5 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_5, GALGAS_string ("the selector should be '\?\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1907)) ;
-    }
-    GALGAS_string temp_6 ;
-    const enumGalgasBool test_7 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_7) {
-      temp_6 = var_selector.mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1909)) ;
-    }else if (kBoolFalse == test_7) {
-      temp_6 = GALGAS_string::makeEmptyString () ;
-    }
-    if (var_sep.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1909)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1909)).add_operation (GALGAS_string ("let "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1909)).isValid ()) {
-      ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1909)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1909)).add_operation (GALGAS_string ("let "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1909)).stringValue () ;
+      inCompiler->emitSemanticError (location_3, GALGAS_string ("the selector should be '\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1908)) ;
     }
     GALGAS_lstring var_actualParameterTypeName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
@@ -18573,23 +18585,52 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_syntax_
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1911)) ;
-    outArgument_outResult = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1912)) ;
+    outArgument_outResult = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1912)) ;
+  } break ;
+  case 3: {
+    GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
+    const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1914)) ;
+    const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_4) {
+      GALGAS_location location_5 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
+      inCompiler->emitSemanticError (location_5, GALGAS_string ("the selector should be '\?\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1916)) ;
+    }
+    GALGAS_string temp_6 ;
+    const enumGalgasBool test_7 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_7) {
+      temp_6 = var_selector.mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)) ;
+    }else if (kBoolFalse == test_7) {
+      temp_6 = GALGAS_string::makeEmptyString () ;
+    }
+    if (var_sep.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)).add_operation (GALGAS_string ("let "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)).isValid ()) {
+      ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)).add_operation (temp_6, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)).add_operation (GALGAS_string ("let "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)).stringValue () ;
+    }
+    GALGAS_lstring var_actualParameterTypeName = inCompiler->synthetizedAttribute_tokenString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1919)) ;
+    GALGAS_lstring var_actualParameterName = inCompiler->synthetizedAttribute_tokenString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1920)) ;
+    outArgument_outResult = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1921)) ;
   } break ;
   case 4: {
     GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1914)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1923)) ;
     const enumGalgasBool test_8 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_8) {
       GALGAS_location location_9 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_9, GALGAS_string ("the selector should be '\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1916)) ;
+      inCompiler->emitSemanticError (location_9, GALGAS_string ("the selector should be '\?'")  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1925)) ;
     }
     GALGAS_lstring var_actualParameterName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)) ;
-    outArgument_outResult = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar::constructor_new (var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1919)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1927)) ;
+    outArgument_outResult = GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar::constructor_new (var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1928)) ;
   } break ;
   default:
     break ;
@@ -18600,30 +18641,19 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_syntax_
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i63_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                                                                 C_Lexique_galgas_5F_scanner * inCompiler) {
-  switch (select_semanticInstructionsSyntax_52 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_53 (inCompiler)) {
   case 1: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1890)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1899)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1894)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1903)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1897)) ;
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1901)) ;
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1902)) ;
-  } break ;
-  case 3: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1905)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1906)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1910)) ;
@@ -18631,13 +18661,24 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_syntax_
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1911)) ;
   } break ;
+  case 3: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1914)) ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1919)) ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1920)) ;
+  } break ;
   case 4: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1914)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1923)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1927)) ;
   } break ;
   default:
     break ;
@@ -18648,24 +18689,24 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_syntax_
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i63_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  switch (select_semanticInstructionsSyntax_52 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_53 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1890)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1894)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1899)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1903)) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1897)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1901)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1902)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1905)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1906)) ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1910)) ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1911)) ;
   } break ;
+  case 3: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1914)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1919)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1920)) ;
+  } break ;
   case 4: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1914)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1918)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1923)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1927)) ;
   } break ;
   default:
     break ;
@@ -18680,74 +18721,74 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1927)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1928)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1936)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1937)) ;
   GALGAS_lstring var_mGrammarComponentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1929)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1938)) ;
   GALGAS_lstring var_mLabelName ;
-  switch (select_semanticInstructionsSyntax_53 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_54 (inCompiler)) {
   case 1: {
-    var_mLabelName = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1932))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1932)) ;
+    var_mLabelName = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1941))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1941)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1934)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1943)) ;
     var_mLabelName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1935)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1944)) ;
   } break ;
   default:
     break ;
   }
   GALGAS_bool var_sourceExpressionIsFile ;
-  switch (select_semanticInstructionsSyntax_54 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_55 (inCompiler)) {
   case 1: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1939)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1948)) ;
     var_sourceExpressionIsFile = GALGAS_bool (true) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_on) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1941)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_on) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1950)) ;
     var_sourceExpressionIsFile = GALGAS_bool (false) ;
   } break ;
   default:
     break ;
   }
   GALGAS_semanticExpressionAST var_mSourceExpression ;
-  C_String syntaxDirectedTranslationResult_76464 ;
-  nt_expression_ (var_mSourceExpression, syntaxDirectedTranslationResult_76464, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76464 ;
-  GALGAS_location var_endOfSourceExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1944)) ;
+  C_String syntaxDirectedTranslationResult_76621 ;
+  nt_expression_ (var_mSourceExpression, syntaxDirectedTranslationResult_76621, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76621 ;
+  GALGAS_location var_endOfSourceExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1953)) ;
   GALGAS_actualParameterListAST var_actualParameterList ;
-  C_String syntaxDirectedTranslationResult_76581 ;
-  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_76581, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76581 ;
+  C_String syntaxDirectedTranslationResult_76738 ;
+  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_76738, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76738 ;
   GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationResult ;
-  switch (select_semanticInstructionsSyntax_55 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_56 (inCompiler)) {
   case 1: {
-    var_grammarInstructionSyntaxDirectedTranslationResult = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1949)) ;
+    var_grammarInstructionSyntaxDirectedTranslationResult = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1958)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1951)) ;
-    C_String syntaxDirectedTranslationResult_76972 ;
-    nt_syntax_5F_directed_5F_translation_5F_result_ (var_grammarInstructionSyntaxDirectedTranslationResult, syntaxDirectedTranslationResult_76972, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76972 ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1960)) ;
+    C_String syntaxDirectedTranslationResult_77129 ;
+    nt_syntax_5F_directed_5F_translation_5F_result_ (var_grammarInstructionSyntaxDirectedTranslationResult, syntaxDirectedTranslationResult_77129, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_77129 ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1954)) ;
-  outArgument_outInstruction = GALGAS_grammarInstructionAST::constructor_new (var_instructionLocation, var_mGrammarComponentName, var_mLabelName, var_mSourceExpression, var_endOfSourceExpression, var_sourceExpressionIsFile, var_actualParameterList, var_grammarInstructionSyntaxDirectedTranslationResult  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1955)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1963)) ;
+  outArgument_outInstruction = GALGAS_grammarInstructionAST::constructor_new (var_instructionLocation, var_mGrammarComponentName, var_mLabelName, var_mSourceExpression, var_endOfSourceExpression, var_sourceExpressionIsFile, var_actualParameterList, var_grammarInstructionSyntaxDirectedTranslationResult  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1964)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18756,104 +18797,104 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1927)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1936)) ;
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1929)) ;
-  switch (select_semanticInstructionsSyntax_53 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1934)) ;
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1935)) ;
-  } break ;
-  default:
-    break ;
-  }
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1938)) ;
   switch (select_semanticInstructionsSyntax_54 (inCompiler)) {
   case 1: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1939)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_on) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1941)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1943)) ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1944)) ;
   } break ;
   default:
     break ;
   }
-  C_String syntaxDirectedTranslationResult_76464 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_76464, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76464 ;
-  C_String syntaxDirectedTranslationResult_76581 ;
-  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_76581, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76581 ;
   switch (select_semanticInstructionsSyntax_55 (inCompiler)) {
+  case 1: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1948)) ;
+  } break ;
+  case 2: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_on) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1950)) ;
+  } break ;
+  default:
+    break ;
+  }
+  C_String syntaxDirectedTranslationResult_76621 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_76621, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76621 ;
+  C_String syntaxDirectedTranslationResult_76738 ;
+  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_76738, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76738 ;
+  switch (select_semanticInstructionsSyntax_56 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1951)) ;
-    C_String syntaxDirectedTranslationResult_76972 ;
-    nt_syntax_5F_directed_5F_translation_5F_result_parse (syntaxDirectedTranslationResult_76972, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_76972 ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1960)) ;
+    C_String syntaxDirectedTranslationResult_77129 ;
+    nt_syntax_5F_directed_5F_translation_5F_result_parse (syntaxDirectedTranslationResult_77129, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_77129 ;
   } break ;
   default:
     break ;
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1954)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1963)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i64_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1927)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1936)) ;
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1929)) ;
-  switch (select_semanticInstructionsSyntax_53 (inCompiler)) {
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1938)) ;
+  switch (select_semanticInstructionsSyntax_54 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1934)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1935)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1943)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1944)) ;
   } break ;
   default:
     break ;
   }
-  switch (select_semanticInstructionsSyntax_54 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_55 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1939)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1948)) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_on) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1941)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_on) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1950)) ;
   } break ;
   default:
     break ;
   }
   nt_expression_indexing (inCompiler) ;
   nt_actual_5F_parameter_5F_list_indexing (inCompiler) ;
-  switch (select_semanticInstructionsSyntax_55 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_56 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1951)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1960)) ;
     nt_syntax_5F_directed_5F_translation_5F_result_indexing (inCompiler) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1954)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1963)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18864,68 +18905,68 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1978)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1979)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1987)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1988)) ;
   GALGAS_semanticExpressionAST var_switchExpression ;
-  C_String syntaxDirectedTranslationResult_78214 ;
-  nt_expression_ (var_switchExpression, syntaxDirectedTranslationResult_78214, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_78214 ;
-  GALGAS_location var_endOfSwitchExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1981)) ;
-  GALGAS_switchBranchesAST var_switchBranches = GALGAS_switchBranchesAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1982)) ;
+  C_String syntaxDirectedTranslationResult_78371 ;
+  nt_expression_ (var_switchExpression, syntaxDirectedTranslationResult_78371, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_78371 ;
+  GALGAS_location var_endOfSwitchExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1990)) ;
+  GALGAS_switchBranchesAST var_switchBranches = GALGAS_switchBranchesAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1991)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1984)) ;
-    if (var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1985)).isValid ()) {
-      ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1985)).stringValue () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1993)) ;
+    if (var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1994)).isValid ()) {
+      ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1994)).stringValue () ;
     }
-    GALGAS_lstringlist var_constantNameList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1986)) ;
+    GALGAS_lstringlist var_constantNameList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1995)) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
       GALGAS_lstring var_constantName = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1988)) ;
-      var_constantNameList.addAssign_operation (var_constantName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1989)) ;
-      switch (select_semanticInstructionsSyntax_57 (inCompiler)) {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1997)) ;
+      var_constantNameList.addAssign_operation (var_constantName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1998)) ;
+      switch (select_semanticInstructionsSyntax_58 (inCompiler)) {
       case 2: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1991)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2000)) ;
       } break ;
       default:
         repeatFlag_1 = false ;
         break ;
       }
     }
-    GALGAS__32_lstringlist var_associatedValuesExtraction = GALGAS__32_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1993)) ;
-    switch (select_semanticInstructionsSyntax_58 (inCompiler)) {
+    GALGAS__32_lstringlist var_associatedValuesExtraction = GALGAS__32_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2002)) ;
+    switch (select_semanticInstructionsSyntax_59 (inCompiler)) {
     case 1: {
     } break ;
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1996)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2005)) ;
       bool repeatFlag_2 = true ;
       while (repeatFlag_2) {
-        switch (select_semanticInstructionsSyntax_60 (inCompiler)) {
+        switch (select_semanticInstructionsSyntax_61 (inCompiler)) {
         case 1: {
           ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
           ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1999)) ;
-          var_associatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2000)), GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2000))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2000)) ;
+          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2008)) ;
+          var_associatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2009)), GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2009))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2009)) ;
         } break ;
         case 2: {
           GALGAS_lstring var_typeName ;
-          switch (select_semanticInstructionsSyntax_61 (inCompiler)) {
+          switch (select_semanticInstructionsSyntax_62 (inCompiler)) {
           case 1: {
             var_typeName = inCompiler->synthetizedAttribute_tokenString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2004)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2013)) ;
           } break ;
           case 2: {
-            var_typeName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2006)) ;
+            var_typeName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2015)) ;
           } break ;
           default:
             break ;
@@ -18933,13 +18974,13 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
           GALGAS_lstring var_constantName = inCompiler->synthetizedAttribute_tokenString () ;
           ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
           ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2008)) ;
-          var_associatedValuesExtraction.addAssign_operation (var_typeName, var_constantName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2009)) ;
+          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2017)) ;
+          var_associatedValuesExtraction.addAssign_operation (var_typeName, var_constantName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2018)) ;
         } break ;
         default:
           break ;
         }
-        switch (select_semanticInstructionsSyntax_59 (inCompiler)) {
+        switch (select_semanticInstructionsSyntax_60 (inCompiler)) {
         case 2: {
         } break ;
         default:
@@ -18949,20 +18990,20 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
       }
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2013)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2022)) ;
     } break ;
     default:
       break ;
     }
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2015)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2024)) ;
     GALGAS_semanticInstructionListAST var_instructions ;
-    C_String syntaxDirectedTranslationResult_79146 ;
-    nt_semantic_5F_instruction_5F_list_ (var_instructions, syntaxDirectedTranslationResult_79146, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_79146 ;
-    var_switchBranches.addAssign_operation (var_constantNameList, var_associatedValuesExtraction, var_instructions, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2017))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2017)) ;
-    switch (select_semanticInstructionsSyntax_56 (inCompiler)) {
+    C_String syntaxDirectedTranslationResult_79303 ;
+    nt_semantic_5F_instruction_5F_list_ (var_instructions, syntaxDirectedTranslationResult_79303, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_79303 ;
+    var_switchBranches.addAssign_operation (var_constantNameList, var_associatedValuesExtraction, var_instructions, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2026))  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2026)) ;
+    switch (select_semanticInstructionsSyntax_57 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -18972,12 +19013,12 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2020)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2021)) ;
-  GALGAS_location var_endOfSwitchInstruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2022)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2023)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2029)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2030)) ;
+  GALGAS_location var_endOfSwitchInstruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2031)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2032)) ;
   GALGAS_string temp_3 ;
-  const enumGalgasBool test_4 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2024)).boolEnum () ;
+  const enumGalgasBool test_4 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2033)).boolEnum () ;
   if (kBoolTrue == test_4) {
     temp_3 = GALGAS_string ("%switch") ;
   }else if (kBoolFalse == test_4) {
@@ -18986,7 +19027,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   if (temp_3.isValid ()) {
     ioSyntaxDirectedTranslationResult << temp_3.stringValue () ;
   }
-  outArgument_outInstruction = GALGAS_switchInstructionAST::constructor_new (var_instructionLocation, var_switchExpression, var_endOfSwitchExpression, var_switchBranches, var_endOfSwitchInstruction  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2025)) ;
+  outArgument_outInstruction = GALGAS_switchInstructionAST::constructor_new (var_instructionLocation, var_switchExpression, var_endOfSwitchExpression, var_switchBranches, var_endOfSwitchInstruction  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2034)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18995,52 +19036,52 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1978)) ;
-  C_String syntaxDirectedTranslationResult_78214 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_78214, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_78214 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1987)) ;
+  C_String syntaxDirectedTranslationResult_78371 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_78371, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_78371 ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1984)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1993)) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1988)) ;
-      switch (select_semanticInstructionsSyntax_57 (inCompiler)) {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1997)) ;
+      switch (select_semanticInstructionsSyntax_58 (inCompiler)) {
       case 2: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1991)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2000)) ;
       } break ;
       default:
         repeatFlag_1 = false ;
         break ;
       }
     }
-    switch (select_semanticInstructionsSyntax_58 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_59 (inCompiler)) {
     case 1: {
     } break ;
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1996)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2005)) ;
       bool repeatFlag_2 = true ;
       while (repeatFlag_2) {
-        switch (select_semanticInstructionsSyntax_60 (inCompiler)) {
+        switch (select_semanticInstructionsSyntax_61 (inCompiler)) {
         case 1: {
           ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
           ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1999)) ;
+          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2008)) ;
         } break ;
         case 2: {
-          switch (select_semanticInstructionsSyntax_61 (inCompiler)) {
+          switch (select_semanticInstructionsSyntax_62 (inCompiler)) {
           case 1: {
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2004)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2013)) ;
           } break ;
           case 2: {
           } break ;
@@ -19049,12 +19090,12 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
           }
           ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
           ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2008)) ;
+          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2017)) ;
         } break ;
         default:
           break ;
         }
-        switch (select_semanticInstructionsSyntax_59 (inCompiler)) {
+        switch (select_semanticInstructionsSyntax_60 (inCompiler)) {
         case 2: {
         } break ;
         default:
@@ -19064,18 +19105,18 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
       }
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2013)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2022)) ;
     } break ;
     default:
       break ;
     }
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2015)) ;
-    C_String syntaxDirectedTranslationResult_79146 ;
-    nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_79146, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_79146 ;
-    switch (select_semanticInstructionsSyntax_56 (inCompiler)) {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2024)) ;
+    C_String syntaxDirectedTranslationResult_79303 ;
+    nt_semantic_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_79303, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_79303 ;
+    switch (select_semanticInstructionsSyntax_57 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -19085,63 +19126,63 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2020)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2029)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2021)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2030)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2023)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2032)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i65_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1978)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1987)) ;
   nt_expression_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1984)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1993)) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1988)) ;
-      switch (select_semanticInstructionsSyntax_57 (inCompiler)) {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1997)) ;
+      switch (select_semanticInstructionsSyntax_58 (inCompiler)) {
       case 2: {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1991)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2000)) ;
       } break ;
       default:
         repeatFlag_1 = false ;
         break ;
       }
     }
-    switch (select_semanticInstructionsSyntax_58 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_59 (inCompiler)) {
     case 1: {
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1996)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2005)) ;
       bool repeatFlag_2 = true ;
       while (repeatFlag_2) {
-        switch (select_semanticInstructionsSyntax_60 (inCompiler)) {
+        switch (select_semanticInstructionsSyntax_61 (inCompiler)) {
         case 1: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1999)) ;
+          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2008)) ;
         } break ;
         case 2: {
-          switch (select_semanticInstructionsSyntax_61 (inCompiler)) {
+          switch (select_semanticInstructionsSyntax_62 (inCompiler)) {
           case 1: {
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2004)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2013)) ;
           } break ;
           case 2: {
           } break ;
           default:
             break ;
           }
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2008)) ;
+          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2017)) ;
         } break ;
         default:
           break ;
         }
-        switch (select_semanticInstructionsSyntax_59 (inCompiler)) {
+        switch (select_semanticInstructionsSyntax_60 (inCompiler)) {
         case 2: {
         } break ;
         default:
@@ -19149,14 +19190,14 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
           break ;
         }
       }
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2013)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2022)) ;
     } break ;
     default:
       break ;
     }
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2015)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2024)) ;
     nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-    switch (select_semanticInstructionsSyntax_56 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_57 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -19164,9 +19205,9 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2020)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2021)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2023)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2029)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_switch) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2030)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2032)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -19177,53 +19218,53 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   outArgument_outSelector.drop () ; // Release 'out' argument
   outArgument_outActualInputParameter.drop () ; // Release 'out' argument
-  switch (select_semanticInstructionsSyntax_62 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_63 (inCompiler)) {
   case 1: {
     outArgument_outSelector = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2047)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2056)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2048)) ;
-    outArgument_outActualInputParameter = GALGAS_inputParameterAnonymousVariable::constructor_new (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2049)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2057)) ;
+    outArgument_outActualInputParameter = GALGAS_inputParameterAnonymousVariable::constructor_new (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2058)) ;
   } break ;
   case 2: {
     outArgument_outSelector = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2051)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2060)) ;
     if (GALGAS_string ("var ").isValid ()) {
       ioSyntaxDirectedTranslationResult << GALGAS_string ("var ").stringValue () ;
     }
     GALGAS_lstring var_actualParameterTypeName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2053)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2062)) ;
     GALGAS_lstring var_actualParameterName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2054)) ;
-    outArgument_outActualInputParameter = GALGAS_inputParameterDeclaredVariable::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2055)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2063)) ;
+    outArgument_outActualInputParameter = GALGAS_inputParameterDeclaredVariable::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2064)) ;
   } break ;
   case 3: {
     outArgument_outSelector = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2057)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2066)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_var) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2058)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_var) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2067)) ;
     GALGAS_lstring var_actualParameterTypeName ;
-    switch (select_semanticInstructionsSyntax_63 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_64 (inCompiler)) {
     case 1: {
-      var_actualParameterTypeName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2061)) ;
+      var_actualParameterTypeName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2070)) ;
     } break ;
     case 2: {
       var_actualParameterTypeName = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2063)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2072)) ;
     } break ;
     default:
       break ;
@@ -19231,33 +19272,33 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
     GALGAS_lstring var_actualParameterName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2065)) ;
-    outArgument_outActualInputParameter = GALGAS_inputParameterDeclaredVariable::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2066)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2074)) ;
+    outArgument_outActualInputParameter = GALGAS_inputParameterDeclaredVariable::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2075)) ;
   } break ;
   case 4: {
     outArgument_outSelector = inCompiler->synthetizedAttribute_tokenString () ;
     const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2068)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2077)) ;
     GALGAS_string temp_0 ;
     const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, outArgument_outSelector.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_1) {
-      temp_0 = outArgument_outSelector.mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2069)) ;
+      temp_0 = outArgument_outSelector.mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2078)) ;
     }else if (kBoolFalse == test_1) {
       temp_0 = GALGAS_string::makeEmptyString () ;
     }
-    if (var_sep.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2069)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2069)).add_operation (GALGAS_string ("let "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2069)).isValid ()) {
-      ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2069)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2069)).add_operation (GALGAS_string ("let "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2069)).stringValue () ;
+    if (var_sep.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2078)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2078)).add_operation (GALGAS_string ("let "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2078)).isValid ()) {
+      ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2078)).add_operation (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2078)).add_operation (GALGAS_string ("let "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2078)).stringValue () ;
     }
     GALGAS_lstring var_actualParameterTypeName ;
-    switch (select_semanticInstructionsSyntax_64 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_65 (inCompiler)) {
     case 1: {
-      var_actualParameterTypeName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2072)) ;
+      var_actualParameterTypeName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2081)) ;
     } break ;
     case 2: {
       var_actualParameterTypeName = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2074)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2083)) ;
     } break ;
     default:
       break ;
@@ -19265,29 +19306,29 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
     GALGAS_lstring var_actualParameterName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2076)) ;
-    outArgument_outActualInputParameter = GALGAS_inputParameterDeclaredConstant::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2077)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2085)) ;
+    outArgument_outActualInputParameter = GALGAS_inputParameterDeclaredConstant::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2086)) ;
   } break ;
   case 5: {
     outArgument_outSelector = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2079)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2088)) ;
     const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_const) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2080)) ;
-    if (var_sep.add_operation (GALGAS_string ("let"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2081)).isValid ()) {
-      ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("let"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2081)).stringValue () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_const) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2089)) ;
+    if (var_sep.add_operation (GALGAS_string ("let"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2090)).isValid ()) {
+      ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("let"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2090)).stringValue () ;
     }
     GALGAS_lstring var_actualParameterTypeName ;
-    switch (select_semanticInstructionsSyntax_65 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_66 (inCompiler)) {
     case 1: {
-      var_actualParameterTypeName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2084)) ;
+      var_actualParameterTypeName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2093)) ;
     } break ;
     case 2: {
       var_actualParameterTypeName = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2086)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2095)) ;
     } break ;
     default:
       break ;
@@ -19295,19 +19336,19 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
     GALGAS_lstring var_actualParameterName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2088)) ;
-    outArgument_outActualInputParameter = GALGAS_inputParameterDeclaredConstant::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2089)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2097)) ;
+    outArgument_outActualInputParameter = GALGAS_inputParameterDeclaredConstant::constructor_new (var_actualParameterTypeName, var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2098)) ;
   } break ;
   case 6: {
     outArgument_outSelector = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2091)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2100)) ;
     GALGAS_lstring var_actualParameterName = inCompiler->synthetizedAttribute_tokenString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2092)) ;
-    outArgument_outActualInputParameter = GALGAS_inputParameterVariable::constructor_new (var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2093)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2101)) ;
+    outArgument_outActualInputParameter = GALGAS_inputParameterVariable::constructor_new (var_actualParameterName  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2102)) ;
   } break ;
   default:
     break ;
@@ -19318,96 +19359,96 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_i66_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                                                  C_Lexique_galgas_5F_scanner * inCompiler) {
-  switch (select_semanticInstructionsSyntax_62 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_63 (inCompiler)) {
   case 1: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2047)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2056)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2048)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2057)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2051)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2060)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2053)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2062)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2054)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2063)) ;
   } break ;
   case 3: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2057)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2066)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_var) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2058)) ;
-    switch (select_semanticInstructionsSyntax_63 (inCompiler)) {
-    case 1: {
-    } break ;
-    case 2: {
-      ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-      ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2063)) ;
-    } break ;
-    default:
-      break ;
-    }
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2065)) ;
-  } break ;
-  case 4: {
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2068)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_var) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2067)) ;
     switch (select_semanticInstructionsSyntax_64 (inCompiler)) {
     case 1: {
     } break ;
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2074)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2072)) ;
     } break ;
     default:
       break ;
     }
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2076)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2074)) ;
   } break ;
-  case 5: {
+  case 4: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2079)) ;
-    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_const) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2080)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2077)) ;
     switch (select_semanticInstructionsSyntax_65 (inCompiler)) {
     case 1: {
     } break ;
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2086)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2083)) ;
     } break ;
     default:
       break ;
     }
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2088)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2085)) ;
+  } break ;
+  case 5: {
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2088)) ;
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_const) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2089)) ;
+    switch (select_semanticInstructionsSyntax_66 (inCompiler)) {
+    case 1: {
+    } break ;
+    case 2: {
+      ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+      ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2095)) ;
+    } break ;
+    default:
+      break ;
+    }
+    ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+    ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2097)) ;
   } break ;
   case 6: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2091)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2100)) ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2092)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2101)) ;
   } break ;
   default:
     break ;
@@ -19418,60 +19459,60 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_i66_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  switch (select_semanticInstructionsSyntax_62 (inCompiler)) {
+  switch (select_semanticInstructionsSyntax_63 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2047)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2048)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2056)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2057)) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2051)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2053)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2054)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2060)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2062)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2063)) ;
   } break ;
   case 3: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2057)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_var) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2058)) ;
-    switch (select_semanticInstructionsSyntax_63 (inCompiler)) {
-    case 1: {
-    } break ;
-    case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2063)) ;
-    } break ;
-    default:
-      break ;
-    }
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2065)) ;
-  } break ;
-  case 4: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2068)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2066)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_var) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2067)) ;
     switch (select_semanticInstructionsSyntax_64 (inCompiler)) {
     case 1: {
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2074)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2072)) ;
     } break ;
     default:
       break ;
     }
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2076)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2074)) ;
   } break ;
-  case 5: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2079)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_const) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2080)) ;
+  case 4: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2077)) ;
     switch (select_semanticInstructionsSyntax_65 (inCompiler)) {
     case 1: {
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2086)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2083)) ;
     } break ;
     default:
       break ;
     }
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2088)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2085)) ;
+  } break ;
+  case 5: {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2088)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_const) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2089)) ;
+    switch (select_semanticInstructionsSyntax_66 (inCompiler)) {
+    case 1: {
+    } break ;
+    case 2: {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2095)) ;
+    } break ;
+    default:
+      break ;
+    }
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2097)) ;
   } break ;
   case 6: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2091)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2092)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2100)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2101)) ;
   } break ;
   default:
     break ;
@@ -19484,17 +19525,17 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
                                                                                                                     C_String & ioSyntaxDirectedTranslationResult,
                                                                                                                     C_Lexique_galgas_5F_scanner * inCompiler) {
   outArgument_outActualInputParameterList.drop () ; // Release 'out' argument
-  outArgument_outActualInputParameterList = GALGAS_actualInputParameterListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2101)) ;
+  outArgument_outActualInputParameterList = GALGAS_actualInputParameterListAST::constructor_emptyList (SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2110)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_66 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_67 (inCompiler)) {
     case 2: {
       GALGAS_lstring var_actualSelector ;
       GALGAS_abstractInputParameter var_actualInputParameter ;
-      C_String syntaxDirectedTranslationResult_82583 ;
-      nt_actual_5F_input_5F_parameter_ (var_actualSelector, var_actualInputParameter, syntaxDirectedTranslationResult_82583, inCompiler) ;
-      ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_82583 ;
-      outArgument_outActualInputParameterList.addAssign_operation (var_actualSelector, var_actualInputParameter  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2105)) ;
+      C_String syntaxDirectedTranslationResult_82740 ;
+      nt_actual_5F_input_5F_parameter_ (var_actualSelector, var_actualInputParameter, syntaxDirectedTranslationResult_82740, inCompiler) ;
+      ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_82740 ;
+      outArgument_outActualInputParameterList.addAssign_operation (var_actualSelector, var_actualInputParameter  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2114)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -19509,11 +19550,11 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
                                                                                                                          C_Lexique_galgas_5F_scanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_66 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_67 (inCompiler)) {
     case 2: {
-      C_String syntaxDirectedTranslationResult_82583 ;
-      nt_actual_5F_input_5F_parameter_parse (syntaxDirectedTranslationResult_82583, inCompiler) ;
-      ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_82583 ;
+      C_String syntaxDirectedTranslationResult_82740 ;
+      nt_actual_5F_input_5F_parameter_parse (syntaxDirectedTranslationResult_82740, inCompiler) ;
+      ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_82740 ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -19528,7 +19569,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_5F_list_i67_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_semanticInstructionsSyntax_66 (inCompiler)) {
+    switch (select_semanticInstructionsSyntax_67 (inCompiler)) {
     case 2: {
       nt_actual_5F_input_5F_parameter_indexing (inCompiler) ;
     } break ;
@@ -19547,26 +19588,26 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2121)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2122)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2130)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2131)) ;
   GALGAS_lstring var_mTypeName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2123)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2132)) ;
   GALGAS_lstring var_mMethodName = inCompiler->synthetizedAttribute_tokenString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2124)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2133)) ;
   GALGAS_actualParameterListAST var_actualParameterList ;
-  C_String syntaxDirectedTranslationResult_83754 ;
-  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_83754, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_83754 ;
+  C_String syntaxDirectedTranslationResult_83911 ;
+  nt_actual_5F_parameter_5F_list_ (var_actualParameterList, syntaxDirectedTranslationResult_83911, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_83911 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2126)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2127)) ;
-  outArgument_outInstruction = GALGAS_typeMethodCallInstructionAST::constructor_new (var_instructionLocation, var_mTypeName, var_mMethodName, var_actualParameterList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2128)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2135)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2136)) ;
+  outArgument_outInstruction = GALGAS_typeMethodCallInstructionAST::constructor_new (var_instructionLocation, var_mTypeName, var_mMethodName, var_actualParameterList  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2137)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -19575,35 +19616,35 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2121)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2130)) ;
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2123)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2132)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2124)) ;
-  C_String syntaxDirectedTranslationResult_83754 ;
-  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_83754, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_83754 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2133)) ;
+  C_String syntaxDirectedTranslationResult_83911 ;
+  nt_actual_5F_parameter_5F_list_parse (syntaxDirectedTranslationResult_83911, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_83911 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2126)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2135)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2127)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2136)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i68_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2121)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2130)) ;
   inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod, "") ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2123)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2124)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2132)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2133)) ;
   nt_actual_5F_parameter_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2126)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2127)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2135)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2136)) ;
 }
 

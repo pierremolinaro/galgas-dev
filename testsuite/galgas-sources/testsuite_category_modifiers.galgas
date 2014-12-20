@@ -9,6 +9,9 @@ proc testsuite_category_modifiers {
   log u, v
   var w = @overridingTestCategoryModifier.new {!1 !"" !"" !2}
   [!?w m]
+#--- Test type cast in setter call
+  @abstractTestCategoryModifier test = v
+  [!?test as @TestCategoryModifier modifier3 !u]
 }
 
 abstract class @abstractTestCategoryModifier {
