@@ -1008,7 +1008,7 @@ typeComparisonResult cPtr_setterCallInstructionForGeneration::dynamicObjectCompa
     result = mAttribute_mReceiverStructAttributes.objectCompare (p->mAttribute_mReceiverStructAttributes) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mTypeNameForCasting.objectCompare (p->mAttribute_mTypeNameForCasting) ;
+    result = mAttribute_mCastType.objectCompare (p->mAttribute_mCastType) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mReceiverType.objectCompare (p->mAttribute_mReceiverType) ;
@@ -1069,7 +1069,7 @@ GALGAS_setterCallInstructionForGeneration GALGAS_setterCallInstructionForGenerat
                                                                                                       const GALGAS_string & inAttribute_mReceiverCppName,
                                                                                                       const GALGAS_string & inAttribute_mReceiverBaseName,
                                                                                                       const GALGAS_lstringlist & inAttribute_mReceiverStructAttributes,
-                                                                                                      const GALGAS_string & inAttribute_mTypeNameForCasting,
+                                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mCastType,
                                                                                                       const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
                                                                                                       const GALGAS_lstring & inAttribute_mModifierName,
                                                                                                       const GALGAS_methodKind & inAttribute_mKind,
@@ -1078,8 +1078,8 @@ GALGAS_setterCallInstructionForGeneration GALGAS_setterCallInstructionForGenerat
                                                                                                       const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mMethodBaseType
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_setterCallInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverCppName.isValid () && inAttribute_mReceiverBaseName.isValid () && inAttribute_mReceiverStructAttributes.isValid () && inAttribute_mTypeNameForCasting.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mModifierName.isValid () && inAttribute_mKind.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mHasCompilerArgument.isValid () && inAttribute_mMethodBaseType.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_setterCallInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverCppName, inAttribute_mReceiverBaseName, inAttribute_mReceiverStructAttributes, inAttribute_mTypeNameForCasting, inAttribute_mReceiverType, inAttribute_mModifierName, inAttribute_mKind, inAttribute_mActualParameterList, inAttribute_mHasCompilerArgument, inAttribute_mMethodBaseType COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverCppName.isValid () && inAttribute_mReceiverBaseName.isValid () && inAttribute_mReceiverStructAttributes.isValid () && inAttribute_mCastType.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mModifierName.isValid () && inAttribute_mKind.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mHasCompilerArgument.isValid () && inAttribute_mMethodBaseType.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_setterCallInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverCppName, inAttribute_mReceiverBaseName, inAttribute_mReceiverStructAttributes, inAttribute_mCastType, inAttribute_mReceiverType, inAttribute_mModifierName, inAttribute_mKind, inAttribute_mActualParameterList, inAttribute_mHasCompilerArgument, inAttribute_mMethodBaseType COMMA_THERE)) ;
   }
   return result ;
 }
@@ -1158,20 +1158,20 @@ GALGAS_lstringlist cPtr_setterCallInstructionForGeneration::reader_mReceiverStru
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_setterCallInstructionForGeneration::reader_mTypeNameForCasting (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_setterCallInstructionForGeneration::reader_mCastType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_setterCallInstructionForGeneration * p = (const cPtr_setterCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_setterCallInstructionForGeneration) ;
-    result = p->mAttribute_mTypeNameForCasting ;
+    result = p->mAttribute_mCastType ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_setterCallInstructionForGeneration::reader_mTypeNameForCasting (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeNameForCasting ;
+GALGAS_unifiedTypeMap_2D_proxy cPtr_setterCallInstructionForGeneration::reader_mCastType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mCastType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1290,7 +1290,7 @@ cPtr_setterCallInstructionForGeneration::cPtr_setterCallInstructionForGeneration
                                                                                   const GALGAS_string & in_mReceiverCppName,
                                                                                   const GALGAS_string & in_mReceiverBaseName,
                                                                                   const GALGAS_lstringlist & in_mReceiverStructAttributes,
-                                                                                  const GALGAS_string & in_mTypeNameForCasting,
+                                                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mCastType,
                                                                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                                                   const GALGAS_lstring & in_mModifierName,
                                                                                   const GALGAS_methodKind & in_mKind,
@@ -1303,7 +1303,7 @@ mAttribute_mInstructionLocation (in_mInstructionLocation),
 mAttribute_mReceiverCppName (in_mReceiverCppName),
 mAttribute_mReceiverBaseName (in_mReceiverBaseName),
 mAttribute_mReceiverStructAttributes (in_mReceiverStructAttributes),
-mAttribute_mTypeNameForCasting (in_mTypeNameForCasting),
+mAttribute_mCastType (in_mCastType),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mModifierName (in_mModifierName),
 mAttribute_mKind (in_mKind),
@@ -1329,7 +1329,7 @@ void cPtr_setterCallInstructionForGeneration::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mReceiverStructAttributes.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mTypeNameForCasting.description (ioString, inIndentation+1) ;
+  mAttribute_mCastType.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mReceiverType.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -1349,7 +1349,7 @@ void cPtr_setterCallInstructionForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_setterCallInstructionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_setterCallInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverCppName, mAttribute_mReceiverBaseName, mAttribute_mReceiverStructAttributes, mAttribute_mTypeNameForCasting, mAttribute_mReceiverType, mAttribute_mModifierName, mAttribute_mKind, mAttribute_mActualParameterList, mAttribute_mHasCompilerArgument, mAttribute_mMethodBaseType COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_setterCallInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverCppName, mAttribute_mReceiverBaseName, mAttribute_mReceiverStructAttributes, mAttribute_mCastType, mAttribute_mReceiverType, mAttribute_mModifierName, mAttribute_mKind, mAttribute_mActualParameterList, mAttribute_mHasCompilerArgument, mAttribute_mMethodBaseType COMMA_THERE)) ;
   return ptr ;
 }
 

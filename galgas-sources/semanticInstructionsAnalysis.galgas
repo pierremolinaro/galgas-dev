@@ -1224,7 +1224,8 @@ override method @setterCallInstructionAST enterInstructionInSemanticContext
 override method @setterCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@variableMap ioVariableMap
+{
 #--- Check receiver object
   [!?ioVariableMap searchForReadWriteAccess
      !mReceiverName
@@ -1244,20 +1245,22 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
 #    end if ;
   end
 #--- Type cast ?
+  @unifiedTypeMap-proxy castType
   if mTypeNameForCasting.string != "" then
-    let castType = @unifiedTypeMap-proxy. searchKey {
+    castType = @unifiedTypeMap-proxy. searchKey {
       !inAnalysisContext.mSemanticContext.mTypeMap
       !mTypeNameForCasting
     }
     checkAssignmentTypes (!receiverType !castType !mTypeNameForCasting.location)
-    receiverType = castType
+  else 
+    castType = receiverType
   end
 #--- Get modifier signature
   @formalParameterSignature routineSignature
   @bool hasCompilerArgument
   @string modifierErrorMessage
   @methodKind kind
-  [[receiverType mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage]
+  [[castType mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage]
   if modifierErrorMessage != "" then
     error mModifierName : modifierErrorMessage
   end
@@ -1273,10 +1276,10 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Search base type that declares the method
-  var baseType = receiverType
+  var baseType = castType
   var searching = true
-  if @uint. errorCount == 0 then
-    loop( @uint. max) while searching do
+  if @uint.errorCount == 0 then
+    loop (@uint.max) while searching do
       if [[baseType mSuperType] isNull] then
         searching = false
       else
@@ -1294,7 +1297,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     !receiverVariableCppName
     !receiverVariableBaseName
     !mReceiverStructAttributes
-    !mTypeNameForCasting.string
+    !castType
     !receiverType
     !mModifierName
     !kind
