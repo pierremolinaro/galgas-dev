@@ -10,8 +10,7 @@ proc testsuite_category_modifiers {
   var w = @overridingTestCategoryModifier.new {!1 !"" !"" !2}
   [!?w m]
 #--- Test type cast in setter call
-  @abstractTestCategoryModifier test = v
-  [!?test as @TestCategoryModifier modifier3 !u]
+  typeCastInSetterCall ()
 }
 
 abstract class @abstractTestCategoryModifier {
@@ -64,4 +63,25 @@ setter @adjMat addNode {
    var tmp = @stringlist {}
    [!?self setNodes !tmp]
 }
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   TYPE CAST IN SETTER CALL                                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+
+private proc typeCastInSetterCall {
+  @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall.new
+  [!?object as @inheritedClassForTypeCastInSetterCall unSetter]
+
+}
+
+class @baseClassForTypeCastInSetterCall {}
+
+class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
+
+setter @inheritedClassForTypeCastInSetterCall unSetter {
+  message "Appel @inheritedClassForTypeCastInSetterCall unSetter\n"
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
 

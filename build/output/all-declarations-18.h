@@ -370,7 +370,7 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
                                                                              const class GALGAS_string & inOperand1,
                                                                              const class GALGAS_string & inOperand2,
                                                                              const class GALGAS_lstringlist & inOperand3,
-                                                                             const class GALGAS_string & inOperand4,
+                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4,
                                                                              const class GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
                                                                              const class GALGAS_lstring & inOperand6,
                                                                              const class GALGAS_methodKind & inOperand7,
@@ -390,6 +390,8 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mCastType (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
@@ -407,8 +409,6 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
   public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mReceiverStructAttributes (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mTypeNameForCasting (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -433,7 +433,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public : GALGAS_string mAttribute_mReceiverCppName ;
   public : GALGAS_string mAttribute_mReceiverBaseName ;
   public : GALGAS_lstringlist mAttribute_mReceiverStructAttributes ;
-  public : GALGAS_string mAttribute_mTypeNameForCasting ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mCastType ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
   public : GALGAS_lstring mAttribute_mModifierName ;
   public : GALGAS_methodKind mAttribute_mKind ;
@@ -446,7 +446,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
                                                     const GALGAS_string & in_mReceiverCppName,
                                                     const GALGAS_string & in_mReceiverBaseName,
                                                     const GALGAS_lstringlist & in_mReceiverStructAttributes,
-                                                    const GALGAS_string & in_mTypeNameForCasting,
+                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mCastType,
                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                     const GALGAS_lstring & in_mModifierName,
                                                     const GALGAS_methodKind & in_mKind,
@@ -463,7 +463,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReceiverBaseName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mReceiverStructAttributes (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mTypeNameForCasting (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mCastType (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;

@@ -561,7 +561,6 @@ override method @setterCallInstructionForGeneration generateInstruction
   @stringlist jokerParametersToReleaseList = {}
   @stringlist inputVariableList = {}
   for () in mActualParameterList do
-    @string parameterCppName
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -569,7 +568,7 @@ override method @setterCallInstructionForGeneration generateInstruction
       !?jokerParametersToReleaseList
       !?inputVariableList
       !?ioUnusedVariableCppNameSet
-      ?parameterCppName
+      ?let parameterCppName
     ]
     parameterCppNameList += !parameterCppName
   end
@@ -583,19 +582,20 @@ override method @setterCallInstructionForGeneration generateInstruction
       end
       let pointerUniqueName = "ptr_" + [mInstructionLocation locationIndex]
       ioGeneratedCode += "cPtr_" + [mReceiverType identifierRepresentation] + " * " + pointerUniqueName
-      ioGeneratedCode += " = (cPtr_" + [mReceiverType identifierRepresentation] + " *)" + receiverCppName + ".ptr () ;\n"
-      if mTypeNameForCasting != "" then
+      ioGeneratedCode += " = (cPtr_" + [mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
+      if [mCastType key] != [mReceiverType key] then
+        ioInclusionSet += !"class-" + [mCastType identifierRepresentation]
         ioGeneratedCode += "if ((NULL != " + pointerUniqueName
-                        + ") && (dynamic_cast <cPtr_" + [mReceiverType identifierRepresentation] + " *> ("
+                        + ") && (dynamic_cast <cPtr_" + [mCastType identifierRepresentation] + " *> ("
                         + pointerUniqueName + ") == NULL)) {\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@" 
-                        + mTypeNameForCasting + "'\" " + [mInstructionLocation commaSourceFile] + ") ;\n"
+                        + [mCastType key] + "'\"" + [mInstructionLocation commaSourceFile] + ") ;\n"
         ioGeneratedCode += "  " + pointerUniqueName + " = NULL ;\n"
         ioGeneratedCode += "}\n"
       end
       ioGeneratedCode += "callCategoryModifier_" + [mModifierName identifierRepresentation]
-                      +  " (" + pointerUniqueName + ", "
+                      +  " ((cPtr_" + [mCastType identifierRepresentation] + " *) " + pointerUniqueName + ", "
     else
       ioGeneratedCode += "categoryModifier_" + [mModifierName identifierRepresentation] + " (" + receiverCppName + ", "
     end

@@ -5519,11 +5519,11 @@ GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInstructio
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticInstructionListForGeneration result_outResult ; // Returned variable
-  result_outResult = GALGAS_semanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("syntaxSignature.galgas", 36)) ;
-  cEnumerator_semanticInstructionListForGeneration enumerator_2902 (constinArgument_inInstructionList, kEnumeration_up) ;
-  while (enumerator_2902.hasCurrentObject ()) {
-    callCategoryMethod_appendSyntaxSignature ((const cPtr_semanticInstructionForGeneration *) enumerator_2902.current_mInstruction (HERE).ptr (), constinArgument_inPosfix, result_outResult, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 38)) ;
-    enumerator_2902.gotoNextObject () ;
+  result_outResult = GALGAS_semanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("syntaxSignature.galgas", 33)) ;
+  cEnumerator_semanticInstructionListForGeneration enumerator_2908 (constinArgument_inInstructionList, kEnumeration_up) ;
+  while (enumerator_2908.hasCurrentObject ()) {
+    callCategoryMethod_appendSyntaxSignature ((const cPtr_semanticInstructionForGeneration *) enumerator_2908.current_mInstruction (HERE).ptr (), constinArgument_inPosfix, result_outResult, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 35)) ;
+    enumerator_2908.gotoNextObject () ;
   }
 //---
   return result_outResult ;
@@ -5579,41 +5579,41 @@ GALGAS_bool function_compareSyntaxSignature (const GALGAS_semanticInstructionLis
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outOk ; // Returned variable
   result_outOk = GALGAS_bool (true) ;
-  cEnumerator_semanticInstructionListForGeneration enumerator_8454 (constinArgument_inReferenceSignature, kEnumeration_up) ;
-  cEnumerator_semanticInstructionListForGeneration enumerator_8485 (constinArgument_inTestedSignature, kEnumeration_up) ;
+  cEnumerator_semanticInstructionListForGeneration enumerator_8474 (constinArgument_inReferenceSignature, kEnumeration_up) ;
+  cEnumerator_semanticInstructionListForGeneration enumerator_8505 (constinArgument_inTestedSignature, kEnumeration_up) ;
   bool bool_0 = result_outOk.isValidAndTrue () ;
-  if (enumerator_8454.hasCurrentObject () && enumerator_8485.hasCurrentObject () && bool_0) {
-    while (enumerator_8454.hasCurrentObject () && enumerator_8485.hasCurrentObject () && bool_0) {
-      result_outOk = callCategoryReader_compareSyntaxInstruction ((const cPtr_semanticInstructionForGeneration *) enumerator_8454.current_mInstruction (HERE).ptr (), enumerator_8485.current_mInstruction (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 157)) ;
-      enumerator_8454.gotoNextObject () ;
-      enumerator_8485.gotoNextObject () ;
-      if (enumerator_8454.hasCurrentObject () && enumerator_8485.hasCurrentObject ()) {
+  if (enumerator_8474.hasCurrentObject () && enumerator_8505.hasCurrentObject () && bool_0) {
+    while (enumerator_8474.hasCurrentObject () && enumerator_8505.hasCurrentObject () && bool_0) {
+      result_outOk = callCategoryReader_compareSyntaxInstruction ((const cPtr_semanticInstructionForGeneration *) enumerator_8474.current_mInstruction (HERE).ptr (), enumerator_8505.current_mInstruction (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 160)) ;
+      enumerator_8474.gotoNextObject () ;
+      enumerator_8505.gotoNextObject () ;
+      if (enumerator_8474.hasCurrentObject () && enumerator_8505.hasCurrentObject ()) {
         bool_0 = result_outOk.isValidAndTrue () ;
       }
     }
   }
-  const enumGalgasBool test_1 = result_outOk.operator_and (GALGAS_bool (kIsStrictInf, constinArgument_inReferenceSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 159)).objectCompare (constinArgument_inTestedSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 159)))) COMMA_SOURCE_FILE ("syntaxSignature.galgas", 159)).boolEnum () ;
+  const enumGalgasBool test_1 = result_outOk.operator_and (GALGAS_bool (kIsStrictInf, constinArgument_inReferenceSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 162)).objectCompare (constinArgument_inTestedSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 162)))) COMMA_SOURCE_FILE ("syntaxSignature.galgas", 162)).boolEnum () ;
   if (kBoolTrue == test_1) {
-    GALGAS_semanticInstructionForGeneration var_instruction = constinArgument_inTestedSignature.reader_mInstructionAtIndex (constinArgument_inReferenceSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 160)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 160)) ;
+    GALGAS_semanticInstructionForGeneration var_instruction = constinArgument_inTestedSignature.reader_mInstructionAtIndex (constinArgument_inReferenceSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 163)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 163)) ;
     if (var_instruction.isValid ()) {
       if (NULL != dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (var_instruction.ptr ())) {
-        GALGAS_syntaxInstructionForGeneration cast_8852_si ((cPtr_syntaxInstructionForGeneration *) var_instruction.ptr ()) ;
-        inCompiler->emitSemanticError (cast_8852_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 163)), GALGAS_string ("syntax signature error, exceeding instruction; this branch has more syntax instructions than reference branch")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 163)) ;
+        GALGAS_syntaxInstructionForGeneration cast_8872_si ((cPtr_syntaxInstructionForGeneration *) var_instruction.ptr ()) ;
+        inCompiler->emitSemanticError (cast_8872_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 166)), GALGAS_string ("syntax signature error, exceeding instruction; this branch has more syntax instructions than reference branch")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 166)) ;
       }else{
-        inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("internal error")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 166)) ;
+        inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("internal error")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 169)) ;
       }
     }
   }else if (kBoolFalse == test_1) {
-    const enumGalgasBool test_2 = result_outOk.operator_and (GALGAS_bool (kIsStrictSup, constinArgument_inReferenceSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 168)).objectCompare (constinArgument_inTestedSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 168)))) COMMA_SOURCE_FILE ("syntaxSignature.galgas", 168)).boolEnum () ;
+    const enumGalgasBool test_2 = result_outOk.operator_and (GALGAS_bool (kIsStrictSup, constinArgument_inReferenceSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 171)).objectCompare (constinArgument_inTestedSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 171)))) COMMA_SOURCE_FILE ("syntaxSignature.galgas", 171)).boolEnum () ;
     if (kBoolTrue == test_2) {
-      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("syntax signature error, missing instruction; this branch has less syntax instructions than reference branch")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 169)) ;
-      GALGAS_semanticInstructionForGeneration var_instruction = constinArgument_inReferenceSignature.reader_mInstructionAtIndex (constinArgument_inTestedSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 171)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 171)) ;
+      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("syntax signature error, missing instruction; this branch has less syntax instructions than reference branch")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 172)) ;
+      GALGAS_semanticInstructionForGeneration var_instruction = constinArgument_inReferenceSignature.reader_mInstructionAtIndex (constinArgument_inTestedSignature.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 174)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 174)) ;
       if (var_instruction.isValid ()) {
         if (NULL != dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (var_instruction.ptr ())) {
-          GALGAS_syntaxInstructionForGeneration cast_9489_si ((cPtr_syntaxInstructionForGeneration *) var_instruction.ptr ()) ;
-          inCompiler->emitSemanticError (cast_9489_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 174)), GALGAS_string ("this is the syntax instruction in reference branch that corresponds to the first missing instruction")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 174)) ;
+          GALGAS_syntaxInstructionForGeneration cast_9509_si ((cPtr_syntaxInstructionForGeneration *) var_instruction.ptr ()) ;
+          inCompiler->emitSemanticError (cast_9509_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 177)), GALGAS_string ("this is the syntax instruction in reference branch that corresponds to the first missing instruction")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 177)) ;
         }else{
-          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("internal error")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 177)) ;
+          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("internal error")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 180)) ;
         }
       }
     }

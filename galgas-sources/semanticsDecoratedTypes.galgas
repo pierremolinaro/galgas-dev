@@ -880,7 +880,7 @@ class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
   @string mReceiverCppName
   @string mReceiverBaseName
   @lstringlist mReceiverStructAttributes
-  @string mTypeNameForCasting
+  @unifiedTypeMap-proxy mCastType
   @unifiedTypeMap-proxy mReceiverType
   @lstring mModifierName
   @methodKind mKind

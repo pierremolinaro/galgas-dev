@@ -310,7 +310,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (80 types)
+--- Type list (82 types)
   @1charArray
   @2lstringlist
   @2lstringlist-element
@@ -331,6 +331,7 @@ LOGGING r: <@uint:5>
   @abstractTestCategoryModifier
   @adjMat
   @application
+  @baseClassForTypeCastInSetterCall
   @binaryset
   @bool
   @char
@@ -342,6 +343,7 @@ LOGGING r: <@uint:5>
   @function
   @functionlist
   @functionlist-element
+  @inheritedClassForTypeCastInSetterCall
   @lbool
   @lchar
   @ldouble
@@ -408,6 +410,7 @@ LOGGING s: <@string:"-3-4-4">
 *************************************** begin of category modifier test
 LOGGING u: <@uint:3>
 LOGGING v: <@TestCategoryModifier:[@TestCategoryModifier:<@uint:3>, <@string:"Hello World">]>
+Appel @inheritedClassForTypeCastInSetterCall unSetter
 *************************************** begin of type category test
 LOGGING Square of 7: <@uint64:49>
 LOGGING Sum 1 + 2 + 3 + 4: <@uint:10>
