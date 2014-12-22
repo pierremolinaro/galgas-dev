@@ -7276,92 +7276,202 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         const GALGAS_lstring sourceFilePath (sfp, location) ;
         int16_t r = 0 ;
         if (fileExtension == "galgas") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_galgas_33_Grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_galgas_33_Grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__30_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_galgas_33_Grammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_galgas_33_Grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "galgasTemplate") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__31_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_projectLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_projectLL_31_grammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_projectLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "galgasProject") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_galgas_33_ProjectGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_galgas_33_ProjectGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__32_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_galgas_33_ProjectGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "gOption") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_optionLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_optionLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__33_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_optionLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_optionLL_31_grammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_optionLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_optionLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "gLexique") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_lexiqueLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_lexiqueLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__34_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_lexiqueLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_lexiqueLL_31_grammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_lexiqueLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_lexiqueLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "gSemantics") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_semanticsSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_semanticsSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__35_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_semanticsSLRgrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_semanticsSLRgrammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_semanticsSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_semanticsSLRgrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "gSyntax") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_syntaxSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_syntaxSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__36_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_syntaxSLRgrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_syntaxSLRgrammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_syntaxSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_syntaxSLRgrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "gGrammar") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_grammarLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_grammarLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__37_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_grammarLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_grammarLL_31_grammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_grammarLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_grammarLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "gGui") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_guiGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_guiGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__38_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_guiGrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_guiGrammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_guiGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_guiGrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "gProgram") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_programSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_programSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__39_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_programSLRgrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_programSLRgrammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_programSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_programSLRgrammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else if (fileExtension == "gProject") {
-          if (executionModeIsIndexing ()) {
-            cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else if (executionModeIsLatex ()) {
-            cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
-          }else{
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
             routine_programRule_5F__31__30_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_projectLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_projectLL_31_grammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_projectLL_31_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
           }
         }else{
           printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;

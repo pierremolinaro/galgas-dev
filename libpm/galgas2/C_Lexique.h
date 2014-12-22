@@ -161,7 +161,7 @@ class C_Lexique : public C_Compiler {
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const = 0 ;
 
 //--- Lexical analysis methods
-  protected : void performLexicalAnalysis (void) ;
+  public : void performLexicalAnalysis (void) ;
 
   protected : bool testForCharWithFunction (bool (*inFunction) (const utf32 inUnicodeCharacter)) ;
 

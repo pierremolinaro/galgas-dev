@@ -7279,18 +7279,32 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
         result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
           "          }\n" ;
       }else if (kBoolFalse == test_0) {
-        result << "          if (executionModeIsIndexing ()) {\n"
-          "            cGrammar_" ;
-        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 99)).stringValue () ;
-        result << "::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
-          "          }else if (executionModeIsLatex ()) {\n"
-          "            cGrammar_" ;
-        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 101)).stringValue () ;
-        result << "::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
-          "          }else{\n"
+        result << "          switch (executionMode ()) {\n"
+          "          case kExecutionModeNormal :\n"
           "            routine_" ;
-        result << GALGAS_string ("programRule_").add_operation (index_4257_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 103)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 103)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 103)).stringValue () ;
+        result << GALGAS_string ("programRule_").add_operation (index_4257_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 100)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 100)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 100)).stringValue () ;
         result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
+          "            break ;\n"
+          "          case kExecutionModeLexicalAnalysisOnly :\n"
+          "            cGrammar_" ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 103)).stringValue () ;
+        result << "::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
+          "            break ;\n"
+          "          case kExecutionModeSyntaxAnalysisOnly :\n"
+          "            cGrammar_" ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 106)).stringValue () ;
+        result << "::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
+          "            break ;\n"
+          "          case kExecutionModeIndexing :\n"
+          "            cGrammar_" ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 109)).stringValue () ;
+        result << "::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
+          "            break ;\n"
+          "          case kExecutionModeLatex :\n"
+          "            cGrammar_" ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 112)).stringValue () ;
+        result << "::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
+          "            break ;\n"
           "          }\n" ;
       }
       if (enumerator_4257.hasNextObject ()) {
