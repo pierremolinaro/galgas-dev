@@ -215,7 +215,7 @@ override getter @lexicalDropInstructionAST generateInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
-  outGeneratedCode = "// enterDroppedTerminal (kToken_" + [mTerminalName identifierRepresentation] + ") ;\n"
+  outGeneratedCode = "enterDroppedTerminal (kToken_" + [mTerminalName identifierRepresentation] + ") ;\n"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

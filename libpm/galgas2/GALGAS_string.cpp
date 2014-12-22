@@ -546,6 +546,18 @@ GALGAS_bool GALGAS_string::reader_containsCharacter (const GALGAS_char & inChara
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_string::reader_containsCharacterInRange (const GALGAS_char & inFirstCharacter,
+                                                            const GALGAS_char & inLastCharacter
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inFirstCharacter.isValid () && inLastCharacter.isValid ()) {
+    result = GALGAS_bool (mString.containsCharacterInRange (inFirstCharacter.charValue (), inLastCharacter.charValue ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_string::description (C_String & ioString,
                                  const int32_t /* inIndentation */) const {
   ioString << "<@string:" ;

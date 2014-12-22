@@ -37,7 +37,7 @@ style delimitersStyle -> "Delimiters"
 style nonTerminalStyle -> "Non Terminal Symbols"
 style variantStyle -> "Variant Symbols"
 style integerStyle -> "Integer Constants"
-style float_csts -> "Floating Point Constants"
+style floatStyle -> "Floating Point Constants"
 style stringStyle -> "String Constants"
 style characterStyle -> "Character Constants"
 style typeNameStyle -> "Type Names (@...)"
@@ -190,7 +190,7 @@ rule '@' {
 
 #------------------------------- Integer, floating Point Constant ------------------
 @double floatValue
-$literal_double$ !floatValue !tokenString  style float_csts error message "a float number"
+$literal_double$ !floatValue !tokenString  style floatStyle error message "a float number"
 $unsigned_literal_integer$ ! uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
 $signed_literal_integer$ ! sint32value  style integerStyle error message "a 32-bit signed decimal number"
 $unsigned_literal_integer64$ ! uint64value  style integerStyle error message "a 64-bit unsigned decimal number"

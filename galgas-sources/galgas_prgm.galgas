@@ -50,7 +50,7 @@ before { #--- Extract LIBPM
 
 case . "galgas"
 message "a GALGAS source file"
-indexing with galgas3Grammar
+grammar galgas3Grammar
 ?sourceFilePath:@lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
@@ -77,7 +77,7 @@ indexing with galgas3Grammar
 
 case . "galgasTemplate"
 message "a GALGAS Template source file"
-indexing with projectLL1grammar
+grammar projectLL1grammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar templateGrammar in inSourceFile ?*
 }
@@ -90,7 +90,7 @@ indexing with projectLL1grammar
 
 case . "galgasProject"
 message "a GALGAS project source file"
-#indexing with galgas3ProjectGrammar
+grammar galgas3ProjectGrammar
 ?sourceFilePath:@lstring inProjectSourceFile {
   parseAndAnalyzeProject (!inProjectSourceFile !"" )
 }
@@ -99,7 +99,7 @@ message "a GALGAS project source file"
 
 case . "gOption"
 message "a GALGAS option source file"
-indexing with optionLL1grammar
+grammar optionLL1grammar
 ?sourceFilePath:@lstring inSourceFile {
   var parsedComponentStruct =@parsedComponentStruct.new{
     !@parsedSemanticsComponentMap. emptyMap
@@ -117,7 +117,7 @@ indexing with optionLL1grammar
 
 case . "gLexique"
 message "a GALGAS lexique source file"
-indexing with lexiqueLL1grammar
+grammar lexiqueLL1grammar
 ?sourceFilePath:@lstring inSourceFile {
   var parsedComponentStruct =@parsedComponentStruct.new{
     !@parsedSemanticsComponentMap. emptyMap
@@ -135,7 +135,7 @@ indexing with lexiqueLL1grammar
 
 case . "gSemantics"
 message "a GALGAS semantics source file"
-indexing with semanticsSLRgrammar
+grammar semanticsSLRgrammar
 ?sourceFilePath:@lstring inSourceFile {
   var parsedComponentStruct =@parsedComponentStruct.new{
     !@parsedSemanticsComponentMap. emptyMap
@@ -153,7 +153,7 @@ indexing with semanticsSLRgrammar
 
 case . "gSyntax"
 message "a GALGAS syntax source file"
-indexing with syntaxSLRgrammar
+grammar syntaxSLRgrammar
 ?sourceFilePath:@lstring inSourceFile {
   var parsedComponentStruct =@parsedComponentStruct.new{
     !@parsedSemanticsComponentMap. emptyMap
@@ -171,7 +171,7 @@ indexing with syntaxSLRgrammar
 
 case . "gGrammar"
 message "a GALGAS grammar source file"
-indexing with grammarLL1grammar
+grammar grammarLL1grammar
 ?sourceFilePath:@lstring inSourceFile {
   var parsedComponentStruct =@parsedComponentStruct.new{
     !@parsedSemanticsComponentMap. emptyMap
@@ -192,7 +192,7 @@ indexing with grammarLL1grammar
 
 case . "gGui"
 message "a GALGAS GUI source file"
-indexing with guiGrammar
+grammar guiGrammar
 ?sourceFilePath:@lstring inSourceFile {
   var parsedComponentStruct =@parsedComponentStruct.new{
     !@parsedSemanticsComponentMap. emptyMap
@@ -210,7 +210,7 @@ indexing with guiGrammar
 
 case . "gProgram"
 message "a GALGAS program source file"
-indexing with programSLRgrammar
+grammar programSLRgrammar
 ?sourceFilePath:@lstring inSourceFile {
   var parsedComponentStruct =@parsedComponentStruct.new{
     !@parsedSemanticsComponentMap. emptyMap
@@ -232,7 +232,7 @@ indexing with programSLRgrammar
 
 case . "gProject"
 message "a GALGAS project source file"
-indexing with projectLL1grammar
+grammar projectLL1grammar
 ?sourceFilePath:@lstring inProjectSourceFile {
   let @string outputDirectory = outputDirectory (!inProjectSourceFile)
 #--- Parse metamodel component

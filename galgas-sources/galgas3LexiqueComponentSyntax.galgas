@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -601,10 +601,16 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
 
 rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
   $style$
-  $identifier$ ?let @lstring name
+  $identifier$ ?let @lstring styleIdentifier
+  if [styleIdentifier.string containsCharacter !'_'] then 
+    error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
+  end
+  if [styleIdentifier.string containsCharacterInRange !'0' !'9'] then 
+    error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
+  end
   $->$
   $literal_string$ ?let @lstring comment
-  ioLexicalStyleList += !name !comment
+  ioLexicalStyleList += !styleIdentifier !comment
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
