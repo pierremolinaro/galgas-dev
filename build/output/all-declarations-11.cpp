@@ -386,6 +386,9 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program 
     "message \"a source text file with the ." ;
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << " extension\"\n"
+    "grammar " ;
+  result << in_PROJECT_5F_NAME.stringValue () ;
+  result << "_grammar\n"
     "\?sourceFilePath:@lstring inSourceFile {\n"
     "  grammar " ;
   result << in_PROJECT_5F_NAME.stringValue () ;

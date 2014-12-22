@@ -7938,6 +7938,34 @@ void cGrammar_templateGrammar::nt_template_5F_parser_5F_start_5F_symbol_ (GALGAS
   }
 }
 
+void cGrammar_templateGrammar::performIndexing (C_Compiler * /* inCompiler */,
+             const C_String & /* inSourceFilePath */) {
+}
+
+void cGrammar_templateGrammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgasTemplateScanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                     gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                     gProductionsTable_templateGrammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_templateGrammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgasTemplateScanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
+                                     gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
+                                     gProductionsTable_templateGrammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Grammar start symbol implementation                                          *
@@ -9959,6 +9987,28 @@ void cGrammar_lexiqueLL_31_grammar::performIndexing (C_Compiler * inCompiler,
   macroDetachSharedObject (scanner) ;
 }
 
+void cGrammar_lexiqueLL_31_grammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performTopDownParsing (gProductions_lexiqueLL1grammar, gProductionNames_lexiqueLL1grammar, gProductionIndexes_lexiqueLL1grammar,
+                                    gFirstProductionIndexes_lexiqueLL1grammar, gDecision_lexiqueLL1grammar, gDecisionIndexes_lexiqueLL1grammar, 399) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_lexiqueLL_31_grammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performTopDownParsing (gProductions_lexiqueLL1grammar, gProductionNames_lexiqueLL1grammar, gProductionIndexes_lexiqueLL1grammar,
+                                    gFirstProductionIndexes_lexiqueLL1grammar, gDecision_lexiqueLL1grammar, gDecisionIndexes_lexiqueLL1grammar, 399) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Grammar start symbol implementation                                          *
@@ -11218,6 +11268,28 @@ void cGrammar_optionLL_31_grammar::performIndexing (C_Compiler * inCompiler,
   macroDetachSharedObject (scanner) ;
 }
 
+void cGrammar_optionLL_31_grammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performTopDownParsing (gProductions_optionLL1grammar, gProductionNames_optionLL1grammar, gProductionIndexes_optionLL1grammar,
+                                    gFirstProductionIndexes_optionLL1grammar, gDecision_optionLL1grammar, gDecisionIndexes_optionLL1grammar, 31) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_optionLL_31_grammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performTopDownParsing (gProductions_optionLL1grammar, gProductionNames_optionLL1grammar, gProductionIndexes_optionLL1grammar,
+                                    gFirstProductionIndexes_optionLL1grammar, gDecision_optionLL1grammar, gDecisionIndexes_optionLL1grammar, 31) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Grammar start symbol implementation                                          *
@@ -11808,6 +11880,30 @@ void cGrammar_guiGrammar::performIndexing (C_Compiler * inCompiler,
       grammar.nt_gui_5F_component_5F_start_5F_symbol_indexing (scanner) ;
     }
     scanner->generateIndexFile () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_guiGrammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performBottomUpParsing (gActionTable_guiGrammar, gNonTerminalNames_guiGrammar,
+                                     gActionTableIndex_guiGrammar, gSuccessorTable_guiGrammar,
+                                     gProductionsTable_guiGrammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_guiGrammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performBottomUpParsing (gActionTable_guiGrammar, gNonTerminalNames_guiGrammar,
+                                     gActionTableIndex_guiGrammar, gSuccessorTable_guiGrammar,
+                                     gProductionsTable_guiGrammar) ;
   }
   macroDetachSharedObject (scanner) ;
 }
@@ -29612,6 +29708,30 @@ void cGrammar_semanticsSLRgrammar::performIndexing (C_Compiler * inCompiler,
       grammar.nt_semantics_5F_component_5F_start_5F_symbol_indexing (scanner) ;
     }
     scanner->generateIndexFile () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_semanticsSLRgrammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performBottomUpParsing (gActionTable_semanticsSLRgrammar, gNonTerminalNames_semanticsSLRgrammar,
+                                     gActionTableIndex_semanticsSLRgrammar, gSuccessorTable_semanticsSLRgrammar,
+                                     gProductionsTable_semanticsSLRgrammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_semanticsSLRgrammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performBottomUpParsing (gActionTable_semanticsSLRgrammar, gNonTerminalNames_semanticsSLRgrammar,
+                                     gActionTableIndex_semanticsSLRgrammar, gSuccessorTable_semanticsSLRgrammar,
+                                     gProductionsTable_semanticsSLRgrammar) ;
   }
   macroDetachSharedObject (scanner) ;
 }

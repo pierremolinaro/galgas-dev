@@ -118,24 +118,40 @@ static C_String gCurrentlyCompiledBaseFilePath ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+static EnumExecutionMode gExecutionMode = kExecutionModeNormal ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void setExecutionMode (C_String & outErrorMessage) {
   const C_String mode = gOption_galgas_5F_builtin_5F_options_mode.mValue ;
   if (mode == "") {
     gMode = 0 ;
+    gExecutionMode = kExecutionModeNormal ;
   }else if (mode == "lexical-only") {
     gMode = 1 ;
+    gExecutionMode = kExecutionModeLexicalAnalysisOnly ;
   }else if (mode == "syntax-only") {
     gMode = 2 ;
+    gExecutionMode = kExecutionModeSyntaxAnalysisOnly ;
   }else if (mode == "indexing") {
     gMode = 3 ;
+    gExecutionMode = kExecutionModeIndexing ;
   }else if (mode == "latex") {
     gMode = 4 ;
+    gExecutionMode = kExecutionModeLatex ;
   }else{
     outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
       "  --mode=                     default mode: perform compilation;\n"
       "  --mode=lexical-only         perform only lexical analysis;\n"
-      "  --mode=syntax-only          perform only syntax analysis.\n" ;
+      "  --mode=syntax-only          perform only syntax analysis;\n"
+      "  --mode=latex                perform latex formatting.\n" ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+EnumExecutionMode executionMode (void) {
+  return gExecutionMode ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

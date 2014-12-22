@@ -69,6 +69,17 @@ extern C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_mode ;
 
 void setExecutionMode (C_String & outErrorMessage) ;
 
+typedef enum {
+ kExecutionModeNormal,
+ kExecutionModeLexicalAnalysisOnly,
+ kExecutionModeSyntaxAnalysisOnly,
+ kExecutionModeIndexing,
+ kExecutionModeLatex,
+ 
+} EnumExecutionMode ;
+
+EnumExecutionMode executionMode (void) ;
+
 bool executionModeIsNormal (void) ;
 
 bool executionModeIsLexicalAnalysisOnly (void) ;

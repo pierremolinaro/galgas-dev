@@ -7278,11 +7278,15 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         if (fileExtension == "galgas") {
           if (executionModeIsIndexing ()) {
             cGrammar_galgas_33_Grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
+            cGrammar_galgas_33_Grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__30_ (sourceFilePath, commonLexique COMMA_HERE) ;
           }
         }else if (fileExtension == "galgasTemplate") {
           if (executionModeIsIndexing ()) {
+            cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
             cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__31_ (sourceFilePath, commonLexique COMMA_HERE) ;
@@ -7290,11 +7294,15 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         }else if (fileExtension == "galgasProject") {
           if (executionModeIsIndexing ()) {
             cGrammar_galgas_33_ProjectGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
+            cGrammar_galgas_33_ProjectGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__32_ (sourceFilePath, commonLexique COMMA_HERE) ;
           }
         }else if (fileExtension == "gOption") {
           if (executionModeIsIndexing ()) {
+            cGrammar_optionLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
             cGrammar_optionLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__33_ (sourceFilePath, commonLexique COMMA_HERE) ;
@@ -7302,11 +7310,15 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         }else if (fileExtension == "gLexique") {
           if (executionModeIsIndexing ()) {
             cGrammar_lexiqueLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
+            cGrammar_lexiqueLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__34_ (sourceFilePath, commonLexique COMMA_HERE) ;
           }
         }else if (fileExtension == "gSemantics") {
           if (executionModeIsIndexing ()) {
+            cGrammar_semanticsSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
             cGrammar_semanticsSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__35_ (sourceFilePath, commonLexique COMMA_HERE) ;
@@ -7314,11 +7326,15 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         }else if (fileExtension == "gSyntax") {
           if (executionModeIsIndexing ()) {
             cGrammar_syntaxSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
+            cGrammar_syntaxSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__36_ (sourceFilePath, commonLexique COMMA_HERE) ;
           }
         }else if (fileExtension == "gGrammar") {
           if (executionModeIsIndexing ()) {
+            cGrammar_grammarLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
             cGrammar_grammarLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__37_ (sourceFilePath, commonLexique COMMA_HERE) ;
@@ -7326,17 +7342,23 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         }else if (fileExtension == "gGui") {
           if (executionModeIsIndexing ()) {
             cGrammar_guiGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
+            cGrammar_guiGrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__38_ (sourceFilePath, commonLexique COMMA_HERE) ;
           }
         }else if (fileExtension == "gProgram") {
           if (executionModeIsIndexing ()) {
             cGrammar_programSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
+            cGrammar_programSLRgrammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__39_ (sourceFilePath, commonLexique COMMA_HERE) ;
           }
         }else if (fileExtension == "gProject") {
           if (executionModeIsIndexing ()) {
+            cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+          }else if (executionModeIsLatex ()) {
             cGrammar_projectLL_31_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
           }else{
             routine_programRule_5F__31__30_ (sourceFilePath, commonLexique COMMA_HERE) ;
@@ -18309,143 +18331,6 @@ GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::extractOb
       result = *p ;
     }else{
       inCompiler->castError ("syntaxExtensions-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_prologueEpilogueList_2D_element::GALGAS_prologueEpilogueList_2D_element (void) :
-mAttribute_mInstructionList (),
-mAttribute_mEndOfInstructionList () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_prologueEpilogueList_2D_element::~ GALGAS_prologueEpilogueList_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_prologueEpilogueList_2D_element::GALGAS_prologueEpilogueList_2D_element (const GALGAS_semanticInstructionListAST & inOperand0,
-                                                                                const GALGAS_location & inOperand1) :
-mAttribute_mInstructionList (inOperand0),
-mAttribute_mEndOfInstructionList (inOperand1) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_prologueEpilogueList_2D_element (GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
-                                                 GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::constructor_new (const GALGAS_semanticInstructionListAST & inOperand0,
-                                                                                                const GALGAS_location & inOperand1 
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_prologueEpilogueList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_prologueEpilogueList_2D_element (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_prologueEpilogueList_2D_element::objectCompare (const GALGAS_prologueEpilogueList_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mInstructionList.objectCompare (inOperand.mAttribute_mInstructionList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mEndOfInstructionList.objectCompare (inOperand.mAttribute_mEndOfInstructionList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_prologueEpilogueList_2D_element::isValid (void) const {
-  return mAttribute_mInstructionList.isValid () && mAttribute_mEndOfInstructionList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_prologueEpilogueList_2D_element::drop (void) {
-  mAttribute_mInstructionList.drop () ;
-  mAttribute_mEndOfInstructionList.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_prologueEpilogueList_2D_element::description (C_String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString << "<struct @prologueEpilogueList-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mInstructionList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mEndOfInstructionList.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST GALGAS_prologueEpilogueList_2D_element::reader_mInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mInstructionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_prologueEpilogueList_2D_element::reader_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfInstructionList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @prologueEpilogueList-element type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_prologueEpilogueList_2D_element ("prologueEpilogueList-element",
-                                                        NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_prologueEpilogueList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_prologueEpilogueList_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_prologueEpilogueList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_prologueEpilogueList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_prologueEpilogueList_2D_element result ;
-  const GALGAS_prologueEpilogueList_2D_element * p = (const GALGAS_prologueEpilogueList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_prologueEpilogueList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("prologueEpilogueList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
