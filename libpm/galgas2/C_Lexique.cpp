@@ -273,36 +273,6 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-//  ptr->mStartLocation = mTokenStartLocation ;
-//  ptr->mEndLocation = mTokenEndLocation ;
-
-void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
-  if (executionModeIsLatex ()) {
-    while (mLatexNextCharacterToEnterIndex < mTokenStartLocation.index ()) {
-      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE)) ;
-      appendCharacterToLatexFile (c) ;
-      mLatexNextCharacterToEnterIndex ++ ;
-    }
-    const C_String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
-    if (styleName.length () > 0) {
-      mLatexOutputString << "\\" << styleName << "{" ;
-    }
-    for (int32_t i=mTokenStartLocation.index () ; i<=mTokenEndLocation.index () ; i++) {
-      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
-      if (UNICODE_VALUE (c) != '\0') {
-        appendCharacterToLatexFile (c) ;
-      }
-    }
-    if (styleName.length () > 0) {
-      mLatexOutputString << "}" ;
-    }
-  //---
-    mLatexNextCharacterToEnterIndex = mTokenEndLocation.index () + 1 ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 void C_Lexique::resetForSecondPass (void) {
   mCurrentLocation.resetWithSourceText (sourceText ()) ;
   mCurrentChar = (sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (0 COMMA_HERE) ;
@@ -1680,6 +1650,33 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark ========= Generate Latex file
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
+  if (executionModeIsLatex ()) {
+    while (mLatexNextCharacterToEnterIndex < mTokenStartLocation.index ()) {
+      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE)) ;
+      appendCharacterToLatexFile (c) ;
+      mLatexNextCharacterToEnterIndex ++ ;
+    }
+    const C_String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
+    if (styleName.length () > 0) {
+      mLatexOutputString << "\\" << styleName << "{" ;
+    }
+    for (int32_t i=mTokenStartLocation.index () ; i<=mTokenEndLocation.index () ; i++) {
+      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
+      if (UNICODE_VALUE (c) != '\0') {
+        appendCharacterToLatexFile (c) ;
+      }
+    }
+    if (styleName.length () > 0) {
+      mLatexOutputString << "}" ;
+    }
+  //---
+    mLatexNextCharacterToEnterIndex = mTokenEndLocation.index () + 1 ;
+  }
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 

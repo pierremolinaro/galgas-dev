@@ -354,6 +354,26 @@ bool C_String::containsCharacter (const utf32 inCharacter) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool C_String::containsCharacterInRange (const utf32 inFirstCharacter,
+                                         const utf32 inLastCharacter) const {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkString (HERE) ;
+  #endif
+  bool found = false ;
+  if (NULL != mEmbeddedString) {
+    for (uint32_t i=0 ; (i<mEmbeddedString->mLength) && ! found ; i++) {
+      found =
+        (UNICODE_VALUE (mEmbeddedString->mString [i]) >= UNICODE_VALUE (inFirstCharacter))
+      &&
+        (UNICODE_VALUE (mEmbeddedString->mString [i]) <= UNICODE_VALUE (inLastCharacter))
+      ;
+    }
+  }
+  return found ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 int32_t C_String::length (void) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;

@@ -147,6 +147,7 @@ class C_String : public AC_OutputStream {
 
 //--- Contains a character
   public : bool containsCharacter (const utf32 inCharacter) const ;
+  public : bool containsCharacterInRange (const utf32 inFirstCharacter, const utf32 inLastCharacter) const ;
 
 //--- Get last character
   public : utf32 lastCharacter (LOCATION_ARGS) const ;

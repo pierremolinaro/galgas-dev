@@ -15,10 +15,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 proc enterBaseFinalReaderWithoutArgument
   ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -465,6 +461,17 @@ override method @stringPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"popen" !returnedTypeName:"string" !true )
   enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"inIndex" !returnedTypeName:"char" !true )
   enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"containsCharacter" !"char" !"inCharacter" !returnedTypeName:"bool" !false )
+  enterBaseReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"containsCharacterInRange"
+    !"char"
+    !"inFirstCharacter"
+    !"char"
+    !"inLastCharacter"
+    !returnedTypeName:"bool"
+    !false
+  )
   enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"stringByRemovingCharacterAtIndex" !"uint" !"inIndex" !returnedTypeName:"string" !true )
   enterBaseReaderWithArgument ( !?outMap !?ioUnifiedTypeMap !"subStringFromIndex" !"uint" !"inIndex" !returnedTypeName:"string" !false )
   enterBaseReaderWithArgument ( !?outMap !?ioUnifiedTypeMap !"rightSubString" !"uint" !"inLength" !returnedTypeName:"string" !false )

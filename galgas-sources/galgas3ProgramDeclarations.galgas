@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'program' component parser, as model builder                             *
+#  'program' component parser, as model builder                                                                        *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -23,7 +23,7 @@ rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsLis
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   P R O L O G U E                                                         *
+#   P R O L O G U E                                                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -41,7 +41,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   E P I L O G U E                                                         *
+#   E P I L O G U E                                                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -59,7 +59,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   S O U R C E    R U L E                                                  *
+#   S O U R C E    R U L E                                                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -70,14 +70,13 @@ rule <declaration>
   $literal_string$ ?let @lstring mSourceFileExtension
   $message$
   $literal_string$ ?let @lstring mSourceFileHelp
-#--- Indexing
-  @lstring indexingGrammar # Empty string if no indexing
+#--- Grammar reference
+  @lstring indexingGrammar
   select
     indexingGrammar = ["" nowhere]
   or
-    $indexing$
-    $with$
-    $identifier$ ? indexingGrammar indexing grammarComponentReference
+    $grammar$
+    $identifier$ ?indexingGrammar
   end
 #--- Source file
   $?$ ?let selector

@@ -22799,7 +22799,7 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
             }
           }while (mLoop) ;
           mLoop = true ;
-          // enterDroppedTerminal (kToken_commentMark) ;
+          enterDroppedTerminal (kToken_commentMark) ;
         }else{
           do {
             if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
@@ -22808,7 +22808,7 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
             }
           }while (mLoop) ;
           mLoop = true ;
-          // enterDroppedTerminal (kToken_comment) ;
+          enterDroppedTerminal (kToken_comment) ;
         }
       }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
       }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
@@ -23306,7 +23306,7 @@ C_String C_Lexique_galgas_33_Scanner::styleNameForIndex (const uint32_t inStyleI
       "terminalStyle",
       "nonTerminalStyle",
       "integerStyle",
-      "float_csts",
+      "floatStyle",
       "characterStyle",
       "stringStyle",
       "typeNameStyle",

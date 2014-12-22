@@ -3027,8 +3027,7 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
                                                                                            const class GALGAS_string & in_COMPONENT_5F_NAME,
                                                                                            const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST,
                                                                                            const class GALGAS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
-                                                                                           const class GALGAS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST,
-                                                                                           const class GALGAS_bool & in_HAS_5F_INDEXING
+                                                                                           const class GALGAS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3419,7 +3418,6 @@ void routine_compileBeforeClauseGalgas_33_ (const class GALGAS_analysisContext c
 void routine_compileProgramRules (const class GALGAS_analysisContext constinArgument0,
                                   const class GALGAS_programRuleList constinArgument1,
                                   class GALGAS_semanticDeclarationSortedListForGeneration & ioArgument2,
-                                  class GALGAS_bool & ioArgument3,
                                   class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
@@ -3432,7 +3430,6 @@ void routine_compileProgramRules (const class GALGAS_analysisContext constinArgu
 void routine_compileProgramRulesGalgas_33_ (const class GALGAS_analysisContext constinArgument0,
                                             const class GALGAS_programRuleList constinArgument1,
                                             class GALGAS_programListForGeneration & ioArgument2,
-                                            class GALGAS_bool & ioArgument3,
                                             class C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
