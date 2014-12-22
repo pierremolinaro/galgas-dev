@@ -111,7 +111,6 @@ C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_mode ("galgas_cli
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static uint32_t gMode ;
 static uint32_t gContextHelpStartLocation ;
 static uint32_t gContextHelpEndLocation ;
 static C_String gCurrentlyCompiledBaseFilePath ;
@@ -125,19 +124,14 @@ static EnumExecutionMode gExecutionMode = kExecutionModeNormal ;
 void setExecutionMode (C_String & outErrorMessage) {
   const C_String mode = gOption_galgas_5F_builtin_5F_options_mode.mValue ;
   if (mode == "") {
-    gMode = 0 ;
     gExecutionMode = kExecutionModeNormal ;
   }else if (mode == "lexical-only") {
-    gMode = 1 ;
     gExecutionMode = kExecutionModeLexicalAnalysisOnly ;
   }else if (mode == "syntax-only") {
-    gMode = 2 ;
     gExecutionMode = kExecutionModeSyntaxAnalysisOnly ;
   }else if (mode == "indexing") {
-    gMode = 3 ;
     gExecutionMode = kExecutionModeIndexing ;
   }else if (mode == "latex") {
-    gMode = 4 ;
     gExecutionMode = kExecutionModeLatex ;
   }else{
     outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
@@ -157,31 +151,31 @@ EnumExecutionMode executionMode (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool executionModeIsNormal (void) {
-  return gMode == 0 ;
+  return gExecutionMode == kExecutionModeNormal ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool executionModeIsLexicalAnalysisOnly (void) {
-  return gMode == 1 ;
+  return gExecutionMode == kExecutionModeLexicalAnalysisOnly ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool executionModeIsSyntaxAnalysisOnly (void) {
-  return gMode == 2 ;
+  return gExecutionMode == kExecutionModeSyntaxAnalysisOnly ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool executionModeIsIndexing (void) {
-  return gMode == 3 ;
+  return gExecutionMode == kExecutionModeIndexing ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool executionModeIsLatex (void) {
-  return gMode == 4 ;
+  return gExecutionMode == kExecutionModeLatex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

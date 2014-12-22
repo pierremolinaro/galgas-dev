@@ -368,8 +368,9 @@ void cGrammar_grammarLL_31_grammar::performOnlyLexicalAnalysis (C_Compiler * inC
   C_Lexique_galgas_5F_scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
-    scanner->performTopDownParsing (gProductions_grammarLL1grammar, gProductionNames_grammarLL1grammar, gProductionIndexes_grammarLL1grammar,
-                                    gFirstProductionIndexes_grammarLL1grammar, gDecision_grammarLL1grammar, gDecisionIndexes_grammarLL1grammar, 85) ;
+    scanner->performLexicalAnalysis () ;
+    //scanner->performTopDownParsing (gProductions_grammarLL1grammar, gProductionNames_grammarLL1grammar, gProductionIndexes_grammarLL1grammar,
+    //                                gFirstProductionIndexes_grammarLL1grammar, gDecision_grammarLL1grammar, gDecisionIndexes_grammarLL1grammar, 85) ;
   }
   macroDetachSharedObject (scanner) ;
 }
@@ -20797,8 +20798,9 @@ void cGrammar_projectLL_31_grammar::performOnlyLexicalAnalysis (C_Compiler * inC
   C_Lexique_galgas_5F_scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
-    scanner->performTopDownParsing (gProductions_projectLL1grammar, gProductionNames_projectLL1grammar, gProductionIndexes_projectLL1grammar,
-                                    gFirstProductionIndexes_projectLL1grammar, gDecision_projectLL1grammar, gDecisionIndexes_projectLL1grammar, 57) ;
+    scanner->performLexicalAnalysis () ;
+    //scanner->performTopDownParsing (gProductions_projectLL1grammar, gProductionNames_projectLL1grammar, gProductionIndexes_projectLL1grammar,
+    //                                gFirstProductionIndexes_projectLL1grammar, gDecision_projectLL1grammar, gDecisionIndexes_projectLL1grammar, 57) ;
   }
   macroDetachSharedObject (scanner) ;
 }
@@ -21092,8 +21094,9 @@ void cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (C_Compiler *
   C_Lexique_galgas_33_Scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
-    scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 26) ;
+    scanner->performLexicalAnalysis () ;
+    //scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
+    //                                gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 26) ;
   }
   macroDetachSharedObject (scanner) ;
 }
