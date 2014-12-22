@@ -7773,6 +7773,7 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
             }
           }while (mLoop) ;
           mLoop = true ;
+          // enterDroppedTerminal (kToken_commentMark) ;
         }else{
           do {
             if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
@@ -7781,6 +7782,7 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
             }
           }while (mLoop) ;
           mLoop = true ;
+          // enterDroppedTerminal (kToken_comment) ;
         }
       }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
       }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
@@ -7824,56 +7826,56 @@ void C_Lexique_galgas_5F_scanner::enterToken (const cTokenFor_galgas_5F_scanner 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //               A T T R I B U T E   A C C E S S                                                                       *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 utf32 C_Lexique_galgas_5F_scanner::attributeValue_charValue (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_charValue ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 double C_Lexique_galgas_5F_scanner::attributeValue_floatValue (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_floatValue ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_5F_scanner::attributeValue_identifierString (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_identifierString ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t C_Lexique_galgas_5F_scanner::attributeValue_sint_33__32_value (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_sint_33__32_value ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 int64_t C_Lexique_galgas_5F_scanner::attributeValue_sint_36__34_value (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_sint_36__34_value ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_5F_scanner::attributeValue_tokenString (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_tokenString ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgas_5F_scanner::attributeValue_uint_33__32_value (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_uint_33__32_value ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 uint64_t C_Lexique_galgas_5F_scanner::attributeValue_uint_36__34_value (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -7882,7 +7884,7 @@ uint64_t C_Lexique_galgas_5F_scanner::attributeValue_uint_36__34_value (void) co
 
 //---------------------------------------------------------------------------------------------------------------------*
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lchar C_Lexique_galgas_5F_scanner::synthetizedAttribute_charValue (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -7893,7 +7895,7 @@ GALGAS_lchar C_Lexique_galgas_5F_scanner::synthetizedAttribute_charValue (void) 
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_ldouble C_Lexique_galgas_5F_scanner::synthetizedAttribute_floatValue (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -7904,7 +7906,7 @@ GALGAS_ldouble C_Lexique_galgas_5F_scanner::synthetizedAttribute_floatValue (voi
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring C_Lexique_galgas_5F_scanner::synthetizedAttribute_identifierString (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -7915,7 +7917,7 @@ GALGAS_lstring C_Lexique_galgas_5F_scanner::synthetizedAttribute_identifierStrin
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lsint C_Lexique_galgas_5F_scanner::synthetizedAttribute_sint_33__32_value (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -7926,7 +7928,7 @@ GALGAS_lsint C_Lexique_galgas_5F_scanner::synthetizedAttribute_sint_33__32_value
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lsint_36__34_ C_Lexique_galgas_5F_scanner::synthetizedAttribute_sint_36__34_value (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -7937,7 +7939,7 @@ GALGAS_lsint_36__34_ C_Lexique_galgas_5F_scanner::synthetizedAttribute_sint_36__
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring C_Lexique_galgas_5F_scanner::synthetizedAttribute_tokenString (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -7948,7 +7950,7 @@ GALGAS_lstring C_Lexique_galgas_5F_scanner::synthetizedAttribute_tokenString (vo
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luint C_Lexique_galgas_5F_scanner::synthetizedAttribute_uint_33__32_value (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -7959,7 +7961,7 @@ GALGAS_luint C_Lexique_galgas_5F_scanner::synthetizedAttribute_uint_33__32_value
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luint_36__34_ C_Lexique_galgas_5F_scanner::synthetizedAttribute_uint_36__34_value (void) const {
   cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
@@ -8133,6 +8135,200 @@ GALGAS_stringlist C_Lexique_galgas_5F_scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("^") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (">>") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("~") COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t C_Lexique_galgas_5F_scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+  static const uint32_t kTerminalSymbolStyles [158] = {0,
+    0 /* galgas_scanner_1_identifier */,
+    8 /* galgas_scanner_1_literal_5F_double */,
+    7 /* galgas_scanner_1_unsigned_5F_literal_5F_integer */,
+    7 /* galgas_scanner_1_signed_5F_literal_5F_integer */,
+    7 /* galgas_scanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
+    7 /* galgas_scanner_1_signed_5F_literal_5F_integer_36__34_ */,
+    2 /* galgas_scanner_1__2E_ */,
+    2 /* galgas_scanner_1__2E__3D_ */,
+    2 /* galgas_scanner_1__2E__2E__2E_ */,
+    11 /* galgas_scanner_1_type_5F_name */,
+    9 /* galgas_scanner_1_literal_5F_char */,
+    4 /* galgas_scanner_1_terminal */,
+    3 /* galgas_scanner_1__3F__3F_ */,
+    3 /* galgas_scanner_1__3F_ */,
+    3 /* galgas_scanner_1__3F__21_ */,
+    3 /* galgas_scanner_1__21_ */,
+    3 /* galgas_scanner_1__21__3F_ */,
+    2 /* galgas_scanner_1__3C_ */,
+    2 /* galgas_scanner_1__3C__2D__3E_ */,
+    2 /* galgas_scanner_1__3C__3D_ */,
+    2 /* galgas_scanner_1__3C__3C_ */,
+    5 /* galgas_scanner_1_non_5F_terminal_5F_symbol */,
+    10 /* galgas_scanner_1_literal_5F_string */,
+    12 /* galgas_scanner_1_comment */,
+    12 /* galgas_scanner_1_commentMark */,
+    1 /* galgas_scanner_1_abstract */,
+    1 /* galgas_scanner_1_after */,
+    1 /* galgas_scanner_1_array */,
+    1 /* galgas_scanner_1_before */,
+    1 /* galgas_scanner_1_between */,
+    1 /* galgas_scanner_1_block */,
+    1 /* galgas_scanner_1_case */,
+    1 /* galgas_scanner_1_cast */,
+    1 /* galgas_scanner_1_class */,
+    1 /* galgas_scanner_1_const */,
+    1 /* galgas_scanner_1_constructor */,
+    1 /* galgas_scanner_1_default */,
+    1 /* galgas_scanner_1_do */,
+    1 /* galgas_scanner_1_drop */,
+    1 /* galgas_scanner_1_else */,
+    1 /* galgas_scanner_1_elsif */,
+    1 /* galgas_scanner_1_end */,
+    1 /* galgas_scanner_1_enum */,
+    1 /* galgas_scanner_1_error */,
+    1 /* galgas_scanner_1_extension */,
+    1 /* galgas_scanner_1_extends */,
+    1 /* galgas_scanner_1_extern */,
+    1 /* galgas_scanner_1_false */,
+    1 /* galgas_scanner_1_feature */,
+    1 /* galgas_scanner_1_filewrapper */,
+    1 /* galgas_scanner_1_for */,
+    1 /* galgas_scanner_1_foreach */,
+    1 /* galgas_scanner_1_func */,
+    1 /* galgas_scanner_1_function */,
+    1 /* galgas_scanner_1_getter */,
+    1 /* galgas_scanner_1_grammar */,
+    1 /* galgas_scanner_1_graph */,
+    1 /* galgas_scanner_1_gui */,
+    1 /* galgas_scanner_1_here */,
+    1 /* galgas_scanner_1_if */,
+    1 /* galgas_scanner_1_import */,
+    1 /* galgas_scanner_1_in */,
+    1 /* galgas_scanner_1_index */,
+    1 /* galgas_scanner_1_indexing */,
+    1 /* galgas_scanner_1_insert */,
+    1 /* galgas_scanner_1_is */,
+    1 /* galgas_scanner_1_label */,
+    1 /* galgas_scanner_1_let */,
+    1 /* galgas_scanner_1_lexique */,
+    1 /* galgas_scanner_1_list */,
+    1 /* galgas_scanner_1_listmap */,
+    1 /* galgas_scanner_1_local */,
+    1 /* galgas_scanner_1_log */,
+    1 /* galgas_scanner_1_loop */,
+    1 /* galgas_scanner_1_map */,
+    1 /* galgas_scanner_1_match */,
+    1 /* galgas_scanner_1_message */,
+    1 /* galgas_scanner_1_method */,
+    1 /* galgas_scanner_1_mod */,
+    1 /* galgas_scanner_1_modifier */,
+    1 /* galgas_scanner_1_nonterminal */,
+    1 /* galgas_scanner_1_not */,
+    1 /* galgas_scanner_1_on */,
+    1 /* galgas_scanner_1_once */,
+    1 /* galgas_scanner_1_operator */,
+    1 /* galgas_scanner_1_option */,
+    1 /* galgas_scanner_1_or */,
+    1 /* galgas_scanner_1_override */,
+    1 /* galgas_scanner_1_parse */,
+    1 /* galgas_scanner_1_private */,
+    1 /* galgas_scanner_1_proc */,
+    1 /* galgas_scanner_1_project */,
+    1 /* galgas_scanner_1_program */,
+    1 /* galgas_scanner_1_reader */,
+    1 /* galgas_scanner_1_remove */,
+    1 /* galgas_scanner_1_replace */,
+    1 /* galgas_scanner_1_repeat */,
+    1 /* galgas_scanner_1_rewind */,
+    1 /* galgas_scanner_1_root */,
+    1 /* galgas_scanner_1_routine */,
+    1 /* galgas_scanner_1_rule */,
+    1 /* galgas_scanner_1_search */,
+    1 /* galgas_scanner_1_select */,
+    1 /* galgas_scanner_1_self */,
+    1 /* galgas_scanner_1_selfcopy */,
+    1 /* galgas_scanner_1_semantics */,
+    1 /* galgas_scanner_1_send */,
+    1 /* galgas_scanner_1_setter */,
+    1 /* galgas_scanner_1_sortedlist */,
+    1 /* galgas_scanner_1_state */,
+    1 /* galgas_scanner_1_struct */,
+    1 /* galgas_scanner_1_style */,
+    1 /* galgas_scanner_1_switch */,
+    1 /* galgas_scanner_1_syntax */,
+    1 /* galgas_scanner_1_tag */,
+    1 /* galgas_scanner_1_template */,
+    1 /* galgas_scanner_1_then */,
+    1 /* galgas_scanner_1_true */,
+    1 /* galgas_scanner_1_sharedmap */,
+    1 /* galgas_scanner_1_unused */,
+    1 /* galgas_scanner_1_var */,
+    1 /* galgas_scanner_1_warning */,
+    1 /* galgas_scanner_1_when */,
+    1 /* galgas_scanner_1_while */,
+    1 /* galgas_scanner_1_with */,
+    2 /* galgas_scanner_1__2A_ */,
+    2 /* galgas_scanner_1__7C_ */,
+    2 /* galgas_scanner_1__2C_ */,
+    2 /* galgas_scanner_1__2B_ */,
+    2 /* galgas_scanner_1__2D__2D_ */,
+    2 /* galgas_scanner_1__3A__3E_ */,
+    2 /* galgas_scanner_1__3E_ */,
+    2 /* galgas_scanner_1__3B_ */,
+    2 /* galgas_scanner_1__3A_ */,
+    2 /* galgas_scanner_1__3A__3A_ */,
+    2 /* galgas_scanner_1__26__26_ */,
+    2 /* galgas_scanner_1__2D_ */,
+    2 /* galgas_scanner_1__28_ */,
+    2 /* galgas_scanner_1__29_ */,
+    2 /* galgas_scanner_1__2D__3E_ */,
+    2 /* galgas_scanner_1__3D__3D_ */,
+    2 /* galgas_scanner_1__3A__3D_ */,
+    2 /* galgas_scanner_1__2B__2B_ */,
+    2 /* galgas_scanner_1__7C__7C_ */,
+    2 /* galgas_scanner_1__5B_ */,
+    2 /* galgas_scanner_1__5D_ */,
+    2 /* galgas_scanner_1__2B__3D_ */,
+    2 /* galgas_scanner_1__2F_ */,
+    2 /* galgas_scanner_1__21__3D_ */,
+    2 /* galgas_scanner_1__3E__3D_ */,
+    2 /* galgas_scanner_1__26_ */,
+    2 /* galgas_scanner_1__7B_ */,
+    2 /* galgas_scanner_1__7D_ */,
+    2 /* galgas_scanner_1__60_ */,
+    2 /* galgas_scanner_1__5E_ */,
+    2 /* galgas_scanner_1__3E__3E_ */,
+    2 /* galgas_scanner_1__7E_ */
+  } ;
+  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_String C_Lexique_galgas_5F_scanner::styleNameForIndex (const uint32_t inStyleIndex) const {
+  C_String result ;
+  if (inStyleIndex < 13) {
+    static const char * kStyleArray [13] = {
+      "",
+      "keywordsStyle",
+      "delimitersStyle",
+      "selectorStyle",
+      "terminalStyle",
+      "nonTerminalStyle",
+      "variantStyle",
+      "integerStyle",
+      "float_csts",
+      "characterStyle",
+      "stringStyle",
+      "typeNameStyle",
+      "commentStyle"
+    } ;
+    result = kStyleArray [inStyleIndex] ;
+  }
   return result ;
 }
 
@@ -15754,6 +15950,7 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
             }
           }while (mLoop) ;
           mLoop = true ;
+          // enterDroppedTerminal (kToken_comment) ;
         }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
         }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
           token.mTokenCode = kToken_ ; // Empty string code
@@ -15801,56 +15998,56 @@ void C_Lexique_galgasTemplateScanner::enterToken (const cTokenFor_galgasTemplate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //               A T T R I B U T E   A C C E S S                                                                       *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 utf32 C_Lexique_galgasTemplateScanner::attributeValue_charValue (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_charValue ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 double C_Lexique_galgasTemplateScanner::attributeValue_floatValue (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_floatValue ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::attributeValue_identifierString (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_identifierString ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t C_Lexique_galgasTemplateScanner::attributeValue_sint_33__32_value (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_sint_33__32_value ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 int64_t C_Lexique_galgasTemplateScanner::attributeValue_sint_36__34_value (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_sint_36__34_value ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::attributeValue_tokenString (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_tokenString ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgasTemplateScanner::attributeValue_uint_33__32_value (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_uint_33__32_value ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 uint64_t C_Lexique_galgasTemplateScanner::attributeValue_uint_36__34_value (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -15859,7 +16056,7 @@ uint64_t C_Lexique_galgasTemplateScanner::attributeValue_uint_36__34_value (void
 
 //---------------------------------------------------------------------------------------------------------------------*
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lchar C_Lexique_galgasTemplateScanner::synthetizedAttribute_charValue (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -15870,7 +16067,7 @@ GALGAS_lchar C_Lexique_galgasTemplateScanner::synthetizedAttribute_charValue (vo
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_ldouble C_Lexique_galgasTemplateScanner::synthetizedAttribute_floatValue (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -15881,7 +16078,7 @@ GALGAS_ldouble C_Lexique_galgasTemplateScanner::synthetizedAttribute_floatValue 
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring C_Lexique_galgasTemplateScanner::synthetizedAttribute_identifierString (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -15892,7 +16089,7 @@ GALGAS_lstring C_Lexique_galgasTemplateScanner::synthetizedAttribute_identifierS
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lsint C_Lexique_galgasTemplateScanner::synthetizedAttribute_sint_33__32_value (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -15903,7 +16100,7 @@ GALGAS_lsint C_Lexique_galgasTemplateScanner::synthetizedAttribute_sint_33__32_v
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lsint_36__34_ C_Lexique_galgasTemplateScanner::synthetizedAttribute_sint_36__34_value (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -15914,7 +16111,7 @@ GALGAS_lsint_36__34_ C_Lexique_galgasTemplateScanner::synthetizedAttribute_sint_
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring C_Lexique_galgasTemplateScanner::synthetizedAttribute_tokenString (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -15925,7 +16122,7 @@ GALGAS_lstring C_Lexique_galgasTemplateScanner::synthetizedAttribute_tokenString
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luint C_Lexique_galgasTemplateScanner::synthetizedAttribute_uint_33__32_value (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -15936,7 +16133,7 @@ GALGAS_luint C_Lexique_galgasTemplateScanner::synthetizedAttribute_uint_33__32_v
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luint_36__34_ C_Lexique_galgasTemplateScanner::synthetizedAttribute_uint_36__34_value (void) const {
   cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
@@ -16104,6 +16301,192 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("^") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (">>") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("~") COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+  static const uint32_t kTerminalSymbolStyles [152] = {0,
+    0 /* galgasTemplateScanner_1_identifier */,
+    9 /* galgasTemplateScanner_1_type_5F_name */,
+    6 /* galgasTemplateScanner_1_literal_5F_double */,
+    5 /* galgasTemplateScanner_1_unsigned_5F_literal_5F_integer */,
+    5 /* galgasTemplateScanner_1_signed_5F_literal_5F_integer */,
+    5 /* galgasTemplateScanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
+    5 /* galgasTemplateScanner_1_signed_5F_literal_5F_integer_36__34_ */,
+    2 /* galgasTemplateScanner_1__2E_ */,
+    2 /* galgasTemplateScanner_1__2E__3D_ */,
+    2 /* galgasTemplateScanner_1__2E__2E__2E_ */,
+    8 /* galgasTemplateScanner_1_literal_5F_char */,
+    7 /* galgasTemplateScanner_1_literal_5F_string */,
+    2 /* galgasTemplateScanner_1__3F_ */,
+    2 /* galgasTemplateScanner_1__3F__21_ */,
+    2 /* galgasTemplateScanner_1__21_ */,
+    2 /* galgasTemplateScanner_1__21__3F_ */,
+    2 /* galgasTemplateScanner_1__3C_ */,
+    2 /* galgasTemplateScanner_1__3C__3D_ */,
+    2 /* galgasTemplateScanner_1__3C__3C_ */,
+    10 /* galgasTemplateScanner_1_comment */,
+    1 /* galgasTemplateScanner_1_abstract */,
+    1 /* galgasTemplateScanner_1_after */,
+    1 /* galgasTemplateScanner_1_array */,
+    1 /* galgasTemplateScanner_1_before */,
+    1 /* galgasTemplateScanner_1_between */,
+    1 /* galgasTemplateScanner_1_block */,
+    1 /* galgasTemplateScanner_1_case */,
+    1 /* galgasTemplateScanner_1_cast */,
+    1 /* galgasTemplateScanner_1_class */,
+    1 /* galgasTemplateScanner_1_const */,
+    1 /* galgasTemplateScanner_1_constructor */,
+    1 /* galgasTemplateScanner_1_default */,
+    1 /* galgasTemplateScanner_1_do */,
+    1 /* galgasTemplateScanner_1_drop */,
+    1 /* galgasTemplateScanner_1_else */,
+    1 /* galgasTemplateScanner_1_elsif */,
+    1 /* galgasTemplateScanner_1_end */,
+    1 /* galgasTemplateScanner_1_enum */,
+    1 /* galgasTemplateScanner_1_error */,
+    1 /* galgasTemplateScanner_1_extension */,
+    1 /* galgasTemplateScanner_1_extends */,
+    1 /* galgasTemplateScanner_1_extern */,
+    1 /* galgasTemplateScanner_1_false */,
+    1 /* galgasTemplateScanner_1_feature */,
+    1 /* galgasTemplateScanner_1_filewrapper */,
+    1 /* galgasTemplateScanner_1_for */,
+    1 /* galgasTemplateScanner_1_foreach */,
+    1 /* galgasTemplateScanner_1_func */,
+    1 /* galgasTemplateScanner_1_function */,
+    1 /* galgasTemplateScanner_1_getter */,
+    1 /* galgasTemplateScanner_1_grammar */,
+    1 /* galgasTemplateScanner_1_graph */,
+    1 /* galgasTemplateScanner_1_gui */,
+    1 /* galgasTemplateScanner_1_here */,
+    1 /* galgasTemplateScanner_1_if */,
+    1 /* galgasTemplateScanner_1_import */,
+    1 /* galgasTemplateScanner_1_in */,
+    1 /* galgasTemplateScanner_1_index */,
+    1 /* galgasTemplateScanner_1_indexing */,
+    1 /* galgasTemplateScanner_1_insert */,
+    1 /* galgasTemplateScanner_1_is */,
+    1 /* galgasTemplateScanner_1_label */,
+    1 /* galgasTemplateScanner_1_let */,
+    1 /* galgasTemplateScanner_1_lexique */,
+    1 /* galgasTemplateScanner_1_list */,
+    1 /* galgasTemplateScanner_1_listmap */,
+    1 /* galgasTemplateScanner_1_local */,
+    1 /* galgasTemplateScanner_1_log */,
+    1 /* galgasTemplateScanner_1_loop */,
+    1 /* galgasTemplateScanner_1_map */,
+    1 /* galgasTemplateScanner_1_match */,
+    1 /* galgasTemplateScanner_1_message */,
+    1 /* galgasTemplateScanner_1_method */,
+    1 /* galgasTemplateScanner_1_mod */,
+    1 /* galgasTemplateScanner_1_modifier */,
+    1 /* galgasTemplateScanner_1_nonterminal */,
+    1 /* galgasTemplateScanner_1_not */,
+    1 /* galgasTemplateScanner_1_on */,
+    1 /* galgasTemplateScanner_1_once */,
+    1 /* galgasTemplateScanner_1_operator */,
+    1 /* galgasTemplateScanner_1_option */,
+    1 /* galgasTemplateScanner_1_or */,
+    1 /* galgasTemplateScanner_1_override */,
+    1 /* galgasTemplateScanner_1_parse */,
+    1 /* galgasTemplateScanner_1_private */,
+    1 /* galgasTemplateScanner_1_proc */,
+    1 /* galgasTemplateScanner_1_project */,
+    1 /* galgasTemplateScanner_1_program */,
+    1 /* galgasTemplateScanner_1_reader */,
+    1 /* galgasTemplateScanner_1_remove */,
+    1 /* galgasTemplateScanner_1_replace */,
+    1 /* galgasTemplateScanner_1_repeat */,
+    1 /* galgasTemplateScanner_1_rewind */,
+    1 /* galgasTemplateScanner_1_root */,
+    1 /* galgasTemplateScanner_1_routine */,
+    1 /* galgasTemplateScanner_1_rule */,
+    1 /* galgasTemplateScanner_1_search */,
+    1 /* galgasTemplateScanner_1_select */,
+    1 /* galgasTemplateScanner_1_self */,
+    1 /* galgasTemplateScanner_1_selfcopy */,
+    1 /* galgasTemplateScanner_1_semantics */,
+    1 /* galgasTemplateScanner_1_send */,
+    1 /* galgasTemplateScanner_1_setter */,
+    1 /* galgasTemplateScanner_1_sortedlist */,
+    1 /* galgasTemplateScanner_1_state */,
+    1 /* galgasTemplateScanner_1_struct */,
+    1 /* galgasTemplateScanner_1_style */,
+    1 /* galgasTemplateScanner_1_switch */,
+    1 /* galgasTemplateScanner_1_syntax */,
+    1 /* galgasTemplateScanner_1_tag */,
+    1 /* galgasTemplateScanner_1_template */,
+    1 /* galgasTemplateScanner_1_then */,
+    1 /* galgasTemplateScanner_1_true */,
+    1 /* galgasTemplateScanner_1_sharedmap */,
+    1 /* galgasTemplateScanner_1_unused */,
+    1 /* galgasTemplateScanner_1_var */,
+    1 /* galgasTemplateScanner_1_warning */,
+    1 /* galgasTemplateScanner_1_when */,
+    1 /* galgasTemplateScanner_1_while */,
+    1 /* galgasTemplateScanner_1_with */,
+    2 /* galgasTemplateScanner_1__2A_ */,
+    2 /* galgasTemplateScanner_1__7C_ */,
+    2 /* galgasTemplateScanner_1__2C_ */,
+    2 /* galgasTemplateScanner_1__2B_ */,
+    2 /* galgasTemplateScanner_1__2D__2D_ */,
+    2 /* galgasTemplateScanner_1__3A__3E_ */,
+    2 /* galgasTemplateScanner_1__3E_ */,
+    2 /* galgasTemplateScanner_1__3B_ */,
+    2 /* galgasTemplateScanner_1__3A_ */,
+    2 /* galgasTemplateScanner_1__3F__5E_ */,
+    2 /* galgasTemplateScanner_1__2D_ */,
+    2 /* galgasTemplateScanner_1__28_ */,
+    2 /* galgasTemplateScanner_1__29_ */,
+    2 /* galgasTemplateScanner_1__2D__3E_ */,
+    2 /* galgasTemplateScanner_1__3D__3D_ */,
+    2 /* galgasTemplateScanner_1__3F__3F_ */,
+    2 /* galgasTemplateScanner_1__3A__3D_ */,
+    2 /* galgasTemplateScanner_1__2B__2B_ */,
+    2 /* galgasTemplateScanner_1__5B_ */,
+    2 /* galgasTemplateScanner_1__5D_ */,
+    2 /* galgasTemplateScanner_1__2B__3D_ */,
+    2 /* galgasTemplateScanner_1__2F_ */,
+    2 /* galgasTemplateScanner_1__21__3D_ */,
+    2 /* galgasTemplateScanner_1__3E__3D_ */,
+    2 /* galgasTemplateScanner_1__26_ */,
+    2 /* galgasTemplateScanner_1__21__5E_ */,
+    2 /* galgasTemplateScanner_1__7B_ */,
+    2 /* galgasTemplateScanner_1__7D_ */,
+    2 /* galgasTemplateScanner_1__5E_ */,
+    2 /* galgasTemplateScanner_1__3E__3E_ */,
+    2 /* galgasTemplateScanner_1__7E_ */
+  } ;
+  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_String C_Lexique_galgasTemplateScanner::styleNameForIndex (const uint32_t inStyleIndex) const {
+  C_String result ;
+  if (inStyleIndex < 11) {
+    static const char * kStyleArray [11] = {
+      "",
+      "keywordsStyle",
+      "delimitersStyle",
+      "nonTerminalStyle",
+      "variantStyle",
+      "integerStyle",
+      "float_csts",
+      "stringStyle",
+      "characterStyle",
+      "typeNameStyle",
+      "commentStyle"
+    } ;
+    result = kStyleArray [inStyleIndex] ;
+  }
   return result ;
 }
 

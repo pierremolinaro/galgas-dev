@@ -10,11 +10,7 @@
 #include "all-declarations-9.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR grammarLL1grammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_grammarLL_31_grammar : public cParser_grammarModelBuilder {
@@ -99,11 +95,7 @@ class cGrammar_grammarLL_31_grammar : public cParser_grammarModelBuilder {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR programSLRgrammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_programSLRgrammar : public cParser_expressionSyntax,
@@ -838,11 +830,7 @@ class cGrammar_programSLRgrammar : public cParser_expressionSyntax,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR projectLL1grammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_projectLL_31_grammar : public cParser_projectModelBuilder {
@@ -885,11 +873,7 @@ class cGrammar_projectLL_31_grammar : public cParser_projectModelBuilder {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR galgas3ProjectGrammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax {
@@ -926,11 +910,7 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
 
 //---------------------------------------------------------------------------------------------------------------------*
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR galgas3Grammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,

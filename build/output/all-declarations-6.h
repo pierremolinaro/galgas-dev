@@ -10014,6 +10014,10 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
 
 //--- Enter Token
   protected : void enterToken (const cTokenFor_galgas_33_Scanner & inToken) ;
+
+//--- Style name for Latex
+  protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
+  protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

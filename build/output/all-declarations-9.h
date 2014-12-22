@@ -10,11 +10,7 @@
 #include "all-declarations-8.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR syntaxSLRgrammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_syntaxSLRgrammar : public cParser_syntaxModelBuilder,

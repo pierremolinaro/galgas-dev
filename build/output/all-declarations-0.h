@@ -341,6 +341,10 @@ class C_Lexique_galgas_5F_scanner : public C_Lexique {
 
 //--- Enter Token
   protected : void enterToken (const cTokenFor_galgas_5F_scanner & inToken) ;
+
+//--- Style name for Latex
+  protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
+  protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -622,6 +626,10 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 
 //--- Enter Token
   protected : void enterToken (const cTokenFor_galgasTemplateScanner & inToken) ;
+
+//--- Style name for Latex
+  protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
+  protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

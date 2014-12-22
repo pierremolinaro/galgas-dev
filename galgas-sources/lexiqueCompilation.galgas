@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'lexique' component metamodel                                            *
+#  'lexique' component metamodel                                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -13,10 +13,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 getter @lexicalTypeEnum cppTypeName -> @string outResult {
@@ -131,7 +127,7 @@ getter @lexicalTypeEnum cocoaReset -> @string outResult {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                     checkLexicalDefaultAction                             *
+#                     checkLexicalDefaultAction                                                                        *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @lexicalSendDefaultActionAST checkLexicalDefaultAction
@@ -152,7 +148,7 @@ override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                       checkLexicalExpression                              *
+#                       checkLexicalExpression                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @lexicalExpressionAST checkLexicalExpression
@@ -207,7 +203,7 @@ override method @lexicalStringNotMatchAST checkLexicalExpression
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                       checkLexicalFunctionCallArgument                    *
+#                       checkLexicalFunctionCallArgument                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument
@@ -322,7 +318,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                       checkLexicalRoutineCallArgument                     *
+#                       checkLexicalRoutineCallArgument                                                                *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument
@@ -437,7 +433,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                       checkLexicalRoutineCallArgument                     *
+#                       checkLexicalRoutineCallArgument                                                                *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument
@@ -489,7 +485,7 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                       checkLexicalInstruction                             *
+#                       checkLexicalInstruction                                                                        *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @lexicalInstructionAST checkLexicalInstruction
@@ -645,7 +641,7 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         compileLexiqueComponent                           *
+#                         compileLexiqueComponent                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractLexicalRuleAST checkLexicalRule
@@ -670,7 +666,7 @@ override method @lexicalExplicitRuleAST checkLexicalRule
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#         G E N E R A T I O N    T E M P L A T E S                          *
+#         G E N E R A T I O N    T E M P L A T E S                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
@@ -700,6 +696,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@metamodelTemplateDelimitorListAST TEMPLATE_DELIMITOR_LIST
     ?@string LEXIQUE_COMPONENT_NAME
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
 
   template newImplementationZone2 "lexique_implementation.new.cpp.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
@@ -715,9 +712,11 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
   template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.galgasTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+
   template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.galgasTemplate"
     ?@string unused LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext unused LEXIQUE_ANALYSIS_CONTEXT
+
   template cocoaImplementationZone2 "lexique_cocoa_implementation.m.galgasTemplate"
     ?@string LEXIQUE_HEADER_FILE_NAME
     ?@string LEXIQUE_CLASS_NAME
@@ -735,7 +734,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         parseLexiqueComponent                             *
+#                         parseLexiqueComponent                                                                        *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc parseLexiqueComponent
@@ -752,7 +751,7 @@ proc parseLexiqueComponent
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         compileLexiqueComponentFromAST                    *
+#                         compileLexiqueComponentFromAST                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc compileLexiqueComponentFromAST
@@ -1063,7 +1062,7 @@ proc compileLexiqueComponentFromAST
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         compileLexiqueComponentFromSource                 *
+#                         compileLexiqueComponentFromSource                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc compileLexiqueComponentFromSource
@@ -1084,7 +1083,7 @@ proc compileLexiqueComponentFromSource
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         compileLexiqueComponentGalgas3                    *
+#                         compileLexiqueComponentGalgas3                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 list @lexiqueComponentGenerationList {
@@ -1094,7 +1093,6 @@ list @lexiqueComponentGenerationList {
   @string mCocoaHeaderContents
   @string mCocoaContents
 }
-
 
 #----------------------------------------------------------------------------------------------------------------------*
 
