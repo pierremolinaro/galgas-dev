@@ -19087,6 +19087,30 @@ void cGrammar_syntaxSLRgrammar::performIndexing (C_Compiler * inCompiler,
   macroDetachSharedObject (scanner) ;
 }
 
+void cGrammar_syntaxSLRgrammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performBottomUpParsing (gActionTable_syntaxSLRgrammar, gNonTerminalNames_syntaxSLRgrammar,
+                                     gActionTableIndex_syntaxSLRgrammar, gSuccessorTable_syntaxSLRgrammar,
+                                     gProductionsTable_syntaxSLRgrammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_syntaxSLRgrammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_galgas_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performBottomUpParsing (gActionTable_syntaxSLRgrammar, gNonTerminalNames_syntaxSLRgrammar,
+                                     gActionTableIndex_syntaxSLRgrammar, gSuccessorTable_syntaxSLRgrammar,
+                                     gProductionsTable_syntaxSLRgrammar) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Grammar start symbol implementation                                          *

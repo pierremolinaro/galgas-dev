@@ -97,6 +97,8 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             else
             %          if (executionModeIsIndexing ()) {\n%
             %            cGrammar_%![mIndexingGrammar identifierRepresentation]%::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %          }else if (executionModeIsLatex ()) {\n%
+            %            cGrammar_%![mIndexingGrammar identifierRepresentation]%::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
             %          }else{\n%
             %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
             %          }\n%

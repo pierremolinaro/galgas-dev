@@ -40,9 +40,17 @@ class cGrammar_grammarLL_31_grammar : public cParser_grammarModelBuilder {
                                                      GALGAS_galgas_33_GrammarComponentListAST_2D_element & outArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
-//--- Start symbol indexing
+//--- Indexing
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+                                                   const C_String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+                                                  const C_String & inSourceFilePath) ;
 
 //------------------------------------- 'grammar_start_symbol_label' non terminal
 //--- 'parse' label
@@ -416,9 +424,17 @@ class cGrammar_programSLRgrammar : public cParser_expressionSyntax,
                                                      GALGAS_programComponentAST & outArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
-//--- Start symbol indexing
+//--- Indexing
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+                                                   const C_String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+                                                  const C_String & inSourceFilePath) ;
 
 //------------------------------------- 'relation_factor' non terminal
 //--- 'parse' label
@@ -860,9 +876,17 @@ class cGrammar_projectLL_31_grammar : public cParser_projectModelBuilder {
                                                      GALGAS_projectComponentAST & outArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
-//--- Start symbol indexing
+//--- Indexing
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+                                                   const C_String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+                                                  const C_String & inSourceFilePath) ;
 
   public : virtual int32_t select_projectModelBuilder_0 (C_Lexique_galgas_5F_scanner *) ;
 
@@ -899,9 +923,17 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
                                                      GALGAS_galgas_33_ProjectComponentAST & outArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
-//--- Start symbol indexing
+//--- Indexing
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+                                                   const C_String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+                                                  const C_String & inSourceFilePath) ;
 
   public : virtual int32_t select_galgas_33_ProjectSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 
@@ -1534,9 +1566,17 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
                                                      GALGAS_galgas_33_DeclarationAST & ioArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
-//--- Start symbol indexing
+//--- Indexing
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+                                                   const C_String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+                                                  const C_String & inSourceFilePath) ;
 
 //------------------------------------- 'style_declaration' non terminal
 //--- 'parse' label

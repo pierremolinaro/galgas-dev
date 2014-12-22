@@ -87,9 +87,15 @@ for () in NON_TERMINAL_MAP do
     end
   end
  #--- Start symbol ?
-  if HAS_INDEXING & (START_SYMBOL_NAME == [lkey string]) then
-    %//--- Start symbol indexing\n%
+  if START_SYMBOL_NAME == [lkey string] then
+    %//--- Indexing\n%
     %  public : static void performIndexing (%?^%C_Compiler * inCompiler,\n%
+    !^%const C_String & inSourceFilePath) ;\n\n%
+    %//--- Only lexical analysis\n%
+    %  public : static void performOnlyLexicalAnalysis (%?^%C_Compiler * inCompiler,\n%
+    !^%const C_String & inSourceFilePath) ;\n\n%
+    %//--- Only syntax analysis\n%
+    %  public : static void performOnlySyntaxAnalysis (%?^%C_Compiler * inCompiler,\n%
     !^%const C_String & inSourceFilePath) ;\n\n%
   end
 end

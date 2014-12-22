@@ -6769,10 +6769,24 @@ GALGAS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_Heade
           enumerator_1115.gotoNextObject () ;
         }
       }
-      const enumGalgasBool test_15 = in_HAS_5F_INDEXING.operator_and (GALGAS_bool (kIsEqual, in_START_5F_SYMBOL_5F_NAME.objectCompare (enumerator_484.current_lkey (HERE).reader_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 90)))) COMMA_SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 90)).boolEnum () ;
+      const enumGalgasBool test_15 = GALGAS_bool (kIsEqual, in_START_5F_SYMBOL_5F_NAME.objectCompare (enumerator_484.current_lkey (HERE).reader_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 90)))).boolEnum () ;
       if (kBoolTrue == test_15) {
-        result << "//--- Start symbol indexing\n"
+        result << "//--- Indexing\n"
           "  public : static void performIndexing (" ;
+        columnMarker = result.currentColumn () ;
+        result << "C_Compiler * inCompiler,\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result << "const C_String & inSourceFilePath) ;\n"
+          "\n"
+          "//--- Only lexical analysis\n"
+          "  public : static void performOnlyLexicalAnalysis (" ;
+        columnMarker = result.currentColumn () ;
+        result << "C_Compiler * inCompiler,\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result << "const C_String & inSourceFilePath) ;\n"
+          "\n"
+          "//--- Only syntax analysis\n"
+          "  public : static void performOnlySyntaxAnalysis (" ;
         columnMarker = result.currentColumn () ;
         result << "C_Compiler * inCompiler,\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
@@ -6784,22 +6798,22 @@ GALGAS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_Heade
       enumerator_484.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_5267_ (0) ;
+  GALGAS_uint index_5581_ (0) ;
   if (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST.isValid ()) {
-    cEnumerator_nonTerminalToAddList enumerator_5267 (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST, kEnumeration_up) ;
-    while (enumerator_5267.hasCurrentObject ()) {
+    cEnumerator_nonTerminalToAddList enumerator_5581 (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST, kEnumeration_up) ;
+    while (enumerator_5581.hasCurrentObject ()) {
       result << "  public : virtual int32_t select_" ;
-      result << enumerator_5267.current_mSyntaxComponentName (HERE).reader_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 98)).stringValue () ;
+      result << enumerator_5581.current_mSyntaxComponentName (HERE).reader_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 104)).stringValue () ;
       result << "_" ;
-      result << enumerator_5267.current_mNonTerminalToAddCount (HERE).reader_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 98)).stringValue () ;
+      result << enumerator_5581.current_mNonTerminalToAddCount (HERE).reader_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 104)).stringValue () ;
       result << " (C_Lexique_" ;
       result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result << " *) ;\n" ;
-      if (enumerator_5267.hasNextObject ()) {
+      if (enumerator_5581.hasNextObject ()) {
         result << "\n" ;
       }
-      index_5267_.increment () ;
-      enumerator_5267.gotoNextObject () ;
+      index_5581_.increment () ;
+      enumerator_5581.gotoNextObject () ;
     }
   }
   result << "} ;\n"
@@ -7269,9 +7283,13 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
           "            cGrammar_" ;
         result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 99)).stringValue () ;
         result << "::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
+          "          }else if (executionModeIsLatex ()) {\n"
+          "            cGrammar_" ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 101)).stringValue () ;
+        result << "::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "          }else{\n"
           "            routine_" ;
-        result << GALGAS_string ("programRule_").add_operation (index_4257_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 101)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 101)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 101)).stringValue () ;
+        result << GALGAS_string ("programRule_").add_operation (index_4257_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 103)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 103)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 103)).stringValue () ;
         result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
           "          }\n" ;
       }

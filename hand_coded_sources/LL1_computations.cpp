@@ -654,25 +654,56 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
       if (inHasIndexing) {
         ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                     << "::performIndexing (C_Compiler * inCompiler,\n"
-                        "             const C_String & inSourceFilePath) {\n"
-                        "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                        "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
-                        "  scanner->enableIndexing () ;\n"
-                        "  if (scanner->sourceText () != NULL) {\n"
-                        "    const bool ok = scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
-                        "                                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
-                       << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
-                       << ") ;\n"
-                        "    if (ok) {\n"
-                        "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
-                        "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
-                        "    }\n"
-                        "    scanner->generateIndexFile () ;\n"
-                        "  }\n"
-                        "  macroDetachSharedObject (scanner) ;\n"
-                        "}\n\n" ;
+                          << "::performIndexing (C_Compiler * inCompiler,\n"
+                             "             const C_String & inSourceFilePath) {\n"
+                             "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                             "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
+                             "  scanner->enableIndexing () ;\n"
+                             "  if (scanner->sourceText () != NULL) {\n"
+                             "    const bool ok = scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
+                             "                                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
+                          << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
+                          << ") ;\n"
+                             "    if (ok) {\n"
+                             "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                             "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
+                             "    }\n"
+                             "    scanner->generateIndexFile () ;\n"
+                             "  }\n"
+                             "  macroDetachSharedObject (scanner) ;\n"
+                             "}\n\n" ;
+      }else{
+        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                          << "::performIndexing (C_Compiler * /* inCompiler */,\n"
+                             "             const C_String & /* inSourceFilePath */) {\n"
+                             "}\n\n" ;
       }
+      ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                        << "::performOnlyLexicalAnalysis (C_Compiler * inCompiler,\n"
+                           "             const C_String & inSourceFilePath) {\n"
+                           "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
+                           "  if (scanner->sourceText () != NULL) {\n"
+                           "    scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
+                           "                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
+                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
+                        << ") ;\n"
+                           "  }\n"
+                           "  macroDetachSharedObject (scanner) ;\n"
+                           "}\n\n" ;
+      ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                        << "::performOnlySyntaxAnalysis (C_Compiler * inCompiler,\n"
+                           "             const C_String & inSourceFilePath) {\n"
+                           "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
+                           "  if (scanner->sourceText () != NULL) {\n"
+                           "    scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
+                           "                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
+                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
+                        << ") ;\n"
+                           "  }\n"
+                           "  macroDetachSharedObject (scanner) ;\n"
+                           "}\n\n" ;
       currentAltForNonTerminal.rewind () ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;

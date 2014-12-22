@@ -462,9 +462,17 @@ class cGrammar_syntaxSLRgrammar : public cParser_syntaxModelBuilder,
                                                      GALGAS_galgas_33_SyntaxComponentListAST_2D_element & outArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
-//--- Start symbol indexing
+//--- Indexing
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+                                                   const C_String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+                                                  const C_String & inSourceFilePath) ;
 
 //------------------------------------- 'syntax_directed_translation_result' non terminal
 //--- 'parse' label
