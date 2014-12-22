@@ -1780,11 +1780,7 @@ class GALGAS_BuildFileList_2D_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR templateGrammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_templateGrammar : public cParser_templateSyntax {
@@ -1940,11 +1936,7 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR lexiqueLL1grammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_lexiqueLL_31_grammar : public cParser_lexiqueSyntax {
@@ -2304,11 +2296,7 @@ class cGrammar_lexiqueLL_31_grammar : public cParser_lexiqueSyntax {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR optionLL1grammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_optionLL_31_grammar : public cParser_optionSyntax {
@@ -2364,11 +2352,7 @@ class cGrammar_optionLL_31_grammar : public cParser_optionSyntax {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR guiGrammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_guiGrammar : public cParser_guiSyntax {
@@ -2421,11 +2405,7 @@ class cGrammar_guiGrammar : public cParser_guiSyntax {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR semanticsSLRgrammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_semanticsSLRgrammar : public cParser_expressionSyntax,

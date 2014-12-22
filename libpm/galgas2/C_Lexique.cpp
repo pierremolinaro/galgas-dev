@@ -106,7 +106,8 @@ mDebugIsRunning (false),
 mLoop (false),
 mArrayForSecondPassParsing (),
 mIndexForSecondPassParsing (0),
-mLatexOutputString () {
+mLatexOutputString (),
+mLatexNextCharacterToEnterIndex (0) {
 //---
   if (inSourceFileName.length () > 0) {
     MF_Assert (UNICODE_VALUE (inSourceFileName (0 COMMA_HERE)) == '/',
@@ -163,7 +164,8 @@ mDebugIsRunning (false),
 mLoop (false),
 mArrayForSecondPassParsing (),
 mIndexForSecondPassParsing (0),
-mLatexOutputString () {
+mLatexOutputString (),
+mLatexNextCharacterToEnterIndex (0) {
 //--- Init source string
   C_SourceTextInString * sourceTextPtr = NULL ;    
   macroMyNew (sourceTextPtr, C_SourceTextInString (inSourceString,
@@ -246,13 +248,56 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
     }
     co << "\n" ;
   }else if (executionModeIsLatex ()) {
-   // mLatexOutputString << getCurrentTokenString (inToken) ;
+    while (mLatexNextCharacterToEnterIndex < inToken->mStartLocation.index ()) {
+      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE)) ;
+      appendCharacterToLatexFile (c) ;
+      mLatexNextCharacterToEnterIndex ++ ;
+    }
+    const C_String styleName = styleNameForIndex (styleIndexForTerminal (inToken->mTokenCode)) ;
+    if (styleName.length () > 0) {
+      mLatexOutputString << "\\" << styleName << "{" ;
+    }
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
       if (UNICODE_VALUE (c) != '\0') {
-        mLatexOutputString.appendUnicodeCharacter (c COMMA_HERE) ;
+        appendCharacterToLatexFile (c) ;
       }
     }
+    if (styleName.length () > 0) {
+      mLatexOutputString << "}" ;
+    }
+  //---
+    mLatexNextCharacterToEnterIndex = inToken->mEndLocation.index () + 1 ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+//  ptr->mStartLocation = mTokenStartLocation ;
+//  ptr->mEndLocation = mTokenEndLocation ;
+
+void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
+  if (executionModeIsLatex ()) {
+    while (mLatexNextCharacterToEnterIndex < mTokenStartLocation.index ()) {
+      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE)) ;
+      appendCharacterToLatexFile (c) ;
+      mLatexNextCharacterToEnterIndex ++ ;
+    }
+    const C_String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
+    if (styleName.length () > 0) {
+      mLatexOutputString << "\\" << styleName << "{" ;
+    }
+    for (int32_t i=mTokenStartLocation.index () ; i<=mTokenEndLocation.index () ; i++) {
+      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
+      if (UNICODE_VALUE (c) != '\0') {
+        appendCharacterToLatexFile (c) ;
+      }
+    }
+    if (styleName.length () > 0) {
+      mLatexOutputString << "}" ;
+    }
+  //---
+    mLatexNextCharacterToEnterIndex = mTokenEndLocation.index () + 1 ;
   }
 }
 
@@ -1635,6 +1680,28 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark ========= Generate Latex file
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
+  switch (UNICODE_VALUE (inUnicodeCharacter)) {
+  case '&' : mLatexOutputString << "\\&" ; break ;
+  case '%' : mLatexOutputString << "\\%" ; break ;
+  case '#' : mLatexOutputString << "\\#" ; break ;
+  case '-' : mLatexOutputString << "-{}" ; break ;
+  case ' ' : mLatexOutputString << "~" ; break ;
+  case '\n' : mLatexOutputString << " \\\\\n" ; break ;
+  case '{' : mLatexOutputString << "\\{" ; break ;
+  case '}' : mLatexOutputString << "\\}" ; break ;
+  case '_' : mLatexOutputString << "\\_" ; break ;
+  case '\\' : mLatexOutputString << "\\textbackslash"  ; break ;
+  case '\'' : mLatexOutputString << "\\textquotesingle " ; break ;
+  case '"' : mLatexOutputString << "\\textquotedbl " ; break ;
+  default:
+    mLatexOutputString.appendUnicodeCharacter (inUnicodeCharacter COMMA_HERE) ;
+    break ;
+  }
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 

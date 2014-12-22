@@ -2668,6 +2668,7 @@ override method @lexiqueComponentAST semanticAnalysis
       !mTemplateDelimitorList
       !lexiqueClassName
       !mTemplateReplacementList
+      !mLexicalStyleList
     ]
   #--- Cocoa header
     var cocoaHeader = [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2

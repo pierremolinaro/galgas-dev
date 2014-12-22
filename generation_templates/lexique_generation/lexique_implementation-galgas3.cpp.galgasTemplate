@@ -317,7 +317,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 //               A T T R I B U T E   A C C E S S                                                                       *
 %
   for () in LEXICAL_ATTRIBUTE_MAP do
-    %//-----------------------------------------------------------------------------*\n\n%
+    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
     ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
     %  return ptr->mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
@@ -327,7 +327,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
 %
   for () in LEXICAL_ATTRIBUTE_MAP do
-    %//-----------------------------------------------------------------------------*\n\n%
+    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
     %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
     %  macroValidSharedObject (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER%) ;\n%
@@ -347,6 +347,35 @@ GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8Representation]%) COMMA_THERE) ;\n%
   end
 %  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t C_Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+  static const uint32_t kTerminalSymbolStyles [%![[TERMINAL_LIST length] + 1 string]%] = {0%
+for () in TERMINAL_LIST do
+  %,\n    %![mStyleIndex string]% /* %!LEXIQUE_COMPONENT_NAME%_1_%![[mTerminalName string] identifierRepresentation]% */%
+end%\n  } ;
+  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::styleNameForIndex (const uint32_t inStyleIndex) const {
+  C_String result ;
+  if (inStyleIndex < %![[LEXICAL_STYLE_LIST length] + 1 string]%) {
+    static const char * kStyleArray [%![[LEXICAL_STYLE_LIST length] + 1 string]%] = {
+      ""%
+for () in LEXICAL_STYLE_LIST do
+  %,\n      %![mName.string utf8Representation]
+end%\n    } ;
+    result = kStyleArray [inStyleIndex] ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

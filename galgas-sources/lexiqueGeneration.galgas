@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'lexique' component metamodel                                            *
+#  'lexique' component metamodel                                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -14,11 +14,7 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
-
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
+#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N                                             *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalExpressionAST generateConditionCode
@@ -95,7 +91,7 @@ override getter @lexicalCharacterSetMatchAST generateConditionCode
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#     R O U T I N E    O R    F U N C T I O N    A R G U M E N T            *
+#     R O U T I N E    O R    F U N C T I O N    A R G U M E N T                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument
@@ -141,7 +137,7 @@ override getter @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgume
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                   R O U T I N E    A R G U M E N T                        *
+#                   R O U T I N E    A R G U M E N T                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
@@ -162,7 +158,7 @@ override getter @lexicalFormalInputArgumentAST generateRoutineArgument
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T         *
+#  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T                                                    *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalSendDefaultActionAST generateDefaultSendCode
@@ -186,7 +182,7 @@ override getter @lexicalErrorByDefaultAST generateDefaultSendCode
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N *
+#  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalInstructionAST generateInstructionCode
@@ -214,11 +210,22 @@ override getter @lexicalStructuredSendInstructionAST generateInstructionCode
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override getter @lexicalDropInstructionAST generateInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+{
+  outGeneratedCode = "// enterDroppedTerminal (kToken_" + [mTerminalName identifierRepresentation] + ") ;\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override getter @lexicalSimpleSendInstructionAST generateInstructionCode
   ?@string unused inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "token.mTokenCode = kToken_" + [mSentTerminal identifierRepresentation] + " ;\n"
+  -> @string outGeneratedCode
+{
+  outGeneratedCode  = "token.mTokenCode = kToken_" + [mSentTerminal identifierRepresentation] + " ;\n"
   outGeneratedCode += "enterToken (token) ;\n"
 }
 
@@ -307,15 +314,6 @@ override getter @lexicalRoutineInstructionAST generateInstructionCode
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalDropInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "" # No generated code
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override getter @lexicalErrorInstructionAST generateInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -366,7 +364,7 @@ override getter @lexicalLogInstructionAST generateInstructionCode
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N         *
+#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N                                                    *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @abstractLexicalRuleAST generateCode

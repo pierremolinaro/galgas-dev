@@ -231,7 +231,13 @@ class C_Lexique : public C_Compiler {
 
 //--- Latex string (for --mode=latex command line option)
   private : C_String mLatexOutputString ;
+  private : int32_t mLatexNextCharacterToEnterIndex ;
   private : void generateLatexFile (void) ;
+  private : void appendCharacterToLatexFile (const utf32 inUnicodeCharacter) ;
+  protected : void enterDroppedTerminal (const int32_t inTerminalIndex) ;
+//--- Style name 
+  protected : virtual uint32_t styleIndexForTerminal (const int32_t /* inTerminalIndex */) const { return 0 ; }
+  protected : virtual C_String styleNameForIndex (const uint32_t /* inStyleIndex */) const { return "" ; }
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
