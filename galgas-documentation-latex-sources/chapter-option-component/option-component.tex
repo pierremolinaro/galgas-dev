@@ -25,7 +25,7 @@ La déclaration d'une option présente le syntaxe suivante :
 
 Les cinq champs qui définissent une option sont :
 \begin{itemize}
-  \item \galgas{@T} : le type de l'option ; trois types sont autorisés : \galgas{@bool}, \galgas{@uint} et \galgas{@string} ;
+  \item \galgas{@T} : le type de l'option ; trois types sont autorisés : \ggs+@bool+, \galgas{@uint} et \galgas{@string} ;
   \item \galgas{nom_option} : c'est le nom, interne à GALGAS, qui permettra de désigner l'option dans l'\emph{appel d'une option} (\refSubsectionPage{appelOption}) ; 
   \item \galgas{caractere} : le caractère qui activera l'option dans la ligne de commande ; par exemple, en écrivant \galgas{'A'}, l'option sera activée par \texttt{-A} dans la ligne de commande ; si vous ne voulez pas d'activation par un caractère, écrivez \galgas{'\\0'} ;
   \item \galgas{chaine} : la chaîne de caractères qui activera l'option dans la ligne de commande ; par exemple, en écrivant \galgas{"ABEDEF"}, l'option sera activée par \texttt{-{}-ABCDEF} dans la ligne de commande ; si vous ne voulez pas d'activation par une chaîne, écrivez \galgas{""} ;
@@ -41,7 +41,7 @@ Les cinq champs qui définissent une option sont :
 
 \section{Option booléenne}
 
-Le champ qui définit le type de l'option est \galgas{@bool} ; par exemple :
+Le champ qui définit le type de l'option est \ggs+@bool+ ; par exemple :
 \begin{galgascode}
   @bool nom_option : 'S', "asm" -> "Extract assembly code"
 \end{galgascode}

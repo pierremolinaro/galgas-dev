@@ -685,10 +685,6 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                            "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText () != NULL) {\n"
                            "    scanner->performLexicalAnalysis () ;\n"
-                           "    //scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
-                           "    //                                gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
-                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
-                        << ") ;\n"
                            "  }\n"
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n" ;

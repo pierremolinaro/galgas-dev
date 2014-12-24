@@ -3,27 +3,6 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\newcommand\keywordsStyle[1]{\textcolor{blue}{\textbf{#1}}}
-\newcommand\delimitersStyle[1]{\textcolor{brown}{#1}}
-\newcommand\selectorStyle[1]{\textcolor{green}{#1}}
-\newcommand\terminalStyle[1]{#1}
-\newcommand\nonTerminalStyle[1]{#1}
-\newcommand\integerStyle[1]{#1}
-\newcommand\floatStyle[1]{#1}
-\newcommand\characterStyle[1]{#1}
-\newcommand\stringStyle[1]{\textcolor{gray}{#1}}
-\newcommand\typeNameStyle[1]{\textcolor{gray}{#1}}
-\newcommand\attributeStyle[1]{\textcolor{pink}{#1}}
-\newcommand\commentStyle[1]{\textcolor{red}{#1}}
-
-\newwrite\tempfile
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
 %   P A R T I C U L A R I S A T I O N   D U    P A Q U E T A G E    « L I S T I N G S »                                 *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -73,15 +52,131 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \newcommand\galgas[1]{\colorbox{\couleurCodeGALGAS}{\lstinline[language=galgas]\%#1\%}}
-\newcommand\galgast[1]{\colorbox{\couleurCodeGALGAS}{\ttfamily{#1}}}
 
-\lstnewenvironment{galgascode}{\lstset{language=galgas}}{}
+\lstnewenvironment{galgascod}{\lstset{language=galgas}}{}
 
 \setlength{\fboxsep}{1.5pt}
 
-%\newcommand\galgasEmphStyle{\framebox[1.05\width]}
 \newcommand\galgasEmphStyle{\underline}
-%\newcommand\galgasEmphStyle{\emph}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{mdframed}
+
+\newcommand\keywordsStyle[1]{\textcolor{blue}{\textbf{#1}}}
+\newcommand\delimitersStyle[1]{\textcolor{brown}{\textbf{#1}}}
+\newcommand\selectorStyle[1]{\textcolor{orange}{#1}}
+\newcommand\terminalStyle[1]{\textcolor{orange}{#1}}
+\newcommand\nonTerminalStyle[1]{\textcolor{orange}{#1}}
+\newcommand\integerStyle[1]{\textcolor{brown}{#1}}
+\newcommand\floatStyle[1]{\textcolor{magenta}{#1}}
+\newcommand\characterStyle[1]{\textcolor{cyan}{#1}}
+\newcommand\stringStyle[1]{\textcolor{gray}{#1}}
+\newcommand\typeNameStyle[1]{\textcolor{gray}{#1}}
+\newcommand\attributeStyle[1]{\textcolor{pink}{#1}}
+\newcommand\commentStyle[1]{\textcolor{red}{#1}}
+
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  linecolor=blue!25,
+  linewidth=2pt
+]{siderules}
+
+\newwrite\tempfile
+
+\makeatletter
+\newenvironment{galgascode}{%
+  \begingroup
+  \@bsphack
+  \immediate\openout\tempfile=temp.galgas%
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active
+  \verbatim@startline
+  \verbatim@addtoline
+  \verbatim@finish
+  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
+  \verbatim@start
+}{
+  \immediate\closeout\tempfile
+  \@esphack
+  \endgroup
+  \immediate\write18{galgas --mode=latex temp.galgas}
+  \begin{siderules}
+    \ttfamily\input{temp.galgas.tex}
+  \end{siderules}
+}
+\makeatother
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+% COMMANDE \ggs : affichage de code en ligne galgas                                                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\makeatletter
+\newcommand*\ggs{%
+  \@bsphack%
+  \begingroup%
+  \let\do\@makeother\dospecials%
+  \let\do\do@noligs\verbatim@nolig@list%
+  \catcode`\^^M=15\relax%
+  \@vobeyspaces%
+  \@ggs{\temporary}%
+}%
+\newcommand\@ggs[2]{%
+  \catcode`-=12\relax%
+  \catcode`<=12\relax%
+  \catcode`>=12\relax%
+  \catcode`,=12\relax%
+  \catcode`'=12\relax%
+  \catcode`#2\active%
+  \catcode`~\active%
+  \lccode`\~`#2\relax%
+  \lowercase{%
+    \begingroup%
+    \def\@tempa##1~{%
+      \edef\@tempa{%
+        \noexpand\@ifstar{%
+          \noexpand\@@ggs\noexpand\visiblespaces{##1}%
+        }{%
+          \noexpand\@@ggs\noexpand\whitespaces{##1}%
+        }%
+      }%
+      \expandafter\endgroup%
+      \expandafter\DeclareRobustCommand%
+      \expandafter*%
+      \expandafter#1%
+      \expandafter{%
+      \@tempa}%
+      \@esphack%
+      \immediate\openout\tempfile=temp.galgas%
+      \immediate\write\tempfile{##1}%
+      \immediate\closeout\tempfile%
+      \immediate\write18{galgas --mode=latex temp.galgas}\texttt{\input{temp.galgas.tex}\unskip}%
+    }%
+  }%
+  \ifnum`#2=`\~\else\@makeother\~\fi%
+  \expandafter\endgroup%
+  \@tempa%
+}%
+\newcommand*\@@ggs[2]{%
+  \relax\ifmmode\hbox\else\leavevmode\null\fi%
+  \bgroup#1\frenchspacing\verbatim@font\verbtextstyle#2\egroup%
+}%
+\let\verbtextstyle\relax%
+\newcommand*\visiblespaces{\chardef\ 32\relax}%
+\newcommand*\whitespaces{\let\ \@@space}%
+\let\@@space\ %
+\makeatother
+
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
