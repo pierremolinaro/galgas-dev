@@ -1103,7 +1103,7 @@ Plusieurs champs de l'instruction \galgas{for} sont optionnels.
 \end{itemize}
 
 
-\galgas{(nom\_index)}. Vous pouvez mentionner un identificateur entre parenthèses après le mot réservé \galgas{do}. Cet identificateur est le nom d'une constante qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Sa visibilité est la branche \galgas{do}.
+\galgas{(nom\_index)}. Vous pouvez mentionner un identificateur entre parenthèses après le mot réservé \galgas{do}. Cet identificateur est le nom d'une constante qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Sa visibilité est la branche \ggs+do+.
 
 \galgas{while expression}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
 
@@ -1240,12 +1240,12 @@ end
 {\lstset{emph={condition, condition2}, emphstyle=\galgasEmphStyle}
 Le langage permet que le type des \galgas{condition} et \galgas{condition2} soit différent du type \refTypePredefini{bool}, sous certaines conditions. La règle complète est que le type des \galgas{condition} et \galgas{condition2} est :
 \begin{itemize}
-\item soit le type \galgas{@bool} ;
-\item soit un type \emph{structure}, possèdant une propriété nommée \galgas{bool}, dont le type est \galgas{@bool}; 
-\item soit un type possédant un \emph{getter} sans argument nommé \galgas{bool} et renvoyant une valeur de type \galgas{@bool}.
+\item soit le type \ggs+@bool+ ;
+\item soit un type \emph{structure}, possèdant une propriété nommée \galgas{bool}, dont le type est \ggs+@bool+; 
+\item soit un type possédant un \emph{getter} sans argument nommé \galgas{bool} et renvoyant une valeur de type \ggs+@bool+.
 \end{itemize}
 
-Voici un exemple illustrant le deuxième cas ; le type \refTypePredefini{bool} est une structure possèdant une propriété nommée \galgas{bool}, dont le type est \galgas{@bool}. Aussi, écrire :
+Voici un exemple illustrant le deuxième cas ; le type \refTypePredefini{bool} est une structure possèdant une propriété nommée \galgas{bool}, dont le type est \ggs+@bool+. Aussi, écrire :
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @lbool variable = ...
@@ -1326,7 +1326,7 @@ end
 
 \sectionLabel{L'instruction \texttt{grammar}}{instruction-grammar}
 
-L'instruction \galgas{grammar} permet d'exécuter l'analyse d'un texte par une grammaire. Le texte peut être contenu dans un fichier ou dans une chaîne de caractères.
+L'instruction \ggs+grammar+ permet d'exécuter l'analyse d'un texte par une grammaire. Le texte peut être contenu dans un fichier ou dans une chaîne de caractères.
 
 Si le texte est contenu dans un fichier :
 \lstset{emph={nom\_grammaire, label\_grammaire, expression\_de\_type\_lstring, liste\_parametres,
@@ -1456,7 +1456,7 @@ Les \galgas{instructions\_1} et \galgas{instructions\_2} sont des listes d'instr
 
 Le \galgas{variant\_expression} est une expression de type \galgas{@uint} qui assure que la boucle n'est pas sans fin : elle est calculée au début de l'exécution de l'instruction, et décrémentée après chaque itération. Si sa valeur atteint zéro, une erreur d'exécution est déclenchée.
 
-L'\galgas{expression} est une expression de type \galgas{@bool} qui exprime la continuation de l'exécution de la boucle.
+L'\galgas{expression} est une expression de type \ggs+@bool+ qui exprime la continuation de l'exécution de la boucle.
 
 L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de la \refFigure{}{loopInstructionFlowchart}.
 
@@ -1641,7 +1641,7 @@ La première syntaxe de l'appel d'un  \emph{setter} est :
 [!?cible nom_setter liste_parametres_effectifs]
 \end{galgascode}
 
-Le délimiteur \galgast{!?} devant \galgas{cible} permet de distinguer syntaxiquement un appel de \emph{setter} d'un appel de méthode. \galgas{cible} désigne l'objet sur lequel le \emph{setter} est appelé, et peut être une variable, ou le champ d'une variable (\galgas{variable.champ}), ou le champ d'un champ d'une variable (\galgas{variable.champ.champ2}), ... \galgas{nom\_setter} est le nom du \emph{setter}, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête du \emph{setter}.
+Le délimiteur \ggs+!?+  devant \galgas{cible} permet de distinguer syntaxiquement un appel de \emph{setter} d'un appel de méthode. \galgas{cible} désigne l'objet sur lequel le \emph{setter} est appelé, et peut être une variable, ou le champ d'une variable (\galgas{variable.champ}), ou le champ d'un champ d'une variable (\galgas{variable.champ.champ2}), ... \galgas{nom\_setter} est le nom du \emph{setter}, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête du \emph{setter}.
 
 Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les \emph{setters} sont listées. Par exemple, pour le type \galgas{@string}, le \emph{setter} \galgas{setCharacterAtIndex} est présenté comme suit :
 
@@ -1925,7 +1925,7 @@ end
 Où :
 \begin{itemize}
   \item \galgas{expression\_cle} est une expression de type \galgas{@string} dont la valeur définit la clé ;
-  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \galgast{:} suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
+  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
   \item \galgas{expression\_table} est une expression qui désigne la table.
 \end{itemize}
 
@@ -2013,7 +2013,7 @@ end
 Où :
 \begin{itemize}
   \item \galgas{expression\_cle} est une expression de type \galgas{@lstring} dont la valeur définit la clé ;
-  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \galgast{:} suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
+  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
   \item \galgas{expression\_table} est une expression qui désigne la table ;
   \item \galgas{methode_recherche} est une méthode de recherche de la table (c'est-à-dire déclarée par \galgas{search}) dont le message associé sera utilisé pour le signalement d'erreur.
 \end{itemize}
@@ -2070,7 +2070,7 @@ end
 Où :
 \begin{itemize}
   \item \galgas{expression\_cle} est une expression de type \galgas{@string} dont la valeur définit la clé ;
-  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \galgast{:} suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
+  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
   \item \galgas{cible\_table} est de la forme \galgas{variable}, ou  \galgas{variable.champ}, ou \galgas{variable.champ.champ2}, ... et désigne la table ; la cible est accédée en lecture/écriture.
 \end{itemize}
 
@@ -2124,7 +2124,7 @@ end
 Où :
 \begin{itemize}
   \item \galgas{expression\_cle} est une expression de type \galgas{@lstring} dont la valeur définit la clé ;
-  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \galgast{:} suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
+  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
   \item \galgas{expression\_table} est une expression qui désigne la table ;
   \item \galgas{methode_recherche} est une méthode de recherche de la table (c'est-à-dire déclarée par \galgas{search}) dont le message associé sera utilisé pour le signalement d'erreur ;
   \item \galgas{cible\_table} est de la forme \galgas{variable}, ou  \galgas{variable.champ}, ou \galgas{variable.champ.champ2}, ... et désigne la table ; la cible est accédée en lecture/écriture.

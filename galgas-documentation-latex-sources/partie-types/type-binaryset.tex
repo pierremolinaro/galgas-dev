@@ -401,20 +401,20 @@ This program Affiche: \texttt{Accessible: 0 1 2 3 4 5}.
 
 \textbf{Exemple :}
 \begin{galgascode}
-@binaryset s [binarySetWithPredicateString !"0 00XX X111\textbar 1 1111 1111"] ;
-log s ; \# Affiche <@binaryset: 000XXX111, 111111111>
-@bool b = [s containsValue !127L !0 !7] ;
-log b ; \# Affiche <@bool:true>
-b = [s containsValue !31L !1 !7] ;
-log b ; \# Affiche <@bool:true>
-b = [s containsValue !63L !1 !8] ;
-log b ; \# Affiche <@bool:false>
-b = [s containsValue !7L !0 !9] ;
-log b ; \# Affiche <@bool:true>
-b = [s containsValue !7L !0 !10] ;
-log b ; \# Affiche <@bool:true>
-b = [s containsValue !32767L !1 !12] ;
-log b ; \# Affiche <@bool:true>
+var s = @binaryset.binarySetWithPredicateString {!"0 00XX X111| 1 1111 1111"}
+log s # Affiche <@binaryset: 000XXX111, 111111111>
+@bool b = [s containsValue !127L !0 !7]
+log b # Affiche <@bool:true>
+b = [s containsValue !31L !1 !7]
+log b # Affiche <@bool:true>
+b = [s containsValue !63L !1 !8]
+log b # Affiche <@bool:false>
+b = [s containsValue !7L !0 !9]
+log b # Affiche <@bool:true>
+b = [s containsValue !7L !0 !10]
+log b # Affiche <@bool:true>
+b = [s containsValue !32767L !1 !12]
+log b # Affiche <@bool:true>
 \end{galgascode}
 
 
@@ -434,7 +434,7 @@ log b ; \# Affiche <@bool:true>
 
 Note that \texttt{[a equalTo !b]} is equivalent to \texttt{$\sim$ (a $\wedge$ b)}.
 
-This operation Retourne un \galgas{@binaryset} value; do not confuse with \emph{==} operator that Retourne un \galgas{@bool} value.
+This operation Retourne un \galgas{@binaryset} value; do not confuse with \emph{==} operator that Retourne un \ggs+@bool+ value.
 
 
 
@@ -866,7 +866,7 @@ $!=$ & Non Equality \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@binaryset} objects, and return a \galgas{@bool} object. These operations are very fast and are performed in a constant time (integer equality comparison).
+Theses operators require both arguments to be \galgas{@binaryset} objects, and return a \ggs+@bool+ object. These operations are very fast and are performed in a constant time (integer equality comparison).
 
 Do not confuse with \refReaderPage{binaryset}{equalTo} and \refReaderPage{binaryset}{notEqualTo} that return a \galgas{@binaryset} object.
 

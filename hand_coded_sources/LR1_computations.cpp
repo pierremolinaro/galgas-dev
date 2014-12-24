@@ -1438,9 +1438,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                            "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                            "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText () != NULL) {\n"
-                           "    scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
-                           "                                     gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
-                           "                                     gProductionsTable_" << inTargetFileName << ") ;\n"
+                           "    scanner->performLexicalAnalysis () ;\n"
                            "  }\n"
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n" ;

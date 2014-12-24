@@ -52,7 +52,7 @@ Il y a deux façons de tester une valeur d'un type énuméré. La première cons
   if feu == [@feuTricolore orange] then ...
 \end{galgascode}
 
-La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \galgas{is<Constante>} (le préfixe \galgas{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \galgas{@bool} qui est vrai si le récepteur a la valeur correspondante :
+La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \galgas{is<Constante>} (le préfixe \galgas{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \ggs+@bool+ qui est vrai si le récepteur a la valeur correspondante :
 \begin{galgascode}
   if [feu isOrange] then ...
 \end{galgascode}

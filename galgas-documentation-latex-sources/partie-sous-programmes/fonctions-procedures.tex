@@ -49,7 +49,7 @@ En préfixant la déclaration d'une fonction par \galgas{private}, on limite son
 
 \subsection{Fonction \texttt{\%once}}
 
-Une fonction sans argument accepte le qualificatif \galgast{\%once} :
+Une fonction sans argument accepte le qualificatif \ggs+%once+ :
 
 \begin{galgascode}
 func %once masque-> @uint resultat {
@@ -57,9 +57,9 @@ func %once masque-> @uint resultat {
 }
 \end{galgascode}
 
-Le qualificatif \galgast{\%once} organise le cache du résultat : celui-ci est calculé lors du premier appel, est mémorisé internement, et est retourné directement lors des appels ultérieurs.
+Le qualificatif \ggs+%once+ organise le cache du résultat : celui-ci est calculé lors du premier appel, est mémorisé internement, et est retourné directement lors des appels ultérieurs.
 
-Une fonction \galgast{\%once} peut être déclarée interne en la préfixant par \galgas{private}.
+Une fonction \ggs+%once+ peut être déclarée interne en la préfixant par \galgas{private}.
 
 \begin{galgascode}
 private func %once masque-> @uint resultat {

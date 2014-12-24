@@ -95,7 +95,7 @@ Les parenthèses \galgas{(} et \galgas{)} permettent de forcer le groupement d'o
 
 \subsection{\texttt{true} et \texttt{false}}
 
-\galgas{true} et \galgas{false} sont les constantes du type \galgas{@bool}.
+\galgas{true} et \galgas{false} sont les constantes du type \ggs+@bool+.
 
 \subsection{Constante Chaîne de caractères}
 
@@ -230,7 +230,7 @@ Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du co
   \begin{tabular}{@{}lllllll@{}}
   \textbf{Type} & \textbf{Constructeur par défaut} \\
   \galgas{abstract class @T} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@bool} & Initialisation à \galgas{false} \\
+  \ggs+@bool+ & Initialisation à \galgas{false} \\
   \galgas{@application} & \emph{Pas de constructeur par défaut} \\
   \galgas{array @T} & \emph{Pas de constructeur par défaut} \\
   \galgas{@char} & Initialisation au caractère \texttt{NULL} \\
@@ -315,7 +315,7 @@ option mesOptions {
 
 Alors :
 \begin{itemize}
-  \item \galgas{[option mesOptions.extractOption value]} renvoie un \galgas{@bool} qui vaut \galgas{true} si l'option a été activée, \galgas{false} dans le cas contraire ;
+  \item \galgas{[option mesOptions.extractOption value]} renvoie un \ggs+@bool+ qui vaut \galgas{true} si l'option a été activée, \galgas{false} dans le cas contraire ;
   \item \galgas{[option mesOptions.extractOption char]} renvoie un \galgas{@char} qui vaut \galgas{'S'} ;
   \item \galgas{[option mesOptions.extractOption string]} renvoie un \galgas{@string} qui vaut \galgas{"asm"} ;
   \item \galgas{[option mesOptions.extractOption comment]} renvoie un \galgas{@string} qui vaut \galgas{"Extract assembly code"}.

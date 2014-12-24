@@ -9,9 +9,9 @@ GALGAS permet de construire un \emph{traducteur dirigée par la syntaxe}. Ce typ
 
 Mettre en place une traduction dirigée par la syntaxe en GALGAS fait appel aux constructions suivantes :
 \begin{itemize}
-  \item activer la traduction dirigée par la syntaxe pour chaque composant \galgas{syntax} ;
-  \item activer la traduction dirigée par la syntaxe pour le composant \galgas{grammar} ;
-  \item modifier l'instruction \galgas{grammar}, de façon à récupérer les informations de traduction ;
+  \item activer la traduction dirigée par la syntaxe pour chaque composant \ggs+syntax+ ;
+  \item activer la traduction dirigée par la syntaxe pour le composant \ggs+grammar+ ;
+  \item modifier l'instruction \ggs+grammar+, de façon à récupérer les informations de traduction ;
   \item modifier l'instruction d'appel de terminal, de façon à récupérer les informations relatives à l'occurrence du terminal ;
   \item modifier l'instruction d'appel de non terminal, de façon à récupérer la traduction du non terminal ;
   \item appeler l'instruction \galgas{send} pour insérer du texte dans la chaîne produite.
@@ -80,9 +80,9 @@ message "an '.expression' source file"
 
 \section{Activer la traduction dirigée par la syntaxe}
 
-Activer la traduction dirigée par la syntaxe indique à GALGAS d'engendrer le code supplémentaire qui prend en charge la traduction. L'activation doit être indiquée à la fois sur le composant \galgas{syntax} et le composant \galgas{grammar} en ajoutant la directive \galgast{\%translate} dans chaque en-tête\footnote{Dans le cas où les règles syntaxiques sont réparties dans plusieurs composants \galgas{syntax}, l'activation doit être indiquée dans tous.}.
+Activer la traduction dirigée par la syntaxe indique à GALGAS d'engendrer le code supplémentaire qui prend en charge la traduction. L'activation doit être indiquée à la fois sur le composant \ggs+syntax+ et le composant \ggs+grammar+ en ajoutant la directive \ggs+%translate+ dans chaque en-tête\footnote{Dans le cas où les règles syntaxiques sont réparties dans plusieurs composants syntaxiques, l'activation doit être indiquée dans tous.}.
 
-Pour le composant \galgas{syntax} :
+Pour le composant \ggs+syntax+ :
 \begin{galgascode}
 syntax expSyntax %translate {
   ...
@@ -105,7 +105,7 @@ Quand la traduction est activée, l'analyse d'un fichier construit une chaîne d
 
 \sectionLabel{Obtenir la chaîne traduite}{instructionGrammarEtTraductionDirigeeParLaSyntaxe}
 
-La chaîne traduite est obtenue en modifiant l'instruction \galgas{grammar} (\refSectionPage{instruction-grammar}). Comme on l'a vu, celle-ci est : 
+La chaîne traduite est obtenue en modifiant l'instruction \ggs+grammar+ (\refSectionPage{instruction-grammar}). Comme on l'a vu, celle-ci est : 
 \begin{galgascode}
 grammar expGrammar in inSourceFile
 \end{galgascode}
@@ -165,7 +165,7 @@ $idf$ ?* :> ?@string separateur ?@string token ;
 
 Cette écriture a pour effet que le séparateur précédent le terminal et le terminal lui-même ne sont plus transmis dans la chaîne traduite, mais affectés respectivement à \galgas{separateur} et à \galgas{token}.
 
-On va prendre un exemple pour illustrer cette construction : produite une chaîne dont les identificateurs et les séparateurs qui les précèdent auront disparus. On modifie le composant \galgas{syntax} comme suit\footnote{Il existe une expression plus simple de l'instruction \galgas{$idf$ ?* :> ?@string s ?@string t ;}, puisque \galgas{s} et \galgas{t} ne sont pas utilisés : c'est \galgas{$idf$ ?* :> ?* ?* ;}, décrite  à la \refSectionPage{instruction-appel-terminal}.} :
+On va prendre un exemple pour illustrer cette construction : produite une chaîne dont les identificateurs et les séparateurs qui les précèdent auront disparus. On modifie le composant \ggs+syntax+ comme suit\footnote{Il existe une expression plus simple de l'instruction \galgas{$idf$ ?* :> ?@string s ?@string t ;}, puisque \galgas{s} et \galgas{t} ne sont pas utilisés : c'est \galgas{$idf$ ?* :> ?* ?* ;}, décrite  à la \refSectionPage{instruction-appel-terminal}.} :
 \begin{galgascode}
 syntax expSyntax {
   rule <expression> {
@@ -210,7 +210,7 @@ send exp
 
 \galgas{exp} est une expression de type \galgas{@string}. Son comportement est simple : la valeur de l'expression chaîne de caractères est simplement transmise à la chaîne produite.
 
-Par exemple, supposons que l'on veuille transformer les parenthèses en accolades ; on écrit le composant \galgas{syntax} comme suit\footnote{Là encore, il existe une forme plus concise de l'instruction \galgas{$($ :> ?@string s ?@string t ;}, puisque \galgas{t} est inutilisé : c'est \galgas{$($ :> ?@string s ?* ;}, décrite  à la \refSectionPage{instruction-appel-terminal}.} :
+Par exemple, supposons que l'on veuille transformer les parenthèses en accolades ; on écrit le composant \ggs+syntax+ comme suit\footnote{Là encore, il existe une forme plus concise de l'instruction \galgas{$($ :> ?@string s ?@string t ;}, puisque \galgas{t} est inutilisé : c'est \galgas{$($ :> ?@string s ?* ;}, décrite  à la \refSectionPage{instruction-appel-terminal}.} :
 \begin{galgascode}
 syntax expSyntax {
   rule <expression> {
