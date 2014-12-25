@@ -101,8 +101,8 @@ L'opérateur \galgas{.=} ajoute tous les éléments de l'expression à la liste 
 
 Exemple :
 \begin{galgascode}
-@MaListeOrdonnee uneListe := ... ;
-@MaListeOrdonnee autreListe := ... ;
+@MaListeOrdonnee uneListe = ... ;
+@MaListeOrdonnee autreListe = ... ;
 uneListe .= autreListe ;
 \end{galgascode}
 
@@ -112,9 +112,9 @@ L'opérateur \galgas{.} combine deux listes ordonnées. Les éléments de la sec
 
 Exemple :
 \begin{galgascode}
-@MaListeOrdonnee uneListe := ... ;
-@MaListeOrdonnee autreListe := ... ;
-@MaListeOrdonnee troisiemeListe := uneListe . autreListe ;
+@MaListeOrdonnee uneListe = ... ;
+@MaListeOrdonnee autreListe = ... ;
+@MaListeOrdonnee troisiemeListe = uneListe . autreListe ;
 \end{galgascode}
 
 
@@ -139,7 +139,7 @@ Le getter \galgas{length} retourne un \galgas{@uint} contenant le nombre d'élé
 Ce \emph{setter} retourne les champs du plus grand élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
 \begin{galgascode}
-@MaListeOrdonnee uneListe := ... ;
+@MaListeOrdonnee uneListe = ... ;
 ...
 [!?uneListe popGreatest
   ?@char c
@@ -155,7 +155,7 @@ Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont plac�
 Ce \emph{setter} retourne les champs du plus petit élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
 \begin{galgascode}
-@MaListeOrdonnee uneListe := ... ;
+@MaListeOrdonnee uneListe = ... ;
 ...
 [!?uneListe popSmallest
   ?@char c
@@ -181,7 +181,7 @@ Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont plac�
 Cette méthode retourne les champs du plus grand élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
 \begin{galgascode}
-@MaListeOrdonnee uneListe := ... ;
+@MaListeOrdonnee uneListe = ... ;
 ...
 [uneListe greatest
   ?@char c
@@ -197,7 +197,7 @@ Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont plac�
 Cette méthode retourne les champs du plus petit élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
 \begin{galgascode}
-@MaListeOrdonnee uneListe := ... ;
+@MaListeOrdonnee uneListe = ... ;
 ...
 [uneListe smallest
   ?@char c
@@ -241,12 +241,12 @@ uneListe += !'f' ! 1 ; # f1
 uneListe += !'a' ! 1 ; # a1
 uneListe += !'c' ! 1 ; # c1
 uneListe += !'f' ! 2 ; # f2
-@string s := "" ;
+@string s = "" ;
 foreach uneListe do
   s .= [mCaractere string] . [mEntier string] . " " ;
 end foreach ;
 message s . "\n" ; # Affiche "a1 b2 b1 c1 d1 f2 f1"
-s := "" ;
+s = "" ;
 foreach > uneListe do
   s .= [mCaractere string] . [mEntier string] . " " ;
 end foreach ;

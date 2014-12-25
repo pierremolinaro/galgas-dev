@@ -3,11 +3,13 @@
 
 \chapitreTypePredefiniLabelIndex{uint64}
 
-An \galgas{@uint64} object value is a 64-bit unsigned integer value. You can initialize an \galgas{@uint64} object from a 64-bit unsigned integer constant:\\
+An \galgas{@uint64} object value is a 64-bit unsigned integer value. You can initialize an \galgas{@uint64} object from a 64-bit unsigned integer constant:
 
-\texttt{@uint64 myUnsignedInteger := 123\_456L ;}\newline
+\begin{galgascode}
+@uint64 myUnsignedInteger = 123_456L
+\end{galgascode}
 
-Note the 'L' suffix is required for a 64-bit unsigned integer constant.
+Note the \texttt{L} suffix is required for a 64-bit unsigned integer constant.
 
 \section{Constructeurs}
 
@@ -34,8 +36,8 @@ Note that the first character of the \emph{inBitString} argument value correspon
 
 \textbf{Exemple :}
 \begin{galgascode}
-@uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"] ;
-log v ; # Displays <@uint64:18> ;
+@uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"]
+log v # Displays <@uint64:18>
 \end{galgascode}
 
 
@@ -83,65 +85,65 @@ log v ; # Displays <@uint64:5> ;
 
 \section{Getters}
 
-\readerSansArgument{double}
-{uint64}
-{1.9.8}
-{double}
-{Returns the receiver's value converted in a \galgas{@double} object.}
-{as a 64-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.}
+\subsectionGetter{double}{uint64}
+
+\begin{galgascode}
+getter double -> @double
+\end{galgascode}
+
+Returns the receiver's value converted in a \galgas{@double} object. As a 64-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.
 
 
 
-\readerSansArgument{hexString}
-{uint64}
-{1.5.2}
-{string}
-{Returns the an hexadecimal string representation of the receiver value, prefixed by the string "0x".}
-{for getting an hexadecimal representation string without "0x" prefix, see \refReaderPage{uint64}{xString}.}
+\subsectionGetter{hexString}{uint64}
 
 
+\begin{galgascode}
+getter hexString -> @string
+\end{galgascode}
 
-
-
-\readerSansArgument{sint}
-{uint64}
-{1.6.12}
-{sint}
-{Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
-{an error is raised is receiver's value is greater than $2^{31}-1$.}
-
-This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint} object.
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. For getting an hexadecimal representation string with any prefix, see \refGetterPage{uint64}{xString}.
 
 
 
 
-\readerSansArgument{sint64}
-{uint64}
-{1.6.12}
-{sint64}
-{Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
-{an error is raised is receiver's value is greater than $2^{63}-1$.}
 
-This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint64} object.
+\subsectionGetter{sint}{uint64}
 
+\begin{galgascode}
+getter sint -> @sint
+\end{galgascode}
 
-\readerSansArgument{string}
-{uint64}
-{1.6.12}
-{string}
-{Returns a decimal string representation of the receiver's value.}
-{for an hexadecimal string representation of the receiver's value, see \refReaderPage{uint64}{hexString} and \refReaderPage{uint64}{xString}.}
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is greater than $2^{31}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint} object.
 
 
 
-\readerSansArgument{uint}
-{uint64}
-{1.6.12}
-{uint}
-{Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
-{an error is raised is receiver's value is greater than $2^{32}-1$.}
+\subsectionGetter{sint64}{uint64}
 
-This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
+\begin{galgascode}
+getter sint64 -> @sint64
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. An error is raised is receiver's value is greater than $2^{63}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint64} object.
+
+
+\subsectionGetter{string}{uint64}
+
+\begin{galgascode}
+getter string -> @string
+\end{galgascode}
+
+Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint64}{hexString} and \refGetterPage{uint64}{xString}.
+
+
+
+\subsectionGetter{uint}{uint64}
+
+\begin{galgascode}
+getter uint -> @uint
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is greater than $2^{32}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
 
 
 \readerDeuxArguments{uintSlice}
@@ -156,8 +158,8 @@ This getter is the only way to convert an \refTypePredefini{uint64} object into 
 
 \textbf{Exemple :}
 \begin{galgascode}
-@uint64 v := 0x1234_5678_9ABC_DEF0L ;
-@uint result := [v uintSlice !4 !5] ; # The result value is 0x8_9ABC
+@uint64 v = 0x1234_5678_9ABC_DEF0L ;
+@uint result = [v uintSlice !4 !5] ; # The result value is 0x8_9ABC
 \end{galgascode}
 
 
@@ -167,15 +169,16 @@ This getter is the only way to convert an \refTypePredefini{uint64} object into 
 %{1.9.10}
 %{string}
 %{Returns an hexadecimal string representation of the receiver's value (without any prefix).}
-%{for an decimal string representation of the receiver's value, see the \refReaderPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refReaderPage{uint64}{string}.}
+%{for an decimal string representation of the receiver's value, see the \refGetterPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint64}{string}.}
 %{}{}
 
-\readerSansArgument{xString}
-{uint64}
-{1.9.10}
-{string}
-{Returns an hexadecimal string representation of the receiver's value (without any prefix).}
-{for an decimal string representation of the receiver's value, see the \refReaderPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refReaderPage{uint64}{string}.}
+\subsectionGetter{xString}{uint64}
+
+\begin{galgascode}
+getter xString -> @string
+\end{galgascode}
+
+Returns an hexadecimal string representation of the receiver's value (without any prefix). For an decimal string representation of the receiver's value, see the \refGetterPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint64}{string}.
 
 
 
@@ -186,9 +189,9 @@ This getter is the only way to convert an \refTypePredefini{uint64} object into 
 
 The \refTypePredefini{uint64} supports incrementation and decrementation instructions.
 
-\texttt{@uint64 n := ... ; n ++ ; \# Incrementation}
+\texttt{@uint64 n = ... ; n ++ ; \# Incrementation}
 
-\texttt{@uint64 p := ... ; p -- ; \# Decrementation}\newline
+\texttt{@uint64 p = ... ; p -- ; \# Decrementation}\newline
 
 The incrementation instruction raises an error if receiver's value is equal to $2^{64}-1$.\newline
 
@@ -205,13 +208,13 @@ The \galgas{@uint64} type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
-$+$ & Addition \\
+\ggs*+* & Addition \\
 \hline
-$-$ & Substraction \\
+\ggs+-+ & Substraction \\
 \hline
-$*$ & Multiplication \\
+\ggs+*+ & Multiplication \\
 \hline
-$/$ & Division \\
+\ggs+/+ & Division \\
 \hline
 \galgas{mod} & Modulo \\
 \hline
@@ -225,7 +228,7 @@ The \galgas{@uint64} type supports the following arithmetic unary operator:\newl
 
 \begin{tabular}{|c|c|}
 \hline
-$+$ & No operation \\
+\ggs*+* & No operation \\
 \hline
 \end{tabular}
 

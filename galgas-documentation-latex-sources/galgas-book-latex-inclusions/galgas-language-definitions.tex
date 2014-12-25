@@ -53,11 +53,7 @@
 
 \newcommand\galgas[1]{\colorbox{\couleurCodeGALGAS}{\lstinline[language=galgas]\%#1\%}}
 
-\lstnewenvironment{galgascod}{\lstset{language=galgas}}{}
-
 \setlength{\fboxsep}{1.5pt}
-
-\newcommand\galgasEmphStyle{\underline}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -198,9 +194,6 @@
 
 \newcommand \subsectionTypePredefiniLabelIndex[1] {\subsection{Le type \texttt{@#1}}\label{type:#1}\index{Type!"@#1}}
 
-
-
-
 %--- Cette macro établit un hyperlien vers un type prédéfini
 % Exemple d'appel : \refTypePredefini{bool} -- affiche --> @bool type (page xx)
 
@@ -208,94 +201,21 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%                         D É F I N I T I O N   D ' U N   R E A D E R   S A N S   A R G U M E N T                       *
+%   G E T T E R   C R O S S    R E F E R E N C I N G                                                                    *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-%--- Définition d'un getter sans argument
-% Exemple d'appel :
-% \readerSansArgument{line} % Nom du getter
-% {@location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce getter
-% {@uint} % Type renvoyé
-% {Returns the line of the receiver's value.} % Description
-% {this getter raises a run-time error if ...} % Discussion
-
-%http://compgroups.net/comp.text.tex/Robust-definition-of-a-new-command
-
-\newcommand\labelReaderSansArgument[2]{}
-
-\newcommand\readerSansArgument[6] {
-  \subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}
-  #5
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-    \galgas{getter @#2 #1 -> @#4 ;}
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
-  \ifthenelse{\equal{#6}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion:} #6
-  }
-  \newline
-}
+% Exemple d'appel : \refGetterPage{bool}{string} -- affiche --> @bool string getter (page xx)
+\newcommand\refGetterPage[2] {\hyperref[getter:#1:#2]{\texttt{@#1 #2} getter (page \pageref{getter:#1:#2})}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%                                     R É F É R E N C E   À   U N   R E A D E R                                         *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
 
-% Exemple d'appel : \refReaderPage{bool}{string} -- affiche --> @bool string getter (page xx)
-\newcommand \refReaderPage[2] {\hyperref[getter:#1:#2]{@#1 #2 getter (page \pageref{getter:#1:#2})}}
-
-%---------------------------------------------------------------------*
-
-%--- Définition d'un getter à 1 argument
-% Exemple d'appel :
-% \readerUnArgument{line} % Nom du getter
-% {location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce getter
-% {uint} % Type renvoyé
-% {Returns the line of the receiver's value.} % Description
-% {this getter raises a run-time error if ...} % Discussion
-
-\newcommand \readerUnArgument[7] {
-  \subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}
-  #6
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-      \galgas{getter @#2 #1}\\
-      \ \ \galgas{?#5}\\
-      \ \ \galgas{-> @#4 ;}
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
-  \ifthenelse{\equal{#7}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion:} #7
-  }
-  \newline
-}
+\newcommand\subsectionGetter[2]{\subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}}
 
 %---------------------------------------------------------------------*
 
 %--- Définition d'un getter à 2 arguments
 % Exemple d'appel :
-% \readerSansArgument{line} % Nom du getter
 % {location} % Nom du type
 % {1.8.2} % Première version GALGAS qui implémente ce getter
 % {uint} % Type renvoyé

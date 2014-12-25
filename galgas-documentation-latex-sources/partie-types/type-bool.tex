@@ -7,12 +7,13 @@ An \ggs+@bool+ object has a boolean value. The two keywords \galgas{true} and \g
 
 \section{Getters}
 
-\readerSansArgument{cString}
-{bool}
-{1.8.7}
-{string}
-{Returns a string representation of the receiver's value.}
-{returns the \texttt{\textquotedbl true\textquotedbl} string if the receiver's value is true, and the \texttt{\textquotedbl false\textquotedbl} string otherwise.}
+\subsectionGetter{cString}{bool}
+
+\begin{galgascode}
+getter cString -> @string
+\end{galgascode}
+
+Returns a string representation of the receiver's value: the \ggs+"true"+ string if the receiver's value is true, and the \ggs+"false"+ string otherwise.
 
 
 
@@ -20,52 +21,57 @@ An \ggs+@bool+ object has a boolean value. The two keywords \galgas{true} and \g
 
 
 
-\readerSansArgument{ocString}
-{bool}
-{1.8.7}
-{string}
-{Returns a string representation of the receiver's value.}
-{returns the \texttt{\textquotedbl YES\textquotedbl} string if the receiver's value is true, and the \texttt{\textquotedbl NO\textquotedbl} string otherwise.}
+\subsectionGetter{ocString}{bool}
+
+\begin{galgascode}
+getter ocString -> @string
+\end{galgascode}
+
+Returns a string representation of the receiver's value: the \ggs+"YES"+ string if the receiver's value is true, and the \ggs+"NO"+ string otherwise.
 
 
 
 
-\readerSansArgument{sint}
-{bool}
-{1.9.4}
-{sint}
-{Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
-{returns the \texttt{1S} \refTypePredefini{sint} value if the receiver's value is true, and the \texttt{0S} \refTypePredefini{sint} value otherwise.}
+\subsectionGetter{sint}{bool}
+
+\begin{galgascode}
+getter sint -> @sint
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object: the \ggs+1S+ \refTypePredefini{sint} value if the receiver's value is true, and the \ggs+0S+ \refTypePredefini{sint} value otherwise.
 
 
 
 
-\readerSansArgument{sint64}
-{bool}
-{1.9.4}
-{sint64}
-{Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
-{returns the \texttt{1LS} \refTypePredefini{sint64} value if the receiver's value is true, and the \texttt{0LS} \refTypePredefini{sint64} value otherwise.}
+\subsectionGetter{sint64}{bool}
+
+\begin{galgascode}
+getter sint64 -> @sint64
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object: the ±ggs+1LS+ \refTypePredefini{sint64} value if the receiver's value is true, and the \ggs+0LS+ \refTypePredefini{sint64} value otherwise.
 
 
 
 
-\readerSansArgument{uint}
-{bool}
-{1.9.4}
-{uint}
-{Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
-{returns the \texttt{1} \refTypePredefini{uint} value if the receiver's value is true, and the \texttt{0} \refTypePredefini{uint} value otherwise.}
+\subsectionGetter{uint}{bool}
+
+\begin{galgascode}
+getter uint -> @iuint
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object: the \ggs+1+ \refTypePredefini{uint} value if the receiver's value is true, and the \ggs+0+ \refTypePredefini{uint} value otherwise.
 
 
 
 
-\readerSansArgument{uint64}
-{bool}
-{1.9.4}
-{uint64}
-{Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
-{returns the \texttt{1L} \refTypePredefini{uint64} value if the receiver's value is true, and the \texttt{0S} \refTypePredefini{uint64} value otherwise.}
+\subsectionGetter{uint64}{bool}
+
+\begin{galgascode}
+getter uint64 -> @uint64
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object: the \ggs+1L+ \refTypePredefini{uint64} value if the receiver's value is true, and the \ggs+0L+ \refTypePredefini{uint64} value otherwise.
 
 
 

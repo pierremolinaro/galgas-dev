@@ -7,21 +7,20 @@ A \ggs+@string+ object value is an Unicode character string value. The @string t
 
 \paragraph{Literal String Constants.}
 
-Characters strings are written enclosed within quotation marks (") characters, as in many languages. For example: "a string". Note that a literal string constant is an actual @string object, so a getter can be used on it. For example: \lstinline[language=galgas]{["ae" uppercaseString]} returns the "AE" string.
+Characters strings are written enclosed within quotation marks (") characters, as in many languages. For example: "a string". Note that a literal string constant is an actual @string object, so a getter can be used on it. For example: \ggs+["ae" uppercaseString]+ returns the "AE" string.
 
 \section{Getters}
 
-\readerUnArgument{containsCharacter}
-{string}
-{2.5.0}
-{bool}
-{@char inCharacter}
-{Returns true if the receiver contains the given charactezr, and false oteherwise.}
-{}
+\subsectionGetter{containsCharacter}{string}
 
 \begin{galgascode}
-@string s := "abcdef";
-@string s2 := [s rightSubString!3]; # The value of s2 is "def"
+getter count ?@char inCharacter -> @bool
+\end{galgascode}
+Returns true if the receiver contains the given character, and false oteherwise.
+
+\begin{galgascode}
+@string s = "abcdef";
+@string s2 = [s rightSubString!3]; # The value of s2 is "def"
 \end{galgascode}
 
 \readerDeuxArguments{subString}
@@ -49,27 +48,24 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %{Creates and returns an \galgas{@stringset} object that contains the value of the \emph{inString} argument object.}
 %{}
 %
-%
-%\readerSansArgument{count}
-%{@stringset}
-%{1.3.0}
-%{@uint}
-%{Returns the number of strings in the set.}
-%{}
-%
-%
-%
-%\readerUnArgument{hasKey}
-%{@stringset}
-%{1.3.0}
-%{@bool}
-%{@string inString}
-%{Returns a boolean value that indicates whether the value of \emph{inString} argument is present in the set.}
-%{returns \motCle{true} if the value of \emph{inString} argument is present in the set, \motCle{false} otherwise.}
-%
-%
-%
-%
+
+
+
+
+
+\subsectionGetter{length}{@uint}
+
+\begin{galgascode}
+getter length -> @uint
+\end{galgascode}
+
+Retourne le nombre de caractères du récepteur.
+
+
+
+
+
+
 %\modifierUnArgument{removeKey}
 %{@stringset}
 %{1.3.0}
@@ -88,8 +84,8 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %
 %\exempleTroisLignes
 %{}
-%{@string aString := ... ;}
-%{@stringset aStringSet := ... ;}
+%{@string aString = ... ;}
+%{@stringset aStringSet = ... ;}
 %{aStringSet += !aString ;}
 %
 %
@@ -101,9 +97,9 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %
 %\exempleTroisLignes
 %{}
-%{@stringset s1 := ... ;}
-%{@stringset s2 := ... ;}
-%{@stringset s := s1 \& s2 ; \# s is the intersection of s1 and s2}
+%{@stringset s1 = ... ;}
+%{@stringset s2 = ... ;}
+%{@stringset s = s1 \& s2 ; \# s is the intersection of s1 and s2}
 %
 %
 %
@@ -116,9 +112,9 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %
 %\exempleTroisLignes
 %{}
-%{@stringset s1 := ... ;}
-%{@stringset s2 := ... ;}
-%{@stringset s := s1 \textbar s2 ; \# s is the union of s1 and s2}
+%{@stringset s1 = ... ;}
+%{@stringset s2 = ... ;}
+%{@stringset s = s1 \textbar s2 ; \# s is the union of s1 and s2}
 %
 %
 %
@@ -131,9 +127,9 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %
 %\exempleTroisLignes
 %{}
-%{@stringset s1 := ... ;}
-%{@stringset s2 := ... ;}
-%{@stringset s := s1 - s2 ; \# s is the difference of s1 and s2}
+%{@stringset s1 = ... ;}
+%{@stringset s2 = ... ;}
+%{@stringset s = s1 - s2 ; \# s is the difference of s1 and s2}
 %
 %
 %
@@ -147,7 +143,7 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %
 %The \motCle{foreach} instruction can be used for enumerating \galgas{@stringset} values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
 %
-%\texttt{@stringset s := ... ;}\newline
+%\texttt{@stringset s = ... ;}\newline
 %\textbf{foreach} \texttt {s} \textbf {do}\newline
 %\texttt{\# the \emph{key} constant has the value of current entry of \emph{s} stringset}\newline
 %\textbf{end foreach} \texttt{;}

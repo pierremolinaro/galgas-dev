@@ -9,7 +9,7 @@ Galgas permet à l'utilisateur de définir des types énumérés.
 
 \section{Déclaration}
 
-La déclaration d'un type \galgas{enum} nomme l'ensemble des constantes associées à ce type.
+La déclaration d'un type \ggs+enum+ nomme l'ensemble des constantes associées à ce type.
 
 Par exemple :
 
@@ -28,7 +28,7 @@ Plusieurs types énumérés peuvent définir des constantes de même nom.
 Chaque constante définit un constructeur de même nom. On peut ainsi écrire :
 
 \begin{galgascode}
-@feuTricolore feu := [@feuTricolore vert] ;
+@feuTricolore feu = [@feuTricolore vert] ;
 \end{galgascode}
 
 Ou encore :
@@ -39,7 +39,7 @@ Ou encore :
 
 \section{Comparaison}
 
-Un type enuméré accpete les six opérateurs de comparaison (\galgas{==}, \galgas{\!=}, \galgas{<}, \galgas{<=}, \galgas{>} et \galgas{>}). L'ordre est celui de la déclaration, c'est-à-dire que :
+Un type enuméré accpete les six opérateurs de comparaison (\ggs+==+, \ggs+!=+, \ggs+<+, \ggs+<=+, \ggs+>+ et \ggs+>+). L'ordre est celui de la déclaration, c'est-à-dire que :
 \begin{galgascode}
   [@feuTricolore vert] < [@feuTricolore orange] < [@feuTricolore rouge]
 \end{galgascode}
@@ -52,14 +52,14 @@ Il y a deux façons de tester une valeur d'un type énuméré. La première cons
   if feu == [@feuTricolore orange] then ...
 \end{galgascode}
 
-La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \galgas{is<Constante>} (le préfixe \galgas{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \ggs+@bool+ qui est vrai si le récepteur a la valeur correspondante :
+La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \texttt{is<Constante>} (le préfixe \texttt{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \ggs+@bool+ qui est vrai si le récepteur a la valeur correspondante :
 \begin{galgascode}
   if [feu isOrange] then ...
 \end{galgascode}
 
 \section{L'instruction \texttt{switch}}
 
-L'instruction \galgas{switch} (\refSectionPage{instructionSwitch}) est dédiée aux types énumérés. On écrit par exemple :
+L'instruction \ggs+switch+ (\refSectionPage{instructionSwitch}) est dédiée aux types énumérés. On écrit par exemple :
 
 \begin{galgascode}
 @feuTricolore feu = ...
@@ -125,7 +125,7 @@ rule regleProduction {
 }
 \end{galgascode}
 
-Cette solution, plus générale, est plus lourde à mettre en œuvre : trois classes, et analyser l'option nécessite d'écrire un \emph{getter} abstrait ou une méthode abstraite pour la classe abstraite de base \galgas{@abstractOption}, et les redéfinir dans les deux classes héritières \galgas{@noOption} et \galgas{@option}.
+Cette solution, plus générale, est plus lourde à mettre en œuvre : trois classes, et analyser l'option nécessite d'écrire un \emph{getter} abstrait ou une méthode abstraite pour la classe abstraite de base \ggs+@abstractOption+, et les redéfinir dans les deux classes héritières \ggs+@noOption+ et \ggs+@option+.
 
 \textbf{Troisième solution.} La troisième et dernière solution consiste à écrire un type énuméré possédant des valeurs associées :
 
@@ -136,7 +136,7 @@ enum @option {
 }
 \end{galgascode}
 
-À la constante \galgas{optionPresente} est associée une valeur de type \galgas{@lstring}, identifiée par le nom \galgas{optionName}. Ce nom est optionnel, on pourrait écrire \galgas{optionPresente (@lstring)}. La construction de l'arbre syntaxique est maintenant réalisée par :
+À la constante \ggs+optionPresente+ est associée une valeur de type \ggs+@lstring+, identifiée par le nom \ggs+optionName+. Ce nom est optionnel, on pourrait écrire \ggs+optionPresente (@lstring)+. La construction de l'arbre syntaxique est maintenant réalisée par :
 \begin{galgascode}
 rule regleProduction {
   @option optionAST
@@ -150,13 +150,13 @@ rule regleProduction {
 }
 \end{galgascode}
 
-À la constante \galgas{optionPresente} correspond un constructeur de même nom, avec un argument qui correspond à la valeur associée \galgas{@lstring optionName}. Le nom \galgas{optionName} est utilisé comme sélecteur. Si on avait déclaré la valeur associée sans nom par \galgas{optionPresente (@lstring)}, alors l'appel du constructeur serait \galgas{@option.optionPresente \{!nomOption\}}.
+À la constante \ggs+optionPresente+ correspond un constructeur de même nom, avec un argument qui correspond à la valeur associée \ggs+@lstring optionName+. Le nom \ggs+optionName+ est utilisé comme sélecteur. Si on avait déclaré la valeur associée sans nom par \ggs+optionPresente (@lstring)+, alors l'appel du constructeur serait \ggs+@option.optionPresente {!nomOption}+.
 
 Pour tester un type énuméré avec des valeurs associées, on peut appliquer les \emph{getter} décrits à \refSectionPage{testerValeurEnum}, mais on n'a pas accès aux valeurs associées.
 
-Les six opérateurs de comparaison (\galgas{==}, \galgas{\!=}, \galgas{<}, \galgas{<=}, \galgas{>} et \galgas{>}) sont définis sur des types énumérés avec des valeurs associées : l'ordre est celui de la déclaration des constantes, et, en cas d'égalité, les valeurs associées sont comparées les unes après les autres, dans leur ordre de déclaration.
+Les six opérateurs de comparaison (\ggs+==+, \ggs+\!=+, \ggs+<+, \ggs+<=+, \ggs+>+ et \ggs+>+) sont définis sur des types énumérés avec des valeurs associées : l'ordre est celui de la déclaration des constantes, et, en cas d'égalité, les valeurs associées sont comparées les unes après les autres, dans leur ordre de déclaration.
 
-Il n'y a qu'une façon d'extraire les valeurs associées, l'instruction \galgas{switch} :
+Il n'y a qu'une façon d'extraire les valeurs associées, l'instruction \ggs+switch+ :
 
 \begin{galgascode}
 switch optionAST
@@ -165,5 +165,5 @@ case optionPresente (@lstring nomOption) : ...
 end
 \end{galgascode}
 
-\galgas{nomOption} est une constante dont la portée s'étend jusqu'à la fin de la branche \galgas{case} courante.
+\ggs+nomOption+ est une constante dont la portée s'étend jusqu'à la fin de la branche \ggs+case+ courante.
  

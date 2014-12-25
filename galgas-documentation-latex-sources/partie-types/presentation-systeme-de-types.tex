@@ -12,14 +12,14 @@
 
 Tout type implémente implicitement :
 \begin{itemize}
-  \item l'opérateur \galgas{==} ;
-  \item l'opérateur \galgas{\!=} ;
-  \item le \emph{getter} \galgas{description} ;
-  \item le \emph{getter} \galgas{dynamicType} ;
-  \item le \emph{getter} \galgas{object}.
+  \item l'opérateur \ggs+==+ ;
+  \item l'opérateur \ggs+!=+ ;
+  \item le \emph{getter} \ggs+description+ ;
+  \item le \emph{getter} \ggs+dynamicType+ ;
+  \item le \emph{getter} \ggs+object+.
 \end{itemize}
 
-La plupart des types implémentent le constructeur par défaut \galgas{default} (voir \refSubsectionPage{constructeurParDefaut}). 
+La plupart des types implémentent le constructeur par défaut \ggs+default+ (voir \refSubsectionPage{constructeurParDefaut}). 
 
 
 \subsection{L'opérateur \texttt{==}}
@@ -36,7 +36,7 @@ Cet opérateur permet de tester l'identité entre de deux objets de même type.
 func != ?@T ?@T -> @bool
 \end{galgascode}
 
-Cet opérateur permet de tester la non identité entre de deux objets de même type. Il renvoie le complément logique du résultat de l'application de l'opérateur \galgas{==}.
+Cet opérateur permet de tester la non identité entre de deux objets de même type. Il renvoie le complément logique du résultat de l'application de l'opérateur \ggs+==+.
 
 
 
@@ -48,7 +48,7 @@ Cet opérateur permet de tester la non identité entre de deux objets de même t
 getter @T description -> @string
 \end{galgascode}
 
-Le \emph{getter} \galgas{description} retourne une description textuelle du receveur, la même que celle affichée par l'instruction \galgas{log} (\refSectionPage{instructionLog}).
+Le \emph{getter} \ggs+description+ retourne une description textuelle du receveur, la même que celle affichée par l'instruction \ggs+log+ (\refSectionPage{instructionLog}).
 
 
 
@@ -58,7 +58,7 @@ Le \emph{getter} \galgas{description} retourne une description textuelle du rece
 getter @T dynamicType -> @type
 \end{galgascode}
 
-Le \emph{getter} \galgas{dynamicType} retourne un objet de type \galgas{@type}, dont la valeur représente le type dynamique du receveur (voir aussi la définition du type \refTypePredefini{type}).
+Le \emph{getter} \ggs+dynamicType+ retourne un objet de type \ggs+@type+, dont la valeur représente le type dynamique du receveur (voir aussi la définition du type \refTypePredefini{type}).
 
 Pour tous les types sauf les classes, leurs instances sont du même type que le type statique :
 
@@ -97,6 +97,6 @@ getter @T object -> @object
 \end{galgascode}
 
 
-Le \emph{getter} \galgas{object} retourne un objet de type \galgas{@object}. Une variable de type \refTypePredefini{object} peut encapsuler tout type de valeur.
+Le \emph{getter} \ggs+object+ retourne un objet de type \ggs+@object+. Une variable de type \refTypePredefini{object} peut encapsuler tout type de valeur.
 
 

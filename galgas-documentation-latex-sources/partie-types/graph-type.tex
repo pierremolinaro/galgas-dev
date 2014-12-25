@@ -17,7 +17,6 @@ Un arc est identifié par un couple de nœuds.
 
 
 Un type \galgas{graph} se déclare comme suit :
-\lstset{emph={@nom_du_type_graph, @nom_liste_information}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 graph @nom_du_type_graph (@nom_liste_information) {
 }
@@ -57,7 +56,7 @@ constructor emptyGraph -> @self ;
 \galgas{emptyGraph} est le seul constructeur d'un graphe. Il instancie un graphe vide.
 
 \begin{galgascode}
-var gr := [@monGraphe emptyGraph] ;
+var gr = [@monGraphe emptyGraph] ;
 \end{galgascode}
 
 
@@ -103,8 +102,8 @@ Ainsi, le setter d'insertion \galgas{addNode} du type de graphe \galgas{@monGrap
 
 Il est par exemple appelé comme suit :
 \begin{galgascode}
-var @lstring lstr := ... ;
-var gr := [@monGraphe emptyGraph] ;
+var @lstring lstr = ... ;
+var gr = [@monGraphe emptyGraph] ;
 [!?gr addNode !lstr !0 !"xyz"] ;
 \end{galgascode}
 

@@ -20,7 +20,6 @@ Une fonction GALGAS n'accepte que des arguments en entrée, et retourne une vale
 
 \subsection{déclaration d'une fonction}\index{Fonction!Déclaration}
 
-\lstset{emph={nom_fonction, liste_arguments_entree, var_resultat, liste_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 private # Optionnel
 func nom_fonction liste_arguments_entree -> @T var_resultat {
@@ -28,7 +27,7 @@ func nom_fonction liste_arguments_entree -> @T var_resultat {
 }
 \end{galgascode}
 
-Une fonction est désignée par \galgas{nom_fonction}. Ce nom est unique dans un projet GALGAS. La liste des paramètres d'entrée peut être vide (\refSectionPage{listeParametresEffectifsEntree}). La valeur renvoyée par l'exécution de la fonction est la valeur de \galgas{var_resultat} à l'issue de l'exécution de la \galgas{liste_instructions}. Aussi, l'exécution de la \galgas{liste_instructions} doit valuer \galgas{var_resultat}.
+Une fonction est désignée par \ggs+nom_fonction+. Ce nom est unique dans un projet GALGAS. La liste des paramètres d'entrée peut être vide (\refSectionPage{listeParametresEffectifsEntree}). La valeur renvoyée par l'exécution de la fonction est la valeur de \ggs+var_resultat+ à l'issue de l'exécution de la \ggs+liste_instructions+. Aussi, l'exécution de la \ggs+liste_instructions+ doit valuer \ggs+var_resultat+.
 
 Exemple :
 
@@ -42,7 +41,7 @@ func produit ?@uint a ?@uint b -> @uint resultat {
 
 \subsection{Fonction interne à un fichier}
 
-En préfixant la déclaration d'une fonction par \galgas{private}, on limite son appel aux expressions situées dans le même fichier que la déclaration.
+En préfixant la déclaration d'une fonction par \ggs+private+, on limite son appel aux expressions situées dans le même fichier que la déclaration.
 
 
 
@@ -59,7 +58,7 @@ func %once masque-> @uint resultat {
 
 Le qualificatif \ggs+%once+ organise le cache du résultat : celui-ci est calculé lors du premier appel, est mémorisé internement, et est retourné directement lors des appels ultérieurs.
 
-Une fonction \ggs+%once+ peut être déclarée interne en la préfixant par \galgas{private}.
+Une fonction \ggs+%once+ peut être déclarée interne en la préfixant par \ggs+private+.
 
 \begin{galgascode}
 private func %once masque-> @uint resultat {
@@ -77,7 +76,6 @@ Une procédure GALGAS accepte que des arguments en entrée, en sortie, en entré
 
 \subsection{Déclaration d'une procédure}\index{Procédure!Déclaration}
 
-\lstset{emph={nom_procedure, liste_arguments, liste_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 private # Optionnel
 proc nom_procedure liste_arguments {
@@ -85,7 +83,7 @@ proc nom_procedure liste_arguments {
 }
 \end{galgascode}
 
-Une procédure est désignée par \galgas{nom_procedure}. Ce nom est unique dans un projet GALGAS. La liste des paramètres en entrée, en sortie ou en entrée/sortie est décrite à la \refSectionPage{listeArgumentsFormels}).
+Une procédure est désignée par \ggs+nom_procedure+. Ce nom est unique dans un projet GALGAS. La liste des paramètres en entrée, en sortie ou en entrée/sortie est décrite à la \refSectionPage{listeArgumentsFormels}).
 
 Exemple :
 
@@ -99,7 +97,7 @@ proc produit ?@uint a ?@uint b !@uint resultat {
 
 \subsection{Procédure interne à un fichier}
 
-En préfixant la déclaration d'une procédure par \galgas{private}, on limite son appel aux instructions situées dans le même fichier que la déclaration.
+En préfixant la déclaration d'une procédure par \ggs+private+, on limite son appel aux instructions situées dans le même fichier que la déclaration.
 
 
 

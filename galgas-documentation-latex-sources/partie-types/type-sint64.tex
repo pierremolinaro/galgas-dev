@@ -5,7 +5,7 @@
 
 An \galgas{@sint64} object value is a 64-bit signed integer value. You can initialize an \galgas{@sint64} object from an 64-bit signed integer constant:\\
 
-\texttt{@sint64 mySignedInteger := 123\_456LS ;}
+\texttt{@sint64 mySignedInteger = 123\_456LS ;}
 
 Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 
@@ -34,22 +34,24 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 \section{Getters}
 
 
-\readerSansArgument{double}
-{sint64}
-{1.9.8}
-{double}
-{Returns the receiver's value converted in a \galgas{@double} object.}
-{as a 64-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.}
+\subsectionGetter{double}{sint64}
+
+\begin{galgascode}
+getter double -> @double
+\end{galgascode}
+
+Returns the receiver's value converted in a \galgas{@double} object. As a 64-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.
 
 
 
 
-\readerSansArgument{sint}
-{sint64}
-{1.3.0}
-{sint}
-{Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
-{an error is raised is receiver's value is lower than $-2^{31}$ or greater than $2^{31}-1$.}
+\subsectionGetter{sint}{sint64}
+
+\begin{galgascode}
+getter sint -> @sint
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is lower than $-2^{31}$ or greater than $2^{31}-1$.
 
 This getter is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{sint} object.
 
@@ -57,12 +59,13 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 
 
-\readerSansArgument{string}
-{sint64}
-{1.6.12}
-{string}
-{Returns a decimal string representation of the receiver's value.}
-{this getter never fails.}
+\subsectionGetter{string}{sint64}
+
+\begin{galgascode}
+getter string -> @string
+\end{galgascode}
+
+Returns a decimal string representation of the receiver's value. This getter never fails.
 
 
 
@@ -71,12 +74,13 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 
 
-\readerSansArgument{uint}
-{sint64}
-{1.3.0}
-{uint}
-{Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
-{an error is raised is receiver's value is negative or greater than $2^{32}-1$.}
+\subsectionGetter{uint}{sint64}
+
+\begin{galgascode}
+getter uint -> @uint
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is negative or greater than $2^{32}-1$.
 
 This getter is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{uint} object.
 
@@ -84,12 +88,13 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 
 
-\readerSansArgument{uint64}
-{sint64}
-{1.3.0}
-{uint64}
-{Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
-{this getter raises a run-time error if the receiver's value is negative.}
+\subsectionGetter{uint64}{sint64}
+
+\begin{galgascode}
+getter uint64 -> @uint64
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. This getter raises a run-time error if the receiver's value is negative.
 
 This getter is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{uint64} object.
 
@@ -103,9 +108,9 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 The \refTypePredefini{sint64} supports incrementation and decrementation instructions.
 
-\texttt{@sint64 n := ... ; n ++ ; \# Incrementation}
+\texttt{@sint64 n = ... ; n ++ ; \# Incrementation}
 
-\texttt{@sint64 p := ... ; p -- ; \# Decrementation}\newline
+\texttt{@sint64 p = ... ; p -- ; \# Decrementation}\newline
 
 The incrementation instruction raises an error if receiver's value is equal to $2^{63}-1$.\newline
 

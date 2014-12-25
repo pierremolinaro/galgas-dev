@@ -6,7 +6,7 @@
 An \galgas{@uint} object value is a 32-bit unsigned integer value. You can initialize an \galgas{@uint} object from an unsigned integer constant:\\
 
 \begin{galgascode}
-@uint myUnsignedInteger := 123_456 ;
+@uint myUnsignedInteger = 123_456 ;
 \end{galgascode}
 
 Note that a 32-bit unsigned integer constant is characterized by no suffix.
@@ -22,7 +22,7 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
 \textbf{Exemple :}
 \begin{galgascode}
-@uint x := [@uint errorCount] ;
+@uint x = [@uint errorCount] ;
 \end{galgascode}
 
 \constructeurSansArgument{max}
@@ -46,7 +46,7 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
 \textbf{Exemple :}
 \begin{galgascode}
-@uint x := [@uint valueWithMask !2 !4] ; # x is equal to 28 (11100 in binary)
+@uint x = [@uint valueWithMask !2 !4] ; # x is equal to 28 (11100 in binary)
 \end{galgascode}
 
 
@@ -61,40 +61,43 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
 \section{Getters}
 
-\readerSansArgument{double}
-{uint}
-{1.9.8}
-{@double}
-{Returns the receiver's value converted in a \galgas{@double} object.}
-{as a 32-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.}
+\subsectionGetter{double}{uint}
+
+\begin{galgascode}
+getter double -> @double
+\end{galgascode}
+
+Returns the receiver's value converted in a \galgas{@double} object. As a 32-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.
 
 
 
-\readerSansArgument{hexString}
-{uint}
-{1.5.2}
-{@string}
-{Returns the an hexadecimal string representation of the receiver value, prefixed by the string "0x".}
-{for getting an hexadecimal representation string without '0x' prefix, see \refReaderPage{uint}{xString}.}
+\subsectionGetter{hexString}{uint}
+
+\begin{galgascode}
+getter hexString -> @string
+\end{galgascode}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. For getting an hexadecimal representation string without any prefix, see \refGetterPage{uint}{xString}.
 
 
 
-\readerUnArgument{isInRange}
-{uint}
-{2.3.0}
-{@bool}
-{@range}
-{Returns an \galgas{@range} value indicating whether the receiver'value belongs to a range.}
-{for a receiver's value equal to $v$ and a range of length $length$ starting at $start$, it returns \galgas{true} if $((v \geqslant start)~and~(v<(start+length)))$, and \galgas{false} otherwise.}
+\subsectionGetter{isInRange}{uint}
+
+\begin{galgascode}
+getter isInRange ?@range inRange -> @bool
+\end{galgascode}
+
+{Returns an \galgas{@bool} value indicating whether the receiver'value belongs to \ggs+inRange+ range : for a receiver's value equal to $v$ and a range of length $length$ starting at $start$, it returns \galgas{true} if $((v \geqslant start)~and~(v<(start+length)))$, and \galgas{false} otherwise.
 
 
 
-\readerSansArgument{isUnicodeValueAssigned}
-{uint}
-{1.8.3}
-{@bool}
-{Returns an \galgas{@bool} value indicating whether the receiver'value represents an assigned Unicode character.}
-{it returns \galgas{true} if the receiver value represents an assigned Unicode character, \galgas{false} and otherwise.}
+\subsectionGetter{isUnicodeValueAssigned}{uint}
+
+\begin{galgascode}
+getter isUnicodeValueAssigned -> @bool
+\end{galgascode}
+
+Returns an \galgas{@bool} value indicating whether the receiver'value represents an assigned Unicode character. It returns \galgas{true} if the receiver value represents an assigned Unicode character, \galgas{false} and otherwise.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -104,17 +107,18 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
 
 
-\readerSansArgument{lsbIndex}
-{uint}
-{1.6.12}
-{uint}
-{Returns an \galgas{@uint} value of the index of the most significant bit of the receiver value.}
-{it raises a run-time error if the receiver value is zero.}
+\subsectionGetter{lsbIndex}{uint}
+
+\begin{galgascode}
+getter lsbIndex -> @uint
+\end{galgascode}
+
+Returns an \galgas{@uint} value of the index of the most significant bit of the receiver value. It raises a run-time error if the receiver value is zero.
 
 \textbf{Exemple :}
 \begin{galgascode}
-@uint value := 192 ; # 192 is 11000000 in binary
-@uint x := [value lsbIndex] ; # x is equal to 7
+@uint value = 192 ; 192 is ...011000000 in binary
+@uint x = [value lsbIndex] ; # x is equal to 7
 \end{galgascode}
 
 The most significant bit of 192 is the 7th bit.
@@ -122,17 +126,18 @@ The most significant bit of 192 is the 7th bit.
 
 
 
-\readerSansArgument{significantBitCount}
-{uint}
-{1.6.12}
-{uint}
-{Returns the number of bits needed to express the receiver value.}
-{it the receiver value is zero, it returns 0 ; otherwise, it returns the most significant bit index plus one.}
+\subsectionGetter{significantBitCount}{uint}
+
+\begin{galgascode}
+getter significantBitCount -> @uint
+\end{galgascode}
+
+Returns the number of bits needed to express the receiver value. If the receiver value is zero, it returns 0 ; otherwise, it returns the most significant bit index plus one.
 
 \textbf{Exemple :}
 \begin{galgascode}
-@uint value := 145 ; # 145 is 10010001 in binary
-@uint x := [value significantBitCount] ; # x is equal to 8
+@uint value = 145 ; # 145 is 10010001 in binary
+@uint x = [value significantBitCount] ; # x is equal to 8
 \end{galgascode}
 
 
@@ -140,56 +145,61 @@ The most significant bit of 192 is the 7th bit.
 
 
 
-\readerSansArgument{sint}
-{uint}
-{1.6.12}
-{sint}
-{Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
-{an error is raised is receiver's value is greater than $2^{31}-1$.}
+\subsectionGetter{sint}{uint}
+
+\begin{galgascode}
+getter sint -> @sint
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is greater than $2^{31}-1$.
 
 This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{sint} object.
 
 
 
 
-\readerSansArgument{sint64}
-{uint}
-{1.6.12}
-{sint64}
-{Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
-{as a 32-bit unsigned value can always be converted in a 64-bit signed value, this getter never fails.}
+\subsectionGetter{sint64}{uint}
+
+\begin{galgascode}
+getter sint64 -> @sint64
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. As a 32-bit unsigned value can always be converted in a 64-bit signed value, this getter never fails.
 
 This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{sint64} object.
 
 
-\readerSansArgument{string}
-{uint}
-{1.6.12}
-{string}
-{Returns a decimal string representation of the receiver's value.}
-{for an hexadecimal string representation of the receiver's value, see \refReaderPage{uint}{hexString} and \refReaderPage{uint}{xString}.}
+\subsectionGetter{string}{uint}
+
+\begin{galgascode}
+getter string -> @string
+\end{galgascode}
+
+Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint}{hexString} and \refGetterPage{uint}{xString}.
 
 
 
 
-\readerSansArgument{uint64}
-{uint}
-{1.6.12}
-{uint64}
-{Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
-{as a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this getter never fails.}
+\subsectionGetter{uint64}{uint}
+
+\begin{galgascode}
+getter uint64 -> @uint64
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. As a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this getter never fails.
 
 This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{uint64} object.
 
 
 
 
-\readerSansArgument{xString}
-{uint}
-{1.9.10}
-{string}
-{Returns an hexadecimal string representation of the receiver's value (without any prefix).}
-{for an decimal string representation of the receiver's value, see the \refReaderPage{uint}{hexString}; for a decimal string representation of the receiver's value, see the \refReaderPage{uint}{string}.}
+\subsectionGetter{xString}{uint}
+
+\begin{galgascode}
+getter xString -> @string
+\end{galgascode}
+
+Returns an hexadecimal string representation of the receiver's value (without any prefix). For an decimal string representation of the receiver's value, see the \refGetterPage{uint}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint}{string}.
 
 
 
@@ -201,8 +211,8 @@ This getter is the only way to convert an \refTypePredefini{uint} object into an
 The \refTypePredefini{uint} supports incrementation and decrementation instructions.
 
 \begin{galgascode}
-@uint n := ... ; n ++ ; # Incrementation
-@uint p := ... ; p -- ; # Decrementation
+@uint n = ... ; n ++ ; # Incrementation
+@uint p = ... ; p -- ; # Decrementation
 \end{galgascode}
 
 
