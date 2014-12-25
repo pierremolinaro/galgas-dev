@@ -17,9 +17,9 @@ D'une manière classique, une expression est constituée d'\emph{opérandes} (\r
 
 \subsection{\texttt{self}}\index{self}
 
-Dans une expression, \galgas{self} représente une copie de l'objet courant. On ne peut donc utiliser \galgas{self} que dans une expression à l'intérieur d'une \emph{méthode}, d'un \emph{getter}, d'un \emph{setter}, ou d'une extension (\refChapterPage{extensions}). Sont donc exclues les procédures et les fonctions.
+Dans une expression, \ggs+self+ représente une copie de l'objet courant. On ne peut donc utiliser \ggs+self+ que dans une expression à l'intérieur d'une \emph{méthode}, d'un \emph{getter}, d'un \emph{setter}, ou d'une extension (\refChapterPage{extensions}). Sont donc exclues les procédures et les fonctions.
 
-\galgas{self} effectue un accès en lecture seule de l'objet courant. 
+\ggs+self+ effectue un accès en lecture seule de l'objet courant. 
 
 Voici un exemple extrait de la section décrivant les \emph{extensions de getter} (\refSectionPage{categoryGetter}) :
 \begin{galgascode}
@@ -37,17 +37,15 @@ getter @uint64 square -> @uint64 outResult {
 
 \subsectionLabel{Expression de conversion polymorphique inverse}{expConversionPolymorphiqueInverse}
 
-\lstset{emph={expression, conversion}, emphstyle=\galgasEmphStyle}
-
 La syntaxe de l'\emph{expression de conversion polymorphique inverse} est :
 
 \begin {galgascode}
 expression as @T
 \end{galgascode}
 
-Elle permet de renvoyer la valeur de \galgas{expression} sous la forme d'un objet de type statique \galgas{@T}. À l'exécution, la conversion échoue si le type dynamique de l'\galgas{expression} n'est pas \galgas{@T} ou une de ses classes héritières ; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
+Elle permet de renvoyer la valeur de \ggs+expression+ sous la forme d'un objet de type statique \ggs+@T+. À l'exécution, la conversion échoue si le type dynamique de l'\ggs+expression+ n'est pas \ggs+@T+ ou une de ses classes héritières ; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
 
-Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \galgas{cast} (\refSectionPage{instructionCast}).
+Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \ggs+cast+ (\refSectionPage{instructionCast}).
 
 
 
@@ -57,11 +55,11 @@ Pour tester le type dynamique de l'expression avant d'effectuer la conversion, u
 
 \subsectionLabel{Test du type dynamique d'une expression}{testTypeDynamiqueExpression}
 
-L'opérande \galgas{expression is conversion @T} teste le type dynamique de \galgas{expression} vis à vis du type \galgas{@T} :
+L'opérande \ggs+expression is conversion @T+ teste le type dynamique de \ggs+expression+ vis à vis du type \ggs+@T+ :
 \begin{itemize}
-\item si \galgas{conversion} est \galgas{==}, la valeur renvoyée est \galgas{true} si le type dynamique de l'\galgas{expression} est exactement \galgas{@T}, et \galgas{false} dans le cas contraire ;
-\item si \galgas{conversion} est \galgas{>=}, la valeur renvoyée est \galgas{true} si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, et \galgas{false} dans le cas contraire ;
-\item si \galgas{conversion} est \galgas{>}, la valeur renvoyée est \galgas{true} si le type dynamique de l'\galgas{expression} n'est pas \galgas{@T} mais une de ses classes héritières, et \galgas{false} dans le cas contraire.
+\item si \ggs+conversion+ est \ggs+==+, la valeur renvoyée est \ggs+true+ si le type dynamique de l'\ggs+expression+ est exactement \ggs+@T+, et \ggs+false+ dans le cas contraire ;
+\item si \ggs+conversion+ est  \ggs+>=+, la valeur renvoyée est \ggs+true+ si le type dynamique de l'\ggs+expression+ est \ggs+@T+ ou une de ses classes héritières, et \ggs+false+ dans le cas contraire ;
+\item si \ggs+conversion+ est  \ggs+>+, la valeur renvoyée est \ggs+true+ si le type dynamique de l'\ggs+expression+ n'est pas \ggs+@T+ mais une de ses classes héritières, et \ggs+false+ dans le cas contraire.
 \end{itemize}
 
 
@@ -86,7 +84,7 @@ end
 
 \subsection{Parenthèses}
 
-Les parenthèses \galgas{(} et \galgas{)} permettent de forcer le groupement d'opérandes.
+Les parenthèses \ggs+(+ et \ggs+)+ permettent de forcer le groupement d'opérandes.
 
 
 
@@ -95,7 +93,7 @@ Les parenthèses \galgas{(} et \galgas{)} permettent de forcer le groupement d'o
 
 \subsection{\texttt{true} et \texttt{false}}
 
-\galgas{true} et \galgas{false} sont les constantes du type \ggs+@bool+.
+\ggs+true+ et \ggs+false+ sont les constantes du type \ggs+@bool+.
 
 \subsection{Constante Chaîne de caractères}
 
@@ -103,12 +101,12 @@ Les parenthèses \galgas{(} et \galgas{)} permettent de forcer le groupement d'o
 
 \subsection{Constante entière}
 
-Une constante entière est une séquence de chiffres décimaux, éventuellement séparés par le caractère de soulignement \galgas{_}, et terminé par un suffixe. Ce suffixe détermine le type de la constante :
+Une constante entière est une séquence de chiffres décimaux, éventuellement séparés par le caractère de soulignement \ggs+_+, et terminé par un suffixe. Ce suffixe détermine le type de la constante :
 \begin{itemize}
-  \item pas de suffixe : \galgas{@uint} ;
-  \item suffixe \galgas{S} : \galgas{@sint} ;
-  \item suffixe \galgas{L} : \galgas{@uint64} ;
-  \item suffixe \galgas{LS} : \galgas{@sint64}.
+  \item pas de suffixe : \ggs+@uint+ ;
+  \item suffixe \ggs+S+ : \ggs+@sint+ ;
+  \item suffixe \ggs+L+ : \ggs+@uint64+ ;
+  \item suffixe \ggs+LS+ : \ggs+@sint64+.
 \end{itemize}
 
 \subsection{Constante flottante}
@@ -130,7 +128,6 @@ Une constante entière est une séquence de chiffres décimaux, éventuellement 
 
 L'appel d'un constructeur instancie un nouvel objet. Sa syntaxe est :
 
-\lstset{emph={@T.constructeur, exp0, exp1}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @T.constructeur {!exp0 !exp1 ...}
 \end{galgascode}
@@ -161,7 +158,7 @@ Si la liste des arguments est vide, les accolades peuvent être omises.
 
 \subsubsection{Inférence du type}
 
-Si le type peut être inféré, il peut être omis (remarquer que ceci est valable aussi pour \galgas{@location.here} qui peut être simplifié en \galgas{.here}.
+Si le type peut être inféré, il peut être omis (remarquer que ceci est valable aussi pour \ggs+@location.here+ qui peut être simplifié en \ggs+.here+.
 
 \begin{galgascode}
 @lstring ls = .new {!"" !.here}
@@ -180,14 +177,14 @@ Si le type peut être inféré, il peut être omis (remarquer que ceci est valab
 Pour la plupart des types, un constructeur par défaut est implicitement défini (voir la liste précise {\refTableauPage{constructeurParDefaut}).
 
 
-L'expression \galgas{@T.default} invoque le constructeur par défaut du type \galgas{@T} et renvoie un objet initialisé du type \galgas{@T}. Le type \galgas{@T} peut être inféré et l'appel du constructeur par défaut s'écrit simplement \galgas{.default}.
+L'expression \ggs+@T.default+ invoque le constructeur par défaut du type \ggs+@T+ et renvoie un objet initialisé du type \ggs+@T+. Le type \ggs+@T+ peut être inféré et l'appel du constructeur par défaut s'écrit simplement \ggs+.default+.
 
 \subsubsection{Intérêt du constructeur par défaut}
 
 
 L'intérêt du constructeur par défaut est qu'il allège l'écriture de l'initialisation des variables de certains types. Ce n'est pas une construction qui apporte de l'expressivité au langage (on peut très bien se passer d'appeler des constructeurs par défaut).
 
-Pour un type comme \galgas{@uint}, écrire \galgas{@uint v = .default} est sémantiquement équivalent à écrire \galgas{@uint v = 0}. On voit que le constructeur par défaut présente peu d'utilité ici.
+Pour un type comme \ggs+@uint+, écrire \ggs+@uint v = .default+ est sémantiquement équivalent à écrire \ggs+@uint v = 0+. On voit que le constructeur par défaut présente peu d'utilité ici.
 
 Par contre, si l'on a un type structure :
 
@@ -217,7 +214,7 @@ Avec le constructeur par défaut, cette instruction s'écrit simplement :
 @T variable = .default
 \end{galgascode}
 
-Pour une structure, comme on va le voir plus bas, le constructeur par défaut appelle le constructeur par défaut pour chaque champ ; le constructeur par défaut d'une \galgas{map} est équivalent à \galgas{emptyMap}, celui d'une \galgas{list}  équivalent à \galgas{emptyList}, et celui d'un \galgas{@stringset}  équivalent à \galgas{emptySet}.
+Pour une structure, comme on va le voir plus bas, le constructeur par défaut appelle le constructeur par défaut pour chaque champ ; le constructeur par défaut d'une \ggs+map+ est équivalent à \ggs+emptyMap+, celui d'une \ggs+list+ équivalent à \ggs+emptyList+, et celui d'un \ggs+@stringset+ équivalent à \ggs+emptySet+.
 
 
 \subsubsection{Les constructeurs par défaut pour chaque type}
@@ -229,30 +226,30 @@ Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du co
   \centering
   \begin{tabular}{@{}lllllll@{}}
   \textbf{Type} & \textbf{Constructeur par défaut} \\
-  \galgas{abstract class @T} & \emph{Pas de constructeur par défaut} \\
-  \ggs+@bool+ & Initialisation à \galgas{false} \\
-  \galgas{@application} & \emph{Pas de constructeur par défaut} \\
-  \galgas{array @T} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@char} & Initialisation au caractère \texttt{NULL} \\
-  \galgas{class @T} & Oui, si tous les attributs possèdent un constructeur par défaut \\
-  \galgas{@data} & Équivalent au constructeur \galgas{emptyData} \\
-  \galgas{@double} & Initialisation à \texttt{0.0} \\
-  \galgas{@filewrapper} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@function} & \emph{Pas de constructeur par défaut} \\
-  \galgas{graph @T} & Équivalent au constructeur \galgas{emptyGraph} \\
-  \galgas{list @T} & Équivalent au constructeur \galgas{emptyList} \\
-  \galgas{map @T} & Équivalent au constructeur \galgas{emptyMap} \\
-  \galgas{listmap @T} & Équivalent au constructeur \galgas{emptyMap} \\
-  \galgas{@object} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@sint} & Initialisation à \galgas{0S} \\
-  \galgas{@sint64} & Initialisation à \galgas{0LS} \\
-  \galgas{sortedlist @T} & Équivalent au constructeur \galgas{emptySortedList} \\
-  \galgas{@string} & Initialisation à chaîne vide \galgas{""} \\
-  \galgas{@stringset} & Équivalent au constructeur \galgas{emptySet} \\
-  \galgas{struct @T} & Oui, si tous les attributs possèdent un constructeur par défaut \\
-  \galgas{@type} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@uint} & Initialisation à \galgas{0} \\
-  \galgas{@uint64} & Initialisation à \galgas{0L} \\
+  \ggs+abstract class @T+ & \emph{Pas de constructeur par défaut} \\
+  \ggs+@bool+ & Initialisation à \ggs+false+ \\
+  \ggs+@application+ & \emph{Pas de constructeur par défaut} \\
+  \ggs+array @T+ & \emph{Pas de constructeur par défaut} \\
+  \ggs+@char+ & Initialisation au caractère \texttt{NULL} \\
+  \ggs+class @T+ & Oui, si tous les attributs possèdent un constructeur par défaut \\
+  \ggs+@data+ & Équivalent au constructeur \ggs+emptyData+ \\
+  \ggs+@double+ & Initialisation à \texttt{0.0} \\
+  \ggs+@filewrapper+ & \emph{Pas de constructeur par défaut} \\
+  \ggs+@function+ & \emph{Pas de constructeur par défaut} \\
+  \ggs+graph @T+ & Équivalent au constructeur \ggs+emptyGraph+ \\
+  \ggs+list @T+ & Équivalent au constructeur \ggs+emptyList+ \\
+  \ggs+map @T+ & Équivalent au constructeur \ggs+emptyMap+ \\
+  \ggs+listmap @T+ & Équivalent au constructeur \ggs+emptyMap+ \\
+  \ggs+@object+ & \emph{Pas de constructeur par défaut} \\
+  \ggs+@sint+ & Initialisation à \ggs+0S+ \\
+  \ggs+@sint64+ & Initialisation à \ggs+0LS+ \\
+  \ggs+sortedlist @T+ & Équivalent au constructeur \ggs+emptySortedList+ \\
+  \ggs+@string+ & Initialisation à chaîne vide \ggs+""+ \\
+  \ggs+@stringset+ & Équivalent au constructeur \ggs+emptySet+ \\
+  \ggs+struct @T+ & Oui, si tous les attributs possèdent un constructeur par défaut \\
+  \ggs+@type+ & \emph{Pas de constructeur par défaut} \\
+  \ggs+@uint+ & Initialisation à \ggs+0+ \\
+  \ggs+@uint64+ & Initialisation à \ggs+0L+ \\
   \end{tabular}
   \caption{Constructeur par défaut pour chaque type}
   \labelTableau{constructeurParDefaut}
@@ -280,14 +277,13 @@ Remarques :
 
 \subsectionLabel{Valeur d'une option}{appelOption}
 
-Les options de la ligne de commande sont définies dans un composant \galgas{option} (\refChapterPage{composantOption}). L'opérande \emph{appel d'option} permet d'obtenir des informations sur une option.
+Les options de la ligne de commande sont définies dans un composant \ggs+option+ (\refChapterPage{composantOption}). L'opérande \emph{appel d'option} permet d'obtenir des informations sur une option.
 
-\lstset{emph={nom_composant_option, nom_option, nom_info}, emphstyle=\galgasEmphStyle}
-Sa syntaxe est \galgas{[option nom_composant_option.nom_option nom_info]}, où :
+Sa syntaxe est \ggs+[option nom_composant_option.nom_option nom_info]+, où :
 \begin{itemize}
-  \item \galgas{nom_composant_option} est le nom du composant \galgas{option} qui déclare l'option ;
-  \item \galgas{nom_option} est le nom donné à l'option lors de sa déclaration ;
-  \item \galgas{nom_info} est le nom de l'information dont la valeur sera retournée par l'opérande.
+  \item \ggs+nom_composant_option+ est le nom du composant \ggs+option+ qui déclare l'option ;
+  \item \ggs+nom_option+ est le nom donné à l'option lors de sa déclaration ;
+  \item \ggs+nom_info+ est le nom de l'information dont la valeur sera retournée par l'opérande.
 \end{itemize}
 
 
@@ -296,17 +292,17 @@ Les informations qui peuvent être ainsi obtenues sont décrites dans le \refTab
   \centering
   \begin{tabular}{llll}
   \textbf{nom\_info} & \textbf{Commentaire}  & \textbf{Type de la valeur retournée}\\
-  \galgas{value} & Valeur de l'option & \galgas{@T} (le type de l'option)\\
-  \galgas{char} & Caractère d'appel de l'option & \galgas{@char}\\
-  \galgas{string} & Chaîne d'appel de l'option & \galgas{@string}\\
-  \galgas{comment} & Description de l'option & \galgas{@string}\\
+  \ggs+value+ & Valeur de l'option & \ggs+@T+ (le type de l'option)\\
+  \ggs+char+ & Caractère d'appel de l'option & \ggs+@char+\\
+  \ggs+string+ & Chaîne d'appel de l'option & \ggs+@string+\\
+  \ggs+comment+ & Description de l'option & \ggs+@string+\\
   \end{tabular}
   \caption{Informations relatives à une option de la ligne de commande}
   \labelTableau{infosDeAppelOption}
   \ligne
 \end{table}
 
-Par exemple, si un composant \galgas{option} est déclaré comme suit :
+Par exemple, si un composant \ggs+option+ est déclaré comme suit :
 \begin{galgascode}
 option mesOptions {
   @bool extractOption : 'S', "asm" -> "Extract assembly code"
@@ -315,10 +311,10 @@ option mesOptions {
 
 Alors :
 \begin{itemize}
-  \item \galgas{[option mesOptions.extractOption value]} renvoie un \ggs+@bool+ qui vaut \galgas{true} si l'option a été activée, \galgas{false} dans le cas contraire ;
-  \item \galgas{[option mesOptions.extractOption char]} renvoie un \galgas{@char} qui vaut \galgas{'S'} ;
-  \item \galgas{[option mesOptions.extractOption string]} renvoie un \galgas{@string} qui vaut \galgas{"asm"} ;
-  \item \galgas{[option mesOptions.extractOption comment]} renvoie un \galgas{@string} qui vaut \galgas{"Extract assembly code"}.
+  \item \ggs+[option mesOptions.extractOption value]+ renvoie un \ggs+@bool+ qui vaut \ggs+true+ si l'option a été activée, \ggs+false+ dans le cas contraire ;
+  \item \ggs+[option mesOptions.extractOption char]+ renvoie un \ggs+@char+ qui vaut \ggs+'S'+ ;
+  \item \ggs+[option mesOptions.extractOption string]+ renvoie un \ggs+@string+ qui vaut \ggs+"asm"+ ;
+  \item \ggs+[option mesOptions.extractOption comment]+ renvoie un \ggs+@string+ qui vaut \ggs+"Extract assembly code"+.
 \end{itemize}
 
 
@@ -331,31 +327,31 @@ Alors :
 
 \subsectionLabel{Priorité des opérateurs}{prioriteOperateurs}
 
-La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs}. Pour des opérateurs de même priorité, le groupement s'effectue de gauche à droite. Les parenthèses permettent de forcer l'ordre d'évaluation. Par exemple, \galgas{4 + 3 - 2 - 3} est équivalent à \galgas{((4 + 3) - 2) - 3}.
+La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs}. Pour des opérateurs de même priorité, le groupement s'effectue de gauche à droite. Les parenthèses permettent de forcer l'ordre d'évaluation. Par exemple, \ggs*4 + 3 - 2 - 3* est équivalent à \ggs*((4 + 3) - 2) - 3*.
 
 \begin{table}[t]
   \centering
-%  \rowcolors{2}{\fondTableau}{}
   \begin{tabular}{llll}
   \textbf{Priorité} & \textbf{Opérateur}  & \textbf{Commentaire} & \textbf{Référence}\\
-  0 (plus faible) & \galgas{\|} & « ou » logique & \refSubsectionPage{operateursLogiques}\\
-    & \galgas{\|\|} & « ou », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
-    & \galgas{\^} & « ou exclusif » logique & \refSubsectionPage{operateursLogiques}\\
-  1 & \galgas{\&} & « et » logique & \refSubsectionPage{operateursLogiques}\\
-    & \galgas{\&\&} & « et », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
-  2 & \galgas{==}, \galgas{\!=} & Test d'identité & \refSubsectionPage{operateursComparaison}\\
-    & \galgas{<}, \galgas{<=} & Comparaison & \refSubsectionPage{operateursComparaison}\\
-    & \galgas{>}, \galgas{>=} & Comparaison & \refSubsectionPage{operateursComparaison}\\
-  3 & \galgas{<<}, \galgas{>>} & Décalage & \refSubsectionPage{operateursDecalage}\\
-    & \galgas{+} & Addition, concaténation & \refSubsectionPage{operateursArithmétique}\\
-    & \galgas{-} & Soustraction & \refSubsectionPage{operateursArithmétique}\\
-  4 & \galgas{*} & Multiplication & \refSubsectionPage{operateursArithmétique}\\
-    & \galgas{/} & Division & \refSubsectionPage{operateursArithmétique}\\
-    & \galgas{mod} & Modulo & \refSubsectionPage{operateursArithmétique}\\
-  5 & \galgas{-} & Négation arithmétique & \refSubsectionPage{operateursArithmétique}\\
-  6 & \galgas{not} & Complémentation booléenne & \refSubsectionPage{operateursLogiques}\\
-  7 & \galgas{\~} & Complémentation bit-à-bit & \refSubsectionPage{complementationBitABit}\\
-  8 (plus forte) & \galgas{.} & Accès à un champ d'une structure & \refSubsectionPage{accesChampStructure}\\
+  0 (plus faible) & \ggs+|+ & « ou » logique & \refSubsectionPage{operateursLogiques}\\
+    & \ggs+||+ & « ou », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
+    & \ggs+^+ & « ou exclusif » logique & \refSubsectionPage{operateursLogiques}\\
+  1 & \ggs+&+ & « et » logique & \refSubsectionPage{operateursLogiques}\\
+    & \ggs+&&+ & « et », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
+  2 & \ggs+==+, \ggs+!=+ & Test d'identité & \refSubsectionPage{operateursComparaison}\\
+    & \ggs+<+, \ggs+<=+ & Comparaison & \refSubsectionPage{operateursComparaison}\\
+    & \ggs+>+, \ggs+>=+ & Comparaison & \refSubsectionPage{operateursComparaison}\\
+  3 & \ggs+<<+, \ggs+>>+ & Décalage & \refSubsectionPage{operateursDecalage}\\
+    & \ggs*+* & Addition, concaténation & \refSubsectionPage{operateursArithmétique}\\
+    & \ggs+-+ & Soustraction & \refSubsectionPage{operateursArithmétique}\\
+  4 & \ggs+*+ & Multiplication & \refSubsectionPage{operateursArithmétique}\\
+    & \ggs+/+ & Division & \refSubsectionPage{operateursArithmétique}\\
+    & \ggs+mod+ & Modulo & \refSubsectionPage{operateursArithmétique}\\
+  5 & \ggs+-+ & Négation arithmétique & \refSubsectionPage{operateursArithmétique}\\
+  6 & \ggs+not+ & Complémentation booléenne & \refSubsectionPage{operateursLogiques}\\
+  7 & \ggs+~+ & Complémentation bit-à-bit & \refSubsectionPage{complementationBitABit}\\
+  8 (plus forte) & \ggs+.+ & Accès à un champ d'une structure & \refSubsectionPage{accesChampStructure}\\
+                 & \ggs+`+ & Construction d'un object de type \ggs+@type+ & \\
   \end{tabular}
   \caption{Priorité des opérateurs}
   \labelTableau{prioriteOperateurs}
@@ -364,15 +360,15 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
 
 \subsectionLabel{Logique}{operateursLogiques}
 
-\galgas{\|}, \galgas{\^}, \galgas{\&}, \galgas{not}
+\ggs+|+, \ggs+^+, \ggs+&+, \ggs+not+
 
 \subsectionLabel{Logique, évaluation en court-circuit}{operateursCourtCircuit}
 
-\galgas{\|\|} et \galgas{\&\&}
+\ggs+||+ et \ggs+&&+
 
 \subsectionLabel{Complémentation bit-à-bit}{complementationBitABit}
 
- \galgas{\~}
+ \ggs+~+
  
  
 \subsectionLabel{Comparaison}{operateursComparaison}
@@ -380,17 +376,17 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
 
 \subsectionLabel{Décalage}{operateursDecalage}
 
-\galgas{<<} et \galgas{>>}
+\ggs+<<+ et \ggs+>>+
 
 \subsectionLabel{Arithmétique}{operateursArithmétique}
 
-\galgas{+}, \galgas{-}, \galgas{*}, \galgas{/}, \galgas{mod}.
+\ggs*+*, \ggs+-+, \ggs+*+, \ggs+/+, \ggs+mod+.
 
-\galgas{-} unaire.
+\ggs+-+ unaire.
 
 
 \subsectionLabel{Accès à un champ d'une structure}{accesChampStructure}
 
-\galgas{.}
+\ggs+.+
 
 

@@ -6,9 +6,9 @@
 %-------------------------------------------------------------
 
 
-Le composant \galgas{option} permet de définir des options qui sont appelables à partir de la ligne de commande. Dans le code, la valeur d'une option est obtenue à partir de l'opérande \emph{appel d'une option}, décrit dans la \refSubsectionPage{appelOption}.
+Le composant \ggs+option+ permet de définir des options qui sont appelables à partir de la ligne de commande. Dans le code, la valeur d'une option est obtenue à partir de l'opérande \emph{appel d'une option}, décrit dans la \refSubsectionPage{appelOption}.
 
-Voici l'exemple d'un composant \galgas{option} qui déclare une option (évidement, un composant \galgas{option} peut déclarer un nombre quelconque d'options) :
+Voici l'exemple d'un composant \ggs+option+ qui déclare une option (évidement, un composant \ggs+option+ peut déclarer un nombre quelconque d'options) :
 \begin{galgascode}
 option nom_composant {
   @bool nom_option : 'S', "asm" -> "Extract assembly code"
@@ -25,11 +25,11 @@ La déclaration d'une option présente le syntaxe suivante :
 
 Les cinq champs qui définissent une option sont :
 \begin{itemize}
-  \item \galgas{@T} : le type de l'option ; trois types sont autorisés : \ggs+@bool+, \galgas{@uint} et \galgas{@string} ;
-  \item \galgas{nom_option} : c'est le nom, interne à GALGAS, qui permettra de désigner l'option dans l'\emph{appel d'une option} (\refSubsectionPage{appelOption}) ; 
-  \item \galgas{caractere} : le caractère qui activera l'option dans la ligne de commande ; par exemple, en écrivant \galgas{'A'}, l'option sera activée par \texttt{-A} dans la ligne de commande ; si vous ne voulez pas d'activation par un caractère, écrivez \galgas{'\\0'} ;
-  \item \galgas{chaine} : la chaîne de caractères qui activera l'option dans la ligne de commande ; par exemple, en écrivant \galgas{"ABEDEF"}, l'option sera activée par \texttt{-{}-ABCDEF} dans la ligne de commande ; si vous ne voulez pas d'activation par une chaîne, écrivez \galgas{""} ;
-  \item \galgas{description} : une chaîne de caractère qui contient une description de l'option, qui sera affichée par l'option \texttt{-{}-help} de votre compilateur.
+  \item \ggs+@T+ : le type de l'option ; trois types sont autorisés : \ggs+@bool+, \ggs+@uint+ et \ggs+@string+ ;
+  \item \ggs+nom_option+ : c'est le nom, interne à GALGAS, qui permettra de désigner l'option dans l'\emph{appel d'une option} (\refSubsectionPage{appelOption}) ; 
+  \item \ggs+caractere+ : le caractère qui activera l'option dans la ligne de commande ; par exemple, en écrivant \ggs+'A'+, l'option sera activée par \texttt{-A} dans la ligne de commande ; si vous ne voulez pas d'activation par un caractère, écrivez \ggs+'\0'+ ;
+  \item \ggs+chaine+ : la chaîne de caractères qui activera l'option dans la ligne de commande ; par exemple, en écrivant \ggs+"ABEDEF"+, l'option sera activée par \texttt{-{}-ABCDEF} dans la ligne de commande ; si vous ne voulez pas d'activation par une chaîne, écrivez \ggs+""+ ;
+  \item \ggs+description+ : une chaîne de caractère qui contient une description de l'option, qui sera affichée par l'option \texttt{-{}-help} de votre compilateur.
 \end{itemize}
 
 
@@ -48,7 +48,7 @@ Le champ qui définit le type de l'option est \ggs+@bool+ ; par exemple :
 
 Dans la ligne de commande, l'option est activée par \texttt{-A} ou \texttt{-{}-asm}.
 
-Par défaut, l'option n'est pas activée, et sa valeur associée est \galgas{false}. Quand l'option est activée dans la ligne de commande, sa valeur associée est \galgas{true}.
+Par défaut, l'option n'est pas activée, et sa valeur associée est \ggs+false+. Quand l'option est activée dans la ligne de commande, sa valeur associée est \ggs+true+.
 
 
 
@@ -59,7 +59,7 @@ Par défaut, l'option n'est pas activée, et sa valeur associée est \galgas{fal
 
 \section{Option entière}
 
-Le champ qui définit le type de l'option est \galgas{@uint} ; par exemple :
+Le champ qui définit le type de l'option est \ggs+@uint+ ; par exemple :
 \begin{galgascode}
   @uint nom_option : 'M', "max-iterations-count" -> "Max of iteration count"
 \end{galgascode}
@@ -79,7 +79,7 @@ Par défaut, l'option n'est pas activée, et sa valeur associée est $0$. Quand 
 
 \section{Option chaîne de caractères}
 
-Le champ qui définit le type de l'option est \galgas{@string} ; par exemple :
+Le champ qui définit le type de l'option est \ggs+@string+ ; par exemple :
 \begin{galgascode}
   @string nom_option : 'F', "file-name" -> "File name"
 \end{galgascode}

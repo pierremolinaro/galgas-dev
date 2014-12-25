@@ -9,9 +9,8 @@
 
 %\sectionLabel{Cible}{ciblePour Instruction}
 %
-%\lstset{emph={cible}, emphstyle=\galgasEmphStyle}
 %
-%La notation \galgas{cible} apparaît dans plusieurs instructions :
+%La notation \ggs+cible+ apparaît dans plusieurs instructions :
 %\begin{itemize}
 %  \item l'instruction d'affectation (\refSectionPage{assignmentInstruction}) ;
 %\end{itemize}
@@ -54,7 +53,6 @@
 
 Le point-virgule n'est pas un terminateur d'instruction. Il représente une instruction vide. Aussi, il peut être utilisé en nombre quelconque entre deux instructions consécutives. Ainsi, on peut écrire :
 
-\lstset{emph={instruction1, instruction2}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 instruction1  instruction2
 \end{galgascode}
@@ -75,14 +73,13 @@ instruction1 ;;;; instruction2
 
 \section{Instruction de déclaration de variable}
 
-\lstset{emph={variable, expression, @type}, emphstyle=\galgasEmphStyle}
 
-Une déclaration de variable peut citer une \galgas{expression} qui lui fournit sa valeur initiale. Dans le cas constraire, la variable est \emph{non construite} jusqu'à ce qu'une valeur lui soit affectée.
+Une déclaration de variable peut citer une \ggs+expression+ qui lui fournit sa valeur initiale. Dans le cas constraire, la variable est \emph{non construite} jusqu'à ce qu'une valeur lui soit affectée.
 
 Les deux formes de déclaration sont donc :
 \begin{itemize}
-\item déclaration d'une variable \emph{non construite} : « \galgas{var @type variable} » ;
-\item déclaration d'une variable \emph{construite} : « \galgas{var @type variable = expression} ».
+\item déclaration d'une variable \emph{non construite} : « \ggs+var @type variable+ » ;
+\item déclaration d'une variable \emph{construite} : « \ggs+var @type variable = expression+ ».
 \end{itemize}
 
 
@@ -100,7 +97,7 @@ var @type variable = expression
 
 \subsection{Déclaration « \texttt{var @type variable} »}
 
-On peut alléger l'écriture en ommettant le mot clé \galgas{var} :
+On peut alléger l'écriture en ommettant le mot clé \ggs+var+ :
 \begin{galgascode}
 @type variable
 \end{galgascode}
@@ -109,17 +106,17 @@ On peut alléger l'écriture en ommettant le mot clé \galgas{var} :
 \subsectionLabel{Déclaration « \texttt{var @type variable = expression} »}{declarationVariableAvecExpression}
 
 
-On peut alléger l'écriture en ommettant le mot clé \galgas{var} :
+On peut alléger l'écriture en ommettant le mot clé \ggs+var+ :
 \begin{galgascode}
 @type variable = expression
 \end{galgascode}
 
-On peut omettre le type (mais il faut alors garder le mot-clé \galgas{var}), à la condition que l'expression puisse fournir l'information de type. Par exemple, dans l'écriture suivante :
+On peut omettre le type (mais il faut alors garder le mot-clé \ggs+var+), à la condition que l'expression puisse fournir l'information de type. Par exemple, dans l'écriture suivante :
 \begin{galgascode}
 var @string s = "Hello"
 \end{galgascode}
 
-L'expression est une chaîne de caractères, dont le type est \galgas{@string}. On peut donc omettre l'annotation de type dans l'instruction :
+L'expression est une chaîne de caractères, dont le type est \ggs+@string+. On peut donc omettre l'annotation de type dans l'instruction :
 \begin{galgascode}
 var s = "Hello"
 \end{galgascode}
@@ -172,17 +169,17 @@ var sl = .here # Erreur : le type est indetermine
 \section{Instruction de déclaration de constante}
 
 La forme générale de cette instruction est la suivante :
-\lstset{emph={nom, expression, @type}, emphstyle=\galgasEmphStyle}
+
 \begin{galgascode}
 let @type nom = expression
 \end{galgascode}
 
-Le mot clé \galgas{let} caractérise une déclaration de constante. L'annotation de type peut être omis si le type peut être déduit de l'expression, comme pour l'instruction de déclaration de variable (\refSubsectionPage{declarationVariableAvecExpression}). On peut donc reprendre les exemples de la section précédente :
+Le mot clé \ggs+let+ caractérise une déclaration de constante. L'annotation de type peut être omis si le type peut être déduit de l'expression, comme pour l'instruction de déclaration de variable (\refSubsectionPage{declarationVariableAvecExpression}). On peut donc reprendre les exemples de la section précédente :
 \begin{galgascode}
 let @string s = "Hello"
 \end{galgascode}
 
-L'expression est une chaîne de caractères, dont le type est \galgas{@string}. On peut donc omettre l'annotation de type dans l'instruction :
+L'expression est une chaîne de caractères, dont le type est \ggs+@string+. On peut donc omettre l'annotation de type dans l'instruction :
 \begin{galgascode}
 let s = "Hello"
 \end{galgascode}
@@ -249,19 +246,19 @@ let sl = .here # Erreur : le type est indetermine
 \sectionLabel{L'instruction d'affectation}{assignmentInstruction}
 
 L'instruction d'affectation peut prendre plusieurs formes. La plus courante est :
-\lstset{emph={expression, variable}, emphstyle=\galgasEmphStyle}
+
 \begin{galgascode}
 variable = expression
 \end{galgascode}
 
-Si \galgas{variable} est une instance de structure (\refChapterPage{type-structure}), on peut directement en modifier un champ en utilisant l'opérateur \galgas{.} :
-\lstset{emph={expression, variable, champ}, emphstyle=\galgasEmphStyle}
+Si \ggs+variable+ est une instance de structure (\refChapterPage{type-structure}), on peut directement en modifier un champ en utilisant l'opérateur \ggs+.+ :
+
 \begin{galgascode}
 variable.champ = expression
 \end{galgascode}
 
-Si \galgas{champ} est lui-même une structure, on peut accéder à l'un de ses champs (et ainsi de suite) :
-\lstset{emph={expression, variable, champ, champ1}, emphstyle=\galgasEmphStyle}
+Si \ggs+champ+ est lui-même une structure, on peut accéder à l'un de ses champs (et ainsi de suite) :
+
 \begin{galgascode}
 variable.champ.champ1 = expression
 \end{galgascode}
@@ -280,9 +277,8 @@ variable.champ.champ1 = expression
 
 \sectionLabel{L'instruction \texttt{cast}}{instructionCast}
 
-L'instruction \galgas{cast} permet simplement d'exprimer de manière élégante une série de tests de conversions polymorphiques inverses. Sa syntaxe est :
+L'instruction \ggs+cast+ permet simplement d'exprimer de manière élégante une série de tests de conversions polymorphiques inverses. Sa syntaxe est :
 
-\lstset{emph={expression, nom1, nom2, conversion}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 cast expression
 case conversion @T1 nom1 :
@@ -294,17 +290,17 @@ else
 end
 \end{galgascode}
 
-L'instruction accepte une ou plusieurs branches \galgas{case}, et zéro ou une branche \galgas{else}. \galgas{conversion} est soit \galgas{==}, soit \galgas{>=}. \galgas{nom1} et \galgas{nom2} sont des constantes dont le type est le type nommé dans la branche \galgas{case} qui la déclare, et dont la portée est limitée à cette branche \galgas{case}.
+L'instruction accepte une ou plusieurs branches \ggs+case+, et zéro ou une branche \ggs+else+. \ggs+conversion+ est soit \ggs+==+, soit \ggs+>=+. \ggs+nom1+ et \ggs+nom2+ sont des constantes dont le type est le type nommé dans la branche \ggs+case+ qui la déclare, et dont la portée est limitée à cette branche \ggs+case+.
 
-Lors de l'exécution, le type dynamique de \galgas{expression} est comparé successivement aux types (\galgas{@T1}, \galgas{@T2}) nommés dans les branches \galgas{case} ; dès que ce type dynamique est :
+Lors de l'exécution, le type dynamique de \ggs+expression+ est comparé successivement aux types (\ggs+@T1+, \ggs+@T2+) nommés dans les branches \ggs+case+ ; dès que ce type dynamique est :
 \begin{itemize}
-  \item exactement la classe \galgas{@T} (\galgas{conversion} est \galgas{==}), 
-  \item la classe \galgas{@T} ou de l'une de ses classes héritières (\galgas{conversion} est \galgas{>=}),
-  \item une classe héritière de la classe \galgas{@T}, mais pas la classe \galgas{@T} (\galgas{conversion} est \galgas{>}),
+  \item exactement la classe \ggs+@T+ (\ggs+conversion+ est \ggs+==+), 
+  \item la classe \ggs+@T+ ou de l'une de ses classes héritières (\ggs+conversion+ est \ggs+>=+),
+  \item une classe héritière de la classe \ggs+@T+, mais pas la classe \ggs+@T+ (\ggs+conversion+ est \ggs+>+),
 \end{itemize}
-alors la constante prend la valeur de \galgas{expression} et les instructions de la branche correspondante sont exécutées.
+alors la constante prend la valeur de \ggs+expression+ et les instructions de la branche correspondante sont exécutées.
 
-Si toutes les comparaisons échouent, la branche \galgas{else} est exécutée (si elle existe). La forme typique de cette instruction est donc :
+Si toutes les comparaisons échouent, la branche \ggs+else+ est exécutée (si elle existe). La forme typique de cette instruction est donc :
 
 
 \begin{galgascode}
@@ -318,7 +314,7 @@ else
 end
 \end{galgascode}
 
-Note : si la variable \galgas{nom1} ou  \galgas{nom2} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \galgas{case >= @T :}.
+Note : si la variable \ggs+nom1+ ou  \ggs+nom2+ n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \ggs+case >= @T :+.
 
 
 
@@ -330,48 +326,47 @@ Note : si la variable \galgas{nom1} ou  \galgas{nom2} n'est pas utilisée dans l
 
 \sectionLabel{L'instruction d'ajout \texttt{+=}}{concatInstruction}
 
-\lstset{emph={cible, expression, expression1, expressionN}, emphstyle=\galgasEmphStyle}
 Cette instruction permet d'ajouter un élément à une collection ; elle présente deux syntaxes, suivant que l'élément à ajouter est défini par :
 \begin{itemize}
-  \item une expression : \galgas{cible += expression} ;
-  \item une liste d'expressions : \galgas{cible += !expression1 ... !expressionN}.
+  \item une expression : \ggs*cible += expression* ;
+  \item une liste d'expressions : \ggs*cible += !expression1 ... !expressionN*.
 \end{itemize}
 
 
-La \galgas{cible} est une variable ou un champ de structure.
+La \ggs+cible+ est une variable ou un champ de structure.
 
 Cette instruction s'applique aux types suivants :
 \begin{itemize}
-  \item \galgas{@string} (\refSubsectionPage{instructionConcatString}) ;
-  \item \galgas{@stringset} (\refSubsectionPage{instructionConcatStringset}) ;
-  \item \galgas{list @T} (\refSubsectionPage{instructionConcatList}) ;
-  \item \galgas{sortedlist @T} (\refSubsectionPage{instructionConcatSortedList}) ;
-  \item \galgas{map @T} (\refSubsectionPage{instructionConcatMap}).
+  \item \ggs+@string+ (\refSubsectionPage{instructionConcatString}) ;
+  \item \ggs+@stringset+ (\refSubsectionPage{instructionConcatStringset}) ;
+  \item \ggs+list @T+ (\refSubsectionPage{instructionConcatList}) ;
+  \item \ggs+sortedlist @T+ (\refSubsectionPage{instructionConcatSortedList}) ;
+  \item \ggs+map @T+ (\refSubsectionPage{instructionConcatMap}).
 \end{itemize}
 
 
 \subsectionLabel{Instruction d'ajout et le type \texttt{@string}}{instructionConcatString}
 
-Sous la forme \galgas{cible += expression}, l'instruction permet de concaténer des chaînes de caractères :
+Sous la forme \ggs+cible += expression+, l'instruction permet de concaténer des chaînes de caractères :
 \begin{galgascode}
 var s = "abc"
 s += "def" # s vaut "abcdef"
 \end{galgascode}
 
-La forme \galgas{cible += !expression1 ... !expressionN} n'est pas prise en compte pour le type \galgas{@string}.
+La forme \ggs+cible += !expression1 ... !expressionN+ n'est pas prise en compte pour le type \ggs+@string+.
 
 
 
 \subsectionLabel{Instruction d'ajout et le type \texttt{@stringset}}{instructionConcatStringset}
 
-Sous la forme \galgas{cible += expression}, l'instruction permet de concaténer d'effectuer l'union des ensembles de châines :
+Sous la forme \ggs*cible += expression*, l'instruction permet de concaténer d'effectuer l'union des ensembles de châines :
 \begin{galgascode}
 var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
 var strset2 = @stringset {!"b", !"c"} # Valeur : "b", "c"
 strset1 += strset2 # strset1 vaut "a", "b", "c"
 \end{galgascode}
 
-La forme \galgas{cible += !expression1 ... !expressionN} permet d'ajouter une chaîne à l'ensemble :
+La forme \ggs*cible += !expression1 ... !expressionN* permet d'ajouter une chaîne à l'ensemble :
 \begin{galgascode}
 var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
 strset1 += !"c" # strset1 vaut "a", "b", "c"
@@ -382,7 +377,7 @@ strset1 += !"b" # strset1 vaut "a", "b", "c"
 
 \subsectionLabel{Instruction d'ajout et les listes}{instructionConcatList}
 
-Sous la forme \galgas{cible += expression}, l'instruction effectue une concaténation de listes : \galgas{cible} et \galgas{expression} doivent avoir le même type \galgas{list @T}, et l'\galgas{expression} est ajoutée à la fin de la \galgas{cible}.
+Sous la forme \ggs*cible += expression*, l'instruction effectue une concaténation de listes : \ggs+cible+ et \ggs+expression+ doivent avoir le même type \ggs+list @T+, et l'\ggs+expression+ est ajoutée à la fin de la \ggs+cible+.
 
 \begin{galgascode}
 var liste1 = @stringlist {!"a", !"b"}
@@ -392,7 +387,7 @@ liste1 += liste2 # liste1 vaut "a" "b" "c" "d"
 
 
 
-Sous la forme \galgas{cible += !expression1 ... !expressionN}, l'instruction ajoute un élément à la fin de \galgas{cible}. L'élément est défini par la liste des valeurs de ses champs.
+Sous la forme \ggs*cible += !expression1 ... !expressionN*, l'instruction ajoute un élément à la fin de \ggs+cible+. L'élément est défini par la liste des valeurs de ses champs.
 
 Avec la liste :
 \begin{galgascode}
@@ -416,7 +411,7 @@ liste += !2 !"a" # liste vaut contient un element 2, "a"
 
 \subsectionLabel{Instruction d'ajout et les listes triées}{instructionConcatSortedList}
 
-Sous la forme \galgas{cible += expression}, l'instruction effectue une concaténation de listes : \galgas{cible} et \galgas{expression} doivent avoir le même type \galgas{list @T}, et chaque élément de \galgas{expression} est ajouté à la \galgas{cible} en respectant l'ordre de tri.
+Sous la forme \ggs*cible += expression*, l'instruction effectue une concaténation de listes : \ggs+cible+ et \ggs+expression+ doivent avoir le même type \ggs+sorted list @T+, et chaque élément de \ggs+expression+ est ajouté à la \ggs+cible+ en respectant l'ordre de tri.
 
 Avec la liste triée :
 \begin{galgascode}
@@ -436,7 +431,7 @@ liste1 += liste2 # liste1 vaut (1, "c"), (2, "b"), (3, "a"), (4, "d")
 
 
 
-Sous la forme \galgas{cible += !expression1 ... !expressionN}, l'instruction ajoute un élément à la fin de \galgas{cible}. L'élément est défini par la liste des valeurs de ses champs.
+Sous la forme \ggs*cible += !expression1 ... !expressionN*, l'instruction ajoute un élément à la fin de \ggs+cible+. L'élément est défini par la liste des valeurs de ses champs.
 
 
 On a :
@@ -456,9 +451,9 @@ liste += !3 !"c" # Valeur : (1, "b"), (2, "a"), (3, "c")
 
 \subsectionLabel{Instruction d'ajout et les tables}{instructionConcatMap}
 
-La forme \galgas{cible += expression} n'est pas prise en charge.
+La forme \ggs*cible += expression* n'est pas prise en charge.
 
-Sous la forme \galgas{cible += !expression1 ... !expressionN}, l'instruction ajoute un élément à la table \galgas{cible}. L'élément est défini par la clé et suivie de la liste des valeurs de ses champs.
+Sous la forme \ggs*cible += !expression1 ... !expressionN*, l'instruction ajoute un élément à la table \ggs+cible+. L'élément est défini par la clé et suivie de la liste des valeurs de ses champs.
 
 
 Avec la table :
@@ -492,8 +487,8 @@ table += !clef !2 !"a"
 
 \sectionLabel{Décrémentation \texttt{-{}-}}{decrementInstruction}
 
-L'instruction de décrémentation s'applique aux types \refTypePredefini{sint}, \refTypePredefini{sint64}, \refTypePredefini{uint} et \refTypePredefini{uint64} ; sa syntaxe est la suivante :
-\lstset{emph={variable, champ}, emphstyle=\galgasEmphStyle}
+L'instruction de décrémentation s'applique aux types \refTypePredefini{sint}, \refTypePredefini{sint64}, \refTypePredefini{uint} et \ggs+uint64+ ; sa syntaxe est la suivante :
+
 \begin{galgascode}
 variable --
 \end{galgascode}
@@ -514,12 +509,11 @@ Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 
 \section{L'instruction \texttt{drop}}
 
-La syntaxe de l'instruction \galgas{drop} est la suivante :
-{\lstset{emph={variable}, emphstyle=\galgasEmphStyle}
+La syntaxe de l'instruction \ggs+drop+ est la suivante :
+
 \begin{galgascode}
 drop variable, ...
 \end{galgascode}
-}
 
 Chaque variable nommée est placée dans l'état \emph{non construit}.
 
@@ -533,16 +527,15 @@ Chaque variable nommée est placée dans l'état \emph{non construit}.
 
 \section{L'instruction \texttt{error}}
 
-L'instruction \galgas{error} permet de signaler une erreur à l'utilisateur. Elle est constituée de trois champs séparés par un double-point (\galgas{\:}) :
+L'instruction \ggs+error+ permet de signaler une erreur à l'utilisateur. Elle est constituée de trois champs séparés par un double-point (\ggs+:+) :
 
-{\lstset{emph={localisation, message_erreur, variable1, variableN}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 error localisation : message_erreur : variable1, ..., variableN
 \end{galgascode}
 
 
 
-Le champ \galgas{localisation} signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \galgas{@location}, ou d'un type possédant un \emph{getter} sans argument nommé \galgas{location} et renvoyant un objet de type \galgas{@location} : c'est le cas de tous les types prédéfinis \refTypePredefini{luint}, \refTypePredefini{luint64}, \refTypePredefini{lsint}, \refTypePredefini{lsint64}, \refTypePredefini{lbool}, \refTypePredefini{lchar} et \refTypePredefini{lstring}. Le \galgas{message_erreur} est le message affiché à l'utilisateur : c'est donc une expression de type \galgas{@string}. Enfin, le troisième champ liste les variables \galgas{variable1}, ..., \galgas{variableN} qui ne peuvent être construites du fait de l'erreur. Si il n'y a pas de variable à citer, l'instruction s'écrit :
+Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggs+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggs+location+ et renvoyant un objet de type \ggs+@location+ : c'est le cas de tous les types prédéfinis \ggs+@luint+, \ggs+@luint64+, \ggs+@lsint+, \ggs+@lsint64+, \ggs+@lbool+, \ggs+@lchar+ et \ggs+@lstring+. Le \ggs+message_erreur+ est le message affiché à l'utilisateur : c'est donc une expression de type \ggs+@string+. Enfin, le troisième champ liste les variables \ggs+variable1+, ..., \ggs+variableN+ qui ne peuvent être construites du fait de l'erreur. Si il n'y a pas de variable à citer, l'instruction s'écrit :
 \begin{galgascode}
 error localisation : message_erreur
 \end{galgascode}
@@ -555,7 +548,7 @@ $identifier$ ??@lstring nom
 error nom.location : message_erreur
 \end{galgascode}
 
-Comme \galgas{nom} est de type \galgas{lstring} (voir ci-dessus), on peut simplement écrire :
+Comme \ggs+nom+ est de type \ggs+lstring+ (voir ci-dessus), on peut simplement écrire :
 \begin{galgascode}
 $identifier$ ??@lstring nom
 ...
@@ -574,7 +567,7 @@ else
 end # Erreur : 'resultat' est value par une branche
 \end{galgascode}
 
-En effet, une des branches du \galgas{if} donne une valeur à \galgas{resultat}, et l'autre pas. Or, en cas d'erreur, on veut que \galgas{resultat} ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile) :
+En effet, une des branches du \ggs+if+ donne une valeur à \ggs+resultat+, et l'autre pas. Or, en cas d'erreur, on veut que \ggs+resultat+ ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile) :
 \begin{galgascode}
 $identifier$ ??@lstring nom
 @unType resultat
@@ -585,7 +578,7 @@ else
 end
 \end{galgascode}
 
-Mentionner \galgas{resultat} à la fin de l'instruction \galgas{error} permet de faire croire au compilateur que \galgas{resultat} est valué.
+Mentionner \ggs+resultat+ à la fin de l'instruction \ggs+error+ permet de faire croire au compilateur que \ggs+resultat+ est valué.
 
 
 %---------------------------------------------------------------------------------------------------------------------------
@@ -615,7 +608,7 @@ La correspondance entre arguments formels et paramètres effectifs est décrite 
 
 \sectionLabel{L'instruction \texttt{for}}{instructionFor}
 
-L'instruction \galgas{for} permet d'énumérer :
+L'instruction \ggs+for+ permet d'énumérer :
 \begin{itemize}
   \item une collection ;
   \item plusieurs collections de manière synchrone.
@@ -623,7 +616,6 @@ L'instruction \galgas{for} permet d'énumérer :
 
 Pour énumérer une collection, la syntaxe est la suivante :
 
-\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, enumeration_collection, enumeration_collection1, enumeration_collection2}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 for enumeration_collection
 while condition # Optionnel
@@ -653,18 +645,17 @@ end
 
 \subsection{Les quatre formes d'une énumération}
 
-Le \refTableau{quatreFormesEnumeration} liste les quatre façons d'exprimer l'énumération \galgas{enumeration_collection}.
+Le \refTableau{quatreFormesEnumeration} liste les quatre façons d'exprimer l'énumération \ggs+enumeration_collection+.
 
 
-\lstset{emph={enumeration_collection, expression, sens, prefixe, cst, cst1, cst2}, emphstyle=\galgasEmphStyle}
 \begin{table}[t]
   \centering
   \begin{tabular}{lp{8.5cm}}
   \textbf{Énumération} & \textbf{Signification}\\
-  \galgas{sens () in expression} & Utilisation de constantes définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicite}).\\
-  \galgas{sens () prefixe in expression} & Utilisation de constantes préfixées définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicitePrefixee}).\\
-  \galgas{sens cst in expression} & Déclaration d'une constante représentant l'élément courant (\refSubsectionPage{enumerationParConstante}).\\
-  \galgas{sens (cst1 cst2 ...) in expression} & Déclaration de constantes représentant les champs de l'élément courant (\refSubsectionPage{enumerationParListeConstantes}).\\
+  \ggs+sens () in expression+ & Utilisation de constantes définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicite}).\\
+  \ggs+sens () prefixe in expression+ & Utilisation de constantes préfixées définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicitePrefixee}).\\
+  \ggs+sens cst in expression+ & Déclaration d'une constante représentant l'élément courant (\refSubsectionPage{enumerationParConstante}).\\
+  \ggs+sens (cst1 cst2 ...) in expression+ & Déclaration de constantes représentant les champs de l'élément courant (\refSubsectionPage{enumerationParListeConstantes}).\\
   \end{tabular}
   \caption{Les quatre formes d'énumération de l'instruction \texttt{for}}
   \labelTableau{quatreFormesEnumeration}
@@ -674,18 +665,18 @@ Le \refTableau{quatreFormesEnumeration} liste les quatre façons d'exprimer l'é
 
 \subsection{Types énumérables et ordre d'énumération}
 
-Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesFor}, ainsi que leur ordre d'énumération par défaut. Si le champ \galgas{sens} est vide, c'est l'ordre par défaut qui est adopté. Utiliser \galgas{>} fixe le sens inverse.
+Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesFor}, ainsi que leur ordre d'énumération par défaut. Si le champ \ggs+sens+ est vide, c'est l'ordre par défaut qui est adopté. Utiliser \ggs+>+ fixe le sens inverse.
 
 \begin{table}[t]
   \centering
   \begin{tabular}{ll}
   \textbf{Type} & \textbf{Ordre d'énumération}\\
-  \galgas{@data} & Ordre croissant des indices\\
-  \galgas{list @T} & Ordre croissant des indices \\
-  \galgas{map @T} & Ordre alphabétique des clés \\
-  \galgas{listmap @T} & Ordre alphabétique des clés \\
-  \galgas{sortedlist @T} & Ordre du tri \\
-  \galgas{@stringset} & Ordre alphabétique \\
+  \ggs+@data+ & Ordre croissant des indices\\
+  \ggs+list @T+ & Ordre croissant des indices \\
+  \ggs+map @T+ & Ordre alphabétique des clés \\
+  \ggs+listmap @T+ & Ordre alphabétique des clés \\
+  \ggs+sortedlist @T+ & Ordre du tri \\
+  \ggs+@stringset+ & Ordre alphabétique \\
   \end{tabular}
   \caption{Types énumérables par l'instruction \texttt{for}}
   \labelTableau{typesEnumerablesFor}
@@ -715,12 +706,12 @@ Des constantes correspondants à chaque champ de l'élément courant sont implic
   \centering
   \begin{tabular}{lp{12cm}}
   \textbf{Type} & \textbf{Constantes implicitement déclarées}\\
-  \galgas{@data} & \galgas{data}, de type \galgas{@uint}\\
-  \galgas{list @T} & À chaque champ de la liste, correspond une constante de même nom.\\
-  \galgas{map @T} & \galgas{lkey}, de type \galgas{@lstring}, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
-  \galgas{listmap @T} & \galgas{key}, de type \galgas{@string}, qui représente la clé, et \galgas{mList}, qui représente la liste associée.\\
-  \galgas{sortedlist @T} & À chaque champ de la liste, correspond une constante de même nom.\\
-  \galgas{@stringset} & \galgas{key}, de type \galgas{@string} \\
+  \ggs+@data+ & \ggs+data+, de type \ggs+@uint+\\
+  \ggs+list @T+ & À chaque champ de la liste, correspond une constante de même nom.\\
+  \ggs+map @T+ & \ggs+lkey+, de type \ggs+@lstring+, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
+  \ggs+listmap @T+ & \ggs+key+, de type \ggs+@string+, qui représente la clé, et \ggs+mList+, qui représente la liste associée.\\
+  \ggs+sortedlist @T+ & À chaque champ de la liste, correspond une constante de même nom.\\
+  \ggs+@stringset+ & \ggs+key+, de type \ggs+@string+ \\
   \end{tabular}
   \caption{Constantes implicitement déclarées par «\texttt{() in expression}»}
   \labelTableau{constantesImplicitementDeclarees}
@@ -782,7 +773,7 @@ end
 
 \subsectionLabel{Énumération « \texttt{() prefixe in expression} »}{enumerationImplicitePrefixee}
 
-Cette écriture est une extension de celle de la section précédente : \galgas{prefixe} est utilisé pour préfixer le nom des constantes implicitement déclarées. En reprenant les exemples de la section précédente :
+Cette écriture est une extension de celle de la section précédente : \ggs+prefixe+ est utilisé pour préfixer le nom des constantes implicitement déclarées. En reprenant les exemples de la section précédente :
 
 \begin{galgascode}
 @data d = ...
@@ -826,7 +817,7 @@ for () in v1, () in v2 do # Erreur !
 end
 \end{galgascode}
 
-Le compilateur GALGAS déclenche une erreur, car il y a ambiguïté sur la signification de \galgas{mProperty1} et de \galgas{mProperty2} à l'intérieur de la boucle : désigne-t'elle l'élément courant de \galgas{v1} ou l'élément courant de \galgas{v2} ?
+Le compilateur GALGAS déclenche une erreur, car il y a ambiguïté sur la signification de \ggs+mProperty1+ et de \ggs+mProperty2+ à l'intérieur de la boucle : désigne-t'elle l'élément courant de \ggs+v1+ ou l'élément courant de \ggs+v2+ ?
 
 Pour lever l'ambiguïté, on complète l'instruction en précisant un préfixe pour l'une des deux listes (par exemple la seconde) :
 \begin{galgascode}
@@ -841,19 +832,19 @@ end
 
 \subsectionLabel{Énumération « \texttt{cst in expression} »}{enumerationParConstante}
 
-Dans cette forme, une seule constante est déclarée (\galgas{cst}), et son type est donné par le \refTableau{enumerationParConstante}. Le type \galgas{@T-element} est implicitement déclaré avec la déclaration de la collection correspondante (liste, table), et est une structure : on accède donc à ses champs par l'opérateur \galgas{.}. 
+Dans cette forme, une seule constante est déclarée (\ggs+cst+), et son type est donné par le \refTableau{enumerationParConstante}. Le type \ggs+@T-element+ est implicitement déclaré avec la déclaration de la collection correspondante (liste, table), et est une structure : on accède donc à ses champs par l'opérateur \ggs+.+. 
 
 
 \begin{table}[t]
   \centering
   \begin{tabular}{llp{7cm}}
-  \textbf{Type} & \textbf{Type implicite de la constante}\\
-  \galgas{@data} & \galgas{@uint}\\
-  \galgas{list @T} & \galgas{@T-element}\\
-  \galgas{map @T} & \galgas{@T-element}\\
-  \galgas{listmap @T} & \galgas{@T-element}\\
-  \galgas{sortedlist @T} & \galgas{@T-element}\\
-  \galgas{@stringset} & \galgas{@string} \\
+  \textbf{Type de \texttt{expression}} & \textbf{Type implicite de la constante \texttt{cst}}\\
+  \ggs+@data+ & \ggs+@uint+\\
+  \ggs+list @T+ & \ggs+@T-element+\\
+  \ggs+map @T+ & \ggs+@T-element+\\
+  \ggs+listmap @T+ & \ggs+@T-element+\\
+  \ggs+sortedlist @T+ & \ggs+@T-element+\\
+  \ggs+@stringset+ & \ggs+@string+ \\
   \end{tabular}
   \caption{Type de la constante dans «\texttt{cst in expression} »}
   \labelTableau{enumerationParConstante}
@@ -947,12 +938,12 @@ Le \refTableau{enumerationParListeConstantes} liste pour chaque type le nombre e
   \centering
   \begin{tabular}{lp{12cm}}
   \textbf{Type} & \textbf{Constantes à déclarer}\\
-  \galgas{@data} & \emph{Ce type n'est pas pris en charge par cette forme.}\\
-  \galgas{list @T} & Une constante pour chaque champ, dans l'ordre de déclaration.\\
-  \galgas{map @T} & Une constante de type \galgas{@lstring}, qui représente la clé, suivi d'une constante pour chaque champ de la table, dans l'ordre de déclaration.\\
-  \galgas{listmap @T} & Une constante de type \galgas{@string}, qui représente la clé, et une constante qui représente la liste associée.\\
-  \galgas{sortedlist @T} & Une constante pour chaque champ, dans l'ordre de déclaration.\\
-  \galgas{@stringset} & \emph{Ce type n'est pas pris en charge par cette forme.} \\
+  \ggs+@data+ & \emph{Ce type n'est pas pris en charge par cette forme.}\\
+  \ggs+list @T+ & Une constante pour chaque champ, dans l'ordre de déclaration.\\
+  \ggs+map @T+ & Une constante de type \ggs+@lstring+, qui représente la clé, suivi d'une constante pour chaque champ de la table, dans l'ordre de déclaration.\\
+  \ggs+listmap @T+ & Une constante de type \ggs+@string+, qui représente la clé, et une constante qui représente la liste associée.\\
+  \ggs+sortedlist @T+ & Une constante pour chaque champ, dans l'ordre de déclaration.\\
+  \ggs+@stringset+ & \emph{Ce type n'est pas pris en charge par cette forme.} \\
   \end{tabular}
   \caption{Constantes à déclarer pour «\texttt{(cst1 cst2 ...) in expression} »}
   \labelTableau{enumerationParListeConstantes}
@@ -1002,7 +993,7 @@ end
 
 \subsubsection{Joker}
 
-Si certaines constantes ne sont pas utiles, on peut les remplacer par un joker (\galgas{*}). Le nom du type ne doit alors pas figurer.
+Si certaines constantes ne sont pas utiles, on peut les remplacer par un joker (\ggs+*+). Le nom du type ne doit alors pas figurer.
 \begin{galgascode}
 @maListe uneListe = {!1 !"a" !'b' !false}
 for (@uint p1 * * @bool p4) in uneListe do
@@ -1022,7 +1013,7 @@ end
 
 \subsubsection{Points de suspension}
 
-Trois points consécutifs (\galgas{...}) peuvent être utilisés pour signifier que les dernières constantes ne sont pas utiles.
+Trois points consécutifs (\ggs+...+) peuvent être utilisés pour signifier que les dernières constantes ne sont pas utiles.
 
 \begin{galgascode}
 @maListe uneListe = {!1 !"a" !'b' !false}
@@ -1046,7 +1037,7 @@ end
 
 \subsection{Organigramme d'exécution}
 
-L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné à la \refFigure{}{organigrammeFor}. Si plusieurs collections sont énumérées, l'instructions se termine dès que la collection la moins nombreuse est complètement enumérée.
+L'organigramme illustrant l'exécution de l'instruction \ggs+for+ est donné à la \refFigure{}{organigrammeFor}. Si plusieurs collections sont énumérées, l'instructions se termine dès que la collection la moins nombreuse est complètement enumérée.
 
 \begin{figure}[t]
   \centering
@@ -1092,32 +1083,31 @@ L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné 
 
 \subsection{Champs optionnels}
 
-Plusieurs champs de l'instruction \galgas{for} sont optionnels.
+Plusieurs champs de l'instruction \ggs+for+ sont optionnels.
 
-\lstset{emph={expression, sens, instructions\_before, instructions\_do, instructions\_between, instructions\_after}, emphstyle=\galgasEmphStyle}
 
-\galgas{sens}. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
+\ggs+sens+. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
 \begin{itemize}
   \item si le champ est vide, dans l'ordre indiqué par le \refTableau{typesEnumerablesFor} ;
-  \item \galgas{>}, dans l'ordre inverse à celui indiqué par le \refTableau{typesEnumerablesFor}.
+  \item \ggs+>+, dans l'ordre inverse à celui indiqué par le \refTableau{typesEnumerablesFor}.
 \end{itemize}
 
 
-\galgas{(nom\_index)}. Vous pouvez mentionner un identificateur entre parenthèses après le mot réservé \galgas{do}. Cet identificateur est le nom d'une constante qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Sa visibilité est la branche \ggs+do+.
+\ggs+(nom_index)+. Vous pouvez mentionner un identificateur entre parenthèses après le mot réservé \ggs+do+. Cet identificateur est le nom d'une constante qui a implicitement le type \ggs+@uint+ et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \ggs+instructions_do+, et avant l'exécution des \ggs+instructions_between+. Sa visibilité est la branche \ggs+do+.
 
-\galgas{while expression}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
+\ggs+while expression+. L'énumération est exécutée tant que l'\ggs+expression+ est vraie. L'absence de cette construction est équivalent à \ggs+while true+ et permet d'énumérer toutes les valeurs.
 
 
-\galgas{before instructions\_before}. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+\ggs+before instructions_before+. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
 
-\galgas{between instructions\_between}. Ces instructions sont exécutées entre deux exécutions consécutives des \galgas{instructions\_do}. Aucun accès aux objets énumérés n'est possible.
+\ggs+between instructions_between+. Ces instructions sont exécutées entre deux exécutions consécutives des \ggs+instructions_do+. Aucun accès aux objets énumérés n'est possible.
 
-\galgas{after instructions\_after}. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+\ggs+after instructions_after+. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
 
 
 \subsection{Modification de la collection}
 
-Au début de l'exécution de l'instruction \galgas{for}, les valeurs des collections enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
+Au début de l'exécution de l'instruction \ggs+for+, les valeurs des collections enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
 \begin{galgascode}
 @stringlist v = {}
 v += !"A"
@@ -1151,8 +1141,8 @@ log v # "A", "B", "C", "A", "B", "C"
 
 \sectionLabel{Instruction d'incrémentation}{incrementInstruction}
 
-L'instruction d'incrémentation s'applique aux types  \refTypePredefini{sint},  \refTypePredefini{sint64}, \refTypePredefini{uint} et \refTypePredefini{uint64} ; sa syntaxe est la suivante :
-\lstset{emph={variable, champ}, emphstyle=\galgasEmphStyle}
+L'instruction d'incrémentation s'applique aux types  \refTypePredefini{sint},  \refTypePredefini{sint64}, \refTypePredefini{uint} et \ggs+uint64+ ; sa syntaxe est la suivante :
+
 \begin{galgascode}
 variable ++
 \end{galgascode}
@@ -1175,8 +1165,8 @@ Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 \section{L'instruction \texttt{if}}
 
 
-Dans sa forme la plus générale, l'instruction \galgas{if} a la syntaxe suivante:
-{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\galgasEmphStyle}
+Dans sa forme la plus générale, l'instruction \ggs+if+ a la syntaxe suivante:
+
 \begin{galgascode}
 if condition then
   instructions
@@ -1187,20 +1177,19 @@ else
   instructions_else
 end
 \end{galgascode}
-}
+
 
 Plus précisement, elle contient :
 \begin{itemize}
-\item zéro, une ou plusieurs branches \galgas{elsif} ;
-\item zéro ou une branche \galgas{else}.
+\item zéro, une ou plusieurs branches \ggs+elsif+ ;
+\item zéro ou une branche \ggs+else+.
 \end{itemize}
 
 
-Aucune branche \galgas{else} est équivalent à une branche \galgas{else} sans aucune instruction.
+Aucune branche \ggs+else+ est équivalent à une branche \ggs+else+ sans aucune instruction.
 
 
-Les branches \galgas{elsif} sont simplement du sucre syntaxique : il est sémantiquement équivalent d'utiliser des instructions \galgas{if} imbriquées. Par exemple :
-{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\galgasEmphStyle}
+Les branches \ggs+elsif+ sont simplement du sucre syntaxique : il est sémantiquement équivalent d'utiliser des instructions \ggs+if+ imbriquées. Par exemple :
 \begin{galgascode}
 if condition then
   instructions
@@ -1210,9 +1199,8 @@ else
   instructions_else
 end
 \end{galgascode}
-}
+
 est équivalent à :
-{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 if condition then
   instructions
@@ -1224,10 +1212,9 @@ else
   end
 end
 \end{galgascode}
-}
+
 
 %So, for describing \emph{if} instruction static and dynamic semantics, we only need to describe an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
-%{\lstset{emph={condition, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 %\begin{galgascode}
 %if condition then
 %  instructions
@@ -1235,18 +1222,16 @@ end
 %  else_instructions
 %end
 %\end{galgascode}
-%}
 
-{\lstset{emph={condition, condition2}, emphstyle=\galgasEmphStyle}
-Le langage permet que le type des \galgas{condition} et \galgas{condition2} soit différent du type \refTypePredefini{bool}, sous certaines conditions. La règle complète est que le type des \galgas{condition} et \galgas{condition2} est :
+Le langage permet que le type des \ggs+condition+ et \ggs+condition2+ soit différent du type \refTypePredefini{bool}, sous certaines conditions. La règle complète est que le type des \ggs+condition+ et \ggs+condition2+ est :
 \begin{itemize}
 \item soit le type \ggs+@bool+ ;
-\item soit un type \emph{structure}, possèdant une propriété nommée \galgas{bool}, dont le type est \ggs+@bool+; 
-\item soit un type possédant un \emph{getter} sans argument nommé \galgas{bool} et renvoyant une valeur de type \ggs+@bool+.
+\item soit un type \emph{structure}, possèdant une propriété nommée \ggs+bool+, dont le type est \ggs+@bool+; 
+\item soit un type possédant un \emph{getter} sans argument nommé \ggs+bool+ et renvoyant une valeur de type \ggs+@bool+.
 \end{itemize}
 
-Voici un exemple illustrant le deuxième cas ; le type \refTypePredefini{bool} est une structure possèdant une propriété nommée \galgas{bool}, dont le type est \ggs+@bool+. Aussi, écrire :
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
+Voici un exemple illustrant le deuxième cas ; le type \refTypePredefini{bool} est une structure possèdant une propriété nommée \ggs+bool+, dont le type est \ggs+@bool+. Aussi, écrire :
+
 \begin{galgascode}
 @lbool variable = ...
 if variable then
@@ -1255,10 +1240,9 @@ else
   else_instructions
 end
 \end{galgascode}
-}
+
 
 est équivalent à :
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @lbool variable = ...
 if variable.bool then
@@ -1267,7 +1251,7 @@ else
   else_instructions
 end
 \end{galgascode}
-}
+
 
 Pour illustrer le troisième cas, on prend l'exemple de la classe suivante :
 \begin{galgascode}
@@ -1277,7 +1261,6 @@ getter @myClass bool -> @bool outResult { ... }
 \end{galgascode}
 
 Ainsi, on peut écrire :
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @myClass myObject = ...
 if myObject then
@@ -1286,10 +1269,9 @@ else
   else_instructions
 end
 \end{galgascode}
-}
+
 
 Il est équivalent d'écrire :
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @myClass myObject = ...
 if [myObject bool] then
@@ -1298,13 +1280,12 @@ else
   else_instructions
 end
 \end{galgascode}
-}
+
 
 
 %\subsection{Dynamic semantics}
 %
 %According to the preceding section, we only need to describe the dynamic semantic of an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
-%{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 %\begin{galgascode}
 %if expression then
 %  instructions
@@ -1312,7 +1293,6 @@ end
 %  else_instructions
 %end  
 %\end{galgascode}
-%}
 %
 %
 %
@@ -1329,10 +1309,6 @@ end
 L'instruction \ggs+grammar+ permet d'exécuter l'analyse d'un texte par une grammaire. Le texte peut être contenu dans un fichier ou dans une chaîne de caractères.
 
 Si le texte est contenu dans un fichier :
-\lstset{emph={nom\_grammaire, label\_grammaire, expression\_de\_type\_lstring, liste\_parametres,
-              expression\_de\_type\_string, traduction\_dirigee\_par\_la\_syntaxe},
-        emphstyle=\galgasEmphStyle
-}
 \begin{galgascode}
 grammar
   nom_grammaire
@@ -1354,12 +1330,12 @@ grammar
 
 Dans ces écritures :
 \begin{itemize}
-  \item \galgas{nom\_grammaire} est un identificateur nommant la grammaire, c'est le nom d'un composant grammaire du projet ;
-  \item \galgas{label\_grammaire} est optionnel, et permet d'exécuter une variante des règles de production (voir \refSectionPage{analysePlusieursPhases}) ;
-  \item \galgas{expression\_de\_type\_lstring} est une valeur de type \galgas{@lstring}, dont le champ \galgas{string} désigne un fichier source, par un chemin relatif ou absolu, et dont le champ \galgas{location} est la position de signalement d'erreur si le fichier source ne peut pas être lu ;
-  \item \galgas{expression\_de\_type\_string} est directement la chaîne source à analyser ;
-  \item \galgas{liste\_parametres} est une liste de paramètres effectifs (en entrée, sortie, ou sortie/entrée), en accord avec la liste des arguments formels de l'axiome de la grammaire ;
-  \item \galgas{traduction\_dirigee\_par\_la\_syntaxe} est optionnel, et permet d'obtenir la chaîne source traduite lors d'une \emph{traduction dirigée par la syntaxe} (voir \refSectionPage{instructionGrammarEtTraductionDirigeeParLaSyntaxe}).
+  \item \ggs+nom_grammaire+ est un identificateur nommant la grammaire, c'est le nom d'un composant grammaire du projet ;
+  \item \ggs+label_grammaire+ est optionnel, et permet d'exécuter une variante des règles de production (voir \refSectionPage{analysePlusieursPhases}) ;
+  \item \ggs+expression_de_type_lstring+ est une valeur de type \ggs+@lstring+, dont le champ \ggs+string+ désigne un fichier source, par un chemin relatif ou absolu, et dont le champ \ggs+location+ est la position de signalement d'erreur si le fichier source ne peut pas être lu ;
+  \item \ggs+expression_de_type_string+ est directement la chaîne source à analyser ;
+  \item \ggs+liste_parametres+ est une liste de paramètres effectifs (en entrée, sortie, ou sortie/entrée), en accord avec la liste des arguments formels de l'axiome de la grammaire ;
+  \item \ggs+traduction_dirigee_par_la_syntaxe+ est optionnel, et permet d'obtenir la chaîne source traduite lors d'une \emph{traduction dirigée par la syntaxe} (voir \refSectionPage{instructionGrammarEtTraductionDirigeeParLaSyntaxe}).
 \end{itemize}
 
 
@@ -1404,11 +1380,10 @@ message "un fichier source"
 
 \sectionLabel{L'instruction \texttt{log}}{instructionLog}
 
-L'instruction \galgas{log} permet d'afficher le détail de la valeur d'une variable, d'une constante ou d'une expression :
-\lstset{emph={expression, nom}, emphstyle=\galgasEmphStyle}
+L'instruction \ggs+log+ permet d'afficher le détail de la valeur d'une variable, d'une constante ou d'une expression :
 \begin{itemize}
-  \item pour une variable ou une constante, \galgas{log nom} ;
-  \item pour une expression, \galgas{log "message" : expression} ;
+  \item pour une variable ou une constante, \ggs+log nom+ ;
+  \item pour une expression, \ggs+log "message" : expression+ ;
 \end{itemize}
 
 Par exemple :
@@ -1418,7 +1393,7 @@ log x # Affiche LOGGING x: <@uint:2>
 log "valeur" : x * 2 # Affiche LOGGING valeur: <@uint:4>
 \end{galgascode}
 
-Plusieurs variables ou constantes peuvent être affichées par une même instruction \galgas{log}, en les séparant par une virgule :
+Plusieurs variables ou constantes peuvent être affichées par une même instruction \ggs+log+, en les séparant par une virgule :
 \begin{galgascode}
 let x = 2
 log x, "valeur" : x * 2
@@ -1440,8 +1415,7 @@ log x, "valeur" : x * 2
 \section{L'instruction \texttt{loop}}
 
 
-L'instruction \galgas{loop} a la syntaxe suivante :
-\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\galgasEmphStyle}
+L'instruction \ggs+loop+ a la syntaxe suivante :
 \begin{galgascode}
 loop (variant_expression)
   instructions_1
@@ -1451,14 +1425,14 @@ end
 \end{galgascode}
 
 
-Les \galgas{instructions\_1} et \galgas{instructions\_2} sont des listes d'instructions qui peuvent être vides.
+Les \ggs+instructions_1+ et \ggs+instructions_2+ sont des listes d'instructions qui peuvent être vides.
 
 
-Le \galgas{variant\_expression} est une expression de type \galgas{@uint} qui assure que la boucle n'est pas sans fin : elle est calculée au début de l'exécution de l'instruction, et décrémentée après chaque itération. Si sa valeur atteint zéro, une erreur d'exécution est déclenchée.
+Le \ggs+variant_expression+ est une expression de type \ggs+@uint+ qui assure que la boucle n'est pas sans fin : elle est calculée au début de l'exécution de l'instruction, et décrémentée après chaque itération. Si sa valeur atteint zéro, une erreur d'exécution est déclenchée.
 
-L'\galgas{expression} est une expression de type \ggs+@bool+ qui exprime la continuation de l'exécution de la boucle.
+L'\ggs+expression+ est une expression de type \ggs+@bool+ qui exprime la continuation de l'exécution de la boucle.
 
-L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de la \refFigure{}{loopInstructionFlowchart}.
+L'exécution de l'instruction \ggs+loop+ est illustrée par l'organigramme de la \refFigure{}{loopInstructionFlowchart}.
 
 
 \begin{figure}[t]
@@ -1520,14 +1494,13 @@ L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de
 \sectionLabel{L'instruction d'appel de procédure}{instructionAppelProcedure}
 
 La syntaxe de l'appel d'une procédure est :
-\lstset{emph={nom_procedure, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 nom_procedure (liste_parametres_effectifs)
 \end{galgascode}
 
 Les parenthèses sont obligatoires. La déclaration d'un procédure est présentée à la \refSectionPage{declarationProcedure}.
 
-\galgas{nom_procedure} est le nom de la procédure, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs de l'appel, en accord avec l'en-tête de la procédure.
+\ggs+nom_procedure+ est le nom de la procédure, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs de l'appel, en accord avec l'en-tête de la procédure.
 
 Par exemple, la procedure suivante :
 \begin{galgascode}
@@ -1558,20 +1531,20 @@ produit (!2 !3 ??@uint resultat)
 \sectionLabel{L'instruction d'appel de méthode}{methodCallInstruction}
 
 En GALGAS, une \emph{méthode} est un sous-programme qui s'applique à un objet, et qui ne modifie pas cet objet. La syntaxe de l'appel d'une méthode est :
-\lstset{emph={nom_methode, expression, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 [expression nom_methode liste_parametres_effectifs]
 \end{galgascode}
 
-La valeur d'\galgas{expression} est l'objet sur lequel la méthode est appelée, \galgas{nom\_methode} est le nom de la méthode, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête de la méthode.
+La valeur d'\ggs+expression+ est l'objet sur lequel la méthode est appelée, \ggs+nom_methode+ est le nom de la méthode, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs, en accord avec l'en-tête de la méthode.
 
-Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \galgas{@string}, la méthode \galgas{writeToExecutableFileWhenDifferentContents} est présentée comme suit :
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \ggs+@string+, la méthode \ggs+writeToExecutableFileWhenDifferentContents+ est présentée comme suit :
 
-\texttt{
-\textbf{method} writeToExecutableFileWhenDifferentContents\\
-\hspace*{1cm}??@string inFilePath\\
-\hspace*{1cm}!@bool outFileModified
-}
+\begin{galgascode}
+method writeToExecutableFileWhenDifferentContents
+  ??@string inFilePath
+  !@bool outFileModified
+\end{galgascode}
+
 
 Aussi, cette méthode peut être appelée par :
 \begin{galgascode}
@@ -1600,14 +1573,13 @@ Aussi, cette méthode peut être appelée par :
 \sectionLabel{L'instruction d'appel de procédure de classe}{classProcCallInstruction}
 
 En GALGAS, une \emph{procédure de classe} est est une procédure définie dans un type. Au contraire d'une méthode, elle ne s'applique pas à un objet. La syntaxe de l'appel d'une procédure de classe est :
-\lstset{emph={nom_procedure, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 [@T nom_procedure liste_parametres_effectifs]
 \end{galgascode}
 
-\galgas{nom_procedure} est le nom de la procédure, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête de la procédure.
+\ggs+nom_procedure+ est le nom de la procédure, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs, en accord avec l'en-tête de la procédure.
 
-Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \galgas{@string}, la procédure de classe \galgas{deleteFile} est présentée comme suit :
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \ggs+@string+, la procédure de classe \ggs+deleteFile+ est présentée comme suit :
 
 \texttt{
 \textbf{proc} @string deleteFile\\
@@ -1636,14 +1608,13 @@ En GALGAS, un \emph{setter} est un sous-programme qui s'applique à un objet, et
 \subsection{Appel simple}
 
 La première syntaxe de l'appel d'un  \emph{setter} est :
-\lstset{emph={nom_setter, cible, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 [!?cible nom_setter liste_parametres_effectifs]
 \end{galgascode}
 
-Le délimiteur \ggs+!?+  devant \galgas{cible} permet de distinguer syntaxiquement un appel de \emph{setter} d'un appel de méthode. \galgas{cible} désigne l'objet sur lequel le \emph{setter} est appelé, et peut être une variable, ou le champ d'une variable (\galgas{variable.champ}), ou le champ d'un champ d'une variable (\galgas{variable.champ.champ2}), ... \galgas{nom\_setter} est le nom du \emph{setter}, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête du \emph{setter}.
+Le délimiteur \ggs+!?+  devant \ggs+cible+ permet de distinguer syntaxiquement un appel de \emph{setter} d'un appel de méthode. \ggs+cible+ désigne l'objet sur lequel le \emph{setter} est appelé, et peut être une variable, ou le champ d'une variable (\ggs+variable.champ+), ou le champ d'un champ d'une variable (\ggs+variable.champ.champ2+), ... \ggs+nom_setter+ est le nom du \emph{setter}, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs, en accord avec l'en-tête du \emph{setter}.
 
-Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les \emph{setters} sont listées. Par exemple, pour le type \galgas{@string}, le \emph{setter} \galgas{setCharacterAtIndex} est présenté comme suit :
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les \emph{setters} sont listées. Par exemple, pour le type \ggs+@string+, le \emph{setter} \ggs+setCharacterAtIndex+ est présenté comme suit :
 
 \begin{galgascode}
 setter setCharacterAtIndex
@@ -1663,14 +1634,13 @@ Aussi, ce \emph{setter} peut être appelée par :
 
 La seconde syntaxe de l'appel d'un  \emph{setter} est :
 
-\lstset{emph={nom_setter, cible, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 [!?cible as @T nom_setter liste_parametres_effectifs]
 \end{galgascode}
 
-Statiquement, le type \galgas{@T} doit être un type héritier du type statique de \galgas{cible}.
+Statiquement, le type \ggs+@T+ doit être un type héritier du type statique de \ggs+cible+.
 
-À l'exécution, si le type dynamique est le type \galgas{@T} ou un de ses héritiers, l'instruction est exécutée. Sinon, une erreur d'exécution a lieu et le setter n'est pas appelé.
+À l'exécution, si le type dynamique est le type \ggs+@T+ ou un de ses héritiers, l'instruction est exécutée. Sinon, une erreur d'exécution a lieu et le setter n'est pas appelé.
 
 Par exemple, on considère les déclarations de classe et le setter suivant :
 
@@ -1685,25 +1655,25 @@ setter @b aSetter { }
 Si on écrit :
 \begin{galgascode}
 @a unObjet = ...
-[!?unObjet aSetter] # Erreur semantique
+[!?unObjet aSetter] # Erreur sémantique
 \end{galgascode}
 
-L'instruction \galgas{[!?unObjet aSetter]} donne lieu à une erreur sémantique, puisque la classe \galgas{@a} ne définit pas le setter \galgas{aSetter}.
+L'instruction \ggs+[!?unObjet aSetter]+ donne lieu à une erreur sémantique, puisque la classe \ggs+@a+ ne définit pas le setter \ggs+aSetter+.
 
-L'écriture suivante est acceptée par le compilateur car la classe \galgas{@b} définit le setter \galgas{aSetter} :
+L'écriture suivante est acceptée par le compilateur car la classe \ggs+@b+ définit le setter \ggs+aSetter+ :
 \begin{galgascode}
 @a unObjet = ...
 [!?unObjet as @b aSetter] # Compilation ok
 \end{galgascode}
 
-À l'exécution, le comportement dépend du type dynamique de \galgas{unObjet}. Si celui-ci est une instance de \galgas{@a}, une erreur d'exécution est déclenchée :
+À l'exécution, le comportement dépend du type dynamique de \ggs+unObjet+. Si celui-ci est une instance de \ggs+@a+, une erreur d'exécution est déclenchée :
 \begin{galgascode}
 @a unObjet = @a.new
-[!?unObjet as @b aSetter] # Compilation ok, erreur d'execution
+[!?unObjet as @b aSetter] # Compilation ok, erreur d'exécution
 \end{galgascode}
 
 
-Par contre, si \galgas{unObject} est une instance de \galgas{@b}, l'appel du setter d'effectue :
+Par contre, si \ggs+unObject+ est une instance de \ggs+@b+, l'appel du setter d'effectue :
 \begin{galgascode}
 @a unObjet = @b.new
 [!?unObjet as @b aSetter] # Compilation ok, appel du setter
@@ -1720,9 +1690,8 @@ Par contre, si \galgas{unObject} est une instance de \galgas{@b}, l'appel du set
 
 \sectionLabel{L'instruction \texttt{switch}}{instructionSwitch}
 
-L'instruction \galgas{switch} est dédiée aux types énumérés. Elle présente la syntaxe suivante :
+L'instruction \ggs+switch+ est dédiée aux types énumérés. Elle présente la syntaxe suivante :
 
-\lstset{emph={constante, expression, liste_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 switch expression
 case constante, constante, ... :
@@ -1734,7 +1703,7 @@ end
 \end{galgascode}
 
 
-Où \galgas{expression} est une expression d'un type énuméré. Toutes les constantes de ce type doivent être nommées dans les branches \galgas{case}, une et une seule fois.
+Où \ggs+expression+ est une expression d'un type énuméré. Toutes les constantes de ce type doivent être nommées dans les branches \ggs+case+, une et une seule fois.
 
 Par exemple, avec la déclaration :
 
@@ -1759,7 +1728,7 @@ case rouge :
 end
 \end{galgascode}
 
-Si des constantes déclarées dans l'énumération ont des valeurs associées, alors les branches \galgas{case} nommant ces constantes doivent adopter une syntaxe particulière. 
+Si des constantes déclarées dans l'énumération ont des valeurs associées, alors les branches \ggs+case+ nommant ces constantes doivent adopter une syntaxe particulière. 
 
 En prenant pour exemple une constante possédant deux valeurs associées, la forme la plus générale est :
 
@@ -1770,9 +1739,9 @@ case constante (@type1 nom1 @type2 nom2) :
 end
 \end{galgascode}
 
-\galgas{nom1} et \galgas{nom2} sont des constantes qui reçoivent les valeurs associées.
+\ggs+nom1+ et \ggs+nom2+ sont des constantes qui reçoivent les valeurs associées.
 
-Si on n'est pas intéressé par une valeur, on peut substituer \galgas{*} au nom :
+Si on n'est pas intéressé par une valeur, on peut substituer \ggs+*+ au nom :
 
 \begin{galgascode}
 switch expression
@@ -1781,7 +1750,7 @@ case constante (@type1 nom1 @type2 *) :
 end
 \end{galgascode}
 
-De même, l'annotation du type est optionnel : les types \galgas{@type1}, \galgas{@type2} peuvent être déduits de la déclaration de la valeur associée :
+De même, l'annotation du type est optionnel : les types \ggs+@type1+, \ggs+@type2+ peuvent être déduits de la déclaration de la valeur associée :
 
 \begin{galgascode}
 switch expression
@@ -1799,7 +1768,7 @@ end
 \end{galgascode}
 
 
-Enfin, on peut mentionner dans le même branche \galgas{case} plusieurs constantes déclarant des valeurs associées, à la condition que ces valeurs associées soient de même nombre et de même type. Par exemple :
+Enfin, on peut mentionner dans le même branche \ggs+case+ plusieurs constantes déclarant des valeurs associées, à la condition que ces valeurs associées soient de même nombre et de même type. Par exemple :
 
 \begin{galgascode}
 enum @erreur {
@@ -1809,7 +1778,7 @@ enum @erreur {
 }
 \end{galgascode}
 
-On peut écrire l'instruction \galgas{switch} correspondante :
+On peut écrire l'instruction \ggs+switch+ correspondante :
 \begin{galgascode}
 @erreur erreur = ... ;
 
@@ -1826,16 +1795,15 @@ end
 
 \section{L'instruction \texttt{warning}}
 
-L'instruction \galgas{warning} permet de signaler une alerte à l'utilisateur. Elle est constituée de deux champs séparés par un double-point (\galgas{\:}) :
+L'instruction \ggs+warning+ permet de signaler une alerte à l'utilisateur. Elle est constituée de deux champs séparés par un double-point (\ggs+:+) :
 
-{\lstset{emph={localisation, message_alerte, variable1, variableN}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 warning localisation : message_alerte
 \end{galgascode}
 
 
 
-Le champ \galgas{localisation} signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \galgas{@location}, ou d'un type possédant un \emph{getter} sans argument nommé \galgas{location} et renvoyant un objet de type \galgas{@location} : c'est le cas de tous les types prédéfinis \refTypePredefini{luint}, \refTypePredefini{luint64}, \refTypePredefini{lsint}, \refTypePredefini{lsint64}, \refTypePredefini{lbool}, \refTypePredefini{lchar} et \refTypePredefini{lstring}. Le \galgas{message_alerte} est le message affiché à l'utilisateur : c'est donc une expression de type \galgas{@string}.
+Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggs+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggs+location+ et renvoyant un objet de type \ggs+@location+ : c'est le cas de tous les types prédéfinis \ggs+@luint+, \ggs+@luint64+, \ggs+@lsint+, \ggs+@lsint64+, \ggs+@lbool+, \ggs+@lchar+ et \ggs+@lstring+. Le \ggs+message_alerte+ est le message affiché à l'utilisateur : c'est donc une expression de type \ggs+@string+.
 
 Par exemple :
 
@@ -1845,7 +1813,7 @@ $identifier$ ??@lstring nom
 warning nom.location : message_alerte
 \end{galgascode}
 
-Comme \galgas{nom} est de type \galgas{lstring} (voir ci-dessus), on peut simplement écrire :
+Comme \ggs+nom+ est de type \ggs+@lstring+ (voir ci-dessus), on peut simplement écrire :
 \begin{galgascode}
 $identifier$ ??@lstring nom
 ...
@@ -1863,9 +1831,7 @@ warning nom : message_alerte
 
 \section{L'instruction \texttt{with}}
 
-L'instruction \galgas{with} permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre quatre formes différentes, suivi que l'on veuille modifier la table ou non, et suivant que l'on veut tolérer l'échec de la recherche ou non.
-
-\lstset{emph={expression_cle, prefixe_optionnel, expression_table, liste_instructions_do, liste_instructions_else, methode_recherche, cible_table}, emphstyle=\galgasEmphStyle}
+L'instruction \ggs+with+ permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre quatre formes différentes, suivi que l'on veuille modifier la table ou non, et suivant que l'on veut tolérer l'échec de la recherche ou non.
 
 Accès en lecture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureTolerante}) :
 \begin{galgascode}
@@ -1924,15 +1890,15 @@ end
 
 Où :
 \begin{itemize}
-  \item \galgas{expression\_cle} est une expression de type \galgas{@string} dont la valeur définit la clé ;
-  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
-  \item \galgas{expression\_table} est une expression qui désigne la table.
+  \item \ggs+expression_cle+ est une expression de type \ggs+@string+ dont la valeur définit la clé ;
+  \item \ggs+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggs+liste_instructions_do+ ;
+  \item \ggs+expression_table+ est une expression qui désigne la table.
 \end{itemize}
 
-La clé désignée par la valeur de \galgas{expression\_cle} est recherchée dans la table désignée par la valeur de \galgas{expression\_table} :
+La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la table désignée par la valeur de \ggs+expression_table+ :
 \begin{itemize}
-  \item en cas d'échec, les instructions \galgas{liste_instructions_else} sont exécutées ;
-  \item en cas de succès, ce sont les instructions \galgas{liste_instructions_do} qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé ; la clé est disponible sous le nom \galgas{lkey} éventuellement préfixé, et est de type \galgas{@lstring}.
+  \item en cas d'échec, les instructions \ggs+liste_instructions_else+ sont exécutées ;
+  \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé ; la clé est disponible sous le nom \ggs+lkey+ éventuellement préfixé, et est de type \ggs+@lstring+.
 \end{itemize}
 
 %Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare :
@@ -2012,16 +1978,16 @@ end
 
 Où :
 \begin{itemize}
-  \item \galgas{expression\_cle} est une expression de type \galgas{@lstring} dont la valeur définit la clé ;
-  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
-  \item \galgas{expression\_table} est une expression qui désigne la table ;
-  \item \galgas{methode_recherche} est une méthode de recherche de la table (c'est-à-dire déclarée par \galgas{search}) dont le message associé sera utilisé pour le signalement d'erreur.
+  \item \ggs+expression_cle+ est une expression de type \ggs+@lstring+ dont la valeur définit la clé ;
+  \item \ggs+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggs+liste_instructions_do+ ;
+  \item \ggs+expression_table+ est une expression qui désigne la table ;
+  \item \ggs+methode_recherche+ est une méthode de recherche de la table (c'est-à-dire déclarée par \ggs+search+) dont le message associé sera utilisé pour le signalement d'erreur.
 \end{itemize}
 
-La clé désignée par la valeur de \galgas{expression\_cle} est recherchée dans la table désignée par la valeur de \galgas{expression\_table} :
+La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la table désignée par la valeur de \ggs+expression_table+ :
 \begin{itemize}
-  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \galgas{methode_recherche}, et sa localisation par le champ \galgas{location} de l'\galgas{expression\_cle} ;
-  \item en cas de succès, ce sont les instructions \galgas{liste_instructions_do} qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé ; la clé est disponible sous le nom \galgas{lkey} éventuellement préfixé, et est de type \galgas{@lstring}.
+  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \ggs+methode_recherche+, et sa localisation par le champ \ggs+location+ de l'\ggs+expression_cle+ ;
+  \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé ; la clé est disponible sous le nom \ggs+lkey+ éventuellement préfixé, et est de type \ggs+@lstring+.
 \end{itemize}
 
 Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations, et la doit avoir été entrée auparavant. On déclare :
@@ -2069,15 +2035,15 @@ end
 
 Où :
 \begin{itemize}
-  \item \galgas{expression\_cle} est une expression de type \galgas{@string} dont la valeur définit la clé ;
-  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
-  \item \galgas{cible\_table} est de la forme \galgas{variable}, ou  \galgas{variable.champ}, ou \galgas{variable.champ.champ2}, ... et désigne la table ; la cible est accédée en lecture/écriture.
+  \item \ggs+expression_cle+ est une expression de type \ggs+@string+ dont la valeur définit la clé ;
+  \item \ggs+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggs+liste_instructions_do+ ;
+  \item \ggs+cible_table+ est de la forme \ggs+variable+, ou  \ggs+variable.champ+, ou \ggs+variable.champ.champ2+, ... et désigne la table ; la cible est accédée en lecture/écriture.
 \end{itemize}
 
-La clé désignée par la valeur de \galgas{expression\_cle} est recherchée dans la table désignée par la valeur de \galgas{cible_table} :
+La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la table désignée par la valeur de \ggs+cible_table+ :
 \begin{itemize}
-  \item en cas d'échec, les instructions \galgas{liste_instructions_else} sont exécutées ;
-  \item en cas de succès, ce sont les instructions \galgas{liste_instructions_do} qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture / écriture, sous leur nom éventuellement préfixé ; la clé est disponible en lecture seule sous le nom \galgas{lkey} éventuellement préfixé, est de type \galgas{@lstring}.
+  \item en cas d'échec, les instructions \ggs+liste_instructions_else+ sont exécutées ;
+  \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture / écriture, sous leur nom éventuellement préfixé ; la clé est disponible en lecture seule sous le nom \ggs+lkey+ éventuellement préfixé, est de type \ggs+@lstring+.
 \end{itemize}
 
 Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare :
@@ -2123,17 +2089,17 @@ end
 
 Où :
 \begin{itemize}
-  \item \galgas{expression\_cle} est une expression de type \galgas{@lstring} dont la valeur définit la clé ;
-  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
-  \item \galgas{expression\_table} est une expression qui désigne la table ;
-  \item \galgas{methode_recherche} est une méthode de recherche de la table (c'est-à-dire déclarée par \galgas{search}) dont le message associé sera utilisé pour le signalement d'erreur ;
-  \item \galgas{cible\_table} est de la forme \galgas{variable}, ou  \galgas{variable.champ}, ou \galgas{variable.champ.champ2}, ... et désigne la table ; la cible est accédée en lecture/écriture.
+  \item \ggs+expression_cle+ est une expression de type \ggs+@lstring+ dont la valeur définit la clé ;
+  \item \ggs+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggs+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggs+liste_instructions_do+ ;
+  \item \ggs+expression_table+ est une expression qui désigne la table ;
+  \item \ggs+methode_recherche+ est une méthode de recherche de la table (c'est-à-dire déclarée par \ggs+search+) dont le message associé sera utilisé pour le signalement d'erreur ;
+  \item \ggs+cible_table+ est de la forme \ggs+variable+, ou  \ggs+variable.champ+, ou \ggs+variable.champ.champ2+, ... et désigne la table ; la cible est accédée en lecture/écriture.
 \end{itemize}
 
-La clé désignée par la valeur de \galgas{expression\_cle} est recherchée dans la table désignée par la valeur de \galgas{expression\_table} :
+La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la table désignée par la valeur de \ggs+expression_table+ :
 \begin{itemize}
-  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \galgas{methode_recherche}, et sa localisation par le champ \galgas{location} de l'\galgas{expression\_cle} ;
-  \item en cas de succès, ce sont les instructions \galgas{liste_instructions_do} qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture/écriture, sous leur nom éventuellement préfixé ; la clé est disponible en lecture seule sous le nom \galgas{lkey} éventuellement préfixé, et est de type \galgas{@lstring}.
+  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \ggs+methode_recherche+, et sa localisation par le champ \ggs+location+ de l'\ggs+expression_cle+ ;
+  \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture/écriture, sous leur nom éventuellement préfixé ; la clé est disponible en lecture seule sous le nom \ggs+lkey+ éventuellement préfixé, et est de type \ggs+@lstring+.
 \end{itemize}
 
 Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations, et la clé doit avoir été entrée auparavant. On déclare :

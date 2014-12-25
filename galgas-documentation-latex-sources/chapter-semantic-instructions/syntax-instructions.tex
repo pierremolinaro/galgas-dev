@@ -21,10 +21,10 @@ traduction_dirigee_par_la_syntaxe # Optionnel
 
 Où :
 \begin{itemize}
-  \item \galgas{$terminal$} est le nom du terminal à vérifier ; il doit être l'un des terminaux déclarés par le lexique importé par le composant syntaxique ;
-  \item \galgas{parametres_entree} est une liste de zéro, un ou plusieurs paramètres effectifs en entrée, en accord avec la déclaration du \galgas{$terminal$} dans le lexique ; comment écrire une liste de paramètres en entrée est présenté à la \refSectionPage{listeParametresEffectifsEntree} ;
-  \item \galgas{nom_index} est le nom d'un index, tel que déclaré dans le lexique ; cet index sert à peupler le menu contextual de cross référence en Cocoa (\refSectionPage{indexingYourSourceFiles}) ;
-  \item \galgas{traduction_dirigee_par_la_syntaxe} permet de préciser les options de \emph{traduction dirigée par la syntaxe} ; celle-ci est présentée en détail au \refChapterPage{chapitreTraductionDirigeeParSyntaxe}. 
+  \item \ggs+$terminal$+ est le nom du terminal à vérifier ; il doit être l'un des terminaux déclarés par le lexique importé par le composant syntaxique ;
+  \item \ggs+parametres_entree+ est une liste de zéro, un ou plusieurs paramètres effectifs en entrée, en accord avec la déclaration du \ggs+$terminal$+ dans le lexique ; comment écrire une liste de paramètres en entrée est présenté à la \refSectionPage{listeParametresEffectifsEntree} ;
+  \item \ggs+nom_index+ est le nom d'un index, tel que déclaré dans le lexique ; cet index sert à peupler le menu contextual de cross référence en Cocoa (\refSectionPage{indexingYourSourceFiles}) ;
+  \item \ggs+traduction_dirigee_par_la_syntaxe+ permet de préciser les options de \emph{traduction dirigée par la syntaxe} ; celle-ci est présentée en détail au \refChapterPage{chapitreTraductionDirigeeParSyntaxe}. 
 \end{itemize}
 
 
@@ -40,7 +40,7 @@ Où :
 
 \sectionLabel{Instruction \texttt{select}}{instructionSelectSyntaxique}
 
-La syntaxe de l'instruction \galgas{select} syntaxique\footnote{Ne confondre avec l'instruction \galgas{select} lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionSelectLexical}).} est la suivante :
+La syntaxe de l'instruction \ggs+select+ syntaxique\footnote{Ne confondre avec l'instruction de sélection lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionSelectLexical}).} est la suivante :
 \begin{galgascode}
 A
 select
@@ -54,16 +54,16 @@ end
 B
 \end{galgascode}
 
-L'instruction est présentée avec trois branches \galgas{or} : l'instruction doit comporter au moins deux branches.
+L'instruction est présentée avec trois branches \ggs+or+ : l'instruction doit comporter au moins deux branches.
 
-Sa signification est la suivante : l'occurrence de chaque \galgas{select} syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \galgas{T}. La séquence précédente devient donc :
+Sa signification est la suivante : l'occurrence de chaque \ggs+select+ syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \ggs+T+. La séquence précédente devient donc :
 \begin{galgascode}
 A
 <T>
 B
 \end{galgascode}
 
-Le non-terminal \galgas{T} se dérive de la façon suivante :
+Le non-terminal \ggs+T+ se dérive de la façon suivante :
 \begin{galgascode}
 rule <T> { I0 }
 
@@ -82,7 +82,7 @@ rule <T> { I2 }
 
 \sectionLabel{Instruction \texttt{repeat}}{instructionRepeatSyntaxique}
 
-La syntaxe de l'instruction \galgas{repeat} syntaxique\footnote{Ne confondre avec l'instruction \galgas{repeat} lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionRepeatLexical}).} est la suivante :
+La syntaxe de l'instruction \ggs+repeat+ syntaxique\footnote{Ne confondre avec l'instruction de répétition lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionRepeatLexical}).} est la suivante :
 \begin{galgascode}
 A
 repeat
@@ -96,9 +96,9 @@ end
 B
 \end{galgascode}
 
-L'instruction est présentée avec deux branches \galgas{while} : l'instruction doit comporter au moins une branche.
+L'instruction est présentée avec deux branches \ggs+while+ : l'instruction doit comporter au moins une branche.
 
-Sa signification est la suivante : l'occurrence de chaque \galgas{repeat} syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \galgas{T}. La séquence précédente devient donc :
+Sa signification est la suivante : l'occurrence de chaque \ggs+repeat+ syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \ggs+T+. La séquence précédente devient donc :
 \begin{galgascode}
 A
 I0
@@ -106,7 +106,7 @@ I0
 B
 \end{galgascode}
 
-Le non-terminal \galgas{T} se dérive de la façon suivante :
+Le non-terminal \ggs+T+ se dérive de la façon suivante :
 \begin{galgascode}
 rule <T> { I1 I0 <T> }
 

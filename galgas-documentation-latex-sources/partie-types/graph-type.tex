@@ -7,7 +7,7 @@
 
 Le type \galgas{graph} permet de faire des opérations sur les graphes orientés.
 
-Chaque nœud est identifié par un nom qui est une chaîne de caractères (de type \galgas{@string}) ; à chaque nœud sont associées types d'informations :
+Chaque nœud est identifié par un nom qui est une chaîne de caractères (de type \ggs+@string+) ; à chaque nœud sont associées types d'informations :
 \begin{itemize}
   \item une liste de positions dans des textes sources (liste de \galgas{@location}) ;
   \item une information utilisateur dont le type est défini par la déclaration du type graphe.
@@ -90,7 +90,7 @@ graph @monGraphe (@maListe) {
 
 Un setter d'insertion présente que des arguments d'entrée :
 \begin{itemize}
-  \item le premier est toujours de type \galgas{@lstring} ; la composante \galgas{@string} est le nom du nœud (qui est unique dans un graphe donné), et la composante \galgas{@location} est la position dans le texte source où est déclaré le nœud, et est ajoutée à la liste correspondante du nœud ;
+  \item le premier est toujours de type \galgas{@lstring} ; la composante \ggs+@string+ est le nom du nœud (qui est unique dans un graphe donné), et la composante \galgas{@location} est la position dans le texte source où est déclaré le nœud, et est ajoutée à la liste correspondante du nœud ;
   \item Les arguments suivants correspondent en nombre et en type aux champs du type liste qui définit les informations associées.
 \end{itemize}
 
@@ -98,7 +98,7 @@ Ainsi, le setter d'insertion \galgas{addNode} du type de graphe \galgas{@monGrap
 \begin{itemize}
   \item le premier de type \galgas{@lstring} ;
   \item le deuxième de type \galgas{@uint}, qui correspond au premier champ \galgas{monInfo1} du type liste \galgas{@maListe} ;
-  \item le troisième de type \galgas{@string}, qui correspond au second champ \galgas{monInfo2} du type liste \galgas{@maListe}.
+  \item le troisième de type \ggs+@string+, qui correspond au second champ \galgas{monInfo2} du type liste \galgas{@maListe}.
 \end{itemize}
 
 Il est par exemple appelé comme suit :
@@ -119,8 +119,8 @@ setter addEdge ??@lstring inSourceNode ??@lstring inTargetNode ;
 
 Pour entrer un arc, appeler le setter prédéfini \galgas{addEdge}. Celui-ci possède deux arguments d'entrée de type \galgas{@lstring} :
 \begin{itemize}
-  \item le premier spécifie le nœud origine de l'arc ; la composante \galgas{@string} est le nom du nœud origine, et la composante \galgas{@location} est ajoutée à la liste du nœud origine ;
-  \item le second spécifie le nœud destination de l'arc ; la composante \galgas{@string} est le nom du nœud destination, et la composante \galgas{@location} est ajoutée à la liste du nœud destination.
+  \item le premier spécifie le nœud origine de l'arc ; la composante \ggs+@string+ est le nom du nœud origine, et la composante \galgas{@location} est ajoutée à la liste du nœud origine ;
+  \item le second spécifie le nœud destination de l'arc ; la composante \ggs+@string+ est le nom du nœud destination, et la composante \galgas{@location} est ajoutée à la liste du nœud destination.
 \end{itemize}
 
 
@@ -135,7 +135,7 @@ Pour entrer un arc, appeler le setter prédéfini \galgas{addEdge}. Celui-ci pos
 setter noteNode ??@lstring inNode ;
 \end{galgascode}
 
-Le setter prédéfini \galgas{noteNode} permet d'indiquer qu'un nœud doit être défini : il possède un seul argument en entrée, de type \galgas{@lstring}, dont la composante \galgas{@string} désigne le nom du nœud, et dont la composante \galgas{@location} est ajoutée à la liste de ce nœud.
+Le setter prédéfini \galgas{noteNode} permet d'indiquer qu'un nœud doit être défini : il possède un seul argument en entrée, de type \galgas{@lstring}, dont la composante \ggs+@string+ désigne le nom du nœud, et dont la composante \galgas{@location} est ajoutée à la liste de ce nœud.
 
 
 
