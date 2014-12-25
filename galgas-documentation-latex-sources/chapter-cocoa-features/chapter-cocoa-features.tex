@@ -58,15 +58,15 @@ For setting an icon for your Cocoa application and its documents, proceed as fol
 
 This feature enables to set particular display attributes to a given list of tokens. This list is defined by a plist file located in the \emph{Resources} directory of the application bundle.
 
-\texteEncercle{1} Edit the GALGAS lexique component, and add one (or more) \galgas{style} entries. For example:
+\texteEncercle{1} Edit the GALGAS lexique component, and add one (or more) \ggs+style+ entries. For example:
 
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 lexique my_lexique :
   ...
 style mySpecificStyle -> "My Style" ;
   ...
 end lexique ;
-\end{lstlisting}
+\end{galgascode}
 
 This new style's feature can be edited as other styles, by the Preferences setting of your Cocoa application.
 
@@ -108,10 +108,10 @@ For configuring your project, you will have to modify the lexique component, the
 \texteEncercle{1} \textbf{Lexique component header.} You need to change the lexique header, adding the « \texttt{indexing in} » declaration :
 
 
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 lexique my_lexique indexing in "INDEXING" :
   ...
-\end{lstlisting}
+\end{galgascode}
 
 The « \texttt{"INDEXING"} » character string defines the name of the directory that will contains the indexing cache files. This directory is relative to the source file.
  \\
@@ -119,14 +119,14 @@ The « \texttt{"INDEXING"} » character string defines the name of the directory
 \texteEncercle{2} \textbf{Indexing classes declarations.} Add one or more indexing classes declarations in the lexique component body.
 
 
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 lexique my_lexique indexing in "INDEXING" :
   ...
 indexing myIndexClass1 : "Awesome objects";
   ...
 indexing myIndexClass2 : "Smart Kinds";
   ...
-\end{lstlisting}
+\end{galgascode}
 
 Each declaration consists of two parts :
 \begin{itemize}
@@ -136,23 +136,23 @@ Each declaration consists of two parts :
 
 \noindent\texteEncercle{3} \textbf{Grammar component configuration.} Just prefix by « \texttt{indexing} » keyword the grammar header:
 
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 indexing grammar my_grammar ... :
   ...
-\end{lstlisting}
+\end{galgascode}
 
 
 
 \noindent\texteEncercle{4} \textbf{Program component configuration.} Insert the « \texttt{indexing with ...} » declaration after the « \texttt{message ...} » declaration in every program rule concerned by indexing:
 
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
   ...
 when ...
 message ...
 indexing with my_grammar
 ??@lstring inSourceFile {
   ...
-\end{lstlisting}
+\end{galgascode}
 
 
 
@@ -161,7 +161,7 @@ indexing with my_grammar
 
 \noindent\texteEncercle{5} \textbf{Define indexing entries.} The indexing entries are defined within the rules of syntax components. The \emph{terminal check} instruction is the unique way for definition, by naming an index class name:
 
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 syntax ... ("my_lexique.gLexique") :
   ...
 rule ... :
@@ -170,16 +170,16 @@ rule ... :
   ...
 end rule ;
   ...
-\end{lstlisting}
+\end{galgascode}
 
 Any kind of terminal symbol accepts an « \texttt{indexing} » attribute : keywords, delimiters, literal string, integers, identifiers, \dots
 
 Several index class names can be named, using a comma as separator:
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
   ...
   $identifier$ ? ... indexing myIndexClass1, myIndexClass2 ;
   ...
-\end{lstlisting}
+\end{galgascode}
 
 
 

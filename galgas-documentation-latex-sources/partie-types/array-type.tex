@@ -11,47 +11,47 @@ Le type \emph{array} permet de réaliser des tableaux dont la dimension et le ty
 
 La déclaration d'un type tableau contient les informations suivantes :
 \begin{itemize}
-  \item le type \galgas{@TypeElement} qui cite le type de l'élément de tableau ;
+  \item le type \ggs+@TypeElement+ qui cite le type de l'élément de tableau ;
   \item la dimension du tableau, qui doit être un nombre entier strictement positif ;
-  \item le type \galgas{@TypeTableau} qui est le nom donné au type de tableau.
+  \item le type \ggs+@TypeTableau+ qui est le nom donné au type de tableau.
 \end{itemize}
 
 La déclaration d'un type tableau a la syntaxe suivante :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 array @TypeTableau : @TypeElement [dimension] ;
-\end{lstlisting}
+\end{galgascode}
 
 Par exemple :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 array @monTableau : @string [3] ;
-\end{lstlisting}
+\end{galgascode}
 
 
 \section{Constructeur d'un type tableau}
 
-Le seul constructeur d'un type tableau est le constructeur \galgas{new}. Il a pour but de fixer les dimensions initiales du tableau (il pourra ensuite être redimensionné). Il comporte \emph{dimension} arguments de type \galgas{@uint}, qui fixent la taille initiale de chaque axe.
+Le seul constructeur d'un type tableau est le constructeur \ggs+new+. Il a pour but de fixer les dimensions initiales du tableau (il pourra ensuite être redimensionné). Il comporte \emph{dimension} arguments de type \ggs+@uint+, qui fixent la taille initiale de chaque axe.
 Par exemple :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
   @monTableau t [new !2 !3 !4] ;
-\end{lstlisting}
+\end{galgascode}
 
-Cette déclaration crée un tableau à $2*3*4$ éléments. Ces éléments sont par défaut \emph{invalides}, c'est à dire que leur lecture par le getter \galgas{valueAtIndex} déclenche une \emph{run-time error}. Pour être valide, un élément doit avoir été initialisé par un appel au setter \galgas{setValueAtIndex}.
+Cette déclaration crée un tableau à $2*3*4$ éléments. Ces éléments sont par défaut \emph{invalides}, c'est à dire que leur lecture par le getter \ggs+valueAtIndex+ déclenche une \emph{run-time error}. Pour être valide, un élément doit avoir été initialisé par un appel au setter \ggs+setValueAtIndex+.
 
 Il est valide d'affecter la valeur $0$ à un ou plusieurs axes. Le tableau ne contient alors aucun élément.
 
 
 \section{Accès à un élément}
 
-L'accès à la valeur d'un élément s'effectue par le getter \galgas{valueAtIndex}. La modification de la valeur d'un élément est réalisée par le setter \galgas{setValueAtIndex} ou le setter \galgas{forceValueAtIndex}.
+L'accès à la valeur d'un élément s'effectue par le getter \ggs+valueAtIndex+. La modification de la valeur d'un élément est réalisée par le setter \ggs+setValueAtIndex+ ou le setter \ggs+forceValueAtIndex+.
 
 \subsection{Le getter \texttt{valueAtIndex}}
 
-Ce getter comporte \emph{dimension} arguments de type \galgas{@uint}, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C).
+Ce getter comporte \emph{dimension} arguments de type \ggs+@uint+, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C).
 
 Par exemple :
-\begin{lstlisting}[language=galgas]
-  @string s := [t valueAtIndex !1 !2 !2] ;
-\end{lstlisting}
+\begin{galgascode}
+  @string s = [t valueAtIndex !1 !2 !2] ;
+\end{galgascode}
 
 
 Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et la valeur retournée est \emph{invalide}. Si les indices ont des valeurs correctes, l'élément est retourné ; si cet élément est invalide, une \emph{run-time error} est déclenchée, et une valeur \emph{invalide} est retournée.
@@ -65,17 +65,17 @@ Une \emph{run-time error} est déclenchée si un indice dépasse sa borne corres
 
 Ce setter comporte (\emph{dimension}+1) arguments :
 \begin{itemize}
-  \item le premier argument est type \galgas{@TypeElement}, et contient la valeur à écrire ;
-  \item les \emph{dimension} suivants arguments sont de type \galgas{@uint} et précisent l'indice pour chaque axe.
+  \item le premier argument est type \ggs+@TypeElement+, et contient la valeur à écrire ;
+  \item les \emph{dimension} suivants arguments sont de type \ggs+@uint+ et précisent l'indice pour chaque axe.
 \end{itemize} 
   
 Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et le tableau est alors non modifié.
 
 Par exemple :
-\begin{lstlisting}[language=galgas]
-  @string s := ... ;
+\begin{galgascode}
+  @string s = ... ;
   [!?t setValueAtIndex !s !1 !2 !2] ;
-\end{lstlisting}
+\end{galgascode}
 
 
 
@@ -85,17 +85,17 @@ Par exemple :
 
 Ce setter comporte (\emph{dimension}+1) arguments :
 \begin{itemize}
-  \item le premier argument est type \galgas{@TypeElement}, et contient la valeur à écrire ;
-  \item les \emph{dimension} suivants arguments sont de type \galgas{@uint} et précisent l'indice pour chaque axe.
+  \item le premier argument est type \ggs+@TypeElement+, et contient la valeur à écrire ;
+  \item les \emph{dimension} suivants arguments sont de type \ggs+@uint+ et précisent l'indice pour chaque axe.
 \end{itemize} 
   
-Les indices sont comptés à partir de zéro (comme en C). Contrairement au setter \galgas{setValueAtIndex}, aucune \emph{run-time error} n'est déclenchée si un indice dépasse sa borne correspondante : le tableau est d'abord agrandi, ce qui ajoute des éléments invalides, puis l'élément désigné par les indices est affecté.
+Les indices sont comptés à partir de zéro (comme en C). Contrairement au setter \ggs+setValueAtIndex+, aucune \emph{run-time error} n'est déclenchée si un indice dépasse sa borne correspondante : le tableau est d'abord agrandi, ce qui ajoute des éléments invalides, puis l'élément désigné par les indices est affecté.
 
 Par exemple :
-\begin{lstlisting}[language=galgas]
-  @string s := ... ;
+\begin{galgascode}
+  @string s = ... ;
   [}?t forceValueAtIndex !s !5 !4 !4] ;
-\end{lstlisting}
+\end{galgascode}
 
 
 
@@ -103,26 +103,26 @@ Par exemple :
 
 \section{Validité d'un élément}
 
-Le getter \galgas{isValueValidAtIndex} permet de savoir si un élément est valide ou non, c'est à dire si sa lecture déclenchera une \emph{run-time error}. Le setter \galgas{invalidateValueAtIndex} invalide un élément.
+Le getter \ggs+isValueValidAtIndex+ permet de savoir si un élément est valide ou non, c'est à dire si sa lecture déclenchera une \emph{run-time error}. Le setter \ggs+invalidateValueAtIndex+ invalide un élément.
 
 \subsection{Le getter \texttt{isValueValidAtIndex}}
 
-Ce getter comporte \emph{dimension} arguments de type \galgas{@uint}, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et la valeur retournée est \emph{invalide}. Il renvoie une valeur de type \ggs+@bool+, suivant que l'élément est valide ou non.
+Ce getter comporte \emph{dimension} arguments de type \ggs+@uint+, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et la valeur retournée est \emph{invalide}. Il renvoie une valeur de type \ggs+@bool+, suivant que l'élément est valide ou non.
 
 Par exemple :
-\begin{lstlisting}[language=galgas]
-  @bool b := [t isValueValidAtIndex !1 !2 !2] ;
-\end{lstlisting}
+\begin{galgascode}
+  @bool b = [t isValueValidAtIndex !1 !2 !2] ;
+\end{galgascode}
 
 
 \subsection{Setter \texttt{invalidateValueAtIndex}}
 
-Ce setter comporte \emph{dimension} arguments de type \galgas{@uint}, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante. Il invalide l'élément correspondant, c'est dire qu'un appel au getter \galgas{valueAtIndex} pour lire cet élément déclenchera une \emph{run-time error}.
+Ce setter comporte \emph{dimension} arguments de type \ggs+@uint+, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante. Il invalide l'élément correspondant, c'est dire qu'un appel au getter \ggs+valueAtIndex+ pour lire cet élément déclenchera une \emph{run-time error}.
 
 Par exemple :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
   [!?t invalidateValueAtIndex !1 !2 !2] ;
-\end{lstlisting}
+\end{galgascode}
 
 
 
@@ -130,37 +130,37 @@ Par exemple :
 
 \section{Contrôle des tailles des axes}
 
-Le getter \galgas{axisCount} renvoie la dimension d'un tableau, c'est à dire le nombre de ces axes, le getter \galgas{sizeForAxis} renvoie la taille allouée à un axe particulier. Les setters \galgas{setSizeForAxis} et \galgas{setSize} permettent de modifier la taille d'un tableau.
+Le getter \ggs+axisCount+ renvoie la dimension d'un tableau, c'est à dire le nombre de ces axes, le getter \ggs+sizeForAxis+ renvoie la taille allouée à un axe particulier. Les setters \ggs+setSizeForAxis+ et \ggs+setSize+ permettent de modifier la taille d'un tableau.
 
 
 
 \subsection{Le getter \texttt{axisCount}}
 
-Ce getter sans argument renvoie un \galgas{@uint} qui contient le nombre d'axes d'un tableau. Comme ce nombre est fixé statiquement par la déclaration de type, la valeur retournée est toujours la même, pour toutes les objets d'un même type tableau.
+Ce getter sans argument renvoie un \ggs+@uint+ qui contient le nombre d'axes d'un tableau. Comme ce nombre est fixé statiquement par la déclaration de type, la valeur retournée est toujours la même, pour toutes les objets d'un même type tableau.
 
 
 Par exemple, pour la déclaration :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 array @monTableau : @string [3] ;
-\end{lstlisting}
-Pour tous les objets de type \galgas{@monTableau}, l'appel au getter \galgas{axisCount} renvoie la valeur $3$.
+\end{galgascode}
+Pour tous les objets de type \ggs+@monTableau+, l'appel au getter \ggs+axisCount+ renvoie la valeur $3$.
 
 
 \subsection{Le getter \texttt{sizeForAxis}}
 
-Ce getter présente un argument de type \galgas{@uint} qui est l'indice de l'axe interrogé. Les axes sont numérotés à partir de zéro, c'est à dire que le premier axe a l'indice $0$, le deuxième l'indice $1$, \dots~Une \emph{run-time error} est déclenchée si la valeur de l'argument est supérieure ou égale à la dimension du tableau, et la valeur renvoyée est invalide. Sinon, il renvoie un \galgas{@uint} qui contient la taille attribuée à l'axe correspondant.
+Ce getter présente un argument de type \ggs+@uint+ qui est l'indice de l'axe interrogé. Les axes sont numérotés à partir de zéro, c'est à dire que le premier axe a l'indice $0$, le deuxième l'indice $1$, \dots~Une \emph{run-time error} est déclenchée si la valeur de l'argument est supérieure ou égale à la dimension du tableau, et la valeur renvoyée est invalide. Sinon, il renvoie un \ggs+@uint+ qui contient la taille attribuée à l'axe correspondant.
 
 
 \subsection{Le getter \texttt{rangeForAxis}}
 
-Ce getter présente un argument de type \galgas{@uint} qui est l'indice de l'axe interrogé. Les axes sont numérotés à partir de zéro, c'est à dire que le premier axe a l'indice $0$, le deuxième l'indice $1$, \dots~Une \emph{run-time error} est déclenchée si la valeur de l'argument est supérieure ou égale à la dimension du tableau, et la valeur renvoyée est invalide. Sinon, il renvoie un \galgas{@range} qui commence à $0$ et qui a pour longueur la taille attribuée à l'axe correspondant.
+Ce getter présente un argument de type \ggs+@uint+ qui est l'indice de l'axe interrogé. Les axes sont numérotés à partir de zéro, c'est à dire que le premier axe a l'indice $0$, le deuxième l'indice $1$, \dots~Une \emph{run-time error} est déclenchée si la valeur de l'argument est supérieure ou égale à la dimension du tableau, et la valeur renvoyée est invalide. Sinon, il renvoie un \ggs+@range+ qui commence à $0$ et qui a pour longueur la taille attribuée à l'axe correspondant.
 
 
 
 
 \subsection{Setter \texttt{setSizeForAxis}}
 
-Ce setter permet de changer la taille d'un axe sans changer les tailles attribuées aux autres axes. Il présente deux arguments de type \galgas{@uint} :
+Ce setter permet de changer la taille d'un axe sans changer les tailles attribuées aux autres axes. Il présente deux arguments de type \ggs+@uint+ :
 \begin{itemize}
   \item le premier est la nouvelle taille ;
   \item le second est l'indice de l'axe concerné.
@@ -170,23 +170,23 @@ Les axes sont numérotés à partir de zéro, c'est à dire que le premier axe a
  
 Diminuer la taille d'un axe fait disparaître des éléments, qui sont alors perdus. Si la nouvelle taille est zéro, le tableau est vidé de tous ses éléments.
 
-Augmenter la taille fait apparaître de nouveaux éléments, qui sont invalides par défaut. Il faudra alors explicitement les initialiser individuellement par un appel au setter \galgas{setValueAtIndex}.
+Augmenter la taille fait apparaître de nouveaux éléments, qui sont invalides par défaut. Il faudra alors explicitement les initialiser individuellement par un appel au setter \ggs+setValueAtIndex+.
 
 
 
 
 \subsection{Setter \texttt{setSize}}
 
-Ce setter permet de changer les tailles de tous les axes. Il présente \galgas{@uint} arguments de type \galgas{@uint} qui contiennent les nouvelles tailles de chaque axe.
+Ce setter permet de changer les tailles de tous les axes. Il présente \ggs+@uint+ arguments de type \ggs+@uint+ qui contiennent les nouvelles tailles de chaque axe.
 
 Diminuer la taille d'un axe fait disparaître des éléments, qui sont alors perdus. Si une des nouvelles tailles est zéro, le tableau est vidé de tous ses éléments.
 
-Augmenter une taille fait apparaître de nouveaux éléments, qui sont invalides par défaut. Il faudra alors explicitement les initialiser individuellement par un appel au setter \galgas{setValueAtIndex}.
+Augmenter une taille fait apparaître de nouveaux éléments, qui sont invalides par défaut. Il faudra alors explicitement les initialiser individuellement par un appel au setter \ggs+setValueAtIndex+.
 
 
 \section{Comparaison}
 
-Un type tableau implémente les opérateurs \galgas{=} et \galgas{\!=}. L'égalité de deux tableaux est testé comme suit :
+Un type tableau implémente les opérateurs \ggs+=+ et \ggs+!=+. L'égalité de deux tableaux est testé comme suit :
 \begin{itemize}
   \item les tailles de chaque axe doivent être identiques ;
   \item les éléments doivent être identiques.

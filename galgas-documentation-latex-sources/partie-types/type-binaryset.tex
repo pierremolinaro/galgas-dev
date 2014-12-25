@@ -177,7 +177,7 @@ log s; # Affiche <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 1
 {binaryset}
 {@string inPredicateString}
 {Returns the \galgas{@binaryset} object described by the \emph{inPredicateString} argument.}
-{the \emph{inBitString} argument string encodes a predicate string, such as those returned by \refReaderPage{binaryset}{predicateStringValue}.}
+{the \emph{inBitString} argument string encodes a predicate string, such as those returned by \refGetterPage{binaryset}{predicateStringValue}.}
 \begin{description}
 \item The \emph{inBitString} argument string characters should have one of the five following values:
 \begin{itemize}
@@ -321,12 +321,13 @@ log s; # Affiche <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 
 
 
-\readerSansArgument{accessibleStates}
-{binaryset}
-{1.6.0}
-{binaryset}
-{Returns the set of accessible states from an initial state set.}
-{computes the set of accessible states from the \emph{inInitialStateSet} state set using the accessibility relation encoded by the receiver.}
+\subsectionGetter{accessibleStates}{binaryset}
+
+\begin{galgascode}
+getter accessibleStates -> @binaryset
+\end{galgascode}
+
+Returns the set of accessible states from an initial state set. It computes the set of accessible states from the \emph{inInitialStateSet} state set using the accessibility relation encoded by the receiver.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -362,23 +363,23 @@ This program Affiche: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 
-\readerSansArgument{compressedValueCount}
-{binaryset}
-{1.6.0}
-{@uint64}
-{Returns in an \galgas{@uint64} value the number of different compressed string values encoded by receiver's value.}
-{}
+\subsectionGetter{compressedValueCount}{binaryset}
+
+\begin{galgascode}
+getter compressedValueCount -> @uint64
+\end{galgascode}
+
+Returns in an \galgas{@uint64} value the number of different compressed string values encoded by receiver's value.
 
 
 
+\subsectionGetter{compressedStringValueList}{binaryset}
 
-\readerUnArgument{compressedStringValueList}
-{binaryset}
-{1.6.0}
-{stringlist}
-{@uint inBitCount}
-{Returns the list of compressed string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
-{}
+\begin{galgascode}
+getter compressedStringValueList ?@uint inBitCount -> @stringlist
+\end{galgascode}
+
+Returns the list of compressed string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
 
 
 
@@ -424,31 +425,31 @@ log b # Affiche <@bool:true>
 
 
 
-\readerUnArgument{equalTo}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@binaryset inOperand}
-{Returns the complement of the exclusive or between the receiver's value and the operand's value.}
-{}
+\subsectionGetter{equalTo}{binaryset}
 
-Note that \texttt{[a equalTo !b]} is equivalent to \texttt{$\sim$ (a $\wedge$ b)}.
+\begin{galgascode}
+getter equalTo ?@binaryset inOperand -> @binaryset
+\end{galgascode}
 
-This operation Retourne un \galgas{@binaryset} value; do not confuse with \emph{==} operator that Retourne un \ggs+@bool+ value.
+Returns the complement of the exclusive or between the receiver's value and the operand's value.
 
+Note that \ggs+[a equalTo !b]+ is equivalent to \texttt{$\sim$ (a $\wedge$ b)}.
 
+This operation returns un \galgas{@binaryset} value; do not confuse with \ggs+==+ operator that Retourne un \ggs+@bool+ value.
 
 
 
 
 
-\readerUnArgument{existOnBitIndex}
-{binaryset}
-{1.6.3}
-{binaryset}
-{@uint inBitIndex}
-{Returns the binary computed by applying the \emph{exist} operator on the \emph{inBitIndex} bit of the receiver's value.}
-{}
+
+
+\subsectionGetter{existOnBitIndex}{binaryset}
+
+\begin{galgascode}
+getter existOnBitIndex ?@uint inBitIndex -> @binaryset
+\end{galgascode}
+
+Returns the binary computed by applying the \emph{exist} operator on the \emph{inBitIndex} bit of the receiver's value.
 
 
 
@@ -480,13 +481,13 @@ log s ; # Affiche <@binaryset: 011XXX10>
 
 
 
-\readerUnArgument{existOnBitIndexAndBeyond}
-{binaryset}
-{1.6.3}
-{binaryset}
-{@uint inBitIndex}
-{Returns the binary set computed by applying the \emph{exist} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.}
-{}
+\subsectionGetter{existOnBitIndexAndBeyond}{binaryset}
+
+\begin{galgascode}
+getter existOnBitIndexAndBeyond ?@uint inBitIndex -> @binaryset
+\end{galgascode}
+
+Returns the binary set computed by applying the \emph{exist} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.
 
 
 
@@ -494,13 +495,13 @@ log s ; # Affiche <@binaryset: 011XXX10>
 
 
 
-\readerUnArgument{forAllOnBitIndex}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitIndex}
-{Returns the binary set computed by applying the \emph{for all} operator on the \emph{inFirstBitIndex} bit index of the receiver's value.}
-{}
+\subsectionGetter{forAllOnBitIndex}{binaryset}
+
+\begin{galgascode}
+getter forAllOnBitIndex ?@uint inBitIndex -> @binaryset
+\end{galgascode}
+
+Returns the binary set computed by applying the \emph{for all} operator on the \emph{inFirstBitIndex} bit index of the receiver's value.
 
 
 
@@ -508,30 +509,14 @@ log s ; # Affiche <@binaryset: 011XXX10>
 
 
 
-\readerUnArgument{forAllOnBitIndexAndBeyond}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitIndex}
-{Returns the binary computed by applying the \emph{for all} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.}
-{}
+\subsectionGetter{forAllOnBitIndexAndBeyond}{binaryset}
+
+\begin{galgascode}
+getter forAllOnBitIndexAndBeyond ?@uint inBitIndex -> @binaryset
+\end{galgascode}
 
 
-
-
-
-
-
-
-\readerUnArgument{greaterOrEqualTo}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@binaryset inOperand}
-{Returns the complement of the exclusive or between the receiver's value and the operand's value.}
-{}
-
-Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar ~$\sim$b)}.
+Returns the binary computed by applying the \emph{for all} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.
 
 
 
@@ -540,12 +525,16 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerSansArgument{isEmpty}
-{binaryset}
-{1.6.0}
-{bool}
-{Returns a \galgas{@bool} value that indicates whether the receiver's value is the empty set.}
-{returns \galgas{true} if receiver's value is the empty set, and \galgas{false} otherwise.}
+\subsectionGetter{greaterOrEqualTo}{binaryset}
+
+\begin{galgascode}
+getter greaterOrEqualTo ?@binaryset inOperand -> @binaryset
+\end{galgascode}
+
+
+Returns the complement of the exclusive or between the receiver's value and the operand's value.
+
+Note that \ggs+[a greaterOrEqualTo !b]+ is equivalent to \texttt{(a \textbar ~$\sim$b)}.
 
 
 
@@ -553,12 +542,28 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerSansArgument{isFull}
-{binaryset}
-{1.6.0}
-{bool}
-{Returns a \galgas{@bool} value that indicates whether the receiver's value is the full set.}
-{returns \galgas{true} if receiver's value is the full set, and \galgas{false} otherwise.}
+
+\subsectionGetter{isEmpty}{binaryset}
+
+\begin{galgascode}
+getter isEmpty -> @bool
+\end{galgascode}
+
+Returns a \galgas{@bool} value that indicates whether the receiver's value is the empty set :  \galgas{true} if receiver's value is the empty set, and \galgas{false} otherwise.
+
+
+
+
+
+
+
+\subsectionGetter{isFull}{binaryset}
+
+\begin{galgascode}
+getter isFull -> @bool
+\end{galgascode}
+
+Returns a \galgas{@bool} value that indicates whether the receiver's value is the full set : \galgas{true} if receiver's value is the full set, and \galgas{false} otherwise.
 
 
 
@@ -581,12 +586,14 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerUnArgument{lowerOrEqualTo}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@binaryset inOperand}
-{Returns the binary set computed by applying the \emph{lower or equal} operator on the receiver's value and the \emph{inOperand} argument.}
+\subsectionGetter{lowerOrEqualTo}{binaryset}
+
+\begin{galgascode}
+getter lowerOrEqualTo ?@binaryset inOperand -> @binaryset
+\end{galgascode}
+
+
+Returns the binary set computed by applying the \emph{lower or equal} operator on the receiver's value and the \emph{inOperand} argument.
 {\texttt{[a lowerOrEqualTo !b]} is \texttt{(($\sim$x) \textbar y)}.}
 
 
@@ -595,12 +602,14 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerUnArgument{notEqualTo}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@binaryset inOperand}
-{Returns the binary set computed by applying the \emph{not equal} operator on the receiver's value and the \emph{inOperand} argument.}
+\subsectionGetter{notEqualTo}{binaryset}
+
+\begin{galgascode}
+getter notEqualTo ?@binaryset inOperand -> @binaryset
+\end{galgascode}
+
+
+Returns the binary set computed by applying the \emph{not equal} operator on the receiver's value and the \emph{inOperand} argument.
 {\texttt{[a notEqualTo !b]} is \texttt{(x $\wedge$ y)}.}
 
 
@@ -609,12 +618,13 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerSansArgument{predicateStringValue}
-{binaryset}
-{1.6.0}
-{string}
-{Returns a string representation of the receiver's value.}
-{the returned string is compatible with the \lienConstructeur{binaryset}{binarySetWithPredicateString}.}
+\subsectionGetter{predicateStringValue}{binaryset}
+
+\begin{galgascode}
+getter predicateStringValue -> @string
+\end{galgascode}
+
+Returns a string representation of the receiver's value. The returned string is compatible with the \lienConstructeur{binaryset}{binarySetWithPredicateString}.
 
 
 
@@ -622,12 +632,13 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerUnArgument{strictGreaterThan}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@binaryset inOperand}
-{Returns the binary set computed by applying the \emph{strict greater} operator on the receiver's value and the \emph{inOperand} argument.}
+\subsectionGetter{strictGreaterThan}{binaryset}
+
+\begin{galgascode}
+getter strictGreaterThan ?@binaryset inOperand -> @binaryset
+\end{galgascode}
+
+Returns the binary set computed by applying the \emph{strict greater} operator on the receiver's value and the \emph{inOperand} argument.
 {\texttt{[a strictGreaterThan !b]} is \texttt{(x \& $\sim$y)}.}
 
 
@@ -636,12 +647,13 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerUnArgument{strictLowerThan}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@binaryset inOperand}
-{Returns the binary set computed by applying the \emph{strict lower} operator on the receiver's value and the \emph{inOperand} argument.}
+\subsectionGetter{strictLowerThan}{binaryset}
+
+\begin{galgascode}
+getter strictLowerThan ?@binaryset inOperand -> @binaryset
+\end{galgascode}
+
+Returns the binary set computed by applying the \emph{strict lower} operator on the receiver's value and the \emph{inOperand} argument.
 {\texttt{[a strictLowerThan !b]} is \texttt{($\sim$x \& y)}.}
 
 
@@ -650,13 +662,13 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerUnArgument{stringValueList}
-{binaryset}
-{1.6.0}
-{@stringlist}
-{@uint inBitCount}
-{Returns the list of string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
-{}
+\subsectionGetter{stringValueList}{binaryset}
+
+\begin{galgascode}
+getter stringValueList ?@uint inBitCount -> @stringlist
+\end{galgascode}
+
+Returns the list of string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
 
 
 
@@ -775,13 +787,16 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerUnArgument{transitiveClosure}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitCount}
-{Returns the transitive closure of the relation encoded by the receiver.}
-{this getter considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount  - 1}, \emph{y} is defined by bits index \emph{inBitCount} to \emph{2 * inBitCount - 1}.}
+\subsectionGetter{transitiveClosure}{binaryset}
+
+\begin{galgascode}
+getter transitiveClosure ?@uint inBitCount -> @binaryset
+\end{galgascode}
+
+
+Returns the transitive closure of the relation encoded by the receiver.
+
+This getter considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount  - 1}, \emph{y} is defined by bits index \emph{inBitCount} to \emph{2 * inBitCount - 1}.
 
 
 
@@ -790,13 +805,14 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerUnArgument{uint64ValueList}
-{binaryset}
-{1.6.0}
-{@uint64list}
-{@uint64 inBitCount}
-{Returns the list of \galgas{@uint64} values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
-{}
+\subsectionGetter{uint64ValueList}{binaryset}
+
+\begin{galgascode}
+getter uint64ValueList ?@uint inBitCount -> @uint64list
+\end{galgascode}
+
+
+Returns the list of \galgas{@uint64} values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
 
 
 
@@ -805,13 +821,14 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
-\readerUnArgument{valueCount}
-{binaryset}
-{1.6.0}
-{@uint64}
-{@uint inBitCount}
-{Returns in an \galgas{@uint64} object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits.}
-{no overflow test in performed.}
+\subsectionGetter{valueCount}{binaryset}
+
+\begin{galgascode}
+getter valueCount ?@uint inBitCount -> @uint64
+\end{galgascode}
+
+
+Returns in an \galgas{@uint64} object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits. No overflow test in performed.
 
 
 
@@ -868,7 +885,7 @@ $!=$ & Non Equality \\
 
 Theses operators require both arguments to be \galgas{@binaryset} objects, and return a \ggs+@bool+ object. These operations are very fast and are performed in a constant time (integer equality comparison).
 
-Do not confuse with \refReaderPage{binaryset}{equalTo} and \refReaderPage{binaryset}{notEqualTo} that return a \galgas{@binaryset} object.
+Do not confuse with \refGetterPage{binaryset}{equalTo} and \refGetterPage{binaryset}{notEqualTo} that return a \galgas{@binaryset} object.
 
 
 

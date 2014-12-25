@@ -70,8 +70,8 @@ Le constructeur \galgas{new} est implicitement pour toute classe non abstraite (
 Par défaut, la lecture d'un attribut est activée par la définition implicite d'un \emph{getter}, dont le nom est le nom de l'attribut. Ainsi, pour une variable \galgas{b} de type \galgas{@B}, on pourra écrire :
 
 \begin{galgascode}
-@uint v := [b mA] ;
-@string s := [b mB] ;
+@uint v = [b mA] ;
+@string s = [b mB] ;
 \end{galgascode}
 
 Il est possible d'inhiber la génération implicite d'un \emph{getter} de lecture d'un attribut en complétant sa déclaration par \galgas{feature nogetter}, comme par exemple :
@@ -140,15 +140,15 @@ Pour toute cette section, nous illustrons les constructions décrites en nous ba
 
 \begin{galgascode}
 @A a ;
-@B b := ... ;
-@C c := ... ;
+@B b = ... ;
+@C c = ... ;
 \end{galgascode}
 
 \subsection{Affectation polymorphique}
 
-GALGAS accepte l'affectation polymorphique qui est par exemple \galgas{a := b ;}. Elle est autorisée aussi lors de l'affectation d'une expression effective à un paramètre formel dans une instruction d'appel (de routine, de fonction, de méthode, ...)
+GALGAS accepte l'affectation polymorphique qui est par exemple \galgas{a = b ;}. Elle est autorisée aussi lors de l'affectation d'une expression effective à un paramètre formel dans une instruction d'appel (de routine, de fonction, de méthode, ...)
 
-L'affectation polymorphique inverse (qui consisterait à écrire \galgas{b := a ;}) est logiquement refusée par le compilateur.
+L'affectation polymorphique inverse (qui consisterait à écrire \galgas{b = a ;}) est logiquement refusée par le compilateur.
 
 Il y a trois constructions qui permettent d'effectuer cette opération :
 \begin{itemize}
@@ -160,7 +160,7 @@ Il y a trois constructions qui permettent d'effectuer cette opération :
 Pour effectuer ponctuellement une affectation polymorphique inverse, on écrit (les parenthèses sont obligatoires) :
 
 \begin{galgascode}
-@T resultat := (cast expression : @T) ;
+@T resultat = (cast expression : @T) ;
 \end{galgascode}
 
 Si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \galgas{@T} contenant la valeur de \galgas{expression}. Dans le cas contraire, un message d'erreur est affiché, et la variable \galgas{resultat} est non construite.
@@ -172,10 +172,10 @@ Grâce à l'\emph{expression de test du type dynamique}, il est possible de test
 
 \begin{galgascode}
 if (expression is @B) then
-  const @B variable := (cast expression : @B) ;
+  const @B variable = (cast expression : @B) ;
   ...
 elsif (expression is @C) then
-  const @C variable := (cast expression : @C) ;
+  const @C variable = (cast expression : @C) ;
   ...
 else
   message "conversion impossible" ;

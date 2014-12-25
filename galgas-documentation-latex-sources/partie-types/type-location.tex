@@ -13,14 +13,14 @@ Un objet de type \galgas{@location} a pour valeur une position dans un texte sou
 
 Le mot réservé \galgas{here} contient la position courante de l'analyse du texte source. Il doit être considéré comme un opérande particulier d'une expression, et, à ce titre, peut apparaître dans toute expression. On peut ainsi écrire :
 
-\galgas{const @location currentLocation := here ;}
+\galgas{const @location currentLocation = here ;}
 
 Plus précisément, la position capturée est le début du dernier \emph{token} analysé. Ainsi, si l'on écrit :
 
 \begin{galgascode}
   $token$ ;
   ...
-  @location currentLocation := here ;
+  @location currentLocation = here ;
 \end{galgascode}
 
 La position capturée est la position du premier caractère du token correspondant à \galgas{$token$}. Si \galgas{here} est appelé avant que le premier token soit analysé, la position capturée est le premier caractère du texte source.
@@ -32,45 +32,50 @@ La position capturée est la position du premier caractère du token corresponda
 {2.1.2}
 {location}
 {Returns an \galgas{@location} that does not point out any location.}
-{The returned object responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+{The returned object responds \galgas{true} to the \refGetterPage{location}{isNowhere}.}
 
 \section{Getters}
 
-\readerSansArgument{column}
-{location}
-{1.8.2}
-{uint}
-{Returns an \galgas{@uint} value containing the column of the receiver's value.}
-{this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+\subsectionGetter{column}{location}
+
+\begin{galgascode}
+getter column -> @uint
+\end{galgascode}
+
+Returns an \galgas{@uint} value containing the column of the receiver's value ; this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refGetterPage{location}{isNowhere}.
 
 
-\readerSansArgument{isNowhere}
-{location}
-{2.1.2}
-{bool}
-{Returns an \galgas{@bool} value indicating whether the receiver'value points out a source location or does not.}
-{this getter returns \galgas{true} if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \galgas{false} if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \galgas{here} keyword.}
+\subsectionGetter{isNowhere}{location}
+
+\begin{galgascode}
+getter isNowhere -> @bool
+\end{galgascode}
+
+Returns an \galgas{@bool} value indicating whether the receiver'value points out a source location or does not. This getter returns \galgas{true} if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \galgas{false} if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \galgas{here} keyword.
 
 
-\readerSansArgument{line}
-{location}
-{1.8.2}
-{uint}
-{Returns an \galgas{@uint} value containing the line of the receiver's value.}
-{this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+\subsectionGetter{line}{location}
+
+\begin{galgascode}
+getter line -> @uint
+\end{galgascode}
+
+Returns an \galgas{@uint} value containing the line of the receiver's value. This getter raises a run-time error if the receiver's value responds \galgas{true} to the \refGetterPage{location}{isNowhere}.
 
 
-\readerSansArgument{locationIndex}
-{location}
-{1.8.2}
-{uint}
-{Returns an \galgas{@uint} value containing the the offset from the the beginning of the source of the location defined by receiver's value.}
-{this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+\subsectionGetter{locationIndex}{location}
+
+\begin{galgascode}
+getter locationIndex -> @uint
+\end{galgascode}
+
+Returns an \galgas{@uint} value containing the the offset from the the beginning of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \galgas{true} to the \refGetterPage{location}{isNowhere}.
 
 
-\readerSansArgument{locationString}
-{location}
-{1.8.2}
-{string}
-{returns an \galgas{@string} object that contains a string representation of the location defined by receiver's value.}
-{this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+\subsectionGetter{locationString}{location}
+
+\begin{galgascode}
+getter locationString -> @string
+\end{galgascode}
+
+Returns an \galgas{@string} object that contains a string representation of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \galgas{true} to the \refGetterPage{location}{isNowhere}.

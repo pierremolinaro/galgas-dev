@@ -5,7 +5,7 @@
 
 An \galgas{@sint} object value is a 32-bit signed integer value. You can initialize an \galgas{@sint} object from an 32-bit signed integer constant:\\
 
-\texttt{@sint mySignedInteger := 123\_456S ;}
+\texttt{@sint mySignedInteger = 123\_456S ;}
 
 Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 
@@ -34,23 +34,25 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 
 \section{Getters}
 
-\readerSansArgument{double}
-{sint}
-{1.9.8}
-{double}
-{Returns the receiver's value converted in a \galgas{@double} object.}
-{as a 32-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.}
+\subsectionGetter{double}{sint}
+
+\begin{galgascode}
+getter double -> @double
+\end{galgascode}
+
+Returns the receiver's value converted in a \galgas{@double} object. As a 32-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.
 
 
 
 
 
-\readerSansArgument{sint64}
-{sint}
-{1.6.12}
-{sint64}
-{Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
-{as a 32-bit signed value can always be converted in a 64-bit signed value, this getter never fails.}
+\subsectionGetter{sint64}{sint}
+
+\begin{galgascode}
+getter sint64 -> @sint64
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. As a 32-bit signed value can always be converted in a 64-bit signed value, this getter never fails.
 
 This getter is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{sint64} object.
 
@@ -58,12 +60,13 @@ This getter is the only way to convert an \refTypePredefini{sint} object into an
 
 
 
-\readerSansArgument{string}
-{sint}
-{1.6.12}
-{string}
-{Returns a decimal string representation of the receiver's value.}
-{for an hexadecimal string representation of the receiver's value, see \refReaderPage{uint}{hexString} and \refReaderPage{uint}{xString}.}
+\subsectionGetter{string}{sint}
+
+\begin{galgascode}
+getter string -> @string
+\end{galgascode}
+
+Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint}{hexString} and \refGetterPage{uint}{xString}.
 
 
 
@@ -71,24 +74,26 @@ This getter is the only way to convert an \refTypePredefini{sint} object into an
 
 
 
-\readerSansArgument{uint}
-{sint}
-{1.3.0}
-{uint}
-{Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
-{an error is raised is receiver's value is negative.}
+\subsectionGetter{uint}{sint}
+
+\begin{galgascode}
+getter uint -> @uint
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is negative.
 
 This getter is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{uint} object.
 
 
 
 
-\readerSansArgument{uint64}
-{sint}
-{1.3.0}
-{uint64}
-{Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
-{an error is raised is receiver's value is negative.}
+\subsectionGetter{uint64}{sint}
+
+\begin{galgascode}
+getter uint64 -> @uint64
+\end{galgascode}
+
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. An error is raised is receiver's value is negative.
 
 This getter is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{uint64} object.
 
@@ -100,9 +105,9 @@ This getter is the only way to convert an \refTypePredefini{sint} object into an
 
 The \refTypePredefini{sint} supports incrementation and decrementation instructions.
 
-\texttt{@sint n := ... ; n ++ ; \# Incrementation}
+\texttt{@sint n = ... ; n ++ ; \# Incrementation}
 
-\texttt{@sint p := ... ; p -- ; \# Decrementation}\newline
+\texttt{@sint p = ... ; p -- ; \# Decrementation}\newline
 
 The incrementation instruction raises an error if receiver's value is equal to $2^{31}-1$.\newline
 

@@ -22,14 +22,13 @@ En GALGAS, un analyseur lexical est défini par un composant \ggs+lexique+. Les 
 
 En GALGAS, un composant \ggs+lexique+ a la structure suivante :
 
-{\lstset{emph={nom, declarations}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 lexique nom {
   declarations
 }
 \end{galgascode}
 
-Le \galgas{nom} est le nom donné au composant ; il est utilisé pour référencer le composant \ggs+lexique+ dans un composant \ggs+syntax+.
+Le \ggs+nom+ est le nom donné au composant ; il est utilisé pour référencer le composant \ggs+lexique+ dans un composant \ggs+syntax+.
 
 
 Dans un composant \ggs+lexique+, cinq types de déclarations sont définies :
@@ -218,7 +217,7 @@ The //matching expression// defines a set of matching strings, that are tested a
 A matching expression can be:
   - a one-character string (for example, ''\textquotesingle{a}\textquotesingle'' matches the ''a'' character);
   - an union of one-character strings, defined by a character subrange (for example, ''\textquotesingle{a}\textquotesingle -> \textquotesingle{z}\textquotesingle'' matches a lower case letter);
-  - a one or more characters string (for example, ''%%"%%:=%%"%%'' matches the corresponding string);
+  - a one or more characters string (for example, ''%%"%%=%%"%%'' matches the corresponding string);
   - an union of above (for example: ''\textquotesingle{A}\textquotesingle -> \textquotesingle{Z}\textquotesingle | \textquotesingle{a}\textquotesingle -> \textquotesingle{z}\textquotesingle'' matches a lower or upper case letter).
 
 On match success, the current location is moved to designate the character after the matching string.
@@ -515,7 +514,7 @@ enterCharacterIntoCharacter ?!@char ioCharacter
                             !@char inCharacter
 \end{galgascode}
 
-This routine performs ''ioCharacter := inCharacter'' assignment.
+This routine performs ''ioCharacter = inCharacter'' assignment.
 
 \subsection{Routine \texttt{enterCharacterIntoString}}
 
@@ -780,7 +779,7 @@ The prototype must conform to the rules presented in the [[\#Correspondance betw
 
 |''**list** galgasDelimitorsList **error message** %%"the '%K' delimitor"%%:\\ 
  %%"*",  "|", ",",  ".",  "<>", "::", ">",  "<",  ";",  ":",%%\\ 
- %%"-",  "(", ")",  "->", "?", "==", "??", "!",  ":=", "...",%%\\ 
+ %%"-",  "(", ")",  "->", "?", "==", "??", "!",  "=", "...",%%\\ 
  %%"[",  "]", "+=", "?!", "!?", "/",  "!=", "<=", ">=", "\&",%%\\ 
  %%"++", "{", "}"%% ;\\ 
 \\ 
