@@ -1682,27 +1682,28 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
 
 void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   switch (UNICODE_VALUE (inUnicodeCharacter)) {
-  case '>' : mLatexOutputString << "\\textgreater " ; break ;
-  case '<' : mLatexOutputString << "\\textless " ; break ;
+  case '>' : mLatexOutputString << "\\textgreater" ; break ;
+  case '<' : mLatexOutputString << "\\textless" ; break ;
   case '~' : mLatexOutputString << "$\\sim$" ; break ;
   case '^' : mLatexOutputString << "$\\wedge$" ; break ;
   case '&' : mLatexOutputString << "\\&" ; break ;
   case '%' : mLatexOutputString << "\\%" ; break ;
   case '#' : mLatexOutputString << "\\#" ; break ;
   case '$' : mLatexOutputString << "\\$" ; break ;
-  case '-' : mLatexOutputString << "-{}" ; break ;
+  case '`' : mLatexOutputString << "\\`" ; break ;
   case ' ' : mLatexOutputString << "\\hspace*{.6em}" ; break ;
   case '\n' : mLatexOutputString << " \\\\\n" ; break ;
   case '{' : mLatexOutputString << "\\{" ; break ;
   case '}' : mLatexOutputString << "\\}" ; break ;
   case '_' : mLatexOutputString << "\\_" ; break ;
-  case '\\' : mLatexOutputString << "\\textbackslash "  ; break ;
-  case '\'' : mLatexOutputString << "\\textquotesingle " ; break ;
-  case '"' : mLatexOutputString << "\\textquotedbl " ; break ;
+  case '\\' : mLatexOutputString << "\\textbackslash"  ; break ;
+  case '\'' : mLatexOutputString << "\\textquotesingle" ; break ;
+  case '"' : mLatexOutputString << "\\textquotedbl" ; break ;
   default:
     mLatexOutputString.appendUnicodeCharacter (inUnicodeCharacter COMMA_HERE) ;
     break ;
   }
+  mLatexOutputString << "{}" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

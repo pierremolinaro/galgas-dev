@@ -115,7 +115,7 @@ Obtenir la chaine traduite s'exprime en utilisant l'opérateur  \galgas{\:>} :
 grammar expGrammar in inSourceFile :> ?@string s
 \end{galgascode}
 
-L'instruction déclare une variable \galgas{s} de type \galgas{@string} et lui affecte la chaîne traduite \footnote{Il existe des variantes pour exprimer l'obtention de la chaîne traduite, voir la description de l'instruction \galgas{grammar} à la \refSectionPage{instruction-grammar}.}.
+L'instruction déclare une variable \galgas{s} de type \ggs+@string+ et lui affecte la chaîne traduite \footnote{Il existe des variantes pour exprimer l'obtention de la chaîne traduite, voir la description de l'instruction \galgas{grammar} à la \refSectionPage{instruction-grammar}.}.
 
 Par défaut, la chaîne traduite est identique à la chaîne source. Obtenir une chaîne différente est contrôlé par trois instructions :
 \begin{itemize}
@@ -208,7 +208,7 @@ L'instruction \galgas{send} a la syntaxe suivante\footnote{L'instruction \galgas
 send exp
 \end{galgascode}
 
-\galgas{exp} est une expression de type \galgas{@string}. Son comportement est simple : la valeur de l'expression chaîne de caractères est simplement transmise à la chaîne produite.
+\galgas{exp} est une expression de type \ggs+@string+. Son comportement est simple : la valeur de l'expression chaîne de caractères est simplement transmise à la chaîne produite.
 
 Par exemple, supposons que l'on veuille transformer les parenthèses en accolades ; on écrit le composant \ggs+syntax+ comme suit\footnote{Là encore, il existe une forme plus concise de l'instruction \galgas{$($ :> ?@string s ?@string t ;}, puisque \galgas{t} est inutilisé : c'est \galgas{$($ :> ?@string s ?* ;}, décrite  à la \refSectionPage{instruction-appel-terminal}.} :
 \begin{galgascode}

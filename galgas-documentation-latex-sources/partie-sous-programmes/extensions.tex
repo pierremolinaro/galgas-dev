@@ -54,7 +54,7 @@ However, it is safe to declare for a given type a category getter, a category me
 
 A category getter is declared like a function, but its header names a type and a getter name. As a function, it accepts zero, one or more input and constant input formal parameters.
 
-For example, the following code add a getter to the \refTypePredefini{uint64} that computes the square of its value:
+For example, the following code add a getter to the \ggs+uint64+ that computes the square of its value:
 \begin{lstlisting}[language=galgas]
 getter @uint64 square -> @uint64 outResult {
   outResult = self * self
@@ -92,7 +92,7 @@ getter @uintlist countValuesGreaterThan
 \end{lstlisting}
 
 When used with a struct or class type, current object attributes values can be read by naming the attribute in an expression. For example, the \refTypePredefini{lstring} has an attribute 
-\lstinline[language=galgas]!string! whose type is \galgas{@string}. The following getter returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
+\lstinline[language=galgas]!string! whose type is \ggs+@string+. The following getter returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
 \begin{lstlisting}[language=galgas]
 getter @lstring op -> @string outResult {
   outResult = string . " !"
@@ -109,7 +109,7 @@ getter @lstring op -> @string outResult {
 
 A category method is declared like a routine, but its header names a type and a method name. As a routine, it accepts zero, one or more input, output, input/output constant input formal parameters.
 
-For example, the following code add a method to the \refTypePredefini{uint64} that computes the square of its value:
+For example, the following code add a method to the \ggs+uint64+ that computes the square of its value:
 \begin{lstlisting}[language=galgas]
 method @uint64 square !@uint64 outResult {
   outResult = self * self
@@ -149,7 +149,7 @@ method @uintlist countValuesGreaterThan
 \end{lstlisting}
 
 When used with a struct or class type, current object attributes values can be read by naming the attribute in an expression. For example, the \refTypePredefini{lstring} has an attribute 
-\lstinline[language=galgas]!string! whose type is \galgas{@string}. The following method returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
+\lstinline[language=galgas]!string! whose type is \ggs+@string+. The following method returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
 \begin{lstlisting}[language=galgas]
 method @lstring op !@string outResult {
   outResult = string . " !"
@@ -223,7 +223,7 @@ setter @uint increment {
   self ++
 }
 \end{lstlisting}
-This construct is valid only for types that handle the \lstinline[language=galgas]!++! operator, such as \refTypePredefini{uint}, \refTypePredefini{uint64}, \refTypePredefini{sint}, \refTypePredefini{sint64}.
+This construct is valid only for types that handle the \lstinline[language=galgas]!++! operator, such as \refTypePredefini{uint}, \ggs+uint64+, \refTypePredefini{sint}, \refTypePredefini{sint64}.
 
 
 
