@@ -17,15 +17,15 @@ A \ggs+@string+ object value is an Unicode character string value. The \ggs+@str
 
 \subsectionGetter{containsCharacter}{string}
 
-\begin{galgascode}
+\begin{galgas}
 getter count ?@char inCharacter -> @bool
-\end{galgascode}
+\end{galgas}
 Returns true if the receiver contains the given character, and false oteherwise.
 
-\begin{galgascode}
+\begin{galgas}
 @string s = "abcdef";
 @string s2 = [s rightSubString!3]; # The value of s2 is "def"
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -34,9 +34,9 @@ Returns true if the receiver contains the given character, and false oteherwise.
 
 \subsectionGetter{length}{string}
 
-\begin{galgascode}
+\begin{galgas}
 getter length -> @uint
-\end{galgascode}
+\end{galgas}
 
 Retourne le nombre de caractères du récepteur.
 
@@ -49,9 +49,9 @@ Retourne le nombre de caractères du récepteur.
 
 \subsectionGetter{subString}{string}
 
-\begin{galgascode}
+\begin{galgas}
 getter subString ?@uint inStart ?@uint inLength -> @string
-\end{galgascode}
+\end{galgas}
 
 Creates and returns the string built with the \emph{inLength} last characters of the receiver. If the receiver contains less than inLength characters, the receiver’s value is returned.
 

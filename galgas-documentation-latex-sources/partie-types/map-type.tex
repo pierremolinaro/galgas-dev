@@ -21,7 +21,7 @@ Les clés sont déclarées implicitement et sont du \refTypePredefini{lstring}.
 
 Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 map @MaTable {
   @string mPremier
   @bool mSecond
@@ -29,7 +29,7 @@ map @MaTable {
   search searchKey error message "the '%K' key is not defined"
   remove removeKey error message "the '%K' key is not defined"
 }
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -41,28 +41,28 @@ map @MaTable {
 
 \subsection{Constructeur \texttt{emptyMap}}
 
-\begin{galgascode}
+\begin{galgas}
 constructor emptyMap -> @T
-\end{galgascode}
+\end{galgas}
 
 Ce constructeur permet d'instancier une table vide. Exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaTable uneTable = .emptyMap
-\end{galgascode}
+\end{galgas}
 
  
 
 \subsection{Constructeur \texttt{mapWithMapToOverride}}
 
-\begin{galgascode}
+\begin{galgas}
 constructor mapWithMapToOverride ?@T inMapToOverride -> @T
-\end{galgascode}
+\end{galgas}
 
 Ce constructeur permet d'instancier une table vide, qui surcharge la table \ggs+inMapToOverride+ citée en argument. Exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaTable uneTable = .emptyMap
 @MaTable autreTableTable = .mapWithMapToOverride {!uneTable}
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -76,9 +76,9 @@ Une \ggs+map+ peut déclarer zéro, un ou plusieurs \emph{setters} d'insertion. 
 
 Un \emph{setter} d'insertion est déclaré par :
 
-\begin{galgascode}
+\begin{galgas}
 insert nom error message "message_erreur"
-\end{galgascode}
+\end{galgas}
 
 L'identificateur \ggs+nom+ donne un nom au \emph{setter} d'insertion ; ce nom doit être unique parmi les \emph{setters} d'insertion et de retrait. La chaîne de caractères \ggs+"message_erreur"+ définit le message d'erreur qui est affiché en cas de tentative d'une clé déjà existante. Cette chaîne accepte deux séquences d'échappement :
 \begin{itemize}
@@ -94,13 +94,13 @@ Un \emph{setter} d'insertion est appelé dans une \emph{instruction d'appel de s
 \end{itemize}
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaTable uneTable = {}
 @lstring clef = ...
 @string s = ...
 @uint v = ...
 [!?uneTable insertKey !clef !s !v]
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -120,9 +120,9 @@ Une \ggs+map+ peut déclarer zéro, une ou plusieurs \emph{méthodes} de recherc
 Une \emph{méthode} de recherche est déclarée par :
 
 
-\begin{galgascode}
+\begin{galgas}
 search nom error message "message_erreur"
-\end{galgascode}
+\end{galgas}
 
 L'identificateur \ggs+nom+ donne un nom à la \emph{méthode} de recherche ; ce nom doit être unique parmi ces \emph{méthodes}. La chaîne de caractères \ggs+"message_erreur"+ définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement :
 \begin{itemize}
@@ -137,12 +137,12 @@ Une \emph{méthode} de recherche est appelée dans une \emph{instruction d'appel
 \end{itemize}
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaTable uneTable = {}
 ...
 @lstring clef = ...
 [!?uneTable searchKey !clef ?@string s ?@uint v]
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -163,9 +163,9 @@ Une \ggs+map+ peut déclarer zéro, un ou plusieurs \emph{setters} de retrait. U
 
 Un \emph{setter} de retrait est déclaré par :
 
-\begin{galgascode}
+\begin{galgas}
 remove nom error message "message_erreur"
-\end{galgascode}
+\end{galgas}
 
 L'identificateur \ggs+nom+ donne un nom au \emph{setter} de retrait ; ce nom doit être unique parmi les \emph{setters} d'insertion et de retrait. La chaîne de caractères \ggs+"message_erreur"+ définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement :
 \begin{itemize}
@@ -180,20 +180,20 @@ Un \emph{setter} de retrait est appelé dans une \emph{instruction d'appel de se
 \end{itemize}
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaTable uneTable = {}
 ...
 @lstring clef = ...
 [!?uneTable removeKey !clef ?@string s ?@uint v]
-\end{galgascode}
+\end{galgas}
 
 \section{Getters}
 
 %\subsection{Getter \texttt{allKeyList}}
 %
-%\begin{galgascode}
+%\begin{galgas}
 %getter @T allKeyList -> @lstringlist ;
-%\end{galgascode}
+%\end{galgas}
 %
 %Le \emph{getter} \ggs+allKeyList+ retourne la liste construite avec toutes les clés du receveur, dans la table de premier niveau et dans les tables surchargées. L'ordre de la liste est :
 %\begin{itemize}
@@ -203,9 +203,9 @@ Par exemple :
 
 \subsection{Getter \texttt{count}}
 
-\begin{galgascode}
+\begin{galgas}
 getter count -> @uint
-\end{galgascode}
+\end{galgas}
 
 
 Le \emph{getter} \ggs+count+ retourne un \ggs+@uint+ qui contient le nombre d'entrées de la table de premier niveau du receveur.
@@ -214,9 +214,9 @@ Le \emph{getter} \ggs+count+ retourne un \ggs+@uint+ qui contient le nombre d'en
 
 \subsection{Getter \texttt{hasKey}}
 
-\begin{galgascode}
+\begin{galgas}
 getter hasKey ?@string inKey -> @bool
-\end{galgascode}
+\end{galgas}
 
 
 Le \emph{getter} \ggs+hasKey+ retourne un \ggs+@bool+ qui est \ggs+true+ si la clé \ggs+inKey+ est dans la table de premier niveau du receveur, \ggs+false+ dans le cas contraire.
@@ -225,9 +225,9 @@ Le \emph{getter} \ggs+hasKey+ retourne un \ggs+@bool+ qui est \ggs+true+ si la c
 
 \subsection{Getter \texttt{keyList}}
 
-\begin{galgascode}
+\begin{galgas}
 getter keyList -> @lstringlist
-\end{galgascode}
+\end{galgas}
 
 
 Le \emph{getter} \ggs+keyList+ retourne la liste construite avec toutes les clés de la table de premier niveau du receveur. L'ordre de la liste est l'ordre alphabétique croissant des clés.
@@ -236,9 +236,9 @@ Le \emph{getter} \ggs+keyList+ retourne la liste construite avec toutes les clé
 
 \subsection{Getter \texttt{keySet}}
 
-\begin{galgascode}
+\begin{galgas}
 getter keySet -> @stringset
-\end{galgascode}
+\end{galgas}
 
 
 Le \emph{getter} \ggs+keySet+ retourne l'ensemble de toutes les clés de la table de premier niveau du receveur.
@@ -249,9 +249,9 @@ Le \emph{getter} \ggs+keySet+ retourne l'ensemble de toutes les clés de la tabl
 
 \subsection{Getter \texttt{locationForKey}}
 
-\begin{galgascode}
+\begin{galgas}
 getter locationForKey ?@string inKey -> @location
-\end{galgascode}
+\end{galgas}
 
 
 Le \emph{getter} \ggs+locationForKey+ retourne un \ggs+@location+ qui contient l'information de position de la clé \ggs+inKey+ dans la table de premier niveau du receveur. Une erreur d'exécution est déclenchée si cette clé n'existe pas.
@@ -265,9 +265,9 @@ Le \emph{getter} \ggs+locationForKey+ retourne un \ggs+@location+ qui contient l
 
 \subsection{Getter \texttt{overriddenMap}}
 
-\begin{galgascode}
+\begin{galgas}
 getter overriddenMap -> @T
-\end{galgascode}
+\end{galgas}
 
 
 Le \emph{getter} \ggs+overriddenMap+ retourne la table obtenue en amputant de la valeur du receveur la table de premier niveau. Si le receveur n'a pas de table surchargée, une erreur d'exécution est déclenchée.
@@ -287,21 +287,21 @@ L'instruction \ggs+for+ permet d'énumérer des objets de type \ggs+map+. Unique
 \end{itemize}
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaTable uneTable = {}
 [!?uneTable insertKey ![@lstring new !"z" !here] !"world" !5]
 [!?uneTable insertKey ![@lstring new !"a" !here] !"hello" !10]
 for () in aMap do
   message lkey->string . " " . mPremier . " " . mSecond . "\n" ;
 end
-\end{galgascode}
+\end{galgas}
 
 L'affichage produit est :
 
-\begin{galgascode}
+\begin{galgas}
 a hello 10
 z world 5
-\end{galgascode}
+\end{galgas}
 
 %====== Setting an attribute of an entry ======
 %

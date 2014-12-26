@@ -20,19 +20,19 @@ Un objet de type \ggs+@location+ a pour valeur une position dans un texte source
 
 \subsectionConstructor{here}{location}
 
-\begin{galgascode}
+\begin{galgas}
 constructor here -> @location
-\end{galgascode}
+\end{galgas}
 
 Le constructeur \ggs+here+ contient la position courante de l'analyse du texte source.
 
 Plus précisément, la position capturée est le début du dernier \emph{token} analysé. Ainsi, si l'on écrit :
 
-\begin{galgascode}
+\begin{galgas}
   $token$ ;
   ...
   @location currentLocation = .here ;
-\end{galgascode}
+\end{galgas}
 
 La position capturée est la position du premier caractère du token correspondant à \ggs+$token$+. Si \ggs+here+ est appelé avant que le premier token soit analysé, la position capturée est le premier caractère du texte source.
 
@@ -43,9 +43,9 @@ La position capturée est la position du premier caractère du token corresponda
 
 \subsectionConstructor{nowhere}{location}
 
-\begin{galgascode}
+\begin{galgas}
 constructor nowhere -> @location
-\end{galgascode}
+\end{galgas}
 
 
 Returns an \ggs+@location+ that does not point out any location.
@@ -56,44 +56,44 @@ The returned object responds \ggs+true+ to the \refGetterPage{location}{isNowher
 
 \subsectionGetter{column}{location}
 
-\begin{galgascode}
+\begin{galgas}
 getter column -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@uint+ value containing the column of the receiver's value ; this getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 \subsectionGetter{isNowhere}{location}
 
-\begin{galgascode}
+\begin{galgas}
 getter isNowhere -> @bool
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@bool+ value indicating whether the receiver'value points out a source location or does not. This getter returns \ggs+true+ if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \ggs+false+ if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \ggs+here+ keyword.
 
 
 \subsectionGetter{line}{location}
 
-\begin{galgascode}
+\begin{galgas}
 getter line -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@uint+ value containing the line of the receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 \subsectionGetter{locationIndex}{location}
 
-\begin{galgascode}
+\begin{galgas}
 getter locationIndex -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@uint+ value containing the the offset from the the beginning of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 \subsectionGetter{locationString}{location}
 
-\begin{galgascode}
+\begin{galgas}
 getter locationString -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@string+ object that contains a string representation of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.

@@ -14,9 +14,9 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 
 \subsectionConstructor{min}{sint}
 
-\begin{galgascode}
+\begin{galgas}
 constructor min -> @sint
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@sint+ object that the minimum value of the 32-bit signed range ($-2^{31}$).
 
@@ -26,9 +26,9 @@ Returns an \ggs+@sint+ object that the minimum value of the 32-bit signed range 
 
 \subsectionConstructor{max}{sint}
 
-\begin{galgascode}
+\begin{galgas}
 constructor max -> @sint
-\end{galgascode}
+\end{galgas}
 
 
 Returns an \ggs+@sint+ object that the maximum value of the 32-bit signed range ($2^{31}-1$).
@@ -39,9 +39,9 @@ Returns an \ggs+@sint+ object that the maximum value of the 32-bit signed range 
 
 \subsectionGetter{double}{sint}
 
-\begin{galgascode}
+\begin{galgas}
 getter double -> @double
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value converted in a \ggs+@double+ object. As a 32-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
 
@@ -51,9 +51,9 @@ Returns the receiver's value converted in a \ggs+@double+ object. As a 32-bit in
 
 \subsectionGetter{sint64}{sint}
 
-\begin{galgascode}
+\begin{galgas}
 getter sint64 -> @sint64
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. As a 32-bit signed value can always be converted in a 64-bit signed value, this getter never fails.
 
@@ -65,9 +65,9 @@ This getter is the only way to convert an \refTypePredefini{sint} object into an
 
 \subsectionGetter{string}{sint}
 
-\begin{galgascode}
+\begin{galgas}
 getter string -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint}{hexString} and \refGetterPage{uint}{xString}.
 
@@ -79,9 +79,9 @@ Returns a decimal string representation of the receiver's value. For an hexadeci
 
 \subsectionGetter{uint}{sint}
 
-\begin{galgascode}
+\begin{galgas}
 getter uint -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is negative.
 
@@ -92,9 +92,9 @@ This getter is the only way to convert an \refTypePredefini{sint} object into an
 
 \subsectionGetter{uint64}{sint}
 
-\begin{galgascode}
+\begin{galgas}
 getter uint64 -> @uint64
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. An error is raised is receiver's value is negative.
 

@@ -8,7 +8,7 @@
 
 Voici différents exemples de déclaration de classes :
 
-\begin{galgascode}
+\begin{galgas}
 abstract class @A {
   @uint mA ;
 }
@@ -18,16 +18,16 @@ class @B extends @A {
 class @C extends @B {
   @data mC ;
 }
-\end{galgascode}
+\end{galgas}
 
 La classe \ggs+@A+ est abstraite (c'est-à-dire qu'elle ne peut pas être instanciée), la classe \ggs+@B+ hérite de \ggs+@A+. Une classe déclare zéro, un ou plusieurs attributs. L'héritage multiple n'est pas implémenté en GALGAS.
 
 Une classe qui hérite d'une autre peut être abstraite :
-\begin{galgascode}
+\begin{galgas}
 abstract class @D extends @C {
   ...
  }
-\end{galgascode}
+\end{galgas}
 
 Une classe non abstraite définit implicitement le constructeur \ggs+new+, et des \emph{getters} pour lire les attributs, et des \emph{setters} pour les écrire. On ne peut pas définir explicitement d'autres constructeurs, \emph{getters} ou \emph{setters} à l'intérieur de la classe. Cependant,  les extensions (\refChapterPage{extensions}) permettent de définir \emph{getters}, \emph{méthodes} et \emph{setters} associés à une classe.
 
@@ -46,7 +46,7 @@ Une classe non abstraite définit implicitement le constructeur \ggs+new+, et de
 
 Le constructeur \ggs+new+ est implicitement pour toute classe non abstraite (c'est à dire les classes \ggs+@B+ et \ggs+@C+). Ce constructeur présente un argument par attribut déclaré dans la classe instanciée et dans toutes les classes mère. L'ordre des arguments est celui obtenu en parcourant la hiérarchie de classes, en commençant par la classe racine. Par exemple on écrira :
 
-\begin{galgascode}
+\begin{galgas}
 @B b [new
   !0 # Attribut mA de @A
   !"Hello" # Attribut mB de @B
@@ -56,7 +56,7 @@ Le constructeur \ggs+new+ est implicitement pour toute classe non abstraite (c'e
   !"Hello" # Attribut mB de @B
   ![@data emptyData] # Attribut mC de @C
 ] ;
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -69,18 +69,18 @@ Le constructeur \ggs+new+ est implicitement pour toute classe non abstraite (c'e
 
 Par défaut, la lecture d'un attribut est activée par la définition implicite d'un \emph{getter}, dont le nom est le nom de l'attribut. Ainsi, pour une variable \ggs+b+ de type \ggs+@B+, on pourra écrire :
 
-\begin{galgascode}
+\begin{galgas}
 @uint v = [b mA] ;
 @string s = [b mB] ;
-\end{galgascode}
+\end{galgas}
 
 Il est possible d'inhiber la génération implicite d'un \emph{getter} de lecture d'un attribut en complétant sa déclaration par \ggs+feature %nogetter+, comme par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 abstract class @A {
   @uint mA feature nogetter ;
 }
-\end{galgascode}
+\end{galgas}
 
 L'écriture \ggs+[b mA]+ sera alors rejetée par le compilateur.
 
@@ -98,30 +98,30 @@ Par défaut, l'écriture d'un attribut n'est pas activée.
 
 Pour activer la génération d'un \emph{setter} permettant décrire un attribut, compléter la déclaration de cet attribut par \ggs+feature %setter+. Un \emph{setter} est alors engendré, et porte le nom \texttt{set<Attribut>}, c'est à dire le nom de l'attribut avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 abstract class @A {
   @uint mA feature setter ;
 }
-\end{galgascode}
+\end{galgas}
 
 
 Pour modifier l'attribut \ggs+mA+, on écrira :
 
-\begin{galgascode}
+\begin{galgas}
 [!?b setMA !12] ;
-\end{galgascode}
+\end{galgas}
 
 Si on veut à la fois inhiber la génération implicite d'un \emph{getter} de lecture d'un attribut et engendrer le \emph{setter} d'écriture, il suffit de déclarer l'attribut par :
 
-\begin{galgascode}
+\begin{galgas}
   @uint mA feature nogetter, setter ;
-\end{galgascode}
+\end{galgas}
 
 Ou encore :
 
-\begin{galgascode}
+\begin{galgas}
   @uint mA feature setter, nogetter ;
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -138,11 +138,11 @@ Ou encore :
 
 Pour toute cette section, nous illustrons les constructions décrites en nous basant sur les trois variables suivantes :
 
-\begin{galgascode}
+\begin{galgas}
 @A a ;
 @B b = ... ;
 @C c = ... ;
-\end{galgascode}
+\end{galgas}
 
 \subsection{Affectation polymorphique}
 
@@ -159,9 +159,9 @@ Il y a trois constructions qui permettent d'effectuer cette opération :
 
 Pour effectuer ponctuellement une affectation polymorphique inverse, on écrit (les parenthèses sont obligatoires) :
 
-\begin{galgascode}
+\begin{galgas}
 @T resultat = (cast expression : @T) ;
-\end{galgascode}
+\end{galgas}
 
 Si le type dynamique de l'\ggs+expression+ est \ggs+@T+ ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \ggs+@T+ contenant la valeur de \ggs+expression+. Dans le cas contraire, un message d'erreur est affiché, et la variable \ggs+resultat+ est non construite.
 
@@ -170,7 +170,7 @@ L'exécution échoue donc avec émission de message d'erreur si la conversion n'
 
 Grâce à l'\emph{expression de test du type dynamique}, il est possible de tester si une conversion est possible. On peut donc écrire :
 
-\begin{galgascode}
+\begin{galgas}
 if (expression is @B) then
   const @B variable = (cast expression : @B) ;
   ...
@@ -180,11 +180,11 @@ elsif (expression is @C) then
 else
   message "conversion impossible" ;
 end if ;
-\end{galgascode}
+\end{galgas}
 
 L'instruction \ggs+cast+ permet simplement d'exprimer de manière plus élégante une série de test de conversion. La forme équivalent à l'instruction \ggs+if+ précédente est :
 
-\begin{galgascode}
+\begin{galgas}
 cast expression
 when >= @B variable :
   ...
@@ -193,6 +193,6 @@ when >= @C variable :
 else
   message "conversion impossible" ;
 end cast ;
-\end{galgascode}
+\end{galgas}
 
 

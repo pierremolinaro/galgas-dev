@@ -5,9 +5,9 @@
 
 An \ggs+@uint64+ object value is a 64-bit unsigned integer value. You can initialize an \ggs+@uint64+ object from a 64-bit unsigned integer constant:
 
-\begin{galgascode}
+\begin{galgas}
 @uint64 myUnsignedInteger = 123_456L
-\end{galgascode}
+\end{galgas}
 
 Note the \texttt{L} suffix is required for a 64-bit unsigned integer constant.
 
@@ -18,18 +18,20 @@ Note the \texttt{L} suffix is required for a 64-bit unsigned integer constant.
 
 \subsectionConstructor{max}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 constructor max -> @uint64
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@uint64+ object that the maximum value of the 64-bit unsigned range ($2^{64}-1$).
 
 
 \subsectionConstructor{uint64BaseValueWithCompressedBitString}{uint64}
 
-\begin{galgascode}
-constructor uint64BaseValueWithCompressedBitString ?@string inBitString -> @uint64
-\end{galgascode}
+\begin{galgas}
+constructor uint64BaseValueWithCompressedBitString
+   ?@string inBitString
+   -> @uint64
+\end{galgas}
 
 
 Returns an \ggs+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.
@@ -42,10 +44,10 @@ Note that the first character of the \emph{inBitString} argument value correspon
 
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 @uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"]
 log v # Displays <@uint64:18>
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -53,9 +55,9 @@ log v # Displays <@uint64:18>
 
 \subsectionConstructor{uint64MaskWithCompressedBitString}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 constructor uint64MaskWithCompressedBitString ?@string inBitString -> @uint64
-\end{galgascode}
+\end{galgas}
 
 
 Returns an \ggs+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.
@@ -67,18 +69,18 @@ This constructor considers the \emph{inBitString} argument value as a binary enc
 Note that the first '0' or '1' character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 @uint64 v [uint64MaskWithCompressedBitString !"01XX10"] ;
-log v ; \# Displays <@uint64:51> ;
-\end{galgascode}
+log v ; # Displays <@uint64:51> ;
+\end{galgas}
 
 
 
 \subsectionConstructor{uint64WithBitString}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 constructor uint64WithBitString ?@string inBitString -> @uint64
-\end{galgascode}
+\end{galgas}
 
 
 Returns an \ggs+@uint64+ object computed from a string containing '0' or '1' characters.
@@ -90,19 +92,19 @@ This constructor considers the \emph{inBitString} argument value as a binary enc
 Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 @uint64 v [uint64WithBitString !"0101"]] ;
 log v ; # Displays <@uint64:5> ;
-\end{galgascode}
+\end{galgas}
 
 
 \section{Getters}
 
 \subsectionGetter{double}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter double -> @double
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
 
@@ -111,9 +113,9 @@ Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit in
 \subsectionGetter{hexString}{uint64}
 
 
-\begin{galgascode}
+\begin{galgas}
 getter hexString -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. For getting an hexadecimal representation string with any prefix, see \refGetterPage{uint64}{xString}.
 
@@ -123,9 +125,9 @@ Returns the an hexadecimal string representation of the receiver value, prefixed
 
 \subsectionGetter{sint}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter sint -> @sint
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is greater than $2^{31}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint} object.
 
@@ -133,18 +135,18 @@ Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed intege
 
 \subsectionGetter{sint64}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter sint64 -> @sint64
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. An error is raised is receiver's value is greater than $2^{63}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint64} object.
 
 
 \subsectionGetter{string}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter string -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint64}{hexString} and \refGetterPage{uint64}{xString}.
 
@@ -152,18 +154,18 @@ Returns a decimal string representation of the receiver's value. For an hexadeci
 
 \subsectionGetter{uint}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter uint -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is greater than $2^{32}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
 
 
 \subsectionGetter{uintSlice}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter uintSlice ?@uint inStartBit ?@uint inBitCount -> @uint
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -171,10 +173,10 @@ Returns an \refTypePredefini{uint} value, extracted from a bit slice of the rece
 
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 @uint64 v = 0x1234_5678_9ABC_DEF0L
 @uint result = [v uintSlice !4 !5] # The result value is 0x8_9ABC
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -188,9 +190,9 @@ Returns an \refTypePredefini{uint} value, extracted from a bit slice of the rece
 
 \subsectionGetter{xString}{uint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter xString -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns an hexadecimal string representation of the receiver's value (without any prefix). For an decimal string representation of the receiver's value, see the \refGetterPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint64}{string}.
 
@@ -203,13 +205,17 @@ Returns an hexadecimal string representation of the receiver's value (without an
 
 The \refTypePredefini{uint64} supports incrementation and decrementation instructions.
 
-\texttt{@uint64 n = ... ; n ++ ; \# Incrementation}
+\begin{galgas}
+@uint64 n = ... ; n ++ # Incrementation
+\end{galgas}
 
-\texttt{@uint64 p = ... ; p -- ; \# Decrementation}\newline
+\begin{galgas}
+@uint64 n = ... ; n -- # Decrementation
+\end{galgas}
 
-The incrementation instruction raises an error if receiver's value is equal to $2^{64}-1$.\newline
+The incrementation instruction raises an error if receiver's value is equal to $2^{64}-1$.
 
-The incrementation instruction raises an error if receiver's value is equal to 0.\newline
+The incrementation instruction raises an error if receiver's value is equal to 0.
 
 Note that incrementation and decrementation are not available within an expression.
 

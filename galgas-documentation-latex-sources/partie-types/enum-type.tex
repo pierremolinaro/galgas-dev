@@ -13,13 +13,13 @@ La déclaration d'un type \ggs+enum+ nomme l'ensemble des constantes associées 
 
 Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 enum @feuTricolore {
   case vert
   case orange
   case rouge
 }
-\end{galgascode}
+\end{galgas}
 
 Plusieurs types énumérés peuvent définir des constantes de même nom.
 
@@ -27,55 +27,55 @@ Plusieurs types énumérés peuvent définir des constantes de même nom.
 
 Chaque constante définit un constructeur de même nom. On peut ainsi écrire :
 
-\begin{galgascode}
+\begin{galgas}
 @feuTricolore feu = [@feuTricolore vert] ;
-\end{galgascode}
+\end{galgas}
 
 Ou encore :
 
-\begin{galgascode}
+\begin{galgas}
 @feuTricolore feu [vert] ;
-\end{galgascode}
+\end{galgas}
 
 \section{Comparaison}
 
 Un type enuméré accpete les six opérateurs de comparaison (\ggs+==+, \ggs+!=+, \ggs+<+, \ggs+<=+, \ggs+>+ et \ggs+>+). L'ordre est celui de la déclaration, c'est-à-dire que :
-\begin{galgascode}
+\begin{galgas}
   [@feuTricolore vert] < [@feuTricolore orange] < [@feuTricolore rouge]
-\end{galgascode}
+\end{galgas}
 
 
 \sectionLabel{Tester une valeur}{testerValeurEnum}
 
 Il y a deux façons de tester une valeur d'un type énuméré. La première consiste à comparer avec une valeur obtenue par un constructeur, par exemple :
-\begin{galgascode}
+\begin{galgas}
   if feu == [@feuTricolore orange] then ...
-\end{galgascode}
+\end{galgas}
 
 La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \texttt{is<Constante>} (le préfixe \texttt{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \ggs+@bool+ qui est vrai si le récepteur a la valeur correspondante :
-\begin{galgascode}
+\begin{galgas}
   if [feu isOrange] then ...
-\end{galgascode}
+\end{galgas}
 
 \section{L'instruction \texttt{switch}}
 
 L'instruction \ggs+switch+ (\refSectionPage{instructionSwitch}) est dédiée aux types énumérés. On écrit par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @feuTricolore feu = ...
 switch feu
 case vert : message "vert"
 case orange : message "orange"
 case rouge : message "rouge" 
 end
-\end{galgascode}
+\end{galgas}
 
 
 \section{Valeurs associées}
 
 Il est possible d'associer des valeurs à chaque constante, ce qui permet d'alléger dans certains cas le code à écrire. Supposons par exemple que l'on ait dans un langage une construction optionnelle :
 
-\begin{galgascode}
+\begin{galgas}
 rule regleProduction {
   select
   or
@@ -83,12 +83,12 @@ rule regleProduction {
     $identifier$ ?let nomOption
   end
 }
-\end{galgascode}
+\end{galgas}
 
 Comment construire l'arbre syntaxique abstrait ? Il y a en fait trois possibilités.
 
 \textbf{Première solution.} La première consiste à considérer la chaîne vide comme significative de l'absence d'option :
-\begin{galgascode}
+\begin{galgas}
 rule regleProduction {
   @lstring nomOption
   select
@@ -98,21 +98,21 @@ rule regleProduction {
     $identifier$ ?nomOption
   end
 }
-\end{galgascode}
+\end{galgas}
 
 Évidemment, cette solution est acceptable uniquement si l'information associée est simple, et si une valeur particulière peut être considéré comme l'absence d'option.
 
 \textbf{Deuxième solution.} La deuxième solution fait appel à trois classes :
-\begin{galgascode}
+\begin{galgas}
 abstract class @abstractOption {}
 
 class @noOption : @abstractOption {}
 
 class @option : @abstractOption { @lstring mOptionName }
-\end{galgascode}
+\end{galgas}
 
 La construction de l'arbre est réalisée par :
-\begin{galgascode}
+\begin{galgas}
 rule regleProduction {
   @abstractOption optionAST
   select
@@ -123,21 +123,21 @@ rule regleProduction {
     optionAST = @option.new {!nomOption}
   end
 }
-\end{galgascode}
+\end{galgas}
 
 Cette solution, plus générale, est plus lourde à mettre en œuvre : trois classes, et analyser l'option nécessite d'écrire un \emph{getter} abstrait ou une méthode abstraite pour la classe abstraite de base \ggs+@abstractOption+, et les redéfinir dans les deux classes héritières \ggs+@noOption+ et \ggs+@option+.
 
 \textbf{Troisième solution.} La troisième et dernière solution consiste à écrire un type énuméré possédant des valeurs associées :
 
-\begin{galgascode}
+\begin{galgas}
 enum @option {
   case noOption
   case optionPresente (@lstring optionName)
 }
-\end{galgascode}
+\end{galgas}
 
 À la constante \ggs+optionPresente+ est associée une valeur de type \ggs+@lstring+, identifiée par le nom \ggs+optionName+. Ce nom est optionnel, on pourrait écrire \ggs+optionPresente (@lstring)+. La construction de l'arbre syntaxique est maintenant réalisée par :
-\begin{galgascode}
+\begin{galgas}
 rule regleProduction {
   @option optionAST
   select
@@ -148,22 +148,22 @@ rule regleProduction {
     optionAST = @option.optionPresente {!optionName:nomOption}
   end
 }
-\end{galgascode}
+\end{galgas}
 
 À la constante \ggs+optionPresente+ correspond un constructeur de même nom, avec un argument qui correspond à la valeur associée \ggs+@lstring optionName+. Le nom \ggs+optionName+ est utilisé comme sélecteur. Si on avait déclaré la valeur associée sans nom par \ggs+optionPresente (@lstring)+, alors l'appel du constructeur serait \ggs+@option.optionPresente {!nomOption}+.
 
 Pour tester un type énuméré avec des valeurs associées, on peut appliquer les \emph{getter} décrits à \refSectionPage{testerValeurEnum}, mais on n'a pas accès aux valeurs associées.
 
-Les six opérateurs de comparaison (\ggs+==+, \ggs+\!=+, \ggs+<+, \ggs+<=+, \ggs+>+ et \ggs+>+) sont définis sur des types énumérés avec des valeurs associées : l'ordre est celui de la déclaration des constantes, et, en cas d'égalité, les valeurs associées sont comparées les unes après les autres, dans leur ordre de déclaration.
+Les six opérateurs de comparaison (\ggs+==+, \ggs+!=+, \ggs+<+, \ggs+<=+, \ggs+>+ et \ggs+>+) sont définis sur des types énumérés avec des valeurs associées : l'ordre est celui de la déclaration des constantes, et, en cas d'égalité, les valeurs associées sont comparées les unes après les autres, dans leur ordre de déclaration.
 
 Il n'y a qu'une façon d'extraire les valeurs associées, l'instruction \ggs+switch+ :
 
-\begin{galgascode}
+\begin{galgas}
 switch optionAST
 case noOption : ...
 case optionPresente (@lstring nomOption) : ...
 end
-\end{galgascode}
+\end{galgas}
 
 \ggs+nomOption+ est une constante dont la portée s'étend jusqu'à la fin de la branche \ggs+case+ courante.
  

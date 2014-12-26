@@ -20,22 +20,22 @@ Une fonction GALGAS n'accepte que des arguments en entrée, et retourne une vale
 
 \subsection{déclaration d'une fonction}\index{Fonction!Déclaration}
 
-\begin{galgascode}
+\begin{galgas}
 private # Optionnel
 func nom_fonction liste_arguments_entree -> @T var_resultat {
   liste_instructions
 }
-\end{galgascode}
+\end{galgas}
 
 Une fonction est désignée par \ggs+nom_fonction+. Ce nom est unique dans un projet GALGAS. La liste des paramètres d'entrée peut être vide (\refSectionPage{listeParametresEffectifsEntree}). La valeur renvoyée par l'exécution de la fonction est la valeur de \ggs+var_resultat+ à l'issue de l'exécution de la \ggs+liste_instructions+. Aussi, l'exécution de la \ggs+liste_instructions+ doit valuer \ggs+var_resultat+.
 
 Exemple :
 
-\begin{galgascode}
+\begin{galgas}
 func produit ?@uint a ?@uint b -> @uint resultat {
   resultat = a * b
 }
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -50,21 +50,21 @@ En préfixant la déclaration d'une fonction par \ggs+private+, on limite son ap
 
 Une fonction sans argument accepte le qualificatif \ggs+%once+ :
 
-\begin{galgascode}
+\begin{galgas}
 func %once masque-> @uint resultat {
   resultat = 1 << 16
 }
-\end{galgascode}
+\end{galgas}
 
 Le qualificatif \ggs+%once+ organise le cache du résultat : celui-ci est calculé lors du premier appel, est mémorisé internement, et est retourné directement lors des appels ultérieurs.
 
 Une fonction \ggs+%once+ peut être déclarée interne en la préfixant par \ggs+private+.
 
-\begin{galgascode}
+\begin{galgas}
 private func %once masque-> @uint resultat {
   resultat = 1 << 16
 }
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -76,22 +76,22 @@ Une procédure GALGAS accepte que des arguments en entrée, en sortie, en entré
 
 \subsection{Déclaration d'une procédure}\index{Procédure!Déclaration}
 
-\begin{galgascode}
+\begin{galgas}
 private # Optionnel
 proc nom_procedure liste_arguments {
   liste_instructions
 }
-\end{galgascode}
+\end{galgas}
 
 Une procédure est désignée par \ggs+nom_procedure+. Ce nom est unique dans un projet GALGAS. La liste des paramètres en entrée, en sortie ou en entrée/sortie est décrite à la \refSectionPage{listeArgumentsFormels}).
 
 Exemple :
 
-\begin{galgascode}
+\begin{galgas}
 proc produit ?@uint a ?@uint b !@uint resultat {
   resultat = a * b
 }
-\end{galgascode}
+\end{galgas}
 
 
 
