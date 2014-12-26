@@ -22,11 +22,11 @@ En GALGAS, un analyseur lexical est défini par un composant \ggs+lexique+. Les 
 
 En GALGAS, un composant \ggs+lexique+ a la structure suivante :
 
-\begin{galgascode}
+\begin{galgas}
 lexique nom {
   declarations
 }
-\end{galgascode}
+\end{galgas}
 
 Le \ggs+nom+ est le nom donné au composant ; il est utilisé pour référencer le composant \ggs+lexique+ dans un composant \ggs+syntax+.
 
@@ -366,173 +366,173 @@ Running the \texttt{-{}-print-predefined-lexical-actions} command line option li
 
 \subsection{Routine \texttt{codePointToUnicode}}
 
-\begin{galgascode}
+\begin{galgas}
 codePointToUnicode !@string inCodePointString
                    ?!@string ioString
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertDecimalStringIntoSInt}}
 
-\begin{galgascode}
+\begin{galgas}
 convertDecimalStringIntoSInt !@string inString
                              ?!@sint ioSignedNumber
                              error inNumberTooLargeError,
                                    inCharacterIsNotDecimalDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertDecimalStringIntoSInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 convertDecimalStringIntoSInt64 !@string inString
                                ?!@sint64 ioSignedNumber
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertDecimalStringIntoUInt}}
 
-\begin{galgascode}
+\begin{galgas}
 convertDecimalStringIntoUInt !@string inString
                              ?!@uint ioUnsignedNumber
                              error inNumberTooLargeError,
                                    inCharacterIsNotDecimalDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertDecimalStringIntoUInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 convertDecimalStringIntoUInt64 !@string inString
                                ?!@uint64 ioUnsignedNumber
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertHTMLSequenceToUnicodeCharacter}}
 
-\begin{galgascode}
+\begin{galgas}
 convertHTMLSequenceToUnicodeCharacter ?!@string inString
                                       ?!@char ioUnicodeCharacter
                                       error inUnassignedHTMLSequenceError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertHexStringIntoSInt}}
 
-\begin{galgascode}
+\begin{galgas}
 convertHexStringIntoSInt !@string inString
                          ?!@sint ioSignedNumber
                          error inNumberTooLargeError,
                                inCharacterIsNotHexDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertHexStringIntoSInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 convertHexStringIntoSInt64 !@string inString
                            ?!@sint64 ioSignedNumber
                            error inNumberTooLargeError,
                                  inCharacterIsNotHexDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertHexStringIntoUInt}}
 
-\begin{galgascode}
+\begin{galgas}
 convertHexStringIntoUInt !@string inString
                          ?!@uint ioUnsignedNumber
                          error inNumberTooLargeError,
                                inCharacterIsNotHexDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertHexStringIntoUInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 convertHexStringIntoUInt64 !@string inString
                            ?!@uint64 ioUnsignedNumber
                            error inNumberTooLargeError,
                                  inCharacterIsNotHexDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{convertStringToDouble}}
 
-\begin{galgascode}
+\begin{galgas}
 convertStringToDouble !@string inString
                       ?!@double ioDouble
                       error inConversionError
-\end{galgascode}
+\end{galgas}
 
 This action tries to convert the string value of the first argument into a double value. On success, the resulting double is set to the second argument. The conversion error message is displayed on conversion error.
 
 \subsection{Routine \texttt{convertUInt64ToSInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 convertUInt64ToSInt64 !@uint64 inUnsignedNumber
                       ?!@sint64 ioSignedNumber
                       error inNumberTooLargeError
-\end{galgascode}
+\end{galgas}
 
 If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<sup>63</sup>-1'', the error is raised. Otherwise, the value is assigned to the ''ioSignedNumber'' argument.
 
 \subsection{Routine \texttt{convertUIntToSInt}}
 
-\begin{galgascode}
+\begin{galgas}
 convertUIntToSInt !@uint inUnsignedNumber
                   ?!@sint ioSignedNumber
                   error inNumberTooLargeError
-\end{galgascode}
+\end{galgas}
 
 If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<sup>31</sup>-1'', the error is raised. Otherwise, the value is assigned to the ''ioSignedNumber'' argument.
 
 \subsection{Routine \texttt{convertUnsignedNumberToUnicodeChar}}
 
-\begin{galgascode}
+\begin{galgas}
 convertUnsignedNumberToUnicodeChar ?!@uint inUnsignedNumber
                                    ?!@char ioUnicodeCharacter
                                    error inUnassignedUnicodeValueError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{enterBinDigitIntoUInt}}
 
-\begin{galgascode}
+\begin{galgas}
 enterBinDigitIntoUInt !@char inCharacter
                       ?!@uint ioUnsignedNumber
                       error inNumberTooLargeError,
                             inCharacterIsNotBinDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{enterBinDigitIntoUInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 enterBinDigitIntoUInt64 !@char inCharacter
                         ?!@uint64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotBinDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{enterCharacterIntoCharacter}}
 
-\begin{galgascode}
+\begin{galgas}
 enterCharacterIntoCharacter ?!@char ioCharacter
                             !@char inCharacter
-\end{galgascode}
+\end{galgas}
 
 This routine performs ''ioCharacter = inCharacter'' assignment.
 
 \subsection{Routine \texttt{enterCharacterIntoString}}
 
-\begin{galgascode}
+\begin{galgas}
 enterCharacterIntoString ?!@string ioString
                          !@char inCharacter
-\end{galgascode}
+\end{galgas}
 
 Appends the character value of the second argument to the string value of the first argument. The resulting string is set to the first argument.
 
 \subsection{Routine \texttt{enterDigitIntoASCIIcharacter}}
 
-\begin{galgascode}
+\begin{galgas}
 enterDigitIntoASCIIcharacter ?!@char ioASCIICharacter
                              !@char inDecimalDigitCharacter
                              error inErrorCodeGreaterThan255,
                                    inErrorNotDecimalDigitCharacter
-\end{galgascode}
+\end{galgas}
 
 Build an ASCII character from its decimal definition.
 
@@ -542,34 +542,34 @@ Note: this lexical action treats characters as unsigned values.
 
 \subsection{Routine \texttt{enterDigitIntoUInt}}
 
-\begin{galgascode}
+\begin{galgas}
 enterDigitIntoUInt !@char inDecimalDigitCharacter
                    ?!@uint ioUnsignedNumber
                    error inNumberTooLargeError,
                          inCharacterIsNotDecimalDigitError
-\end{galgascode}
+\end{galgas}
 
 First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the range ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]''. On failure, the ''inCharacterIsNotDecimalDigitError'' error message is displayed. On success, the unsigned value of the first argument is multiplied by ten, and is added the decimal value corresponding to the ''ioUnsignedNumber'' argument. If the result is lower or equal to ''2<sup>32</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the ''inNumberTooLargeError'' error is raised.
 
 \subsection{Routine \texttt{enterDigitIntoUInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 enterDigitIntoUInt64 !@char inDecimalDigitCharacter
                      ?!@uint64 ioUnsignedNumber
                      error inNumberTooLargeError,
                            inCharacterIsNotDecimalDigitError
-\end{galgascode}
+\end{galgas}
 
 First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the range ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]''. On failure, the ''inCharacterIsNotDecimalDigitError'' error message is displayed. On success, the unsigned value of the first argument is multiplied by ten, and is added the decimal value corresponding to the ''ioUnsignedNumber'' argument. If the result is lower or equal to ''2<sup>64</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the ''inNumberTooLargeError'' error is raised.
 
 \subsection{Routine \texttt{enterHexDigitIntoASCIIcharacter}}
 
-\begin{galgascode}
+\begin{galgas}
 enterHexDigitIntoASCIIcharacter ?!@char ioASCIICharacter
                                 !@char inHexDigitCharacter
                                 error inErrorCodeGreaterThan255,
                                       inErrorNotHexDigitCharacter
-\end{galgascode}
+\end{galgas}
 
 Build an ASCII character from its hexadecimal definition.
 
@@ -579,84 +579,84 @@ Note: this lexical action treats characters as unsigned values.
 
 \subsection{Routine \texttt{enterHexDigitIntoUInt}}
 
-\begin{galgascode}
+\begin{galgas}
 enterHexDigitIntoUInt !@char inHexDigitCharacter
                       ?!@uint ioUnsignedNumber
                       error inNumberTooLargeError,
                             inCharacterIsNotHexDigitError
-\end{galgascode}
+\end{galgas}
 
 First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that in one of the the ranges ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]'', ''[\textquotesingle{a}\textquotesingle, \textquotesingle{f}\textquotesingle]'', ''[\textquotesingle{A}\textquotesingle, \textquotesingle{F}\textquotesingle]''. On failure, the ''inCharacterIsNotHexDigitError'' error message is displayed. On success, the unsigned value of the ''ioUnsignedNumber'' argument is multiplied by sixteen, and is added the hexadecimal value corresponding to second argument. If the result is lower or equal to ''2<sup>32</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the first error is raised.
 
 \subsection{Routine \texttt{enterHexDigitIntoUInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 enterHexDigitIntoUInt64 !@char inHexDigitCharacter
                         ?!@uint64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotHexDigitError
-\end{galgascode}
+\end{galgas}
 
 First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that in one of the the ranges ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]'', ''[\textquotesingle{a}\textquotesingle, \textquotesingle{f}\textquotesingle]'', ''[\textquotesingle{A}\textquotesingle, \textquotesingle{F}\textquotesingle]''. On failure, the ''inCharacterIsNotHexDigitError'' error message is displayed. On success, the unsigned value of the ''ioUnsignedNumber'' argument is multiplied by sixteen, and is added the hexadecimal value corresponding to second argument. If the result is lower or equal to ''2<sup>64</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the first error is raised.
 
 \subsection{Routine \texttt{enterOctDigitIntoUInt}}
 
-\begin{galgascode}
+\begin{galgas}
 enterOctDigitIntoUInt !@char inString
                       ?!@uint ioUnsignedNumber
                       error inNumberTooLargeError,
                             inCharacterIsNotOctDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{enterOctDigitIntoUInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 enterOctDigitIntoUInt64 !@char inString
                         ?!@uint64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotOctDigitError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{multiplyUInt}}
 
-\begin{galgascode}
+\begin{galgas}
 multiplyUInt !@uint inUnsignedNumber
              ?!@uint ioUnsignedNumber
              error inResultTooLargeError
-\end{galgascode}
+\end{galgas}
 
 Multiply the ''ioUnsignedNumber'' value by ''inUnsignedNumber'' value. Detection of overflow is performed.
 
 \subsection{Routine \texttt{multiplyUInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 multiplyUInt64 !@uint inUnsignedNumber
                ?!@uint64 ioUnsignedNumber
                error inResultTooLargeError
-\end{galgascode}
+\end{galgas}
 
 Multiply the ''ioUnsignedNumber'' value by ''inUnsignedNumber'' value. Detection of overflow is performed.
 
 \subsection{Routine \texttt{negateSInt}}
 
-\begin{galgascode}
+\begin{galgas}
 negateSInt ?!@sint ioNumber
            error inNumberTooLargeError
-\end{galgascode}
+\end{galgas}
 
 \subsection{Routine \texttt{negateSInt64}}
 
-\begin{galgascode}
+\begin{galgas}
 negateSInt64 ?!@sint64 ioNumber
              error inNumberTooLargeError
-\end{galgascode}
+\end{galgas}
 
 
 \subsection{Routine \texttt{resetString}}
 
-\begin{galgascode}
+\begin{galgas}
 resetString ?!@string ioString
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -675,17 +675,17 @@ Running the \texttt{-{}-print-predefined-lexical-actions} command line option li
 
 \subsection{Fonction \texttt{toLower}}
 
-\begin{galgascode}
+\begin{galgas}
 toLower ?@char inCharacter -> @char
-\end{galgascode}
+\end{galgas}
 
 If the character value of the argument is an upper case letter, this function returns the corresponding lower case letter. Otherwise, it returns the unchanged character value of the argument.
 
 \subsection{Fonction \texttt{toUpper}}
 
-\begin{galgascode}
+\begin{galgas}
 toUpper ?@char inCharacter -> @char
-\end{galgascode}
+\end{galgas}
 
 
 If the character value of the argument is an lower case letter, this function returns the corresponding upper case letter. Otherwise, it returns the unchanged character value of the argument.

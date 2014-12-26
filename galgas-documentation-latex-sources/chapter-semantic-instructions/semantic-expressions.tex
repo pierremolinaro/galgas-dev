@@ -22,11 +22,11 @@ Dans une expression, \ggs+self+ représente une copie de l'objet courant. On ne 
 \ggs+self+ effectue un accès en lecture seule de l'objet courant. 
 
 Voici un exemple extrait de la section décrivant les \emph{extensions de getter} (\refSectionPage{categoryGetter}) :
-\begin{galgascode}
+\begin{galgas}
 getter @uint64 square -> @uint64 outResult {
   outResult = self * self
 }
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -39,9 +39,9 @@ getter @uint64 square -> @uint64 outResult {
 
 La syntaxe de l'\emph{expression de conversion polymorphique inverse} est :
 
-\begin {galgascode}
+\begin{galgas}
 expression as @T
-\end{galgascode}
+\end{galgas}
 
 Elle permet de renvoyer la valeur de \ggs+expression+ sous la forme d'un objet de type statique \ggs+@T+. À l'exécution, la conversion échoue si le type dynamique de l'\ggs+expression+ n'est pas \ggs+@T+ ou une de ses classes héritières ; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
 
@@ -66,7 +66,7 @@ L'opérande \ggs+expression is conversion @T+ teste le type dynamique de \ggs+ex
 
 Alliée à la construction précédente, elle permet de lancer une conversion uniquement si elle est possible :
 
-\begin{galgascode}
+\begin{galgas}
 if expression is == @B then
   let @B cst = expression as @B
   ...
@@ -76,7 +76,7 @@ elsif expression is >= @C then
 else
   message "conversion impossible"
 end
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -101,12 +101,12 @@ Les parenthèses \ggs+(+ et \ggs+)+ permettent de forcer le groupement d'opéran
 
 \subsection{Constante entière}
 
-Une constante entière est une séquence de chiffres décimaux, éventuellement séparés par le caractère de soulignement \ggs+_+, et terminé par un suffixe. Ce suffixe détermine le type de la constante :
+Une constante entière est une séquence de chiffres décimaux, éventuellement séparés par le caractère de soulignement \texttt{\_}, et terminé par un suffixe. Ce suffixe détermine le type de la constante :
 \begin{itemize}
   \item pas de suffixe : \ggs+@uint+ ;
-  \item suffixe \ggs+S+ : \ggs+@sint+ ;
-  \item suffixe \ggs+L+ : \ggs+@uint64+ ;
-  \item suffixe \ggs+LS+ : \ggs+@sint64+.
+  \item suffixe \texttt{S} : \ggs+@sint+ ;
+  \item suffixe \texttt{L} : \ggs+@uint64+ ;
+  \item suffixe \texttt{LS} : \ggs+@sint64+.
 \end{itemize}
 
 \subsection{Constante flottante}
@@ -128,15 +128,15 @@ Une constante entière est une séquence de chiffres décimaux, éventuellement 
 
 L'appel d'un constructeur instancie un nouvel objet. Sa syntaxe est :
 
-\begin{galgascode}
+\begin{galgas}
 @T.constructeur {!exp0 !exp1 ...}
-\end{galgascode}
+\end{galgas}
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
 @lstring ls = @lstring.new {!"" !@location.here{}}
 @stringlist str = @lstringlist.emptyList {}
-\end{galgascode}
+\end{galgas}
 
 Deux simplifications syntaxiques sont proposées :
 \begin{itemize}
@@ -149,10 +149,10 @@ Deux simplifications syntaxiques sont proposées :
 
 Si la liste des arguments est vide, les accolades peuvent être omises.
 
-\begin{galgascode}
+\begin{galgas}
 @lstring ls = @lstring.new {!"" !@location.here}
 @stringlist str = @lstringlist.emptyList
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -160,10 +160,10 @@ Si la liste des arguments est vide, les accolades peuvent être omises.
 
 Si le type peut être inféré, il peut être omis (remarquer que ceci est valable aussi pour \ggs+@location.here+ qui peut être simplifié en \ggs+.here+.
 
-\begin{galgascode}
+\begin{galgas}
 @lstring ls = .new {!"" !.here}
 @stringlist str = .emptyList
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -188,31 +188,31 @@ Pour un type comme \ggs+@uint+, écrire \ggs+@uint v = .default+ est sémantique
 
 Par contre, si l'on a un type structure :
 
-\begin{galgascode}
+\begin{galgas}
 struct @T {
   @uneMap mMap
   @uneListe mList
   @stringlist mStringList
   @stringset mStringSet
 }
-\end{galgascode}
+\end{galgas}
 
 Déclarer et initialiser une variable de ce type s'écrit :
 
-\begin{galgascode}
+\begin{galgas}
 @T variable = .new {
   !{}
   !{}
   !{}
   !{}
 }
-\end{galgascode}
+\end{galgas}
 
 Avec le constructeur par défaut, cette instruction s'écrit simplement :
 
-\begin{galgascode}
+\begin{galgas}
 @T variable = .default
-\end{galgascode}
+\end{galgas}
 
 Pour une structure, comme on va le voir plus bas, le constructeur par défaut appelle le constructeur par défaut pour chaque champ ; le constructeur par défaut d'une \ggs+map+ est équivalent à \ggs+emptyMap+, celui d'une \ggs+list+ équivalent à \ggs+emptyList+, et celui d'un \ggs+@stringset+ équivalent à \ggs+emptySet+.
 
@@ -303,11 +303,11 @@ Les informations qui peuvent être ainsi obtenues sont décrites dans le \refTab
 \end{table}
 
 Par exemple, si un composant \ggs+option+ est déclaré comme suit :
-\begin{galgascode}
+\begin{galgas}
 option mesOptions {
   @bool extractOption : 'S', "asm" -> "Extract assembly code"
 }
-\end{galgascode}
+\end{galgas}
 
 Alors :
 \begin{itemize}

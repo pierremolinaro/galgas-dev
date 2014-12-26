@@ -9,12 +9,12 @@
 
 A \ggs+list+ type declaration names all attributes of the list elements:
 
-\begin{galgascode}
+\begin{galgas}
 list @MyList {
   @string mFirstAttribute ;
   @bool mSecondAttribute ;
 }
-\end{galgascode}
+\end{galgas}
 
 \section{Constructors}
 
@@ -22,26 +22,26 @@ list @MyList {
 
 For every list, an \ggs+emptyList+ constructor is implicitly declared. It returns an empty list:
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = [@MyList emptyList] ;
-\end{galgascode}
+\end{galgas}
 
 
 \subsection{The \texttt{listWithValue} constructor}
 
 A list can be constructed directly with one value:
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = [@myList listWithValue !"c" !3] ;
-\end{galgascode}
+\end{galgas}
 
 
 Using this constructor is equivalent to:
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = [@MyList emptyList] ;
 aList += !"c" !3 ;
-\end{galgascode}
+\end{galgas}
 
 \section{Adding elements}
 
@@ -49,23 +49,23 @@ aList += !"c" !3 ;
 
 The  \ggs*+=* operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:\\
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = ... ;
 @string aString = ... ;
 @bool aBool = ... ;
-aList += !aString !aBool ;''
-\end{galgascode}
+aList += !aString !aBool ;
+\end{galgas}
 
 
 \subsection{L'instruction \texttt{+=}}
 
 L'instruction \ggs*cible += expression* concatène la liste définie par la valeur de \ggs+expression+ à la la liste \ggs+cible+ :
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = ...
 @MyList secondList = ...
 aList += secondList
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -75,12 +75,12 @@ aList += secondList
 
 The \ggs+prependValue+ setter adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \ggs+list+ declaration:
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = ... ;
 @string aString = ... ;
 @bool aBool = ... ;
 [!?aList prependValue !aString !aBool];
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -97,23 +97,23 @@ L'indice d'insertion peut varier entre $0$ (insertion au début, comme le faisai
 
 Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = ... ;
 @string aString = ... ;
 @bool aBool = ... ;
 [!?aList insertAtIndex !aString !aBool !0];
-\end{galgascode}
+\end{galgas}
 
 \subsection{The concatenation operator}
 
 The «~\ggs*+*~» operator can be used for concatenating two lists of the same type:
 
 
-\begin{galgascode}
+\begin{galgas}
 @MyList firstList = ... ;
 @MyList secondList = ... ;
 @MyList thirdList = firstList . secondList ;
-\end{galgascode}
+\end{galgas}
 
 \section{Removing elements}
 
@@ -122,12 +122,12 @@ The «~\ggs*+*~» operator can be used for concatenating two lists of the same t
 
 The \ggs+popFirst+ setter removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = ... ;
 @string aString ;
 @bool aBool ;
 [!?aList popFirst ?aString ?aBool];
-\end{galgascode}
+\end{galgas}
 
 If the list is empty when \ggs+popFirst+ setter is invoked, a run-time error is raised and the input arguments are not valuated.
 
@@ -136,12 +136,12 @@ If the list is empty when \ggs+popFirst+ setter is invoked, a run-time error is 
 
 The \ggs+popLast+ setter removes and returns the last element of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = ... ;
 @string aString ;
 @bool aBool ;
 [!?aList popLast ?aString ?aBool];
-\end{galgascode}
+\end{galgas}
 
 If the list is empty when \ggs+popLast+ is invoked, a run-time error is raised and the input arguments are not valuated.
 
@@ -151,12 +151,12 @@ If the list is empty when \ggs+popLast+ is invoked, a run-time error is raised a
 
 The \ggs+first+ method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = ... ;
 @string aString ;
 @bool aBool ;
 [aList first ?aString ?aBool];
-\end{galgascode}
+\end{galgas}
 
 If the list is empty when \ggs+first+ is invoked, a run-time error is raised and the input arguments are not valuated.
 
@@ -164,12 +164,12 @@ If the list is empty when \ggs+first+ is invoked, a run-time error is raised and
 
 The \ggs+last+ method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:\\
 
-\begin{galgascode}
+\begin{galgas}
 @MyList aList = ... ;
 @string aString ;
 @bool aBool ;
 [aList last ?aString ?aBool];
-\end{galgascode}
+\end{galgas}
 
 
 If the list is empty when \ggs+last+ is invoked, a run-time error is raised and the input arguments are not valuated.
@@ -185,18 +185,18 @@ If the list is empty when \ggs+last+ is invoked, a run-time error is raised and 
 
 \subsection{Le getter \texttt{length}}
 
-\begin{galgascode}
+\begin{galgas}
 getter length -> @uint ;
-\end{galgascode}
+\end{galgas}
 
 Le getter \ggs+length+ getter retourne le nombre d'éléments du receveur.
 
 
 \subsection{Le getter \texttt{range}}
 
-\begin{galgascode}
+\begin{galgas}
 getter range -> @range ;
-\end{galgascode}
+\end{galgas}
 
 The \ggs+range+ getter returns a range starting at $0$ of length equal to the number of elements of the receiver.
 
@@ -205,20 +205,20 @@ The \ggs+range+ getter returns a range starting at $0$ of length equal to the nu
 
 \subsection{Le getter \texttt{subListFromIndex}}
 
-\begin{galgascode}
+\begin{galgas}
 getter subListFromIndex ?@uint inIndex -> @self
-\end{galgascode}
+\end{galgas}
 
 This getter returns a new list containing the elements of the receiver from the one at a given index to the end. The  \ggs+inIndex+ value should be lower or equal to the length of the receiver's value. If \ggs+inIndex+ is equal to the length of the receiver, the getter returns an empty list.
 
 
 \subsection{Le getter \texttt{subListWithRange}}
 
-\begin{galgascode}
+\begin{galgas}
 getter subListWithRange
   ?@range inRange
   -> @self
-\end{galgascode}
+\end{galgas}
 
 This getter returns a list containing the elements of the receiver that lie within a given range. The range must not exceed the length of the receiver's value, that is $range\_start + range\_length \leqslant list\_length$. If the range's length is equal to zero, this getter returns an empty list.
 
@@ -238,49 +238,49 @@ There are two ways for accessing element values:
 
 Given the list declaration:
 
-\begin{galgascode}
+\begin{galgas}
 list @MyList {
   @string mFirstAttribute ;
   @bool mSecondAttribute ;
 }
-\end{galgascode}
+\end{galgas}
 
 \subsection{Enumeration using the implicitly declared constants}
 
 For every attribute, a constant of the same name is available in the \ggs+do+ instruction list. Theses constants receive the value of the corresponding attribute of the current element.
 
-\begin{galgascode}
+\begin{galgas}
 foreach aList do
   # the mFirstAttribute constant receives the value
   # of the mFirstAttribute attribute of the current element,
   # and the mSecondAttribute constant receives the value
   # of the mSecondAttribute attribute of the current element.
 end foreach ;
-\end{galgascode}
+\end{galgas}
 
 \subsection{Enumeration using the explicitly declared constants}
 
 The \ggs+for+ header declares a sequence of constants, corresponding to the attribute list of the \ggs+do+ declaration. Theses constants receive the value of the corresponding attribute of the current element.
 
 
-\begin{galgascode}
+\begin{galgas}
 foreach aList (@string kString @bool kBool) do
   # the kString constant receives the value
   # of the mFirstAttribute attribute of the current element,
   # and the kBool constant receives the value
   # of the mSecondAttribute attribute of the current element.
 end foreach ;
-\end{galgascode}
+\end{galgas}
 
 \subsection{Enumeration in the reverse order}
 
 In GALGAS 1.7.3 and later, you can enumerate a list in the reverse order using the \ggs+>+ qualifier:
 
-\begin{galgascode}
+\begin{galgas}
 foreach > aList (@string kString @bool kBool) do
   ...
 end foreach ;
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -300,7 +300,7 @@ By default and for every attribute, a getter is provided to retrieve the value o
 You can disable the default getter generation, by using \ggs+feature %nogetter+.
 
 For example:
-\begin{galgascode}
+\begin{galgas}
 list @MyList {
   @string mFirstAttribute ;
   @bool mSecondAttribute feature nogetter ;
@@ -308,7 +308,7 @@ list @MyList {
 ...
 @MyList aList = ... ;
 @string s = [aList mFirstAttributeAtIndex !1] ;
-\end{galgascode}
+\end{galgas}
 
 One getter is available: \ggs+mFirstAttributeAtIndex+; the \ggs+mSecondAttributeAtIndex+ getter is not available.
 
@@ -321,7 +321,7 @@ The setter name is the name of the attribute with the first letter capitalized, 
 
 For example:
 
-\begin{galgascode}
+\begin{galgas}
 list @MyList {
   @string mFirstAttribute feature setter ;
   @bool mSecondAttribute ;
@@ -329,13 +329,13 @@ list @MyList {
 ...
 @string s = ... ;
 [!?aList setMFirstAttributeAtIndex !s !1] ;
-\end{galgascode}
+\end{galgas}
 
 One setter is available: \ggs+setMFirstAttributeAtIndex+; the \ggs+setMSecondAttributeAtIndex+ setter is not available.
 
 \subsection{Example of read and write accesses}
 
-\begin{galgascode}
+\begin{galgas}
 list @myList {
   @string name ;
 }
@@ -365,4 +365,4 @@ s = [strList nameAtIndex !2] ;
 log s ; # displays LOGGING s: <@string:"z">
 s = [strList nameAtIndex !3] ;
 log s ; # displays LOGGING s: <@string:"t">
-\end{galgascode}
+\end{galgas}

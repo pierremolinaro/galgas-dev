@@ -5,9 +5,9 @@
 
 An \ggs+@uint+ object value is a 32-bit unsigned integer value. You can initialize an \ggs+@uint+ object from an unsigned integer constant:\\
 
-\begin{galgascode}
+\begin{galgas}
 @uint myUnsignedInteger = 123_456 ;
-\end{galgascode}
+\end{galgas}
 
 Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
@@ -15,35 +15,35 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
 \subsectionConstructor{errorCount}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 constructor errorCount -> @uint
-\end{galgascode}
+\end{galgas}
 
 
 Returns an \ggs+@uint+ object that contains the number of errors. The returned value is the cumulative count of errors from the beginning of execution.
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 @uint x = [@uint errorCount] ;
-\end{galgascode}
+\end{galgas}
 
 
 
 
 \subsectionConstructor{max}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 constructor max -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@uint+ object that the maximum value of the 32-bit unsigned range ($2^{32}-1$).
 
 
 \subsectionConstructor{valueWithMask}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 constructor valueWithMask ?@uint inLowerIndex ?@uint inUpperIndex -> @uint
-\end{galgascode}
+\end{galgas}
 
 
 Returns an \ggs+@uint+ object with bits from \emph{inLowerIndex} to \emph{inUpperIndex} equal to 1.
@@ -53,18 +53,18 @@ A run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{i
 
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 @uint x = [@uint valueWithMask !2 !4] ; # x is equal to 28 (11100 in binary)
-\end{galgascode}
+\end{galgas}
 
 
 
 
 \subsectionConstructor{warningCount}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 constructor warningCount -> @uint
-\end{galgascode}
+\end{galgas}
 
 
 Returns an \ggs+@uint+ object that contains the number of warnings. The returned value is the cumulative count of warnings from the beginning of execution.
@@ -73,9 +73,9 @@ Returns an \ggs+@uint+ object that contains the number of warnings. The returned
 
 \subsectionGetter{double}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter double -> @double
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value converted in a \ggs+@double+ object. As a 32-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
 
@@ -83,9 +83,9 @@ Returns the receiver's value converted in a \ggs+@double+ object. As a 32-bit in
 
 \subsectionGetter{hexString}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter hexString -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. For getting an hexadecimal representation string without any prefix, see \refGetterPage{uint}{xString}.
 
@@ -93,9 +93,9 @@ Returns the an hexadecimal string representation of the receiver value, prefixed
 
 \subsectionGetter{isInRange}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter isInRange ?@range inRange -> @bool
-\end{galgascode}
+\end{galgas}
 
 {Returns an \ggs+@bool+ value indicating whether the receiver'value belongs to \ggs+inRange+ range : for a receiver's value equal to $v$ and a range of length $length$ starting at $start$, it returns \ggs+true+ if $((v \geqslant start)~and~(v<(start+length)))$, and \ggs+false+ otherwise.
 
@@ -103,33 +103,33 @@ getter isInRange ?@range inRange -> @bool
 
 \subsectionGetter{isUnicodeValueAssigned}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter isUnicodeValueAssigned -> @bool
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@bool+ value indicating whether the receiver'value represents an assigned Unicode character. It returns \ggs+true+ if the receiver value represents an assigned Unicode character, \ggs+false+ and otherwise.
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 [0xFFFF isUnicodeValueAssigned] # is false, as \uFFFF is not assigned.
 [0x41 isUnicodeValueAssigned] # is true, as \u0041 is assigned (LATIN CAPITAL LETTER A).
-\end{galgascode}
+\end{galgas}
 
 
 
 \subsectionGetter{lsbIndex}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter lsbIndex -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@uint+ value of the index of the most significant bit of the receiver value. It raises a run-time error if the receiver value is zero.
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 @uint value = 192 ; 192 is ...011000000 in binary
 @uint x = [value lsbIndex] ; # x is equal to 7
-\end{galgascode}
+\end{galgas}
 
 The most significant bit of 192 is the 7th bit.
 
@@ -138,17 +138,17 @@ The most significant bit of 192 is the 7th bit.
 
 \subsectionGetter{significantBitCount}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter significantBitCount -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns the number of bits needed to express the receiver value. If the receiver value is zero, it returns 0 ; otherwise, it returns the most significant bit index plus one.
 
 \textbf{Exemple :}
-\begin{galgascode}
+\begin{galgas}
 @uint value = 145 ; # 145 is 10010001 in binary
 @uint x = [value significantBitCount] ; # x is equal to 8
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -157,9 +157,9 @@ Returns the number of bits needed to express the receiver value. If the receiver
 
 \subsectionGetter{sint}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter sint -> @sint
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is greater than $2^{31}-1$.
 
@@ -170,9 +170,9 @@ This getter is the only way to convert an \refTypePredefini{uint} object into an
 
 \subsectionGetter{sint64}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter sint64 -> @sint64
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. As a 32-bit unsigned value can always be converted in a 64-bit signed value, this getter never fails.
 
@@ -181,9 +181,9 @@ This getter is the only way to convert an \refTypePredefini{uint} object into an
 
 \subsectionGetter{string}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter string -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint}{hexString} and \refGetterPage{uint}{xString}.
 
@@ -192,9 +192,9 @@ Returns a decimal string representation of the receiver's value. For an hexadeci
 
 \subsectionGetter{uint64}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter uint64 -> @uint64
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. As a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this getter never fails.
 
@@ -205,9 +205,9 @@ This getter is the only way to convert an \refTypePredefini{uint} object into an
 
 \subsectionGetter{xString}{uint}
 
-\begin{galgascode}
+\begin{galgas}
 getter xString -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns an hexadecimal string representation of the receiver's value (without any prefix). For an decimal string representation of the receiver's value, see the \refGetterPage{uint}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint}{string}.
 
@@ -220,10 +220,10 @@ Returns an hexadecimal string representation of the receiver's value (without an
 
 The \refTypePredefini{uint} supports incrementation and decrementation instructions.
 
-\begin{galgascode}
+\begin{galgas}
 @uint n = ... ; n ++ ; # Incrementation
 @uint p = ... ; p -- ; # Decrementation
-\end{galgascode}
+\end{galgas}
 
 
 The incrementation instruction raises an error if receiver's value is equal to $2^{32}-1$ ; the incrementation instruction raises an error if receiver's value is equal to 0.

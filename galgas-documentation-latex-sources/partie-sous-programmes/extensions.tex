@@ -55,30 +55,30 @@ However, it is safe to declare for a given type a category getter, a category me
 A category getter is declared like a function, but its header names a type and a getter name. As a function, it accepts zero, one or more input and constant input formal parameters.
 
 For example, the following code add a getter to the \ggs+uint64+ that computes the square of its value:
-\begin{galgascode}
+\begin{galgas}
 getter @uint64 square -> @uint64 outResult {
   outResult = self * self
 }
-\end{galgascode}
+\end{galgas}
 
 This getter is called like a predefined getter:
-\begin{galgascode}
+\begin{galgas}
 @uint64 v = 7L
 log "Square of 7": [v square] # LOGGING Square of 7 : <@uint64:49>
-\end{galgascode}
+\end{galgas}
 
 You can add a category getter to a list :
-\begin{galgascode}
+\begin{galgas}
 getter @uintlist sum -> @uint outResult {
   outResult = 0
   for self do
     outResult = outResult + mValue
   }
 }
-\end{galgascode}
+\end{galgas}
 
 For counting the number of element values greater than the value given in argument:
-\begin{galgascode}
+\begin{galgas}
 getter @uintlist countValuesGreaterThan
   ?let @uint inTestValue -> @uint outResult
 {
@@ -89,15 +89,15 @@ getter @uintlist countValuesGreaterThan
     end if
   }
 }
-\end{galgascode}
+\end{galgas}
 
 When used with a struct or class type, current object attributes values can be read by naming the attribute in an expression. For example, the \refTypePredefini{lstring} has an attribute 
  \ggs!string! whose type is \ggs+@string+. The following getter returns the value of this attribute, appended with the  \ggs?" !"? string:
-\begin{galgascode}
+\begin{galgas}
 getter @lstring op -> @string outResult {
   outResult = string . " !"
 }
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -110,31 +110,31 @@ getter @lstring op -> @string outResult {
 A category method is declared like a routine, but its header names a type and a method name. As a routine, it accepts zero, one or more input, output, input/output constant input formal parameters.
 
 For example, the following code add a method to the \ggs+uint64+ that computes the square of its value:
-\begin{galgascode}
+\begin{galgas}
 method @uint64 square !@uint64 outResult {
   outResult = self * self
 }
-\end{galgascode}
+\end{galgas}
 
 This getter is called like a predefined method:
-\begin{galgascode}
+\begin{galgas}
 @uint64 v
 [7L square ?v]
 log "Square of 7": v # LOGGING Square of 7 : <@uint64:49>
-\end{galgascode}
+\end{galgas}
 
 You can add a category method to a list :
-\begin{galgascode}
+\begin{galgas}
 method @uintlist sum !@uint outResult {
   outResult = 0
   for self do
     outResult = outResult + mValue
   }
 }
-\end{galgascode}
+\end{galgas}
 
 For counting the number of element values greater than the value given in argument:
-\begin{galgascode}
+\begin{galgas}
 method @uintlist countValuesGreaterThan
   ?let @uint inTestValue
   !@uint outResult
@@ -146,15 +146,15 @@ method @uintlist countValuesGreaterThan
     end if
   }
 }
-\end{galgascode}
+\end{galgas}
 
 When used with a struct or class type, current object attributes values can be read by naming the attribute in an expression. For example, the \refTypePredefini{lstring} has an attribute 
  \ggs!string! whose type is \ggs+@string+. The following method returns the value of this attribute, appended with the  \ggs?" !"? string:
-\begin{galgascode}
+\begin{galgas}
 method @lstring op !@string outResult {
   outResult = string . " !"
 }
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -171,11 +171,11 @@ method @lstring op !@string outResult {
 A category method is declared like a routine, but its header names a type and a setter name. As a routine, it accepts zero, one or more output, input/output, input and constant input formal parameters. Unlike a category method, a category setter can change the value of the current object.
 
 For structure and classes types, attributes can be read, written, read / written. For example :
-\begin{galgascode}
+\begin{galgas}
 setter @lstring appendInt ?let @uint inValue {
   string .= [inValue string]
 }
-\end{galgascode}
+\end{galgas}
 
 
 The  \ggs!self! key word is used as a syntactic tag for denoting a read/write or a write access on the current object. This key word is syntactically accepted in the following constructs:
@@ -188,41 +188,41 @@ The  \ggs!self! key word is used as a syntactic tag for denoting a read/write or
 \end{enumerate}
 
 Example of using  \ggs!self! in setter call instruction; this setter prepends the square of argument value to the \ggs+@uint64list+ value:
-\begin{galgascode}
+\begin{galgas}
 setter @uint64list prependSquare ?let @uint64 inValue {
   [!?self prependValue !inValue * inValue]
 }
-\end{galgascode}
+\end{galgas}
 
 
 Example of using  \ggs!self! in the append instruction; this setter appends the square of argument value to the \ggs+@uintlist+ value:
-\begin{galgascode}
+\begin{galgas}
 setter @uintlist appendSquare ?let @uint inValue {
   self += !inValue * inValue
 }
-\end{galgascode}
+\end{galgas}
 This construct is valid only for types that handle the  \ggs!+=! operator.
 
 
 Example of using  \ggs!self! in the concat instruction; this setter appends to the string all items of the \ggs+@stringlist+ argument value:
-\begin{galgascode}
+\begin{galgas}
 setter @string concatList ?let @stringlist inList {
   for inList do
     self .= mValue
   }
 }
-\end{galgascode}
+\end{galgas}
 This construct is valid only for types that handle the  \ggs!.=! operator.
 
 
 
 
 Example of using \ggs!self! in the increment instruction; this setter increments the receiver's value:
-\begin{galgascode}
+\begin{galgas}
 setter @uint increment {
   self ++
 }
-\end{galgascode}
+\end{galgas}
 This construct is valid only for types that handle the \ggs!++! operator, such as \refTypePredefini{uint}, \ggs+uint64+, \refTypePredefini{sint}, \refTypePredefini{sint64}.
 
 
@@ -230,7 +230,7 @@ This construct is valid only for types that handle the \ggs!++! operator, such a
 
 
 Example of using \ggs!self! in the assignment instruction; this setter removes all odd values of the receiver:
-\begin{galgascode}
+\begin{galgas}
 setter @uintlist removeOddValues {
   @uintlist listWithEvenValues [emptyList]
   for self do
@@ -240,7 +240,7 @@ setter @uintlist removeOddValues {
   }
   self = listWithEvenValues
 }
-\end{galgascode}
+\end{galgas}
 This construct is valid only for types, but class types.
 
 
@@ -265,7 +265,7 @@ Additional features are available only for classes; in addition to category gett
 \emph{Abstract} category getters, methods, setters and \emph{overriding abstract} category getters, methods, setters do not contain any instruction list: they act as \emph{prototypes}.
 
 Examples of \emph{abstract} category getters, methods, setters declarations :
-\begin{galgascode}
+\begin{galgas}
 abstract getter @aType getterName
   ?anOtherType aParameter
   -> @resultType outResult
@@ -278,11 +278,11 @@ abstract method @aType methodName
 abstract setter @aType setterName
   ?anOtherType aParameter
 ;
-\end{galgascode}
+\end{galgas}
 
 
 Examples of \emph{overriding} category getters, methods, setters declarations :
-\begin{galgascode}
+\begin{galgas}
 override getter @aType getterName
   ?anOtherType aParameter
   -> @resultType outResult
@@ -301,11 +301,11 @@ override setter @aType setterName
 {
   instructions
 }
-\end{galgascode}
+\end{galgas}
 
 
 Examples of \emph{overriding abstract} category getters, methods, setters declarations :
-\begin{galgascode}
+\begin{galgas}
 override abstract getter @aType getterName
   ?@anOtherType aParameter
   -> @resultType outResult
@@ -318,7 +318,7 @@ override abstract method @aType methodName
 override abstract setter @aType setterName
   ?anOtherType aParameter
 ;
-\end{galgascode}
+\end{galgas}
 
 
 

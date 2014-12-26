@@ -12,11 +12,11 @@ Les six instructions décrites dans ce chapitre ne peuvent être utilisées qu'�
 
 
 Cette instruction permet de vérifier l'occurrence d'un terminal. Sa syntaxe présente deux options :
-\begin{galgascode}
+\begin{galgas}
 $terminal$ parametres_entree
 indexing nom_index # Optionnel
 traduction_dirigee_par_la_syntaxe # Optionnel
-\end{galgascode}
+\end{galgas}
 
 Où :
 \begin{itemize}
@@ -40,7 +40,7 @@ Où :
 \sectionLabel{Instruction \texttt{select}}{instructionSelectSyntaxique}
 
 La syntaxe de l'instruction \ggs+select+ syntaxique\footnote{Ne confondre avec l'instruction de sélection lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionSelectLexical}).} est la suivante :
-\begin{galgascode}
+\begin{galgas}
 A
 select
   I0
@@ -51,19 +51,19 @@ or
 ...
 end
 B
-\end{galgascode}
+\end{galgas}
 
 L'instruction est présentée avec trois branches \ggs+or+ : l'instruction doit comporter au moins deux branches.
 
 Sa signification est la suivante : l'occurrence de chaque \ggs+select+ syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \ggs+T+. La séquence précédente devient donc :
-\begin{galgascode}
+\begin{galgas}
 A
 <T>
 B
-\end{galgascode}
+\end{galgas}
 
 Le non-terminal \ggs+T+ se dérive de la façon suivante :
-\begin{galgascode}
+\begin{galgas}
 rule <T> { I0 }
 
 rule <T> { I1 }
@@ -71,7 +71,7 @@ rule <T> { I1 }
 rule <T> { I2 }
 
 ...
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -82,7 +82,7 @@ rule <T> { I2 }
 \sectionLabel{Instruction \texttt{repeat}}{instructionRepeatSyntaxique}
 
 La syntaxe de l'instruction \ggs+repeat+ syntaxique\footnote{Ne confondre avec l'instruction de répétition lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionRepeatLexical}).} est la suivante :
-\begin{galgascode}
+\begin{galgas}
 A
 repeat
   I0
@@ -93,20 +93,20 @@ while
 ...
 end
 B
-\end{galgascode}
+\end{galgas}
 
 L'instruction est présentée avec deux branches \ggs+while+ : l'instruction doit comporter au moins une branche.
 
 Sa signification est la suivante : l'occurrence de chaque \ggs+repeat+ syntaxique peut être remplacée par un nouvel non-terminal particulier, que l'on va nommer \ggs+T+. La séquence précédente devient donc :
-\begin{galgascode}
+\begin{galgas}
 A
 I0
 <T>
 B
-\end{galgascode}
+\end{galgas}
 
 Le non-terminal \ggs+T+ se dérive de la façon suivante :
-\begin{galgascode}
+\begin{galgas}
 rule <T> { I1 I0 <T> }
 
 rule <T> { I2 I0 <T> }
@@ -114,7 +114,7 @@ rule <T> { I2 I0 <T> }
 ...
 
 rule <T> {  }
-\end{galgascode}
+\end{galgas}
 
 
 

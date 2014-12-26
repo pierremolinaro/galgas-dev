@@ -14,9 +14,9 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 
 \subsectionConstructor{min}{sint64}
 
-\begin{galgascode}
+\begin{galgas}
 constructor min -> @sint64
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@sint64+ object that the minimum value of the 64-bit signed range ($-2^{63}$).
 
@@ -26,9 +26,9 @@ Returns an \ggs+@sint64+ object that the minimum value of the 64-bit signed rang
 
 \subsectionConstructor{max}{sint64}
 
-\begin{galgascode}
+\begin{galgas}
 constructor max -> @sint64
-\end{galgascode}
+\end{galgas}
 
 Returns an \ggs+@sint64+ object that the maximum value of the 64-bit signed range ($2^{63}-1$).
 
@@ -38,9 +38,9 @@ Returns an \ggs+@sint64+ object that the maximum value of the 64-bit signed rang
 
 \subsectionGetter{double}{sint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter double -> @double
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
 
@@ -49,9 +49,9 @@ Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit in
 
 \subsectionGetter{sint}{sint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter sint -> @sint
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is lower than $-2^{31}$ or greater than $2^{31}-1$.
 
@@ -63,9 +63,9 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 \subsectionGetter{string}{sint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter string -> @string
-\end{galgascode}
+\end{galgas}
 
 Returns a decimal string representation of the receiver's value. This getter never fails.
 
@@ -78,9 +78,9 @@ Returns a decimal string representation of the receiver's value. This getter nev
 
 \subsectionGetter{uint}{sint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter uint -> @uint
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is negative or greater than $2^{32}-1$.
 
@@ -92,9 +92,9 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 \subsectionGetter{uint64}{sint64}
 
-\begin{galgascode}
+\begin{galgas}
 getter uint64 -> @uint64
-\end{galgascode}
+\end{galgas}
 
 Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. This getter raises a run-time error if the receiver's value is negative.
 

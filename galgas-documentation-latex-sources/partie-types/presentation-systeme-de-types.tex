@@ -24,17 +24,17 @@ La plupart des types implémentent le constructeur par défaut \ggs+default+ (vo
 
 \subsection{L'opérateur \texttt{==}}
 
-\begin{galgascode}
+\begin{galgas}
 func == ?@T ?@T -> @bool
-\end{galgascode}
+\end{galgas}
 
 Cet opérateur permet de tester l'identité entre de deux objets de même type. 
 
 \subsection{L'opérateur \texttt{!=}}
 
-\begin{galgascode}
+\begin{galgas}
 func != ?@T ?@T -> @bool
-\end{galgascode}
+\end{galgas}
 
 Cet opérateur permet de tester la non identité entre de deux objets de même type. Il renvoie le complément logique du résultat de l'application de l'opérateur \ggs+==+.
 
@@ -44,9 +44,9 @@ Cet opérateur permet de tester la non identité entre de deux objets de même t
 
 \subsection{Le getter \texttt{description}}
 
-\begin{galgascode}
+\begin{galgas}
 getter @T description -> @string
-\end{galgascode}
+\end{galgas}
 
 Le \emph{getter} \ggs+description+ retourne une description textuelle du receveur, la même que celle affichée par l'instruction \ggs+log+ (\refSectionPage{instructionLog}).
 
@@ -54,37 +54,37 @@ Le \emph{getter} \ggs+description+ retourne une description textuelle du receveu
 
 \subsection{Le getter \texttt{dynamicType}}
 
-\begin{galgascode}
+\begin{galgas}
 getter @T dynamicType -> @type
-\end{galgascode}
+\end{galgas}
 
 Le \emph{getter} \ggs+dynamicType+ retourne un objet de type \ggs+@type+, dont la valeur représente le type dynamique du receveur (voir aussi la définition du type \refTypePredefini{type}).
 
 Pour tous les types sauf les classes, leurs instances sont du même type que le type statique :
 
-\begin{galgascode}
+\begin{galgas}
 @uint n = 2
 @type t = [n dynamicType]
 log t # Affiche @uint
-\end{galgascode}
+\end{galgas}
 
 Pour les instances de classes, le jeu des affectations polymorphiques peut entraîner que le type dynamique soit une classe héritière du type statique.
 
 Par exemple, en déclarant :
-\begin{galgascode}
+\begin{galgas}
 class @A { }
 class @B : @A { }
-\end{galgascode}
+\end{galgas}
 
 Et avec la séquence d'instructions suivante :
-\begin{galgascode}
+\begin{galgas}
 @B b = .new
 @type t = [b dynamicType]
 log t # Affiche @B, type statique de b : @B
 @A a = b # Affectation polymorphique
 t = [a dynamicType]
 log t # Affiche @B, type statique de a : @A
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -92,9 +92,9 @@ log t # Affiche @B, type statique de a : @A
 
 \subsection{Le getter \texttt{object}}
 
-\begin{galgascode}
+\begin{galgas}
 getter @T object -> @object
-\end{galgascode}
+\end{galgas}
 
 
 Le \emph{getter} \ggs+object+ retourne un objet de type \ggs+@object+. Une variable de type \refTypePredefini{object} peut encapsuler tout type de valeur.

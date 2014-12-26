@@ -31,7 +31,7 @@ Pour illustrer les différentes possibilités, on prend pour exemple une grammai
 L'analyseur lexical -- non décrit -- définit les symboles terminaux \ggs+$idf$ !@lstring+, \ggs*$+$*, \ggs+$*$+, \ggs+$($+ et \ggs+$)$+.
 
 L'analyseur syntaxique est le suivant :
-\begin{galgascode}
+\begin{galgas}
 syntax expSyntax {
   rule <expression> {
     <terme>
@@ -50,26 +50,26 @@ syntax expSyntax {
     $)$
   }
 }
-\end{galgascode}
+\end{galgas}
 
 La grammaire :
-\begin{galgascode}
+\begin{galgas}
 grammar expGrammar "LL1" {
   syntax expSyntax
   <expression>
 }
-\end{galgascode}
+\end{galgas}
 
 La classe de la grammaire (ici \texttt{LL1}) n'a pas d'importance pour la traduction dirigée par la syntaxe : celle-ci fonctionne pour toutes les classes de grammaire. 
 
 Enfin, le lien entre l'extension des fichiers source et l'analyseur est réalisé par le code suivant :
-\begin{galgascode}
+\begin{galgas}
 case . "expression"
 message "an '.expression' source file"
 ?@lstring inSourceFile {
   grammar expGrammar in inSourceFile
 }
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -83,16 +83,16 @@ message "an '.expression' source file"
 Activer la traduction dirigée par la syntaxe indique à GALGAS d'engendrer le code supplémentaire qui prend en charge la traduction. L'activation doit être indiquée à la fois sur le composant \ggs+syntax+ et le composant \ggs+grammar+ en ajoutant la directive \ggs+%translate+ dans chaque en-tête\footnote{Dans le cas où les règles syntaxiques sont réparties dans plusieurs composants syntaxiques, l'activation doit être indiquée dans tous.}.
 
 Pour le composant \ggs+syntax+ :
-\begin{galgascode}
+\begin{galgas}
 syntax expSyntax %translate {
   ...
-\end{galgascode}
+\end{galgas}
 
 Et pour la grammaire :
-\begin{galgascode}
+\begin{galgas}
 grammar expGrammar "LL1" %translate {
   ...
-\end{galgascode}
+\end{galgas}
 
 Quand la traduction est activée, l'analyse d'un fichier construit une chaîne de caractères, et par défaut celle-ci est identique à la chaîne source. Par défaut, la chaîne construite est perdue, la section suivante va montrer comment l'obtenir.
 
@@ -106,14 +106,14 @@ Quand la traduction est activée, l'analyse d'un fichier construit une chaîne d
 \sectionLabel{Obtenir la chaîne traduite}{instructionGrammarEtTraductionDirigeeParLaSyntaxe}
 
 La chaîne traduite est obtenue en modifiant l'instruction \ggs+grammar+ (\refSectionPage{instruction-grammar}). Comme on l'a vu, celle-ci est : 
-\begin{galgascode}
+\begin{galgas}
 grammar expGrammar in inSourceFile
-\end{galgascode}
+\end{galgas}
 
 Obtenir la chaine traduite s'exprime en utilisant l'opérateur  \ggs+:>+ :
-\begin{galgascode}
+\begin{galgas}
 grammar expGrammar in inSourceFile :> ?@string s
-\end{galgascode}
+\end{galgas}
 
 L'instruction déclare une variable \ggs+s+ de type \ggs+@string+ et lui affecte la chaîne traduite \footnote{Il existe des variantes pour exprimer l'obtention de la chaîne traduite, voir la description de l'instruction grammaire à la \refSectionPage{instruction-grammar}.}.
 
@@ -133,9 +133,9 @@ Par défaut, la chaîne traduite est identique à la chaîne source. Obtenir une
 \section{Modifier l'instruction d'appel de terminal}
 
 Une instruction d'appel de terminal a l'allure suivante (par exemple pour \ggs+$idf$+) :
-\begin{galgascode}
+\begin{galgas}
 $idf$ ?*
-\end{galgascode}
+\end{galgas}
 
 Par défaut, cette instruction recopie à l'identique dans la chaîne produite deux informations :
 \begin{itemize}
@@ -159,14 +159,14 @@ Prenons un exemple. On suppose que la chaîne source est : \texttt{@1@a+@2@b@3@}
 Le dernier commentaire (\texttt{@3@}), placé après le dernier symbole non terminal, est toujours ajouté à la fin de la chaîne produite.
 
 Pour obtenir les deux informations attachés à chaque terminal\footnote{Il existe d'autres variantes de cet opérateur, voir la description de l'\emph{instruction d'appel de terminal} à la \refSectionPage{instruction-appel-terminal}.}, on utilise l'opérateur \ggs+:>+ :
-\begin{galgascode}
-$idf$ ?* :> ?@string separateur ?@string token ;
-\end{galgascode}
+\begin{galgas}
+$idf$ ?* :> ?@string separateur ?@string token
+\end{galgas}
 
 Cette écriture a pour effet que le séparateur précédent le terminal et le terminal lui-même ne sont plus transmis dans la chaîne traduite, mais affectés respectivement à \ggs+separateur+ et à \ggs+token+.
 
-On va prendre un exemple pour illustrer cette construction : produite une chaîne dont les identificateurs et les séparateurs qui les précèdent auront disparus. On modifie le composant \ggs+syntax+ comme suit (il existe une expression plus simple de l'instruction \ggs+$idf$ ?* :> ?@string s ?@string t ;+, puisque \ggs+s+ et \ggs+t+ ne sont pas utilisés : c'est \ggs+$idf$ ?* :> ?* ?* ;+, décrite  à la \refSectionPage{instruction-appel-terminal})     t :
-\begin{galgascode}
+On va prendre un exemple pour illustrer cette construction : produite une chaîne dont les identificateurs et les séparateurs qui les précèdent auront disparus. On modifie le composant \ggs+syntax+ comme suit (il existe une expression plus simple de l'instruction \ggs+$idf$ ?* :> ?@string s ?@string t+, puisque \ggs+s+ et \ggs+t+ ne sont pas utilisés : c'est \ggs+$idf$ ?* :> ?* ?*+, décrite  à la \refSectionPage{instruction-appel-terminal}) :
+\begin{galgas}
 syntax expSyntax {
   rule <expression> {
     <terme> ;
@@ -185,7 +185,7 @@ syntax expSyntax {
     $)$ ;
   }
 }
-\end{galgascode}
+\end{galgas}
 
 Si la chaîne source est \texttt{@1@a+@2@b@3@}, alors la chaîne produite est \texttt{+@3@}.
 
@@ -204,14 +204,14 @@ Cette première instruction permet donc de ne pas transmettre les informations a
 
 L'instruction \ggs+send+ a la syntaxe suivante (l'instruction \ggs+send+ est décrite à la \refSectionPage{instruction-send-syntaxique}) :
 
-\begin{galgascode}
+\begin{galgas}
 send exp
-\end{galgascode}
+\end{galgas}
 
 \ggs+exp+ est une expression de type \ggs+@string+. Son comportement est simple : la valeur de l'expression chaîne de caractères est simplement transmise à la chaîne produite.
 
-Par exemple, supposons que l'on veuille transformer les parenthèses en accolades ; on écrit le composant \ggs+syntax+ comme suit (là encore, il existe une forme plus concise de l'instruction \ggs+$($ :> ?@string s ?@string t ;+, puisque \ggs+t+ est inutilisé : c'est \ggs+$($ :> ?@string s ?* ;+, décrite  à la \refSectionPage{instruction-appel-terminal}) :
-\begin{galgascode}
+Par exemple, supposons que l'on veuille transformer les parenthèses en accolades ; on écrit le composant \ggs+syntax+ comme suit (là encore, il existe une forme plus concise de l'instruction \ggs+$($ :> ?@string s ?@string t+, puisque \ggs+t+ est inutilisé : c'est \ggs+$($ :> ?@string s ?*+, décrite  à la \refSectionPage{instruction-appel-terminal}) :
+\begin{galgas}
 syntax expSyntax {
   rule <expression> {
     <terme>
@@ -230,26 +230,26 @@ syntax expSyntax {
     $)$ :> ?@string s ?@string t ; send s . "}"
   }
 }
-\end{galgascode}
+\end{galgas}
 
 Mentionner \ggs+s+ dans l'instruction \ggs+send+ permet de transmettre les séparateurs qui précèdent les parenthèses. Ainsi à partir de la chaîne source \texttt{(@1@a+@2@b)@3@}, on obtient \texttt{\{@1@a+@2@b\}@3@}.
 
 
-L'instruction \ggs+send+ permet de reconstituer le comportement par défaut de l'instruction d'appel de terminal : par exemple, \ggs+$($ \:> ?@string s ?@string t ; send s . t ;+ a le même effet que \ggs+$($ ;+.
+L'instruction \ggs+send+ permet de reconstituer le comportement par défaut de l'instruction d'appel de terminal : par exemple, \ggs*$($ :> ?@string s ?@string t ; send s + t* a le même effet que \ggs+$($+.
 
 
 Attention, l'instruction \ggs+send+ est une instruction syntaxique. Cela signifie que le code suivant est incorrect :
 
-\begin{galgascode}
+\begin{galgas}
 if condition then
   send A # Erreur
 else
   send B # Erreur
 end
-\end{galgascode}
+\end{galgas}
 
 L'analyse des instructions \ggs+send A+ et  \ggs+send B+ déclenche une erreur ; en effet, les branches d'une instruction \ggs+if+ ne peuvent contenir que des instructions sémantiques. Les instructions \ggs+send+ ne peuvent figurer que directement dans des règles de production, soient dans les branches des instructions \ggs+select+, \ggs+repeat+ ou \ggs+parse+. Pour contourner cette interdiction, écrire :
-\begin{galgascode}
+\begin{galgas}
 @string s
 if condition then
   s = A
@@ -257,32 +257,32 @@ else
   s = B
 end
 send s
-\end{galgascode}
+\end{galgas}
 
 
 
 \section{Modifier l'instruction d'appel de non-terminal}
 
 L'instruction d'appel de non terminal capture la chaîne obtenue par la dérivation de ce non terminal :
-\begin{galgascode}
+\begin{galgas}
 <expression>
-\end{galgascode}
+\end{galgas}
 
 
 Par défaut, cette chaîne est ajoutée à la chaîne produite.
 
 Là encore, l'opérateur \ggs+:>+ permet d'effectuer une interception. On écrit :
-\begin{galgascode}
+\begin{galgas}
 <expression> :> ?@string e
-\end{galgascode}
+\end{galgas}
 
 La chaîne obtenue par la dérivation du non terminal \ggs+<expression>+ n'est pas ajoutée à la chaîne produite, mais affectée à la variable \ggs+e+. D'une manière analogue à l'instruction d'appel de terminal, l'instruction \ggs+send+ permet de retrouver le comportement par défaut :
-\begin{galgascode}
+\begin{galgas}
 <expression> :> ?@string e ; send e
-\end{galgascode}
+\end{galgas}
 
-On utilise souvent cette construction pour ne pas transmettre la chaîne obtenue par la dérivation d'un non terminal ; par exemple, si on ne veut pas transmettre les expressions entre parenthèses, on modifie la dernière règle \ggs+facteur+ en (ou encore : \ggs+<expression> \:> ?*+) :
-\begin{galgascode}
+On utilise souvent cette construction pour ne pas transmettre la chaîne obtenue par la dérivation d'un non terminal ; par exemple, si on ne veut pas transmettre les expressions entre parenthèses, on modifie la dernière règle \ggs+facteur+ en (ou encore : \ggs+<expression> :> ?*+) :
+\begin{galgas}
 syntax expSyntax {
   ...
   rule <facteur> {
@@ -291,6 +291,6 @@ syntax expSyntax {
     $)$
   }
 }
-\end{galgascode}
+\end{galgas}
 
 

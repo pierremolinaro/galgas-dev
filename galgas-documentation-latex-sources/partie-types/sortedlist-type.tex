@@ -14,14 +14,14 @@ Le type \ggs+sortedlist+ permet de construire des listes ordonnées de valeurs.
 
 La déclaration d'une \ggs+sortedlist+ nomme tous les attributs qui composent un élément de liste et la description du tri. Par Exemple :
 
-\begin{galgascode}
+\begin{galgas}
 sortedlist @MaListeOrdonnee {
   @char mCaractere ;
   @uint mEntier ;
 }{
   mCaractere <, mEntier >
 }
-\end{galgascode}
+\end{galgas}
 
 La description du tri est exprimée par la liste ordonnée des attributs qui interviennent dans le tri, chacun d'eux étant suivi de l'ordre du tri (\ggs+<+ pour croissant, et \ggs+>+ pour décroissant). Ainsi, les élements des instances du type liste ordonnée ci-dessus sont triés par ordre croissant du champ caractère, puis par ordre décroissant du champ entier.
 
@@ -51,21 +51,21 @@ Déclarer une \ggs+sortedlist+ définit implicitement :
 \subsectionLabel{Constructeur \texttt{emptySortedList}}{constructeurSortedlistEmptySortedList}
 
 Le constructeur \ggs+emptySortedList+ construit et retourne une liste vide. Par exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe [emptySortedList] ;
-\end{galgascode}
+\end{galgas}
 
 
 \subsectionLabel{Constructeur \texttt{sortedListWithValue}}{constructeurSortedlistSortedListWithValue}
 
 Le constructeur \ggs+sortedListWithValue+ construit et retourne une liste comprenant un élément. Cet élément est spécifié par les arguments effectifs de l'appel : ce constructeur présente une séquence d'arguments en entrée correspondant aux champs de l'élément. Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe [sortedListWithValue
   !'a' # Affecte au champ mCaractere
   !10  # Affecte au champ mEntier
 ] ;
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -84,7 +84,7 @@ Cette opération est effectuée en $O(log (n))$ où $n$ est le nombre d'élémen
 
 Exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe [emptySortedList] ;
 uneListe += !'b' ! 1 ; # b1
 uneListe += !'b' ! 2 ; # b2
@@ -93,29 +93,29 @@ uneListe += !'f' ! 1 ; # f1
 uneListe += !'a' ! 1 ; # a1
 uneListe += !'c' ! 1 ; # c1
 uneListe += !'f' ! 2 ; # f2
-\end{galgascode}
+\end{galgas}
 
 \subsectionLabel{L'opérateur \texttt{.=}}{operateurSortedListPointEgal}
 
 L'opérateur \ggs*+=* ajoute tous les éléments de l'expression à la liste ordonnée, en maintenant la relation d'ordre. Si il y a un ou plusieurs éléments égaux à chaque élément ajouté, ce dernier est placé après les éléments existants. 
 
 Exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe = ... ;
 @MaListeOrdonnee autreListe = ... ;
 uneListe .= autreListe ;
-\end{galgascode}
+\end{galgas}
 
 \subsectionLabel{L'opérateur \texttt{.}}{operateurSortedListPoint}
 
 L'opérateur \ggs*+* combine deux listes ordonnées. Les éléments de la seconde liste égaux à ceux de la première liste sont placés après ceux de la première liste.
 
 Exemple :
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe = ... ;
 @MaListeOrdonnee autreListe = ... ;
 @MaListeOrdonnee troisiemeListe = uneListe . autreListe ;
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -138,14 +138,14 @@ Le getter \ggs+length+ retourne un \ggs+@uint+ contenant le nombre d'éléments 
 
 Ce \emph{setter} retourne les champs du plus grand élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe = ... ;
 ...
 [!?uneListe popGreatest
   ?@char c
   ?@uint n
 ] ;
-\end{galgascode}
+\end{galgas}
 
 Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans l'état \emph{invalide}.
 
@@ -154,14 +154,14 @@ Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans 
 
 Ce \emph{setter} retourne les champs du plus petit élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe = ... ;
 ...
 [!?uneListe popSmallest
   ?@char c
   ?@uint n
 ] ;
-\end{galgascode}
+\end{galgas}
 
 Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans l'état \emph{invalide}.
 
@@ -180,14 +180,14 @@ Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans 
 
 Cette méthode retourne les champs du plus grand élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe = ... ;
 ...
 [uneListe greatest
   ?@char c
   ?@uint n
 ] ;
-\end{galgascode}
+\end{galgas}
 
 Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans l'état \emph{invalide}.
 
@@ -196,14 +196,14 @@ Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans 
 
 Cette méthode retourne les champs du plus petit élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe = ... ;
 ...
 [uneListe smallest
   ?@char c
   ?@uint n
 ] ;
-\end{galgascode}
+\end{galgas}
 
 Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans l'état \emph{invalide}.
 
@@ -215,24 +215,24 @@ Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans 
 L'instruction \ggs+for+ (\refSectionPage{instructionFor}) permet d'énumérer les éléments d'une liste ordonnée, par ordre croissant ou décroissant.
 
 Pour effectuer l'énumération par ordre croissant, écrire :
-\begin{galgascode}
+\begin{galgas}
 foreach uneListe do
   ...
 end foreach ;
-\end{galgascode}
+\end{galgas}
 
 Pour effectuer l'énumération par ordre décroissant, écrire :
-\begin{galgascode}
+\begin{galgas}
 foreach > uneListe do
   ...
 end foreach ;
-\end{galgascode}
+\end{galgas}
 
 À l'intérieur de la boucle, pour chaque champ des éléments de la liste, un constante dont le nom est celui du champ est définie et prend la valeur du champ correspondant de l'élément courant.
 
 Par exemple :
 
-\begin{galgascode}
+\begin{galgas}
 @MaListeOrdonnee uneListe [emptySortedList] ;
 uneListe += !'b' ! 1 ; # b1
 uneListe += !'b' ! 2 ; # b2
@@ -251,4 +251,4 @@ foreach > uneListe do
   s .= [mCaractere string] . [mEntier string] . " " ;
 end foreach ;
 message s . "\n" ; # Affiche "f1 f2 d1 c1 b1 b2 a1"
-\end{galgascode}
+\end{galgas}

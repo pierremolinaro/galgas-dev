@@ -17,23 +17,23 @@ La déclaration d'un type tableau contient les informations suivantes :
 \end{itemize}
 
 La déclaration d'un type tableau a la syntaxe suivante :
-\begin{galgascode}
+\begin{galgas}
 array @TypeTableau : @TypeElement [dimension] ;
-\end{galgascode}
+\end{galgas}
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
 array @monTableau : @string [3] ;
-\end{galgascode}
+\end{galgas}
 
 
 \section{Constructeur d'un type tableau}
 
 Le seul constructeur d'un type tableau est le constructeur \ggs+new+. Il a pour but de fixer les dimensions initiales du tableau (il pourra ensuite être redimensionné). Il comporte \emph{dimension} arguments de type \ggs+@uint+, qui fixent la taille initiale de chaque axe.
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
   @monTableau t [new !2 !3 !4] ;
-\end{galgascode}
+\end{galgas}
 
 Cette déclaration crée un tableau à $2*3*4$ éléments. Ces éléments sont par défaut \emph{invalides}, c'est à dire que leur lecture par le getter \ggs+valueAtIndex+ déclenche une \emph{run-time error}. Pour être valide, un élément doit avoir été initialisé par un appel au setter \ggs+setValueAtIndex+.
 
@@ -49,9 +49,9 @@ L'accès à la valeur d'un élément s'effectue par le getter \ggs+valueAtIndex+
 Ce getter comporte \emph{dimension} arguments de type \ggs+@uint+, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C).
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
   @string s = [t valueAtIndex !1 !2 !2] ;
-\end{galgascode}
+\end{galgas}
 
 
 Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et la valeur retournée est \emph{invalide}. Si les indices ont des valeurs correctes, l'élément est retourné ; si cet élément est invalide, une \emph{run-time error} est déclenchée, et une valeur \emph{invalide} est retournée.
@@ -72,10 +72,10 @@ Ce setter comporte (\emph{dimension}+1) arguments :
 Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et le tableau est alors non modifié.
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
   @string s = ... ;
   [!?t setValueAtIndex !s !1 !2 !2] ;
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -92,10 +92,10 @@ Ce setter comporte (\emph{dimension}+1) arguments :
 Les indices sont comptés à partir de zéro (comme en C). Contrairement au setter \ggs+setValueAtIndex+, aucune \emph{run-time error} n'est déclenchée si un indice dépasse sa borne correspondante : le tableau est d'abord agrandi, ce qui ajoute des éléments invalides, puis l'élément désigné par les indices est affecté.
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
   @string s = ... ;
   [}?t forceValueAtIndex !s !5 !4 !4] ;
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -110,9 +110,9 @@ Le getter \ggs+isValueValidAtIndex+ permet de savoir si un élément est valide 
 Ce getter comporte \emph{dimension} arguments de type \ggs+@uint+, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et la valeur retournée est \emph{invalide}. Il renvoie une valeur de type \ggs+@bool+, suivant que l'élément est valide ou non.
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
   @bool b = [t isValueValidAtIndex !1 !2 !2] ;
-\end{galgascode}
+\end{galgas}
 
 
 \subsection{Setter \texttt{invalidateValueAtIndex}}
@@ -120,9 +120,9 @@ Par exemple :
 Ce setter comporte \emph{dimension} arguments de type \ggs+@uint+, qui précisent l'indice pour chaque axe. Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante. Il invalide l'élément correspondant, c'est dire qu'un appel au getter \ggs+valueAtIndex+ pour lire cet élément déclenchera une \emph{run-time error}.
 
 Par exemple :
-\begin{galgascode}
+\begin{galgas}
   [!?t invalidateValueAtIndex !1 !2 !2] ;
-\end{galgascode}
+\end{galgas}
 
 
 
@@ -140,9 +140,9 @@ Ce getter sans argument renvoie un \ggs+@uint+ qui contient le nombre d'axes d'u
 
 
 Par exemple, pour la déclaration :
-\begin{galgascode}
+\begin{galgas}
 array @monTableau : @string [3] ;
-\end{galgascode}
+\end{galgas}
 Pour tous les objets de type \ggs+@monTableau+, l'appel au getter \ggs+axisCount+ renvoie la valeur $3$.
 
 
