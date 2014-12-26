@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{char}
 
-An \galgas{@char} object value is an Unicode character. You can initialize an \galgas{@char} object from a character constant:
+An \ggs+@char+ object value is an Unicode character. You can initialize an \ggs+@char+ object from a character constant:
 
 \begin{galgascode}
 @char myCharacter = 'A' ;
@@ -13,7 +13,7 @@ An \galgas{@char} object value is an Unicode character. You can initialize an \g
 You have several ways for writing a literal character constant. In any case, it should define an assigned Unicode character. A compile-time error is raised if it does not.
 
 
-A literal character constant is a single character or an escape sequence enclosed by single quotes (\galgas{'}).
+A literal character constant is a single character or an escape sequence enclosed by single quotes (\ggs+'+).
 
 For an ASCII printable character:
 
@@ -91,27 +91,30 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \section{Constructors}
 
 
+\subsectionConstructor{replacementCharacter}{char}
 
-\constructeurSansArgument{replacementCharacter}
-{char}
-{1.8.3}
-{char}
-{Returns an \galgas{@char} object corresponding to Unicode replacement character (\texttt{\textquotesingle\textbackslash uFFFD}.}
-{}
+\begin{galgascode}
+constructor replacementCharacter -> @char
+\end{galgascode}
 
 
-
+Returns an \ggs+@char+ object corresponding to Unicode replacement character (\ggs+'\uFFFD'+).
 
 
 
 
-\constructeurUnArgument{unicodeCharacterWithUnsigned}
-{char}
-{1.8.3}
-{char}
-{@uint inValue}
-{Returns an \galgas{@char} object from an Unicode code point.}
-{A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \galgas{@uint} value represents an assigned Unicode value with the \refGetterPage{uint}{isUnicodeValueAssigned}.}
+
+
+\subsectionConstructor{unicodeCharacterWithUnsigned}{char}
+
+\begin{galgascode}
+constructor unicodeCharacterWithUnsigned ?@uint inValue -> @char
+\end{galgascode}
+
+
+Returns an \ggs+@char+ object from an Unicode code point.
+
+A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \ggs+@uint+ value represents an assigned Unicode value with the \refGetterPage{uint}{isUnicodeValueAssigned}.
 
 
 \section{Getters}
@@ -123,7 +126,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 getter isalnum -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII letter or an ASCII digit: \galgas{true} if the receiver'value represents an ASCII letter or an ASCII digit (between \ggs+'A'+ and \ggs+'Z'+, or between \ggs'a'+ and \ggs+'z'+, or between \ggs+'0'+ and \ggs+'9'+, and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an ASCII letter or an ASCII digit: \ggs+true+ if the receiver'value represents an ASCII letter or an ASCII digit (between \ggs+'A'+ and \ggs+'Z'+, or between \ggs'a'+ and \ggs+'z'+, or between \ggs+'0'+ and \ggs+'9'+, and \ggs+false+ otherwise.
 
 
 
@@ -134,7 +137,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isalpha -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII letter: \galgas{true} if the receiver'value represents an ASCII letter (between \ggs+'A'+ and \ggs+'Z'+, or between \ggs+'a'+ and \ggs+'z'+), and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an ASCII letter: \ggs+true+ if the receiver'value represents an ASCII letter (between \ggs+'A'+ and \ggs+'Z'+, or between \ggs+'a'+ and \ggs+'z'+), and \ggs+false+ otherwise.
 
 
 
@@ -145,7 +148,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter iscntrl -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII control character: \galgas{true} if the receiver'value represents an ASCII control character (strictly before the \emph{SPACE} character), and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an ASCII control character: \ggs+true+ if the receiver'value represents an ASCII control character (strictly before the \emph{SPACE} character), and \ggs+false+ otherwise.
 
 
 
@@ -157,7 +160,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isdigit -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII digit: \galgas{true} if the receiver'value represents an ASCII digit (between \ggs+'0'+ and \ggs+'9'+), and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an ASCII digit: \ggs+true+ if the receiver'value represents an ASCII digit (between \ggs+'0'+ and \ggs+'9'+), and \ggs+false+ otherwise.
 
 
 
@@ -169,7 +172,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter islower -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII lowercase ASCII letter: \galgas{true} if the receiver'value represents an ASCII lowercase letter (between \ggs+'a'+ and \ggs+'z'+), and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an ASCII lowercase ASCII letter: \ggs+true+ if the receiver'value represents an ASCII lowercase letter (between \ggs+'a'+ and \ggs+'z'+), and \ggs+false+ otherwise.
 
 
 
@@ -182,7 +185,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isUnicodeCommand -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode command: \galgas{true} if the receiver'value represents an Unicode command, and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an Unicode command: \ggs+true+ if the receiver'value represents an Unicode command, and \ggs+false+ otherwise.
 
 
 
@@ -195,7 +198,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isUnicodeLetter -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode letter: \galgas{true} if the receiver'value represents an Unicode letter, and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an Unicode letter: \ggs+true+ if the receiver'value represents an Unicode letter, and \ggs+false+ otherwise.
 
 
 
@@ -208,7 +211,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isUnicodeMark -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode mark character: \galgas{true} if the receiver'value represents an Unicode mark character, and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an Unicode mark character: \ggs+true+ if the receiver'value represents an Unicode mark character, and \ggs+false+ otherwise.
 
 
 
@@ -221,7 +224,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isUnicodePunctuation -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode punctuation character: \galgas{true} if the receiver'value represents an Unicode punctuation character, and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an Unicode punctuation character: \ggs+true+ if the receiver'value represents an Unicode punctuation character, and \ggs+false+ otherwise.
 
 
 
@@ -234,7 +237,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isUnicodeSeparator -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode separator character: \galgas{true} if the receiver'value represents an Unicode separator character, and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an Unicode separator character: \ggs+true+ if the receiver'value represents an Unicode separator character, and \ggs+false+ otherwise.
 
 
 
@@ -247,7 +250,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isUnicodeSymbol -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode symbol character: \galgas{true} if the receiver'value represents an Unicode symbol character, and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an Unicode symbol character: \ggs+true+ if the receiver'value represents an Unicode symbol character, and \ggs+false+ otherwise.
 
 
 
@@ -263,7 +266,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter isupper -> @bool
 \end{galgascode}
 
-Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII uppercase ASCII letter: \galgas{true} if the receiver'value represents an ASCII uppercase letter (between \ggs+'A'+ and \ggs+'Z'+, and \galgas{false} otherwise.
+Returns an \ggs+@bool+ value indicating whether the receiver'value represents an ASCII uppercase ASCII letter: \ggs+true+ if the receiver'value represents an ASCII uppercase letter (between \ggs+'A'+ and \ggs+'Z'+, and \ggs+false+ otherwise.
 
 
 
@@ -275,7 +278,7 @@ Returns an \galgas{@bool} value indicating whether the receiver'value represents
 getter string -> @string
 \end{galgascode}
 
-Returns returns a string representation of the receiver's value: a one character \galgas{@string} object, containing the receiver's value.
+Returns returns a string representation of the receiver's value: a one character \ggs+@string+ object, containing the receiver's value.
 
 
 
@@ -286,7 +289,7 @@ Returns returns a string representation of the receiver's value: a one character
 getter uint -> @uint
 \end{galgascode}
 
-Returns an \galgas{@uint} object representing the Unicode code point of the receiver's value.
+Returns an \ggs+@uint+ object representing the Unicode code point of the receiver's value.
 
 
 
@@ -344,7 +347,7 @@ Returns the uppercase character corresponding to the receiver's value: if the re
 
 \section{Comparison Operators}
 
-The \galgas{@char} type supports the six comparison operators:\newline
+The \ggs+@char+ type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -362,6 +365,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@char} objects, and return a \ggs+@bool+ object. Comparison is done by comparing of the Unicode code point's value.
+Theses operators require both arguments to be \ggs+@char+ objects, and return a \ggs+@bool+ object. Comparison is done by comparing of the Unicode code point's value.
 
 

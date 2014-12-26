@@ -6,7 +6,7 @@
 
 %-------------------------------------------------------------
 
-Un type \galgas{extern} est déclaré et spécifié en GALGAS, et implémenté par une classe C++. Ceci permet de définir des types qui seraient difficilement exprimables en GALGAS.
+Un type \ggs+extern+ est déclaré et spécifié en GALGAS, et implémenté par une classe C++. Ceci permet de définir des types qui seraient difficilement exprimables en GALGAS.
 
 On va voir sur un exemple comment déclarer et implémenter :
 \begin{itemize}
@@ -18,11 +18,11 @@ On va voir sur un exemple comment déclarer et implémenter :
   \item une \emph{méthode} de classe.
 \end{itemize}
 
-L'exemple consiste à implémenter le type \galgas{@complex} qui représente les nombres complexes.
+L'exemple consiste à implémenter le type \ggs+@complex+ qui représente les nombres complexes.
 
 \section{Type externe minimum}
 
-L'implémentation minimum ne sera pas opérationnelle, car elle ne comprendra pas de constructeur : on ne pourra donc pas instancier d'objet du type \galgas{@complex}. L'ajout de constructeur sera présenté à la section suivante. De même, cette implémentation minimum ne définira ni \emph{setter}, ni \emph{méthode}, ni \emph{getter}.
+L'implémentation minimum ne sera pas opérationnelle, car elle ne comprendra pas de constructeur : on ne pourra donc pas instancier d'objet du type \ggs+@complex+. L'ajout de constructeur sera présenté à la section suivante. De même, cette implémentation minimum ne définira ni \emph{setter}, ni \emph{méthode}, ni \emph{getter}.
 
 
 \subsection{Déclaration en GALGAS}
@@ -39,9 +39,9 @@ extern @complex {
 }
 \end{galgascode}
 
-Cette description est divisée en trois parties, délimitées par les accolades \galgas{\{} et \galgas{\}}.
+Cette description est divisée en trois parties, délimitées par les accolades \ggs+{+ et \ggs+}+.
 
-\textbf{Première partie.} Elle cite une séquence de chaînes de caractères, qui seront écrites telles quelles dans le fichier d'en-tête C++ engendré, juste avant la déclaration de la classe C++ ; on peut y placer là des pré-déclarations de classe, des inclusions de fichier, … Pour le type \galgas{@complex}, aucune pré-déclaration n'est nécessaire, aussi on place un simple commentaire C++, de façon à le localiser dans le fichier d'en-tête C++ engendré.
+\textbf{Première partie.} Elle cite une séquence de chaînes de caractères, qui seront écrites telles quelles dans le fichier d'en-tête C++ engendré, juste avant la déclaration de la classe C++ ; on peut y placer là des pré-déclarations de classe, des inclusions de fichier, … Pour le type \ggs+@complex+, aucune pré-déclaration n'est nécessaire, aussi on place un simple commentaire C++, de façon à le localiser dans le fichier d'en-tête C++ engendré.
 
 \subsection{Implémentation en C++}
 

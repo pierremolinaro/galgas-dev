@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{uint64}
 
-An \galgas{@uint64} object value is a 64-bit unsigned integer value. You can initialize an \galgas{@uint64} object from a 64-bit unsigned integer constant:
+An \ggs+@uint64+ object value is a 64-bit unsigned integer value. You can initialize an \ggs+@uint64+ object from a 64-bit unsigned integer constant:
 
 \begin{galgascode}
 @uint64 myUnsignedInteger = 123_456L
@@ -13,25 +13,32 @@ Note the \texttt{L} suffix is required for a 64-bit unsigned integer constant.
 
 \section{Constructeurs}
 
-\constructeurSansArgument{max}
-{uint64}
-{1.3.0}
-{uint64}
-{Returns an \galgas{@uint64} object that the maximum value of the 64-bit unsigned range.}
-{The returned value is $2^{64}-1$.}
 
 
-\constructeurUnArgument{uint64BaseValueWithCompressedBitString}
-{uint64}
-{1.6.4}
-{uint64}
-{@string inBitString}
-{Returns an \galgas{@uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.}
-{the inBitString argument should contain only '0', '1' or 'X' characters. A run time exception is raised if an other character appears.
+
+\subsectionConstructor{max}{uint64}
+
+\begin{galgascode}
+constructor max -> @uint64
+\end{galgascode}
+
+Returns an \ggs+@uint64+ object that the maximum value of the 64-bit unsigned range ($2^{64}-1$).
+
+
+\subsectionConstructor{uint64BaseValueWithCompressedBitString}{uint64}
+
+\begin{galgascode}
+constructor uint64BaseValueWithCompressedBitString ?@string inBitString -> @uint64
+\end{galgascode}
+
+
+Returns an \ggs+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.
+
+The inBitString argument should contain only '0', '1' or 'X' characters. A run time exception is raised if an other character appears.
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
 
-Note that the first character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
+Note that the first character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.
 
 
 \textbf{Exemple :}
@@ -44,17 +51,20 @@ log v # Displays <@uint64:18>
 
 
 
-\constructeurUnArgument{uint64MaskWithCompressedBitString}
-{uint64}
-{1.6.4}
-{uint64}
-{@string inBitString}
-{Returns an \galgas{@uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.}
-{the \emph{inBitString} argument should contain only '0', '1' and 'X' characters. A run time exception is raised if an other character appears.
+\subsectionConstructor{uint64MaskWithCompressedBitString}{uint64}
+
+\begin{galgascode}
+constructor uint64MaskWithCompressedBitString ?@string inBitString -> @uint64
+\end{galgascode}
+
+
+Returns an \ggs+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.
+
+The \emph{inBitString} argument should contain only '0', '1' and 'X' characters. A run time exception is raised if an other character appears.
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all '0's by '1's and all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
 
-Note that the first '0' or '1' character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.}
+Note that the first '0' or '1' character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -64,17 +74,20 @@ log v ; \# Displays <@uint64:51> ;
 
 
 
-\constructeurUnArgument{uint64WithBitString}
-{uint64}
-{1.6.4}
-{uint64}
-{@string inBitString}
-{Returns an \galgas{@uint64} object computed from a string containing '0' or '1' characters.}
-{the \emph{inBitString} argument should contain only '0' and '1' characters. A run time exception is raised if an other character appears.
+\subsectionConstructor{uint64WithBitString}{uint64}
 
-This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \galgas{@uint64} object containing the converted value.
+\begin{galgascode}
+constructor uint64WithBitString ?@string inBitString -> @uint64
+\end{galgascode}
 
-Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
+
+Returns an \ggs+@uint64+ object computed from a string containing '0' or '1' characters.
+
+The \emph{inBitString} argument should contain only '0' and '1' characters. A run time exception is raised if an other character appears.
+
+This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \ggs+@uint64+ object containing the converted value.
+
+Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -91,7 +104,7 @@ log v ; # Displays <@uint64:5> ;
 getter double -> @double
 \end{galgascode}
 
-Returns the receiver's value converted in a \galgas{@double} object. As a 64-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.
+Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
 
 
 
@@ -146,20 +159,21 @@ getter uint -> @uint
 Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is greater than $2^{32}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
 
 
-\readerDeuxArguments{uintSlice}
-{uint64}
-{1.6.0}
-{uint}
-{@uint inStartBit}
-{@uint inBitCount}
-{Returns an \refTypePredefini{uint} value, extracted from a bit slice of the receiver's value.}
-{the receiver's value is right shifted by \emph{inStartBit}, and the resulted value is and'ed with a mask equal to $2^{inBitCount}-1$.}
+\subsectionGetter{uintSlice}{uint64}
+
+\begin{galgascode}
+getter uintSlice ?@uint inStartBit ?@uint inBitCount -> @uint
+\end{galgascode}
+
+
+
+Returns an \refTypePredefini{uint} value, extracted from a bit slice of the receiver's value. The receiver's value is right shifted by \emph{inStartBit}, and the resulted value is and'ed with a mask equal to $2^{inBitCount}-1$.
 
 
 \textbf{Exemple :}
 \begin{galgascode}
-@uint64 v = 0x1234_5678_9ABC_DEF0L ;
-@uint result = [v uintSlice !4 !5] ; # The result value is 0x8_9ABC
+@uint64 v = 0x1234_5678_9ABC_DEF0L
+@uint result = [v uintSlice !4 !5] # The result value is 0x8_9ABC
 \end{galgascode}
 
 
@@ -204,7 +218,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 \section{Arithmetic Operators}
 
-The \galgas{@uint64} type supports the five arithmetic diadic operators:\newline
+The \ggs+@uint64+ type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -216,15 +230,15 @@ The \galgas{@uint64} type supports the five arithmetic diadic operators:\newline
 \hline
 \ggs+/+ & Division \\
 \hline
-\galgas{mod} & Modulo \\
+\ggs+mod+ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@uint64} objects.\newline
+Theses operators require both arguments to be \ggs+@uint64+ objects.\newline
 
 A run-time error is raised if the operation leads to a 64-bit unsigned overflow.
 
-The \galgas{@uint64} type supports the following arithmetic unary operator:\newline
+The \ggs+@uint64+ type supports the following arithmetic unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -232,7 +246,7 @@ The \galgas{@uint64} type supports the following arithmetic unary operator:\newl
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an  \galgas{@uint64} object).
+This operator returns the receiver's value (an  \ggs+@uint64+ object).
 
 
 
@@ -240,7 +254,7 @@ This operator returns the receiver's value (an  \galgas{@uint64} object).
 \section{Shift Operators}
 
 
-The \galgas{@uint} type supports right and left shift operators:\newline
+The \ggs+@uint+ type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -250,7 +264,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the left argument to be \galgas{@uint64} object, and  the right argument to be \galgas{@uint} object.\newline
+Theses operators require the left argument to be \ggs+@uint64+ object, and  the right argument to be \ggs+@uint+ object.\newline
 
 Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
 
@@ -261,7 +275,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \galgas{@uint64} type supports the three bit-wise logical diadic operators:
+The \ggs+@uint64+ type supports the three bit-wise logical diadic operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -273,10 +287,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@uint64} objects.\newline
+Theses operators require both arguments to be \ggs+@uint64+ objects.\newline
 
 
-The \galgas{@uint64} type supports the bit-wise logical unary operator:
+The \ggs+@uint64+ type supports the bit-wise logical unary operator:
 
 \begin{tabular}{|c|c|}
   \hline
@@ -284,14 +298,14 @@ The \galgas{@uint64} type supports the bit-wise logical unary operator:
   \hline
 \end{tabular}
 
-This operator returns an \galgas{@uint64} object.
+This operator returns an \ggs+@uint64+ object.
 
 
 
 
 \section{Comparison Operators}
 
-The \galgas{@uint64} type supports the six comparison operators:
+The \ggs+@uint64+ type supports the six comparison operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -309,4 +323,4 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@uint64} objects, and return a \galgas{@bool} object.
+Theses operators require both arguments to be \ggs+@uint64+ objects, and return a \ggs+@bool+ object.

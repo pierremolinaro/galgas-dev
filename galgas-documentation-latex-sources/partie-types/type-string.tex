@@ -3,13 +3,17 @@
 
 \chapitreTypePredefiniLabelIndex{string}
 
-A \ggs+@string+ object value is an Unicode character string value. The @string type defines several constructors, getters constant methods and setters, described below.
+A \ggs+@string+ object value is an Unicode character string value. The \ggs+@string+ type defines several constructors, getters constant methods and setters, described below.
 
-\paragraph{Literal String Constants.}
-
-Characters strings are written enclosed within quotation marks (") characters, as in many languages. For example: "a string". Note that a literal string constant is an actual @string object, so a getter can be used on it. For example: \ggs+["ae" uppercaseString]+ returns the "AE" string.
+\textbf{Literal String Constants.} Characters strings are written enclosed within quotation marks (") characters, as in many languages. For example: \ggs+"a string"+. Note that a literal string constant is an actual \ggs+@string+ object, so a getter can be used on it. For example: \ggs+["ae" uppercaseString]+ returns the \ggs+"AE"+ string.
 
 \section{Getters}
+
+
+
+
+
+
 
 \subsectionGetter{containsCharacter}{string}
 
@@ -23,37 +27,12 @@ Returns true if the receiver contains the given character, and false oteherwise.
 @string s2 = [s rightSubString!3]; # The value of s2 is "def"
 \end{galgascode}
 
-\readerDeuxArguments{subString}
-{string}
-{1.7.8}
-{string}
-{@uint inStart}
-{@uint inLength}
-{Creates and returns the string built with the \emph{inLength} last characters of the receiver. If the receiver contains less than inLength characters, the receiver’s value is returned.}
-{}
-
-
-%\constructeurSansArgument{emptySet}
-%{@stringset}
-%{1.3.0}
-%{@stringset}
-%{Creates and returns an empty \galgas{@stringset} object.}
-%{}
-%
-%\constructeurUnArgument{setWithString}
-%{@stringset}
-%{1.3.0}
-%{@stringset}
-%{@string inString}
-%{Creates and returns an \galgas{@stringset} object that contains the value of the \emph{inString} argument object.}
-%{}
-%
 
 
 
 
 
-\subsectionGetter{length}{@uint}
+\subsectionGetter{length}{string}
 
 \begin{galgascode}
 getter length -> @uint
@@ -66,29 +45,19 @@ Retourne le nombre de caractères du récepteur.
 
 
 
-%\modifierUnArgument{removeKey}
-%{@stringset}
-%{1.3.0}
-%{@string inString}
-%{Removes the value of \emph{inString} argument from the receiver's value.}
-%{if the receiver's value does not contain the value of \emph{inString} argument, this setter leaves the receiver's value unchanged.}
-%
-%
-%
-%
-%
-%
-%\subsection{the \emph{+=} Operator}
-%
-%The \emph{+=} operator adds a string value to the receiver. If the receiver's value already contains the added value, this operator has no effect.
-%
-%\exempleTroisLignes
-%{}
-%{@string aString = ... ;}
-%{@stringset aStringSet = ... ;}
-%{aStringSet += !aString ;}
-%
-%
+
+
+\subsectionGetter{subString}{string}
+
+\begin{galgascode}
+getter subString ?@uint inStart ?@uint inLength -> @string
+\end{galgascode}
+
+Creates and returns the string built with the \emph{inLength} last characters of the receiver. If the receiver contains less than inLength characters, the receiver’s value is returned.
+
+
+
+
 %
 %
 %\subsection{the \emph{$\&$} Operator}
@@ -138,10 +107,10 @@ Retourne le nombre de caractères du récepteur.
 %
 %
 %
-%\subsection{Enumerating \galgas{@stringset} objects}
+%\subsection{Enumerating \ggs+@stringset+ objects}
 %
 %
-%The \motCle{foreach} instruction can be used for enumerating \galgas{@stringset} values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
+%The \motCle{foreach} instruction can be used for enumerating \ggs+@stringset+ values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
 %
 %\texttt{@stringset s = ... ;}\newline
 %\textbf{foreach} \texttt {s} \textbf {do}\newline
@@ -156,7 +125,7 @@ Retourne le nombre de caractères du récepteur.
 %
 %\subsection{Comparison Operators}
 %
-%The \galgas{@stringset} type supports the six comparison operators:\newline
+%The \ggs+@stringset+ type supports the six comparison operators:\newline
 %
 %\begin{tabular}{|c|c|}
 %\hline
@@ -174,6 +143,6 @@ Retourne le nombre de caractères du récepteur.
 %\hline
 %\end{tabular}
 %
-%Theses operators require both arguments to be \galgas{@stringset} objects, and return a \galgas{@stringset} object.
+%Theses operators require both arguments to be \ggs+@stringset+ objects, and return a \ggs+@stringset+ object.
 %
 %

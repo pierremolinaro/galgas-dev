@@ -2,63 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%   P A R T I C U L A R I S A T I O N   D U    P A Q U E T A G E    « L I S T I N G S »                                 *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\lstdefinelanguage{galgas}{
-%  keywordsprefix=\@,
-  morekeywords=[2]{abstract, after, array, as, before, between, block, case, cast, class, constructor, default, do, drop, else, elsif, end, enum,
-    error, extern, false, feature, filewrapper, for, func, getter, grammar, graph, gui, if,
-    in, indexing, insert, is, label, lexique, list, listmap, let, log, loop, map, mapproxy,
-    message, method, mod, not, on, operator, option, or, override, parse, private, proc,
-    project, program, remove, replace, repeat, rewind, rule, search, select,
-    self, setter, send, sortedlist, state, struct, style, switch, syntax, tag, template,
-    then, to, true, uniquemap, unused, var, warning, while, with
-  },
-  comment=[l]\#,
-  string=[b]", string=[d]",
-  style=galgas,
-  showstringspaces=false  % do not underline spaces within strings
-}
-
-\newcommand\couleurCodeGALGAS{white}
-
-
-\ifthenelse{\equal{\sortieEnCouleur}{true}}{
-  \lstdefinestyle{galgas}{
-    basicstyle=\ttfamily,
-%    keywordstyle=\color{red}\textbf,
-    frame=l,
-    framerule=2pt,
-    rulecolor=\color{blue!25},
-    upquote=true,
-    xleftmargin=16pt,
-    keywordstyle=[2]\bfseries\color{blue},
-    backgroundcolor=\color{\couleurCodeGALGAS},
-    identifierstyle=\color{brown},
-    commentstyle=\color{red},
-    stringstyle=\color{gray}
-  }
-}{
-  \lstdefinestyle{galgas}{
-    basicstyle=\ttfamily,
-    upquote=true,
-    keywordstyle=\bf
-  }
-}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\newcommand\galgas[1]{\colorbox{\couleurCodeGALGAS}{\lstinline[language=galgas]\%#1\%}}
-
-\setlength{\fboxsep}{1.5pt}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
 %   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
-%                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \usepackage{mdframed}
@@ -112,9 +56,7 @@
 \makeatother
 
 %-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
 % COMMANDE \ggs : affichage de code en ligne galgas                                                                     *
-%                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \makeatletter
@@ -174,7 +116,6 @@
 \let\@@space\ %
 \makeatother
 
-
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 % A F F I C H A G E    E T    C R O S S   R É F É R E N C E    D E S    T Y P E S    P R É D É F I N I S   G A L G A S  *
@@ -200,232 +141,36 @@
 \newcommand \refTypePredefini[1] {\hyperref[type:#1]{\texttt{@#1} (page \pageref{type:#1})}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
 %   G E T T E R   C R O S S    R E F E R E N C I N G                                                                    *
-%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\newcommand\subsectionGetter[2]{\subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}}
+
 %-----------------------------------------------------------------------------------------------------------------------*
 
 % Exemple d'appel : \refGetterPage{bool}{string} -- affiche --> @bool string getter (page xx)
 \newcommand\refGetterPage[2] {\hyperref[getter:#1:#2]{\texttt{@#1 #2} getter (page \pageref{getter:#1:#2})}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
+%   S E T T E R   C R O S S    R E F E R E N C I N G                                                                    *
+%-----------------------------------------------------------------------------------------------------------------------*
 
-\newcommand\subsectionGetter[2]{\subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}}
+\newcommand\subsectionSetter[2]{\subsection{Setter \texttt{#1}}\label{setter:#2:#1}\index{#1!"@#2 getter}}
 
-%---------------------------------------------------------------------*
+%-----------------------------------------------------------------------------------------------------------------------*
 
-%--- Définition d'un getter à 2 arguments
-% Exemple d'appel :
-% {location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce getter
-% {uint} % Type renvoyé
-% {Returns the line of the receiver's value.} % Description
-% {this getter raises a run-time error if ...} % Discussion
+% Exemple d'appel : \refSetterPage{bool}{string} -- affiche --> @bool string setter (page xx)
+\newcommand\refSetterPage[2] {\hyperref[setter:#1:#2]{\texttt{@#1 #2} setter (page \pageref{setter:#1:#2})}}
 
-\newcommand \readerDeuxArguments[8] {
-  \subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}
-  #7
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-    \galgas{getter @#2 #1}\\
-    \ \ \galgas{?#5}\\
-    \ \ \galgas{?#6}\\
-    \ \ \galgas{-> @#4 ;}
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
-  \ifthenelse{\equal{#8}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion:} #8
-  }
-  \newline
-}
 
-%---------------------------------------------------------------------*
+%-----------------------------------------------------------------------------------------------------------------------*
+%   C O N S T R U C T O R   C R O S S    R E F E R E N C I N G                                                          *
+%-----------------------------------------------------------------------------------------------------------------------*
 
-%--- Définition d'un getter à 3 arguments
+\newcommand\subsectionConstructor[2]{\subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}}
 
-\newcommand \readerTroisArguments[9] {
-  \subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}
-  #8
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-    \galgas{getter @#2 #1}\\
-    \ \ \galgas{?#5}\\
-    \ \ \galgas{?#6}\\
-    \ \ \galgas{?#7}\\
-    \ \ \galgas{-> @#4 ;}
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
-  \ifthenelse{\equal{#9}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion:} #9
-  }
-  \newline
-}
+%-----------------------------------------------------------------------------------------------------------------------*
 
-%---------------------------------------------------------------------*
+\newcommand \refConstructorPage[2] {\hyperref[constructor:#1:#2]{#2 constructor (page \pageref{constructor:#1:#2})}}
 
-\newcommand \lienConstructeur[2] {\hyperref[constructor:#1:#2]{#2 constructor (page \pageref{constructor:#1:#2})}}
-
-%---------------------------------------------------------------------*
-
-%--- Définition d'un constructeur sans argument
-% Exemple d'appel :
-% \constructeurSansArgument{nowhere} % Nom du constructeur
-% {location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce constructeur
-% {uint} % Type renvoyé
-%{Returns an \nomType{location} that does not points out any location.} % Description
-%{The returned object responds \motCle{true} to the isNowhere getter.} % Discussion
-
-\newcommand \constructeurSansArgument[6] {
-  \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
-  #5
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-    \galgas{constructor @#2 #1 -> @#4}
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
-  \ifthenelse{\equal{#6}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion:} #6
-  }
-  \newline
-}
-
-%---------------------------------------------------------------------*
-
-%--- Définition d'un constructeur avec 1 argument
-
-\newcommand \constructeurUnArgument[7] {
-  \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"#2 constructor}
-  #6
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-    \galgas{constructor @#2 #1}\\
-    \ \ \galgas{?#5}\\
-    \ \ \galgas{-> @#4}
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
-  \ifthenelse{\equal{#7}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion :} #7
-  }
-  \newline
-}
-
-%---------------------------------------------------------------------*
-
-%--- Définition d'un constructeur avec 2 arguments
-
-\newcommand \constructeurDeuxArguments[8] {
-  \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
-  #7
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-    \galgas{constructor @#2 #1}\\
-    \ \ \galgas{?#5}\\
-    \ \ \galgas{?#6}\\
-    \ \ \galgas{-> @#4}
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
-  \ifthenelse{\equal{#8}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion :} #8
-  }
-  \newline
-}
-
-%---------------------------------------------------------------------*
-
-%--- Définition d'un constructeur avec 3 arguments
-
-\newcommand \constructeurTroisArguments[9] {
-  \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
-  #8
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-    \galgas{constructor @#2 #1}\\
-    \ \ \galgas{?#5}\\
-    \ \ \galgas{?#6}\\
-    \ \ \galgas{?#7}\\
-    \ \ \galgas{-> @#4}
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
-  \ifthenelse{\equal{#9}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion :} #9
-  }
-  \newline
-}
-
-%---------------------------------------------------------------------*
-
-%--- Définition d'un setter à 1 argument
-
-\newcommand \modifierUnArgument[6] {
-  \subsection{Setter \texttt{#1}}\label{setter:#2:#1}\index{#1!"@#2 setter}
-  #5
-  \newline
-  \newline
-  \colorbox{\couleurCodeGALGAS}{
-    \begin{tabular}{l}
-    \galgas{setter @#2 #1}\\
-    \ \ \galgas{?#4}\\
-    \end{tabular}
-  }
-  \newline
-  \newline
-  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
-  \ifthenelse{\equal{#6}{}}{
-  }{
-    \newline
-    \newline
-    \textbf{Discussion:} #6
-  }
-  \newline
-}
-
-%---------------------------------------------------------------------*
+%-----------------------------------------------------------------------------------------------------------------------*

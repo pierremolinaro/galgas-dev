@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{sint64}
 
-An \galgas{@sint64} object value is a 64-bit signed integer value. You can initialize an \galgas{@sint64} object from an 64-bit signed integer constant:\\
+An \ggs+@sint64+ object value is a 64-bit signed integer value. You can initialize an \ggs+@sint64+ object from an 64-bit signed integer constant:\\
 
 \texttt{@sint64 mySignedInteger = 123\_456LS ;}
 
@@ -12,23 +12,25 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 \section{Constructors}
 
 
-\constructeurSansArgument{min}
-{sint64}
-{1.3.0}
-{sint64}
-{Returns an \galgas{@sint64} object that the minimum value of the 64-bit signed range.}
-{the returned value is $-2^{63}$.}
+\subsectionConstructor{min}{sint64}
+
+\begin{galgascode}
+constructor min -> @sint64
+\end{galgascode}
+
+Returns an \ggs+@sint64+ object that the minimum value of the 64-bit signed range ($-2^{63}$).
 
 
 
 
 
-\constructeurSansArgument{max}
-{sint64}
-{1.3.0}
-{sint64}
-{Returns an \galgas{@sint64} object that the maximum value of the 64-bit signed range.}
-{the returned value is $2^{63}-1$.}
+\subsectionConstructor{max}{sint64}
+
+\begin{galgascode}
+constructor max -> @sint64
+\end{galgascode}
+
+Returns an \ggs+@sint64+ object that the maximum value of the 64-bit signed range ($2^{63}-1$).
 
 
 \section{Getters}
@@ -40,7 +42,7 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 getter double -> @double
 \end{galgascode}
 
-Returns the receiver's value converted in a \galgas{@double} object. As a 64-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.
+Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
 
 
 
@@ -123,7 +125,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 \section{Arithmetic Operators}
 
-The \galgas{@sint64} type supports the five arithmetic diadic operators:\newline
+The \ggs+@sint64+ type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -135,15 +137,15 @@ $*$ & Multiplication \\
 \hline
 $/$ & Division \\
 \hline
-\galgas{mod} & Modulo \\
+\ggs+mod+ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@sint64} objects.\newline
+Theses operators require both arguments to be \ggs+@sint64+ objects.\newline
 
 A run-time error is raised if the operation leads to a 64-bit signed overflow.
 
-The \galgas{@sint} type supports the following arithmetic unary operators:\newline
+The \ggs+@sint+ type supports the following arithmetic unary operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -153,7 +155,7 @@ $-$ & Negate \\
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an \galgas{@sint} object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{63}$.
+This operator returns the receiver's value (an \ggs+@sint+ object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{63}$.
 
 
 
@@ -163,7 +165,7 @@ This operator returns the receiver's value (an \galgas{@sint} object). A run-tim
 \section{Shift Operators}
 
 
-The \galgas{@sint64} type supports right and left shift operators:\newline
+The \ggs+@sint64+ type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -173,7 +175,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the right argument to be \galgas{@sint64} object, and the left argument to be \galgas{@uint} object.\newline
+Theses operators require the right argument to be \ggs+@sint64+ object, and the left argument to be \ggs+@uint+ object.\newline
 
 Note the right shift inserts a zero bit in the most significant bit location if the receiver's value is negative, and a one bit otherwise (it is a arithmetic right shift).\newline
 
@@ -184,7 +186,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \galgas{@sint64} type supports the three bit-wise logical operators:\newline
+The \ggs+@sint64+ type supports the three bit-wise logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -196,10 +198,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@sint64} objects.\newline
+Theses operators require both arguments to be \ggs+@sint64+ objects.\newline
 
 
-The \galgas{@sint64} type supports the bit-wise logical unary operator:\newline
+The \ggs+@sint64+ type supports the bit-wise logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -207,7 +209,7 @@ $\sim$ & Bit-wise complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \galgas{@sint64} object.
+This operator returns an \ggs+@sint64+ object.
 
 
 
@@ -217,7 +219,7 @@ This operator returns an \galgas{@sint64} object.
 
 \section{Comparison Operators}
 
-The \galgas{@sint64} type supports the six comparison operators:\newline
+The \ggs+@sint64+ type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -235,6 +237,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@sint64} objects, and return a \galgas{@bool} object.
+Theses operators require both arguments to be \ggs+@sint64+ objects, and return a \ggs+@bool+ object.
 
 

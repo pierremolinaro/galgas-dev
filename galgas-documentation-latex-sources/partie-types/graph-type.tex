@@ -5,28 +5,28 @@
 \chapter{Le type \texttt{graph}}
 %-------------------------------------------------------------
 
-Le type \galgas{graph} permet de faire des opérations sur les graphes orientés.
+Le type \ggs+graph+ permet de faire des opérations sur les graphes orientés.
 
 Chaque nœud est identifié par un nom qui est une chaîne de caractères (de type \ggs+@string+) ; à chaque nœud sont associées types d'informations :
 \begin{itemize}
-  \item une liste de positions dans des textes sources (liste de \galgas{@location}) ;
+  \item une liste de positions dans des textes sources (liste de \ggs+@location+) ;
   \item une information utilisateur dont le type est défini par la déclaration du type graphe.
 \end{itemize}
 
 Un arc est identifié par un couple de nœuds.
 
 
-Un type \galgas{graph} se déclare comme suit :
+Un type \ggs+graph+ se déclare comme suit :
 \begin{galgascode}
 graph @nom_du_type_graph (@nom_liste_information) {
 }
 \end{galgascode}
 
-Le nom \galgas{@nom_du_type_graph} est le nom donné au type. Le nom \galgas{@nom_liste_information} nomme un type qui spécifie l'information utilisateur associée à chaque nœud.
+Le nom \ggs+@nom_du_type_graph+ est le nom donné au type. Le nom \ggs+@nom_liste_information+ nomme un type qui spécifie l'information utilisateur associée à chaque nœud.
 
-Attention, le type \galgas{@nom_liste_information} est un type \emph{liste}, et l'information utilisateur a pour type l'élement associé, c'est à dire \galgas{@nom_liste_information-element}. 
+Attention, le type \ggs+@nom_liste_information+ est un type \emph{liste}, et l'information utilisateur a pour type l'élement associé, c'est à dire \ggs+@nom_liste_information-element+. 
 
-Par exemple, si l'on veut manipuler des graphes dont l'information associée est un entier \galgas{@uint}, on déclarera :
+Par exemple, si l'on veut manipuler des graphes dont l'information associée est un entier \ggs+@uint+, on déclarera :
 \begin{galgascode}
 graph @monGraphe (@uintlist) {
 }
@@ -53,7 +53,7 @@ graph @monGraphe (@maListe) {
 constructor emptyGraph -> @self ;
 \end{galgascode}
 
-\galgas{emptyGraph} est le seul constructeur d'un graphe. Il instancie un graphe vide.
+\ggs+emptyGraph+ est le seul constructeur d'un graphe. Il instancie un graphe vide.
 
 \begin{galgascode}
 var gr = [@monGraphe emptyGraph] ;
@@ -66,8 +66,8 @@ var gr = [@monGraphe emptyGraph] ;
 Trois setters permettent de construire un graphe :
 \begin{itemize}
   \item un \emph{setter d'insertion} (\refSubsectionPage{setter-insertion-graphe}), défini par l'utilisateur, réalise l'ajout d'un nœud ;
-  \item le \emph{setter} \galgas{addEdge} (\refSubsectionPage{setter-addEdge}), implicitement défini, réalise l'ajout d'un arc ;
-  \item le \emph{setter} \galgas{noteNode} (\refSubsectionPage{setter-noteNode}), implicitement défini, indique qu'un nœud doit être défini.
+  \item le \emph{setter} \ggs+addEdge+ (\refSubsectionPage{setter-addEdge}), implicitement défini, réalise l'ajout d'un arc ;
+  \item le \emph{setter} \ggs+noteNode+ (\refSubsectionPage{setter-noteNode}), implicitement défini, indique qu'un nœud doit être défini.
 \end{itemize}
 
 Ces trois setters peuvent être appelés dans un ordre quelconque. Il est possible d'entrer un arc alors que ni le nœud origine, ni le nœud destination ne sont définis. Il faudra simplement qu'ils le soient avant que les calculs soient entrepris sur le graphe.
@@ -81,23 +81,23 @@ graph @monGraphe (@maListe) {
 }
 \end{galgascode}
 
-\galgas{addNode} est le nom donné au \emph{setter} d'insertion de nœud. Comme dans un graphe, un nœud est unique, la chaîne de caractères qui suit \galgas{error message} est le message d'erreur qui est affiché en cas de tentative d'insertion d'un nœud déjà existant. Dans cette chaîne, deux séquences particulières peuvent être utilisées :
+\ggs+addNode+ est le nom donné au \emph{setter} d'insertion de nœud. Comme dans un graphe, un nœud est unique, la chaîne de caractères qui suit \ggs+error message+ est le message d'erreur qui est affiché en cas de tentative d'insertion d'un nœud déjà existant. Dans cette chaîne, deux séquences particulières peuvent être utilisées :
 \begin{itemize}
-  \item \colorbox{\couleurCodeGALGAS}{\texttt{\%K}}, qui est remplacée par le nom du nœud ;
-  \item \colorbox{\couleurCodeGALGAS}{\texttt{\%L}}, qui est remplacée par la désignation de l'endroit dans le texte source où est déclaré le nœud déjà existant.
+  \item \texttt{\%K}, qui est remplacée par le nom du nœud ;
+  \item \texttt{\%L}, qui est remplacée par la désignation de l'endroit dans le texte source où est déclaré le nœud déjà existant.
 \end{itemize}
 
 Un setter d'insertion présente que des arguments d'entrée :
 \begin{itemize}
-  \item le premier est toujours de type \galgas{@lstring} ; la composante \ggs+@string+ est le nom du nœud (qui est unique dans un graphe donné), et la composante \galgas{@location} est la position dans le texte source où est déclaré le nœud, et est ajoutée à la liste correspondante du nœud ;
+  \item le premier est toujours de type \ggs+@lstring+ ; la composante \ggs+@string+ est le nom du nœud (qui est unique dans un graphe donné), et la composante \ggs+@location+ est la position dans le texte source où est déclaré le nœud, et est ajoutée à la liste correspondante du nœud ;
   \item Les arguments suivants correspondent en nombre et en type aux champs du type liste qui définit les informations associées.
 \end{itemize}
 
-Ainsi, le setter d'insertion \galgas{addNode} du type de graphe \galgas{@monGraphe} possède trois arguments en entrée ;
+Ainsi, le setter d'insertion \ggs+addNode+ du type de graphe \ggs+@monGraphe+ possède trois arguments en entrée ;
 \begin{itemize}
-  \item le premier de type \galgas{@lstring} ;
-  \item le deuxième de type \galgas{@uint}, qui correspond au premier champ \galgas{monInfo1} du type liste \galgas{@maListe} ;
-  \item le troisième de type \ggs+@string+, qui correspond au second champ \galgas{monInfo2} du type liste \galgas{@maListe}.
+  \item le premier de type \ggs+@lstring+ ;
+  \item le deuxième de type \ggs+@uint+, qui correspond au premier champ \ggs+monInfo1+ du type liste \ggs+@maListe+ ;
+  \item le troisième de type \ggs+@string+, qui correspond au second champ \ggs+monInfo2+ du type liste \ggs+@maListe+.
 \end{itemize}
 
 Il est par exemple appelé comme suit :
@@ -113,13 +113,13 @@ var gr = [@monGraphe emptyGraph] ;
 \subsectionLabel{Entrer un arc : setter \texttt{addEdge}}{setter-addEdge}
 
 \begin{galgascode}
-setter addEdge ??@lstring inSourceNode ??@lstring inTargetNode ;
+setter addEdge ?@lstring inSourceNode ?@lstring inTargetNode ;
 \end{galgascode}
 
-Pour entrer un arc, appeler le setter prédéfini \galgas{addEdge}. Celui-ci possède deux arguments d'entrée de type \galgas{@lstring} :
+Pour entrer un arc, appeler le setter prédéfini \ggs+addEdge+. Celui-ci possède deux arguments d'entrée de type \ggs+@lstring+ :
 \begin{itemize}
-  \item le premier spécifie le nœud origine de l'arc ; la composante \ggs+@string+ est le nom du nœud origine, et la composante \galgas{@location} est ajoutée à la liste du nœud origine ;
-  \item le second spécifie le nœud destination de l'arc ; la composante \ggs+@string+ est le nom du nœud destination, et la composante \galgas{@location} est ajoutée à la liste du nœud destination.
+  \item le premier spécifie le nœud origine de l'arc ; la composante \ggs+@string+ est le nom du nœud origine, et la composante \ggs+@location+ est ajoutée à la liste du nœud origine ;
+  \item le second spécifie le nœud destination de l'arc ; la composante \ggs+@string+ est le nom du nœud destination, et la composante \ggs+@location+ est ajoutée à la liste du nœud destination.
 \end{itemize}
 
 
@@ -131,10 +131,10 @@ Pour entrer un arc, appeler le setter prédéfini \galgas{addEdge}. Celui-ci pos
 \subsectionLabel{setter \texttt{noteNode}}{setter-noteNode}
 
 \begin{galgascode}
-setter noteNode ??@lstring inNode ;
+setter noteNode ?@lstring inNode ;
 \end{galgascode}
 
-Le setter prédéfini \galgas{noteNode} permet d'indiquer qu'un nœud doit être défini : il possède un seul argument en entrée, de type \galgas{@lstring}, dont la composante \ggs+@string+ désigne le nom du nœud, et dont la composante \galgas{@location} est ajoutée à la liste de ce nœud.
+Le setter prédéfini \ggs+noteNode+ permet d'indiquer qu'un nœud doit être défini : il possède un seul argument en entrée, de type \ggs+@lstring+, dont la composante \ggs+@string+ désigne le nom du nœud, et dont la composante \ggs+@location+ est ajoutée à la liste de ce nœud.
 
 
 
@@ -142,8 +142,8 @@ Le setter prédéfini \galgas{noteNode} permet d'indiquer qu'un nœud doit être
 
 Deux \emph{setters} permettent d'enlever des arcs à un graphe :
 \begin{itemize}
-  \item le \emph{setter} \galgas{removeEdgesToNode} (\refSubsectionPage{setter-graphe-removeEdgesToNode}) retire tous les arcs qui arrivent à un nœud ;
-  \item le \emph{setter} \galgas{removeEdgesToDominators} (\refSubsectionPage{setter-graphe-removeEdgesToDominators}) retire tous les arcs qui arrivent à un nœud \emph{dominateur}.
+  \item le \emph{setter} \ggs+removeEdgesToNode+ (\refSubsectionPage{setter-graphe-removeEdgesToNode}) retire tous les arcs qui arrivent à un nœud ;
+  \item le \emph{setter} \ggs+removeEdgesToDominators+ (\refSubsectionPage{setter-graphe-removeEdgesToDominators}) retire tous les arcs qui arrivent à un nœud \emph{dominateur}.
 \end{itemize}
 
 
@@ -151,7 +151,7 @@ Deux \emph{setters} permettent d'enlever des arcs à un graphe :
 \subsectionLabel{Setter \texttt{removeEdgesToNode}}{setter-graphe-removeEdgesToNode}
 
 \begin{galgascode}
-setter removeEdgesToNode ??@string inTargetNode ;
+setter removeEdgesToNode ?@string inTargetNode ;
 \end{galgascode}
 
 Ce \emph{setter} ne présente qu'un seul argument, une chaîne qui désigne un nœud du graphe. Son exécution supprime tous les arcs dont le nœud destination est le nœud nommé en argument.
@@ -202,7 +202,7 @@ Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (
 getter lkeyList -> @stringlist ;
 \end{galgascode}
 
-Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un setter d'insertion a été appelé, \refSubsectionPage{setter-insertion-graphe}), que les nœuds indéfinis. Chaque nœud défini est accompagné de sa position de définition, les nœuds indéfinis sont accompagnés d'une position non définie (équivalente à celle obtenue par le constructeur \galgas{nowhere}).
+Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un setter d'insertion a été appelé, \refSubsectionPage{setter-insertion-graphe}), que les nœuds indéfinis. Chaque nœud défini est accompagné de sa position de définition, les nœuds indéfinis sont accompagnés d'une position non définie (équivalente à celle obtenue par le constructeur \ggs+nowhere+).
 
 
 
@@ -222,12 +222,12 @@ Ce getter retourne un graphe de même type que le receiveur, mais dont les arcs 
 
 \begin{galgascode}
 getter subgraphFromNodes
-  ??@lstringlist inStartNodes
-  ??@stringset inNodesToExclude
+  ?@lstringlist inStartNodes
+  ?@stringset inNodesToExclude
   -> @self ;
 \end{galgascode}
 
-Ce getter retourne le graphe défini par la partie accessible du receveur à partir des nœuds nommés dans \galgas{inStartNodes}, en excluant les nœuds nommés dans \galgas{inNodesToExclude}.
+Ce getter retourne le graphe défini par la partie accessible du receveur à partir des nœuds nommés dans \ggs+inStartNodes+, en excluant les nœuds nommés dans \ggs+inNodesToExclude+.
 
 
 
@@ -238,11 +238,11 @@ Ce getter retourne le graphe défini par la partie accessible du receveur à par
 
 \begin{galgascode}
 getter accessibleNodesFromNodes
-  ??@lstringlist inStartNodes
+  ?@lstringlist inStartNodes
   -> @lstringlist ;
 \end{galgascode}
 
-Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés dans \galgas{inStartNodes}.
+Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés dans \ggs+inStartNodes+.
 
 
 
@@ -284,7 +284,7 @@ Ce getter retourne la liste des noms des nœuds indéfinis (c'est à dire les n�
 getter undefinedNodeReferenceList -> @lstringlist ;
 \end{galgascode}
 
-Ce getter retourne la liste des références des nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}). Une référence à un nœud est un \galgas{@lstring} dont la chaîne est le nom du nœud, et la composante \galgas{@location} une position dans le texte source, définie par un appel à \galgas{addEdge} (\refSubsectionPage{setter-addEdge}) ou \galgas{noteNode} (\refSubsectionPage{setter-noteNode}).
+Ce getter retourne la liste des références des nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}). Une référence à un nœud est un \ggs+@lstring+ dont la chaîne est le nom du nœud, et la composante \ggs+@location+ une position dans le texte source, définie par un appel à \ggs+addEdge+ (\refSubsectionPage{setter-addEdge}) ou \ggs+noteNode+ (\refSubsectionPage{setter-noteNode}).
 
 
 
@@ -304,10 +304,10 @@ method depthFirstTopologicalSort
 
 Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie :
 \begin{itemize}
-  \item le premier argument \galgas{outSortedInformationList} est la liste triée des informations utilisateur liées aux nœuds ;
-  \item le deuxième \galgas{outSortedKeyList} est la liste triée des noms de nœuds ;
-  \item le troisième \galgas{outUnsortedInformationList} est la liste des informations utilisateur liées aux nœuds qui n'ont pas pu être triés ;
-  \item le dernier \galgas{outUnsortedKeyList} est la liste des noms de nœuds qui n'ont pas pu être triés.
+  \item le premier argument \ggs+outSortedInformationList+ est la liste triée des informations utilisateur liées aux nœuds ;
+  \item le deuxième \ggs+outSortedKeyList+ est la liste triée des noms de nœuds ;
+  \item le troisième \ggs+outUnsortedInformationList+ est la liste des informations utilisateur liées aux nœuds qui n'ont pas pu être triés ;
+  \item le dernier \ggs+outUnsortedKeyList+ est la liste des noms de nœuds qui n'ont pas pu être triés.
 \end{itemize}
 
 Si le tri échoue, aucun message d'erreur n'est émis ; il suffit de tester le nombre d'éléments du troisième ou du quatrième argument pour savoir si le tri a réussi.
@@ -317,7 +317,7 @@ Les deux premiers arguments renvoyés ont le même nombre d'éléments, et corre
 
 Les deux derniers arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice. L'ordre dans lequel les nœuds non triés apparaissent n'est pas défini.
 
-Cette méthode différe de \galgas{topologicalSort} (\refSubsectionPage{methode-graphe-topologicalSort}) par le fait que la liste triée est présentée en privilégiant un parcours en profondeur.
+Cette méthode différe de \ggs+topologicalSort+ (\refSubsectionPage{methode-graphe-topologicalSort}) par le fait que la liste triée est présentée en privilégiant un parcours en profondeur.
 
 
 
@@ -335,8 +335,8 @@ method nodesWithNoPredecessor
 
 Cette méthode renvoie la liste de tous les nœuds sans prédecesseur. Les deux arguments sont en sortie :
 \begin{itemize}
-  \item le premier argument \galgas{outInformationList} est la liste des informations utilisateur liées aux nœuds sans prédécesseur ;
-  \item le second \galgas{outKeyList} est la liste des noms de nœuds sans prédécesseur.
+  \item le premier argument \ggs+outInformationList+ est la liste des informations utilisateur liées aux nœuds sans prédécesseur ;
+  \item le second \ggs+outKeyList+ est la liste des noms de nœuds sans prédécesseur.
 \end{itemize}
 
 Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice.
@@ -357,8 +357,8 @@ method nodesWithNoSucccessor
 
 Cette méthode renvoie la liste de tous les nœuds sans successeur. Les deux arguments sont en sortie :
 \begin{itemize}
-  \item le premier argument \galgas{outInformationList} est la liste des informations utilisateur liées aux nœuds sans successeur ;
-  \item le second \galgas{outKeyList} est la liste des noms de nœuds sans successeur.
+  \item le premier argument \ggs+outInformationList+ est la liste des informations utilisateur liées aux nœuds sans successeur ;
+  \item le second \ggs+outKeyList+ est la liste des noms de nœuds sans successeur.
 \end{itemize}
 
 Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice.
@@ -380,10 +380,10 @@ method topologicalSort
 
 Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie :
 \begin{itemize}
-  \item le premier argument \galgas{outSortedInformationList} est la liste triée des informations utilisateur liées aux nœuds ;
-  \item le deuxième \galgas{outSortedKeyList} est la liste triée des noms de nœuds ;
-  \item le troisième \galgas{outUnsortedInformationList} est la liste des informations utilisateur liées aux nœuds qui n'ont pas pu être triés ;
-  \item le dernier \galgas{outUnsortedKeyList} est la liste des noms de nœuds qui n'ont pas pu être triés.
+  \item le premier argument \ggs+outSortedInformationList+ est la liste triée des informations utilisateur liées aux nœuds ;
+  \item le deuxième \ggs+outSortedKeyList+ est la liste triée des noms de nœuds ;
+  \item le troisième \ggs+outUnsortedInformationList+ est la liste des informations utilisateur liées aux nœuds qui n'ont pas pu être triés ;
+  \item le dernier \ggs+outUnsortedKeyList+ est la liste des noms de nœuds qui n'ont pas pu être triés.
 \end{itemize}
 
 Si le tri échoue, aucun message d'erreur n'est émis ; il suffit de tester le nombre d'éléments du troisième ou du quatrième argument pour savoir si le tri a réussi.
@@ -393,4 +393,4 @@ Les deux premiers arguments renvoyés ont le même nombre d'éléments, et corre
 
 Les deux derniers arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice. L'ordre dans lequel les nœuds non triés apparaissent n'est pas défini.
 
-Cette méthode différe de \galgas{depthFirstTopologicalSort} (\refSubsectionPage{methode-graphe-depthFirstTopologicalSort}) par le fait que  l'ordre topologique n'est pas défini.
+Cette méthode différe de \ggs+depthFirstTopologicalSort+ (\refSubsectionPage{methode-graphe-depthFirstTopologicalSort}) par le fait que  l'ordre topologique n'est pas défini.

@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{filewrapper}
 
-Le type \galgas{@filewrapper} permet d'accéder à un \emph{filewrapper}, c'est à dire à des fichiers embarqués dans l'exécutable (voir \refChapterPage{filewrapper}).
+Le type \ggs+@filewrapper+ permet d'accéder à un \emph{filewrapper}, c'est à dire à des fichiers embarqués dans l'exécutable (voir \refChapterPage{filewrapper}).
 
 \section{Constructor}
 
@@ -12,7 +12,7 @@ Le type \galgas{@filewrapper} permet d'accéder à un \emph{filewrapper}, c'est 
 \subsection{Setter \texttt{setCurrentDirectory}}
 
 \begin{galgascode}
-setter setCurrentDirectory ??@string inDirectory ;
+setter setCurrentDirectory ?@string inDirectory ;
 \end{galgascode}
 
 
@@ -59,7 +59,7 @@ getter currentDirectory -> @string ;
 \subsection{Getter \texttt{allFilePathesWithExtension}}
 
 \begin{galgascode}
-getter allFilePathesWithExtension ??@string inExtension -> @stringlist ;
+getter allFilePathesWithExtension ?@string inExtension -> @stringlist ;
 \end{galgascode}
 
 
@@ -74,7 +74,7 @@ getter allFilePathesWithExtension ??@string inExtension -> @stringlist ;
 \subsection{Getter \texttt{directoryExistsAtPath}}
 
 \begin{galgascode}
-getter directoryExistsAtPath ??@string inPath -> @bool ;
+getter directoryExistsAtPath ?@string inPath -> @bool ;
 \end{galgascode}
 
 
@@ -89,7 +89,7 @@ getter directoryExistsAtPath ??@string inPath -> @bool ;
 \subsection{Getter \texttt{fileExistsAtPath}}
 
 \begin{galgascode}
-getter fileExistsAtPath ??@string inPath -> @bool ;
+getter fileExistsAtPath ?@string inPath -> @bool ;
 \end{galgascode}
 
 
@@ -104,7 +104,7 @@ getter fileExistsAtPath ??@string inPath -> @bool ;
 \subsection{Getter \texttt{textFileContentsAtPath}}
 
 \begin{galgascode}
-getter textFileContentsAtPath ??@string inPath -> @string ;
+getter textFileContentsAtPath ?@string inPath -> @string ;
 \end{galgascode}
 
 
@@ -119,7 +119,7 @@ getter textFileContentsAtPath ??@string inPath -> @string ;
 \subsection{Getter \texttt{binaryFileContentsAtPath}}
 
 \begin{galgascode}
-getter binaryFileContentsAtPath ??@string inPath -> @data ;
+getter binaryFileContentsAtPath ?@string inPath -> @data ;
 \end{galgascode}
 
 
@@ -134,7 +134,7 @@ getter binaryFileContentsAtPath ??@string inPath -> @data ;
 \subsection{Getter \texttt{absolutePathForPath}}
 
 \begin{galgascode}
-getter absolutePathForPath ??@string inPath -> @string ;
+getter absolutePathForPath ?@string inPath -> @string ;
 \end{galgascode}
 
 
