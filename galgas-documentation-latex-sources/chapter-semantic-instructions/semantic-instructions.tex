@@ -543,14 +543,14 @@ error localisation : message_erreur
 Par exemple :
 
 \begin{galgascode}
-$identifier$ ??@lstring nom
+$identifier$ ?@lstring nom
 ...
 error nom.location : message_erreur
 \end{galgascode}
 
 Comme \ggs+nom+ est de type \ggs+lstring+ (voir ci-dessus), on peut simplement écrire :
 \begin{galgascode}
-$identifier$ ??@lstring nom
+$identifier$ ?@lstring nom
 ...
 error nom : message_erreur
 \end{galgascode}
@@ -558,7 +558,7 @@ error nom : message_erreur
 
 Lister des variables qui ne peuvent pas être construites est indispensable dans certains cas. Examinons le code suivant (\underline{qui ne compile pas}) :
 \begin{galgascode}
-$identifier$ ??@lstring nom
+$identifier$ ?@lstring nom
 @unType resultat
 if ok then
   resultat = ...
@@ -569,7 +569,7 @@ end # Erreur : 'resultat' est value par une branche
 
 En effet, une des branches du \ggs+if+ donne une valeur à \ggs+resultat+, et l'autre pas. Or, en cas d'erreur, on veut que \ggs+resultat+ ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile) :
 \begin{galgascode}
-$identifier$ ??@lstring nom
+$identifier$ ?@lstring nom
 @unType resultat
 if ok then
   resultat = ...
@@ -1357,7 +1357,7 @@ Cette instruction est typiquement utilisé dans une règle d'analyse de fichier 
 \begin{galgascode}
 case . "monExtension"
 message "un fichier source"
-??@lstring inSourceFile {
+?@lstring inSourceFile {
   var declaration = @declarationList {}
   grammar maGrammaire in inSourceFile !?ioDeclarations
   ...
@@ -1511,7 +1511,7 @@ proc produit ?@uint a ?@uint b !@uint resultat {
 
 Peut être appelée par :
 \begin{galgascode}
-produit (!2 !3 ??@uint resultat)
+produit (!2 !3 ?@uint resultat)
 \end{galgascode}
 
 
@@ -1541,7 +1541,7 @@ Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de
 
 \begin{galgascode}
 method writeToExecutableFileWhenDifferentContents
-  ??@string inFilePath
+  ?@string inFilePath
   !@bool outFileModified
 \end{galgascode}
 
@@ -1552,7 +1552,7 @@ Aussi, cette méthode peut être appelée par :
 @string filePath = ...
 [contents writeToExecutableFileWhenDifferentContents
   !filePath
-  ??@bool fileChanged
+  ?@bool fileChanged
 ]
 \end{galgascode}
 
@@ -1583,7 +1583,7 @@ Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de
 
 \texttt{
 \textbf{proc} @string deleteFile\\
-\hspace*{1cm}??@string inFilePath\\
+\hspace*{1cm}?@string inFilePath\\
 }
 
 Aussi, elle peut être appelée par :
@@ -1618,8 +1618,8 @@ Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de
 
 \begin{galgascode}
 setter setCharacterAtIndex
-  ??@char inChar
-  ??@uint inIndex
+  ?@char inChar
+  ?@uint inIndex
 }
 \end{galgascode}
 
@@ -1808,14 +1808,14 @@ Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dan
 Par exemple :
 
 \begin{galgascode}
-$identifier$ ??@lstring nom
+$identifier$ ?@lstring nom
 ...
 warning nom.location : message_alerte
 \end{galgascode}
 
 Comme \ggs+nom+ est de type \ggs+@lstring+ (voir ci-dessus), on peut simplement écrire :
 \begin{galgascode}
-$identifier$ ??@lstring nom
+$identifier$ ?@lstring nom
 ...
 warning nom : message_alerte
 \end{galgascode}

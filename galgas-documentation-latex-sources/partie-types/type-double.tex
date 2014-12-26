@@ -3,28 +3,36 @@
 
 \chapitreTypePredefiniLabelIndex{double}
 
-The \galgas{@double} object values correspond to the C type \galgas{@double} values. You can initialize an \galgas{@double} object from a float constant:
+The \ggs+@double+ object values correspond to the C type \ggs+@double+ values. You can initialize an \ggs+@double+ object from a float constant:
 
-\texttt{@double myDouble = 123.456 ;}
+\begin{galgascode}
+@double myDouble = 123.456
+\end{galgascode}
 
-Note that a \galgas{@double} constant is characterized by the occurrence of the decimal point (.)
+Note that a \ggs+@double+ constant is characterized by the occurrence of the decimal point (.)
 
 \section{Constructor}
 
-\constructeurUnArgument{doubleWithBinaryImage}
-{double}
-{2.4.7}
-{double}
-{@uint64 inImage}
-{Returns a double object from the binary image of the argument}
-{}
+\subsectionConstructor{doubleWithBinaryImage}{double}
 
-\constructeurSansArgument{pi}
-{double}
-{2.1.1}
-{double}
-{Returns an approximation of the $\pi$ constant value (3.14159265358979323846264338327950288).}
-{}
+\begin{galgascode}
+constructor doubleWithBinaryImage ?@uint inValue -> @double
+\end{galgascode}
+
+
+Returns a double object from the binary image of the argument.
+
+
+
+\subsectionConstructor{pi}{double}
+
+\begin{galgascode}
+constructor pi -> @double
+\end{galgascode}
+
+
+
+Returns an approximation of the $\pi$ constant value (\ggs+3.14159265358979323846264338327950288+).
 
 \section{Getters}
 
@@ -67,7 +75,7 @@ Returns the \emph{sine} value of receiver's value, expressed in radian.
 getter sint -> @sint
 \end{galgascode}
 
-Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object: if receiver's value is outside \galgas{@sint} bounds, a runtime error is raised.
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object: if receiver's value is outside \ggs+@sint+ bounds, a runtime error is raised.
 
 
 
@@ -77,7 +85,7 @@ Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed intege
 getter sint64 -> @sint64
 \end{galgascode}
 
-Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object: if receiver's value is outside \galgas{@sint64} bounds, a runtime error is raised.
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object: if receiver's value is outside \ggs+@sint64+ bounds, a runtime error is raised.
 
 
 
@@ -113,7 +121,7 @@ Returns the \emph{tangent} value of receiver's value, expressed in radian.
 getter uint -> @uint
 \end{galgascode}
 
-Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object: if receiver's value is outside \galgas{@uint} bounds, a runtime error is raised.
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object: if receiver's value is outside \ggs+@uint+ bounds, a runtime error is raised.
 
 
 
@@ -125,14 +133,14 @@ Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned inte
 getter uint64 -> @uint64
 \end{galgascode}
 
-Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object: if receiver's value is outside \galgas{@uint64} bounds, a runtime error is raised.
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object: if receiver's value is outside \ggs+@uint64+ bounds, a runtime error is raised.
 
 
 
 
 \section{Arithmetic Operators}
 
-The \galgas{@double} type supports the five arithmetic diadic operators:\newline
+The \ggs+@double+ type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -144,15 +152,15 @@ $*$ & Multiplication \\
 \hline
 $/$ & Division \\
 \hline
-\galgas{mod} & Modulo \\
+\ggs+mod+ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@double} objects.\newline
+Theses operators require both arguments to be \ggs+@double+ objects.\newline
 
 A run-time error is raised if the operation leads to an overflow.
 
-The \galgas{@double} type supports the following arithmetic unary operators:\newline
+The \ggs+@double+ type supports the following arithmetic unary operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -161,7 +169,7 @@ $-$ & Negate \\
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an \galgas{@double} object).
+This operator returns the receiver's value (an \ggs+@double+ object).
 
 
 
@@ -170,7 +178,7 @@ This operator returns the receiver's value (an \galgas{@double} object).
 
 \section{Comparison Operators}
 
-The \galgas{@double} type supports the six comparison operators:\newline
+The \ggs+@double+ type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -188,6 +196,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@double} objects, and return a \galgas{@bool} object.
+Theses operators require both arguments to be \ggs+@double+ objects, and return a \ggs+@bool+ object.
 
 

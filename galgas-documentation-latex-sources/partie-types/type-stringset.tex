@@ -3,24 +3,27 @@
 
 \chapitreTypePredefiniLabelIndex{stringset}
 
-An \galgas{@stringset} object value is a set of \ggs+@string+ values.\\
+An \ggs+@stringset+ object value is a set of \ggs+@string+ values.\\
 
 \section{Constructors}
 
-\constructeurSansArgument{emptySet}
-{stringset}
-{1.3.0}
-{stringset}
-{Creates and returns an empty \galgas{@stringset} object.}
-{}
+\subsectionConstructor{emptySet}{stringset}
 
-\constructeurUnArgument{setWithString}
-{stringset}
-{1.3.0}
-{stringset}
-{@string inString}
-{Creates and returns an \galgas{@stringset} object that contains the value of the \emph{inString} argument object.}
-{}
+\begin{galgascode}
+constructor emptySet -> @stringset
+\end{galgascode}
+
+
+Creates and returns an empty \ggs+@stringset+ object.
+
+\subsectionConstructor{setWithString}{stringset}
+
+\begin{galgascode}
+constructor setWithString ?@string inString -> @stringset
+\end{galgascode}
+
+
+Creates and returns an \ggs+@stringset+ object that contains the value of the \emph{inString} argument object.
 
 \section{Getters}
 
@@ -40,7 +43,7 @@ Returns the number of strings in the set.
 getter hasKey ?@string inString -> @bool
 \end{galgascode}
 
-Returns a boolean value that indicates whether the value of \emph{inString} argument is present in the set: \galgas{true} if the value of \emph{inString} argument is present in the set, \galgas{false} otherwise.
+Returns a boolean value that indicates whether the value of \emph{inString} argument is present in the set: \ggs+true+ if the value of \emph{inString} argument is present in the set, \ggs+false+ otherwise.
 
 
 \subsectionGetter{anyString}{stringset}
@@ -56,19 +59,21 @@ Retourne une des chaînes de caractères contenue dans le récepteur. Si le réc
 
 \section{Setter}
 
-\modifierUnArgument{removeKey}
-{stringset}
-{1.3.0}
-{@string inString}
-{Removes the value of \emph{inString} argument from the receiver's value.}
-{if the receiver's value does not contain the value of \emph{inString} argument, this setter leaves the receiver's value unchanged.}
+\subsectionSetter{removeKey}{stringset}
+
+\begin{galgascode}
+setter removeKey ?@string inString
+\end{galgascode}
+
+
+Removes the value of \emph{inString} argument from the receiver's value. If the receiver's value does not contain the value of \emph{inString} argument, this setter leaves the receiver's value unchanged.
 
 
 
 
 
 
-\section{the \emph{+=} Operator}
+\section{the \texttt{+=} Operator}
 
 The \emph{+=} operator adds a string value to the receiver. If the receiver's value already contains the added value, this operator has no effect.
 
@@ -135,7 +140,7 @@ The \emph{$-$} operator returns the difference of its operand values.
 \section{Enumerating \texttt{@stringset} objects}
 
 
-The \galgas{foreach} instruction can be used for enumerating \galgas{@stringset} values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
+The \ggs+for+ instruction can be used for enumerating \ggs+@stringset+ values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
 
 \texttt{@stringset s = ... ;}\newline
 \textbf{foreach} \texttt {s} \textbf {do}\newline
@@ -150,7 +155,7 @@ The \galgas{foreach} instruction can be used for enumerating \galgas{@stringset}
 
 \section{Comparison Operators}
 
-The \galgas{@stringset} type supports the six comparison operators:\newline
+The \ggs+@stringset+ type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -168,6 +173,6 @@ $>=$  & Greater or Equality \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@stringset} objects, and return a \galgas{@stringset} object.
+Theses operators require both arguments to be \ggs+@stringset+ objects, and return a \ggs+@stringset+ object.
 
 

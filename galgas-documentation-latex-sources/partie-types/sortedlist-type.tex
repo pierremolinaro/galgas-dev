@@ -5,14 +5,14 @@
 \chapter{Le type \texttt{sortedlist}}
 %-------------------------------------------------------------
 
-Le type \galgas{sortedlist} permet de construire des listes ordonnées de valeurs.
+Le type \ggs+sortedlist+ permet de construire des listes ordonnées de valeurs.
 
 
 
 
 \section{Déclaration}
 
-La déclaration d'une \galgas{sortedlist} nomme tous les attributs qui composent un élément de liste et la description du tri. Par Exemple :
+La déclaration d'une \ggs+sortedlist+ nomme tous les attributs qui composent un élément de liste et la description du tri. Par Exemple :
 
 \begin{galgascode}
 sortedlist @MaListeOrdonnee {
@@ -23,20 +23,20 @@ sortedlist @MaListeOrdonnee {
 }
 \end{galgascode}
 
-La description du tri est exprimée par la liste ordonnée des attributs qui interviennent dans le tri, chacun d'eux étant suivi de l'ordre du tri (\galgas{<} pour croissant, et \galgas{>} pour décroissant). Ainsi, les élements des instances du type liste ordonnée ci-dessus sont triés par ordre croissant du champ caractère, puis par ordre décroissant du champ entier.
+La description du tri est exprimée par la liste ordonnée des attributs qui interviennent dans le tri, chacun d'eux étant suivi de l'ordre du tri (\ggs+<+ pour croissant, et \ggs+>+ pour décroissant). Ainsi, les élements des instances du type liste ordonnée ci-dessus sont triés par ordre croissant du champ caractère, puis par ordre décroissant du champ entier.
 
-Déclarer une \galgas{sortedlist} définit implicitement :
+Déclarer une \ggs+sortedlist+ définit implicitement :
 \begin{itemize}
-  \item le constructeur \galgas{emptySortedList} qui construit une liste vide (\refSubsectionPage{constructeurSortedlistEmptySortedList}) ;
-  \item le constructeur \galgas{sortedListWithValue} qui construit une liste contenant un élément (\refSubsectionPage{constructeurSortedlistSortedListWithValue}) ;
-  \item l'opérateur \galgas{+=} pour ajouter un élément à une liste ordonnée (\refSubsectionPage{operateurSortedListPlusEgal}) ;
-  \item l'opérateur \galgas{.=} pour ajouter tous les éléments d'une liste à une liste ordonnée (\refSubsectionPage{operateurSortedListPointEgal}) ;
-  \item l'opérateur \galgas{.} pour construire une liste ordonnée à partir de deux listes ordonnées (\refSubsectionPage{operateurSortedListPoint}) ;
-  \item le \emph{getter} \galgas{length}, qui retourne le nombre d'éléments d'une liste (\refSectionPage{readerSortedListLength}) ;
-  \item le \emph{setter} \galgas{popGreatest}, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopGreatest}) ;
-  \item le \emph{setter} \galgas{popSmallest}, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopSmallest}) ;
-  \item la \emph{méthode} \galgas{greatest}, qui retourne les champs du plus grand élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListGreatest}) ;
-  \item la \emph{méthode} \galgas{smallest}, qui retourne les champs du plus petit élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListSmallest}).
+  \item le constructeur \ggs+emptySortedList+ qui construit une liste vide (\refSubsectionPage{constructeurSortedlistEmptySortedList}) ;
+  \item le constructeur \ggs+sortedListWithValue+ qui construit une liste contenant un élément (\refSubsectionPage{constructeurSortedlistSortedListWithValue}) ;
+  \item l'opérateur \ggs*+=* pour ajouter un élément à une liste ordonnée (\refSubsectionPage{operateurSortedListPlusEgal}) ;
+  \item l'opérateur \ggs*+=* pour ajouter tous les éléments d'une liste à une liste ordonnée (\refSubsectionPage{operateurSortedListPointEgal}) ;
+  \item l'opérateur \ggs*+* pour construire une liste ordonnée à partir de deux listes ordonnées (\refSubsectionPage{operateurSortedListPoint}) ;
+  \item le \emph{getter} \ggs+length+, qui retourne le nombre d'éléments d'une liste (\refSectionPage{readerSortedListLength}) ;
+  \item le \emph{setter} \ggs+popGreatest+, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopGreatest}) ;
+  \item le \emph{setter} \ggs+popSmallest+, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopSmallest}) ;
+  \item la \emph{méthode} \ggs+greatest+, qui retourne les champs du plus grand élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListGreatest}) ;
+  \item la \emph{méthode} \ggs+smallest+, qui retourne les champs du plus petit élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListSmallest}).
 \end{itemize}
 
 
@@ -50,7 +50,7 @@ Déclarer une \galgas{sortedlist} définit implicitement :
 
 \subsectionLabel{Constructeur \texttt{emptySortedList}}{constructeurSortedlistEmptySortedList}
 
-Le constructeur \galgas{emptySortedList} construit et retourne une liste vide. Par exemple :
+Le constructeur \ggs+emptySortedList+ construit et retourne une liste vide. Par exemple :
 \begin{galgascode}
 @MaListeOrdonnee uneListe [emptySortedList] ;
 \end{galgascode}
@@ -58,7 +58,7 @@ Le constructeur \galgas{emptySortedList} construit et retourne une liste vide. P
 
 \subsectionLabel{Constructeur \texttt{sortedListWithValue}}{constructeurSortedlistSortedListWithValue}
 
-Le constructeur \galgas{sortedListWithValue} construit et retourne une liste comprenant un élément. Cet élément est spécifié par les arguments effectifs de l'appel : ce constructeur présente une séquence d'arguments en entrée correspondant aux champs de l'élément. Par exemple :
+Le constructeur \ggs+sortedListWithValue+ construit et retourne une liste comprenant un élément. Cet élément est spécifié par les arguments effectifs de l'appel : ce constructeur présente une séquence d'arguments en entrée correspondant aux champs de l'élément. Par exemple :
 
 \begin{galgascode}
 @MaListeOrdonnee uneListe [sortedListWithValue
@@ -77,7 +77,7 @@ Le constructeur \galgas{sortedListWithValue} construit et retourne une liste com
 
 \subsectionLabel{L'opérateur \texttt{+=}}{operateurSortedListPlusEgal}
 
-L'opérateur \galgas{+=} ajoute un élément à la liste ordonnée, en maintenant la relation d'ordre. L'élément ajouté est spécifié par la séquences des valeurs à affecter à ses champs. Si il y a un ou plusieurs éléments égaux à l'élément ajouté, ce dernier est placé après les éléments existants. 
+L'opérateur \ggs*+=* ajoute un élément à la liste ordonnée, en maintenant la relation d'ordre. L'élément ajouté est spécifié par la séquences des valeurs à affecter à ses champs. Si il y a un ou plusieurs éléments égaux à l'élément ajouté, ce dernier est placé après les éléments existants. 
 
 
 Cette opération est effectuée en $O(log (n))$ où $n$ est le nombre d'éléments de la liste.
@@ -97,7 +97,7 @@ uneListe += !'f' ! 2 ; # f2
 
 \subsectionLabel{L'opérateur \texttt{.=}}{operateurSortedListPointEgal}
 
-L'opérateur \galgas{.=} ajoute tous les éléments de l'expression à la liste ordonnée, en maintenant la relation d'ordre. Si il y a un ou plusieurs éléments égaux à chaque élément ajouté, ce dernier est placé après les éléments existants. 
+L'opérateur \ggs*+=* ajoute tous les éléments de l'expression à la liste ordonnée, en maintenant la relation d'ordre. Si il y a un ou plusieurs éléments égaux à chaque élément ajouté, ce dernier est placé après les éléments existants. 
 
 Exemple :
 \begin{galgascode}
@@ -108,7 +108,7 @@ uneListe .= autreListe ;
 
 \subsectionLabel{L'opérateur \texttt{.}}{operateurSortedListPoint}
 
-L'opérateur \galgas{.} combine deux listes ordonnées. Les éléments de la seconde liste égaux à ceux de la première liste sont placés après ceux de la première liste.
+L'opérateur \ggs*+* combine deux listes ordonnées. Les éléments de la seconde liste égaux à ceux de la première liste sont placés après ceux de la première liste.
 
 Exemple :
 \begin{galgascode}
@@ -125,7 +125,7 @@ Exemple :
 
 \sectionLabel{Getter \texttt{length}}{readerSortedListLength}
 
-Le getter \galgas{length} retourne un \galgas{@uint} contenant le nombre d'éléments de la liste ordonnée.
+Le getter \ggs+length+ retourne un \ggs+@uint+ contenant le nombre d'éléments de la liste ordonnée.
 
 
 
@@ -147,7 +147,7 @@ Ce \emph{setter} retourne les champs du plus grand élément de la liste ordonn�
 ] ;
 \end{galgascode}
 
-Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
+Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans l'état \emph{invalide}.
 
 
 \subsectionLabel{Setter \texttt{popSmallest}}{modifierSortedListPopSmallest}
@@ -163,7 +163,7 @@ Ce \emph{setter} retourne les champs du plus petit élément de la liste ordonn�
 ] ;
 \end{galgascode}
 
-Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
+Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans l'état \emph{invalide}.
 
 
 
@@ -189,7 +189,7 @@ Cette méthode retourne les champs du plus grand élément de la liste ordonnée
 ] ;
 \end{galgascode}
 
-Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
+Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans l'état \emph{invalide}.
 
 
 \subsectionLabel{La méthode \texttt{smallest}}{methodeSortedListSmallest}
@@ -205,14 +205,14 @@ Cette méthode retourne les champs du plus petit élément de la liste ordonnée
 ] ;
 \end{galgascode}
 
-Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
+Si \ggs+uneListe+ est vide, les variables \ggs+c+ et \ggs+n+ sont placées dans l'état \emph{invalide}.
 
 
 
 
 \section{Énumération avec l'instruction \texttt{for}}
 
-L'instruction \galgas{foreach} (\refSectionPage{instructionFor}) permet d'énumérer les éléments d'une liste ordonnée, par ordre croissant ou décroissant.
+L'instruction \ggs+for+ (\refSectionPage{instructionFor}) permet d'énumérer les éléments d'une liste ordonnée, par ordre croissant ou décroissant.
 
 Pour effectuer l'énumération par ordre croissant, écrire :
 \begin{galgascode}

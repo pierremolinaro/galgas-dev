@@ -3,18 +3,19 @@
 
 \chapitreTypePredefiniLabelIndex{binaryset}
 
-Le type \galgas{@binaryset} encode des ensembles, des relations binaires, des expressions booléennes. Il est implémenté par des BDD (Binary Decision Diagrams).
+Le type \ggs+@binaryset+ encode des ensembles, des relations binaires, des expressions booléennes. Il est implémenté par des BDD (Binary Decision Diagrams).
 
 
 \section{Constructeurs}
 
-\constructeurUnArgument{binarySetWithBit}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitIndex}
-{Retourne un \galgas{@binaryset} dont le bit \galgas{inBitIndex} est égal à 1.}
-{}
+\subsectionConstructor{binarySetWithBit}{binaryset}
+
+\begin{galgascode}
+constructor binarySetWithBit ?@uint inBitIndex -> @binaryset
+\end{galgascode}
+
+
+Retourne un \ggs+@binaryset+ dont le bit \ggs+inBitIndex+ est égal à 1.
 
 
 \textbf{Exemple :}
@@ -24,18 +25,22 @@ log s # Affiche <@binaryset: 1XX>
 \end{galgascode}
 
 
+\subsectionConstructor{binarySetWithEqualComparison}{binaryset}
+
+\begin{galgascode}
+constructor binarySetWithEqualComparison
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint inRightFirstIndex
+  -> @binaryset
+\end{galgascode}
 
 
 
-\constructeurTroisArguments{binarySetWithEqualComparison}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint inRightFirstIndex}
-{Retourne un \galgas{@binaryset} qui encode la relation d'égalité entre deux variables.}
-{ce constructeur retourne un binary set qui encode la relation \emph{a~==~b}, où \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, et \emph{b} est encodé à partir du bit d'indice bit \emph{inRightFirstIndex} jusqu'au bit d'indice \emph{inRightFirstIndex + inBitCount - 1}.}
+
+Retourne un \ggs+@binaryset+ qui encode la relation d'égalité entre deux variables.
+
+Ce constructeur retourne un binary set qui encode la relation \emph{a~==~b}, où \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, et \emph{b} est encodé à partir du bit d'indice bit \emph{inRightFirstIndex} jusqu'au bit d'indice \emph{inRightFirstIndex + inBitCount - 1}.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -46,16 +51,20 @@ log s # Affiche <@binaryset: 00x00, 01X01, 10X10, 11X11>
 
 
 
+\subsectionConstructor{binarySetWithEqualToConstant}{binaryset}
 
-\constructeurTroisArguments{binarySetWithEqualToConstant}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint64 inConstant}
-{Retourne un \galgas{@binaryset} object that encodes a equality relation between a variable and a constant.}
-{ce constructeur retourne un objet qui encode la relation the \emph{a~==~cst}, où \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, et \emph{cst} est défini par l'argument \emph{inConstant}.}
+\begin{galgascode}
+constructor binarySetWithEqualToConstant
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint64 inConstant
+  -> @binaryset
+\end{galgascode}
+
+
+Retourne un \ggs+@binaryset+ object that encodes a equality relation between a variable and a constant.
+
+Ce constructeur retourne un objet qui encode la relation the \emph{a~==~cst}, où \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, et \emph{cst} est défini par l'argument \emph{inConstant}.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -66,16 +75,20 @@ log s # Affiche <@binaryset: 10111>
 
 
 
+\subsectionConstructor{binarySetWithGreaterOrEqualComparison}{binaryset}
 
-\constructeurTroisArguments{binarySetWithGreaterOrEqualComparison}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint inRightFirstIndex}
-{Retourne un \galgas{@binaryset} object qui encode la relation \emph{supérieur ou égal} entre deux variables.}
-{ce constructeur retourne un binary set qui encode la relation \emph{a~>=~b}, où \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, et \emph{b} est encodé à partir du bit d'indice bit \emph{inRightFirstIndex} jusqu'au bit d'indice \emph{inRightFirstIndex + inBitCount - 1}.}
+\begin{galgascode}
+constructor binarySetWithGreaterOrEqualComparison
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint inRightFirstIndex
+  -> @binaryset
+\end{galgascode}
+
+
+Retourne un \ggs+@binaryset+ object qui encode la relation \emph{supérieur ou égal} entre deux variables.
+
+Ce constructeur retourne un binary set qui encode la relation \emph{a~>=~b}, où \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, et \emph{b} est encodé à partir du bit d'indice bit \emph{inRightFirstIndex} jusqu'au bit d'indice \emph{inRightFirstIndex + inBitCount - 1}.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -85,31 +98,39 @@ log s # Affiche <@binaryset: 00XXX, 01X01, 01X1X, 10X1X, 11X11>
 
 
 
+\subsectionConstructor{binarySetWithGreaterOrEqualToConstant}{binaryset}
 
-
-\constructeurTroisArguments{binarySetWithGreaterOrEqualToConstant}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint64 inConstant}
-{Retourne un \galgas{@binaryset} object that encodes a greater or equal relation between a variable and a constant.}
-{the constructeur Retourne un binary set that encodes the \emph{a~>=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
-
+\begin{galgascode}
+constructor binarySetWithGreaterOrEqualToConstant
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint64 inConstant
+  -> @binaryset
+\end{galgascode}
 
 
 
+Retourne un \ggs+@binaryset+ object that encodes a greater or equal relation between a variable and a constant.
 
-\constructeurTroisArguments{binarySetWithLowerOrEqualComparison}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint inRightFirstIndex}
-{Retourne un \galgas{@binaryset} object that encodes a lower or equal relation between two variables.}
-{the constructeur Retourne un binary set that encodes the \emph{a~<=~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+The constructor returns a binary set that encodes the \emph{a~>=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.
+
+
+
+
+\subsectionConstructor{binarySetWithLowerOrEqualComparison}{binaryset}
+
+\begin{galgascode}
+constructor binarySetWithLowerOrEqualComparison
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint inRightFirstIndex
+  -> @binaryset
+\end{galgascode}
+
+
+Retourne un \ggs+@binaryset+ object that encodes a lower or equal relation between two variables.
+
+The constructor returns a binary set that encodes the \emph{a~<=~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -120,30 +141,39 @@ log s; # Affiche <@binaryset: 00X00, 01X0X, 10X0X, 10X10, 11XXX>
 
 
 
+\subsectionConstructor{binarySetWithLowerOrEqualToConstant}{binaryset}
 
-\constructeurTroisArguments{binarySetWithLowerOrEqualToConstant}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint64 inConstant}
-{Retourne un \galgas{@binaryset} object that encodes a lower or equal relation between a variable and a constant.}
-{the constructeur Retourne un binary set that encodes the \emph{a~<=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
-
+\begin{galgascode}
+constructor binarySetWithLowerOrEqualToConstant
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint64 inConstant
+  -> @binaryset
+\end{galgascode}
 
 
+Retourne un \ggs+@binaryset+ object that encodes a lower or equal relation between a variable and a constant.
+
+The constructor returns a binary set that encodes the \emph{a~<=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.
 
 
-\constructeurTroisArguments{binarySetWithNotEqualComparison}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint inRightFirstIndex}
-{Retourne un \galgas{@binaryset} object that encodes an inequality relation between two variables.}
-{the constructeur Retourne un binary set that encodes the \emph{a~!=~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+
+
+\subsectionConstructor{binarySetWithNotEqualComparison}{binaryset}
+
+\begin{galgascode}
+constructor binarySetWithNotEqualComparison
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint inRightFirstIndex
+  -> @binaryset
+\end{galgascode}
+
+
+
+Retourne un \ggs+@binaryset+ object that encodes an inequality relation between two variables.
+
+The constructor returns a binary set that encodes the \emph{a~!=~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -154,30 +184,37 @@ log s; # Affiche <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 1
 
 
 
+\subsectionConstructor{binarySetWithNotEqualToConstant}{binaryset}
 
-\constructeurTroisArguments{binarySetWithNotEqualToConstant}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint64 inConstant}
-{Retourne un \galgas{@binaryset} object that encodes an inequality relation between a variable and a constant.}
-{the constructeur Retourne un binary set that encodes the \emph{a~!=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
-
+\begin{galgascode}
+constructor binarySetWithNotEqualToConstant
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint64 inConstant
+  -> @binaryset
+\end{galgascode}
 
 
+Retourne un \ggs+@binaryset+ object that encodes an inequality relation between a variable and a constant.
+
+The constructor returns a binary set that encodes the \emph{a~!=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.
 
 
 
 
-\constructeurUnArgument{binarySetWithPredicateString}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@string inPredicateString}
-{Returns the \galgas{@binaryset} object described by the \emph{inPredicateString} argument.}
-{the \emph{inBitString} argument string encodes a predicate string, such as those returned by \refGetterPage{binaryset}{predicateStringValue}.}
+
+
+
+\subsectionConstructor{binarySetWithPredicateString}{binaryset}
+
+\begin{galgascode}
+constructor binarySetWithPredicateString ?@string inPredicateString -> @binaryset
+\end{galgascode}
+
+Returns the \ggs+@binaryset+ object described by the \emph{inPredicateString} argument.
+
+The \emph{inBitString} argument string encodes a predicate string, such as those returned by \refGetterPage{binaryset}{predicateStringValue}.
+
 \begin{description}
 \item The \emph{inBitString} argument string characters should have one of the five following values:
 \begin{itemize}
@@ -191,37 +228,37 @@ log s; # Affiche <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 1
 
 
 \textbf{Exemple :}
-\begin{galgascode}
 An empty predicate string (or a string containing only spaces) provides an empty binary set:
+\begin{galgascode}
 @binaryset s = .binarySetWithPredicateString !" "] ;
 @bool b = = .s isEmptySet]; # b is true
 \end{galgascode}
 
 
-\begin{galgascode}
 A predicate string containing only 'X' characters (at least one) provides an full binary set:
+\begin{galgascode}
 @binaryset s = .binarySetWithPredicateString !" X X"] ; # Spaces are non significant
 @bool b = [s isFullSet]; # b is true
 \end{galgascode}
 
 
-\begin{galgascode}
 A predicate string can encode a binary value (MSB first):
+\begin{galgascode}
 @binaryset s [binarySetWithPredicateString !"1100"] ; # 12 in decimal
 log s; # Affiche <@binaryset: 1100>
 \end{galgascode}
 
 
-\begin{galgascode}
 You can use the boolean '|' operator for providing an or'ed values:
+\begin{galgascode}
 @binaryset s [binarySetWithPredicateString !" 1100 | 1101"] ;
 log s; # Affiche <@binaryset: 110X>
 \end{galgascode}
 
 
 
-\begin{galgascode}
 You can use you can use don't care bits and '|' operator together:
+\begin{galgascode}
 @binaryset s [binarySetWithPredicateString !"11X00X0 | 111XXX"] ;
 log s; # Affiche <@binaryset: 1100X0, 111XXX>
 \end{galgascode}
@@ -229,16 +266,20 @@ log s; # Affiche <@binaryset: 1100X0, 111XXX>
 
 
 
+\subsectionConstructor{binarySetWithStrictGreaterComparison}{binaryset}
 
-\constructeurTroisArguments{binarySetWithStrictGreaterComparison}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint inRightFirstIndex}
-{Retourne un \galgas{@binaryset} object that encodes a strict greater than relation between two variables.}
-{the constructeur Retourne un binary set that encodes the \emph{a~>~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+\begin{galgascode}
+constructor binarySetWithStrictGreaterComparison
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint inRightFirstIndex
+  -> @binaryset
+\end{galgascode}
+
+
+Retourne un \ggs+@binaryset+ object that encodes a strict greater than relation between two variables.
+
+The constructor returns a binary set that encodes the \emph{a~>~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -249,30 +290,38 @@ log s; # Affiche <@binaryset: 00X01, 00X1X, 01X1X, 10X11>
 
 
 
+\subsectionConstructor{binarySetWithStrictGreaterThanConstant}{binaryset}
 
-\constructeurTroisArguments{binarySetWithStrictGreaterThanConstant}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint64 inConstant}
-{Retourne un \galgas{@binaryset} object that encodes a strict greater than relation between a variable and a constant.}
-{the constructeur Retourne un binary set that encodes the \emph{a~>~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
-
+\begin{galgascode}
+constructor binarySetWithStrictGreaterThanConstant
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint64 inConstant
+  -> @binaryset
+\end{galgascode}
 
 
+Retourne un \ggs+@binaryset+ object that encodes a strict greater than relation between a variable and a constant.
+
+The constructor returns a binary set that encodes the \emph{a~>~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.
 
 
-\constructeurTroisArguments{binarySetWithStrictLowerComparison}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint inRightFirstIndex}
-{Retourne un \galgas{@binaryset} object that encodes a strict lower than relation between two variables.}
-{the constructeur Retourne un binary set that encodes the \emph{a~<~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+
+
+\subsectionConstructor{binarySetWithStrictLowerComparison}{binaryset}
+
+\begin{galgascode}
+constructor binarySetWithStrictLowerComparison
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint inRightFirstIndex
+  -> @binaryset
+\end{galgascode}
+
+
+Retourne un \ggs+@binaryset+ object that encodes a strict lower than relation between two variables.
+
+The constructor returns a binary set that encodes the \emph{a~<~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -283,38 +332,44 @@ log s; # Affiche <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 
 
 
+\subsectionConstructor{binarySetWithStrictLowerThanConstant}{binaryset}
 
-\constructeurTroisArguments{binarySetWithStrictLowerThanConstant}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inLeftFirstIndex}
-{@uint inBitCount}
-{@uint64 inConstant}
-{Retourne un \galgas{@binaryset} object that encodes a strict lower than relation between a variable and a constant.}
-{the constructeur Retourne un binary set that encodes the \emph{a~<~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
-
+\begin{galgascode}
+constructor binarySetWithStrictLowerThanConstant
+  ?@uint inLeftFirstIndex
+  ?@uint inBitCount
+  ?@uint64 inConstant
+  -> @binaryset
+\end{galgascode}
 
 
+Retourne un \ggs+@binaryset+ object that encodes a strict lower than relation between a variable and a constant.
 
-
-\constructeurSansArgument{emptyBinarySet}
-{binaryset}
-{1.6.0}
-{binaryset}
-{Retourne un empty \galgas{@binaryset} object.}
-{}
+The constructor returns a binary set that encodes the \emph{a~<~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.
 
 
 
 
+\subsectionConstructor{emptyBinarySet}{binaryset}
 
-\constructeurSansArgument{fullBinarySet}
-{binaryset}
-{1.6.0}
-{binaryset}
-{Returns a full \galgas{@binaryset} object.}
-{}
+\begin{galgascode}
+constructor emptyBinarySet -> @binaryset
+\end{galgascode}
+
+
+Retourne un empty \ggs+@binaryset+ object.
+
+
+
+
+
+\subsectionConstructor{fullBinarySet}{binaryset}
+
+\begin{galgascode}
+constructor fullBinarySet -> @binaryset
+\end{galgascode}
+
+Returns a full \ggs+@binaryset+ object.
 
 
 \section{Getters}
@@ -351,15 +406,14 @@ This program Affiche: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 
+\subsectionGetter{binarySetByTranslatingFromIndex}{binaryset}
 
-\readerDeuxArguments{binarySetByTranslatingFromIndex}
-{binaryset}
-{1.6.3}
-{binaryset}
-{@uint inFirstIndex}
-{@uint inTranslation}
-{Returns a \galgas{@binaryset} value computed by translating the receiver's value by \emph{inTranslation} bits from index \emph{inFirstIndex}.}
-{}
+\begin{galgascode}
+getter binarySetByTranslatingFromIndex ?@uint inFirstIndex ?@uint inTranslation -> @string
+\end{galgascode}
+
+
+Returns a \ggs+@binaryset+ value computed by translating the receiver's value by \emph{inTranslation} bits from index \emph{inFirstIndex}.
 
 
 
@@ -369,7 +423,7 @@ This program Affiche: \texttt{Accessible: 0 1 2 3 4 5}.
 getter compressedValueCount -> @uint64
 \end{galgascode}
 
-Returns in an \galgas{@uint64} value the number of different compressed string values encoded by receiver's value.
+Returns in an \ggs+@uint64+ value the number of different compressed string values encoded by receiver's value.
 
 
 
@@ -390,14 +444,14 @@ Returns the list of compressed string values corresponding to receiver's value, 
 
 
 
-\readerDeuxArguments{containsValue}
-{binaryset}
-{1.6.4}
-{bool}
-{@uint inFirstBit}
-{@uint inBitCount}
-{Retourne un \galgas{@bool} value indicating whether the receiver'value contains a given value.}
-{returns \galgas{true} if the receiver's contains a value, and \galgas{false} otherwise; this value is computed from the \emph{inBitCount} first bits of \emph{inValue} value, shifted left by \emph{inFirstBit}.}
+\subsectionGetter{containsValue}{binaryset}
+
+\begin{galgascode}
+getter containsValue ?@uint inFirstBit ?@uint inBitCount -> @bool
+\end{galgascode}
+
+
+Retourne un \ggs+@bool+ value indicating whether the receiver'value contains a given value: \ggs+true+ if the receiver's contains a value, and \ggs+false+ otherwise; this value is computed from the \emph{inBitCount} first bits of \emph{inValue} value, shifted left by \emph{inFirstBit}.
 
 
 \textbf{Exemple :}
@@ -435,7 +489,7 @@ Returns the complement of the exclusive or between the receiver's value and the 
 
 Note that \ggs+[a equalTo !b]+ is equivalent to \texttt{$\sim$ (a $\wedge$ b)}.
 
-This operation returns un \galgas{@binaryset} value; do not confuse with \ggs+==+ operator that Retourne un \ggs+@bool+ value.
+This operation returns un \ggs+@binaryset+ value; do not confuse with \ggs+==+ operator that Retourne un \ggs+@bool+ value.
 
 
 
@@ -456,15 +510,14 @@ Returns the binary computed by applying the \emph{exist} operator on the \emph{i
 
 
 
+\subsectionGetter{existsOnBitRange}{binaryset}
 
-\readerDeuxArguments{existsOnBitRange}
-{binaryset}
-{1.6.3}
-{binaryset}
-{@uint inFirstBitIndex}
-{@uint inBitCount}
-{Returns the binary computed by applying the \emph{exist} operator on the receiver's value, from \emph{inFirstBitIndex} bit index until the \emph{inFirstBitIndex + inBitCount - 1} bit index.}
-{}
+\begin{galgascode}
+getter existsOnBitRange ?@uint inFirstBitIndex ?@uint inBitCount -> @bool
+\end{galgascode}
+
+
+Returns the binary computed by applying the \emph{exist} operator on the receiver's value, from \emph{inFirstBitIndex} bit index until the \emph{inFirstBitIndex + inBitCount - 1} bit index.
 
 
 \textbf{Exemple :}
@@ -549,7 +602,7 @@ Note that \ggs+[a greaterOrEqualTo !b]+ is equivalent to \texttt{(a \textbar ~$\
 getter isEmpty -> @bool
 \end{galgascode}
 
-Returns a \galgas{@bool} value that indicates whether the receiver's value is the empty set :  \galgas{true} if receiver's value is the empty set, and \galgas{false} otherwise.
+Returns a \ggs+@bool+ value that indicates whether the receiver's value is the empty set :  \ggs+true+ if receiver's value is the empty set, and \ggs+false+ otherwise.
 
 
 
@@ -563,7 +616,7 @@ Returns a \galgas{@bool} value that indicates whether the receiver's value is th
 getter isFull -> @bool
 \end{galgascode}
 
-Returns a \galgas{@bool} value that indicates whether the receiver's value is the full set : \galgas{true} if receiver's value is the full set, and \galgas{false} otherwise.
+Returns a \ggs+@bool+ value that indicates whether the receiver's value is the full set : \ggs+true+ if receiver's value is the full set, and \ggs+false+ otherwise.
 
 
 
@@ -571,13 +624,15 @@ Returns a \galgas{@bool} value that indicates whether the receiver's value is th
 
 
 
-\readerDeuxArguments{ITE}
-{binaryset}
-{1.6.3}
-{binaryset}
-{@binaryset inThenOperand}
-{@binaryset inElseOperand}
-{Returns the binary set computed by applying the \emph{ite} operator on the receiver's value, the \emph{inThenOperand} argument, and the  \emph{inElseOperand} argument.}
+\subsectionGetter{ITE}{binaryset}
+
+\begin{galgascode}
+getter ITE ?@binaryset inThenOperand ?@binaryset inElseOperand -> @binaryset
+\end{galgascode}
+
+
+Returns the binary set computed by applying the \emph{ite} operator on the receiver's value, the \emph{inThenOperand} argument, and the  \emph{inElseOperand} argument.
+
 {\texttt{ite (x, y, z)} is \texttt{(x \& y) \textbar ($\sim$x \& z)}.}
 
 
@@ -624,7 +679,7 @@ Returns the binary set computed by applying the \emph{not equal} operator on the
 getter predicateStringValue -> @string
 \end{galgascode}
 
-Returns a string representation of the receiver's value. The returned string is compatible with the \lienConstructeur{binaryset}{binarySetWithPredicateString}.
+Returns a string representation of the receiver's value. The returned string is compatible with the \refConstructorPage{binaryset}{binarySetWithPredicateString}.
 
 
 
@@ -676,14 +731,17 @@ Returns the list of string values corresponding to receiver's value, considering
 
 
 
-\readerDeuxArguments{stringValueListWithNameList}
-{binaryset}
-{1.9.3}
-{@stringlist}
-{@uint inBitCount}
-{@stringlist inNameList}
-{Returns the list of named values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
-{first, the receiver is enumerated, considering it uses \emph{inBitCount} bits. Each enumerated value is used as an index of \emph{inNameList}, and the string value at this index is appended at the end of the returned value.}
+\subsectionGetter{stringValueListWithNameList}{binaryset}
+
+\begin{galgascode}
+getter stringValueListWithNameList
+  ?@uint inBitCount
+  ?@stringlist inNameList
+  -> @stringlist
+\end{galgascode}
+
+
+Returns the list of named values corresponding to receiver's value, considering it uses \emph{inBitCount} bits. First, the receiver is enumerated, considering it uses \emph{inBitCount} bits. Each enumerated value is used as an index of \emph{inNameList}, and the string value at this index is appended at the end of the returned value.
 
 
 
@@ -691,15 +749,21 @@ Returns the list of string values corresponding to receiver's value, considering
 
 
 
-\readerTroisArguments{swap021}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitCount1}
-{@uint inBitCount2}
-{@uint inBitCount3}
-{Returns the transposed \emph{(x, z, y)} relation.}
-{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+\subsectionGetter{swap021}{binaryset}
+
+\begin{galgascode}
+getter swap021
+  ?@uint inBitCount1
+  ?@uint inBitCount2
+  ?@uint inBitCount3
+  -> @binaryset
+\end{galgascode}
+
+
+
+Returns the transposed \emph{(x, z, y)} relation.
+
+This getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.
 
 
 
@@ -707,78 +771,91 @@ Returns the list of string values corresponding to receiver's value, considering
 
 
 
-\readerDeuxArguments{swap01}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitCount1}
-{@uint inBitCount2}
-{Returns the transposed \emph{(y, x)} relation.}
-{this getter considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1}.}
+\subsectionGetter{swap01}{binaryset}
+
+\begin{galgascode}
+getter swap01 ?@uint inBitCount1 ?@uint inBitCount2 -> @binaryset
+\end{galgascode}
+
+
+Returns the transposed \emph{(y, x)} relation.
+
+This getter considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1}.
+
+
+
+
+
+\subsectionGetter{swap102}{binaryset}
+
+\begin{galgascode}
+getter swap102
+  ?@uint inBitCount1
+  ?@uint inBitCount2
+  ?@uint inBitCount3
+  -> @binaryset
+\end{galgascode}
+
+Returns the transposed \emph{(y, x, z)} relation.
+
+This getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.
 
 
 
 
 
 
+\subsectionGetter{swap120}{binaryset}
 
-\readerTroisArguments{swap102}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitCount1}
-{@uint inBitCount2}
-{@uint inBitCount3}
-{Returns the transposed \emph{(y, x, z)} relation.}
-{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+\begin{galgascode}
+getter swap120
+  ?@uint inBitCount1
+  ?@uint inBitCount2
+  ?@uint inBitCount3
+  -> @binaryset
+\end{galgascode}
 
+Returns the transposed \emph{(y, z, x)} relation.
 
-
-
-
-
-
-\readerTroisArguments{swap120}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitCount1}
-{@uint inBitCount2}
-{@uint inBitCount3}
-{Returns the transposed \emph{(y, z, x)} relation.}
-{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+This getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.
 
 
 
 
 
 
+\subsectionGetter{swap201}{binaryset}
 
-\readerTroisArguments{swap201}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitCount1}
-{@uint inBitCount2}
-{@uint inBitCount3}
-{Returns the transposed \emph{(z, x, y)} relation.}
-{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+\begin{galgascode}
+getter swap201
+  ?@uint inBitCount1
+  ?@uint inBitCount2
+  ?@uint inBitCount3
+  -> @binaryset
+\end{galgascode}
 
+Returns the transposed \emph{(z, x, y)} relation.
 
-
-
-
+This getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.
 
 
-\readerTroisArguments{swap210}
-{binaryset}
-{1.6.0}
-{binaryset}
-{@uint inBitCount1}
-{@uint inBitCount2}
-{@uint inBitCount3}
-{Returns the transposed \emph{(z, y, x)} relation.}
-{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+
+
+
+
+\subsectionGetter{swap210}{binaryset}
+
+\begin{galgascode}
+getter swap210
+  ?@uint inBitCount1
+  ?@uint inBitCount2
+  ?@uint inBitCount3
+  -> @binaryset
+\end{galgascode}
+
+Returns the transposed \emph{(z, y, x)} relation.
+
+This getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.
 
 
 
@@ -812,7 +889,7 @@ getter uint64ValueList ?@uint inBitCount -> @uint64list
 \end{galgascode}
 
 
-Returns the list of \galgas{@uint64} values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
+Returns the list of \ggs+@uint64+ values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
 
 
 
@@ -828,7 +905,7 @@ getter valueCount ?@uint inBitCount -> @uint64
 \end{galgascode}
 
 
-Returns in an \galgas{@uint64} object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits. No overflow test in performed.
+Returns in an \ggs+@uint64+ object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits. No overflow test in performed.
 
 
 
@@ -840,7 +917,7 @@ Returns in an \galgas{@uint64} object the number of different values encoded by 
 
 \section{Logical Operators}
 
-The \galgas{@binaryset} type supports the three logical operators:\newline
+The \ggs+@binaryset+ type supports the three logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -852,10 +929,10 @@ The \galgas{@binaryset} type supports the three logical operators:\newline
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@binaryset} objects and return an \galgas{@binaryset} object.\newline
+Theses operators require both arguments to be \ggs+@binaryset+ objects and return an \ggs+@binaryset+ object.\newline
 
 
-The \galgas{@binaryset} type supports the logical unary operator:\newline
+The \ggs+@binaryset+ type supports the logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -863,7 +940,7 @@ $\sim$ & Negation, Complementation \\
 \hline
 \end{tabular}
 
-This operator Retourne un \galgas{@binaryset} object.
+This operator Retourne un \ggs+@binaryset+ object.
 
 
 
@@ -873,7 +950,7 @@ This operator Retourne un \galgas{@binaryset} object.
 
 \section{Comparison Operators}
 
-The \galgas{@binaryset} type supports the two comparison operators:\newline
+The \ggs+@binaryset+ type supports the two comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -883,9 +960,9 @@ $!=$ & Non Equality \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \galgas{@binaryset} objects, and return a \ggs+@bool+ object. These operations are very fast and are performed in a constant time (integer equality comparison).
+Theses operators require both arguments to be \ggs+@binaryset+ objects, and return a \ggs+@bool+ object. These operations are very fast and are performed in a constant time (integer equality comparison).
 
-Do not confuse with \refGetterPage{binaryset}{equalTo} and \refGetterPage{binaryset}{notEqualTo} that return a \galgas{@binaryset} object.
+Do not confuse with \refGetterPage{binaryset}{equalTo} and \refGetterPage{binaryset}{notEqualTo} that return a \ggs+@binaryset+ object.
 
 
 
@@ -895,7 +972,7 @@ Do not confuse with \refGetterPage{binaryset}{equalTo} and \refGetterPage{binary
 
 \section{Shift Operators}
 
-The \galgas{@binaryset} type supports the two shift operators:\newline
+The \ggs+@binaryset+ type supports the two shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
