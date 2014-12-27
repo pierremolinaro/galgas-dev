@@ -5,15 +5,6 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%   « N O I R    E T    B L A N C »    O U    « C O U L E U R »                                                         *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%--- Par défaut, l'impression se fait en couleur
-\providecommand{\sortieEnCouleur}{true}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
 %   E N C O D A G E    D E S    S O U R C E S     :     U T F 8                                                         *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -54,6 +45,10 @@
 %   M I S E    E N    P A G E                                                                                           *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Interligne 1,5 ligne
+\usepackage{setspace}
+\onehalfspacing
 
 % Voir "Une courte introduction à Latex2e", § 6.4
 
@@ -133,6 +128,7 @@
 %--- Ce paquetage permet d'effectuer des tests : \ifthenelse{test}{bloc then}{bloc else}
 \usepackage{ifthen}
 
+
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 %   E X T E N S I O N S    P O U R    P R É S E N T E R    L E S    T A B L E A U X                                     *
@@ -141,16 +137,6 @@
 
 \usepackage{array}
 \usepackage[table]{xcolor} % À placer avant \usepackage{listings}
-
-%\renewcommand{\arraystretch}{1.2}
-
-%--- Couleur de fond alternée des tableaux
-\ifthenelse{\equal{\sortieEnCouleur}{true}}{
-  \newcommand\fondTableau{yellow!25}
-}{
-  \newcommand\fondTableau{gray!25}
-}
-
 
 %--- Ce paquetage permet de changer le style des légendes des tableaux et des figures (voir caption-eng.pdf) :
 %  - l'étiquette est en italique gras
@@ -196,6 +182,10 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \usepackage{listings} % À placer après \usepackage[table]{xcolor}
+
+\usepackage{lineno}
+
+\usepackage{mdframed}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -309,19 +299,6 @@
 
 \setcounter{tocdepth}{3}
 
-%\titlespacing{\chapter} {0pt} {*0} {*0} {}
-%\titlespacing{\section} {4ex} {*0} {*0} {}
-%\titlespacing{\subsection} {10ex} {*0} {*0} {}
-%\titlespacing{\subsubsection} {\subsubsectskip} {*0} {*0} {}
-
-%\setlength{\parindent}{50pt}
-%\makeatletter
-%\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-%                                    {3.25ex \@plus 1ex \@minus .2ex}%
-%                                    {2.3ex \ at plus.2ex}%
-%                                    {\normalfont\normalsize\bfseries}}
-%\makeatother
-
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 %   H Y P E R R E F                                                                                                     *
@@ -331,11 +308,7 @@
 %--- Pour les hyperliens, et le contrôle de la génération PDF 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true}
-\ifthenelse{\equal{\sortieEnCouleur}{true}}{
-  \hypersetup{linkcolor=blue}
-}{
-  \hypersetup{linkcolor=black}
-}
+\hypersetup{linkcolor=blue}
 \hypersetup{breaklinks=true}
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -491,6 +464,7 @@
   \input{partie-utilisation/installation.tex}
   \input{partie-utilisation/using-galgas.tex}
   \input{partie-utilisation/lexical-elements.tex}
+  \input{partie-utilisation/formatage-latex.tex}
   \input{partie-utilisation/traduction-dirigee-par-la-syntaxe.tex}
 
 \part{Le système de types}

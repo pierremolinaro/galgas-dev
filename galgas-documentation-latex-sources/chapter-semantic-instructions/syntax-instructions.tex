@@ -39,7 +39,7 @@ Où :
 
 \sectionLabel{Instruction \texttt{select}}{instructionSelectSyntaxique}
 
-La syntaxe de l'instruction \ggs+select+ syntaxique\footnote{Ne confondre avec l'instruction de sélection lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionSelectLexical}).} est la suivante :
+La syntaxe de l'instruction \ggs+select+ syntaxique\footnote{Ne pas confondre avec l'instruction de sélection lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionSelectLexical}).} est la suivante :
 \begin{galgas}
 A
 select
@@ -48,7 +48,6 @@ or
   I1
 or
   I2
-...
 end
 B
 \end{galgas}
@@ -69,8 +68,6 @@ rule <T> { I0 }
 rule <T> { I1 }
 
 rule <T> { I2 }
-
-...
 \end{galgas}
 
 
@@ -81,7 +78,7 @@ rule <T> { I2 }
 
 \sectionLabel{Instruction \texttt{repeat}}{instructionRepeatSyntaxique}
 
-La syntaxe de l'instruction \ggs+repeat+ syntaxique\footnote{Ne confondre avec l'instruction de répétition lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionRepeatLexical}).} est la suivante :
+La syntaxe de l'instruction \ggs+repeat+ syntaxique\footnote{Ne pas confondre avec l'instruction de répétition lexicale, qui ne peut être utilisée que dans les analyseurs lexicaux (\refSubsectionPage{instructionRepeatLexical}).} est la suivante :
 \begin{galgas}
 A
 repeat
@@ -90,7 +87,6 @@ while
   I1
 while
   I2
-...
 end
 B
 \end{galgas}
@@ -110,8 +106,6 @@ Le non-terminal \ggs+T+ se dérive de la façon suivante :
 rule <T> { I1 I0 <T> }
 
 rule <T> { I2 I0 <T> }
-
-...
 
 rule <T> {  }
 \end{galgas}

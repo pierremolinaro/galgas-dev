@@ -60,7 +60,7 @@ grammar expGrammar "LL1" {
 }
 \end{galgas}
 
-La classe de la grammaire (ici \texttt{LL1}) n'a pas d'importance pour la traduction dirigée par la syntaxe : celle-ci fonctionne pour toutes les classes de grammaire. 
+La classe de la grammaire (ici \tpp{LL1}) n'a pas d'importance pour la traduction dirigée par la syntaxe : celle-ci fonctionne pour toutes les classes de grammaire. 
 
 Enfin, le lien entre l'extension des fichiers source et l'analyseur est réalisé par le code suivant :
 \begin{galgas}
@@ -143,20 +143,20 @@ Par défaut, cette instruction recopie à l'identique dans la chaîne produite d
   \item le terminal lui-même.
 \end{itemize}
 
-Prenons un exemple. On suppose que la chaîne source est : \texttt{@1@a+@2@b@3@}, les commentaires étant constitués des séquences \texttt{@...@}. Cet exemple considère des commentaires, mais il en est de même pour les séparateurs (espaces, retours à la ligne). La séquence des terminaux encontrés lors de l'analyse de cette phrase est :
+Prenons un exemple. On suppose que la chaîne source est : \tpp{@1@a+@2@b@3@}, les commentaires étant constitués des séquences \tpp{@...@}. Cet exemple considère des commentaires, mais il en est de même pour les séparateurs (espaces, retours à la ligne). La séquence des terminaux encontrés lors de l'analyse de cette phrase est :
 
 \begin{center}
   \begin{tabular}{lllllll@{}}
   \textbf{Instruction} & \textbf{Séparateurs précédent le terminal}  & \textbf{Terminal} \\
   \hline
-  \ggs+$idf$ ?*+ & \texttt{@1@} & \texttt{a} \\
-  \ggs*$+$* &  & \texttt{+} \\
-  \ggs+$idf$ ?*+ & \texttt{@2@} & \texttt{b} \\
+  \ggs+$idf$ ?*+ & \tpp{@1@} & \tpp{a} \\
+  \ggs*$+$* &  & \tpp{+} \\
+  \ggs+$idf$ ?*+ & \tpp{@2@} & \tpp{b} \\
   \hline
   \end{tabular}
 \end{center}
 
-Le dernier commentaire (\texttt{@3@}), placé après le dernier symbole non terminal, est toujours ajouté à la fin de la chaîne produite.
+Le dernier commentaire (\tpp{@3@}), placé après le dernier symbole non terminal, est toujours ajouté à la fin de la chaîne produite.
 
 Pour obtenir les deux informations attachés à chaque terminal\footnote{Il existe d'autres variantes de cet opérateur, voir la description de l'\emph{instruction d'appel de terminal} à la \refSectionPage{instruction-appel-terminal}.}, on utilise l'opérateur \ggs+:>+ :
 \begin{galgas}
@@ -187,7 +187,7 @@ syntax expSyntax {
 }
 \end{galgas}
 
-Si la chaîne source est \texttt{@1@a+@2@b@3@}, alors la chaîne produite est \texttt{+@3@}.
+Si la chaîne source est \tpp{@1@a+@2@b@3@}, alors la chaîne produite est \tpp{+@3@}.
 
 Cette première instruction permet donc de ne pas transmettre les informations attachées un terminal. L'instruction \ggs+send+, décrite à la section suivante, va montrer comment insérer du texte dans la chaîne produite.
 
@@ -232,7 +232,7 @@ syntax expSyntax {
 }
 \end{galgas}
 
-Mentionner \ggs+s+ dans l'instruction \ggs+send+ permet de transmettre les séparateurs qui précèdent les parenthèses. Ainsi à partir de la chaîne source \texttt{(@1@a+@2@b)@3@}, on obtient \texttt{\{@1@a+@2@b\}@3@}.
+Mentionner \ggs+s+ dans l'instruction \ggs+send+ permet de transmettre les séparateurs qui précèdent les parenthèses. Ainsi à partir de la chaîne source \tpp{(@1@a+@2@b)@3@}, on obtient \tpp{\{@1@a+@2@b\}@3@}.
 
 
 L'instruction \ggs+send+ permet de reconstituer le comportement par défaut de l'instruction d'appel de terminal : par exemple, \ggs*$($ :> ?@string s ?@string t ; send s + t* a le même effet que \ggs+$($+.

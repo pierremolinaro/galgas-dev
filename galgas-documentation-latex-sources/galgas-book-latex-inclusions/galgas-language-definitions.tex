@@ -5,7 +5,11 @@
 %   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\usepackage{mdframed}
+\newcommand\tpp[1]{\colorbox{gray!12}{\ttfamily #1}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
+%-----------------------------------------------------------------------------------------------------------------------*
 
 \newcommand\keywordsStyle[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\delimitersStyle[1]{\textcolor{brown}{\textbf{#1}}}
@@ -24,8 +28,8 @@
   topline=false,
   bottomline=false,
   rightline=false,
-  skipabove=\topsep,
-  skipbelow=\topsep,
+%  skipabove=\topsep,
+%  skipbelow=\topsep,
   linecolor=blue!25,
   linewidth=2pt
 ]{siderules}
@@ -49,9 +53,7 @@
   \@esphack
   \endgroup
   \immediate\write18{galgas --mode=latex temp.galgas}
-  \begin{siderules}
-    \ttfamily\input{temp.galgas.tex}
-  \end{siderules}
+  {\singlespacing\begin{siderules}\ttfamily\input{temp.galgas.tex}\end{siderules}}
 }
 \makeatother
 
@@ -93,13 +95,13 @@
       \expandafter\DeclareRobustCommand%
       \expandafter*%
       \expandafter#1%
-      \expandafter{%
-      \@tempa}%
+      \expandafter{\@tempa}%
       \@esphack%
       \immediate\openout\tempfile=temp.galgas%
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
-      \immediate\write18{galgas --mode=latex temp.galgas}\texttt{\input{temp.galgas.tex}\unskip}%
+      \immediate\write18{galgas --mode=latex temp.galgas}%
+      \colorbox{gray!6}{\ttfamily\input{temp.galgas.tex}\unskip}%
     }%
   }%
   \ifnum`#2=`\~\else\@makeother\~\fi%
@@ -149,7 +151,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 % Exemple d'appel : \refGetterPage{bool}{string} -- affiche --> @bool string getter (page xx)
-\newcommand\refGetterPage[2] {\hyperref[getter:#1:#2]{\texttt{@#1 #2} getter (page \pageref{getter:#1:#2})}}
+\newcommand\refGetterPage[2] {\hyperref[getter:#1:#2]{getter \texttt{@#1 #2} à la page \pageref{getter:#1:#2}}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %   S E T T E R   C R O S S    R E F E R E N C I N G                                                                    *
@@ -160,7 +162,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 % Exemple d'appel : \refSetterPage{bool}{string} -- affiche --> @bool string setter (page xx)
-\newcommand\refSetterPage[2] {\hyperref[setter:#1:#2]{\texttt{@#1 #2} setter (page \pageref{setter:#1:#2})}}
+\newcommand\refSetterPage[2] {\hyperref[setter:#1:#2]{setter \texttt{@#1 #2} à la page \pageref{setter:#1:#2}}}
 
 
 %-----------------------------------------------------------------------------------------------------------------------*

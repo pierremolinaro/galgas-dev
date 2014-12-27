@@ -8,20 +8,20 @@
 
 \section{Generated Cocoa Application}
 
-When a project component is compiled with a Xcode project target, a \texttt{project\_xcode} directory is created. This directory contains:
+When a project component is compiled with a Xcode project target, a \tpp{project\_xcode} directory is created. This directory contains:
 \begin{itemize}
 \item the Xcode project file;
-\item a \texttt{build.command} file ;
-\item an \texttt{Info.plist} file ;
-\item an \texttt{English.lproj} directory ;
-\item an empty \texttt{userResources} directory.
+\item a \tpp{build.command} file ;
+\item an \tpp{Info.plist} file ;
+\item an \tpp{English.lproj} directory ;
+\item an empty \tpp{userResources} directory.
 \end{itemize}
 
-The \texttt{Info.plist}, the \texttt{English.lproj} directory and the \texttt{userResources} directory are used by the Cocoa target of the Xcode project. The \texttt{build.command} file is a command file that builds the Xcode project.
+The \tpp{Info.plist}, the \tpp{English.lproj} directory and the \tpp{userResources} directory are used by the Cocoa target of the Xcode project. The \tpp{build.command} file is a command file that builds the Xcode project.
 
-All files you put in the \texttt{userResources} directory are added to the Cocoa target of the Xcode project when the GALGAS Project component is compiled. When the Cocoa target of the Xcode project is compiled, theses files are put in the \texttt{Resources} directory within the application bundle.
+All files you put in the \tpp{userResources} directory are added to the Cocoa target of the Xcode project when the GALGAS Project component is compiled. When the Cocoa target of the Xcode project is compiled, theses files are put in the \tpp{Resources} directory within the application bundle.
 
-Adding files to the \texttt{userResources} directory is the way of customizing the Cocoa Application:
+Adding files to the \tpp{userResources} directory is the way of customizing the Cocoa Application:
 \begin{itemize}
 \item adding icons to your Application (\refSectionPage{addingIconsCocoaApplication});
 \item customizing syntax coloring (\refSectionPage{customizingSyntaxColoring}). 
@@ -36,13 +36,13 @@ For setting an icon for your Cocoa application and its documents, proceed as fol
 
 
 
-\texteEncercle{1} Design icons, for example with names \texttt{myApplicationIcon.icns} and \texttt{myDocumentIcon.icns}.
+\texteEncercle{1} Design icons, for example with names \tpp{myApplicationIcon.icns} and \tpp{myDocumentIcon.icns}.
 
-\texteEncercle{2} Put the icons in the \texttt{userResources} directory.
+\texteEncercle{2} Put the icons in the \tpp{userResources} directory.
 
 \texteEncercle{3} Compile the GALGAS project: this updates the Xcode project, adding the icons files to its Cocoa target.
 
-\texteEncercle{4} Under Xcode, edit the \texttt{Info.plist} file for assigning icon to the application and to the document (see \url{http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Documents/Concepts/DocTypePList.html}).
+\texteEncercle{4} Under Xcode, edit the \tpp{Info.plist} file for assigning icon to the application and to the document (see \url{http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Documents/Concepts/DocTypePList.html}).
 
 
 
@@ -71,9 +71,9 @@ end lexique ;
 This new style's feature can be edited as other styles, by the Preferences setting of your Cocoa application.
 
 
-\texteEncercle{2} Create a plist file with the \emph{Property List Editor} application. This file should be named with the lexique component name, suffixed by \texttt{-syntax-coloring-adds}: so, for the example, the file name is \texttt{my\_lexique-syntax-coloring-adds.plist}. Put this file in the \emph{userResources} directory: so when the GALGAS project document is compiled, this file is added to the Cocoa Target of the Xcode project. 
+\texteEncercle{2} Create a plist file with the \emph{Property List Editor} application. This file should be named with the lexique component name, suffixed by \tpp{-syntax-coloring-adds}: so, for the example, the file name is \tpp{my\_lexique-syntax-coloring-adds.plist}. Put this file in the \emph{userResources} directory: so when the GALGAS project document is compiled, this file is added to the Cocoa Target of the Xcode project. 
 
-\texteEncercle{3} Edit the \texttt{my\_lexique-syntax-coloring-adds.plist} with the \emph{Property List Editor} application or Xcode. Add one entry for every custom syntax coloring case: the \emph{key} is the terminal spelling, the \emph{value} has the \emph{String} type, and the specific style name. For example, the \refFigure{}{customSyntaxColoringPropertyList} shows the assignment of the terminal which spelling is \texttt{begin} by the \texttt{mySpecificStyle} style.
+\texteEncercle{3} Edit the \tpp{my\_lexique-syntax-coloring-adds.plist} with the \emph{Property List Editor} application or Xcode. Add one entry for every custom syntax coloring case: the \emph{key} is the terminal spelling, the \emph{value} has the \emph{String} type, and the specific style name. For example, the \refFigure{}{customSyntaxColoringPropertyList} shows the assignment of the terminal which spelling is \tpp{begin} by the \tpp{mySpecificStyle} style.
 
 \begin{figure}[t]
   \centering
@@ -92,7 +92,7 @@ If your provides an undefined style name, you will be warned every time you open
 
 \sectionLabel{Indexing your source files}{indexingYourSourceFiles}
 
-You can configure your project for enabling cross-referencing entities with your Cocoa application. This has been done in GALGAS, providing such feature (\refFigure{}{indexingUnderCocoaGALGAS}). The contextual menu is displayed with a \texttt{cmd}-click.
+You can configure your project for enabling cross-referencing entities with your Cocoa application. This has been done in GALGAS, providing such feature (\refFigure{}{indexingUnderCocoaGALGAS}). The contextual menu is displayed with a \texttt{cmd-click}.
 
 \begin{figure}[t]
   \centering
@@ -105,7 +105,7 @@ You can configure your project for enabling cross-referencing entities with your
 For configuring your project, you will have to modify the lexique component, the syntax component, the grammar component and the program component. This section presents the six configuring steps.
  \\
  \\
-\texteEncercle{1} \textbf{Lexique component header.} You need to change the lexique header, adding the « \texttt{indexing in} » declaration :
+\texteEncercle{1} \textbf{Lexique component header.} You need to change the lexique header, adding the \ggs+indexing in+ declaration :
 
 
 \begin{galgas}
@@ -113,9 +113,8 @@ lexique my_lexique indexing in "INDEXING" :
   ...
 \end{galgas}
 
-The « \texttt{"INDEXING"} » character string defines the name of the directory that will contains the indexing cache files. This directory is relative to the source file.
- \\
- \\
+The \ggs+"INDEXING"+ character string defines the name of the directory that will contains the indexing cache files. This directory is relative to the source file.
+
 \texteEncercle{2} \textbf{Indexing classes declarations.} Add one or more indexing classes declarations in the lexique component body.
 
 
@@ -130,11 +129,11 @@ indexing myIndexClass2 : "Smart Kinds";
 
 Each declaration consists of two parts :
 \begin{itemize}
-\item the index class name (for example \texttt{myIndexClass1}, \texttt{myIndexClass2}) is an identifier that assigns an internal name to the indexing declaration;
-\item the index class title (for example \texttt{"Awesome objects"}, \texttt{"Smart Kinds"}) is a literal string that will be used as title in the Cocoa Application; in the \refFigure{}{indexingUnderCocoaGALGAS}, the titles are \emph{Class Definition}, \emph{Class Reference as Superclass} and \emph{Abstract Category Getter Definition}.
+\item the index class name (for example \tpp{myIndexClass1}, \tpp{myIndexClass2}) is an identifier that assigns an internal name to the indexing declaration;
+\item the index class title (for example \tpp{"Awesome objects"}, \tpp{"Smart Kinds"}) is a literal string that will be used as title in the Cocoa Application; in the \refFigure{}{indexingUnderCocoaGALGAS}, the titles are \emph{Class Definition}, \emph{Class Reference as Superclass} and \emph{Abstract Category Getter Definition}.
 \end{itemize}
 
-\noindent\texteEncercle{3} \textbf{Grammar component configuration.} Just prefix by « \texttt{indexing} » keyword the grammar header:
+\noindent\texteEncercle{3} \textbf{Grammar component configuration.} Just prefix by \ggs+indexing+ keyword the grammar header:
 
 \begin{galgas}
 indexing grammar my_grammar ... :
@@ -143,13 +142,12 @@ indexing grammar my_grammar ... :
 
 
 
-\noindent\texteEncercle{4} \textbf{Program component configuration.} Insert the « \texttt{indexing with ...} » declaration after the « \texttt{message ...} » declaration in every program rule concerned by indexing:
+\noindent\texteEncercle{4} \textbf{Program component configuration.} Insert the \ggs+grammar+ declaration after the « \texttt{message ...} » declaration in every program rule concerned by indexing:
 
 \begin{galgas}
-  ...
-when ...
+case ...
 message ...
-indexing with my_grammar
+grammar my_grammar
 ?@lstring inSourceFile {
   ...
 \end{galgas}

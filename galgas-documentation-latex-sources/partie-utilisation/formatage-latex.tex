@@ -1,0 +1,539 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Formatage pour LaTeX}
+%-------------------------------------------------------------
+
+Si vous utilisez \LaTeX pour écrire la documentation de votre compilateur, vous êtes confronté sans doute au problème de la présentation des programmes sources. En effet, les paquetages classiques pour ce type de problème, comme par exemple \tpp{listings}, peuvent être trop rigides pour des règles lexicales particulières d'un langage.
+
+Par exemple, en GALGAS, les constantes entières acceptent le caractère \tpp{\_}, comme dans \ggs+123_456+. Elles peuvent être préfixées par \tpp{0x}, et post-fixés par \tpp{S}, \tpp{LS} pour indiquer leur type : \ggs+0x123_456S+, \ggs+0x_123_456_LS+. Le paquetage \tpp{listings} ne peut pas être paramétré pour afficher correctement les constantes entières de GALGAS. Il n'accepte pas non plus les caractères accuentés dans les commentaires.
+
+Comment faire ? Développer des commandes \LaTeX particulières pour faire ce travail. Elles s'appuient sur un mode particulier des compilateurs engendrés par GALGAS, qui permet de traduire un fichier source en un code compatible \LaTeX. C'est de cette façon que le code GALGAS est présenté dans ce document. Si les fichiers \tpp{.tex} sont codés en UTF-8, alors les caractères accentués peuvent être utilisés sans restriction, comme des caractères comme \tpp{æ} ou \tpp{Œ} (voir par exemple le \refGetterPage{char}{unicodeToLower}).
+
+Dans la suite, nous allons progressivement présenter la démarche pour formatter un code source :
+\begin{itemize}
+  \item d'abord comment configurer votre compilateur pour qu'il engendre du code \LaTeX ;
+  \item comment afficher ce code en utilisant le paquetage \tpp{f{}ilecontents} ;
+  \item une amélioration de la solution précédente en définissant un environnement particulier (utilise le paquetage \tpp{verbatim}) ;
+  \item définition d'une commande permettant d'afficher du code en ligne, appelable comme la commande \tpp{\textbackslash verb} (utilise le paquetage \tpp{verbatim}).
+\end{itemize}
+
+Dans tout ce chapitre, nous appliquons cette démarche au langage LOGO, défini à la \refSectionPage{presentation-logo}.
+
+
+
+
+
+\section{Configuration de votre compilateur}
+
+Tout compilateur engendré par GALGAS possède un mode d'exécution particulier, le mode \emph{latex}. Il est activé par l'option \tpp{-{}-mode=latex}.
+
+Dans ce mode, seule l'analyse lexicale est effectuée, aussi le fichier source doit être \emph{lexicalement correct}, mais n'a pas besoin d'être ni \emph{syntaxiquement correct}, ni \emph{sémantiquement correct}.
+
+Le fichier de sortie a pour nom le fichier d'entrée postfixé par l'extension \tpp{.tex}. Il contient le texte source formatté pour \LaTeX.
+
+Par exemple, si le fichier d'entrée est \tpp{test.logo} et contient :
+
+\begin{lstlisting}
+ROUTINE trace
+BEGIN
+  FORWARD 50;
+  ROTATE 90;
+END
+\end{lstlisting}
+
+En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient :
+
+\begin{verbatim}
+\keywordsStyle{R{}O{}U{}T{}I{}N{}E{}}\hspace*{.6em}t{}r{}a{}c{}e{} \\
+\keywordsStyle{B{}E{}G{}I{}N{}} \\
+\hspace*{1.2em}\keywordsStyle{F{}O{}R{}W{}A{}R{}D{}}\hspace*{.6em}
+                                       \integerStyle{5{}0{}}\delimitersStyle{;{}} \\
+\hspace*{1.2em}\keywordsStyle{R{}O{}T{}A{}T{}E{}}\hspace*{.6em}
+                                       \integerStyle{9{}0{}}\delimitersStyle{;{}} \\
+\keywordsStyle{E{}N{}D{}}
+\end{verbatim}
+
+Pour l'afficher, il suffit de définir les commandes \tpp{\textbackslash keywordsStyle}, \tpp{\textbackslash integerStyle} et \tpp{\textbackslash delimitersStyle}\footnote{Aucune commande n'est définie pour les identificateurs, car l'analyseur lexical ne définit pas de style pour ceux-ci (voir \refSubsectionPage{fonctionnement-mode-latex}).}, et de placer ce texte dans un environnement où une police à échappement fixe est activée :
+\begin{verbatim}
+\newcommand\keywordsStyle[1]{\textcolor{blue}{\textbf{#1}}}
+\newcommand\delimitersStyle[1]{\textcolor{brown}{\textbf{#1}}}
+\newcommand\integerStyle[1]{\textcolor{brown}{#1}}
+
+\texttt{
+\keywordsStyle{R{}O{}U{}T{}I{}N{}E{}}\hspace*{.6em}t{}r{}a{}c{}e{} \\
+\keywordsStyle{B{}E{}G{}I{}N{}} \\
+\hspace*{1.2em}\keywordsStyle{F{}O{}R{}W{}A{}R{}D{}}\hspace*{.6em}
+                                       \integerStyle{5{}0{}}\delimitersStyle{;{}} \\
+\hspace*{1.2em}\keywordsStyle{R{}O{}T{}A{}T{}E{}}\hspace*{.6em}
+                                       \integerStyle{9{}0{}}\delimitersStyle{;{}} \\
+\keywordsStyle{E{}N{}D{}}
+}
+\end{verbatim}
+
+On obtient ainsi (noter l'identation de la première ligne) :
+
+\texttt{
+\textcolor{blue}{\bf ROUTINE}\hspace*{.6em}t{}r{}a{}c{}e{} \\
+\textcolor{blue}{\bf BEGIN} \\
+\hspace*{1.2em}\textcolor{blue}{\bf FORWARD}\hspace*{.6em}\integerStyle{5{}0{}}\textcolor{brown}{\bf ;} \\
+\hspace*{1.2em}\textcolor{blue}{\bf ROTATE}\hspace*{.6em}\integerStyle{9{}0{}}\textcolor{brown}{\bf ;} \\
+\textcolor{blue}{\bf END}
+}
+
+\subsection{Formatage avec le paquetage \texttt{lineno}}
+
+On peut aussi utiliser le paquetage \tpp{lineno} pour numéroter les lignes sources :
+\begin{verbatim}
+\resetlinenumber
+\begin{linenumbers}
+\ttfamily
+...
+\end{linenumbers}
+\end{verbatim}
+
+Et on obtient :
+
+\resetlinenumber
+\begin{linenumbers}\singlespacing\ttfamily
+\textcolor{blue}{\bf ROUTINE}\hspace*{.6em}t{}r{}a{}c{}e{} \\
+\textcolor{blue}{\bf BEGIN} \\
+\hspace*{1.2em}\textcolor{blue}{\bf FORWARD}\hspace*{.6em}\integerStyle{5{}0{}}\textcolor{brown}{\bf ;} \\
+\hspace*{1.2em}\textcolor{blue}{\bf ROTATE}\hspace*{.6em}\integerStyle{9{}0{}}\textcolor{brown}{\bf ;} \\
+\textcolor{blue}{\bf END}
+\end{linenumbers}
+
+\subsection{Formatage avec le paquetage \texttt{mdframed}}
+
+Le paquetage \tpp{mdframed} permet afficher un trait vertical dans la marge gauche. Pour cela, il faut d'abord le configurer :
+
+\begin{verbatim}
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  linecolor=red!25,
+  linewidth=2pt
+]{siderules}
+\end{verbatim}
+
+Et on utilise l'environnement \tpp{siderules} :
+
+\begin{verbatim}
+\begin{siderules}
+\ttfamily
+...
+\end{siderules}
+\end{verbatim}
+
+Et on obtient :
+
+{
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  linecolor=red!25,
+  linewidth=2pt
+]{siderulesRed}
+
+\begin{siderulesRed}
+\ttfamily
+\textcolor{blue}{\bf ROUTINE}\hspace*{.6em}t{}r{}a{}c{}e{} \\
+\textcolor{blue}{\bf BEGIN} \\
+\hspace*{1.2em}\textcolor{blue}{\bf FORWARD}\hspace*{.6em}\integerStyle{5{}0{}}\textcolor{brown}{\bf ;} \\
+\hspace*{1.2em}\textcolor{blue}{\bf ROTATE}\hspace*{.6em}\integerStyle{9{}0{}}\textcolor{brown}{\bf ;} \\
+\textcolor{blue}{\bf END}
+\end{siderulesRed}
+}
+
+\subsection{Comment s'effectue la traduction en \LaTeX}
+
+La traduction s'effectue comme suit :
+\begin{itemize}
+  \item à chaque \ggs+style+ défini dans l'analyseur lexical correspond une commande \LaTeX particulière : par exemple à \tpp{keywordsStyle} correspond \tpp{\textbackslash keywordsStyle} (\refSubsectionPage{fonctionnement-mode-latex}) ;
+  \item les caractères possédant une signification particulière en \LaTeX sont échappés ou substitués selon le \refTableau{substitution-latex} ;
+  \item après tout caractère non échappé ni substitué est ajoutée la séquence \tpp{\{\}}.
+\end{itemize}
+
+L'ajout de la séquence \tpp{\{\}} peut paraître superflue, mais elle permet de résoudre de manière systématique bien des difficultés d'affichage :
+\begin{itemize}
+  \item la séquence \tpp{-{}-} est affichée \tpp{--} : en écrivant \tpp{-\{\}-\{\}}, on a l'affichage souhaité \tpp{-{}-} ;
+  \item de même \tpp{\textgreater{}\textgreater} est affiché \tpp{\textgreater\textgreater} et \tpp{\textless{}\textless} est affiché \tpp{\textless\textless} ;
+  \item \LaTeX effectue par défaut des ligatures : \tpp{f{}i} est affiché \tpp{fi}, il faut écrire \tpp{f\{\}i} pour obtenir  \tpp{f{}i}.
+\end{itemize}
+
+
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{rl}
+    \textbf{Caractère source} & \textbf{Formattage pour\LaTeX}\\
+    \texttt{\textquotesingle\textgreater\textquotesingle} & \texttt{\textbackslash textgreater\{\}} \\
+    \texttt{\textquotesingle\textless\textquotesingle} & \texttt{\textbackslash textless\{\}} \\
+    \texttt{\textquotesingle$\sim$\textquotesingle} & \texttt{\$\textbackslash sim\$} \\
+    \texttt{\textquotesingle$\wedge$\textquotesingle} & \texttt{\$\textbackslash wedge\$} \\
+    \texttt{\textquotesingle\&\textquotesingle} & \texttt{\textbackslash \&} \\
+    \texttt{\textquotesingle\%\textquotesingle} & \texttt{\textbackslash \%} \\
+    \texttt{\textquotesingle\#\textquotesingle} & \texttt{\textbackslash \#} \\
+    \texttt{\textquotesingle\$\textquotesingle} & \texttt{\textbackslash \$} \\
+    \texttt{\textquotesingle\`{}\textquotesingle} & \texttt{\textbackslash \`{}\{\}} \\
+    \texttt{\textquotesingle~\textquotesingle} & \texttt{\textbackslash hspace*\{.6em\}} \\
+    \texttt{\textquotesingle\textbackslash n\textquotesingle} & \texttt{\textvisiblespace\textbackslash \textbackslash \textbackslash \textbackslash n} \\
+    \texttt{\textquotesingle\{\textquotesingle} & \texttt{\textbackslash \{} \\
+    \texttt{\textquotesingle\}\textquotesingle} & \texttt{\textbackslash \}} \\
+    \texttt{\textquotesingle\_\textquotesingle} & \texttt{\textbackslash \_} \\
+    \texttt{\textquotesingle\textbackslash\textquotesingle} & \texttt{\textbackslash textbackslash\{\}} \\
+    \texttt{\textquotesingle\textquotesingle\textquotesingle} & \texttt{\textbackslash textquotesingle\{\}} \\
+    \texttt{\textquotesingle\textquotedbl\textquotesingle} & \texttt{\textbackslash textquotedbl\{\}} \\
+    Autre caractère : \texttt{\textquotesingle}$c$\texttt{\textquotesingle} & $c$\texttt{\{\}} \\
+  \end{tabular}
+  \caption{Échappement et substitution des caractères pour formattage \LaTeX}
+  \labelTableau{substitution-latex}
+  \ligne
+\end{table}
+
+
+
+\subsectionLabel{Fonctionnement de l'option \texttt{-{}-mode=latex}}{fonctionnement-mode-latex}
+
+L'option \tpp{-{}-mode=latex} utilise les noms de style définis dans l'analyseur lexical LOGO. Par exemple, l'extrait suivant indique que le style \tpp{integerStyle} est attaché au terminal \ggs+$integer$+ :
+
+\begin{galgas}
+style integerStyle -> "Integer Constants"
+$integer$ !uint32value style integerStyle ...
+\end{galgas}
+
+À chaque style, correspond une commande \LaTeX obtenue en préfixant le nom du style par un anti-slash \tpp{\textbackslash}\footnote{Les chiffres et le caractère de soulignement \tpp{\_} sont interdits dans les nom de style.}. Si aucun style n'est défini par un terminal particulier, il est affiché avec le style par défaut : c'est le cas des identificateurs LOGO dans les listings précédents.
+
+Noter que l'affichage des commentaires nécessite l'utilisation conjointe d'un style particulier et de l'instruction lexicale \ggs+drop+ (\refSubsectionPage{instructionLexicaleDrop}) ; pour le langage LOGO :
+
+\begin{galgas}
+style commentStyle -> "Comments"
+$comment$ style commentStyle ...
+rule '#' {
+  repeat
+  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
+  end
+  drop $comment$
+}
+\end{galgas}
+
+
+
+
+
+
+
+\section{Affichage via le paquetage \texttt{f{}ilecontents}}
+
+Insérer un texte en effectuant un copié/collé comme suggéré à la section précédente est très laborieux ! Le paquetage \tpp{f{}ilecontents} va permettre de simplifier l'écriture en utilisant l'environnement \tpp{f{}ilecontents*} :
+
+\begin{verbatim}
+\begin{filecontents*}{temp.logo}
+ROUTINE trace
+BEGIN
+  FORWARD 50;
+  ROTATE 90;
+END
+\end{filecontents*}
+\immediate\write18{logo --mode=latex temp.logo}
+\noindent{\ttfamily\input{temp.logo.tex}}
+\end{verbatim}
+
+L'environnement \tpp{f{}ilecontents*} écrit son contenu dans le fichier \tpp{temp.logo} du répertoire courant. La commande \tpp{\textbackslash immediate\textbackslash write18}\footnote{Penser à ajouter l'option \tpp{-{}-shell-escape} lors de la compilation \LaTeX.} permet de lancer la commande shell \tpp{logo -{}-mode=latex temp.logo}\footnote{Le répertoire vers l'exécutable \tpp{logo} doit faire partie des chemins définis par la variable \tpp{\$PATH} du shell.}, qui a pour résultat d'écrire le fichier formatté \tpp{temp.logo.tex} dans le répertoire courant. Il suffit donc de l'inclure grâce à la commande \tpp{\textbackslash input} en sélectionnant une police à échappement fixe (\tpp{\textbackslash ttfamily}). \tpp{\textbackslash noindent} permet d'éliminer l'indentation de la première ligne.
+
+Cette deuxième approche est plus satisfaisante car on peut faire figurer le texte source LOGO directement dans le fichier \LaTeX, mais nous allons voir dans la section suivante une meilleure solution.
+
+
+
+
+
+
+
+
+
+
+
+\section{Définition d'un environnement d'affichage formatté}
+
+Dans cette section, on va voir comment nous allons définir un environnement \tpp{logocode} qui permettra d'entrer et de formatter implicitement un texte LOGO :
+
+\begin{verbatim}
+\begin{logocode}
+ROUTINE trace
+BEGIN
+  FORWARD 50;
+  ROTATE 90;
+END
+\end{logocode}
+\end{verbatim}
+
+Ce qui permettra d'obtenir :
+
+{\noindent\ttfamily
+\textcolor{blue}{\bf ROUTINE}\hspace*{.6em}t{}r{}a{}c{}e{} \\
+\textcolor{blue}{\bf BEGIN} \\
+\hspace*{1.2em}\textcolor{blue}{\bf FORWARD}\hspace*{.6em}\integerStyle{5{}0{}}\textcolor{brown}{\bf ;} \\
+\hspace*{1.2em}\textcolor{blue}{\bf ROTATE}\hspace*{.6em}\integerStyle{9{}0{}}\textcolor{brown}{\bf ;} \\
+\textcolor{blue}{\bf END}
+}
+
+
+Pour cela, nous avons besoin du paquetage \tpp{verbatim}. Il est conseillé d'inclure ce paquetage juste après la déclaration \tpp{\textbackslash documentclass} :
+
+{\singlespacing
+\begin{verbatim}
+\documentclass [...] {...}
+\usepackage{verbatim}
+...
+\end{verbatim}
+}
+
+La définition de l'environnement \tpp{logocode} est la suivante :
+
+
+%\begin{verbatim}
+%\newwrite\tempfile
+%\makeatletter
+%\newenvironment{logocode}{%
+%  \begingroup
+%  \@bsphack
+%  \immediate\openout\tempfile=temp.logo%
+%  \let\do\@makeother\dospecials
+%  \catcode`\^^M\active
+%  \verbatim@startline
+%  \verbatim@addtoline
+%  \verbatim@finish
+%  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
+%  \verbatim@start
+%}{
+%  \immediate\closeout\tempfile
+%  \@esphack
+%  \endgroup
+%  \immediate\write18{logo --mode=latex temp.logo}
+%  \noindent{\ttfamily\input{temp.logo.tex}}
+%}
+%\makeatother
+%\end{verbatim}
+
+\resetlinenumber
+\begin{linenumbers}\singlespacing\ttfamily
+\textbackslash newwrite\textbackslash tempf{}ile\newline
+\textbackslash makeatletter\newline
+\textbackslash newenvironment\{logocode\}\{\%\newline
+\hspace*{1.2em}\textbackslash begingroup\newline
+\hspace*{1.2em}\textbackslash @bsphack\newline
+\hspace*{1.2em}\textbackslash immediate\textbackslash openout\textbackslash tempf{}ile=temp.logo\%\newline
+\hspace*{1.2em}\textbackslash let\textbackslash do\textbackslash @makeother\textbackslash dospecials\newline
+\hspace*{1.2em}\textbackslash catcode\`{}\textbackslash$\wedge\wedge$M\textbackslash active\newline
+\hspace*{1.2em}\textbackslash verbatim@startline\newline
+\hspace*{1.2em}\textbackslash verbatim@addtoline\newline
+\hspace*{1.2em}\textbackslash verbatim@finish\newline
+\hspace*{1.2em}\textbackslash def\textbackslash verbatim@processline\{\textbackslash immediate\textbackslash write\textbackslash tempf{}ile\{\textbackslash the\textbackslash verbatim@line\}\}\%\newline
+\hspace*{1.2em}\textbackslash verbatim@start\newline
+\}\{\newline
+\hspace*{1.2em}\textbackslash immediate\textbackslash closeout\textbackslash tempf{}ile\newline
+\hspace*{1.2em}\textbackslash @esphack\newline
+\hspace*{1.2em}\textbackslash endgroup\newline
+\hspace*{1.2em}\textbackslash immediate\textbackslash write18\{logo -{}-mode=latex temp.logo\}\newline
+\hspace*{1.2em}\{\textbackslash noindent\textbackslash ttfamily\textbackslash input\{temp.logo.tex\}\}\newline
+\}\newline
+\textbackslash makeatother
+\end{linenumbers}
+
+Quelques commentaires :
+\begin{itemize}
+  \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier ; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer ; 
+  \item ligne 3, le nom d'environnement est défini : bien entendu, vous pouvez changer ce nom pour l'adapter au nom de votre compilateur ;
+  \item ligne 8, attention, après la commande \tpp{\textbackslash catcode}, c'est un accent aigu \tpp{\`{}} ;
+  \item ligne 19, l'affichage de la ligne traduite est effectuée ; à cet endroit, nous pouvez utiliser toutes les commandes de formattage, comme par exemple les paquetages \tpp{lineno} et \tpp{mdframed} cités plus haut.
+\end{itemize}
+
+Par exemple, à la place de la ligne 19, on peut utiliser l'environnement \tpp{siderules} (paquetage \tpp{mdframed}) et écrire :
+
+\texttt{
+\textbackslash noindent\textbackslash begin\{siderules\}\textbackslash ttfamily\textbackslash input\{temp.logo.tex\}\textbackslash end\{siderules\}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Affichage du code en ligne}
+
+Pour afficher du code en ligne, on va définir une commande \tpp{\textbackslash logo} qui s'utilise comme la commande verbatim en ligne \tpp{\textbackslash verb} ; si on écrit :
+
+\begin{verbatim}
+Les mots réservés de LOGO sont \logo+BEGIN+, \logo+END+, ..., les délimiteurs
+sont \logo+;+ et \logo+.+.
+\end{verbatim}
+
+Le délimiteur utilisé ici est \tpp{+}, mais, comme pour \tpp{\textbackslash verb}, tout caractère peut être utilisé, à condition qu'il n'apparaisse pas dans la chaîne à formatter. On obtient donc :
+
+Les mots réservés de LOGO sont \colorbox{gray!6}{\ttfamily\textcolor{blue}{\bf BEGIN}}, \colorbox{gray!6}{\ttfamily\textcolor{blue}{\bf END}}, ..., les délimiteurs sont \colorbox{gray!6}{\ttfamily\textcolor{brown}{\bf ;}} et \colorbox{gray!6}{\ttfamily\textcolor{brown}{\bf .}}.
+
+Comme pour l'affichage d'un listing, nous avons besoin du paquetage \tpp{verbatim}. Rappelons qu'il est conseillé d'inclure ce paquetage juste après la déclaration \tpp{\textbackslash documentclass} :
+
+{\singlespacing
+\begin{verbatim}
+\documentclass [...] {...}
+\usepackage{verbatim}
+...
+\end{verbatim}
+}
+
+La définition de commande \tpp{\textbackslash logo} est la suivante :
+
+
+%\begin{verbatim}
+%\makeatletter
+%\newcommand*\ggs{%
+%  \@bsphack%
+%  \begingroup%
+%  \let\do\@makeother\dospecials%
+%  \let\do\do@noligs\verbatim@nolig@list%
+%  \catcode`\^^M=15\relax%
+%  \@vobeyspaces%
+%  \@ggs{\temporary}%
+%}%
+%\newcommand\@ggs[2]{%
+%  \catcode`-=12\relax%
+%  \catcode`<=12\relax%
+%  \catcode`>=12\relax%
+%  \catcode`,=12\relax%
+%  \catcode`'=12\relax%
+%  \catcode``=12\relax%
+%  \catcode`#2\active%
+%  \catcode`~\active%
+%  \lccode`\~`#2\relax%
+%  \lowercase{%
+%    \begingroup%
+%    \def\@tempa##1~{%
+%      \edef\@tempa{%
+%        \noexpand\@ifstar{%
+%          \noexpand\@@ggs\noexpand\visiblespaces{##1}%
+%        }{%
+%          \noexpand\@@ggs\noexpand\whitespaces{##1}%
+%        }%
+%      }%
+%      \expandafter\endgroup%
+%      \expandafter\DeclareRobustCommand%
+%      \expandafter*%
+%      \expandafter#1%
+%      \expandafter{%
+%      \@tempa}%
+%      \@esphack%
+%      \immediate\openout\tempfile=temp.galgas%
+%      \immediate\write\tempfile{##1}%
+%      \immediate\closeout\tempfile%
+%      \immediate\write18{galgas --mode=latex temp.galgas}%
+%      \colorbox{gray!6}{\ttfamily\input{temp.galgas.tex}\unskip}%
+%    }%
+%  }%
+%  \ifnum`#2=`\~\else\@makeother\~\fi%
+%  \expandafter\endgroup%
+%  \@tempa%
+%}%
+%\newcommand*\@@ggs[2]{%
+%  \relax\ifmmode\hbox\else\leavevmode\null\fi%
+%  \bgroup#1\frenchspacing\verbatim@font\verbtextstyle#2\egroup%
+%}%
+%\let\verbtextstyle\relax%
+%\newcommand*\visiblespaces{\chardef\ 32\relax}%
+%\newcommand*\whitespaces{\let\ \@@space}%
+%\let\@@space\ %
+%\makeatother
+%\end{verbatim}
+
+
+
+
+\resetlinenumber
+\begin{linenumbers}\singlespacing\ttfamily
+\textbackslash newwrite\textbackslash tempf{}ile\newline
+\textbackslash makeatletter\newline
+\textbackslash newcommand*\textbackslash \textcolor{blue}{logo}\{\%\newline
+\hspace*{1.2em}\textbackslash @bsphack\%\newline
+\hspace*{1.2em}\textbackslash begingroup\%\newline
+\hspace*{1.2em}\textbackslash let\textbackslash do\textbackslash @makeother\textbackslash dospecials\%\newline
+\hspace*{1.2em}\textbackslash let\textbackslash do\textbackslash do@noligs\textbackslash verbatim@nolig@list\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{}\textbackslash $\wedge\wedge$M=15\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash @vobeyspaces\%\newline
+\hspace*{1.2em}\textbackslash @\textcolor{blue}{logo}\{\textbackslash temporary\}\%\newline
+\}\%\newline
+\textbackslash newcommand\textbackslash @\textcolor{blue}{logo}[2]\{\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{}-=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{}<=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{}>=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{},=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{}\textquotesingle=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{}\`{}=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{}\#2\textbackslash active\%\newline
+\hspace*{1.2em}\textbackslash catcode\`{}$\sim$\textbackslash active\%\newline
+\hspace*{1.2em}\textbackslash lccode\`{}\textbackslash $\sim$\`{}\#2\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash lowercase\{\%\newline
+\hspace*{2.4em}\textbackslash begingroup\%\newline
+\hspace*{2.4em}\textbackslash def\textbackslash @tempa\#\#1$\sim$\{\%\newline
+\hspace*{4.8em}\textbackslash edef\textbackslash @tempa\{\%\newline
+\hspace*{4.8em}\textbackslash noexpand\textbackslash @ifstar\{\%\newline
+\hspace*{6.0em}\textbackslash noexpand\textbackslash @@\textcolor{blue}{logo}\textbackslash noexpand\textbackslash visiblespaces\{\#\#1\}\%\newline
+\hspace*{4.8em}\}\{\%\newline
+\hspace*{6.0em}\textbackslash noexpand\textbackslash @@\textcolor{blue}{logo}\textbackslash noexpand\textbackslash whitespaces\{\#\#1\}\%\newline
+\hspace*{4.8em}\}\%\newline
+\hspace*{3.6em}\}\%\newline
+\hspace*{3.6em}\textbackslash expandafter\textbackslash endgroup\%\newline
+\hspace*{3.6em}\textbackslash expandafter\textbackslash DeclareRobustCommand\%\newline
+\hspace*{3.6em}\textbackslash expandafter*\%\newline
+\hspace*{3.6em}\textbackslash expandafter\#1\%\newline
+\hspace*{3.6em}\textbackslash expandafter\{@tempa\}\%\newline
+\hspace*{3.6em}\textbackslash @esphack\%\newline
+\hspace*{3.6em}\textbackslash immediate\textbackslash openout\textbackslash tempf{}ile=temp.logo\%\newline
+\hspace*{3.6em}\textbackslash immediate\textbackslash write\textbackslash tempf{}ile\{\#\#1\}\%\newline
+\hspace*{3.6em}\textbackslash immediate\textbackslash closeout\textbackslash tempf{}ile\%\newline
+\hspace*{3.6em}\textbackslash immediate\textbackslash write18\{logo -{}-mode=latex temp.logo\}\%\newline
+\hspace*{3.6em}\textbackslash colorbox\{gray!6\}\{\textbackslash ttfamily\textbackslash input\{temp.logo.tex\}\textbackslash unskip\}\%\newline
+\hspace*{2.4em}\}\%\newline
+\hspace*{1.2em}\}\%\newline
+\hspace*{1.2em}\textbackslash ifnum\`{}\#2=\`{}\textbackslash $\sim$\textbackslash else\textbackslash @makeother\textbackslash $\sim$\textbackslash f{}i\%\newline
+\hspace*{1.2em}\textbackslash expandafter\textbackslash endgroup\%\newline
+\hspace*{1.2em}\textbackslash @tempa\%\newline
+\}\%\newline
+\textbackslash newcommand*\textbackslash @@\textcolor{blue}{logo}[2]\{\%\newline
+\hspace*{1.2em}\textbackslash relax\textbackslash ifmmode\textbackslash hbox\textbackslash else\textbackslash leavevmode\textbackslash null\textbackslash f{}i\%\newline
+\hspace*{1.2em}\textbackslash bgroup\#1\textbackslash frenchspacing\textbackslash verbatim@font\textbackslash verbtextstyle\#2\textbackslash egroup\%\newline
+\}\%\newline
+\textbackslash let\textbackslash verbtextstyle\textbackslash relax\%\newline
+\textbackslash newcommand*\textbackslash visiblespaces\{\textbackslash chardef\textbackslash  32\textbackslash relax\}\%\newline
+\textbackslash newcommand*\textbackslash whitespaces\{\textbackslash let\textbackslash  \textbackslash @@space\}\%\newline
+\textbackslash let\textbackslash @@space\textbackslash\textvisiblespace\%\newline
+\textbackslash makeatother
+\end{linenumbers}
+
+Commentaires :
+\begin{itemize}
+  \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier ; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer ; 
+  \item ligne 3, 10, 12, 27, 29 et 49 : le nom \tpp{logo} apparaît six fois (en bleu pour être repéré plus facilement) : si vous changez le nom de la commande, veillez à en remplacer toutes les occurrences ;
+  \item une difficulté est d'assurer que la commande n'insère aucune espace supplémentaire : c'est pour cela que toutes les lignes se terminent par \tpp{\%}\footnote{En fait, uniquement certaines lignes doivent être obligatoirement terminées par \tpp{\%} ; pour simplifier, on applique cette terminaison à toutes.} ;
+  \item de plus, la commande \tpp{\textbackslash input} (ligne 42) insère toujours une espace après elle, espace que l'on supprime par \tpp{\textbackslash unskip} ;
+    \item les lignes 53 à 56 définissent la commande \tpp{\textbackslash verbtextstyle} ; si vous définissez plusieurs commandes d'affichage en ligne, ces lignes ne doivent pas être dupliquées ;
+    \item enfin le plus intéressant : ligne 38, le fichier \tpp{temp.logo} est ouvert en écriture ;
+    \item ligne 39, le contenu de la commande est écrit dans ce fichier ;
+    \item ligne 40, le fichier est fermé ;
+    \item ligne 41, le compilateur est appelé pour effectuer la traductio en \LaTeX ;
+    \item ligne 42, l'affichage du code traduit est affiché.
+\end{itemize}
+
+Noter bien que la ligne 42 est une commande générale d'affichage : ici on a choisi un fond gris, et une police à échappement fixe.
+
+Enfin, la commande \tpp{\textbackslash logo} ne peut pas être utilisée dans les notes en bas de page (commande \tpp{\textbackslash footnote}), ni en argument d'une macro.
+
+
