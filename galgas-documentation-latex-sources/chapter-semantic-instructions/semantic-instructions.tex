@@ -1581,9 +1581,9 @@ En GALGAS, une \emph{procédure de classe} est est une procédure définie dans 
 
 Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \ggs+@string+, la procédure de classe \ggs+deleteFile+ est présentée comme suit :
 
-\texttt{
+{\noindent\ttfamily
 \textbf{proc} @string deleteFile\\
-\hspace*{1cm}?@string inFilePath\\
+\hspace*{3em}?@string inFilePath\\
 }
 
 Aussi, elle peut être appelée par :
@@ -1620,10 +1620,9 @@ Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de
 setter setCharacterAtIndex
   ?@char inChar
   ?@uint inIndex
-}
 \end{galgas}
 
-Aussi, ce \emph{setter} peut être appelée par :
+Aussi, ce \emph{setter} peut être appelé par :
 \begin{galgas}
 @string s = ...
 [!?s setCharacterAtIndex !'a' !4]
@@ -1833,7 +1832,7 @@ warning nom : message_alerte
 
 L'instruction \ggs+with+ permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre quatre formes différentes, suivi que l'on veuille modifier la table ou non, et suivant que l'on veut tolérer l'échec de la recherche ou non.
 
-Accès en lecture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureTolerante}) :
+\textbf{Première forme.} Accès en lecture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureTolerante}) :
 \begin{galgas}
 with expression_cle prefixe_optionnel in expression_table
 do
@@ -1843,7 +1842,7 @@ else
 end
 \end{galgas}
 
-Accès en lecture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureSansTolerance}) :
+\textbf{Deuxième forme.} Accès en lecture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureSansTolerance}) :
 \begin{galgas}
 with expression_cle prefixe_optionnel in expression_table
 error message methode_recherche
@@ -1854,7 +1853,7 @@ end
 
 
 
-Accès en lecture/écriture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureTolerante}) :
+\textbf{Troisième forme.} Accès en lecture/écriture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureTolerante}) :
 \begin{galgas}
 with expression_cle prefixe_optionnel in !?cible_table
 do
@@ -1864,7 +1863,7 @@ else
 end
 \end{galgas}
 
-Accès en lecture/écriture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureSansTolerance}) :
+\textbf{Quatrième forme.} Accès en lecture/écriture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureSansTolerance}) :
 \begin{galgas}
 with expression_cle prefixe_optionnel in !?cible_table
 error message methode_recherche

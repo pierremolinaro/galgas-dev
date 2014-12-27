@@ -2,7 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Tutorial}
+\chapter{Tutorial : le langage LOGO}
 %-------------------------------------------------------------
 
 Le but de ce tutorial est de construire en utilisant GALGAS un compilateur d’un langage inspiré de LOGO, qui fournit en sortie un fichier SVG contenant les tracés définis par un programme source LOGO.
@@ -16,7 +16,7 @@ Vous trouverez des informations sur le format SVG sur la page :
 
 \url{http://www.canarlake.org/index.cgi?theme=svg}
 
-\section{Présentation du langage LOGO}
+\sectionLabel{Présentation du langage LOGO}{presentation-logo}
 
 Vous trouverez une description précise du langage à la fin de cette section. Un programme LOGO décrit le déplacement d'une tortue dans un plan. Celle-ci peut effectuer des déplacements en ligne droite et des rotations sur place. La tortue est munie d'un crayon, qui peut être abaissé ou levé. Un déplacement provoque le tracé d'un segment de droite si le crayon est abaissé.
 
@@ -271,7 +271,7 @@ Les mots réservés sont les identificateurs suivants : \texttt{PROGRAM}, \textt
 
 Les constantes littérales entières sont écrites en décimal (une séquence non vide de chiffres décimaux).
 
-Les séparateurs sont tous les caractères compris entre le point de code Unicode \texttt{\textquotesingle\textbackslash u0001\textquotesingle} et l’espace (point de code Unicode \texttt{\textquotesingle\textbackslash 0020\textquotesingle}), ce qui inclut la tabulation horizontale et les différentes formes de la fin de ligne.
+Les séparateurs sont tous les caractères compris entre le point de code Unicode \texttt{\textquotesingle\textbackslash u0001\textquotesingle} et l’espace (point de code \texttt{\textquotesingle\textbackslash u0020\textquotesingle}), ce qui inclut la tabulation horizontale et les différentes formes de la fin de ligne.
 
 Les délimiteurs sont le point ('.') et le point virgule (';').
 
@@ -770,7 +770,7 @@ Pour vous aider, voici une écriture possible de la dérivation de l'axiome :
 
 \begin{galgas}
 rule <start_symbol> {
-#-- Definition des routines
+#-- Définition des routines
   $PROGRAM$
   repeat
   while
