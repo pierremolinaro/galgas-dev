@@ -73,12 +73,16 @@ echo "---------------- REMOVE PROJECT --------------------------" &&
 cd ${DIR} &&
 rm -fr ${CREATE_PROJECT_TEST_DIR} &&
 echo "---------------- SUCCES --------------------------"
+#-------------------- VŽrifier les programmes d'exemple
+${DIR}/sample_code/-build-all-macosx.command &&
+#-------------------- ExŽcuter les tests
+${DIR}/testsuite/_run_testsuite.command &&
 #-------------------- Construire la documentation Latex
 sed "s/GALGASCURRENTVERSION/${VERSION_GALGAS}/g" ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex > ${DIR}/temp &&
 cp ${DIR}/temp ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex &&
 rm ${DIR}/temp &&
-cd ${DIR}/galgas/galgas-documentation-latex-sources && ./build-color.command &&
-cd ${DIR} && cp galgas/galgas-documentation-latex-sources/galgas-book-color.pdf galgas-book.pdf &&
+cd ${DIR}/galgas/galgas-documentation-latex-sources && ./-build.command &&
+cd ${DIR} && cp galgas/galgas-documentation-latex-sources/galgas-book.pdf galgas-book.pdf &&
 #-------------------- Creer l'archive de l'executable windows (release et debug)
 cd ${DIR}/galgas/makefile-win32-on-macosx/ && python ./build.py &&
 cp ${DIR}/galgas/makefile-win32-on-macosx/galgas.exe ${DIR}/galgas.exe &&

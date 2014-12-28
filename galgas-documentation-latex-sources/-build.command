@@ -1,6 +1,8 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
+cd $DIR/../makefile-macosx && make galgas -j `sysctl -n hw.ncpu` &&
+PATH=$DIR/../makefile-macosx:$PATH &&
 cd $DIR &&
 rm -f galgas-book.pdf ref.* galgas-book.ilg galgas-book.ind &&
 rm -f galgas-book.aux galgas-book.idx galgas-book.lof galgas-book.lot galgas-book.toc &&
@@ -25,5 +27,7 @@ do
   /usr/texbin/pdflatex --file-line-error --shell-escape galgas-book.tex &&
   iteration=$((iteration+=1))
 done &&
+rm -f galgas-book.aux galgas-book.idx galgas-book.lof galgas-book.lot galgas-book.toc &&
+rm -f galgas-book.log galgas-book.ilg galgas-book.ind galgas-book.out galgas-book.synctex.gz &&
 rm -f ref.* temp.galgas temp.galgas.tex &&
 echo "---------------- SUCCES $iteration iterations"
