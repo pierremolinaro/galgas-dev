@@ -81,7 +81,7 @@ echo "---------------- SUCCES --------------------------"
 sed "s/GALGASCURRENTVERSION/${VERSION_GALGAS}/g" ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex > ${DIR}/temp &&
 cp ${DIR}/temp ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex &&
 rm ${DIR}/temp &&
-cd ${DIR}/galgas/galgas-documentation-latex-sources && ./-build.command &&
+${DIR}/galgas/galgas-documentation-latex-sources/-build.command &&
 cd ${DIR} && cp galgas/galgas-documentation-latex-sources/galgas-book.pdf galgas-book.pdf &&
 #-------------------- Creer l'archive de l'executable windows (release et debug)
 cd ${DIR}/galgas/makefile-win32-on-macosx/ && python ./build.py &&
