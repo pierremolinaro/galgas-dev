@@ -55,7 +55,8 @@ const utf32 C_Compiler::kEndOfSourceLexicalErrorMessage [] = {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_Compiler::performGeneration (void) {
-  return (! gOption_galgas_5F_builtin_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue) && executionModeIsNormal () ;
+  return (! gOption_galgas_5F_builtin_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue)
+      && (executionMode () == kExecutionModeNormal) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -1,0 +1,10 @@
+gui cocoa {
+  with option logo_options
+
+  with lexique logo_lexique {
+    fileExtension: "logo"
+    title: "Source"
+    blockComment : "#"
+  }
+
+}

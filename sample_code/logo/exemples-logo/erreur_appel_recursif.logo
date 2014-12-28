@@ -1,0 +1,12 @@
+# La compilation de ce fichier doit
+# provoquer une erreur semantique
+# 'routine indefinie' sur l'instruction CALL
+PROGRAM
+
+  ROUTINE routineRecursive
+  BEGIN
+    CALL routineRecursive;
+  END
+  
+BEGIN
+END.

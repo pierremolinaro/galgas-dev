@@ -7277,32 +7277,51 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
           "            routine_" ;
         result << GALGAS_string ("programRule_").add_operation (index_4257_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 95)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 95)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 95)).stringValue () ;
         result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
+          "          }\n"
+          "          switch (executionMode ()) {\n"
+          "          case kExecutionModeNormal :\n"
+          "            routine_" ;
+        result << GALGAS_string ("programRule_").add_operation (index_4257_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 99)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 99)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 99)).stringValue () ;
+        result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
+          "            break ;\n"
+          "          case kExecutionModeLexicalAnalysisOnly :\n"
+          "            commonLexique->onTheFlyRunTimeError (\"Cannot handle \\\"--mode=lexical-only\\\" option: no grammar in program RULE\" COMMA_HERE) ;\n"
+          "            break ;\n"
+          "          case kExecutionModeSyntaxAnalysisOnly :\n"
+          "            commonLexique->onTheFlyRunTimeError (\"Cannot handle \\\"--mode=syntax-only\\\" option: no grammar in program RULE\" COMMA_HERE) ;\n"
+          "            break ;\n"
+          "          case kExecutionModeIndexing :\n"
+          "            commonLexique->onTheFlyRunTimeError (\"Cannot handle \\\"--mode=indexing\\\" option: no grammar in program RULE\" COMMA_HERE) ;\n"
+          "            break ;\n"
+          "          case kExecutionModeLatex :\n"
+          "            commonLexique->onTheFlyRunTimeError (\"Cannot handle \\\"--mode=latex\\\" option: no grammar in program RULE\" COMMA_HERE) ;\n"
+          "            break ;\n"
           "          }\n" ;
       }else if (kBoolFalse == test_0) {
         result << "          switch (executionMode ()) {\n"
           "          case kExecutionModeNormal :\n"
           "            routine_" ;
-        result << GALGAS_string ("programRule_").add_operation (index_4257_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 100)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 100)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 100)).stringValue () ;
+        result << GALGAS_string ("programRule_").add_operation (index_4257_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 117)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 117)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 117)).stringValue () ;
         result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
           "            break ;\n"
           "          case kExecutionModeLexicalAnalysisOnly :\n"
           "            cGrammar_" ;
-        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 103)).stringValue () ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 120)).stringValue () ;
         result << "::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "            break ;\n"
           "          case kExecutionModeSyntaxAnalysisOnly :\n"
           "            cGrammar_" ;
-        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 106)).stringValue () ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 123)).stringValue () ;
         result << "::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "            break ;\n"
           "          case kExecutionModeIndexing :\n"
           "            cGrammar_" ;
-        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 109)).stringValue () ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 126)).stringValue () ;
         result << "::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "            break ;\n"
           "          case kExecutionModeLatex :\n"
           "            cGrammar_" ;
-        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 112)).stringValue () ;
+        result << enumerator_4257.current_mIndexingGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 129)).stringValue () ;
         result << "::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "            break ;\n"
           "          }\n" ;

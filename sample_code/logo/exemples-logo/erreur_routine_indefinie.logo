@@ -1,0 +1,8 @@
+# La compilation de ce fichier doit
+# provoquer une erreur semantique
+# 'routine indefinie' sur l'instruction CALL
+PROGRAM
+
+BEGIN
+  CALL routineNonDefinie;
+END.

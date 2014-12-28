@@ -1,0 +1,106 @@
+lexique logo_lexique {
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   Identifiers and keywords                                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+
+@string tokenString
+
+style keywordsStyle -> "Keywords"
+
+$identifier$ ! tokenString error message "an identifier"
+
+#--- This is the keyword list
+list keyWordList style keywordsStyle error message "the '%K' keyword" {
+  "PROGRAM", "ROUTINE", "BEGIN", "END", "FORWARD",
+  "ROTATE",  "CALL",    "PEN",   "UP",  "DOWN"
+}
+
+rule 'a'->'z' |  'A'->'Z' {
+  repeat
+    enterCharacterIntoString (!?tokenString !*)
+  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  end
+  send search tokenString in keyWordList default $identifier$
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   Literal decimal integers                                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+
+style integerStyle -> "Integer Constants"
+@uint uint32value
+$integer$ !uint32value style integerStyle error message "a 32-bit unsigned decimal number"
+
+message decimalNumberTooLarge : "decimal number too large"
+message internalError : "internal error"
+
+rule '0'->'9' {
+  enterCharacterIntoString (!?tokenString !*)
+  repeat
+  while '0'->'9' :
+    enterCharacterIntoString (!?tokenString !*)
+  while '_' :
+  end
+  convertDecimalStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError)
+  send $integer$
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   Literal character strings                                                                                          *
+#----------------------------------------------------------------------------------------------------------------------*
+
+style stringStyle -> "String Constants"
+$literal_string$ ! tokenString style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
+
+
+message incorrectStringEnd : "string does not end with '\"'"
+
+rule '"' {
+  repeat
+   while ' ' | '!' | '#'-> '\uFFFD' :
+    enterCharacterIntoString (!?tokenString !*)
+  end
+  select
+  case '"' :
+    send $literal_string$
+  default
+    error incorrectStringEnd
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   Delimiters                                                                                                         *
+#----------------------------------------------------------------------------------------------------------------------*
+
+style delimitersStyle -> "Delimiters"
+list delimitorsList style delimitersStyle error message "the '%K' delimitor" {
+  ".", ";"
+}
+
+rule list delimitorsList
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   Comments                                                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+
+style commentStyle -> "Comments"
+$comment$ style commentStyle %nonAtomicSelection error message "a comment"
+rule '#' {
+  repeat
+  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
+  end
+  drop $comment$
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   Separators                                                                                                         *
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule '\u0001' -> ' ' {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+}
+

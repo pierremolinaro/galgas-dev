@@ -205,7 +205,7 @@ style integerStyle -> "Integer Constants"
 $integer$ !uint32value style integerStyle ...
 \end{galgas}
 
-À chaque style, correspond une commande \LaTeX obtenue en préfixant le nom du style par un anti-slash \tpp{\textbackslash}\footnote{Les chiffres et le caractère de soulignement \tpp{\_} sont interdits dans les nom de style.}. Si aucun style n'est défini par un terminal particulier, il est affiché avec le style par défaut : c'est le cas des identificateurs LOGO dans les listings précédents.
+À chaque style, correspond une commande \LaTeX obtenue en préfixant le nom du style par un anti-slash \tpp{\textbackslash}\footnote{Les chiffres et le caractère de soulignement \tpp{\_} sont interdits dans les noms de style.}. Si aucun style n'est défini par un terminal particulier, il est affiché avec le style par défaut : c'est le cas des identificateurs LOGO dans les listings précédents.
 
 Noter que l'affichage des commentaires nécessite l'utilisation conjointe d'un style particulier et de l'instruction lexicale \ggs+drop+ (\refSubsectionPage{instructionLexicaleDrop}) ; pour le langage LOGO :
 
@@ -322,7 +322,7 @@ La définition de l'environnement \tpp{logocode} est la suivante :
 \begin{linenumbers}\singlespacing\ttfamily
 \textbackslash newwrite\textbackslash tempf{}ile\newline
 \textbackslash makeatletter\newline
-\textbackslash newenvironment\{logocode\}\{\%\newline
+\textbackslash newenvironment\{\textcolor{blue}{logocode}\}\{\%\newline
 \hspace*{1.2em}\textbackslash begingroup\newline
 \hspace*{1.2em}\textbackslash @bsphack\newline
 \hspace*{1.2em}\textbackslash immediate\textbackslash openout\textbackslash tempf{}ile=temp.logo\%\newline
@@ -346,7 +346,7 @@ La définition de l'environnement \tpp{logocode} est la suivante :
 Quelques commentaires :
 \begin{itemize}
   \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier ; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer ; 
-  \item ligne 3, le nom d'environnement est défini : bien entendu, vous pouvez changer ce nom pour l'adapter au nom de votre compilateur ;
+  \item ligne 3, le nom d'environnement (en bleu) est défini : bien entendu, vous pouvez changer ce nom pour l'adapter au nom de votre compilateur ;
   \item ligne 8, attention, après la commande \tpp{\textbackslash catcode}, c'est un accent aigu \tpp{\`{}} ;
   \item ligne 19, l'affichage de la ligne traduite est effectuée ; à cet endroit, nous pouvez utiliser toutes les commandes de formattage, comme par exemple les paquetages \tpp{lineno} et \tpp{mdframed} cités plus haut.
 \end{itemize}
@@ -521,6 +521,7 @@ La définition de commande \tpp{\textbackslash logo} est la suivante :
 Commentaires :
 \begin{itemize}
   \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier ; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer ; 
+  \item ligne 8, 13 à 21 et 45 : attention, c'est un accent aigu \tpp{\`{}} ;
   \item ligne 3, 10, 12, 27, 29 et 49 : le nom \tpp{logo} apparaît six fois (en bleu pour être repéré plus facilement) : si vous changez le nom de la commande, veillez à en remplacer toutes les occurrences ;
   \item une difficulté est d'assurer que la commande n'insère aucune espace supplémentaire : c'est pour cela que toutes les lignes se terminent par \tpp{\%}\footnote{En fait, uniquement certaines lignes doivent être obligatoirement terminées par \tpp{\%} ; pour simplifier, on applique cette terminaison à toutes.} ;
   \item de plus, la commande \tpp{\textbackslash input} (ligne 42) insère toujours une espace après elle, espace que l'on supprime par \tpp{\textbackslash unskip} ;
@@ -528,7 +529,7 @@ Commentaires :
     \item enfin le plus intéressant : ligne 38, le fichier \tpp{temp.logo} est ouvert en écriture ;
     \item ligne 39, le contenu de la commande est écrit dans ce fichier ;
     \item ligne 40, le fichier est fermé ;
-    \item ligne 41, le compilateur est appelé pour effectuer la traductio en \LaTeX ;
+    \item ligne 41, le compilateur est appelé pour effectuer la traduction en \LaTeX ;
     \item ligne 42, l'affichage du code traduit est affiché.
 \end{itemize}
 

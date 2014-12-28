@@ -94,6 +94,23 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             %          if (! executionModeIsIndexing ()) {\n%
             %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
             %          }\n%
+            %          switch (executionMode ()) {\n%
+            %          case kExecutionModeNormal :\n%
+            %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+            %            break ;\n%
+            %          case kExecutionModeLexicalAnalysisOnly :\n%
+            %            commonLexique->onTheFlyRunTimeError ("Cannot handle \"--mode=lexical-only\" option: no grammar in program RULE" COMMA_HERE) ;\n%
+            %            break ;\n%
+            %          case kExecutionModeSyntaxAnalysisOnly :\n%
+            %            commonLexique->onTheFlyRunTimeError ("Cannot handle \"--mode=syntax-only\" option: no grammar in program RULE" COMMA_HERE) ;\n%
+            %            break ;\n%
+            %          case kExecutionModeIndexing :\n%
+            %            commonLexique->onTheFlyRunTimeError ("Cannot handle \"--mode=indexing\" option: no grammar in program RULE" COMMA_HERE) ;\n%
+            %            break ;\n%
+            %          case kExecutionModeLatex :\n%
+            %            commonLexique->onTheFlyRunTimeError ("Cannot handle \"--mode=latex\" option: no grammar in program RULE" COMMA_HERE) ;\n%
+            %            break ;\n%
+            %          }\n%
             else
             %          switch (executionMode ()) {\n%
             %          case kExecutionModeNormal :\n%
