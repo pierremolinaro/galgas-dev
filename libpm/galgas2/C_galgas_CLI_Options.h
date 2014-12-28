@@ -80,8 +80,6 @@ typedef enum {
 
 EnumExecutionMode executionMode (void) ;
 
-bool executionModeIsNormal (void) ;
-
 bool executionModeIsLexicalAnalysisOnly (void) ;
 
 bool executionModeIsSyntaxAnalysisOnly (void) ;

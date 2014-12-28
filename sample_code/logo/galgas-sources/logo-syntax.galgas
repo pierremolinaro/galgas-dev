@@ -1,0 +1,109 @@
+syntax logo_syntax (logo_lexique) {
+
+  #--------------------------------------------------------------------------------------------------------------------*
+  
+  rule <pen_direction> ?!@instructionList il {
+    select
+      $UP$
+      @instruction ins = @penUp.new
+      il += !ins
+    or
+      $DOWN$
+      @instruction ins = @penDown.new
+      il += !ins
+    end
+  }
+
+  #--------------------------------------------------------------------------------------------------------------------*
+
+  rule <instruction> ?!@routineMap ioTableRoutines ?!@instructionList il {
+    select
+      $FORWARD$
+      $integer$ ?let @luint param
+      let @instruction ins = @forward.new {!param}
+      il += !ins
+      $;$
+    or
+      $ROTATE$
+      $integer$ ?let @luint param
+      $;$
+      let @instruction ins = @rotate.new {!param}
+      il += !ins
+    or
+      $PEN$
+      <pen_direction> !? il
+      $;$
+    or
+      $CALL$
+      $identifier$ ?let @lstring routineName
+      @instructionList routineContent = {}
+      [ioTableRoutines searchKey !routineName ?routineContent]
+      for i in routineContent do
+        il += !i.mInstruction
+      end
+      $;$
+    end%select
+  }
+
+  #--------------------------------------------------------------------------------------------------------------------*
+
+  rule <instruction_list> ?!@routineMap ioTableRoutines ?!@instructionList il {
+    repeat
+      while
+        <instruction> !? ioTableRoutines !? il
+    end %repeat
+  }
+
+  #--------------------------------------------------------------------------------------------------------------------*
+
+  rule <routine_definition> ?!@routineMap ioTableRoutines {
+    $ROUTINE$
+    $identifier$ ?let @lstring routineName
+    $BEGIN$
+    @instructionList il = {}
+    <instruction_list> !? ioTableRoutines !? il
+    $END$
+  #--- Insertion dans la table
+    [!?ioTableRoutines insertKey !routineName !il]
+  }
+
+  #--------------------------------------------------------------------------------------------------------------------*
+
+  rule <start_symbol> {
+  #-- Définition des routines
+    $PROGRAM$
+    @routineMap tableRoutines = {}
+    @instructionList instructions = {}
+    repeat
+    while
+      <routine_definition> !? tableRoutines
+    end
+  #--- Programme principal
+    $BEGIN$
+    <instruction_list> !? tableRoutines !? instructions
+    $END$
+    $.$
+  #--- Compute SVG instructions
+    @bool pendown = false
+    @double x = 0.0
+    @double y = 0.0
+    @double angle = 0.0 # Angle en degrés
+    @string SVG = ""
+    for i in instructions do
+      [i.mInstruction codeDisplay !?pendown !?x !?y !?angle !?SVG]
+    end
+  #--- Output file
+    let @string sourceFilePath = @string.stringWithSourceFilePath
+    let @string code = [filewrapper generationTemplate.svg
+      ![sourceFilePath lastPathComponent]
+      !SVG
+    ]
+    [code writeToFile ![sourceFilePath stringByDeletingPathExtension] + ".svg"]
+  }
+
+  #--------------------------------------------------------------------------------------------------------------------*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+

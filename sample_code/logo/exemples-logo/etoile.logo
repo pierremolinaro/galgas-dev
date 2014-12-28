@@ -1,0 +1,25 @@
+PROGRAM
+
+  ROUTINE trace
+  BEGIN
+    FORWARD 70;
+    ROTATE 160;
+  END
+
+  ROUTINE trace3
+  BEGIN
+    CALL trace;
+    CALL trace;
+    CALL trace;
+  END
+
+BEGIN
+  FORWARD 200;
+  ROTATE 90;
+  FORWARD 300;
+  ROTATE 270;
+  PEN DOWN;
+  CALL trace3;
+  CALL trace3;
+  CALL trace3;
+END.

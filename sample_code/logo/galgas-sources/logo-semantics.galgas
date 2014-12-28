@@ -1,0 +1,116 @@
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+filewrapper generationTemplate in "."
+{}{}{
+ template svg "logo-svg.galgasTemplate"
+  ?@string TITLE
+  ?@string DRAWINGS
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+map @routineMap {
+  @instructionList mInstructionList
+  insert insertKey error message "the '%K' routine has been already declared"
+  search searchKey error message "the '%K' routine is not declared"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract class @instruction {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract method @instruction codeDisplay
+  ?!@bool ioPenDown
+  ?!@double unused ioX
+  ?!@double unused ioY
+  ?!@double unused ioAngle
+  ?!@string unused SVG
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @instructionList {
+  @instruction mInstruction ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @penUp : @instruction {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @penUp codeDisplay
+  ?!@bool ioPenDown
+  ?!@double unused ioX
+  ?!@double unused ioY
+  ?!@double unused ioAngle
+  ?!@string unused SVG
+{
+  ioPenDown = false
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @penDown : @instruction {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @penDown codeDisplay
+  ?!@bool ioPenDown
+  ?!@double unused ioX
+  ?!@double unused ioY
+  ?!@double unused ioAngle
+  ?!@string unused SVG
+{
+  ioPenDown = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @rotate : @instruction {
+  @luint mAngle
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @rotate codeDisplay
+  ?!@bool unused ioPenDown
+  ?!@double unused ioX
+  ?!@double unused ioY
+  ?!@double ioAngle
+  ?!@string unused SVG
+{
+  ioAngle = ioAngle + [[mAngle uint] double]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @forward : @instruction {
+  @luint mLength
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @forward codeDisplay
+  ?!@bool ioPenDown
+  ?!@double ioX
+  ?!@double ioY
+  ?!@double ioAngle
+  ?!@string SVG
+{
+  let @double x = ioX + [mLength double] * [ioAngle cosDegree]
+  let @double y = ioY + [mLength double] * [ioAngle sinDegree]
+  if ioPenDown then
+    SVG += "<line x1=\"" + ioX + "\" y1=\"" + ioY + "\" x2=\"" + x + "\" y2=\""
+        + y + "\" style=\"stroke:#1F56D2\" stroke-linecap=\"round\" />\n"
+  end
+  ioX = x
+  ioY = y
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

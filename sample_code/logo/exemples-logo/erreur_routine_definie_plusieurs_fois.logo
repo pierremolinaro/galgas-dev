@@ -1,0 +1,16 @@
+# La compilation de ce fichier doit
+# provoquer une erreur semantique
+# 'routine deja definie' sur l'en tete
+# de la seconde routine
+PROGRAM
+
+  ROUTINE routineDefiniePlusieursFois
+  BEGIN
+  END
+  
+  ROUTINE routineDefiniePlusieursFois
+  BEGIN
+  END
+  
+BEGIN
+END.

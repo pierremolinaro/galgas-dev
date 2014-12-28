@@ -1,0 +1,23 @@
+project (0:0:1) -> "logo" {
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-x86linux32-on-macosx
+  %makefile-x86linux64-on-macosx
+  %makefile-win32-on-macosx
+  %makefile-msys32-on-windows
+  %Mavericks
+  %applicationBundleBase : "fr.what"
+  %codeblocks-windows
+  %codeblocks-linux-mac
+
+#--- Source files
+  "galgas-sources/logo-lexique.galgas"
+  "galgas-sources/logo-options.galgas"
+  "galgas-sources/logo-semantics.galgas"
+  "galgas-sources/logo-syntax.galgas"
+  "galgas-sources/logo-grammar.galgas"
+  "galgas-sources/logo-cocoa.galgas"
+  "galgas-sources/logo-program.galgas"
+}
+

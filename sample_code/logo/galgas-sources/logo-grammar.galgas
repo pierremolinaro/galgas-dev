@@ -1,0 +1,5 @@
+grammar logo_grammar "LL1" {
+  syntax logo_syntax
+  <start_symbol>
+}
+

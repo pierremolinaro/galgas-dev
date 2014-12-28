@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2006, ..., 2011 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2006, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -106,7 +106,7 @@ C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_mode ("galgas_cli
                                          "mode",
                                          0,
                                          "mode",
-                                         "'lexical-only' or 'syntax-only'",
+                                         "'lexical-only', 'syntax-only' or 'latex'",
                                          "") ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -146,12 +146,6 @@ void setExecutionMode (C_String & outErrorMessage) {
 
 EnumExecutionMode executionMode (void) {
   return gExecutionMode ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool executionModeIsNormal (void) {
-  return gExecutionMode == kExecutionModeNormal ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
