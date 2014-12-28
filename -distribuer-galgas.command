@@ -43,6 +43,10 @@ eolc -unix -D${DIR}/galgas -Eh -Ec -Ecpp -Em -Emm -Epy -Ebat -Emke -Fmakefile &&
 cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-lf.tar.bz2 &&
 eolc -dos -D${DIR}/galgas -Eh -Ec -Ecpp -Em -Emm -Epy -Ebat -Emke -Fmakefile &&
 cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-crlf.tar.bz2 &&
+#-------------------- VŽrifier les programmes d'exemple
+${DIR}/galgas/sample_code/-build-all-macosx.command &&
+#-------------------- ExŽcuter les tests
+${DIR}/galgas/testsuite/_run_testsuite.command &&
 #-------------------- Recompiler le projet Xcode
 cd ${DIR}/galgas/project-xcode-galgas && xcodebuild -project galgas-distribution.xcodeproj -target "GALGAS Cocoa" -configuration Default &&
 #-------------------- VŽrifier la crŽation de projet
@@ -73,10 +77,6 @@ echo "---------------- REMOVE PROJECT --------------------------" &&
 cd ${DIR} &&
 rm -fr ${CREATE_PROJECT_TEST_DIR} &&
 echo "---------------- SUCCES --------------------------"
-#-------------------- VŽrifier les programmes d'exemple
-${DIR}/../sample_code/-build-all-macosx.command &&
-#-------------------- ExŽcuter les tests
-${DIR}/../testsuite/_run_testsuite.command &&
 #-------------------- Construire la documentation Latex
 sed "s/GALGASCURRENTVERSION/${VERSION_GALGAS}/g" ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex > ${DIR}/temp &&
 cp ${DIR}/temp ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex &&
