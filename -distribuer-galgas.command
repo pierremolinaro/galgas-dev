@@ -74,9 +74,9 @@ cd ${DIR} &&
 rm -fr ${CREATE_PROJECT_TEST_DIR} &&
 echo "---------------- SUCCES --------------------------"
 #-------------------- VŽrifier les programmes d'exemple
-${DIR}/sample_code/-build-all-macosx.command &&
+${DIR}/../sample_code/-build-all-macosx.command &&
 #-------------------- ExŽcuter les tests
-${DIR}/testsuite/_run_testsuite.command &&
+${DIR}/../testsuite/_run_testsuite.command &&
 #-------------------- Construire la documentation Latex
 sed "s/GALGASCURRENTVERSION/${VERSION_GALGAS}/g" ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex > ${DIR}/temp &&
 cp ${DIR}/temp ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex &&
