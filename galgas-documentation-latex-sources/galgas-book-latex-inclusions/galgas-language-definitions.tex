@@ -11,18 +11,31 @@
 %   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\newcommand\keywordsStyle[1]{\textcolor{blue}{\textbf{#1}}}
-\newcommand\delimitersStyle[1]{\textcolor{brown}{\textbf{#1}}}
-\newcommand\selectorStyle[1]{\textcolor{orange}{#1}}
-\newcommand\terminalStyle[1]{\textcolor{orange}{#1}}
-\newcommand\nonTerminalStyle[1]{\textcolor{orange}{#1}}
-\newcommand\integerStyle[1]{\textcolor{brown}{#1}}
-\newcommand\floatStyle[1]{\textcolor{magenta}{#1}}
-\newcommand\characterStyle[1]{\textcolor{cyan}{#1}}
-\newcommand\stringStyle[1]{\textcolor{gray}{#1}}
-\newcommand\typeNameStyle[1]{\textcolor{gray}{#1}}
-\newcommand\attributeStyle[1]{\textcolor{pink}{#1}}
-\newcommand\commentStyle[1]{\textcolor{red}{#1}}
+\newcommand\keywordsStyleGalgas[1]{\textcolor{blue}{\textbf{#1}}}
+\newcommand\delimitersStyleGalgas[1]{\textcolor{brown}{\textbf{#1}}}
+\newcommand\selectorStyleGalgas[1]{\textcolor{orange}{#1}}
+\newcommand\terminalStyleGalgas[1]{\textcolor{orange}{#1}}
+\newcommand\nonTerminalStyleGalgas[1]{\textcolor{orange}{#1}}
+\newcommand\integerStyleGalgas[1]{\textcolor{brown}{#1}}
+\newcommand\floatStyleGalgas[1]{\textcolor{magenta}{#1}}
+\newcommand\characterStyleGalgas[1]{\textcolor{cyan}{#1}}
+\newcommand\stringStyleGalgas[1]{\textcolor{gray}{#1}}
+\newcommand\typeNameStyleGalgas[1]{\textcolor{gray}{#1}}
+\newcommand\attributeStyleGalgas[1]{\textcolor{pink}{#1}}
+\newcommand\commentStyleGalgas[1]{\textcolor{red}{#1}}
+
+\newcommand\keywordsStylegalgas[1]{\textcolor{blue}{\textbf{#1}}}
+\newcommand\delimitersStylegalgas[1]{\textcolor{brown}{\textbf{#1}}}
+\newcommand\selectorStylegalgas[1]{\textcolor{orange}{#1}}
+\newcommand\terminalStylegalgas[1]{\textcolor{orange}{#1}}
+\newcommand\nonTerminalStylegalgas[1]{\textcolor{orange}{#1}}
+\newcommand\integerStylegalgas[1]{\textcolor{brown}{#1}}
+\newcommand\floatStylegalgas[1]{\textcolor{magenta}{#1}}
+\newcommand\characterStylegalgas[1]{\textcolor{cyan}{#1}}
+\newcommand\stringStylegalgas[1]{\textcolor{gray}{#1}}
+\newcommand\typeNameStylegalgas[1]{\textcolor{gray}{#1}}
+\newcommand\attributeStylegalgas[1]{\textcolor{pink}{#1}}
+\newcommand\commentStylegalgas[1]{\textcolor{red}{#1}}
 
 \newmdenv[
   topline=false,
@@ -52,7 +65,7 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas --mode=latex temp.galgas}
+  \immediate\write18{galgas --mode=latex:Galgas temp.galgas}
   {\singlespacing\begin{siderules}\ttfamily\input{temp.galgas.tex}\end{siderules}}
 }
 \makeatother
@@ -60,6 +73,8 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 % COMMANDE \ggs : affichage de code en ligne galgas                                                                     *
 %-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{textcase}
 
 \makeatletter
 \newcommand*\ggs{%
@@ -81,16 +96,9 @@
   \catcode`#2\active%
   \catcode`~\active%
   \lccode`\~`#2\relax%
+  \begingroup%
   \lowercase{%
-    \begingroup%
     \def\@tempa##1~{%
-      \edef\@tempa{%
-        \noexpand\@ifstar{%
-          \noexpand\@@ggs\noexpand\visiblespaces{##1}%
-        }{%
-          \noexpand\@@ggs\noexpand\whitespaces{##1}%
-        }%
-      }%
       \expandafter\endgroup%
       \expandafter\DeclareRobustCommand%
       \expandafter*%
@@ -100,7 +108,7 @@
       \immediate\openout\tempfile=temp.galgas%
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
-      \immediate\write18{galgas --mode=latex temp.galgas}%
+      \immediate\write18{galgas --mode=latex:Galgas temp.galgas}%
       \colorbox{gray!6}{\ttfamily\input{temp.galgas.tex}\unskip}%
     }%
   }%
@@ -108,14 +116,6 @@
   \expandafter\endgroup%
   \@tempa%
 }%
-\newcommand*\@@ggs[2]{%
-  \relax\ifmmode\hbox\else\leavevmode\null\fi%
-  \bgroup#1\frenchspacing\verbatim@font\verbtextstyle#2\egroup%
-}%
-\let\verbtextstyle\relax%
-\newcommand*\visiblespaces{\chardef\ 32\relax}%
-\newcommand*\whitespaces{\let\ \@@space}%
-\let\@@space\ %
 \makeatother
 
 %-----------------------------------------------------------------------------------------------------------------------*

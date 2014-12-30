@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'syntax' component parser, as model builder                              *
+#  'syntax' component parser, as model builder                                                                         *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -15,11 +15,11 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-syntax semanticsComponent (galgas_scanner) %translate {
+syntax semanticsComponent (galgas2Scanner) %translate {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#          Rules prototypes                                                    *
+#          Rules prototypes                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

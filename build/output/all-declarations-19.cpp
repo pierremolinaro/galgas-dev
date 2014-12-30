@@ -7266,7 +7266,6 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       routine_before (commonLexique COMMA_HERE) ;
       verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
-        setCurrentCompiledFilePath (sourceFilesArray (i COMMA_HERE)) ;
         if (gOption_galgas_5F_builtin_5F_options_trace.mValue) {
           enableTraceWithPath (sourceFilesArray (i COMMA_HERE)) ;
         }

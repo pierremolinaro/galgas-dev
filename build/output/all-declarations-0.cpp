@@ -19,7 +19,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cTokenFor_galgas_5F_scanner::cTokenFor_galgas_5F_scanner (void) :
+cTokenFor_galgas_32_Scanner::cTokenFor_galgas_32_Scanner (void) :
 mLexicalAttribute_charValue (),
 mLexicalAttribute_floatValue (),
 mLexicalAttribute_identifierString (),
@@ -32,7 +32,7 @@ mLexicalAttribute_uint_36__34_value () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_Lexique_galgas_5F_scanner::C_Lexique_galgas_5F_scanner (C_Compiler * inCallerCompiler,
+C_Lexique_galgas_32_Scanner::C_Lexique_galgas_32_Scanner (C_Compiler * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
                 const C_String & inSourceFileName
@@ -42,7 +42,7 @@ C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_Lexique_galgas_5F_scanner::C_Lexique_galgas_5F_scanner (C_Compiler * inCallerCompiler,
+C_Lexique_galgas_32_Scanner::C_Lexique_galgas_32_Scanner (C_Compiler * inCallerCompiler,
                 const C_String & inSourceString,
                 const C_String & inStringForError
                 COMMA_LOCATION_ARGS) :
@@ -53,7 +53,7 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 //                 I N D E X I N G    D I R E C T O R Y                                                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_Lexique_galgas_5F_scanner::indexingDirectory (void) const {
+C_String C_Lexique_galgas_32_Scanner::indexingDirectory (void) const {
   return "../build/indexes" ;
 }
 
@@ -61,7 +61,7 @@ C_String C_Lexique_galgas_5F_scanner::indexingDirectory (void) const {
 //                        Lexical error message list                                                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_ASCIIcodeTooLargeError [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_ASCIIcodeTooLargeError [] = {
   TO_UNICODE ('A'),
   TO_UNICODE ('S'),
   TO_UNICODE ('C'),
@@ -81,7 +81,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_ASCIIcodeTooLargeError [] =
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge [] = {
   TO_UNICODE ('d'),
   TO_UNICODE ('e'),
   TO_UNICODE ('c'),
@@ -109,7 +109,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge [] = 
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_floatNumberConversionError [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_floatNumberConversionError [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('v'),
@@ -133,7 +133,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_floatNumberConversionError 
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_incorrectCharConstant [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_incorrectCharConstant [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('c'),
@@ -164,7 +164,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_incorrectCharConstant [] = 
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_incorrectHTMLescapeSequence [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_incorrectHTMLescapeSequence [] = {
   TO_UNICODE ('I'),
   TO_UNICODE ('n'),
   TO_UNICODE ('v'),
@@ -208,7 +208,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_incorrectHTMLescapeSequence
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_incorrectStringEnd [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_incorrectStringEnd [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
@@ -240,7 +240,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_incorrectStringEnd [] = {
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_incorrectTypeNameError [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_incorrectTypeNameError [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE (' '),
@@ -300,7 +300,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_incorrectTypeNameError [] =
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_incorrect_terminal_end [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_incorrect_terminal_end [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
@@ -334,7 +334,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_incorrect_terminal_end [] =
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_incorrect_terminal_start [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_incorrect_terminal_start [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('c'),
@@ -362,7 +362,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_incorrect_terminal_start []
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_internalError [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_internalError [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('t'),
@@ -380,7 +380,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_internalError [] = {
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('u'),
   TO_UNICODE (' '),
@@ -440,7 +440,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('U'),
   TO_UNICODE (' '),
@@ -501,7 +501,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_obsoleteCharConstruction [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_obsoleteCharConstruction [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('x'),
   TO_UNICODE ('.'),
@@ -552,7 +552,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_obsoleteCharConstruction []
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_obsoleteStringConstruction [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_obsoleteStringConstruction [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE (' '),
   TO_UNICODE ('f'),
@@ -619,7 +619,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_obsoleteStringConstruction 
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_unassignedUnicodeValue [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('i'),
@@ -682,7 +682,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_unassignedUnicodeValue [] =
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_5F_scanner_unknownHTMLescapeSequence [] = {
+static const utf32 gLexicalMessage_galgas_32_Scanner_unknownHTMLescapeSequence [] = {
   TO_UNICODE ('I'),
   TO_UNICODE ('n'),
   TO_UNICODE ('v'),
@@ -718,7 +718,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_unknownHTMLescapeSequence [
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Syntax error message for terminal '$identifier$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_identifier [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_identifier [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('n'),
   TO_UNICODE (' '),
@@ -736,7 +736,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_identifier [] = {
 } ;
 
 //--- Syntax error message for terminal '$literal_double$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_double [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_double [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('f'),
@@ -755,7 +755,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_double [] = 
 } ;
 
 //--- Syntax error message for terminal '$unsigned_literal_integer$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_unsigned_5F_literal_5F_integer [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('3'),
@@ -792,7 +792,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_unsigned_5F_literal_5F_
 } ;
 
 //--- Syntax error message for terminal '$signed_literal_integer$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_signed_5F_literal_5F_integer [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('3'),
@@ -827,7 +827,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_signed_5F_literal_5F_in
 } ;
 
 //--- Syntax error message for terminal '$unsigned_literal_integer64$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_unsigned_5F_literal_5F_integer_36__34_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer_36__34_ [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('6'),
@@ -864,7 +864,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_unsigned_5F_literal_5F_
 } ;
 
 //--- Syntax error message for terminal '$signed_literal_integer64$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_signed_5F_literal_5F_integer_36__34_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer_36__34_ [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('6'),
@@ -899,7 +899,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_signed_5F_literal_5F_in
 } ;
 
 //--- Syntax error message for terminal '$.$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -921,7 +921,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2E_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$.=$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2E__3D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2E__3D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -944,7 +944,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2E__3D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$...$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2E__2E__2E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2E__2E__2E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -968,7 +968,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2E__2E__2E_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$type_name$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_type_5F_name [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_type_5F_name [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('t'),
@@ -991,7 +991,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_type_5F_name [] = {
 } ;
 
 //--- Syntax error message for terminal '$literal_char$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_char [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_char [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('c'),
@@ -1016,7 +1016,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_char [] = {
 } ;
 
 //--- Syntax error message for terminal '$terminal$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_terminal [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_terminal [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('t'),
@@ -1046,7 +1046,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_terminal [] = {
 } ;
 
 //--- Syntax error message for terminal '$??$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3F__3F_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3F__3F_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1086,7 +1086,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3F__3F_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$?$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3F_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3F_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1124,7 +1124,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3F_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$?!$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3F__21_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3F__21_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1164,7 +1164,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3F__21_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$!$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__21_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__21_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1202,7 +1202,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__21_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$!?$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__21__3F_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__21__3F_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1242,7 +1242,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__21__3F_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$<$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3C_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3C_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1264,7 +1264,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3C_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$<->$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3C__2D__3E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3C__2D__3E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1288,7 +1288,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3C__2D__3E_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$<=$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3C__3D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3C__3D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1311,7 +1311,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3C__3D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$<<$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3C__3C_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3C__3C_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1334,7 +1334,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3C__3C_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$non_terminal_symbol$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_non_5F_terminal_5F_symbol [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_non_5F_terminal_5F_symbol [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('n'),
@@ -1366,7 +1366,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_non_5F_terminal_5F_symb
 } ;
 
 //--- Syntax error message for terminal '$literal_string$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_string [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_string [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('c'),
@@ -1404,7 +1404,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_string [] = 
 } ;
 
 //--- Syntax error message for terminal '$comment$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_comment [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_comment [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('c'),
@@ -1418,7 +1418,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_comment [] = {
 } ;
 
 //--- Syntax error message for terminal '$commentMark$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_commentMark [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_commentMark [] = {
   TO_UNICODE ('a'),
   TO_UNICODE (' '),
   TO_UNICODE ('c'),
@@ -1432,7 +1432,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_commentMark [] = {
 } ;
 
 //--- Syntax error message for terminal '$abstract$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_abstract [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_abstract [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1459,7 +1459,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_abstract [] = {
 } ;
 
 //--- Syntax error message for terminal '$after$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_after [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_after [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1483,7 +1483,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_after [] = {
 } ;
 
 //--- Syntax error message for terminal '$array$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_array [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_array [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1507,7 +1507,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_array [] = {
 } ;
 
 //--- Syntax error message for terminal '$before$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_before [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_before [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1532,7 +1532,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_before [] = {
 } ;
 
 //--- Syntax error message for terminal '$between$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_between [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_between [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1558,7 +1558,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_between [] = {
 } ;
 
 //--- Syntax error message for terminal '$block$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_block [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_block [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1582,7 +1582,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_block [] = {
 } ;
 
 //--- Syntax error message for terminal '$case$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_case [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_case [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1605,7 +1605,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_case [] = {
 } ;
 
 //--- Syntax error message for terminal '$cast$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_cast [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_cast [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1628,7 +1628,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_cast [] = {
 } ;
 
 //--- Syntax error message for terminal '$class$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_class [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_class [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1652,7 +1652,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_class [] = {
 } ;
 
 //--- Syntax error message for terminal '$const$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_const [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_const [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1676,7 +1676,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_const [] = {
 } ;
 
 //--- Syntax error message for terminal '$constructor$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_constructor [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_constructor [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1706,7 +1706,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_constructor [] = {
 } ;
 
 //--- Syntax error message for terminal '$default$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_default [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_default [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1732,7 +1732,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_default [] = {
 } ;
 
 //--- Syntax error message for terminal '$do$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_do [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_do [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1753,7 +1753,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_do [] = {
 } ;
 
 //--- Syntax error message for terminal '$drop$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_drop [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_drop [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1776,7 +1776,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_drop [] = {
 } ;
 
 //--- Syntax error message for terminal '$else$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_else [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_else [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1799,7 +1799,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_else [] = {
 } ;
 
 //--- Syntax error message for terminal '$elsif$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_elsif [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_elsif [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1823,7 +1823,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_elsif [] = {
 } ;
 
 //--- Syntax error message for terminal '$end$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_end [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_end [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1845,7 +1845,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_end [] = {
 } ;
 
 //--- Syntax error message for terminal '$enum$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_enum [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_enum [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1868,7 +1868,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_enum [] = {
 } ;
 
 //--- Syntax error message for terminal '$error$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_error [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_error [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1892,7 +1892,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_error [] = {
 } ;
 
 //--- Syntax error message for terminal '$extension$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_extension [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_extension [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1920,7 +1920,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_extension [] = {
 } ;
 
 //--- Syntax error message for terminal '$extends$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_extends [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_extends [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1946,7 +1946,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_extends [] = {
 } ;
 
 //--- Syntax error message for terminal '$extern$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_extern [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_extern [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1971,7 +1971,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_extern [] = {
 } ;
 
 //--- Syntax error message for terminal '$false$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_false [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_false [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -1995,7 +1995,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_false [] = {
 } ;
 
 //--- Syntax error message for terminal '$feature$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_feature [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_feature [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2021,7 +2021,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_feature [] = {
 } ;
 
 //--- Syntax error message for terminal '$filewrapper$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_filewrapper [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_filewrapper [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2051,7 +2051,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_filewrapper [] = {
 } ;
 
 //--- Syntax error message for terminal '$for$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_for [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_for [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2073,7 +2073,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_for [] = {
 } ;
 
 //--- Syntax error message for terminal '$foreach$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_foreach [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_foreach [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2099,7 +2099,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_foreach [] = {
 } ;
 
 //--- Syntax error message for terminal '$func$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_func [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_func [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2122,7 +2122,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_func [] = {
 } ;
 
 //--- Syntax error message for terminal '$function$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_function [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_function [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2149,7 +2149,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_function [] = {
 } ;
 
 //--- Syntax error message for terminal '$getter$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_getter [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_getter [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2174,7 +2174,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_getter [] = {
 } ;
 
 //--- Syntax error message for terminal '$grammar$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_grammar [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_grammar [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2200,7 +2200,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_grammar [] = {
 } ;
 
 //--- Syntax error message for terminal '$graph$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_graph [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_graph [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2224,7 +2224,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_graph [] = {
 } ;
 
 //--- Syntax error message for terminal '$gui$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_gui [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_gui [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2246,7 +2246,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_gui [] = {
 } ;
 
 //--- Syntax error message for terminal '$here$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_here [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_here [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2269,7 +2269,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_here [] = {
 } ;
 
 //--- Syntax error message for terminal '$if$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_if [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_if [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2290,7 +2290,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_if [] = {
 } ;
 
 //--- Syntax error message for terminal '$import$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_import [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_import [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2315,7 +2315,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_import [] = {
 } ;
 
 //--- Syntax error message for terminal '$in$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_in [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_in [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2336,7 +2336,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_in [] = {
 } ;
 
 //--- Syntax error message for terminal '$index$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_index [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_index [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2360,7 +2360,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_index [] = {
 } ;
 
 //--- Syntax error message for terminal '$indexing$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_indexing [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_indexing [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2387,7 +2387,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_indexing [] = {
 } ;
 
 //--- Syntax error message for terminal '$insert$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_insert [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_insert [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2412,7 +2412,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_insert [] = {
 } ;
 
 //--- Syntax error message for terminal '$is$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_is [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_is [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2433,7 +2433,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_is [] = {
 } ;
 
 //--- Syntax error message for terminal '$label$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_label [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_label [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2457,7 +2457,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_label [] = {
 } ;
 
 //--- Syntax error message for terminal '$let$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_let [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_let [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2479,7 +2479,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_let [] = {
 } ;
 
 //--- Syntax error message for terminal '$lexique$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_lexique [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_lexique [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2505,7 +2505,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_lexique [] = {
 } ;
 
 //--- Syntax error message for terminal '$list$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_list [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_list [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2528,7 +2528,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_list [] = {
 } ;
 
 //--- Syntax error message for terminal '$listmap$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_listmap [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_listmap [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2554,7 +2554,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_listmap [] = {
 } ;
 
 //--- Syntax error message for terminal '$local$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_local [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_local [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2578,7 +2578,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_local [] = {
 } ;
 
 //--- Syntax error message for terminal '$log$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_log [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_log [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2600,7 +2600,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_log [] = {
 } ;
 
 //--- Syntax error message for terminal '$loop$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_loop [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_loop [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2623,7 +2623,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_loop [] = {
 } ;
 
 //--- Syntax error message for terminal '$map$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_map [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_map [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2645,7 +2645,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_map [] = {
 } ;
 
 //--- Syntax error message for terminal '$match$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_match [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_match [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2669,7 +2669,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_match [] = {
 } ;
 
 //--- Syntax error message for terminal '$message$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_message [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_message [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2695,7 +2695,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_message [] = {
 } ;
 
 //--- Syntax error message for terminal '$method$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_method [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_method [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2720,7 +2720,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_method [] = {
 } ;
 
 //--- Syntax error message for terminal '$mod$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_mod [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_mod [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2742,7 +2742,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_mod [] = {
 } ;
 
 //--- Syntax error message for terminal '$modifier$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_modifier [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_modifier [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2769,7 +2769,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_modifier [] = {
 } ;
 
 //--- Syntax error message for terminal '$nonterminal$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_nonterminal [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_nonterminal [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2799,7 +2799,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_nonterminal [] = {
 } ;
 
 //--- Syntax error message for terminal '$not$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_not [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_not [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2821,7 +2821,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_not [] = {
 } ;
 
 //--- Syntax error message for terminal '$on$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_on [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_on [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2842,7 +2842,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_on [] = {
 } ;
 
 //--- Syntax error message for terminal '$once$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_once [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_once [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2865,7 +2865,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_once [] = {
 } ;
 
 //--- Syntax error message for terminal '$operator$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_operator [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_operator [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2892,7 +2892,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_operator [] = {
 } ;
 
 //--- Syntax error message for terminal '$option$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_option [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_option [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2917,7 +2917,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_option [] = {
 } ;
 
 //--- Syntax error message for terminal '$or$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_or [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_or [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2938,7 +2938,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_or [] = {
 } ;
 
 //--- Syntax error message for terminal '$override$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_override [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_override [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2965,7 +2965,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_override [] = {
 } ;
 
 //--- Syntax error message for terminal '$parse$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_parse [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_parse [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -2989,7 +2989,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_parse [] = {
 } ;
 
 //--- Syntax error message for terminal '$private$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_private [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_private [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3015,7 +3015,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_private [] = {
 } ;
 
 //--- Syntax error message for terminal '$proc$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_proc [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_proc [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3038,7 +3038,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_proc [] = {
 } ;
 
 //--- Syntax error message for terminal '$project$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_project [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_project [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3064,7 +3064,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_project [] = {
 } ;
 
 //--- Syntax error message for terminal '$program$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_program [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_program [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3090,7 +3090,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_program [] = {
 } ;
 
 //--- Syntax error message for terminal '$reader$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_reader [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_reader [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3115,7 +3115,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_reader [] = {
 } ;
 
 //--- Syntax error message for terminal '$remove$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_remove [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_remove [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3140,7 +3140,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_remove [] = {
 } ;
 
 //--- Syntax error message for terminal '$replace$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_replace [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_replace [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3166,7 +3166,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_replace [] = {
 } ;
 
 //--- Syntax error message for terminal '$repeat$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_repeat [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_repeat [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3191,7 +3191,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_repeat [] = {
 } ;
 
 //--- Syntax error message for terminal '$rewind$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_rewind [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_rewind [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3216,7 +3216,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_rewind [] = {
 } ;
 
 //--- Syntax error message for terminal '$root$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_root [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_root [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3239,7 +3239,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_root [] = {
 } ;
 
 //--- Syntax error message for terminal '$routine$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_routine [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_routine [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3265,7 +3265,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_routine [] = {
 } ;
 
 //--- Syntax error message for terminal '$rule$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_rule [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_rule [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3288,7 +3288,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_rule [] = {
 } ;
 
 //--- Syntax error message for terminal '$search$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_search [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_search [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3313,7 +3313,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_search [] = {
 } ;
 
 //--- Syntax error message for terminal '$select$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_select [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_select [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3338,7 +3338,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_select [] = {
 } ;
 
 //--- Syntax error message for terminal '$self$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_self [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_self [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3361,7 +3361,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_self [] = {
 } ;
 
 //--- Syntax error message for terminal '$selfcopy$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_selfcopy [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_selfcopy [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3388,7 +3388,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_selfcopy [] = {
 } ;
 
 //--- Syntax error message for terminal '$semantics$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_semantics [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_semantics [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3416,7 +3416,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_semantics [] = {
 } ;
 
 //--- Syntax error message for terminal '$send$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_send [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_send [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3439,7 +3439,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_send [] = {
 } ;
 
 //--- Syntax error message for terminal '$setter$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_setter [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_setter [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3464,7 +3464,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_setter [] = {
 } ;
 
 //--- Syntax error message for terminal '$sortedlist$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_sortedlist [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_sortedlist [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3493,7 +3493,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_sortedlist [] = {
 } ;
 
 //--- Syntax error message for terminal '$state$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_state [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_state [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3517,7 +3517,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_state [] = {
 } ;
 
 //--- Syntax error message for terminal '$struct$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_struct [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_struct [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3542,7 +3542,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_struct [] = {
 } ;
 
 //--- Syntax error message for terminal '$style$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_style [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_style [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3566,7 +3566,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_style [] = {
 } ;
 
 //--- Syntax error message for terminal '$switch$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_switch [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_switch [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3591,7 +3591,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_switch [] = {
 } ;
 
 //--- Syntax error message for terminal '$syntax$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_syntax [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_syntax [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3616,7 +3616,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_syntax [] = {
 } ;
 
 //--- Syntax error message for terminal '$tag$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_tag [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_tag [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3638,7 +3638,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_tag [] = {
 } ;
 
 //--- Syntax error message for terminal '$template$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_template [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_template [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3665,7 +3665,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_template [] = {
 } ;
 
 //--- Syntax error message for terminal '$then$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_then [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_then [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3688,7 +3688,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_then [] = {
 } ;
 
 //--- Syntax error message for terminal '$true$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_true [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_true [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3711,7 +3711,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_true [] = {
 } ;
 
 //--- Syntax error message for terminal '$sharedmap$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_sharedmap [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_sharedmap [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3739,7 +3739,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_sharedmap [] = {
 } ;
 
 //--- Syntax error message for terminal '$unused$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_unused [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_unused [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3764,7 +3764,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_unused [] = {
 } ;
 
 //--- Syntax error message for terminal '$var$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_var [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_var [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3786,7 +3786,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_var [] = {
 } ;
 
 //--- Syntax error message for terminal '$warning$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_warning [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_warning [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3812,7 +3812,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_warning [] = {
 } ;
 
 //--- Syntax error message for terminal '$when$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_when [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_when [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3835,7 +3835,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_when [] = {
 } ;
 
 //--- Syntax error message for terminal '$while$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_while [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_while [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3859,7 +3859,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_while [] = {
 } ;
 
 //--- Syntax error message for terminal '$with$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_with [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_with [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3882,7 +3882,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_with [] = {
 } ;
 
 //--- Syntax error message for terminal '$*$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2A_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2A_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3904,7 +3904,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2A_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$|$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7C_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7C_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3926,7 +3926,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7C_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$,$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2C_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2C_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3948,7 +3948,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2C_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$+$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2B_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2B_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3970,7 +3970,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2B_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$--$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2D__2D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2D__2D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -3993,7 +3993,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2D__2D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$:>$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3A__3E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3A__3E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4016,7 +4016,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3A__3E_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$>$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4038,7 +4038,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3E_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$;$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3B_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3B_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4060,7 +4060,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3B_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$:$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3A_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3A_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4082,7 +4082,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3A_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$::$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3A__3A_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3A__3A_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4105,7 +4105,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3A__3A_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$&&$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__26__26_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__26_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4128,7 +4128,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__26__26_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$-$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4150,7 +4150,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$($' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__28_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__28_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4172,7 +4172,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__28_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$)$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__29_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__29_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4194,7 +4194,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__29_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$->$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2D__3E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2D__3E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4217,7 +4217,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2D__3E_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$==$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3D__3D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3D__3D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4240,7 +4240,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3D__3D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$:=$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3A__3D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3A__3D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4263,7 +4263,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3A__3D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$++$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2B__2B_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2B__2B_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4286,7 +4286,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2B__2B_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$||$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7C__7C_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7C__7C_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4309,7 +4309,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7C__7C_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$[$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__5B_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__5B_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4331,7 +4331,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__5B_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$]$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__5D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__5D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4353,7 +4353,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__5D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$+=$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2B__3D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2B__3D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4376,7 +4376,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2B__3D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$/$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2F_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2F_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4398,7 +4398,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__2F_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$!=$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__21__3D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__21__3D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4421,7 +4421,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__21__3D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$>=$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3E__3D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3E__3D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4444,7 +4444,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3E__3D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$&$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__26_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4466,7 +4466,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__26_ [] = {
 } ;
 
 //--- Syntax error message for terminal '${$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7B_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7B_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4488,7 +4488,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7B_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$}$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7D_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7D_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4510,7 +4510,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7D_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$`$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__60_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__60_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4532,7 +4532,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__60_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$^$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__5E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__5E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4554,7 +4554,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__5E_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$>>$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3E__3E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3E__3E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4577,7 +4577,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__3E__3E_ [] = {
 } ;
 
 //--- Syntax error message for terminal '$~$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7E_ [] = {
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7E_ [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -4602,165 +4602,165 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7E_ [] = {
 //                getMessageForTerminal                                                                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_Lexique_galgas_5F_scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
+C_String C_Lexique_galgas_32_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   static const utf32 * syntaxErrorMessageArray [158] = {kEndOfSourceLexicalErrorMessage,
-    gSyntaxErrorMessage_galgas_5F_scanner_identifier,
-    gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_double,
-    gSyntaxErrorMessage_galgas_5F_scanner_unsigned_5F_literal_5F_integer,
-    gSyntaxErrorMessage_galgas_5F_scanner_signed_5F_literal_5F_integer,
-    gSyntaxErrorMessage_galgas_5F_scanner_unsigned_5F_literal_5F_integer_36__34_,
-    gSyntaxErrorMessage_galgas_5F_scanner_signed_5F_literal_5F_integer_36__34_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2E_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2E__3D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2E__2E__2E_,
-    gSyntaxErrorMessage_galgas_5F_scanner_type_5F_name,
-    gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_char,
-    gSyntaxErrorMessage_galgas_5F_scanner_terminal,
-    gSyntaxErrorMessage_galgas_5F_scanner__3F__3F_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3F_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3F__21_,
-    gSyntaxErrorMessage_galgas_5F_scanner__21_,
-    gSyntaxErrorMessage_galgas_5F_scanner__21__3F_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3C_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3C__2D__3E_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3C__3D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3C__3C_,
-    gSyntaxErrorMessage_galgas_5F_scanner_non_5F_terminal_5F_symbol,
-    gSyntaxErrorMessage_galgas_5F_scanner_literal_5F_string,
-    gSyntaxErrorMessage_galgas_5F_scanner_comment,
-    gSyntaxErrorMessage_galgas_5F_scanner_commentMark,
-    gSyntaxErrorMessage_galgas_5F_scanner_abstract,
-    gSyntaxErrorMessage_galgas_5F_scanner_after,
-    gSyntaxErrorMessage_galgas_5F_scanner_array,
-    gSyntaxErrorMessage_galgas_5F_scanner_before,
-    gSyntaxErrorMessage_galgas_5F_scanner_between,
-    gSyntaxErrorMessage_galgas_5F_scanner_block,
-    gSyntaxErrorMessage_galgas_5F_scanner_case,
-    gSyntaxErrorMessage_galgas_5F_scanner_cast,
-    gSyntaxErrorMessage_galgas_5F_scanner_class,
-    gSyntaxErrorMessage_galgas_5F_scanner_const,
-    gSyntaxErrorMessage_galgas_5F_scanner_constructor,
-    gSyntaxErrorMessage_galgas_5F_scanner_default,
-    gSyntaxErrorMessage_galgas_5F_scanner_do,
-    gSyntaxErrorMessage_galgas_5F_scanner_drop,
-    gSyntaxErrorMessage_galgas_5F_scanner_else,
-    gSyntaxErrorMessage_galgas_5F_scanner_elsif,
-    gSyntaxErrorMessage_galgas_5F_scanner_end,
-    gSyntaxErrorMessage_galgas_5F_scanner_enum,
-    gSyntaxErrorMessage_galgas_5F_scanner_error,
-    gSyntaxErrorMessage_galgas_5F_scanner_extension,
-    gSyntaxErrorMessage_galgas_5F_scanner_extends,
-    gSyntaxErrorMessage_galgas_5F_scanner_extern,
-    gSyntaxErrorMessage_galgas_5F_scanner_false,
-    gSyntaxErrorMessage_galgas_5F_scanner_feature,
-    gSyntaxErrorMessage_galgas_5F_scanner_filewrapper,
-    gSyntaxErrorMessage_galgas_5F_scanner_for,
-    gSyntaxErrorMessage_galgas_5F_scanner_foreach,
-    gSyntaxErrorMessage_galgas_5F_scanner_func,
-    gSyntaxErrorMessage_galgas_5F_scanner_function,
-    gSyntaxErrorMessage_galgas_5F_scanner_getter,
-    gSyntaxErrorMessage_galgas_5F_scanner_grammar,
-    gSyntaxErrorMessage_galgas_5F_scanner_graph,
-    gSyntaxErrorMessage_galgas_5F_scanner_gui,
-    gSyntaxErrorMessage_galgas_5F_scanner_here,
-    gSyntaxErrorMessage_galgas_5F_scanner_if,
-    gSyntaxErrorMessage_galgas_5F_scanner_import,
-    gSyntaxErrorMessage_galgas_5F_scanner_in,
-    gSyntaxErrorMessage_galgas_5F_scanner_index,
-    gSyntaxErrorMessage_galgas_5F_scanner_indexing,
-    gSyntaxErrorMessage_galgas_5F_scanner_insert,
-    gSyntaxErrorMessage_galgas_5F_scanner_is,
-    gSyntaxErrorMessage_galgas_5F_scanner_label,
-    gSyntaxErrorMessage_galgas_5F_scanner_let,
-    gSyntaxErrorMessage_galgas_5F_scanner_lexique,
-    gSyntaxErrorMessage_galgas_5F_scanner_list,
-    gSyntaxErrorMessage_galgas_5F_scanner_listmap,
-    gSyntaxErrorMessage_galgas_5F_scanner_local,
-    gSyntaxErrorMessage_galgas_5F_scanner_log,
-    gSyntaxErrorMessage_galgas_5F_scanner_loop,
-    gSyntaxErrorMessage_galgas_5F_scanner_map,
-    gSyntaxErrorMessage_galgas_5F_scanner_match,
-    gSyntaxErrorMessage_galgas_5F_scanner_message,
-    gSyntaxErrorMessage_galgas_5F_scanner_method,
-    gSyntaxErrorMessage_galgas_5F_scanner_mod,
-    gSyntaxErrorMessage_galgas_5F_scanner_modifier,
-    gSyntaxErrorMessage_galgas_5F_scanner_nonterminal,
-    gSyntaxErrorMessage_galgas_5F_scanner_not,
-    gSyntaxErrorMessage_galgas_5F_scanner_on,
-    gSyntaxErrorMessage_galgas_5F_scanner_once,
-    gSyntaxErrorMessage_galgas_5F_scanner_operator,
-    gSyntaxErrorMessage_galgas_5F_scanner_option,
-    gSyntaxErrorMessage_galgas_5F_scanner_or,
-    gSyntaxErrorMessage_galgas_5F_scanner_override,
-    gSyntaxErrorMessage_galgas_5F_scanner_parse,
-    gSyntaxErrorMessage_galgas_5F_scanner_private,
-    gSyntaxErrorMessage_galgas_5F_scanner_proc,
-    gSyntaxErrorMessage_galgas_5F_scanner_project,
-    gSyntaxErrorMessage_galgas_5F_scanner_program,
-    gSyntaxErrorMessage_galgas_5F_scanner_reader,
-    gSyntaxErrorMessage_galgas_5F_scanner_remove,
-    gSyntaxErrorMessage_galgas_5F_scanner_replace,
-    gSyntaxErrorMessage_galgas_5F_scanner_repeat,
-    gSyntaxErrorMessage_galgas_5F_scanner_rewind,
-    gSyntaxErrorMessage_galgas_5F_scanner_root,
-    gSyntaxErrorMessage_galgas_5F_scanner_routine,
-    gSyntaxErrorMessage_galgas_5F_scanner_rule,
-    gSyntaxErrorMessage_galgas_5F_scanner_search,
-    gSyntaxErrorMessage_galgas_5F_scanner_select,
-    gSyntaxErrorMessage_galgas_5F_scanner_self,
-    gSyntaxErrorMessage_galgas_5F_scanner_selfcopy,
-    gSyntaxErrorMessage_galgas_5F_scanner_semantics,
-    gSyntaxErrorMessage_galgas_5F_scanner_send,
-    gSyntaxErrorMessage_galgas_5F_scanner_setter,
-    gSyntaxErrorMessage_galgas_5F_scanner_sortedlist,
-    gSyntaxErrorMessage_galgas_5F_scanner_state,
-    gSyntaxErrorMessage_galgas_5F_scanner_struct,
-    gSyntaxErrorMessage_galgas_5F_scanner_style,
-    gSyntaxErrorMessage_galgas_5F_scanner_switch,
-    gSyntaxErrorMessage_galgas_5F_scanner_syntax,
-    gSyntaxErrorMessage_galgas_5F_scanner_tag,
-    gSyntaxErrorMessage_galgas_5F_scanner_template,
-    gSyntaxErrorMessage_galgas_5F_scanner_then,
-    gSyntaxErrorMessage_galgas_5F_scanner_true,
-    gSyntaxErrorMessage_galgas_5F_scanner_sharedmap,
-    gSyntaxErrorMessage_galgas_5F_scanner_unused,
-    gSyntaxErrorMessage_galgas_5F_scanner_var,
-    gSyntaxErrorMessage_galgas_5F_scanner_warning,
-    gSyntaxErrorMessage_galgas_5F_scanner_when,
-    gSyntaxErrorMessage_galgas_5F_scanner_while,
-    gSyntaxErrorMessage_galgas_5F_scanner_with,
-    gSyntaxErrorMessage_galgas_5F_scanner__2A_,
-    gSyntaxErrorMessage_galgas_5F_scanner__7C_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2C_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2B_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2D__2D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3A__3E_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3E_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3B_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3A_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3A__3A_,
-    gSyntaxErrorMessage_galgas_5F_scanner__26__26_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__28_,
-    gSyntaxErrorMessage_galgas_5F_scanner__29_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2D__3E_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3D__3D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3A__3D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2B__2B_,
-    gSyntaxErrorMessage_galgas_5F_scanner__7C__7C_,
-    gSyntaxErrorMessage_galgas_5F_scanner__5B_,
-    gSyntaxErrorMessage_galgas_5F_scanner__5D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2B__3D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__2F_,
-    gSyntaxErrorMessage_galgas_5F_scanner__21__3D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3E__3D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__26_,
-    gSyntaxErrorMessage_galgas_5F_scanner__7B_,
-    gSyntaxErrorMessage_galgas_5F_scanner__7D_,
-    gSyntaxErrorMessage_galgas_5F_scanner__60_,
-    gSyntaxErrorMessage_galgas_5F_scanner__5E_,
-    gSyntaxErrorMessage_galgas_5F_scanner__3E__3E_,
-    gSyntaxErrorMessage_galgas_5F_scanner__7E_} ;
+    gSyntaxErrorMessage_galgas_32_Scanner_identifier,
+    gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_double,
+    gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer,
+    gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer,
+    gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer_36__34_,
+    gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer_36__34_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2E_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2E__3D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2E__2E__2E_,
+    gSyntaxErrorMessage_galgas_32_Scanner_type_5F_name,
+    gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_char,
+    gSyntaxErrorMessage_galgas_32_Scanner_terminal,
+    gSyntaxErrorMessage_galgas_32_Scanner__3F__3F_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3F_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3F__21_,
+    gSyntaxErrorMessage_galgas_32_Scanner__21_,
+    gSyntaxErrorMessage_galgas_32_Scanner__21__3F_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3C_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3C__2D__3E_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3C__3D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3C__3C_,
+    gSyntaxErrorMessage_galgas_32_Scanner_non_5F_terminal_5F_symbol,
+    gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_string,
+    gSyntaxErrorMessage_galgas_32_Scanner_comment,
+    gSyntaxErrorMessage_galgas_32_Scanner_commentMark,
+    gSyntaxErrorMessage_galgas_32_Scanner_abstract,
+    gSyntaxErrorMessage_galgas_32_Scanner_after,
+    gSyntaxErrorMessage_galgas_32_Scanner_array,
+    gSyntaxErrorMessage_galgas_32_Scanner_before,
+    gSyntaxErrorMessage_galgas_32_Scanner_between,
+    gSyntaxErrorMessage_galgas_32_Scanner_block,
+    gSyntaxErrorMessage_galgas_32_Scanner_case,
+    gSyntaxErrorMessage_galgas_32_Scanner_cast,
+    gSyntaxErrorMessage_galgas_32_Scanner_class,
+    gSyntaxErrorMessage_galgas_32_Scanner_const,
+    gSyntaxErrorMessage_galgas_32_Scanner_constructor,
+    gSyntaxErrorMessage_galgas_32_Scanner_default,
+    gSyntaxErrorMessage_galgas_32_Scanner_do,
+    gSyntaxErrorMessage_galgas_32_Scanner_drop,
+    gSyntaxErrorMessage_galgas_32_Scanner_else,
+    gSyntaxErrorMessage_galgas_32_Scanner_elsif,
+    gSyntaxErrorMessage_galgas_32_Scanner_end,
+    gSyntaxErrorMessage_galgas_32_Scanner_enum,
+    gSyntaxErrorMessage_galgas_32_Scanner_error,
+    gSyntaxErrorMessage_galgas_32_Scanner_extension,
+    gSyntaxErrorMessage_galgas_32_Scanner_extends,
+    gSyntaxErrorMessage_galgas_32_Scanner_extern,
+    gSyntaxErrorMessage_galgas_32_Scanner_false,
+    gSyntaxErrorMessage_galgas_32_Scanner_feature,
+    gSyntaxErrorMessage_galgas_32_Scanner_filewrapper,
+    gSyntaxErrorMessage_galgas_32_Scanner_for,
+    gSyntaxErrorMessage_galgas_32_Scanner_foreach,
+    gSyntaxErrorMessage_galgas_32_Scanner_func,
+    gSyntaxErrorMessage_galgas_32_Scanner_function,
+    gSyntaxErrorMessage_galgas_32_Scanner_getter,
+    gSyntaxErrorMessage_galgas_32_Scanner_grammar,
+    gSyntaxErrorMessage_galgas_32_Scanner_graph,
+    gSyntaxErrorMessage_galgas_32_Scanner_gui,
+    gSyntaxErrorMessage_galgas_32_Scanner_here,
+    gSyntaxErrorMessage_galgas_32_Scanner_if,
+    gSyntaxErrorMessage_galgas_32_Scanner_import,
+    gSyntaxErrorMessage_galgas_32_Scanner_in,
+    gSyntaxErrorMessage_galgas_32_Scanner_index,
+    gSyntaxErrorMessage_galgas_32_Scanner_indexing,
+    gSyntaxErrorMessage_galgas_32_Scanner_insert,
+    gSyntaxErrorMessage_galgas_32_Scanner_is,
+    gSyntaxErrorMessage_galgas_32_Scanner_label,
+    gSyntaxErrorMessage_galgas_32_Scanner_let,
+    gSyntaxErrorMessage_galgas_32_Scanner_lexique,
+    gSyntaxErrorMessage_galgas_32_Scanner_list,
+    gSyntaxErrorMessage_galgas_32_Scanner_listmap,
+    gSyntaxErrorMessage_galgas_32_Scanner_local,
+    gSyntaxErrorMessage_galgas_32_Scanner_log,
+    gSyntaxErrorMessage_galgas_32_Scanner_loop,
+    gSyntaxErrorMessage_galgas_32_Scanner_map,
+    gSyntaxErrorMessage_galgas_32_Scanner_match,
+    gSyntaxErrorMessage_galgas_32_Scanner_message,
+    gSyntaxErrorMessage_galgas_32_Scanner_method,
+    gSyntaxErrorMessage_galgas_32_Scanner_mod,
+    gSyntaxErrorMessage_galgas_32_Scanner_modifier,
+    gSyntaxErrorMessage_galgas_32_Scanner_nonterminal,
+    gSyntaxErrorMessage_galgas_32_Scanner_not,
+    gSyntaxErrorMessage_galgas_32_Scanner_on,
+    gSyntaxErrorMessage_galgas_32_Scanner_once,
+    gSyntaxErrorMessage_galgas_32_Scanner_operator,
+    gSyntaxErrorMessage_galgas_32_Scanner_option,
+    gSyntaxErrorMessage_galgas_32_Scanner_or,
+    gSyntaxErrorMessage_galgas_32_Scanner_override,
+    gSyntaxErrorMessage_galgas_32_Scanner_parse,
+    gSyntaxErrorMessage_galgas_32_Scanner_private,
+    gSyntaxErrorMessage_galgas_32_Scanner_proc,
+    gSyntaxErrorMessage_galgas_32_Scanner_project,
+    gSyntaxErrorMessage_galgas_32_Scanner_program,
+    gSyntaxErrorMessage_galgas_32_Scanner_reader,
+    gSyntaxErrorMessage_galgas_32_Scanner_remove,
+    gSyntaxErrorMessage_galgas_32_Scanner_replace,
+    gSyntaxErrorMessage_galgas_32_Scanner_repeat,
+    gSyntaxErrorMessage_galgas_32_Scanner_rewind,
+    gSyntaxErrorMessage_galgas_32_Scanner_root,
+    gSyntaxErrorMessage_galgas_32_Scanner_routine,
+    gSyntaxErrorMessage_galgas_32_Scanner_rule,
+    gSyntaxErrorMessage_galgas_32_Scanner_search,
+    gSyntaxErrorMessage_galgas_32_Scanner_select,
+    gSyntaxErrorMessage_galgas_32_Scanner_self,
+    gSyntaxErrorMessage_galgas_32_Scanner_selfcopy,
+    gSyntaxErrorMessage_galgas_32_Scanner_semantics,
+    gSyntaxErrorMessage_galgas_32_Scanner_send,
+    gSyntaxErrorMessage_galgas_32_Scanner_setter,
+    gSyntaxErrorMessage_galgas_32_Scanner_sortedlist,
+    gSyntaxErrorMessage_galgas_32_Scanner_state,
+    gSyntaxErrorMessage_galgas_32_Scanner_struct,
+    gSyntaxErrorMessage_galgas_32_Scanner_style,
+    gSyntaxErrorMessage_galgas_32_Scanner_switch,
+    gSyntaxErrorMessage_galgas_32_Scanner_syntax,
+    gSyntaxErrorMessage_galgas_32_Scanner_tag,
+    gSyntaxErrorMessage_galgas_32_Scanner_template,
+    gSyntaxErrorMessage_galgas_32_Scanner_then,
+    gSyntaxErrorMessage_galgas_32_Scanner_true,
+    gSyntaxErrorMessage_galgas_32_Scanner_sharedmap,
+    gSyntaxErrorMessage_galgas_32_Scanner_unused,
+    gSyntaxErrorMessage_galgas_32_Scanner_var,
+    gSyntaxErrorMessage_galgas_32_Scanner_warning,
+    gSyntaxErrorMessage_galgas_32_Scanner_when,
+    gSyntaxErrorMessage_galgas_32_Scanner_while,
+    gSyntaxErrorMessage_galgas_32_Scanner_with,
+    gSyntaxErrorMessage_galgas_32_Scanner__2A_,
+    gSyntaxErrorMessage_galgas_32_Scanner__7C_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2C_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2B_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2D__2D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3A__3E_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3E_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3B_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3A_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3A__3A_,
+    gSyntaxErrorMessage_galgas_32_Scanner__26__26_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__28_,
+    gSyntaxErrorMessage_galgas_32_Scanner__29_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2D__3E_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3D__3D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3A__3D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2B__2B_,
+    gSyntaxErrorMessage_galgas_32_Scanner__7C__7C_,
+    gSyntaxErrorMessage_galgas_32_Scanner__5B_,
+    gSyntaxErrorMessage_galgas_32_Scanner__5D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2B__3D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__2F_,
+    gSyntaxErrorMessage_galgas_32_Scanner__21__3D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3E__3D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__26_,
+    gSyntaxErrorMessage_galgas_32_Scanner__7B_,
+    gSyntaxErrorMessage_galgas_32_Scanner__7D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__60_,
+    gSyntaxErrorMessage_galgas_32_Scanner__5E_,
+    gSyntaxErrorMessage_galgas_32_Scanner__3E__3E_,
+    gSyntaxErrorMessage_galgas_32_Scanner__7E_} ;
   return syntaxErrorMessageArray [inTerminalIndex] ;
 }
 
@@ -4769,208 +4769,208 @@ C_String C_Lexique_galgas_5F_scanner::getMessageForTerminal (const int16_t inTer
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Unicode string for '$_21__3D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__21__3D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__21__3D_ [] = {
   TO_UNICODE ('!'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_26_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__26_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__26_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_26__26_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__26__26_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__26__26_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('&'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_28_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__28_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__28_ [] = {
   TO_UNICODE ('('),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_29_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__29_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__29_ [] = {
   TO_UNICODE (')'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2A_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2A_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2A_ [] = {
   TO_UNICODE ('*'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2B_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2B_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2B_ [] = {
   TO_UNICODE ('+'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2B__2B_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2B__2B_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2B__2B_ [] = {
   TO_UNICODE ('+'),
   TO_UNICODE ('+'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2B__3D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2B__3D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2B__3D_ [] = {
   TO_UNICODE ('+'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2C_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2C_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2C_ [] = {
   TO_UNICODE (','),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2D_ [] = {
   TO_UNICODE ('-'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2D__2D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2D__2D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2D__2D_ [] = {
   TO_UNICODE ('-'),
   TO_UNICODE ('-'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2D__3E_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2D__3E_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2D__3E_ [] = {
   TO_UNICODE ('-'),
   TO_UNICODE ('>'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2E__2E_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2E__2E_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2E__2E_ [] = {
   TO_UNICODE ('.'),
   TO_UNICODE ('.'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_2F_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__2F_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__2F_ [] = {
   TO_UNICODE ('/'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_30_x$'
-static const utf32 kUnicodeString_galgas_5F_scanner__30_x [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__30_x [] = {
   TO_UNICODE ('0'),
   TO_UNICODE ('x'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3A_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3A_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3A_ [] = {
   TO_UNICODE (':'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3A__3A_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3A__3A_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3A__3A_ [] = {
   TO_UNICODE (':'),
   TO_UNICODE (':'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3A__3D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3A__3D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3A__3D_ [] = {
   TO_UNICODE (':'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3A__3E_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3A__3E_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3A__3E_ [] = {
   TO_UNICODE (':'),
   TO_UNICODE ('>'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3B_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3B_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3B_ [] = {
   TO_UNICODE (';'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3D_ [] = {
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3D__3D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3D__3D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3D__3D_ [] = {
   TO_UNICODE ('='),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3E_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3E_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3E_ [] = {
   TO_UNICODE ('>'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3E__3D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3E__3D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3E__3D_ [] = {
   TO_UNICODE ('>'),
   TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_3E__3E_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__3E__3E_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__3E__3E_ [] = {
   TO_UNICODE ('>'),
   TO_UNICODE ('>'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$LS$'
-static const utf32 kUnicodeString_galgas_5F_scanner_LS [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_LS [] = {
   TO_UNICODE ('L'),
   TO_UNICODE ('S'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_5B_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__5B_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__5B_ [] = {
   TO_UNICODE ('['),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_5D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__5D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__5D_ [] = {
   TO_UNICODE (']'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_5E_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__5E_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__5E_ [] = {
   TO_UNICODE ('^'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_60_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__60_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__60_ [] = {
   TO_UNICODE ('`'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$abstract$'
-static const utf32 kUnicodeString_galgas_5F_scanner_abstract [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_abstract [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('b'),
   TO_UNICODE ('s'),
@@ -4983,7 +4983,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_abstract [] = {
 } ;
 
 //--- Unicode string for '$after$'
-static const utf32 kUnicodeString_galgas_5F_scanner_after [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_after [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('f'),
   TO_UNICODE ('t'),
@@ -4993,7 +4993,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_after [] = {
 } ;
 
 //--- Unicode string for '$array$'
-static const utf32 kUnicodeString_galgas_5F_scanner_array [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_array [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
   TO_UNICODE ('r'),
@@ -5003,7 +5003,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_array [] = {
 } ;
 
 //--- Unicode string for '$before$'
-static const utf32 kUnicodeString_galgas_5F_scanner_before [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_before [] = {
   TO_UNICODE ('b'),
   TO_UNICODE ('e'),
   TO_UNICODE ('f'),
@@ -5014,7 +5014,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_before [] = {
 } ;
 
 //--- Unicode string for '$between$'
-static const utf32 kUnicodeString_galgas_5F_scanner_between [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_between [] = {
   TO_UNICODE ('b'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
@@ -5026,7 +5026,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_between [] = {
 } ;
 
 //--- Unicode string for '$block$'
-static const utf32 kUnicodeString_galgas_5F_scanner_block [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_block [] = {
   TO_UNICODE ('b'),
   TO_UNICODE ('l'),
   TO_UNICODE ('o'),
@@ -5036,7 +5036,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_block [] = {
 } ;
 
 //--- Unicode string for '$case$'
-static const utf32 kUnicodeString_galgas_5F_scanner_case [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_case [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
@@ -5045,7 +5045,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_case [] = {
 } ;
 
 //--- Unicode string for '$cast$'
-static const utf32 kUnicodeString_galgas_5F_scanner_cast [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_cast [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
@@ -5054,7 +5054,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_cast [] = {
 } ;
 
 //--- Unicode string for '$class$'
-static const utf32 kUnicodeString_galgas_5F_scanner_class [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_class [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('l'),
   TO_UNICODE ('a'),
@@ -5064,7 +5064,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_class [] = {
 } ;
 
 //--- Unicode string for '$const$'
-static const utf32 kUnicodeString_galgas_5F_scanner_const [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_const [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
@@ -5074,7 +5074,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_const [] = {
 } ;
 
 //--- Unicode string for '$constructor$'
-static const utf32 kUnicodeString_galgas_5F_scanner_constructor [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_constructor [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
@@ -5090,7 +5090,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_constructor [] = {
 } ;
 
 //--- Unicode string for '$default$'
-static const utf32 kUnicodeString_galgas_5F_scanner_default [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_default [] = {
   TO_UNICODE ('d'),
   TO_UNICODE ('e'),
   TO_UNICODE ('f'),
@@ -5102,14 +5102,14 @@ static const utf32 kUnicodeString_galgas_5F_scanner_default [] = {
 } ;
 
 //--- Unicode string for '$do$'
-static const utf32 kUnicodeString_galgas_5F_scanner_do [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_do [] = {
   TO_UNICODE ('d'),
   TO_UNICODE ('o'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$drop$'
-static const utf32 kUnicodeString_galgas_5F_scanner_drop [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_drop [] = {
   TO_UNICODE ('d'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
@@ -5118,7 +5118,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_drop [] = {
 } ;
 
 //--- Unicode string for '$else$'
-static const utf32 kUnicodeString_galgas_5F_scanner_else [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_else [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
   TO_UNICODE ('s'),
@@ -5127,7 +5127,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_else [] = {
 } ;
 
 //--- Unicode string for '$elsif$'
-static const utf32 kUnicodeString_galgas_5F_scanner_elsif [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_elsif [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
   TO_UNICODE ('s'),
@@ -5137,7 +5137,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_elsif [] = {
 } ;
 
 //--- Unicode string for '$end$'
-static const utf32 kUnicodeString_galgas_5F_scanner_end [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_end [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
   TO_UNICODE ('d'),
@@ -5145,7 +5145,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_end [] = {
 } ;
 
 //--- Unicode string for '$enum$'
-static const utf32 kUnicodeString_galgas_5F_scanner_enum [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_enum [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
@@ -5154,7 +5154,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_enum [] = {
 } ;
 
 //--- Unicode string for '$error$'
-static const utf32 kUnicodeString_galgas_5F_scanner_error [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_error [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
   TO_UNICODE ('r'),
@@ -5164,7 +5164,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_error [] = {
 } ;
 
 //--- Unicode string for '$extends$'
-static const utf32 kUnicodeString_galgas_5F_scanner_extends [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_extends [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('x'),
   TO_UNICODE ('t'),
@@ -5176,7 +5176,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_extends [] = {
 } ;
 
 //--- Unicode string for '$extension$'
-static const utf32 kUnicodeString_galgas_5F_scanner_extension [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_extension [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('x'),
   TO_UNICODE ('t'),
@@ -5190,7 +5190,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_extension [] = {
 } ;
 
 //--- Unicode string for '$extern$'
-static const utf32 kUnicodeString_galgas_5F_scanner_extern [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_extern [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('x'),
   TO_UNICODE ('t'),
@@ -5201,7 +5201,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_extern [] = {
 } ;
 
 //--- Unicode string for '$false$'
-static const utf32 kUnicodeString_galgas_5F_scanner_false [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_false [] = {
   TO_UNICODE ('f'),
   TO_UNICODE ('a'),
   TO_UNICODE ('l'),
@@ -5211,7 +5211,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_false [] = {
 } ;
 
 //--- Unicode string for '$feature$'
-static const utf32 kUnicodeString_galgas_5F_scanner_feature [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_feature [] = {
   TO_UNICODE ('f'),
   TO_UNICODE ('e'),
   TO_UNICODE ('a'),
@@ -5223,7 +5223,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_feature [] = {
 } ;
 
 //--- Unicode string for '$filewrapper$'
-static const utf32 kUnicodeString_galgas_5F_scanner_filewrapper [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_filewrapper [] = {
   TO_UNICODE ('f'),
   TO_UNICODE ('i'),
   TO_UNICODE ('l'),
@@ -5239,7 +5239,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_filewrapper [] = {
 } ;
 
 //--- Unicode string for '$for$'
-static const utf32 kUnicodeString_galgas_5F_scanner_for [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_for [] = {
   TO_UNICODE ('f'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
@@ -5247,7 +5247,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_for [] = {
 } ;
 
 //--- Unicode string for '$foreach$'
-static const utf32 kUnicodeString_galgas_5F_scanner_foreach [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_foreach [] = {
   TO_UNICODE ('f'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
@@ -5259,7 +5259,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_foreach [] = {
 } ;
 
 //--- Unicode string for '$func$'
-static const utf32 kUnicodeString_galgas_5F_scanner_func [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_func [] = {
   TO_UNICODE ('f'),
   TO_UNICODE ('u'),
   TO_UNICODE ('n'),
@@ -5268,7 +5268,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_func [] = {
 } ;
 
 //--- Unicode string for '$function$'
-static const utf32 kUnicodeString_galgas_5F_scanner_function [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_function [] = {
   TO_UNICODE ('f'),
   TO_UNICODE ('u'),
   TO_UNICODE ('n'),
@@ -5281,7 +5281,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_function [] = {
 } ;
 
 //--- Unicode string for '$getter$'
-static const utf32 kUnicodeString_galgas_5F_scanner_getter [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_getter [] = {
   TO_UNICODE ('g'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
@@ -5292,7 +5292,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_getter [] = {
 } ;
 
 //--- Unicode string for '$grammar$'
-static const utf32 kUnicodeString_galgas_5F_scanner_grammar [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_grammar [] = {
   TO_UNICODE ('g'),
   TO_UNICODE ('r'),
   TO_UNICODE ('a'),
@@ -5304,7 +5304,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_grammar [] = {
 } ;
 
 //--- Unicode string for '$graph$'
-static const utf32 kUnicodeString_galgas_5F_scanner_graph [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_graph [] = {
   TO_UNICODE ('g'),
   TO_UNICODE ('r'),
   TO_UNICODE ('a'),
@@ -5314,7 +5314,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_graph [] = {
 } ;
 
 //--- Unicode string for '$gui$'
-static const utf32 kUnicodeString_galgas_5F_scanner_gui [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_gui [] = {
   TO_UNICODE ('g'),
   TO_UNICODE ('u'),
   TO_UNICODE ('i'),
@@ -5322,7 +5322,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_gui [] = {
 } ;
 
 //--- Unicode string for '$here$'
-static const utf32 kUnicodeString_galgas_5F_scanner_here [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_here [] = {
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
@@ -5331,14 +5331,14 @@ static const utf32 kUnicodeString_galgas_5F_scanner_here [] = {
 } ;
 
 //--- Unicode string for '$if$'
-static const utf32 kUnicodeString_galgas_5F_scanner_if [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_if [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('f'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$import$'
-static const utf32 kUnicodeString_galgas_5F_scanner_import [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_import [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('m'),
   TO_UNICODE ('p'),
@@ -5349,14 +5349,14 @@ static const utf32 kUnicodeString_galgas_5F_scanner_import [] = {
 } ;
 
 //--- Unicode string for '$in$'
-static const utf32 kUnicodeString_galgas_5F_scanner_in [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_in [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$index$'
-static const utf32 kUnicodeString_galgas_5F_scanner_index [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_index [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('d'),
@@ -5366,7 +5366,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_index [] = {
 } ;
 
 //--- Unicode string for '$indexing$'
-static const utf32 kUnicodeString_galgas_5F_scanner_indexing [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_indexing [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('d'),
@@ -5379,7 +5379,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_indexing [] = {
 } ;
 
 //--- Unicode string for '$insert$'
-static const utf32 kUnicodeString_galgas_5F_scanner_insert [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_insert [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('s'),
@@ -5390,14 +5390,14 @@ static const utf32 kUnicodeString_galgas_5F_scanner_insert [] = {
 } ;
 
 //--- Unicode string for '$is$'
-static const utf32 kUnicodeString_galgas_5F_scanner_is [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_is [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$label$'
-static const utf32 kUnicodeString_galgas_5F_scanner_label [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_label [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('a'),
   TO_UNICODE ('b'),
@@ -5407,7 +5407,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_label [] = {
 } ;
 
 //--- Unicode string for '$let$'
-static const utf32 kUnicodeString_galgas_5F_scanner_let [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_let [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
@@ -5415,7 +5415,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_let [] = {
 } ;
 
 //--- Unicode string for '$lexique$'
-static const utf32 kUnicodeString_galgas_5F_scanner_lexique [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_lexique [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('e'),
   TO_UNICODE ('x'),
@@ -5427,7 +5427,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_lexique [] = {
 } ;
 
 //--- Unicode string for '$list$'
-static const utf32 kUnicodeString_galgas_5F_scanner_list [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_list [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
@@ -5436,7 +5436,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_list [] = {
 } ;
 
 //--- Unicode string for '$listmap$'
-static const utf32 kUnicodeString_galgas_5F_scanner_listmap [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_listmap [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
@@ -5448,7 +5448,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_listmap [] = {
 } ;
 
 //--- Unicode string for '$local$'
-static const utf32 kUnicodeString_galgas_5F_scanner_local [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_local [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('o'),
   TO_UNICODE ('c'),
@@ -5458,7 +5458,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_local [] = {
 } ;
 
 //--- Unicode string for '$log$'
-static const utf32 kUnicodeString_galgas_5F_scanner_log [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_log [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('o'),
   TO_UNICODE ('g'),
@@ -5466,7 +5466,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_log [] = {
 } ;
 
 //--- Unicode string for '$loop$'
-static const utf32 kUnicodeString_galgas_5F_scanner_loop [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_loop [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('o'),
   TO_UNICODE ('o'),
@@ -5475,7 +5475,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_loop [] = {
 } ;
 
 //--- Unicode string for '$map$'
-static const utf32 kUnicodeString_galgas_5F_scanner_map [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_map [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
@@ -5483,7 +5483,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_map [] = {
 } ;
 
 //--- Unicode string for '$match$'
-static const utf32 kUnicodeString_galgas_5F_scanner_match [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_match [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('t'),
@@ -5493,7 +5493,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_match [] = {
 } ;
 
 //--- Unicode string for '$message$'
-static const utf32 kUnicodeString_galgas_5F_scanner_message [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_message [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('e'),
   TO_UNICODE ('s'),
@@ -5505,7 +5505,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_message [] = {
 } ;
 
 //--- Unicode string for '$method$'
-static const utf32 kUnicodeString_galgas_5F_scanner_method [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_method [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
@@ -5516,7 +5516,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_method [] = {
 } ;
 
 //--- Unicode string for '$mod$'
-static const utf32 kUnicodeString_galgas_5F_scanner_mod [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_mod [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
@@ -5524,7 +5524,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_mod [] = {
 } ;
 
 //--- Unicode string for '$modifier$'
-static const utf32 kUnicodeString_galgas_5F_scanner_modifier [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_modifier [] = {
   TO_UNICODE ('m'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
@@ -5537,7 +5537,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_modifier [] = {
 } ;
 
 //--- Unicode string for '$nonterminal$'
-static const utf32 kUnicodeString_galgas_5F_scanner_nonterminal [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_nonterminal [] = {
   TO_UNICODE ('n'),
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
@@ -5553,7 +5553,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_nonterminal [] = {
 } ;
 
 //--- Unicode string for '$not$'
-static const utf32 kUnicodeString_galgas_5F_scanner_not [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_not [] = {
   TO_UNICODE ('n'),
   TO_UNICODE ('o'),
   TO_UNICODE ('t'),
@@ -5561,14 +5561,14 @@ static const utf32 kUnicodeString_galgas_5F_scanner_not [] = {
 } ;
 
 //--- Unicode string for '$on$'
-static const utf32 kUnicodeString_galgas_5F_scanner_on [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_on [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$once$'
-static const utf32 kUnicodeString_galgas_5F_scanner_once [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_once [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
   TO_UNICODE ('c'),
@@ -5577,7 +5577,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_once [] = {
 } ;
 
 //--- Unicode string for '$operator$'
-static const utf32 kUnicodeString_galgas_5F_scanner_operator [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_operator [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('p'),
   TO_UNICODE ('e'),
@@ -5590,7 +5590,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_operator [] = {
 } ;
 
 //--- Unicode string for '$option$'
-static const utf32 kUnicodeString_galgas_5F_scanner_option [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_option [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('p'),
   TO_UNICODE ('t'),
@@ -5601,14 +5601,14 @@ static const utf32 kUnicodeString_galgas_5F_scanner_option [] = {
 } ;
 
 //--- Unicode string for '$or$'
-static const utf32 kUnicodeString_galgas_5F_scanner_or [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_or [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$override$'
-static const utf32 kUnicodeString_galgas_5F_scanner_override [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_override [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('v'),
   TO_UNICODE ('e'),
@@ -5621,7 +5621,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_override [] = {
 } ;
 
 //--- Unicode string for '$parse$'
-static const utf32 kUnicodeString_galgas_5F_scanner_parse [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_parse [] = {
   TO_UNICODE ('p'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
@@ -5631,7 +5631,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_parse [] = {
 } ;
 
 //--- Unicode string for '$private$'
-static const utf32 kUnicodeString_galgas_5F_scanner_private [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_private [] = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('i'),
@@ -5643,7 +5643,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_private [] = {
 } ;
 
 //--- Unicode string for '$proc$'
-static const utf32 kUnicodeString_galgas_5F_scanner_proc [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_proc [] = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
@@ -5652,7 +5652,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_proc [] = {
 } ;
 
 //--- Unicode string for '$program$'
-static const utf32 kUnicodeString_galgas_5F_scanner_program [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_program [] = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
@@ -5664,7 +5664,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_program [] = {
 } ;
 
 //--- Unicode string for '$project$'
-static const utf32 kUnicodeString_galgas_5F_scanner_project [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_project [] = {
   TO_UNICODE ('p'),
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
@@ -5676,7 +5676,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_project [] = {
 } ;
 
 //--- Unicode string for '$reader$'
-static const utf32 kUnicodeString_galgas_5F_scanner_reader [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_reader [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('a'),
@@ -5687,7 +5687,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_reader [] = {
 } ;
 
 //--- Unicode string for '$remove$'
-static const utf32 kUnicodeString_galgas_5F_scanner_remove [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_remove [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('m'),
@@ -5698,7 +5698,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_remove [] = {
 } ;
 
 //--- Unicode string for '$repeat$'
-static const utf32 kUnicodeString_galgas_5F_scanner_repeat [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_repeat [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('p'),
@@ -5709,7 +5709,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_repeat [] = {
 } ;
 
 //--- Unicode string for '$replace$'
-static const utf32 kUnicodeString_galgas_5F_scanner_replace [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_replace [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('p'),
@@ -5721,7 +5721,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_replace [] = {
 } ;
 
 //--- Unicode string for '$rewind$'
-static const utf32 kUnicodeString_galgas_5F_scanner_rewind [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_rewind [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('w'),
@@ -5732,7 +5732,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_rewind [] = {
 } ;
 
 //--- Unicode string for '$root$'
-static const utf32 kUnicodeString_galgas_5F_scanner_root [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_root [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
   TO_UNICODE ('o'),
@@ -5741,7 +5741,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_root [] = {
 } ;
 
 //--- Unicode string for '$routine$'
-static const utf32 kUnicodeString_galgas_5F_scanner_routine [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_routine [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
   TO_UNICODE ('u'),
@@ -5753,7 +5753,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_routine [] = {
 } ;
 
 //--- Unicode string for '$rule$'
-static const utf32 kUnicodeString_galgas_5F_scanner_rule [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_rule [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('l'),
@@ -5762,7 +5762,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_rule [] = {
 } ;
 
 //--- Unicode string for '$search$'
-static const utf32 kUnicodeString_galgas_5F_scanner_search [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_search [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('a'),
@@ -5773,7 +5773,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_search [] = {
 } ;
 
 //--- Unicode string for '$select$'
-static const utf32 kUnicodeString_galgas_5F_scanner_select [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_select [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
@@ -5784,7 +5784,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_select [] = {
 } ;
 
 //--- Unicode string for '$self$'
-static const utf32 kUnicodeString_galgas_5F_scanner_self [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_self [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
@@ -5793,7 +5793,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_self [] = {
 } ;
 
 //--- Unicode string for '$selfcopy$'
-static const utf32 kUnicodeString_galgas_5F_scanner_selfcopy [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_selfcopy [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
@@ -5806,7 +5806,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_selfcopy [] = {
 } ;
 
 //--- Unicode string for '$semantics$'
-static const utf32 kUnicodeString_galgas_5F_scanner_semantics [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_semantics [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('m'),
@@ -5820,7 +5820,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_semantics [] = {
 } ;
 
 //--- Unicode string for '$send$'
-static const utf32 kUnicodeString_galgas_5F_scanner_send [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_send [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
@@ -5829,7 +5829,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_send [] = {
 } ;
 
 //--- Unicode string for '$setter$'
-static const utf32 kUnicodeString_galgas_5F_scanner_setter [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_setter [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('t'),
@@ -5840,7 +5840,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_setter [] = {
 } ;
 
 //--- Unicode string for '$sharedmap$'
-static const utf32 kUnicodeString_galgas_5F_scanner_sharedmap [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_sharedmap [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('h'),
   TO_UNICODE ('a'),
@@ -5854,7 +5854,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_sharedmap [] = {
 } ;
 
 //--- Unicode string for '$sortedlist$'
-static const utf32 kUnicodeString_galgas_5F_scanner_sortedlist [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_sortedlist [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
@@ -5869,7 +5869,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_sortedlist [] = {
 } ;
 
 //--- Unicode string for '$state$'
-static const utf32 kUnicodeString_galgas_5F_scanner_state [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_state [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
   TO_UNICODE ('a'),
@@ -5879,7 +5879,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_state [] = {
 } ;
 
 //--- Unicode string for '$struct$'
-static const utf32 kUnicodeString_galgas_5F_scanner_struct [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_struct [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
@@ -5890,7 +5890,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_struct [] = {
 } ;
 
 //--- Unicode string for '$style$'
-static const utf32 kUnicodeString_galgas_5F_scanner_style [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_style [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
   TO_UNICODE ('y'),
@@ -5900,7 +5900,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_style [] = {
 } ;
 
 //--- Unicode string for '$switch$'
-static const utf32 kUnicodeString_galgas_5F_scanner_switch [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_switch [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('w'),
   TO_UNICODE ('i'),
@@ -5911,7 +5911,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_switch [] = {
 } ;
 
 //--- Unicode string for '$syntax$'
-static const utf32 kUnicodeString_galgas_5F_scanner_syntax [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_syntax [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('y'),
   TO_UNICODE ('n'),
@@ -5922,7 +5922,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_syntax [] = {
 } ;
 
 //--- Unicode string for '$tag$'
-static const utf32 kUnicodeString_galgas_5F_scanner_tag [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_tag [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('a'),
   TO_UNICODE ('g'),
@@ -5930,7 +5930,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_tag [] = {
 } ;
 
 //--- Unicode string for '$template$'
-static const utf32 kUnicodeString_galgas_5F_scanner_template [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_template [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE ('m'),
@@ -5943,7 +5943,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_template [] = {
 } ;
 
 //--- Unicode string for '$then$'
-static const utf32 kUnicodeString_galgas_5F_scanner_then [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_then [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -5952,7 +5952,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_then [] = {
 } ;
 
 //--- Unicode string for '$true$'
-static const utf32 kUnicodeString_galgas_5F_scanner_true [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_true [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
@@ -5961,7 +5961,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_true [] = {
 } ;
 
 //--- Unicode string for '$unused$'
-static const utf32 kUnicodeString_galgas_5F_scanner_unused [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_unused [] = {
   TO_UNICODE ('u'),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
@@ -5972,7 +5972,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_unused [] = {
 } ;
 
 //--- Unicode string for '$var$'
-static const utf32 kUnicodeString_galgas_5F_scanner_var [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_var [] = {
   TO_UNICODE ('v'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
@@ -5980,7 +5980,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_var [] = {
 } ;
 
 //--- Unicode string for '$warning$'
-static const utf32 kUnicodeString_galgas_5F_scanner_warning [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_warning [] = {
   TO_UNICODE ('w'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
@@ -5992,7 +5992,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_warning [] = {
 } ;
 
 //--- Unicode string for '$when$'
-static const utf32 kUnicodeString_galgas_5F_scanner_when [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_when [] = {
   TO_UNICODE ('w'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -6001,7 +6001,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_when [] = {
 } ;
 
 //--- Unicode string for '$while$'
-static const utf32 kUnicodeString_galgas_5F_scanner_while [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_while [] = {
   TO_UNICODE ('w'),
   TO_UNICODE ('h'),
   TO_UNICODE ('i'),
@@ -6011,7 +6011,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner_while [] = {
 } ;
 
 //--- Unicode string for '$with$'
-static const utf32 kUnicodeString_galgas_5F_scanner_with [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner_with [] = {
   TO_UNICODE ('w'),
   TO_UNICODE ('i'),
   TO_UNICODE ('t'),
@@ -6020,32 +6020,32 @@ static const utf32 kUnicodeString_galgas_5F_scanner_with [] = {
 } ;
 
 //--- Unicode string for '$_7B_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__7B_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__7B_ [] = {
   TO_UNICODE ('{'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_7C_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__7C_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__7C_ [] = {
   TO_UNICODE ('|'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_7C__7C_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__7C__7C_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__7C__7C_ [] = {
   TO_UNICODE ('|'),
   TO_UNICODE ('|'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_7D_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__7D_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__7D_ [] = {
   TO_UNICODE ('}'),
   TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$_7E_$'
-static const utf32 kUnicodeString_galgas_5F_scanner__7E_ [] = {
+static const utf32 kUnicodeString_galgas_32_Scanner__7E_ [] = {
   TO_UNICODE ('~'),
   TO_UNICODE (0)
 } ;
@@ -6054,158 +6054,158 @@ static const utf32 kUnicodeString_galgas_5F_scanner__7E_ [] = {
 //             Key words table 'galgasDelimitorsList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgas_5F_scanner_galgasDelimitorsList = 32 ;
+static const int32_t ktable_size_galgas_32_Scanner_galgasDelimitorsList = 32 ;
 
-static const C_unicode_lexique_table_entry ktable_for_galgas_5F_scanner_galgasDelimitorsList [ktable_size_galgas_5F_scanner_galgasDelimitorsList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__26_, 1, C_Lexique_galgas_5F_scanner::kToken__26_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__28_, 1, C_Lexique_galgas_5F_scanner::kToken__28_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__29_, 1, C_Lexique_galgas_5F_scanner::kToken__29_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2A_, 1, C_Lexique_galgas_5F_scanner::kToken__2A_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2B_, 1, C_Lexique_galgas_5F_scanner::kToken__2B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2C_, 1, C_Lexique_galgas_5F_scanner::kToken__2C_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2D_, 1, C_Lexique_galgas_5F_scanner::kToken__2D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2F_, 1, C_Lexique_galgas_5F_scanner::kToken__2F_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3A_, 1, C_Lexique_galgas_5F_scanner::kToken__3A_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3B_, 1, C_Lexique_galgas_5F_scanner::kToken__3B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3E_, 1, C_Lexique_galgas_5F_scanner::kToken__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__5B_, 1, C_Lexique_galgas_5F_scanner::kToken__5B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__5D_, 1, C_Lexique_galgas_5F_scanner::kToken__5D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__5E_, 1, C_Lexique_galgas_5F_scanner::kToken__5E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__60_, 1, C_Lexique_galgas_5F_scanner::kToken__60_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__7B_, 1, C_Lexique_galgas_5F_scanner::kToken__7B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__7C_, 1, C_Lexique_galgas_5F_scanner::kToken__7C_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__7D_, 1, C_Lexique_galgas_5F_scanner::kToken__7D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__7E_, 1, C_Lexique_galgas_5F_scanner::kToken__7E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__21__3D_, 2, C_Lexique_galgas_5F_scanner::kToken__21__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__26__26_, 2, C_Lexique_galgas_5F_scanner::kToken__26__26_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2B__2B_, 2, C_Lexique_galgas_5F_scanner::kToken__2B__2B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2B__3D_, 2, C_Lexique_galgas_5F_scanner::kToken__2B__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2D__2D_, 2, C_Lexique_galgas_5F_scanner::kToken__2D__2D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__2D__3E_, 2, C_Lexique_galgas_5F_scanner::kToken__2D__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3A__3A_, 2, C_Lexique_galgas_5F_scanner::kToken__3A__3A_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3A__3D_, 2, C_Lexique_galgas_5F_scanner::kToken__3A__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3A__3E_, 2, C_Lexique_galgas_5F_scanner::kToken__3A__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3D__3D_, 2, C_Lexique_galgas_5F_scanner::kToken__3D__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3E__3D_, 2, C_Lexique_galgas_5F_scanner::kToken__3E__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__3E__3E_, 2, C_Lexique_galgas_5F_scanner::kToken__3E__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner__7C__7C_, 2, C_Lexique_galgas_5F_scanner::kToken__7C__7C_)
+static const C_unicode_lexique_table_entry ktable_for_galgas_32_Scanner_galgasDelimitorsList [ktable_size_galgas_32_Scanner_galgasDelimitorsList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26_, 1, C_Lexique_galgas_32_Scanner::kToken__26_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__28_, 1, C_Lexique_galgas_32_Scanner::kToken__28_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__29_, 1, C_Lexique_galgas_32_Scanner::kToken__29_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2A_, 1, C_Lexique_galgas_32_Scanner::kToken__2A_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2B_, 1, C_Lexique_galgas_32_Scanner::kToken__2B_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2C_, 1, C_Lexique_galgas_32_Scanner::kToken__2C_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2D_, 1, C_Lexique_galgas_32_Scanner::kToken__2D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2F_, 1, C_Lexique_galgas_32_Scanner::kToken__2F_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3A_, 1, C_Lexique_galgas_32_Scanner::kToken__3A_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3B_, 1, C_Lexique_galgas_32_Scanner::kToken__3B_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3E_, 1, C_Lexique_galgas_32_Scanner::kToken__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__5B_, 1, C_Lexique_galgas_32_Scanner::kToken__5B_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__5D_, 1, C_Lexique_galgas_32_Scanner::kToken__5D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__5E_, 1, C_Lexique_galgas_32_Scanner::kToken__5E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__60_, 1, C_Lexique_galgas_32_Scanner::kToken__60_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7B_, 1, C_Lexique_galgas_32_Scanner::kToken__7B_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7C_, 1, C_Lexique_galgas_32_Scanner::kToken__7C_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7D_, 1, C_Lexique_galgas_32_Scanner::kToken__7D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7E_, 1, C_Lexique_galgas_32_Scanner::kToken__7E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__21__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__21__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__26_, 2, C_Lexique_galgas_32_Scanner::kToken__26__26_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2B__2B_, 2, C_Lexique_galgas_32_Scanner::kToken__2B__2B_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2B__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__2B__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2D__2D_, 2, C_Lexique_galgas_32_Scanner::kToken__2D__2D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2D__3E_, 2, C_Lexique_galgas_32_Scanner::kToken__2D__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3A__3A_, 2, C_Lexique_galgas_32_Scanner::kToken__3A__3A_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3A__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__3A__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3A__3E_, 2, C_Lexique_galgas_32_Scanner::kToken__3A__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3D__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__3D__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3E__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__3E__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3E__3E_, 2, C_Lexique_galgas_32_Scanner::kToken__3E__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7C__7C_, 2, C_Lexique_galgas_32_Scanner::kToken__7C__7C_)
 } ;
 
-int16_t C_Lexique_galgas_5F_scanner::search_into_galgasDelimitorsList (const C_String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_galgas_5F_scanner_galgasDelimitorsList, ktable_size_galgas_5F_scanner_galgasDelimitorsList) ;
+int16_t C_Lexique_galgas_32_Scanner::search_into_galgasDelimitorsList (const C_String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_galgas_32_Scanner_galgasDelimitorsList, ktable_size_galgas_32_Scanner_galgasDelimitorsList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 //             Key words table 'galgasKeyWordList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgas_5F_scanner_galgasKeyWordList = 100 ;
+static const int32_t ktable_size_galgas_32_Scanner_galgasKeyWordList = 100 ;
 
-static const C_unicode_lexique_table_entry ktable_for_galgas_5F_scanner_galgasKeyWordList [ktable_size_galgas_5F_scanner_galgasKeyWordList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_do, 2, C_Lexique_galgas_5F_scanner::kToken_do),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_if, 2, C_Lexique_galgas_5F_scanner::kToken_if),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_in, 2, C_Lexique_galgas_5F_scanner::kToken_in),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_is, 2, C_Lexique_galgas_5F_scanner::kToken_is),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_on, 2, C_Lexique_galgas_5F_scanner::kToken_on),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_or, 2, C_Lexique_galgas_5F_scanner::kToken_or),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_end, 3, C_Lexique_galgas_5F_scanner::kToken_end),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_for, 3, C_Lexique_galgas_5F_scanner::kToken_for),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_gui, 3, C_Lexique_galgas_5F_scanner::kToken_gui),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_let, 3, C_Lexique_galgas_5F_scanner::kToken_let),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_log, 3, C_Lexique_galgas_5F_scanner::kToken_log),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_map, 3, C_Lexique_galgas_5F_scanner::kToken_map),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_mod, 3, C_Lexique_galgas_5F_scanner::kToken_mod),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_not, 3, C_Lexique_galgas_5F_scanner::kToken_not),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_tag, 3, C_Lexique_galgas_5F_scanner::kToken_tag),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_var, 3, C_Lexique_galgas_5F_scanner::kToken_var),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_case, 4, C_Lexique_galgas_5F_scanner::kToken_case),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_cast, 4, C_Lexique_galgas_5F_scanner::kToken_cast),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_drop, 4, C_Lexique_galgas_5F_scanner::kToken_drop),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_else, 4, C_Lexique_galgas_5F_scanner::kToken_else),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_enum, 4, C_Lexique_galgas_5F_scanner::kToken_enum),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_func, 4, C_Lexique_galgas_5F_scanner::kToken_func),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_here, 4, C_Lexique_galgas_5F_scanner::kToken_here),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_list, 4, C_Lexique_galgas_5F_scanner::kToken_list),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_loop, 4, C_Lexique_galgas_5F_scanner::kToken_loop),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_once, 4, C_Lexique_galgas_5F_scanner::kToken_once),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_proc, 4, C_Lexique_galgas_5F_scanner::kToken_proc),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_root, 4, C_Lexique_galgas_5F_scanner::kToken_root),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_rule, 4, C_Lexique_galgas_5F_scanner::kToken_rule),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_self, 4, C_Lexique_galgas_5F_scanner::kToken_self),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_send, 4, C_Lexique_galgas_5F_scanner::kToken_send),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_then, 4, C_Lexique_galgas_5F_scanner::kToken_then),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_true, 4, C_Lexique_galgas_5F_scanner::kToken_true),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_when, 4, C_Lexique_galgas_5F_scanner::kToken_when),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_with, 4, C_Lexique_galgas_5F_scanner::kToken_with),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_after, 5, C_Lexique_galgas_5F_scanner::kToken_after),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_array, 5, C_Lexique_galgas_5F_scanner::kToken_array),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_block, 5, C_Lexique_galgas_5F_scanner::kToken_block),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_class, 5, C_Lexique_galgas_5F_scanner::kToken_class),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_const, 5, C_Lexique_galgas_5F_scanner::kToken_const),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_elsif, 5, C_Lexique_galgas_5F_scanner::kToken_elsif),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_error, 5, C_Lexique_galgas_5F_scanner::kToken_error),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_false, 5, C_Lexique_galgas_5F_scanner::kToken_false),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_graph, 5, C_Lexique_galgas_5F_scanner::kToken_graph),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_index, 5, C_Lexique_galgas_5F_scanner::kToken_index),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_label, 5, C_Lexique_galgas_5F_scanner::kToken_label),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_local, 5, C_Lexique_galgas_5F_scanner::kToken_local),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_match, 5, C_Lexique_galgas_5F_scanner::kToken_match),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_parse, 5, C_Lexique_galgas_5F_scanner::kToken_parse),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_state, 5, C_Lexique_galgas_5F_scanner::kToken_state),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_style, 5, C_Lexique_galgas_5F_scanner::kToken_style),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_while, 5, C_Lexique_galgas_5F_scanner::kToken_while),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_before, 6, C_Lexique_galgas_5F_scanner::kToken_before),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_extern, 6, C_Lexique_galgas_5F_scanner::kToken_extern),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_getter, 6, C_Lexique_galgas_5F_scanner::kToken_getter),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_import, 6, C_Lexique_galgas_5F_scanner::kToken_import),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_insert, 6, C_Lexique_galgas_5F_scanner::kToken_insert),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_method, 6, C_Lexique_galgas_5F_scanner::kToken_method),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_option, 6, C_Lexique_galgas_5F_scanner::kToken_option),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_reader, 6, C_Lexique_galgas_5F_scanner::kToken_reader),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_remove, 6, C_Lexique_galgas_5F_scanner::kToken_remove),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_repeat, 6, C_Lexique_galgas_5F_scanner::kToken_repeat),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_rewind, 6, C_Lexique_galgas_5F_scanner::kToken_rewind),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_search, 6, C_Lexique_galgas_5F_scanner::kToken_search),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_select, 6, C_Lexique_galgas_5F_scanner::kToken_select),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_setter, 6, C_Lexique_galgas_5F_scanner::kToken_setter),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_struct, 6, C_Lexique_galgas_5F_scanner::kToken_struct),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_switch, 6, C_Lexique_galgas_5F_scanner::kToken_switch),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_syntax, 6, C_Lexique_galgas_5F_scanner::kToken_syntax),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_unused, 6, C_Lexique_galgas_5F_scanner::kToken_unused),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_between, 7, C_Lexique_galgas_5F_scanner::kToken_between),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_default, 7, C_Lexique_galgas_5F_scanner::kToken_default),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_extends, 7, C_Lexique_galgas_5F_scanner::kToken_extends),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_feature, 7, C_Lexique_galgas_5F_scanner::kToken_feature),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_foreach, 7, C_Lexique_galgas_5F_scanner::kToken_foreach),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_grammar, 7, C_Lexique_galgas_5F_scanner::kToken_grammar),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_lexique, 7, C_Lexique_galgas_5F_scanner::kToken_lexique),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_listmap, 7, C_Lexique_galgas_5F_scanner::kToken_listmap),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_message, 7, C_Lexique_galgas_5F_scanner::kToken_message),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_private, 7, C_Lexique_galgas_5F_scanner::kToken_private),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_program, 7, C_Lexique_galgas_5F_scanner::kToken_program),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_project, 7, C_Lexique_galgas_5F_scanner::kToken_project),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_replace, 7, C_Lexique_galgas_5F_scanner::kToken_replace),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_routine, 7, C_Lexique_galgas_5F_scanner::kToken_routine),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_warning, 7, C_Lexique_galgas_5F_scanner::kToken_warning),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_abstract, 8, C_Lexique_galgas_5F_scanner::kToken_abstract),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_function, 8, C_Lexique_galgas_5F_scanner::kToken_function),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_indexing, 8, C_Lexique_galgas_5F_scanner::kToken_indexing),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_modifier, 8, C_Lexique_galgas_5F_scanner::kToken_modifier),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_operator, 8, C_Lexique_galgas_5F_scanner::kToken_operator),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_override, 8, C_Lexique_galgas_5F_scanner::kToken_override),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_selfcopy, 8, C_Lexique_galgas_5F_scanner::kToken_selfcopy),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_template, 8, C_Lexique_galgas_5F_scanner::kToken_template),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_extension, 9, C_Lexique_galgas_5F_scanner::kToken_extension),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_semantics, 9, C_Lexique_galgas_5F_scanner::kToken_semantics),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_sharedmap, 9, C_Lexique_galgas_5F_scanner::kToken_sharedmap),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_sortedlist, 10, C_Lexique_galgas_5F_scanner::kToken_sortedlist),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_constructor, 11, C_Lexique_galgas_5F_scanner::kToken_constructor),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_filewrapper, 11, C_Lexique_galgas_5F_scanner::kToken_filewrapper),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_nonterminal, 11, C_Lexique_galgas_5F_scanner::kToken_nonterminal)
+static const C_unicode_lexique_table_entry ktable_for_galgas_32_Scanner_galgasKeyWordList [ktable_size_galgas_32_Scanner_galgasKeyWordList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_do, 2, C_Lexique_galgas_32_Scanner::kToken_do),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_if, 2, C_Lexique_galgas_32_Scanner::kToken_if),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_in, 2, C_Lexique_galgas_32_Scanner::kToken_in),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_is, 2, C_Lexique_galgas_32_Scanner::kToken_is),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_on, 2, C_Lexique_galgas_32_Scanner::kToken_on),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_or, 2, C_Lexique_galgas_32_Scanner::kToken_or),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_end, 3, C_Lexique_galgas_32_Scanner::kToken_end),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_for, 3, C_Lexique_galgas_32_Scanner::kToken_for),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_gui, 3, C_Lexique_galgas_32_Scanner::kToken_gui),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_let, 3, C_Lexique_galgas_32_Scanner::kToken_let),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_log, 3, C_Lexique_galgas_32_Scanner::kToken_log),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_map, 3, C_Lexique_galgas_32_Scanner::kToken_map),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_mod, 3, C_Lexique_galgas_32_Scanner::kToken_mod),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_not, 3, C_Lexique_galgas_32_Scanner::kToken_not),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_tag, 3, C_Lexique_galgas_32_Scanner::kToken_tag),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_var, 3, C_Lexique_galgas_32_Scanner::kToken_var),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_case, 4, C_Lexique_galgas_32_Scanner::kToken_case),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_cast, 4, C_Lexique_galgas_32_Scanner::kToken_cast),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_drop, 4, C_Lexique_galgas_32_Scanner::kToken_drop),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_else, 4, C_Lexique_galgas_32_Scanner::kToken_else),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_enum, 4, C_Lexique_galgas_32_Scanner::kToken_enum),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_func, 4, C_Lexique_galgas_32_Scanner::kToken_func),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_here, 4, C_Lexique_galgas_32_Scanner::kToken_here),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_list, 4, C_Lexique_galgas_32_Scanner::kToken_list),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_loop, 4, C_Lexique_galgas_32_Scanner::kToken_loop),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_once, 4, C_Lexique_galgas_32_Scanner::kToken_once),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_proc, 4, C_Lexique_galgas_32_Scanner::kToken_proc),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_root, 4, C_Lexique_galgas_32_Scanner::kToken_root),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_rule, 4, C_Lexique_galgas_32_Scanner::kToken_rule),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_self, 4, C_Lexique_galgas_32_Scanner::kToken_self),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_send, 4, C_Lexique_galgas_32_Scanner::kToken_send),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_then, 4, C_Lexique_galgas_32_Scanner::kToken_then),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_true, 4, C_Lexique_galgas_32_Scanner::kToken_true),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_when, 4, C_Lexique_galgas_32_Scanner::kToken_when),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_with, 4, C_Lexique_galgas_32_Scanner::kToken_with),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_after, 5, C_Lexique_galgas_32_Scanner::kToken_after),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_array, 5, C_Lexique_galgas_32_Scanner::kToken_array),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_block, 5, C_Lexique_galgas_32_Scanner::kToken_block),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_class, 5, C_Lexique_galgas_32_Scanner::kToken_class),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_const, 5, C_Lexique_galgas_32_Scanner::kToken_const),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_elsif, 5, C_Lexique_galgas_32_Scanner::kToken_elsif),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_error, 5, C_Lexique_galgas_32_Scanner::kToken_error),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_false, 5, C_Lexique_galgas_32_Scanner::kToken_false),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_graph, 5, C_Lexique_galgas_32_Scanner::kToken_graph),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_index, 5, C_Lexique_galgas_32_Scanner::kToken_index),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_label, 5, C_Lexique_galgas_32_Scanner::kToken_label),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_local, 5, C_Lexique_galgas_32_Scanner::kToken_local),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_match, 5, C_Lexique_galgas_32_Scanner::kToken_match),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_parse, 5, C_Lexique_galgas_32_Scanner::kToken_parse),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_state, 5, C_Lexique_galgas_32_Scanner::kToken_state),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_style, 5, C_Lexique_galgas_32_Scanner::kToken_style),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_while, 5, C_Lexique_galgas_32_Scanner::kToken_while),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_before, 6, C_Lexique_galgas_32_Scanner::kToken_before),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_extern, 6, C_Lexique_galgas_32_Scanner::kToken_extern),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_getter, 6, C_Lexique_galgas_32_Scanner::kToken_getter),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_import, 6, C_Lexique_galgas_32_Scanner::kToken_import),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_insert, 6, C_Lexique_galgas_32_Scanner::kToken_insert),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_method, 6, C_Lexique_galgas_32_Scanner::kToken_method),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_option, 6, C_Lexique_galgas_32_Scanner::kToken_option),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_reader, 6, C_Lexique_galgas_32_Scanner::kToken_reader),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_remove, 6, C_Lexique_galgas_32_Scanner::kToken_remove),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_repeat, 6, C_Lexique_galgas_32_Scanner::kToken_repeat),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_rewind, 6, C_Lexique_galgas_32_Scanner::kToken_rewind),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_search, 6, C_Lexique_galgas_32_Scanner::kToken_search),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_select, 6, C_Lexique_galgas_32_Scanner::kToken_select),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_setter, 6, C_Lexique_galgas_32_Scanner::kToken_setter),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_struct, 6, C_Lexique_galgas_32_Scanner::kToken_struct),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_switch, 6, C_Lexique_galgas_32_Scanner::kToken_switch),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_syntax, 6, C_Lexique_galgas_32_Scanner::kToken_syntax),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_unused, 6, C_Lexique_galgas_32_Scanner::kToken_unused),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_between, 7, C_Lexique_galgas_32_Scanner::kToken_between),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_default, 7, C_Lexique_galgas_32_Scanner::kToken_default),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_extends, 7, C_Lexique_galgas_32_Scanner::kToken_extends),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_feature, 7, C_Lexique_galgas_32_Scanner::kToken_feature),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_foreach, 7, C_Lexique_galgas_32_Scanner::kToken_foreach),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_grammar, 7, C_Lexique_galgas_32_Scanner::kToken_grammar),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_lexique, 7, C_Lexique_galgas_32_Scanner::kToken_lexique),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_listmap, 7, C_Lexique_galgas_32_Scanner::kToken_listmap),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_message, 7, C_Lexique_galgas_32_Scanner::kToken_message),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_private, 7, C_Lexique_galgas_32_Scanner::kToken_private),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_program, 7, C_Lexique_galgas_32_Scanner::kToken_program),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_project, 7, C_Lexique_galgas_32_Scanner::kToken_project),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_replace, 7, C_Lexique_galgas_32_Scanner::kToken_replace),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_routine, 7, C_Lexique_galgas_32_Scanner::kToken_routine),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_warning, 7, C_Lexique_galgas_32_Scanner::kToken_warning),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_abstract, 8, C_Lexique_galgas_32_Scanner::kToken_abstract),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_function, 8, C_Lexique_galgas_32_Scanner::kToken_function),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_indexing, 8, C_Lexique_galgas_32_Scanner::kToken_indexing),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_modifier, 8, C_Lexique_galgas_32_Scanner::kToken_modifier),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_operator, 8, C_Lexique_galgas_32_Scanner::kToken_operator),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_override, 8, C_Lexique_galgas_32_Scanner::kToken_override),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_selfcopy, 8, C_Lexique_galgas_32_Scanner::kToken_selfcopy),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_template, 8, C_Lexique_galgas_32_Scanner::kToken_template),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_extension, 9, C_Lexique_galgas_32_Scanner::kToken_extension),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_semantics, 9, C_Lexique_galgas_32_Scanner::kToken_semantics),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_sharedmap, 9, C_Lexique_galgas_32_Scanner::kToken_sharedmap),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_sortedlist, 10, C_Lexique_galgas_32_Scanner::kToken_sortedlist),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_constructor, 11, C_Lexique_galgas_32_Scanner::kToken_constructor),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_filewrapper, 11, C_Lexique_galgas_32_Scanner::kToken_filewrapper),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_nonterminal, 11, C_Lexique_galgas_32_Scanner::kToken_nonterminal)
 } ;
 
-int16_t C_Lexique_galgas_5F_scanner::search_into_galgasKeyWordList (const C_String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_galgas_5F_scanner_galgasKeyWordList, ktable_size_galgas_5F_scanner_galgasKeyWordList) ;
+int16_t C_Lexique_galgas_32_Scanner::search_into_galgasKeyWordList (const C_String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_galgas_32_Scanner_galgasKeyWordList, ktable_size_galgas_32_Scanner_galgasKeyWordList) ;
 }
 
 
@@ -6213,8 +6213,8 @@ int16_t C_Lexique_galgas_5F_scanner::search_into_galgasKeyWordList (const C_Stri
 //                          getCurrentTokenString                                                                      *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_Lexique_galgas_5F_scanner::getCurrentTokenString (const cToken * inTokenPtr) const {
-  const cTokenFor_galgas_5F_scanner * ptr = (const cTokenFor_galgas_5F_scanner *) inTokenPtr ;
+C_String C_Lexique_galgas_32_Scanner::getCurrentTokenString (const cToken * inTokenPtr) const {
+  const cTokenFor_galgas_32_Scanner * ptr = (const cTokenFor_galgas_32_Scanner *) inTokenPtr ;
   C_String s ;
   if (ptr == NULL) {
     s.appendCString("$$") ;
@@ -7069,8 +7069,8 @@ C_String C_Lexique_galgas_5F_scanner::getCurrentTokenString (const cToken * inTo
 //               P A R S E    L E X I C A L    T O K E N                                                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
-  cTokenFor_galgas_5F_scanner token ;
+bool C_Lexique_galgas_32_Scanner::parseLexicalToken (void) {
+  cTokenFor_galgas_32_Scanner token ;
   mLoop = true ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
@@ -7101,7 +7101,7 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
           token.mTokenCode = kToken_identifier ;
         }
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__30_x, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__30_x, 2, true)) {
         do {
           if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
@@ -7115,20 +7115,20 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
           }
         }while (mLoop) ;
         mLoop = true ;
-        if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner_LS, 2, true)) {
-          ::scanner_routine_convertHexStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge, gLexicalMessage_galgas_5F_scanner_internalError) ;
+        if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner_LS, 2, true)) {
+          ::scanner_routine_convertHexStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_signed_5F_literal_5F_integer_36__34_ ;
           enterToken (token) ;
         }else if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
-          ::scanner_routine_convertHexStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge, gLexicalMessage_galgas_5F_scanner_internalError) ;
+          ::scanner_routine_convertHexStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_signed_5F_literal_5F_integer ;
           enterToken (token) ;
         }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-          ::scanner_routine_convertHexStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge, gLexicalMessage_galgas_5F_scanner_internalError) ;
+          ::scanner_routine_convertHexStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
           enterToken (token) ;
         }else{
-          ::scanner_routine_convertHexStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge, gLexicalMessage_galgas_5F_scanner_internalError) ;
+          ::scanner_routine_convertHexStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
           enterToken (token) ;
         }
@@ -7144,15 +7144,15 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
         }while (mLoop) ;
         mLoop = true ;
         if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
-          ::scanner_routine_convertDecimalStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge, gLexicalMessage_galgas_5F_scanner_internalError) ;
+          ::scanner_routine_convertDecimalStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_signed_5F_literal_5F_integer ;
           enterToken (token) ;
-        }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner_LS, 2, true)) {
-          ::scanner_routine_convertDecimalStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge, gLexicalMessage_galgas_5F_scanner_internalError) ;
+        }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner_LS, 2, true)) {
+          ::scanner_routine_convertDecimalStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_signed_5F_literal_5F_integer_36__34_ ;
           enterToken (token) ;
         }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-          ::scanner_routine_convertDecimalStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge, gLexicalMessage_galgas_5F_scanner_internalError) ;
+          ::scanner_routine_convertDecimalStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
           enterToken (token) ;
         }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
@@ -7166,11 +7166,11 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
             }
           }while (mLoop) ;
           mLoop = true ;
-          ::scanner_routine_convertStringToDouble (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_floatValue, gLexicalMessage_galgas_5F_scanner_floatNumberConversionError) ;
+          ::scanner_routine_convertStringToDouble (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_floatValue, gLexicalMessage_galgas_32_Scanner_floatNumberConversionError) ;
           token.mTokenCode = kToken_literal_5F_double ;
           enterToken (token) ;
         }else{
-          ::scanner_routine_convertDecimalStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_decimalNumberTooLarge, gLexicalMessage_galgas_5F_scanner_internalError) ;
+          ::scanner_routine_convertDecimalStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
           enterToken (token) ;
         }
@@ -7188,14 +7188,14 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
             }
           }while (mLoop) ;
           mLoop = true ;
-          ::scanner_routine_convertStringToDouble (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_floatValue, gLexicalMessage_galgas_5F_scanner_floatNumberConversionError) ;
+          ::scanner_routine_convertStringToDouble (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_floatValue, gLexicalMessage_galgas_32_Scanner_floatNumberConversionError) ;
           token.mTokenCode = kToken_literal_5F_double ;
           enterToken (token) ;
         }else{
-          if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2E__2E_, 2, true)) {
+          if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2E__2E_, 2, true)) {
             token.mTokenCode = kToken__2E__2E__2E_ ;
             enterToken (token) ;
-          }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3D_, 1, true)) {
+          }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3D_, 1, true)) {
             token.mTokenCode = kToken__2E__3D_ ;
             enterToken (token) ;
           }else{
@@ -7224,7 +7224,7 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
             mLoop = true ;
           }
         }else{
-          lexicalError (gLexicalMessage_galgas_5F_scanner_incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
+          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
         }
         token.mTokenCode = kToken_type_5F_name ;
         enterToken (token) ;
@@ -7248,73 +7248,73 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
             ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\'')) ;
           }else if (testForInputUTF32Char (TO_UNICODE ('u'))) {
             if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
               if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                 if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                   if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
-                    ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_5F_scanner_unassignedUnicodeValue) ;
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
+                    ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue) ;
                   }else{
-                    lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                    lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
                   }
                 }else{
-                  lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                  lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
                 }
               }else{
-                lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
               }
             }else{
-              lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else if (testForInputUTF32Char (TO_UNICODE ('U'))) {
             if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
               if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                 if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                   if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                     if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                       if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                         if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                           if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
-                            ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_5F_scanner_unassignedUnicodeValue) ;
+                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
+                            ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue) ;
                           }else{
-                            lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                            lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                           }
                         }else{
-                          lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                          lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                         }
                       }else{
-                        lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                        lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                       }
                     }else{
-                      lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                      lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                     }
                   }else{
-                    lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                    lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                   }
                 }else{
-                  lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                  lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                 }
               }else{
-                lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
               }
             }else{
-              lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else if (testForInputUTF32Char (TO_UNICODE ('x')) || testForInputUTF32Char (TO_UNICODE ('X'))) {
-            lexicalWarning (gLexicalMessage_galgas_5F_scanner_obsoleteCharConstruction COMMA_LINE_AND_SOURCE_FILE) ;
+            lexicalWarning (gLexicalMessage_galgas_32_Scanner_obsoleteCharConstruction COMMA_LINE_AND_SOURCE_FILE) ;
             if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
               do {
-                ::scanner_routine_enterHexDigitIntoASCIIcharacter (*this, token.mLexicalAttribute_charValue, previousChar (), gLexicalMessage_galgas_5F_scanner_ASCIIcodeTooLargeError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoASCIIcharacter (*this, token.mLexicalAttribute_charValue, previousChar (), gLexicalMessage_galgas_32_Scanner_ASCIIcodeTooLargeError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                 if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
                 }else{
                   mLoop = false ;
@@ -7322,31 +7322,31 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
               }while (mLoop) ;
               mLoop = true ;
             }else{
-              lexicalError (gLexicalMessage_galgas_5F_scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
             do {
-              if (notTestForInputUTF32String (kUnicodeString_galgas_5F_scanner__3B_, 1, gLexicalMessage_galgas_5F_scanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
+              if (notTestForInputUTF32String (kUnicodeString_galgas_32_Scanner__3B_, 1, gLexicalMessage_galgas_32_Scanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
                 ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
               }else{
                 mLoop = false ;
               }
             }while (mLoop) ;
             mLoop = true ;
-            ::scanner_routine_convertHTMLSequenceToUnicodeCharacter (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_5F_scanner_unknownHTMLescapeSequence) ;
+            ::scanner_routine_convertHTMLSequenceToUnicodeCharacter (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unknownHTMLescapeSequence) ;
           }else{
-            lexicalError (gLexicalMessage_galgas_5F_scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+            lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
           }
         }else if (testForInputUTF32CharRange (TO_UNICODE (' '), TO_UNICODE (65533))) {
           ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, previousChar ()) ;
         }else{
-          lexicalError (gLexicalMessage_galgas_5F_scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
         }
         if (testForInputUTF32Char (TO_UNICODE ('\''))) {
           token.mTokenCode = kToken_literal_5F_char ;
           enterToken (token) ;
         }else{
-          lexicalError (gLexicalMessage_galgas_5F_scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
         }
       }else if (testForInputUTF32Char (TO_UNICODE ('$'))) {
         if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
@@ -7359,108 +7359,108 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
           }while (mLoop) ;
           mLoop = true ;
         }else{
-          lexicalError (gLexicalMessage_galgas_5F_scanner_incorrect_terminal_start COMMA_LINE_AND_SOURCE_FILE) ;
+          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrect_terminal_start COMMA_LINE_AND_SOURCE_FILE) ;
         }
         if (testForInputUTF32Char (TO_UNICODE ('$'))) {
         }else{
-          lexicalError (gLexicalMessage_galgas_5F_scanner_incorrect_terminal_end COMMA_LINE_AND_SOURCE_FILE) ;
+          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrect_terminal_end COMMA_LINE_AND_SOURCE_FILE) ;
         }
         token.mTokenCode = kToken_terminal ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__7C__7C_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7C__7C_, 2, true)) {
         token.mTokenCode = kToken__7C__7C_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3E__3E_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3E__3E_, 2, true)) {
         token.mTokenCode = kToken__3E__3E_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3E__3D_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3E__3D_, 2, true)) {
         token.mTokenCode = kToken__3E__3D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3D__3D_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3D__3D_, 2, true)) {
         token.mTokenCode = kToken__3D__3D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3A__3E_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3A__3E_, 2, true)) {
         token.mTokenCode = kToken__3A__3E_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3A__3D_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3A__3D_, 2, true)) {
         token.mTokenCode = kToken__3A__3D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3A__3A_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3A__3A_, 2, true)) {
         token.mTokenCode = kToken__3A__3A_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2D__3E_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2D__3E_, 2, true)) {
         token.mTokenCode = kToken__2D__3E_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2D__2D_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2D__2D_, 2, true)) {
         token.mTokenCode = kToken__2D__2D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2B__3D_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2B__3D_, 2, true)) {
         token.mTokenCode = kToken__2B__3D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2B__2B_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2B__2B_, 2, true)) {
         token.mTokenCode = kToken__2B__2B_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__26__26_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__26_, 2, true)) {
         token.mTokenCode = kToken__26__26_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__21__3D_, 2, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__21__3D_, 2, true)) {
         token.mTokenCode = kToken__21__3D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__7E_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7E_, 1, true)) {
         token.mTokenCode = kToken__7E_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__7D_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7D_, 1, true)) {
         token.mTokenCode = kToken__7D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__7C_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7C_, 1, true)) {
         token.mTokenCode = kToken__7C_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__7B_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7B_, 1, true)) {
         token.mTokenCode = kToken__7B_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__60_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__60_, 1, true)) {
         token.mTokenCode = kToken__60_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__5E_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__5E_, 1, true)) {
         token.mTokenCode = kToken__5E_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__5D_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__5D_, 1, true)) {
         token.mTokenCode = kToken__5D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__5B_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__5B_, 1, true)) {
         token.mTokenCode = kToken__5B_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3E_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3E_, 1, true)) {
         token.mTokenCode = kToken__3E_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3B_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3B_, 1, true)) {
         token.mTokenCode = kToken__3B_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__3A_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3A_, 1, true)) {
         token.mTokenCode = kToken__3A_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2F_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2F_, 1, true)) {
         token.mTokenCode = kToken__2F_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2D_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2D_, 1, true)) {
         token.mTokenCode = kToken__2D_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2C_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2C_, 1, true)) {
         token.mTokenCode = kToken__2C_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2B_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2B_, 1, true)) {
         token.mTokenCode = kToken__2B_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2A_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2A_, 1, true)) {
         token.mTokenCode = kToken__2A_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__29_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__29_, 1, true)) {
         token.mTokenCode = kToken__29_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__28_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__28_, 1, true)) {
         token.mTokenCode = kToken__28_ ;
         enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__26_, 1, true)) {
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26_, 1, true)) {
         token.mTokenCode = kToken__26_ ;
         enterToken (token) ;
       }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
@@ -7610,7 +7610,7 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
         if (testForInputUTF32Char (TO_UNICODE ('='))) {
           token.mTokenCode = kToken__3C__3D_ ;
           enterToken (token) ;
-        }else if (testForInputUTF32String (kUnicodeString_galgas_5F_scanner__2D__3E_, 2, true)) {
+        }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2D__3E_, 2, true)) {
           token.mTokenCode = kToken__3C__2D__3E_ ;
           enterToken (token) ;
         }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
@@ -7662,19 +7662,19 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
               ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\?')) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
               do {
-                if (notTestForInputUTF32String (kUnicodeString_galgas_5F_scanner__3B_, 1, gLexicalMessage_galgas_5F_scanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
+                if (notTestForInputUTF32String (kUnicodeString_galgas_32_Scanner__3B_, 1, gLexicalMessage_galgas_32_Scanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
                   ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, previousChar ()) ;
                 }else{
                   mLoop = false ;
                 }
               }while (mLoop) ;
               mLoop = true ;
-              ::scanner_routine_convertHTMLSequenceToUnicodeCharacter (*this, token.mLexicalAttribute_identifierString, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_5F_scanner_unknownHTMLescapeSequence) ;
+              ::scanner_routine_convertHTMLSequenceToUnicodeCharacter (*this, token.mLexicalAttribute_identifierString, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unknownHTMLescapeSequence) ;
               ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
             }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              lexicalWarning (gLexicalMessage_galgas_5F_scanner_obsoleteStringConstruction COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalWarning (gLexicalMessage_galgas_32_Scanner_obsoleteStringConstruction COMMA_LINE_AND_SOURCE_FILE) ;
               do {
-                ::scanner_routine_enterHexDigitIntoASCIIcharacter (*this, token.mLexicalAttribute_charValue, previousChar (), gLexicalMessage_galgas_5F_scanner_ASCIIcodeTooLargeError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoASCIIcharacter (*this, token.mLexicalAttribute_charValue, previousChar (), gLexicalMessage_galgas_32_Scanner_ASCIIcodeTooLargeError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                 if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
                 }else{
                   mLoop = false ;
@@ -7684,72 +7684,72 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
               ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('u'))) {
               if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                 if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                   if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                     if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
-                      ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_5F_scanner_unassignedUnicodeValue) ;
+                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
+                      ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue) ;
                       ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
                     }else{
-                      lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                      lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
                     }
                   }else{
-                    lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                    lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
                   }
                 }else{
-                  lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                  lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
                 }
               }else{
-                lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
               }
             }else if (testForInputUTF32Char (TO_UNICODE ('U'))) {
               if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                 if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                   if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                     if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                       if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                         if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                           if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
+                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
                             if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_5F_scanner_internalError, gLexicalMessage_galgas_5F_scanner_internalError) ;
-                              ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_5F_scanner_unassignedUnicodeValue) ;
+                              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
+                              ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue) ;
                               ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
                             }else{
-                              lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                              lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                             }
                           }else{
-                            lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                            lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                           }
                         }else{
-                          lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                          lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                         }
                       }else{
-                        lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                        lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                       }
                     }else{
-                      lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                      lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                     }
                   }else{
-                    lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                    lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                   }
                 }else{
-                  lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                  lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                 }
               }else{
-                lexicalError (gLexicalMessage_galgas_5F_scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
               }
             }else{
-              lexicalError (gLexicalMessage_galgas_5F_scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else if (testForInputUTF32Char (TO_UNICODE (' ')) || testForInputUTF32Char (TO_UNICODE ('!')) || testForInputUTF32CharRange (TO_UNICODE ('#'), TO_UNICODE (65533))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
@@ -7762,7 +7762,7 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
           token.mTokenCode = kToken_literal_5F_string ;
           enterToken (token) ;
         }else{
-          lexicalError (gLexicalMessage_galgas_5F_scanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
+          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
         }
       }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
         if (testForInputUTF32Char (TO_UNICODE ('!'))) {
@@ -7806,9 +7806,9 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
 //                         E N T E R    T O K E N                                                                      *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_Lexique_galgas_5F_scanner::enterToken (const cTokenFor_galgas_5F_scanner & inToken) {
-  cTokenFor_galgas_5F_scanner * ptr = NULL ;
-  macroMyNew (ptr, cTokenFor_galgas_5F_scanner ()) ;
+void C_Lexique_galgas_32_Scanner::enterToken (const cTokenFor_galgas_32_Scanner & inToken) {
+  cTokenFor_galgas_32_Scanner * ptr = NULL ;
+  macroMyNew (ptr, cTokenFor_galgas_32_Scanner ()) ;
   ptr->mTokenCode = inToken.mTokenCode ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
@@ -7828,57 +7828,57 @@ void C_Lexique_galgas_5F_scanner::enterToken (const cTokenFor_galgas_5F_scanner 
 //               A T T R I B U T E   A C C E S S                                                                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
-utf32 C_Lexique_galgas_5F_scanner::attributeValue_charValue (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
+utf32 C_Lexique_galgas_32_Scanner::attributeValue_charValue (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_charValue ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-double C_Lexique_galgas_5F_scanner::attributeValue_floatValue (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
+double C_Lexique_galgas_32_Scanner::attributeValue_floatValue (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_floatValue ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_Lexique_galgas_5F_scanner::attributeValue_identifierString (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
+C_String C_Lexique_galgas_32_Scanner::attributeValue_identifierString (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_identifierString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-int32_t C_Lexique_galgas_5F_scanner::attributeValue_sint_33__32_value (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
+int32_t C_Lexique_galgas_32_Scanner::attributeValue_sint_33__32_value (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_sint_33__32_value ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-int64_t C_Lexique_galgas_5F_scanner::attributeValue_sint_36__34_value (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
+int64_t C_Lexique_galgas_32_Scanner::attributeValue_sint_36__34_value (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_sint_36__34_value ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_Lexique_galgas_5F_scanner::attributeValue_tokenString (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
+C_String C_Lexique_galgas_32_Scanner::attributeValue_tokenString (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_tokenString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-uint32_t C_Lexique_galgas_5F_scanner::attributeValue_uint_33__32_value (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
+uint32_t C_Lexique_galgas_32_Scanner::attributeValue_uint_33__32_value (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_uint_33__32_value ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-uint64_t C_Lexique_galgas_5F_scanner::attributeValue_uint_36__34_value (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
+uint64_t C_Lexique_galgas_32_Scanner::attributeValue_uint_36__34_value (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_uint_36__34_value ;
 }
 
@@ -7886,9 +7886,9 @@ uint64_t C_Lexique_galgas_5F_scanner::attributeValue_uint_36__34_value (void) co
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lchar C_Lexique_galgas_5F_scanner::synthetizedAttribute_charValue (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_5F_scanner) ;
+GALGAS_lchar C_Lexique_galgas_32_Scanner::synthetizedAttribute_charValue (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
   GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GALGAS_char value (ptr->mLexicalAttribute_charValue) ;
   GALGAS_lchar result (value, currentLocation) ;
@@ -7897,9 +7897,9 @@ GALGAS_lchar C_Lexique_galgas_5F_scanner::synthetizedAttribute_charValue (void) 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_ldouble C_Lexique_galgas_5F_scanner::synthetizedAttribute_floatValue (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_5F_scanner) ;
+GALGAS_ldouble C_Lexique_galgas_32_Scanner::synthetizedAttribute_floatValue (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
   GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GALGAS_double value (ptr->mLexicalAttribute_floatValue) ;
   GALGAS_ldouble result (value, currentLocation) ;
@@ -7908,9 +7908,9 @@ GALGAS_ldouble C_Lexique_galgas_5F_scanner::synthetizedAttribute_floatValue (voi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring C_Lexique_galgas_5F_scanner::synthetizedAttribute_identifierString (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_5F_scanner) ;
+GALGAS_lstring C_Lexique_galgas_32_Scanner::synthetizedAttribute_identifierString (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
   GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GALGAS_string value (ptr->mLexicalAttribute_identifierString) ;
   GALGAS_lstring result (value, currentLocation) ;
@@ -7919,9 +7919,9 @@ GALGAS_lstring C_Lexique_galgas_5F_scanner::synthetizedAttribute_identifierStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lsint C_Lexique_galgas_5F_scanner::synthetizedAttribute_sint_33__32_value (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_5F_scanner) ;
+GALGAS_lsint C_Lexique_galgas_32_Scanner::synthetizedAttribute_sint_33__32_value (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
   GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GALGAS_sint value (ptr->mLexicalAttribute_sint_33__32_value) ;
   GALGAS_lsint result (value, currentLocation) ;
@@ -7930,9 +7930,9 @@ GALGAS_lsint C_Lexique_galgas_5F_scanner::synthetizedAttribute_sint_33__32_value
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lsint_36__34_ C_Lexique_galgas_5F_scanner::synthetizedAttribute_sint_36__34_value (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_5F_scanner) ;
+GALGAS_lsint_36__34_ C_Lexique_galgas_32_Scanner::synthetizedAttribute_sint_36__34_value (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
   GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GALGAS_sint_36__34_ value (ptr->mLexicalAttribute_sint_36__34_value) ;
   GALGAS_lsint_36__34_ result (value, currentLocation) ;
@@ -7941,9 +7941,9 @@ GALGAS_lsint_36__34_ C_Lexique_galgas_5F_scanner::synthetizedAttribute_sint_36__
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring C_Lexique_galgas_5F_scanner::synthetizedAttribute_tokenString (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_5F_scanner) ;
+GALGAS_lstring C_Lexique_galgas_32_Scanner::synthetizedAttribute_tokenString (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
   GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GALGAS_string value (ptr->mLexicalAttribute_tokenString) ;
   GALGAS_lstring result (value, currentLocation) ;
@@ -7952,9 +7952,9 @@ GALGAS_lstring C_Lexique_galgas_5F_scanner::synthetizedAttribute_tokenString (vo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint C_Lexique_galgas_5F_scanner::synthetizedAttribute_uint_33__32_value (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_5F_scanner) ;
+GALGAS_luint C_Lexique_galgas_32_Scanner::synthetizedAttribute_uint_33__32_value (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
   GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GALGAS_uint value (ptr->mLexicalAttribute_uint_33__32_value) ;
   GALGAS_luint result (value, currentLocation) ;
@@ -7963,9 +7963,9 @@ GALGAS_luint C_Lexique_galgas_5F_scanner::synthetizedAttribute_uint_33__32_value
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint_36__34_ C_Lexique_galgas_5F_scanner::synthetizedAttribute_uint_36__34_value (void) const {
-  cTokenFor_galgas_5F_scanner * ptr = (cTokenFor_galgas_5F_scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_5F_scanner) ;
+GALGAS_luint_36__34_ C_Lexique_galgas_32_Scanner::synthetizedAttribute_uint_36__34_value (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
   GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GALGAS_uint_36__34_ value (ptr->mLexicalAttribute_uint_36__34_value) ;
   GALGAS_luint_36__34_ result (value, currentLocation) ;
@@ -7976,7 +7976,7 @@ GALGAS_luint_36__34_ C_Lexique_galgas_5F_scanner::synthetizedAttribute_uint_36__
 //                         I N T R O S P E C T I O N                                                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist C_Lexique_galgas_5F_scanner::symbols (LOCATION_ARGS) {
+GALGAS_stringlist C_Lexique_galgas_32_Scanner::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
   result.addAssign_operation (GALGAS_string ("identifier") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("literal_double") COMMA_THERE) ;
@@ -8142,165 +8142,165 @@ GALGAS_stringlist C_Lexique_galgas_5F_scanner::symbols (LOCATION_ARGS) {
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-uint32_t C_Lexique_galgas_5F_scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+uint32_t C_Lexique_galgas_32_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
   static const uint32_t kTerminalSymbolStyles [158] = {0,
-    0 /* galgas_scanner_1_identifier */,
-    8 /* galgas_scanner_1_literal_5F_double */,
-    7 /* galgas_scanner_1_unsigned_5F_literal_5F_integer */,
-    7 /* galgas_scanner_1_signed_5F_literal_5F_integer */,
-    7 /* galgas_scanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
-    7 /* galgas_scanner_1_signed_5F_literal_5F_integer_36__34_ */,
-    2 /* galgas_scanner_1__2E_ */,
-    2 /* galgas_scanner_1__2E__3D_ */,
-    2 /* galgas_scanner_1__2E__2E__2E_ */,
-    11 /* galgas_scanner_1_type_5F_name */,
-    9 /* galgas_scanner_1_literal_5F_char */,
-    4 /* galgas_scanner_1_terminal */,
-    3 /* galgas_scanner_1__3F__3F_ */,
-    3 /* galgas_scanner_1__3F_ */,
-    3 /* galgas_scanner_1__3F__21_ */,
-    3 /* galgas_scanner_1__21_ */,
-    3 /* galgas_scanner_1__21__3F_ */,
-    2 /* galgas_scanner_1__3C_ */,
-    2 /* galgas_scanner_1__3C__2D__3E_ */,
-    2 /* galgas_scanner_1__3C__3D_ */,
-    2 /* galgas_scanner_1__3C__3C_ */,
-    5 /* galgas_scanner_1_non_5F_terminal_5F_symbol */,
-    10 /* galgas_scanner_1_literal_5F_string */,
-    12 /* galgas_scanner_1_comment */,
-    12 /* galgas_scanner_1_commentMark */,
-    1 /* galgas_scanner_1_abstract */,
-    1 /* galgas_scanner_1_after */,
-    1 /* galgas_scanner_1_array */,
-    1 /* galgas_scanner_1_before */,
-    1 /* galgas_scanner_1_between */,
-    1 /* galgas_scanner_1_block */,
-    1 /* galgas_scanner_1_case */,
-    1 /* galgas_scanner_1_cast */,
-    1 /* galgas_scanner_1_class */,
-    1 /* galgas_scanner_1_const */,
-    1 /* galgas_scanner_1_constructor */,
-    1 /* galgas_scanner_1_default */,
-    1 /* galgas_scanner_1_do */,
-    1 /* galgas_scanner_1_drop */,
-    1 /* galgas_scanner_1_else */,
-    1 /* galgas_scanner_1_elsif */,
-    1 /* galgas_scanner_1_end */,
-    1 /* galgas_scanner_1_enum */,
-    1 /* galgas_scanner_1_error */,
-    1 /* galgas_scanner_1_extension */,
-    1 /* galgas_scanner_1_extends */,
-    1 /* galgas_scanner_1_extern */,
-    1 /* galgas_scanner_1_false */,
-    1 /* galgas_scanner_1_feature */,
-    1 /* galgas_scanner_1_filewrapper */,
-    1 /* galgas_scanner_1_for */,
-    1 /* galgas_scanner_1_foreach */,
-    1 /* galgas_scanner_1_func */,
-    1 /* galgas_scanner_1_function */,
-    1 /* galgas_scanner_1_getter */,
-    1 /* galgas_scanner_1_grammar */,
-    1 /* galgas_scanner_1_graph */,
-    1 /* galgas_scanner_1_gui */,
-    1 /* galgas_scanner_1_here */,
-    1 /* galgas_scanner_1_if */,
-    1 /* galgas_scanner_1_import */,
-    1 /* galgas_scanner_1_in */,
-    1 /* galgas_scanner_1_index */,
-    1 /* galgas_scanner_1_indexing */,
-    1 /* galgas_scanner_1_insert */,
-    1 /* galgas_scanner_1_is */,
-    1 /* galgas_scanner_1_label */,
-    1 /* galgas_scanner_1_let */,
-    1 /* galgas_scanner_1_lexique */,
-    1 /* galgas_scanner_1_list */,
-    1 /* galgas_scanner_1_listmap */,
-    1 /* galgas_scanner_1_local */,
-    1 /* galgas_scanner_1_log */,
-    1 /* galgas_scanner_1_loop */,
-    1 /* galgas_scanner_1_map */,
-    1 /* galgas_scanner_1_match */,
-    1 /* galgas_scanner_1_message */,
-    1 /* galgas_scanner_1_method */,
-    1 /* galgas_scanner_1_mod */,
-    1 /* galgas_scanner_1_modifier */,
-    1 /* galgas_scanner_1_nonterminal */,
-    1 /* galgas_scanner_1_not */,
-    1 /* galgas_scanner_1_on */,
-    1 /* galgas_scanner_1_once */,
-    1 /* galgas_scanner_1_operator */,
-    1 /* galgas_scanner_1_option */,
-    1 /* galgas_scanner_1_or */,
-    1 /* galgas_scanner_1_override */,
-    1 /* galgas_scanner_1_parse */,
-    1 /* galgas_scanner_1_private */,
-    1 /* galgas_scanner_1_proc */,
-    1 /* galgas_scanner_1_project */,
-    1 /* galgas_scanner_1_program */,
-    1 /* galgas_scanner_1_reader */,
-    1 /* galgas_scanner_1_remove */,
-    1 /* galgas_scanner_1_replace */,
-    1 /* galgas_scanner_1_repeat */,
-    1 /* galgas_scanner_1_rewind */,
-    1 /* galgas_scanner_1_root */,
-    1 /* galgas_scanner_1_routine */,
-    1 /* galgas_scanner_1_rule */,
-    1 /* galgas_scanner_1_search */,
-    1 /* galgas_scanner_1_select */,
-    1 /* galgas_scanner_1_self */,
-    1 /* galgas_scanner_1_selfcopy */,
-    1 /* galgas_scanner_1_semantics */,
-    1 /* galgas_scanner_1_send */,
-    1 /* galgas_scanner_1_setter */,
-    1 /* galgas_scanner_1_sortedlist */,
-    1 /* galgas_scanner_1_state */,
-    1 /* galgas_scanner_1_struct */,
-    1 /* galgas_scanner_1_style */,
-    1 /* galgas_scanner_1_switch */,
-    1 /* galgas_scanner_1_syntax */,
-    1 /* galgas_scanner_1_tag */,
-    1 /* galgas_scanner_1_template */,
-    1 /* galgas_scanner_1_then */,
-    1 /* galgas_scanner_1_true */,
-    1 /* galgas_scanner_1_sharedmap */,
-    1 /* galgas_scanner_1_unused */,
-    1 /* galgas_scanner_1_var */,
-    1 /* galgas_scanner_1_warning */,
-    1 /* galgas_scanner_1_when */,
-    1 /* galgas_scanner_1_while */,
-    1 /* galgas_scanner_1_with */,
-    2 /* galgas_scanner_1__2A_ */,
-    2 /* galgas_scanner_1__7C_ */,
-    2 /* galgas_scanner_1__2C_ */,
-    2 /* galgas_scanner_1__2B_ */,
-    2 /* galgas_scanner_1__2D__2D_ */,
-    2 /* galgas_scanner_1__3A__3E_ */,
-    2 /* galgas_scanner_1__3E_ */,
-    2 /* galgas_scanner_1__3B_ */,
-    2 /* galgas_scanner_1__3A_ */,
-    2 /* galgas_scanner_1__3A__3A_ */,
-    2 /* galgas_scanner_1__26__26_ */,
-    2 /* galgas_scanner_1__2D_ */,
-    2 /* galgas_scanner_1__28_ */,
-    2 /* galgas_scanner_1__29_ */,
-    2 /* galgas_scanner_1__2D__3E_ */,
-    2 /* galgas_scanner_1__3D__3D_ */,
-    2 /* galgas_scanner_1__3A__3D_ */,
-    2 /* galgas_scanner_1__2B__2B_ */,
-    2 /* galgas_scanner_1__7C__7C_ */,
-    2 /* galgas_scanner_1__5B_ */,
-    2 /* galgas_scanner_1__5D_ */,
-    2 /* galgas_scanner_1__2B__3D_ */,
-    2 /* galgas_scanner_1__2F_ */,
-    2 /* galgas_scanner_1__21__3D_ */,
-    2 /* galgas_scanner_1__3E__3D_ */,
-    2 /* galgas_scanner_1__26_ */,
-    2 /* galgas_scanner_1__7B_ */,
-    2 /* galgas_scanner_1__7D_ */,
-    2 /* galgas_scanner_1__60_ */,
-    2 /* galgas_scanner_1__5E_ */,
-    2 /* galgas_scanner_1__3E__3E_ */,
-    2 /* galgas_scanner_1__7E_ */
+    0 /* galgas2Scanner_1_identifier */,
+    8 /* galgas2Scanner_1_literal_5F_double */,
+    7 /* galgas2Scanner_1_unsigned_5F_literal_5F_integer */,
+    7 /* galgas2Scanner_1_signed_5F_literal_5F_integer */,
+    7 /* galgas2Scanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
+    7 /* galgas2Scanner_1_signed_5F_literal_5F_integer_36__34_ */,
+    2 /* galgas2Scanner_1__2E_ */,
+    2 /* galgas2Scanner_1__2E__3D_ */,
+    2 /* galgas2Scanner_1__2E__2E__2E_ */,
+    11 /* galgas2Scanner_1_type_5F_name */,
+    9 /* galgas2Scanner_1_literal_5F_char */,
+    4 /* galgas2Scanner_1_terminal */,
+    3 /* galgas2Scanner_1__3F__3F_ */,
+    3 /* galgas2Scanner_1__3F_ */,
+    3 /* galgas2Scanner_1__3F__21_ */,
+    3 /* galgas2Scanner_1__21_ */,
+    3 /* galgas2Scanner_1__21__3F_ */,
+    2 /* galgas2Scanner_1__3C_ */,
+    2 /* galgas2Scanner_1__3C__2D__3E_ */,
+    2 /* galgas2Scanner_1__3C__3D_ */,
+    2 /* galgas2Scanner_1__3C__3C_ */,
+    5 /* galgas2Scanner_1_non_5F_terminal_5F_symbol */,
+    10 /* galgas2Scanner_1_literal_5F_string */,
+    12 /* galgas2Scanner_1_comment */,
+    12 /* galgas2Scanner_1_commentMark */,
+    1 /* galgas2Scanner_1_abstract */,
+    1 /* galgas2Scanner_1_after */,
+    1 /* galgas2Scanner_1_array */,
+    1 /* galgas2Scanner_1_before */,
+    1 /* galgas2Scanner_1_between */,
+    1 /* galgas2Scanner_1_block */,
+    1 /* galgas2Scanner_1_case */,
+    1 /* galgas2Scanner_1_cast */,
+    1 /* galgas2Scanner_1_class */,
+    1 /* galgas2Scanner_1_const */,
+    1 /* galgas2Scanner_1_constructor */,
+    1 /* galgas2Scanner_1_default */,
+    1 /* galgas2Scanner_1_do */,
+    1 /* galgas2Scanner_1_drop */,
+    1 /* galgas2Scanner_1_else */,
+    1 /* galgas2Scanner_1_elsif */,
+    1 /* galgas2Scanner_1_end */,
+    1 /* galgas2Scanner_1_enum */,
+    1 /* galgas2Scanner_1_error */,
+    1 /* galgas2Scanner_1_extension */,
+    1 /* galgas2Scanner_1_extends */,
+    1 /* galgas2Scanner_1_extern */,
+    1 /* galgas2Scanner_1_false */,
+    1 /* galgas2Scanner_1_feature */,
+    1 /* galgas2Scanner_1_filewrapper */,
+    1 /* galgas2Scanner_1_for */,
+    1 /* galgas2Scanner_1_foreach */,
+    1 /* galgas2Scanner_1_func */,
+    1 /* galgas2Scanner_1_function */,
+    1 /* galgas2Scanner_1_getter */,
+    1 /* galgas2Scanner_1_grammar */,
+    1 /* galgas2Scanner_1_graph */,
+    1 /* galgas2Scanner_1_gui */,
+    1 /* galgas2Scanner_1_here */,
+    1 /* galgas2Scanner_1_if */,
+    1 /* galgas2Scanner_1_import */,
+    1 /* galgas2Scanner_1_in */,
+    1 /* galgas2Scanner_1_index */,
+    1 /* galgas2Scanner_1_indexing */,
+    1 /* galgas2Scanner_1_insert */,
+    1 /* galgas2Scanner_1_is */,
+    1 /* galgas2Scanner_1_label */,
+    1 /* galgas2Scanner_1_let */,
+    1 /* galgas2Scanner_1_lexique */,
+    1 /* galgas2Scanner_1_list */,
+    1 /* galgas2Scanner_1_listmap */,
+    1 /* galgas2Scanner_1_local */,
+    1 /* galgas2Scanner_1_log */,
+    1 /* galgas2Scanner_1_loop */,
+    1 /* galgas2Scanner_1_map */,
+    1 /* galgas2Scanner_1_match */,
+    1 /* galgas2Scanner_1_message */,
+    1 /* galgas2Scanner_1_method */,
+    1 /* galgas2Scanner_1_mod */,
+    1 /* galgas2Scanner_1_modifier */,
+    1 /* galgas2Scanner_1_nonterminal */,
+    1 /* galgas2Scanner_1_not */,
+    1 /* galgas2Scanner_1_on */,
+    1 /* galgas2Scanner_1_once */,
+    1 /* galgas2Scanner_1_operator */,
+    1 /* galgas2Scanner_1_option */,
+    1 /* galgas2Scanner_1_or */,
+    1 /* galgas2Scanner_1_override */,
+    1 /* galgas2Scanner_1_parse */,
+    1 /* galgas2Scanner_1_private */,
+    1 /* galgas2Scanner_1_proc */,
+    1 /* galgas2Scanner_1_project */,
+    1 /* galgas2Scanner_1_program */,
+    1 /* galgas2Scanner_1_reader */,
+    1 /* galgas2Scanner_1_remove */,
+    1 /* galgas2Scanner_1_replace */,
+    1 /* galgas2Scanner_1_repeat */,
+    1 /* galgas2Scanner_1_rewind */,
+    1 /* galgas2Scanner_1_root */,
+    1 /* galgas2Scanner_1_routine */,
+    1 /* galgas2Scanner_1_rule */,
+    1 /* galgas2Scanner_1_search */,
+    1 /* galgas2Scanner_1_select */,
+    1 /* galgas2Scanner_1_self */,
+    1 /* galgas2Scanner_1_selfcopy */,
+    1 /* galgas2Scanner_1_semantics */,
+    1 /* galgas2Scanner_1_send */,
+    1 /* galgas2Scanner_1_setter */,
+    1 /* galgas2Scanner_1_sortedlist */,
+    1 /* galgas2Scanner_1_state */,
+    1 /* galgas2Scanner_1_struct */,
+    1 /* galgas2Scanner_1_style */,
+    1 /* galgas2Scanner_1_switch */,
+    1 /* galgas2Scanner_1_syntax */,
+    1 /* galgas2Scanner_1_tag */,
+    1 /* galgas2Scanner_1_template */,
+    1 /* galgas2Scanner_1_then */,
+    1 /* galgas2Scanner_1_true */,
+    1 /* galgas2Scanner_1_sharedmap */,
+    1 /* galgas2Scanner_1_unused */,
+    1 /* galgas2Scanner_1_var */,
+    1 /* galgas2Scanner_1_warning */,
+    1 /* galgas2Scanner_1_when */,
+    1 /* galgas2Scanner_1_while */,
+    1 /* galgas2Scanner_1_with */,
+    2 /* galgas2Scanner_1__2A_ */,
+    2 /* galgas2Scanner_1__7C_ */,
+    2 /* galgas2Scanner_1__2C_ */,
+    2 /* galgas2Scanner_1__2B_ */,
+    2 /* galgas2Scanner_1__2D__2D_ */,
+    2 /* galgas2Scanner_1__3A__3E_ */,
+    2 /* galgas2Scanner_1__3E_ */,
+    2 /* galgas2Scanner_1__3B_ */,
+    2 /* galgas2Scanner_1__3A_ */,
+    2 /* galgas2Scanner_1__3A__3A_ */,
+    2 /* galgas2Scanner_1__26__26_ */,
+    2 /* galgas2Scanner_1__2D_ */,
+    2 /* galgas2Scanner_1__28_ */,
+    2 /* galgas2Scanner_1__29_ */,
+    2 /* galgas2Scanner_1__2D__3E_ */,
+    2 /* galgas2Scanner_1__3D__3D_ */,
+    2 /* galgas2Scanner_1__3A__3D_ */,
+    2 /* galgas2Scanner_1__2B__2B_ */,
+    2 /* galgas2Scanner_1__7C__7C_ */,
+    2 /* galgas2Scanner_1__5B_ */,
+    2 /* galgas2Scanner_1__5D_ */,
+    2 /* galgas2Scanner_1__2B__3D_ */,
+    2 /* galgas2Scanner_1__2F_ */,
+    2 /* galgas2Scanner_1__21__3D_ */,
+    2 /* galgas2Scanner_1__3E__3D_ */,
+    2 /* galgas2Scanner_1__26_ */,
+    2 /* galgas2Scanner_1__7B_ */,
+    2 /* galgas2Scanner_1__7D_ */,
+    2 /* galgas2Scanner_1__60_ */,
+    2 /* galgas2Scanner_1__5E_ */,
+    2 /* galgas2Scanner_1__3E__3E_ */,
+    2 /* galgas2Scanner_1__7E_ */
   } ;
   return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
 }
@@ -8309,7 +8309,7 @@ uint32_t C_Lexique_galgas_5F_scanner::styleIndexForTerminal (const int32_t inTer
 //   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_Lexique_galgas_5F_scanner::styleNameForIndex (const uint32_t inStyleIndex) const {
+C_String C_Lexique_galgas_32_Scanner::styleNameForIndex (const uint32_t inStyleIndex) const {
   C_String result ;
   if (inStyleIndex < 13) {
     static const char * kStyleArray [13] = {

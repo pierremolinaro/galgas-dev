@@ -30,11 +30,11 @@ rule <project_component_start_symbol>
   $unsigned_literal_integer$ ?let @luint revisionVersion
   $)$
   $->$
-  $literal_string$ ?var  @lstring targetName
+  $literal_string$ ?let @lstring targetName
   ${$
-  var projectSourceList =@lstringlist.emptyList{}
-  var generateFeatureList =@lstringlist.emptyList{}
-  var qualifiedFeatureList =@galgas3QualifiedFeatureList. emptyList{}
+  @lstringlist projectSourceList = {}
+  @lstringlist generateFeatureList = {}
+  @galgas3QualifiedFeatureList qualifiedFeatureList = {}
   repeat
   while
     $attribute$ ?let @lstring featureName
@@ -58,7 +58,8 @@ rule <project_component_start_symbol>
     !generateFeatureList
     !qualifiedFeatureList
     !targetName
-    !@location.here}
+    !@location.here
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

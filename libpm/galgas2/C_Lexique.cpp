@@ -255,7 +255,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
     }
     const C_String styleName = styleNameForIndex (styleIndexForTerminal (inToken->mTokenCode)) ;
     if (styleName.length () > 0) {
-      mLatexOutputString << "\\" << styleName << "{" ;
+      mLatexOutputString << "\\" << styleName << latexModeStyleSuffixString () << "{" ;
     }
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
@@ -1662,7 +1662,7 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
     }
     const C_String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
     if (styleName.length () > 0) {
-      mLatexOutputString << "\\" << styleName << "{" ;
+      mLatexOutputString << "\\" << styleName << latexModeStyleSuffixString () << "{" ;
     }
     for (int32_t i=mTokenStartLocation.index () ; i<=mTokenEndLocation.index () ; i++) {
       const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;

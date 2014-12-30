@@ -991,17 +991,17 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::extractObject (const GALGAS
 
 void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (GALGAS_guiComponentAST & outArgument_outGuiComponentRoot,
                                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                                C_Lexique_galgas_5F_scanner * inCompiler) {
+                                                                                C_Lexique_galgas_32_Scanner * inCompiler) {
   outArgument_outGuiComponentRoot.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 28)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 28)) ;
   GALGAS_lstring var_mGUIName = inCompiler->synthetizedAttribute_tokenString () ;
   GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 29)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 29)) ;
   GALGAS_lstring var_mGUIClass = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 30)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 31)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 30)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 31)) ;
   if (var_sep.add_operation (var_mGUIClass.reader_string (SOURCE_FILE ("guiSyntax.galgas", 32)), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 32)).add_operation (GALGAS_string (" {"), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 32)).isValid ()) {
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (var_mGUIClass.reader_string (SOURCE_FILE ("guiSyntax.galgas", 32)), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 32)).add_operation (GALGAS_string (" {"), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 32)).stringValue () ;
   }
@@ -1015,17 +1015,17 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
       GALGAS_lstring var_mKey = inCompiler->synthetizedAttribute_tokenString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 38)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 38)) ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 39)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 39)) ;
       GALGAS_lstring var_mValue = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("guiSyntax.galgas", 40))  COMMA_SOURCE_FILE ("guiSyntax.galgas", 40)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
         GALGAS_lstring var_value = inCompiler->synthetizedAttribute_tokenString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 42)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 42)) ;
         var_mValue = GALGAS_lstring::constructor_new (var_mValue.reader_string (SOURCE_FILE ("guiSyntax.galgas", 43)).add_operation (var_value.reader_string (SOURCE_FILE ("guiSyntax.galgas", 43)), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 43)), var_value.reader_location (SOURCE_FILE ("guiSyntax.galgas", 43))  COMMA_SOURCE_FILE ("guiSyntax.galgas", 43)) ;
         switch (select_guiSyntax_1 (inCompiler)) {
         case 2: {
@@ -1035,34 +1035,34 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
           break ;
         }
       }
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 46)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 46)) ;
       var_simpleGlobalAttributes.addAssign_operation (var_mKey, var_mValue  COMMA_SOURCE_FILE ("guiSyntax.galgas", 47)) ;
     } break ;
     case 3: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("guiSyntax.galgas", 49)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiSyntax.galgas", 49)) ;
       switch (select_guiSyntax_2 (inCompiler)) {
       case 1: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_option) COMMA_SOURCE_FILE ("guiSyntax.galgas", 51)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_option) COMMA_SOURCE_FILE ("guiSyntax.galgas", 51)) ;
         GALGAS_lstring var_optionReference = inCompiler->synthetizedAttribute_tokenString () ;
         const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 52)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 52)) ;
         if (var_sep.add_operation (var_optionReference.mAttribute_string.reader_stringByDeletingPathExtension (SOURCE_FILE ("guiSyntax.galgas", 53)), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 53)).isValid ()) {
           ioSyntaxDirectedTranslationResult << var_sep.add_operation (var_optionReference.mAttribute_string.reader_stringByDeletingPathExtension (SOURCE_FILE ("guiSyntax.galgas", 53)), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 53)).stringValue () ;
         }
         var_importedOptionList.addAssign_operation (var_optionReference  COMMA_SOURCE_FILE ("guiSyntax.galgas", 54)) ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 55)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 55)) ;
       } break ;
       case 2: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiSyntax.galgas", 57)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiSyntax.galgas", 57)) ;
         GALGAS_lstring var_lexiqueReference = inCompiler->synthetizedAttribute_tokenString () ;
         const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 58)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 58)) ;
         if (var_sep.add_operation (var_lexiqueReference.mAttribute_string.reader_stringByDeletingPathExtension (SOURCE_FILE ("guiSyntax.galgas", 59)), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 59)).isValid ()) {
           ioSyntaxDirectedTranslationResult << var_sep.add_operation (var_lexiqueReference.mAttribute_string.reader_stringByDeletingPathExtension (SOURCE_FILE ("guiSyntax.galgas", 59)), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 59)).stringValue () ;
         }
@@ -1071,14 +1071,14 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
         GALGAS_guiCompoundAttributeListAST var_compoundAttributes = GALGAS_guiCompoundAttributeListAST::constructor_emptyList (SOURCE_FILE ("guiSyntax.galgas", 62)) ;
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 63)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 63)) ;
         bool repeatFlag_2 = true ;
         while (repeatFlag_2) {
           switch (select_guiSyntax_3 (inCompiler)) {
           case 2: {
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("guiSyntax.galgas", 66)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_label) COMMA_SOURCE_FILE ("guiSyntax.galgas", 66)) ;
             GALGAS_uint var_displayStyle ;
             switch (select_guiSyntax_4 (inCompiler)) {
             case 1: {
@@ -1087,7 +1087,7 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
             case 2: {
               ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
               ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 71)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 71)) ;
               var_displayStyle = GALGAS_uint ((uint32_t) 1U) ;
             } break ;
             default:
@@ -1099,7 +1099,7 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
               GALGAS_lstring var_terminal = inCompiler->synthetizedAttribute_tokenString () ;
               ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
               ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) COMMA_SOURCE_FILE ("guiSyntax.galgas", 76)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_terminal) COMMA_SOURCE_FILE ("guiSyntax.galgas", 76)) ;
               GALGAS_uint var_displayFlags ;
               switch (select_guiSyntax_6 (inCompiler)) {
               case 1: {
@@ -1108,17 +1108,17 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
               case 2: {
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 81)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 81)) ;
                 var_displayFlags = GALGAS_uint ((uint32_t) 65535U) ;
               } break ;
               case 3: {
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 84)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__28_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 84)) ;
                 GALGAS_luint var_leadingStrip = inCompiler->synthetizedAttribute_uint_33__32_value () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 85)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 85)) ;
                 const enumGalgasBool test_4 = GALGAS_bool (kIsSupOrEqual, var_leadingStrip.mAttribute_uint.objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
                 if (kBoolTrue == test_4) {
                   GALGAS_location location_5 (var_leadingStrip.reader_location (HERE)) ; // Implicit use of 'location' reader
@@ -1126,11 +1126,11 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
                 }
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 89)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 89)) ;
                 GALGAS_luint var_endingStrip = inCompiler->synthetizedAttribute_uint_33__32_value () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 90)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 90)) ;
                 const enumGalgasBool test_6 = GALGAS_bool (kIsSupOrEqual, var_endingStrip.mAttribute_uint.objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
                 if (kBoolTrue == test_6) {
                   GALGAS_location location_7 (var_endingStrip.reader_location (HERE)) ; // Implicit use of 'location' reader
@@ -1139,7 +1139,7 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
                 var_displayFlags = var_leadingStrip.mAttribute_uint.left_shift_operation (GALGAS_uint ((uint32_t) 4U) COMMA_SOURCE_FILE ("guiSyntax.galgas", 94)).operator_or (var_endingStrip.reader_uint (SOURCE_FILE ("guiSyntax.galgas", 94)) COMMA_SOURCE_FILE ("guiSyntax.galgas", 94)) ;
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 95)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__29_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 95)) ;
               } break ;
               default:
                 break ;
@@ -1149,35 +1149,35 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
               case 2: {
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 99)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 99)) ;
               } break ;
               default:
                 repeatFlag_3 = false ;
                 break ;
               }
             }
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 101)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 101)) ;
             var_labels.addAssign_operation (var_displayStyle, var_terminalList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("guiSyntax.galgas", 102))  COMMA_SOURCE_FILE ("guiSyntax.galgas", 102)) ;
           } break ;
           case 3: {
             GALGAS_lstring var_key = inCompiler->synthetizedAttribute_tokenString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 104)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 104)) ;
             GALGAS_lstring var_name = inCompiler->synthetizedAttribute_tokenString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 105)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 105)) ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 106)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 106)) ;
             GALGAS_lstring var_value = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("guiSyntax.galgas", 107))  COMMA_SOURCE_FILE ("guiSyntax.galgas", 107)) ;
             bool repeatFlag_8 = true ;
             while (repeatFlag_8) {
               GALGAS_lstring var_v = inCompiler->synthetizedAttribute_tokenString () ;
               ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
               ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 109)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 109)) ;
               var_value = GALGAS_lstring::constructor_new (var_value.reader_string (SOURCE_FILE ("guiSyntax.galgas", 110)).add_operation (var_v.reader_string (SOURCE_FILE ("guiSyntax.galgas", 110)), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 110)), var_v.reader_location (SOURCE_FILE ("guiSyntax.galgas", 110))  COMMA_SOURCE_FILE ("guiSyntax.galgas", 110)) ;
               switch (select_guiSyntax_7 (inCompiler)) {
               case 2: {
@@ -1187,22 +1187,22 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
                 break ;
               }
             }
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 113)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 113)) ;
             var_compoundAttributes.addAssign_operation (var_key, var_name, var_value  COMMA_SOURCE_FILE ("guiSyntax.galgas", 114)) ;
           } break ;
           case 4: {
             GALGAS_lstring var_name = inCompiler->synthetizedAttribute_tokenString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 116)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 116)) ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 117)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 117)) ;
             GALGAS_lstring var_value = inCompiler->synthetizedAttribute_tokenString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 118)) ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 119)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 118)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 119)) ;
             var_simpleAttributes.addAssign_operation (var_name, var_value  COMMA_SOURCE_FILE ("guiSyntax.galgas", 120)) ;
           } break ;
           default:
@@ -1212,7 +1212,7 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
         }
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 122)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 122)) ;
         var_withLexiqueList.addAssign_operation (var_lexiqueReference, var_labels, var_simpleAttributes, var_compoundAttributes  COMMA_SOURCE_FILE ("guiSyntax.galgas", 123)) ;
       } break ;
       default:
@@ -1225,46 +1225,46 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_ (
     }
   }
   var_sep = GALGAS_string (inCompiler->preceedingSeparatorString ()) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("guiSyntax.galgas", 131)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_end) COMMA_SOURCE_FILE ("guiSyntax.galgas", 131)) ;
   if (var_sep.add_operation (GALGAS_string ("}"), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 132)).isValid ()) {
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("}"), inCompiler COMMA_SOURCE_FILE ("guiSyntax.galgas", 132)).stringValue () ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 133)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 134)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 133)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 134)) ;
   outArgument_outGuiComponentRoot = GALGAS_guiComponentAST::constructor_new (var_mGUIName, var_mGUIClass, var_importedOptionList, var_simpleGlobalAttributes, var_withLexiqueList  COMMA_SOURCE_FILE ("guiSyntax.galgas", 135)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                     C_Lexique_galgas_5F_scanner * inCompiler) {
+                                                                                     C_Lexique_galgas_32_Scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 28)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 28)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 29)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 29)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 30)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 30)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 31)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 31)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_guiSyntax_0 (inCompiler)) {
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 38)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 38)) ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 39)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 39)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 42)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 42)) ;
         switch (select_guiSyntax_1 (inCompiler)) {
         case 2: {
         } break ;
@@ -1275,48 +1275,48 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_pa
       }
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 46)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 46)) ;
     } break ;
     case 3: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("guiSyntax.galgas", 49)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiSyntax.galgas", 49)) ;
       switch (select_guiSyntax_2 (inCompiler)) {
       case 1: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_option) COMMA_SOURCE_FILE ("guiSyntax.galgas", 51)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_option) COMMA_SOURCE_FILE ("guiSyntax.galgas", 51)) ;
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 52)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 52)) ;
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 55)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 55)) ;
       } break ;
       case 2: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiSyntax.galgas", 57)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiSyntax.galgas", 57)) ;
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 58)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 58)) ;
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 63)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 63)) ;
         bool repeatFlag_2 = true ;
         while (repeatFlag_2) {
           switch (select_guiSyntax_3 (inCompiler)) {
           case 2: {
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("guiSyntax.galgas", 66)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_label) COMMA_SOURCE_FILE ("guiSyntax.galgas", 66)) ;
             switch (select_guiSyntax_4 (inCompiler)) {
             case 1: {
             } break ;
             case 2: {
               ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
               ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 71)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 71)) ;
             } break ;
             default:
               break ;
@@ -1325,31 +1325,31 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_pa
             while (repeatFlag_3) {
               ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
               ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) COMMA_SOURCE_FILE ("guiSyntax.galgas", 76)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_terminal) COMMA_SOURCE_FILE ("guiSyntax.galgas", 76)) ;
               switch (select_guiSyntax_6 (inCompiler)) {
               case 1: {
               } break ;
               case 2: {
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 81)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 81)) ;
               } break ;
               case 3: {
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 84)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__28_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 84)) ;
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 85)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 85)) ;
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 89)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 89)) ;
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 90)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 90)) ;
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 95)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__29_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 95)) ;
               } break ;
               default:
                 break ;
@@ -1358,7 +1358,7 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_pa
               case 2: {
                 ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
                 ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 99)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 99)) ;
               } break ;
               default:
                 repeatFlag_3 = false ;
@@ -1367,23 +1367,23 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_pa
             }
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 101)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 101)) ;
           } break ;
           case 3: {
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 104)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 104)) ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 105)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 105)) ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 106)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 106)) ;
             bool repeatFlag_4 = true ;
             while (repeatFlag_4) {
               ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
               ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 109)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 109)) ;
               switch (select_guiSyntax_7 (inCompiler)) {
               case 2: {
               } break ;
@@ -1394,21 +1394,21 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_pa
             }
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 113)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 113)) ;
           } break ;
           case 4: {
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 116)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 116)) ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 117)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 117)) ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 118)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 118)) ;
             ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
             ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 119)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 119)) ;
           } break ;
           default:
             repeatFlag_2 = false ;
@@ -1417,7 +1417,7 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_pa
         }
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 122)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 122)) ;
       } break ;
       default:
         break ;
@@ -1430,32 +1430,32 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_pa
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("guiSyntax.galgas", 131)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_end) COMMA_SOURCE_FILE ("guiSyntax.galgas", 131)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 133)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 133)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 134)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 134)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 28)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 29)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 30)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 31)) ;
+void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_indexing (C_Lexique_galgas_32_Scanner * inCompiler) {
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 28)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 29)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 30)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 31)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_guiSyntax_0 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 38)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 39)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 38)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 39)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 42)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 42)) ;
         switch (select_guiSyntax_1 (inCompiler)) {
         case 2: {
         } break ;
@@ -1464,71 +1464,71 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_in
           break ;
         }
       }
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 46)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 46)) ;
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("guiSyntax.galgas", 49)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiSyntax.galgas", 49)) ;
       switch (select_guiSyntax_2 (inCompiler)) {
       case 1: {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_option) COMMA_SOURCE_FILE ("guiSyntax.galgas", 51)) ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 52)) ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 55)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_option) COMMA_SOURCE_FILE ("guiSyntax.galgas", 51)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 52)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 55)) ;
       } break ;
       case 2: {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiSyntax.galgas", 57)) ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 58)) ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 63)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiSyntax.galgas", 57)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 58)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 63)) ;
         bool repeatFlag_2 = true ;
         while (repeatFlag_2) {
           switch (select_guiSyntax_3 (inCompiler)) {
           case 2: {
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) COMMA_SOURCE_FILE ("guiSyntax.galgas", 66)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_label) COMMA_SOURCE_FILE ("guiSyntax.galgas", 66)) ;
             switch (select_guiSyntax_4 (inCompiler)) {
             case 1: {
             } break ;
             case 2: {
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 71)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 71)) ;
             } break ;
             default:
               break ;
             }
             bool repeatFlag_3 = true ;
             while (repeatFlag_3) {
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) COMMA_SOURCE_FILE ("guiSyntax.galgas", 76)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_terminal) COMMA_SOURCE_FILE ("guiSyntax.galgas", 76)) ;
               switch (select_guiSyntax_6 (inCompiler)) {
               case 1: {
               } break ;
               case 2: {
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 81)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 81)) ;
               } break ;
               case 3: {
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 84)) ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 85)) ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 89)) ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 90)) ;
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 95)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__28_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 84)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 85)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 89)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_unsigned_5F_literal_5F_integer) COMMA_SOURCE_FILE ("guiSyntax.galgas", 90)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__29_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 95)) ;
               } break ;
               default:
                 break ;
               }
               switch (select_guiSyntax_5 (inCompiler)) {
               case 2: {
-                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 99)) ;
+                inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 99)) ;
               } break ;
               default:
                 repeatFlag_3 = false ;
                 break ;
               }
             }
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 101)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 101)) ;
           } break ;
           case 3: {
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 104)) ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 105)) ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 106)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 104)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 105)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 106)) ;
             bool repeatFlag_4 = true ;
             while (repeatFlag_4) {
-              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 109)) ;
+              inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 109)) ;
               switch (select_guiSyntax_7 (inCompiler)) {
               case 2: {
               } break ;
@@ -1537,20 +1537,20 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_in
                 break ;
               }
             }
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 113)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 113)) ;
           } break ;
           case 4: {
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 116)) ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 117)) ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 118)) ;
-            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 119)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiSyntax.galgas", 116)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 117)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("guiSyntax.galgas", 118)) ;
+            inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 119)) ;
           } break ;
           default:
             repeatFlag_2 = false ;
             break ;
           }
         }
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 122)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 122)) ;
       } break ;
       default:
         break ;
@@ -1561,9 +1561,9 @@ void cParser_guiSyntax::rule_guiSyntax_gui_5F_component_5F_start_5F_symbol_i0_in
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("guiSyntax.galgas", 131)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 133)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 134)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_end) COMMA_SOURCE_FILE ("guiSyntax.galgas", 131)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiSyntax.galgas", 133)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_32_Scanner::kToken__3B_) COMMA_SOURCE_FILE ("guiSyntax.galgas", 134)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
