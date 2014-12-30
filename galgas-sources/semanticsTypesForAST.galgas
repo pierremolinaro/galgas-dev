@@ -1919,7 +1919,7 @@ list @programRuleList {
   @lstring mSourceFileHelp
   @lstring mSourceFileVariableName
   @bool mSourceFileVariableNameIsUnused
-  @lstring mIndexingGrammar # Empty string if no indexing
+  @lstring mGrammar # Empty string if no grammar
   @semanticInstructionListAST mInstructionList
   @location mEndOfInstructionList
 }

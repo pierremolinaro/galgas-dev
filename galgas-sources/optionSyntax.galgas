@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'option' component parser, as model builder                              *
+#  'option' component parser, as model builder                                                                         *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -15,7 +15,7 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-syntax optionSyntax (galgas_scanner) %translate {
+syntax optionSyntax (galgas2Scanner) %translate {
 
 #----------------------------------------------------------------------------------------------------------------------*
 

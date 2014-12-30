@@ -9,8 +9,8 @@
 
 
 
-#ifndef galgas_5F_scanner_CLASS_DEFINED
-#define galgas_5F_scanner_CLASS_DEFINED
+#ifndef galgas_32_Scanner_CLASS_DEFINED
+#define galgas_32_Scanner_CLASS_DEFINED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -35,7 +35,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cTokenFor_galgas_5F_scanner : public cToken {
+class cTokenFor_galgas_32_Scanner : public cToken {
   public : utf32 mLexicalAttribute_charValue ;
   public : double mLexicalAttribute_floatValue ;
   public : C_String mLexicalAttribute_identifierString ;
@@ -45,7 +45,7 @@ class cTokenFor_galgas_5F_scanner : public cToken {
   public : uint32_t mLexicalAttribute_uint_33__32_value ;
   public : uint64_t mLexicalAttribute_uint_36__34_value ;
 
-  public : cTokenFor_galgas_5F_scanner (void) ;
+  public : cTokenFor_galgas_32_Scanner (void) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -54,15 +54,15 @@ class cTokenFor_galgas_5F_scanner : public cToken {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class C_Lexique_galgas_5F_scanner : public C_Lexique {
+class C_Lexique_galgas_32_Scanner : public C_Lexique {
 //--- Constructors
-  public : C_Lexique_galgas_5F_scanner (C_Compiler * inCallerCompiler,
+  public : C_Lexique_galgas_32_Scanner (C_Compiler * inCallerCompiler,
                        const C_String & inDependencyFileExtension,
                        const C_String & inDependencyFilePath,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public : C_Lexique_galgas_5F_scanner (C_Compiler * inCallerCompiler,
+  public : C_Lexique_galgas_32_Scanner (C_Compiler * inCallerCompiler,
                        const C_String & inSourceString,
                        const C_String & inStringForError
                        COMMA_LOCATION_ARGS) ;
@@ -74,7 +74,7 @@ class C_Lexique_galgas_5F_scanner : public C_Lexique {
 //    an error if a direct delete is performed; only the static method
 //    C_SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected : virtual ~ C_Lexique_galgas_5F_scanner (void) {}
+    protected : virtual ~ C_Lexique_galgas_32_Scanner (void) {}
   #endif
 
 
@@ -340,7 +340,7 @@ class C_Lexique_galgas_5F_scanner : public C_Lexique {
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 
 //--- Enter Token
-  protected : void enterToken (const cTokenFor_galgas_5F_scanner & inToken) ;
+  protected : void enterToken (const cTokenFor_galgas_32_Scanner & inToken) ;
 
 //--- Style name for Latex
   protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;

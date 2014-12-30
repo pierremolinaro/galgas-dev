@@ -14,10 +14,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 list @programListForGeneration {
   @semanticDeclarationForGeneration mDeclaration
 }
@@ -131,11 +127,11 @@ proc compileProgramRules
  {
   @uint ruleIndex = 0
   for () in inProgramRules do
-#    if mIndexingGrammar.string != "" then
+#    if mGrammar.string != "" then
 #      ioHasIndexing = true
-#      [inAnalysisContext.mSemanticContext.mGrammarMap searchKey !mIndexingGrammar ?* ?let @bool hasIndexing ?*]
+#      [inAnalysisContext.mSemanticContext.mGrammarMap searchKey !mGrammar ?* ?let @bool hasIndexing ?*]
 #      if not hasIndexing then
-#        error mIndexingGrammar : "the '" + mIndexingGrammar + "' grammar does not enable indexing"
+#        error mGrammar : "the '" + mGrammar + "' grammar does not enable indexing"
 #      end
 #    end
     let @formalParameterListAST argumentList = {
@@ -182,11 +178,11 @@ private proc compileProgramRulesGalgas3
 {
   @uint ruleIndex = 0
   for () in inProgramRules do
-#    if mIndexingGrammar.string != "" then
+#    if mGrammar.string != "" then
 #      ioHasIndexing = true
-#      [inAnalysisContext.mSemanticContext.mGrammarMap searchKey !mIndexingGrammar ?* ?let @bool hasIndexing ?*]
+#      [inAnalysisContext.mSemanticContext.mGrammarMap searchKey !mGrammar ?* ?let @bool hasIndexing ?*]
 #      if not hasIndexing then
-#        error mIndexingGrammar : "the '" + mIndexingGrammar + "' grammar does not enable indexing"
+#        error mGrammar : "the '" + mGrammar + "' grammar does not enable indexing"
 #      end
 #    end
     let @formalParameterListAST argumentList = {
@@ -520,8 +516,8 @@ proc compileProgramComponentGalgas3
     beforeAfterRulesString += code
   end
   for () in inProgramRules do
-    if mIndexingGrammar.string != "" then
-      inclusionSet += !"grammar-" + mIndexingGrammar
+    if mGrammar.string != "" then
+      inclusionSet += !"grammar-" + mGrammar
     end
   end
   let cppContents = [filewrapper programFileGenerationTemplate.programFileImplementation

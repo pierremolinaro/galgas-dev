@@ -88,15 +88,7 @@ bool executionModeIsIndexing (void) ;
 
 bool executionModeIsLatex (void) ;
 
-//---------------------------------------------------------------------------------------------------------------------*
-
-uint32_t contextHelpStartLocation (void) ;
-
-uint32_t contextHelpEndLocation (void) ;
-
-void setCurrentCompiledFilePath (const C_String & inPath) ;
-
-bool isCurrentCompiledFilePath (const C_String & inPath) ;
+C_String latexModeStyleSuffixString (void) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
