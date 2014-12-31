@@ -1,4 +1,4 @@
-grammar logo_grammar "LL1" {
+indexing grammar logo_grammar "LL1" {
   syntax logo_syntax
   <start_symbol>
 }

@@ -7,7 +7,7 @@
 
 Si vous utilisez \LaTeX pour écrire la documentation de votre compilateur, vous êtes confronté sans doute au problème de la présentation des programmes sources. En effet, les paquetages classiques pour ce type de problème, comme par exemple \tpp{listings}, peuvent être trop rigides pour des règles lexicales particulières d'un langage.
 
-Par exemple, en GALGAS, les constantes entières acceptent le caractère \tpp{\_}, comme dans \ggs+123_456+. Elles peuvent être préfixées par \tpp{0x}, et post-fixés par \tpp{S}, \tpp{LS} pour indiquer leur type : \ggs+0x123_456S+, \ggs+0x_123_456_LS+. Le paquetage \tpp{listings} ne peut pas être paramétré pour afficher correctement les constantes entières de GALGAS. Il n'accepte pas non plus les caractères accuentés dans les commentaires.
+Par exemple, en GALGAS, les constantes entières acceptent le caractère \tpp{\_}, comme dans \ggs+123_456+. Elles peuvent être préfixées par \tpp{0x}, et postfixées par \tpp{S}, \tpp{LS} pour indiquer leur type : \ggs+0x123_456S+, ou encore \ggs+0x_123_456_LS+. Le paquetage \tpp{listings} ne peut pas être paramétré pour afficher correctement les constantes entières de GALGAS. Il n'accepte pas non plus les caractères UTF-8 accentués dans les commentaires.
 
 Comment faire ? Développer des commandes \LaTeX particulières pour faire ce travail. Elles s'appuient sur un mode particulier des compilateurs engendrés par GALGAS, qui permet de traduire un fichier source en un code compatible \LaTeX. C'est de cette façon que le code GALGAS est présenté dans ce document. Si les fichiers \tpp{.tex} sont codés en UTF-8, alors les caractères accentués peuvent être utilisés sans restriction, comme des caractères comme \tpp{æ} ou \tpp{Œ} (voir par exemple le \refGetterPage{char}{unicodeToLower}).
 
@@ -144,7 +144,7 @@ Le paquetage \tpp{mdframed} permet (entre autres) d'afficher un trait vertical d
 ]{siderules}
 \end{verbatim}
 
-Et on utilise l'environnement \tpp{siderules} :
+En utilisant l'environnement \tpp{siderules} :
 
 \begin{verbatim}
 \begin{siderules}
@@ -153,7 +153,7 @@ Et on utilise l'environnement \tpp{siderules} :
 \end{siderules}
 \end{verbatim}
 
-Et on obtient :
+On obtient :
 
 {
 \newmdenv[
@@ -206,7 +206,7 @@ L'ajout de la séquence \tpp{\{\}} peut paraître superflue, mais elle permet de
     \texttt{\textquotesingle\$\textquotesingle} & \texttt{\textbackslash \$} \\
     \texttt{\textquotesingle\`{}\textquotesingle} & \texttt{\textbackslash \`{}\{\}} \\
     \texttt{\textquotesingle~\textquotesingle} & \texttt{\textbackslash hspace*\{.6em\}} \\
-    \texttt{\textquotesingle\textbackslash n\textquotesingle} & \texttt{\textvisiblespace\textbackslash \textbackslash \textbackslash \textbackslash n} \\
+    \texttt{\textquotesingle\textbackslash n\textquotesingle} & \texttt{\textvisiblespace\textbackslash\textbackslash\textbackslash n} \\
     \texttt{\textquotesingle\{\textquotesingle} & \texttt{\textbackslash \{} \\
     \texttt{\textquotesingle\}\textquotesingle} & \texttt{\textbackslash \}} \\
     \texttt{\textquotesingle\_\textquotesingle} & \texttt{\textbackslash \_} \\
