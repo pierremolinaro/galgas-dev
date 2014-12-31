@@ -377,7 +377,7 @@ proc updateGalgas3Targets
   end
 #--- Check Cocoa features
   if (SDK != "") & not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
-    warning @location.here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: 'feature applicationBundleBase : \"fr.what\" ;'"
+    warning @location.here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
   end
 #--- Generation
   if [generationFeatures hasKey !"makefile-macosx"] then
@@ -444,6 +444,7 @@ proc updateGalgas3Targets
     !inToolCppFileList
     !linkOptionForLinkingFrameworkWithTool
     !libpmPath
+
   ]
   let fileListPath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list.mak"
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*]

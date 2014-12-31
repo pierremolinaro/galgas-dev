@@ -35,7 +35,7 @@ syntax logo_syntax (logo_lexique) {
       $;$
     or
       $CALL$
-      $identifier$ ?let @lstring routineName
+      $identifier$ ?let @lstring routineName indexing routineCall
       @instructionList routineContent = {}
       [ioTableRoutines searchKey !routineName ?routineContent]
       for i in routineContent do
@@ -58,7 +58,7 @@ syntax logo_syntax (logo_lexique) {
 
   rule <routine_definition> ?!@routineMap ioTableRoutines {
     $ROUTINE$
-    $identifier$ ?let @lstring routineName
+    $identifier$ ?let @lstring routineName indexing routineDefinition
     $BEGIN$
     @instructionList il = {}
     <instruction_list> !? ioTableRoutines !? il
