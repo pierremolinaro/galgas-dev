@@ -159,7 +159,7 @@ En résumé :
 
 \sectionLabel{Indexation des fichiers sources}{indexingYourSourceFiles}
 
-Vous pouvez configurer votre projet GALGAS pour que l'application Cocoa engendrée établisse une indexation et des références croisées : un \texttt{cmd-click} affiche un menu contextuel. Cette indexation est basée sur l'analyse syntaxique. C'est ce qui a été fait pour l'application \texttt{CocoaGalgas} (\refFigure{}{indexingUnderCocoaGALGAS}). On voit dans le menu contextuel trois classes d'index : \tpp{Class Definition}, \tpp{Class Reference as Superclass} et \tpp{Abstract Category Method Definition} ; au dessous, les références croisées correspondantes.
+Vous pouvez configurer votre projet GALGAS pour que l'application Cocoa engendrée établisse une indexation et des références croisées : un \tpp{cmd-click} affiche un menu contextuel. Cette indexation est basée sur l'analyse syntaxique. C'est ce qui a été fait pour l'application \texttt{CocoaGalgas} (\refFigure{}{indexingUnderCocoaGALGAS}). On voit dans le menu contextuel trois classes d'index : \tpp{Class Definition}, \tpp{Class Reference as Superclass} et \tpp{Abstract Category Method Definition} ; au dessous, les références croisées correspondantes.
 
 
 %You can configure your project for enabling cross-referencing entities with your Cocoa application. This has been done in GALGAS, providing such feature (\refFigure{}{indexingUnderCocoaGALGAS}). The contextual menu is displayed with a \texttt{cmd-click}.
@@ -172,10 +172,12 @@ Vous pouvez configurer votre projet GALGAS pour que l'application Cocoa engendr�
   \ligne
 \end{figure}
 
-Pour configurer votre projet, vous avez à modifier le composant \emph{lexique}, le composant \emph{syntax}, le composant \emph{grammar}, et la règle d'analyse du fichier source. Les quatre modifications sont présentées successivement ci-après, en prenant comme exemple le langage LOGO (\refSectionPage{presentation-logo}).
+Pour configurer votre projet, vous avez à modifier le composant \emph{lexique}, le composant \emph{syntax}, le composant \emph{grammar}, et la règle d'analyse du fichier source. Les cinq modifications sont présentées successivement ci-après, en prenant comme exemple le langage LOGO (\refSectionPage{presentation-logo}).
 
 
-%For configuring your project, you will have to modify the lexique component, the syntax component, the grammar component and the program component. This section presents the six configuring steps.
+
+
+
 \subsection{En tête du composant \texttt{lexique}}
 
 Il faut modifier l'en-tête, en ajoutant la déclaration  \ggs+indexing in+ :
@@ -207,6 +209,31 @@ Note : maintenant, la compilation GALGAS s'effectue sans erreur.
 
 
 
+\subsection{Règle d'analyse des fichiers sources}
+
+La règle d'analyse des fichiers source doit mentionner dans l'en-tête la grammaire utilisée pour l'analyse (pour l'exemple du langage LOGO, la troisième ligne \ggs+grammar logo_grammar+ remplit ce rôle).
+
+\begin{galgas}
+case . "logo"
+message "a source text file with the .logo extension"
+grammar logo_grammar
+?sourceFilePath:@lstring inSourceFile {
+  grammar logo_grammar in inSourceFile
+}
+\end{galgas}
+
+Quand le mode d'exécution (absence de l'option \tpp{-{}-mode}) est le mode par défaut, les instructions de la règle sont exécutées. Ci-dessus, la seule instruction est \ggs+grammar logo_grammar in inSourceFile+ (ligne 5).
+
+Quand le mode d'exécution (présence de l'option \tpp{-{}-mode}) n'est pas le mode par défaut, les instructions de la règle ne sont pas exécutées, et les opérations sont guidées par la grammaire indiquée ligne 3. Dans le cas de l'indexation, l'exécution construit l'indexation du fichier source.
+
+
+
+
+
+
+
+
+
 \subsection{Déclaration des classes d'index}
 
 La déclaration des classes d'index s'effectue dans l'analyseur lexical. Dans la cadre du langage d'exemple LOGO, on veut simplement indéxer les routines, plus précisément l'endroit de leur définition, et les endroits où elles sont appelées. On définit donc deux classes d'index \ggs+routineDefinition+ et \ggs+routineCall+. À chaque déclaration est associée une chaîne de caractères, qui sera le titre affiché dans le menu contextuel. 
@@ -222,7 +249,12 @@ indexing routineCall : "Routine call"
 \end{galgas}
 
 
-Ces déclarations peuvent placées à tout endroit dans le lexique.
+Ces définitions peuvent être placées à tout endroit dans la définition de l'analyseur lexical.
+
+
+
+
+
 
 
 

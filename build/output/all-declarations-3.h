@@ -3318,7 +3318,7 @@ class GALGAS_programRuleList_2D_element : public AC_GALGAS_root {
   public : GALGAS_lstring mAttribute_mSourceFileHelp ;
   public : GALGAS_lstring mAttribute_mSourceFileVariableName ;
   public : GALGAS_bool mAttribute_mSourceFileVariableNameIsUnused ;
-  public : GALGAS_lstring mAttribute_mGrammar ;
+  public : GALGAS_lstring mAttribute_mReferenceGrammar ;
   public : GALGAS_semanticInstructionListAST mAttribute_mInstructionList ;
   public : GALGAS_location mAttribute_mEndOfInstructionList ;
 
@@ -3341,7 +3341,7 @@ class GALGAS_programRuleList_2D_element : public AC_GALGAS_root {
                                               const GALGAS_lstring & in_mSourceFileHelp,
                                               const GALGAS_lstring & in_mSourceFileVariableName,
                                               const GALGAS_bool & in_mSourceFileVariableNameIsUnused,
-                                              const GALGAS_lstring & in_mGrammar,
+                                              const GALGAS_lstring & in_mReferenceGrammar,
                                               const GALGAS_semanticInstructionListAST & in_mInstructionList,
                                               const GALGAS_location & in_mEndOfInstructionList) ;
 
@@ -3379,9 +3379,9 @@ class GALGAS_programRuleList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfInstructionList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mGrammar (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST reader_mInstructionList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mReferenceGrammar (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mSourceFileExtension (LOCATION_ARGS) const ;
 

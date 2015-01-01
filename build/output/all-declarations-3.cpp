@@ -7882,7 +7882,7 @@ class cCollectionElement_programRuleList : public cCollectionElement {
                                                const GALGAS_lstring & in_mSourceFileHelp,
                                                const GALGAS_lstring & in_mSourceFileVariableName,
                                                const GALGAS_bool & in_mSourceFileVariableNameIsUnused,
-                                               const GALGAS_lstring & in_mGrammar,
+                                               const GALGAS_lstring & in_mReferenceGrammar,
                                                const GALGAS_semanticInstructionListAST & in_mInstructionList,
                                                const GALGAS_location & in_mEndOfInstructionList
                                                COMMA_LOCATION_ARGS) ;
@@ -7906,12 +7906,12 @@ cCollectionElement_programRuleList::cCollectionElement_programRuleList (const GA
                                                                         const GALGAS_lstring & in_mSourceFileHelp,
                                                                         const GALGAS_lstring & in_mSourceFileVariableName,
                                                                         const GALGAS_bool & in_mSourceFileVariableNameIsUnused,
-                                                                        const GALGAS_lstring & in_mGrammar,
+                                                                        const GALGAS_lstring & in_mReferenceGrammar,
                                                                         const GALGAS_semanticInstructionListAST & in_mInstructionList,
                                                                         const GALGAS_location & in_mEndOfInstructionList
                                                                         COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mSourceFileExtension, in_mSourceFileHelp, in_mSourceFileVariableName, in_mSourceFileVariableNameIsUnused, in_mGrammar, in_mInstructionList, in_mEndOfInstructionList) {
+mObject (in_mSourceFileExtension, in_mSourceFileHelp, in_mSourceFileVariableName, in_mSourceFileVariableNameIsUnused, in_mReferenceGrammar, in_mInstructionList, in_mEndOfInstructionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7924,7 +7924,7 @@ bool cCollectionElement_programRuleList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_programRuleList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_programRuleList (mObject.mAttribute_mSourceFileExtension, mObject.mAttribute_mSourceFileHelp, mObject.mAttribute_mSourceFileVariableName, mObject.mAttribute_mSourceFileVariableNameIsUnused, mObject.mAttribute_mGrammar, mObject.mAttribute_mInstructionList, mObject.mAttribute_mEndOfInstructionList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_programRuleList (mObject.mAttribute_mSourceFileExtension, mObject.mAttribute_mSourceFileHelp, mObject.mAttribute_mSourceFileVariableName, mObject.mAttribute_mSourceFileVariableNameIsUnused, mObject.mAttribute_mReferenceGrammar, mObject.mAttribute_mInstructionList, mObject.mAttribute_mEndOfInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -7949,8 +7949,8 @@ void cCollectionElement_programRuleList::description (C_String & ioString, const
   mObject.mAttribute_mSourceFileVariableNameIsUnused.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mGrammar" ":" ;
-  mObject.mAttribute_mGrammar.description (ioString, inIndentation) ;
+  ioString << "mReferenceGrammar" ":" ;
+  mObject.mAttribute_mReferenceGrammar.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionList" ":" ;
@@ -8019,7 +8019,7 @@ void GALGAS_programRuleList::makeAttributesFromObjects (capCollectionElement & o
                                                         const GALGAS_lstring & in_mSourceFileHelp,
                                                         const GALGAS_lstring & in_mSourceFileVariableName,
                                                         const GALGAS_bool & in_mSourceFileVariableNameIsUnused,
-                                                        const GALGAS_lstring & in_mGrammar,
+                                                        const GALGAS_lstring & in_mReferenceGrammar,
                                                         const GALGAS_semanticInstructionListAST & in_mInstructionList,
                                                         const GALGAS_location & in_mEndOfInstructionList
                                                         COMMA_LOCATION_ARGS) {
@@ -8028,7 +8028,7 @@ void GALGAS_programRuleList::makeAttributesFromObjects (capCollectionElement & o
                                                      in_mSourceFileHelp,
                                                      in_mSourceFileVariableName,
                                                      in_mSourceFileVariableNameIsUnused,
-                                                     in_mGrammar,
+                                                     in_mReferenceGrammar,
                                                      in_mInstructionList,
                                                      in_mEndOfInstructionList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
@@ -8107,7 +8107,7 @@ void GALGAS_programRuleList::modifier_removeAtIndex (GALGAS_lstring & outOperand
       outOperand1 = p->mObject.mAttribute_mSourceFileHelp ;
       outOperand2 = p->mObject.mAttribute_mSourceFileVariableName ;
       outOperand3 = p->mObject.mAttribute_mSourceFileVariableNameIsUnused ;
-      outOperand4 = p->mObject.mAttribute_mGrammar ;
+      outOperand4 = p->mObject.mAttribute_mReferenceGrammar ;
       outOperand5 = p->mObject.mAttribute_mInstructionList ;
       outOperand6 = p->mObject.mAttribute_mEndOfInstructionList ;
     }
@@ -8142,7 +8142,7 @@ void GALGAS_programRuleList::modifier_popFirst (GALGAS_lstring & outOperand0,
     outOperand1 = p->mObject.mAttribute_mSourceFileHelp ;
     outOperand2 = p->mObject.mAttribute_mSourceFileVariableName ;
     outOperand3 = p->mObject.mAttribute_mSourceFileVariableNameIsUnused ;
-    outOperand4 = p->mObject.mAttribute_mGrammar ;
+    outOperand4 = p->mObject.mAttribute_mReferenceGrammar ;
     outOperand5 = p->mObject.mAttribute_mInstructionList ;
     outOperand6 = p->mObject.mAttribute_mEndOfInstructionList ;
   }
@@ -8176,7 +8176,7 @@ void GALGAS_programRuleList::modifier_popLast (GALGAS_lstring & outOperand0,
     outOperand1 = p->mObject.mAttribute_mSourceFileHelp ;
     outOperand2 = p->mObject.mAttribute_mSourceFileVariableName ;
     outOperand3 = p->mObject.mAttribute_mSourceFileVariableNameIsUnused ;
-    outOperand4 = p->mObject.mAttribute_mGrammar ;
+    outOperand4 = p->mObject.mAttribute_mReferenceGrammar ;
     outOperand5 = p->mObject.mAttribute_mInstructionList ;
     outOperand6 = p->mObject.mAttribute_mEndOfInstructionList ;
   }
@@ -8210,7 +8210,7 @@ void GALGAS_programRuleList::method_first (GALGAS_lstring & outOperand0,
     outOperand1 = p->mObject.mAttribute_mSourceFileHelp ;
     outOperand2 = p->mObject.mAttribute_mSourceFileVariableName ;
     outOperand3 = p->mObject.mAttribute_mSourceFileVariableNameIsUnused ;
-    outOperand4 = p->mObject.mAttribute_mGrammar ;
+    outOperand4 = p->mObject.mAttribute_mReferenceGrammar ;
     outOperand5 = p->mObject.mAttribute_mInstructionList ;
     outOperand6 = p->mObject.mAttribute_mEndOfInstructionList ;
   }
@@ -8244,7 +8244,7 @@ void GALGAS_programRuleList::method_last (GALGAS_lstring & outOperand0,
     outOperand1 = p->mObject.mAttribute_mSourceFileHelp ;
     outOperand2 = p->mObject.mAttribute_mSourceFileVariableName ;
     outOperand3 = p->mObject.mAttribute_mSourceFileVariableNameIsUnused ;
-    outOperand4 = p->mObject.mAttribute_mGrammar ;
+    outOperand4 = p->mObject.mAttribute_mReferenceGrammar ;
     outOperand5 = p->mObject.mAttribute_mInstructionList ;
     outOperand6 = p->mObject.mAttribute_mEndOfInstructionList ;
   }
@@ -8364,15 +8364,15 @@ GALGAS_bool GALGAS_programRuleList::reader_mSourceFileVariableNameIsUnusedAtInde
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_programRuleList::reader_mGrammarAtIndex (const GALGAS_uint & inIndex,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_programRuleList::reader_mReferenceGrammarAtIndex (const GALGAS_uint & inIndex,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_programRuleList * p = (cCollectionElement_programRuleList *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_programRuleList) ;
-    result = p->mObject.mAttribute_mGrammar ;
+    result = p->mObject.mAttribute_mReferenceGrammar ;
   }
   return result ;
 }
@@ -8460,10 +8460,10 @@ GALGAS_bool cEnumerator_programRuleList::current_mSourceFileVariableNameIsUnused
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_programRuleList::current_mGrammar (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_programRuleList::current_mReferenceGrammar (LOCATION_ARGS) const {
   const cCollectionElement_programRuleList * p = (const cCollectionElement_programRuleList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_programRuleList) ;
-  return p->mObject.mAttribute_mGrammar ;
+  return p->mObject.mAttribute_mReferenceGrammar ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

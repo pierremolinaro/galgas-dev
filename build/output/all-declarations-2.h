@@ -3882,7 +3882,7 @@ class GALGAS_programRuleList : public AC_GALGAS_list {
                                                   const class GALGAS_lstring & in_mSourceFileHelp,
                                                   const class GALGAS_lstring & in_mSourceFileVariableName,
                                                   const class GALGAS_bool & in_mSourceFileVariableNameIsUnused,
-                                                  const class GALGAS_lstring & in_mGrammar,
+                                                  const class GALGAS_lstring & in_mReferenceGrammar,
                                                   const class GALGAS_semanticInstructionListAST & in_mInstructionList,
                                                   const class GALGAS_location & in_mEndOfInstructionList
                                                   COMMA_LOCATION_ARGS) ;
@@ -4004,13 +4004,13 @@ class GALGAS_programRuleList : public AC_GALGAS_list {
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mGrammarAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST reader_mInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                                     C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mReferenceGrammarAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mSourceFileExtensionAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                      C_Compiler * inCompiler
@@ -4058,7 +4058,7 @@ class cEnumerator_programRuleList : public cGenericAbstractEnumerator {
   public : class GALGAS_lstring current_mSourceFileHelp (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mSourceFileVariableName (LOCATION_ARGS) const ;
   public : class GALGAS_bool current_mSourceFileVariableNameIsUnused (LOCATION_ARGS) const ;
-  public : class GALGAS_lstring current_mGrammar (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mReferenceGrammar (LOCATION_ARGS) const ;
   public : class GALGAS_semanticInstructionListAST current_mInstructionList (LOCATION_ARGS) const ;
   public : class GALGAS_location current_mEndOfInstructionList (LOCATION_ARGS) const ;
 //--- Current element access

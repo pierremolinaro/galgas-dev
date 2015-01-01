@@ -18,7 +18,7 @@ option nom_composant {
 
 \section{Déclaration d'une option}
 
-La déclaration d'une option présente le syntaxe suivante :
+La déclaration d'une option présente la syntaxe suivante :
 \begin{galgas}
   @T nom_option : caractere, chaine -> description
 \end{galgas}
@@ -29,7 +29,7 @@ Les cinq champs qui définissent une option sont :
   \item \ggs+nom_option+ : c'est le nom, interne à GALGAS, qui permettra de désigner l'option dans l'\emph{appel d'une option} (\refSubsectionPage{appelOption}) ; 
   \item \ggs+caractere+ : le caractère qui activera l'option dans la ligne de commande ; par exemple, en écrivant \ggs+'A'+, l'option sera activée par \texttt{-A} dans la ligne de commande ; si vous ne voulez pas d'activation par un caractère, écrivez \ggs+'\0'+ ;
   \item \ggs+chaine+ : la chaîne de caractères qui activera l'option dans la ligne de commande ; par exemple, en écrivant \ggs+"ABEDEF"+, l'option sera activée par \texttt{-{}-ABCDEF} dans la ligne de commande ; si vous ne voulez pas d'activation par une chaîne, écrivez \ggs+""+ ;
-  \item \ggs+description+ : une chaîne de caractère qui contient une description de l'option, qui sera affichée par l'option \texttt{-{}-help} de votre compilateur.
+  \item \ggs+description+ : une chaîne de caractères qui contient une description de l'option, qui sera affichée par l'option \tpp{-{}-help} de votre compilateur.
 \end{itemize}
 
 
@@ -46,7 +46,7 @@ Le champ qui définit le type de l'option est \ggs+@bool+ ; par exemple :
   @bool nom_option : 'S', "asm" -> "Extract assembly code"
 \end{galgas}
 
-Dans la ligne de commande, l'option est activée par \texttt{-A} ou \texttt{-{}-asm}.
+Dans la ligne de commande, l'option est activée par \tpp{-S} ou \tpp{-{}-asm}.
 
 Par défaut, l'option n'est pas activée, et sa valeur associée est \ggs+false+. Quand l'option est activée dans la ligne de commande, sa valeur associée est \ggs+true+.
 
@@ -64,9 +64,9 @@ Le champ qui définit le type de l'option est \ggs+@uint+ ; par exemple :
   @uint nom_option : 'M', "max-iterations-count" -> "Max of iteration count"
 \end{galgas}
 
-Dans la ligne de commande, l'option est activée par \texttt{-N=xxx} ou \texttt{-{}-max-iterations-count=xxx}, où \texttt{xxx} est un nombre entier positif ou nul (et inférieur ou égal à $2^{32}-1$).
+Dans la ligne de commande, l'option est activée par \tpp{-M=xxx} ou \tpp{-{}-max-iterations-count=xxx}, où \tpp{xxx} est un nombre entier positif ou nul (et inférieur ou égal à $2^{32}-1$).
 
-Par défaut, l'option n'est pas activée, et sa valeur associée est $0$. Quand l'option est activée dans la ligne de commande, sa valeur associée est la valeur \texttt{xxx}. Ainsi, l'option \texttt{-N=0}, comme l'option \texttt{-{}-max-iterations-count=0} n'a aucun effet.
+Par défaut, l'option n'est pas activée, et sa valeur associée est $0$. Quand l'option est activée dans la ligne de commande, sa valeur associée est la valeur \tpp{xxx}. Ainsi, l'option \tpp{-M=0}, comme l'option \tpp{-{}-max-iterations-count=0} n'a aucun effet.
 
 
 
@@ -84,8 +84,8 @@ Le champ qui définit le type de l'option est \ggs+@string+ ; par exemple :
   @string nom_option : 'F', "file-name" -> "File name"
 \end{galgas}
 
-Dans la ligne de commande, l'option est activée par \texttt{-F=abc} ou \texttt{-{}-file-name=abc}, où \texttt{abc} est une chaîne de caractères sans espaces. Si vous voulez entrer une chaîne de caractères qui comprend des espaces, écrivez : \texttt{"-F=abc"} ou \texttt{"-{}-file-name=abc"}.
+Dans la ligne de commande, l'option est activée par \tpp{-F=abc} ou \tpp{-{}-file-name=abc}, où \texttt{abc} est une chaîne de caractères sans espaces. Si vous voulez entrer une chaîne de caractères qui comprend des espaces, par exemple \tpp{abc def}, écrivez : \tpp{"-F=abc def"} ou \tpp{"-{}-file-name=abc def"}.
 
-Par défaut, l'option n'est pas activée, et sa valeur associée est la chaîne vide. Quand l'option est activée dans la ligne de commande, sa valeur associée est la chaîne \texttt{abc}. Ainsi, l'option \texttt{-F=}, comme l'option \texttt{-{}-file-name=} n'a aucun effet.
+Par défaut, l'option n'est pas activée, et sa valeur associée est la chaîne vide. Quand l'option est activée dans la ligne de commande, sa valeur associée est la chaîne \tpp{abc}. Ainsi, l'option \tpp{-F=}, comme l'option \tpp{-{}-file-name=} n'a aucun effet.
 
 

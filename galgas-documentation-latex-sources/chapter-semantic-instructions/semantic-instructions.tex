@@ -139,7 +139,7 @@ var @stringlist sl = {}
 
 Par contre, omettre les deux annotations ne permet pas de déduire le type de la variable : c'est donc une erreur détectée par le compilateur :
 \begin{galgas}
-var sl = {} # Erreur : le type est indetermine
+var sl = {} # Erreur : le type est indéterminé
 \end{galgas}
 
 Un dernier exemple, avec un constructeur :
@@ -159,7 +159,7 @@ var @location sl = .here
 
 Mais en aucun cas :
 \begin{galgas}
-var sl = .here # Erreur : le type est indetermine
+var sl = .here # Erreur : le type est indéterminé
 \end{galgas}
 
 
@@ -202,7 +202,7 @@ let @stringlist sl = {}
 
 Par contre, omettre les deux annotations ne permet pas de déduire le type de la constante : c'est donc une erreur détectée par le compilateur :
 \begin{galgas}
-let sl = {} # Erreur : le type est indetermine
+let sl = {} # Erreur : le type est indéterminé
 \end{galgas}
 
 Un dernier exemple, avec un constructeur :
@@ -222,7 +222,7 @@ let @location sl = .here
 
 Mais en aucun cas :
 \begin{galgas}
-let sl = .here # Erreur : le type est indetermine
+let sl = .here # Erreur : le type est indéterminé
 \end{galgas}
 
 
@@ -401,7 +401,7 @@ On a :
 
 \begin{galgas}
 var liste = @maListe {}
-liste += !2 !"a" # liste vaut contient un element 2, "a"
+liste += !2 !"a" # liste vaut contient un élément 2, "a"
 \end{galgas}
 
 
@@ -564,7 +564,7 @@ if ok then
   resultat = ...
 else
   error nom : message_erreur
-end # Erreur : 'resultat' est value par une branche
+end # Erreur : 'resultat' est valué par une branche
 \end{galgas}
 
 En effet, une des branches du \ggs+if+ donne une valeur à \ggs+resultat+, et l'autre pas. Or, en cas d'erreur, on veut que \ggs+resultat+ ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile) :
@@ -650,7 +650,7 @@ Le \refTableau{quatreFormesEnumeration} liste les quatre façons d'exprimer l'é
 
 \begin{table}[t]
   \centering
-  \begin{tabular}{lp{8.5cm}}
+  \begin{tabular}{lp{8cm}}
   \textbf{Énumération} & \textbf{Signification}\\
   \ggs+sens () in expression+ & Utilisation de constantes définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicite}).\\
   \ggs+sens () prefixe in expression+ & Utilisation de constantes préfixées définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicitePrefixee}).\\
@@ -731,7 +731,7 @@ end
 \begin{galgas}
 @stringset v = ...
 for () in v do
-  log key # Affichage des cles dans l'ordre alphabetique
+  log key # Affichage des clés dans l'ordre alphabétique
 end
 \end{galgas}
 
@@ -787,7 +787,7 @@ end
 \begin{galgas}
 @stringset v = ...
 for () pre in v do
-  log prekey # Affichage des cles dans l'ordre alphabetique
+  log prekey # Affichage des clés dans l'ordre alphabétique
 end
 \end{galgas}
 
@@ -824,8 +824,8 @@ Pour lever l'ambiguïté, on complète l'instruction en précisant un préfixe p
 @maListe v1 = ...
 @maListe v2 = ...
 for () in v1, () l2_ in v2 do
-  log mProperty1 # Designe sans ambiguite le champ de la premiere liste
-  log l2_mProperty1 # Designe sans ambiguite le champ de la seconde liste
+  log mProperty1 # Désigne sans ambiguïté le champ de la première liste
+  log l2_mProperty1 # Désigne sans ambiguïté le champ de la seconde liste
 end
 \end{galgas}
 
@@ -1579,11 +1579,10 @@ En GALGAS, une \emph{procédure de classe} est est une procédure définie dans 
 
 \ggs+nom_procedure+ est le nom de la procédure, et \ggs+liste_parametres_effectifs+ est la liste des paramètres effectifs, en accord avec l'en-tête de la procédure.
 
-Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \ggs+@string+, la procédure de classe \ggs+deleteFile+ est présentée comme suit :
+Avec l'option \tpp{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \tpp{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \ggs+@string+, la procédure de classe \ggs+deleteFile+ est présentée comme suit :
 
 {\noindent\ttfamily
-\textbf{proc} @string deleteFile\\
-\hspace*{3em}?@string inFilePath\\
+\textbf{proc} @string deleteFile ?@string inFilePath\\
 }
 
 Aussi, elle peut être appelée par :

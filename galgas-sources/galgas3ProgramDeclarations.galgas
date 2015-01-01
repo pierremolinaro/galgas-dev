@@ -70,13 +70,13 @@ rule <declaration>
   $literal_string$ ?let @lstring mSourceFileExtension
   $message$
   $literal_string$ ?let @lstring mSourceFileHelp
-#--- Grammar reference
-  @lstring indexingGrammar
+#--- Reference grammar
+  @lstring referenceGrammar
   select
-    indexingGrammar = ["" nowhere]
+    referenceGrammar = ["" nowhere]
   or
     $grammar$
-    $identifier$ ?indexingGrammar
+    $identifier$ ?referenceGrammar
   end
 #--- Source file
   $?$ ?let selector
@@ -108,7 +108,7 @@ rule <declaration>
     !mSourceFileHelp
     !mSourceFileVariableName
     !isUnused
-    !indexingGrammar
+    !referenceGrammar
     !mInstructionList
     !endOfInstructionList
 }
