@@ -2428,7 +2428,7 @@ mAttribute_mSourceFileExtension (),
 mAttribute_mSourceFileHelp (),
 mAttribute_mSourceFileVariableName (),
 mAttribute_mSourceFileVariableNameIsUnused (),
-mAttribute_mGrammar (),
+mAttribute_mReferenceGrammar (),
 mAttribute_mInstructionList (),
 mAttribute_mEndOfInstructionList () {
 }
@@ -2451,7 +2451,7 @@ mAttribute_mSourceFileExtension (inOperand0),
 mAttribute_mSourceFileHelp (inOperand1),
 mAttribute_mSourceFileVariableName (inOperand2),
 mAttribute_mSourceFileVariableNameIsUnused (inOperand3),
-mAttribute_mGrammar (inOperand4),
+mAttribute_mReferenceGrammar (inOperand4),
 mAttribute_mInstructionList (inOperand5),
 mAttribute_mEndOfInstructionList (inOperand6) {
 }
@@ -2502,7 +2502,7 @@ typeComparisonResult GALGAS_programRuleList_2D_element::objectCompare (const GAL
     result = mAttribute_mSourceFileVariableNameIsUnused.objectCompare (inOperand.mAttribute_mSourceFileVariableNameIsUnused) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mGrammar.objectCompare (inOperand.mAttribute_mGrammar) ;
+    result = mAttribute_mReferenceGrammar.objectCompare (inOperand.mAttribute_mReferenceGrammar) ;
   }
   if (result == kOperandEqual) {
     result = mAttribute_mInstructionList.objectCompare (inOperand.mAttribute_mInstructionList) ;
@@ -2516,7 +2516,7 @@ typeComparisonResult GALGAS_programRuleList_2D_element::objectCompare (const GAL
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_programRuleList_2D_element::isValid (void) const {
-  return mAttribute_mSourceFileExtension.isValid () && mAttribute_mSourceFileHelp.isValid () && mAttribute_mSourceFileVariableName.isValid () && mAttribute_mSourceFileVariableNameIsUnused.isValid () && mAttribute_mGrammar.isValid () && mAttribute_mInstructionList.isValid () && mAttribute_mEndOfInstructionList.isValid () ;
+  return mAttribute_mSourceFileExtension.isValid () && mAttribute_mSourceFileHelp.isValid () && mAttribute_mSourceFileVariableName.isValid () && mAttribute_mSourceFileVariableNameIsUnused.isValid () && mAttribute_mReferenceGrammar.isValid () && mAttribute_mInstructionList.isValid () && mAttribute_mEndOfInstructionList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2526,7 +2526,7 @@ void GALGAS_programRuleList_2D_element::drop (void) {
   mAttribute_mSourceFileHelp.drop () ;
   mAttribute_mSourceFileVariableName.drop () ;
   mAttribute_mSourceFileVariableNameIsUnused.drop () ;
-  mAttribute_mGrammar.drop () ;
+  mAttribute_mReferenceGrammar.drop () ;
   mAttribute_mInstructionList.drop () ;
   mAttribute_mEndOfInstructionList.drop () ;
 }
@@ -2547,7 +2547,7 @@ void GALGAS_programRuleList_2D_element::description (C_String & ioString,
     ioString << ", " ;
     mAttribute_mSourceFileVariableNameIsUnused.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mGrammar.description (ioString, inIndentation+1) ;
+    mAttribute_mReferenceGrammar.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mInstructionList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
@@ -2582,8 +2582,8 @@ GALGAS_bool GALGAS_programRuleList_2D_element::reader_mSourceFileVariableNameIsU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_programRuleList_2D_element::reader_mGrammar (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mGrammar ;
+GALGAS_lstring GALGAS_programRuleList_2D_element::reader_mReferenceGrammar (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mReferenceGrammar ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

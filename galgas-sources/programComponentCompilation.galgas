@@ -479,17 +479,19 @@ proc compileProgramComponentGalgas3
   ?let @programRuleList inProgramRules
   ?let @prologueEpilogueList inEpilogueList
   ?let @semanticContext inSemanticContext
-  !@programComponentForGeneration outProgramComponentForGeneration {
+  !@programComponentForGeneration outProgramComponentForGeneration
+{
 #  const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
 #--- Analysis context
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !buildPredefinedTypes (!inSemanticContext)
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !""
-    !@unifiedTypeMap-proxy. null}
+    !@unifiedTypeMap-proxy.null
+  }
 #--- Analyse 'before' instructions
-  var decoratedDeclarationListForGeneration = @programListForGeneration. emptyList
+  @programListForGeneration decoratedDeclarationListForGeneration = {}
   compileBeforeClauseGalgas3 (
     !analysisContext
     !inPrologueList
@@ -516,8 +518,8 @@ proc compileProgramComponentGalgas3
     beforeAfterRulesString += code
   end
   for () in inProgramRules do
-    if mGrammar.string != "" then
-      inclusionSet += !"grammar-" + mGrammar
+    if mReferenceGrammar.string != "" then
+      inclusionSet += !"grammar-" + mReferenceGrammar
     end
   end
   let cppContents = [filewrapper programFileGenerationTemplate.programFileImplementation
