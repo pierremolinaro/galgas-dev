@@ -97,10 +97,10 @@ cp ${DIR}/galgas/makefile-win32-on-macosx/galgas-debug.exe ${DIR}/galgas-debug.e
 cd ${DIR} && bzip2 -9 galgas-debug.exe &&
 #-------------------- Creer l'archive de l'executable x86 linux 64 (release et debug)
 cd ${DIR}/galgas/makefile-x86linux64-on-macosx/ && python ./build.py &&
-bzip2 -9 ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas &&
-cp ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas.bz2 ${DIR}/galgas-x86-linux64.bz2 &&
-bzip2 -9 ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug &&
-cp ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug.bz2 ${DIR}/galgas-debug-x86-linux64.bz2 &&
+zip -9 ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas.zip ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas &&
+cp ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas.zip ${DIR}/galgas-x86-linux64.zip &&
+zip -9 ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug.zip ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug &&
+cp ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug.zip ${DIR}/galgas-debug-x86-linux64.zip &&
 #-------------------- Copier changeLog
 mv ${DIR}/galgas/changeLog.html ${DIR}/changeLog.html &&
 #-------------------- Creer l'archive BZ2 de cocoa galgas
