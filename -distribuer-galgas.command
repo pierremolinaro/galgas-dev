@@ -46,9 +46,9 @@ cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-crlf.tar.bz2 &&
 #-------------------- Creer l'archive de l'executable x86 linux 32 (release et debug)
 cd ${DIR}/galgas/makefile-x86linux32-on-macosx/ && python ./build.py &&
 zip -9 ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas &&
-cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas-x86-linux32.bz2 &&
+cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas-x86-linux32.zip &&
 zip -9 ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug &&
-cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas-debug-x86-linux32.bz2 &&
+cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas-debug-x86-linux32.zip &&
 #-------------------- Vérifier les programmes d'exemple
 ${DIR}/galgas/sample_code/-build-all-macosx.command &&
 #-------------------- Exécuter les tests
