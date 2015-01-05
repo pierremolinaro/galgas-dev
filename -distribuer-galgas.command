@@ -43,12 +43,6 @@ eolc -unix -D${DIR}/galgas -Eh -Ec -Ecpp -Em -Emm -Epy -Ebat -Emke -Fmakefile &&
 cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-lf.tar.bz2 &&
 eolc -dos -D${DIR}/galgas -Eh -Ec -Ecpp -Em -Emm -Epy -Ebat -Emke -Fmakefile &&
 cd ${DIR} && tar cv galgas | bzip2 -9 > galgas-sources-crlf.tar.bz2 &&
-#-------------------- Creer l'archive de l'executable x86 linux 32 (release et debug)
-cd ${DIR}/galgas/makefile-x86linux32-on-macosx/ && python ./build.py &&
-zip -9 ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas &&
-cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas-x86-linux32.zip &&
-zip -9 ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug &&
-cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas-debug-x86-linux32.zip &&
 #-------------------- Vérifier les programmes d'exemple
 ${DIR}/galgas/sample_code/-build-all-macosx.command &&
 #-------------------- Exécuter les tests
@@ -89,6 +83,12 @@ cp ${DIR}/temp ${DIR}/galgas/galgas-documentation-latex-sources/galgas-book.tex 
 rm ${DIR}/temp &&
 ${DIR}/galgas/galgas-documentation-latex-sources/-build.command &&
 cd ${DIR} && cp galgas/galgas-documentation-latex-sources/galgas-book.pdf galgas-book.pdf &&
+#-------------------- Creer l'archive de l'executable x86 linux 32 (release et debug)
+cd ${DIR}/galgas/makefile-x86linux32-on-macosx/ && python ./build.py &&
+zip -9 ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas &&
+cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas-x86-linux32.zip &&
+zip -9 ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug &&
+cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas-debug-x86-linux32.zip &&
 #-------------------- Creer l'archive de l'executable windows (release et debug)
 cd ${DIR}/galgas/makefile-win32-on-macosx/ && python ./build.py &&
 cp ${DIR}/galgas/makefile-win32-on-macosx/galgas.exe ${DIR}/galgas.exe &&
