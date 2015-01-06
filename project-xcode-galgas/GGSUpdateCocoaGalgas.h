@@ -46,6 +46,7 @@
   
   @private PMDownloadData * mDownloadData ;
   @private PMDownloadFile * mDownloadFile ;
+  @private NSString * mLastAvailableVersion ;
 
 //--- Create new project
   @private IBOutlet NSTextView * mResultTextView ;
