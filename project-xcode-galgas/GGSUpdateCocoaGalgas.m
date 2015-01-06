@@ -1,11 +1,22 @@
-//
-//  GGSUpdateCocoaGalgas.m
-//  galgas
-//
-//  Created by Pierre MOLINARO on 02/10/06.
-//  Copyright 2006 __MyCompanyName__. All rights reserved.
-//
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//  Update Cocoa GALGAS                                                                                                *
+//                                                                                                                     *
+//  Copyright (C) 2006, ..., 2015 Pierre Molinaro.                                                                     *
+//                                                                                                                     *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
+//                                                                                                                     *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
+//                                                                                                                     *
+//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General  *
+//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)  *
+//  any later version.                                                                                                 *
+//                                                                                                                     *
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
+//  more details.                                                                                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #import "CocoaGalgasPrefix.h"
 #import "GGSUpdateCocoaGalgas.h"
@@ -14,28 +25,24 @@
 #import "PMDownloadFile.h"
 #import "OC_GGS_ApplicationDelegate.h"
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #import <WebKit/WebKit.h>
 #import <Security/Security.h>
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 //--- Only for debugging !!!
-//#define FORCED_GALGAS_VERSION @"2.2.2"
+#define FORCED_GALGAS_VERSION @"3.0.4"
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 @implementation GGSUpdateCocoaGalgas
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) galgasUpdaterArchiveName {
-  #ifdef FORCED_GALGAS_VERSION
-    return @"cocoa_galgas_updater3.app.tar.bz2" ;
-  #else
-    return @"cocoa_galgas_updater3.app.tar.bz2" ;
-  #endif
+  return @"cocoa_galgas_updater3.app.tar.bz2" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -117,7 +124,7 @@
   return result ;
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) awakeFromNib {
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
@@ -173,19 +180,21 @@
   NSMenu * menubar = [NSApplication sharedApplication].mainMenu ;
   NSMenu * fileMenu = [menubar itemWithTitle:@"File"].submenu ;
   [fileMenu insertItem:mi atIndex:0] ;
-//----------------------------------------- Check for new version  
-  [self checkForNewVersion:nil] ;
+//----------------------------------------- Check for new version
+  if ([ud boolForKey:@"GGS_check_update_at_start_up"]) {
+    [self checkForNewVersion:nil] ;
+  }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #pragma mark Check for new version
 
-//--------------------------------------------------------------------------*
-//                                                                          *
-//            Check for new version                                         *
-//                                                                          *
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//            Check for new version                                                                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (IBAction) checkForNewVersion: (id) inSender {
   mSearchForUpdatesInBackground = inSender == nil ;
@@ -198,7 +207,7 @@
   ] ;
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) downloadAllAvailableGalgasVersion: (PMDownloadData *) inDownloader {
   [mCheckNowButton setEnabled:YES] ;
@@ -220,10 +229,10 @@
       ] ;
     }
   }else{
-    NSString * lastAvailableVersion = [[NSString alloc] initWithData:[inDownloader downloadedData] encoding:NSASCIIStringEncoding] ;
-    // NSLog (@"Last Available Version: '%@'", lastAvailableVersion) ;
+    mLastAvailableVersion = [[NSString alloc] initWithData:[inDownloader downloadedData] encoding:NSASCIIStringEncoding] ;
+    // NSLog (@"Last Available Version: '%@'", mLastAvailableVersion) ;
   //--- Check Response
-    NSScanner * scanner = [NSScanner scannerWithString:lastAvailableVersion] ;
+    NSScanner * scanner = [NSScanner scannerWithString:mLastAvailableVersion] ;
     const BOOL versionOk = [scanner scanInt:NULL]
                  && [scanner scanString:@"." intoString:NULL]
                  && [scanner scanInt:NULL]
@@ -239,37 +248,30 @@
       #ifdef FORCED_GALGAS_VERSION
         galgasVersion = FORCED_GALGAS_VERSION ;
         NSLog (@"Forced GALGAS version: %@", galgasVersion) ;
-        NSLog (@"Last Available version: %@", lastAvailableVersion) ;
+        NSLog (@"Last Available version: %@", mLastAvailableVersion) ;
       #endif
       if (! [galgasVersion isEqualToString:@"GALGAS_BETA_VERSION"]) {
-        const NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:lastAvailableVersion] ;
+        const NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:mLastAvailableVersion] ;
         if (r == NSOrderedAscending) {
         //--- Display change log in Web View
           NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
           [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-          [mChangeLogWebView setPolicyDelegate:self] ;
           NSString * s = [NSString stringWithFormat:
             @"Current version is %@; the %@ version can be downloaded.",
             galgasVersion,
-            lastAvailableVersion
+            mLastAvailableVersion
           ] ;
           [mNewVersionTextField setStringValue:s] ;
-          s = [NSString stringWithFormat:
-            @"Install and Launch Version %@",
-            lastAvailableVersion
-          ] ;
+          s = [NSString stringWithFormat:@"Install and Launch Version %@", mLastAvailableVersion] ;
           [mPerformUpdateButton setTitle:s] ;
-          #if ! __has_feature(objc_arc)
-            [[NSGarbageCollector defaultCollector] disableCollectorForPointer:lastAvailableVersion] ;
-          #endif
+          [mCheckNowButton setEnabled:NO] ;
           [NSApp
             beginSheet:mNewAvailableVersionPanel
             modalForWindow:nil
             modalDelegate:self
             didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
-            contextInfo:(ARC_BRIDGE void *) lastAvailableVersion
+            contextInfo:NULL
           ] ;
-          [mCheckNowButton setEnabled:NO] ;
         }else if (! mSearchForUpdatesInBackground) {
           NSAlert * alert = [NSAlert
             alertWithMessageText:@"GALGAS is up to date."
@@ -292,7 +294,7 @@
         defaultButton:@"Ok"
         alternateButton:nil
         otherButton:nil
-        informativeTextWithFormat:@"The server answered in an incomprehensible way: '%@'.", lastAvailableVersion
+        informativeTextWithFormat:@"The server answered in an incomprehensible way: '%@'.", mLastAvailableVersion
       ] ;
       [alert
         beginSheetModalForWindow:nil
@@ -304,29 +306,11 @@
   }
 }
 
-//--------------------------------------------------------------------------*
-
-- (void)webView:(WebView *)sender
-        decidePolicyForNavigationAction:(NSDictionary *)actionInformation
-        request:(NSURLRequest *)request
-        frame:(WebFrame *)frame
-        decisionListener:(id<WebPolicyDecisionListener>)listener {
-  [listener ignore] ;
-  NSURL * requestedURL = [request URL] ;
-//  NSLog (@"requestedURL: '%@'", requestedURL) ;
-  NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
-  [ws openURL:requestedURL] ;
-}
-
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
          returnCode:(int) inReturnCode
-   contextInfo:(void  *) inContextInfo {
-  NSString * lastAvailableVersion = (ARC_BRIDGE NSString *) inContextInfo ;
-  #if ! __has_feature(objc_arc)
-    [[NSGarbageCollector defaultCollector] enableCollectorForPointer:lastAvailableVersion] ;
-  #endif
+         contextInfo:(void  *) inContextInfo {
   // NSLog (@"inReturnCode %d", inReturnCode) ;
   if (inReturnCode == YES) {
   //--- Remove temporary dir if it exists
@@ -342,23 +326,23 @@
       error:nil
     ] ;
   //--- Start download GALGAS
-    [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading GALGAS %@...", lastAvailableVersion]] ;
+    [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading GALGAS %@...", mLastAvailableVersion]] ;
     [[mCancelButton window] makeKeyAndOrderFront:nil] ;
-    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:lastAvailableVersion]
+    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:mLastAvailableVersion]
        destinationFileName:[self temporaryPathForGALGASArchive]
        downloadDelegate:self
        downloadDidEndSelector:@selector (downloadNewVersionOfGALGASDidEnd:)
        cancelButton:mCancelButton
        subtitle:mDownloadSubTitle
        progressIndicator:mDownloadProgressIndicator
-       userInfo:lastAvailableVersion
+       userInfo:mLastAvailableVersion
     ] ;
   }else{
     [mCheckNowButton setEnabled:YES] ;
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) downloadHasBeenCancelled {
   [mCancelButton.window orderOut:nil] ;
@@ -370,7 +354,7 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) downloadDidFinishOnError: (NSError *) inError {
 //--- Note : presentError is not available on 10.3.9 and earlier
@@ -393,7 +377,7 @@
   [self downloadHasBeenCancelled] ;
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) downloadNewVersionOfGALGASDidEnd: (PMDownloadFile *) inDownloader {
   if ([inDownloader downloadHasBeenCancelled]) {
@@ -419,7 +403,7 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (int) uncompressArchive: (NSString *) inArchivePath {
   NSArray * arguments = [NSArray arrayWithObjects:
@@ -454,7 +438,7 @@
   return status ;
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) downloadGalgasUpdaterDidEnd: (PMDownloadFile *) inDownloader {
   if ([inDownloader downloadHasBeenCancelled]) {
@@ -515,7 +499,7 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) launchGalgasUpdaterAlertDidEnd:(NSAlert *) inUnusedAlert
          returnCode:(int) inReturnCode
@@ -541,15 +525,15 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #pragma mark Installing CLI tools
 
-//--------------------------------------------------------------------------*
-//                                                                          *
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //            Installing CLI tools                                          *
-//                                                                          *
-//--------------------------------------------------------------------------*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (OSStatus) privilegedOperation: (AuthorizationRef) inAutorizationRef
              commandPath: (const char *) inCommandPath
@@ -567,7 +551,7 @@
   return myStatus ;
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (IBAction) performCLIToolInstallation: (id) inSender {
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
@@ -611,7 +595,7 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) performToolInstallationAlertDidEnd:(NSAlert *)alert 
          returnCode:(int) inReturnCode
@@ -627,7 +611,7 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) install: (id) ininUnusedArg {
   OSStatus myStatus = 0 ;
@@ -696,15 +680,15 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #pragma mark Removing CLI tools
 
-//--------------------------------------------------------------------------*
-//                                                                          *
-//            Removing CLI tools                                            *
-//                                                                          *
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//            Removing CLI tools                                                                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (IBAction) performCLIToolRemove: (id) inSender {
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
@@ -770,7 +754,7 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) performToolRemovingAlertDidEnd:(NSAlert *)alert 
          returnCode:(int) inReturnCode
@@ -786,7 +770,7 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) remove: (id) ininUnusedArg {
   OSStatus myStatus = 0 ;
@@ -842,11 +826,11 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #pragma mark Create a new project
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) createNewProjectAction: (id) inSender {
   NSSavePanel * op = [NSSavePanel savePanel] ;
@@ -939,6 +923,6 @@
   }
 }
 
-//--------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 @end
