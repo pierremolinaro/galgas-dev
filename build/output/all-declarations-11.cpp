@@ -62,6 +62,13 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
+C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ("galgas_cli_options",
+                                         "cppCompile",
+                                         0,
+                                         "compile",
+                                         "Perform C++ compilation on 'string' target",
+                                         "") ;
+
 C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ("galgas_cli_options",
                                          "create_project",
                                          0,

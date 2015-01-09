@@ -532,6 +532,25 @@ grammar projectLL1grammar
       !handledExtensionSet
     )
   end
+#--- C++ compilation
+  if 0 == @uint.errorCount then
+    let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
+    if cppCompilationTarget != "" then
+      if [option .verbose_output value] then
+        message "*** Perform C++ compilation\n"
+      end
+      let targetDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget
+      if [targetDirectory directoryExists] then
+        let resultCode = ["python " + targetDirectory + "/build.py" system]
+        if resultCode != 0S then
+        error ["" nowhere] : "Running '" + targetDirectory + "' returns " + resultCode
+        end
+      else
+        error ["" nowhere] : "Cannot perform C++ compilation of '" + cppCompilationTarget
+            + "' : the '" + targetDirectory + "' directory does not exist"
+      end
+    end
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -547,8 +566,27 @@ proc parseAndAnalyzeProject
     message "*** Parsing project files\n"
   end
   grammar galgas3ProjectGrammar in inProjectSourceFile ?let @galgas3ProjectComponentAST projectComponentAST
-  if [option .mode value] == "" then
+  if [option.mode value] == "" then
     compileProject (!inProjectSourceFile !inSourceToAnalyze !projectComponentAST)
+  #--- C++ compilation
+    if 0 == @uint.errorCount then
+      let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
+      if cppCompilationTarget != "" then
+        if [option.verbose_output value] then
+          message "*** Perform C++ compilation\n"
+        end
+        let targetDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget
+        if [targetDirectory directoryExists] then
+          let resultCode = ["python " + targetDirectory + "/build.py" system]
+          if resultCode != 0S then
+          error ["" nowhere] : "Running '" + targetDirectory + "' returns " + resultCode
+          end
+        else
+          error ["" nowhere] : "Cannot perform C++ compilation of '" + cppCompilationTarget
+              + "' : the '" + targetDirectory + "' directory does not exist"
+        end
+      end
+    end
   end
 }
 
