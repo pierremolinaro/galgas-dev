@@ -25,6 +25,8 @@ option galgas_cli_options {
   @bool convertToGalgas3 : '\0', "convert-to-galgas-3" -> "Convert to GALGAS 3"
   @bool generateOneHeader : '\0', "generate-one-cpp-header" -> "Generate one C++ header file for all declarations"
   @bool generateManyFiles : '\0', "generate-many-cpp-files" -> "Generate many C++ implementation files"
+  
+  @string cppCompile : '\0', "compile" -> "Perform C++ compilation on 'string' target"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

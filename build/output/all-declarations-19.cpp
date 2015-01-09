@@ -7231,6 +7231,30 @@ static void routine_programRule_5F__31__30_ (const GALGAS_lstring constinArgumen
     routine_updateTargets (constinArgument_inProjectSourceFile, var_projectComponentAST.mAttribute_mMajorVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 526)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 526)).add_operation (var_projectComponentAST.mAttribute_mMinorVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 526)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 526)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 526)).add_operation (var_projectComponentAST.mAttribute_mRevisionVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 526)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 526)), var_projectComponentAST.reader_mProjectName (SOURCE_FILE ("galgas_prgm.galgas", 527)), var_targetName, var_projectQualifiedFeatureMap, var_projectComponentAST.reader_mGenerationFeatureList (SOURCE_FILE ("galgas_prgm.galgas", 530)), var_projectComponentAST.reader_mProjectSourceList (SOURCE_FILE ("galgas_prgm.galgas", 531)), var_handledExtensionSet, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 524)) ;
     }
   }
+  const enumGalgasBool test_44 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 536)))).boolEnum () ;
+  if (kBoolTrue == test_44) {
+    GALGAS_string var_cppCompilationTarget = GALGAS_string (gOption_galgas_5F_cli_5F_options_cppCompile.reader_value ()) ;
+    const enumGalgasBool test_45 = GALGAS_bool (kIsNotEqual, var_cppCompilationTarget.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_45) {
+      const enumGalgasBool test_46 = GALGAS_bool (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.reader_value ()).boolEnum () ;
+      if (kBoolTrue == test_46) {
+        inCompiler->printMessage (GALGAS_string ("*** Perform C++ compilation\n")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 540)) ;
+      }
+      GALGAS_string var_targetDirectory = constinArgument_inProjectSourceFile.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 542)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 542)).add_operation (var_cppCompilationTarget, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 542)) ;
+      const enumGalgasBool test_47 = var_targetDirectory.reader_directoryExists (SOURCE_FILE ("galgas_prgm.galgas", 543)).boolEnum () ;
+      if (kBoolTrue == test_47) {
+        GALGAS_sint var_resultCode = GALGAS_string ("python ").add_operation (var_targetDirectory, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 544)).add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 544)).reader_system (SOURCE_FILE ("galgas_prgm.galgas", 544)) ;
+        const enumGalgasBool test_48 = GALGAS_bool (kIsNotEqual, var_resultCode.objectCompare (GALGAS_sint ((int32_t) 0L))).boolEnum () ;
+        if (kBoolTrue == test_48) {
+          GALGAS_location location_49 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas_prgm.galgas", 546)).reader_location (HERE)) ; // Implicit use of 'location' reader
+          inCompiler->emitSemanticError (location_49, GALGAS_string ("Running '").add_operation (var_targetDirectory, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 546)).add_operation (GALGAS_string ("' returns "), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 546)).add_operation (var_resultCode.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 546)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 546))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 546)) ;
+        }
+      }else if (kBoolFalse == test_47) {
+        GALGAS_location location_50 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas_prgm.galgas", 549)).reader_location (HERE)) ; // Implicit use of 'location' reader
+        inCompiler->emitSemanticError (location_50, GALGAS_string ("Cannot perform C++ compilation of '").add_operation (var_cppCompilationTarget, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 549)).add_operation (GALGAS_string ("' : the '"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 549)).add_operation (var_targetDirectory, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 550)).add_operation (GALGAS_string ("' directory does not exist"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 550))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 549)) ;
+      }
+    }
+  }
 }
 
 
@@ -18303,143 +18327,6 @@ GALGAS_collectionValueElementList_2D_element GALGAS_collectionValueElementList_2
       result = *p ;
     }else{
       inCompiler->castError ("collectionValueElementList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxExtensions_2D_element::GALGAS_syntaxExtensions_2D_element (void) :
-mAttribute_key (),
-mAttribute_mList () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxExtensions_2D_element::~ GALGAS_syntaxExtensions_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxExtensions_2D_element::GALGAS_syntaxExtensions_2D_element (const GALGAS_string & inOperand0,
-                                                                        const GALGAS_galgas_33_SyntaxExtensionListAST & inOperand1) :
-mAttribute_key (inOperand0),
-mAttribute_mList (inOperand1) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_syntaxExtensions_2D_element (GALGAS_string::constructor_default (HERE),
-                                             GALGAS_galgas_33_SyntaxExtensionListAST::constructor_emptyList (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                        const GALGAS_galgas_33_SyntaxExtensionListAST & inOperand1 
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_syntaxExtensions_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_syntaxExtensions_2D_element (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_syntaxExtensions_2D_element::objectCompare (const GALGAS_syntaxExtensions_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_key.objectCompare (inOperand.mAttribute_key) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mList.objectCompare (inOperand.mAttribute_mList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_syntaxExtensions_2D_element::isValid (void) const {
-  return mAttribute_key.isValid () && mAttribute_mList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_syntaxExtensions_2D_element::drop (void) {
-  mAttribute_key.drop () ;
-  mAttribute_mList.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_syntaxExtensions_2D_element::description (C_String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString << "<struct @syntaxExtensions-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_key.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mList.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_syntaxExtensions_2D_element::reader_key (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_key ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_SyntaxExtensionListAST GALGAS_syntaxExtensions_2D_element::reader_mList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @syntaxExtensions-element type                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_syntaxExtensions_2D_element ("syntaxExtensions-element",
-                                                    NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_syntaxExtensions_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxExtensions_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_syntaxExtensions_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_syntaxExtensions_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_syntaxExtensions_2D_element result ;
-  const GALGAS_syntaxExtensions_2D_element * p = (const GALGAS_syntaxExtensions_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_syntaxExtensions_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("syntaxExtensions-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

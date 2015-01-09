@@ -40,6 +40,8 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
+extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
+
 extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
 
 extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
