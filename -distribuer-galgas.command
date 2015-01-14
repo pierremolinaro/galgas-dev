@@ -88,9 +88,9 @@ cd ${DIR} && cp galgas/galgas-documentation-latex-sources/galgas-book.pdf galgas
 rm -fr ${DIR}/galgas/galgas-documentation-latex-sources &&
 #-------------------- Creer l'archive de l'executable x86 linux 32 (release et debug)
 cd ${DIR}/galgas/makefile-x86linux32-on-macosx/ && python ./build.py &&
-zip -9 ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas &&
+cd ${DIR}/galgas/makefile-x86linux32-on-macosx && zip -9 galgas.zip galgas &&
 cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas.zip ${DIR}/galgas-x86-linux32.zip &&
-zip -9 ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug &&
+cd ${DIR}/galgas/makefile-x86linux32-on-macosx && zip -9 galgas-debug.zip galgas-debug &&
 cp ${DIR}/galgas/makefile-x86linux32-on-macosx/galgas-debug.zip ${DIR}/galgas-debug-x86-linux32.zip &&
 rm -fr ${DIR}/galgas/makefile-x86linux32-on-macosx &&
 rm -fr ${DIR}/galgas/build/cli-objects &&
@@ -104,9 +104,9 @@ rm -fr ${DIR}/galgas/makefile-win32-on-macosx &&
 rm -fr ${DIR}/galgas/build/cli-objects &&
 #-------------------- Creer l'archive de l'executable x86 linux 64 (release et debug)
 cd ${DIR}/galgas/makefile-x86linux64-on-macosx/ && python ./build.py &&
-zip -9 ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas.zip ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas &&
+cd ${DIR}/galgas/makefile-x86linux64-on-macosx && zip -9 galgas.zip galgas &&
 cp ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas.zip ${DIR}/galgas-x86-linux64.zip &&
-zip -9 ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug.zip ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug &&
+cd ${DIR}/galgas/makefile-x86linux64-on-macosx && zip -9 galgas-debug.zip galgas-debug &&
 cp ${DIR}/galgas/makefile-x86linux64-on-macosx/galgas-debug.zip ${DIR}/galgas-debug-x86-linux64.zip &&
 rm -fr ${DIR}/galgas/makefile-x86linux64-on-macosx &&
 rm -fr ${DIR}/galgas/build/cli-objects &&
