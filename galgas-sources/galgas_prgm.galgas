@@ -575,15 +575,15 @@ proc parseAndAnalyzeProject
         if [option.verbose_output value] then
           message "*** Perform C++ compilation\n"
         end
-        let targetDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget
-        if [targetDirectory directoryExists] then
-          let resultCode = ["python " + targetDirectory + "/build.py" system]
+        let buildFile = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
+        if [buildFile fileExists] then
+          let resultCode = ["python " + buildFile system]
           if resultCode != 0S then
-          error ["" nowhere] : "Running '" + targetDirectory + "' returns " + resultCode
+          error ["" nowhere] : "Running '" + buildFile + "' returns " + resultCode
           end
         else
           error ["" nowhere] : "Cannot perform C++ compilation of '" + cppCompilationTarget
-              + "' : the '" + targetDirectory + "' directory does not exist"
+              + "' : the '" + buildFile + "' file does not exist"
         end
       end
     end

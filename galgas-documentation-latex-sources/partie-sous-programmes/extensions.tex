@@ -335,10 +335,10 @@ The following example illustrates how theses rules should be applied. In the \re
 \begin{figure}[t]
   \centering
    \begin{tikzpicture}[every state/.style={draw, circle}, node distance=1.5cm, <-, thick]
-     \node at (0, 4.5) [state, accepting] (A) {\ggs!@A!};
-     \node at (0, 3) [state]            (B) {\ggs!@B!};
-     \node at (0, 1.5) [state, accepting] (C) {\ggs!@C!};
-     \node at (0, 0) [state]            (D) {\ggs!@D!};
+     \node at (0, 4.5) [state, accepting] (A) {\texttt{@A}};
+     \node at (0, 3) [state]            (B) {\texttt{@B}};
+     \node at (0, 1.5) [state, accepting] (C) {\texttt{@C}};
+     \node at (0, 0) [state]            (D) {\texttt{@D}};
      \path (A) edge (B) ;
      \path (B) edge (C) ;
      \path (C) edge (D) ;
