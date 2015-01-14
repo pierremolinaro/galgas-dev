@@ -9,7 +9,6 @@ LEOPARD_SDK := $(shell file /Developer/SDKs/MacOSX10.5.sdk | awk '/directory$$/ 
 #--- For XCode 4.x
 SNOW_LEOPARD_SDK := $(shell file /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk | awk '/directory$$/ { print $$2; }')
 
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 ifeq ($(LEOPARD_SDK), directory)
