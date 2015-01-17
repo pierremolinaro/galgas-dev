@@ -28,7 +28,7 @@
 
 @interface OC_GGS_BuildTask : NSObject {
   @private NSTask * mTask ;
-  @private NSPipe * mPipe ;
+  @private NSPipe * mTaskOutputPipe ;
 
   @private BOOL mOutputBufferedDataHasBeenTransmitted ;
 

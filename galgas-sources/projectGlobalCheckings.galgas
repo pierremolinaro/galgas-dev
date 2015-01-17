@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  GALGAS LL1 routines                                                      *
+#  GALGAS LL1 routines                                                                                                 *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2013 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2013 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -14,12 +14,8 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
-
-
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        M U L T I - M E T H O D   L I S T M A P                            *
+#        M U L T I - M E T H O D   L I S T M A P                                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -27,7 +23,7 @@ listmap @genericCategoryMethodListMap (@lstringlist)
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  B U I L D    M U L T I - M E T H O D S    L I S M A P S                  *
+#  B U I L D    M U L T I - M E T H O D S    L I S M A P S                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -288,7 +284,7 @@ override method @overridingAbstractCategoryReaderAST buildCategoryListMaps
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    D E S C E N D A N T    C L A S S    L I S T M A P                      *
+#    D E S C E N D A N T    C L A S S    L I S T M A P                                                                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -296,9 +292,9 @@ listmap @descendantClassListMap (@unifiedTypeMapProxyList)
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  C A T E G O R Y    M E T H O D    M A P                                  *
+#  C A T E G O R Y    M E T H O D    M A P                                                                             *
 #                                                                                                                      *
-# Used for checking a category-method is defined once for a type            *
+# Used for checking a category-method is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @categoryMethodMapForGlobalCheckings {
@@ -307,9 +303,9 @@ map @categoryMethodMapForGlobalCheckings {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  C A T E G O R Y    M O D I F I E R    M A P                              *
+#  C A T E G O R Y    M O D I F I E R    M A P                                                                         *
 #                                                                                                                      *
-# Used for checking a category-setter is defined once for a type          *
+# Used for checking a category-setter is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @categoryModifierMapForGlobalCheckings {
@@ -318,9 +314,9 @@ map @categoryModifierMapForGlobalCheckings {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  C A T E G O R Y    R E A D E R    M A P                                  *
+#  C A T E G O R Y    R E A D E R    M A P                                                                             *
 #                                                                                                                      *
-# Used for checking a category-method is defined once for a type            *
+# Used for checking a category-method is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @categoryReaderMapForGlobalCheckings {
@@ -911,7 +907,7 @@ proc performGalgas3ProjectGlobalCheckings
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

@@ -66,13 +66,13 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
 
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s %p", __PRETTY_FUNCTION__, self) ;
+    NSLog (@"%s %p [%g, %g ; %g, %g]", __PRETTY_FUNCTION__, self, inRect.origin.x, inRect.origin.y, inRect.size.width, inRect.size.height) ;
   #endif
 //--- Draw background
   [[NSColor windowBackgroundColor] setFill] ;
   [NSBezierPath fillRect:inRect] ;
 //--- Draw right border
-  const NSRect viewBounds = [self bounds] ;
+  const NSRect viewBounds = self.bounds ;
   const NSPoint p1 = {viewBounds.size.width, 0.0} ;
   const NSPoint p2 = {viewBounds.size.width, viewBounds.size.height} ;
   [NSBezierPath strokeLineFromPoint:p1 toPoint:p2] ;
@@ -94,13 +94,27 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   NSLayoutManager * lm = textView.layoutManager ;
   const NSRange selectedRange = textView.selectedRange ;
   NSString * sourceString = textView.string ;
+//  const NSRect visibleRect = textView.visibleRect ;
   const NSUInteger sourceStringLength = sourceString.length ;
 //---
-  const NSUInteger firstCharacterIndex = [lm
-    characterIndexForPoint:textView.visibleRect.origin
+//  const NSUInteger firstCharacterIndex = 0 ;
+/*  const NSUInteger firstCharacterIndex = [lm
+    characterIndexForPoint:visibleRect.origin
     inTextContainer:textView.textContainer
     fractionOfDistanceBetweenInsertionPoints:NULL
-  ] ;
+  ] ;*/
+//  const NSUInteger indexAfterLastCharacter = sourceString.length ;
+/*  const NSUInteger lastCharacterIndex = [lm
+    characterIndexForPoint:NSMakePoint (visibleRect.origin.x, visibleRect.origin.y + visibleRect.size.height)
+    inTextContainer:textView.textContainer
+    fractionOfDistanceBetweenInsertionPoints:NULL
+  ] ;*/
+//  const NSUInteger firstCharacterIndex = 0 ;
+//--- Visible character range
+/*  const NSRange visibleGlyphRange = [lm glyphRangeForBoundingRect:textView.visibleRect inTextContainer:textView.textContainer] ;
+  const NSRange visibleCharacterRange = [lm characterRangeForGlyphRange:visibleGlyphRange actualGlyphRange:NULL] ;
+  NSLog (@"visibleCharacterRange %lu %lu", visibleCharacterRange.location, visibleCharacterRange.length) ;
+  const NSUInteger lastVisibleCharacterIndex = visibleCharacterRange.location + visibleCharacterRange.length ;*/
 //--- Find first line number to draw
   NSUInteger idx = 0 ;
   NSInteger lineIndex = 0 ;
@@ -108,16 +122,20 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   while ((idx < sourceStringLength) && ! found) {
     lineIndex ++ ;
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 0)] ;
-    found = (lineRange.location + lineRange.length) > firstCharacterIndex ;
+    const NSRect r = [lm lineFragmentRectForGlyphAtIndex:lineRange.location effectiveRange:NULL] ;
+    const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
+    found = p.y > inRect.origin.y ;
     if (! found) {
       idx = lineRange.location + lineRange.length ;
     }
   }
+//  NSLog (@"lineIndex %ld", lineIndex) ;
 //---
-  const double maxYforDrawing = NSMaxY (self.visibleRect) ;
-  BOOL maxYreached = NO ;
+//  const double maxYforDrawing = inRect.origin.y + inRect.size.height ;
+//  BOOL maxYreached = NO ;
   NSMutableArray * bulletArray = [NSMutableArray new] ;
-  while ((idx < sourceStringLength) && ! maxYreached) {
+//  while ((idx < sourceStringLength) && ! maxYreached) {
+  while (idx < sourceStringLength) {
     const NSRect r = [lm lineFragmentRectForGlyphAtIndex:idx effectiveRange:NULL] ;
     NSUInteger startIndex = 0 ;
     NSUInteger lineEndIndex = 0 ;
@@ -134,8 +152,8 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
     p.x = viewBounds.size.width - 2.0 - strSize.width ;
     p.y -= strSize.height ;
-    maxYreached = (p.y > maxYforDrawing) ;
     [str drawAtPoint:p withAttributes:intersect ? attributesForSelection : attributes] ;
+//    maxYreached = p.y > maxYforDrawing ;
   //--- Error or warning at this line ?
     BOOL hasError = NO ;
     BOOL hasWarning = NO ;
