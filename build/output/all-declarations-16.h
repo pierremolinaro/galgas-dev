@@ -1033,8 +1033,7 @@ class GALGAS_grammarForGeneration : public GALGAS_semanticDeclarationWithHeaderF
                                                                const class GALGAS_lstringlist & inOperand7,
                                                                const class GALGAS_string & inOperand8,
                                                                const class GALGAS_bool & inOperand9,
-                                                               const class GALGAS_string & inOperand10,
-                                                               const class GALGAS_string & inOperand11
+                                                               const class GALGAS_string & inOperand10
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1049,8 +1048,6 @@ class GALGAS_grammarForGeneration : public GALGAS_semanticDeclarationWithHeaderF
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mCppFileContents (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mGrammarName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mHTLMHelperContents (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasIndexing (LOCATION_ARGS) const ;
 
@@ -1094,7 +1091,6 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
   public : GALGAS_string mAttribute_mStartSymbolName ;
   public : GALGAS_bool mAttribute_mHasTranslateFeature ;
   public : GALGAS_string mAttribute_mCppFileContents ;
-  public : GALGAS_string mAttribute_mHTLMHelperContents ;
 
 //--- Constructor
   public : cPtr_grammarForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -1107,8 +1103,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
                                       const GALGAS_lstringlist & in_mSyntaxComponents,
                                       const GALGAS_string & in_mStartSymbolName,
                                       const GALGAS_bool & in_mHasTranslateFeature,
-                                      const GALGAS_string & in_mCppFileContents,
-                                      const GALGAS_string & in_mHTLMHelperContents
+                                      const GALGAS_string & in_mCppFileContents
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1124,7 +1119,6 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mStartSymbolName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasTranslateFeature (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mCppFileContents (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mHTLMHelperContents (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

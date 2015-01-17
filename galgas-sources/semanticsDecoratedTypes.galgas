@@ -618,7 +618,7 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @string mStartSymbolName
   @bool mHasTranslateFeature
   @string mCppFileContents
-  @string mHTLMHelperContents
+#  @string mHTLMHelperContents
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
