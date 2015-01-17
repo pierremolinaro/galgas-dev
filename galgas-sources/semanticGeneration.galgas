@@ -59,16 +59,16 @@ override method @grammarForGeneration appendSpecificImplementation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @grammarForGeneration appendSpecificFiles
-  ?let @string inProductDirectory
-  ?!@stringset unused ioAllProductFileSet {
-  let HTMLFilePath = inProductDirectory + "/../helpers/" + mGrammarName + ".html"
-  if [option galgas_cli_options.outputHTMLgrammarFile value] then
-    [mHTLMHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
-  else
-    [@string deleteFileIfExists !HTMLFilePath]
-  end
-}
+#override method @grammarForGeneration appendSpecificFiles
+#  ?let @string inProductDirectory
+#  ?!@stringset unused ioAllProductFileSet {
+#  let HTMLFilePath = inProductDirectory + "/../helpers/" + mGrammarName + ".html"
+#  if [option galgas_cli_options.outputHTMLgrammarFile value] then
+#    [mHTLMHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
+#  else
+#    [@string deleteFileIfExists !HTMLFilePath]
+#  end
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*
 

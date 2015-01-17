@@ -6639,9 +6639,6 @@ typeComparisonResult cPtr_grammarForGeneration::dynamicObjectCompare (const acPt
   if (kOperandEqual == result) {
     result = mAttribute_mCppFileContents.objectCompare (p->mAttribute_mCppFileContents) ;
   }
-  if (kOperandEqual == result) {
-    result = mAttribute_mHTLMHelperContents.objectCompare (p->mAttribute_mHTLMHelperContents) ;
-  }
   return result ;
 }
 
@@ -6683,7 +6680,6 @@ GALGAS_grammarForGeneration GALGAS_grammarForGeneration::constructor_default (LO
                                                        GALGAS_lstringlist::constructor_emptyList (HERE),
                                                        GALGAS_string::constructor_default (HERE),
                                                        GALGAS_bool::constructor_default (HERE),
-                                                       GALGAS_string::constructor_default (HERE),
                                                        GALGAS_string::constructor_default (HERE)
                                                        COMMA_THERE) ;
 }
@@ -6707,12 +6703,11 @@ GALGAS_grammarForGeneration GALGAS_grammarForGeneration::constructor_new (const 
                                                                           const GALGAS_lstringlist & inAttribute_mSyntaxComponents,
                                                                           const GALGAS_string & inAttribute_mStartSymbolName,
                                                                           const GALGAS_bool & inAttribute_mHasTranslateFeature,
-                                                                          const GALGAS_string & inAttribute_mCppFileContents,
-                                                                          const GALGAS_string & inAttribute_mHTLMHelperContents
+                                                                          const GALGAS_string & inAttribute_mCppFileContents
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_grammarForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mGrammarName.isValid () && inAttribute_mLexiqueName.isValid () && inAttribute_mNonTerminalMapForGrammarAnalysis.isValid () && inAttribute_mNonTerminalToAddList.isValid () && inAttribute_mHasIndexing.isValid () && inAttribute_mSyntaxComponents.isValid () && inAttribute_mStartSymbolName.isValid () && inAttribute_mHasTranslateFeature.isValid () && inAttribute_mCppFileContents.isValid () && inAttribute_mHTLMHelperContents.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_grammarForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mGrammarName, inAttribute_mLexiqueName, inAttribute_mNonTerminalMapForGrammarAnalysis, inAttribute_mNonTerminalToAddList, inAttribute_mHasIndexing, inAttribute_mSyntaxComponents, inAttribute_mStartSymbolName, inAttribute_mHasTranslateFeature, inAttribute_mCppFileContents, inAttribute_mHTLMHelperContents COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mGrammarName.isValid () && inAttribute_mLexiqueName.isValid () && inAttribute_mNonTerminalMapForGrammarAnalysis.isValid () && inAttribute_mNonTerminalToAddList.isValid () && inAttribute_mHasIndexing.isValid () && inAttribute_mSyntaxComponents.isValid () && inAttribute_mStartSymbolName.isValid () && inAttribute_mHasTranslateFeature.isValid () && inAttribute_mCppFileContents.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_grammarForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mGrammarName, inAttribute_mLexiqueName, inAttribute_mNonTerminalMapForGrammarAnalysis, inAttribute_mNonTerminalToAddList, inAttribute_mHasIndexing, inAttribute_mSyntaxComponents, inAttribute_mStartSymbolName, inAttribute_mHasTranslateFeature, inAttribute_mCppFileContents COMMA_THERE)) ;
   }
   return result ;
 }
@@ -6880,24 +6875,6 @@ GALGAS_string cPtr_grammarForGeneration::reader_mCppFileContents (UNUSED_LOCATIO
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_grammarForGeneration::reader_mHTLMHelperContents (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_grammarForGeneration * p = (const cPtr_grammarForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_grammarForGeneration) ;
-    result = p->mAttribute_mHTLMHelperContents ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cPtr_grammarForGeneration::reader_mHTLMHelperContents (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHTLMHelperContents ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                    Pointer class for @grammarForGeneration class                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6911,8 +6888,7 @@ cPtr_grammarForGeneration::cPtr_grammarForGeneration (const GALGAS_bool & in_mHa
                                                       const GALGAS_lstringlist & in_mSyntaxComponents,
                                                       const GALGAS_string & in_mStartSymbolName,
                                                       const GALGAS_bool & in_mHasTranslateFeature,
-                                                      const GALGAS_string & in_mCppFileContents,
-                                                      const GALGAS_string & in_mHTLMHelperContents
+                                                      const GALGAS_string & in_mCppFileContents
                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mGrammarName (in_mGrammarName),
@@ -6923,8 +6899,7 @@ mAttribute_mHasIndexing (in_mHasIndexing),
 mAttribute_mSyntaxComponents (in_mSyntaxComponents),
 mAttribute_mStartSymbolName (in_mStartSymbolName),
 mAttribute_mHasTranslateFeature (in_mHasTranslateFeature),
-mAttribute_mCppFileContents (in_mCppFileContents),
-mAttribute_mHTLMHelperContents (in_mHTLMHelperContents) {
+mAttribute_mCppFileContents (in_mCppFileContents) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6957,8 +6932,6 @@ void cPtr_grammarForGeneration::description (C_String & ioString,
   mAttribute_mHasTranslateFeature.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mCppFileContents.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mHTLMHelperContents.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6966,7 +6939,7 @@ void cPtr_grammarForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_grammarForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_grammarForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mGrammarName, mAttribute_mLexiqueName, mAttribute_mNonTerminalMapForGrammarAnalysis, mAttribute_mNonTerminalToAddList, mAttribute_mHasIndexing, mAttribute_mSyntaxComponents, mAttribute_mStartSymbolName, mAttribute_mHasTranslateFeature, mAttribute_mCppFileContents, mAttribute_mHTLMHelperContents COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_grammarForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mGrammarName, mAttribute_mLexiqueName, mAttribute_mNonTerminalMapForGrammarAnalysis, mAttribute_mNonTerminalToAddList, mAttribute_mHasIndexing, mAttribute_mSyntaxComponents, mAttribute_mStartSymbolName, mAttribute_mHasTranslateFeature, mAttribute_mCppFileContents COMMA_THERE)) ;
   return ptr ;
 }
 

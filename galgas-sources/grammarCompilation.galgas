@@ -593,13 +593,11 @@ proc compileGrammarComponentFromAST
     ?let @string grammarHTMLHelperContents
   )
 #---------------------------------------------------------- Generate HTML grammer helper file
-#  if [@uint errorCount] == 0 then
-    if [option galgas_cli_options.outputHTMLgrammarFile value] then
-      [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
-    else
-      [@string deleteFileIfExists !HTMLFilePath]
-    end
-#  end if ;
+  if [option galgas_cli_options.outputHTMLgrammarFile value] then
+    [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
+  else
+    [@string deleteFileIfExists !HTMLFilePath]
+  end
 #---------------------------------------------------------- Generate Implementation file
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern

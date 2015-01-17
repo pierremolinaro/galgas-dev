@@ -2388,8 +2388,6 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   if [option galgas_cli_options.generateOneHeader value] then
     implementationFileHeader = @stringset. emptySet
   end
-#  implementationFileHeader += !"grammar-" . mGrammarComponentName ;
-#  implementationFileHeader += !"lexique-" . lexiqueComponentName ;
 #---------------------------------------------------------- Analyze grammar
   let HTMLFilePath = inProductDirectory + "/../helpers/" + mGrammarComponentName + ".html"
   grammarAnalysisAndGeneration (
@@ -2408,6 +2406,12 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     ?let @string grammarCppFile
     ?let @string grammarHTMLHelperContents
   )
+#---------------------------------------------------------- Generate HTML grammer helper file
+  if [option galgas_cli_options.outputHTMLgrammarFile value] then
+    [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
+  else
+    [@string deleteFileIfExists !HTMLFilePath]
+  end
 #---
   ioSemanticDeclarationListForGeneration +=
     !""   
@@ -2423,7 +2427,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !mStartSymbolName.string
       !mHasTranslateFeature
       !grammarCppFile
-      !grammarHTMLHelperContents}
+#      !grammarHTMLHelperContents
+    }
     !""
 }
 
