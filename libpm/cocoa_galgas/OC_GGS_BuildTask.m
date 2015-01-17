@@ -82,17 +82,17 @@
         [mTask setArguments:arguments] ;
       }
     //--- Set standard output notification
-      mPipe = [NSPipe pipe] ;
-      [mTask setStandardOutput:mPipe] ;
-      [mTask setStandardError:mPipe] ;
+      mTaskOutputPipe = [NSPipe pipe] ;
+      [mTask setStandardOutput:mTaskOutputPipe] ;
+      [mTask setStandardError:mTaskOutputPipe] ;
     //---
       [[NSNotificationCenter defaultCenter]
         addObserver:self
         selector:@selector (getDataFromTaskOutput:)
         name:NSFileHandleReadCompletionNotification
-        object:[mPipe fileHandleForReading]
+        object:[mTaskOutputPipe fileHandleForReading]
       ] ;
-      [mPipe.fileHandleForReading readInBackgroundAndNotify] ;
+      [mTaskOutputPipe.fileHandleForReading readInBackgroundAndNotify] ;
     //---
       [[NSNotificationCenter defaultCenter]
         addObserver:self
@@ -128,17 +128,17 @@
     [[NSNotificationCenter defaultCenter]
       removeObserver:self
       name:NSFileHandleReadCompletionNotification
-      object:[mPipe fileHandleForReading]
+      object:[mTaskOutputPipe fileHandleForReading]
     ] ;
     [[NSNotificationCenter defaultCenter]
       removeObserver:self
       name:NSTaskDidTerminateNotification
       object:mTask
     ] ;
-    [[mPipe fileHandleForReading] closeFile] ;
+    [[mTaskOutputPipe fileHandleForReading] closeFile] ;
     mOutputBufferedDataHasBeenTransmitted = YES ;
     mTask = nil ;
-    mPipe = nil ;
+    mTaskOutputPipe = nil ;
     [mDocument buildCompleted] ;
   }
 }
