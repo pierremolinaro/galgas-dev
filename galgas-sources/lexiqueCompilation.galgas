@@ -519,12 +519,12 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap ioTagMap {
   for () in mLexicalWhileBranchList do
     [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
-    var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
+    var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
     for () in mWhileInstructionList do
       [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
     end
   end
-  var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
+  var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
   for () in mRepeatedInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
@@ -537,12 +537,12 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap  ioTagMap {
   for () in mLexicalSelectBranchList do
     [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
-    var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
+    var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
     for () in mSelectInstructionList do
       [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
     end
   end
-  var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
+  var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
   for () in mDefaultInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
@@ -741,7 +741,7 @@ proc parseLexiqueComponent
   ?let @lstring inSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct
   !@galgas3LexiqueComponentListAST-element outLexiqueComponentRoot {
-  var key =@lstring.new{ ![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]}
+  var key =@lstring.new{![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]}
   if [[ioParsedComponentStruct mParsedLexiqueComponentMap] hasKey ! [key string]] then
     [[ioParsedComponentStruct mParsedLexiqueComponentMap] searchKey !key ?outLexiqueComponentRoot]
   else

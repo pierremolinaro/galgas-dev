@@ -1609,7 +1609,7 @@ rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
     !errorLocationExpression
     !@literalStringExpressionAST.new {
       !instructionLocation
-      !@stringlist. listWithValue { !"cast instruction run-time error"}}
+      !@stringlist. listWithValue {!"cast instruction run-time error"}}
     !@lstringlist. emptyList}
 }
 

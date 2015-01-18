@@ -371,7 +371,7 @@ proc build_PROJECT_RESOURCES_group
 #---
   enter_files_in_group (
    !?ioXcodeProjectDescription
-   !@stringlist. listWithValue { !"Info.plist"}
+   !@stringlist. listWithValue {!"Info.plist"}
    !?ioFileListForGroup
   )
 }
@@ -658,7 +658,7 @@ proc build_FRAMEWORKS_group
   ?let @stringset inExternSourceForApp
   ?let @stringlist inHandCodedLinkAppFileList
   ?let @bool inHandleUpdateFromInternet {
-  var fileSet =@stringset.setWithStringList{ !inHandCodedLinkAppFileList}
+  var fileSet =@stringset.setWithStringList{!inHandCodedLinkAppFileList}
 #  @stringset fileSet [emptySet] ;
   fileSet += !"AppKit.framework"
   fileSet += !"Cocoa.framework"
@@ -1154,7 +1154,7 @@ proc generateXcodeProject
     var frameworkList =@Xcode_PBXBuildFile_list.emptyList{}
     enter_files_for_frameworks_build_phase (
       !?XcodeProjectDescription
-      !@stringlist. listWithValue { !"Foundation.framework"}
+      !@stringlist. listWithValue {!"Foundation.framework"}
       !?frameworkList
     )
   #--- Target settings
@@ -1397,7 +1397,7 @@ proc generateXcodeProject
   )
 #--- Frameworks Build Phase
   var listForFrameworksBuildPhaseOfCocoaApp =@Xcode_PBXBuildFile_list.emptyList{}
-  fileSet = @stringset. setWithStringList { !inHandCodedLinkAppFileList}
+  fileSet = @stringset. setWithStringList {!inHandCodedLinkAppFileList}
   fileSet += !"AppKit.framework"
   fileSet += !"Cocoa.framework"
   if handleUpdateFromInternet then

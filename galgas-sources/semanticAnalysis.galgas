@@ -109,7 +109,7 @@ override method @predefinedTypeAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"Predefined type " + mPredefinedTypeName
     !@primitiveTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mPredefinedTypeName !@location.here}}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mPredefinedTypeName !@location.here}}
       !mPredefinedTypeName
       !mKind}
     !""
@@ -134,7 +134,7 @@ override method @listDeclarationAST semanticAnalysis
   var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     var hasGetter = true
     var hasSetter = false
     for () in mFeatureList do
@@ -163,8 +163,8 @@ override method @listDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"list type " + mListTypeName
     !@listTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mListTypeName}
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mListTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}}
       !typedAttributeList}
   !""
 }
@@ -180,7 +180,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = true
     @bool hasGetter = true
     typedAttributeList +=
@@ -205,8 +205,8 @@ override method @sortedListDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"sorted list " + mSortedListTypeName
     !@sortedListTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mSortedListTypeName}
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mSortedListTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}}
       !typedAttributeList
       !sortDescriptorList}
     !""
@@ -234,7 +234,7 @@ override method @structDeclarationAST semanticAnalysis
   var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     for () in mFeatureList do
       error mValue : "a struct attribute does not accept any feature"
     end
@@ -258,7 +258,7 @@ override method @structDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"struct " + mStructTypeName
     !@structTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mStructTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mStructTypeName}
       !typedAttributeList}
     !"~"
 }
@@ -270,8 +270,8 @@ override method @graphDeclarationAST semanticAnalysis
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  let graphTypeProxy = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mGraphTypeName}
-  let associatedListTypeProxy = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAssociatedListTypeName}
+  let graphTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mGraphTypeName}
+  let associatedListTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
   let associatedListElementTypeProxy = @unifiedTypeMap-proxy.searchKey { 
     !inSemanticContext.mTypeMap
     !@lstring.new {!mAssociatedListTypeName.string +elementTypeNameSuffix () !mAssociatedListTypeName.location}}
@@ -306,7 +306,7 @@ override method @externTypeDeclarationAST semanticAnalysis
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  let externTypeProxy = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mExternTypeName}
+  let externTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mExternTypeName}
 #---
   ioSemanticDeclarationListForGeneration +=
     !"extern type " + mExternTypeName
@@ -334,7 +334,7 @@ override method @enumDeclarationAST semanticAnalysis
     @unifiedTypeMapProxyList associatedTypeList = {}
     @stringset associatedValueNameSet = {}
     for () in mAssociatedValueDefinitionList do
-      let associatedTypeProxy = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mValue0}
+      let associatedTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mValue0}
       associatedTypeList += !associatedTypeProxy
       if [associatedValueNameSet hasKey !mValue1.string] then
         error mValue1 : "duplicated name"
@@ -348,7 +348,7 @@ override method @enumDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"enum " + mEnumTypeName
     !@enumTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mEnumTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mEnumTypeName}
       !enumConstantListForGeneration}
     !""
 }
@@ -364,8 +364,8 @@ override method @arrayDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"array " + mArrayTypeName
     !@arrayTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mArrayTypeName}
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mElementTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mArrayTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mElementTypeName}
       ![mDimension uint]}
     !""
 }
@@ -396,10 +396,10 @@ override method @listmapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"list map " + mListmapTypeName
     !@listmapTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mListmapTypeName}
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAssociatedListTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mListmapTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
       !listTypeAttributeList
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}}}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}}}
     !""
 }
 
@@ -418,7 +418,7 @@ map @searchMethodMap {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#         M A P                                                             *
+#         M A P                                                                                                        *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc check_K_escapeCharacters
@@ -477,7 +477,7 @@ override method @mapDeclarationAST semanticAnalysis
   var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mPropertyList do
-    var t =@unifiedTypeMap-proxy.searchKey{ !inSemanticContext.mTypeMap !mPropertyTypeName}
+    var t =@unifiedTypeMap-proxy.searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = true
     @bool hasGetter = true
     typedAttributeList +=
@@ -538,8 +538,8 @@ override method @mapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"map " + mMapTypeName
     !@mapTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mMapTypeName}
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mMapTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}}
       !mMapTypeName
       !typedAttributeList
       !mInsertMethodList
@@ -805,7 +805,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mPropertyList do
-    let t =@unifiedTypeMap-proxy.searchKey{ !inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t =@unifiedTypeMap-proxy.searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = true
     @bool hasGetter = true
     typedAttributeList +=
@@ -881,7 +881,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"unique map " + mMapTypeName
     !@uniqueMapTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mMapTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mMapTypeName}
       !mMapTypeName
       !typedAttributeList
       !mInsertMethodList
@@ -914,8 +914,8 @@ override method @mapProxyDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"map proxy " + mMapProxyTypeName
     !@mapProxyTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mMapProxyTypeName}
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAssociatedMapTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mMapProxyTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedMapTypeName}
       !listTypeAttributeList
       !searchMethodList}
     !""
@@ -936,7 +936,7 @@ proc buildLocalVariableMapAndSignature
   !@formalParameterListForGeneration outRoutineSignature {
   outRoutineSignature = @formalParameterListForGeneration. emptyList
   for () in inRoutineSignatureAST do
-    let type = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+    let type = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
     @string formalArgumentCppName
     switch mFormalArgumentPassingMode
     case argumentIn :
@@ -1039,7 +1039,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   for () in mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       ![mFormalArgumentName string]
       !mFormalArgumentName
       !mIsConstant
@@ -1051,7 +1051,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
       !"func-" + mFunctionName
       ![mFunctionName string]
       !formalArgumentList
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mResultTypeName}}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mResultTypeName}}
     !""
 }
 
@@ -1067,7 +1067,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
     formalArgumentList +=
       !mFormalSelector
       !mFormalArgumentPassingMode
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       !mFormalArgumentName
       ![mFormalArgumentName string]
   end
@@ -1130,7 +1130,7 @@ override method @classDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #------ Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mClassTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
 #------ Super type, and class features
 # A class that has a super may not have any feature
 # A class without a super class admits the 'generatedInSeparateFile' feature
@@ -1153,7 +1153,7 @@ override method @classDeclarationAST semanticAnalysis
       end
     end
   else
-    superClassProxy = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mSuperClassName}
+    superClassProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mSuperClassName}
     allAttributeList = [superClassProxy mAllTypedAttributeList]
     if [mClassFeatureList length] > 0 then
       for () in mClassFeatureList do
@@ -1165,7 +1165,7 @@ override method @classDeclarationAST semanticAnalysis
   var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mPropertyTypeName}
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = false
     @bool hasGetter = true
     for () in mFeatureList do
@@ -1207,7 +1207,7 @@ override method @classDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"class " + mClassTypeName
     !@classTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mClassTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
       !mIsAbstract
       !mClassTypeName
       !superClassProxy
@@ -1245,7 +1245,7 @@ proc analyzeFunctionBody
 #--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration. emptyList
   for () in inFunctionSignature do
-    let parameterType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mFormalArgumentTypeName}
+    let parameterType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mFormalArgumentTypeName}
     if mIsConstant then
       let @string cppName = "constinArgument_" + [[mFormalArgumentName string] identifierRepresentation]
       outSignatureForGeneration +=
@@ -1275,7 +1275,7 @@ proc analyzeFunctionBody
     end
   end
 #--- Enter return variable
-  outReturnedType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !inResultTypeName}
+  outReturnedType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inResultTypeName}
   outResultVariableCppName = "result_" + [inReturnVariableName identifierRepresentation]
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 #---  Analyze instruction list
@@ -1425,7 +1425,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       @templateVariableMap templateVariableMap = {}
       var filewrapperTemplateFormalInputParameters =@formalInputParameterListForGeneration.emptyList{}
       for () in mFilewrapperTemplateFormalInputParameters do
-        var type =@unifiedTypeMap-proxy.searchKey{ !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        var type =@unifiedTypeMap-proxy.searchKey{!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         let @string cppVarName = "in_" + [[mFormalArgumentName string] identifierRepresentation]
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
@@ -1501,7 +1501,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
     error mAbstractCategoryMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
@@ -1514,7 +1514,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       !mFormalArgumentName
       ![mFormalArgumentName string]
   end
@@ -1538,7 +1538,7 @@ override method @categoryMethodAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
   @string selfObjectName
   @string selfObjectAccessor
   @bool implementedAsFunction
@@ -1599,7 +1599,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
     error mOverridingCategoryMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
@@ -1679,7 +1679,7 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
     error mOverridingCategoryMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
@@ -1733,7 +1733,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
     error mAbstractCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
@@ -1746,7 +1746,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       !mFormalArgumentName
       ![mFormalArgumentName string]
   end
@@ -1770,7 +1770,7 @@ override method @categoryModifierAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
   @string selfObjectName
   @string selfObjectAccessor
   @bool implementedAsFunction
@@ -1828,9 +1828,9 @@ override method @overridingCategoryModifierAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
-  if [selfType mTypeKindEnum] != @typeKindEnum. classType then
+  if [selfType mTypeKindEnum] != @typeKindEnum.classType then
     error mOverridingCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
@@ -1905,7 +1905,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
     error mOverridingCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
@@ -1959,19 +1959,19 @@ override method @abstractCategoryReaderAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
-  if [selfType mTypeKindEnum] != @typeKindEnum. classType then
+  if [selfType mTypeKindEnum] != @typeKindEnum.classType then
     error mAbstractCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
     error mAbstractCategoryReaderName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
-  var formalParameterListForGeneration =@formalInputParameterListForGeneration.emptyList{}
+  var formalParameterListForGeneration = @formalInputParameterListForGeneration.emptyList{}
   for () in mAbstractCategoryReaderFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       ![mFormalArgumentName string]
       !mFormalArgumentName
       !mIsConstant
@@ -1984,8 +1984,9 @@ override method @abstractCategoryReaderAST semanticAnalysis
       !"getter-" + mTypeName + "-" + mAbstractCategoryReaderName
       !selfType
       ![mAbstractCategoryReaderName string]
-      !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAbstractCategoryReaderReturnedTypeName}
-      !formalParameterListForGeneration}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractCategoryReaderReturnedTypeName}
+      !formalParameterListForGeneration
+    }
     !"~"
 }
 
@@ -1999,7 +2000,7 @@ override method @categoryReaderAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
   @string selfObjectName
   @string selfObjectAccessor
   @bool implementedAsFunction
@@ -2066,7 +2067,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
     error mOverridingCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
@@ -2159,9 +2160,9 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Return type
-  let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAbstractCategoryReaderReturnedTypeName}
+  let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractCategoryReaderReturnedTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
     error mAbstractCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
@@ -2203,7 +2204,7 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
     for () in mAbstractCategoryReaderFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
-        !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         ![mFormalArgumentName string]
         !mFormalArgumentName
         !mIsConstant
@@ -2378,7 +2379,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentIn, argumentConstantIn :
-          let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mGalgasTypeNameForGrammarAnalysis}
+          let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mGalgasTypeNameForGrammarAnalysis}
           [t addHeaderFileName !?implementationFileHeader]
         case argumentInOut, argumentOut :
         end
@@ -2723,24 +2724,24 @@ override method @lexiqueComponentAST semanticAnalysis
 
 func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefinedTypes outPredefinedTypes {
   outPredefinedTypes = .new {
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"location"  !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"bool"       !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"char"       !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"string"     !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"uint"       !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"sint"       !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"uint64"     !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"sint64"     !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"double"     !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lbool"      !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lchar"      !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lstring"    !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"luint"      !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lsint"      !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"luint64"    !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"lsint64"    !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"ldouble"    !.here}}
-    !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !.new {!"stringlist" !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"location"  !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"bool"       !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"char"       !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"string"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"uint"       !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"sint"       !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"uint64"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"sint64"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"double"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"lbool"      !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"lchar"      !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"lstring"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"luint"      !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"lsint"      !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"luint64"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"lsint64"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"ldouble"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"stringlist" !.here}}
   }
 }
 
@@ -2938,7 +2939,7 @@ proc buildNonterminalDeclarationsMap
       var signatureForGeneration =@formalParameterListForGeneration.emptyList{}
       var signature =@formalParameterSignature.emptyList{}
       for () in mFormalArgumentList do
-        let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string]
         signature += !mFormalSelector !t !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
@@ -3157,7 +3158,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   end
 #--- Type is named, or should be infered ?
   if mActualParameterTypeName.string != "" then
-    let type = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
+    let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
     if expectedType != type then
       error mActualParameterName
       : "the '" + mActualParameterName + "' formal argument has the '@" + [type key]
@@ -3194,7 +3195,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   end
 #--- Type is named, or should be infered ?
   if mActualParameterTypeName.string != "" then
-    let type = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
+    let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
     if expectedType != type then
       error mActualParameterName
       : "the '" + mActualParameterName + "' formal argument has the '@" + [type key]
@@ -3265,7 +3266,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
   let cppName = "var_" + [mActualParameterName identifierRepresentation]
-  let type = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
+  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
   [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -3285,7 +3286,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [mActualParameterName identifierRepresentation]
-  let type = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
+  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
   [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -4141,7 +4142,7 @@ proc semanticAnalysisOfSyntaxComponent
       var signatureForGeneration =@formalParameterListForGeneration.emptyList{}
       var signature =@formalParameterSignature.emptyList{}
       for () in mFormalArguments do
-        let type = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        let type = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !type !mFormalArgumentName !"argument_" + mFormalArgumentName
         signature += !mFormalSelector !type !mFormalArgumentPassingMode !mFormalArgumentName.string
       end

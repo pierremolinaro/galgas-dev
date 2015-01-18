@@ -33,7 +33,7 @@ rule <declaration>
   while
     $identifier$ ?var @lstring mKey
     $:$
-    var mValue =@lstring.new{ !"" !@location.here}
+    var mValue =@lstring.new{!"" !@location.here}
     repeat
       $literal_string$ ?var @lstring value
       mValue = @lstring.new {![mValue string] + [value string] ![value location]}
@@ -95,7 +95,7 @@ rule <declaration>
         $identifier$ ?var @lstring key
         $literal_string$ ?var @lstring name
         $:$
-        var value =@lstring.new{ !"" !@location.here}
+        var value =@lstring.new{!"" !@location.here}
         repeat
           $literal_string$ ?var @lstring v
           value = @lstring.new {![value string] + [v string] ![v location]}

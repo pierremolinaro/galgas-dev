@@ -47,7 +47,7 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
   $literal_string$ ?var @lstring mOptionInvocationString
   $->$
   $literal_string$ ?var @lstring mOptionComment
-  var defaultValue =@lstring.new{ !"" !@location.here}
+  var defaultValue =@lstring.new{!"" !@location.here}
   @optionDefaultValueEnumAST optionDefaultValueKind
   select
     optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue

@@ -164,7 +164,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
 override method @templateConstructorAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  let @unifiedTypeMap-proxy constructorType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy constructorType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- Get constructor map from type map
   let @constructorMap constructorMap = [constructorType mConstructorMap]
 #--- Search contructor
@@ -1130,7 +1130,7 @@ override method @templateClassToTypeOperandAST  templateExpressionAnalysis
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mTypeName ?26*]
 #---
   outExpression = @literalTypeInExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"type" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"type" !@location.here}}
     ![mTypeName location]
     ![mTypeName string]}
 }

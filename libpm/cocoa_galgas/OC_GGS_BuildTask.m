@@ -90,7 +90,7 @@
         addObserver:self
         selector:@selector (getDataFromTaskOutput:)
         name:NSFileHandleReadCompletionNotification
-        object:[mTaskOutputPipe fileHandleForReading]
+        object:mTaskOutputPipe.fileHandleForReading
       ] ;
       [mTaskOutputPipe.fileHandleForReading readInBackgroundAndNotify] ;
     //---
@@ -120,7 +120,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSData * data = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+  NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
   if (data.length > 0) {
     [mDocument appendBuildOutputData:data] ;
     [inNotification.object readInBackgroundAndNotify] ;
@@ -128,14 +128,14 @@
     [[NSNotificationCenter defaultCenter]
       removeObserver:self
       name:NSFileHandleReadCompletionNotification
-      object:[mTaskOutputPipe fileHandleForReading]
+      object:mTaskOutputPipe.fileHandleForReading
     ] ;
     [[NSNotificationCenter defaultCenter]
       removeObserver:self
       name:NSTaskDidTerminateNotification
       object:mTask
     ] ;
-    [[mTaskOutputPipe fileHandleForReading] closeFile] ;
+    [mTaskOutputPipe.fileHandleForReading closeFile] ;
     mOutputBufferedDataHasBeenTransmitted = YES ;
     mTask = nil ;
     mTaskOutputPipe = nil ;
