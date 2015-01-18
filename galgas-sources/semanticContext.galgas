@@ -1096,7 +1096,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   @unifiedTypeMap-proxy currentMapTypeIndex
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapTypeName ?currentMapTypeIndex]
 #--- Enumeration description
-  var enumerationDescriptor =@enumerationDescriptorList.listWithValue{ !lstringTypeIndex !"lkey"}
+  var enumerationDescriptor =@enumerationDescriptorList.listWithValue{!lstringTypeIndex !"lkey"}
   var enumerationVariants =@stringlist.emptyList{}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
@@ -1240,7 +1240,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [!?modifierMap insertKey
       !@lstring.new {!"closeBranch" !@location.here}
       !@methodKind. definedAsMember
-      !@formalParameterSignature. listWithValue { !["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
       !true
       !@methodQualifier.isBasic
       !"" # No error message
@@ -1248,7 +1248,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [!?modifierMap insertKey
       !@lstring.new {!"closeOverride" !@location.here}
       !@methodKind. definedAsMember
-      !@formalParameterSignature. listWithValue { !["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
       !true
       !@methodQualifier. isInherited
       !"" # No error message
@@ -1256,7 +1256,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [!?instanceMethodMap insertKey
       !@lstring.new {!"checkAutomatonStates" !@location.here}
       !@methodKind. definedAsMember
-      !@formalParameterSignature. listWithValue { !["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
       !@location.here
       !true
       !@methodQualifier.isBasic
@@ -2805,7 +2805,7 @@ override method @classDeclarationAST enterInSemanticContext
       [!?modifierMap insertKey
         !@lstring.new {!"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind. definedAsMember
-        !@formalParameterSignature. listWithValue { !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentIn !mAttributeName.string}
+        !@formalParameterSignature. listWithValue {!["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentIn !mAttributeName.string}
         !false # No compiler argument
         !@methodQualifier.isBasicFinal
         !"" # No error message

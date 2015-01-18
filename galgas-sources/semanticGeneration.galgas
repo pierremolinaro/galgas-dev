@@ -47,7 +47,7 @@ override method @grammarForGeneration appendSpecificImplementation
       for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentConstantIn, argumentIn :
-          let t = @unifiedTypeMap-proxy. searchKey { !inUnifiedTypeMap !mGalgasTypeNameForGrammarAnalysis}
+          let t = @unifiedTypeMap-proxy. searchKey {!inUnifiedTypeMap !mGalgasTypeNameForGrammarAnalysis}
           [t addHeaderFileName !?ioInclusionSet]
         case argumentInOut, argumentOut :
         end     
@@ -2809,7 +2809,7 @@ proc generateWrapperContents
 #--- Generate regular files
   for () in inFilewrapperRegularFileMap do
     if mIsTextFile then
-      let @string contents = @string. stringWithContentsOfFile { !mAbsoluteFilePath}
+      let @string contents = @string. stringWithContentsOfFile {!mAbsoluteFilePath}
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
       +  "const char * gWrapperFileContent_"
       + [mWrapperFileIndex string] + "_"
@@ -2824,7 +2824,7 @@ proc generateWrapperContents
       + "  gWrapperFileContent_" + [mWrapperFileIndex string] + "_" + [inFilewrapperName identifierRepresentation] +"\n"
       + ") ;\n\n"
     else
-      let @data contents = @data. dataWithContentsOfFile { !mAbsoluteFilePath}
+      let @data contents = @data. dataWithContentsOfFile {!mAbsoluteFilePath}
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
       +  "const uint8_t gWrapperFileContent_"
       + [mWrapperFileIndex string] + "_"

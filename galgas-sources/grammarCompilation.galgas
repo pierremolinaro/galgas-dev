@@ -240,7 +240,7 @@ override method @repeatInstruction transformInstruction
     !?addedTerminalIndex:ioAddedNonTerminalIndex
     !?repeatedInstructionList
   )
-  var repeatBranchList =@branchListForGrammarAnalysis.listWithValue{ !repeatedInstructionList}
+  var repeatBranchList =@branchListForGrammarAnalysis.listWithValue{!repeatedInstructionList}
 
   for () in mRepeatBranchList do
     var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis.emptyList{}
@@ -577,7 +577,7 @@ proc compileGrammarComponentFromAST
 #---------------------------------------------------------- Analyze grammar
   let HTMLFilePath = outputDirectoryForHTMLFile + "/" + inGrammarComponentRoot.mGrammarComponentName + ".html"
   grammarAnalysisAndGeneration (
-    !@stringset. setWithString { !inGrammarComponentRoot.mGrammarComponentName.string}
+    !@stringset. setWithString {!inGrammarComponentRoot.mGrammarComponentName.string}
     !inGrammarComponentRoot.mGrammarComponentName
     ![inGrammarComponentRoot mGrammarClass]
     !startSymbolIndex

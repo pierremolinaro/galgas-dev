@@ -31,9 +31,9 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["bool" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
-      ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
-      ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
+      !@lchar.new {!@application. boolOptionInvocationLetter {!mValue0 !mValue1} !@location. nowhere}
+      ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
+      ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
       !@optionDefaultValueEnumAST. noDefaultValue
   end
@@ -41,9 +41,9 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["uint" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
-      ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
-      ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
+      !@lchar.new {!@application. boolOptionInvocationLetter {!mValue0 !mValue1} !@location. nowhere}
+      ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
+      ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
       !@optionDefaultValueEnumAST. noDefaultValue
   end
@@ -51,9 +51,9 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["string" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
-      ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
-      ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
+      !@lchar.new {!@application. boolOptionInvocationLetter {!mValue0 !mValue1} !@location. nowhere}
+      ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
+      ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
       !@optionDefaultValueEnumAST.noDefaultValue
   end
@@ -494,13 +494,13 @@ private proc generateFewImplementationFiles
       n ++
       if n == definitionGroupAmount () then
         if useOneHugeHeader then
-          inclusionSet = @stringset. setWithString { !"all-declarations"}
+          inclusionSet = @stringset. setWithString {!"all-declarations"}
         end
         let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![inclusionSet stringList]
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
-        ioToolProductFileList = @stringlist. listWithValue { !fileName} + ioToolProductFileList
+        ioToolProductFileList = @stringlist. listWithValue {!fileName} + ioToolProductFileList
         ioAllProductFileSet += !fileName
         [@string generateFile
           !inProductDirectory
@@ -517,7 +517,7 @@ private proc generateFewImplementationFiles
 #--- Last file
   if implementationString != "" then
     if useOneHugeHeader then
-      inclusionSet = @stringset. setWithString { !"all-declarations"}
+      inclusionSet = @stringset. setWithString {!"all-declarations"}
     end
 #    for () in inSemanticContext->mGrammarMap do
 #      inclusionSet += !"grammar-" . lkey->string ;
@@ -527,7 +527,7 @@ private proc generateFewImplementationFiles
       ![inclusionSet stringList]
     ]
     let fileName = "all-declarations-" + fileIdx + ".cpp"
-    ioToolProductFileList = @stringlist. listWithValue { !fileName} + ioToolProductFileList
+    ioToolProductFileList = @stringlist. listWithValue {!fileName} + ioToolProductFileList
     ioAllProductFileSet += !fileName
     [@string generateFile
       !inProductDirectory
@@ -596,7 +596,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       implementationString += [mDeclaration appendTypeGenericImplementation]
       if [implementationString length] > 1048576 then
         if useOneHugeHeader then
-          inclusionSet = @stringset. setWithString { !"all-declarations"}
+          inclusionSet = @stringset. setWithString {!"all-declarations"}
         else
           inclusionSet = {!"all-declarations-" + fileIdx}
         end
@@ -604,7 +604,7 @@ private proc generateFewImplementationFilesWithFewHeaders
           ![inclusionSet stringList]
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
-        ioToolProductFileList = @stringlist. listWithValue { !fileName} + ioToolProductFileList
+        ioToolProductFileList = @stringlist. listWithValue {!fileName} + ioToolProductFileList
         ioAllProductFileSet += !fileName
         [@string generateFile
           !inProductDirectory
@@ -635,13 +635,13 @@ private proc generateFewImplementationFilesWithFewHeaders
 #--- Last file
   if implementationString != "" then
     if useOneHugeHeader then
-      inclusionSet = @stringset. setWithString { !"all-declarations"}
+      inclusionSet = @stringset. setWithString {!"all-declarations"}
     end
     let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !{!"all-declarations-" + fileIdx}
     ]
     let fileName = "all-declarations-" + fileIdx + ".cpp"
-    ioToolProductFileList = @stringlist. listWithValue { !fileName} + ioToolProductFileList
+    ioToolProductFileList = @stringlist. listWithValue {!fileName} + ioToolProductFileList
     ioAllProductFileSet += !fileName
     [@string generateFile
       !inProductDirectory
@@ -692,7 +692,7 @@ private proc generateManyImplementationFiles
         inclusionSet += ![mDeclaration implementationCppFileName]
       end
       if useOneHugeHeader then
-        inclusionSet = @stringset. setWithString { !"all-declarations"}
+        inclusionSet = @stringset. setWithString {!"all-declarations"}
       end
       let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
         ![inclusionSet stringList]

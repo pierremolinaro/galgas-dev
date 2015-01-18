@@ -317,7 +317,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     end
     @location passingModeLocation = @location.here
     $identifier$ ?var @lstring attributeName
-    var arg =@lexicalAttributeInputOutputArgumentAST.new{ !passingModeLocation !attributeName}
+    var arg =@lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
     actualArgumentList += !arg
   end
   @lstringlist errorMessageList = {}

@@ -474,7 +474,7 @@ proc performProjectGlobalCheckings
      if not [mSuperType isNull] then
        descendantClassListMap +=
          ![mSuperType key]
-         !@unifiedTypeMap-proxy. searchKey { !semanticContext.mTypeMap !lkey}
+         !@unifiedTypeMap-proxy. searchKey {!semanticContext.mTypeMap !lkey}
      end
   end
 #--- Build Category method listmaps
@@ -710,7 +710,7 @@ proc performGalgas3ProjectGlobalCheckings
      if not [mSuperType isNull] then
        descendantClassListMap +=
          ![mSuperType key]
-         !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !lkey}
+         !@unifiedTypeMap-proxy. searchKey {!inSemanticContext.mTypeMap !lkey}
      end
   end
 #--- Build Category method listmaps

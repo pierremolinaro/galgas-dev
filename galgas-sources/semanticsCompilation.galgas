@@ -43,7 +43,7 @@ proc parseSemanticComponent
   ?!@parsedComponentStruct ioParsedComponentStruct
   !@semanticsComponentAST outSemanticsComponentRoot {
   @string basename = [[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-  var basenameKey =@lstring.new{ !basename !@location.here}
+  var basenameKey =@lstring.new{!basename !@location.here}
   if [[ioParsedComponentStruct mParsedSemanticsComponentMap] hasKey ! basename] then
     [[ioParsedComponentStruct mParsedSemanticsComponentMap] searchKey !basenameKey ?* ?outSemanticsComponentRoot]
   else
@@ -228,9 +228,9 @@ proc buildOptionComponentMapForSemanticAnalysis
     for () in optionNameList do
       [!?boolOptionMap insertKey
         !@lstring.new {!mValue1 !@location.here}
-        !@application. boolOptionInvocationLetter { !mValue0 !mValue1}
-        !@application. boolOptionInvocationString { !mValue0 !mValue1}
-        !@application. boolOptionCommentString { !mValue0 !mValue1}
+        !@application. boolOptionInvocationLetter {!mValue0 !mValue1}
+        !@application. boolOptionInvocationString {!mValue0 !mValue1}
+        !@application. boolOptionCommentString {!mValue0 !mValue1}
         !"" # Not used
       ]
     end
@@ -240,9 +240,9 @@ proc buildOptionComponentMapForSemanticAnalysis
     for () in optionNameList do
       [!?uintOptionMap insertKey
         !@lstring.new {!mValue1 !@location.here}
-        !@application. uintOptionInvocationLetter { !mValue0 !mValue1}
-        !@application. uintOptionInvocationString { !mValue0 !mValue1}
-        !@application. uintOptionCommentString { !mValue0 !mValue1}
+        !@application. uintOptionInvocationLetter {!mValue0 !mValue1}
+        !@application. uintOptionInvocationString {!mValue0 !mValue1}
+        !@application. uintOptionCommentString {!mValue0 !mValue1}
         !"" # Not used
       ]
     end
@@ -252,9 +252,9 @@ proc buildOptionComponentMapForSemanticAnalysis
     for () in optionNameList do
       [!?stringOptionMap insertKey
         !@lstring.new {!mValue1 !@location.here}
-        !@application. stringOptionInvocationLetter { !mValue0 !mValue1}
-        !@application. stringOptionInvocationString { !mValue0 !mValue1}
-        !@application. stringOptionCommentString { !mValue0 !mValue1}
+        !@application. stringOptionInvocationLetter {!mValue0 !mValue1}
+        !@application. stringOptionInvocationString {!mValue0 !mValue1}
+        !@application. stringOptionCommentString {!mValue0 !mValue1}
         !"" # Not used
       ]
     end
@@ -285,7 +285,7 @@ proc buildGrammarComponentMapForSemanticAnalysis
       for () in mFormalArgumentList do
         formalArgumentList +=
           !mFormalSelector
-          !@unifiedTypeMap-proxy. searchKey { !ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
+          !@unifiedTypeMap-proxy. searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
           !mFormalArgumentPassingMode
           !mFormalArgumentName.string
       end
@@ -321,7 +321,7 @@ proc compileSemanticsComponentAST
   end 
 #--- Recursively parse all imported files
   @semanticDeclarationListAST semanticDeclarationList = [inSemanticsComponentRoot mSemanticDeclarationList]
-  var parsedFileSet =@stringset.setWithString{ ![inSourceFile string]}
+  var parsedFileSet =@stringset.setWithString{![inSourceFile string]}
   var optionComponentFileNameList =@lstringlist.emptyList{}
   var grammarComponentASTList =@grammarComponentASTList.emptyList{}
   var headerIncludeList =@stringlist.emptyList{}

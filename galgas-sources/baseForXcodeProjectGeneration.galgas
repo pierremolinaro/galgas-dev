@@ -595,8 +595,8 @@ proc enter_cpp_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_cppSourceFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_cppSourceFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -608,8 +608,8 @@ proc enter_h_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_hSourceFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_hSourceFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -621,8 +621,8 @@ proc enter_pch_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_pchSourceFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_pchSourceFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -634,8 +634,8 @@ proc enter_m_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_mSourceFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_mSourceFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -647,8 +647,8 @@ proc enter_mm_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_mmSourceFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_mmSourceFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -660,8 +660,8 @@ proc enter_gif_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inFile !@location.here}
-  var ref =@Xcode_PBXFileReference_gifFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inFile}
+  var key =@lstring.new{!inFile !@location.here}
+  var ref =@Xcode_PBXFileReference_gifFile.new{![ioXcodeProjectDescription mSequenceNumber] !inFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inFile
@@ -673,8 +673,8 @@ proc enter_tiff_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_tiffFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_tiffFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -686,8 +686,8 @@ proc enter_png_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_pngFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_pngFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -699,8 +699,8 @@ proc enter_plist_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_plistFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_plistFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -712,8 +712,8 @@ proc enter_framework_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_frameworkFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_frameworkFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -725,8 +725,8 @@ proc enter_icns_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  var key =@lstring.new{ !inCppFile !@location.here}
-  var ref =@Xcode_PBXFileReference_icnsFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
+  var key =@lstring.new{!inCppFile !@location.here}
+  var ref =@Xcode_PBXFileReference_icnsFile.new{![ioXcodeProjectDescription mSequenceNumber] !inCppFile}
   ioXcodeProjectDescription.mSequenceNumber ++
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
@@ -792,7 +792,7 @@ proc enter_xib_file_in_group
     ! in_lproj_dir + "/" + in_xib_fileName
   }
   ioXcodeProjectDescription.mSequenceNumber ++
-  var key =@lstring.new{ !in_xib_fileName !@location.here}
+  var key =@lstring.new{!in_xib_fileName !@location.here}
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   @string PBXVariantGroupKey = [[[[ioXcodeProjectDescription mSequenceNumber] string] md5] rightSubString!24]
   ioXcodeProjectDescription.mSequenceNumber ++
@@ -816,7 +816,7 @@ proc enter_plist_strings_in_group
     ! in_lproj_dir + "/" + in_plist_string_fileName
   }
   ioXcodeProjectDescription.mSequenceNumber ++
-  var key =@lstring.new{ !in_plist_string_fileName !@location.here}
+  var key =@lstring.new{!in_plist_string_fileName !@location.here}
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref]
   @string PBXVariantGroupKey = [[[[ioXcodeProjectDescription mSequenceNumber] string] md5] rightSubString!24]
   ioXcodeProjectDescription.mSequenceNumber ++
@@ -833,10 +833,10 @@ proc enter_file_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string in_fileName
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
-  var key =@lstring.new{ !in_fileName !@location.here}
+  var key =@lstring.new{!in_fileName !@location.here}
   @Xcode_PBXFileReference_abstract ref
   [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref]
-  var build_file =@Xcode_PBXBuildFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !ref}
+  var build_file =@Xcode_PBXBuildFile.new{![ioXcodeProjectDescription mSequenceNumber] !ref}
   ioXcodeProjectDescription.mSequenceNumber ++
   ioXcodeProjectDescription.mAllBuildFileList += !build_file
   ioBuildPhaseList += !build_file
@@ -864,10 +864,10 @@ proc enter_files_for_resources_build_phase
   ?let @stringlist in_fileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
   for () in in_fileList do
-    var key =@lstring.new{ !mValue !@location.here}
+    var key =@lstring.new{!mValue !@location.here}
     @Xcode_PBXFileReference_abstract ref
     [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref]
-    var build_file =@Xcode_PBXBuildFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !ref}
+    var build_file =@Xcode_PBXBuildFile.new{![ioXcodeProjectDescription mSequenceNumber] !ref}
     ioXcodeProjectDescription.mSequenceNumber ++
     ioXcodeProjectDescription.mAllBuildFileList += !build_file
     ioBuildPhaseList += !build_file
@@ -881,10 +881,10 @@ proc enter_files_for_frameworks_build_phase
   ?let @stringlist in_framework_fileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
   for () in in_framework_fileList do
-    var key =@lstring.new{ !mValue !@location.here}
+    var key =@lstring.new{!mValue !@location.here}
     @Xcode_PBXFileReference_abstract ref
     [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref]
-    var build_file =@Xcode_PBXBuildFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !ref}
+    var build_file =@Xcode_PBXBuildFile.new{![ioXcodeProjectDescription mSequenceNumber] !ref}
     ioXcodeProjectDescription.mSequenceNumber ++
     ioXcodeProjectDescription.mAllBuildFileList += !build_file
     ioBuildPhaseList += !build_file
@@ -903,9 +903,9 @@ proc add_tool_target
   ?let @Xcode_PBXBuildFile_list inFrameworkKeyList
   ?let @stringlist inDirectDependencyList
   !@string outTargetKey {
-  var toolFileReference =@Xcode_PBXFileReference_CompiledMachOExecutable.new{ ![ioXcodeProjectDescription mSequenceNumber] !inProductFileName}
+  var toolFileReference =@Xcode_PBXFileReference_CompiledMachOExecutable.new{![ioXcodeProjectDescription mSequenceNumber] !inProductFileName}
   ioXcodeProjectDescription.mSequenceNumber ++
-  var projectNameKey =@lstring.new{ !inProductFileName !@location.here}
+  var projectNameKey =@lstring.new{!inProductFileName !@location.here}
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference]
 
   ioXcodeProjectDescription.mProductGroupChildrenList  += !getPBXFileReferenceKey (!seq:[toolFileReference mSequenceNumber]) !inTargetName
@@ -916,7 +916,7 @@ proc add_tool_target
     !inSourcesToCompileKeyList
   }
   ioXcodeProjectDescription.mSequenceNumber ++
-  var buildPhases =@stringlist.listWithValue{ !getPBXFileReferenceKey (!seq:[compileSourcesBuildPhase mSequenceNumber])}
+  var buildPhases =@stringlist.listWithValue{!getPBXFileReferenceKey (!seq:[compileSourcesBuildPhase mSequenceNumber])}
 #--- Define Frameworks Build Phase
   if [inFrameworkKeyList length] > 0 then
     var frameworksBuildPhase =@Xcode_PBXFrameworksBuildPhase.new{
@@ -973,9 +973,9 @@ proc add_app_target
   !@string outTargetKey {
   var buildPhases =@stringlist.emptyList{}
 #--- Define Product Application File Reference
-  var toolFileReference =@Xcode_PBXFileReference_Application.new{ ![ioXcodeProjectDescription mSequenceNumber] !inProductFileName}
+  var toolFileReference =@Xcode_PBXFileReference_Application.new{![ioXcodeProjectDescription mSequenceNumber] !inProductFileName}
   ioXcodeProjectDescription.mSequenceNumber ++
-  var projectNameKey =@lstring.new{ !inProductFileName !@location.here}
+  var projectNameKey =@lstring.new{!inProductFileName !@location.here}
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference]
 #--- Enter Product Application in "Products" Group
   ioXcodeProjectDescription.mProductGroupChildrenList  += !getPBXFileReferenceKey (!seq:[toolFileReference mSequenceNumber]) !inTargetName
@@ -1011,7 +1011,7 @@ proc add_app_target
     @Xcode_PBXFileReference_abstract ref
     [[ioXcodeProjectDescription mFileReferenceMap] searchKey ![inFileToCopyInWrapperLaunchServices nowhere] ?ref]
    #--
-    var build_file =@Xcode_PBXBuildFile.new{ ![ioXcodeProjectDescription mSequenceNumber] !ref}
+    var build_file =@Xcode_PBXBuildFile.new{![ioXcodeProjectDescription mSequenceNumber] !ref}
     ioXcodeProjectDescription.mSequenceNumber ++
     ioXcodeProjectDescription.mAllBuildFileList += !build_file
     var copyBuildPhase =@Xcode_PBXCopyBuildPhase.new{
@@ -1019,7 +1019,7 @@ proc add_app_target
       !""
       !1 # Wrapper
       !"Contents/Library/LaunchServices"
-      !@Xcode_PBXBuildFile_list. listWithValue { !build_file}
+      !@Xcode_PBXBuildFile_list. listWithValue {!build_file}
     }
     ioXcodeProjectDescription.mSequenceNumber ++
     ioXcodeProjectDescription.mPBXCopyBuildPhase_list += !copyBuildPhase
@@ -1039,7 +1039,7 @@ proc add_app_target
 #--- Define dependency data
   var targetDependencyKeyList =@stringlist.emptyList{}
   for () in inDirectDependencyList do
-    var d =@Xcode_targetDependencyDescription.new{ ![ioXcodeProjectDescription mSequenceNumber] !mValue}
+    var d =@Xcode_targetDependencyDescription.new{![ioXcodeProjectDescription mSequenceNumber] !mValue}
     ioXcodeProjectDescription.mSequenceNumber ++
     targetDependencyKeyList += !getPBXFileReferenceKey (!seq:[d mSequenceNumber])
     ioXcodeProjectDescription.mDependencyList += !d
@@ -1369,7 +1369,7 @@ proc generateXCodeFile
     ![ioXcodeProjectDescription mProductGroupChildrenList]
   )
 #--- Main Group
-  var mainGroup =@Xcode_PBXGroup.new{ ![ioXcodeProjectDescription mSequenceNumber] !"" !"" ![ioXcodeProjectDescription mMainGroupChildrenList]}
+  var mainGroup =@Xcode_PBXGroup.new{![ioXcodeProjectDescription mSequenceNumber] !"" !"" ![ioXcodeProjectDescription mMainGroupChildrenList]}
   ioXcodeProjectDescription.mSequenceNumber ++
   ioXcodeProjectDescription.mProjectGroupList += !mainGroup
 #--- Build Project contents string
@@ -1391,7 +1391,7 @@ proc generateXCodeFile
     if written | not [pbxprojFilePath fileExists] then
       [fileNewContents writeToFileWhenDifferentContents !pbxprojFilePath ?*]
   #--- Delete all XXX.pbxuser files in this directory
-      @stringlist pbxuser_files = [in_xcodeproj_filePath regularFilesWithExtensions !false !@stringlist. listWithValue { !"pbxuser"}]
+      @stringlist pbxuser_files = [in_xcodeproj_filePath regularFilesWithExtensions !false !@stringlist. listWithValue {!"pbxuser"}]
       for () in pbxuser_files do
         @string fullPath = in_xcodeproj_filePath + "/" + mValue
         [@string deleteFile !fullPath]

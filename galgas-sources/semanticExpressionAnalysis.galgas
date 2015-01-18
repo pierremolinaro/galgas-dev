@@ -635,7 +635,7 @@ proc analyzeConstructorInvocation
   !@bool outHasCompilerArgument {
   outConstructorType = inType
   if inTypeName.string != "" then
-    outConstructorType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
+    outConstructorType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
   end
   if [outConstructorType isNull] then
     error inTypeName : "cannot infer type" : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
@@ -708,7 +708,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
   var type = inType
   if mTypeName.string != "" then
-    type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+    type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   end
   if [type isNull] then
     error mTypeName : "cannot infer type" : outExpression
@@ -810,7 +810,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       returnedType = @unifiedTypeMap-proxy. null
       kind = @methodKind. definedAsCategory
       for () in [receiverType mCurrentTypedAttributeList] do
-        let attributeType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {![mAttributeTypeProxy key] !@location.here}}
+        let attributeType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {![mAttributeTypeProxy key] !@location.here}}
         let aMap = [attributeType mReaderMap]
         with [mReaderName string] in aMap  do
           matchingReaderCount ++
@@ -2260,7 +2260,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
 #---
   outExpression = @literalTypeInExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"type" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"type" !@location.here}}
     ![mLiteralTypeName location]
     ![mLiteralTypeName string]}
 }
@@ -2284,7 +2284,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   @semanticExpressionForGeneration expression
   [mReceiverExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
 #--- Get type information
-   let castType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+   let castType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- This type is either a class
   if [[expression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
   #--- Check expression type is a descendant of named type
@@ -2408,7 +2408,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   end
 #---
   outExpression = @filewrapperInExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"filewrapper" ![mFilewrapperName location]}}
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"filewrapper" ![mFilewrapperName location]}}
     ![mFilewrapperName location]
     ![mFilewrapperName string]
     ![filewrapperPath string]}
@@ -2549,7 +2549,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
     !if isTextFile
       then inAnalysisContext.mPredefinedTypes.mStringType
-      else @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"data" !@location.here}}
+      else @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"data" !@location.here}}
      end
     ![mFilewrapperName location]
     ![mFilewrapperName string]
@@ -2582,7 +2582,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   end
 #---
   outExpression = @lexiqueIntrospectionForGeneration.new {
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["stringlist" nowhere]}
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["stringlist" nowhere]}
     !mLexiqueComponentName.location
     !mLexiqueComponentName.string
     !mLexiqueReaderName.string}
@@ -2714,7 +2714,7 @@ override method @collectionValueAST analyzeSemanticExpression
   if mTypeName.string == "" then
     targetType = inType
   else
-    targetType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+    targetType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   end
 #---
   if targetType == @unifiedTypeMap-proxy. null then

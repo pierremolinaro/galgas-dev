@@ -637,7 +637,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
 #--- Analyze input/output variable
   @string variableCppName
   [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?var @unifiedTypeMap-proxy parameterType ?variableCppName ?*]
-  var typeList = @unifiedTypeMapProxyList. listWithValue { !parameterType}
+  var typeList = @unifiedTypeMapProxyList. listWithValue {!parameterType}
   for () in mStructAttributeList do
     let attributeMap = [parameterType mAttributeMap]
     [attributeMap searchKey
@@ -703,7 +703,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMapProxyList. listWithValue { !inFormalArgumentType}}
+    !@unifiedTypeMapProxyList. listWithValue {!inFormalArgumentType}}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -737,7 +737,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     !inFormalArgumentType
     !cppVarName
     !{}
-    !@unifiedTypeMapProxyList. listWithValue { !inFormalArgumentType}}
+    !@unifiedTypeMapProxyList. listWithValue {!inFormalArgumentType}}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1091,7 +1091,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #--- Get type method map for the named type
-  let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- Get type method signature
   @formalParameterSignature routineSignature
   @bool hasCompilerArgument
@@ -2722,7 +2722,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   var castBranchList =@castInstructionBranchListForGeneration.emptyList{}
   for () in mCastInstructionBranchList do
   #--- Get named type
-    let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+    let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   #--- Check named type is a descendant of receiver type
     @unifiedTypeMap-proxy t = type
     @bool found = t == [castExpression mResultType]
@@ -2846,7 +2846,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [mActualParameterName identifierRepresentation]
-  let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
+  let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
   [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -2869,7 +2869,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [mActualParameterName identifierRepresentation]
-  let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
+  let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
   [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -3036,7 +3036,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   end
 #--- Add lkey as @lstring constant
   localConstantList +=
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
     !@lstring.new {!mPrefix.string + "lkey" !mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mAttribute_lkey"
@@ -3147,7 +3147,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
   end
   let localConstantList = @localConstantList {
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
     !@lstring.new {!mPrefix.string + "lkey" !mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mAttribute_lkey"
@@ -3347,7 +3347,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
         let type = [mExpression mResultType]
         if [type mTypeKindEnum] == @typeKindEnum. classType then
           if mIsType then
-            let namedType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
+            let namedType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
             @unifiedTypeMap-proxy t = type
             @bool found = t == namedType
             loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)

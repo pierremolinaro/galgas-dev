@@ -315,7 +315,7 @@ proc compileProgramComponentFromAST
   end 
 #--- Recursively parse all imported files
   @semanticDeclarationListAST semanticDeclarationList = [inProgramComponentAST mSemanticDeclarationList]
-  var parsedFileSet =@stringset.setWithString{ ![inSourceFile string]}
+  var parsedFileSet =@stringset.setWithString{![inSourceFile string]}
   var optionComponentFileNameList =@lstringlist.emptyList{}
   var grammarComponentASTList =@grammarComponentASTList.emptyList{}
   var headerIncludeList =@stringlist.emptyList{}

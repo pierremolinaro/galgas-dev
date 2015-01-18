@@ -175,7 +175,7 @@ rule <syntax_rule_label>
 rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
   $rule$
   $non_terminal_symbol$ ?var  @lstring mNonterminalName indexing ruleDefinition
-  var labelName =@lstring.new{ !"" !@location.here}
+  var labelName =@lstring.new{!"" !@location.here}
   var mLabelList =@syntaxRuleLabelListAST.emptyList{}
   repeat
     <syntax_rule_label> !labelName !?mLabelList
