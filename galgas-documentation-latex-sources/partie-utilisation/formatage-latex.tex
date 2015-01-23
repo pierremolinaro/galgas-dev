@@ -178,10 +178,13 @@ On obtient :
 
 La traduction s'effectue comme suit :
 \begin{itemize}
-  \item à chaque \ggs+style+ défini dans l'analyseur lexical correspond une commande \LaTeX particulière : par exemple à \tpp{keywordsStyle} correspond \tpp{\textbackslash keywordsStyle} (\refSubsectionPage{fonctionnement-mode-latex}) ;
+  \item à chaque \ggs+style+ défini dans l'analyseur lexical correspond une commande \LaTeX particulière : par exemple à \tpp{keywordsStyle} correspond \tpp{\textbackslash keywordsStyle}\footnote{Si un suffixe est précisé (\texttt{-{}-mode:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash keywordsStyle}.} (\refSubsectionPage{fonctionnement-mode-latex}) ;
+  \item si une erreur lexicale est détectée, une commande \tpp{\textbackslash lexicalError}\footnote{Si un suffixe est précisé (\texttt{-{}-mode:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash lexicalError}.} est insérée ;
   \item les caractères possédant une signification particulière en \LaTeX sont échappés ou substitués selon le \refTableau{substitution-latex} ;
   \item après tout caractère non échappé ni substitué est ajoutée la séquence \tpp{\{\}}.
 \end{itemize}
+
+Vous devez donc créer une commande particulière pour chaque style, plus éventuellement la commande \tpp{\textbackslash lexicalError} pour afficher l'occurrence des erreurs lexicales. Vous pouvez choisir de ne pas définir la commande \tpp{\textbackslash lexicalError}, auquel cas la compilation \LaTeX échouera en présence d'erreur lexicale ; mais si elle réussit, vous êtes sûr qu'il y a aucune erreur lexicale.
 
 L'ajout de la séquence \tpp{\{\}} peut paraître superflue, mais elle permet de résoudre de manière systématique bien des difficultés d'affichage :
 \begin{itemize}
@@ -522,7 +525,7 @@ La définition de commande \tpp{\textbackslash logo} est la suivante :
 \hspace*{3.6em}\textbackslash expandafter\#1\%\newline
 \hspace*{3.6em}\textbackslash expandafter\{@tempa\}\%\newline
 \hspace*{3.6em}\textbackslash @esphack\%\newline
-\hspace*{3.6em}\textbackslash immediate\textbackslash openout\textbackslash \textcolor{blue}{tempf{}ile=temp.logo}\%\newline
+\hspace*{3.6em}\textbackslash immediate\textbackslash openout\textbackslash tempf{}ile=\textcolor{blue}{temp.logo}\%\newline
 \hspace*{3.6em}\textbackslash immediate\textbackslash write\textbackslash tempf{}ile\{\#\#1\}\%\newline
 \hspace*{3.6em}\textbackslash immediate\textbackslash closeout\textbackslash tempf{}ile\%\newline
 \hspace*{3.6em}\textbackslash immediate\textbackslash write18\{\textcolor{blue}{logo -{}-mode=latex temp.logo}\}\%\newline
@@ -545,7 +548,7 @@ Commentaires :
     \item enfin le plus intéressant : ligne 31, le fichier \tpp{temp.logo} est ouvert en écriture ;
     \item ligne 32, le contenu de la commande est écrit dans ce fichier ;
     \item ligne 33, le fichier est fermé ;
-    \item ligne 34, le compilateur est appelé pour effectuer la traduction en \LaTeX ; {\bf attention}, cette commande est un argument de \tpp{\textbackslash lowercase}\footnote{Aucune idée de son rôle, mais si on supprime \tpp{\textbackslash lowercase}, la compilation \LaTeX échoue.} (ligne 22), si bien que tous les caractères sont passés en minuscules : ainsi, si on écrit \tpp{logo -{}-mode=latex:Logo temp.logo}, c'est la commande \tpp{logo} \tpp{-{}-mode=latex:logo temp.logo} qui est exécutée ;
+    \item ligne 34, le compilateur est appelé pour effectuer la traduction en \LaTeX ; {\bf attention}, cette commande est un argument de \tpp{\textbackslash lowercase}\footnote{Aucune idée de son rôle, mais si on supprime \tpp{\textbackslash lowercase}, la compilation \LaTeX échoue.} (ligne 22), si bien que tous les caractères sont passés en minuscules : ainsi, si on écrit \tpp{logo -{}-mode=latex:LOGO temp.logo}, c'est la commande \tpp{logo} \tpp{-{}-mode=latex:logo temp.logo} qui est exécutée ;
     \item ligne 35, le code traduit est affiché ; comme la commande \tpp{\textbackslash input} (ligne 35) insère toujours une espace après elle, on la supprime par \tpp{\textbackslash unskip}.
 \end{itemize}
 

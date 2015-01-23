@@ -522,6 +522,9 @@ void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
                       currentLocationInSource (),
                       inLexicalErrorMessage
                       COMMA_THERE) ;
+  if (executionModeIsLatex ()) {
+    signalLexicalErrorInLatexOutput () ;
+  }
   throw C_lexicalErrorException () ;
 }
 
@@ -534,6 +537,9 @@ void C_Lexique::lexicalErrorAtLocation (const C_String & inLexicalErrorMessage,
                       inErrorLocation,
                       inLexicalErrorMessage
                       COMMA_THERE) ;
+  if (executionModeIsLatex ()) {
+    signalLexicalErrorInLatexOutput () ;
+  }
   throw C_lexicalErrorException () ;
 }
 
@@ -1704,6 +1710,12 @@ void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
     mLatexOutputString << "{}" ;
     break ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_Lexique::signalLexicalErrorInLatexOutput (void) {
+  mLatexOutputString << "\\lexicalError" << latexModeStyleSuffixString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
