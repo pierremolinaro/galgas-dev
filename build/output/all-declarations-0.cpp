@@ -12866,6 +12866,12 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
 //                      U N I C O D E    S T R I N G S                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+//--- Unicode string for '$_9_$'
+static const utf32 kUnicodeString_galgasTemplateScanner__9_ [] = {
+  TO_UNICODE (9),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$_A_$'
 static const utf32 kUnicodeString_galgasTemplateScanner__A_ [] = {
   TO_UNICODE (10),
@@ -13085,6 +13091,13 @@ static const utf32 kUnicodeString_galgasTemplateScanner__5C__5C_ [] = {
 static const utf32 kUnicodeString_galgasTemplateScanner__5C_n [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE ('n'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_5C_t$'
+static const utf32 kUnicodeString_galgasTemplateScanner__5C_t [] = {
+  TO_UNICODE ('\\'),
+  TO_UNICODE ('t'),
   TO_UNICODE (0)
 } ;
 
@@ -15148,9 +15161,10 @@ static const cTemplateDelimiter kTemplateDefinitionArray [1] = {
 //                           Template Replacements                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cTemplateDelimiter kTemplateReplacementArray [3] = {
+static const cTemplateDelimiter kTemplateReplacementArray [4] = {
   cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__25_, 2, kUnicodeString_galgasTemplateScanner__25_, 1, NULL, true),
   cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C_n, 2, kUnicodeString_galgasTemplateScanner__A_, 1, NULL, true),
+  cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C_t, 2, kUnicodeString_galgasTemplateScanner__9_, 1, NULL, true),
   cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__5C_, 2, kUnicodeString_galgasTemplateScanner__5C_, 1, NULL, true)
 } ;
 
@@ -15335,7 +15349,7 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
     while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       int32_t replacementIndex = 0 ;
       while (replacementIndex >= 0) {
-        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, 3) ;
+        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, 4) ;
         if (replacementIndex >= 0) {
           if (kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
             token.mTemplateStringBeforeToken << kTemplateReplacementArray [replacementIndex].mEndString ;
