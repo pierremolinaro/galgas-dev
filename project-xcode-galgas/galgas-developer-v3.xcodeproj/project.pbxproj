@@ -400,8 +400,6 @@
 		CF23744B19967C4F0061D2D8 /* all-declarations-19.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-19.cpp"; sourceTree = "<group>"; };
 		CF2374E319967D5D0061D2D8 /* all-declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations.h"; sourceTree = "<group>"; };
 		CF2378C219967DF10061D2D8 /* gui-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "gui-cocoa.m"; sourceTree = "<group>"; };
-		CF2378C319967DF10061D2D8 /* lexique-galgas_scanner-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "lexique-galgas_scanner-cocoa.h"; sourceTree = "<group>"; };
-		CF2378C419967DF10061D2D8 /* lexique-galgas_scanner-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "lexique-galgas_scanner-cocoa.m"; sourceTree = "<group>"; };
 		CF2378C519967DF10061D2D8 /* lexique-galgas3Scanner-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "lexique-galgas3Scanner-cocoa.h"; sourceTree = "<group>"; };
 		CF2378C619967DF10061D2D8 /* lexique-galgas3Scanner-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "lexique-galgas3Scanner-cocoa.m"; sourceTree = "<group>"; };
 		CF2378C719967DF10061D2D8 /* lexique-galgasTemplateScanner-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "lexique-galgasTemplateScanner-cocoa.h"; sourceTree = "<group>"; };
@@ -1004,8 +1002,6 @@
 			isa = PBXGroup;
 			children = (
 				CF2378C219967DF10061D2D8 /* gui-cocoa.m */,
-				CF2378C319967DF10061D2D8 /* lexique-galgas_scanner-cocoa.h */,
-				CF2378C419967DF10061D2D8 /* lexique-galgas_scanner-cocoa.m */,
 				CF2378C519967DF10061D2D8 /* lexique-galgas3Scanner-cocoa.h */,
 				CF2378C619967DF10061D2D8 /* lexique-galgas3Scanner-cocoa.m */,
 				CF2378C719967DF10061D2D8 /* lexique-galgasTemplateScanner-cocoa.h */,

@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2003, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2003, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -244,6 +244,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
          withCurrentRectangle: (NSRect *) ioRect
          withEnclosingRectangle: (NSRect *) ioEnclosingRect
          withBackgroundColorBindingPath: (NSString *) inBackgroundBindingPath
+         withBackgroundActivationBindingPath: (NSString *) inBackgroundActivationBindingPath
          withFontBindingPath: (NSString *) inFontBindingPath
          withForegroundColorBindingPath: (NSString *) inForegroundBindingPath
          withSettingTitle: (NSString *) inTitle {
@@ -255,6 +256,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   ioRect->origin.x = 10.0 ;
   ioRect->size.width = 40.0 ;
   NSColorWell * colorWell = [[NSColorWell alloc] initWithFrame:*ioRect] ;
+  [colorWell setToolTip: @"Background Color"] ;
   [colorWell setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
   [colorWell
     bind:@"value"
@@ -264,10 +266,35 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   ] ;
   [ioView addSubview:colorWell] ;
   *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
-//--- Add "Font" button
+//--- Add associated checkbox
   ioRect->origin.x += 50.0 ;
+  ioRect->size.width = 20.0 ;
+  NSButton * cb = [[NSButton alloc] initWithFrame:*ioRect] ;
+  [cb setToolTip: @"Enable background"] ;
+  [cb setButtonType: NSSwitchButton] ;
+  [cb setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
+  [cb
+    bind:@"value"
+    toObject:udc
+    withKeyPath:inBackgroundActivationBindingPath
+    options:NULL
+  ] ;
+  [colorWell
+    bind:@"hidden"
+    toObject:udc
+    withKeyPath:inBackgroundActivationBindingPath
+    options:[NSDictionary dictionaryWithObjectsAndKeys:
+      NSNegateBooleanTransformerName, NSValueTransformerNameBindingOption,
+      nil
+    ]
+  ] ;
+  [ioView addSubview:cb] ;
+  *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
+//--- Add "Font" button
+  ioRect->origin.x += 30.0 ;
   ioRect->size.width = 200.0 ;
-  NSButton * cb = [[PMFontButton alloc] initWithFrame:*ioRect] ;
+  cb = [[PMFontButton alloc] initWithFrame:*ioRect] ;
+  [cb setToolTip: @"Font"] ;
   [cb setButtonType: NSMomentaryLightButton] ;
   [cb setBezelStyle: NSSmallSquareBezelStyle] ;
   [cb setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
@@ -283,6 +310,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   ioRect->origin.x += 210.0 ;
   ioRect->size.width = 40.0 ;
   colorWell = [[NSColorWell alloc] initWithFrame:*ioRect] ;
+  [colorWell setToolTip: @"Foreground Color"] ;
   [colorWell setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
   [colorWell
     bind:@"value"
@@ -372,6 +400,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
       withCurrentRectangle: & r
       withEnclosingRectangle: & enclosingRect
       withBackgroundColorBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_background_color, [inTokenizer styleIdentifierForStyleIndex:0]]
+      withBackgroundActivationBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_enable_template_background, [inTokenizer styleIdentifierForStyleIndex:0]]
       withFontBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_font, [inTokenizer styleIdentifierForStyleIndex:0]]
       withForegroundColorBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_foreground_color, [inTokenizer styleIdentifierForStyleIndex:0]]
       withSettingTitle:@"Template String"
@@ -426,6 +455,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
       withCurrentRectangle: & r
       withEnclosingRectangle: & enclosingRect
       withBackgroundColorBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_background_color, [inTokenizer styleIdentifierForStyleIndex:i]]
+      withBackgroundActivationBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_enable_background, [inTokenizer styleIdentifierForStyleIndex:i]]
       withFontBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_font, [inTokenizer styleIdentifierForStyleIndex:i]]
       withForegroundColorBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_color, [inTokenizer styleIdentifierForStyleIndex:i]]
       withSettingTitle:[inTokenizer styleNameForStyleIndex: i]
@@ -880,9 +910,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   if ([ud valueForKey:GGS_uses_page_guide] == nil) {
     [ud setBool:YES forKey:GGS_uses_page_guide] ;
   }
-  if ([ud valueForKey:GGS_page_guide_column] == nil) {
-    [ud setInteger:80 forKey:GGS_page_guide_column] ;
-  }
   [mPageGuideCheckbox
     bind:@"value"
     toObject:udc
@@ -895,13 +922,29 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     withKeyPath:@"values." GGS_uses_page_guide
     options:nil
   ] ;
+  if ([ud valueForKey:GGS_page_guide_column] == nil) {
+    [ud setInteger:80 forKey:GGS_page_guide_column] ;
+  }
   [mPageGuideColumnTextField
     bind:@"value"
     toObject:udc
     withKeyPath:@"values." GGS_page_guide_column
     options:nil
   ] ;
-
+//--- Editor background color
+  if ([ud valueForKey:GGS_editor_background_color] == nil) {
+    NSData * data = [NSArchiver archivedDataWithRootObject:[NSColor whiteColor]] ;
+    [ud setValue:data forKey:GGS_editor_background_color] ;
+  }
+  [mEditorBackgroundColorWell
+    bind:@"value"
+    toObject:udc
+    withKeyPath:@"values." GGS_editor_background_color
+    options:[NSDictionary dictionaryWithObjectsAndKeys:
+      NSUnarchiveFromDataTransformerName, NSValueTransformerNameBindingOption,
+      nil
+    ]
+  ] ;
 //--- Bind « Prefix by time Utility » checkbox
   [mPrefixByTimeUtilityCheckBox
     bind:@"value"
@@ -1049,6 +1092,8 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [mCommandLineOptionTextView setEditable:NO] ;
 //---
   [self updateSourceTextPreferenceCount] ;
+//---
+  [mLexicalColoringTabView selectTabViewItemAtIndex:0] ;
 //---  
   #ifdef PM_HANDLE_UPDATE
     [PMApplicationUpdate instanciateSingleton] ;
@@ -1263,8 +1308,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   #endif
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSBundle * mb = [NSBundle mainBundle] ;
-//  NSLog (@"[mb bundleIdentifier] %@", [mb bundleIdentifier]) ;
-//  NSLog (@"[ud persistentDomainNames] %@", [ud persistentDomainNames]) ;
   NSDictionary * dictionaryRepresentation = [ud persistentDomainForName:[mb bundleIdentifier]] ;
   NSArray * allKeys = [dictionaryRepresentation allKeys] ;
   NSUInteger n = 0 ;

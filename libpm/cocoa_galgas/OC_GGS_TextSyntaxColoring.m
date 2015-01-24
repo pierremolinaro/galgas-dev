@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2011, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2011, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -31,13 +31,15 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#define TAG_MASK                          (0xFF000000)
-#define TAG_FOR_FOREGROUND_COLOR          (0x80000000)
-#define TAG_FOR_BACKGROUND_COLOR          (0x90000000)
-#define TAG_FOR_FONT_ATTRIBUTE            (0xA0000000)
-#define TAG_FOR_TEMPLATE_FOREGROUND_COLOR (0xB0000000)
-#define TAG_FOR_TEMPLATE_BACKGROUND_COLOR (0xC0000000)
-#define TAG_FOR_TEMPLATE_FONT_ATTRIBUTE   (0xD0000000)
+#define TAG_MASK                           (0xFF000000)
+#define TAG_FOR_FOREGROUND_COLOR           (0x80000000)
+#define TAG_FOR_BACKGROUND_COLOR           (0x90000000)
+#define TAG_FOR_ENABLING_BACKGROUND        (0xA0000000)
+#define TAG_FOR_FONT_ATTRIBUTE             (0xB0000000)
+#define TAG_FOR_TEMPLATE_FOREGROUND_COLOR  (0xC0000000)
+#define TAG_FOR_ENABLE_TEMPLATE_BACKGROUND (0xD0000000)
+#define TAG_FOR_TEMPLATE_BACKGROUND_COLOR  (0xE0000000)
+#define TAG_FOR_TEMPLATE_FONT_ATTRIBUTE    (0xF0000000)
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -201,13 +203,23 @@
         options:0
         context:(void *) (TAG_FOR_TEMPLATE_BACKGROUND_COLOR)
       ] ;
-      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_background_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
-      NSData * data = [defaults dataForKey:name] ;
-      if (data != nil) {
-        NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-        [mTemplateTextAttributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
-      }else{
-        [mTemplateTextAttributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;
+      keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_enable_template_background, [mTokenizer styleIdentifierForStyleIndex:0]] ;
+      [udc
+        addObserver:self
+        forKeyPath:keyPath
+        options:0
+        context:(void *) (TAG_FOR_ENABLE_TEMPLATE_BACKGROUND)
+      ] ;
+      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_enable_template_background, [mTokenizer styleIdentifierForStyleIndex:0]] ;
+      if ([defaults boolForKey:name]) {
+        name = [NSString stringWithFormat:@"%@_%@", GGS_template_background_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
+        NSData * data = [defaults dataForKey:name] ;
+        if (data != nil) {
+          NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+          [mTemplateTextAttributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
+        }else{
+          [mTemplateTextAttributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;
+        }
       }
     }
     for (NSInteger i=0 ; i<(NSInteger) mTokenizer.styleCount ; i++) {
@@ -217,6 +229,13 @@
         forKeyPath:keyPath
         options:0
         context:(void *) (TAG_FOR_BACKGROUND_COLOR | i)
+      ] ;
+      keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_enable_background, [mTokenizer styleIdentifierForStyleIndex:i]] ;
+      [udc
+        addObserver:self
+        forKeyPath:keyPath
+        options:0
+        context:(void *) (TAG_FOR_ENABLING_BACKGROUND | i)
       ] ;
     }
   //--------------------------------------------------- Add font observers
@@ -260,13 +279,16 @@
         [attributeDictionary setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName] ;
       }
     //--- Add background color   
-      name = [NSString stringWithFormat:@"%@_%@", GGS_named_background_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
-      data = [defaults dataForKey:name] ;
-      if (data != nil) {
-        NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-        [attributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
-      }else{
-        [attributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;
+      name = [NSString stringWithFormat:@"%@_%@", GGS_named_enable_background, [mTokenizer styleIdentifierForStyleIndex:i]] ;
+      if ([defaults boolForKey:name]) {
+        name = [NSString stringWithFormat:@"%@_%@", GGS_named_background_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
+        data = [defaults dataForKey:name] ;
+        if (data != nil) {
+          NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+          [attributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
+        }else{
+          [attributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;
+        }
       }
     //--- Add font attribute   
       name = [NSString stringWithFormat:@"%@_%@", GGS_named_font, [mTokenizer styleIdentifierForStyleIndex:i]] ;
@@ -468,6 +490,10 @@
         const NSInteger colorIndex = [token style] ;
         if (colorIndex == inChangedColorIndex) {
           const NSRange range = [token range] ;
+          [mSourceTextStorage
+            setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0]
+            range:range
+          ] ;
           #ifdef DEBUG_MESSAGES
             NSLog (@"change attribute for index %lu [%lu, %lu]>", i, range.location, range.length) ;
           #endif
@@ -934,6 +960,25 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       [mTemplateTextAttributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
       [self applyTextAttributeForIndex:-2] ;
       break;
+    case TAG_FOR_ENABLING_BACKGROUND:
+      if (data != nil)  {
+        // NSLog (@"DATA %@", data) ;
+        const BOOL enableBackground = [[inObject valueForKeyPath:inKeyPath] boolValue] ;
+        d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
+        if (enableBackground) {
+          NSString * keyPath = [NSString stringWithFormat:@"%@_%@",
+            GGS_named_background_color,
+            [mTokenizer styleIdentifierForStyleIndex:(NSInteger) idx]
+          ] ;
+          NSData * colorData = [[NSUserDefaults standardUserDefaults] objectForKey:keyPath] ;
+          color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:colorData] ;
+          [d setValue:color forKey:NSBackgroundColorAttributeName] ;
+        }else{
+          [d removeObjectForKey:NSBackgroundColorAttributeName] ;
+        }
+        [self applyTextAttributeForIndex:(NSInteger) idx] ;
+      }
+      break;
     case TAG_FOR_BACKGROUND_COLOR:
       if (data == nil) {
         color = [NSColor whiteColor] ;
@@ -944,6 +989,24 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       [d setObject:color forKey:NSBackgroundColorAttributeName] ;
       [self applyTextAttributeForIndex:(NSInteger) idx] ;
       break;
+    case TAG_FOR_ENABLE_TEMPLATE_BACKGROUND :
+      if (data != nil)  {
+        // NSLog (@"DATA %@", data) ;
+        const BOOL enableBackground = [[inObject valueForKeyPath:inKeyPath] boolValue] ;
+        if (enableBackground) {
+          NSString * keyPath = [NSString stringWithFormat:@"%@_%@",
+            GGS_template_background_color,
+            [mTokenizer styleIdentifierForStyleIndex:(NSInteger) idx]
+          ] ;
+          NSData * colorData = [[NSUserDefaults standardUserDefaults] objectForKey:keyPath] ;
+          color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:colorData] ;
+          [mTemplateTextAttributeDictionary setValue:color forKey:NSBackgroundColorAttributeName] ;
+        }else{
+          [mTemplateTextAttributeDictionary removeObjectForKey:NSBackgroundColorAttributeName] ;
+        }
+        [self applyTextAttributeForIndex:-2] ;
+      }
+      break ;
     case TAG_FOR_TEMPLATE_BACKGROUND_COLOR:
       if (data == nil) {
         color = [NSColor whiteColor] ;
