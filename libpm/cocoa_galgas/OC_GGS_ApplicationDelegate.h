@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2003, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2003, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -29,6 +29,7 @@
 #define GGS_indexed_color                    @"GGS_colors"
 #define GGS_named_color                      @"GGS_color_for_style"
 #define GGS_named_background_color           @"GGS_background_color_for_style"
+#define GGS_named_enable_background          @"GGS_enable_background_color_for_style"
 #define GGS_named_font                       @"GGS_font_attribute_for_style"
 #define GGS_bool_build_option                @"GGS_bool_build_option"
 #define GGS_uint_build_option                @"GGS_uint_build_option"
@@ -39,12 +40,14 @@
 #define GGS_operation_on_opening_file_with_undecidable_encoding @"GGS_operation_on_opening_file_with_undecidable_encoding"
 #define GGS_tool_selection_preference @"GGS_tool_selection_preference"
 
-#define GGS_template_background_color @"GGS_template_background_color"
-#define GGS_template_font             @"GGS_template_font"
-#define GGS_template_foreground_color @"GGS_template_foreground_color"
+#define GGS_template_background_color  @"GGS_template_background_color"
+#define GGS_template_font              @"GGS_template_font"
+#define GGS_template_foreground_color  @"GGS_template_foreground_color"
+#define GGS_enable_template_background @"GGS_enable_template_foreground_color"
 
 #define GGS_uses_page_guide           @"GGS_USE_PAGE_GUIDE"
 #define GGS_page_guide_column         @"GGS_PAGE_GUIDE_COLUMN"
+#define GGS_editor_background_color   @"GGS_EDITOR_BACKGROUND_COLOR"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -87,6 +90,9 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //--- Preference Window
   @private IBOutlet NSWindow * mPreferenceWindow ;
+
+//--- Preference Window
+  @private IBOutlet NSColorWell * mEditorBackgroundColorWell ;
 
 //--- Font build window
   @private IBOutlet PMFontButton * mCurrentBuildWindowFontAndSizeSettingsButton ;

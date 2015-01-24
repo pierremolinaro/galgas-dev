@@ -114,7 +114,7 @@ with lexique galgas2Scanner {
   fileExtension : "gGui"
   fileExtension : "gProject"
   blockComment : "#"
-  title: "Source GALGAS < 2"
+  title: "Source GALGAS ≤ 2"
   label $before$, ${$
   label $after$, ${$
   label $map$, $type_name$

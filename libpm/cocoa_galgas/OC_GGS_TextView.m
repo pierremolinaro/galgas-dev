@@ -68,6 +68,12 @@
       options:0
       context:NULL
     ] ;
+    [df
+      addObserver:self
+      forKeyPath:GGS_editor_background_color
+      options:0
+      context:NULL
+    ] ;
   }
   return self;
 }
@@ -83,6 +89,10 @@
   [df
     removeObserver:self
     forKeyPath:GGS_page_guide_column
+  ] ;
+  [df
+    removeObserver:self
+    forKeyPath:GGS_editor_background_color
   ] ;
   noteObjectDeallocation (self) ;
   macroSuperFinalize ;
@@ -105,6 +115,8 @@
   if ((inObject == df) && [inKeyPath isEqualToString:GGS_uses_page_guide]) {
     [self setNeedsDisplay:YES] ;
   }else if ((inObject == df) && [inKeyPath isEqualToString:GGS_page_guide_column]) {
+    [self setNeedsDisplay:YES] ;
+  }else if ((inObject == df) && [inKeyPath isEqualToString:GGS_editor_background_color]) {
     [self setNeedsDisplay:YES] ;
   }else{
     [super
@@ -165,7 +177,11 @@
     const NSRect pageRect = {{0.0, 0.0}, {column, NSMaxY (self.frame)}} ;
     const NSRect pageRectToDraw = NSIntersectionRect (inRect, pageRect) ;
     if (! NSIsEmptyRect (pageRectToDraw)) {
-      [[NSColor whiteColor] setFill] ;
+      NSData * data = [[NSUserDefaults standardUserDefaults] valueForKey:GGS_editor_background_color] ;
+      // NSLog (@"DATA %@", data) ;
+      NSColor * color = [NSUnarchiver unarchiveObjectWithData:data] ;
+      // NSLog (@"color %@", color) ;
+      [color setFill] ;
       NSRectFill (pageRectToDraw) ;
     }
     const NSRect outsidePageRect = {{column, 0.0}, {NSMaxX (self.frame) - column, NSMaxY (self.frame)}} ;
