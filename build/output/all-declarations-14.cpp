@@ -1816,7 +1816,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credit
   result << "{\\rtf0\\ansi{\\fonttbl\\f0\\fswiss Helvetica;}\n"
     "{\\colortbl;\\red255\\green255\\blue255;}\n"
     "\\paperw9840\\paperh8400\n"
-    "\\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\\ql\\qnatural\n"
+    "\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\ql\\qnatural\n"
     "\n"
     "\\f0\\b\\fs24 \\cf0 Engineering:\n"
     "\\b0 \\\n"
