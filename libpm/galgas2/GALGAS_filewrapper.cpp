@@ -6,7 +6,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2008, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -319,8 +319,8 @@ static const cRegularFileWrapper * findFileInDirectory (const cDirectoryWrapper 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cDirectoryWrapper *  getDirectory (const C_String & inDirectory,
-                                                const cDirectoryWrapper * inRootDirectoryPtr) {
+static const cDirectoryWrapper * getDirectory (const C_String & inDirectory,
+                                               const cDirectoryWrapper * inRootDirectoryPtr) {
   TC_UniqueArray <C_String> componentArray ;
   inDirectory.componentsSeparatedByString ("/", componentArray) ;
   const cDirectoryWrapper * dir = inRootDirectoryPtr ;
@@ -494,6 +494,79 @@ GALGAS_string GALGAS_filewrapper::reader_absolutePathForPath (const GALGAS_strin
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{ //--- Recompose path
       result = GALGAS_string (C_String::componentsJoinedByString (componentArray, "/")) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_filewrapper::reader_directoriesAtPath (const GALGAS_string & inPath,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_stringlist result ;
+  if ((mRootDirectoryPtr != NULL) && inPath.isValid ()) {
+    const GALGAS_string path = reader_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
+    if (path.isValid ()) {
+      const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
+      if (NULL != dir) {
+        result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+        const cDirectoryWrapper * * dirs = dir->mDirectories ;
+        while ((*dirs) != NULL) {
+          result.addAssign_operation (GALGAS_string ((*dirs)->mDirectoryName) COMMA_HERE) ;
+          dirs ++ ;
+        }
+      }
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_filewrapper::reader_textFilesAtPath (const GALGAS_string & inPath,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_stringlist result ;
+  if ((mRootDirectoryPtr != NULL) && inPath.isValid ()) {
+    const GALGAS_string path = reader_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
+    if (path.isValid ()) {
+      const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
+      if (NULL != dir) {
+        result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+        const cRegularFileWrapper * * files = dir->mFiles ;
+        while ((*files) != NULL) {
+          if ((*files)->mIsTextFile) {
+            result.addAssign_operation (GALGAS_string ((*files)->mName) COMMA_HERE) ;
+          }
+          files ++ ;
+        }
+      }
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_filewrapper::reader_binaryFilesAtPath (const GALGAS_string & inPath,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_stringlist result ;
+  if ((mRootDirectoryPtr != NULL) && inPath.isValid ()) {
+    const GALGAS_string path = reader_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
+    if (path.isValid ()) {
+      const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
+      if (NULL != dir) {
+        result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+        const cRegularFileWrapper * * files = dir->mFiles ;
+        while ((*files) != NULL) {
+          if (! (*files)->mIsTextFile) {
+            result.addAssign_operation (GALGAS_string ((*files)->mName) COMMA_HERE) ;
+          }
+          files ++ ;
+        }
+      }
     }
   }
   return result ;
