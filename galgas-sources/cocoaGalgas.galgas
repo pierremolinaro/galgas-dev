@@ -54,6 +54,8 @@ with lexique galgas3Scanner {
   label $override$,  $setter$, $type_name$, $identifier$
   label $setter$, $type_name$, $identifier$
 
+  label $syntax$, $extension$, $identifier$
+
   label $case$, $.$, $literal_string$
   label * $commentMark$ (2, 0)
   label $terminal$, $!$ -
