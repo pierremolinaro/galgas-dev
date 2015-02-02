@@ -121,34 +121,8 @@ clean:
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-CURL_ARGUMENTS :=
-CURL_ARGUMENTS += $(shell python $(LIBPM_DIRECTORY_PATH)/included_makefiles/get_system_ftp_proxy.py)
-CURL_ARGUMENTS += --fail
-CURL_ARGUMENTS += --location
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-$(TOOL_CHAIN_ARCHIVE).tar.bz2:
-	curl $(CURL_ARGUMENTS) --output $(TOOL_CHAIN_ARCHIVE).tar.bz2 $(TOOL_CHAIN_URL)
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 $(COMPILER_PATH):
-	rm -f $(TOOL_CHAIN_ARCHIVE).tar
-	@echo "****** TOOL CHAIN IS NOT INSTALLED ********"
-	@echo "The tool chain url is $(TOOL_CHAIN_URL)"
-	@echo "Download and installation is done automatically."
-	@echo "You will enter the administrator password in order to install $(notdir $(TOOL_CHAIN_INSTALL_PATH)) in $(dir $(TOOL_CHAIN_INSTALL_PATH))"
-	@echo "****** DOWNLOADING..."
-	$(MAKE) $(TOOL_CHAIN_ARCHIVE).tar.bz2
-	@echo "****** UNTARING..."
-	bunzip2 -kc $(TOOL_CHAIN_ARCHIVE).tar.bz2 > $(TOOL_CHAIN_ARCHIVE).tar
-	rm $(TOOL_CHAIN_ARCHIVE).tar.bz2
-	tar xf $(TOOL_CHAIN_ARCHIVE).tar
-	rm $(TOOL_CHAIN_ARCHIVE).tar
-	@echo "****** INSTALLING..."
-	sudo mv -f $(TOOL_CHAIN_ARCHIVE) $(TOOL_CHAIN_INSTALL_PATH)
-	@echo "****** DONE."
+	python $(LIBPM_DIRECTORY_PATH)/included_makefiles/download_cross_compiler.py $(TOOL_CHAIN_ARCHIVE)
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
