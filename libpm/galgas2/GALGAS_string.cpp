@@ -225,6 +225,16 @@ GALGAS_string GALGAS_string::reader_identifierRepresentation (UNUSED_LOCATION_AR
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_string::reader_nameRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mString.nameRepresentation ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_string::reader_subStringFromIndex (const GALGAS_uint & inStartIndex
                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;

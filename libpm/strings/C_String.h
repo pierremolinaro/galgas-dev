@@ -157,7 +157,8 @@ class C_String : public AC_OutputStream {
 
 //--- Get a representation that contains only letters, digits or '_', so that 
 //    it is a valid C identifier
-  public : C_String identifierRepresentation (void) const ;
+  public : C_String identifierRepresentation (void) const ; // Preserves ASCII letters
+  public : C_String nameRepresentation (void) const ; // Preserves ASCII letters and digits
 
 //--- Get an UTF32 representation
   public : C_String utf32Representation (void) const ;
