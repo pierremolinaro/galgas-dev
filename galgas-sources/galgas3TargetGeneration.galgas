@@ -70,7 +70,6 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
  "bat", "rtf", "py"
 }{
 }{
-  template makefile_macosx_makefile "makefile-macosx/makefile.galgasTemplate" ?@string PROJECT_NAME
   template build_macosx "makefile-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME
   template build_verbose_macosx "makefile-macosx/verbose-build.py.galgasTemplate" ?@string PROJECT_NAME
   template build_debug_macosx "makefile-macosx/build+debug.py.galgasTemplate" ?@string PROJECT_NAME
@@ -216,7 +215,6 @@ private proc generateGalgas3MakefileMacOSXTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_release_macosx !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/build+release.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.install_macosx !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_macosx_makefile !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
