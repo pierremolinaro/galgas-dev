@@ -602,16 +602,6 @@ extern const cDirectoryWrapper gWrapperDirectory_14_targetGalgas_33_GenerationFi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_macosx_makefile'                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_macosx_5F_makefile (class C_Compiler * inCompiler,
-                                                                                                        const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                       Filewrapper template 'targetGalgas3GenerationFileWrapper build_macosx'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
