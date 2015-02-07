@@ -12,6 +12,279 @@
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_overridingCategoryMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_overridingCategoryMethodAST * p = (const cPtr_overridingCategoryMethodAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_overridingCategoryMethodAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mOverridingCategoryMethodName.objectCompare (p->mAttribute_mOverridingCategoryMethodName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mOverridingCategoryMethodFormalParameterList.objectCompare (p->mAttribute_mOverridingCategoryMethodFormalParameterList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mOverridingCategoryMethodInstructionList.objectCompare (p->mAttribute_mOverridingCategoryMethodInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfMethodLocation.objectCompare (p->mAttribute_mEndOfMethodLocation) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_overridingCategoryMethodAST::objectCompare (const GALGAS_overridingCategoryMethodAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_overridingCategoryMethodAST::GALGAS_overridingCategoryMethodAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_overridingCategoryMethodAST GALGAS_overridingCategoryMethodAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_overridingCategoryMethodAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                              GALGAS_lstring::constructor_default (HERE),
+                                                              GALGAS_lstring::constructor_default (HERE),
+                                                              GALGAS_formalParameterListAST::constructor_emptyList (HERE),
+                                                              GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
+                                                              GALGAS_location::constructor_nowhere (HERE)
+                                                              COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_overridingCategoryMethodAST::GALGAS_overridingCategoryMethodAST (const cPtr_overridingCategoryMethodAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingCategoryMethodAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_overridingCategoryMethodAST GALGAS_overridingCategoryMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                                        const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                        const GALGAS_lstring & inAttribute_mOverridingCategoryMethodName,
+                                                                                        const GALGAS_formalParameterListAST & inAttribute_mOverridingCategoryMethodFormalParameterList,
+                                                                                        const GALGAS_semanticInstructionListAST & inAttribute_mOverridingCategoryMethodInstructionList,
+                                                                                        const GALGAS_location & inAttribute_mEndOfMethodLocation
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_overridingCategoryMethodAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingCategoryMethodName.isValid () && inAttribute_mOverridingCategoryMethodFormalParameterList.isValid () && inAttribute_mOverridingCategoryMethodInstructionList.isValid () && inAttribute_mEndOfMethodLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overridingCategoryMethodAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingCategoryMethodName, inAttribute_mOverridingCategoryMethodFormalParameterList, inAttribute_mOverridingCategoryMethodInstructionList, inAttribute_mEndOfMethodLocation COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_overridingCategoryMethodAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingCategoryMethodAST * p = (const cPtr_overridingCategoryMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingCategoryMethodAST) ;
+    result = p->mAttribute_mTypeName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_overridingCategoryMethodAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_overridingCategoryMethodAST::reader_mOverridingCategoryMethodName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingCategoryMethodAST * p = (const cPtr_overridingCategoryMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingCategoryMethodAST) ;
+    result = p->mAttribute_mOverridingCategoryMethodName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_overridingCategoryMethodAST::reader_mOverridingCategoryMethodName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverridingCategoryMethodName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST GALGAS_overridingCategoryMethodAST::reader_mOverridingCategoryMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_formalParameterListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingCategoryMethodAST * p = (const cPtr_overridingCategoryMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingCategoryMethodAST) ;
+    result = p->mAttribute_mOverridingCategoryMethodFormalParameterList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST cPtr_overridingCategoryMethodAST::reader_mOverridingCategoryMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverridingCategoryMethodFormalParameterList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST GALGAS_overridingCategoryMethodAST::reader_mOverridingCategoryMethodInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticInstructionListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingCategoryMethodAST * p = (const cPtr_overridingCategoryMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingCategoryMethodAST) ;
+    result = p->mAttribute_mOverridingCategoryMethodInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST cPtr_overridingCategoryMethodAST::reader_mOverridingCategoryMethodInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverridingCategoryMethodInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_overridingCategoryMethodAST::reader_mEndOfMethodLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingCategoryMethodAST * p = (const cPtr_overridingCategoryMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingCategoryMethodAST) ;
+    result = p->mAttribute_mEndOfMethodLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_overridingCategoryMethodAST::reader_mEndOfMethodLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfMethodLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                Pointer class for @overridingCategoryMethodAST class                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_overridingCategoryMethodAST::cPtr_overridingCategoryMethodAST (const GALGAS_bool & in_mIsPredefined,
+                                                                    const GALGAS_lstring & in_mTypeName,
+                                                                    const GALGAS_lstring & in_mOverridingCategoryMethodName,
+                                                                    const GALGAS_formalParameterListAST & in_mOverridingCategoryMethodFormalParameterList,
+                                                                    const GALGAS_semanticInstructionListAST & in_mOverridingCategoryMethodInstructionList,
+                                                                    const GALGAS_location & in_mEndOfMethodLocation
+                                                                    COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
+mAttribute_mTypeName (in_mTypeName),
+mAttribute_mOverridingCategoryMethodName (in_mOverridingCategoryMethodName),
+mAttribute_mOverridingCategoryMethodFormalParameterList (in_mOverridingCategoryMethodFormalParameterList),
+mAttribute_mOverridingCategoryMethodInstructionList (in_mOverridingCategoryMethodInstructionList),
+mAttribute_mEndOfMethodLocation (in_mEndOfMethodLocation) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_overridingCategoryMethodAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_overridingCategoryMethodAST ;
+}
+
+void cPtr_overridingCategoryMethodAST::description (C_String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString << "[@overridingCategoryMethodAST:" ;
+  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mOverridingCategoryMethodName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mOverridingCategoryMethodFormalParameterList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mOverridingCategoryMethodInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfMethodLocation.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingCategoryMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingCategoryMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingCategoryMethodName, mAttribute_mOverridingCategoryMethodFormalParameterList, mAttribute_mOverridingCategoryMethodInstructionList, mAttribute_mEndOfMethodLocation COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @overridingCategoryMethodAST type                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_overridingCategoryMethodAST ("overridingCategoryMethodAST",
+                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_overridingCategoryMethodAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_overridingCategoryMethodAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_overridingCategoryMethodAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_overridingCategoryMethodAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_overridingCategoryMethodAST GALGAS_overridingCategoryMethodAST::extractObject (const GALGAS_object & inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_overridingCategoryMethodAST result ;
+  const GALGAS_overridingCategoryMethodAST * p = (const GALGAS_overridingCategoryMethodAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_overridingCategoryMethodAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("overridingCategoryMethodAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_overridingCategoryModifierAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_overridingCategoryModifierAST * p = (const cPtr_overridingCategoryModifierAST *) inOperandPtr ;
@@ -18829,384 +19102,6 @@ GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::extractOb
       result = *p ;
     }else{
       inCompiler->castError ("multiplicationExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_notEqualExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_notEqualExpressionAST * p = (const cPtr_notEqualExpressionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_notEqualExpressionAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_notEqualExpressionAST::objectCompare (const GALGAS_notEqualExpressionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_notEqualExpressionAST::GALGAS_notEqualExpressionAST (void) :
-GALGAS_semanticExpressionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_notEqualExpressionAST::GALGAS_notEqualExpressionAST (const cPtr_notEqualExpressionAST * inSourcePtr) :
-GALGAS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_notEqualExpressionAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_notEqualExpressionAST GALGAS_notEqualExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                            const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                            const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_notEqualExpressionAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_notEqualExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_notEqualExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_notEqualExpressionAST * p = (const cPtr_notEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notEqualExpressionAST) ;
-    result = p->mAttribute_mOperatorLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_notEqualExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_notEqualExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_notEqualExpressionAST * p = (const cPtr_notEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notEqualExpressionAST) ;
-    result = p->mAttribute_mLeftExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_notEqualExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_notEqualExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_notEqualExpressionAST * p = (const cPtr_notEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notEqualExpressionAST) ;
-    result = p->mAttribute_mRightExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_notEqualExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                   Pointer class for @notEqualExpressionAST class                                    *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_notEqualExpressionAST::cPtr_notEqualExpressionAST (const GALGAS_location & in_mOperatorLocation,
-                                                        const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                        const GALGAS_semanticExpressionAST & in_mRightExpression
-                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_notEqualExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_notEqualExpressionAST ;
-}
-
-void cPtr_notEqualExpressionAST::description (C_String & ioString,
-                                              const int32_t inIndentation) const {
-  ioString << "[@notEqualExpressionAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_notEqualExpressionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_notEqualExpressionAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                             @notEqualExpressionAST type                                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_notEqualExpressionAST ("notEqualExpressionAST",
-                                              & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_notEqualExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_notEqualExpressionAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_notEqualExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_notEqualExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_notEqualExpressionAST GALGAS_notEqualExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_notEqualExpressionAST result ;
-  const GALGAS_notEqualExpressionAST * p = (const GALGAS_notEqualExpressionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_notEqualExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("notEqualExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_notExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_notExpressionAST * p = (const cPtr_notExpressionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_notExpressionAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mExpression.objectCompare (p->mAttribute_mExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_notExpressionAST::objectCompare (const GALGAS_notExpressionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_notExpressionAST::GALGAS_notExpressionAST (void) :
-GALGAS_semanticExpressionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_notExpressionAST::GALGAS_notExpressionAST (const cPtr_notExpressionAST * inSourcePtr) :
-GALGAS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_notExpressionAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_notExpressionAST GALGAS_notExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mExpression
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_notExpressionAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_notExpressionAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_notExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_notExpressionAST * p = (const cPtr_notExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notExpressionAST) ;
-    result = p->mAttribute_mOperatorLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_notExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_notExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_notExpressionAST * p = (const cPtr_notExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notExpressionAST) ;
-    result = p->mAttribute_mExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_notExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                      Pointer class for @notExpressionAST class                                      *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_notExpressionAST::cPtr_notExpressionAST (const GALGAS_location & in_mOperatorLocation,
-                                              const GALGAS_semanticExpressionAST & in_mExpression
-                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mExpression (in_mExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_notExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_notExpressionAST ;
-}
-
-void cPtr_notExpressionAST::description (C_String & ioString,
-                                         const int32_t inIndentation) const {
-  ioString << "[@notExpressionAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_notExpressionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_notExpressionAST (mAttribute_mOperatorLocation, mAttribute_mExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                               @notExpressionAST type                                                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_notExpressionAST ("notExpressionAST",
-                                         & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_notExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_notExpressionAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_notExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_notExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_notExpressionAST GALGAS_notExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_notExpressionAST result ;
-  const GALGAS_notExpressionAST * p = (const GALGAS_notExpressionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_notExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("notExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -1,0 +1,26 @@
+{
+  "LIBPM_DIRECTORY_PATH" : "%!LIBPM_DIRECTORY_PATH%",
+  "SOURCES_DIR" : ["../build/output", "../build/user-headers", "%!LIBPM_DIRECTORY_PATH%"%
+for () in HAND_CODED_SOURCE_DIR_SET do
+  %, "%!key%"%
+end
+%],
+  "SOURCES" : [
+    "all-galgas.cpp",
+    "all-libpm.cpp"%
+for () in MAKEFILE_FILE_LIST do
+  %,\n    "%!mValue%"%
+end
+for () in HAND_CODED_SOURCE_FILE_LIST do
+  %,\n    "%!mValue%"%
+end
+%
+  ],
+  "USER_LINK_OPTIONS" : [%
+for () in TOOL_LINK_LIST
+  do%\n    "%!mValue%"%
+  between %,%
+end%
+  ]
+}
+
