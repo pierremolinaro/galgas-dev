@@ -1,9 +1,9 @@
 #!/bin/sh
 #set -x
 GALGAS_TOOL=`dirname $0`/../makefile-macosx/galgas-debug &&
-cd `dirname $0`/../makefile-macosx && make galgas-debug -j `sysctl -n hw.ncpu` &&
+cd `dirname $0`/../makefile-macosx && python build.py debug &&
 cd `dirname $0` && $GALGAS_TOOL --generate-many-cpp-files -v --Werror +testsuite.galgasProject &&
-cd `dirname $0`/makefile-macosx && make --warn-undefined-variables all -j `sysctl -n hw.ncpu` &&
+cd `dirname $0`/makefile-macosx && python build.py &&
 echo "*** Running test suite" &&
 cd `dirname $0` && ./makefile-macosx/testsuite > results.txt &&
 if [ "`cat results.txt`" != "`cat results_reference.txt`" ]; then
