@@ -15,7 +15,7 @@ goal = "" # Default goal
 if len (sys.argv) > 1 :
   goal = sys.argv [1]
 #----------------------------------------------------------------- Get max parallel jobs as second argument
-maxParallelJobs = 0 # 0 means use host processor count
+maxParallelJobs = -1 # 0 means use host processor count
 if len (sys.argv) > 2 :
   maxParallelJobs = int (sys.argv [2])
 #----------------------------------------------------------------- Get json description dictionary
