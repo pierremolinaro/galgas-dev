@@ -2892,6 +2892,8 @@ extern const char * gWrapperFileContent_262_libpmFileWrapper ;
 extern const char * gWrapperFileContent_263_libpmFileWrapper ;
 extern const char * gWrapperFileContent_264_libpmFileWrapper ;
 extern const char * gWrapperFileContent_265_libpmFileWrapper ;
+extern const char * gWrapperFileContent_266_libpmFileWrapper ;
+extern const char * gWrapperFileContent_267_libpmFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3169,6 +3171,8 @@ extern const cRegularFileWrapper gWrapperFile_262_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_263_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_264_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_265_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_266_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_267_libpmFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3188,5 +3192,6 @@ extern const cDirectoryWrapper gWrapperDirectory_12_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_13_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_14_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_15_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_16_libpmFileWrapper ;
 
 #endif
