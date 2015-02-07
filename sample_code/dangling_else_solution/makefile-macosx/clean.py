@@ -22,8 +22,8 @@ atexit.register (cleanup)
 #--- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 #--- Directories to clean
-dir1 = scriptDir + "/../build/cli-objects/makefile-maxosx-debug-objects"
-dir2 = scriptDir + "/../build/cli-objects/makefile-maxosx-objects"
+dir1 = scriptDir + "/../build/cli-objects/makefile-macosx-debug-objects"
+dir2 = scriptDir + "/../build/cli-objects/makefile-macosx-objects"
 #--- Files to clean
 file1 = scriptDir + "/all_dangling_else_solution"
 file2 = scriptDir + "/all_dangling_else_solution-debug"

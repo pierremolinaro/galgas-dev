@@ -232,7 +232,7 @@ class Make:
                   appendToJobList = True
               if appendToJobList:
                 if not os.path.exists (os.path.dirname (absTarget)):
-                  runCommand (["mkdir", os.path.dirname (target)], "Making " + os.path.dirname (target) + " directory")
+                  runCommand (["mkdir", "-p", os.path.dirname (target)], "Making " + os.path.dirname (target) + " directory")
                 self.mJobList.append (Job (target, jobDependenceFiles, rule.mCommand, rule.mTitle))
                 needToBeBuilt = True
     return needToBeBuilt
