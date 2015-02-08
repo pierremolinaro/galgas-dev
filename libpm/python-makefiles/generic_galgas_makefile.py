@@ -46,6 +46,7 @@ class GenericGalgasMakefile :
   m_Cpp_CompilerOptions = []
   m_ObjectiveC_CompilerOptions = []
   m_ObjectiveCpp_CompilerOptions = []
+  mTargetName = ""
 
   def run (self) :
     startTime = time.time ()
@@ -72,7 +73,7 @@ class GenericGalgasMakefile :
     make = makefile.Make ()
   #--------------------------------------------------------------------------- Add Compile rule for sources
   #--- Object file directory
-    objectDirectory = os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-macosx-objects")
+    objectDirectory = os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-" + self.mTargetName + "-objects")
   #---
     objectFileList = []
     for source in SOURCES:
@@ -92,7 +93,7 @@ class GenericGalgasMakefile :
         make.addRule (objectFile, [sourcePath], command, self.mCompilationMessage + ": " + source, [], objectFile + ".dep")
   #--------------------------------------------------------------------------- Add Compile rule for sources debug
   #--- Object file directory
-    debugObjectDirectory = os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-macosx-debug-objects")
+    debugObjectDirectory = os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-" + self.mTargetName + "-debug-objects")
   #---
     debugObjectFileList = []
     for source in SOURCES:
