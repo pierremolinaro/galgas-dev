@@ -22,8 +22,8 @@ atexit.register (cleanup)
 #--- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 #--- Directories to clean
-dir1 = scriptDir + "/../build/cli-objects/makefile-x86linux32-debug-objects"
-dir2 = scriptDir + "/../build/cli-objects/makefile-x86linux32-objects"
+dir1 = scriptDir + "/../build/cli-objects/makefile-linux32-debug-objects"
+dir2 = scriptDir + "/../build/cli-objects/makefile-linux32-objects"
 #--- Files to clean
 file1 = scriptDir + "/galgas"
 file2 = scriptDir + "/galgas-debug"
