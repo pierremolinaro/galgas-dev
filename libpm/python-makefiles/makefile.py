@@ -105,6 +105,7 @@ class Job:
   mRequiredFiles = []
   mPostCommands = []
   mReturnCode = None
+  mState = 0 # 0: waiting, 1:executing, 2: waiting for executing post command, 3:executing for executing post command, 4: completed
   
   #--------------------------------------------------------------------------*
 
@@ -119,6 +120,24 @@ class Job:
 
   def run (self, displayLock, terminationSemaphore, useTitle):
     title = self.mTitle if useTitle else ""
+    displayLock.acquire ()
+    if title == "":
+      cmdAsString = ""
+      for s in self.mCommand:
+        cmdAsString += s.replace (" ", "\\ ") + " "
+      print BOLD_BLUE + cmdAsString + ENDC
+    else:
+      print BOLD_BLUE + title + ENDC
+    displayLock.release ()
+    thread = threading.Thread (target=runInThread, args=(self, displayLock, terminationSemaphore))
+    thread.start()
+
+  #--------------------------------------------------------------------------*
+
+  def runPostCommand (self, displayLock, terminationSemaphore, useTitle):
+    (self.mCommand, title) = self.mPostCommands [0]
+    if not useTitle:
+      title = ""
     displayLock.acquire ()
     if title == "":
       cmdAsString = ""
@@ -241,6 +260,7 @@ class Make:
     return needToBeBuilt
 
   #--------------------------------------------------------------------------*
+  # 0: waiting, 1:running, 2: waiting for executing post command, 3:executing for executing post command, 4: completed
 
   def runJobs (self, maxConcurrentJobs, useTitle):
     if self.mErrorCount == 0:
@@ -257,16 +277,22 @@ class Make:
         while loop:
           #--- Launch jobs in parallel
           for job in self.mJobList:
-            if (returnCode == 0) and (jobCount < maxConcurrentJobs) and (len (job.mRequiredFiles) == 0) and (job.mReturnCode == None):
+            if (job.mState == 0) and (jobCount < maxConcurrentJobs) and (len (job.mRequiredFiles) == 0):
               #--- Create target directory if does not exist
               absTargetDirectory = os.path.dirname (os.path.abspath (job.mTarget))
               if not os.path.exists (absTargetDirectory):
                 displayLock.acquire ()
                 runCommand (["mkdir", "-p", absTargetDirectory], "Making " + absTargetDirectory + " directory" if useTitle else "")
                 displayLock.release ()
+              #--- Run job
               job.run (displayLock, terminationSemaphore, useTitle)
               jobCount = jobCount + 1
-              job.mReturnCode = -1 # Means is running
+              job.mState = 1 # Means is running
+            elif (job.mState == 2) and (jobCount < maxConcurrentJobs): # Waiting for executing post command
+              job.mReturnCode = None # Means post command not terminated
+              job.runPostCommand (displayLock, terminationSemaphore, useTitle)
+              jobCount = jobCount + 1
+              job.mState = 3 # Means post command is running
           #--- Wait for a job termination
           terminationSemaphore.acquire ()
           #--- Checks for terminated jobs
@@ -274,29 +300,42 @@ class Make:
           while index < len (self.mJobList):
             job = self.mJobList [index]
             index = index + 1
-            if job.mReturnCode == -1 : # Is running
-              pass
-            elif job.mReturnCode == 0 : # Terminated without error
+            if (job.mState == 1) and (job.mReturnCode == 0) : # Terminated without error
               jobCount = jobCount - 1
-              self.mJobList.pop (index - 1) # Remove terminated job
-              index = 0 # For scanning for new job from the beginning of job list
+              if len (job.mPostCommands) > 0:
+                job.mState = 2 # Ready to execute next post command
+              else:
+                job.mState = 4 # Completed
+                index = index - 1 # For removing job from list
+            elif ((job.mState == 1)) and (job.mReturnCode > 0) : # terminated with error : exit
+              jobCount = jobCount - 1
+              job.mState = 4 # Means Terminated
+              index = index - 1 # For removing job from list
+            elif (job.mState == 3) and (job.mReturnCode == 0): # post command is terminated without error
+              jobCount = jobCount - 1
+              job.mPostCommands.pop (0) # Remove completed post command
+              if len (job.mPostCommands) > 0:
+                job.mState = 2 # Ready to execute next post command
+              else:
+                job.mState = 4 # Completed
+                index = index - 1 # For removing job from list
+            elif (job.mState == 3) and (job.mReturnCode > 0): # post command is terminated with error
+              job.mState = 4 # Completed
+              index = index - 1 # For removing job from list
+            elif job.mState == 4: # Completed: delete job
+              index = index - 1
+              self.mJobList.pop (index) # Remove terminated job
+              #--- Remove dependences from this job
               for aJob in self.mJobList:
                 if any (x == job.mTarget for x in aJob.mRequiredFiles):
                   aJob.mRequiredFiles.remove (job.mTarget)
-              #--- Run post commands
-              for (postCommand, title) in job.mPostCommands :
-                displayLock.acquire ()
-                runCommand (postCommand, title)
-                displayLock.release ()
-            elif job.mReturnCode > 0 : # terminated with error : exit
-              jobCount = jobCount - 1
-              index = index - 1
-              self.mJobList.pop (index) # Remove terminated job
-              print BOLD_RED + "Return code: " + str (job.mReturnCode) + ENDC
-              if (returnCode == 0) and (jobCount > 0) :
-                print "Wait for job termination..."
-              returnCode = job.mReturnCode
-          loop = (len (self.mJobList) > 0) if returnCode == 0 else (jobCount > 0)
+              #--- Signal error ?
+              if (job.mReturnCode > 0) and (returnCode == 0):
+                print BOLD_RED + "Return code: " + str (job.mReturnCode) + ENDC
+                if (returnCode == 0) and (jobCount > 0) :
+                  print "Wait for job termination..."
+                returnCode = job.mReturnCode
+          loop = (len (self.mJobList) > 0) if (returnCode == 0) else (jobCount > 0)
         if returnCode > 0 :
           sys.exit (returnCode)
 
