@@ -11,7 +11,7 @@ import sys, os, json
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 os.chdir (scriptDir)
 #----------------------------------------------------------------- Get goal as first argument
-goal = "" # Default goal
+goal = "all" # Default goal
 if len (sys.argv) > 1 :
   goal = sys.argv [1]
 #----------------------------------------------------------------- Get max parallel jobs as second argument

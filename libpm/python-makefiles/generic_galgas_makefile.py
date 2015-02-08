@@ -38,6 +38,7 @@ class GenericGalgasMakefile :
   mCompilationMessage = ""
   mLinkingMessage = ""
   mInstallationgMessage = ""
+  mStripMessage = ""
   mAllCompilerOptions = []
   mCompilerReleaseOptions = []
   mCompilerDebugOptions = []
@@ -88,7 +89,7 @@ class GenericGalgasMakefile :
         command += ["-o", objectFile]
         command += includeDirs
         command += ["-MD", "-MP", "-MF", objectFile + ".dep"]
-        make.addRule (objectFile, [sourcePath], command, self.mCompilationMessage + ": " + source, objectFile + ".dep")
+        make.addRule (objectFile, [sourcePath], command, self.mCompilationMessage + ": " + source, [], objectFile + ".dep")
   #--------------------------------------------------------------------------- Add Compile rule for sources debug
   #--- Object file directory
     debugObjectDirectory = os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-macosx-debug-objects")
@@ -108,48 +109,58 @@ class GenericGalgasMakefile :
         command += ["-o", objectFile]
         command += includeDirs
         command += ["-MD", "-MP", "-MF", objectFile + ".dep"]
-        make.addRule (objectFile, [sourcePath], command, self.mCompilationMessage + " - debug: " + source, objectFile + ".dep")
+        make.addRule (objectFile, [sourcePath], command, self.mCompilationMessage + " - debug: " + source, [], objectFile + ".dep")
   #--------------------------------------------------------------------------- Add EXECUTABLE file rule
     linkCommand = []
     linkCommand += self.mLinkerTool
     linkCommand += objectFileList
     linkCommand += ["-o", self.mExecutable]
-    make.addRule (self.mExecutable, objectFileList, linkCommand, self.mLinkingMessage + ": " + self.mExecutable)
+    postCommand = []
+    postCommand += self.mStripTool
+    postCommand.append (self.mExecutable)
+    postCommandList = [(postCommand, self.mStripMessage + " " + self.mExecutable)]
+    #print '[%s]' % ', '.join(map(str, postCommandList))
+    make.addRule (self.mExecutable, objectFileList, linkCommand, self.mLinkingMessage + ": " + self.mExecutable, postCommandList)
   #--------------------------------------------------------------------------- Add EXECUTABLE_DEBUG file rule
     EXECUTABLE_DEBUG = self.mExecutable + "-debug"
     linkCommand = []
     linkCommand += self.mLinkerTool
     linkCommand += debugObjectFileList
     linkCommand += ["-o", EXECUTABLE_DEBUG]
-    make.addRule (EXECUTABLE_DEBUG, debugObjectFileList, linkCommand, self.mLinkingMessage + " - debug: " + EXECUTABLE_DEBUG)
+    make.addRule (EXECUTABLE_DEBUG, debugObjectFileList, linkCommand, self.mLinkingMessage + " - debug: " + EXECUTABLE_DEBUG, [])
   #--------------------------------------------------------------------------- Add install EXECUTABLE file rule
     INSTALL_EXECUTABLE = "/usr/local/bin/" + self.mExecutable
     command = []
     command += self.mSudoTool
     command += ["cp", self.mExecutable, INSTALL_EXECUTABLE]
-    make.addRule (INSTALL_EXECUTABLE, [self.mExecutable], command, self.mInstallationgMessage + " " + self.mExecutable)
+    make.addRule (INSTALL_EXECUTABLE, [self.mExecutable], command, self.mInstallationgMessage + " " + self.mExecutable, [])
   #--------------------------------------------------------------------------- Add install EXECUTABLE-debug file rule
     INSTALL_EXECUTABLE_DEBUG = "/usr/local/bin/" + EXECUTABLE_DEBUG
     command = []
     command += self.mSudoTool
     command += ["cp", EXECUTABLE_DEBUG, INSTALL_EXECUTABLE_DEBUG]
-    make.addRule (INSTALL_EXECUTABLE_DEBUG, [EXECUTABLE_DEBUG], command, self.mInstallationgMessage + " " + EXECUTABLE_DEBUG)
+    make.addRule (INSTALL_EXECUTABLE_DEBUG, [EXECUTABLE_DEBUG], command, self.mInstallationgMessage + " " + EXECUTABLE_DEBUG, [])
   #--------------------------------------------------------------------------- Compute jobs
-    if (self.mGoal == "") or (self.mGoal == "all"):
-      make.makeJobs (self.mExecutable)
-      make.makeJobs (EXECUTABLE_DEBUG)
-    elif self.mGoal == "release":
-      make.makeJobs (self.mExecutable)
-    elif self.mGoal == "debug":
-      make.makeJobs (EXECUTABLE_DEBUG)
-    elif self.mGoal == "install-release":
-      make.makeJobs (INSTALL_EXECUTABLE)
-    elif self.mGoal == "install-debug":
-      make.makeJobs (INSTALL_EXECUTABLE_DEBUG)
-    else:
-      make.enterError ("Unknown '" + self.mGoal + "' goal; accepted: '', 'all', 'release', 'debug', 'install-release', 'install-debug'")
+    make.addGoal ("all", [self.mExecutable, EXECUTABLE_DEBUG], "Build " + self.mExecutable + " and " + EXECUTABLE_DEBUG)
+    make.addGoal ("debug", [self.mExecutable, EXECUTABLE_DEBUG], "Build " + EXECUTABLE_DEBUG)
+    make.addGoal ("release", [self.mExecutable], "Build " + self.mExecutable)
+    make.addGoal ("install-release", [INSTALL_EXECUTABLE], "Build and install " + INSTALL_EXECUTABLE)
+    make.addGoal ("install-debug", [INSTALL_EXECUTABLE_DEBUG], "Build and install " + INSTALL_EXECUTABLE_DEBUG)
+#     if self.mGoal == "all":
+#       make.makeJobs (self.mExecutable)
+#       make.makeJobs (EXECUTABLE_DEBUG)
+#     elif self.mGoal == "release":
+#       make.makeJobs (self.mExecutable)
+#     elif self.mGoal == "debug":
+#       make.makeJobs (EXECUTABLE_DEBUG)
+#     elif self.mGoal == "install-release":
+#       make.makeJobs (INSTALL_EXECUTABLE)
+#     elif self.mGoal == "install-debug":
+#       make.makeJobs (INSTALL_EXECUTABLE_DEBUG)
+#     else:
+#       make.enterError ("Unknown '" + self.mGoal + "' goal; accepted: '', 'all', 'release', 'debug', 'install-release', 'install-debug'")
   #--------------------------------------------------------------------------- Run jobs
-    make.runJobs (self.mMaxParallelJobs, self.mUseTitles)
+    make.runGoal (self.mGoal, self.mMaxParallelJobs, self.mUseTitles)
   #--------------------------------------------------------------------------- Ok ?
     make.printErrorCountAndExitOnError ()
     displayDurationFromStartTime (startTime)

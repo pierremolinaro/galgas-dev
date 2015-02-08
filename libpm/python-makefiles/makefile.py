@@ -103,15 +103,17 @@ class Job:
   mCommand = []
   mTitle = ""
   mRequiredFiles = []
+  mPostCommands = []
   mReturnCode = None
   
   #--------------------------------------------------------------------------*
 
-  def __init__ (self, target, requiredFiles, command, title):
+  def __init__ (self, target, requiredFiles, command, postCommands, title):
     self.mTarget = target
     self.mCommand = command
     self.mRequiredFiles = requiredFiles
     self.mTitle = title
+    self.mPostCommands = postCommands
 
   #--------------------------------------------------------------------------*
 
@@ -137,14 +139,16 @@ class Rule:
   mCommand = []
   mSecondaryMostRecentModificationDate = 0.0 # Far in the past
   mTitle = ""
+  mPostCommands = []
   
   #--------------------------------------------------------------------------*
 
-  def __init__ (self, dateCacheDictionary, target, sourceList, command, title, optionalDependanceFile):
+  def __init__ (self, dateCacheDictionary, target, sourceList, command, postCommands, title, optionalDependanceFile):
     self.mTarget = target
     self.mSourceList = sourceList
     self.mCommand = command
     self.mTitle = title
+    self.mPostCommands = postCommands
     if optionalDependanceFile != "":
       filePath = os.path.abspath (optionalDependanceFile)
       if os.path.exists (filePath):
@@ -173,11 +177,12 @@ class Make:
   mJobList = []
   mErrorCount = 0
   mModificationDateDictionary = {}
+  mGoals = {}
 
   #--------------------------------------------------------------------------*
 
-  def addRule (self, target, source, command, title, optionalDependanceFile = ""):
-    rule = Rule (self.mModificationDateDictionary, target, source, command, title, optionalDependanceFile)
+  def addRule (self, target, source, command, title, postCommands, optionalDependanceFile = ""):
+    rule = Rule (self.mModificationDateDictionary, target, source, command, postCommands, title, optionalDependanceFile)
     self.mRuleList.append (rule)
 
   #--------------------------------------------------------------------------*
@@ -233,7 +238,7 @@ class Make:
               if appendToJobList:
                 if not os.path.exists (os.path.dirname (absTarget)):
                   runCommand (["mkdir", "-p", os.path.dirname (target)], "Making " + os.path.dirname (target) + " directory")
-                self.mJobList.append (Job (target, jobDependenceFiles, rule.mCommand, rule.mTitle))
+                self.mJobList.append (Job (target, jobDependenceFiles, rule.mCommand, rule.mPostCommands, rule.mTitle))
                 needToBeBuilt = True
     return needToBeBuilt
 
@@ -274,6 +279,11 @@ class Make:
               for aJob in self.mJobList:
                 if any (x == job.mTarget for x in aJob.mRequiredFiles):
                   aJob.mRequiredFiles.remove (job.mTarget)
+              #--- Run post command
+              for (postCommand, title) in job.mPostCommands :
+                displayLock.acquire ()
+                runCommand (postCommand, title)
+                displayLock.release ()
             elif job.mReturnCode > 0 : # terminated with error : exit
               jobCount = jobCount - 1
               index = index - 1
@@ -310,6 +320,28 @@ class Make:
   def enterError (self, message):
     print BOLD_RED + message + ENDC
     self.mErrorCount = self.mErrorCount + 1
+
+  #--------------------------------------------------------------------------*
+
+  def addGoal (self, goal, targetList, message):
+    self.mGoals [goal] = (targetList, message)
+    #print '%s' % ', '.join(map(str, self.mGoals))
+
+  #--------------------------------------------------------------------------*
+
+  def runGoal (self, goal, maxConcurrentJobs, useTitle):
+    if self.mGoals.has_key (goal) :
+      (targetList, message) = self.mGoals [goal]
+      for target in targetList:
+        self.makeJobs (target)
+      self.runJobs (maxConcurrentJobs, useTitle)
+    else:
+      errorMessage = "The '" + goal + "' goal is not defined; defined goals:"
+      for key in self.mGoals:
+        (targetList, message) = self.mGoals [key]
+        errorMessage += "\n  '" + key + "': " + message
+      print BOLD_RED + errorMessage + ENDC
+      self.mErrorCount = self.mErrorCount + 1
 
   #--------------------------------------------------------------------------*
 
