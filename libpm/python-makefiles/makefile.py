@@ -236,8 +236,6 @@ class Make:
                 if targetDateModification < rule.mSecondaryMostRecentModificationDate:
                   appendToJobList = True
               if appendToJobList:
-                if not os.path.exists (os.path.dirname (absTarget)):
-                  runCommand (["mkdir", "-p", os.path.dirname (target)], "Making " + os.path.dirname (target) + " directory")
                 self.mJobList.append (Job (target, jobDependenceFiles, rule.mCommand, rule.mPostCommands, rule.mTitle))
                 needToBeBuilt = True
     return needToBeBuilt
@@ -260,6 +258,12 @@ class Make:
           #--- Launch jobs in parallel
           for job in self.mJobList:
             if (returnCode == 0) and (jobCount < maxConcurrentJobs) and (len (job.mRequiredFiles) == 0) and (job.mReturnCode == None):
+              #--- Create target directory if does not exist
+              absTargetDirectory = os.path.dirname (os.path.abspath (job.mTarget))
+              if not os.path.exists (absTargetDirectory):
+                displayLock.acquire ()
+                runCommand (["mkdir", "-p", absTargetDirectory], "Making " + absTargetDirectory + " directory" if useTitle else "")
+                displayLock.release ()
               job.run (displayLock, terminationSemaphore, useTitle)
               jobCount = jobCount + 1
               job.mReturnCode = -1 # Means is running
@@ -279,7 +283,7 @@ class Make:
               for aJob in self.mJobList:
                 if any (x == job.mTarget for x in aJob.mRequiredFiles):
                   aJob.mRequiredFiles.remove (job.mTarget)
-              #--- Run post command
+              #--- Run post commands
               for (postCommand, title) in job.mPostCommands :
                 displayLock.acquire ()
                 runCommand (postCommand, title)
