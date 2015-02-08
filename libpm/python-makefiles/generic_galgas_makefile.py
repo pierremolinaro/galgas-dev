@@ -47,6 +47,8 @@ class GenericGalgasMakefile :
   m_ObjectiveC_CompilerOptions = []
   m_ObjectiveCpp_CompilerOptions = []
   mTargetName = ""
+  mLinkerOptions = []
+  mExecutableSuffix = ""
 
   def run (self) :
     startTime = time.time ()
@@ -111,42 +113,48 @@ class GenericGalgasMakefile :
         command += includeDirs
         command += ["-MD", "-MP", "-MF", objectFile + ".dep"]
         make.addRule (objectFile, [sourcePath], command, self.mCompilationMessage + " - debug: " + source, [], objectFile + ".dep")
-  #--------------------------------------------------------------------------- Add EXECUTABLE file rule
+  #--------------------------------------------------------------------------- Add EXECUTABLE link rule
+    EXECUTABLE = self.mExecutable + self.mExecutableSuffix
     linkCommand = []
     linkCommand += self.mLinkerTool
     linkCommand += objectFileList
-    linkCommand += ["-o", self.mExecutable]
+    linkCommand += ["-o", EXECUTABLE]
+    linkCommand += self.mLinkerOptions
     postCommand = []
     postCommand += self.mStripTool
-    postCommand.append (self.mExecutable)
-    postCommandList = [(postCommand, self.mStripMessage + " " + self.mExecutable)]
+    postCommand.append (EXECUTABLE)
+    postCommandList = [(postCommand, self.mStripMessage + " " + EXECUTABLE)]
     #print '[%s]' % ', '.join(map(str, postCommandList))
-    make.addRule (self.mExecutable, objectFileList, linkCommand, self.mLinkingMessage + ": " + self.mExecutable, postCommandList)
-  #--------------------------------------------------------------------------- Add EXECUTABLE_DEBUG file rule
-    EXECUTABLE_DEBUG = self.mExecutable + "-debug"
+    make.addRule (EXECUTABLE, objectFileList, linkCommand, self.mLinkingMessage + ": " + EXECUTABLE, postCommandList)
+  #--------------------------------------------------------------------------- Add EXECUTABLE_DEBUG link rule
+    EXECUTABLE_DEBUG = self.mExecutable + "-debug" + self.mExecutableSuffix
     linkCommand = []
     linkCommand += self.mLinkerTool
     linkCommand += debugObjectFileList
     linkCommand += ["-o", EXECUTABLE_DEBUG]
+    linkCommand += self.mLinkerOptions
     make.addRule (EXECUTABLE_DEBUG, debugObjectFileList, linkCommand, self.mLinkingMessage + " - debug: " + EXECUTABLE_DEBUG, [])
   #--------------------------------------------------------------------------- Add install EXECUTABLE file rule
-    INSTALL_EXECUTABLE = "/usr/local/bin/" + self.mExecutable
-    command = []
-    command += self.mSudoTool
-    command += ["cp", self.mExecutable, INSTALL_EXECUTABLE]
-    make.addRule (INSTALL_EXECUTABLE, [self.mExecutable], command, self.mInstallationgMessage + " " + self.mExecutable, [])
+    if len (self.mSudoTool) > 0:
+      INSTALL_EXECUTABLE = "/usr/local/bin/" + EXECUTABLE
+      command = []
+      command += self.mSudoTool
+      command += ["cp", EXECUTABLE, INSTALL_EXECUTABLE]
+      make.addRule (INSTALL_EXECUTABLE, [EXECUTABLE], command, self.mInstallationgMessage + " " + INSTALL_EXECUTABLE, [])
   #--------------------------------------------------------------------------- Add install EXECUTABLE-debug file rule
-    INSTALL_EXECUTABLE_DEBUG = "/usr/local/bin/" + EXECUTABLE_DEBUG
-    command = []
-    command += self.mSudoTool
-    command += ["cp", EXECUTABLE_DEBUG, INSTALL_EXECUTABLE_DEBUG]
-    make.addRule (INSTALL_EXECUTABLE_DEBUG, [EXECUTABLE_DEBUG], command, self.mInstallationgMessage + " " + EXECUTABLE_DEBUG, [])
+    if len (self.mSudoTool) > 0:
+      INSTALL_EXECUTABLE_DEBUG = "/usr/local/bin/" + EXECUTABLE_DEBUG
+      command = []
+      command += self.mSudoTool
+      command += ["cp", EXECUTABLE_DEBUG, INSTALL_EXECUTABLE_DEBUG]
+      make.addRule (INSTALL_EXECUTABLE_DEBUG, [EXECUTABLE_DEBUG], command, self.mInstallationgMessage + " " + INSTALL_EXECUTABLE_DEBUG, [])
   #--------------------------------------------------------------------------- Compute jobs
-    make.addGoal ("all", [self.mExecutable, EXECUTABLE_DEBUG], "Build " + self.mExecutable + " and " + EXECUTABLE_DEBUG)
-    make.addGoal ("debug", [self.mExecutable, EXECUTABLE_DEBUG], "Build " + EXECUTABLE_DEBUG)
-    make.addGoal ("release", [self.mExecutable], "Build " + self.mExecutable)
-    make.addGoal ("install-release", [INSTALL_EXECUTABLE], "Build and install " + INSTALL_EXECUTABLE)
-    make.addGoal ("install-debug", [INSTALL_EXECUTABLE_DEBUG], "Build and install " + INSTALL_EXECUTABLE_DEBUG)
+    make.addGoal ("all", [EXECUTABLE, EXECUTABLE_DEBUG], "Build " + EXECUTABLE + " and " + EXECUTABLE_DEBUG)
+    make.addGoal ("debug", [EXECUTABLE_DEBUG], "Build " + EXECUTABLE_DEBUG)
+    make.addGoal ("release", [EXECUTABLE], "Build " + EXECUTABLE)
+    if len (self.mSudoTool) > 0:
+      make.addGoal ("install-release", [INSTALL_EXECUTABLE], "Build and install " + INSTALL_EXECUTABLE)
+      make.addGoal ("install-debug", [INSTALL_EXECUTABLE_DEBUG], "Build and install " + INSTALL_EXECUTABLE_DEBUG)
 #     if self.mGoal == "all":
 #       make.makeJobs (self.mExecutable)
 #       make.makeJobs (EXECUTABLE_DEBUG)

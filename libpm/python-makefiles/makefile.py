@@ -307,7 +307,7 @@ class Make:
         matchCount = matchCount + 1
         result = sourcePath
     if matchCount == 0:
-      print BOLD_RED + "No source file for making '" + file + "'" + ENDC
+      print BOLD_RED + "Cannot find '" + file + "'" + ENDC
       self.mErrorCount = self.mErrorCount + 1
     elif matchCount > 1:
       print BOLD_RED + str (matchCount) + " source files for making '" + file + "'" + ENDC

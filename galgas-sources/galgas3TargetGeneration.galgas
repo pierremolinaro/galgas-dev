@@ -90,8 +90,11 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
   template makefile_x86_linux64_on_macosx_makefile "makefile-x86linux64-on-macosx/makefile.galgasTemplate" ?@string PROJECT_NAME
   template clean_x86_linux64_on_macosx_makefile "makefile-x86linux64-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
 
-  template makefile_win32_on_macosx_makefile "makefile-win32-on-macosx/makefile.galgasTemplate" ?@string PROJECT_NAME
-  template clean_win32_on_macosx_makefile "makefile-win32-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template clean_win32_on_mac "makefile-win32-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_win32_on_mac "makefile-win32-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_verbose_win32_on_mac "makefile-win32-on-macosx/verbose-build.py.galgasTemplate"
+  template build_debug_win32_on_mac "makefile-win32-on-macosx/build+debug.py.galgasTemplate"
+  template build_release_win32_on_mac "makefile-win32-on-macosx/build+release.py.galgasTemplate"
 
   template makefile_msys32_on_windows_makefile "makefile-msys32-on-windows/makefile.galgasTemplate" ?@string PROJECT_NAME
 
@@ -197,13 +200,15 @@ private proc generateGalgas3MinGWOnMacOSXTarget
   ?let @string inProjectName {
   let @string dir = inProjectDirectory + "/makefile-win32-on-macosx"
   [dir makeDirectory]
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-win32-on-macosx/build.py"] writeToExecutableFileWhenDifferentContents !dir +"/build.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-win32-on-macosx/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.clean_win32_on_macosx_makefile !inProjectName] writeToExecutableFileWhenDifferentContents
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_win32_on_mac !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/build.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_release_win32_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+release.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_win32_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_win32_on_mac] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.clean_win32_on_mac !inProjectName] writeToExecutableFileWhenDifferentContents
     !dir +"/clean.py"
     ?*
   ]
-  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_win32_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
+  [@string deleteFileIfExists !dir + "/makefile"]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -219,6 +224,7 @@ private proc generateGalgas3MakefileMacOSXTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_release_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+release.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.install_macosx] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_macosx !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
+  [@string deleteFileIfExists !dir + "/makefile"]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -234,6 +240,7 @@ private proc generateGalgas3MakefileUnixTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_unix] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.install_unix] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_unix !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
+  [@string deleteFileIfExists !dir + "/makefile"]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
