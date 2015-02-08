@@ -1,7 +1,7 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
-cd $DIR/../makefile-macosx && make galgas -j `sysctl -n hw.ncpu` &&
+cd $DIR/../makefile-macosx && python build.py release &&
 PATH=$DIR/../makefile-macosx:$PATH &&
 cd $DIR &&
 rm -f galgas-book.pdf ref.* galgas-book.ilg galgas-book.ind &&
