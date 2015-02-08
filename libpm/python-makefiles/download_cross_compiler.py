@@ -4,6 +4,7 @@
 #----------------------------------------------------------------------------------------------------------------------*
  
 import urllib, os, sys, subprocess
+import tool_chain_installation_path 
 
 #----------------------------------------------------------------------------------------------------------------------*
 #   ARCHIVE DOWNLOAD                                                                                                   *
@@ -46,29 +47,32 @@ def runCommand (cmd) :
 #  MAIN                                                                                                                *
 #----------------------------------------------------------------------------------------------------------------------*
 
-#--------------------------------------------------------------------------- Get URL
-TOOL_CHAIN = sys.argv [1]
-url = "http://crossgcc.rts-software.org/downloads/galgas-tools-for-cross-compilation/" + TOOL_CHAIN + ".tar.bz2"
-print "*** TOOL CHAIN IS NOT INSTALLED"
-print "Tool chain URL: " + url
-#--------------------------------------------------------------------------- Get home directory
-homeDir = os.path.expanduser ("~")
-#--------------------------------------------------------------------------- Get installation directory
-installDir = homeDir + "/galgas-tools-for-cross-compilation"
-print "Intallation directory: " + installDir
-LOCAL_ARCHIVE = installDir + "/" + TOOL_CHAIN + ".tar.bz2"
-runCommand (["mkdir", "-p", installDir])
-#--------------------------------------------------------------------------- Download
-os.chdir (installDir)
-print "+ cd " + installDir
-runCommand (["rm", "-f", TOOL_CHAIN + ".tar.bz2"])
-runCommand (["rm", "-f", TOOL_CHAIN + ".tar"])
-downloadArchive (url, LOCAL_ARCHIVE)
-#--------------------------------------------------------------------------- Unzip
-runCommand (["bunzip2", TOOL_CHAIN + ".tar.bz2"])
-runCommand (["tar", "xf", TOOL_CHAIN + ".tar"])
-runCommand (["rm", TOOL_CHAIN + ".tar"])
-#--------------------------------------------------------------------------- Done
-print "*** DONE."
+def downloadToolChain (TOOL_CHAIN):
+  #--------------------------------------------------------------------------- Get URL
+  url = "http://crossgcc.rts-software.org/downloads/galgas-tools-for-cross-compilation/" + TOOL_CHAIN + ".tar.bz2"
+  print "*** TOOL CHAIN IS NOT INSTALLED"
+  print "Tool chain URL: " + url
+  #--------------------------------------------------------------------------- Get installation directory
+  installDir = tool_chain_installation_path.toolChainInstallationPath ()
+  print "Intallation directory: " + installDir
+  LOCAL_ARCHIVE = installDir + "/" + TOOL_CHAIN + ".tar.bz2"
+  runCommand (["mkdir", "-p", installDir])
+  #--------------------------------------------------------------------------- Save current dir and change it
+  currentDir = os.getcwd ()
+  os.chdir (installDir)
+  print "+ cd " + installDir
+  #--------------------------------------------------------------------------- Download
+  runCommand (["rm", "-f", TOOL_CHAIN + ".tar.bz2"])
+  runCommand (["rm", "-f", TOOL_CHAIN + ".tar"])
+  downloadArchive (url, LOCAL_ARCHIVE)
+  #--------------------------------------------------------------------------- Unzip
+  runCommand (["bunzip2", TOOL_CHAIN + ".tar.bz2"])
+  runCommand (["tar", "xf", TOOL_CHAIN + ".tar"])
+  runCommand (["rm", TOOL_CHAIN + ".tar"])
+  #--------------------------------------------------------------------------- Restore current dir
+  os.chdir (currentDir)
+  print "+ cd " + currentDir
+  #--------------------------------------------------------------------------- Done
+  print "*** DONE."
 
 #----------------------------------------------------------------------------------------------------------------------*
