@@ -9954,7 +9954,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "os.chdir (scriptDir)\n"
     "#----------------------------------------------------------------- Get goal as first argument\n"
-    "goal = \"\" # Default goal\n"
+    "goal = \"all\" # Default goal\n"
     "if len (sys.argv) > 1 :\n"
     "  goal = sys.argv [1]\n"
     "#----------------------------------------------------------------- Get max parallel jobs as second argument\n"

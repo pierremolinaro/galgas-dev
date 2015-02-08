@@ -24,6 +24,7 @@ def buildForMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, useTitles) :
   gmf.mCompilationMessage = "Native Compiling for Mac OS X"
   gmf.mLinkingMessage = "Native Linking for Mac OS X"
   gmf.mInstallationgMessage = "Installing"
+  gmf.mStripMessage = "Stripping"
 #--- Options for all compilers
   gmf.mAllCompilerOptions = default_build_options.allCompilerOptions (["-Wconversion"])
 #--- Options for release mode
