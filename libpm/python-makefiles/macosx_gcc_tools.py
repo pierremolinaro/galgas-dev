@@ -16,6 +16,7 @@ def buildForMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, useTitles) :
   gmf.mGoal = GOAL
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mUseTitles = useTitles
+  gmf.mTargetName = "macosx"
 #---
   gmf.mCompilerTool = ["gcc"]
   gmf.mLinkerTool   = ["g++"]
