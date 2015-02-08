@@ -7,7 +7,7 @@ import sys, time, os, json
 import makefile, default_build_options
 import generic_galgas_makefile
 import tool_chain_installation_path 
-import download_cross_compiler
+import cross_compiler_download
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -18,7 +18,7 @@ def buildForWin32OnMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, useTit
   installDir = tool_chain_installation_path.toolChainInstallationPath ()
   TOOL_CHAIN_INSTALL_PATH = installDir + "/" + TOOL_CHAIN_NAME
   if not os.path.exists (TOOL_CHAIN_INSTALL_PATH):
-    download_cross_compiler.downloadToolChain (TOOL_CHAIN_NAME)
+    cross_compiler_download.downloadToolChain (TOOL_CHAIN_NAME)
 #---
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mDictionary = dictionary

@@ -122,7 +122,7 @@ clean:
 #----------------------------------------------------------------------------------------------------------------------*
 
 $(COMPILER_PATH):
-	python $(LIBPM_DIRECTORY_PATH)/python-makefiles/download_cross_compiler.py $(TOOL_CHAIN_ARCHIVE)
+	python $(LIBPM_DIRECTORY_PATH)/included_makefiles/download_cross_compiler.py $(TOOL_CHAIN_ARCHIVE)
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
