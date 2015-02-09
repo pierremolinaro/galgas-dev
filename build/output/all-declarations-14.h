@@ -894,20 +894,6 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_file_list'                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_file_5F_list (class C_Compiler * inCompiler,
-                                                                                                  const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
-                                                                                                  const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
-                                                                                                  const class GALGAS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
-                                                                                                  const class GALGAS_stringlist & in_TOOL_5F_LINK_5F_LIST,
-                                                                                                  const class GALGAS_string & in_LIBPM_5F_DIRECTORY_5F_PATH
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                      Filewrapper template 'targetGalgas3GenerationFileWrapper json_file_list'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

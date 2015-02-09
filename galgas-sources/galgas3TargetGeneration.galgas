@@ -122,13 +122,6 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
 
   template makefile_info_plist_strings "project_xcode/English.lproj/InfoPlist.strings" ?@string PROJECT_NAME
 
-  template makefile_file_list "makefile-file-list-galgas3.galgasTemplate"
-    ?@stringset HAND_CODED_SOURCE_DIR_SET
-    ?@stringlist HAND_CODED_SOURCE_FILE_LIST
-    ?@stringlist MAKEFILE_FILE_LIST
-    ?@stringlist TOOL_LINK_LIST
-    ?@string LIBPM_DIRECTORY_PATH
-
   template json_file_list "json-file-list-galgas3.galgasTemplate"
     ?@stringset HAND_CODED_SOURCE_DIR_SET
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
@@ -483,18 +476,6 @@ proc updateGalgas3Targets
   let jsonFileListPath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list.json"
   [jsonFileListContents writeToFileWhenDifferentContents !jsonFileListPath ?*]
   ioAllProductFileSet += !"file-list.json"
-#--- Update makefile file list
-  let @string newFileListContents = [filewrapper targetGalgas3GenerationFileWrapper.makefile_file_list
-    !inHandCodedSourceDirectorySet
-    !handCodedSourceToolFileList
-    !inToolCppFileList
-    !linkOptionForLinkingFrameworkWithTool
-    !libpmPath
-
-  ]
-  let fileListPath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list.mak"
-  [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*]
-  ioAllProductFileSet += !"file-list.mak"
 #---------------------- update Xcode project
   if SDK != "" then
     let dir = projectDirectory + "/xcode-project"
