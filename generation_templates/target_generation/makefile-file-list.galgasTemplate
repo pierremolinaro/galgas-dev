@@ -49,6 +49,7 @@ SOURCES += C_CommandLineOption.cpp
 SOURCES += C_BoolCommandLineOption.cpp
 SOURCES += C_UIntCommandLineOption.cpp
 SOURCES += C_StringCommandLineOption.cpp
+SOURCES += C_StringListCommandLineOption.cpp
 SOURCES += C_builtin_CLI_Options.cpp
 SOURCES += F_Analyze_CLI_Options.cpp
 
