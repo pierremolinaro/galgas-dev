@@ -4,7 +4,7 @@
 #----------------------------------------------------------------------------------------------------------------------*
 # https://docs.python.org/2/library/subprocess.html#module-subprocess
 
-import subprocess, sys, os
+import subprocess, sys, os, copy
 import urllib, shutil
 import subprocess, re
 from time import time
@@ -110,11 +110,11 @@ class Job:
   #--------------------------------------------------------------------------*
 
   def __init__ (self, target, requiredFiles, command, postCommands, title):
-    self.mTarget = target
-    self.mCommand = command
-    self.mRequiredFiles = requiredFiles
-    self.mTitle = title
-    self.mPostCommands = postCommands
+    self.mTarget = copy.deepcopy (target)
+    self.mCommand = copy.deepcopy (command)
+    self.mRequiredFiles = copy.deepcopy (requiredFiles)
+    self.mTitle = copy.deepcopy (title)
+    self.mPostCommands = copy.deepcopy (postCommands)
 
   #--------------------------------------------------------------------------*
 
@@ -163,11 +163,11 @@ class Rule:
   #--------------------------------------------------------------------------*
 
   def __init__ (self, dateCacheDictionary, target, sourceList, command, postCommands, title, optionalDependanceFile):
-    self.mTarget = target
-    self.mSourceList = sourceList
-    self.mCommand = command
-    self.mTitle = title
-    self.mPostCommands = postCommands
+    self.mTarget = copy.deepcopy (target)
+    self.mSourceList = copy.deepcopy (sourceList)
+    self.mCommand = copy.deepcopy (command)
+    self.mTitle = copy.deepcopy (title)
+    self.mPostCommands = copy.deepcopy (postCommands)
     if optionalDependanceFile != "":
       filePath = os.path.abspath (optionalDependanceFile)
       if os.path.exists (filePath):
@@ -203,6 +203,30 @@ class Make:
   def addRule (self, target, source, command, title, postCommands, optionalDependanceFile = ""):
     rule = Rule (self.mModificationDateDictionary, target, source, command, postCommands, title, optionalDependanceFile)
     self.mRuleList.append (rule)
+
+  #--------------------------------------------------------------------------*
+
+  def printRules (self):
+    print BOLD_BLUE + "--- Print the " + str (len (self.mRuleList)) + " rule" + ("s" if len (self.mRuleList) > 1 else "") + " ---" + ENDC
+    for rule in self.mRuleList:
+      print BOLD_GREEN + "Target: '" + rule.mTarget + "'" + ENDC
+      for dep in rule.mSourceList:
+        print "  Dependence: '" + dep + "'"
+      s = "  Command: "
+      for cmd in rule.mCommand:
+        s += " \"" + cmd + "\""
+      print s
+      print "  Title: '" + rule.mTitle + "'"
+      index = 0
+      for (command, title) in rule.mPostCommands:
+        index = index + 1
+        s = "  Post command " + str (index) + ": "
+        for cmd in command:
+          s += " \"" + cmd + "\""
+        print s
+        print "  Its title: '" + title + "'"
+        
+    print BOLD_BLUE + "--- End of print rule ---" + ENDC
 
   #--------------------------------------------------------------------------*
 
@@ -260,7 +284,12 @@ class Make:
     return needToBeBuilt
 
   #--------------------------------------------------------------------------*
-  # 0: waiting, 1:running, 2: waiting for executing post command, 3:executing for executing post command, 4: completed
+  #Job state
+  # 0: waiting
+  # 1:running
+  # 2: waiting for executing post command
+  # 3:executing for executing post command
+  # 4: completed
 
   def runJobs (self, maxConcurrentJobs, useTitle):
     if self.mErrorCount == 0:
@@ -369,6 +398,19 @@ class Make:
   def addGoal (self, goal, targetList, message):
     self.mGoals [goal] = (targetList, message)
     #print '%s' % ', '.join(map(str, self.mGoals))
+
+  #--------------------------------------------------------------------------*
+
+  def printGoals (self):
+    print BOLD_BLUE + "--- Print the " + str (len (self.mGoals)) + " goal" + ("s" if len (self.mGoals) > 1 else "") + " ---" + ENDC
+    for goalKey in self.mGoals.keys ():
+      print BOLD_GREEN + "Goal: '" + goalKey + "'" + ENDC
+      (targetList, message) = self.mGoals [goalKey]
+      for target in targetList:
+        print "  Target: '" + target + "'"
+      print "  Message: '" + message + "'"
+        
+    print BOLD_BLUE + "--- End of print goals ---" + ENDC
 
   #--------------------------------------------------------------------------*
 

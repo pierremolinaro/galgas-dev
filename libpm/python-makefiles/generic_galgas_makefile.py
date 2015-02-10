@@ -149,26 +149,15 @@ class GenericGalgasMakefile :
       command += ["cp", EXECUTABLE_DEBUG, INSTALL_EXECUTABLE_DEBUG]
       make.addRule (INSTALL_EXECUTABLE_DEBUG, [EXECUTABLE_DEBUG], command, self.mInstallationgMessage + " " + INSTALL_EXECUTABLE_DEBUG, [])
   #--------------------------------------------------------------------------- Compute jobs
+    # make.printRules ()
     make.addGoal ("all", [EXECUTABLE, EXECUTABLE_DEBUG], "Build " + EXECUTABLE + " and " + EXECUTABLE_DEBUG)
     make.addGoal ("debug", [EXECUTABLE_DEBUG], "Build " + EXECUTABLE_DEBUG)
     make.addGoal ("release", [EXECUTABLE], "Build " + EXECUTABLE)
     if len (self.mSudoTool) > 0:
       make.addGoal ("install-release", [INSTALL_EXECUTABLE], "Build and install " + INSTALL_EXECUTABLE)
       make.addGoal ("install-debug", [INSTALL_EXECUTABLE_DEBUG], "Build and install " + INSTALL_EXECUTABLE_DEBUG)
-#     if self.mGoal == "all":
-#       make.makeJobs (self.mExecutable)
-#       make.makeJobs (EXECUTABLE_DEBUG)
-#     elif self.mGoal == "release":
-#       make.makeJobs (self.mExecutable)
-#     elif self.mGoal == "debug":
-#       make.makeJobs (EXECUTABLE_DEBUG)
-#     elif self.mGoal == "install-release":
-#       make.makeJobs (INSTALL_EXECUTABLE)
-#     elif self.mGoal == "install-debug":
-#       make.makeJobs (INSTALL_EXECUTABLE_DEBUG)
-#     else:
-#       make.enterError ("Unknown '" + self.mGoal + "' goal; accepted: '', 'all', 'release', 'debug', 'install-release', 'install-debug'")
   #--------------------------------------------------------------------------- Run jobs
+#    make.printGoals ()
     make.runGoal (self.mGoal, self.mMaxParallelJobs, self.mUseTitles)
   #--------------------------------------------------------------------------- Ok ?
     make.printErrorCountAndExitOnError ()
