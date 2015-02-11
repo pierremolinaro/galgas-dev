@@ -11,7 +11,7 @@ import cross_compiler_download
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-def buildForWin32OnMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, useTitles) :
+def buildForWin32OnMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
 #--- Too chain installation
   GCC_VERSION = "4.9.2"
   TOOL_CHAIN_NAME = "gcc-" + GCC_VERSION + "-for-mingw32"
@@ -25,7 +25,7 @@ def buildForWin32OnMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, useTit
   gmf.mExecutable = EXECUTABLE
   gmf.mGoal = GOAL
   gmf.mMaxParallelJobs = maxParallelJobs
-  gmf.mUseTitles = useTitles
+  gmf.mDisplayCommands = displayCommands
   gmf.mTargetName = "win32"
   gmf.mLinkerOptions = ["-lcomdlg32", "-lws2_32"]
   gmf.mExecutableSuffix = ".exe"

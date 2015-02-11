@@ -30,7 +30,7 @@ class GenericGalgasMakefile :
   mExecutable = ""
   mGoal = ""
   mMaxParallelJobs = 0
-  mUseTitles = True
+  mDisplayCommands = False
   mCompilerTool = []
   mLinkerTool = []
   mStripTool = []
@@ -158,7 +158,7 @@ class GenericGalgasMakefile :
       make.addGoal ("install-debug", [INSTALL_EXECUTABLE_DEBUG], "Build and install " + INSTALL_EXECUTABLE_DEBUG)
   #--------------------------------------------------------------------------- Run jobs
 #    make.printGoals ()
-    make.runGoal (self.mGoal, self.mMaxParallelJobs, self.mUseTitles)
+    make.runGoal (self.mGoal, self.mMaxParallelJobs, self.mDisplayCommands)
   #--------------------------------------------------------------------------- Ok ?
     make.printErrorCountAndExitOnError ()
     displayDurationFromStartTime (startTime)

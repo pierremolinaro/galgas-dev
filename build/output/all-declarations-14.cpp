@@ -9534,7 +9534,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#----------------------------------------------------------------- Build\n"
     "buildForMacOSX (dictionary, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\", goal, maxParallelJobs, maxParallelJobs != 1)\n"
+  result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;
@@ -9851,7 +9851,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#----------------------------------------------------------------- Build\n"
     "buildForUnix (dictionary, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\", goal, maxParallelJobs, maxParallelJobs != 1)\n"
+  result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;
@@ -10113,7 +10113,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#----------------------------------------------------------------- Build\n"
     "buildForLinux32OnMacOSX (dictionary, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\", goal, maxParallelJobs, maxParallelJobs != 1)\n"
+  result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;
@@ -10335,7 +10335,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#----------------------------------------------------------------- Build\n"
     "buildForLinux64OnMacOSX (dictionary, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\", goal, maxParallelJobs, maxParallelJobs != 1)\n"
+  result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;
@@ -10557,7 +10557,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#----------------------------------------------------------------- Build\n"
     "buildForWin32OnMacOSX (dictionary, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\", goal, maxParallelJobs, maxParallelJobs != 1)\n"
+  result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;

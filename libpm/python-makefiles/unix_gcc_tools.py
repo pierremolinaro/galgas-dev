@@ -9,13 +9,13 @@ import generic_galgas_makefile
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-def buildForUnix (dictionary, EXECUTABLE, GOAL, maxParallelJobs, useTitles) :
+def buildForUnix (dictionary, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mDictionary = dictionary
   gmf.mExecutable = EXECUTABLE
   gmf.mGoal = GOAL
   gmf.mMaxParallelJobs = maxParallelJobs
-  gmf.mUseTitles = useTitles
+  gmf.mDisplayCommands = displayCommands
   gmf.mTargetName = "unix"
 #---
   gmf.mCompilerTool = ["gcc"]
