@@ -27,33 +27,105 @@ def processorCount () :
   return coreCount
 
 #----------------------------------------------------------------------------------------------------------------------*
+#   fileExtension                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+def fileExtension (fileName) :
+  components = fileName.split ('.')
+  if len (components) > 0 :
+    return components [len (components) - 1]
+  else:
+    return ""
+
+#----------------------------------------------------------------------------------------------------------------------*
 #   FOR PRINTING IN COLOR                                                                                              *
 #----------------------------------------------------------------------------------------------------------------------*
 
-HEADER = '\033[95m'
-BLUE = '\033[94m'
-GREEN = '\033[92m'
-WARNING = '\033[93m'
-FAIL = '\033[91m'
-ENDC = '\033[0m'
-BOLD = '\033[1m'
-UNDERLINE = '\033[4m'
-BOLD_BLUE = '\033[1m' + '\033[94m'
-BOLD_GREEN = '\033[1m' + '\033[92m'
-BOLD_RED = '\033[1m' + '\033[91m'
+def BLACK () :
+  return '\033[90m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def RED () :
+  return '\033[91m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def GREEN () :
+  return '\033[92m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def YELLOW () :
+  return '\033[93m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def BLUE () :
+  return '\033[94m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def MAGENTA () :
+  return '\033[95m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def CYAN () :
+  return '\033[96m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def WHITE () :
+  return '\033[97m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def ENDC () :
+  return '\033[0m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def BOLD () :
+  return '\033[1m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def UNDERLINE () :
+  return '\033[4m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def BLINK () :
+  return '\033[5m'
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def BOLD_BLUE () :
+  return BOLD () + BLUE ()
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def BOLD_GREEN () :
+  return BOLD () + GREEN ()
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+def BOLD_RED () :
+  return BOLD () + RED ()
 
 #----------------------------------------------------------------------------------------------------------------------*
 #   runCommand                                                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
-def runCommand (cmd, title = "") :
-  if title == "":
+def runCommand (cmd, title, showCommand) :
+  if title != "":
+    print BOLD_BLUE () + title + ENDC ()
+  if (title == "") or showCommand :
     str = ""
     for s in cmd:
       str += s.replace (" ", "\\ ") + " "
-    print BOLD_BLUE + str + ENDC
-  else:
-    print BOLD_BLUE + title + ENDC
+    print str
   childProcess = subprocess.Popen (cmd)
   childProcess.wait ()
   if childProcess.returncode != 0 :
@@ -118,34 +190,31 @@ class Job:
 
   #--------------------------------------------------------------------------*
 
-  def run (self, displayLock, terminationSemaphore, useTitle):
-    title = self.mTitle if useTitle else ""
+  def run (self, displayLock, terminationSemaphore, showCommand):
     displayLock.acquire ()
-    if title == "":
+    if self.mTitle != "":
+      print BOLD_BLUE () + self.mTitle + ENDC ()
+    if (self.mTitle == "") or showCommand :
       cmdAsString = ""
       for s in self.mCommand:
         cmdAsString += s.replace (" ", "\\ ") + " "
-      print BOLD_BLUE + cmdAsString + ENDC
-    else:
-      print BOLD_BLUE + title + ENDC
+      print cmdAsString
     displayLock.release ()
     thread = threading.Thread (target=runInThread, args=(self, displayLock, terminationSemaphore))
     thread.start()
 
   #--------------------------------------------------------------------------*
 
-  def runPostCommand (self, displayLock, terminationSemaphore, useTitle):
+  def runPostCommand (self, displayLock, terminationSemaphore, showCommand):
     (self.mCommand, title) = self.mPostCommands [0]
-    if not useTitle:
-      title = ""
     displayLock.acquire ()
-    if title == "":
+    if title != "":
+      print BOLD_BLUE () + title + ENDC ()
+    if (title == "") or showCommand:
       cmdAsString = ""
       for s in self.mCommand:
         cmdAsString += s.replace (" ", "\\ ") + " "
-      print BOLD_BLUE + cmdAsString + ENDC
-    else:
-      print BOLD_BLUE + title + ENDC
+      print BOLD_BLUE () + cmdAsString + ENDC ()
     displayLock.release ()
     thread = threading.Thread (target=runInThread, args=(self, displayLock, terminationSemaphore))
     thread.start()
@@ -187,7 +256,7 @@ class Rule:
             modifDate = modificationDateForFile (dateCacheDictionary, secondarySource)
             if self.mSecondaryMostRecentModificationDate < modifDate :
               self.mSecondaryMostRecentModificationDate = modifDate
-              #print BOLD_BLUE + str (modifDate) + ENDC
+              #print BOLD_BLUE () + str (modifDate) + ENDC ()
   
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -207,9 +276,9 @@ class Make:
   #--------------------------------------------------------------------------*
 
   def printRules (self):
-    print BOLD_BLUE + "--- Print the " + str (len (self.mRuleList)) + " rule" + ("s" if len (self.mRuleList) > 1 else "") + " ---" + ENDC
+    print BOLD_BLUE () + "--- Print the " + str (len (self.mRuleList)) + " rule" + ("s" if len (self.mRuleList) > 1 else "") + " ---" + ENDC ()
     for rule in self.mRuleList:
-      print BOLD_GREEN + "Target: '" + rule.mTarget + "'" + ENDC
+      print BOLD_GREEN () + "Target: '" + rule.mTarget + "'" + ENDC ()
       for dep in rule.mSourceList:
         print "  Dependence: '" + dep + "'"
       s = "  Command: "
@@ -226,7 +295,7 @@ class Make:
         print s
         print "  Its title: '" + title + "'"
         
-    print BOLD_BLUE + "--- End of print rule ---" + ENDC
+    print BOLD_BLUE () + "--- End of print rule ---" + ENDC ()
 
   #--------------------------------------------------------------------------*
 
@@ -241,10 +310,10 @@ class Make:
           matchCount = matchCount + 1
       if matchCount == 0:
         if not os.path.exists (absTarget):
-          print BOLD_RED + "No rule for making '" + target + "'" + ENDC
+          print BOLD_RED () + "No rule for making '" + target + "'" + ENDC ()
           self.mErrorCount = self.mErrorCount + 1
       elif matchCount > 1:
-        print BOLD_RED + str (matchCount) + " rules for making '" + target + "'" + ENDC
+        print BOLD_RED () + str (matchCount) + " rules for making '" + target + "'" + ENDC ()
         self.mErrorCount = self.mErrorCount + 1
       elif matchCount == 1:
         for rule in self.mRuleList:
@@ -291,10 +360,10 @@ class Make:
   # 3:executing for executing post command
   # 4: completed
 
-  def runJobs (self, maxConcurrentJobs, useTitle):
+  def runJobs (self, maxConcurrentJobs, showCommand):
     if self.mErrorCount == 0:
       if len (self.mJobList) == 0:
-        print BOLD_BLUE + "Nothing to make." + ENDC
+        print BOLD_BLUE () + "Nothing to make." + ENDC ()
       else:
         if maxConcurrentJobs <= 0:
           maxConcurrentJobs = processorCount () - maxConcurrentJobs
@@ -311,15 +380,15 @@ class Make:
               absTargetDirectory = os.path.dirname (os.path.abspath (job.mTarget))
               if not os.path.exists (absTargetDirectory):
                 displayLock.acquire ()
-                runCommand (["mkdir", "-p", absTargetDirectory], "Making " + absTargetDirectory + " directory" if useTitle else "")
+                runCommand (["mkdir", "-p", absTargetDirectory], "Making " + absTargetDirectory + " directory", showCommand)
                 displayLock.release ()
               #--- Run job
-              job.run (displayLock, terminationSemaphore, useTitle)
+              job.run (displayLock, terminationSemaphore, showCommand)
               jobCount = jobCount + 1
               job.mState = 1 # Means is running
             elif (job.mState == 2) and (jobCount < maxConcurrentJobs): # Waiting for executing post command
               job.mReturnCode = None # Means post command not terminated
-              job.runPostCommand (displayLock, terminationSemaphore, useTitle)
+              job.runPostCommand (displayLock, terminationSemaphore, showCommand)
               jobCount = jobCount + 1
               job.mState = 3 # Means post command is running
           #--- Wait for a job termination
@@ -360,13 +429,12 @@ class Make:
                   aJob.mRequiredFiles.remove (job.mTarget)
               #--- Signal error ?
               if (job.mReturnCode > 0) and (returnCode == 0):
-                print BOLD_RED + "Return code: " + str (job.mReturnCode) + ENDC
+                self.mErrorCount = self.mErrorCount + 1
+                print BOLD_RED () + "Return code: " + str (job.mReturnCode) + ENDC ()
                 if (returnCode == 0) and (jobCount > 0) :
                   print "Wait for job termination..."
                 returnCode = job.mReturnCode
           loop = (len (self.mJobList) > 0) if (returnCode == 0) else (jobCount > 0)
-        if returnCode > 0 :
-          sys.exit (returnCode)
 
   #--------------------------------------------------------------------------*
 
@@ -379,19 +447,13 @@ class Make:
         matchCount = matchCount + 1
         result = sourcePath
     if matchCount == 0:
-      print BOLD_RED + "Cannot find '" + file + "'" + ENDC
+      print BOLD_RED () + "Cannot find '" + file + "'" + ENDC ()
       self.mErrorCount = self.mErrorCount + 1
     elif matchCount > 1:
-      print BOLD_RED + str (matchCount) + " source files for making '" + file + "'" + ENDC
+      print BOLD_RED () + str (matchCount) + " source files for making '" + file + "'" + ENDC ()
       self.mErrorCount = self.mErrorCount + 1
       result = ""
     return result
-
-  #--------------------------------------------------------------------------*
-
-  def enterError (self, message):
-    print BOLD_RED + message + ENDC
-    self.mErrorCount = self.mErrorCount + 1
 
   #--------------------------------------------------------------------------*
 
@@ -402,40 +464,59 @@ class Make:
   #--------------------------------------------------------------------------*
 
   def printGoals (self):
-    print BOLD_BLUE + "--- Print the " + str (len (self.mGoals)) + " goal" + ("s" if len (self.mGoals) > 1 else "") + " ---" + ENDC
+    print BOLD_BLUE () + "--- Print the " + str (len (self.mGoals)) + " goal" + ("s" if len (self.mGoals) > 1 else "") + " ---" + ENDC ()
     for goalKey in self.mGoals.keys ():
-      print BOLD_GREEN + "Goal: '" + goalKey + "'" + ENDC
+      print BOLD_GREEN () + "Goal: '" + goalKey + "'" + ENDC ()
       (targetList, message) = self.mGoals [goalKey]
       for target in targetList:
         print "  Target: '" + target + "'"
       print "  Message: '" + message + "'"
         
-    print BOLD_BLUE + "--- End of print goals ---" + ENDC
+    print BOLD_BLUE () + "--- End of print goals ---" + ENDC ()
 
   #--------------------------------------------------------------------------*
 
-  def runGoal (self, goal, maxConcurrentJobs, useTitle):
+  def runGoal (self, goal, maxConcurrentJobs, showCommand):
     if self.mGoals.has_key (goal) :
       (targetList, message) = self.mGoals [goal]
       for target in targetList:
         self.makeJobs (target)
-      self.runJobs (maxConcurrentJobs, useTitle)
+      self.runJobs (maxConcurrentJobs, showCommand)
     else:
       errorMessage = "The '" + goal + "' goal is not defined; defined goals:"
       for key in self.mGoals:
         (targetList, message) = self.mGoals [key]
         errorMessage += "\n  '" + key + "': " + message
-      print BOLD_RED + errorMessage + ENDC
+      print BOLD_RED () + errorMessage + ENDC ()
       self.mErrorCount = self.mErrorCount + 1
+
+  #--------------------------------------------------------------------------*
+
+  def enterError (self, message):
+    print BOLD_RED () + message + ENDC ()
+    self.mErrorCount = self.mErrorCount + 1
 
   #--------------------------------------------------------------------------*
 
   def printErrorCountAndExitOnError (self):
     if self.mErrorCount == 1:
-      print BOLD_RED + "1 error." + ENDC
+      print BOLD_RED () + "1 error." + ENDC ()
       sys.exit (1)
     elif self.mErrorCount > 1:
-      print BOLD_RED + str (self.mErrorCount) + " errors." + ENDC
+      print BOLD_RED () + str (self.mErrorCount) + " errors." + ENDC ()
       sys.exit (1)
+
+  #--------------------------------------------------------------------------*
+
+  def printErrorCount (self):
+    if self.mErrorCount == 1:
+      print BOLD_RED () + "1 error." + ENDC ()
+    elif self.mErrorCount > 1:
+      print BOLD_RED () + str (self.mErrorCount) + " errors." + ENDC ()
+
+  #--------------------------------------------------------------------------*
+
+  def errorCount (self):
+    return self.mErrorCount
 
 #----------------------------------------------------------------------------------------------------------------------*
