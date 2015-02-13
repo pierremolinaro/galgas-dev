@@ -9,13 +9,13 @@ import generic_galgas_makefile
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-def buildForMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, useTitles) :
+def buildForMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, showCommands) :
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mDictionary = dictionary
   gmf.mExecutable = EXECUTABLE
   gmf.mGoal = GOAL
   gmf.mMaxParallelJobs = maxParallelJobs
-  gmf.mUseTitles = useTitles
+  gmf.mDisplayCommands = showCommands
   gmf.mTargetName = "macosx"
 #---
   gmf.mCompilerTool = ["gcc"]
