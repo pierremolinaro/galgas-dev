@@ -10,7 +10,7 @@ import subprocess, re
 from time import time
 import platform
 import json
-import threading
+import threading, operator
 
 if sys.version_info >= (2, 6) :
   import multiprocessing
@@ -25,17 +25,6 @@ def processorCount () :
   else:
     coreCount = 1
   return coreCount
-
-#----------------------------------------------------------------------------------------------------------------------*
-#   fileExtension                                                                                                     *
-#----------------------------------------------------------------------------------------------------------------------*
-
-def fileExtension (fileName) :
-  components = fileName.split ('.')
-  if len (components) > 0 :
-    return components [len (components) - 1]
-  else:
-    return ""
 
 #----------------------------------------------------------------------------------------------------------------------*
 #   FOR PRINTING IN COLOR                                                                                              *
@@ -115,6 +104,23 @@ def BOLD_RED () :
   return BOLD () + RED ()
 
 #----------------------------------------------------------------------------------------------------------------------*
+#   runHiddenCommand                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+def runHiddenCommand (cmd) :
+  result = ""
+  childProcess = subprocess.Popen (cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+  while True:
+    line = childProcess.stdout.readline ()
+    if line != "":
+      result += line
+    else:
+      childProcess.wait ()
+      if childProcess.returncode != 0 :
+        sys.exit (childProcess.returncode)
+      return result
+
+#----------------------------------------------------------------------------------------------------------------------*
 #   runCommand                                                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -122,10 +128,13 @@ def runCommand (cmd, title, showCommand) :
   if title != "":
     print BOLD_BLUE () + title + ENDC ()
   if (title == "") or showCommand :
-    str = ""
+    cmdAsString = ""
     for s in cmd:
-      str += s.replace (" ", "\\ ") + " "
-    print str
+      if (s == "") or (s.find (" ") >= 0):
+        cmdAsString += '"' + s + '" '
+      else:
+        cmdAsString += s + ' '
+    print cmdAsString
   childProcess = subprocess.Popen (cmd)
   childProcess.wait ()
   if childProcess.returncode != 0 :
@@ -167,7 +176,21 @@ def modificationDateForFile (dateCacheDictionary, file):
     return date
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   MAKE                                                                                                               *
+#   class PostCommand                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class PostCommand:
+  mCommand = []
+  mTitle = ""
+
+  #--------------------------------------------------------------------------*
+
+  def __init__ (self, title = ""):
+    self.mCommand = []
+    self.mTitle = title
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   class Job                                                                                                          *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class Job:
@@ -177,16 +200,18 @@ class Job:
   mRequiredFiles = []
   mPostCommands = []
   mReturnCode = None
-  mState = 0 # 0: waiting, 1:executing, 2: waiting for executing post command, 3:executing for executing post command, 4: completed
+  mPriority = 0
+  mState = 0 # 0: waiting for execution
   
   #--------------------------------------------------------------------------*
 
-  def __init__ (self, target, requiredFiles, command, postCommands, title):
+  def __init__ (self, target, requiredFiles, command, postCommands, priority, title):
     self.mTarget = copy.deepcopy (target)
     self.mCommand = copy.deepcopy (command)
     self.mRequiredFiles = copy.deepcopy (requiredFiles)
     self.mTitle = copy.deepcopy (title)
     self.mPostCommands = copy.deepcopy (postCommands)
+    self.mPriority = priority
 
   #--------------------------------------------------------------------------*
 
@@ -197,7 +222,10 @@ class Job:
     if (self.mTitle == "") or showCommand :
       cmdAsString = ""
       for s in self.mCommand:
-        cmdAsString += s.replace (" ", "\\ ") + " "
+        if (s == "") or (s.find (" ") >= 0):
+          cmdAsString += '"' + s + '" '
+        else:
+          cmdAsString += s + ' '
       print cmdAsString
     displayLock.release ()
     thread = threading.Thread (target=runInThread, args=(self, displayLock, terminationSemaphore))
@@ -206,45 +234,61 @@ class Job:
   #--------------------------------------------------------------------------*
 
   def runPostCommand (self, displayLock, terminationSemaphore, showCommand):
-    (self.mCommand, title) = self.mPostCommands [0]
+    postCommand = self.mPostCommands [0]
+    self.mCommand = postCommand.mCommand
     displayLock.acquire ()
-    if title != "":
-      print BOLD_BLUE () + title + ENDC ()
-    if (title == "") or showCommand:
+    print BOLD_BLUE () + postCommand.mTitle + ENDC ()
+    if showCommand:
       cmdAsString = ""
       for s in self.mCommand:
-        cmdAsString += s.replace (" ", "\\ ") + " "
-      print BOLD_BLUE () + cmdAsString + ENDC ()
+        if (s == "") or (s.find (" ") >= 0):
+          cmdAsString += '"' + s + '" '
+        else:
+          cmdAsString += s + ' '
+      print cmdAsString
     displayLock.release ()
     thread = threading.Thread (target=runInThread, args=(self, displayLock, terminationSemaphore))
     thread.start()
 
 #----------------------------------------------------------------------------------------------------------------------*
+#   class Rule                                                                                                         *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class Rule:
   mTarget = ""
-  mSourceList = []
+  mDependences = []
   mCommand = []
   mSecondaryMostRecentModificationDate = 0.0 # Far in the past
   mTitle = ""
   mPostCommands = []
+  mPriority = 0
   
   #--------------------------------------------------------------------------*
 
-  def __init__ (self, dateCacheDictionary, target, sourceList, command, postCommands, title, optionalDependanceFile):
+  def __init__ (self, target, title = ""):
     self.mTarget = copy.deepcopy (target)
-    self.mSourceList = copy.deepcopy (sourceList)
-    self.mCommand = copy.deepcopy (command)
-    self.mTitle = copy.deepcopy (title)
-    self.mPostCommands = copy.deepcopy (postCommands)
-    if optionalDependanceFile != "":
-      filePath = os.path.abspath (optionalDependanceFile)
+    self.mDependences = []
+    self.mCommand = []
+    self.mSecondaryMostRecentModificationDate = 0.0
+    self.mPostCommands = []
+    self.mPriority = 0
+    if title == "":
+      self.mTitle = "Building " + target
+    else:
+      self.mTitle = copy.deepcopy (title)
+  
+  #--------------------------------------------------------------------------*
+
+  def enterSecondaryDependanceFile (self, secondaryDependanceFile):
+    if secondaryDependanceFile != "":
+      filePath = os.path.abspath (secondaryDependanceFile)
       if os.path.exists (filePath):
         f = open (filePath, "r")
         s = f.read ().replace ("\\ ", "\x01") # Read and replace escaped spaces by \0x01
         f.close ()
         s = s.replace ("\\\n", "")
         liste = s.split ("\n\n")
+        dateCacheDictionary = {}
         for s in liste:
           components = s.split (':')
           target = components [0].replace ("\x01", " ")
@@ -257,7 +301,9 @@ class Rule:
             if self.mSecondaryMostRecentModificationDate < modifDate :
               self.mSecondaryMostRecentModificationDate = modifDate
               #print BOLD_BLUE () + str (modifDate) + ENDC ()
-  
+    
+#----------------------------------------------------------------------------------------------------------------------*
+#   class Make                                                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class Make:
@@ -269,9 +315,8 @@ class Make:
 
   #--------------------------------------------------------------------------*
 
-  def addRule (self, target, source, command, title, postCommands, optionalDependanceFile = ""):
-    rule = Rule (self.mModificationDateDictionary, target, source, command, postCommands, title, optionalDependanceFile)
-    self.mRuleList.append (rule)
+  def addRule (self, rule):
+    self.mRuleList.append (copy.deepcopy (rule))
 
   #--------------------------------------------------------------------------*
 
@@ -279,7 +324,7 @@ class Make:
     print BOLD_BLUE () + "--- Print the " + str (len (self.mRuleList)) + " rule" + ("s" if len (self.mRuleList) > 1 else "") + " ---" + ENDC ()
     for rule in self.mRuleList:
       print BOLD_GREEN () + "Target: '" + rule.mTarget + "'" + ENDC ()
-      for dep in rule.mSourceList:
+      for dep in rule.mDependences:
         print "  Dependence: '" + dep + "'"
       s = "  Command: "
       for cmd in rule.mCommand:
@@ -299,58 +344,133 @@ class Make:
 
   #--------------------------------------------------------------------------*
 
-  def makeJobs (self, target):
-    needToBeBuilt = False
+  def writeRuleDependancesInDotFile (self, dotFileName):
+    s = "digraph G {\n"
+    s += "  node [fontname=courier]\n"
+    arrowSet = set ()
+    for rule in self.mRuleList:
+      s += '  "' + rule.mTarget + '" [shape=rectangle]\n'
+      for dep in rule.mDependences:
+        arrowSet.add ('  "' + rule.mTarget + '" -> "' + dep + '"\n')
+    for arrow in arrowSet:
+      s += arrow
+    s += "}\n"
+    f = open (dotFileName, "w")
+    f.write (s)
+    f.close ()
+
+  #--------------------------------------------------------------------------*
+
+  def checkRules (self):
     if self.mErrorCount == 0:
-      absTarget = os.path.abspath (target)
-      #--- Find a rule for making the target
-      matchCount = 0
-      for rule in self.mRuleList:
-        if target == rule.mTarget:
-          matchCount = matchCount + 1
-      if matchCount == 0:
-        if not os.path.exists (absTarget):
-          print BOLD_RED () + "No rule for making '" + target + "'" + ENDC ()
-          self.mErrorCount = self.mErrorCount + 1
-      elif matchCount > 1:
-        print BOLD_RED () + str (matchCount) + " rules for making '" + target + "'" + ENDC ()
-        self.mErrorCount = self.mErrorCount + 1
-      elif matchCount == 1:
-        for rule in self.mRuleList:
-          if target == rule.mTarget:
-          #--- Target already in job list ?
-            jobInJobList = False
-            for job in self.mJobList:
-              if job.mTarget == target:
-                jobInJobList = True
+      ruleList = copy.deepcopy (self.mRuleList)
+      index = 0
+      looping = True
+    #--- loop on rules
+      while looping:
+        looping = False
+        while index < len (ruleList):
+          aRule = ruleList [index]
+          index = index + 1
+        #--- Check dependance files have rule for building, or does exist
+          depIdx = 0
+          while depIdx < len (aRule.mDependences):
+            dep = aRule.mDependences [depIdx]
+            depIdx = depIdx + 1
+            hasBuildRule = False
+            for r in ruleList:
+              if dep == r.mTarget:
+                hasBuildRule = True
                 break
-          #--- Not in job list ?
-            if not jobInJobList:
-              appendToJobList = not os.path.exists (absTarget)
-            #--- Build primary file
-              jobDependenceFiles = []
-              for source in rule.mSourceList:
-                built = self.makeJobs (source)
-                if built:
-                  jobDependenceFiles.append (source)
-                  appendToJobList = True
-            #--- Check primary file modification dates
-              if not appendToJobList:
-                targetDateModification = os.path.getmtime (absTarget)
-                for source in rule.mSourceList:
-                  sourceDateModification = os.path.getmtime (source)
-                  if targetDateModification < sourceDateModification:
-                    appendToJobList = True
-                    break
-            #--- Check for secondary dependancy files
-              if not appendToJobList:
-                targetDateModification = os.path.getmtime (absTarget)
-                if targetDateModification < rule.mSecondaryMostRecentModificationDate:
-                  appendToJobList = True
-              if appendToJobList:
-                self.mJobList.append (Job (target, jobDependenceFiles, rule.mCommand, rule.mPostCommands, rule.mTitle))
-                needToBeBuilt = True
-    return needToBeBuilt
+            if not hasBuildRule:
+              looping = True
+              if not os.path.exists (os.path.abspath (dep)):
+                self.mErrorCount = self.mErrorCount + 1
+                print BOLD_RED () + "Check rules error: '" + dep + "' does not exist, and there is no rule for building it." + ENDC ()
+              depIdx = depIdx - 1
+              aRule.mDependences.pop (depIdx)
+        #--- Rule with no dependances
+          if len (aRule.mDependences) == 0 :
+            looping = True
+            index = index - 1
+            ruleList.pop (index)
+            idx = 0
+            while idx < len (ruleList):
+              r = ruleList [idx]
+              idx = idx + 1
+              while r.mDependences.count (aRule.mTarget) > 0 :
+                r.mDependences.remove (aRule.mTarget)
+    #--- Error if rules remain
+      if len (ruleList) > 0:
+        self.mErrorCount = self.mErrorCount + 1
+        print BOLD_RED () + "Check rules error; circulary dependances between:" + ENDC ()
+        for aRule in ruleList: 
+          print BOLD_RED () + "  - '" + aRule.mTarget + "', depends from:" + ENDC ()
+          for dep in aRule.mDependences:
+            print BOLD_RED () + "      '" + dep + "'" + ENDC ()
+
+  #--------------------------------------------------------------------------*
+
+  def existsJobForTarget (self, target):
+    for job in self.mJobList:
+      if job.mTarget == target:
+        return True
+    return False
+
+  #--------------------------------------------------------------------------*
+
+  def makeJob (self, target): # Return a bool indicating wheither the target should be built
+  #--- If there are errors, return immediatly
+    if self.mErrorCount != 0:
+      return False
+  #--- Target already in job list ?
+    if self.existsJobForTarget (target):
+      return True # yes, return target will be built
+  #--- Find a rule for making the target
+    absTarget = os.path.abspath (target)
+    rule = None
+    matchCount = 0
+    for r in self.mRuleList:
+      if target == r.mTarget:
+        matchCount = matchCount + 1
+        rule = r
+    if matchCount == 0:
+      absTarget = os.path.abspath (target)
+      if not os.path.exists (absTarget):
+        print BOLD_RED () + "No rule for making '" + target + "'" + ENDC ()
+        self.mErrorCount = self.mErrorCount + 1
+      return False # Error or target exists, and no rule for building it
+    elif matchCount > 1:
+      print BOLD_RED () + str (matchCount) + " rules for making '" + target + "'" + ENDC ()
+      self.mErrorCount = self.mErrorCount + 1
+      return False # Error
+  #--- Target file does not exist, and 'rule' variable indicates how build it
+    appendToJobList = not os.path.exists (absTarget)
+  #--- Build primary dependences
+    jobDependenceFiles = []
+    for dependence in rule.mDependences:
+      willBeBuilt = self.makeJob (dependence)
+      if willBeBuilt:
+        jobDependenceFiles.append (dependence)
+        appendToJobList = True
+  #--- Check primary file modification dates
+    if not appendToJobList:
+      targetDateModification = os.path.getmtime (absTarget)
+      for source in rule.mDependences:
+        sourceDateModification = os.path.getmtime (source)
+        if targetDateModification < sourceDateModification:
+          appendToJobList = True
+          break
+  #--- Check for secondary dependancy files
+    if not appendToJobList:
+      targetDateModification = os.path.getmtime (absTarget)
+      if targetDateModification < rule.mSecondaryMostRecentModificationDate:
+        appendToJobList = True
+  #--- Append to job list
+    if appendToJobList:
+      self.mJobList.append (Job (target, jobDependenceFiles, rule.mCommand, rule.mPostCommands, rule.mPriority, rule.mTitle))
+  #--- Return
+    return appendToJobList
 
   #--------------------------------------------------------------------------*
   #Job state
@@ -365,6 +485,9 @@ class Make:
       if len (self.mJobList) == 0:
         print BOLD_BLUE () + "Nothing to make." + ENDC ()
       else:
+      #--- Sort jobs following their priorities
+        self.mJobList = sorted (self.mJobList, key=operator.attrgetter("mPriority"), reverse=True)
+      #--- Run
         if maxConcurrentJobs <= 0:
           maxConcurrentJobs = processorCount () - maxConcurrentJobs
         jobCount = 0 ;
@@ -373,27 +496,29 @@ class Make:
         loop = True
         returnCode = 0
         while loop:
-          #--- Launch jobs in parallel
+        #--- Launch jobs in parallel
           for job in self.mJobList:
-            if (job.mState == 0) and (jobCount < maxConcurrentJobs) and (len (job.mRequiredFiles) == 0):
-              #--- Create target directory if does not exist
-              absTargetDirectory = os.path.dirname (os.path.abspath (job.mTarget))
-              if not os.path.exists (absTargetDirectory):
-                displayLock.acquire ()
-                runCommand (["mkdir", "-p", absTargetDirectory], "Making " + absTargetDirectory + " directory", showCommand)
-                displayLock.release ()
-              #--- Run job
-              job.run (displayLock, terminationSemaphore, showCommand)
-              jobCount = jobCount + 1
-              job.mState = 1 # Means is running
-            elif (job.mState == 2) and (jobCount < maxConcurrentJobs): # Waiting for executing post command
-              job.mReturnCode = None # Means post command not terminated
-              job.runPostCommand (displayLock, terminationSemaphore, showCommand)
-              jobCount = jobCount + 1
-              job.mState = 3 # Means post command is running
-          #--- Wait for a job termination
+            if (returnCode == 0) and (jobCount < maxConcurrentJobs):
+              if (job.mState == 0) and (len (job.mRequiredFiles) == 0):
+                #--- Create target directory if does not exist
+                absTargetDirectory = os.path.dirname (os.path.abspath (job.mTarget))
+                if not os.path.exists (absTargetDirectory):
+                  displayLock.acquire ()
+                  runCommand (["mkdir", "-p", absTargetDirectory], "Making " + absTargetDirectory + " directory", showCommand)
+                  displayLock.release ()
+                #--- Run job
+                job.run (displayLock, terminationSemaphore, showCommand)
+                jobCount = jobCount + 1
+                job.mState = 1 # Means is running
+              elif job.mState == 2: # Waiting for executing post command
+                job.mReturnCode = None # Means post command not terminated
+                job.runPostCommand (displayLock, terminationSemaphore, showCommand)
+                jobCount = jobCount + 1
+                job.mState = 3 # Means post command is running
+        #--- Wait for a job termination
+          #print "wait " + str (jobCount) + " " + str (len (self.mJobList))
           terminationSemaphore.acquire ()
-          #--- Checks for terminated jobs
+        #--- Checks for terminated jobs
           index = 0
           while index < len (self.mJobList):
             job = self.mJobList [index]
@@ -405,7 +530,7 @@ class Make:
               else:
                 job.mState = 4 # Completed
                 index = index - 1 # For removing job from list
-            elif ((job.mState == 1)) and (job.mReturnCode > 0) : # terminated with error : exit
+            elif (job.mState == 1) and (job.mReturnCode > 0) : # terminated with error : exit
               jobCount = jobCount - 1
               job.mState = 4 # Means Terminated
               index = index - 1 # For removing job from list
@@ -418,15 +543,23 @@ class Make:
                 job.mState = 4 # Completed
                 index = index - 1 # For removing job from list
             elif (job.mState == 3) and (job.mReturnCode > 0): # post command is terminated with error
+              jobCount = jobCount - 1
               job.mState = 4 # Completed
               index = index - 1 # For removing job from list
             elif job.mState == 4: # Completed: delete job
               index = index - 1
               self.mJobList.pop (index) # Remove terminated job
+              #displayLock.acquire ()
+              #print "Completed '" + job.mTitle + "'"
               #--- Remove dependences from this job
-              for aJob in self.mJobList:
-                if any (x == job.mTarget for x in aJob.mRequiredFiles):
+              idx = 0
+              while idx < len (self.mJobList):
+                aJob = self.mJobList [idx]
+                idx = idx + 1
+                while aJob.mRequiredFiles.count (job.mTarget) > 0 :
                   aJob.mRequiredFiles.remove (job.mTarget)
+                  #print "  Removed from '" + aJob.mTitle + "': " + str (len (aJob.mRequiredFiles))
+              #displayLock.release ()
               #--- Signal error ?
               if (job.mReturnCode > 0) and (returnCode == 0):
                 self.mErrorCount = self.mErrorCount + 1
@@ -480,7 +613,7 @@ class Make:
     if self.mGoals.has_key (goal) :
       (targetList, message) = self.mGoals [goal]
       for target in targetList:
-        self.makeJobs (target)
+        self.makeJob (target)
       self.runJobs (maxConcurrentJobs, showCommand)
     else:
       errorMessage = "The '" + goal + "' goal is not defined; defined goals:"

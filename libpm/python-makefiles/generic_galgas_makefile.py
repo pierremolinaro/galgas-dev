@@ -83,16 +83,33 @@ class GenericGalgasMakefile :
       objectFileList.append (objectFile)
       sourcePath = make.searchFileInDirectories (source, SOURCES_DIR)
       if sourcePath != "" :
-        command = []
-        command += self.mCompilerTool
-        command += self.mCompilerReleaseOptions
-        command += self.mAllCompilerOptions
-        command += self.m_Cpp_CompilerOptions
-        command += ["-c", sourcePath]
-        command += ["-o", objectFile]
-        command += includeDirs
-        command += ["-MD", "-MP", "-MF", objectFile + ".dep"]
-        make.addRule (objectFile, [sourcePath], command, self.mCompilationMessage + ": " + source, [], objectFile + ".dep")
+        rule = makefile.Rule (objectFile, self.mCompilationMessage + ": " + source)
+        #rule.mPriority = os.path.getsize (os.path.abspath (sourcePath))
+        rule.mDependences.append (sourcePath)
+        rule.enterSecondaryDependanceFile (objectFile + ".dep")
+        rule.mCommand += self.mCompilerTool
+        rule.mCommand += self.mCompilerReleaseOptions
+        rule.mCommand += self.mAllCompilerOptions
+        rule.mCommand += self.m_Cpp_CompilerOptions
+        rule.mCommand += ["-c", sourcePath]
+        rule.mCommand += ["-o", objectFile]
+        rule.mCommand += includeDirs
+        rule.mCommand += ["-MD", "-MP", "-MF", objectFile + ".dep"]
+        make.addRule (rule) ;
+  #--------------------------------------------------------------------------- Add EXECUTABLE link rule
+    EXECUTABLE = self.mExecutable + self.mExecutableSuffix
+    rule = makefile.Rule (EXECUTABLE, self.mLinkingMessage + ": " + EXECUTABLE)
+    rule.mDependences += objectFileList
+    rule.mCommand += self.mLinkerTool
+    rule.mCommand += objectFileList
+    rule.mCommand += ["-o", EXECUTABLE]
+    rule.mCommand += self.mLinkerOptions
+    postCommand = makefile.PostCommand (self.mStripMessage + " " + EXECUTABLE)
+    postCommand.mCommand += self.mStripTool
+    postCommand.mCommand.append (EXECUTABLE)
+    rule.mPostCommands.append (postCommand)
+    rule.mPriority = 1
+    make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add Compile rule for sources debug
   #--- Object file directory
     debugObjectDirectory = os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-" + self.mTargetName + "-debug-objects")
@@ -103,51 +120,44 @@ class GenericGalgasMakefile :
       debugObjectFileList.append (objectFile)
       sourcePath = make.searchFileInDirectories (source, SOURCES_DIR)
       if sourcePath != "" :
-        command = []
-        command += self.mCompilerTool
-        command += self.mCompilerDebugOptions
-        command += self.mAllCompilerOptions
-        command += self.m_Cpp_CompilerOptions
-        command += ["-c", sourcePath]
-        command += ["-o", objectFile]
-        command += includeDirs
-        command += ["-MD", "-MP", "-MF", objectFile + ".dep"]
-        make.addRule (objectFile, [sourcePath], command, self.mCompilationMessage + " - debug: " + source, [], objectFile + ".dep")
-  #--------------------------------------------------------------------------- Add EXECUTABLE link rule
-    EXECUTABLE = self.mExecutable + self.mExecutableSuffix
-    linkCommand = []
-    linkCommand += self.mLinkerTool
-    linkCommand += objectFileList
-    linkCommand += ["-o", EXECUTABLE]
-    linkCommand += self.mLinkerOptions
-    postCommand = []
-    postCommand += self.mStripTool
-    postCommand.append (EXECUTABLE)
-    postCommandList = [(postCommand, self.mStripMessage + " " + EXECUTABLE)]
-    #print '[%s]' % ', '.join(map(str, postCommandList))
-    make.addRule (EXECUTABLE, objectFileList, linkCommand, self.mLinkingMessage + ": " + EXECUTABLE, postCommandList)
+        rule = makefile.Rule (objectFile, self.mCompilationMessage + " (debug): " + source)
+        #rule.mPriority = os.path.getsize (os.path.abspath (sourcePath))
+        rule.mDependences.append (sourcePath)
+        rule.enterSecondaryDependanceFile (objectFile + ".dep")
+        rule.mCommand += self.mCompilerTool
+        rule.mCommand += self.mCompilerDebugOptions
+        rule.mCommand += self.mAllCompilerOptions
+        rule.mCommand += self.m_Cpp_CompilerOptions
+        rule.mCommand += ["-c", sourcePath]
+        rule.mCommand += ["-o", objectFile]
+        rule.mCommand += includeDirs
+        rule.mCommand += ["-MD", "-MP", "-MF", objectFile + ".dep"]
+        make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add EXECUTABLE_DEBUG link rule
     EXECUTABLE_DEBUG = self.mExecutable + "-debug" + self.mExecutableSuffix
-    linkCommand = []
-    linkCommand += self.mLinkerTool
-    linkCommand += debugObjectFileList
-    linkCommand += ["-o", EXECUTABLE_DEBUG]
-    linkCommand += self.mLinkerOptions
-    make.addRule (EXECUTABLE_DEBUG, debugObjectFileList, linkCommand, self.mLinkingMessage + " - debug: " + EXECUTABLE_DEBUG, [])
+    rule = makefile.Rule (EXECUTABLE_DEBUG, self.mLinkingMessage + " (debug): " + EXECUTABLE_DEBUG)
+    rule.mDependences += debugObjectFileList
+    rule.mCommand += self.mLinkerTool
+    rule.mCommand += debugObjectFileList
+    rule.mCommand += ["-o", EXECUTABLE_DEBUG]
+    rule.mCommand += self.mLinkerOptions
+    make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add install EXECUTABLE file rule
     if len (self.mSudoTool) > 0:
       INSTALL_EXECUTABLE = "/usr/local/bin/" + EXECUTABLE
-      command = []
-      command += self.mSudoTool
-      command += ["cp", EXECUTABLE, INSTALL_EXECUTABLE]
-      make.addRule (INSTALL_EXECUTABLE, [EXECUTABLE], command, self.mInstallationgMessage + " " + INSTALL_EXECUTABLE, [])
+      rule = makefile.Rule (INSTALL_EXECUTABLE, self.mInstallationgMessage + ": " + INSTALL_EXECUTABLE)
+      rule.mDependences.append (EXECUTABLE)
+      rule.mCommand += self.mSudoTool
+      rule.mCommand += ["cp", EXECUTABLE, INSTALL_EXECUTABLE]
+      make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add install EXECUTABLE-debug file rule
     if len (self.mSudoTool) > 0:
       INSTALL_EXECUTABLE_DEBUG = "/usr/local/bin/" + EXECUTABLE_DEBUG
-      command = []
-      command += self.mSudoTool
-      command += ["cp", EXECUTABLE_DEBUG, INSTALL_EXECUTABLE_DEBUG]
-      make.addRule (INSTALL_EXECUTABLE_DEBUG, [EXECUTABLE_DEBUG], command, self.mInstallationgMessage + " " + INSTALL_EXECUTABLE_DEBUG, [])
+      rule = makefile.Rule (INSTALL_EXECUTABLE_DEBUG, self.mInstallationgMessage + " (debug): " + INSTALL_EXECUTABLE_DEBUG)
+      rule.mDependences.append (INSTALL_EXECUTABLE_DEBUG)
+      rule.mCommand += self.mSudoTool
+      rule.mCommand += ["cp", EXECUTABLE_DEBUG, INSTALL_EXECUTABLE_DEBUG]
+      make.addRule (rule) ;
   #--------------------------------------------------------------------------- Compute jobs
     # make.printRules ()
     make.addGoal ("all", [EXECUTABLE, EXECUTABLE_DEBUG], "Build " + EXECUTABLE + " and " + EXECUTABLE_DEBUG)
