@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2002, ..., 2010 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2002, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -34,7 +34,7 @@ C_ConsoleOut::C_ConsoleOut (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Flush output                                               *
+//                  Flush output                                                                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -44,13 +44,12 @@ void C_ConsoleOut::flush (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Write a character string on the console                    *
+//                  Write a character string on the console                                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_ConsoleOut::
-performActualCharArrayOutput (const char * inCharArray,
-                              const int32_t inArrayCount) {
+void C_ConsoleOut::performActualCharArrayOutput (const char * inCharArray,
+                                                 const int32_t inArrayCount) {
   if (inArrayCount > 0) {
     printf ("%.*s", (int) inArrayCount, inCharArray) ;
   }
@@ -66,9 +65,8 @@ performActualCharArrayOutput (const char * inCharArray,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_ConsoleOut::
-performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                 const int32_t inArrayCount) {
+void C_ConsoleOut::performActualUnicodeArrayOutput (const utf32 * inCharArray,
+                                                    const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     char buffer [5] ;
     UTF8StringFromUTF32Character (inCharArray [i], buffer) ;
@@ -78,7 +76,7 @@ performActualUnicodeArrayOutput (const utf32 * inCharArray,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  C O N S O L E    O U T    G L O B A L   V A R I A B L E                    *
+//  C O N S O L E    O U T    G L O B A L   V A R I A B L E                                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
