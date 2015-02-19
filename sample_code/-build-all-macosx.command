@@ -2,7 +2,7 @@
 set -x
 DIR=`dirname $0` &&
 #----------------- Build GALGAS command tool
-cd $DIR/../makefile-macosx && make galgas -j `sysctl -n hw.ncpu` &&
+cd $DIR/../makefile-macosx && python build+release.py &&
 #----------------- Assignment language
 $DIR/../makefile-macosx/galgas -v --Werror ${DIR}/assignment_language/+asl.galgasProject &&
 python ${DIR}/assignment_language/makefile-macosx/build.py &&
