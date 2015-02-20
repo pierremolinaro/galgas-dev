@@ -118,6 +118,7 @@ runCommand (["rm", "-fr", DIR])
 runCommand (["mv", TEMP_DIR, DIR])
 #-------------------- Mettre a jour les numéros de version
 writeFile (versionGALGAS, DIR + "/version-galgas.txt")
+writeFile (numeroRevisionSVN, DIR + "/version-repository.txt")
 remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcode-galgas/Info.plist")
 remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcode-galgas/English.lproj/InfoPlist.strings")
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-sources"):
