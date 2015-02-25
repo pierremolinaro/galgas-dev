@@ -280,27 +280,28 @@ class Rule:
   #--------------------------------------------------------------------------*
 
   def enterSecondaryDependanceFile (self, secondaryDependanceFile):
-    if secondaryDependanceFile != "":
-      filePath = os.path.abspath (secondaryDependanceFile)
-      if os.path.exists (filePath):
-        f = open (filePath, "r")
-        s = f.read ().replace ("\\ ", "\x01") # Read and replace escaped spaces by \0x01
-        f.close ()
-        s = s.replace ("\\\n", "")
-        liste = s.split ("\n\n")
-        dateCacheDictionary = {}
-        for s in liste:
-          components = s.split (':')
-          target = components [0].replace ("\x01", " ")
-          #print "------- Optional dependency rules for target '" + target + "'"
-          #print "Secondary target '" + target + "'"
-          for src in components [1].split ():
-            secondarySource = src.replace ("\x01", " ")
-            #print "  '" + secondarySource + "'"
-            modifDate = modificationDateForFile (dateCacheDictionary, secondarySource)
-            if self.mSecondaryMostRecentModificationDate < modifDate :
-              self.mSecondaryMostRecentModificationDate = modifDate
-              #print BOLD_BLUE () + str (modifDate) + ENDC ()
+    filePath = os.path.abspath (secondaryDependanceFile)
+    if not os.path.exists (filePath):
+      self.mSecondaryMostRecentModificationDate = sys.float_info.max # Very far in future
+    else:
+      f = open (filePath, "r")
+      s = f.read ().replace ("\\ ", "\x01") # Read and replace escaped spaces by \0x01
+      f.close ()
+      s = s.replace ("\\\n", "")
+      liste = s.split ("\n\n")
+      dateCacheDictionary = {}
+      for s in liste:
+        components = s.split (':')
+        target = components [0].replace ("\x01", " ")
+        #print "------- Optional dependency rules for target '" + target + "'"
+        #print "Secondary target '" + target + "'"
+        for src in components [1].split ():
+          secondarySource = src.replace ("\x01", " ")
+          #print "  '" + secondarySource + "'"
+          modifDate = modificationDateForFile (dateCacheDictionary, secondarySource)
+          if self.mSecondaryMostRecentModificationDate < modifDate :
+            self.mSecondaryMostRecentModificationDate = modifDate
+            #print BOLD_BLUE () + str (modifDate) + ENDC ()
     
 #----------------------------------------------------------------------------------------------------------------------*
 #   class Make                                                                                                         *
@@ -321,16 +322,16 @@ class Make:
   #--------------------------------------------------------------------------*
 
   def printRules (self):
-    print BOLD_BLUE () + "--- Print the " + str (len (self.mRuleList)) + " rule" + ("s" if len (self.mRuleList) > 1 else "") + " ---" + ENDC ()
+    print BOLD_BLUE () + "--- Print " + str (len (self.mRuleList)) + " rule" + ("s" if len (self.mRuleList) > 1 else "") + " ---" + ENDC ()
     for rule in self.mRuleList:
-      print BOLD_GREEN () + "Target: '" + rule.mTarget + "'" + ENDC ()
+      print BOLD_GREEN () + "Target: \"" + rule.mTarget + "\"" + ENDC ()
       for dep in rule.mDependences:
-        print "  Dependence: '" + dep + "'"
+        print "  Dependence: \"" + dep + "\""
       s = "  Command: "
       for cmd in rule.mCommand:
         s += " \"" + cmd + "\""
       print s
-      print "  Title: '" + rule.mTitle + "'"
+      print "  Title: \"" + rule.mTitle + "\""
       index = 0
       for (command, title) in rule.mPostCommands:
         index = index + 1
@@ -338,7 +339,7 @@ class Make:
         for cmd in command:
           s += " \"" + cmd + "\""
         print s
-        print "  Its title: '" + title + "'"
+        print "  Its title: \"" + title + "\""
         
     print BOLD_BLUE () + "--- End of print rule ---" + ENDC ()
 
@@ -504,7 +505,7 @@ class Make:
                 absTargetDirectory = os.path.dirname (os.path.abspath (job.mTarget))
                 if not os.path.exists (absTargetDirectory):
                   displayLock.acquire ()
-                  runCommand (["mkdir", "-p", absTargetDirectory], "Making " + absTargetDirectory + " directory", showCommand)
+                  runCommand (["mkdir", "-p", os.path.dirname (job.mTarget)], "Making \"" + os.path.dirname (job.mTarget) + "\" directory", showCommand)
                   displayLock.release ()
                 #--- Run job
                 job.run (displayLock, terminationSemaphore, showCommand)
@@ -597,13 +598,13 @@ class Make:
   #--------------------------------------------------------------------------*
 
   def printGoals (self):
-    print BOLD_BLUE () + "--- Print the " + str (len (self.mGoals)) + " goal" + ("s" if len (self.mGoals) > 1 else "") + " ---" + ENDC ()
+    print BOLD_BLUE () + "--- Print " + str (len (self.mGoals)) + " goal" + ("s" if len (self.mGoals) > 1 else "") + " ---" + ENDC ()
     for goalKey in self.mGoals.keys ():
-      print BOLD_GREEN () + "Goal: '" + goalKey + "'" + ENDC ()
+      print BOLD_GREEN () + "Goal: \"" + goalKey + "\"" + ENDC ()
       (targetList, message) = self.mGoals [goalKey]
       for target in targetList:
-        print "  Target: '" + target + "'"
-      print "  Message: '" + message + "'"
+        print "  Target: \"" + target + "\""
+      print "  Message: \"" + message + "\""
         
     print BOLD_BLUE () + "--- End of print goals ---" + ENDC ()
 
