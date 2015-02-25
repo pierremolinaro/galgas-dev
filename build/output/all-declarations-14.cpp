@@ -9707,19 +9707,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (C_Compiler * /* inCompiler */,
-                                                                                         const GALGAS_string & in_PROJECT_5F_NAME
+                                                                                         const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "#! /usr/bin/env python\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
-    "# https://docs.python.org/2/library/subprocess.html#module-subprocess\n"
     "\n"
-    "import subprocess\n"
-    "import sys\n"
-    "import os\n"
-    "import atexit\n"
+    "import sys, os, subprocess, atexit\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -9733,18 +9729,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "atexit.register (cleanup)\n"
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
-    "#--- Directories to clean\n"
-    "dir1 = scriptDir + \"/../build/cli-objects/makefile-macosx-debug-objects\"\n"
-    "dir2 = scriptDir + \"/../build/cli-objects/makefile-macosx-objects\"\n"
-    "#--- Files to clean\n"
-    "file1 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\"\n"
-    "file2 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-debug\"\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"rm\", \"-fr\", dir1, dir2, file1, file2], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -9762,19 +9748,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (C_Compiler * /* inCompiler */,
-                                                                                       const GALGAS_string & in_PROJECT_5F_NAME
+                                                                                       const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "#! /usr/bin/env python\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
-    "# https://docs.python.org/2/library/subprocess.html#module-subprocess\n"
     "\n"
-    "import subprocess\n"
-    "import sys\n"
-    "import os\n"
-    "import atexit\n"
+    "import sys, os, subprocess, atexit\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -9788,18 +9770,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "atexit.register (cleanup)\n"
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
-    "#--- Directories to clean\n"
-    "dir1 = scriptDir + \"/../build/cli-objects/makefile-unix-debug-objects\"\n"
-    "dir2 = scriptDir + \"/../build/cli-objects/makefile-unix-objects\"\n"
-    "#--- Files to clean\n"
-    "file1 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\"\n"
-    "file2 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-debug\"\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"rm\", \"-fr\", dir1, dir2, file1, file2], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -10024,19 +9996,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
-                                                                                                                      const GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "#! /usr/bin/env python\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
-    "# https://docs.python.org/2/library/subprocess.html#module-subprocess\n"
     "\n"
-    "import subprocess\n"
-    "import sys\n"
-    "import os\n"
-    "import atexit\n"
+    "import sys, os, subprocess, atexit\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10050,18 +10018,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "atexit.register (cleanup)\n"
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
-    "#--- Directories to clean\n"
-    "dir1 = scriptDir + \"/../build/cli-objects/makefile-x86linux32-debug-objects\"\n"
-    "dir2 = scriptDir + \"/../build/cli-objects/makefile-x86linux32-objects\"\n"
-    "#--- Files to clean\n"
-    "file1 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\"\n"
-    "file2 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-debug\"\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"rm\", \"-fr\", dir1, dir2, file1, file2], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -10246,19 +10204,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */,
-                                                                                                                      const GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "#! /usr/bin/env python\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
-    "# https://docs.python.org/2/library/subprocess.html#module-subprocess\n"
     "\n"
-    "import subprocess\n"
-    "import sys\n"
-    "import os\n"
-    "import atexit\n"
+    "import sys, os, subprocess, atexit\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10272,18 +10226,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "atexit.register (cleanup)\n"
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
-    "#--- Directories to clean\n"
-    "dir1 = scriptDir + \"/../build/cli-objects/makefile-x86linux64-debug-objects\"\n"
-    "dir2 = scriptDir + \"/../build/cli-objects/makefile-x86linux64-objects\"\n"
-    "#--- Files to clean\n"
-    "file1 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\"\n"
-    "file2 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-debug\"\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"rm\", \"-fr\", dir1, dir2, file1, file2], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -10468,19 +10412,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
-                                                                                                           const GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                           const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "#! /usr/bin/env python\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
-    "# https://docs.python.org/2/library/subprocess.html#module-subprocess\n"
     "\n"
-    "import subprocess\n"
-    "import sys\n"
-    "import os\n"
-    "import atexit\n"
+    "import sys, os, subprocess, atexit\n"
     "\n"
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -10494,18 +10434,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "atexit.register (cleanup)\n"
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
-    "#--- Directories to clean\n"
-    "dir1 = scriptDir + \"/../build/cli-objects/makefile-win32-debug-objects\"\n"
-    "dir2 = scriptDir + \"/../build/cli-objects/makefile-win32-objects\"\n"
-    "#--- Files to clean\n"
-    "file1 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << ".exe\"\n"
-    "file2 = scriptDir + \"/" ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-debug.exe\"\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"rm\", \"-fr\", dir1, dir2, file1, file2], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"

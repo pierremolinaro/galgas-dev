@@ -84,7 +84,7 @@ class GenericGalgasMakefile :
       sourcePath = make.searchFileInDirectories (source, SOURCES_DIR)
       if sourcePath != "" :
         rule = makefile.Rule (objectFile, self.mCompilationMessage + ": " + source)
-        #rule.mPriority = os.path.getsize (os.path.abspath (sourcePath))
+        rule.deleteTargetDirectoryOnClean ()
         rule.mDependences.append (sourcePath)
         rule.enterSecondaryDependanceFile (objectFile + ".dep")
         rule.mCommand += self.mCompilerTool
@@ -99,6 +99,8 @@ class GenericGalgasMakefile :
   #--------------------------------------------------------------------------- Add EXECUTABLE link rule
     EXECUTABLE = self.mExecutable + self.mExecutableSuffix
     rule = makefile.Rule (EXECUTABLE, self.mLinkingMessage + ": " + EXECUTABLE)
+    rule.mOnErrorDeleteTarget = True
+    rule.deleteTargetFileOnClean ()
     rule.mDependences += objectFileList
     rule.mCommand += self.mLinkerTool
     rule.mCommand += objectFileList
@@ -121,7 +123,7 @@ class GenericGalgasMakefile :
       sourcePath = make.searchFileInDirectories (source, SOURCES_DIR)
       if sourcePath != "" :
         rule = makefile.Rule (objectFile, self.mCompilationMessage + " (debug): " + source)
-        #rule.mPriority = os.path.getsize (os.path.abspath (sourcePath))
+        rule.deleteTargetDirectoryOnClean ()
         rule.mDependences.append (sourcePath)
         rule.enterSecondaryDependanceFile (objectFile + ".dep")
         rule.mCommand += self.mCompilerTool
@@ -136,6 +138,8 @@ class GenericGalgasMakefile :
   #--------------------------------------------------------------------------- Add EXECUTABLE_DEBUG link rule
     EXECUTABLE_DEBUG = self.mExecutable + "-debug" + self.mExecutableSuffix
     rule = makefile.Rule (EXECUTABLE_DEBUG, self.mLinkingMessage + " (debug): " + EXECUTABLE_DEBUG)
+    rule.mOnErrorDeleteTarget = True
+    rule.deleteTargetFileOnClean ()
     rule.mDependences += debugObjectFileList
     rule.mCommand += self.mLinkerTool
     rule.mCommand += debugObjectFileList
