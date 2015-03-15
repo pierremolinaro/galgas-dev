@@ -17522,7 +17522,7 @@ GALGAS_switchBranchesAST_2D_element::~ GALGAS_switchBranchesAST_2D_element (void
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST_2D_element::GALGAS_switchBranchesAST_2D_element (const GALGAS_lstringlist & inOperand0,
-                                                                          const GALGAS__32_lstringlist & inOperand1,
+                                                                          const GALGAS_switchExtractedValuesListAST & inOperand1,
                                                                           const GALGAS_semanticInstructionListAST & inOperand2,
                                                                           const GALGAS_location & inOperand3) :
 mAttribute_mSwitchConstantList (inOperand0),
@@ -17535,7 +17535,7 @@ mAttribute_mEndOfBranch (inOperand3) {
 
 GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_switchBranchesAST_2D_element (GALGAS_lstringlist::constructor_emptyList (HERE),
-                                              GALGAS__32_lstringlist::constructor_emptyList (HERE),
+                                              GALGAS_switchExtractedValuesListAST::constructor_emptyList (HERE),
                                               GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
                                               GALGAS_location::constructor_nowhere (HERE)) ;
 }
@@ -17543,7 +17543,7 @@ GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constru
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constructor_new (const GALGAS_lstringlist & inOperand0,
-                                                                                          const GALGAS__32_lstringlist & inOperand1,
+                                                                                          const GALGAS_switchExtractedValuesListAST & inOperand1,
                                                                                           const GALGAS_semanticInstructionListAST & inOperand2,
                                                                                           const GALGAS_location & inOperand3 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
@@ -17615,7 +17615,7 @@ GALGAS_lstringlist GALGAS_switchBranchesAST_2D_element::reader_mSwitchConstantLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_lstringlist GALGAS_switchBranchesAST_2D_element::reader_mAssociatedValuesExtraction (UNUSED_LOCATION_ARGS) const {
+GALGAS_switchExtractedValuesListAST GALGAS_switchBranchesAST_2D_element::reader_mAssociatedValuesExtraction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedValuesExtraction ;
 }
 

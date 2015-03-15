@@ -871,16 +871,26 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   end
 #--- Declare local constant
   let targetVariableCppName = "var_" + [mInputActualParameterName identifierRepresentation]
-  [!?ioVariableMap insertLocalConstant
-    !mInputActualParameterName
-    !inFormalArgumentType
-    !targetVariableCppName
-    !targetVariableCppName
-  ]
+  if mMarkedAsUnused then
+    [!?ioVariableMap insertUsedLocalConstant
+      !mInputActualParameterName
+      !inFormalArgumentType
+      !targetVariableCppName
+      !targetVariableCppName
+    ]
+  else
+    [!?ioVariableMap insertLocalConstant
+      !mInputActualParameterName
+      !inFormalArgumentType
+      !targetVariableCppName
+      !targetVariableCppName
+    ]
+  end
 #--- Generate local variable declaration
   ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
     !inFormalArgumentType
-    !targetVariableCppName}
+    !targetVariableCppName
+  }
 #--- Check for exclusive access
   if [ioExclusiveVariableSet hasKey !mInputActualParameterName.string] then
     error mInputActualParameterName
@@ -890,7 +900,8 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
 #--- Generate actual parameter
   ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !inFormalArgumentType
-    !targetVariableCppName}
+    !targetVariableCppName
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -939,7 +950,8 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   #--- Generate actual parameter
     ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
       !inFormalArgumentType
-      !cppVarName}
+      !cppVarName
+    }
   end
 }
 
@@ -3249,15 +3261,19 @@ override method @switchInstructionAST analyzeSemanticInstruction
         else
           var associatedValueIndex = 0
           for () in associatedTypeList, () in mAssociatedValuesExtraction do
-            if mValue0.string != "" then # Explicit type ?
-              if [mType key] != mValue0.string then
-                error mValue0 : "the required type is '@" + [mType key] + "'"
+            if mExtractedValueTypeName.string != "" then # Explicit type ?
+              if [mType key] != mExtractedValueTypeName.string then
+                error mExtractedValueTypeName : "the required type is '@" + [mType key] + "'"
               end
             end
-            if firstConstant & (mValue1.string != "") then
-              let cppName = "extractedValue_" + mValue1
+            if firstConstant & (mExtractedValueName.string != "") then
+              let cppName = "extractedValue_" + mExtractedValueName
               extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
-              [!?ioVariableMap insertLocalConstant !mValue1 !mType !cppName !cppName]
+              if mMarkedAsUnused then
+                [!?ioVariableMap insertUsedLocalConstant !mExtractedValueName !mType !cppName !cppName]
+              else
+                [!?ioVariableMap insertLocalConstant !mExtractedValueName !mType !cppName !cppName]
+              end
             end
             associatedValueIndex ++
           end%for

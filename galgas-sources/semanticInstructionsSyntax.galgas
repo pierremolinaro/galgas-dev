@@ -1999,14 +1999,14 @@ rule <semantic_instruction>
     while
       $,$
     end
-    @2lstringlist associatedValuesExtraction = {}
+    @switchExtractedValuesListAST associatedValuesExtraction = {}
     select
     or
       $($
       repeat
         select
           $*$
-          associatedValuesExtraction += !["" nowhere] !["" nowhere]
+          associatedValuesExtraction += !["" nowhere] !["" nowhere] !false
          or
           @lstring typeName
           select
@@ -2014,8 +2014,15 @@ rule <semantic_instruction>
           or
             typeName = ["" nowhere]
           end
+          @bool constantMarkedAsUnused
+          select
+            constantMarkedAsUnused = false
+          or
+            $unused$
+            constantMarkedAsUnused = true
+          end
           $identifier$ ?let @lstring constantName
-          associatedValuesExtraction += !typeName !constantName
+          associatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
         end
       while
       end

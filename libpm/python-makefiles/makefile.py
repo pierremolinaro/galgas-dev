@@ -145,6 +145,7 @@ def runInThread (job, displayLock, terminationSemaphore):
   while True:
     line = childProcess.stdout.readline ()
     if line != "":
+      job.mOutputLines.append (line)
       displayLock.acquire ()
       sys.stdout.write (line) # Print without newline
       displayLock.release ()
@@ -198,16 +199,20 @@ class Job:
   mReturnCode = None
   mPriority = 0
   mState = 0 # 0: waiting for execution
+  mOutputLines = []
+  mOpenSourceOnError = False # Do not try to open source file on error
   
   #--------------------------------------------------------------------------*
 
-  def __init__ (self, target, requiredFiles, command, postCommands, priority, title):
+  def __init__ (self, target, requiredFiles, command, postCommands, priority, title, openSourceOnError):
     self.mTarget = copy.deepcopy (target)
     self.mCommand = copy.deepcopy (command)
     self.mRequiredFiles = copy.deepcopy (requiredFiles)
     self.mTitle = copy.deepcopy (title)
     self.mPostCommands = copy.deepcopy (postCommands)
     self.mPriority = priority
+    self.mOutputLines = []
+    self.mOpenSourceOnError = openSourceOnError
 
   #--------------------------------------------------------------------------*
 
@@ -258,8 +263,9 @@ class Rule:
   mTitle = ""
   mPostCommands = []
   mPriority = 0
-  mOnErrorDeleteTarget = False # No operation on error
+  mDeleteTargetOnError = False # No operation on error
   mCleanOperation = 0 # No operation on clean
+  mOpenSourceOnError = False # Do not try to open source file on error
   
   #--------------------------------------------------------------------------*
 
@@ -270,7 +276,8 @@ class Rule:
     self.mSecondaryMostRecentModificationDate = 0.0
     self.mPostCommands = []
     self.mPriority = 0
-    self.mOnErrorDeleteTarget = False # No operation on error
+    self.mDeleteTargetOnError = False # No operation on error
+    self.mOpenSourceOnError = False # Do not try to open source file on error
     self.mCleanOperation = 0 # No operation on clean
     if title == "":
       self.mTitle = "Building " + target
@@ -289,29 +296,30 @@ class Rule:
   
   #--------------------------------------------------------------------------*
 
-  def enterSecondaryDependanceFile (self, secondaryDependanceFile):
-    filePath = os.path.abspath (secondaryDependanceFile)
-    if not os.path.exists (filePath):
-      self.mSecondaryMostRecentModificationDate = sys.float_info.max # Very far in future
-    else:
-      f = open (filePath, "r")
-      s = f.read ().replace ("\\ ", "\x01") # Read and replace escaped spaces by \0x01
-      f.close ()
-      s = s.replace ("\\\n", "")
-      liste = s.split ("\n\n")
-      dateCacheDictionary = {}
-      for s in liste:
-        components = s.split (':')
-        target = components [0].replace ("\x01", " ")
-        #print "------- Optional dependency rules for target '" + target + "'"
-        #print "Secondary target '" + target + "'"
-        for src in components [1].split ():
-          secondarySource = src.replace ("\x01", " ")
-          #print "  '" + secondarySource + "'"
-          modifDate = modificationDateForFile (dateCacheDictionary, secondarySource)
-          if self.mSecondaryMostRecentModificationDate < modifDate :
-            self.mSecondaryMostRecentModificationDate = modifDate
-            #print BOLD_BLUE () + str (modifDate) + ENDC ()
+  def enterSecondaryDependanceFile (self, secondaryDependanceFile, make):
+    if make.mSelectedGoal != "clean":
+      filePath = os.path.abspath (secondaryDependanceFile)
+      if not os.path.exists (filePath):
+        self.mSecondaryMostRecentModificationDate = sys.float_info.max # Very far in future
+      else:
+        f = open (filePath, "r")
+        s = f.read ()
+        f.close ()
+        s = s.replace ("\\ ", "\x01") # Replace escaped spaces by \0x01
+        s = s.replace ("\\\n", "") # Suppress \ at the end of lines
+        liste = s.split ("\n\n")
+        for s in liste:
+          components = s.split (':')
+          target = components [0].replace ("\x01", " ")
+          #print "------- Optional dependency rules for target '" + target + "'"
+          #print "Secondary target '" + target + "'"
+          for src in components [1].split ():
+            secondarySource = src.replace ("\x01", " ")
+            #print "  '" + secondarySource + "'"
+            modifDate = modificationDateForFile (make.mModificationDateDictionary, secondarySource)
+            if self.mSecondaryMostRecentModificationDate < modifDate :
+              self.mSecondaryMostRecentModificationDate = modifDate
+              #print BOLD_BLUE () + str (modifDate) + ENDC ()
     
 #----------------------------------------------------------------------------*
 #   class Make                                                               *
@@ -323,6 +331,21 @@ class Make:
   mErrorCount = 0
   mModificationDateDictionary = {}
   mGoals = {}
+  mSelectedGoal = ""
+  mLinuxTextEditor = ""
+  mMacTextEditor = ""
+
+  #--------------------------------------------------------------------------*
+
+  def __init__ (self, goal):
+    self.mRuleList = []
+    self.mJobList = []
+    self.mErrorCount = 0
+    self.mModificationDateDictionary = {}
+    self.mGoals = {}
+    self.mSelectedGoal = goal
+    self.mLinuxTextEditor = "gEdit"
+    self.mMacTextEditor = "TextEdit"
 
   #--------------------------------------------------------------------------*
 
@@ -479,7 +502,7 @@ class Make:
         appendToJobList = True
   #--- Append to job list
     if appendToJobList:
-      self.mJobList.append (Job (target, jobDependenceFiles, rule.mCommand, rule.mPostCommands, rule.mPriority, rule.mTitle))
+      self.mJobList.append (Job (target, jobDependenceFiles, rule.mCommand, rule.mPostCommands, rule.mPriority, rule.mTitle, rule.mOpenSourceOnError))
   #--- Return
     return appendToJobList
 
@@ -536,6 +559,10 @@ class Make:
             index = index + 1
             if (job.mState == 1) and (job.mReturnCode == 0) : # Terminated without error
               jobCount = jobCount - 1
+              if not os.path.exists (os.path.abspath (job.mTarget)): # Warning: target does not exist
+                displayLock.acquire ()
+                print MAGENTA () + BOLD () + "Warning: target \"" + job.mTarget + "\" was not created by rule execution." + ENDC ()
+                displayLock.release ()
               if len (job.mPostCommands) > 0:
                 job.mState = 2 # Ready to execute next post command
               else:
@@ -545,6 +572,14 @@ class Make:
               jobCount = jobCount - 1
               job.mState = 4 # Means Terminated
               index = index - 1 # For removing job from list
+              if job.mOpenSourceOnError:
+                for line in job.mOutputLines:
+                  components = line.split (':')
+                  if (len (components) > 1) and os.path.exists (os.path.abspath (components [0])) :
+                    if sys.platform == "darwin":
+                      os.system ("open -a \"" + self.mMacTextEditor + "\" \"" + components [0] + "\"")
+                    elif sys.platform == "linux2":
+                      os.system ("\"" + self.mLinuxTextEditor + "\" \"" + components [0] + "\"")
             elif (job.mState == 3) and (job.mReturnCode == 0): # post command is terminated without error
               jobCount = jobCount - 1
               job.mPostCommands.pop (0) # Remove completed post command
@@ -602,7 +637,10 @@ class Make:
   #--------------------------------------------------------------------------*
 
   def addGoal (self, goal, targetList, message):
-    self.mGoals [goal] = (targetList, message)
+    if self.mGoals.has_key (goal) or (goal == "clean") :
+      self.enterError ("The '" + goal + "' goal is already defined")
+    else:
+      self.mGoals [goal] = (targetList, message)
     #print '%s' % ', '.join(map(str, self.mGoals))
 
   #--------------------------------------------------------------------------*
@@ -620,17 +658,17 @@ class Make:
 
   #--------------------------------------------------------------------------*
 
-  def runGoal (self, goal, maxConcurrentJobs, showCommand):
-    if self.mGoals.has_key (goal) :
-      (targetList, message) = self.mGoals [goal]
+  def runGoal (self, maxConcurrentJobs, showCommand):
+    if self.mGoals.has_key (self.mSelectedGoal) :
+      (targetList, message) = self.mGoals [self.mSelectedGoal]
       for target in targetList:
         self.makeJob (target)
       self.runJobs (maxConcurrentJobs, showCommand)
       if self.mErrorCount > 0:
         for rule in self.mRuleList:
-          if rule.mOnErrorDeleteTarget and os.path.exists (os.path.abspath (rule.mTarget)):
+          if rule.mDeleteTargetOnError and os.path.exists (os.path.abspath (rule.mTarget)):
             runCommand (["rm", rule.mTarget], "Delete \"" + rule.mTarget + "\" on error", showCommand)
-    elif goal == "clean" :
+    elif self.mSelectedGoal == "clean" :
       filesToRemoveList = []
       directoriesToRemoveSet = set ()
       for rule in self.mRuleList:
@@ -639,11 +677,13 @@ class Make:
         elif rule.mCleanOperation == 2: # Delete target directories
           directoriesToRemoveSet.add (os.path.dirname (rule.mTarget))
       for dir in directoriesToRemoveSet:
-        runCommand (["rm", "-fr", dir], "Removing \"" + dir + "\"", showCommand)
+        if os.path.exists (os.path.abspath (dir)):
+          runCommand (["rm", "-fr", dir], "Removing \"" + dir + "\"", showCommand)
       for file in filesToRemoveList:
-        runCommand (["rm", "-f", file], "Deleting \"" + file + "\"", showCommand)
+        if os.path.exists (os.path.abspath (file)):
+          runCommand (["rm", "-f", file], "Deleting \"" + file + "\"", showCommand)
     else:
-      errorMessage = "The '" + goal + "' goal is not defined; defined goals:"
+      errorMessage = "The '" + self.mSelectedGoal + "' goal is not defined; defined goals:"
       for key in self.mGoals:
         (targetList, message) = self.mGoals [key]
         errorMessage += "\n  '" + key + "': " + message

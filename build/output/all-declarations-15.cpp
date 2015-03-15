@@ -5009,6 +5009,9 @@ typeComparisonResult cPtr_inputActualNewConstantParameterAST::dynamicObjectCompa
   if (kOperandEqual == result) {
     result = mAttribute_mInputActualParameterName.objectCompare (p->mAttribute_mInputActualParameterName) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMarkedAsUnused.objectCompare (p->mAttribute_mMarkedAsUnused) ;
+  }
   return result ;
 }
 
@@ -5042,7 +5045,8 @@ GALGAS_actualParameterAST () {
 GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_inputActualNewConstantParameterAST::constructor_new (GALGAS_lstring::constructor_default (HERE),
                                                                      GALGAS_lstring::constructor_default (HERE),
-                                                                     GALGAS_lstring::constructor_default (HERE)
+                                                                     GALGAS_lstring::constructor_default (HERE),
+                                                                     GALGAS_bool::constructor_default (HERE)
                                                                      COMMA_THERE) ;
 }
 
@@ -5057,11 +5061,12 @@ GALGAS_actualParameterAST (inSourcePtr) {
 
 GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                                       const GALGAS_lstring & inAttribute_mInputOptionalActualTypeName,
-                                                                                                      const GALGAS_lstring & inAttribute_mInputActualParameterName
+                                                                                                      const GALGAS_lstring & inAttribute_mInputActualParameterName,
+                                                                                                      const GALGAS_bool & inAttribute_mMarkedAsUnused
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_inputActualNewConstantParameterAST result ;
-  if (inAttribute_mActualSelector.isValid () && inAttribute_mInputOptionalActualTypeName.isValid () && inAttribute_mInputActualParameterName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_inputActualNewConstantParameterAST (inAttribute_mActualSelector, inAttribute_mInputOptionalActualTypeName, inAttribute_mInputActualParameterName COMMA_THERE)) ;
+  if (inAttribute_mActualSelector.isValid () && inAttribute_mInputOptionalActualTypeName.isValid () && inAttribute_mInputActualParameterName.isValid () && inAttribute_mMarkedAsUnused.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_inputActualNewConstantParameterAST (inAttribute_mActualSelector, inAttribute_mInputOptionalActualTypeName, inAttribute_mInputActualParameterName, inAttribute_mMarkedAsUnused COMMA_THERE)) ;
   }
   return result ;
 }
@@ -5121,17 +5126,37 @@ GALGAS_lstring cPtr_inputActualNewConstantParameterAST::reader_mInputActualParam
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_inputActualNewConstantParameterAST::reader_mMarkedAsUnused (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_inputActualNewConstantParameterAST * p = (const cPtr_inputActualNewConstantParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualNewConstantParameterAST) ;
+    result = p->mAttribute_mMarkedAsUnused ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool cPtr_inputActualNewConstantParameterAST::reader_mMarkedAsUnused (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMarkedAsUnused ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                             Pointer class for @inputActualNewConstantParameterAST class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_inputActualNewConstantParameterAST::cPtr_inputActualNewConstantParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                                                   const GALGAS_lstring & in_mInputOptionalActualTypeName,
-                                                                                  const GALGAS_lstring & in_mInputActualParameterName
+                                                                                  const GALGAS_lstring & in_mInputActualParameterName,
+                                                                                  const GALGAS_bool & in_mMarkedAsUnused
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (THERE),
 mAttribute_mActualSelector (in_mActualSelector),
 mAttribute_mInputOptionalActualTypeName (in_mInputOptionalActualTypeName),
-mAttribute_mInputActualParameterName (in_mInputActualParameterName) {
+mAttribute_mInputActualParameterName (in_mInputActualParameterName),
+mAttribute_mMarkedAsUnused (in_mMarkedAsUnused) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5148,6 +5173,8 @@ void cPtr_inputActualNewConstantParameterAST::description (C_String & ioString,
   mAttribute_mInputOptionalActualTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mInputActualParameterName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMarkedAsUnused.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5155,7 +5182,7 @@ void cPtr_inputActualNewConstantParameterAST::description (C_String & ioString,
 
 acPtr_class * cPtr_inputActualNewConstantParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_inputActualNewConstantParameterAST (mAttribute_mActualSelector, mAttribute_mInputOptionalActualTypeName, mAttribute_mInputActualParameterName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_inputActualNewConstantParameterAST (mAttribute_mActualSelector, mAttribute_mInputOptionalActualTypeName, mAttribute_mInputActualParameterName, mAttribute_mMarkedAsUnused COMMA_THERE)) ;
   return ptr ;
 }
 

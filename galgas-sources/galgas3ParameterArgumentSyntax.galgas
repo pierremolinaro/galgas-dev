@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2014, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -21,7 +21,7 @@ rule <expression> !@semanticExpressionAST outExpressionAST
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#          F O R M A L    P A R A M E T E R    L I S T                         *
+#          F O R M A L    P A R A M E T E R    L I S T                                                                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -65,12 +65,13 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  A C T U A L    P A R A M E T E R    L I S T                              *
+#  A C T U A L    P A R A M E T E R    L I S T                                                                         *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <actual_parameter_list>
-  !@actualParameterListAST outActualParameterList {
+  !@actualParameterListAST outActualParameterList
+{
   outActualParameterList = @actualParameterListAST. emptyList
   repeat
   while
@@ -103,7 +104,8 @@ rule <actual_parameter_list>
     outActualParameterList += !@outputActualParameterAST.new {
       !selector
       !e
-      !endOfExpressionLocation}
+      !endOfExpressionLocation
+    }
   while
     $!?$ ?let selector
     @lstring outputInputActualParameterName
@@ -118,12 +120,12 @@ rule <actual_parameter_list>
     outActualParameterList += !@outputInputActualParameterAST.new { 
       !selector
       !outputInputActualParameterName
-      !structAttributeList}
+      !structAttributeList
+    }
   while
     $!?$ ?let selector
     $*$
-    outActualParameterList += !@outputInputSingleJokerParameterAST.new { 
-      !selector}
+    outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
   while
     $!?$ ?let selector
     $unsigned_literal_integer$ ?let @luint count
@@ -146,7 +148,8 @@ rule <actual_parameter_list>
     $identifier$ ?let inputActualParameterName
     outActualParameterList += !@inputActualExistingVariableParameterAST.new {
       !selector
-      !inputActualParameterName}
+      !inputActualParameterName
+    }
   while  # input parameter, new variable
     $?$ ?let selector
     $var$
@@ -168,7 +171,8 @@ rule <actual_parameter_list>
     outActualParameterList += !@inputActualNewVariableParameterAST.new {
       !selector
       !declarationTypeName
-      !inputActualParameterName}
+      !inputActualParameterName
+    }
   while # input parameter, new constant
     $?$ ?let selector
     $let$
@@ -178,17 +182,26 @@ rule <actual_parameter_list>
     or
       $type_name$ ?declarationTypeName
     end
+    @bool markedAsUnused
+    select
+      markedAsUnused = false
+    or
+      $unused$
+      markedAsUnused = true
+    end
     $identifier$ ?let inputActualParameterName
     outActualParameterList += !@inputActualNewConstantParameterAST.new {
       !selector
       !declarationTypeName
-      !inputActualParameterName}
+      !inputActualParameterName
+      !markedAsUnused
+    }
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  F O R M A L    I N P U T    P A R A M E T E R S                          *
+#  F O R M A L    I N P U T    P A R A M E T E R S                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

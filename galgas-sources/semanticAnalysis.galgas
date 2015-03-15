@@ -2409,6 +2409,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   )
 #---------------------------------------------------------- Generate HTML grammer helper file
   if [option galgas_cli_options.outputHTMLgrammarFile value] then
+    [[HTMLFilePath stringByDeletingLastPathComponent] makeDirectory]
     [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
   else
     [@string deleteFileIfExists !HTMLFilePath]

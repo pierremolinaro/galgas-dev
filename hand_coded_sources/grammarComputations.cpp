@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  This file handles all computations performed on grammars                   *
+//  This file handles all computations performed on grammars                                                           *
 //                                                                                                                     *
-//  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
 //                                                                                                                     *
