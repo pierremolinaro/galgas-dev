@@ -1513,7 +1513,6 @@
 		CFF537C7057A524B00854C83 /* Grammar Component */ = {
 			isa = PBXGroup;
 			children = (
-				CFD94B641290677400864538 /* grammarComputations.cpp */,
 				CFD94AA71290635400864538 /* buildPureBNFgrammar.cpp */,
 				CFD94AA81290635400864538 /* buildPureBNFgrammar.h */,
 				CFD94AA91290635400864538 /* cDecisionTableElement.cpp */,
@@ -1529,12 +1528,13 @@
 				CFD94AB31290635400864538 /* follow_by_empty_computation.h */,
 				CFD94AB41290635400864538 /* FOLLOW_computations.cpp */,
 				CFD94AB51290635400864538 /* FOLLOW_computations.h */,
-				CFD94ABA1290635400864538 /* printOriginalGrammar.cpp */,
-				CFD94ABB1290635400864538 /* printOriginalGrammar.h */,
+				CFD94B641290677400864538 /* grammarComputations.cpp */,
 				CFD94AB61290635400864538 /* LL1_computations.cpp */,
 				CFD94AB71290635400864538 /* LL1_computations.h */,
 				CFD94AB81290635400864538 /* LR1_computations.cpp */,
 				CFD94AB91290635400864538 /* LR1_computations.h */,
+				CFD94ABA1290635400864538 /* printOriginalGrammar.cpp */,
+				CFD94ABB1290635400864538 /* printOriginalGrammar.h */,
 				CFD94ABC1290635400864538 /* SLR_computations.cpp */,
 				CFD94ABD1290635400864538 /* SLR_computations.h */,
 				CFD94ABE1290635400864538 /* useful_symbols_computations.cpp */,

@@ -392,6 +392,7 @@ class @inputActualNewConstantParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
+  @bool mMarkedAsUnused
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1086,9 +1087,17 @@ class @readWriteAccessWithInstructionAST : @semanticInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+list @switchExtractedValuesListAST {
+  @lstring mExtractedValueTypeName
+  @lstring mExtractedValueName
+  @bool mMarkedAsUnused
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 list @switchBranchesAST {
   @lstringlist mSwitchConstantList
-  @2lstringlist mAssociatedValuesExtraction
+  @switchExtractedValuesListAST mAssociatedValuesExtraction
   @semanticInstructionListAST mInstructions
   @location mEndOfBranch
 }

@@ -72,7 +72,7 @@ class GenericGalgasMakefile :
     for d in SOURCES_DIR:
       includeDirs.append ("-I" + d)
   #--- Make object
-    make = makefile.Make ()
+    make = makefile.Make (self.mGoal)
   #--------------------------------------------------------------------------- Add Compile rule for sources
   #--- Object file directory
     objectDirectory = os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-" + self.mTargetName + "-objects")
@@ -86,7 +86,7 @@ class GenericGalgasMakefile :
         rule = makefile.Rule (objectFile, self.mCompilationMessage + ": " + source)
         rule.deleteTargetDirectoryOnClean ()
         rule.mDependences.append (sourcePath)
-        rule.enterSecondaryDependanceFile (objectFile + ".dep")
+        rule.enterSecondaryDependanceFile (objectFile + ".dep", make)
         rule.mCommand += self.mCompilerTool
         rule.mCommand += self.mCompilerReleaseOptions
         rule.mCommand += self.mAllCompilerOptions
@@ -125,7 +125,7 @@ class GenericGalgasMakefile :
         rule = makefile.Rule (objectFile, self.mCompilationMessage + " (debug): " + source)
         rule.deleteTargetDirectoryOnClean ()
         rule.mDependences.append (sourcePath)
-        rule.enterSecondaryDependanceFile (objectFile + ".dep")
+        rule.enterSecondaryDependanceFile (objectFile + ".dep", make)
         rule.mCommand += self.mCompilerTool
         rule.mCommand += self.mCompilerDebugOptions
         rule.mCommand += self.mAllCompilerOptions
@@ -172,7 +172,7 @@ class GenericGalgasMakefile :
       make.addGoal ("install-debug", [INSTALL_EXECUTABLE_DEBUG], "Build and install " + INSTALL_EXECUTABLE_DEBUG)
   #--------------------------------------------------------------------------- Run jobs
 #    make.printGoals ()
-    make.runGoal (self.mGoal, self.mMaxParallelJobs, self.mDisplayCommands)
+    make.runGoal (self.mMaxParallelJobs, self.mDisplayCommands)
   #--------------------------------------------------------------------------- Ok ?
     make.printErrorCountAndExitOnError ()
     displayDurationFromStartTime (startTime)

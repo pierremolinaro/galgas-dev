@@ -433,8 +433,8 @@ GALGAS_string GALGAS_string::reader_stringByLeftPadding (const GALGAS_uint & inP
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_string::reader_stringByRightPadding (const GALGAS_uint & inPaddedStringLength,
-                                                            const GALGAS_char & inPaddingChar
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+                                                          const GALGAS_char & inPaddingChar
+                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if ((inPaddedStringLength.isValid ()) && (inPaddingChar.isValid ())) {
     const utf32 paddingChar = inPaddingChar.charValue () ;

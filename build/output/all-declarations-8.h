@@ -2949,6 +2949,10 @@ class cGrammar_semanticsSLRgrammar : public cParser_expressionSyntax,
 
   public : virtual int32_t select_parameterArgumentSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
 
+  public : virtual int32_t select_parameterArgumentSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
+
+  public : virtual int32_t select_parameterArgumentSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
+
   public : virtual int32_t select_semanticInstructionsSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
 
   public : virtual int32_t select_semanticInstructionsSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
@@ -3084,6 +3088,8 @@ class cGrammar_semanticsSLRgrammar : public cParser_expressionSyntax,
   public : virtual int32_t select_semanticInstructionsSyntax_66 (C_Lexique_galgas_32_Scanner *) ;
 
   public : virtual int32_t select_semanticInstructionsSyntax_67 (C_Lexique_galgas_32_Scanner *) ;
+
+  public : virtual int32_t select_semanticInstructionsSyntax_68 (C_Lexique_galgas_32_Scanner *) ;
 
   public : virtual int32_t select_semanticsComponent_0 (C_Lexique_galgas_32_Scanner *) ;
 

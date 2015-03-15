@@ -181,11 +181,20 @@ rule <actual_parameter_list>
     or
       $type_name$ ?declarationTypeName
     end
+    @bool markedAsUnused
+    select
+      markedAsUnused = false
+    or
+      $unused$
+      markedAsUnused = true
+    end
     $identifier$ ?var @lstring inputActualParameterName
     outActualParameterList += !@inputActualNewConstantParameterAST.new {
       !selector
       !declarationTypeName
-      !inputActualParameterName}
+      !inputActualParameterName
+      !markedAsUnused
+    }
   while # New constant parameter
     $?$ ?let selector
     $let$
@@ -195,11 +204,20 @@ rule <actual_parameter_list>
     or
       $type_name$ ?declarationTypeName
     end
+    @bool markedAsUnused
+    select
+      markedAsUnused = false
+    or
+      $unused$
+      markedAsUnused = true
+    end
     $identifier$ ?var @lstring inputActualParameterName
     outActualParameterList += !@inputActualNewConstantParameterAST.new {
       !selector
       !declarationTypeName
-      !inputActualParameterName}
+      !inputActualParameterName
+      !markedAsUnused
+    }
   end
 }
 
