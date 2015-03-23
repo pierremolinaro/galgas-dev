@@ -93,10 +93,12 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
     \begin{tabular}{lll}
       \textbf{Argument formel en sortie} & \textbf{Paramètre effectif en entrée} & \textbf{Remarque} \\
         \ggs+!selector:@T variable+ & \ggs+?selector:variable+ & Affectation \\
-      & \ggs+?selector: @T variable+ & Déclaration et affectation de variable \\
+      & \ggs+?selector:@T variable+ & Déclaration et affectation \\
       & \ggs+?selector:let @T constante+ & Déclaration et affectation \\
+      & \ggs+?selector:let @T unused constante+ & Déclaration et affectation \\
       & \ggs+?selector:let constante+ & Déclaration et affectation \\
-      & \ggs+?selector:*+ & Variable anonyme \\
+      & \ggs+?selector:let unused constante+ & Déclaration et affectation \\
+      & \ggs+?selector:*+ & Une variable anonyme \\
       & \ggs+?n*+ & $n$ variables anonymes \\
     \end{tabular}
   \caption{Argument formel en sortie, paramètre effectif en entrée}

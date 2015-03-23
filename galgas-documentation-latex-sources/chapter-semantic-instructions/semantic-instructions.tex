@@ -1766,6 +1766,15 @@ end
 \end{galgas}
 
 
+Ou utiliser le mot clé \ggs+unused+ (avec ou sans annotation de type) :
+\begin{galgas}
+switch expression
+case constante (@type1 unused nom1 unused nom2) :
+...
+end
+\end{galgas}
+
+
 Enfin, on peut mentionner dans le même branche \ggs+case+ plusieurs constantes déclarant des valeurs associées, à la condition que ces valeurs associées soient de même nombre et de même type. Par exemple :
 
 \begin{galgas}
