@@ -1013,8 +1013,8 @@ override method @mapDeclarationAST enterInSemanticContext
     let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
-    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mPropertyName.string
-    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
     [!?modifierMap insertOrReplace
       !accessorName
       !@methodKind. definedAsMember

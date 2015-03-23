@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  semantics definitions for semantics component                            *
+#  semantics definitions for semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -13,10 +13,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWithInputArgument
