@@ -76,7 +76,7 @@
     [ud
       addObserver:self
       forKeyPath:GGS_build_text_font
-      options:0
+      options:NSKeyValueObservingOptionNew
       context:NULL
     ] ;
    }
@@ -156,7 +156,7 @@
   [mFoundEntryTreeController
     addObserver:self 
     forKeyPath:@"selectionIndexPath"
-    options:0
+    options:NSKeyValueObservingOptionNew
     context:NULL
   ] ;
   [[mResultOutlineView tableColumnWithIdentifier:@"count"]
@@ -194,7 +194,7 @@
   [mSourceDisplayArrayControllerHigh
     addObserver:self 
     forKeyPath:@"selection.textSelectionStart"
-    options:0
+    options:NSKeyValueObservingOptionNew
     context:NULL
   ] ;
 //---
@@ -279,7 +279,7 @@
   [mSourceDisplayArrayControllerHigh
     addObserver:self 
     forKeyPath:@"selectionIndex"
-    options:0
+    options:NSKeyValueObservingOptionNew
     context:NULL
   ] ;
 //------------------------------------------------------------------ Display the document contents
@@ -327,7 +327,7 @@
   [[NSUserDefaults standardUserDefaults]
     addObserver:self
     forKeyPath:[NSString stringWithFormat:@"searchMatrixFor:%@", mBaseFilePreferenceKey]
-    options:0
+    options:NSKeyValueObservingOptionNew
     context:NULL
   ] ;
   [self updateDirectoryListVisibility] ;

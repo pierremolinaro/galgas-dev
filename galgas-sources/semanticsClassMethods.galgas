@@ -42,8 +42,8 @@ override method @stringPredefinedTypeAST getClassMethodMap
   enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true )
   enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true )
   enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true )
-  @unifiedTypeMap-proxy stringType
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-proxy stringType]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?let @unifiedTypeMap-proxy boolType]
   var argList =@formalParameterSignature.emptyList{}
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
@@ -62,6 +62,7 @@ override method @stringPredefinedTypeAST getClassMethodMap
   argList += !["generatedZone2" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone2"
   argList += !["defaultUserZone2" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone2"
   argList += !["generatedZone3" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone3"
+  argList += !["makeExecutable" nowhere] !boolType !.argumentConstantIn !"inMakeExecutable"
   [!?outClassMethodMap insertOrReplace
     !@lstring.new {!"generateFileWithPattern" !@location.here}
     !argList

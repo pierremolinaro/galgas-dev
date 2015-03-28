@@ -228,6 +228,7 @@ proc compileGuiComponentFromAST
       !generatedZone2:[filewrapper guiGenerationTemplates.gui_implementation !galgas3:false !context]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # Zone 3
+      !makeExecutable:false
     ]
   end
 }
@@ -412,6 +413,7 @@ proc generateAllGuiComponentsGalgas3
       !generatedZone2:[filewrapper guiGenerationTemplates.gui_implementation !galgas3:true !mGuiComponentContext]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # Zone 3
+      !makeExecutable:false
     ]
   end
 }

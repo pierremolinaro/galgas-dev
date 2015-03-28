@@ -1513,6 +1513,7 @@ class GALGAS_string : public AC_GALGAS_root
                                                              class GALGAS_string constinArgument5,
                                                              class GALGAS_string constinArgument6,
                                                              class GALGAS_string constinArgument7,
+                                                             class GALGAS_bool constinArgument8,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 

@@ -1172,6 +1172,7 @@ void GALGAS_string::class_method_generateFileWithPattern (GALGAS_string inStartP
                                                           GALGAS_string inGeneratedZone2,
                                                           GALGAS_string inDefaultUserZone2,
                                                           GALGAS_string inGeneratedZone3,
+                                                          GALGAS_bool inMakeExecutable,
                                                           C_Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   const bool built = (inStartPath.isValid ())
@@ -1182,6 +1183,7 @@ void GALGAS_string::class_method_generateFileWithPattern (GALGAS_string inStartP
     && (inDefaultUserZone2.isValid ())
     && (inDefaultUserZone2.isValid ())
     && (inGeneratedZone3.isValid ())
+    && (inMakeExecutable.isValid ())
   ;
   if (built) {
     TC_UniqueArray <C_String> directoriesToExclude ;
@@ -1194,7 +1196,8 @@ void GALGAS_string::class_method_generateFileWithPattern (GALGAS_string inStartP
       inDefaultUserZone1.mString,
       inGeneratedZone2.mString,
       inDefaultUserZone2.mString,
-      inGeneratedZone3.mString
+      inGeneratedZone3.mString,
+      inMakeExecutable.boolValue ()
     ) ;
   }
 }

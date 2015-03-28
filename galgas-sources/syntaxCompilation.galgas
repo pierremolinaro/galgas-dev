@@ -154,6 +154,7 @@ proc compileSyntaxComponentFromAST
         !generatedZone2:headerString
         !defaultUserZone2:"\n\n" # Defaut user zone2
         !generatedZone3:"#endif\n"
+        !makeExecutable:false
       ]
     #------ Generate Implementation File
       if @uint. errorCount == 0 then
@@ -176,6 +177,7 @@ proc compileSyntaxComponentFromAST
           !generatedZone2:implementationString
           !defaultUserZone2:"\n\n" # Defaut user zone2
           !generatedZone3:"\n"
+          !makeExecutable:false
         ]
       end
     end

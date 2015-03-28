@@ -5278,7 +5278,11 @@ static void categoryMethod_stringPredefinedTypeAST_getClassMethodMap (const cPtr
   }
   GALGAS_unifiedTypeMap_2D_proxy var_stringType ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringType COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 46)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringType COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 45)) ;
+  }
+  GALGAS_unifiedTypeMap_2D_proxy var_boolType ;
+  {
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("bool"), var_boolType COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 46)) ;
   }
   GALGAS_formalParameterSignature var_argList = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("semanticsClassMethods.galgas", 47)) ;
   var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsClassMethods.galgas", 48)), var_stringType, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("semanticsClassMethods.galgas", 48)), GALGAS_string ("inStartPath")  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 48)) ;
@@ -5296,8 +5300,9 @@ static void categoryMethod_stringPredefinedTypeAST_getClassMethodMap (const cPtr
   var_argList.addAssign_operation (GALGAS_string ("generatedZone2").reader_nowhere (SOURCE_FILE ("semanticsClassMethods.galgas", 62)), var_stringType, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("semanticsClassMethods.galgas", 62)), GALGAS_string ("inGeneratedZone2")  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 62)) ;
   var_argList.addAssign_operation (GALGAS_string ("defaultUserZone2").reader_nowhere (SOURCE_FILE ("semanticsClassMethods.galgas", 63)), var_stringType, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("semanticsClassMethods.galgas", 63)), GALGAS_string ("inDefaultUserZone2")  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 63)) ;
   var_argList.addAssign_operation (GALGAS_string ("generatedZone3").reader_nowhere (SOURCE_FILE ("semanticsClassMethods.galgas", 64)), var_stringType, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("semanticsClassMethods.galgas", 64)), GALGAS_string ("inGeneratedZone3")  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 64)) ;
+  var_argList.addAssign_operation (GALGAS_string ("makeExecutable").reader_nowhere (SOURCE_FILE ("semanticsClassMethods.galgas", 65)), var_boolType, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("semanticsClassMethods.galgas", 65)), GALGAS_string ("inMakeExecutable")  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 65)) ;
   {
-  outArgument_outClassMethodMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("generateFileWithPattern"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 66))  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 66)), var_argList, GALGAS_bool (true) COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 65)) ;
+  outArgument_outClassMethodMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("generateFileWithPattern"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 67))  COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 67)), var_argList, GALGAS_bool (true) COMMA_SOURCE_FILE ("semanticsClassMethods.galgas", 66)) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*

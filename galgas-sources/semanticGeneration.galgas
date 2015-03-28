@@ -1912,6 +1912,7 @@ override method @classTypeForGeneration appendDeclaration2
       !generatedZone2:part1
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:part2
+      !makeExecutable:false
     ]
     outHeader = "#include \"" + headerFileName + "\"\n\n"
   else
@@ -2629,6 +2630,7 @@ override method @optionComponentForGeneration appendSpecificFiles
       !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
         !mOptionComponentName
       ]
+      !makeExecutable:false
     ]
   #--- Generate Cocoa Implementation
     ioAllProductFileSet += !"option-" + mOptionComponentName + "-cocoa.m"
@@ -2648,6 +2650,7 @@ override method @optionComponentForGeneration appendSpecificFiles
       ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # User Zone 3
+      !makeExecutable:false
     ]
  end
 }
@@ -2694,6 +2697,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !generatedZone2:mCocoaHeader
     !defaultUserZone2:"\n\n" # Defaut user zone2
     !generatedZone3:"\n"
+    !makeExecutable:false
   ]
 #--- Generate Cocoa implementation file
 #      ioAppProductFileList += !"lexique-" + mLexiqueName + "-cocoa.m" ;
@@ -2707,6 +2711,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !generatedZone2:mCocoaImplementation
     !defaultUserZone2:"\n\n" # Defaut user zone2
     !generatedZone3:"\n\n" # Zone 3
+    !makeExecutable:false
   ]
 }
 
@@ -3101,6 +3106,7 @@ proc generatePredefinedTypeFiles ?let @string inDirectory {
           !generatedZone2:generatedCode
           !defaultUserZone2:"\n\n" # Defaut user zone2
           !generatedZone3:"#endif\n"
+          !makeExecutable:false
         ]
       end
     #------ Generate predefined types implementation
@@ -3121,6 +3127,7 @@ proc generatePredefinedTypeFiles ?let @string inDirectory {
           !generatedZone2:generatedCode
           !defaultUserZone2:"\n\n" # Defaut user zone2
           !generatedZone3:""
+          !makeExecutable:false
         ]
       end
     end

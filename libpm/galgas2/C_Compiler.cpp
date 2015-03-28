@@ -82,10 +82,6 @@ C_Compiler::C_Compiler (C_Compiler * inCallerCompiler,
                         const C_String & /* inDependencyFilePath */
                         COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
-#ifdef USE_THREADS
-  mSemaphore (),
-  mThread (NULL),
-#endif
 mCallerCompiler (NULL),
 mSentString (),
 mSentStringIsValid (true),
@@ -102,13 +98,6 @@ mCheckedVariableList () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_Compiler::~C_Compiler (void) {
-  #ifdef USE_THREADS
-    mSemaphore.lock () ;
-    if (NULL != mThread) {
-      mThread->join () ;
-      macroMyDelete (mThread) ;
-    }
-  #endif
   macroDetachSharedObject (mSourceTextPtr) ;
   macroDetachSharedObject (mCallerCompiler) ;
 }
@@ -525,7 +514,8 @@ void C_Compiler::generateFile (const C_String & inLineCommentPrefix,
                                const C_String & inDefaultUserZone1,
                                const C_String & inGeneratedZone2,
                                const C_String & inDefaultUserZone2,
-                               const C_String & inGeneratedZone3) {
+                               const C_String & inGeneratedZone3,
+                               const bool inMakeExecutable) {
   generateFileWithPatternFromPathes (sourceFilePath ().stringByDeletingLastPathComponent (),
                           inDirectoriesToExclude,
                           inLineCommentPrefix,
@@ -534,36 +524,16 @@ void C_Compiler::generateFile (const C_String & inLineCommentPrefix,
                           inDefaultUserZone1,
                           inGeneratedZone2,
                           inDefaultUserZone2,
-                          inGeneratedZone3) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void C_Compiler::generateFileInGALGAS_OUTPUT (const C_String & inLineCommentPrefix,
-                                              const C_String & inFileName,
-                                              const C_String & inHeader,
-                                              const C_String & inDefaultUserZone1,
-                                              const C_String & inGeneratedZone2,
-                                              const C_String & inDefaultUserZone2,
-                                              const C_String & inGeneratedZone3) {
-  const TC_UniqueArray <C_String> directoriesToExclude ;
-  generateFileWithPatternFromPathes (sourceFilePath ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT",
-                          directoriesToExclude,
-                          inLineCommentPrefix,
-                          inFileName,
-                          inHeader,
-                          inDefaultUserZone1,
-                          inGeneratedZone2,
-                          inDefaultUserZone2,
-                          inGeneratedZone3) ;
+                          inGeneratedZone3,
+                          inMakeExecutable) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
-                                        const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-                                        const C_String & inFileName,
-                                        const C_String & inContents) {
+                                         const TC_UniqueArray <C_String> & inDirectoriesToExclude,
+                                         const C_String & inFileName,
+                                         const C_String & inContents) {
 //--- Verbose option ?
   const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
 //--- Very Verbose (?)
@@ -666,27 +636,6 @@ C_String C_Compiler::checkedVariableAtIndex (const int32_t inIndex COMMA_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef USE_THREADS
-  static void codeThread (C_Compiler * inCompiler,
-                          const C_String & inStartPath,
-                          const C_String & inLineCommentPrefix,
-                          const C_String & inFileName,
-                          const C_String & inDefaultUserZone1,
-                          const C_String & inGeneratedZone2,
-                          const C_String & inDefaultUserZone2,
-                          const C_String & inGeneratedZone3) {
-    inCompiler->actualGenerateFileWithPatternFromPathes (inStartPath,
-                                                         inLineCommentPrefix,
-                                                         inFileName,
-                                                         inDefaultUserZone1,
-                                                         inGeneratedZone2,
-                                                         inDefaultUserZone2,
-                                                         inGeneratedZone3) ;
-  }
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 void C_Compiler::generateFileWithPatternFromPathes (
   const C_String & inStartPath,
   const TC_UniqueArray <C_String> & inDirectoriesToExclude,
@@ -696,55 +645,8 @@ void C_Compiler::generateFileWithPatternFromPathes (
   const C_String & inDefaultUserZone1,
   const C_String & inGeneratedZone2,
   const C_String & inDefaultUserZone2,
-  const C_String & inGeneratedZone3
-) {
-  #ifdef USE_THREADS
-    inStartPath.insulate () ;
-    inLineCommentPrefix.insulate () ;
-    inLineCommentPrefix.insulate () ;
-    inFileName.insulate () ;
-    inDefaultUserZone1.insulate () ;
-    inGeneratedZone2.insulate () ;
-    inDefaultUserZone2.insulate () ;
-    inGeneratedZone3.insulate () ;
-    mSemaphore.lock () ;
-    if (NULL != mThread) {
-      mThread->join () ;
-      macroMyDelete (mThread) ;
-    }
-    macroMyNew (mThread, std::thread (codeThread, this,
-                                             inStartPath,
-                                             inLineCommentPrefix,
-                                             inFileName,
-                                             inDefaultUserZone1,
-                                             inGeneratedZone2,
-                                             inDefaultUserZone2,
-                                             inGeneratedZone3)) ;
-  #else
-    actualGenerateFileWithPatternFromPathes (inStartPath,
-                                             inDirectoriesToExclude,
-                                             inLineCommentPrefix,
-                                             inFileName,
-                                             inHeader,
-                                             inDefaultUserZone1,
-                                             inGeneratedZone2,
-                                             inDefaultUserZone2,
-                                             inGeneratedZone3) ;
-  #endif
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void C_Compiler::actualGenerateFileWithPatternFromPathes (
-  const C_String & inStartPath,
-  const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-  const C_String & inLineCommentPrefix,
-  const C_String & inFileName,
-  const C_String & inHeader,
-  const C_String & inDefaultUserZone1,
-  const C_String & inGeneratedZone2,
-  const C_String & inDefaultUserZone2,
-  const C_String & inGeneratedZone3
+  const C_String & inGeneratedZone3,
+  const bool inMakeExecutable
 ) {
 //--- Verbose option ?
   const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
@@ -792,6 +694,15 @@ void C_Compiler::actualGenerateFileWithPatternFromPathes (
         << inGeneratedZone3 ;
       if (verboseOptionOn || veryVerboseOptionOn) {
         ggs_printFileCreationSuccess (C_String ("Created '") + fileName + "'.\n" COMMA_HERE) ;
+      }
+      f.close () ;
+      if (inMakeExecutable) {
+        #ifndef COMPILE_FOR_WIN32
+          struct stat fileStat ;
+          ::stat (fullPathName.cString (HERE), & fileStat) ;
+            // printf ("FILE MODE 0x%X\n", fileStat.st_mode) ;
+          ::chmod (fullPathName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+        #endif
       }
     }else{
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
@@ -851,13 +762,19 @@ void C_Compiler::actualGenerateFileWithPatternFromPathes (
       if (verboseOptionOn || veryVerboseOptionOn) {
         ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n" COMMA_HERE) ;
       }
+      f.close () ;
+      if (inMakeExecutable) {
+        #ifndef COMPILE_FOR_WIN32
+          struct stat fileStat ;
+          ::stat (fullPathName.cString (HERE), & fileStat) ;
+            // printf ("FILE MODE 0x%X\n", fileStat.st_mode) ;
+          ::chmod (fullPathName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+        #endif
+      }
     }else{
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
     }
   }
-  #ifdef USE_THREADS
-    mSemaphore.unlock () ;
-  #endif
 }
 
 
