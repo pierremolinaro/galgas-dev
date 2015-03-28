@@ -394,13 +394,14 @@ proc compileSemanticsComponentAST
       headerString += headerString2
     end
     [@string generateFileWithPattern
-      !inOutputDirectory
-      ![componentName string] + ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !headerString
-      !"\n\n" # Defaut user zone2
-      !"#endif\n"
+      !startPath:inOutputDirectory
+      !fileName:[componentName string] + ".h"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:headerString
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"#endif\n"
     ]
   end
 #------ Generate Implementation File
@@ -416,13 +417,14 @@ proc compileSemanticsComponentAST
       implementationString += [mDeclaration appendTypeGenericImplementation]
     end
     [@string generateFileWithPattern
-      !inOutputDirectory
-      ![componentName string] + ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !implementationString
-      !"\n\n" # Defaut user zone2
-      !"\n"
+      !startPath:inOutputDirectory
+      !fileName:[componentName string] + ".cpp"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:implementationString
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n"
     ]
   end
 }

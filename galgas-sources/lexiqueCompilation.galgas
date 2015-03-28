@@ -975,17 +975,18 @@ proc compileLexiqueComponentFromAST
 #--- Generate header file
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectory
-      !lexiqueClassName + ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.newHeaderZone2
+      !startPath:inOutputDirectory
+      !fileName:lexiqueClassName + ".h"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper lexiqueGenerationTemplates.newHeaderZone2
          ![lexiqueClassName identifierRepresentation]
          !lexiqueAnalysisContext
          !inLexiqueComponentRoot.mTemplateDelimitorList
        ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper lexiqueGenerationTemplates.newHeaderZone3
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:[filewrapper lexiqueGenerationTemplates.newHeaderZone3
          ![lexiqueClassName identifierRepresentation]
          ![inLexiqueComponentRoot mLexicalListDeclarationList]
          !lexiqueAnalysisContext
@@ -996,11 +997,12 @@ proc compileLexiqueComponentFromAST
 #--- Generate implementation file
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectory
-      !lexiqueClassName + ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.newImplementationZone2
+      !startPath:inOutputDirectory
+      !fileName:lexiqueClassName + ".cpp"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper lexiqueGenerationTemplates.newImplementationZone2
          ![lexiqueClassName identifierRepresentation]
          ![lexiqueAnalysisContext mLexicalAttributeMap]
          ![lexiqueAnalysisContext mLexicalMessageMap]
@@ -1011,23 +1013,24 @@ proc compileLexiqueComponentFromAST
          !lexiqueAnalysisContext
          !inLexiqueComponentRoot
        ]
-      !"\n\n" # Defaut user zone2
-      !"\n\n" # Zone 3
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n\n" # Zone 3
     ]
   end
 #--- Generate cocoa header file
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectory
-      !lexiqueClassName + "-cocoa.h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
+      !startPath:inOutputDirectory
+      !fileName:lexiqueClassName + "-cocoa.h"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
          !lexiqueClassName
          !lexiqueAnalysisContext
        ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:[filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
          !lexiqueClassName
          !lexiqueAnalysisContext
        ]
@@ -1036,11 +1039,12 @@ proc compileLexiqueComponentFromAST
 #--- Generate Cocoa implementation file
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectory
-      !lexiqueClassName + "-cocoa.m"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+      !startPath:inOutputDirectory
+      !fileName:lexiqueClassName + "-cocoa.m"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
          !lexiqueClassName + "-cocoa"
          !lexiqueClassName
          ![lexiqueAnalysisContext mLexicalAttributeMap]
@@ -1055,8 +1059,8 @@ proc compileLexiqueComponentFromAST
          !inLexiqueComponentRoot.mLexicalStyleList
          !inLexiqueComponentRoot.mTemplateDelimitorList
       ]
-      !"\n\n" # Defaut user zone2
-      !"\n\n" # Zone 3
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n\n" # Zone 3
     ]
   end
 }
