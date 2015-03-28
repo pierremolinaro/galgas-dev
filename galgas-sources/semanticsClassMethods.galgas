@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  semantics definitions for semantics component                            *
+#  semantics definitions for semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -13,10 +13,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc enterClassMethodWithStringInputArgument
@@ -42,10 +38,10 @@ override method @stringPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@classMethodMap outClassMethodMap {
   outClassMethodMap = @classMethodMap. emptyMap
-  enterClassMethodWithStringInputArgument ( !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !"inFilePath" !true )
-  enterClassMethodWithStringInputArgument ( !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true )
-  enterClassMethodWithStringInputArgument ( !?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true )
-  enterClassMethodWithStringInputArgument ( !?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true )
+  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !"inFilePath" !true )
+  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true )
+  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true )
+  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true )
   @unifiedTypeMap-proxy stringType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
   var argList =@formalParameterSignature.emptyList{}
@@ -57,14 +53,15 @@ override method @stringPredefinedTypeAST getClassMethodMap
     !argList
     !true
   ]
-  argList = @formalParameterSignature. emptyList
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inLineCommentPrefix"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inDefaultUserZone1"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inGeneratedZone2"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inDefaultUserZone2"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inGeneratedZone3"
+  argList = {}
+  argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
+  argList += !["fileName" nowhere] !stringType !.argumentConstantIn !"inFileName"
+  argList += !["lineComment" nowhere] !stringType !.argumentConstantIn !"inLineCommentPrefix"
+  argList += !["header" nowhere] !stringType !.argumentConstantIn !"inHeader"
+  argList += !["defaultUserZone1" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone1"
+  argList += !["generatedZone2" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone2"
+  argList += !["defaultUserZone2" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone2"
+  argList += !["generatedZone3" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone3"
   [!?outClassMethodMap insertOrReplace
     !@lstring.new {!"generateFileWithPattern" !@location.here}
     !argList

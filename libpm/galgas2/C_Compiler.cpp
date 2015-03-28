@@ -521,6 +521,7 @@ void closeTrace (void) {
 void C_Compiler::generateFile (const C_String & inLineCommentPrefix,
                                const TC_UniqueArray <C_String> & inDirectoriesToExclude,
                                const C_String & inFileName,
+                               const C_String & inHeader,
                                const C_String & inDefaultUserZone1,
                                const C_String & inGeneratedZone2,
                                const C_String & inDefaultUserZone2,
@@ -529,6 +530,7 @@ void C_Compiler::generateFile (const C_String & inLineCommentPrefix,
                           inDirectoriesToExclude,
                           inLineCommentPrefix,
                           inFileName,
+                          inHeader,
                           inDefaultUserZone1,
                           inGeneratedZone2,
                           inDefaultUserZone2,
@@ -539,6 +541,7 @@ void C_Compiler::generateFile (const C_String & inLineCommentPrefix,
 
 void C_Compiler::generateFileInGALGAS_OUTPUT (const C_String & inLineCommentPrefix,
                                               const C_String & inFileName,
+                                              const C_String & inHeader,
                                               const C_String & inDefaultUserZone1,
                                               const C_String & inGeneratedZone2,
                                               const C_String & inDefaultUserZone2,
@@ -548,6 +551,7 @@ void C_Compiler::generateFileInGALGAS_OUTPUT (const C_String & inLineCommentPref
                           directoriesToExclude,
                           inLineCommentPrefix,
                           inFileName,
+                          inHeader,
                           inDefaultUserZone1,
                           inGeneratedZone2,
                           inDefaultUserZone2,
@@ -683,14 +687,17 @@ C_String C_Compiler::checkedVariableAtIndex (const int32_t inIndex COMMA_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_Compiler::generateFileWithPatternFromPathes (const C_String & inStartPath,
-                                                    const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-                                                    const C_String & inLineCommentPrefix,
-                                                    const C_String & inFileName,
-                                                    const C_String & inDefaultUserZone1,
-                                                    const C_String & inGeneratedZone2,
-                                                    const C_String & inDefaultUserZone2,
-                                                    const C_String & inGeneratedZone3) {
+void C_Compiler::generateFileWithPatternFromPathes (
+  const C_String & inStartPath,
+  const TC_UniqueArray <C_String> & inDirectoriesToExclude,
+  const C_String & inLineCommentPrefix,
+  const C_String & inFileName,
+  const C_String & inHeader,
+  const C_String & inDefaultUserZone1,
+  const C_String & inGeneratedZone2,
+  const C_String & inDefaultUserZone2,
+  const C_String & inGeneratedZone3
+) {
   #ifdef USE_THREADS
     inStartPath.insulate () ;
     inLineCommentPrefix.insulate () ;
@@ -718,6 +725,7 @@ void C_Compiler::generateFileWithPatternFromPathes (const C_String & inStartPath
                                              inDirectoriesToExclude,
                                              inLineCommentPrefix,
                                              inFileName,
+                                             inHeader,
                                              inDefaultUserZone1,
                                              inGeneratedZone2,
                                              inDefaultUserZone2,
@@ -727,15 +735,17 @@ void C_Compiler::generateFileWithPatternFromPathes (const C_String & inStartPath
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_Compiler::actualGenerateFileWithPatternFromPathes (const C_String & inStartPath,
-                                                    const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-                                                    const C_String & inLineCommentPrefix,
-                                                    const C_String & inFileName,
-                                                    const C_String & inDefaultUserZone1,
-                                                    const C_String & inGeneratedZone2,
-                                                    const C_String & inDefaultUserZone2,
-                                                    const C_String & inGeneratedZone3) {
-//  const TC_UniqueArray <C_String> inDirectoriesToExclude ;
+void C_Compiler::actualGenerateFileWithPatternFromPathes (
+  const C_String & inStartPath,
+  const TC_UniqueArray <C_String> & inDirectoriesToExclude,
+  const C_String & inLineCommentPrefix,
+  const C_String & inFileName,
+  const C_String & inHeader,
+  const C_String & inDefaultUserZone1,
+  const C_String & inGeneratedZone2,
+  const C_String & inDefaultUserZone2,
+  const C_String & inGeneratedZone3
+) {
 //--- Verbose option ?
   const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
 //--- Very Verbose (?)
@@ -746,12 +756,13 @@ void C_Compiler::actualGenerateFileWithPatternFromPathes (const C_String & inSta
   const C_String kSTART_OF_USER_ZONE_2 = C_String (inLineCommentPrefix) + START_OF_USER_ZONE_2 ;
   const C_String kEND_OF_USER_ZONE_2   = C_String (inLineCommentPrefix) + END_OF_USER_ZONE_2 ;
 //--- Build generated zone 1
-  C_String generatedZone1 ;
-  generatedZone1.appendFileHeaderComment (inLineCommentPrefix, C_String ("File '") + inFileName + "'", compilerVersionString (), false) ;
+//  C_String generatedZone1 ;
+//  generatedZone1.appendFileHeaderComment (inLineCommentPrefix, C_String ("File '") + inFileName + "'", compilerVersionString (), false) ;
 //--- Start path : by default, use source file directory
   const C_String startPath = (inStartPath.length () == 0)
-   ? sourceFilePath ().stringByDeletingLastPathComponent ()
-   : inStartPath ;
+    ? sourceFilePath ().stringByDeletingLastPathComponent ()
+    : inStartPath
+  ;
 //--- Search file in directory
   const C_String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
   if (fullPathName.length () == 0) {
@@ -776,7 +787,7 @@ void C_Compiler::actualGenerateFileWithPatternFromPathes (const C_String & inSta
         message << "Cannot open '" << fileName << "' file in write mode." ;
         onTheFlySemanticError (message COMMA_HERE) ;
       }
-      f << generatedZone1 << kSTART_OF_USER_ZONE_1 << inDefaultUserZone1 << kEND_OF_USER_ZONE_1
+      f << inHeader << kSTART_OF_USER_ZONE_1 << inDefaultUserZone1 << kEND_OF_USER_ZONE_1
         << inGeneratedZone2 << kSTART_OF_USER_ZONE_2 << inDefaultUserZone2 << kEND_OF_USER_ZONE_2
         << inGeneratedZone3 ;
       if (verboseOptionOn || veryVerboseOptionOn) {
@@ -832,7 +843,7 @@ void C_Compiler::actualGenerateFileWithPatternFromPathes (const C_String & inSta
         message << "Cannot open '" << fullPathName << "' file in write mode." ;
         onTheFlySemanticError (message COMMA_HERE) ;
       }
-      f << generatedZone1
+      f << inHeader
         << kSTART_OF_USER_ZONE_1 << firstUserPart << kEND_OF_USER_ZONE_1
         << inGeneratedZone2
         << kSTART_OF_USER_ZONE_2 << secondUserPart << kEND_OF_USER_ZONE_2

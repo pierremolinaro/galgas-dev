@@ -206,15 +206,16 @@ proc compileOptionComponentAST
 #--- Generate header
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectory
-      ![inOptionComponentName string] + ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper optionGenerationTemplates.optionHeaderZone2
+      !startPath:inOutputDirectory
+      !fileName:[inOptionComponentName string] + ".h"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderZone2
         ![inOptionComponentName string]
       ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper optionGenerationTemplates.optionHeaderZone3
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderZone3
         ![inOptionComponentName string]
         !boolOptionMap
         !uintOptionMap
@@ -226,33 +227,35 @@ proc compileOptionComponentAST
 #--- Generate Implementation
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectory
-      ![inOptionComponentName string] + ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper optionGenerationTemplates.optionImplementation
+      !startPath:inOutputDirectory
+      !fileName:[inOptionComponentName string] + ".cpp"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementation
         ![inOptionComponentName string]
         !boolOptionMap
         !uintOptionMap
         !stringOptionMap
         !stringListOptionMap
       ]
-      !"\n\n" # Defaut user zone2
-      !"\n\n" # User Zone 3
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n\n" # User Zone 3
     ]
  end
 #--- Generate Cocoa header
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectory
-      ![inOptionComponentName string] + "-cocoa.h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
+      !startPath:inOutputDirectory
+      !fileName:[inOptionComponentName string] + "-cocoa.h"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
         ![inOptionComponentName string]
       ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
         ![inOptionComponentName string]
       ]
     ]
@@ -260,11 +263,12 @@ proc compileOptionComponentAST
 #--- Generate Cocoa Implementation
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectory
-      ![inOptionComponentName string] + "-cocoa.m"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper optionGenerationTemplates.optionImplementationCocoa
+      !startPath:inOutputDirectory
+      !fileName:[inOptionComponentName string] + "-cocoa.m"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
         !inOptionComponentName.string + "-cocoa"
         !inOptionComponentName.string
         !boolOptionMap
@@ -272,8 +276,8 @@ proc compileOptionComponentAST
         !stringOptionMap
         !stringListOptionMap
       ]
-      !"\n\n" # Defaut user zone2
-      !"\n\n" # User Zone 3
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n\n" # User Zone 3
     ]
  end
 }

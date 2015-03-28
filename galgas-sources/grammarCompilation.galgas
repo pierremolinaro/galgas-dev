@@ -597,13 +597,14 @@ proc compileGrammarComponentFromAST
 #---------------------------------------------------------- Generate Implementation file
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern
-      !inOutputDirectoryForCppFiles
-      !inGrammarComponentRoot.mGrammarComponentName.string + ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !grammarCppFile
-      !"\n\n" # Defaut user zone2
-      !"\n"
+      !startPath:inOutputDirectoryForCppFiles
+      !fileName:inGrammarComponentRoot.mGrammarComponentName.string + ".cpp"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:grammarCppFile
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n"
     ]
   end
 #---------------------------------------------------------- Generate header
@@ -619,13 +620,14 @@ proc compileGrammarComponentFromAST
       !hasIndexing
     ]
     [@string generateFileWithPattern
-      !inOutputDirectoryForCppFiles
-      !inGrammarComponentRoot.mGrammarComponentName.string + ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !zone2
-      !"\n\n" # Defaut user zone2
-      !zone3
+      !startPath:inOutputDirectoryForCppFiles
+      !fileName:inGrammarComponentRoot.mGrammarComponentName.string + ".h"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:zone2
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:zone3
     ]
   end
 }

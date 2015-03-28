@@ -618,7 +618,7 @@ proc updateGalgas3Targets
 #      !inProjectQualifiedFeatureMap
 #    ;
   #-------------------------------------------------------- New Xcode project generation
-    var xcodeProject =@XcodeProjectDescriptor.default
+    var xcodeProject = @XcodeProjectDescriptor.default
   #--- Default build configuration
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList:{
       !"ALWAYS_SEARCH_USER_PATHS = NO",
