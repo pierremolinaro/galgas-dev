@@ -222,6 +222,7 @@ proc compileOptionComponentAST
         !stringOptionMap
         !stringListOptionMap
       ] + "\n#endif\n"
+      !makeExecutable:false
     ]
   end
 #--- Generate Implementation
@@ -241,6 +242,7 @@ proc compileOptionComponentAST
       ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # User Zone 3
+      !makeExecutable:false
     ]
  end
 #--- Generate Cocoa header
@@ -258,6 +260,7 @@ proc compileOptionComponentAST
       !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
         ![inOptionComponentName string]
       ]
+      !makeExecutable:false
     ]
   end
 #--- Generate Cocoa Implementation
@@ -278,6 +281,7 @@ proc compileOptionComponentAST
       ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # User Zone 3
+      !makeExecutable:false
     ]
  end
 }

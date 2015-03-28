@@ -173,7 +173,7 @@
       [udc
         addObserver:self
         forKeyPath:keyPath
-        options:0
+        options:NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_TEMPLATE_FOREGROUND_COLOR)
       ] ;
       NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_foreground_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
@@ -190,7 +190,7 @@
       [udc
         addObserver:self
         forKeyPath:keyPath
-        options:0
+        options:NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_FOREGROUND_COLOR | i)
       ] ;
     }
@@ -200,14 +200,14 @@
       [udc
         addObserver:self
         forKeyPath:keyPath
-        options:0
+        options:NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_TEMPLATE_BACKGROUND_COLOR)
       ] ;
       keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_enable_template_background, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       [udc
         addObserver:self
         forKeyPath:keyPath
-        options:0
+        options:NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_ENABLE_TEMPLATE_BACKGROUND)
       ] ;
       NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_enable_template_background, [mTokenizer styleIdentifierForStyleIndex:0]] ;
@@ -227,14 +227,14 @@
       [udc
         addObserver:self
         forKeyPath:keyPath
-        options:0
+        options:NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_BACKGROUND_COLOR | i)
       ] ;
       keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_enable_background, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
         addObserver:self
         forKeyPath:keyPath
-        options:0
+        options:NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_ENABLING_BACKGROUND | i)
       ] ;
     }
@@ -244,7 +244,7 @@
       [udc
         addObserver:self
         forKeyPath:keyPath
-        options:0
+        options:NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_TEMPLATE_FONT_ATTRIBUTE)
       ] ;
     //--- Add font attribute   
@@ -260,7 +260,7 @@
       [udc
         addObserver:self
         forKeyPath:keyPath
-        options:0
+        options:NSKeyValueObservingOptionNew
         context:(void *) (TAG_FOR_FONT_ATTRIBUTE | i)
       ] ;
     }
@@ -841,7 +841,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
     #endif
     NSString * lineString = [sourceString substringWithRange:currentLineRange] ;
-    if ([lineString compare:blockCommentString options:0 range:NSMakeRange (0, blockCommentLength)] == NSOrderedSame) {
+    if ([lineString compare:blockCommentString options:NSLiteralSearch range:NSMakeRange (0, blockCommentLength)] == NSOrderedSame) {
       [mutableSourceString replaceCharactersInRange:NSMakeRange (currentLineRange.location, blockCommentLength) withString:@""] ;
     //--- Examen du nombre de caractères à l'intérieur de la sélection
       const NSInteger withinSelectionCharacterCount = 

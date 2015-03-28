@@ -150,7 +150,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     [[NSUserDefaultsController sharedUserDefaultsController]
       addObserver:self
       forKeyPath:@"values.PMShowInvisibleCharacters"
-      options:0
+      options:NSKeyValueObservingOptionNew
       context:NULL
     ] ;
     [self refreshShowInvisibleCharacters] ;
@@ -425,7 +425,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
     #endif
     NSString * lineString = [sourceString substringWithRange:currentLineRange] ;
-    if ([lineString compare:spaceString options:0 range:NSMakeRange (0, twoSpaceLength)] == NSOrderedSame) {
+    if ([lineString compare:spaceString options:NSLiteralSearch range:NSMakeRange (0, twoSpaceLength)] == NSOrderedSame) {
       [mutableSourceString replaceCharactersInRange:NSMakeRange (currentLineRange.location, twoSpaceLength) withString:@""] ;
     //--- Examen du nombre de caractères à l'intérieur de la sélection
       const NSInteger withinSelectionCharacterCount = 

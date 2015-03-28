@@ -991,11 +991,12 @@ proc compileLexiqueComponentFromAST
          ![inLexiqueComponentRoot mLexicalListDeclarationList]
          !lexiqueAnalysisContext
          ![inLexiqueComponentRoot mIndexingListAST]
-       ]
+      ]
+      !makeExecutable:false
     ]
   end
 #--- Generate implementation file
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
     [@string generateFileWithPattern
       !startPath:inOutputDirectory
       !fileName:lexiqueClassName + ".cpp"
@@ -1015,6 +1016,7 @@ proc compileLexiqueComponentFromAST
        ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # Zone 3
+      !makeExecutable:false
     ]
   end
 #--- Generate cocoa header file
@@ -1034,6 +1036,7 @@ proc compileLexiqueComponentFromAST
          !lexiqueClassName
          !lexiqueAnalysisContext
        ]
+      !makeExecutable:false
     ]
   end
 #--- Generate Cocoa implementation file
@@ -1061,6 +1064,7 @@ proc compileLexiqueComponentFromAST
       ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # Zone 3
+      !makeExecutable:false
     ]
   end
 }

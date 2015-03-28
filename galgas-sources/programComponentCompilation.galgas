@@ -415,6 +415,7 @@ proc compileProgramComponentFromAST
       !generatedZone2:headerString
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"#endif\n"
+      !makeExecutable:false
     ]
   end
 #------ Generate Implementation File
@@ -441,6 +442,7 @@ proc compileProgramComponentFromAST
       !generatedZone2:implementationString
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n"
+      !makeExecutable:false
     ]
   end
 }
