@@ -347,19 +347,19 @@ Cette instruction s'applique aux types suivants :
 
 \subsectionLabel{Instruction d'ajout et le type \texttt{@string}}{instructionConcatString}
 
-Sous la forme \ggs+cible += expression+, l'instruction permet de concaténer des chaînes de caractères :
+Sous la forme \ggs*cible += expression*, l'instruction permet de concaténer des chaînes de caractères :
 \begin{galgas}
 var s = "abc"
 s += "def" # s vaut "abcdef"
 \end{galgas}
 
-La forme \ggs+cible += !expression1 ... !expressionN+ n'est pas prise en compte pour le type \ggs+@string+.
+La forme \ggs*cible += !expression1 ... !expressionN* n'est pas prise en compte pour le type \ggs+@string+.
 
 
 
 \subsectionLabel{Instruction d'ajout et le type \texttt{@stringset}}{instructionConcatStringset}
 
-Sous la forme \ggs*cible += expression*, l'instruction permet de concaténer d'effectuer l'union des ensembles de châines :
+Sous la forme \ggs*cible += expression*, l'instruction permet de concaténer d'effectuer l'union des ensembles de chaînes :
 \begin{galgas}
 var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
 var strset2 = @stringset {!"b", !"c"} # Valeur : "b", "c"
@@ -411,7 +411,7 @@ liste += !2 !"a" # liste vaut contient un élément 2, "a"
 
 \subsectionLabel{Instruction d'ajout et les listes triées}{instructionConcatSortedList}
 
-Sous la forme \ggs*cible += expression*, l'instruction effectue une concaténation de listes : \ggs+cible+ et \ggs+expression+ doivent avoir le même type \ggs+sorted list @T+, et chaque élément de \ggs+expression+ est ajouté à la \ggs+cible+ en respectant l'ordre de tri.
+Sous la forme \ggs*cible += expression*, l'instruction effectue une concaténation de listes : \ggs+cible+ et \ggs+expression+ doivent avoir le même type \ggs+sortedlist @T+, et chaque élément de \ggs+expression+ est ajouté à la \ggs+cible+ en respectant l'ordre de tri.
 
 Avec la liste triée :
 \begin{galgas}
@@ -1109,10 +1109,7 @@ Plusieurs champs de l'instruction \ggs+for+ sont optionnels.
 
 Au début de l'exécution de l'instruction \ggs+for+, les valeurs des collections enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
 \begin{galgas}
-@stringlist v = {}
-v += !"A"
-v += !"B"
-v += !"C"
+@stringlist v = {!"A", !"B", !"C"}
 log v # "A", "B", "C"
 for s in v do
   v += !s
