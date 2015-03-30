@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  Compile all galgas sources                                                                                          *
 #                                                                                                                      *
-#  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 1997, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -15,7 +15,7 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-project (3:0:6) -> "galgas" {
+project (3:0:7) -> "galgas" {
   %libpmAtPath : "../libpm"
 #--- Targets
   %makefile-macosx
