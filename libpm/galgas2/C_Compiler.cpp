@@ -699,9 +699,9 @@ void C_Compiler::generateFileWithPatternFromPathes (
       if (inMakeExecutable) {
         #ifndef COMPILE_FOR_WIN32
           struct stat fileStat ;
-          ::stat (fullPathName.cString (HERE), & fileStat) ;
+          ::stat (fileName.cString (HERE), & fileStat) ;
             // printf ("FILE MODE 0x%X\n", fileStat.st_mode) ;
-          ::chmod (fullPathName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+          ::chmod (fileName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
         #endif
       }
     }else{

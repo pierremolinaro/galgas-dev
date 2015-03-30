@@ -270,7 +270,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        G O T O    L I N E    A N D     C O L U M N                          *
+//        G O T O    L I N E    A N D     C O L U M N                                                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -293,6 +293,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     range.location = lastStartOfLine ;
     range.length = 0 ;
   }
+  NSBeep () ;
   [mTextView setSelectedRange:range] ;
   [mTextView scrollRangeToVisible:range] ;
 }

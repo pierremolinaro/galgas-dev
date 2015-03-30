@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Component for compiling a semantics component                            *
+#  Component for compiling a semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
@@ -13,12 +13,8 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
-
-
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -34,7 +30,7 @@ filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_
                             
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C O M P I L E    S E M A N T I C S   C O M P O N E N T                 *
+#    C O M P I L E    S E M A N T I C S   C O M P O N E N T                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
