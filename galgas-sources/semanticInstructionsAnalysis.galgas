@@ -436,10 +436,15 @@ private proc analyzeErrorOrWarningInstruction
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outLocationExpression
   !@semanticExpressionForGeneration outMessageExpression
-  !@bool outUseLocationReader {
+  !@bool outUseLocationReader
+{
 #--- Analyze location expression
+  let locationType = @unifiedTypeMap-proxy.searchKey {
+    !inAnalysisContext.mSemanticContext.mTypeMap
+    !["location" nowhere]
+  }
   [inLocationExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy. null
+    !locationType
     !inAnalysisContext
     !?ioVariableMap
     ?outLocationExpression
