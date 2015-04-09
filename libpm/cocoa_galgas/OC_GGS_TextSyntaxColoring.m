@@ -63,7 +63,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) refreshRulers {
+/*- (void) refreshRulers {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -78,7 +78,7 @@
       }
     }    
   }
-}
+}*/
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -157,13 +157,6 @@
       selector:@selector (undoManagerCheckPointNotification:)
       name:NSUndoManagerDidRedoChangeNotification
       object:mUndoManager
-    ] ;
-  //---
-    [[NSNotificationCenter defaultCenter]
-      addObserver:self
-      selector:@selector(textStorageDidProcessEditingNotification:)
-      name: NSTextStorageDidProcessEditingNotification
-      object:mSourceTextStorage
     ] ;
   //--------------------------------------------------- Add foreground color observers
     NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
@@ -302,6 +295,13 @@
     }
   //--- Max line height
     [self computeMaxLineHeight:NULL] ;
+  //---
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector:@selector(textStorageDidProcessEditingNotification:)
+      name: NSTextStorageDidProcessEditingNotification
+      object:mSourceTextStorage
+    ] ;
   //--- Enter source string
     [mSourceTextStorage beginEditing] ;
     [mSourceTextStorage replaceCharactersInRange:NSMakeRange (0, mSourceTextStorage.length) withString:inSource] ;
@@ -451,14 +451,14 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   if ((mTokenizer != NULL) && ([mSourceTextStorage length] > 0)) {
-    [self refreshRulers] ;
+//    [self refreshRulers] ;
   //--- Remove observer so that textStorageDidProcessEditingNotification will not be called at the end of edition
-    [[NSNotificationCenter defaultCenter]
+ /*   [[NSNotificationCenter defaultCenter]
       removeObserver:self
       name: NSTextStorageDidProcessEditingNotification
       object:mSourceTextStorage
-    ];
-    [mSourceTextStorage beginEditing] ;
+    ]; */
+ //   [mSourceTextStorage beginEditing] ;
   //--- Change default style ?
     if (inChangedColorIndex == 0) {
       const NSRange allTextRange = {0, [mSourceTextStorage length]} ;
@@ -513,14 +513,14 @@
         }
       }
     }
-    [mSourceTextStorage endEditing] ;
+/*    [mSourceTextStorage endEditing] ;
   //--- Resinstall observer
     [[NSNotificationCenter defaultCenter]
       addObserver:self
       selector:@selector(textStorageDidProcessEditingNotification:)
       name: NSTextStorageDidProcessEditingNotification
       object:mSourceTextStorage
-    ] ;
+    ] ; */
     #ifdef DEBUG_MESSAGES
       NSLog (@"%s DONE", __PRETTY_FUNCTION__) ;
     #endif
@@ -715,6 +715,7 @@
 
 - (void) autosaveTimerDidFire: (NSTimer *) inTimer {
   // NSLog (@"Timer did fire %@", self.documentData.fileURL) ;
+  [mTimerForAutosaving invalidate] ;
   mTimerForAutosaving = nil ;
   [documentData save] ;
 }
@@ -731,7 +732,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           C O M M E N T R A N G E                                           *
+//           C O M M E N T R A N G E                                                                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -934,6 +935,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     NSLog (@"%s, inKeyPath '%@'", __PRETTY_FUNCTION__, inKeyPath) ;
   #endif
   if (mTokenizer != NULL) {
+    [mSourceTextStorage beginEditing] ;
     BOOL lineHeightDidChange = NO ;
     NSColor * color = nil ;
     NSMutableDictionary * d = nil ;
@@ -1030,6 +1032,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     default:
       break;
     }
+    [mSourceTextStorage endEditing] ;
   }
 }
 
