@@ -86,11 +86,14 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   const NSRange selectedRange = textView.selectedRange ;
   NSString * sourceString = textView.string ;
   const NSUInteger sourceStringLength = sourceString.length ;
-//-------- Find the characters that are currently visible
-  const NSRange visibleGlyphRange = [lm glyphRangeForBoundingRect:self.scrollView.contentView.bounds inTextContainer:textContainer] ;
-  const NSRange visibleRange = [lm characterRangeForGlyphRange:visibleGlyphRange actualGlyphRange:NULL] ;
 //-------- Compute layout
   [lm ensureLayoutForCharacterRange:NSMakeRange (0, sourceStringLength)] ;
+//-------- Find the characters that are currently visible
+  const NSRange visibleGlyphRange = [lm
+    glyphRangeForBoundingRect:self.scrollView.contentView.bounds
+    inTextContainer:textContainer
+  ] ;
+  const NSRange visibleRange = [lm characterRangeForGlyphRange:visibleGlyphRange actualGlyphRange:NULL] ;
 //--- Find first line number to draw
   NSUInteger idx = 0 ;
   NSInteger lineIndex = 0 ;
@@ -112,7 +115,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     //--- Draw background if line selected
       if (lineIntersectsSelection) {
         const NSRect rBackground = {{0.0, p.y}, {viewBounds.size.width, r.size.height}} ;
-        [[NSColor yellowColor] setFill] ;
+        [[NSColor whiteColor] setFill] ;
         [NSBezierPath fillRect:rBackground] ;
       }
     //--- Draw line number
