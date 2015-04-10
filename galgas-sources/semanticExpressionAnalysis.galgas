@@ -2708,16 +2708,17 @@ override method @collectionValueAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Type
   @unifiedTypeMap-proxy targetType
   if mTypeName.string == "" then
     targetType = inType
   else
-    targetType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+    targetType = .searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   end
 #---
-  if targetType == @unifiedTypeMap-proxy. null then
+  if targetType == .null then
     error mTypeName : "Cannot infer type" : outExpression
   elsif not [targetType mSupportCollectionValue] then
     error mTypeName : "the @" + mTypeName + " type does not support collection value" : outExpression
