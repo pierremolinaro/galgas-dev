@@ -50,8 +50,9 @@ private proc analyzeSemanticInstructionList
   ?let @semanticInstructionListAST inSemanticInstructionListAST
   ?let @location inEndOfBranchLocation
   ?!@variableMap ioVariableMap
-  !@semanticInstructionListForGeneration outInstructionListForGeneration {
-  outInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
+  !@semanticInstructionListForGeneration outInstructionListForGeneration
+{
+  outInstructionListForGeneration = {}
 #--- Begin branch
   [!?ioVariableMap openBranch]
 #--- Declare local constants
@@ -2195,9 +2196,10 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ?!@variableMap ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
-  !@semanticExpressionForGeneration outEnumerationExpression {
+  !@semanticExpressionForGeneration outEnumerationExpression
+{
   [mEnumeratedExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -2259,9 +2261,10 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ?!@variableMap ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
-  !@semanticExpressionForGeneration outEnumerationExpression {
+  !@semanticExpressionForGeneration outEnumerationExpression
+{
   [mEnumeratedExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -2350,8 +2353,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   )
   [!?ioVariableMap closeOverride !mEndOf_after_branch]
 #--- Analyze enumerated objects
-  var localConstantListForDoBranch =@localInitializedVariableList.emptyList{}
-  var enumerationList =@foreachInstructionEnumeratedObjectListForGeneration.emptyList{}
+  @localInitializedVariableList localConstantListForDoBranch = {}
+  @foreachInstructionEnumeratedObjectListForGeneration enumerationList = {}
   for () in mEnumeratedObjectList do
     [mEnumeratedCollection analyzeEnumeration
       !inAnalysisContext
@@ -2370,12 +2373,17 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForRepeatBlock]
   [!?ioVariableMap openBranch]
 #--- Declare local constants
-  for () in localConstantListForDoBranch do
-   [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName !mCppName]
+  for localConstant in localConstantListForDoBranch do
+   [!?ioVariableMap insertUsedLocalConstant
+     !localConstant.mName
+     !localConstant.mType
+     !localConstant.mCppName
+     !localConstant.mCppName
+   ]
   end
 #---
   [mWhileExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration uncheckedWhileExpression

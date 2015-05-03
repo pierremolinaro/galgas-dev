@@ -2460,7 +2460,7 @@ void routine_printFeaturesOfType (const class GALGAS_string constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        Category Reader '@typeKindEnum kind'                                         *
+//                                 Category Getter '@typeKindEnum kind' (as function)                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2785,7 +2785,7 @@ void routine_checkLabelMap (const class GALGAS_location constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Reader '@formalArgumentPassingModeAST formalArgumentString'                         *
+//                 Category Getter '@formalArgumentPassingModeAST formalArgumentString' (as function)                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

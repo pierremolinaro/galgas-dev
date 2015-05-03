@@ -731,7 +731,7 @@ void routine_printPredefinedLexicalActions (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category Reader '@lexicalArgumentModeAST lexicalFormalModeName'                           *
+//                    Category Getter '@lexicalArgumentModeAST lexicalFormalModeName' (as function)                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -741,7 +741,7 @@ class GALGAS_string categoryReader_lexicalFormalModeName (const class GALGAS_lex
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category Reader '@lexicalTypeEnum lexicalTypeBaseName'                                *
+//                        Category Getter '@lexicalTypeEnum lexicalTypeBaseName' (as function)                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -927,7 +927,7 @@ class GALGAS_string callCategoryReader_generateCode (const class cPtr_abstractLe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category Reader '@lexicalArgumentModeAST cocoaPointerInFormalArgument'                        *
+//                Category Getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument' (as function)                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -937,7 +937,7 @@ class GALGAS_string categoryReader_cocoaPointerInFormalArgument (const class GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Category Reader '@lexicalArgumentModeAST cppConstInFormalArgument'                          *
+//                  Category Getter '@lexicalArgumentModeAST cppConstInFormalArgument' (as function)                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -947,7 +947,7 @@ class GALGAS_string categoryReader_cppConstInFormalArgument (const class GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category Reader '@lexicalArgumentModeAST cppReferenceInFormalArgument'                        *
+//                Category Getter '@lexicalArgumentModeAST cppReferenceInFormalArgument' (as function)                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -957,7 +957,7 @@ class GALGAS_string categoryReader_cppReferenceInFormalArgument (const class GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category Reader '@lexicalTypeEnum appendArgumentOfMethod'                              *
+//                       Category Getter '@lexicalTypeEnum appendArgumentOfMethod' (as function)                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -967,7 +967,7 @@ class GALGAS_string categoryReader_appendArgumentOfMethod (const class GALGAS_le
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category Reader '@lexicalTypeEnum appendMethodName'                                 *
+//                          Category Getter '@lexicalTypeEnum appendMethodName' (as function)                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -977,7 +977,7 @@ class GALGAS_string categoryReader_appendMethodName (const class GALGAS_lexicalT
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category Reader '@lexicalTypeEnum cocoaInitializationCode'                              *
+//                      Category Getter '@lexicalTypeEnum cocoaInitializationCode' (as function)                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -987,7 +987,7 @@ class GALGAS_string categoryReader_cocoaInitializationCode (const class GALGAS_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                    Category Reader '@lexicalTypeEnum cocoaReset'                                    *
+//                             Category Getter '@lexicalTypeEnum cocoaReset' (as function)                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -997,7 +997,7 @@ class GALGAS_string categoryReader_cocoaReset (const class GALGAS_lexicalTypeEnu
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category Reader '@lexicalTypeEnum cocoaResetPrefix'                                 *
+//                          Category Getter '@lexicalTypeEnum cocoaResetPrefix' (as function)                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1007,7 +1007,7 @@ class GALGAS_string categoryReader_cocoaResetPrefix (const class GALGAS_lexicalT
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category Reader '@lexicalTypeEnum cocoaTypeName'                                   *
+//                           Category Getter '@lexicalTypeEnum cocoaTypeName' (as function)                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1017,7 +1017,7 @@ class GALGAS_string categoryReader_cocoaTypeName (const class GALGAS_lexicalType
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Category Reader '@lexicalTypeEnum cppTypeName'                                    *
+//                            Category Getter '@lexicalTypeEnum cppTypeName' (as function)                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1027,7 +1027,7 @@ class GALGAS_string categoryReader_cppTypeName (const class GALGAS_lexicalTypeEn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category Reader '@lexicalTypeEnum initialization'                                  *
+//                           Category Getter '@lexicalTypeEnum initialization' (as function)                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2921,7 +2921,7 @@ void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Reader '@formalArgumentPassingModeAST formalArgumentMessage'                        *
+//                 Category Getter '@formalArgumentPassingModeAST formalArgumentMessage' (as function)                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2931,7 +2931,7 @@ class GALGAS_string categoryReader_formalArgumentMessage (const class GALGAS_for
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category Reader '@formalArgumentPassingModeAST string'                                *
+//                        Category Getter '@formalArgumentPassingModeAST string' (as function)                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
