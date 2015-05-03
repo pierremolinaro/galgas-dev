@@ -646,7 +646,7 @@ proc generateCategoryMethod
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# C A T E G O R Y    R E A D E R    I M P L E M E N A T I O N               *
+# C A T E G O R Y    R E A D E R    I M P L E M E N T A T I O N                                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -777,7 +777,7 @@ sortedlist @keySortedList {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -996,7 +996,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1261,7 +1261,6 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
  }
@@ -1304,7 +1303,6 @@ override method @arrayTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
  }
@@ -1361,7 +1359,6 @@ override method @listmapTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
  }
@@ -1411,7 +1408,6 @@ override method @mapTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
  }
@@ -1449,7 +1445,6 @@ override method @mapTypeForGeneration appendSpecificImplementation
     !mSearchMethodList
     !mRemoveMethodList
     !mHasInsertOrReplaceModifier
-#    !mWithAccessorMap
   ]
  }
 
@@ -1483,7 +1478,6 @@ override method @uniqueMapTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
  }
@@ -1518,7 +1512,6 @@ override method @uniqueMapTypeForGeneration appendSpecificImplementation
     !mTypedAttributeList
     !mInsertMethodList
     !mSearchMethodList
-#    !mWithAccessorMap
     !mMapAutomatonStateMap
     !mMapAutomatonActionMap
     !mMapStateSortedList
@@ -1551,7 +1544,6 @@ override method @sortedListTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
  }
@@ -1727,7 +1719,6 @@ override method @structTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
  }
@@ -1771,7 +1762,6 @@ override method @listTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
 }
@@ -1817,7 +1807,6 @@ override method @graphDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ]
  }
@@ -2384,14 +2373,15 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @abstractCategoryReaderForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
+  outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryReaderForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
-  !@string outHeader {
+  !@string outHeader
+{
   outHeader = [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderDeclaration
     ![mReceiverType key]
     !mAbstractCategoryReaderName
@@ -2405,8 +2395,9 @@ override method @abstractCategoryReaderForGeneration appendDeclaration1
 override method @abstractCategoryReaderForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  ioInclusionSet += !"getter-" + [mReceiverType key]+ "-" + mAbstractCategoryReaderName
+  !@string outImplementation
+{
+  ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mAbstractCategoryReaderName
   [mResultType addHeaderFileName !?ioInclusionSet]
   [mReceiverType addHeaderFileName !?ioInclusionSet]
   for () in mAbstractCategoryReaderFormalParameterList do
@@ -2423,7 +2414,7 @@ override method @abstractCategoryReaderForGeneration appendSpecificImplementatio
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @categoryReaderForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
+  outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2464,7 +2455,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
       !true  
       !0    
     ]
-    ioInclusionSet += !"getter-" + [mReceiverType key]+ "-" + mCategoryReaderName
+    ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mCategoryReaderName
     generateFunction (
       !"categoryReader_" + [mCategoryReaderName identifierRepresentation]
       !?ioInclusionSet

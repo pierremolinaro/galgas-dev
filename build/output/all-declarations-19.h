@@ -1326,7 +1326,7 @@ void callCategoryMethod_getEnumerationList (const class cPtr_predefinedTypeAST *
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Category Reader '@location sourceFile'                                        *
+//                                Category Getter '@location sourceFile' (as function)                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1336,7 +1336,7 @@ class GALGAS_string categoryReader_sourceFile (const class GALGAS_location & inO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Category Reader '@location commaSourceFile'                                     *
+//                              Category Getter '@location commaSourceFile' (as function)                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1414,7 +1414,7 @@ void categoryMethod_enterInSemanticContext (const class GALGAS_actualOutputExpre
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Category Reader '@predefinedTypeKindEnum defaultConstructorName'                           *
+//                   Category Getter '@predefinedTypeKindEnum defaultConstructorName' (as function)                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1476,7 +1476,7 @@ void callCategoryMethod_analyze (const class cPtr_abstractCollectionValueElement
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Category Reader '@formalArgumentPassingModeAST correspondingEffectiveParameterString'                *
+//         Category Getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString' (as function)         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

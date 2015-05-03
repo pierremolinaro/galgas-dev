@@ -781,19 +781,24 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Expression analysis
-  @semanticExpressionForGeneration receiverExpression
-  [mReceiver analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?receiverExpression]
+  [mReceiver analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration receiverExpression
+  ]
   let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
-#--- Get reader map
+#--- Get getter map
   let @getterMap getterMap = [receiverType mReaderMap]
-#--- Search reader
+#--- Search getter
   @functionSignature readerFormalArgumentTypeList
   @methodKind kind
   @bool hasCompilerArgument
   @unifiedTypeMap-proxy returnedType
-  var fieldList =@stringlist.emptyList{}
+  @stringlist fieldList = {}
   with [mReaderName string] in getterMap  do
     readerFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
@@ -804,23 +809,28 @@ override method @readerCallExpressionAST analyzeSemanticExpression
     end
   else
     @uint matchingReaderCount = 0
-    if [receiverType mTypeKindEnum] == @typeKindEnum. structType then
+    if [receiverType mTypeKindEnum] == @typeKindEnum.structType then
       readerFormalArgumentTypeList = {}
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-proxy. null
       kind = @methodKind. definedAsCategory
       for () in [receiverType mCurrentTypedAttributeList] do
-        let attributeType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {![mAttributeTypeProxy key] !@location.here}}
+        let attributeType = @unifiedTypeMap-proxy.searchKey {
+          !inAnalysisContext.mSemanticContext.mTypeMap
+          !@lstring.new {![mAttributeTypeProxy key] !@location.here}
+        }
         let aMap = [attributeType mReaderMap]
-        with [mReaderName string] in aMap  do
-          matchingReaderCount ++
-          readerFormalArgumentTypeList = mArgumentTypeList
-          hasCompilerArgument = mHasCompilerArgument
-          returnedType = mReturnedType
-          kind = mKind
-          fieldList += ![mAttributeName string]
-          if mErrorMessage != "" then
-            error mReaderName : mErrorMessage
+        with mReaderName.string in aMap  do
+          if [attributeType key] == mAttributeName.string then
+            matchingReaderCount ++
+            readerFormalArgumentTypeList = mArgumentTypeList
+            hasCompilerArgument = mHasCompilerArgument
+            returnedType = mReturnedType
+            kind = mKind
+            fieldList += !mAttributeName.string
+            if mErrorMessage != "" then
+              error mReaderName : mErrorMessage
+            end
           end
         end
       end
@@ -868,7 +878,12 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   else
     var constructorEffectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
     for () in mExpressions, () in readerFormalArgumentTypeList do
-      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
+      [mExpression analyzeSemanticExpression
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let @semanticExpressionForGeneration exp
+      ]
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
@@ -2239,7 +2254,8 @@ override method @varInExpressionAST analyzeSemanticExpression
     !type
     ![mVarName location]
     !sourceVariableCppName
-    !nameForCheckingFormalParameterUsing}
+    !nameForCheckingFormalParameterUsing
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
