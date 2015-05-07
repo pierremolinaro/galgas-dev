@@ -841,12 +841,13 @@ override method @plusEqualnstructionForGeneration generateInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @incrementInstructionForGeneration generateInstruction
+override method @incDecInstructionForGeneration generateInstruction
   ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+{
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
   @string receiverCppName = mReceiverCppName
@@ -854,29 +855,20 @@ override method @incrementInstructionForGeneration generateInstruction
     receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation
-  ioGeneratedCode += receiverCppName + ".increment_operation (" + compilerCppName ()
-                  + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @decrementInstructionForGeneration generateInstruction
-  ?!@stringset unused ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-#--- Receiver
-  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
-  @string receiverCppName = mReceiverCppName
-  for () in mStructAttributeList do
-    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  switch mKind
+  case incWithOverflowDetect :
+    ioGeneratedCode += receiverCppName + ".increment_operation (" + compilerCppName ()
+                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  case decWithOverflowDetect :
+    ioGeneratedCode += receiverCppName + ".decrement_operation (" + compilerCppName ()
+                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  case incNoOverflowDetect :
+    ioGeneratedCode += receiverCppName + " ++ ;\n"
+  case decNoOverflowDetect :
+    ioGeneratedCode += receiverCppName + " -- ;\n"
   end
-#--- Invoke incrementation
-  ioGeneratedCode += receiverCppName + ".decrement_operation (" + compilerCppName ()
-                  + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -886,9 +878,16 @@ override method @messageInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+{
 #--- Message expression
-  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string messageCppVarName]
+  [mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string messageCppVarName
+  ]
 #--- Invoke 'printMessage' method of C_Compiler
   ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
   ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
@@ -902,10 +901,16 @@ override method @loopInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+{
 #--- Variant expression
-  @string variantCppVarName
-  [mVariantExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantCppVarName]
+  [mVariantExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string variantCppVarName
+  ]
   ioGeneratedCode += "if (" + variantCppVarName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
   let @string variantVar = "variant_" + [[mInstructionLocation locationIndex] string]

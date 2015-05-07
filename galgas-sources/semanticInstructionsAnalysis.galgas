@@ -1736,14 +1736,14 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @incrementInstructionAST enterInstructionInSemanticContext
+override method @incDecInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @incrementInstructionAST analyzeSemanticInstruction
+override method @incDecInstructionAST analyzeSemanticInstruction
   ?let @analysisContext unused inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -1765,26 +1765,28 @@ override method @incrementInstructionAST analyzeSemanticInstruction
 #--- Check target type accepts incrementation
   if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
     error mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '++' operator"
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '++', '--' operators"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@incrementInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
     !mInstructionLocation
     !targetVariableCppName
     !targetType
-    !mStructAttributeList}
+    !mStructAttributeList
+    !mKind
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @selfIncrementInstructionAST enterInstructionInSemanticContext
+override method @selfIncDecInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @selfIncrementInstructionAST analyzeSemanticInstruction
+override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap unused ioVariableMap {
@@ -1803,87 +1805,13 @@ override method @selfIncrementInstructionAST analyzeSemanticInstruction
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' operator"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@incrementInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
     !mInstructionLocation
     !selfObjectCppName
     !selfTypeProxy
-    !@lstringlist. emptyList}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @decrementInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @decrementInstructionAST analyzeSemanticInstruction
-  ?let @analysisContext unused inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
-#--- Check target variable
-  @unifiedTypeMap-proxy targetType
-  @string targetVariableCppName
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
-  for () in mStructAttributeList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-#      ??@bool isPrivate
-      ?targetType
-    ]
-#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-#      error mValue : "this field is private" ;
-#    end if ;
-  end
-#--- Check target type accepts incrementation
-  if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
-    error mInstructionLocation
-    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '--' operator"
-  end
-#--- Generate instruction
-  ioInstructionListForGeneration += !@decrementInstructionForGeneration.new {
-    !mInstructionLocation
-    !targetVariableCppName
-    !targetType
-    !mStructAttributeList}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @selfDecrementInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @selfDecrementInstructionAST analyzeSemanticInstruction
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap {
-#--- Analyze "self", as receiver expression
-  @unifiedTypeMap-proxy selfTypeProxy
-  @string selfObjectCppName
-  if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
-  else
-    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
-    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
-  end
-#--- Check target type accepts incrementation
-  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
-    error mInstructionLocation
-    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '--' operator"
-  end
-#--- Generate instruction
-  ioInstructionListForGeneration += !@decrementInstructionForGeneration.new {
-    !mInstructionLocation
-    !selfObjectCppName
-    !selfTypeProxy
-    !@lstringlist. emptyList}
+    !@lstringlist. emptyList
+    !mKind
+   }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
