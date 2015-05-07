@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2009, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -327,6 +327,18 @@ GALGAS_bool GALGAS_uint::reader_isUnicodeValueAssigned (UNUSED_LOCATION_ARGS) co
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Operations
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_uint::increment_operation_no_overflow (void) {
+  mUIntValue ++ ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_uint::decrement_operation_no_overflow (void) {
+  mUIntValue -- ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 

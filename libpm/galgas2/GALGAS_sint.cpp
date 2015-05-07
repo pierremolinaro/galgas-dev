@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2004, ..., 2010 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2004, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -130,6 +130,18 @@ void GALGAS_sint::description (C_String & ioString,
     ioString << "not built" ;
   }
   ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sint::increment_operation_no_overflow (void) {
+  mSIntValue ++ ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sint::decrement_operation_no_overflow (void) {
+  mSIntValue -- ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

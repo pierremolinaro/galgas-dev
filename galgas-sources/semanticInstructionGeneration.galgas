@@ -865,9 +865,9 @@ override method @incDecInstructionForGeneration generateInstruction
                     + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   case incNoOverflowDetect :
-    ioGeneratedCode += receiverCppName + " ++ ;\n"
+    ioGeneratedCode += receiverCppName + ".increment_operation_no_overflow () ;\n"
   case decNoOverflowDetect :
-    ioGeneratedCode += receiverCppName + " -- ;\n"
+    ioGeneratedCode += receiverCppName + ".decrement_operation_no_overflow () ;\n"
   end
 }
 

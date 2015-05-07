@@ -146,6 +146,8 @@ if (SUPPORTED_OPERATORS & incDecOperator ()) != 0 then
         !^%COMMA_LOCATION_ARGS) ;\n\n%
   %  public : VIRTUAL_IN_DEBUG void decrement_operation (%?^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
+  %  public : VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;\n\n%
+  %  public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;\n\n%
 end
 if (SUPPORTED_OPERATORS & generateDescriptionReaderUtilityMethod ()) != 0 then
   %//--------------------------------- Implementation of reader 'description'\n%
