@@ -62,13 +62,19 @@ map @constructorMap {
 #----------------------------------------------------------------------------------------------------------------------*
 
 enum @methodQualifier {
-  case isAbstract  case isBasic  case isBasicFinal  case isInherited  case isOverriding  case isOverridingAbstract
+  case isAbstract
+  case isBasic
+  case isBasicFinal
+  case isInherited
+  case isOverriding
+  case isOverridingAbstract
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 enum @methodKind {
-  case definedAsMember  case definedAsCategory
+  case definedAsMember
+  case definedAsCategory
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
