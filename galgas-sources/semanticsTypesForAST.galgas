@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -11,10 +11,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 func %once generateGalgas3InstructionTerminator -> @bool outResult {
@@ -896,42 +892,33 @@ class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    I N C R E M E N T    I N S T R U C T I O N                                                                        *
+#    I N C R E M E N T    /    D E C R E M E N T    I N S T R U C T I O N                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @incrementInstructionAST : @semanticInstructionAST {
+enum @incDecKind {
+  case incWithOverflowDetect
+  case decWithOverflowDetect
+  case incNoOverflowDetect
+  case decNoOverflowDetect
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @incDecInstructionAST : @semanticInstructionAST {
   @lstring mReceiverName
   @lstringlist mStructAttributeList
+  @incDecKind mKind
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S E L F    I N C R E M E N T    I N S T R U C T I O N                                                             *
+#    S E L F    I N C R E M E N T    /    D E C R E M E N T    I N S T R U C T I O N                                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @selfIncrementInstructionAST : @semanticInstructionAST {
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    D E C R E M E N T    I N S T R U C T I O N                                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @decrementInstructionAST : @semanticInstructionAST {
-  @lstring mReceiverName
-  @lstringlist mStructAttributeList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    S E L F    D E C R E M E N T    I N S T R U C T I O N                                                             *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @selfDecrementInstructionAST : @semanticInstructionAST {
+class @selfIncDecInstructionAST : @semanticInstructionAST {
+  @incDecKind mKind
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

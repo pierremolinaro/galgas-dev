@@ -942,28 +942,16 @@ class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    I N C R E M E N T    I N S T R U C T I O N                                                                        *
+#    I N C R E M E N T    /    D E C R E M E N T    I N S T R U C T I O N                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @incrementInstructionForGeneration : @semanticInstructionForGeneration {
+class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @string mReceiverCppName
   @unifiedTypeMap-proxy mReceiverType
   @lstringlist mStructAttributeList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    D E C R E M E N T    I N S T R U C T I O N                                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @decrementInstructionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mReceiverCppName
-  @unifiedTypeMap-proxy mReceiverType
-  @lstringlist mStructAttributeList
+  @incDecKind mKind
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

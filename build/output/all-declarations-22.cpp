@@ -10,510 +10,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category reader '@lexicalCharacterMatchAST generateConditionCode'                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalCharacterMatchAST_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
-                                                                                    GALGAS_lexiqueAnalysisContext /* inArgument_inLexiqueAnalysisContext */,
-                                                                                    C_Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalCharacterMatchAST * object = (const cPtr_lexicalCharacterMatchAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalCharacterMatchAST) ;
-  result_outGeneratedCode = GALGAS_string ("testForInputUTF32Char (") ;
-  result_outGeneratedCode.dotAssign_operation (object->mAttribute_mCharacter.reader_char (SOURCE_FILE ("lexiqueGeneration.galgas", 79)).reader_utf_33__32_CharConstantRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 79))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 79)) ;
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string (")")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 80)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalCharacterMatchAST_generateConditionCode (void) {
-  enterCategoryReader_generateConditionCode (kTypeDescriptor_GALGAS_lexicalCharacterMatchAST.mSlotID,
-                                             categoryReader_lexicalCharacterMatchAST_generateConditionCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalCharacterMatchAST_generateConditionCode (defineCategoryReader_lexicalCharacterMatchAST_generateConditionCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Overriding category reader '@lexicalCharacterSetMatchAST generateConditionCode'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalCharacterSetMatchAST_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
-                                                                                       GALGAS_lexiqueAnalysisContext /* inArgument_inLexiqueAnalysisContext */,
-                                                                                       C_Compiler * /* inCompiler */
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalCharacterSetMatchAST * object = (const cPtr_lexicalCharacterSetMatchAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalCharacterSetMatchAST) ;
-  result_outGeneratedCode = GALGAS_string ("testForCharWithFunction (") ;
-  result_outGeneratedCode.dotAssign_operation (object->mAttribute_mCharacterSetName.reader_string (SOURCE_FILE ("lexiqueGeneration.galgas", 89))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 89)) ;
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string (")")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 90)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalCharacterSetMatchAST_generateConditionCode (void) {
-  enterCategoryReader_generateConditionCode (kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST.mSlotID,
-                                             categoryReader_lexicalCharacterSetMatchAST_generateConditionCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalCharacterSetMatchAST_generateConditionCode (defineCategoryReader_lexicalCharacterSetMatchAST_generateConditionCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//          Overriding category reader '@lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument'           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalAttributeInputArgumentAST_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalAttributeInputArgumentAST * object = (const cPtr_lexicalAttributeInputArgumentAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalAttributeInputArgumentAST) ;
-  result_outGeneratedCode = GALGAS_string ("token.mLexicalAttribute_").add_operation (object->mAttribute_mAttributeName.mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 104)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 104)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalAttributeInputArgumentAST_generateRoutineOrFunctionArgument (void) {
-  enterCategoryReader_generateRoutineOrFunctionArgument (kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST.mSlotID,
-                                                         categoryReader_lexicalAttributeInputArgumentAST_generateRoutineOrFunctionArgument) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalAttributeInputArgumentAST_generateRoutineOrFunctionArgument (defineCategoryReader_lexicalAttributeInputArgumentAST_generateRoutineOrFunctionArgument, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//          Overriding category reader '@lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument'           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalCharacterInputArgumentAST_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                                        C_Compiler * /* inCompiler */
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalCharacterInputArgumentAST * object = (const cPtr_lexicalCharacterInputArgumentAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalCharacterInputArgumentAST) ;
-  result_outGeneratedCode = object->mAttribute_mCharacter.reader_char (SOURCE_FILE ("lexiqueGeneration.galgas", 111)).reader_utf_33__32_CharConstantRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 111)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalCharacterInputArgumentAST_generateRoutineOrFunctionArgument (void) {
-  enterCategoryReader_generateRoutineOrFunctionArgument (kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST.mSlotID,
-                                                         categoryReader_lexicalCharacterInputArgumentAST_generateRoutineOrFunctionArgument) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalCharacterInputArgumentAST_generateRoutineOrFunctionArgument (defineCategoryReader_lexicalCharacterInputArgumentAST_generateRoutineOrFunctionArgument, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//           Overriding category reader '@lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument'           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalUnsignedInputArgumentAST_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                                       C_Compiler * /* inCompiler */
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalUnsignedInputArgumentAST * object = (const cPtr_lexicalUnsignedInputArgumentAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalUnsignedInputArgumentAST) ;
-  result_outGeneratedCode = object->mAttribute_mUnsigned.reader_uint (SOURCE_FILE ("lexiqueGeneration.galgas", 118)).reader_string (SOURCE_FILE ("lexiqueGeneration.galgas", 118)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalUnsignedInputArgumentAST_generateRoutineOrFunctionArgument (void) {
-  enterCategoryReader_generateRoutineOrFunctionArgument (kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST.mSlotID,
-                                                         categoryReader_lexicalUnsignedInputArgumentAST_generateRoutineOrFunctionArgument) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalUnsignedInputArgumentAST_generateRoutineOrFunctionArgument (defineCategoryReader_lexicalUnsignedInputArgumentAST_generateRoutineOrFunctionArgument, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//       Overriding category reader '@lexicalCurrentCharacterInputArgumentAST generateRoutineOrFunctionArgument'       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalCurrentCharacterInputArgumentAST_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * /* inObject */,
-                                                                                                               C_Compiler * /* inCompiler */
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  result_outGeneratedCode = GALGAS_string ("previousChar ()") ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalCurrentCharacterInputArgumentAST_generateRoutineOrFunctionArgument (void) {
-  enterCategoryReader_generateRoutineOrFunctionArgument (kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST.mSlotID,
-                                                         categoryReader_lexicalCurrentCharacterInputArgumentAST_generateRoutineOrFunctionArgument) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalCurrentCharacterInputArgumentAST_generateRoutineOrFunctionArgument (defineCategoryReader_lexicalCurrentCharacterInputArgumentAST_generateRoutineOrFunctionArgument, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//           Overriding category reader '@lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument'           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalFunctionInputArgumentAST_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                                       C_Compiler * inCompiler
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalFunctionInputArgumentAST * object = (const cPtr_lexicalFunctionInputArgumentAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalFunctionInputArgumentAST) ;
-  result_outGeneratedCode = GALGAS_string ("::scanner_function_").add_operation (object->mAttribute_mFunctionName.reader_string (SOURCE_FILE ("lexiqueGeneration.galgas", 132)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 132)).add_operation (GALGAS_string (" (*this"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 132)) ;
-  cEnumerator_lexicalFunctionCallActualArgumentListAST enumerator_7662 (object->mAttribute_mFunctionActualArgumentList, kEnumeration_up) ;
-  while (enumerator_7662.hasCurrentObject ()) {
-    result_outGeneratedCode.dotAssign_operation (GALGAS_string (", ").add_operation (callCategoryReader_generateRoutineOrFunctionArgument ((const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) enumerator_7662.current_mLexicalActualInputArgument (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 134)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 134))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 134)) ;
-    enumerator_7662.gotoNextObject () ;
-  }
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string (")")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 136)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalFunctionInputArgumentAST_generateRoutineOrFunctionArgument (void) {
-  enterCategoryReader_generateRoutineOrFunctionArgument (kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST.mSlotID,
-                                                         categoryReader_lexicalFunctionInputArgumentAST_generateRoutineOrFunctionArgument) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalFunctionInputArgumentAST_generateRoutineOrFunctionArgument (defineCategoryReader_lexicalFunctionInputArgumentAST_generateRoutineOrFunctionArgument, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//            Overriding category reader '@lexicalAttributeInputOutputArgumentAST generateRoutineArgument'             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalAttributeInputOutputArgumentAST_generateRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalAttributeInputOutputArgumentAST * object = (const cPtr_lexicalAttributeInputOutputArgumentAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalAttributeInputOutputArgumentAST) ;
-  result_outGeneratedCode = GALGAS_string ("token.mLexicalAttribute_").add_operation (object->mAttribute_mAttributeName.mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 150)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 150)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalAttributeInputOutputArgumentAST_generateRoutineArgument (void) {
-  enterCategoryReader_generateRoutineArgument (kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST.mSlotID,
-                                               categoryReader_lexicalAttributeInputOutputArgumentAST_generateRoutineArgument) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalAttributeInputOutputArgumentAST_generateRoutineArgument (defineCategoryReader_lexicalAttributeInputOutputArgumentAST_generateRoutineArgument, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                 Overriding category reader '@lexicalFormalInputArgumentAST generateRoutineArgument'                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalFormalInputArgumentAST_generateRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalFormalInputArgumentAST * object = (const cPtr_lexicalFormalInputArgumentAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalFormalInputArgumentAST) ;
-  result_outGeneratedCode = callCategoryReader_generateRoutineOrFunctionArgument ((const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) object->mAttribute_mRoutineOrFunctionFormalInputArgument.ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 157)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalFormalInputArgumentAST_generateRoutineArgument (void) {
-  enterCategoryReader_generateRoutineArgument (kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST.mSlotID,
-                                               categoryReader_lexicalFormalInputArgumentAST_generateRoutineArgument) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalFormalInputArgumentAST_generateRoutineArgument (defineCategoryReader_lexicalFormalInputArgumentAST_generateRoutineArgument, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                Overriding category reader '@lexicalSendTerminalByDefaultAST generateDefaultSendCode'                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalSendTerminalByDefaultAST_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
-                                                                                             GALGAS_string /* inArgument_inScannerClassName */,
-                                                                                             C_Compiler * inCompiler
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalSendTerminalByDefaultAST * object = (const cPtr_lexicalSendTerminalByDefaultAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalSendTerminalByDefaultAST) ;
-  result_outGeneratedCode = GALGAS_string ("token.mTokenCode = kToken_").add_operation (object->mAttribute_mDefaultSentTerminal.reader_string (SOURCE_FILE ("lexiqueGeneration.galgas", 173)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 173)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 173)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalSendTerminalByDefaultAST_generateDefaultSendCode (void) {
-  enterCategoryReader_generateDefaultSendCode (kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST.mSlotID,
-                                               categoryReader_lexicalSendTerminalByDefaultAST_generateDefaultSendCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalSendTerminalByDefaultAST_generateDefaultSendCode (defineCategoryReader_lexicalSendTerminalByDefaultAST_generateDefaultSendCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Overriding category reader '@lexicalErrorByDefaultAST generateDefaultSendCode'                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalErrorByDefaultAST_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
-                                                                                      GALGAS_string inArgument_inScannerClassName,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalErrorByDefaultAST * object = (const cPtr_lexicalErrorByDefaultAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalErrorByDefaultAST) ;
-  result_outGeneratedCode = GALGAS_string ("lexicalError (gLexicalMessage_").add_operation (inArgument_inScannerClassName.reader_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 181)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 181)).add_operation (object->mAttribute_mDefaultErrorMessageName.reader_string (SOURCE_FILE ("lexiqueGeneration.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 181)).add_operation (GALGAS_string (" COMMA_LINE_AND_SOURCE_FILE) ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 181)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalErrorByDefaultAST_generateDefaultSendCode (void) {
-  enterCategoryReader_generateDefaultSendCode (kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST.mSlotID,
-                                               categoryReader_lexicalErrorByDefaultAST_generateDefaultSendCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalErrorByDefaultAST_generateDefaultSendCode (defineCategoryReader_lexicalErrorByDefaultAST_generateDefaultSendCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//              Overriding category reader '@lexicalStructuredSendInstructionAST generateInstructionCode'              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalStructuredSendInstructionAST_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                                                                 GALGAS_string inArgument_inScannerClassName,
-                                                                                                 GALGAS_lexiqueAnalysisContext /* inArgument_inLexiqueAnalysisContext */,
-                                                                                                 C_Compiler * inCompiler
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalStructuredSendInstructionAST * object = (const cPtr_lexicalStructuredSendInstructionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalStructuredSendInstructionAST) ;
-  result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
-  cEnumerator_lexicalSendSearchListAST enumerator_11110 (object->mAttribute_mLexicalSendSearchList, kEnumeration_up) ;
-  while (enumerator_11110.hasCurrentObject ()) {
-    result_outGeneratedCode.dotAssign_operation (GALGAS_string ("if (token.mTokenCode == -1) {\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 201)) ;
-    result_outGeneratedCode.dotAssign_operation (GALGAS_string ("  token.mTokenCode = search_into_").add_operation (enumerator_11110.current_mSearchListName (HERE).reader_string (SOURCE_FILE ("lexiqueGeneration.galgas", 202)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 202)).add_operation (GALGAS_string (" (token.mLexicalAttribute_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 202)).add_operation (enumerator_11110.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 202)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 202)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 202))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 202)) ;
-    result_outGeneratedCode.dotAssign_operation (GALGAS_string ("}\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 203)) ;
-    enumerator_11110.gotoNextObject () ;
-  }
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string ("if (token.mTokenCode == -1) {\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 205)) ;
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string ("  ").add_operation (callCategoryReader_generateDefaultSendCode ((const cPtr_lexicalSendDefaultActionAST *) object->mAttribute_mLexicalSendDefaultAction.ptr (), inArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 206)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 206))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 206)) ;
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string ("}\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 207)) ;
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string ("enterToken (token) ;\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 208)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalStructuredSendInstructionAST_generateInstructionCode (void) {
-  enterCategoryReader_generateInstructionCode (kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST.mSlotID,
-                                               categoryReader_lexicalStructuredSendInstructionAST_generateInstructionCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalStructuredSendInstructionAST_generateInstructionCode (defineCategoryReader_lexicalStructuredSendInstructionAST_generateInstructionCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Overriding category reader '@lexicalDropInstructionAST generateInstructionCode'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalDropInstructionAST_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                                                       GALGAS_string /* inArgument_inScannerClassName */,
-                                                                                       GALGAS_lexiqueAnalysisContext /* inArgument_inLexiqueAnalysisContext */,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalDropInstructionAST * object = (const cPtr_lexicalDropInstructionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalDropInstructionAST) ;
-  result_outGeneratedCode = GALGAS_string ("enterDroppedTerminal (kToken_").add_operation (object->mAttribute_mTerminalName.mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 218)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 218)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 218)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalDropInstructionAST_generateInstructionCode (void) {
-  enterCategoryReader_generateInstructionCode (kTypeDescriptor_GALGAS_lexicalDropInstructionAST.mSlotID,
-                                               categoryReader_lexicalDropInstructionAST_generateInstructionCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalDropInstructionAST_generateInstructionCode (defineCategoryReader_lexicalDropInstructionAST_generateInstructionCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                Overriding category reader '@lexicalSimpleSendInstructionAST generateInstructionCode'                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalSimpleSendInstructionAST_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                                                             GALGAS_string /* inArgument_inScannerClassName */,
-                                                                                             GALGAS_lexiqueAnalysisContext /* inArgument_inLexiqueAnalysisContext */,
-                                                                                             C_Compiler * inCompiler
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalSimpleSendInstructionAST * object = (const cPtr_lexicalSimpleSendInstructionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalSimpleSendInstructionAST) ;
-  result_outGeneratedCode = GALGAS_string ("token.mTokenCode = kToken_").add_operation (object->mAttribute_mSentTerminal.mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas", 228)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 228)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 228)) ;
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string ("enterToken (token) ;\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 229)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalSimpleSendInstructionAST_generateInstructionCode (void) {
-  enterCategoryReader_generateInstructionCode (kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST.mSlotID,
-                                               categoryReader_lexicalSimpleSendInstructionAST_generateInstructionCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalSimpleSendInstructionAST_generateInstructionCode (defineCategoryReader_lexicalSimpleSendInstructionAST_generateInstructionCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                  Overriding category reader '@lexicalRepeatInstructionAST generateInstructionCode'                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalRepeatInstructionAST_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                                                         GALGAS_string inArgument_inScannerClassName,
-                                                                                         GALGAS_lexiqueAnalysisContext inArgument_inLexiqueAnalysisContext,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalRepeatInstructionAST * object = (const cPtr_lexicalRepeatInstructionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalRepeatInstructionAST) ;
-  result_outGeneratedCode = GALGAS_string ("do {\n") ;
-  {
-  result_outGeneratedCode.modifier_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 239)) ;
-  }
-  cEnumerator_lexicalInstructionListAST enumerator_12946 (object->mAttribute_mRepeatedInstructionList, kEnumeration_up) ;
-  while (enumerator_12946.hasCurrentObject ()) {
-    result_outGeneratedCode.dotAssign_operation (callCategoryReader_generateInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_12946.current_mInstruction (HERE).ptr (), inArgument_inScannerClassName, inArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 242))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 242)) ;
-    enumerator_12946.gotoNextObject () ;
-  }
-  cEnumerator_lexicalWhileBranchListAST enumerator_13105 (object->mAttribute_mLexicalWhileBranchList, kEnumeration_up) ;
-  while (enumerator_13105.hasCurrentObject ()) {
-    result_outGeneratedCode.dotAssign_operation (GALGAS_string ("if (")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 247)) ;
-    result_outGeneratedCode.dotAssign_operation (callCategoryReader_generateConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_13105.current_mWhileExpression (HERE).ptr (), inArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 248))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 248)) ;
-    result_outGeneratedCode.dotAssign_operation (GALGAS_string (") {\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 249)) ;
-    {
-    result_outGeneratedCode.modifier_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 250)) ;
-    }
-    cEnumerator_lexicalInstructionListAST enumerator_13351 (enumerator_13105.current_mWhileInstructionList (HERE), kEnumeration_up) ;
-    while (enumerator_13351.hasCurrentObject ()) {
-      result_outGeneratedCode.dotAssign_operation (callCategoryReader_generateInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_13351.current_mInstruction (HERE).ptr (), inArgument_inScannerClassName, inArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 252))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 252)) ;
-      enumerator_13351.gotoNextObject () ;
-    }
-    {
-    result_outGeneratedCode.modifier_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 254)) ;
-    }
-    if (enumerator_13105.hasNextObject ()) {
-      result_outGeneratedCode.dotAssign_operation (GALGAS_string ("}else ")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 256)) ;
-    }
-    enumerator_13105.gotoNextObject () ;
-  }
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string ("}else{\n"
-    "  mLoop = false ;\n"
-    "}\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 258)) ;
-  {
-  result_outGeneratedCode.modifier_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 261)) ;
-  }
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string ("}while (mLoop) ;\n"
-    "mLoop = true ;\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 262)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalRepeatInstructionAST_generateInstructionCode (void) {
-  enterCategoryReader_generateInstructionCode (kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST.mSlotID,
-                                               categoryReader_lexicalRepeatInstructionAST_generateInstructionCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalRepeatInstructionAST_generateInstructionCode (defineCategoryReader_lexicalRepeatInstructionAST_generateInstructionCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                  Overriding category reader '@lexicalSelectInstructionAST generateInstructionCode'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10754,4 +10250,492 @@ static void defineCategoryMethod_trueExpressionAST_analyzeSemanticExpression (vo
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_trueExpressionAST_analyzeSemanticExpression (defineCategoryMethod_trueExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Overriding category method '@falseExpressionAST enterExpressionInSemanticContext'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_falseExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
+                                                                                GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                C_Compiler * /* inCompiler */
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_falseExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_falseExpressionAST.mSlotID,
+                                                        categoryMethod_falseExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_falseExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_falseExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Overriding category method '@falseExpressionAST analyzeSemanticExpression'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_falseExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                         const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inType */,
+                                                                         const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                         GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                         C_Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_falseExpressionAST * object = (const cPtr_falseExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_falseExpressionAST) ;
+  outArgument_outExpression = GALGAS_falseExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mLocation  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 494)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_falseExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_falseExpressionAST.mSlotID,
+                                                 categoryMethod_falseExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_falseExpressionAST_analyzeSemanticExpression (defineCategoryMethod_falseExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Overriding category method '@literalCharExpressionAST enterExpressionInSemanticContext'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalCharExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
+                                                                                      GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                      C_Compiler * /* inCompiler */
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalCharExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_literalCharExpressionAST.mSlotID,
+                                                        categoryMethod_literalCharExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalCharExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_literalCharExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Overriding category method '@literalCharExpressionAST analyzeSemanticExpression'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalCharExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                               const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inType */,
+                                                                               const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                               GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                               GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                               C_Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_literalCharExpressionAST * object = (const cPtr_literalCharExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_literalCharExpressionAST) ;
+  outArgument_outExpression = GALGAS_literalCharExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mCharType, object->mAttribute_mCharacter.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 511)), object->mAttribute_mCharacter.reader_char (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 511))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 511)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalCharExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_literalCharExpressionAST.mSlotID,
+                                                 categoryMethod_literalCharExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalCharExpressionAST_analyzeSemanticExpression (defineCategoryMethod_literalCharExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Overriding category method '@literalStringExpressionAST enterExpressionInSemanticContext'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalStringExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
+                                                                                        GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                        C_Compiler * /* inCompiler */
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalStringExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_literalStringExpressionAST.mSlotID,
+                                                        categoryMethod_literalStringExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalStringExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_literalStringExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Overriding category method '@literalStringExpressionAST analyzeSemanticExpression'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalStringExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                 const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inType */,
+                                                                                 const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                 GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                                 GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                 C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_literalStringExpressionAST * object = (const cPtr_literalStringExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_literalStringExpressionAST) ;
+  GALGAS_string var_s = GALGAS_string::makeEmptyString () ;
+  cEnumerator_stringlist enumerator_36733 (object->mAttribute_mStringSequence, kEnumeration_up) ;
+  while (enumerator_36733.hasCurrentObject ()) {
+    var_s.dotAssign_operation (enumerator_36733.current_mValue (HERE)  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 530)) ;
+    enumerator_36733.gotoNextObject () ;
+  }
+  outArgument_outExpression = GALGAS_literalStringExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mStringType, object->mAttribute_mLocation, var_s  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 532)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalStringExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_literalStringExpressionAST.mSlotID,
+                                                 categoryMethod_literalStringExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalStringExpressionAST_analyzeSemanticExpression (defineCategoryMethod_literalStringExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Overriding category method '@literalDoubleExpressionAST enterExpressionInSemanticContext'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalDoubleExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
+                                                                                        GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                        C_Compiler * /* inCompiler */
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalDoubleExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_literalDoubleExpressionAST.mSlotID,
+                                                        categoryMethod_literalDoubleExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalDoubleExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_literalDoubleExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Overriding category method '@literalDoubleExpressionAST analyzeSemanticExpression'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalDoubleExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                 const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inType */,
+                                                                                 const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                 GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                                 GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                 C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_literalDoubleExpressionAST * object = (const cPtr_literalDoubleExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_literalDoubleExpressionAST) ;
+  outArgument_outExpression = GALGAS_literalDoubleExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mDoubleType, object->mAttribute_mValue.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 549)), object->mAttribute_mValue.reader_double (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 549))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 549)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalDoubleExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_literalDoubleExpressionAST.mSlotID,
+                                                 categoryMethod_literalDoubleExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalDoubleExpressionAST_analyzeSemanticExpression (defineCategoryMethod_literalDoubleExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Overriding category method '@literalUIntExpressionAST enterExpressionInSemanticContext'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalUIntExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
+                                                                                      GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                      C_Compiler * /* inCompiler */
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalUIntExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_literalUIntExpressionAST.mSlotID,
+                                                        categoryMethod_literalUIntExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalUIntExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_literalUIntExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Overriding category method '@literalUIntExpressionAST analyzeSemanticExpression'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalUIntExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                               const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inType */,
+                                                                               const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                               GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                               GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                               C_Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_literalUIntExpressionAST * object = (const cPtr_literalUIntExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_literalUIntExpressionAST) ;
+  outArgument_outExpression = GALGAS_literalUIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mUIntType, object->mAttribute_mValue.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 566)), object->mAttribute_mValue.reader_uint (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 566))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 566)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalUIntExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_literalUIntExpressionAST.mSlotID,
+                                                 categoryMethod_literalUIntExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalUIntExpressionAST_analyzeSemanticExpression (defineCategoryMethod_literalUIntExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Overriding category method '@literalUInt64ExpressionAST enterExpressionInSemanticContext'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalUInt_36__34_ExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
+                                                                                              GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                              C_Compiler * /* inCompiler */
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalUInt_36__34_ExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionAST.mSlotID,
+                                                        categoryMethod_literalUInt_36__34_ExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalUInt_36__34_ExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_literalUInt_36__34_ExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Overriding category method '@literalUInt64ExpressionAST analyzeSemanticExpression'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalUInt_36__34_ExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                       const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inType */,
+                                                                                       const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                       GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                       C_Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_literalUInt_36__34_ExpressionAST * object = (const cPtr_literalUInt_36__34_ExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_literalUInt_36__34_ExpressionAST) ;
+  outArgument_outExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mUInt_36__34_Type, object->mAttribute_mValue.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 585)), object->mAttribute_mValue.reader_uint_36__34_ (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 586))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 583)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalUInt_36__34_ExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionAST.mSlotID,
+                                                 categoryMethod_literalUInt_36__34_ExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalUInt_36__34_ExpressionAST_analyzeSemanticExpression (defineCategoryMethod_literalUInt_36__34_ExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Overriding category method '@literalSIntExpressionAST enterExpressionInSemanticContext'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalSIntExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
+                                                                                      GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                      C_Compiler * /* inCompiler */
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalSIntExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_literalSIntExpressionAST.mSlotID,
+                                                        categoryMethod_literalSIntExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalSIntExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_literalSIntExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Overriding category method '@literalSIntExpressionAST analyzeSemanticExpression'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalSIntExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                               const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inType */,
+                                                                               const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                               GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                               GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                               C_Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_literalSIntExpressionAST * object = (const cPtr_literalSIntExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_literalSIntExpressionAST) ;
+  outArgument_outExpression = GALGAS_literalSIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mSIntType, object->mAttribute_mValue.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 603)), object->mAttribute_mValue.reader_sint (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 603))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 603)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalSIntExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_literalSIntExpressionAST.mSlotID,
+                                                 categoryMethod_literalSIntExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalSIntExpressionAST_analyzeSemanticExpression (defineCategoryMethod_literalSIntExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Overriding category method '@literalSInt64ExpressionAST enterExpressionInSemanticContext'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalSInt_36__34_ExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * /* inObject */,
+                                                                                              GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                              C_Compiler * /* inCompiler */
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalSInt_36__34_ExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionAST.mSlotID,
+                                                        categoryMethod_literalSInt_36__34_ExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalSInt_36__34_ExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_literalSInt_36__34_ExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Overriding category method '@literalSInt64ExpressionAST analyzeSemanticExpression'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                       const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inType */,
+                                                                                       const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                       GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                       C_Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_literalSInt_36__34_ExpressionAST * object = (const cPtr_literalSInt_36__34_ExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_literalSInt_36__34_ExpressionAST) ;
+  outArgument_outExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mSInt_36__34_Type, object->mAttribute_mValue.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 620)), object->mAttribute_mValue.reader_sint_36__34_ (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 620))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 620)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionAST.mSlotID,
+                                                 categoryMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpression (defineCategoryMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//           Overriding category method '@defaultConstructorExpressionAST enterExpressionInSemanticContext'            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_defaultConstructorExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                             GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                             C_Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_defaultConstructorExpressionAST * object = (const cPtr_defaultConstructorExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_defaultConstructorExpressionAST) ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, object->mAttribute_mTypeName.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  if (kBoolTrue == test_0) {
+    {
+    GALGAS_unifiedTypeMap_2D_proxy joker_44530 ; // Joker input parameter
+    GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioTypeMap, object->mAttribute_mTypeName, joker_44530 COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 698)) ;
+    }
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_defaultConstructorExpressionAST_enterExpressionInSemanticContext (void) {
+  enterCategoryMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_defaultConstructorExpressionAST.mSlotID,
+                                                        categoryMethod_defaultConstructorExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_defaultConstructorExpressionAST_enterExpressionInSemanticContext (defineCategoryMethod_defaultConstructorExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Overriding category method '@defaultConstructorExpressionAST analyzeSemanticExpression'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                      const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inType,
+                                                                                      const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                      GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                                      GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_defaultConstructorExpressionAST * object = (const cPtr_defaultConstructorExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_defaultConstructorExpressionAST) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_type = constinArgument_inType ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, object->mAttribute_mTypeName.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  if (kBoolTrue == test_0) {
+    var_type = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, object->mAttribute_mTypeName, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 711)) ;
+  }
+  const enumGalgasBool test_1 = var_type.reader_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 713)).boolEnum () ;
+  if (kBoolTrue == test_1) {
+    GALGAS_location location_2 (object->mAttribute_mTypeName.reader_location (HERE)) ; // Implicit use of 'location' reader
+    inCompiler->emitSemanticError (location_2, GALGAS_string ("cannot infer type")  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 714)) ;
+    outArgument_outExpression.drop () ; // Release error dropped variable
+  }else if (kBoolFalse == test_1) {
+    const enumGalgasBool test_3 = var_type.reader_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 717)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 717)).boolEnum () ;
+    if (kBoolTrue == test_3) {
+      GALGAS_location location_4 (object->mAttribute_mTypeName.reader_location (HERE)) ; // Implicit use of 'location' reader
+      inCompiler->emitSemanticError (location_4, GALGAS_string ("an abstract class does not support the default constructor")  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 718)) ;
+    }else if (kBoolFalse == test_3) {
+      const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, var_type.reader_mDefaultConstructorName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 719)).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      if (kBoolTrue == test_5) {
+        GALGAS_location location_6 (object->mAttribute_mTypeName.reader_location (HERE)) ; // Implicit use of 'location' reader
+        inCompiler->emitSemanticError (location_6, GALGAS_string ("this class does not support the default constructor")  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 720)) ;
+      }
+    }
+    outArgument_outExpression = GALGAS_defaultConstructorExpressionForGeneration::constructor_new (var_type, object->mAttribute_mTypeName.mAttribute_location  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 723)) ;
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_defaultConstructorExpressionAST.mSlotID,
+                                                 categoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_defaultConstructorExpressionAST_analyzeSemanticExpression (defineCategoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression, NULL) ;
 

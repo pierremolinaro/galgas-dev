@@ -11,6 +11,205 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                            @graphInsertModifierList list                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_graphInsertModifierList : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public : GALGAS_graphInsertModifierList (void) ;
+
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_graphInsertModifierList (cSharedList * inSharedListPtr) ;
+
+//--------------------------------- Element constructor used by listmap
+  public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                  const class GALGAS_lstring & in_mInsertModifierName,
+                                                  const class GALGAS_lstring & in_mInsertErrorMessage
+                                                  COMMA_LOCATION_ARGS) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_graphInsertModifierList extractObject (const GALGAS_object & inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_graphInsertModifierList constructor_emptyList (LOCATION_ARGS) ;
+
+  public : static GALGAS_graphInsertModifierList constructor_listWithValue (const class GALGAS_lstring & inOperand0,
+                                                                            const class GALGAS_lstring & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_graphInsertModifierList inOperand
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                      const class GALGAS_lstring & inOperand1
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- . (concat) operator
+  public : VIRTUAL_IN_DEBUG GALGAS_graphInsertModifierList operator_concat (const GALGAS_graphInsertModifierList & inOperand
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- + operator
+  public : VIRTUAL_IN_DEBUG GALGAS_graphInsertModifierList add_operation (const GALGAS_graphInsertModifierList & inOperand,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_lstring constinArgument0,
+                                                         class GALGAS_lstring constinArgument1,
+                                                         class GALGAS_uint constinArgument2,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_lstring & outArgument0,
+                                                    class GALGAS_lstring & outArgument1,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_lstring & outArgument0,
+                                                   class GALGAS_lstring & outArgument1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_lstring & outArgument0,
+                                                         class GALGAS_lstring & outArgument1,
+                                                         class GALGAS_uint constinArgument2,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
+                                               class GALGAS_lstring & outArgument1,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
+                                              class GALGAS_lstring & outArgument1,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_graphInsertModifierList reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_graphInsertModifierList reader_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_graphInsertModifierList ;
+ 
+} ; // End of GALGAS_graphInsertModifierList class
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Enumerator declaration                                                    *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cEnumerator_graphInsertModifierList : public cGenericAbstractEnumerator {
+  public : cEnumerator_graphInsertModifierList (const GALGAS_graphInsertModifierList & inEnumeratedObject,
+                                                const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public : class GALGAS_lstring current_mInsertModifierName (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mInsertErrorMessage (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_graphInsertModifierList_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     @graphInsertModifierList_2D_element struct                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_graphInsertModifierList_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_lstring mAttribute_mInsertModifierName ;
+  public : GALGAS_lstring mAttribute_mInsertErrorMessage ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_graphInsertModifierList_2D_element constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_graphInsertModifierList_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_graphInsertModifierList_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_graphInsertModifierList_2D_element (const GALGAS_lstring & in_mInsertModifierName,
+                                                      const GALGAS_lstring & in_mInsertErrorMessage) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_graphInsertModifierList_2D_element extractObject (const GALGAS_object & inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_graphInsertModifierList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_graphInsertModifierList_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mInsertErrorMessage (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mInsertModifierName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_graphInsertModifierList_2D_element class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList_2D_element ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                               @matchEntryListAST list                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10302,14 +10501,14 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i24_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i25_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_foreach_5F_enumerated_5F_object_i25_ (GALGAS_foreachInstructionEnumeratedObjectListAST & ioArgument0,
+                                                                                         C_String & ioSyntaxDirectedTranslationResult,
+                                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i25_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_foreach_5F_enumerated_5F_object_i25_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i25_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_foreach_5F_enumerated_5F_object_i25_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i26_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                  C_String & ioSyntaxDirectedTranslationResult,
@@ -10320,23 +10519,23 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i26_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_foreach_5F_enumerated_5F_object_i27_ (GALGAS_foreachInstructionEnumeratedObjectListAST & ioArgument0,
-                                                                                         C_String & ioSyntaxDirectedTranslationResult,
-                                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i27_ (GALGAS_foreachInstructionEnumeratedObjectElementListAST & ioArgument0,
+                                                                                       C_String & ioSyntaxDirectedTranslationResult,
+                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_foreach_5F_enumerated_5F_object_i27_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i27_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_foreach_5F_enumerated_5F_object_i27_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i27_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i28_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i28_ (GALGAS_foreachInstructionEnumeratedObjectElementListAST & ioArgument0,
+                                                                                       C_String & ioSyntaxDirectedTranslationResult,
+                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i28_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i28_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i28_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i28_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i29_ (GALGAS_foreachInstructionEnumeratedObjectElementListAST & ioArgument0,
                                                                                        C_String & ioSyntaxDirectedTranslationResult,
@@ -10347,23 +10546,23 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i29_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i30_ (GALGAS_foreachInstructionEnumeratedObjectElementListAST & ioArgument0,
-                                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
+                                                                                                    C_String & ioSyntaxDirectedTranslationResult,
+                                                                                                    C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i30_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i30_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i31_ (GALGAS_foreachInstructionEnumeratedObjectElementListAST & ioArgument0,
-                                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i31_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
+                                                                                                    C_String & ioSyntaxDirectedTranslationResult,
+                                                                                                    C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i31_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i31_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_element_i31_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i31_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i32_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
                                                                                                     C_String & ioSyntaxDirectedTranslationResult,
@@ -10374,23 +10573,23 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i32_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i33_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
-                                                                                                    C_String & ioSyntaxDirectedTranslationResult,
-                                                                                                    C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i33_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                 C_String & ioSyntaxDirectedTranslationResult,
+                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i33_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i33_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i33_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i33_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i34_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
-                                                                                                    C_String & ioSyntaxDirectedTranslationResult,
-                                                                                                    C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_if_5F_branch_i34_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                      C_String & ioSyntaxDirectedTranslationResult,
+                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i34_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_if_5F_branch_i34_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                           C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i34_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_if_5F_branch_i34_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i35_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                  C_String & ioSyntaxDirectedTranslationResult,
@@ -10401,50 +10600,50 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i35_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_if_5F_branch_i36_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                      C_String & ioSyntaxDirectedTranslationResult,
-                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_if_5F_branch_i36_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                           C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_if_5F_branch_i36_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i37_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i37_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i37_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i38_ (GALGAS_matchEntryListAST & ioArgument0,
+  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i36_ (GALGAS_matchEntryListAST & ioArgument0,
                                                                         C_String & ioSyntaxDirectedTranslationResult,
                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i38_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i36_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i38_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i36_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i39_ (GALGAS_matchEntryListAST & ioArgument0,
+  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i37_ (GALGAS_matchEntryListAST & ioArgument0,
                                                                         C_String & ioSyntaxDirectedTranslationResult,
                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i39_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i37_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i39_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_match_5F_entry_i37_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_match_5F_instruction_5F_branch_i40_ (GALGAS_matchInstructionBranchListAST & ioArgument0,
+  protected : void rule_semanticInstructionsSyntax_match_5F_instruction_5F_branch_i38_ (GALGAS_matchInstructionBranchListAST & ioArgument0,
                                                                                         C_String & ioSyntaxDirectedTranslationResult,
                                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_match_5F_instruction_5F_branch_i40_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_semanticInstructionsSyntax_match_5F_instruction_5F_branch_i38_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_match_5F_instruction_5F_branch_i40_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_match_5F_instruction_5F_branch_i38_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i39_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                 C_String & ioSyntaxDirectedTranslationResult,
+                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i39_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i39_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i40_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                 C_String & ioSyntaxDirectedTranslationResult,
+                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i40_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i40_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i41_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                  C_String & ioSyntaxDirectedTranslationResult,
@@ -10509,32 +10708,32 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i47_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i48_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i48_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i48_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i49_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i49_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i49_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_cast_5F_instruction_5F_branch_i50_ (GALGAS_castInstructionBranchListAST & ioArgument0,
+  protected : void rule_semanticInstructionsSyntax_cast_5F_instruction_5F_branch_i48_ (GALGAS_castInstructionBranchListAST & ioArgument0,
                                                                                        C_String & ioSyntaxDirectedTranslationResult,
                                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_cast_5F_instruction_5F_branch_i50_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_semanticInstructionsSyntax_cast_5F_instruction_5F_branch_i48_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                             C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_cast_5F_instruction_5F_branch_i50_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_cast_5F_instruction_5F_branch_i48_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i49_ (GALGAS_semanticInstructionListAST & outArgument0,
+                                                                                       C_String & ioSyntaxDirectedTranslationResult,
+                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i49_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i49_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i50_ (GALGAS_semanticInstructionListAST & outArgument0,
+                                                                                       C_String & ioSyntaxDirectedTranslationResult,
+                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i50_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i50_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i51_ (GALGAS_semanticInstructionListAST & outArgument0,
                                                                                        C_String & ioSyntaxDirectedTranslationResult,
@@ -10545,23 +10744,23 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i51_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i52_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i52_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                 C_String & ioSyntaxDirectedTranslationResult,
+                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i52_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i52_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i52_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i52_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i53_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i53_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                 C_String & ioSyntaxDirectedTranslationResult,
+                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i53_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i53_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_cast_5F_else_5F_or_5F_default_i53_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i53_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i54_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                  C_String & ioSyntaxDirectedTranslationResult,
@@ -10626,14 +10825,14 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i60_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i61_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i61_ (GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & outArgument0,
+                                                                                                     C_String & ioSyntaxDirectedTranslationResult,
+                                                                                                     C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i61_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i61_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                                          C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i61_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i61_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i62_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                  C_String & ioSyntaxDirectedTranslationResult,
@@ -10644,60 +10843,42 @@ class cParser_semanticInstructionsSyntax {
 
   protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i62_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i63_ (GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & outArgument0,
-                                                                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                                                                     C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i63_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                                          C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i63_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i64_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i63_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                  C_String & ioSyntaxDirectedTranslationResult,
                                                                                  C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i64_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i63_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i64_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i63_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i65_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i65_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i65_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_i66_ (GALGAS_lstring & outArgument0,
+  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_i64_ (GALGAS_lstring & outArgument0,
                                                                                       GALGAS_abstractInputParameter & outArgument1,
                                                                                       C_String & ioSyntaxDirectedTranslationResult,
                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_i66_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_i64_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_i66_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_i64_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_5F_list_i67_ (GALGAS_actualInputParameterListAST & outArgument0,
+  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_5F_list_i65_ (GALGAS_actualInputParameterListAST & outArgument0,
                                                                                               C_String & ioSyntaxDirectedTranslationResult,
                                                                                               C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_5F_list_i67_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_5F_list_i65_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                                    C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_5F_list_i67_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_actual_5F_input_5F_parameter_5F_list_i65_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i68_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i66_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                  C_String & ioSyntaxDirectedTranslationResult,
                                                                                  C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i68_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i66_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i68_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_semanticInstructionsSyntax_semantic_5F_instruction_i66_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
 
 
@@ -10839,6 +11020,8 @@ class cParser_semanticInstructionsSyntax {
   protected : virtual int32_t select_semanticInstructionsSyntax_67 (C_Lexique_galgas_32_Scanner *) = 0 ;
 
   protected : virtual int32_t select_semanticInstructionsSyntax_68 (C_Lexique_galgas_32_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_semanticInstructionsSyntax_69 (C_Lexique_galgas_32_Scanner *) = 0 ;
 
 
 } ;
@@ -11092,98 +11275,6 @@ class cPtr_concatInstructionAST : public cPtr_semanticInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTargetVariableName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST reader_mSourceExpression (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @decrementInstructionAST class                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_decrementInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
-  public : GALGAS_decrementInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_decrementInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_decrementInstructionAST * ptr (void) const { return (const cPtr_decrementInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_decrementInstructionAST (const cPtr_decrementInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_decrementInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_decrementInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_lstring & inOperand1,
-                                                                  const class GALGAS_lstringlist & inOperand2
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_decrementInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mReceiverName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_decrementInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_decrementInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Pointer class for @decrementInstructionAST class                                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_decrementInstructionAST : public cPtr_semanticInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-
-//--- Constructor
-  public : cPtr_decrementInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                         const GALGAS_lstring & in_mReceiverName,
-                                         const GALGAS_lstringlist & in_mStructAttributeList
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mReceiverName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -12938,22 +13029,19 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           @incrementInstructionAST class                                            *
+//                                             @incDecInstructionAST class                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_incrementInstructionAST : public GALGAS_semanticInstructionAST {
+class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
 //--- Constructor
-  public : GALGAS_incrementInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_incrementInstructionAST constructor_default (LOCATION_ARGS) ;
+  public : GALGAS_incDecInstructionAST (void) ;
 
 //---
-  public : inline const class cPtr_incrementInstructionAST * ptr (void) const { return (const cPtr_incrementInstructionAST *) mObjectPtr ; }
+  public : inline const class cPtr_incDecInstructionAST * ptr (void) const { return (const cPtr_incDecInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_incrementInstructionAST (const cPtr_incrementInstructionAST * inSourcePtr) ;
+  public : GALGAS_incDecInstructionAST (const cPtr_incDecInstructionAST * inSourcePtr) ;
 
 //-- Start of generic part --*
 
@@ -12961,18 +13049,19 @@ class GALGAS_incrementInstructionAST : public GALGAS_semanticInstructionAST {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_incrementInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_incDecInstructionAST extractObject (const GALGAS_object & inObject,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_incrementInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_lstring & inOperand1,
-                                                                  const class GALGAS_lstringlist & inOperand2
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_incDecInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                               const class GALGAS_lstring & inOperand1,
+                                                               const class GALGAS_lstringlist & inOperand2,
+                                                               const class GALGAS_incDecKind & inOperand3
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_incrementInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_incDecInstructionAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -12980,6 +13069,8 @@ class GALGAS_incrementInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_incDecKind reader_mKind (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mReceiverName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
@@ -12988,29 +13079,31 @@ class GALGAS_incrementInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_incrementInstructionAST class
+} ; // End of GALGAS_incDecInstructionAST class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incrementInstructionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAST ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Pointer class for @incrementInstructionAST class                                   *
+//                                    Pointer class for @incDecInstructionAST class                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_incrementInstructionAST : public cPtr_semanticInstructionAST {
+class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mReceiverName ;
   public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
+  public : GALGAS_incDecKind mAttribute_mKind ;
 
 //--- Constructor
-  public : cPtr_incrementInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                         const GALGAS_lstring & in_mReceiverName,
-                                         const GALGAS_lstringlist & in_mStructAttributeList
-                                         COMMA_LOCATION_ARGS) ;
+  public : cPtr_incDecInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                      const GALGAS_lstring & in_mReceiverName,
+                                      const GALGAS_lstringlist & in_mStructAttributeList,
+                                      const GALGAS_incDecKind & in_mKind
+                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
@@ -13018,6 +13111,7 @@ class cPtr_incrementInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_incDecKind reader_mKind (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -15401,22 +15495,19 @@ class cPtr_selfConcatInstructionAST : public cPtr_semanticInstructionAST {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         @selfDecrementInstructionAST class                                          *
+//                                           @selfIncDecInstructionAST class                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_selfDecrementInstructionAST : public GALGAS_semanticInstructionAST {
+class GALGAS_selfIncDecInstructionAST : public GALGAS_semanticInstructionAST {
 //--- Constructor
-  public : GALGAS_selfDecrementInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_selfDecrementInstructionAST constructor_default (LOCATION_ARGS) ;
+  public : GALGAS_selfIncDecInstructionAST (void) ;
 
 //---
-  public : inline const class cPtr_selfDecrementInstructionAST * ptr (void) const { return (const cPtr_selfDecrementInstructionAST *) mObjectPtr ; }
+  public : inline const class cPtr_selfIncDecInstructionAST * ptr (void) const { return (const cPtr_selfIncDecInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_selfDecrementInstructionAST (const cPtr_selfDecrementInstructionAST * inSourcePtr) ;
+  public : GALGAS_selfIncDecInstructionAST (const cPtr_selfIncDecInstructionAST * inSourcePtr) ;
 
 //-- Start of generic part --*
 
@@ -15424,16 +15515,17 @@ class GALGAS_selfDecrementInstructionAST : public GALGAS_semanticInstructionAST 
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_selfDecrementInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_selfIncDecInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfDecrementInstructionAST constructor_new (const class GALGAS_location & inOperand0
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_selfIncDecInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_incDecKind & inOperand1
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_selfDecrementInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_selfIncDecInstructionAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -15441,114 +15533,39 @@ class GALGAS_selfDecrementInstructionAST : public GALGAS_semanticInstructionAST 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_incDecKind reader_mKind (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_selfDecrementInstructionAST class
+} ; // End of GALGAS_selfIncDecInstructionAST class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDecrementInstructionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecInstructionAST ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Pointer class for @selfDecrementInstructionAST class                                 *
+//                                  Pointer class for @selfIncDecInstructionAST class                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_selfDecrementInstructionAST : public cPtr_semanticInstructionAST {
+class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_incDecKind mAttribute_mKind ;
 
 //--- Constructor
-  public : cPtr_selfDecrementInstructionAST (const GALGAS_location & in_mInstructionLocation
-                                             COMMA_LOCATION_ARGS) ;
+  public : cPtr_selfIncDecInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                          const GALGAS_incDecKind & in_mKind
+                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @selfIncrementInstructionAST class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_selfIncrementInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
-  public : GALGAS_selfIncrementInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_selfIncrementInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_selfIncrementInstructionAST * ptr (void) const { return (const cPtr_selfIncrementInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_selfIncrementInstructionAST (const cPtr_selfIncrementInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_selfIncrementInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_selfIncrementInstructionAST constructor_new (const class GALGAS_location & inOperand0
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_selfIncrementInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_selfIncrementInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncrementInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @selfIncrementInstructionAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_selfIncrementInstructionAST : public cPtr_semanticInstructionAST {
-//--- Attributes
-
-//--- Constructor
-  public : cPtr_selfIncrementInstructionAST (const GALGAS_location & in_mInstructionLocation
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_incDecKind reader_mKind (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

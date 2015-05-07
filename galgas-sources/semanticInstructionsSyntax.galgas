@@ -613,12 +613,27 @@ rule <semantic_instruction>
     $identifier$ ?var  @lstring attributeName
     mStructAttributeList += !attributeName
   end
-  $++$
+  @incDecKind kind
+  select
+    $++$
+    kind = .incWithOverflowDetect
+  or
+    $--$
+    kind = .decWithOverflowDetect
+  or
+    $&++$
+    kind = .incNoOverflowDetect
+  or
+    $&--$
+    kind = .decNoOverflowDetect
+  end
   $;$ :> ?* ?*
-  outInstruction = @incrementInstructionAST.new {
+  outInstruction = @incDecInstructionAST.new {
     ![mReceiverName location]
     !mReceiverName
-    !mStructAttributeList}
+    !mStructAttributeList
+    !kind
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -635,59 +650,25 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $self$
   let instructionLocation = @location.here
-  $++$
-  $;$ :> ?* ?*
-  outInstruction = @selfIncrementInstructionAST.new {
-    !instructionLocation}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    D E C R E M E N T    I N S T R U C T I O N                                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! -- instruction
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
-  $identifier$ ?var @lstring mReceiverName
-  var mStructAttributeList =@lstringlist.emptyList{}
-  repeat
-  while
-    $->$ :> ?@string sep ?*
-    send sep + "."
-    $identifier$ ?var  @lstring attributeName
-    mStructAttributeList += !attributeName
+  @incDecKind kind
+  select
+    $++$
+    kind = .incWithOverflowDetect
+  or
+    $--$
+    kind = .decWithOverflowDetect
+  or
+    $&++$
+    kind = .incNoOverflowDetect
+  or
+    $&--$
+    kind = .decNoOverflowDetect
   end
-  $--$
   $;$ :> ?* ?*
-  outInstruction = @decrementInstructionAST.new {
-    ![mReceiverName location]
-    !mReceiverName
-    !mStructAttributeList}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    S E L F    D E C R E M E N T    I N S T R U C T I O N                                                             *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! self -- instruction
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
-  $self$
-  let instructionLocation = @location.here
-  $--$
-  $;$ :> ?* ?*
-  outInstruction = @selfDecrementInstructionAST.new {
-    !instructionLocation}
+  outInstruction = @selfIncDecInstructionAST.new {
+    !instructionLocation
+    !kind
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

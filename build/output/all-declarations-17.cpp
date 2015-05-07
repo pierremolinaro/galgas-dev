@@ -13792,244 +13792,6 @@ GALGAS_concatInstructionForGeneration GALGAS_concatInstructionForGeneration::ext
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cPtr_decrementInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_decrementInstructionForGeneration * p = (const cPtr_decrementInstructionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_decrementInstructionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mReceiverCppName.objectCompare (p->mAttribute_mReceiverCppName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mReceiverType.objectCompare (p->mAttribute_mReceiverType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mStructAttributeList.objectCompare (p->mAttribute_mStructAttributeList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_decrementInstructionForGeneration::objectCompare (const GALGAS_decrementInstructionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_decrementInstructionForGeneration::GALGAS_decrementInstructionForGeneration (void) :
-GALGAS_semanticInstructionForGeneration () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_decrementInstructionForGeneration GALGAS_decrementInstructionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_decrementInstructionForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
-                                                                    GALGAS_string::constructor_default (HERE),
-                                                                    GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                    GALGAS_lstringlist::constructor_emptyList (HERE)
-                                                                    COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_decrementInstructionForGeneration::GALGAS_decrementInstructionForGeneration (const cPtr_decrementInstructionForGeneration * inSourcePtr) :
-GALGAS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_decrementInstructionForGeneration) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_decrementInstructionForGeneration GALGAS_decrementInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                    const GALGAS_string & inAttribute_mReceiverCppName,
-                                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
-                                                                                                    const GALGAS_lstringlist & inAttribute_mStructAttributeList
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_decrementInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverCppName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mStructAttributeList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_decrementInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverCppName, inAttribute_mReceiverType, inAttribute_mStructAttributeList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_decrementInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_decrementInstructionForGeneration * p = (const cPtr_decrementInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_decrementInstructionForGeneration) ;
-    result = p->mAttribute_mInstructionLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_decrementInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mInstructionLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_decrementInstructionForGeneration::reader_mReceiverCppName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_decrementInstructionForGeneration * p = (const cPtr_decrementInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_decrementInstructionForGeneration) ;
-    result = p->mAttribute_mReceiverCppName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cPtr_decrementInstructionForGeneration::reader_mReceiverCppName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mReceiverCppName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_decrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_decrementInstructionForGeneration * p = (const cPtr_decrementInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_decrementInstructionForGeneration) ;
-    result = p->mAttribute_mReceiverType ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy cPtr_decrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mReceiverType ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_decrementInstructionForGeneration::reader_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_decrementInstructionForGeneration * p = (const cPtr_decrementInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_decrementInstructionForGeneration) ;
-    result = p->mAttribute_mStructAttributeList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist cPtr_decrementInstructionForGeneration::reader_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mStructAttributeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                             Pointer class for @decrementInstructionForGeneration class                              *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_decrementInstructionForGeneration::cPtr_decrementInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                                const GALGAS_string & in_mReceiverCppName,
-                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                                                const GALGAS_lstringlist & in_mStructAttributeList
-                                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (THERE),
-mAttribute_mInstructionLocation (in_mInstructionLocation),
-mAttribute_mReceiverCppName (in_mReceiverCppName),
-mAttribute_mReceiverType (in_mReceiverType),
-mAttribute_mStructAttributeList (in_mStructAttributeList) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_decrementInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_decrementInstructionForGeneration ;
-}
-
-void cPtr_decrementInstructionForGeneration::description (C_String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString << "[@decrementInstructionForGeneration:" ;
-  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mReceiverCppName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mStructAttributeList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_decrementInstructionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_decrementInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverCppName, mAttribute_mReceiverType, mAttribute_mStructAttributeList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @decrementInstructionForGeneration type                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_decrementInstructionForGeneration ("decrementInstructionForGeneration",
-                                                          & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_decrementInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_decrementInstructionForGeneration ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_decrementInstructionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_decrementInstructionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_decrementInstructionForGeneration GALGAS_decrementInstructionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_decrementInstructionForGeneration result ;
-  const GALGAS_decrementInstructionForGeneration * p = (const GALGAS_decrementInstructionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_decrementInstructionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("decrementInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
 typeComparisonResult cPtr_dropInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_dropInstructionForGeneration * p = (const cPtr_dropInstructionForGeneration *) inOperandPtr ;
@@ -15719,10 +15481,10 @@ GALGAS_ifInstructionForGeneration GALGAS_ifInstructionForGeneration::extractObje
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cPtr_incrementInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+typeComparisonResult cPtr_incDecInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
-  const cPtr_incrementInstructionForGeneration * p = (const cPtr_incrementInstructionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_incrementInstructionForGeneration) ;
+  const cPtr_incDecInstructionForGeneration * p = (const cPtr_incDecInstructionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_incDecInstructionForGeneration) ;
   if (kOperandEqual == result) {
     result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
   }
@@ -15735,13 +15497,16 @@ typeComparisonResult cPtr_incrementInstructionForGeneration::dynamicObjectCompar
   if (kOperandEqual == result) {
     result = mAttribute_mStructAttributeList.objectCompare (p->mAttribute_mStructAttributeList) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+  }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 
-typeComparisonResult GALGAS_incrementInstructionForGeneration::objectCompare (const GALGAS_incrementInstructionForGeneration & inOperand) const {
+typeComparisonResult GALGAS_incDecInstructionForGeneration::objectCompare (const GALGAS_incDecInstructionForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
@@ -15759,48 +15524,39 @@ typeComparisonResult GALGAS_incrementInstructionForGeneration::objectCompare (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_incrementInstructionForGeneration::GALGAS_incrementInstructionForGeneration (void) :
+GALGAS_incDecInstructionForGeneration::GALGAS_incDecInstructionForGeneration (void) :
 GALGAS_semanticInstructionForGeneration () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_incrementInstructionForGeneration GALGAS_incrementInstructionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_incrementInstructionForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
-                                                                    GALGAS_string::constructor_default (HERE),
-                                                                    GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                    GALGAS_lstringlist::constructor_emptyList (HERE)
-                                                                    COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_incrementInstructionForGeneration::GALGAS_incrementInstructionForGeneration (const cPtr_incrementInstructionForGeneration * inSourcePtr) :
+GALGAS_incDecInstructionForGeneration::GALGAS_incDecInstructionForGeneration (const cPtr_incDecInstructionForGeneration * inSourcePtr) :
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_incrementInstructionForGeneration) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_incDecInstructionForGeneration) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_incrementInstructionForGeneration GALGAS_incrementInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                    const GALGAS_string & inAttribute_mReceiverCppName,
-                                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
-                                                                                                    const GALGAS_lstringlist & inAttribute_mStructAttributeList
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_incrementInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverCppName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mStructAttributeList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_incrementInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverCppName, inAttribute_mReceiverType, inAttribute_mStructAttributeList COMMA_THERE)) ;
+GALGAS_incDecInstructionForGeneration GALGAS_incDecInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                                              const GALGAS_string & inAttribute_mReceiverCppName,
+                                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
+                                                                                              const GALGAS_lstringlist & inAttribute_mStructAttributeList,
+                                                                                              const GALGAS_incDecKind & inAttribute_mKind
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_incDecInstructionForGeneration result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverCppName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mStructAttributeList.isValid () && inAttribute_mKind.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_incDecInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverCppName, inAttribute_mReceiverType, inAttribute_mStructAttributeList, inAttribute_mKind COMMA_THERE)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_incrementInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_incDecInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
-    const cPtr_incrementInstructionForGeneration * p = (const cPtr_incrementInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_incrementInstructionForGeneration) ;
+    const cPtr_incDecInstructionForGeneration * p = (const cPtr_incDecInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_incDecInstructionForGeneration) ;
     result = p->mAttribute_mInstructionLocation ;
   }
   return result ;
@@ -15808,17 +15564,17 @@ GALGAS_location GALGAS_incrementInstructionForGeneration::reader_mInstructionLoc
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_incrementInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_incDecInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructionLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_incrementInstructionForGeneration::reader_mReceiverCppName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_incDecInstructionForGeneration::reader_mReceiverCppName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
-    const cPtr_incrementInstructionForGeneration * p = (const cPtr_incrementInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_incrementInstructionForGeneration) ;
+    const cPtr_incDecInstructionForGeneration * p = (const cPtr_incDecInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_incDecInstructionForGeneration) ;
     result = p->mAttribute_mReceiverCppName ;
   }
   return result ;
@@ -15826,17 +15582,17 @@ GALGAS_string GALGAS_incrementInstructionForGeneration::reader_mReceiverCppName 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_incrementInstructionForGeneration::reader_mReceiverCppName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_incDecInstructionForGeneration::reader_mReceiverCppName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverCppName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_incrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_incDecInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
-    const cPtr_incrementInstructionForGeneration * p = (const cPtr_incrementInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_incrementInstructionForGeneration) ;
+    const cPtr_incDecInstructionForGeneration * p = (const cPtr_incDecInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_incDecInstructionForGeneration) ;
     result = p->mAttribute_mReceiverType ;
   }
   return result ;
@@ -15844,17 +15600,17 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_incrementInstructionForGeneration::reader_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_incrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_incDecInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_incrementInstructionForGeneration::reader_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_incDecInstructionForGeneration::reader_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (NULL != mObjectPtr) {
-    const cPtr_incrementInstructionForGeneration * p = (const cPtr_incrementInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_incrementInstructionForGeneration) ;
+    const cPtr_incDecInstructionForGeneration * p = (const cPtr_incDecInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_incDecInstructionForGeneration) ;
     result = p->mAttribute_mStructAttributeList ;
   }
   return result ;
@@ -15862,35 +15618,55 @@ GALGAS_lstringlist GALGAS_incrementInstructionForGeneration::reader_mStructAttri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist cPtr_incrementInstructionForGeneration::reader_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist cPtr_incDecInstructionForGeneration::reader_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStructAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                             Pointer class for @incrementInstructionForGeneration class                              *
+
+GALGAS_incDecKind GALGAS_incDecInstructionForGeneration::reader_mKind (UNUSED_LOCATION_ARGS) const {
+  GALGAS_incDecKind result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_incDecInstructionForGeneration * p = (const cPtr_incDecInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_incDecInstructionForGeneration) ;
+    result = p->mAttribute_mKind ;
+  }
+  return result ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_incrementInstructionForGeneration::cPtr_incrementInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                                const GALGAS_string & in_mReceiverCppName,
-                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                                                const GALGAS_lstringlist & in_mStructAttributeList
-                                                                                COMMA_LOCATION_ARGS) :
+GALGAS_incDecKind cPtr_incDecInstructionForGeneration::reader_mKind (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mKind ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                               Pointer class for @incDecInstructionForGeneration class                               *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_incDecInstructionForGeneration::cPtr_incDecInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                                          const GALGAS_string & in_mReceiverCppName,
+                                                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
+                                                                          const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                          const GALGAS_incDecKind & in_mKind
+                                                                          COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
 mAttribute_mInstructionLocation (in_mInstructionLocation),
 mAttribute_mReceiverCppName (in_mReceiverCppName),
 mAttribute_mReceiverType (in_mReceiverType),
-mAttribute_mStructAttributeList (in_mStructAttributeList) {
+mAttribute_mStructAttributeList (in_mStructAttributeList),
+mAttribute_mKind (in_mKind) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * cPtr_incrementInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_incrementInstructionForGeneration ;
+const C_galgas_type_descriptor * cPtr_incDecInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_incDecInstructionForGeneration ;
 }
 
-void cPtr_incrementInstructionForGeneration::description (C_String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString << "[@incrementInstructionForGeneration:" ;
+void cPtr_incDecInstructionForGeneration::description (C_String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString << "[@incDecInstructionForGeneration:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mReceiverCppName.description (ioString, inIndentation+1) ;
@@ -15898,56 +15674,58 @@ void cPtr_incrementInstructionForGeneration::description (C_String & ioString,
   mAttribute_mReceiverType.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mStructAttributeList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-acPtr_class * cPtr_incrementInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_incDecInstructionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_incrementInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverCppName, mAttribute_mReceiverType, mAttribute_mStructAttributeList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_incDecInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverCppName, mAttribute_mReceiverType, mAttribute_mStructAttributeList, mAttribute_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       @incrementInstructionForGeneration type                                       *
+//                                        @incDecInstructionForGeneration type                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_incrementInstructionForGeneration ("incrementInstructionForGeneration",
-                                                          & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+kTypeDescriptor_GALGAS_incDecInstructionForGeneration ("incDecInstructionForGeneration",
+                                                       & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_incrementInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_incrementInstructionForGeneration ;
+const C_galgas_type_descriptor * GALGAS_incDecInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_incDecInstructionForGeneration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_incrementInstructionForGeneration::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_incDecInstructionForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_incrementInstructionForGeneration (*this)) ;
+    macroMyNew (result, GALGAS_incDecInstructionForGeneration (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_incrementInstructionForGeneration GALGAS_incrementInstructionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_incrementInstructionForGeneration result ;
-  const GALGAS_incrementInstructionForGeneration * p = (const GALGAS_incrementInstructionForGeneration *) inObject.embeddedObject () ;
+GALGAS_incDecInstructionForGeneration GALGAS_incDecInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_incDecInstructionForGeneration result ;
+  const GALGAS_incDecInstructionForGeneration * p = (const GALGAS_incDecInstructionForGeneration *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_incrementInstructionForGeneration *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_incDecInstructionForGeneration *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("incrementInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("incDecInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -18664,6 +18442,364 @@ GALGAS_readOnlyWithInstructionForGeneration GALGAS_readOnlyWithInstructionForGen
       result = *p ;
     }else{
       inCompiler->castError ("readOnlyWithInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_readWriteWithInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mReceiverVariableCppName.objectCompare (p->mAttribute_mReceiverVariableCppName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mReceiverType.objectCompare (p->mAttribute_mReceiverType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mStructAttributeList.objectCompare (p->mAttribute_mStructAttributeList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mObjectArrayCppName.objectCompare (p->mAttribute_mObjectArrayCppName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mKeyExpression.objectCompare (p->mAttribute_mKeyExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSearchMethodNameForErrorSignaling.objectCompare (p->mAttribute_mSearchMethodNameForErrorSignaling) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mDoBranchInstructions.objectCompare (p->mAttribute_mDoBranchInstructions) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mElseBranchInstructions.objectCompare (p->mAttribute_mElseBranchInstructions) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_readWriteWithInstructionForGeneration::objectCompare (const GALGAS_readWriteWithInstructionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_readWriteWithInstructionForGeneration::GALGAS_readWriteWithInstructionForGeneration (void) :
+GALGAS_semanticInstructionForGeneration () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_readWriteWithInstructionForGeneration::GALGAS_readWriteWithInstructionForGeneration (const cPtr_readWriteWithInstructionForGeneration * inSourcePtr) :
+GALGAS_semanticInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_readWriteWithInstructionForGeneration) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_readWriteWithInstructionForGeneration GALGAS_readWriteWithInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                                                            const GALGAS_string & inAttribute_mReceiverVariableCppName,
+                                                                                                            const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
+                                                                                                            const GALGAS_lstringlist & inAttribute_mStructAttributeList,
+                                                                                                            const GALGAS_string & inAttribute_mObjectArrayCppName,
+                                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mKeyExpression,
+                                                                                                            const GALGAS_string & inAttribute_mSearchMethodNameForErrorSignaling,
+                                                                                                            const GALGAS_semanticInstructionListForGeneration & inAttribute_mDoBranchInstructions,
+                                                                                                            const GALGAS_semanticInstructionListForGeneration & inAttribute_mElseBranchInstructions
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_readWriteWithInstructionForGeneration result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverVariableCppName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mStructAttributeList.isValid () && inAttribute_mObjectArrayCppName.isValid () && inAttribute_mKeyExpression.isValid () && inAttribute_mSearchMethodNameForErrorSignaling.isValid () && inAttribute_mDoBranchInstructions.isValid () && inAttribute_mElseBranchInstructions.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_readWriteWithInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverVariableCppName, inAttribute_mReceiverType, inAttribute_mStructAttributeList, inAttribute_mObjectArrayCppName, inAttribute_mKeyExpression, inAttribute_mSearchMethodNameForErrorSignaling, inAttribute_mDoBranchInstructions, inAttribute_mElseBranchInstructions COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_readWriteWithInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mInstructionLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_readWriteWithInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInstructionLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_readWriteWithInstructionForGeneration::reader_mReceiverVariableCppName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mReceiverVariableCppName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_readWriteWithInstructionForGeneration::reader_mReceiverVariableCppName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mReceiverVariableCppName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_readWriteWithInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mReceiverType ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy cPtr_readWriteWithInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mReceiverType ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_readWriteWithInstructionForGeneration::reader_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstringlist result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mStructAttributeList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cPtr_readWriteWithInstructionForGeneration::reader_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mStructAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_readWriteWithInstructionForGeneration::reader_mObjectArrayCppName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mObjectArrayCppName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_readWriteWithInstructionForGeneration::reader_mObjectArrayCppName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mObjectArrayCppName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionForGeneration GALGAS_readWriteWithInstructionForGeneration::reader_mKeyExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mKeyExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionForGeneration cPtr_readWriteWithInstructionForGeneration::reader_mKeyExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mKeyExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_readWriteWithInstructionForGeneration::reader_mSearchMethodNameForErrorSignaling (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mSearchMethodNameForErrorSignaling ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_readWriteWithInstructionForGeneration::reader_mSearchMethodNameForErrorSignaling (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSearchMethodNameForErrorSignaling ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListForGeneration GALGAS_readWriteWithInstructionForGeneration::reader_mDoBranchInstructions (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticInstructionListForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mDoBranchInstructions ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListForGeneration cPtr_readWriteWithInstructionForGeneration::reader_mDoBranchInstructions (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mDoBranchInstructions ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListForGeneration GALGAS_readWriteWithInstructionForGeneration::reader_mElseBranchInstructions (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticInstructionListForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
+    result = p->mAttribute_mElseBranchInstructions ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListForGeneration cPtr_readWriteWithInstructionForGeneration::reader_mElseBranchInstructions (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mElseBranchInstructions ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                           Pointer class for @readWriteWithInstructionForGeneration class                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_readWriteWithInstructionForGeneration::cPtr_readWriteWithInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                                                        const GALGAS_string & in_mReceiverVariableCppName,
+                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
+                                                                                        const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                        const GALGAS_string & in_mObjectArrayCppName,
+                                                                                        const GALGAS_semanticExpressionForGeneration & in_mKeyExpression,
+                                                                                        const GALGAS_string & in_mSearchMethodNameForErrorSignaling,
+                                                                                        const GALGAS_semanticInstructionListForGeneration & in_mDoBranchInstructions,
+                                                                                        const GALGAS_semanticInstructionListForGeneration & in_mElseBranchInstructions
+                                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (THERE),
+mAttribute_mInstructionLocation (in_mInstructionLocation),
+mAttribute_mReceiverVariableCppName (in_mReceiverVariableCppName),
+mAttribute_mReceiverType (in_mReceiverType),
+mAttribute_mStructAttributeList (in_mStructAttributeList),
+mAttribute_mObjectArrayCppName (in_mObjectArrayCppName),
+mAttribute_mKeyExpression (in_mKeyExpression),
+mAttribute_mSearchMethodNameForErrorSignaling (in_mSearchMethodNameForErrorSignaling),
+mAttribute_mDoBranchInstructions (in_mDoBranchInstructions),
+mAttribute_mElseBranchInstructions (in_mElseBranchInstructions) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_readWriteWithInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_readWriteWithInstructionForGeneration ;
+}
+
+void cPtr_readWriteWithInstructionForGeneration::description (C_String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString << "[@readWriteWithInstructionForGeneration:" ;
+  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mReceiverVariableCppName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mReceiverType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mStructAttributeList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mObjectArrayCppName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mKeyExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSearchMethodNameForErrorSignaling.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mDoBranchInstructions.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mElseBranchInstructions.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_readWriteWithInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_readWriteWithInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverVariableCppName, mAttribute_mReceiverType, mAttribute_mStructAttributeList, mAttribute_mObjectArrayCppName, mAttribute_mKeyExpression, mAttribute_mSearchMethodNameForErrorSignaling, mAttribute_mDoBranchInstructions, mAttribute_mElseBranchInstructions COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     @readWriteWithInstructionForGeneration type                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_readWriteWithInstructionForGeneration ("readWriteWithInstructionForGeneration",
+                                                              & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_readWriteWithInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_readWriteWithInstructionForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_readWriteWithInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_readWriteWithInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_readWriteWithInstructionForGeneration GALGAS_readWriteWithInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                          C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_readWriteWithInstructionForGeneration result ;
+  const GALGAS_readWriteWithInstructionForGeneration * p = (const GALGAS_readWriteWithInstructionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_readWriteWithInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("readWriteWithInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -3091,6 +3091,8 @@ class cGrammar_semanticsSLRgrammar : public cParser_expressionSyntax,
 
   public : virtual int32_t select_semanticInstructionsSyntax_68 (C_Lexique_galgas_32_Scanner *) ;
 
+  public : virtual int32_t select_semanticInstructionsSyntax_69 (C_Lexique_galgas_32_Scanner *) ;
+
   public : virtual int32_t select_semanticsComponent_0 (C_Lexique_galgas_32_Scanner *) ;
 
   public : virtual int32_t select_semanticDeclarationsSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
