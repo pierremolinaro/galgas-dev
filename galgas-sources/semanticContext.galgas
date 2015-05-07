@@ -1904,14 +1904,14 @@ override method @enumDeclarationAST enterInSemanticContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
-  var constructorMap =@constructorMap.emptyMap{}
-  var modifierMap =@setterMap.emptyMap{}
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
-  var classMethodMap =@classMethodMap.emptyMap{}
+  @constructorMap constructorMap = {}
+  @setterMap modifierMap = {}
+  @instanceMethodMap instanceMethodMap = {}
+  @classMethodMap classMethodMap = {}
 #--- currentType type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mEnumTypeName ?let @unifiedTypeMap-proxy enumTypeProxy]
 #--- Constructors
-  var constantMap =@constantIndexMap.emptyMap{}
+  @constantIndexMap constantMap = {}
   @bool hasAssociatedValues = false
   for () in mConstantList do
     @unifiedTypeMapProxyList associatedTypeList = {}
@@ -1930,8 +1930,30 @@ override method @enumDeclarationAST enterInSemanticContext
       !enumTypeProxy
     ]
   end
-#--- readers
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap  )
+#--- Methods
+  for () in mConstantList do
+    if [mAssociatedValueDefinitionList length] > 0 then
+      @unifiedTypeMapProxyList associatedTypeList = {}
+      @formalParameterSignature argumentTypeList = {}
+      for (typeName selectorName) in mAssociatedValueDefinitionList do
+        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !typeName ?let @unifiedTypeMap-proxy associatedTypeProxy]
+        argumentTypeList += !selectorName !associatedTypeProxy !.argumentOut !typeName.string
+        associatedTypeList += !associatedTypeProxy
+        hasAssociatedValues = true
+      end
+      [!?instanceMethodMap insertKey
+        !mConstantName
+        !.definedAsMember
+        !argumentTypeList
+        !mConstantName.location
+        !true
+        !.isBasicFinal
+        !""
+      ]
+    end
+  end
+#--- getters
+  commonReaderMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
   for () in mConstantList do
     enterBaseReaderWithoutArgument (
       !?getterMap

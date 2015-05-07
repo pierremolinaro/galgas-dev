@@ -88,6 +88,32 @@ for () in CONSTANT_LIST do
   %}\n\n%
 end
 
+for () in CONSTANT_LIST do
+  if [mAssociatedValueTypeList length] > 0 then
+    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+    %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mConstantName identifierRepresentation]% (%?^
+    for () in mAssociatedValueTypeList do index idx
+      %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue%![idx string]%,\n%!^
+    end
+    !^%C_Compiler * inCompiler\n%
+    !^%COMMA_LOCATION_ARGS) const {\n%
+    %  if (mEnum != kEnum_%![mConstantName identifierRepresentation]%) {\n%
+    for () in mAssociatedValueTypeList do index idx
+      %    outAssociatedValue%![idx string]%.drop () ;\n%
+    end
+    %    C_String s ;\n%
+    %    s << "method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value" ;\n%
+    %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
+    %  }else{\n%
+    %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
+    for () in mAssociatedValueTypeList do index idx
+      %     outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
+    end
+    %  }\n%
+    %}\n\n%
+  end
+end
+
 %//---------------------------------------------------------------------------------------------------------------------*
 
 static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] + 1 string]%] = {

@@ -269,7 +269,10 @@ class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
 #----------------------------------------------------------------------------------------------------------------------*
 
 enum @formalArgumentPassingModeAST {
-  case argumentIn  case argumentOut  case argumentInOut  case argumentConstantIn
+  case argumentIn
+  case argumentOut
+  case argumentInOut
+  case argumentConstantIn
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
