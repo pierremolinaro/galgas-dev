@@ -253,6 +253,8 @@
 		CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7005179ACAD400789D8A /* PMUndoManager.m */; };
 		CFC1042C161DFE2000253307 /* PMUInt128.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* PMUInt128.cpp */; };
 		CFC1042D161DFE2000253307 /* PMUInt128.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* PMUInt128.cpp */; };
+		CFC2223F1AFBE6A00049A4CB /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC2223E1AFBE6A00049A4CB /* all-declarations-26.cpp */; };
+		CFC222401AFBE6A00049A4CB /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC2223E1AFBE6A00049A4CB /* all-declarations-26.cpp */; };
 		CFC8FE1618637C510035BBBE /* closeSourceFile.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */; };
 		CFCAEE67160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */; };
 		CFD396F0110E1EAF001549E6 /* cpp-allocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD396EF110E1EAF001549E6 /* cpp-allocation.cpp */; };
@@ -744,6 +746,8 @@
 		CFBF7005179ACAD400789D8A /* PMUndoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUndoManager.m; sourceTree = "<group>"; };
 		CFC1042A161DFE2000253307 /* PMUInt128.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = PMUInt128.cpp; sourceTree = "<group>"; };
 		CFC1042B161DFE2000253307 /* PMUInt128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMUInt128.h; sourceTree = "<group>"; };
+		CFC2223E1AFBE6A00049A4CB /* all-declarations-26.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-26.cpp"; sourceTree = "<group>"; };
+		CFC222411AFBE6AD0049A4CB /* all-declarations-26.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-26.h"; sourceTree = "<group>"; };
 		CFC51EEE10D3BBB4008BF80F /* GALGAS_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_type.cpp; sourceTree = "<group>"; };
 		CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = closeSourceFile.tiff; sourceTree = "<group>"; };
 		CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_binaryset.cpp; sourceTree = "<group>"; };
@@ -961,6 +965,7 @@
 				CFB02C7A19F3FC2F0011D03D /* all-declarations-23.cpp */,
 				CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */,
 				CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */,
+				CFC2223E1AFBE6A00049A4CB /* all-declarations-26.cpp */,
 			);
 			name = "C++ files";
 			sourceTree = "<group>";
@@ -994,6 +999,7 @@
 				CFB02C9D19F3FC570011D03D /* all-declarations-23.h */,
 				CFB02C9E19F3FC570011D03D /* all-declarations-24.h */,
 				CF393C641A0681A000153A38 /* all-declarations-25.h */,
+				CFC222411AFBE6AD0049A4CB /* all-declarations-26.h */,
 				CF2374E319967D5D0061D2D8 /* all-declarations.h */,
 				CF237AE819967E4E0061D2D8 /* project_header.h */,
 			);
@@ -1807,6 +1813,7 @@
 			files = (
 				CF6DF16909E3F23700506859 /* F_Analyze_CLI_Options.cpp in Sources */,
 				CF6DF16B09E3F23700506859 /* C_HTML_FileWrite.cpp in Sources */,
+				CFC2223F1AFBE6A00049A4CB /* all-declarations-26.cpp in Sources */,
 				CF6DF16C09E3F23700506859 /* C_TextFileWrite.cpp in Sources */,
 				CF6DF16E09E3F23700506859 /* AC_OutputStream.cpp in Sources */,
 				CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */,
@@ -1946,6 +1953,7 @@
 			files = (
 				CF6DF1E309E3F30400506859 /* F_Analyze_CLI_Options.cpp in Sources */,
 				CF6DF1E509E3F30400506859 /* C_HTML_FileWrite.cpp in Sources */,
+				CFC222401AFBE6A00049A4CB /* all-declarations-26.cpp in Sources */,
 				CF6DF1E609E3F30400506859 /* C_TextFileWrite.cpp in Sources */,
 				CF6DF1E809E3F30400506859 /* AC_OutputStream.cpp in Sources */,
 				CF6DF1E909E3F30400506859 /* C_ConsoleOut.cpp in Sources */,

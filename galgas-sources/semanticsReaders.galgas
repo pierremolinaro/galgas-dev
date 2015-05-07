@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  semantics definitions for semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2009, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -169,36 +169,6 @@ proc enterBaseReaderWithArgument
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#routine enterBaseReaderWithArgumentAndMessage
-#  ?!@getterMap ioReaderMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  ??@string inReaderName
-#  ??@string inArgument1TypeName
-#  ??@string inArgument1Name
-#  ??returnedTypeName:@string inReturnedTypeName
-#  ??@bool inHasLexiqueAndLocationArguments
-#  ??@string inMessage
-#:
-#  @unifiedTypeMap-proxy returnedTypeIndex ;
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-#  @functionSignature argList := {} ;
-#  @unifiedTypeMap-proxy t ;
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-#  argList += !["" nowhere] !t !inArgument1Name ;
-#  [!?ioReaderMap insertOrReplace
-#    ![@lstring new !inReaderName !here]
-#    ![@methodKind definedAsMember]
-#    !argList
-#    !here
-#    !inHasLexiqueAndLocationArguments
-#    !returnedTypeIndex
-#    ![@methodQualifier isBasic]
-#    !inMessage
-#  ] ;
-#end routine ;
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 proc enterBaseFinalReaderWithArgument
   ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -256,40 +226,6 @@ proc enterBaseReaderWith2Arguments
     !"" # No Error message
   ]
 }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#routine enterBaseReaderWith2ArgumentsAndMessage
-#  ?!@getterMap ioReaderMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  ??@string inReaderName
-#  ??@string inArgument1TypeName
-#  ??@string inArgument1Name
-#  ??@string inArgument2TypeName
-#  ??@string inArgument2Name
-#  ??returnedTypeName:@string inReturnedTypeName
-#  ??@bool inHasLexiqueAndLocationArguments
-#  ??@string inMessage
-#:
-#  @unifiedTypeMap-proxy returnedTypeIndex ;
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-#  @functionSignature argList := {} ;
-#  @unifiedTypeMap-proxy t ;
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-#  argList += !["" nowhere] !t !inArgument1Name ;
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-#  argList += !["" nowhere] !t !inArgument2Name ;
-#  [!?ioReaderMap insertOrReplace
-#    ![@lstring new !inReaderName !here]
-#    ![@methodKind definedAsMember]
-#    !argList
-#    !here
-#    !inHasLexiqueAndLocationArguments
-#    !returnedTypeIndex
-#    ![@methodQualifier isBasic]
-#    !inMessage
-#  ] ;
-#end routine ;
 
 #----------------------------------------------------------------------------------------------------------------------*
 

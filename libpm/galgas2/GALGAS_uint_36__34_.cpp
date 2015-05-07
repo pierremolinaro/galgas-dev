@@ -313,12 +313,22 @@ void GALGAS_uint_36__34_::decrement_operation (C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (mUInt64Value == 0) {
-      inCompiler->onTheFlyRunTimeError ("@uint 64 -- operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@uint64 -- operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
       mUInt64Value -- ;
     }
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::add_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand) const {
+  GALGAS_uint_36__34_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_uint_36__34_ (mUInt64Value + inOperand.mUInt64Value) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -341,6 +351,26 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::add_operation (const GALGAS_uint_36__34
       const uint64_t v = (highSum << 32) | lowResult ;
       result = GALGAS_uint_36__34_ (v) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::substract_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand2) const {
+  GALGAS_uint_36__34_ result ;
+  if (isValid () && inOperand2.isValid ()) {
+    result = GALGAS_uint_36__34_ (mUInt64Value - inOperand2.mUInt64Value) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::multiply_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand2) const {
+  GALGAS_uint_36__34_ result ;
+  if (isValid () && inOperand2.isValid ()) {
+    result = GALGAS_uint_36__34_ (mUInt64Value * inOperand2.mUInt64Value) ;
   }
   return result ;
 }

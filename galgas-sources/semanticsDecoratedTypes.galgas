@@ -209,8 +209,11 @@ class @concatExpressionForGeneration,
       @rightShiftExpressionForGeneration,
       @leftShiftExpressionForGeneration,
       @addExpressionForGeneration,
+      @addExpressionNoOverflowForGeneration,
       @subExpressionForGeneration,
+      @subExpressionNoOverflowForGeneration,
       @multiplicationExpressionForGeneration,
+      @multiplicationExpressionNoOverflowForGeneration,
       @divisionExpressionForGeneration,
       @moduloExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression

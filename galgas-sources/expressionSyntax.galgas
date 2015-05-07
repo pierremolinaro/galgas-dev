@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -197,11 +197,25 @@ rule <simple_expression> !@semanticExpressionAST outExpression {
     outExpression = @addExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
+    $&+$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <term> ? rightOperand
+    outExpression = @addExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
     $-$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
     outExpression = @subExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $&-$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <term> ? rightOperand
+    outExpression = @subExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
@@ -220,6 +234,12 @@ rule <term> !@semanticExpressionAST outExpression {
     let leftOperand = outExpression
     <factor> ?let @semanticExpressionAST rightOperand
     outExpression = @multiplicationExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+  while
+    let operatorLocation = @location.here
+    $&*$
+    let leftOperand = outExpression
+    <factor> ?let @semanticExpressionAST rightOperand
+    outExpression = @multiplicationExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $/$

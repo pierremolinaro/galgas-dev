@@ -553,10 +553,11 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
   ":>",    ">",    ";",      ":",     "?^",
   "-",     "(",    ")",     "->",
   "==",   "??",     ":=",     "++",
-  "[",     "]",   "+=",
+  "[",     "]",   "+=",    "&+",
   "/",    "!=",   ">=",      "&",     "!^",
   "{",     "}",
-  "^",    ">>",    "~" }
+  "^",    ">>",    "~", "&++", "&--"
+}
 
 rule list galgasDelimitorsList
 

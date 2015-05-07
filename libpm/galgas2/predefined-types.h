@@ -575,6 +575,12 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint right_shift_operation (const GALGAS_uint i
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- &+ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_uint add_operation_no_ovf (const GALGAS_uint & inOperand) const ;
+
+//--------------------------------- &- operator
+  public : VIRTUAL_IN_DEBUG GALGAS_uint substract_operation_no_ovf (const GALGAS_uint & inOperand) const ;
+
 //--------------------------------- - operator
   public : VIRTUAL_IN_DEBUG GALGAS_uint substract_operation (const GALGAS_uint & inOperand,
                                                              C_Compiler * inCompiler
@@ -584,6 +590,9 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint right_shift_operation (const GALGAS_uint i
   public : VIRTUAL_IN_DEBUG GALGAS_uint multiply_operation (const GALGAS_uint & inOperand,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &* operator
+  public : VIRTUAL_IN_DEBUG GALGAS_uint multiply_operation_no_ovf (const GALGAS_uint & inOperand) const ;
 
 //--------------------------------- / operator
   public : VIRTUAL_IN_DEBUG GALGAS_uint divide_operation (const GALGAS_uint & inOperand,
@@ -734,6 +743,12 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ right_shift_operation (const GALGA
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- &+ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ add_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand) const ;
+
+//--------------------------------- &- operator
+  public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ substract_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand) const ;
+
 //--------------------------------- - operator
   public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ substract_operation (const GALGAS_uint_36__34_ & inOperand,
                                                                      C_Compiler * inCompiler
@@ -743,6 +758,9 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ right_shift_operation (const GALGA
   public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ multiply_operation (const GALGAS_uint_36__34_ & inOperand,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &* operator
+  public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ multiply_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand) const ;
 
 //--------------------------------- / operator
   public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ divide_operation (const GALGAS_uint_36__34_ & inOperand,
@@ -877,6 +895,12 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- &+ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_sint add_operation_no_ovf (const GALGAS_sint & inOperand) const ;
+
+//--------------------------------- &- operator
+  public : VIRTUAL_IN_DEBUG GALGAS_sint substract_operation_no_ovf (const GALGAS_sint & inOperand) const ;
+
 //--------------------------------- - operator
   public : VIRTUAL_IN_DEBUG GALGAS_sint substract_operation (const GALGAS_sint & inOperand,
                                                              C_Compiler * inCompiler
@@ -886,6 +910,9 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
   public : VIRTUAL_IN_DEBUG GALGAS_sint multiply_operation (const GALGAS_sint & inOperand,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &* operator
+  public : VIRTUAL_IN_DEBUG GALGAS_sint multiply_operation_no_ovf (const GALGAS_sint & inOperand) const ;
 
 //--------------------------------- / operator
   public : VIRTUAL_IN_DEBUG GALGAS_sint divide_operation (const GALGAS_sint & inOperand,
@@ -1014,6 +1041,12 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- &+ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ add_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand) const ;
+
+//--------------------------------- &- operator
+  public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ substract_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand) const ;
+
 //--------------------------------- - operator
   public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ substract_operation (const GALGAS_sint_36__34_ & inOperand,
                                                                      C_Compiler * inCompiler
@@ -1023,6 +1056,9 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
   public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ multiply_operation (const GALGAS_sint_36__34_ & inOperand,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &* operator
+  public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ multiply_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand) const ;
 
 //--------------------------------- / operator
   public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ divide_operation (const GALGAS_sint_36__34_ & inOperand,
