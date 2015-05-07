@@ -607,18 +607,59 @@ override method @addExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
   [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [mLeftExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string leftTemporaryOperand
+  ]
 #--- Right operand
-  @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string rightTemporaryOperand
+  ]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".add_operation ("
                    + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @addExpressionNoOverflowForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  [mLeftExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string leftTemporaryOperand
+  ]
+#--- Right operand
+  [mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string rightTemporaryOperand
+  ]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".add_operation_no_ovf (" + rightTemporaryOperand + ")"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -644,6 +685,25 @@ override method @subExpressionForGeneration generateExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @subExpressionNoOverflowForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  @string leftTemporaryOperand
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+#--- Right operand
+  @string rightTemporaryOperand
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".substract_operation_no_ovf (" + rightTemporaryOperand + ")"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @multiplicationExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
@@ -661,6 +721,25 @@ override method @multiplicationExpressionForGeneration generateExpression
   outCppExpression = leftTemporaryOperand + ".multiply_operation ("
                   + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @multiplicationExpressionNoOverflowForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  @string leftTemporaryOperand
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+#--- Right operand
+  @string rightTemporaryOperand
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".multiply_operation_no_ovf (" + rightTemporaryOperand + ")"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

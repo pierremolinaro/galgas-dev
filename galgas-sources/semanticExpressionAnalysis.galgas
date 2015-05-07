@@ -1743,6 +1743,56 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @addExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryAddOperator ()) != 0
+    !"+"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @addExpressionNoOverflowForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @addExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
@@ -1786,7 +1836,58 @@ override method @addExpressionAST analyzeSemanticExpression
     !leftType
     !mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !rightExpression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @subExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binarySubOperator ()) != 0
+    !"-"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @subExpressionNoOverflowForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1831,6 +1932,55 @@ override method @subExpressionAST analyzeSemanticExpression
   )  
 #--- Generate expression
   outExpression = @subExpressionForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryMulOperator ()) != 0
+    !"*"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @multiplicationExpressionNoOverflowForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression

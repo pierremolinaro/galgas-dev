@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Generate predefined types                                                *
+#  Generate predefined types                                                                                           *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -13,10 +13,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 private proc appendPredefinedListTypeAST
@@ -135,23 +131,23 @@ proc appendStructASTForRangeType
 
 proc appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
-  ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!true !"application" !@predefinedTypeKindEnum. predefined_application}
-  ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!true !"filewrapper" !@predefinedTypeKindEnum. predefined_filewrapper}
-  ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!true !"object" !@predefinedTypeKindEnum. predefined_object}
-  ioDeclarationListASTs += !@boolPredefinedTypeAST.new {!true !"bool" !@predefinedTypeKindEnum. predefined_bool}
-  ioDeclarationListASTs += !@uintPredefinedTypeAST.new {!true !"uint" !@predefinedTypeKindEnum. predefined_uint}
-  ioDeclarationListASTs += !@uint64PredefinedTypeAST.new {!true !"uint64" !@predefinedTypeKindEnum. predefined_uint64}
-  ioDeclarationListASTs += !@sintPredefinedTypeAST.new {!true !"sint" !@predefinedTypeKindEnum. predefined_sint}
-  ioDeclarationListASTs += !@sint64PredefinedTypeAST.new {!true !"sint64" !@predefinedTypeKindEnum. predefined_sint64}
-  ioDeclarationListASTs += !@charPredefinedTypeAST.new {!true !"char" !@predefinedTypeKindEnum. predefined_char}
-  ioDeclarationListASTs += !@doublePredefinedTypeAST.new {!true !"double" !@predefinedTypeKindEnum. predefined_double}
-  ioDeclarationListASTs += !@stringPredefinedTypeAST.new {!true !"string" !@predefinedTypeKindEnum. predefined_string}
-  ioDeclarationListASTs += !@locationPredefinedTypeAST.new {!true !"location" !@predefinedTypeKindEnum. predefined_location}
-  ioDeclarationListASTs += !@stringsetPredefinedTypeAST.new {!true !"stringset" !@predefinedTypeKindEnum. predefined_stringset}
-  ioDeclarationListASTs += !@functionPredefinedTypeAST.new {!true !"function" !@predefinedTypeKindEnum. predefined_function}
-  ioDeclarationListASTs += !@typePredefinedTypeAST.new {!true !"type" !@predefinedTypeKindEnum. predefined_type}
-  ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!true !"binaryset" !@predefinedTypeKindEnum. predefined_binaryset}
-  ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!true !"data" !@predefinedTypeKindEnum. predefined_data}
+  ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!true !"application" !.predefined_application}
+  ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!true !"filewrapper" !.predefined_filewrapper}
+  ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!true !"object" !.predefined_object}
+  ioDeclarationListASTs += !@boolPredefinedTypeAST.new {!true !"bool" !.predefined_bool}
+  ioDeclarationListASTs += !@uintPredefinedTypeAST.new {!true !"uint" !.predefined_uint}
+  ioDeclarationListASTs += !@uint64PredefinedTypeAST.new {!true !"uint64" !.predefined_uint64}
+  ioDeclarationListASTs += !@sintPredefinedTypeAST.new {!true !"sint" !.predefined_sint}
+  ioDeclarationListASTs += !@sint64PredefinedTypeAST.new {!true !"sint64" !.predefined_sint64}
+  ioDeclarationListASTs += !@charPredefinedTypeAST.new {!true !"char" !.predefined_char}
+  ioDeclarationListASTs += !@doublePredefinedTypeAST.new {!true !"double" !.predefined_double}
+  ioDeclarationListASTs += !@stringPredefinedTypeAST.new {!true !"string" !.predefined_string}
+  ioDeclarationListASTs += !@locationPredefinedTypeAST.new {!true !"location" !.predefined_location}
+  ioDeclarationListASTs += !@stringsetPredefinedTypeAST.new {!true !"stringset" !.predefined_stringset}
+  ioDeclarationListASTs += !@functionPredefinedTypeAST.new {!true !"function" !.predefined_function}
+  ioDeclarationListASTs += !@typePredefinedTypeAST.new {!true !"type" !.predefined_type}
+  ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!true !"binaryset" !.predefined_binaryset}
+  ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!true !"data" !.predefined_data}
 
   appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"luint" )
   appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"uint" )
@@ -323,11 +319,20 @@ proc printFeaturesOfType
   if (inHandledOperatorFlags & binaryAddOperator ()) != 0 then
     s += "    @" + inTypeName + " + @" + inTypeName + " -> @" + inTypeName + "\n"
   end
+  if (inHandledOperatorFlags & binaryAddOperatorNoOVF ()) != 0 then
+    s += "    @" + inTypeName + " &+ @" + inTypeName + " -> @" + inTypeName + "\n"
+  end
   if (inHandledOperatorFlags & binarySubOperator ()) != 0 then
     s += "    @" + inTypeName + " - @" + inTypeName + " -> @" + inTypeName + "\n"
   end
+  if (inHandledOperatorFlags & binarySubOperatorNoOVF ()) != 0 then
+    s += "    @" + inTypeName + " &- @" + inTypeName + " -> @" + inTypeName + "\n"
+  end
   if (inHandledOperatorFlags & binaryMulOperator ()) != 0 then
     s += "    @" + inTypeName + " * @" + inTypeName + " -> @" + inTypeName + "\n"
+  end
+  if (inHandledOperatorFlags & binaryMulOperatorNoOVF ()) != 0 then
+    s += "    @" + inTypeName + " &* @" + inTypeName + " -> @" + inTypeName + "\n"
   end
   if (inHandledOperatorFlags & binaryDivOperator ()) != 0 then
     s += "    @" + inTypeName + " / @" + inTypeName + " -> @" + inTypeName + "\n"
@@ -365,7 +370,9 @@ proc printFeaturesOfType
   end
   if (inHandledOperatorFlags & incDecOperator ()) != 0 then
     s += "    @" + inTypeName + " ++ -> @" + inTypeName + "\n"
+    s += "    @" + inTypeName + " &++ -> @" + inTypeName + "\n"
     s += "    @" + inTypeName + " -- -> @" + inTypeName + "\n"
+    s += "    @" + inTypeName + " &-- -> @" + inTypeName + "\n"
   end
   for () in inAddAssignOperatorArguments
   before

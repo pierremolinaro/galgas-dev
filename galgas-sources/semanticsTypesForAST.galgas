@@ -158,8 +158,11 @@ class @concatExpressionAST,
       @rightShiftExpressionAST,
       @leftShiftExpressionAST,
       @addExpressionAST,
+      @addExpressionNoOverflowAST,
       @subExpressionAST,
+      @subExpressionNoOverflowAST,
       @multiplicationExpressionAST,
+      @multiplicationExpressionNoOverflowAST,
       @divisionExpressionAST,
       @moduloExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation

@@ -485,7 +485,7 @@ table += !clef !2 !"a"
 
 
 
-\sectionLabel{Décrémentation \texttt{-{}-}}{decrementInstruction}
+\sectionLabel{Décrémentation \texttt{-{}-} et \texttt{\&-{}-}}{decrementInstruction}
 
 L'instruction de décrémentation s'applique aux types \refTypePredefini{sint}, \refTypePredefini{sint64}, \refTypePredefini{uint} et \ggs+uint64+ ; sa syntaxe est la suivante :
 
@@ -500,8 +500,15 @@ variable.champ --
 
 Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 
+L'opérateur \ggs+&--+ effectue une décrémentation sans déclencher d'erreur en cas de dépassement de capacité :
+\begin{galgas}
+variable &--
+\end{galgas}
 
-
+Les champs de structure peuvent être décrémentés sans déclencher d'erreur en cas de dépassement de capacité :
+\begin{galgas}
+variable.champ &--
+\end{galgas}
 
 
 
@@ -1136,7 +1143,7 @@ log v # "A", "B", "C", "A", "B", "C"
 
 
 
-\sectionLabel{Instruction d'incrémentation}{incrementInstruction}
+\sectionLabel{Incrémentation \texttt{++} et \texttt{\&++}}{incrementInstruction}
 
 L'instruction d'incrémentation s'applique aux types  \refTypePredefini{sint},  \refTypePredefini{sint64}, \refTypePredefini{uint} et \ggs+uint64+ ; sa syntaxe est la suivante :
 
@@ -1151,6 +1158,15 @@ variable.champ ++
 
 Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 
+L'opérateur \ggs-&++- effectue une incrémentation sans déclencher d'erreur en cas de dépassement de capacité :
+\begin{galgas}
+variable &++
+\end{galgas}
+
+Les champs de structure peuvent être incrémentés sans déclencher d'erreur en cas de dépassement de capacité :
+\begin{galgas}
+variable.champ &++
+\end{galgas}
 
 
 

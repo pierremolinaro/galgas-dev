@@ -4262,6 +4262,75 @@ static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7C__7C_ [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Syntax error message for terminal '$&+$' :
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2B_ [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('&'),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
+//--- Syntax error message for terminal '$&-$' :
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2D_ [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('&'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
+//--- Syntax error message for terminal '$&*$' :
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2A_ [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('&'),
+  TO_UNICODE ('*'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
 //--- Syntax error message for terminal '$[$' :
 static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__5B_ [] = {
   TO_UNICODE ('t'),
@@ -4651,7 +4720,7 @@ static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2B__2B_ [] = {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_32_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [160] = {kEndOfSourceLexicalErrorMessage,
+  static const utf32 * syntaxErrorMessageArray [163] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgas_32_Scanner_identifier,
     gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_double,
     gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer,
@@ -4794,6 +4863,9 @@ C_String C_Lexique_galgas_32_Scanner::getMessageForTerminal (const int16_t inTer
     gSyntaxErrorMessage_galgas_32_Scanner__3D__3D_,
     gSyntaxErrorMessage_galgas_32_Scanner__3A__3D_,
     gSyntaxErrorMessage_galgas_32_Scanner__7C__7C_,
+    gSyntaxErrorMessage_galgas_32_Scanner__26__2B_,
+    gSyntaxErrorMessage_galgas_32_Scanner__26__2D_,
+    gSyntaxErrorMessage_galgas_32_Scanner__26__2A_,
     gSyntaxErrorMessage_galgas_32_Scanner__5B_,
     gSyntaxErrorMessage_galgas_32_Scanner__5D_,
     gSyntaxErrorMessage_galgas_32_Scanner__2B__3D_,
@@ -4838,11 +4910,32 @@ static const utf32 kUnicodeString_galgas_32_Scanner__26__26_ [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$_26__2A_$'
+static const utf32 kUnicodeString_galgas_32_Scanner__26__2A_ [] = {
+  TO_UNICODE ('&'),
+  TO_UNICODE ('*'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_26__2B_$'
+static const utf32 kUnicodeString_galgas_32_Scanner__26__2B_ [] = {
+  TO_UNICODE ('&'),
+  TO_UNICODE ('+'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$_26__2B__2B_$'
 static const utf32 kUnicodeString_galgas_32_Scanner__26__2B__2B_ [] = {
   TO_UNICODE ('&'),
   TO_UNICODE ('+'),
   TO_UNICODE ('+'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_26__2D_$'
+static const utf32 kUnicodeString_galgas_32_Scanner__26__2D_ [] = {
+  TO_UNICODE ('&'),
+  TO_UNICODE ('-'),
   TO_UNICODE (0)
 } ;
 
@@ -6120,7 +6213,7 @@ static const utf32 kUnicodeString_galgas_32_Scanner__7E_ [] = {
 //             Key words table 'galgasDelimitorsList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgas_32_Scanner_galgasDelimitorsList = 34 ;
+static const int32_t ktable_size_galgas_32_Scanner_galgasDelimitorsList = 37 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgas_32_Scanner_galgasDelimitorsList [ktable_size_galgas_32_Scanner_galgasDelimitorsList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26_, 1, C_Lexique_galgas_32_Scanner::kToken__26_),
@@ -6144,6 +6237,9 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_32_Scanner_galgasDe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7E_, 1, C_Lexique_galgas_32_Scanner::kToken__7E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__21__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__21__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__26_, 2, C_Lexique_galgas_32_Scanner::kToken__26__26_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2A_, 2, C_Lexique_galgas_32_Scanner::kToken__26__2A_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2B_, 2, C_Lexique_galgas_32_Scanner::kToken__26__2B_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2D_, 2, C_Lexique_galgas_32_Scanner::kToken__26__2D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2B__2B_, 2, C_Lexique_galgas_32_Scanner::kToken__2B__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2B__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__2B__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2D__2D_, 2, C_Lexique_galgas_32_Scanner::kToken__2D__2D_),
@@ -7035,6 +7131,21 @@ C_String C_Lexique_galgas_32_Scanner::getCurrentTokenString (const cToken * inTo
       s.appendCString ("||") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
+    case kToken__26__2B_:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("&+") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken__26__2D_:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("&-") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken__26__2A_:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("&*") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
     case kToken__5B_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("[") ;
@@ -7483,6 +7594,15 @@ bool C_Lexique_galgas_32_Scanner::parseLexicalToken (void) {
         enterToken (token) ;
       }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2B__2B_, 2, true)) {
         token.mTokenCode = kToken__2B__2B_ ;
+        enterToken (token) ;
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2D_, 2, true)) {
+        token.mTokenCode = kToken__26__2D_ ;
+        enterToken (token) ;
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2B_, 2, true)) {
+        token.mTokenCode = kToken__26__2B_ ;
+        enterToken (token) ;
+      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2A_, 2, true)) {
+        token.mTokenCode = kToken__26__2A_ ;
         enterToken (token) ;
       }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__26_, 2, true)) {
         token.mTokenCode = kToken__26__26_ ;
@@ -8204,6 +8324,9 @@ GALGAS_stringlist C_Lexique_galgas_32_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("==") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (":=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("||") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("&+") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("&-") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("&*") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("[") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("]") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("+=") COMMA_THERE) ;
@@ -8229,7 +8352,7 @@ GALGAS_stringlist C_Lexique_galgas_32_Scanner::symbols (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgas_32_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [160] = {0,
+  static const uint32_t kTerminalSymbolStyles [163] = {0,
     0 /* galgas2Scanner_1_identifier */,
     8 /* galgas2Scanner_1_literal_5F_double */,
     7 /* galgas2Scanner_1_unsigned_5F_literal_5F_integer */,
@@ -8372,6 +8495,9 @@ uint32_t C_Lexique_galgas_32_Scanner::styleIndexForTerminal (const int32_t inTer
     2 /* galgas2Scanner_1__3D__3D_ */,
     2 /* galgas2Scanner_1__3A__3D_ */,
     2 /* galgas2Scanner_1__7C__7C_ */,
+    2 /* galgas2Scanner_1__26__2B_ */,
+    2 /* galgas2Scanner_1__26__2D_ */,
+    2 /* galgas2Scanner_1__26__2A_ */,
     2 /* galgas2Scanner_1__5B_ */,
     2 /* galgas2Scanner_1__5D_ */,
     2 /* galgas2Scanner_1__2B__3D_ */,
@@ -12566,6 +12692,29 @@ static const utf32 gSyntaxErrorMessage_galgasTemplateScanner__2B__3D_ [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Syntax error message for terminal '$&+$' :
+static const utf32 gSyntaxErrorMessage_galgasTemplateScanner__26__2B_ [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('&'),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
 //--- Syntax error message for terminal '$/$' :
 static const utf32 gSyntaxErrorMessage_galgasTemplateScanner__2F_ [] = {
   TO_UNICODE ('t'),
@@ -12790,12 +12939,60 @@ static const utf32 gSyntaxErrorMessage_galgasTemplateScanner__7E_ [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Syntax error message for terminal '$&++$' :
+static const utf32 gSyntaxErrorMessage_galgasTemplateScanner__26__2B__2B_ [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('&'),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
+//--- Syntax error message for terminal '$&--$' :
+static const utf32 gSyntaxErrorMessage_galgasTemplateScanner__26__2D__2D_ [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('&'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                getMessageForTerminal                                                                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [152] = {kEndOfSourceLexicalErrorMessage,
+  static const utf32 * syntaxErrorMessageArray [155] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgasTemplateScanner_identifier,
     gSyntaxErrorMessage_galgasTemplateScanner_type_5F_name,
     gSyntaxErrorMessage_galgasTemplateScanner_literal_5F_double,
@@ -12937,6 +13134,7 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
     gSyntaxErrorMessage_galgasTemplateScanner__5B_,
     gSyntaxErrorMessage_galgasTemplateScanner__5D_,
     gSyntaxErrorMessage_galgasTemplateScanner__2B__3D_,
+    gSyntaxErrorMessage_galgasTemplateScanner__26__2B_,
     gSyntaxErrorMessage_galgasTemplateScanner__2F_,
     gSyntaxErrorMessage_galgasTemplateScanner__21__3D_,
     gSyntaxErrorMessage_galgasTemplateScanner__3E__3D_,
@@ -12946,7 +13144,9 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
     gSyntaxErrorMessage_galgasTemplateScanner__7D_,
     gSyntaxErrorMessage_galgasTemplateScanner__5E_,
     gSyntaxErrorMessage_galgasTemplateScanner__3E__3E_,
-    gSyntaxErrorMessage_galgasTemplateScanner__7E_} ;
+    gSyntaxErrorMessage_galgasTemplateScanner__7E_,
+    gSyntaxErrorMessage_galgasTemplateScanner__26__2B__2B_,
+    gSyntaxErrorMessage_galgasTemplateScanner__26__2D__2D_} ;
   return syntaxErrorMessageArray [inTerminalIndex] ;
 }
 
@@ -12983,6 +13183,29 @@ static const utf32 kUnicodeString_galgasTemplateScanner__25_ [] = {
 //--- Unicode string for '$_26_$'
 static const utf32 kUnicodeString_galgasTemplateScanner__26_ [] = {
   TO_UNICODE ('&'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_26__2B_$'
+static const utf32 kUnicodeString_galgasTemplateScanner__26__2B_ [] = {
+  TO_UNICODE ('&'),
+  TO_UNICODE ('+'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_26__2B__2B_$'
+static const utf32 kUnicodeString_galgasTemplateScanner__26__2B__2B_ [] = {
+  TO_UNICODE ('&'),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('+'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_26__2D__2D_$'
+static const utf32 kUnicodeString_galgasTemplateScanner__26__2D__2D_ [] = {
+  TO_UNICODE ('&'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('-'),
   TO_UNICODE (0)
 } ;
 
@@ -14266,7 +14489,7 @@ static const utf32 kUnicodeString_galgasTemplateScanner__7E_ [] = {
 //             Key words table 'galgasDelimitorsList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgasTemplateScanner_galgasDelimitorsList = 31 ;
+static const int32_t ktable_size_galgasTemplateScanner_galgasDelimitorsList = 34 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galgasDelimitorsList [ktable_size_galgasTemplateScanner_galgasDelimitorsList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__26_, 1, C_Lexique_galgasTemplateScanner::kToken__26_),
@@ -14289,6 +14512,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__7E_, 1, C_Lexique_galgasTemplateScanner::kToken__7E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__21__3D_, 2, C_Lexique_galgasTemplateScanner::kToken__21__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__21__5E_, 2, C_Lexique_galgasTemplateScanner::kToken__21__5E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__26__2B_, 2, C_Lexique_galgasTemplateScanner::kToken__26__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__2B__2B_, 2, C_Lexique_galgasTemplateScanner::kToken__2B__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__2B__3D_, 2, C_Lexique_galgasTemplateScanner::kToken__2B__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__2D__2D_, 2, C_Lexique_galgasTemplateScanner::kToken__2D__2D_),
@@ -14299,7 +14523,9 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3E__3D_, 2, C_Lexique_galgasTemplateScanner::kToken__3E__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3E__3E_, 2, C_Lexique_galgasTemplateScanner::kToken__3E__3E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3F__3F_, 2, C_Lexique_galgasTemplateScanner::kToken__3F__3F_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3F__5E_, 2, C_Lexique_galgasTemplateScanner::kToken__3F__5E_)
+  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__3F__5E_, 2, C_Lexique_galgasTemplateScanner::kToken__3F__5E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__26__2B__2B_, 3, C_Lexique_galgasTemplateScanner::kToken__26__2B__2B_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner__26__2D__2D_, 3, C_Lexique_galgasTemplateScanner::kToken__26__2D__2D_)
 } ;
 
 int16_t C_Lexique_galgasTemplateScanner::search_into_galgasDelimitorsList (const C_String & inSearchedString) {
@@ -15167,6 +15393,11 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("+=") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
+    case kToken__26__2B_:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("&+") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
     case kToken__2F_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("/") ;
@@ -15217,6 +15448,16 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("~") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
+    case kToken__26__2B__2B_:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("&++") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken__26__2D__2D_:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("&--") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
     default:
       break ;
     }
@@ -15246,7 +15487,7 @@ static const cTemplateDelimiter kTemplateReplacementArray [3] = {
 //            Terminal Symbols as end of script in template mark                                                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const bool kEndOfScriptInTemplateArray [151] = {
+static const bool kEndOfScriptInTemplateArray [154] = {
   false /* identifier */,
   false /* type_name */,
   false /* literal_double */,
@@ -15388,6 +15629,7 @@ static const bool kEndOfScriptInTemplateArray [151] = {
   false /* [ */,
   false /* ] */,
   false /* += */,
+  false /* &+ */,
   false /* / */,
   false /* != */,
   false /* >= */,
@@ -15397,7 +15639,9 @@ static const bool kEndOfScriptInTemplateArray [151] = {
   false /* } */,
   false /* ^ */,
   false /* >> */,
-  false /* ~ */
+  false /* ~ */,
+  false /* &++ */,
+  false /* &-- */
 } ;
 
 
@@ -15814,6 +16058,12 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
           }else{
             lexicalError (gLexicalMessage_galgasTemplateScanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
           }
+        }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__26__2D__2D_, 3, true)) {
+          token.mTokenCode = kToken__26__2D__2D_ ;
+          enterToken (token) ;
+        }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__26__2B__2B_, 3, true)) {
+          token.mTokenCode = kToken__26__2B__2B_ ;
+          enterToken (token) ;
         }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__3F__5E_, 2, true)) {
           token.mTokenCode = kToken__3F__5E_ ;
           enterToken (token) ;
@@ -15846,6 +16096,9 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
           enterToken (token) ;
         }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__2B__2B_, 2, true)) {
           token.mTokenCode = kToken__2B__2B_ ;
+          enterToken (token) ;
+        }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__26__2B_, 2, true)) {
+          token.mTokenCode = kToken__26__2B_ ;
           enterToken (token) ;
         }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__21__5E_, 2, true)) {
           token.mTokenCode = kToken__21__5E_ ;
@@ -16379,6 +16632,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("[") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("]") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("+=") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("&+") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("/") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (">=") COMMA_THERE) ;
@@ -16389,6 +16643,8 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("^") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (">>") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("~") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("&++") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("&--") COMMA_THERE) ;
   return result ;
 }
 
@@ -16397,7 +16653,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [152] = {0,
+  static const uint32_t kTerminalSymbolStyles [155] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     9 /* galgasTemplateScanner_1_type_5F_name */,
     6 /* galgasTemplateScanner_1_literal_5F_double */,
@@ -16539,6 +16795,7 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     2 /* galgasTemplateScanner_1__5B_ */,
     2 /* galgasTemplateScanner_1__5D_ */,
     2 /* galgasTemplateScanner_1__2B__3D_ */,
+    2 /* galgasTemplateScanner_1__26__2B_ */,
     2 /* galgasTemplateScanner_1__2F_ */,
     2 /* galgasTemplateScanner_1__21__3D_ */,
     2 /* galgasTemplateScanner_1__3E__3D_ */,
@@ -16548,7 +16805,9 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     2 /* galgasTemplateScanner_1__7D_ */,
     2 /* galgasTemplateScanner_1__5E_ */,
     2 /* galgasTemplateScanner_1__3E__3E_ */,
-    2 /* galgasTemplateScanner_1__7E_ */
+    2 /* galgasTemplateScanner_1__7E_ */,
+    2 /* galgasTemplateScanner_1__26__2B__2B_ */,
+    2 /* galgasTemplateScanner_1__26__2D__2D_ */
   } ;
   return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
 }
@@ -25257,493 +25516,6 @@ GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::extractObject (co
       result = *p ;
     }else{
       inCompiler->castError ("lexicalListEntryListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                             Class for element of '@lexicalListDeclarationListAST' list                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cCollectionElement_lexicalListDeclarationListAST : public cCollectionElement {
-  public : GALGAS_lexicalListDeclarationListAST_2D_element mObject ;
-
-//--- Constructor
-  public : cCollectionElement_lexicalListDeclarationListAST (const GALGAS_lstring & in_mName,
-                                                             const GALGAS_lstring & in_mStyle,
-                                                             const GALGAS_lstring & in_mSyntaxErrorMessage,
-                                                             const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
-                                                             const GALGAS_lexicalListEntryListAST & in_mEntryList
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-
-//--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement_lexicalListDeclarationListAST::cCollectionElement_lexicalListDeclarationListAST (const GALGAS_lstring & in_mName,
-                                                                                                    const GALGAS_lstring & in_mStyle,
-                                                                                                    const GALGAS_lstring & in_mSyntaxErrorMessage,
-                                                                                                    const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
-                                                                                                    const GALGAS_lexicalListEntryListAST & in_mEntryList
-                                                                                                    COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mName, in_mStyle, in_mSyntaxErrorMessage, in_mSentAttributeList, in_mEntryList) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cCollectionElement_lexicalListDeclarationListAST::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement * cCollectionElement_lexicalListDeclarationListAST::copy (void) {
-  cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_lexicalListDeclarationListAST (mObject.mAttribute_mName, mObject.mAttribute_mStyle, mObject.mAttribute_mSyntaxErrorMessage, mObject.mAttribute_mSentAttributeList, mObject.mAttribute_mEntryList COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cCollectionElement_lexicalListDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mName" ":" ;
-  mObject.mAttribute_mName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mStyle" ":" ;
-  mObject.mAttribute_mStyle.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mSyntaxErrorMessage" ":" ;
-  mObject.mAttribute_mSyntaxErrorMessage.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mSentAttributeList" ":" ;
-  mObject.mAttribute_mSentAttributeList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mEntryList" ":" ;
-  mObject.mAttribute_mEntryList.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cCollectionElement_lexicalListDeclarationListAST::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_lexicalListDeclarationListAST * operand = (cCollectionElement_lexicalListDeclarationListAST *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_lexicalListDeclarationListAST) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST::GALGAS_lexicalListDeclarationListAST (void) :
-AC_GALGAS_list () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST::GALGAS_lexicalListDeclarationListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_lexicalListDeclarationListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                      const GALGAS_lstring & inOperand1,
-                                                                                                      const GALGAS_lstring & inOperand2,
-                                                                                                      const GALGAS_sentLexicalAttributeListAST & inOperand3,
-                                                                                                      const GALGAS_lexicalListEntryListAST & inOperand4
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalListDeclarationListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result.createNewEmptyList (THERE) ;
-    capCollectionElement attributes ;
-    GALGAS_lexicalListDeclarationListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
-    result.addObject (attributes) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                      const GALGAS_lstring & in_mName,
-                                                                      const GALGAS_lstring & in_mStyle,
-                                                                      const GALGAS_lstring & in_mSyntaxErrorMessage,
-                                                                      const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
-                                                                      const GALGAS_lexicalListEntryListAST & in_mEntryList
-                                                                      COMMA_LOCATION_ARGS) {
-  cCollectionElement_lexicalListDeclarationListAST * p = NULL ;
-  macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (in_mName,
-                                                                   in_mStyle,
-                                                                   in_mSyntaxErrorMessage,
-                                                                   in_mSentAttributeList,
-                                                                   in_mEntryList COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
-                                                                const GALGAS_lstring & inOperand1,
-                                                                const GALGAS_lstring & inOperand2,
-                                                                const GALGAS_sentLexicalAttributeListAST & inOperand3,
-                                                                const GALGAS_lexicalListEntryListAST & inOperand4
-                                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObject (attributes) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                                   const GALGAS_lstring inOperand1,
-                                                                   const GALGAS_lstring inOperand2,
-                                                                   const GALGAS_sentLexicalAttributeListAST inOperand3,
-                                                                   const GALGAS_lexicalListEntryListAST inOperand4,
-                                                                   const GALGAS_uint inInsertionIndex,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                                   GALGAS_lstring & outOperand1,
-                                                                   GALGAS_lstring & outOperand2,
-                                                                   GALGAS_sentLexicalAttributeListAST & outOperand3,
-                                                                   GALGAS_lexicalListEntryListAST & outOperand4,
-                                                                   const GALGAS_uint inRemoveIndex,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
-    if (NULL == p) {
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      outOperand3.drop () ;
-      outOperand4.drop () ;
-    }else{
-      macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-      outOperand0 = p->mObject.mAttribute_mName ;
-      outOperand1 = p->mObject.mAttribute_mStyle ;
-      outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
-      outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
-      outOperand4 = p->mObject.mAttribute_mEntryList ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
-                                                              GALGAS_lstring & outOperand1,
-                                                              GALGAS_lstring & outOperand2,
-                                                              GALGAS_sentLexicalAttributeListAST & outOperand3,
-                                                              GALGAS_lexicalListEntryListAST & outOperand4,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-    outOperand0 = p->mObject.mAttribute_mName ;
-    outOperand1 = p->mObject.mAttribute_mStyle ;
-    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
-    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
-    outOperand4 = p->mObject.mAttribute_mEntryList ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::modifier_popLast (GALGAS_lstring & outOperand0,
-                                                             GALGAS_lstring & outOperand1,
-                                                             GALGAS_lstring & outOperand2,
-                                                             GALGAS_sentLexicalAttributeListAST & outOperand3,
-                                                             GALGAS_lexicalListEntryListAST & outOperand4,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-    outOperand0 = p->mObject.mAttribute_mName ;
-    outOperand1 = p->mObject.mAttribute_mStyle ;
-    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
-    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
-    outOperand4 = p->mObject.mAttribute_mEntryList ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::method_first (GALGAS_lstring & outOperand0,
-                                                         GALGAS_lstring & outOperand1,
-                                                         GALGAS_lstring & outOperand2,
-                                                         GALGAS_sentLexicalAttributeListAST & outOperand3,
-                                                         GALGAS_lexicalListEntryListAST & outOperand4,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-    outOperand0 = p->mObject.mAttribute_mName ;
-    outOperand1 = p->mObject.mAttribute_mStyle ;
-    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
-    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
-    outOperand4 = p->mObject.mAttribute_mEntryList ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::method_last (GALGAS_lstring & outOperand0,
-                                                        GALGAS_lstring & outOperand1,
-                                                        GALGAS_lstring & outOperand2,
-                                                        GALGAS_sentLexicalAttributeListAST & outOperand3,
-                                                        GALGAS_lexicalListEntryListAST & outOperand4,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-    outOperand0 = p->mObject.mAttribute_mName ;
-    outOperand1 = p->mObject.mAttribute_mStyle ;
-    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
-    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
-    outOperand4 = p->mObject.mAttribute_mEntryList ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::operator_concat (const GALGAS_lexicalListDeclarationListAST & inOperand
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalListDeclarationListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::add_operation (const GALGAS_lexicalListDeclarationListAST & inOperand,
-                                                                                          C_Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalListDeclarationListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::reader_subListWithRange (const GALGAS_range & inRange,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalListDeclarationListAST result = GALGAS_lexicalListDeclarationListAST::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalListDeclarationListAST result = GALGAS_lexicalListDeclarationListAST::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalListDeclarationListAST::dotAssign_operation (const GALGAS_lexicalListDeclarationListAST inOperand
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_lexicalListDeclarationListAST::cEnumerator_lexicalListDeclarationListAST (const GALGAS_lexicalListDeclarationListAST & inEnumeratedObject,
-                                                                                      const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST_2D_element cEnumerator_lexicalListDeclarationListAST::current (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-  return p->mObject ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mName (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-  return p->mObject.mAttribute_mName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mStyle (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-  return p->mObject.mAttribute_mStyle ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mSyntaxErrorMessage (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-  return p->mObject.mAttribute_mSyntaxErrorMessage ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_sentLexicalAttributeListAST cEnumerator_lexicalListDeclarationListAST::current_mSentAttributeList (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-  return p->mObject.mAttribute_mSentAttributeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListEntryListAST cEnumerator_lexicalListDeclarationListAST::current_mEntryList (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
-  return p->mObject.mAttribute_mEntryList ;
-}
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @lexicalListDeclarationListAST type                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ("lexicalListDeclarationListAST",
-                                                      NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_lexicalListDeclarationListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_lexicalListDeclarationListAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalListDeclarationListAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalListDeclarationListAST result ;
-  const GALGAS_lexicalListDeclarationListAST * p = (const GALGAS_lexicalListDeclarationListAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalListDeclarationListAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalListDeclarationListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

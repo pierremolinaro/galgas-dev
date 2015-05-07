@@ -188,6 +188,16 @@ void GALGAS_sint_36__34_::decrement_operation (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_sint_36__34_ GALGAS_sint_36__34_::add_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand) const {
+  GALGAS_sint_36__34_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_sint_36__34_ (mSInt64Value + inOperand.mSInt64Value) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_sint_36__34_ GALGAS_sint_36__34_::add_operation (const GALGAS_sint_36__34_ & inOperand2,
                                                             C_Compiler * /* inCompiler */ 
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
@@ -208,6 +218,26 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::substract_operation (const GALGAS_sint_
   if (isValid () && inOperand2.isValid ()) {
     const int64_t v = mSInt64Value - inOperand2.mSInt64Value ;
     result = GALGAS_sint_36__34_ (v) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sint_36__34_ GALGAS_sint_36__34_::substract_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand2) const {
+  GALGAS_sint_36__34_ result ;
+  if (isValid () && inOperand2.isValid ()) {
+    result = GALGAS_sint_36__34_ (mSInt64Value - inOperand2.mSInt64Value) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sint_36__34_ GALGAS_sint_36__34_::multiply_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand2) const {
+  GALGAS_sint_36__34_ result ;
+  if (isValid () && inOperand2.isValid ()) {
+    result = GALGAS_sint_36__34_ (mSInt64Value * inOperand2.mSInt64Value) ;
   }
   return result ;
 }

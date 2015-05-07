@@ -174,6 +174,16 @@ void GALGAS_sint::decrement_operation (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_sint GALGAS_sint::add_operation_no_ovf (const GALGAS_sint & inOperand) const {
+  GALGAS_sint result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_sint (mSIntValue + inOperand.mSIntValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_sint GALGAS_sint::add_operation (const GALGAS_sint & inOperand2,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
@@ -206,6 +216,26 @@ GALGAS_sint GALGAS_sint::substract_operation (const GALGAS_sint & inOperand2,
     }else{
       result = GALGAS_sint ((int32_t) (mSIntValue - inOperand2.mSIntValue)) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sint GALGAS_sint::substract_operation_no_ovf (const GALGAS_sint & inOperand2) const {
+  GALGAS_sint result ;
+  if (isValid () && inOperand2.isValid ()) {
+    result = GALGAS_sint (mSIntValue - inOperand2.mSIntValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sint GALGAS_sint::multiply_operation_no_ovf (const GALGAS_sint & inOperand2) const {
+  GALGAS_sint result ;
+  if (isValid () && inOperand2.isValid ()) {
+    result = GALGAS_sint (mSIntValue * inOperand2.mSIntValue) ;
   }
   return result ;
 }
