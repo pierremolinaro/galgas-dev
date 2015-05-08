@@ -198,26 +198,42 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::add_operation_no_ovf (const GALGAS_sint
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sint_36__34_ GALGAS_sint_36__34_::add_operation (const GALGAS_sint_36__34_ & inOperand2,
-                                                            C_Compiler * /* inCompiler */ 
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_sint_36__34_ GALGAS_sint_36__34_::add_operation (const GALGAS_sint_36__34_ & inOperand,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
-  if (isValid () && inOperand2.isValid ()) {
-    const int64_t v = mSInt64Value + inOperand2.mSInt64Value ;
-    result = GALGAS_sint_36__34_ (v) ;
+  if (isValid () && inOperand.isValid ()) {
+    const int64_t r = mSInt64Value + inOperand.mSInt64Value ;
+    const bool signA = mSInt64Value >= 0 ;
+    const bool signB = inOperand.mSInt64Value >= 0 ;
+    const bool signR = r >= 0 ;
+    const bool ovf = (signA == signB) && (signA != signR) ;
+    if (ovf) {
+      inCompiler->onTheFlyRunTimeError ("@sint64 + operation overflow" COMMA_THERE) ;
+    }else{
+      result = GALGAS_sint_36__34_ (r) ;
+    }
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+// http://stackoverflow.com/questions/199333/how-to-detect-integer-overflow-in-c-c
+// For signed integers you can check the signs of the arguments and of the result. integers of different signs
+// can't overflow, and integers of same sign overflow only is the result is of different sign
 
-GALGAS_sint_36__34_ GALGAS_sint_36__34_::substract_operation (const GALGAS_sint_36__34_ & inOperand2,
-                                                                  C_Compiler * /* inCompiler */ 
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_sint_36__34_ GALGAS_sint_36__34_::substract_operation (const GALGAS_sint_36__34_ & inOperand,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
-  if (isValid () && inOperand2.isValid ()) {
-    const int64_t v = mSInt64Value - inOperand2.mSInt64Value ;
-    result = GALGAS_sint_36__34_ (v) ;
+  if (isValid () && inOperand.isValid ()) {
+    const int64_t r = mSInt64Value - inOperand.mSInt64Value ;
+    const bool ovf = (mSInt64Value >= inOperand.mSInt64Value) != (r >= 0) ;
+    if (ovf) {
+      inCompiler->onTheFlyRunTimeError ("@sint64 - operation overflow" COMMA_THERE) ;
+    }else{
+      result = GALGAS_sint_36__34_ (r) ;
+    }
   }
   return result ;
 }
@@ -227,7 +243,8 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::substract_operation (const GALGAS_sint_
 GALGAS_sint_36__34_ GALGAS_sint_36__34_::substract_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand2) const {
   GALGAS_sint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GALGAS_sint_36__34_ (mSInt64Value - inOperand2.mSInt64Value) ;
+    const int64_t r = mSInt64Value - inOperand2.mSInt64Value ;
+    result = GALGAS_sint_36__34_ (r) ;
   }
   return result ;
 }
@@ -244,66 +261,22 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::multiply_operation_no_ovf (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void productSint64 (const uint64_t inOperand1,
-                           const uint64_t inOperand2,
-                           uint64_t & outResult,
-                           bool & outOverflow) {
-  const uint64_t lowWord1 = inOperand1 & UINT32_MAX ;
-  const uint64_t highWord1 = inOperand1 >> 32 ;
-  const uint64_t lowWord2 = inOperand2 & UINT32_MAX ;
-  const uint64_t highWord2 = inOperand2 >> 32 ;
-  const uint64_t lowResult = lowWord1 * lowWord2 ;
-  const uint64_t crossResult = (lowWord1 * highWord2) + (lowWord2 * highWord1) + (lowResult >> 32) ;
-  const uint64_t highResult = (highWord1 * highWord2) + (crossResult >> 32) ;
-  outResult = (crossResult << 32) + (lowResult & UINT32_MAX) ;
-  outOverflow = highResult > 0 ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_sint_36__34_ GALGAS_sint_36__34_::multiply_operation (const GALGAS_sint_36__34_ & inOperand2,
-                                                                 C_Compiler * inCompiler 
-                                                                 COMMA_LOCATION_ARGS) const {
+GALGAS_sint_36__34_ GALGAS_sint_36__34_::multiply_operation (const GALGAS_sint_36__34_ & inOperand,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
-  if (isValid () && inOperand2.isValid ()) {
-    uint64_t operand1 ;
-    if (mSInt64Value == INT64_MIN) {
-      operand1 = (uint64_t) INT64_MIN ;
-    }else if (mSInt64Value < 0) {
-      operand1 = (uint64_t) (- mSInt64Value) ;
-    }else{
-      operand1 = (uint64_t) mSInt64Value ;
+  if (isValid () && inOperand.isValid ()) {
+    const int64_t r = mSInt64Value * inOperand.mSInt64Value ;
+    bool ovf = false ;
+    if (inOperand.mSInt64Value == -1) {
+      ovf = mSInt64Value == INT64_MIN ;
+    }else if (inOperand.mSInt64Value != 0) {
+      ovf = (r / inOperand.mSInt64Value) != mSInt64Value ;
     }
-    uint64_t operand2 ;
-    if (inOperand2.mSInt64Value == INT64_MIN) {
-      operand2 = (uint64_t) INT64_MIN ;
-    }else if (inOperand2.mSInt64Value < 0) {
-      operand2 = (uint64_t) (- inOperand2.mSInt64Value) ;
+    if (ovf) {
+      inCompiler->onTheFlyRunTimeError ("@sint64 * operation overflow" COMMA_THERE) ;
     }else{
-      operand2 = (uint64_t) inOperand2.mSInt64Value ;
-    }
-    bool resultIsPositive = (mSInt64Value >= 0) == (inOperand2.mSInt64Value >= 0) ;
-    uint64_t unsignedResult ;
-    bool overflow ;
-    productSint64 (operand1, operand2, unsignedResult, overflow) ;
-    int64_t resultValue = 0 ;
-    if (! overflow) {
-      if (resultIsPositive) {
-        overflow = unsignedResult > ((uint64_t) INT64_MAX) ;
-        resultValue = (int64_t) unsignedResult ;
-      }else{
-        overflow = unsignedResult > (1LLU << 63) ;
-        if (unsignedResult == (1LLU << 63)) {
-          resultValue = INT64_MIN ;
-        }else{
-          resultValue = - ((int64_t) unsignedResult) ;
-        }
-      }
-    }
-    if (overflow) {
-      inCompiler->onTheFlyRunTimeError ("* operation overflow" COMMA_THERE) ;
-    }else{
-      result = GALGAS_sint_36__34_ (resultValue) ;
+      result = GALGAS_sint_36__34_ (r) ;
     }
   }
   return result ;
@@ -312,8 +285,8 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::multiply_operation (const GALGAS_sint_3
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint_36__34_ GALGAS_sint_36__34_::divide_operation (const GALGAS_sint_36__34_ & inOperand2,
-                                                               C_Compiler * inCompiler 
-                                                               COMMA_LOCATION_ARGS) const {
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     if (inOperand2.mSInt64Value == 0) {
@@ -330,8 +303,8 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::divide_operation (const GALGAS_sint_36_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint_36__34_ GALGAS_sint_36__34_::modulo_operation (const GALGAS_sint_36__34_ & inOperand2,
-                                                               C_Compiler * inCompiler 
-                                                               COMMA_LOCATION_ARGS) const {
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     if (inOperand2.mSInt64Value == 0) {
