@@ -107,7 +107,7 @@ for () in CONSTANT_LIST do
     %  }else{\n%
     %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
     for () in mAssociatedValueTypeList do index idx
-      %     outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
+      %    outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
     end
     %  }\n%
     %}\n\n%
