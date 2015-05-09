@@ -2037,6 +2037,55 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryDivOperator ()) != 0
+    !"/"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @divisionExpressionNoOverflowForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @divisionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {

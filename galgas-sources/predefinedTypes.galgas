@@ -337,8 +337,11 @@ proc printFeaturesOfType
   if (inHandledOperatorFlags & binaryDivOperator ()) != 0 then
     s += "    @" + inTypeName + " / @" + inTypeName + " -> @" + inTypeName + "\n"
   end
+  if (inHandledOperatorFlags & binaryDivOperatorNoOVF ()) != 0 then
+    s += "    @" + inTypeName + " &/ @" + inTypeName + " -> @" + inTypeName + "\n"
+  end
   if (inHandledOperatorFlags & binaryModOperator ()) != 0 then
-    s += "    @" + inTypeName + " % @" + inTypeName + " -> @" + inTypeName + "\n"
+    s += "    @" + inTypeName + " mod @" + inTypeName + " -> @" + inTypeName + "\n"
   end
   if (inHandledOperatorFlags & binaryAndOperator ()) != 0 then
     s += "    @" + inTypeName + " & @" + inTypeName + " -> @" + inTypeName + "\n"

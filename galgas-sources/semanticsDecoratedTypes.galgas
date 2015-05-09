@@ -215,6 +215,7 @@ class @concatExpressionForGeneration,
       @multiplicationExpressionForGeneration,
       @multiplicationExpressionNoOverflowForGeneration,
       @divisionExpressionForGeneration,
+      @divisionExpressionNoOverflowForGeneration,
       @moduloExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @semanticExpressionForGeneration mRightExpression

@@ -179,7 +179,8 @@ enum {galgasTemplateScanner_1_,
   galgasTemplateScanner_1__3E__3E_,
   galgasTemplateScanner_1__7E_,
   galgasTemplateScanner_1__26__2B__2B_,
-  galgasTemplateScanner_1__26__2D__2D_
+  galgasTemplateScanner_1__26__2D__2D_,
+  galgasTemplateScanner_1__26__2F_
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
