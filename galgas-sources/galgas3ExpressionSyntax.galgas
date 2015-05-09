@@ -298,6 +298,19 @@ rule <factor> !@semanticExpressionAST outExpression {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
+#   F A C T O R    :    &- factor                                                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpressionAST outExpression {
+  @location operatorLocation = @location.here
+  $&-$
+  <factor> ? outExpression
+  outExpression = @unaryMinusNoOverflowExpressionAST.new {!operatorLocation !outExpression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   F A C T O R    :    not FACTOR                                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

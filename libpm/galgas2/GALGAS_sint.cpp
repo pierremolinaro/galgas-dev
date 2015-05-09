@@ -90,7 +90,7 @@ GALGAS_uint GALGAS_sint::reader_uint (C_Compiler * inCompiler
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_sint::reader_uint_36__34_ (C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
+                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (mSIntValue < 0) {
     inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint into unsigned value" COMMA_THERE) ;
@@ -147,7 +147,7 @@ void GALGAS_sint::decrement_operation_no_overflow (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_sint::increment_operation (C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
+                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (mSIntValue == INT32_MAX) {
       inCompiler->onTheFlyRunTimeError ("@sint ++ operation overflow" COMMA_THERE) ;
@@ -161,7 +161,7 @@ void GALGAS_sint::increment_operation (C_Compiler * inCompiler
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_sint::decrement_operation (C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
+                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (mSIntValue == INT32_MIN) {
       inCompiler->onTheFlyRunTimeError ("@sint -- operation underflow" COMMA_THERE) ;
@@ -287,7 +287,7 @@ GALGAS_sint GALGAS_sint::divide_operation (const GALGAS_sint & inOperand,
 GALGAS_sint GALGAS_sint::divide_operation_no_ovf (const GALGAS_sint & inOperand) const {
   GALGAS_sint result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GALGAS_sint (mSIntValue / inOperand.mSIntValue) ;
+    result = GALGAS_sint ((inOperand.mSIntValue == 0) ? 0 : (mSIntValue / inOperand.mSIntValue)) ;
   }
   return result ;
 }
@@ -295,8 +295,8 @@ GALGAS_sint GALGAS_sint::divide_operation_no_ovf (const GALGAS_sint & inOperand)
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint GALGAS_sint::modulo_operation (const GALGAS_sint & inOperand2,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inOperand2.isValid ()) {
     if (mSIntValue == 0) {
@@ -311,7 +311,7 @@ GALGAS_sint GALGAS_sint::modulo_operation (const GALGAS_sint & inOperand2,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint GALGAS_sint::operator_unary_minus (C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
+                                               COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid ()) {
     if (mSIntValue == INT32_MIN) {
@@ -326,8 +326,19 @@ GALGAS_sint GALGAS_sint::operator_unary_minus (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_sint GALGAS_sint::operator_unary_minus_no_ovf (void) const {
+  GALGAS_sint result ;
+  if (isValid ()) {
+    result = GALGAS_sint (- mSIntValue) ;
+  }
+  return result ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_sint GALGAS_sint::left_shift_operation (const GALGAS_uint inShiftOperand
-                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inShiftOperand.isValid ()) {
     result = GALGAS_sint (mSIntValue << (inShiftOperand.uintValue () & 31)) ;
@@ -338,7 +349,7 @@ GALGAS_sint GALGAS_sint::left_shift_operation (const GALGAS_uint inShiftOperand
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint GALGAS_sint::right_shift_operation (const GALGAS_uint inShiftOperand
-                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inShiftOperand.isValid ()) {
     result = GALGAS_sint (mSIntValue >> (inShiftOperand.uintValue () & 31)) ;
@@ -349,7 +360,7 @@ GALGAS_sint GALGAS_sint::right_shift_operation (const GALGAS_uint inShiftOperand
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint GALGAS_sint::operator_and (const GALGAS_sint & inOperand2
-                                           COMMA_UNUSED_LOCATION_ARGS) const {
+                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GALGAS_sint (mSIntValue & inOperand2.mSIntValue) ;
@@ -360,7 +371,7 @@ GALGAS_sint GALGAS_sint::operator_and (const GALGAS_sint & inOperand2
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint GALGAS_sint::operator_or (const GALGAS_sint & inOperand2
-                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GALGAS_sint (mSIntValue | inOperand2.mSIntValue) ;
@@ -371,7 +382,7 @@ GALGAS_sint GALGAS_sint::operator_or (const GALGAS_sint & inOperand2
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint GALGAS_sint::operator_xor (const GALGAS_sint & inOperand2
-                                           COMMA_UNUSED_LOCATION_ARGS) const {
+                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GALGAS_sint (mSIntValue ^ inOperand2.mSIntValue) ;

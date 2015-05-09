@@ -162,7 +162,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::operator_and (const GALGAS_uint_36__34_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::operator_or (const GALGAS_uint_36__34_ & inOperand2
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GALGAS_uint_36__34_ (mUInt64Value | inOperand2.mUInt64Value) ;
@@ -173,7 +173,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::operator_or (const GALGAS_uint_36__34_ 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::operator_xor (const GALGAS_uint_36__34_ & inOperand2
-                                                           COMMA_UNUSED_LOCATION_ARGS) const {
+                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GALGAS_uint_36__34_ (mUInt64Value ^ inOperand2.mUInt64Value) ;
@@ -194,8 +194,8 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::operator_tilde (UNUSED_LOCATION_ARGS) c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::modulo_operation (const GALGAS_uint_36__34_ & inOperand2,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     if (inOperand2.mUInt64Value == 0) {
@@ -210,7 +210,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::modulo_operation (const GALGAS_uint_36_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::left_shift_operation (const GALGAS_uint inShiftOperand
-                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     result = GALGAS_uint_36__34_ (mUInt64Value << (inShiftOperand.uintValue () & 63)) ;
@@ -221,7 +221,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::left_shift_operation (const GALGAS_uint
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::right_shift_operation (const GALGAS_uint inShiftOperand
-                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     result = GALGAS_uint_36__34_ (mUInt64Value >> (inShiftOperand.uintValue () & 63)) ;
@@ -268,7 +268,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::divide_operation (const GALGAS_uint_36_
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::divide_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GALGAS_uint_36__34_ (mUInt64Value / inOperand.mUInt64Value) ;
+    result = GALGAS_uint_36__34_ ((inOperand.mUInt64Value == 0) ? 0 : (mUInt64Value / inOperand.mUInt64Value)) ;
   }
   return result ;
 }
@@ -302,7 +302,7 @@ void GALGAS_uint_36__34_::increment_operation (C_Compiler * inCompiler
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_uint_36__34_::decrement_operation (C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (mUInt64Value == 0) {
       inCompiler->onTheFlyRunTimeError ("@uint64 -- operation overflow" COMMA_THERE) ;
@@ -326,8 +326,8 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::add_operation_no_ovf (const GALGAS_uint
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::add_operation (const GALGAS_uint_36__34_ & inOperand,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
     const uint64_t r = mUInt64Value + inOperand.mUInt64Value ;
@@ -404,7 +404,7 @@ typeComparisonResult GALGAS_uint_36__34_::objectCompare (const GALGAS_uint_36__3
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint_36__34_ GALGAS_uint_36__34_::reader_sint_36__34_ (C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
+                                                              COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (mUInt64Value > ((uint64_t) INT64_MAX)) {
     inCompiler->onTheFlyRunTimeError ("@uint64 to signed value conversion overflow" COMMA_THERE) ;
@@ -417,7 +417,7 @@ GALGAS_sint_36__34_ GALGAS_uint_36__34_::reader_sint_36__34_ (C_Compiler * inCom
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint GALGAS_uint_36__34_::reader_sint (C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
+                                              COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (mUInt64Value > ((uint64_t) INT32_MAX)) {
     inCompiler->onTheFlyRunTimeError ("@uint64 to signed value conversion overflow" COMMA_THERE) ;
@@ -430,7 +430,7 @@ GALGAS_sint GALGAS_uint_36__34_::reader_sint (C_Compiler * inCompiler
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_uint_36__34_::reader_uint (C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
+                                              COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (mUInt64Value > ((uint64_t) UINT32_MAX)) {
     inCompiler->onTheFlyRunTimeError ("64-bit unsigned value to 32-bit unsigned value conversion overflow" COMMA_THERE) ;
@@ -487,9 +487,9 @@ void GALGAS_uint_36__34_::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_uint_36__34_::reader_uintSlice (const GALGAS_uint & inStartBit,
-                                                     const GALGAS_uint & inBitCount,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
+                                                   const GALGAS_uint & inBitCount,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (inStartBit.isValid () && inBitCount.isValid ()) {
     if (inBitCount.uintValue () > 32) {

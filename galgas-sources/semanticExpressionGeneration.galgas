@@ -823,6 +823,27 @@ override method @unaryMinusExpressionForGeneration generateExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @unaryMinusExpressionNoOverflowForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  [mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string operand
+  ]
+#--- Generate Comparison
+  outCppExpression = operand + ".operator_unary_minus_no_ovf ()"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @notExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
