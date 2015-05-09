@@ -249,6 +249,13 @@ rule <term> !@semanticExpressionAST outExpression {
     outExpression = @divisionExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
+    $&/$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <factor> ? rightOperand
+    outExpression = @divisionExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
     $mod$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand

@@ -284,6 +284,16 @@ GALGAS_sint GALGAS_sint::divide_operation (const GALGAS_sint & inOperand,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_sint GALGAS_sint::divide_operation_no_ovf (const GALGAS_sint & inOperand) const {
+  GALGAS_sint result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_sint (mSIntValue / inOperand.mSIntValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_sint GALGAS_sint::modulo_operation (const GALGAS_sint & inOperand2,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {

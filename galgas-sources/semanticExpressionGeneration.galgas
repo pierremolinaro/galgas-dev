@@ -765,6 +765,25 @@ override method @divisionExpressionForGeneration generateExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @divisionExpressionNoOverflowForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  @string leftTemporaryOperand
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+#--- Right operand
+  @string rightTemporaryOperand
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".divide_operation_no_ovf (" + rightTemporaryOperand + ")"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @moduloExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet

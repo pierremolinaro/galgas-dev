@@ -164,6 +164,7 @@ class @concatExpressionAST,
       @multiplicationExpressionAST,
       @multiplicationExpressionNoOverflowAST,
       @divisionExpressionAST,
+      @divisionExpressionNoOverflowAST,
       @moduloExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression

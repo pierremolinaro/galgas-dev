@@ -471,6 +471,16 @@ GALGAS_uint GALGAS_uint::divide_operation (const GALGAS_uint & inOperand,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_uint GALGAS_uint::divide_operation_no_ovf (const GALGAS_uint & inOperand) const {
+  GALGAS_uint result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_uint (mUIntValue / inOperand.mUIntValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_uint::modulo_operation (const GALGAS_uint & inOperand,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {

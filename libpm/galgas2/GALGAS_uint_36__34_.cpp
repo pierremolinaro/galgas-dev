@@ -265,6 +265,16 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::divide_operation (const GALGAS_uint_36_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::divide_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand) const {
+  GALGAS_uint_36__34_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_uint_36__34_ (mUInt64Value / inOperand.mUInt64Value) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_uint_36__34_::increment_operation_no_overflow (void) {
   mUInt64Value ++ ;
 }

@@ -142,6 +142,11 @@ if (SUPPORTED_OPERATORS & binaryDivOperator ()) != 0 then
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
+if (SUPPORTED_OPERATORS & binaryDivOperatorNoOVF ()) != 0 then
+  %//--------------------------------- &* operator\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation_no_ovf (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+end
+
 if (SUPPORTED_OPERATORS & binaryModOperator ()) != 0 then
   %//--------------------------------- mod operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% modulo_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%

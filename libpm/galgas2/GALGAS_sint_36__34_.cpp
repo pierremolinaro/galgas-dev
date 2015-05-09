@@ -302,6 +302,16 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::divide_operation (const GALGAS_sint_36_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_sint_36__34_ GALGAS_sint_36__34_::divide_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand) const {
+  GALGAS_sint_36__34_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_sint_36__34_ (mSInt64Value / inOperand.mSInt64Value) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_sint_36__34_ GALGAS_sint_36__34_::modulo_operation (const GALGAS_sint_36__34_ & inOperand2,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {

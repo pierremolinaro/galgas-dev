@@ -122,7 +122,7 @@ override getter @uintPredefinedTypeAST getSupportedOperatorFlags
     | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | generateDescriptionReaderUtilityMethod () | incDecOperator () | isComparable ()
-    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF ()
+    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -133,7 +133,7 @@ override getter @sintPredefinedTypeAST getSupportedOperatorFlags
     | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator () | unaryMinusOperator ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | generateDescriptionReaderUtilityMethod ()  | incDecOperator () | isComparable ()
-    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF ()
+    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -144,7 +144,7 @@ override getter @uint64PredefinedTypeAST getSupportedOperatorFlags
     | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | generateDescriptionReaderUtilityMethod () | incDecOperator () | isComparable ()
-    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF ()
+    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -155,7 +155,7 @@ override getter @sint64PredefinedTypeAST getSupportedOperatorFlags
     | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator () | unaryMinusOperator ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | incDecOperator ()  | generateDescriptionReaderUtilityMethod () | isComparable ()
-    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF ()
+    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
