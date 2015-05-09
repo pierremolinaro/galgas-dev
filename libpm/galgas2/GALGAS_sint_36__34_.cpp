@@ -98,9 +98,9 @@ GALGAS_uint GALGAS_sint_36__34_::reader_uint (C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (mSInt64Value < 0) {
-    inCompiler->onTheFlyRunTimeError ("cannot convert a negative sint64 into an uint" COMMA_THERE) ;
+    inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint64 into an uint" COMMA_THERE) ;
   }else if (mSInt64Value > ((int64_t) UINT32_MAX)) {
-    inCompiler->onTheFlyRunTimeError ("conversion to unsigned value overflow" COMMA_THERE) ;
+    inCompiler->onTheFlyRunTimeError ("@sint64 conversion to unsigned value overflow" COMMA_THERE) ;
   }else{
     result = GALGAS_uint ((uint32_t) (mSInt64Value & UINT32_MAX)) ;
   }
@@ -151,7 +151,7 @@ void GALGAS_sint_36__34_::increment_operation (C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (mSInt64Value == INT64_MAX) {
-      inCompiler->onTheFlyRunTimeError ("++ operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint64 ++ operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
       mSInt64Value ++ ;
@@ -178,7 +178,7 @@ void GALGAS_sint_36__34_::decrement_operation (C_Compiler * inCompiler
   if (isValid ()) {
   //--- Overflow ?
     if (mSInt64Value == INT64_MIN) {
-      inCompiler->onTheFlyRunTimeError ("-- operation underflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint64 -- operation underflow" COMMA_THERE) ;
       drop () ;
     }else{
       mSInt64Value -- ;
@@ -290,9 +290,9 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::divide_operation (const GALGAS_sint_36_
   GALGAS_sint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     if (inOperand2.mSInt64Value == 0) {
-      inCompiler->onTheFlyRunTimeError ("divide by zero" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero" COMMA_THERE) ;
     }else if ((mSInt64Value == INT32_MIN) && (inOperand2.mSInt64Value == -1)) {
-      inCompiler->onTheFlyRunTimeError ("/ operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint64 / operation overflow" COMMA_THERE) ;
     }else{
       result = GALGAS_sint_36__34_ (mSInt64Value / inOperand2.mSInt64Value) ;
     }
@@ -318,7 +318,7 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::modulo_operation (const GALGAS_sint_36_
   GALGAS_sint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     if (inOperand2.mSInt64Value == 0) {
-      inCompiler->onTheFlyRunTimeError ("divide by zero in modulo operation" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero in modulo operation" COMMA_THERE) ;
     }else{
       result = GALGAS_sint_36__34_ (mSInt64Value % inOperand2.mSInt64Value) ;
     }
@@ -333,7 +333,7 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::operator_unary_minus (C_Compiler * inCo
   GALGAS_sint_36__34_ result ;
   if (isValid ()) {
     if (mSInt64Value == INT32_MIN) {
-      inCompiler->onTheFlyRunTimeError ("unary '-' operation underflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint64 unary '-' operation underflow" COMMA_THERE) ;
     }else{
       result = GALGAS_sint_36__34_ (- mSInt64Value) ;
     }

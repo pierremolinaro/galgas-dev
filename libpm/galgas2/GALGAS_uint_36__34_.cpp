@@ -407,7 +407,7 @@ GALGAS_sint_36__34_ GALGAS_uint_36__34_::reader_sint_36__34_ (C_Compiler * inCom
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (mUInt64Value > ((uint64_t) INT64_MAX)) {
-    inCompiler->onTheFlyRunTimeError ("unsigned value to signed value conversion overflow" COMMA_THERE) ;
+    inCompiler->onTheFlyRunTimeError ("@uint64 to signed value conversion overflow" COMMA_THERE) ;
   }else{
     result = GALGAS_sint_36__34_ ((int64_t) mUInt64Value) ;
   }
@@ -420,7 +420,7 @@ GALGAS_sint GALGAS_uint_36__34_::reader_sint (C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (mUInt64Value > ((uint64_t) INT32_MAX)) {
-    inCompiler->onTheFlyRunTimeError ("unsigned value to signed value conversion overflow" COMMA_THERE) ;
+    inCompiler->onTheFlyRunTimeError ("@uint64 to signed value conversion overflow" COMMA_THERE) ;
   }else{
     result = GALGAS_sint ((int32_t) (mUInt64Value & UINT32_MAX)) ;
   }

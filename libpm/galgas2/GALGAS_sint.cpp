@@ -80,7 +80,7 @@ GALGAS_uint GALGAS_sint::reader_uint (C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (mSIntValue < 0) {
-    inCompiler->onTheFlyRunTimeError ("cannot convert a negative integer into unsigned value" COMMA_THERE) ;
+    inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint into unsigned value" COMMA_THERE) ;
   }else{
     result = GALGAS_uint ((uint32_t) mSIntValue) ;
   }
@@ -93,7 +93,7 @@ GALGAS_uint_36__34_ GALGAS_sint::reader_uint_36__34_ (C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (mSIntValue < 0) {
-    inCompiler->onTheFlyRunTimeError ("cannot convert a negative integer into unsigned value" COMMA_THERE) ;
+    inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint into unsigned value" COMMA_THERE) ;
   }else{
     result = GALGAS_uint_36__34_ ((uint64_t) mSIntValue) ;
   }
@@ -150,7 +150,7 @@ void GALGAS_sint::increment_operation (C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (mSIntValue == INT32_MAX) {
-      inCompiler->onTheFlyRunTimeError ("++ operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint ++ operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
       mSIntValue ++ ;
@@ -164,7 +164,7 @@ void GALGAS_sint::decrement_operation (C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (mSIntValue == INT32_MIN) {
-      inCompiler->onTheFlyRunTimeError ("-- operation underflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint -- operation underflow" COMMA_THERE) ;
       drop () ;
     }else{
       mSIntValue -- ;
@@ -300,7 +300,7 @@ GALGAS_sint GALGAS_sint::modulo_operation (const GALGAS_sint & inOperand2,
   GALGAS_sint result ;
   if (isValid () && inOperand2.isValid ()) {
     if (mSIntValue == 0) {
-      inCompiler->onTheFlyRunTimeError ("divide by zero in modulo operation" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint divide by zero in modulo operation" COMMA_THERE) ;
     }else{
       result = GALGAS_sint (mSIntValue % inOperand2.mSIntValue) ;
     }
@@ -315,7 +315,7 @@ GALGAS_sint GALGAS_sint::operator_unary_minus (C_Compiler * inCompiler
   GALGAS_sint result ;
   if (isValid ()) {
     if (mSIntValue == INT32_MIN) {
-      inCompiler->onTheFlyRunTimeError ("unary '-' operation underflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@sint unary '-' operation underflow" COMMA_THERE) ;
     }else{
       result = GALGAS_sint (- mSIntValue) ;
     }
