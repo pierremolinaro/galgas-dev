@@ -130,7 +130,8 @@ override getter @uintPredefinedTypeAST getSupportedOperatorFlags
 override getter @sintPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
-    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator () | unaryMinusOperator ()
+    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
+    | unaryMinusOperator () | unaryMinusOperatorNoOVF ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | generateDescriptionReaderUtilityMethod ()  | incDecOperator () | isComparable ()
     | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
@@ -152,7 +153,8 @@ override getter @uint64PredefinedTypeAST getSupportedOperatorFlags
 override getter @sint64PredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
-    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator () | unaryMinusOperator ()
+    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
+    | unaryMinusOperator () | unaryMinusOperatorNoOVF ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | incDecOperator ()  | generateDescriptionReaderUtilityMethod () | isComparable ()
     | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()

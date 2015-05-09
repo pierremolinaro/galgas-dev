@@ -143,7 +143,7 @@ if (SUPPORTED_OPERATORS & binaryDivOperator ()) != 0 then
 end
 
 if (SUPPORTED_OPERATORS & binaryDivOperatorNoOVF ()) != 0 then
-  %//--------------------------------- &* operator\n%
+  %//--------------------------------- &/ operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation_no_ovf (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
@@ -160,8 +160,13 @@ if (SUPPORTED_OPERATORS & unaryMinusOperator ()) != 0 then
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
+if (SUPPORTED_OPERATORS & unaryMinusOperatorNoOVF ()) != 0 then
+  %//--------------------------------- unary &- operator\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus_no_ovf (void) const ;\n\n%
+end
+
 if (SUPPORTED_OPERATORS & incDecOperator ()) != 0 then
-  %//--------------------------------- ++, -- operators\n%
+  %//--------------------------------- ++, --, &++, &-- operators\n%
   %  public : VIRTUAL_IN_DEBUG void increment_operation (%?^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
   %  public : VIRTUAL_IN_DEBUG void decrement_operation (%?^%C_Compiler * inCompiler\n%

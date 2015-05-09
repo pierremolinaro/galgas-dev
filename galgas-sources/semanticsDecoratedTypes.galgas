@@ -223,7 +223,8 @@ class @concatExpressionForGeneration,
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @unaryMinusExpressionForGeneration : @semanticExpressionForGeneration {
+class @unaryMinusExpressionForGeneration,
+      @unaryMinusExpressionNoOverflowForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 

@@ -599,7 +599,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint right_shift_operation (const GALGAS_uint i
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- &* operator
+//--------------------------------- &/ operator
   public : VIRTUAL_IN_DEBUG GALGAS_uint divide_operation_no_ovf (const GALGAS_uint & inOperand) const ;
 
 //--------------------------------- mod operator
@@ -607,7 +607,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint right_shift_operation (const GALGAS_uint i
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- ++, -- operators
+//--------------------------------- ++, --, &++, &-- operators
   public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -770,7 +770,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ right_shift_operation (const GALGA
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- &* operator
+//--------------------------------- &/ operator
   public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ divide_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand) const ;
 
 //--------------------------------- mod operator
@@ -778,7 +778,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ right_shift_operation (const GALGA
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- ++, -- operators
+//--------------------------------- ++, --, &++, &-- operators
   public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -925,7 +925,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- &* operator
+//--------------------------------- &/ operator
   public : VIRTUAL_IN_DEBUG GALGAS_sint divide_operation_no_ovf (const GALGAS_sint & inOperand) const ;
 
 //--------------------------------- mod operator
@@ -937,7 +937,10 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
   public : VIRTUAL_IN_DEBUG GALGAS_sint operator_unary_minus (C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- ++, -- operators
+//--------------------------------- unary &- operator
+  public : VIRTUAL_IN_DEBUG GALGAS_sint operator_unary_minus_no_ovf (void) const ;
+
+//--------------------------------- ++, --, &++, &-- operators
   public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -1074,7 +1077,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- &* operator
+//--------------------------------- &/ operator
   public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ divide_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand) const ;
 
 //--------------------------------- mod operator
@@ -1086,7 +1089,10 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
   public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ operator_unary_minus (C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- ++, -- operators
+//--------------------------------- unary &- operator
+  public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ operator_unary_minus_no_ovf (void) const ;
+
+//--------------------------------- ++, --, &++, &-- operators
   public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 

@@ -365,6 +365,9 @@ proc printFeaturesOfType
   if (inHandledOperatorFlags & unaryMinusOperator ()) != 0 then
     s += "    - @" + inTypeName + " -> @" + inTypeName + "\n"
   end
+  if (inHandledOperatorFlags & unaryMinusOperatorNoOVF ()) != 0 then
+    s += "    &- @" + inTypeName + " -> @" + inTypeName + "\n"
+  end
   if (inHandledOperatorFlags & unaryTildeOperator ()) != 0 then
     s += "    ~ @" + inTypeName + " -> @" + inTypeName + "\n"
   end

@@ -342,12 +342,12 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
     & \ggs+<+, \ggs+<=+ & Comparaison & \refSubsectionPage{operateursComparaison}\\
     & \ggs+>+, \ggs+>=+ & Comparaison & \refSubsectionPage{operateursComparaison}\\
   3 & \ggs+<<+, \ggs+>>+ & Décalage & \refSubsectionPage{operateursDecalage}\\
-    & \ggs*+* & Addition, concaténation & \refSubsectionPage{operateursArithmétique}\\
-    & \ggs+-+ & Soustraction & \refSubsectionPage{operateursArithmétique}\\
-  4 & \ggs+*+ & Multiplication & \refSubsectionPage{operateursArithmétique}\\
-    & \ggs+/+ & Division & \refSubsectionPage{operateursArithmétique}\\
+    & \ggs*+*, \ggs*&+* & Addition, concaténation & \refSubsectionPage{operateursArithmétique}\\
+    & \ggs+-+, \ggs+&-+ & Soustraction & \refSubsectionPage{operateursArithmétique}\\
+  4 & \ggs+*+,  \ggs+&*+ & Multiplication & \refSubsectionPage{operateursArithmétique}\\
+    & \ggs+/+, \ggs+&/+ & Division & \refSubsectionPage{operateursArithmétique}\\
     & \ggs+mod+ & Modulo & \refSubsectionPage{operateursArithmétique}\\
-  5 & \ggs+-+ & Négation arithmétique & \refSubsectionPage{operateursArithmétique}\\
+  5 & \ggs+-+, \ggs+&-+ & Négation arithmétique & \refSubsectionPage{operateursArithmétique}\\
   6 & \ggs+not+ & Complémentation booléenne & \refSubsectionPage{operateursLogiques}\\
   7 & \ggs+~+ & Complémentation bit-à-bit & \refSubsectionPage{complementationBitABit}\\
   8 (plus forte) & \ggs+.+ & Accès à un champ d'une structure & \refSubsectionPage{accesChampStructure}\\
@@ -379,14 +379,19 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
 
 \subsectionLabel{Arithmétique}{operateursArithmétique}
 
-Ces opérateurs détectent un dépassement de capacité : \ggs*+*, \ggs+-+, \ggs+*+
+GALGAS propose des opérateurs arithmétiques qui détectent les dépassements de capacité : \ggs*+*, \ggs+-+, \ggs+*+. Une erreur est déclenchée à chaque débordement.
 
-Ces opérateurs ne détectent pas un dépassement de capacité : \ggs*&+*, \ggs+&-+, \ggs+&*+
+L'opérateur de division \ggs+/+ déclenche une erreur lors d'une division par zéro. Pour les types signés, une erreur est aussi déclenchée par la division de \ggs+@sint.min+ par \ggs+-1S+, et la division de \ggs+@sint64.min+ par \ggs+-1LS+.
 
+Ces opérateurs ne détectent pas un dépassement de capacité : \ggs*&+*, \ggs+&-+, \ggs+&*+, et fonctionnent donc comme les opérateurs arithmétiques du C.
 
-\ggs+/+, \ggs+mod+.
+L'opérateur de division \ggs+&/+ ne déclenche aucune erreur lors d'une division par zéro, la valeur renvoyée est zéro. La division de \ggs+@sint.min+ par \ggs+-1S+ retourne \ggs+@sint.min+, et celle de \ggs+@sint64.min+ par \ggs+-1LS+ retourne \ggs+@sint64.min+.
 
-\ggs+-+ unaire.
+L'opérateur \ggs+mod+ déclenche une erreur en cas de division par zéro.
+ 
+La négation arithmétique (opérateur \ggs+-+ unaire) est uniquement définie sur les types entiers signés, et détecte les débordements provoqués par \ggs+- @sint.min+ et \ggs+- @sint64.min+.
+
+Il existe un second opérateur de négation arithmétique (\ggs+&-+), lui aussi uniquement défini sur les types entiers signés, qui ne détecte aucun débordement: \ggs+&- @sint.min+ renvoie \ggs+@sint.min+ et \ggs+&- @sint64.min+ renvoie  \ggs+@sint64.min+.
 
 
 \subsectionLabel{Accès à un champ d'une structure}{accesChampStructure}
