@@ -202,7 +202,7 @@ GALGAS_sint GALGAS_uint::reader_sint (C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (mUIntValue > ((uint32_t) INT32_MAX)) {
-    inCompiler->onTheFlyRunTimeError ("unsigned value to signed value conversion overflow" COMMA_THERE) ;
+    inCompiler->onTheFlyRunTimeError ("@uint to signed value conversion overflow" COMMA_THERE) ;
   }else{
     result = GALGAS_sint ((int32_t) mUIntValue) ;
   }
@@ -346,7 +346,7 @@ void GALGAS_uint::increment_operation (C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (mUIntValue == UINT32_MAX) {
-      inCompiler->onTheFlyRunTimeError ("++ operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@uint ++ operation overflow" COMMA_THERE) ;
       drop () ;
     }else{
       mUIntValue ++ ;
@@ -361,7 +361,7 @@ void GALGAS_uint::decrement_operation (C_Compiler * inCompiler
   if (isValid ()) {
   //--- Overflow ?
     if (mUIntValue == 0) {
-      inCompiler->onTheFlyRunTimeError ("-- operation underflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@uint -- operation underflow" COMMA_THERE) ;
       drop () ;
     }else{
       mUIntValue -- ;
@@ -445,7 +445,7 @@ GALGAS_uint GALGAS_uint::multiply_operation (const GALGAS_uint & inOperand,
     const uint32_t r = mUIntValue * inOperand.mUIntValue ;
     const bool ovf = (inOperand.mUIntValue != 0) && ((r / inOperand.mUIntValue) != mUIntValue) ;
     if (ovf) {
-      inCompiler->onTheFlyRunTimeError ("* operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@uint * operation overflow" COMMA_THERE) ;
     }else{
       result = GALGAS_uint (r) ;
     }
@@ -487,7 +487,7 @@ GALGAS_uint GALGAS_uint::modulo_operation (const GALGAS_uint & inOperand,
   GALGAS_uint result ;
   if (isValid () && inOperand.isValid ()) {
     if (inOperand.mUIntValue == 0) {
-      inCompiler->onTheFlyRunTimeError ("divide by zero in modulo operation" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@uint divide by zero in modulo operation" COMMA_THERE) ;
     }else{
       result = GALGAS_uint (mUIntValue % inOperand.mUIntValue) ;
     }
