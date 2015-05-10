@@ -218,6 +218,22 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::add_operation (const GALGAS_sint_36__34
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sint_36__34_::reader_canAdd (const GALGAS_sint_36__34_ & inOperand
+                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    const int64_t r = mSInt64Value + inOperand.mSInt64Value ;
+    const bool signA = mSInt64Value >= 0 ;
+    const bool signB = inOperand.mSInt64Value >= 0 ;
+    const bool signR = r >= 0 ;
+    const bool ovf = (signA == signB) && (signA != signR) ;
+    result = GALGAS_bool (!ovf) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 // http://stackoverflow.com/questions/199333/how-to-detect-integer-overflow-in-c-c
 // For signed integers you can check the signs of the arguments and of the result. integers of different signs
 // can't overflow, and integers of same sign overflow only is the result is of different sign
@@ -234,6 +250,19 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::substract_operation (const GALGAS_sint_
     }else{
       result = GALGAS_sint_36__34_ (r) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sint_36__34_::reader_canSubstract (const GALGAS_sint_36__34_ & inOperand
+                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    const int64_t r = mSInt64Value - inOperand.mSInt64Value ;
+    const bool ovf = (mSInt64Value >= inOperand.mSInt64Value) != (r >= 0) ;
+    result = GALGAS_bool (!ovf) ;
   }
   return result ;
 }
@@ -284,6 +313,24 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::multiply_operation (const GALGAS_sint_3
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_sint_36__34_::reader_canMultiply (const GALGAS_sint_36__34_ & inOperand
+                                                     COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    const int64_t r = mSInt64Value * inOperand.mSInt64Value ;
+    bool ovf = false ;
+    if (inOperand.mSInt64Value == -1) {
+      ovf = mSInt64Value == INT64_MIN ;
+    }else if (inOperand.mSInt64Value != 0) {
+      ovf = (r / inOperand.mSInt64Value) != mSInt64Value ;
+    }
+    result = GALGAS_bool (!ovf) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_sint_36__34_ GALGAS_sint_36__34_::divide_operation (const GALGAS_sint_36__34_ & inOperand2,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -296,6 +343,18 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::divide_operation (const GALGAS_sint_36_
     }else{
       result = GALGAS_sint_36__34_ (mSInt64Value / inOperand2.mSInt64Value) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sint_36__34_::reader_canDivide (const GALGAS_sint_36__34_ & inOperand
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    const bool ok = (mSInt64Value != 0) && !((mSInt64Value == INT64_MIN) && (inOperand.mSInt64Value == -1)) ;
+    result = GALGAS_bool (ok) ;
   }
   return result ;
 }

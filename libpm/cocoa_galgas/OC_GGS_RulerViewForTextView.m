@@ -96,7 +96,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   const NSRange visibleRange = [lm characterRangeForGlyphRange:visibleGlyphRange actualGlyphRange:NULL] ;
 //--- Find first line number to draw
   NSUInteger idx = 0 ;
-  NSInteger lineIndex = 0 ;
+  NSInteger lineIndex = 1 ;
 //---
   BOOL maxYreached = NO ;
   NSMutableArray * bulletArray = [NSMutableArray new] ;

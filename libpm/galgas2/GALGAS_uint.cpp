@@ -389,6 +389,19 @@ GALGAS_uint GALGAS_uint::add_operation (const GALGAS_uint & inOperand,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_uint::reader_canAdd (const GALGAS_uint & inOperand
+                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    const uint32_t r = mUIntValue + inOperand.mUIntValue ;
+    const bool ovf = r < mUIntValue ;
+    result = GALGAS_bool (!ovf) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_uint::add_operation_no_ovf (const GALGAS_uint & inOperand) const {
   GALGAS_uint result ;
   if (isValid () && inOperand.isValid ()) {
@@ -411,6 +424,17 @@ GALGAS_uint GALGAS_uint::substract_operation (const GALGAS_uint & inOperand,
     }else{
       result = GALGAS_uint (r) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_uint::reader_canSubstract (const GALGAS_uint & inOperand
+                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_bool (mUIntValue >= inOperand.mUIntValue) ;
   }
   return result ;
 }
@@ -455,6 +479,19 @@ GALGAS_uint GALGAS_uint::multiply_operation (const GALGAS_uint & inOperand,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_uint::reader_canMultiply (const GALGAS_uint & inOperand
+                                             COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    const uint32_t r = mUIntValue * inOperand.mUIntValue ;
+    const bool ovf = (inOperand.mUIntValue != 0) && ((r / inOperand.mUIntValue) != mUIntValue) ;
+    result = GALGAS_bool (!ovf) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_uint::divide_operation (const GALGAS_uint & inOperand,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
@@ -465,6 +502,17 @@ GALGAS_uint GALGAS_uint::divide_operation (const GALGAS_uint & inOperand,
     }else{
       result = GALGAS_uint (mUIntValue / inOperand.mUIntValue) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_uint::reader_canDivide (const GALGAS_uint & inOperand
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_bool (inOperand.mUIntValue != 0) ;
   }
   return result ;
 }
