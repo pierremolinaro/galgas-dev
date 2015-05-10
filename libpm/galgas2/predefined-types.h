@@ -630,6 +630,18 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint right_shift_operation (const GALGAS_uint i
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canAdd (const class GALGAS_uint & constinOperand0
+                                                             COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canDivide (const class GALGAS_uint & constinOperand0
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canMultiply (const class GALGAS_uint & constinOperand0
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canSubstract (const class GALGAS_uint & constinOperand0
+                                                                   COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_double reader_double (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_hexString (LOCATION_ARGS) const ;
@@ -801,6 +813,18 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ right_shift_operation (const GALGA
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canAdd (const class GALGAS_uint_36__34_ & constinOperand0
+                                                             COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canDivide (const class GALGAS_uint_36__34_ & constinOperand0
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canMultiply (const class GALGAS_uint_36__34_ & constinOperand0
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canSubstract (const class GALGAS_uint_36__34_ & constinOperand0
+                                                                   COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_double reader_double (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_hexString (LOCATION_ARGS) const ;
@@ -963,6 +987,18 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canAdd (const class GALGAS_sint & constinOperand0
+                                                             COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canDivide (const class GALGAS_sint & constinOperand0
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canMultiply (const class GALGAS_sint & constinOperand0
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canSubstract (const class GALGAS_sint & constinOperand0
+                                                                   COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_double reader_double (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_sint_36__34_ reader_sint_36__34_ (LOCATION_ARGS) const ;
@@ -1115,6 +1151,18 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canAdd (const class GALGAS_sint_36__34_ & constinOperand0
+                                                             COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canDivide (const class GALGAS_sint_36__34_ & constinOperand0
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canMultiply (const class GALGAS_sint_36__34_ & constinOperand0
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canSubstract (const class GALGAS_sint_36__34_ & constinOperand0
+                                                                   COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_double reader_double (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_sint reader_sint (C_Compiler * inCompiler

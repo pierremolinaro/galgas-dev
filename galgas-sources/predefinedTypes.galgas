@@ -22,7 +22,6 @@ private proc appendPredefinedListTypeAST
   var attributeFeatureList =@lstringlist.emptyList{}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
-#    !false # Is not private
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!"mValue" !@location.here}
     !attributeFeatureList
@@ -40,12 +39,10 @@ private proc appendPredefined2StringListTypeAST
   var attributeFeatureList =@lstringlist.emptyList{}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
-#    !false # Is not private
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
     !attributeFeatureList
   attributeList +=
-#    !false # Is not private
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
     !attributeFeatureList
@@ -64,12 +61,10 @@ private proc appendPredefined2LStringListTypeAST
   var attributeFeatureList =@lstringlist.emptyList{}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
-#    !false # Is not private
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
     !attributeFeatureList
   attributeList +=
-#    !false # Is not private
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
     !attributeFeatureList
@@ -88,12 +83,10 @@ private proc appendStructASTForTypeWithLocation
   var featureList =@lstringlist.emptyList{}
   var attributeList =@propertyInCollectionListAST.emptyList{}
   attributeList += 
-#    !false # Is not private
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!inElementTypeName !@location.here}
     !featureList
   attributeList +=
-#    !false # Is not private
     !@lstring.new {!"location" !@location.here}
     !@lstring.new {!"location" !@location.here}
     !featureList
@@ -111,12 +104,10 @@ proc appendStructASTForRangeType
   var featureList =@lstringlist.emptyList{}
   var attributeList =@propertyInCollectionListAST.emptyList{}
   attributeList +=
-#    !false # Is not private
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"start" !@location.here}
     !featureList
   attributeList +=
-#    !false # Is not private
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"length" !@location.here}
     !featureList

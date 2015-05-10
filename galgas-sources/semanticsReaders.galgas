@@ -488,6 +488,11 @@ override method @uintPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"xString" !returnedTypeName:"string" !false)
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"isUnicodeValueAssigned" !returnedTypeName:"bool" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"isInRange" !"range" !"inRange" !returnedTypeName:"bool" !false)
+
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canAdd" !"uint" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canSubstract" !"uint" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canMultiply" !"uint" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canDivide" !"uint" !"inOperand" !returnedTypeName:"bool" !false)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -501,6 +506,11 @@ override method @sintPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"sint64" !returnedTypeName:"sint64" !false)
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"uint" !returnedTypeName:"uint" !true)
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"string" !returnedTypeName:"string" !false)
+
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canAdd" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canSubstract" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canMultiply" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canDivide" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -517,6 +527,11 @@ override method @uint64PredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"string" !returnedTypeName:"string" !false)
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"hexString" !returnedTypeName:"string" !false)
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"xString" !returnedTypeName:"string" !false)
+
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canAdd" !"uint64" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canSubstract" !"uint64" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canMultiply" !"uint64" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canDivide" !"uint64" !"inOperand" !returnedTypeName:"bool" !false)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -530,6 +545,11 @@ override method @sint64PredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"sint" !returnedTypeName:"sint" !true)
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"uint" !returnedTypeName:"uint" !true)
   enterBaseFinalReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"string" !returnedTypeName:"string" !false)
+
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canAdd" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canSubstract" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canMultiply" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"canDivide" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

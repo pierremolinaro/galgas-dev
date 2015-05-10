@@ -394,6 +394,18 @@ La négation arithmétique (opérateur \ggs+-+ unaire) est uniquement définie s
 Il existe un second opérateur de négation arithmétique (\ggs+&-+), lui aussi uniquement défini sur les types entiers signés, qui ne détecte aucun débordement: \ggs+&- @sint.min+ renvoie \ggs+@sint.min+ et \ggs+&- @sint64.min+ renvoie  \ggs+@sint64.min+.
 
 
+On peut tester l'absence de débordement grâce aux \emph{getters} \ggs+canAdd+, \ggs+canSubstract+, \ggs+canMultiply+ et \ggs+canDivide+, définis pour les quatre types \ggs+@uint+, \ggs+@uint64+, \ggs+@sint+ et \ggs+@sint64+. Si ces \emph{getters} renvoient \ggs+true+, alors les opérations correspondantes s'effectueront sans débordement. Par exemple :
+\begin{galgas}
+@uint a = ...
+@uint b = ...
+if [a canAdd !b] then
+  @uint r = a + b # Pas de débordement
+else
+  # L'addition provoquerait un débordement
+end
+\end{galgas}
+
+
 \subsectionLabel{Accès à un champ d'une structure}{accesChampStructure}
 
 \ggs+.+

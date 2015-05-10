@@ -249,6 +249,19 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::multiply_operation (const GALGAS_uint_3
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_uint_36__34_::reader_canMultiply (const GALGAS_uint_36__34_ & inOperand
+                                                     COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    const uint64_t r = mUInt64Value * inOperand.mUInt64Value ;
+    const bool ovf = (inOperand.mUInt64Value != 0) && ((r / inOperand.mUInt64Value) != mUInt64Value) ;
+    result = GALGAS_bool (!ovf) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::divide_operation (const GALGAS_uint_36__34_ & inOperand,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -259,6 +272,17 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::divide_operation (const GALGAS_uint_36_
     }else{
       result = GALGAS_uint_36__34_ (mUInt64Value / inOperand.mUInt64Value) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_uint_36__34_::reader_canDivide (const GALGAS_uint_36__34_ & inOperand
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_bool (inOperand.mUInt64Value != 0) ;
   }
   return result ;
 }
@@ -343,6 +367,19 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::add_operation (const GALGAS_uint_36__34
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_uint_36__34_::reader_canAdd (const GALGAS_uint_36__34_ & inOperand
+                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    const uint64_t r = mUInt64Value + inOperand.mUInt64Value ;
+    const bool ovf = r < mUInt64Value ;
+    result = GALGAS_bool (!ovf) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint_36__34_ GALGAS_uint_36__34_::substract_operation_no_ovf (const GALGAS_uint_36__34_ & inOperand2) const {
   GALGAS_uint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
@@ -375,6 +412,17 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::substract_operation (const GALGAS_uint_
     }else{
       result = GALGAS_uint_36__34_ (r) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_uint_36__34_::reader_canSubstract (const GALGAS_uint_36__34_ & inOperand
+                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_bool (mUInt64Value >= inOperand.mUInt64Value) ;
   }
   return result ;
 }
