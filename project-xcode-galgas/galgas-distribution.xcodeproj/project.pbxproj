@@ -28,6 +28,8 @@
 		CF074C331000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */; };
 		CF074C9D1000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C9B1000EFF500F45986 /* C_StringCommandLineOption.cpp */; };
 		CF074CA01000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C9B1000EFF500F45986 /* C_StringCommandLineOption.cpp */; };
+		CF0759A51B00D2CE004CCCBE /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0759A31B00D2CE004CCCBE /* all-declarations-26.cpp */; };
+		CF0759A61B00D2CE004CCCBE /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0759A31B00D2CE004CCCBE /* all-declarations-26.cpp */; };
 		CF085E5111176CDA00A23487 /* GALGAS_location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF085E4E11176CDA00A23487 /* GALGAS_location.cpp */; };
 		CF085E5211176CDA00A23487 /* GALGAS_location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF085E4E11176CDA00A23487 /* GALGAS_location.cpp */; };
 		CF0D340B19D742A7003AD43D /* NSString+identifierRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0D340A19D742A7003AD43D /* NSString+identifierRepresentation.m */; };
@@ -356,6 +358,8 @@
 		CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_UIntCommandLineOption.cpp; sourceTree = "<group>"; };
 		CF074C9A1000EFF500F45986 /* C_StringCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_StringCommandLineOption.h; sourceTree = "<group>"; };
 		CF074C9B1000EFF500F45986 /* C_StringCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_StringCommandLineOption.cpp; sourceTree = "<group>"; };
+		CF0759A31B00D2CE004CCCBE /* all-declarations-26.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-26.cpp"; sourceTree = "<group>"; };
+		CF0759A41B00D2CE004CCCBE /* all-declarations-26.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-26.h"; sourceTree = "<group>"; };
 		CF085E4E11176CDA00A23487 /* GALGAS_location.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_location.cpp; sourceTree = "<group>"; };
 		CF0D340919D742A7003AD43D /* NSString+identifierRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+identifierRepresentation.h"; sourceTree = "<group>"; };
 		CF0D340A19D742A7003AD43D /* NSString+identifierRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+identifierRepresentation.m"; sourceTree = "<group>"; };
@@ -923,6 +927,22 @@
 				CF7599DC19F3FE90007E49A1 /* all-declarations-0.h */,
 				CF7599DD19F3FE90007E49A1 /* all-declarations-1.cpp */,
 				CF7599DE19F3FE90007E49A1 /* all-declarations-1.h */,
+				CF7599DF19F3FE90007E49A1 /* all-declarations-2.cpp */,
+				CF7599E019F3FE90007E49A1 /* all-declarations-2.h */,
+				CF7599E119F3FE90007E49A1 /* all-declarations-3.cpp */,
+				CF7599E219F3FE90007E49A1 /* all-declarations-3.h */,
+				CF7599E319F3FE90007E49A1 /* all-declarations-4.cpp */,
+				CF7599E419F3FE90007E49A1 /* all-declarations-4.h */,
+				CF7599E519F3FE90007E49A1 /* all-declarations-5.cpp */,
+				CF7599E619F3FE90007E49A1 /* all-declarations-5.h */,
+				CF7599E719F3FE90007E49A1 /* all-declarations-6.cpp */,
+				CF7599E819F3FE90007E49A1 /* all-declarations-6.h */,
+				CF7599E919F3FE90007E49A1 /* all-declarations-7.cpp */,
+				CF7599EA19F3FE90007E49A1 /* all-declarations-7.h */,
+				CF7599EB19F3FE90007E49A1 /* all-declarations-8.cpp */,
+				CF7599EC19F3FE90007E49A1 /* all-declarations-8.h */,
+				CF7599ED19F3FE90007E49A1 /* all-declarations-9.cpp */,
+				CF7599EE19F3FE90007E49A1 /* all-declarations-9.h */,
 				CF7599EF19F3FE90007E49A1 /* all-declarations-10.cpp */,
 				CF7599F019F3FE90007E49A1 /* all-declarations-10.h */,
 				CF7599F119F3FE90007E49A1 /* all-declarations-11.cpp */,
@@ -943,8 +963,6 @@
 				CF759A0019F3FE90007E49A1 /* all-declarations-18.h */,
 				CF759A0119F3FE90007E49A1 /* all-declarations-19.cpp */,
 				CF759A0219F3FE90007E49A1 /* all-declarations-19.h */,
-				CF7599DF19F3FE90007E49A1 /* all-declarations-2.cpp */,
-				CF7599E019F3FE90007E49A1 /* all-declarations-2.h */,
 				CF759A0319F3FE90007E49A1 /* all-declarations-20.cpp */,
 				CF759A0419F3FE90007E49A1 /* all-declarations-20.h */,
 				CF759A0519F3FE90007E49A1 /* all-declarations-21.cpp */,
@@ -957,20 +975,8 @@
 				CF759A0C19F3FE90007E49A1 /* all-declarations-24.h */,
 				CF5DDE911A06B6CF0003F6F4 /* all-declarations-25.cpp */,
 				CF5DDE921A06B6CF0003F6F4 /* all-declarations-25.h */,
-				CF7599E119F3FE90007E49A1 /* all-declarations-3.cpp */,
-				CF7599E219F3FE90007E49A1 /* all-declarations-3.h */,
-				CF7599E319F3FE90007E49A1 /* all-declarations-4.cpp */,
-				CF7599E419F3FE90007E49A1 /* all-declarations-4.h */,
-				CF7599E519F3FE90007E49A1 /* all-declarations-5.cpp */,
-				CF7599E619F3FE90007E49A1 /* all-declarations-5.h */,
-				CF7599E719F3FE90007E49A1 /* all-declarations-6.cpp */,
-				CF7599E819F3FE90007E49A1 /* all-declarations-6.h */,
-				CF7599E919F3FE90007E49A1 /* all-declarations-7.cpp */,
-				CF7599EA19F3FE90007E49A1 /* all-declarations-7.h */,
-				CF7599EB19F3FE90007E49A1 /* all-declarations-8.cpp */,
-				CF7599EC19F3FE90007E49A1 /* all-declarations-8.h */,
-				CF7599ED19F3FE90007E49A1 /* all-declarations-9.cpp */,
-				CF7599EE19F3FE90007E49A1 /* all-declarations-9.h */,
+				CF0759A31B00D2CE004CCCBE /* all-declarations-26.cpp */,
+				CF0759A41B00D2CE004CCCBE /* all-declarations-26.h */,
 				CF759A0D19F3FE90007E49A1 /* all-declarations.h */,
 				CF759A0E19F3FE90007E49A1 /* project_header.h */,
 			);
@@ -1613,7 +1619,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = IRCCyN;
 			};
 			buildConfigurationList = CF0DA6A4085630E800F38E67 /* Build configuration list for PBXProject "galgas-distribution" */;
@@ -1749,6 +1755,7 @@
 				CFFC0F1711EDC44200C97B85 /* C_BDD-and-operation.cpp in Sources */,
 				CFFC0F1811EDC44200C97B85 /* C_BDD-find-or-add.cpp in Sources */,
 				CFFC0F1911EDC44200C97B85 /* C_BDD-single-operand-ops.cpp in Sources */,
+				CF0759A51B00D2CE004CCCBE /* all-declarations-26.cpp in Sources */,
 				CF2382A5124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,
 				CF2382D1124D126000A57965 /* C_galgas_function_descriptor.cpp in Sources */,
 				CF3D9FCC1257733E0037D473 /* capCollectionElement.cpp in Sources */,
@@ -1887,6 +1894,7 @@
 				CFFC0F1A11EDC44200C97B85 /* C_BDD-and-operation.cpp in Sources */,
 				CFFC0F1B11EDC44200C97B85 /* C_BDD-find-or-add.cpp in Sources */,
 				CFFC0F1C11EDC44200C97B85 /* C_BDD-single-operand-ops.cpp in Sources */,
+				CF0759A61B00D2CE004CCCBE /* all-declarations-26.cpp in Sources */,
 				CF2382A6124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,
 				CF2382D2124D126000A57965 /* C_galgas_function_descriptor.cpp in Sources */,
 				CF3D9FD11257733E0037D473 /* capCollectionElement.cpp in Sources */,
@@ -2047,9 +2055,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					DO_NOT_GENERATE_CHECKINGS,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				INSTALL_PATH = "$(HOME)/bin";
 				LD_OPENMP_FLAGS = "";
