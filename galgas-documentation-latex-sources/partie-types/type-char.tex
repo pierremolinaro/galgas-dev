@@ -30,25 +30,25 @@ Otherwise, for any printable Unicode character, you can write it directly, witho
 @char myCharacter = 'æ'
 \end{galgas}
 
-The following escape sequences are defined (they begin with a '\textquotesingle').
+The following escape sequences are defined (they begin with a « \textquotesingle »).
 
 \begin{tabular}{|c|c|}
 \hline
 Character Constant & Meaning \\
 \hline
-\texttt{\textquotesingle\textbackslash f\textquotesingle} & A Form Feed Character \\
+\ggs+'\f'+ & A Form Feed Character \\
 \hline
-\texttt{\textquotesingle\textbackslash n\textquotesingle} & A New Line Character \\
+\ggs+'\n'+ & A New Line Character \\
 \hline
-\texttt{\textquotesingle\textbackslash r\textquotesingle} & A Carriage Return Character \\
+\ggs+'\r'+ & A Carriage Return Character \\
 \hline
-\texttt{\textquotesingle\textbackslash v\textquotesingle} & A Vertical Tabulation Character \\
+\ggs+'\v'+ & A Vertical Tabulation Character \\
 \hline
-\texttt{\textquotesingle\textbackslash\textbackslash\textquotesingle} & A back slash Character \\
+\ggs+'\\'+ & A back slash Character \\
 \hline
-\texttt{\textquotesingle\textbackslash 0\textquotesingle} & A Nul Character \\
+\ggs+'\0'+ & A Nul Character \\
 \hline
-\texttt{\textquotesingle\textbackslash\textquotesingle\textquotesingle} & A Single Quote Character \\
+\ggs+'\''+ & A Single Quote Character \\
 \hline
 \end{tabular}
 
@@ -57,7 +57,7 @@ Character Constant & Meaning \\
 \hline
 Character Constant & Meaning \\
 \hline
-\texttt{\textquotesingle\textbackslash uABCD\textquotesingle} & An Unicode Character \\
+\ggs+'\uABCD'+ & An Unicode Character \\
 \hline
 \end{tabular}
 
@@ -67,7 +67,7 @@ Where \emph{ABCD} is a four digit hexadecimal number that represents an assigned
 var myChar = '\u03A0' # The 'SIGMA' character
 \end{galgas}
 
-Note: an unassigned point code (as \texttt{\textquotesingle\textbackslash uFFFF\textquotesingle}) raises a compile-time error.
+Note: an unassigned point code (as \texttt{\textquotesingle\textbackslash FFFF\textquotesingle}) raises a compile-time error.
 
 
 \begin{tabular}{|c|c|}

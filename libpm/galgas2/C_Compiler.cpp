@@ -657,9 +657,6 @@ void C_Compiler::generateFileWithPatternFromPathes (
   const C_String kEND_OF_USER_ZONE_1   = C_String (inLineCommentPrefix) + END_OF_USER_ZONE_1 ;
   const C_String kSTART_OF_USER_ZONE_2 = C_String (inLineCommentPrefix) + START_OF_USER_ZONE_2 ;
   const C_String kEND_OF_USER_ZONE_2   = C_String (inLineCommentPrefix) + END_OF_USER_ZONE_2 ;
-//--- Build generated zone 1
-//  C_String generatedZone1 ;
-//  generatedZone1.appendFileHeaderComment (inLineCommentPrefix, C_String ("File '") + inFileName + "'", compilerVersionString (), false) ;
 //--- Start path : by default, use source file directory
   const C_String startPath = (inStartPath.length () == 0)
     ? sourceFilePath ().stringByDeletingLastPathComponent ()
