@@ -16423,57 +16423,6 @@ static const utf32 gLexicalMessage_galgas_33_Scanner_invalideUnicodeDefinition8 
   TO_UNICODE (0)
 } ;
 
-static const utf32 gLexicalMessage_galgas_33_Scanner_obsoleteCharConstruction [] = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (':'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('w'),
-  TO_UNICODE (','),
-  TO_UNICODE (' '),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('U'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (0)
-} ;
-
 static const utf32 gLexicalMessage_galgas_33_Scanner_obsoleteStringConstruction [] = {
   TO_UNICODE ('\\'),
   TO_UNICODE (' '),
@@ -22595,20 +22544,6 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
               }
             }else{
               lexicalError (gLexicalMessage_galgas_33_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else if (testForInputUTF32Char (TO_UNICODE ('x')) || testForInputUTF32Char (TO_UNICODE ('X'))) {
-            lexicalWarning (gLexicalMessage_galgas_33_Scanner_obsoleteCharConstruction COMMA_LINE_AND_SOURCE_FILE) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-              do {
-                ::scanner_routine_enterHexDigitIntoASCIIcharacter (*this, token.mLexicalAttribute_charValue, previousChar (), gLexicalMessage_galgas_33_Scanner_ASCIIcodeTooLargeError, gLexicalMessage_galgas_33_Scanner_internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                }else{
-                  mLoop = false ;
-                }
-              }while (mLoop) ;
-              mLoop = true ;
-            }else{
-              lexicalError (gLexicalMessage_galgas_33_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
             do {
