@@ -2,18 +2,172 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Lexical Elements}
+\chapter{Élements lexicaux}
 %-------------------------------------------------------------
 
-%Avant
-%[\input{|"/bin/echo -n ab"}]
-%Après
-%
-%
-%(\immediate\write18{"/bin/echo -n ab"})
-%
-%\begin{filecontents}{myfile.tex}%     This text gets written to \texttt{myfile.tex}.\\
-%     Zis text gets written to \texttt{myfile.tex}.
-%\end{filecontents}
-%
-%\input{myfile.tex}
+Les éléments lexicaux du langage GALGAS sont :
+\begin{itemize}
+  \item les identificateurs ;
+  \item les mots réservés ;
+  \item les délimiteurs ;
+  \item les sélecteurs ;
+  \item les séparateurs ;
+  \item les commentaires ;
+  \item les non terminaux ;
+  \item les terminaux ;
+  \item les constantes litérales entières ;
+  \item les constantes litérales flottantes ;
+  \item les caractères litéraux  ;
+  \item les constantes chaînes de caractères ;
+  \item les noms de types ;
+  \item les attributs.
+\end{itemize}
+
+
+\section{Les identificateurs}
+
+Un identificateur commence par une lettre minuscule ou majuscule, suivie de zéro, un ou plusieurs chiffres décimaux, lettres minuscules ou majuscules ou caractères \ggs='_'=. Par exemple :
+
+\ggs=element=, \ggs=element0=, \ggs=element_0=, \ggs=instructionList=, \ggs=instruction_list=.
+
+\section{Les mots réservés}
+
+Les mots réservés de GALGAS 2 et de GALGAS 3 sont les identificateurs listés dans le \refTableau{mots-reserves}. Les mots réservés de GALGAS 3 apparaissent en gras, et de couleur bleue.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllll}
+    \ggs=abstract=    & \ggs=after=    & \ggs=array=    & \ggs=before=    & \ggs=between=     & \ggs=block=     & \ggs=case=    \\
+    \ggs=cast=        & \ggs=cast=     & \ggs=class=    & \ggs=const=     & \ggs=constructor= & \ggs=default=   & \ggs=do=   \\
+    \ggs=drop=        & \ggs=else=     & \ggs=elsif=    & \ggs=end=       & \ggs=enum=        & \ggs=error=     & \ggs=extension= \\
+    \ggs=extends=     & \ggs=extern=   & \ggs=false=    & \ggs=feature=   & \ggs=filewrapper= & \ggs=for=       & \ggs=foreach=    \\
+    \ggs=func=        & \ggs=function= & \ggs=getter=   & \ggs=grammar=   & \ggs=graph=       & \ggs=gui=       & \ggs=here=  \\
+    \ggs=if=          & \ggs=import=   & \ggs=in=       & \ggs=index=     & \ggs=indexing=    & \ggs=insert=    & \ggs=is=      \\
+    \ggs=label=       & \ggs=let=      & \ggs=lexique=  & \ggs=list=      & \ggs=listmap=     & \ggs=local=     & \ggs=log=   \\
+    \ggs=loop=        & \ggs=map=      & \ggs=match=    & \ggs=message=   & \ggs=method=      & \ggs=mod=       & \ggs=modifier= \\
+    \ggs=nonterminal= & \ggs=not=      & \ggs=on=       & \ggs=once=      & \ggs=operator=    & \ggs=option=    & \ggs=or=      \\
+    \ggs=override=    & \ggs=parse=    & \ggs=private=  & \ggs=proc=      & \ggs=project=     & \ggs=program=   & \ggs=reader=  \\
+    \ggs=remove=      & \ggs=replace=  & \ggs=repeat=   & \ggs=rewind=    & \ggs=root=        & \ggs=routine=   & \ggs=rule= \\
+    \ggs=search=      & \ggs=select=   & \ggs=self=     & \ggs=selfcopy=  & \ggs=semantics=   & \ggs=send=      & \ggs=setter= \\
+    \ggs=sortedlist=  & \ggs=state=    & \ggs=struct=   & \ggs=style=     & \ggs=switch=      & \ggs=syntax=    & \ggs=tag= \\
+    \ggs=template=    & \ggs=then=     & \ggs=true=     & \ggs=sharedmap= & \ggs=unused=      & \ggs=var=       & \ggs=warning= \\
+    \ggs=when=        & \ggs=while=    & \ggs=with=     &                 &                   &                 &  \\
+  \end{tabular}
+  \caption{Mots réservés du langage GALGAS}
+  \labelTableau{mots-reserves}
+  \ligne
+\end{table}
+
+
+\section{Les délimiteurs}
+
+Les délimiteurs du langage GALGAS sont listés dans le \refTableau{delimiteurs}.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \ggs=*=  & \ggs=,=  & \ggs=+=  & \ggs=&+= & \ggs=&-= & \ggs=&*= & \ggs=&/= & \ggs=>=  & \ggs+>=+ & \ggs=<=  & \ggs+<=+ & \ggs+==+ & \ggs+!=+ & \ggs+=+ \\
+    \ggs=;=  & \ggs=:=  & \ggs=:>= & \ggs=-=  & \ggs=(=  & \ggs=)=  & \ggs=->= & \ggs=&&= & \ggs=[=  & \ggs=]=  & \ggs-+=- & \ggs=|=  & \ggs=/=  & \ggs=&= \\
+    \ggs={=  & \ggs=}=  & \ggs=`=  & \ggs=||= & \ggs=^=  & \ggs=>>= & \ggs=<<= & \ggs=~=  & \ggs=--= & \ggs=++= & \ggs=&--=& \ggs=&++=&          &      \\
+  \end{tabular}
+  \caption{Délimiteurs du langage GALGAS}
+  \labelTableau{delimiteurs}
+  \ligne
+\end{table}
+
+
+
+\section{Les sélecteurs}
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \ggs=!=  & \ggs=!selecteur:=  & \ggs=!?=  & \ggs=!?selecteur:= & \ggs=?= & \ggs=?selecteur:= & \ggs=?!= & \ggs=?!selecteur:= \\
+   \end{tabular}
+  \caption{Sélecteurs du langage GALGAS}
+  \labelTableau{selecteurs}
+  \ligne
+\end{table}
+
+Les sélecteurs du langage GALGAS sont listés dans le \refTableau{selecteurs}.
+
+
+
+\section{Les séparateurs}
+
+Les séparateurs du langage GALGAS sont :
+\begin{itemize}
+  \item le caractère \emph{espace} ;
+  \item tout caractère dont le point de code est compris entre \texttt{U+0000} et \texttt{U+001F}. 
+\end{itemize}
+
+
+
+\section{Les commentaires}
+
+Un commentaire commence par le caractère \texttt{\#} s'étend jusqu'à la fin de la ligne courante.
+
+
+
+
+
+
+
+
+\section{Les non terminaux}
+
+Un \emph{non terminal} d'une grammaire est un identificateur placé entre les caractères \texttt{<} et \texttt{>}. Exemple :
+
+\begin{galgas}
+ <expression>, <instruction>
+\end{galgas}
+
+
+
+
+
+
+
+\section{Les terminaux}
+
+Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre les caractères \texttt{\$} et \texttt{\$}. Exemple :
+
+\begin{galgas}
+ $identifier$, $constant$
+\end{galgas}
+
+Tout caractère ASCII imprimable, sauf le caractère \texttt{\$}, peut apparaître dans un terminal :
+\begin{galgas}
+ $=$, $($, $--$
+\end{galgas}
+
+
+\section{Les constantes litérales entières}
+
+
+
+
+\section{Les constantes litérales flottantes}
+
+
+
+\section{Les caractères litéraux}
+
+
+
+
+\section{Les constantes chaînes de caractères}
+
+
+
+
+\section{Les noms de types}
+
+
+
+
+
+\section{Les attributs}
+
+
+
