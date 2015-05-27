@@ -477,19 +477,6 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
           }else{
             scanningOk = NO ;
           }
-        }else if (scanningOk && ([self testForInputChar:120] || [self testForInputChar:88])) {
-          if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-            do {
-              scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (& scanningOk, & mLexicalAttribute_charValue, mPreviousChar) ;
-              if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-              }else{
-                mLoop = NO ;
-              }
-            }while (mLoop && scanningOk) ;
-            mLoop = YES ;
-          }else{
-            scanningOk = NO ;
-          }
         }else if (scanningOk && ([self testForInputChar:38])) {
           do {
             if (scanningOk && ([self notTestForInputString:@";" error:& scanningOk])) {

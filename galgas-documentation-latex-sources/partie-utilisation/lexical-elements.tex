@@ -15,9 +15,9 @@ Les éléments lexicaux du langage GALGAS sont :
   \item les commentaires ;
   \item les non terminaux ;
   \item les terminaux ;
-  \item les constantes litérales entières ;
-  \item les constantes litérales flottantes ;
-  \item les caractères litéraux  ;
+  \item les constantes littérales entières ;
+  \item les constantes littérales flottantes ;
+  \item les caractères littéraux  ;
   \item les constantes chaînes de caractères ;
   \item les noms de types ;
   \item les attributs.
@@ -68,7 +68,7 @@ Les délimiteurs du langage GALGAS sont listés dans le \refTableau{delimiteurs}
   \begin{tabular}{llllllllllllll}
     \ggs=*=  & \ggs=,=  & \ggs=+=  & \ggs=&+= & \ggs=&-= & \ggs=&*= & \ggs=&/= & \ggs=>=  & \ggs+>=+ & \ggs=<=  & \ggs+<=+ & \ggs+==+ & \ggs+!=+ & \ggs+=+ \\
     \ggs=;=  & \ggs=:=  & \ggs=:>= & \ggs=-=  & \ggs=(=  & \ggs=)=  & \ggs=->= & \ggs=&&= & \ggs=[=  & \ggs=]=  & \ggs-+=- & \ggs=|=  & \ggs=/=  & \ggs=&= \\
-    \ggs={=  & \ggs=}=  & \ggs=`=  & \ggs=||= & \ggs=^=  & \ggs=>>= & \ggs=<<= & \ggs=~=  & \ggs=--= & \ggs=++= & \ggs=&--=& \ggs=&++=&          &      \\
+    \ggs={=  & \ggs=}=  & \ggs=`=  & \ggs=||= & \ggs=^=  & \ggs=>>= & \ggs=<<= & \ggs=~=  & \ggs=--= & \ggs=++= & \ggs=&--=& \ggs=&++=& \ggs=.=  & \ggs=...=  \\
   \end{tabular}
   \caption{Délimiteurs du langage GALGAS}
   \labelTableau{delimiteurs}
@@ -130,7 +130,7 @@ Un \emph{non terminal} d'une grammaire est un identificateur placé entre les ca
 
 \section{Les terminaux}
 
-Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre les caractères \texttt{\$} et \texttt{\$}. Exemple :
+Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre deux caractères \texttt{\$}. Exemple :
 
 \begin{galgas}
  $identifier$, $constant$
@@ -142,32 +142,157 @@ Tout caractère ASCII imprimable, sauf le caractère \texttt{\$}, peut apparaît
 \end{galgas}
 
 
-\section{Les constantes litérales entières}
 
 
 
 
-\section{Les constantes litérales flottantes}
+\section{Les constantes littérales entières}
+
+Une constante littérale entière peut être écrite :
+\begin{itemize}
+  \item en \emph{décimal} : elle est constituée de un ou plusieurs chiffres décimaux ; exemple : \ggs=123=, \ggs=9=, \ggs=05= ;
+  \item en \emph{hexadécimal} : elle commence par \texttt{0x}, suivi d'un ou plusieurs chiffres hexadécimaux ; exemple : \ggs=0x12A=, \ggs=0xabcd=.
+\end{itemize}
+
+Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres décimaux ou hexadécimaux : \ggs=1_234=, \ggs=0x123_4567=.
+
+Une constante littérale entière est typée ; son type est fixé par son suffixe (\refTableau{suffixeConstantesLiteralesEntieres}).
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \textbf{Suffixe} & \textbf{Type} & \textbf{Exemples}\\
+    \emph{Pas de suffixe}  & \ggs=@uint=  & \ggs=1_234=, \ggs=0x1234_5678= \\
+    \texttt{L}  & \ggs=@uint64=  & \ggs=1_234L=, \ggs=0x1234_5678L= \\
+    \texttt{S}  & \ggs=@sint=  & \ggs=1_234S=, \ggs=0x1234_5678S= \\
+    \texttt{LS}  & \ggs=@sint64=  & \ggs=1_234LS=, \ggs=0x1234_5678LS= \\
+   \end{tabular}
+  \caption{Suffixes et types des constantes littérales entières}
+  \labelTableau{suffixeConstantesLiteralesEntieres}
+  \ligne
+\end{table}
 
 
 
-\section{Les caractères litéraux}
+
+
+
+
+\section{Les constantes littérales flottantes}
+
+Une constante littérale flottante comprend toujours un point. Elle est constituée :
+\begin{itemize}
+  \item d'un ou plusieurs chiffres décimaux ;
+  \item suivis d'un point ;
+  \item suivi de zéro, un ou plusieurs chiffres décimaux.
+\end{itemize}
+
+Par exemple : \ggs=0.=, \ggs=12.34=.
+
+Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres : \ggs=1_234.567_890=.
+
+Une constante littérale flottante est du type \ggs=@double=.
+
+
+
+
+\section{Les caractères littéraux}
+
+Un \emph{caractère littéral} est un caractère Unicode placé entre deux apostrophes « \texttt{\textquotesingle} ». Exemple :
+
+\begin{galgas}
+ 'a', 'æ', 'Œ'
+\end{galgas}
+
+Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesCaracteres}.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \textbf{Échappement} & \textbf{Caractère} & \textbf{Point de code}\\
+    \ggs='\f'=  & Nouvelle page & \texttt{U+0C} \\
+    \ggs='\n'=  & Passage à la ligne (\emph{Line Feed}) & \texttt{U+0A} \\
+    \ggs='\r'=  & Retour chariot & \texttt{U+0D} \\
+    \ggs='\t'=  & Tabulation horizontale & \texttt{U+09} \\
+    \ggs='\v'=  & Tabulation verticale & \texttt{U+0B} \\
+    \ggs='\\'=  & Barre oblique inversée & \texttt{U+5C} \\
+    \ggs='\0'=  & Caractère nul & \texttt{U+0} \\
+    \ggs='\''=  & Apostrophe & \texttt{U+27} \\
+    \ggs='\uabcd'=  & Caractère du plan de base (4 chiffres hexadécimaux) & \texttt{U+ABCD} \\
+    \texttt{\textquotesingle\textbackslash Uabcdefgh\textquotesingle}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
+   \end{tabular}
+  \caption{Séquence d'échappement des constantes littérales caractère}
+  \labelTableau{echappementConstantesLiteralesCaracteres}
+  \ligne
+\end{table}
 
 
 
 
 \section{Les constantes chaînes de caractères}
 
+Un \emph{chaîne de caractères littérale} est une séquence de caractères Unicode placé entre deux guillemets « \texttt{\textquotedbl} ». Exemple :
+
+\begin{galgas}
+ "une chaîne", "Œnologie"
+\end{galgas}
+
+Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesChaine}.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llllllllllllll}
+    \textbf{Échappement} & \textbf{Caractère} & \textbf{Point de code}\\
+    \ggs="\f"=  & Nouvelle page & \texttt{U+0C} \\
+    \ggs="\n"=  & Passage à la ligne (\emph{Line Feed}) & \texttt{U+0A} \\
+    \ggs="\r"=  & Retour chariot & \texttt{U+0D} \\
+    \ggs="\t"=  & Tabulation horizontale & \texttt{U+09} \\
+    \ggs="\v"=  & Tabulation verticale & \texttt{U+0B} \\
+    \ggs="\\"=  & Barre oblique inversée & \texttt{U+5C} \\
+    \ggs="\""=  & Guillemet & \texttt{U+22} \\
+    \ggs="\uabcd"=  & Caractère du plan de base (4 chiffres hexadécimaux) & \texttt{U+ABCD} \\
+    \texttt{\textquotedbl\textbackslash Uabcdefgh\textquotedbl}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
+   \end{tabular}
+  \caption{Séquence d'échappement des constantes littérales chaîne de caractères}
+  \labelTableau{echappementConstantesLiteralesChaine}
+  \ligne
+\end{table}
+
+
+
+
+
 
 
 
 \section{Les noms de types}
 
+Un nom de type :
+\begin{itemize}
+  \item commence par un caractère \texttt{@} ;
+  \item est suivi par un ou plusieurs chiffres ou lettres ;
+  \item est suivi éventuellement par un tiret « \texttt{-} », lui-même suivi par un ou plusieurs chiffres ou lettres.
+\end{itemize}
+
+Par exemple :
+\begin{galgas}
+ @string, @stringlist-element, @2stringlist
+\end{galgas}
 
 
 
 
 \section{Les attributs}
 
+Un attribut :
+\begin{itemize}
+  \item commence par un caractère \texttt{\%} ;
+  \item est suivi par une ou plusieurs lettres.
+\end{itemize}
+
+Par exemple :
+\begin{galgas}
+ %once, %translate
+\end{galgas}
 
 
