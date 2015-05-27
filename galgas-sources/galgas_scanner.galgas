@@ -102,7 +102,7 @@ style commentStyle -> "Comments"
 
 $identifier$ ! tokenString error message "an identifier"
 
-list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
+list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "abstract",
   "after",
   "array",
@@ -153,7 +153,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "log",
   "loop",
   "map",
-#  "mapproxy",
   "match",
   "message",
   "method",
@@ -203,7 +202,8 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "warning",
   "when",              
   "while",
-  "with" }
+  "with"
+}
 
 rule 'a'->'z' |  'A'->'Z' {
   repeat
