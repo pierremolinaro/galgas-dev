@@ -35,8 +35,8 @@ graph @monGraphe (@uintlist) {
 Si l'information associée à chaque nœud est composée d'un entier et d'une chaîne de caractères, il faut déclarer un type liste particulier :
 \begin{galgas}
 list @maListe {
-  @uint monInfo1 ;
-  @string monInfo2 ;
+  @uint monInfo1
+  @string monInfo2
 }
 graph @monGraphe (@maListe) {
 }
@@ -50,13 +50,13 @@ graph @monGraphe (@maListe) {
 \section{Constructeur \texttt{emptyGraph}}
 
 \begin{galgas}
-constructor emptyGraph -> @self ;
+constructor emptyGraph -> @self
 \end{galgas}
 
 \ggs+emptyGraph+ est le seul constructeur d'un graphe. Il instancie un graphe vide.
 
 \begin{galgas}
-var gr = [@monGraphe emptyGraph] ;
+var gr = [@monGraphe emptyGraph] 
 \end{galgas}
 
 
@@ -77,7 +77,7 @@ Ces trois setters peuvent être appelés dans un ordre quelconque. Il est possib
 Pour pouvoir entrer un nœud, il faut déclarer explicitement un \emph{setter d'insertion} :
 \begin{galgas}
 graph @monGraphe (@maListe) {
-  insert addNode error message "the '%K' node is already declared at %L" ;
+  insert addNode error message "the '%K' node is already declared at %L"
 }
 \end{galgas}
 
@@ -102,9 +102,9 @@ Ainsi, le setter d'insertion \ggs+addNode+ du type de graphe \ggs+@monGraphe+ po
 
 Il est par exemple appelé comme suit :
 \begin{galgas}
-var @lstring lstr = ... ;
-var gr = [@monGraphe emptyGraph] ;
-[!?gr addNode !lstr !0 !"xyz"] ;
+var @lstring lstr = ... 
+var gr = [@monGraphe emptyGraph] 
+[!?gr addNode !lstr !0 !"xyz"] 
 \end{galgas}
 
 
@@ -113,7 +113,7 @@ var gr = [@monGraphe emptyGraph] ;
 \subsectionLabel{Entrer un arc : setter \texttt{addEdge}}{setter-addEdge}
 
 \begin{galgas}
-setter addEdge ?@lstring inSourceNode ?@lstring inTargetNode ;
+setter addEdge ?@lstring inSourceNode ?@lstring inTargetNode 
 \end{galgas}
 
 Pour entrer un arc, appeler le setter prédéfini \ggs+addEdge+. Celui-ci possède deux arguments d'entrée de type \ggs+@lstring+ :
@@ -131,7 +131,7 @@ Pour entrer un arc, appeler le setter prédéfini \ggs+addEdge+. Celui-ci possè
 \subsectionLabel{setter \texttt{noteNode}}{setter-noteNode}
 
 \begin{galgas}
-setter noteNode ?@lstring inNode ;
+setter noteNode ?@lstring inNode 
 \end{galgas}
 
 Le setter prédéfini \ggs+noteNode+ permet d'indiquer qu'un nœud doit être défini : il possède un seul argument en entrée, de type \ggs+@lstring+, dont la composante \ggs+@string+ désigne le nom du nœud, et dont la composante \ggs+@location+ est ajoutée à la liste de ce nœud.
@@ -151,7 +151,7 @@ Deux \emph{setters} permettent d'enlever des arcs à un graphe :
 \subsectionLabel{Setter \texttt{removeEdgesToNode}}{setter-graphe-removeEdgesToNode}
 
 \begin{galgas}
-setter removeEdgesToNode ?@string inTargetNode ;
+setter removeEdgesToNode ?@string inTargetNode 
 \end{galgas}
 
 Ce \emph{setter} ne présente qu'un seul argument, une chaîne qui désigne un nœud du graphe. Son exécution supprime tous les arcs dont le nœud destination est le nœud nommé en argument.
@@ -159,7 +159,7 @@ Ce \emph{setter} ne présente qu'un seul argument, une chaîne qui désigne un n
 \subsectionLabel{Setter \texttt{removeEdgesToDominators}}{setter-graphe-removeEdgesToDominators}
 
 \begin{galgas}
-setter removeEdgesToDominators ;
+setter removeEdgesToDominators 
 \end{galgas}
 
 Dans un graphe, un nœud $d$ domine un autre nœud $n$ si chaque chemin à partir du nœud d'entrée vers le nœud $n$ doit passer par $d$ \footnote{\url{http://en.wikipedia.org/wiki/Dominator_(graph_theory)}}.
@@ -171,7 +171,7 @@ Ce \emph{setter} considère que les nœuds d'entrée sont les nœuds sans préd�
 \subsection{Getter \texttt{edges}}
 
 \begin{galgas}
-getter edges -> @2stringlist ;
+getter edges -> @2stringlist 
 \end{galgas}
 
 Ce getter retourne la liste des arcs.
@@ -180,16 +180,26 @@ Ce getter retourne la liste des arcs.
 \subsection{Getter \texttt{graphviz}}
 
 \begin{galgas}
-getter graphviz -> @string ;
+getter graphviz -> @string 
 \end{galgas}
 
 Ce getter retourne une chaîne de caractères contenant une description compatible \emph{GraphViz}\footnote{\url{http://www.graphviz.org/}} du graphe.
 
 
+
+\subsection{Getter \texttt{isNodeDefined}}
+
+\begin{galgas}
+getter isNodeDefined ?@string inNodeName -> @bool 
+\end{galgas}
+
+Ce getter retourne\ggs+true+ si le nœud \texttt{inNodeName} est défini, et \ggs=false= dans le cas contraire..
+
+
 \subsection{Getter \texttt{keyList}}
 
 \begin{galgas}
-getter keyList -> @stringlist ;
+getter keyList -> @stringlist 
 \end{galgas}
 
 Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un setter d'insertion a été appelé, \refSubsectionPage{setter-insertion-graphe}), que les nœuds indéfinis.
@@ -199,7 +209,7 @@ Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (
 \subsection{Getter \texttt{lkeyList}}
 
 \begin{galgas}
-getter lkeyList -> @stringlist ;
+getter lkeyList -> @stringlist 
 \end{galgas}
 
 Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un setter d'insertion a été appelé, \refSubsectionPage{setter-insertion-graphe}), que les nœuds indéfinis. Chaque nœud défini est accompagné de sa position de définition, les nœuds indéfinis sont accompagnés d'une position non définie (équivalente à celle obtenue par le constructeur \ggs+nowhere+).
@@ -209,7 +219,7 @@ Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (
 \subsection{Getter \texttt{reversedGraph}}
 
 \begin{galgas}
-getter reversedGraph -> @T ;
+getter reversedGraph -> @T 
 \end{galgas}
 
 Ce getter retourne un graphe de même type que le receiveur, mais dont les arcs sont inversés.
@@ -224,7 +234,7 @@ Ce getter retourne un graphe de même type que le receiveur, mais dont les arcs 
 getter subgraphFromNodes
   ?@lstringlist inStartNodes
   ?@stringset inNodesToExclude
-  -> @self ;
+  -> @self 
 \end{galgas}
 
 Ce getter retourne le graphe défini par la partie accessible du receveur à partir des nœuds nommés dans \ggs+inStartNodes+, en excluant les nœuds nommés dans \ggs+inNodesToExclude+.
@@ -239,7 +249,7 @@ Ce getter retourne le graphe défini par la partie accessible du receveur à par
 \begin{galgas}
 getter accessibleNodesFromNodes
   ?@lstringlist inStartNodes
-  -> @lstringlist ;
+  -> @lstringlist 
 \end{galgas}
 
 Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés dans \ggs+inStartNodes+.
@@ -252,7 +262,7 @@ Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés 
 \subsection{Getter \texttt{undefinedNodeCount}}
 
 \begin{galgas}
-getter undefinedNodeCount -> @uint ;
+getter undefinedNodeCount -> @uint 
 \end{galgas}
 
 Ce getter retourne le nombre de nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}).
@@ -266,7 +276,7 @@ Ce getter retourne le nombre de nœuds indéfinis (c'est à dire les nœuds pour
 \subsection{Getter \texttt{undefinedNodeKeyList}}
 
 \begin{galgas}
-getter undefinedNodeKeyList -> @stringlist ;
+getter undefinedNodeKeyList -> @stringlist 
 \end{galgas}
 
 Ce getter retourne la liste des noms des nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}).
@@ -281,7 +291,7 @@ Ce getter retourne la liste des noms des nœuds indéfinis (c'est à dire les n�
 \subsection{Getter \texttt{undefinedNodeReferenceList}}
 
 \begin{galgas}
-getter undefinedNodeReferenceList -> @lstringlist ;
+getter undefinedNodeReferenceList -> @lstringlist 
 \end{galgas}
 
 Ce getter retourne la liste des références des nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}). Une référence à un nœud est un \ggs+@lstring+ dont la chaîne est le nom du nœud, et la composante \ggs+@location+ une position dans le texte source, définie par un appel à \ggs+addEdge+ (\refSubsectionPage{setter-addEdge}) ou \ggs+noteNode+ (\refSubsectionPage{setter-noteNode}).
@@ -299,7 +309,6 @@ method depthFirstTopologicalSort
   !@lstringlist outSortedKeyList
   !@nom_liste_information outUnsortedInformationList
   !@lstringlist outUnsortedKeyList
-;
 \end{galgas}
 
 Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie :
@@ -324,13 +333,33 @@ Cette méthode différe de \ggs+topologicalSort+ (\refSubsectionPage{methode-gra
 
 
 
+\subsectionLabel{Méthode \texttt{circularities}}{methode-graphe-circularities}
+
+\begin{galgas}
+method circularities
+  !@nom_liste_information outInformationList
+  !@lstringlist outKeyList
+\end{galgas}
+
+Cette méthode renvoie la liste de tous les nœuds impliqués dans une circularité. Les deux arguments sont en sortie :
+\begin{itemize}
+  \item le premier argument \ggs+outInformationList+ est la liste des informations utilisateur liées aux nœuds sans prédécesseur ;
+  \item le second \ggs+outKeyList+ est la liste des noms de nœuds sans prédécesseur.
+\end{itemize}
+
+Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice.
+
+
+
+
+
+
 \subsectionLabel{Méthode \texttt{nodesWithNoPredecessor}}{methode-graphe-nodesWithNoPredecessor}
 
 \begin{galgas}
 method nodesWithNoPredecessor
   !@nom_liste_information outInformationList
   !@lstringlist outKeyList
-;
 \end{galgas}
 
 Cette méthode renvoie la liste de tous les nœuds sans prédecesseur. Les deux arguments sont en sortie :
@@ -352,7 +381,6 @@ Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent 
 method nodesWithNoSucccessor
   !@nom_liste_information outInformationList
   !@lstringlist outKeyList
-;
 \end{galgas}
 
 Cette méthode renvoie la liste de tous les nœuds sans successeur. Les deux arguments sont en sortie :
@@ -375,7 +403,6 @@ method topologicalSort
   !@lstringlist outSortedKeyList
   !@nom_liste_information outUnsortedInformationList
   !@lstringlist outUnsortedKeyList
-;
 \end{galgas}
 
 Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie :
