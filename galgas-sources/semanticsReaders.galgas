@@ -59,12 +59,12 @@ proc enterInheritedReaderWithoutArgument
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc enterInheritedReaderWithArgument
+proc enterInheritedGetterWithArgument
   ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inReaderName
-  ?let @string inArgument1TypeName
-  ?let @string inArgument1Name
+  ?getterName:let @string inReaderName
+  ?argumentTypeName:let @string inArgument1TypeName
+  ?argumentName:let @string inArgument1Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments {
   @unifiedTypeMap-proxy returnedTypeIndex

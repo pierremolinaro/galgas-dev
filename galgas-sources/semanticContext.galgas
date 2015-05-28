@@ -897,8 +897,24 @@ override method @mapDeclarationAST enterInSemanticContext
   enterInheritedReaderWith2Arguments ( !?getterMap !?ioSemanticContext.mTypeMap !"hasKeyAtLevel" !"string" !"inKey" !"uint" !"inLevel" !returnedTypeName:"bool" !false )
   enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"keySet" !returnedTypeName:"stringset" !false )
   enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"keyList" !returnedTypeName:"lstringlist" !false )
-  enterInheritedReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"hasKey" !"string" !"inKey" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"locationForKey" !"string" !"inKey" !returnedTypeName:"location" !true )
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"hasKey"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap 
+    !getterName:"locationForKey"
+    !argumentTypeName:"string"
+    !argumentName:"inKey" 
+    !returnedTypeName:"location"
+    !true
+  )
   enterBaseReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
   enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
 #--- Handle properties
@@ -1122,8 +1138,24 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
 #--- Readers
   enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"allKeys" !returnedTypeName:"stringset" !false )
   enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"allKeyList" !returnedTypeName:"lstringlist" !false )
-  enterInheritedReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"hasKey" !"string" !"inKey" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"locationForKey" !"string" !"inKey" !returnedTypeName:"location" !true )
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"hasKey"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"locationForKey" 
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"location"
+    !true
+  )
   enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
   enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"unsolvedProxyCount" !returnedTypeName:"uint" !false )
   enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"unsolvedProxyList" !returnedTypeName:"lstringlist" !false )
@@ -1644,7 +1676,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- @lstringlist type proxy
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let @unifiedTypeMap-proxy lstringListTypeProxy]
 #---
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonReaderMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var constructorMap =@constructorMap.emptyMap{}
   var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
@@ -1737,6 +1769,16 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"string"
     !false # No compiler argument
   )
+#--- Reader 'isNodeDefined'
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isNodeDefined"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"bool"
+    !false # No compiler argument
+  )
 #--- Reader 'keyList'
   enterInheritedReaderWithoutArgument (
     !?getterMap
@@ -1745,7 +1787,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"stringlist"
     !false # No compiler argument
   )
-#--- Reader 'keyList'
+#--- Reader 'lkeyList'
   enterInheritedReaderWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap

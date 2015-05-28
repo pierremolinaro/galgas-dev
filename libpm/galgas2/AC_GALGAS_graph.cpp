@@ -67,14 +67,17 @@ class cSharedGraph : public C_SharedObject {
   private : C_DirectedGraph mDirectedGraph ;
   private : TC_UniqueArray <cGraphNode *> mNodeArray ;
 
-//--- Count
-  public : inline uint32_t allNodeCount (void) const { return (uint32_t) mNodeArray.count () ; }
-
 //--- Constructor
   public : cSharedGraph (LOCATION_ARGS) ;
 
 //--- Destructor
   public : virtual ~ cSharedGraph (void) ;
+
+//--- Count
+  public : inline uint32_t allNodeCount (void) const { return (uint32_t) mNodeArray.count () ; }
+
+//--- isNodeDefined
+  public : bool isNodeDefined (const C_String & inKey) const ;
 
 //--- Internal methods
   public : void description (C_String & ioString,
@@ -331,6 +334,34 @@ void AC_GALGAS_graph::insulateGraph (LOCATION_ARGS) {
       mSharedGraph->checkGraph (HERE) ;
     #endif
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark reader_hasKey
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool AC_GALGAS_graph::reader_isNodeDefined (const GALGAS_string & inKey
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = mSharedGraph->isNodeDefined (inKey.stringValue ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cSharedGraph::isNodeDefined (const C_String & inKey) const {
+  bool result = false ;
+  for (int32_t i=0 ; (i<mNodeArray.count ()) && !result ; i++) {
+    const cGraphNode * p = mNodeArray (i COMMA_HERE) ;
+    result = p->mIsDefined && (p->mKey == inKey) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

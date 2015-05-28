@@ -1921,11 +1921,11 @@ void routine_enterInheritedReaderWithoutArgument (class GALGAS_getterMap & ioArg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Routine 'enterInheritedReaderWithArgument'                                      *
+//                                     Routine 'enterInheritedGetterWithArgument'                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithArgument (class GALGAS_getterMap & ioArgument0,
+void routine_enterInheritedGetterWithArgument (class GALGAS_getterMap & ioArgument0,
                                                class GALGAS_unifiedTypeMap & ioArgument1,
                                                const class GALGAS_string constinArgument2,
                                                const class GALGAS_string constinArgument3,
