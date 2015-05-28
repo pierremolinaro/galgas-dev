@@ -567,7 +567,7 @@ proc addCategories
       end
       [!?ioInstanceMethodMap insertKey
         !lkey
-        !@methodKind. definedAsCategory
+        !@methodKind.definedAsCategory
         !formalArgumentList
         ![lkey location]
         !true
@@ -591,7 +591,7 @@ proc addCategories
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedType]
       [!?ioReaderMap insertKey
         !lkey
-        !@methodKind. definedAsCategory
+        !@methodKind.definedAsCategory
         !formalArgumentList
         ![lkey location]
         !true
@@ -614,7 +614,7 @@ proc addCategories
       end
       [!?ioModifierMap insertKey
         !lkey
-        !@methodKind. definedAsCategory
+        !@methodKind.definedAsCategory
         !formalArgumentList
         !true
         !@methodQualifier.isBasic
@@ -893,10 +893,38 @@ override method @mapDeclarationAST enterInSemanticContext
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false )
   enterConstructorWithArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] !"inMap" ![mMapTypeName string] !false )
 #--- Readers
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"levels" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWith2Arguments ( !?getterMap !?ioSemanticContext.mTypeMap !"hasKeyAtLevel" !"string" !"inKey" !"uint" !"inLevel" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"keySet" !returnedTypeName:"stringset" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"keyList" !returnedTypeName:"lstringlist" !false )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"levels"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedReaderWith2Arguments (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"hasKeyAtLevel"
+    !"string"
+    !"inKey"
+    !"uint"
+    !"inLevel"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"keySet"
+    !returnedTypeName:"stringset"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"keyList"
+    !returnedTypeName:"lstringlist"
+    !false
+  )
   enterInheritedGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -916,7 +944,13 @@ override method @mapDeclarationAST enterInSemanticContext
     !true
   )
   enterBaseReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"count"
+    !returnedTypeName:"uint"
+    !false
+  )
 #--- Handle properties
   var insertMethodFormalArgumentList = @formalParameterSignature.emptyList{}
   var typedPropertyList = @typedPropertyList.emptyList{}
@@ -931,7 +965,7 @@ override method @mapDeclarationAST enterInSemanticContext
   removeMethodFormalArgumentList +=
     ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
     !lstringTypeIndex
-    !@formalArgumentPassingModeAST. argumentConstantIn
+    !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList. emptyList
   for () in mPropertyList do
@@ -1002,7 +1036,7 @@ override method @mapDeclarationAST enterInSemanticContext
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey"}
       !@location.here
       !true
@@ -1017,7 +1051,7 @@ override method @mapDeclarationAST enterInSemanticContext
     [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation]
     [!?modifierMap insertOrReplace
       !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !insertMethodFormalArgumentList
       !false
       !@methodQualifier.isBasic
@@ -1033,7 +1067,7 @@ override method @mapDeclarationAST enterInSemanticContext
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
     [!?modifierMap insertOrReplace
       !accessorName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !accessorFormalArgumentList
       !true
       !@methodQualifier.isBasic
@@ -1136,8 +1170,20 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
 #--- Constructors
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false )
 #--- Readers
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"allKeys" !returnedTypeName:"stringset" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"allKeyList" !returnedTypeName:"lstringlist" !false )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"allKeys"
+    !returnedTypeName:"stringset"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"allKeyList"
+    !returnedTypeName:"lstringlist"
+    !false
+  )
   enterInheritedGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1156,10 +1202,34 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !returnedTypeName:"location"
     !true
   )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"unsolvedProxyCount" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"unsolvedProxyList" !returnedTypeName:"lstringlist" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"edgeGraphvizRepresentation" !returnedTypeName:"string" !false )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"count"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"unsolvedProxyCount"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"unsolvedProxyList"
+    !returnedTypeName:"lstringlist"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"edgeGraphvizRepresentation"
+    !returnedTypeName:"string"
+    !false
+  )
 #--- Handle attributes
   var typedAttributeList =@typedPropertyList.emptyList{}
   var insertMethodFormalArgumentList =@formalParameterSignature.emptyList{}
@@ -1189,7 +1259,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     removeMethodFormalArgumentList +=
       !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
       !attributeTypeIndex
-      !@formalArgumentPassingModeAST. argumentOut
+      !@formalArgumentPassingModeAST.argumentOut
       !mPropertyName.string
   end
 #-------------------------- Insert Modifiers
@@ -1199,7 +1269,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     else
       [!?modifierMap insertOrReplace
         !mInsertMethodName
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !insertMethodFormalArgumentList
         !true
         !@methodQualifier.isBasic
@@ -1209,11 +1279,11 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   end
 #--------------------------- EnterEdge setter
   var enterEdgeFormalArgumentList =@formalParameterSignature.emptyList{}
-  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inSource"
-  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inTarget"
+  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inSource"
+  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inTarget"
   [!?modifierMap insertOrReplace
     !["enterEdge" nowhere]
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !enterEdgeFormalArgumentList
     !false
     !@methodQualifier. isInherited
@@ -1221,11 +1291,11 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   ]
 #--------------------------- topologicalSort Method
   var topologicalSortFormalArgumentList =@formalParameterSignature.emptyList{}
-  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !@formalArgumentPassingModeAST. argumentOut !"outSortedLKeys"
-  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !@formalArgumentPassingModeAST. argumentOut !"outUnsortedLKeys"
+  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !@formalArgumentPassingModeAST.argumentOut !"outSortedLKeys"
+  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !@formalArgumentPassingModeAST.argumentOut !"outUnsortedLKeys"
   [!?instanceMethodMap insertKey
     !["topologicalSort" nowhere]
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !topologicalSortFormalArgumentList
     !@location.here
     !true
@@ -1237,7 +1307,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     for () in mSearchMethodList do
       [!?instanceMethodMap insertKey
         !mSearchMethodName
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !removeMethodFormalArgumentList
         ![mSearchMethodName location]
         !true
@@ -1249,7 +1319,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     for () in mSearchMethodList do
       [!?modifierMap insertKey
         !mSearchMethodName
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !removeMethodFormalArgumentList
         !true
         !@methodQualifier.isBasic
@@ -1263,7 +1333,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?locationTypeIndex]
     [!?modifierMap insertKey
       !@lstring.new {!"openBranch" !@location.here}
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !@formalParameterSignature. emptyList
       !true
       !@methodQualifier. isInherited
@@ -1271,24 +1341,24 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ]
     [!?modifierMap insertKey
       !@lstring.new {!"closeBranch" !@location.here}
-      !@methodKind. definedAsMember
-      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
+      !@methodKind.definedAsMember
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST.argumentIn !"inErrorLocation"}
       !true
       !@methodQualifier.isBasic
       !"" # No error message
     ]
     [!?modifierMap insertKey
       !@lstring.new {!"closeOverride" !@location.here}
-      !@methodKind. definedAsMember
-      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
+      !@methodKind.definedAsMember
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST.argumentIn !"inErrorLocation"}
       !true
       !@methodQualifier. isInherited
       !"" # No error message
     ]
     [!?instanceMethodMap insertKey
       !@lstring.new {!"checkAutomatonStates" !@location.here}
-      !@methodKind. definedAsMember
-      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
+      !@methodKind.definedAsMember
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST.argumentIn !"inErrorLocation"}
       !@location.here
       !true
       !@methodQualifier.isBasic
@@ -1297,7 +1367,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     for () in mMapOverrideBlockListAST do
       [!?modifierMap insertKey
         !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !@formalParameterSignature. emptyList
         !true
         !@methodQualifier.isBasic
@@ -1312,7 +1382,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey"}
       !@location.here
       !true
@@ -1326,11 +1396,11 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
-    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mPropertyName.string
-    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
     [!?modifierMap insertOrReplace
       !accessorName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !accessorFormalArgumentList
       !true
       !@methodQualifier.isBasic
@@ -1421,9 +1491,9 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapProxyTypeName ?mapProxyTypeProxy]
 #--- class method : makeProxy
   var argList =@formalParameterSignature.emptyList{}
-  argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST. argumentInOut !"ioMap"
-  argList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inLKey"
-  argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outProxy"
+  argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
+  argList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
+  argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST.argumentOut !"outProxy"
   [!?classMethodMap insertKey
     !@lstring.new {!"makeProxy" !@location.here}
     !argList
@@ -1431,9 +1501,9 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   ]
 #--- class method : makeProxyFromString
   argList = @formalParameterSignature. emptyList
-  argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST. argumentInOut !"ioMap"
-  argList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inLKey"
-  argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outProxy"
+  argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
+  argList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
+  argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST.argumentOut !"outProxy"
   [!?classMethodMap insertKey
     !@lstring.new {!"makeProxyFromString" !@location.here}
     !argList
@@ -1454,12 +1524,48 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ]
   end
 #--- readers
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"isSolved" !returnedTypeName:"bool" !true )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"isNull" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"isRegular" !returnedTypeName:"bool" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"lkey" !returnedTypeName:"lstring" !true )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"key" !returnedTypeName:"string" !true )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"identifierRepresentation" !returnedTypeName:"string" !true )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isSolved"
+    !returnedTypeName:"bool"
+    !true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isNull"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isRegular"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"lkey"
+    !returnedTypeName:"lstring"
+    !true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"key"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"identifierRepresentation"
+    !returnedTypeName:"string"
+    !true
+  )
 #--- Enter associated map attribute names as readers
   let @getterMap inheritedReaderMap = getterMap
   for () in mapTypedAttributeList do
@@ -1474,7 +1580,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     else
       [!?getterMap insertKey
         !mAttributeName
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !@functionSignature {}
         !@location.here
         !true
@@ -1573,7 +1679,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   #---
     [!?getterMap insertKey
       !mReaderName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !arguments
       !@location.here
       !true #inHasLexiqueAndLocationArguments
@@ -1596,7 +1702,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   #---
     [!?modifierMap insertKey
       !mModifierName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !routineSignature
       !true #inHasLexiqueAndLocationArguments
       !@methodQualifier.isBasicFinal
@@ -1618,7 +1724,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   #---
     [!?instanceMethodMap insertKey
       !mMethodName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !routineSignature
       !mDeclarationLocation
       !true #inHasLexiqueAndLocationArguments
@@ -1666,15 +1772,35 @@ override method @graphDeclarationAST enterInSemanticContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- string type proxy
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeProxy]
+  [@unifiedTypeMap-proxy makeProxyFromString
+    !?ioSemanticContext.mTypeMap
+    !"string"
+    ?let @unifiedTypeMap-proxy stringTypeProxy
+  ]
 #--- lstring type proxy
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?let @unifiedTypeMap-proxy lstringTypeProxy]
+  [@unifiedTypeMap-proxy makeProxyFromString
+    !?ioSemanticContext.mTypeMap
+    !"lstring"
+    ?let @unifiedTypeMap-proxy lstringTypeProxy
+  ]
 #--- Graph type proxy
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mGraphTypeName ?let @unifiedTypeMap-proxy graphTypeProxy]
+  [@unifiedTypeMap-proxy makeProxy
+    !?ioSemanticContext.mTypeMap
+    !mGraphTypeName
+    ?let @unifiedTypeMap-proxy graphTypeProxy
+  ]
 #--- Associated list type proxy
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let @unifiedTypeMap-proxy associatedListTypeProxy]
+  [@unifiedTypeMap-proxy makeProxy
+    !?ioSemanticContext.mTypeMap
+    !mAssociatedListTypeName
+    ?let @unifiedTypeMap-proxy associatedListTypeProxy
+  ]
 #--- @lstringlist type proxy
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let @unifiedTypeMap-proxy lstringListTypeProxy]
+  [@unifiedTypeMap-proxy makeProxyFromString
+    !?ioSemanticContext.mTypeMap
+    !"lstringlist"
+    ?let @unifiedTypeMap-proxy lstringListTypeProxy
+  ]
 #---
   commonReaderMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var constructorMap =@constructorMap.emptyMap{}
@@ -1682,14 +1808,30 @@ override method @graphDeclarationAST enterInSemanticContext
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
-  var formalParameterList =@formalParameterSignature.emptyList{}
-  formalParameterList += !["" nowhere] !associatedListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outSortedInformationList"
-  formalParameterList += !["" nowhere] !lstringListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outSortedLKeyList"
-  formalParameterList += !["" nowhere] !associatedListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outUnsortedInformationList"
-  formalParameterList += !["" nowhere] !lstringListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outUnsortedLKeyList"
+  var formalParameterList = @formalParameterSignature {}
+  formalParameterList += 
+    !["" nowhere]
+    !associatedListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outSortedInformationList"
+  formalParameterList +=
+    !["" nowhere]
+    !lstringListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outSortedLKeyList"
+  formalParameterList +=
+    !["" nowhere]
+    !associatedListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outUnsortedInformationList"
+  formalParameterList +=
+    !["" nowhere]
+    !lstringListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut 
+    !"outUnsortedLKeyList"
   [!?instanceMethodMap insertKey
     !@lstring.new {!"topologicalSort" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
     !true # Has Compiler Argument
@@ -1698,7 +1840,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   [!?instanceMethodMap insertKey
     !@lstring.new {!"depthFirstTopologicalSort" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
     !true # Has Compiler Argument
@@ -1707,12 +1849,29 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   drop formalParameterList
 #--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
-  formalParameterList = @formalParameterSignature. emptyList
-  formalParameterList += !["" nowhere] !associatedListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outInformationList"
-  formalParameterList += !["" nowhere] !lstringListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outLKeyList"
+  formalParameterList = {}
+  formalParameterList +=
+    !["" nowhere]
+    !associatedListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outInformationList"
+  formalParameterList +=
+    !["" nowhere]
+    !lstringListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outLKeyList"
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"circularities" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !@location.here
+    !false # No Compiler Argument
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
   [!?instanceMethodMap insertKey
     !@lstring.new {!"nodesWithNoSuccessor" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
     !false # No Compiler Argument
@@ -1721,7 +1880,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   [!?instanceMethodMap insertKey
     !@lstring.new {!"nodesWithNoPredecessor" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
     !false # No Compiler Argument
@@ -1730,7 +1889,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   drop formalParameterList
 #--- Reader 'reversedGraph'
-  enterBaseFinalReaderWithoutArgument (
+  enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"reversedGraph"
@@ -1738,34 +1897,34 @@ override method @graphDeclarationAST enterInSemanticContext
     !false # No compiler argument
   )
 #--- Reader 'undefinedNodeCount'
-  enterInheritedReaderWithoutArgument (
+  enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"undefinedNodeCount"
+    !getterName:"undefinedNodeCount"
     !returnedTypeName:"uint"
     !false # No compiler argument
   )
 #--- Reader 'undefinedNodeKeyList'
-  enterInheritedReaderWithoutArgument (
+  enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"undefinedNodeKeyList"
+    !getterName:"undefinedNodeKeyList"
     !returnedTypeName:"stringlist"
     !false # No compiler argument
   )
 #--- Reader 'undefinedNodeReferenceList'
-  enterInheritedReaderWithoutArgument (
+  enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"undefinedNodeReferenceList"
+    !getterName:"undefinedNodeReferenceList"
     !returnedTypeName:"lstringlist"
     !false # No compiler argument
   )
 #--- Reader 'graphviz'
-  enterInheritedReaderWithoutArgument (
+  enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"graphviz"
+    !getterName:"graphviz"
     !returnedTypeName:"string"
     !false # No compiler argument
   )
@@ -1780,26 +1939,26 @@ override method @graphDeclarationAST enterInSemanticContext
     !false # No compiler argument
   )
 #--- Reader 'keyList'
-  enterInheritedReaderWithoutArgument (
+  enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"keyList"
+    !getterName:"keyList"
     !returnedTypeName:"stringlist"
     !false # No compiler argument
   )
 #--- Reader 'lkeyList'
-  enterInheritedReaderWithoutArgument (
+  enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"lkeyList"
+    !getterName:"lkeyList"
     !returnedTypeName:"lstringlist"
     !false # No compiler argument
   )
 #--- Reader 'egdes'
-  enterInheritedReaderWithoutArgument (
+  enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"edges"
+    !getterName:"edges"
     !returnedTypeName:"2stringlist"
     !false # No compiler argument
   )
@@ -1833,15 +1992,23 @@ override method @graphDeclarationAST enterInSemanticContext
     !graphTypeProxy
   ]
 #--- setter 'enterNode'
-  formalParameterList = @formalParameterSignature. emptyList
-  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inLKey"
+  formalParameterList = {}
+  formalParameterList +=
+    !["" nowhere]
+    !lstringTypeProxy
+    !@formalArgumentPassingModeAST.argumentIn
+    !"inLKey"
   for () in [associatedListTypeProxy mAddAssignOperatorArguments] do
-    formalParameterList += !["" nowhere] !mFormalArgumentType !@formalArgumentPassingModeAST. argumentIn !mFormalArgumentName
+    formalParameterList +=
+      !["" nowhere]
+      !mFormalArgumentType
+      !@formalArgumentPassingModeAST.argumentIn
+      !mFormalArgumentName
   end
   for () in mInsertModifierList do
     [!?modifierMap insertOrReplace
       !mInsertModifierName
-      !@methodKind. definedAsMember
+      !@methodKind.definedAsMember
       !formalParameterList
       !true # has compiler argument
       !@methodQualifier.isBasic
@@ -1852,7 +2019,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- setter 'removeEdgeToDominators'
   [!?modifierMap insertKey
     !@lstring.new {!"removeEdgesToDominators" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !@formalParameterSignature. emptyList
     !false # No compiler argument
     !@methodQualifier. isInherited
@@ -1860,10 +2027,10 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
 #--- setter 'removeEdgesToNode'
   formalParameterList = @formalParameterSignature. emptyList
-  formalParameterList += !["" nowhere] !stringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inNodeName"
+  formalParameterList += !["" nowhere] !stringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
   [!?modifierMap insertKey
     !@lstring.new {!"removeEdgesToNode" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !formalParameterList
     !true # Compiler argument
     !@methodQualifier. isInherited
@@ -1872,11 +2039,11 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList
 #--- setter 'addEdge'
   formalParameterList = @formalParameterSignature. emptyList
-  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inSourceNodeLKey"
-  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inTargetNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
   [!?modifierMap insertKey
     !@lstring.new {!"addEdge" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !formalParameterList
     !false # No compiler argument
     !@methodQualifier. isInherited
@@ -1885,10 +2052,10 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList
 #--- setter 'noteNode'
   formalParameterList = @formalParameterSignature. emptyList
-  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
   [!?modifierMap insertKey
     !@lstring.new {!"noteNode" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !formalParameterList
     !false # No compiler argument
     !@methodQualifier. isInherited
@@ -2310,8 +2477,8 @@ override method @listDeclarationAST enterInSemanticContext
   for () in typedAttributeList do
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string]
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
-    modifierOutputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentOut !mAttributeName.string
-    modifierInputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
+    modifierOutputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentOut !mAttributeName.string
+    modifierInputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
   end
 #--- Constructors
   var constructorMap =@constructorMap.emptyMap{}
@@ -2324,15 +2491,27 @@ override method @listDeclarationAST enterInSemanticContext
   ]
 #--- Readers
   commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"length" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"range" !returnedTypeName:"range" !false )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"length"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"range"
+    !returnedTypeName:"range"
+    !false
+  )
   enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" !"inIndex" !returnedTypeName:[mListTypeName string] !true )
   enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"range" !"inRange" !returnedTypeName:[mListTypeName string] !true )
   for () in typedAttributeList do
     if mHasGetter then
       [!?getterMap insertOrReplace
         !@lstring.new {![mAttributeName string] + "AtIndex" ![mAttributeName location]}
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !@functionSignature {!["" nowhere] !uintType !"inIndex"}
         !@location.here
         !true
@@ -2346,7 +2525,7 @@ override method @listDeclarationAST enterInSemanticContext
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   [!?instanceMethodMap insertKey
     !@lstring.new {!"first" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierOutputFormalArgumentList
     !@location.here
     !true
@@ -2355,7 +2534,7 @@ override method @listDeclarationAST enterInSemanticContext
   ]
   [!?instanceMethodMap insertKey
     !@lstring.new {!"last" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierOutputFormalArgumentList
     !@location.here
     !true
@@ -2366,7 +2545,7 @@ override method @listDeclarationAST enterInSemanticContext
   var modifierMap =@setterMap.emptyMap{}
   [!?modifierMap insertOrReplace
     !@lstring.new {!"popFirst" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierOutputFormalArgumentList
     !true
     !@methodQualifier.isBasic
@@ -2374,16 +2553,16 @@ override method @listDeclarationAST enterInSemanticContext
   ]
   [!?modifierMap insertOrReplace
     !@lstring.new {!"popLast" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierOutputFormalArgumentList
     !true
     !@methodQualifier.isBasic
     !""
   ]
-  modifierOutputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !"inIndex"
+  modifierOutputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex"
   [!?modifierMap insertOrReplace
     !@lstring.new {!"removeAtIndex" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierOutputFormalArgumentList
     !true
     !@methodQualifier.isBasic
@@ -2393,11 +2572,11 @@ override method @listDeclarationAST enterInSemanticContext
   for () in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList =@formalParameterSignature.emptyList{}
-      setterFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
-      setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
+      setterFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
+      setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
       [!?modifierMap insertOrReplace
         !@lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mAttributeName location]}
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !setterFormalArgumentList
         !true
         !@methodQualifier.isBasic
@@ -2406,10 +2585,10 @@ override method @listDeclarationAST enterInSemanticContext
     end
   end
 #--- setter 'insertAtIndex'
-  modifierInputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !"inInsertionIndex"
+  modifierInputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
   [!?modifierMap insertOrReplace
     !@lstring.new {!"insertAtIndex" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierInputFormalArgumentList
     !true
     !@methodQualifier.isBasic
@@ -2490,7 +2669,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    modifierFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentOut !mPropertyName.string
+    modifierFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
   end
 #--- Constructors
   var constructorMap =@constructorMap.emptyMap{}
@@ -2503,12 +2682,18 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ]
 #--- Readers
   commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"length" !returnedTypeName:"uint" !false )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"length"
+    !returnedTypeName:"uint"
+    !false
+  )
 #--- Modifiers
   var modifierMap =@setterMap.emptyMap{}
   [!?modifierMap insertOrReplace
     !@lstring.new {!"popGreatest" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !true
     !@methodQualifier.isBasic
@@ -2516,7 +2701,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ]
   [!?modifierMap insertOrReplace
     !@lstring.new {!"popSmallest" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !true
     !@methodQualifier.isBasic
@@ -2526,7 +2711,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   [!?instanceMethodMap insertKey
     !@lstring.new {!"greatest" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !@location.here
     !true
@@ -2535,7 +2720,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ]
   [!?instanceMethodMap insertKey
     !@lstring.new {!"smallest" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !@location.here
     !true
@@ -2611,8 +2796,8 @@ override method @structDeclarationAST enterInSemanticContext
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
-    @bool hasSetter = false
-    @bool hasGetter = true
+    var hasSetter = false
+    var hasGetter = true
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     [!?attributeMap insertKey
       !mPropertyName
@@ -2621,7 +2806,7 @@ override method @structDeclarationAST enterInSemanticContext
     ]
   end
   [!?constructorMap insertKey
-    !@lstring.new {!"new" !@location.here}
+    !@lstring.new {!"new" !.here}
     !constructorAttributeTypeList
     !false
     !structTypeIndex
@@ -2630,7 +2815,7 @@ override method @structDeclarationAST enterInSemanticContext
   @getterMap getterMap
   commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
   for () in typedAttributeList do
-    enterBaseFinalReaderWithoutArgument (
+    enterBaseFinalGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap 
       ![mAttributeName string]
@@ -2639,9 +2824,9 @@ override method @structDeclarationAST enterInSemanticContext
     )
   end
 #--- Modifiers
-  var modifierMap =@setterMap.emptyMap{}
+  var modifierMap = @setterMap {}
 #--- Instance methods
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  var instanceMethodMap = @instanceMethodMap {}
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
@@ -2853,7 +3038,7 @@ override method @classDeclarationAST enterInSemanticContext
     if hasGetter then
       [!?getterMap insertKey
         !mPropertyName
-        !@methodKind. definedAsMember
+        !@methodKind.definedAsMember
         !@functionSignature {} # No argument
         !@location.here
         !false # No Compiler argument
@@ -2868,8 +3053,8 @@ override method @classDeclarationAST enterInSemanticContext
     if mHasSetter then
       [!?modifierMap insertKey
         !@lstring.new {!"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
-        !@methodKind. definedAsMember
-        !@formalParameterSignature. listWithValue {!["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentIn !mAttributeName.string}
+        !@methodKind.definedAsMember
+        !@formalParameterSignature. listWithValue {!["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentIn !mAttributeName.string}
         !false # No compiler argument
         !@methodQualifier.isBasicFinal
         !"" # No error message
@@ -3062,7 +3247,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
   [!?getterMap insertOrReplace
     !@lstring.new {!"isValueValidAtIndex" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !uintArgs
     !@location.here
     !true
@@ -3072,7 +3257,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   ]
   [!?getterMap insertOrReplace
     !@lstring.new {!"valueAtIndex" !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !uintArgs
     !@location.here
     !true
@@ -3082,15 +3267,15 @@ override method @arrayDeclarationAST enterInSemanticContext
   ]
 #--- Modifiers
   var modifierFormalArgumentList =@formalParameterSignature.emptyList{}
-  modifierFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"InValue"
+  modifierFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
   idx = 0
   loop( [mDimension uint]) while idx < [mDimension uint] do
-    modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !"inIndex" + idx
+    modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex" + idx
     idx ++
   end
   [!?modifierMap insertKey
     !["setValueAtIndex" nowhere]
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
@@ -3098,7 +3283,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   ]
   [!?modifierMap insertKey
     !["forceValueAtIndex" nowhere]
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
@@ -3107,7 +3292,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   [!?modifierFormalArgumentList popFirst ?4*]
   [!?modifierMap insertKey
     !["invalidateValueAtIndex" nowhere]
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
@@ -3115,18 +3300,18 @@ override method @arrayDeclarationAST enterInSemanticContext
   ]
   [!?modifierMap insertKey
     !["setSize" nowhere]
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
     !""
   ]
   modifierFormalArgumentList = @formalParameterSignature. emptyList
-  modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !"inSize"
-  modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !"inAxisIndex"
+  modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inSize"
+  modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inAxisIndex"
   [!?modifierMap insertKey
     !["setSizeForAxis" nowhere]
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !modifierFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
@@ -3194,10 +3379,36 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- currentType type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
 #--- readers
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"count" !returnedTypeName:"uint" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"allKeys" !returnedTypeName:"stringset" !false )
-  enterInheritedReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"keyList" !returnedTypeName:"stringlist" !false )
-  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"listForKey" !"string" !"inKey" !returnedTypeName:[mAssociatedListTypeName string] !false )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap 
+    !getterName:"count"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"allKeys"
+    !returnedTypeName:"stringset"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"keyList"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseReaderWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"listForKey"
+    !"string"
+    !"inKey"
+    !returnedTypeName:[mAssociatedListTypeName string]
+    !false
+  )
 #--- Constructors
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mListmapTypeName string] !false )
 #--- Enumerator description

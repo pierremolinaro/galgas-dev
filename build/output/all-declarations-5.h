@@ -1426,6 +1426,10 @@ class GALGAS_semanticTypePrecedenceGraph : public AC_GALGAS_graph {
 
 
 //--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_circularities (class GALGAS_semanticDeclarationListAST & outArgument0,
+                                                       class GALGAS_lstringlist & outArgument1
+                                                       COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG void method_depthFirstTopologicalSort (class GALGAS_semanticDeclarationListAST & outArgument0,
                                                                    class GALGAS_lstringlist & outArgument1,
                                                                    class GALGAS_semanticDeclarationListAST & outArgument2,

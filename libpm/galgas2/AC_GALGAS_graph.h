@@ -138,6 +138,10 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const ;
 
+  protected : VIRTUAL_IN_DEBUG void internalFindCircularities (cSharedList * & outInfoList,
+                                                               GALGAS_lstringlist & outNodeKeyList
+                                                               COMMA_UNUSED_LOCATION_ARGS) const ;
+
   protected : VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (cSharedList * & outSortedList,
                                                                     GALGAS_lstringlist & outSortedNodeKeyList
                                                                     COMMA_LOCATION_ARGS) const ;

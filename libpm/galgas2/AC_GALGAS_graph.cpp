@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2008, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -116,6 +116,10 @@ class cSharedGraph : public C_SharedObject {
                                          GALGAS_lstringlist & outSortedNodeKeyList,
                                          cSharedList * & outUnsortedList,
                                          GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
+
+
+  public : void internalFindCircularities (cSharedList * & outInfoList,
+                                           GALGAS_lstringlist & outNodeKeyList) const ;
 
   public : void internalNodesWithNoPredecessor (cSharedList * & outInfoList,
                                                 GALGAS_lstringlist & outNodeKeyList) const ;
@@ -951,6 +955,43 @@ GALGAS_stringlist AC_GALGAS_graph::reader_undefinedNodeKeyList (LOCATION_ARGS) c
     buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;
   }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Find circularities
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cSharedGraph::internalFindCircularities (cSharedList * & outInfoList,
+                                              GALGAS_lstringlist & outNodeKeyList) const {
+  TC_UniqueArray <uint32_t> nodeArray ;
+  mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
+//--- Add nodes
+  AC_GALGAS_list::makeNewSharedList (outInfoList COMMA_HERE) ;
+  outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void AC_GALGAS_graph::internalFindCircularities (cSharedList * & outInfoList,
+                                                 GALGAS_lstringlist & outNodeKeyList
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalFindCircularities (outInfoList, outNodeKeyList) ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
