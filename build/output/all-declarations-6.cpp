@@ -2685,6 +2685,17 @@ GALGAS_semanticImportDependenceGraph GALGAS_semanticImportDependenceGraph::reade
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_semanticImportDependenceGraph::method_circularities (GALGAS_stringlist & outInfoList,
+                                                                 GALGAS_lstringlist & outKeyList
+                                                                 COMMA_LOCATION_ARGS) const {
+  cSharedList * infoList = NULL ;
+  internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
+  outInfoList = GALGAS_stringlist (infoList) ;
+  GALGAS_stringlist::detachSharedList (infoList) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_semanticImportDependenceGraph::method_nodesWithNoSuccessor (GALGAS_stringlist & outInfoList,
                                                                         GALGAS_lstringlist & outKeyList
                                                                         COMMA_LOCATION_ARGS) const {

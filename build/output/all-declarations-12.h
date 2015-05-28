@@ -1893,11 +1893,11 @@ void routine_enterConstructorWith_33_Arguments (class GALGAS_constructorMap & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                    Routine 'enterBaseFinalReaderWithoutArgument'                                    *
+//                                    Routine 'enterBaseFinalGetterWithoutArgument'                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWithoutArgument (class GALGAS_getterMap & ioArgument0,
+void routine_enterBaseFinalGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
                                                   class GALGAS_unifiedTypeMap & ioArgument1,
                                                   const class GALGAS_string constinArgument2,
                                                   const class GALGAS_string constinArgument3,
@@ -1907,11 +1907,11 @@ void routine_enterBaseFinalReaderWithoutArgument (class GALGAS_getterMap & ioArg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                    Routine 'enterInheritedReaderWithoutArgument'                                    *
+//                                    Routine 'enterInheritedGetterWithoutArgument'                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithoutArgument (class GALGAS_getterMap & ioArgument0,
+void routine_enterInheritedGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
                                                   class GALGAS_unifiedTypeMap & ioArgument1,
                                                   const class GALGAS_string constinArgument2,
                                                   const class GALGAS_string constinArgument3,
