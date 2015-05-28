@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2010, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -76,6 +76,8 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
 //--------------------------------- Readers
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_count (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_isNodeDefined (const GALGAS_string & inKey COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_keyList (LOCATION_ARGS) const ;
 
