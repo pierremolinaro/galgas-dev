@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2001, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2001, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -47,20 +47,6 @@
 #ifndef MACHINE_IS_DEFINED
   #error "Undefined machine"
 #endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                        C O C O A   O U T P U T                                                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static bool gCocoaOutput = false ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cocoaOutput (void) {
-  return gCocoaOutput ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -237,7 +223,7 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
   outFound = false ;
   bool correctFormat = true ;
 //--- Look for a boolean argument
-  C_BoolCommandLineOption::setBoolOptionForCommandString (& inCommand [2], outFound, gCocoaOutput) ;
+  C_BoolCommandLineOption::setBoolOptionForCommandString (& inCommand [2], outFound) ;
 //--- If not found, look for a Uint option
   if (! outFound) {
     C_UIntCommandLineOption::setUIntOptionForCommandString (& inCommand [2], outFound, correctFormat) ;

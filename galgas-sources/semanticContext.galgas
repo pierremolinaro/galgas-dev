@@ -3054,7 +3054,7 @@ override method @classDeclarationAST enterInSemanticContext
       [!?modifierMap insertKey
         !@lstring.new {!"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
-        !@formalParameterSignature. listWithValue {!["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentIn !mAttributeName.string}
+        !{!["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentIn !mAttributeName.string}
         !false # No compiler argument
         !@methodQualifier.isBasicFinal
         !"" # No error message

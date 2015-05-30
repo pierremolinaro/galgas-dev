@@ -1292,26 +1292,23 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [mBufferedOutputData appendData:inData] ;
-//--- Split input data, by detecting 2 consecutives COCOA_MESSAGE_ID characters
+//--- Split input data, by detecting a line feed
   BOOL ok = YES ;
-  const uint16 sentinel = 0x0101 ;
   while (ok) {
     ok = NO ;
-  //--- Look for sentinel
-    NSUInteger idx = 0 ;
-    while ((! ok) && ((idx + 1) < mBufferedOutputData.length)) {
-      const NSRange range = {idx, 2} ;
-      uint16 c ;
+    NSUInteger idx = mBufferedOutputData.length ;
+    while ((! ok) && (idx > 0)) {
+      idx -- ;
+      const NSRange range = {idx, 1} ;
+      uint8 c ;
       [mBufferedOutputData getBytes:& c range:range] ;
-      ok = c == sentinel ;
-      if (! ok) {
-        idx ++ ;
-      }
+      ok = c == '\n' ;
     }
   //--- If found, extract data
     if (ok) {
+      idx ++ ;
       NSData * data = [mBufferedOutputData subdataWithRange:NSMakeRange (0, idx)] ;
-      NSData * remainingData = [mBufferedOutputData subdataWithRange:NSMakeRange (idx + 2, mBufferedOutputData.length - (idx + 2))] ;
+      NSData * remainingData = [mBufferedOutputData subdataWithRange:NSMakeRange (idx, mBufferedOutputData.length - idx)] ;
       [mBufferedOutputData setData:remainingData] ;
       [self enterOutputData:data] ;
     }
