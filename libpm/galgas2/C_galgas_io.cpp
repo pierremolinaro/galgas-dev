@@ -585,9 +585,7 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void ggs_printFileOperationSuccess (const C_String & inMessage
-                                    COMMA_UNUSED_LOCATION_ARGS) {
-//---
+void ggs_printFileOperationSuccess (const C_String & inMessage) {
   if (! executionModeIsIndexing ()) {
     co.setForeColor (kGreenForeColor) ;
     co.setTextAttribute (kBoldTextAttribute) ;
@@ -603,9 +601,7 @@ void ggs_printFileOperationSuccess (const C_String & inMessage
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void ggs_printFileCreationSuccess (const C_String & inMessage
-                                   COMMA_UNUSED_LOCATION_ARGS) {
-//---
+void ggs_printFileCreationSuccess (const C_String & inMessage) {
   if (! executionModeIsIndexing ()) {
     co.setForeColor (kBlueForeColor) ;
     co.setTextAttribute (kBoldTextAttribute) ;

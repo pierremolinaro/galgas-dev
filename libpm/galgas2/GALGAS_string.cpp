@@ -1052,7 +1052,7 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
     }else{
       const C_String errorMessage = C_FileManager::deleteFile (inFilePath.mString) ;
       if (errorMessage.length () == 0) {
-        ggs_printFileOperationSuccess (C_String ("Deleted '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+        ggs_printFileOperationSuccess (C_String ("Deleted '") + inFilePath.mString + "'.\n") ;
       }else{
         C_String message ;
         message << "cannot perform delete '" << inFilePath.mString << "' file: " << errorMessage ;
@@ -1245,9 +1245,9 @@ void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
       const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
       const bool ok = C_FileManager::writeStringToFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
-        ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+        ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n") ;
       }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-        ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+        ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n") ;
       }else if (! ok) {
         C_String message ;
         message << "cannot write '" << inFilePath.mString << "' file" ;
@@ -1286,9 +1286,9 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
         }else{
           ok = C_FileManager::writeStringToFile (mString, inFilePath.mString) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
-            ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+            ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n") ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+            ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n") ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.mString << "' file" ;
@@ -1315,9 +1315,9 @@ void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
       const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
       const bool ok = C_FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
-        ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+        ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n") ;
       }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-        ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+        ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n") ;
       }else if (! ok) {
         C_String message ;
         message << "cannot write '" << inFilePath.mString << "' file" ;
@@ -1356,9 +1356,9 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
         }else{
           ok = C_FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
-            ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+            ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n") ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+            ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n") ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.mString << "' file" ;

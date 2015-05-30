@@ -568,7 +568,7 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
       }
       f << inContents ;
       if (verboseOptionOn || veryVerboseOptionOn) {
-        ggs_printFileOperationSuccess (C_String ("Created '") + fileName + "'.\n" COMMA_HERE) ;
+        ggs_printFileOperationSuccess (C_String ("Created '") + fileName + "'.\n") ;
       }
     }else{
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
@@ -591,7 +591,7 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
         }else{
           f << inContents ;
           if (verboseOptionOn || veryVerboseOptionOn) {
-            ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n" COMMA_HERE) ;
+            ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
           }
         }
       }else{
@@ -690,7 +690,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
         << inGeneratedZone2 << kSTART_OF_USER_ZONE_2 << inDefaultUserZone2 << kEND_OF_USER_ZONE_2
         << inGeneratedZone3 ;
       if (verboseOptionOn || veryVerboseOptionOn) {
-        ggs_printFileCreationSuccess (C_String ("Created '") + fileName + "'.\n" COMMA_HERE) ;
+        ggs_printFileCreationSuccess (C_String ("Created '") + fileName + "'.\n") ;
       }
       f.close () ;
       if (inMakeExecutable) {
@@ -757,7 +757,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
         << kSTART_OF_USER_ZONE_2 << secondUserPart << kEND_OF_USER_ZONE_2
         << inGeneratedZone3 ;
       if (verboseOptionOn || veryVerboseOptionOn) {
-        ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n" COMMA_HERE) ;
+        ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
       }
       f.close () ;
       if (inMakeExecutable) {
