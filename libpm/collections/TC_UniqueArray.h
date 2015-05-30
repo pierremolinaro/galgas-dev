@@ -6,7 +6,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1997, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -31,6 +31,7 @@
 #include "utilities/M_SourceLocation.h"
 #include "utilities/TF_Swap.h"
 #include "utilities/MF_MemoryControl.h"
+#include "utilities/cpp-allocation.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
