@@ -69,6 +69,7 @@
       NSMutableArray * arguments = [NSMutableArray new] ;
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
       [arguments addObject:inFilePath] ;
+      [arguments addObject:@"--cocoa"] ;
    //--- Create task
       mTask = [NSTask new] ;
       if ([gCocoaApplicationDelegate prefixByToolUtility]) {
