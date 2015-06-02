@@ -35,6 +35,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+#ifndef COMPILE_FOR_WIN32
+  #include <pwd.h>
+#endif
+
+#ifdef COMPILE_FOR_WIN32
+  #include <Shlobj.h>
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifndef COMPILE_FOR_WIN32
+  GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
+    return GALGAS_string (getpwuid (getuid ())->pw_dir) ;
+  }
+#endif
+
+#ifdef COMPILE_FOR_WIN32
+  GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
+    char path [MAX_PATH] ;
+    SHGetFolderPath (NULL, CSIDL_PROFILE, NULL, 0, path) ;
+    return GALGAS_string (path).reader_unixPathWithNativePath (HERE) ;
+  }
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
