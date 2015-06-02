@@ -1495,6 +1495,8 @@ class GALGAS_string : public AC_GALGAS_root
                                                                       const class GALGAS_string & inOperand1
                                                                       COMMA_LOCATION_ARGS) ;
 
+  public : static GALGAS_string constructor_homeDirectory (LOCATION_ARGS) ;
+
   public : static GALGAS_string constructor_retrieveAndResetTemplateString (C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
