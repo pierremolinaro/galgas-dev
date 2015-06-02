@@ -514,7 +514,6 @@ void signalRunTimeWarning (const C_String & inWarningMessage
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const utf32 COCOA_MESSAGE_ID  = TO_UNICODE (1) ;
 static const utf32 COCOA_WARNING_ID = TO_UNICODE (3) ;
 static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
@@ -549,8 +548,6 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
       co.appendUnicodeCharacter (COCOA_ERROR_ID COMMA_HERE) ;
       co << errorMessage ;
       co.setTextAttribute (kAllAttributesOff) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
       co.flush () ;
     }else{
       co.setForeColor (kRedForeColor) ;
@@ -594,8 +591,6 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
       co.appendUnicodeCharacter (COCOA_WARNING_ID COMMA_HERE) ;
       co << warningMessage ;
       co.setTextAttribute (kAllAttributesOff) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
       co.flush () ;
     }else{
       co.setForeColor (kYellowForeColor) ;
@@ -620,8 +615,6 @@ void ggs_printFileOperationSuccess (const C_String & inMessage) {
       co.setTextAttribute (kBoldTextAttribute) ;
       co << inMessage;
       co.setTextAttribute (kAllAttributesOff) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
       co.flush () ;
     }else{
       co.setForeColor (kGreenForeColor) ;
@@ -646,8 +639,6 @@ void ggs_printFileCreationSuccess (const C_String & inMessage) {
       co.setTextAttribute (kBoldTextAttribute) ;
       co << inMessage;
       co.setTextAttribute (kAllAttributesOff) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
       co.flush () ;
     }else{
       co.setForeColor (kBlueForeColor) ;
@@ -676,10 +667,6 @@ void ggs_printMessage (const C_String & inMessage
       }
     #endif
     co << message ;
-    if (cocoaOutput ()) {
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
-      co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
-    }
     co.flush () ;
   }
 }

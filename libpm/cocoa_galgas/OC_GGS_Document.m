@@ -1292,29 +1292,29 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [mBufferedOutputData appendData:inData] ;
-//--- Split input data, by detecting 2 consecutives COCOA_MESSAGE_ID characters
-  BOOL ok = YES ;
-  const uint16 sentinel = 0x0101 ;
-  while (ok) {
-    ok = NO ;
-  //--- Look for sentinel
-    NSUInteger idx = 0 ;
-    while ((! ok) && ((idx + 1) < mBufferedOutputData.length)) {
-      const NSRange range = {idx, 2} ;
-      uint16 c ;
-      [mBufferedOutputData getBytes:& c range:range] ;
-      ok = c == sentinel ;
-      if (! ok) {
-        idx ++ ;
-      }
-    }
-  //--- If found, extract data
-    if (ok) {
-      NSData * data = [mBufferedOutputData subdataWithRange:NSMakeRange (0, idx)] ;
-      NSData * remainingData = [mBufferedOutputData subdataWithRange:NSMakeRange (idx + 2, mBufferedOutputData.length - (idx + 2))] ;
-      [mBufferedOutputData setData:remainingData] ;
-      [self enterOutputData:data] ;
-    }
+//--- Look for line feed
+  BOOL ok = NO ;
+  NSUInteger idx = mBufferedOutputData.length ;
+  while ((! ok) && (idx > 0)) {
+    idx -- ;
+    const NSRange range = {idx, 1} ;
+    uint16 c ;
+    [mBufferedOutputData getBytes:& c range:range] ;
+    ok = c == '\n' ;
+  }
+//--- If found, extract data
+  if (ok) {
+    idx ++ ;
+    NSData * data = [mBufferedOutputData subdataWithRange:NSMakeRange (0, idx)] ;
+    NSData * remainingData = [mBufferedOutputData subdataWithRange:NSMakeRange (idx, mBufferedOutputData.length - idx)] ;
+    [mBufferedOutputData setData:remainingData] ;
+    [self enterOutputData:data] ;
+  }
+//--- Remaining data is a valid UFT8 string ?
+  NSString * s = [[NSString alloc] initWithData:mBufferedOutputData encoding:NSUTF8StringEncoding] ;
+  if (s != nil) { // Valid UFT8 string
+    [self enterOutputData:mBufferedOutputData] ;
+    [mBufferedOutputData setData:[NSData data]] ;
   }
 }
 
