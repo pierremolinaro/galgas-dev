@@ -99,23 +99,24 @@ private proc appendStructASTForTypeWithLocation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc appendStructASTForRangeType
-  ?!@semanticDeclarationListAST ioDeclarationListASTs {
-  var featureList =@lstringlist.emptyList{}
-  var attributeList =@propertyInCollectionListAST.emptyList{}
+private proc appendStructASTForRangeType
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+{
+  @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"start" !@location.here}
-    !featureList
+    !{}
   attributeList +=
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"length" !@location.here}
-    !featureList
+    !{}
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined
     !@lstring.new {!"range" !@location.here}
     !attributeList
-    !"uint"}
+    !"uint"
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -140,28 +141,28 @@ proc appendPredefinedTypesASTs
   ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!true !"binaryset" !.predefined_binaryset}
   ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!true !"data" !.predefined_data}
 
-  appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"luint" )
-  appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"uint" )
-  appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"uint64" )
-  appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"function" )
-  appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"string" )
-  appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"lstring" )
-  appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"type" )
-  appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"object" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"luint" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint64" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"function" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"string" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"lstring" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"type" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"object" )
 
-  appendStructASTForTypeWithLocation ( !?ioDeclarationListASTs !"bool" )
-  appendStructASTForTypeWithLocation ( !?ioDeclarationListASTs !"uint" )
-  appendStructASTForTypeWithLocation ( !?ioDeclarationListASTs !"uint64" )
-  appendStructASTForTypeWithLocation ( !?ioDeclarationListASTs !"sint" )
-  appendStructASTForTypeWithLocation ( !?ioDeclarationListASTs !"sint64" )
-  appendStructASTForTypeWithLocation ( !?ioDeclarationListASTs !"char" )
-  appendStructASTForTypeWithLocation ( !?ioDeclarationListASTs !"double" )
-  appendStructASTForTypeWithLocation ( !?ioDeclarationListASTs !"string" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bool" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint64" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint64" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"char" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"double" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"string" )
 
-  appendPredefined2StringListTypeAST ( !?ioDeclarationListASTs )
-  appendPredefined2LStringListTypeAST ( !?ioDeclarationListASTs )
+  appendPredefined2StringListTypeAST (!?ioDeclarationListASTs )
+  appendPredefined2LStringListTypeAST (!?ioDeclarationListASTs )
 
-  appendStructASTForRangeType ( !?ioDeclarationListASTs )
+  appendStructASTForRangeType (!?ioDeclarationListASTs )
 #--- Enumeration predefined type (used only for testing type generation)
 #  @lstringlist constantList [emptyList] ;
 #  constantList += ![@lstring new !"zero" !here] ;

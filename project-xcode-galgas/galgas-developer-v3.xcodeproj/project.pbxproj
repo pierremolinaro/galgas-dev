@@ -1746,7 +1746,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = IRCCyN;
 				TargetAttributes = {
 					CF6DF20D09E3F3A700506859 = {
@@ -2250,8 +2250,8 @@
 					"../libpm/**",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				SDKROOT = macosx10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				SDKROOT = macosx10.10;
 				SYMROOT = "build-developer-v3";
 				VALID_ARCHS = x86_64;
 			};
@@ -2306,6 +2306,7 @@
 				);
 				INFOPLIST_FILE = "Info-developer.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.ec-nantes.irccyn.molinaro.cocoaGalgas";
 				PRODUCT_NAME = cocoaGalgasDeveloper;
 				WRAPPER_EXTENSION = app;
 			};
