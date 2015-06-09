@@ -19,7 +19,7 @@
 
 @interface GGSUpdateCocoaGalgas : NSObject {
 //--- In New Available Panel
-  @private IBOutlet NSPanel * mNewAvailableVersionPanel ;
+//  @private IBOutlet NSPanel * mNewAvailableVersionPanel ;
   @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox2 ;
   @private IBOutlet NSButton * mPerformUpdateButton ;
   @private IBOutlet NSTextField * mNewVersionTextField ;
@@ -54,6 +54,8 @@
   @private NSPipe * mPipe ;
   @private NSMutableData * mResultData ;
 }
+
+@property(atomic) IBOutlet NSPanel * mNewAvailableVersionPanel ;
 
 - (IBAction) checkForNewVersion: (id) inSender ;
 
