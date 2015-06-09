@@ -39,6 +39,8 @@
 
 @implementation GGSUpdateCocoaGalgas
 
+@synthesize mNewAvailableVersionPanel ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) galgasUpdaterArchiveName {
@@ -260,14 +262,17 @@
           s = [NSString stringWithFormat:@"Install and Launch Version %@", mLastAvailableVersion] ;
           [mPerformUpdateButton setTitle:s] ;
           [mCheckNowButton setEnabled:NO] ;
- //         dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{ [self.mNewAvailableVersionPanel runModal] ; }) ;
-          [NSApp
+          dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+            const NSInteger returnCode = [NSApp runModalForWindow:self.mNewAvailableVersionPanel];
+            [self newVersionIsAvailableAlertDidEndWithReturnCode:returnCode] ;
+          }) ;
+ /*         [NSApp
             beginSheet:mNewAvailableVersionPanel
             modalForWindow:nil
             modalDelegate:self
             didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
             contextInfo:NULL
-          ] ;
+          ] ;*/
         }else if (! mSearchForUpdatesInBackground) {
           NSAlert * alert = [NSAlert
             alertWithMessageText:@"GALGAS is up to date."
@@ -299,9 +304,10 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
+/*- (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
          returnCode:(int) inReturnCode
-         contextInfo:(void  *) inContextInfo {
+         contextInfo:(void  *) inContextInfo {*/
+- (void) newVersionIsAvailableAlertDidEndWithReturnCode:(NSInteger) inReturnCode {
   // NSLog (@"inReturnCode %d", inReturnCode) ;
   if (inReturnCode == YES) {
   //--- Remove temporary dir if it exists
@@ -459,12 +465,16 @@
           otherButton:nil
           informativeTextWithFormat:@""
         ] ;
-        [alert
+        dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+          const NSInteger returnCode = [alert runModal];
+          [self launchGalgasUpdaterAlertDidEndWithReturnCode:returnCode] ;
+        }) ;
+ /*       [alert
           beginSheetModalForWindow:nil
           modalDelegate:self
           didEndSelector:@selector (launchGalgasUpdaterAlertDidEnd:returnCode:contextInfo:)
           contextInfo:NULL
-        ] ;
+        ] ;*/
       }else{
         NSAlert * alert = [NSAlert
           alertWithMessageText:@"Cannot uncompress archive."
@@ -482,9 +492,10 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) launchGalgasUpdaterAlertDidEnd:(NSAlert *) inUnusedAlert
+/*- (void) launchGalgasUpdaterAlertDidEnd:(NSAlert *) inUnusedAlert
          returnCode:(int) inReturnCode
-         contextInfo:(void  *) inContextInfo {
+         contextInfo:(void  *) inContextInfo {*/
+- (void) launchGalgasUpdaterAlertDidEndWithReturnCode: (NSInteger) inReturnCode {
   if (inReturnCode == YES) {
     NSString * galgasUpdaterApp = [[[self temporaryPathForGalgasUpdaterArchive] stringByDeletingPathExtension] stringByDeletingPathExtension] ;
     NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;

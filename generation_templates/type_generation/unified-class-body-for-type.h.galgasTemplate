@@ -108,12 +108,12 @@ end
 
 if (SUPPORTED_OPERATORS & binaryAddOperatorNoOVF ()) != 0 then
   %//--------------------------------- &+ operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation_no_ovf (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if (SUPPORTED_OPERATORS & binarySubOperatorNoOVF ()) != 0 then
   %//--------------------------------- &- operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation_no_ovf (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if (SUPPORTED_OPERATORS & binarySubOperator ()) != 0 then
@@ -132,7 +132,7 @@ end
 
 if (SUPPORTED_OPERATORS & binaryMulOperatorNoOVF ()) != 0 then
   %//--------------------------------- &* operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation_no_ovf (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if (SUPPORTED_OPERATORS & binaryDivOperator ()) != 0 then
@@ -144,7 +144,7 @@ end
 
 if (SUPPORTED_OPERATORS & binaryDivOperatorNoOVF ()) != 0 then
   %//--------------------------------- &/ operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation_no_ovf (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if (SUPPORTED_OPERATORS & binaryModOperator ()) != 0 then

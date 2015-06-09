@@ -2251,7 +2251,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx10.11;
 				SYMROOT = "build-developer-v3";
 				VALID_ARCHS = x86_64;
 			};
