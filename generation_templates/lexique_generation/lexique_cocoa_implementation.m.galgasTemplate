@@ -91,14 +91,21 @@ end%
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSArray *) indexingTitles { // Array of NSString
-  return [NSArray arrayWithObjects:
+%
+if [INDEXING_LIST length] > 0 then
+%  return [NSArray arrayWithObjects:
 %
   for () in INDEXING_LIST do
     %    @%![mIndexComment utf8Representation]%,\n%
   end
 %    NULL
   ] ;
-}
+%else
+%
+  return [NSArray array] ;
+%
+end
+%}
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
