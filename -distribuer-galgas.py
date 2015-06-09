@@ -190,7 +190,7 @@ runCommand (["rm", "-fr", "galgas/makefile-x86linux64-on-macosx"])
 runCommand (["rm", "-fr", "galgas/build/cli-objects"])
 #-------------------- Recompiler le projet Xcode
 os.chdir (DIR + "/galgas/project-xcode-galgas")
-runCommand (["xcodebuild", "-project", "galgas-distribution.xcodeproj", "-target", "GALGAS Cocoa", "-configuration", "Default"])
+runCommand (["xcodebuild", "-project", "galgas-distribution.xcodeproj", "-sdk", "macosx10.7", "-target", "GALGAS Cocoa", "-configuration", "Default"])
 os.chdir (DIR)
 #-------------------- Creer l'archive BZ2 de cocoa galgas
 runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app", DIR])
