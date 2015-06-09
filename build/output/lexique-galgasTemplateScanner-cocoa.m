@@ -82,9 +82,8 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSArray *) indexingTitles { // Array of NSString
-  return [NSArray arrayWithObjects:
-    NULL
-  ] ;
+
+  return [NSArray array] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

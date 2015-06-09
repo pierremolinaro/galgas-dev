@@ -221,7 +221,7 @@
         otherButton:nil
         informativeTextWithFormat:@"Reason: '%@'.", [error localizedDescription]
       ] ;
-      [alert runModal] ;
+      dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{ [alert runModal] ; }) ;
     }
   }else{
     mLastAvailableVersion = [[NSString alloc] initWithData:[inDownloader downloadedData] encoding:NSASCIIStringEncoding] ;
@@ -260,6 +260,7 @@
           s = [NSString stringWithFormat:@"Install and Launch Version %@", mLastAvailableVersion] ;
           [mPerformUpdateButton setTitle:s] ;
           [mCheckNowButton setEnabled:NO] ;
+ //         dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{ [self.mNewAvailableVersionPanel runModal] ; }) ;
           [NSApp
             beginSheet:mNewAvailableVersionPanel
             modalForWindow:nil
@@ -291,7 +292,7 @@
         otherButton:nil
         informativeTextWithFormat:@"The server answered in an incomprehensible way: '%@'.", mLastAvailableVersion
       ] ;
-      [alert runModal] ;
+      dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{ [alert runModal] ; }) ;
     }
   }
 }
@@ -358,7 +359,7 @@
     otherButton:nil
     informativeTextWithFormat:@"The following error occurs: %@.", [userInfo objectForKey:@"NSLocalizedDescription"]
   ] ;
-  [alert runModal] ;
+  dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{ [alert runModal] ; }) ;
   [self downloadHasBeenCancelled] ;
 }
 
@@ -472,7 +473,7 @@
           otherButton:nil
           informativeTextWithFormat:@"An error occurs during uncompressing (code %d).", status
         ] ;
-        [alert runModal] ;
+        dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{ [alert runModal] ; }) ;
       }
       [mCancelButton.window orderOut:nil] ;
     }  
@@ -497,7 +498,7 @@
         otherButton:nil
         informativeTextWithFormat:@"Cannot launch Galgas Updater."
       ] ;
-      [alert runModal] ;
+      dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{ [alert runModal] ; }) ;
       [self downloadHasBeenCancelled] ;
     }
   }else{
@@ -843,7 +844,7 @@
       otherButton: nil
       informativeTextWithFormat:@"No command line Tool is currently embedded by application."
     ] ;
-    [alert runModal] ;
+    dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{ [alert runModal] ; }) ;
   }else{
  //--- Create task
     mTask = [NSTask new] ;
