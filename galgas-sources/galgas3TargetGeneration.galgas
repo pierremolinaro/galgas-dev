@@ -331,6 +331,7 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"MountainLion"
   availableGenerationFeatures += !"Mavericks"
   availableGenerationFeatures += !"Yosemite"
+  availableGenerationFeatures += !"ElCapitan"
   availableGenerationFeatures += !"LatestMacOS"
   availableGenerationFeatures += !"multi-threading"
   var generationFeatures =@stringset.emptySet{}
@@ -344,6 +345,8 @@ proc updateGalgas3Targets
       if [generationFeatures hasKey !mValue.string] then
         error mValue: "duplicate '" + mValue + "' feature"
       end
+      let macOsDuplicateMessage = "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\","
+          " \"Yosemite\" and \"ElCapitan\", \"LatestMacOS\" are exclusive"
     #--- Multi-threading
       if mValue.string == "multi-threading" then
         if multiThreadingEnabled then
@@ -353,41 +356,48 @@ proc updateGalgas3Targets
     #--- SnowLeopard
       elsif mValue.string == "SnowLeopard" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive"
+          error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.6"
     #--- Lion
       elsif mValue.string == "Lion" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive"
+          error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.7"
         usesARC = true
     #--- Mountain Lion
       elsif mValue.string == "MountainLion" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive"
+          error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.8"
         usesARC = true
     #--- Mavericks
       elsif mValue.string == "Mavericks" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive"
+          error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.9"
         usesARC = true
     #--- Yosemite
       elsif mValue.string == "Yosemite" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive"
+          error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.10"
+        usesARC = true
+    #--- ElCapitan
+      elsif mValue.string == "ElCapitan" then
+        if (SDK != "") then
+          error mValue: macOsDuplicateMessage
+        end
+        SDK = "macosx10.11"
         usesARC = true
     #--- Lastest MacOS
       elsif mValue.string == "LatestMacOS" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive"
+          error mValue: macOsDuplicateMessage
         end
         SDK = "macosx"
         usesARC = true
