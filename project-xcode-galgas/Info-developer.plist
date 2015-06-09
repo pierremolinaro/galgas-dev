@@ -188,7 +188,7 @@
 	<key>CFBundleIconFile</key>
 	<string>galgasApplication</string>
 	<key>CFBundleIdentifier</key>
-	<string>fr.ec-nantes.irccyn.molinaro.cocoaGalgas</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

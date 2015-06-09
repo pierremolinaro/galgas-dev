@@ -221,12 +221,7 @@
         otherButton:nil
         informativeTextWithFormat:@"Reason: '%@'.", [error localizedDescription]
       ] ;
-      [alert
-        beginSheetModalForWindow:nil
-        modalDelegate:nil
-        didEndSelector:NULL
-        contextInfo:NULL
-      ] ;
+      [alert runModal] ;
     }
   }else{
     mLastAvailableVersion = [[NSString alloc] initWithData:[inDownloader downloadedData] encoding:NSASCIIStringEncoding] ;
@@ -296,12 +291,7 @@
         otherButton:nil
         informativeTextWithFormat:@"The server answered in an incomprehensible way: '%@'.", mLastAvailableVersion
       ] ;
-      [alert
-        beginSheetModalForWindow:nil
-        modalDelegate:nil
-        didEndSelector:NULL
-        contextInfo:NULL
-      ] ;
+      [alert runModal] ;
     }
   }
 }
@@ -368,12 +358,7 @@
     otherButton:nil
     informativeTextWithFormat:@"The following error occurs: %@.", [userInfo objectForKey:@"NSLocalizedDescription"]
   ] ;
-  [alert
-     beginSheetModalForWindow:nil
-     modalDelegate:nil
-     didEndSelector:NULL
-     contextInfo:NULL
-  ] ;
+  [alert runModal] ;
   [self downloadHasBeenCancelled] ;
 }
 
@@ -487,12 +472,7 @@
           otherButton:nil
           informativeTextWithFormat:@"An error occurs during uncompressing (code %d).", status
         ] ;
-        [alert
-          beginSheetModalForWindow:nil
-          modalDelegate:nil
-          didEndSelector:NULL
-          contextInfo:NULL
-        ] ;
+        [alert runModal] ;
       }
       [mCancelButton.window orderOut:nil] ;
     }  
@@ -626,7 +606,7 @@
 //--- Tools
   NSArray * toolNameArray = [gCocoaApplicationDelegate toolNameArray] ;
 //--- Create an empty Authorization
-  const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
+  const AuthorizationFlags myFlags = (AuthorizationFlags) (kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights) ;
   AuthorizationRef authorizationRef = 0 ;
   AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & authorizationRef) ; 
   NSFileManager * fm = [NSFileManager defaultManager] ;
@@ -781,7 +761,7 @@
 //--- Tools
   NSArray * toolNameArray = [gCocoaApplicationDelegate toolNameArray] ;
 //--- Create an empty Authorization
-  const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
+  const AuthorizationFlags myFlags = (AuthorizationFlags) (kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights) ;
   AuthorizationRef authorizationRef = 0 ;
   AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & authorizationRef) ; 
 //--- Installing tools
@@ -863,12 +843,7 @@
       otherButton: nil
       informativeTextWithFormat:@"No command line Tool is currently embedded by application."
     ] ;
-    [alert
-      beginSheetModalForWindow:nil
-      modalDelegate:nil
-      didEndSelector:0
-      contextInfo:NULL
-    ] ;
+    [alert runModal] ;
   }else{
  //--- Create task
     mTask = [NSTask new] ;

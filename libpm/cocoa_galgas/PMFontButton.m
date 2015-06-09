@@ -193,7 +193,7 @@
   if (self) {
     mInheritedEnableState = [super isEnabled] ;
     mFontButtonBindingEnableState = YES ;
-    [self setTitle:nil] ;
+    [self setTitle:@""] ;
   }
   return self ;
 }
@@ -208,7 +208,7 @@
   if (self) {
     mInheritedEnableState = [super isEnabled] ;
     mFontButtonBindingEnableState = YES ;
-    [self setTitle:nil] ;
+    [self setTitle:@""] ;
   }
   return self ;
 }
@@ -223,7 +223,7 @@
   if (self) {
     mInheritedEnableState = [super isEnabled] ;
     mFontButtonBindingEnableState = YES ;
-    [self setTitle:nil] ;
+    [self setTitle:@""] ;
   }
   return self ;
 }

@@ -169,12 +169,7 @@ static NSArray * gIssueArray ;
         otherButton:nil
         informativeTextWithFormat:@"%@", s
       ] ;
-      [alert
-        beginSheetModalForWindow:nil // [self windowForSheet]
-        modalDelegate:nil
-        didEndSelector:NULL
-        contextInfo:NULL
-      ] ;
+      [alert runModal] ;
     }
   }
 }
