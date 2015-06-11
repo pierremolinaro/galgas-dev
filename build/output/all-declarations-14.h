@@ -11,6 +11,177 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                        Filewrapper 'updaterToolFileWrapper'                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_updaterToolFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'updaterToolFileWrapper updater_object_protocol'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_object_5F_protocol (class C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'updaterToolFileWrapper updater_object_header'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_object_5F_header (class C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Filewrapper template 'updaterToolFileWrapper updater_object_implementation'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_object_5F_implementation (class C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'updaterToolFileWrapper updater_object_main'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_object_5F_main (class C_Compiler * inCompiler,
+                                                                                    const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                    const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'updaterToolFileWrapper updater_tool_info_plist'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_tool_5F_info_5F_plist (class C_Compiler * inCompiler,
+                                                                                           const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                           const class GALGAS_string & in_TARGET_5F_NAME,
+                                                                                           const class GALGAS_string & in_CODE_5F_SIGNING_5F_IDENTITY
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'updaterToolFileWrapper updater_tool_launchd_plist'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                              const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Filewrapper 'applicationUpdateFileWrapper'                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_applicationUpdateFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'applicationUpdateFileWrapper application_update_header'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_application_5F_update_5F_header (class C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'applicationUpdateFileWrapper application_update_implementation'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_application_5F_update_5F_implementation (class C_Compiler * inCompiler,
+                                                                                                        const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                                                        const class GALGAS_string & in_REPOSITORY_5F_URL,
+                                                                                                        const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Filewrapper template 'applicationUpdateFileWrapper application_update_nib'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_application_5F_update_5F_nib (class C_Compiler * inCompiler,
+                                                                                             const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'applicationUpdateFileWrapper download_data_header'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_download_5F_data_5F_header (class C_Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'applicationUpdateFileWrapper download_data_implementation'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_download_5F_data_5F_implementation (class C_Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'applicationUpdateFileWrapper download_file_header'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_download_5F_file_5F_header (class C_Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'applicationUpdateFileWrapper download_file_implementation'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_download_5F_file_5F_implementation (class C_Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'applicationUpdateFileWrapper compatibility_header'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_compatibility_5F_header (class C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                      Filewrapper 'targetGenerationFileWrapper'                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

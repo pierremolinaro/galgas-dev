@@ -1,0 +1,301 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @structDeclarationAST : @semanticDeclarationAST {
+  @lstring mStructTypeName
+  @propertyInCollectionListAST mAttributeList
+  @string mEnumeratedElementTypeName # Empty string if not enumerable
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration>
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $struct$
+    $type_name$ ?let @lstring structTypeName indexing structDefinition
+    ${$
+    @propertyInCollectionListAST attributeList = {}
+    repeat
+    while
+      <attribute_declaration> !?attributeList
+    while
+      $;$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
+      !false # Is not predefined
+      !structTypeName
+      !attributeList
+      !""
+    }
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @structDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mStructTypeName ![mStructTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  for () in mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @structDeclarationAST enterInSemanticContext
+  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
+  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--- Struct type index
+  @unifiedTypeMap-proxy structTypeIndex
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mStructTypeName ?structTypeIndex]
+#--- Constructors and attribute map
+  var attributeMap =@attributeMap.emptyMap{}
+  var constructorMap =@constructorMap.emptyMap{}
+  var constructorAttributeTypeList =@functionSignature.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList. emptyList
+  for () in mAttributeList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    typesToIncludeInHeaderCompilation += !attributeTypeIndex
+    var hasSetter = false
+    var hasGetter = true
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    [!?attributeMap insertKey
+      !mPropertyName
+#      !mIsPrivate
+      !attributeTypeIndex
+    ]
+  end
+  [!?constructorMap insertKey
+    !@lstring.new {!"new" !.here}
+    !constructorAttributeTypeList
+    !false
+    !structTypeIndex
+  ]
+#--- Readers
+  @getterMap getterMap
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
+  for () in typedAttributeList do
+    enterBaseFinalGetterWithoutArgument (
+      !?getterMap
+      !?ioSemanticContext.mTypeMap 
+      ![mAttributeName string]
+      !returnedTypeName:[mAttributeTypeProxy key]
+      !false
+    )
+  end
+#--- Modifiers
+  var modifierMap = @setterMap {}
+#--- Instance methods
+  var instanceMethodMap = @instanceMethodMap {}
+#--- Add Categories
+  addCategories (
+    !inCategoryMethodMapForBuildingContext
+    !inCategoryReaderMapForBuildingContext
+    !inCategoryModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mStructTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Enumeration by "for" instruction
+  @unifiedTypeMap-proxy enumeratedType
+  if mEnumeratedElementTypeName == "" then
+    enumeratedType = @unifiedTypeMap-proxy. null
+  else
+   [@unifiedTypeMap-proxy makeProxyFromString
+     !?ioSemanticContext.mTypeMap
+     !mEnumeratedElementTypeName
+     ?enumeratedType
+    ]
+  end
+#--- Generate a "default" constructor ?
+  @string defaultConstructorName = "default"
+  for () in typedAttributeList while defaultConstructorName != "" do
+    if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
+      defaultConstructorName = ""
+    end
+  end  
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mStructTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. structType
+    !false # Does not support collection value
+    !typedAttributeList
+    !attributeMap
+    !typedAttributeList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !@enumerationDescriptorList. emptyList
+    !@stringlist. emptyList
+    !generateDescriptionReaderUtilityMethod ()
+    !@functionSignature. emptyList
+    !{}
+    !{}
+    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST. emptyList
+    !false # Do not generate header in separate file
+    !enumeratedType # Type for enumerated element for "for" instruction
+    !defaultConstructorName # Default constructor
+    !"struct-" + mStructTypeName
+    !@headerKind. oneHeader
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+private func %once forbiddenKeysForStruct -> @stringset outResult {
+  outResult = @stringset. emptySet
+  outResult += !"description"
+  outResult += !"object"
+}
+
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @structDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  if [mAttributeList length] == 0 then
+    error mStructTypeName: "a structure cannot be empty: it must have at least one field" 
+  end
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  var attributeMap =@attributeIndexMap.emptyMap{}
+  for () in mAttributeList do
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    for () in mFeatureList do
+      error mValue : "a struct attribute does not accept any feature"
+    end
+    let @bool hasSetter = false
+    let @bool hasGetter = false
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+    if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
+      @string m = "an attribute cannot be named:"
+      for s in forbiddenKeysForStruct () do
+        m+= " " + s
+      end
+      m += "; theses names are reserved"
+      error mPropertyName: m
+    end
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+  ioSemanticDeclarationListForGeneration +=
+    !"struct " + mStructTypeName
+    !@structTypeForGeneration.new {
+      !.searchKey {!inSemanticContext.mTypeMap !mStructTypeName}
+      !typedAttributeList
+    }
+    !"~"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @structTypeForGeneration : @semanticTypeForGeneration {
+  @typedPropertyList mTypedAttributeList
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+filewrapper structGenerationTemplate in "../generation_templates/type_generation" {
+}{
+}{
+  template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@bool HAS_DEFAULT_CONSTRUCTOR
+
+  template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@bool HAS_DEFAULT_CONSTRUCTOR
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @structTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
+{
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet]
+  end
+
+  outHeader = [filewrapper structGenerationTemplate.structTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+    ![mTypeProxy mDefaultConstructorName] != ""
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @structTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
+{
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper structGenerationTemplate.structTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+    ![mTypeProxy mDefaultConstructorName] != ""
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+

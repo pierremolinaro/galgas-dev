@@ -804,26 +804,12 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@unifiedTypeMap-proxy SUPER_TYPE_INDEX
     ?@uint SUPPORTED_OPERATORS
 
-#---------- STRUCTURE
-  template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-    ?@bool HAS_DEFAULT_CONSTRUCTOR
-
-  template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-    ?@bool HAS_DEFAULT_CONSTRUCTOR
-
 #---------- Extern Type
   template externTypeHeader1 "GALGAS_extern_type.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string PRE_DECLARATION
     ?@string CODE
-
 
 #---------- Graph
   template graphTypeHeader1 "GALGAS_graph.h1.galgasTemplate"
@@ -858,17 +844,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_LIST_TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-
-#---------- LIST
-  template listTypeHeader1 "GALGAS_list.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-
-  template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
 
 #---------- SORTED LIST
@@ -955,7 +930,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
-
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1531,100 +1505,6 @@ override method @enumTypeForGeneration appendSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mConstantList
     !hasAssociatedValues
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-#! Struct
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @structTypeForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader {
-  for (t ...) in mTypedAttributeList do
-    [t addHeaderFileName1 !?ioInclusionSet]
-  end
-
-  outHeader = [filewrapper typeGenerationTemplate.structTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    ![mTypeProxy mDefaultConstructorName] != ""
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @structTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    ![mTypeProxy mDefaultConstructorName] != ""
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-#! List
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @listTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  outHeader = [filewrapper typeGenerationTemplate.listTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @listTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  for (t ...) in mTypedAttributeList do
-    [t addHeaderFileName !?ioInclusionSet]
-  end
-  [mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
   ]
  }
 

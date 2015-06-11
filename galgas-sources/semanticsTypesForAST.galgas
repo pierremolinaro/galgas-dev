@@ -1382,29 +1382,6 @@ class @classDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    L I S T    D E C L A R A T I O N                                                                                  *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @listDeclarationAST : @semanticDeclarationAST {
-  @lstring mListTypeName %nogetter
-  @propertyInCollectionListAST mAttributeList %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    S T R U C T    D E C L A R A T I O N                                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @structDeclarationAST : @semanticDeclarationAST {
-  @lstring mStructTypeName
-  @propertyInCollectionListAST mAttributeList
-  @string mEnumeratedElementTypeName # Empty string if not enumerable
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    S O R T E D    L I S T    D E C L A R A T I O N                                                                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

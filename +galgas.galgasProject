@@ -102,6 +102,8 @@ project (3:0:10) -> "galgas" {
  #--- Type declaration
   "galgas-sources/shared-map.galgas"
   "galgas-sources/map-proxy.galgas"
+  "galgas-sources/list.galgas"
+  "galgas-sources/struct.galgas"
 
 #--- Syntax Component
   "galgas-sources/syntaxModelBuilder.galgas"

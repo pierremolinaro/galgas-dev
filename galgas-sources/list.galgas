@@ -1,0 +1,401 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @listDeclarationAST : @semanticDeclarationAST {
+  @lstring mListTypeName %nogetter
+  @propertyInCollectionListAST mAttributeList %nogetter
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration>
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $list$
+    $type_name$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
+    ${$
+    var mAttributeList =@propertyInCollectionListAST.emptyList{}
+    repeat
+    while
+      <attribute_declaration> !? mAttributeList
+    while
+      $;$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
+      !false # Is not predefined
+      !mListTypeName
+      !mAttributeList}
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mListTypeName ![mListTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  for () in mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listDeclarationAST enterInSemanticContext
+  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
+  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--- Handle attributes
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  for () in mAttributeList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    @bool hasGetter = true
+    @bool hasSetter = false
+    for () in mFeatureList do
+      if mValue.string == "nogetter" then
+        hasGetter = false
+      elsif mValue.string == "setter" then
+        hasSetter = true
+      end
+    end
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+  end
+#--- uint type index
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?let @unifiedTypeMap-proxy uintType]
+#--- List type index
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mListTypeName ?let @unifiedTypeMap-proxy listTypeIndex]
+#--- Element type index
+  [@unifiedTypeMap-proxy makeProxy
+    !?ioSemanticContext.mTypeMap
+    !@lstring.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}
+    ?let @unifiedTypeMap-proxy listElementTypeIndex
+  ]
+#--- Property description
+  var enumerationDescriptor =@enumerationDescriptorList.emptyList{}
+  var constructorAttributeTypeList =@functionSignature.emptyList{}
+  var modifierOutputFormalArgumentList =@formalParameterSignature.emptyList{}
+  var modifierInputFormalArgumentList =@formalParameterSignature.emptyList{}
+  for () in typedAttributeList do
+    enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string]
+    constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
+    modifierOutputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentOut !mAttributeName.string
+    modifierInputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
+  end
+#--- Constructors
+  var constructorMap =@constructorMap.emptyMap{}
+  enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyList" ![mListTypeName string] !false )
+  [!?constructorMap insertKey
+    !@lstring.new {!"listWithValue" !@location.here}
+    !constructorAttributeTypeList
+    !false
+    !listTypeIndex
+  ]
+#--- Readers
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"length"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"range"
+    !returnedTypeName:"range"
+    !false
+  )
+  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" !"inIndex" !returnedTypeName:[mListTypeName string] !true )
+  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"range" !"inRange" !returnedTypeName:[mListTypeName string] !true )
+  for () in typedAttributeList do
+    if mHasGetter then
+      [!?getterMap insertOrReplace
+        !@lstring.new {![mAttributeName string] + "AtIndex" ![mAttributeName location]}
+        !@methodKind.definedAsMember
+        !@functionSignature {!["" nowhere] !uintType !"inIndex"}
+        !@location.here
+        !true
+        !mAttributeTypeProxy
+        !@methodQualifier.isBasic
+        !"" # No Error message
+      ]
+    end
+  end
+#------------------------- Instance methods
+  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"first" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierOutputFormalArgumentList
+    !@location.here
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"last" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierOutputFormalArgumentList
+    !@location.here
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
+#----------------------------------------- Modifiers
+  var modifierMap =@setterMap.emptyMap{}
+  [!?modifierMap insertOrReplace
+    !@lstring.new {!"popFirst" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierOutputFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
+  [!?modifierMap insertOrReplace
+    !@lstring.new {!"popLast" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierOutputFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
+  modifierOutputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex"
+  [!?modifierMap insertOrReplace
+    !@lstring.new {!"removeAtIndex" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierOutputFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
+  drop modifierOutputFormalArgumentList
+  for () in typedAttributeList do
+    if mHasSetter then
+      var setterFormalArgumentList =@formalParameterSignature.emptyList{}
+      setterFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
+      setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
+      [!?modifierMap insertOrReplace
+        !@lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mAttributeName location]}
+        !@methodKind.definedAsMember
+        !setterFormalArgumentList
+        !true
+        !@methodQualifier.isBasic
+        !"" # No error message
+      ]
+    end
+  end
+#--- setter 'insertAtIndex'
+  modifierInputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
+  [!?modifierMap insertOrReplace
+    !@lstring.new {!"insertAtIndex" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierInputFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  drop modifierInputFormalArgumentList
+#--- Enumeration variants
+  var enumerationVariants =@stringlist.emptyList{}
+  enumerationVariants += !"up"
+  enumerationVariants += !"down"
+#--- Add Categories
+  addCategories (
+    !inCategoryMethodMapForBuildingContext
+    !inCategoryReaderMapForBuildingContext
+    !inCategoryModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mListTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mListTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. listType
+    !true # Support collection value
+    !typedAttributeList
+    !@attributeMap. emptyMap
+    !@typedPropertyList. emptyList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !enumerationDescriptor
+    !enumerationVariants
+    !binaryConcatOperator () | doNotGenererateObjectCompare () | plusEqualOperatorWithExpression () | binaryAddOperator ()
+    !constructorAttributeTypeList
+    !{}
+    !{}
+    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST. emptyList
+    !false # Do not generate header in separate file
+    !listElementTypeIndex # Type for enumerated element for "for" instruction
+    !"emptyList" # Default constructor
+    !"list-" + mListTypeName
+    !@headerKind. oneHeader
+  ]
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @listDeclarationAST addAssociatedElement
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList
+{
+  @propertyInCollectionListAST structAttributeList = {}
+  for () in mAttributeList do
+    structAttributeList +=
+      !mPropertyTypeName
+      !mPropertyName
+      !{}
+  end
+  ioSemanticDeclarationList += !@structDeclarationAST.new {
+    !mIsPredefined
+    !.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}
+    !structAttributeList
+    !""
+  }
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  var attributeMap =@attributeIndexMap.emptyMap{}
+  for () in mAttributeList do
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    var hasGetter = true
+    var hasSetter = false
+    for () in mFeatureList do
+      if mValue.string == "nogetter" then
+        if not hasGetter then
+          error mValue:"duplicate feature"
+        end
+        hasGetter = false
+      elsif mValue.string == "setter" then
+        if hasSetter then
+          error mValue:"duplicate feature"
+        end
+        hasSetter = true
+      else
+        error mValue:"unknown feature; the features available here are: 'nogetter', 'setter'"
+      end
+    end
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"list type " + mListTypeName
+    !@listTypeForGeneration.new {
+      !.searchKey {!inSemanticContext.mTypeMap !mListTypeName}
+      !.searchKey {!inSemanticContext.mTypeMap !.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}}
+      !typedAttributeList
+    }
+  !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @listTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mListElementTypeIndex
+  @typedPropertyList mTypedAttributeList
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+filewrapper listGenerationTemplate in "../generation_templates/type_generation" {
+}{
+}{
+  template listTypeHeader1 "GALGAS_list.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+
+  template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @listTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = [filewrapper listGenerationTemplate.listTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @listTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName !?ioInclusionSet]
+  end
+  [mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper listGenerationTemplate.listTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
