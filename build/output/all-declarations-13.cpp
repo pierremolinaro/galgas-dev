@@ -3522,24 +3522,24 @@ void routine_recursivlyEnumerateRegularFile (const GALGAS_wrapperFileMap constin
                                              GALGAS_stringlist & ioArgument_ioRegularBinaryContentIndexStringList,
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
-  ioArgument_ioDirectoryIndexStringList.addAssign_operation (ioArgument_ioDirectoryIndexStringList.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2590)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2590))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2590)) ;
-  cEnumerator_wrapperFileMap enumerator_100186 (constinArgument_inFilewrapperFileMap, kEnumeration_up) ;
-  while (enumerator_100186.hasCurrentObject ()) {
-    ioArgument_ioRegularFileIndexStringList.addAssign_operation (ioArgument_ioRegularFileIndexStringList.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2592)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2592))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2592)) ;
-    const enumGalgasBool test_0 = enumerator_100186.current_mIsTextFile (HERE).boolEnum () ;
+  ioArgument_ioDirectoryIndexStringList.addAssign_operation (ioArgument_ioDirectoryIndexStringList.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2470)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2470))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2470)) ;
+  cEnumerator_wrapperFileMap enumerator_95950 (constinArgument_inFilewrapperFileMap, kEnumeration_up) ;
+  while (enumerator_95950.hasCurrentObject ()) {
+    ioArgument_ioRegularFileIndexStringList.addAssign_operation (ioArgument_ioRegularFileIndexStringList.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2472)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2472))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2472)) ;
+    const enumGalgasBool test_0 = enumerator_95950.current_mIsTextFile (HERE).boolEnum () ;
     if (kBoolTrue == test_0) {
-      ioArgument_ioRegularTextContentIndexStringList.addAssign_operation (enumerator_100186.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2594))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2594)) ;
+      ioArgument_ioRegularTextContentIndexStringList.addAssign_operation (enumerator_95950.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2474))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2474)) ;
     }else if (kBoolFalse == test_0) {
-      ioArgument_ioRegularBinaryContentIndexStringList.addAssign_operation (enumerator_100186.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2596))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2596)) ;
+      ioArgument_ioRegularBinaryContentIndexStringList.addAssign_operation (enumerator_95950.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2476))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2476)) ;
     }
-    enumerator_100186.gotoNextObject () ;
+    enumerator_95950.gotoNextObject () ;
   }
-  cEnumerator_wrapperDirectoryMap enumerator_100506 (constinArgument_inFilewrapperDirectoryMap, kEnumeration_up) ;
-  while (enumerator_100506.hasCurrentObject ()) {
+  cEnumerator_wrapperDirectoryMap enumerator_96270 (constinArgument_inFilewrapperDirectoryMap, kEnumeration_up) ;
+  while (enumerator_96270.hasCurrentObject ()) {
     {
-    routine_recursivlyEnumerateRegularFile (enumerator_100506.current_mRegularFileMap (HERE), enumerator_100506.current_mDirectoryMap (HERE), ioArgument_ioRegularFileIndexStringList, ioArgument_ioDirectoryIndexStringList, ioArgument_ioRegularTextContentIndexStringList, ioArgument_ioRegularBinaryContentIndexStringList, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2600)) ;
+    routine_recursivlyEnumerateRegularFile (enumerator_96270.current_mRegularFileMap (HERE), enumerator_96270.current_mDirectoryMap (HERE), ioArgument_ioRegularFileIndexStringList, ioArgument_ioDirectoryIndexStringList, ioArgument_ioRegularTextContentIndexStringList, ioArgument_ioRegularBinaryContentIndexStringList, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2480)) ;
     }
-    enumerator_100506.gotoNextObject () ;
+    enumerator_96270.gotoNextObject () ;
   }
 }
 
@@ -3558,52 +3558,52 @@ void routine_generateWrapperContents (const GALGAS_string constinArgument_inFile
                                       GALGAS_string & ioArgument_ioImplementation,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_wrapperFileMap enumerator_102524 (constinArgument_inFilewrapperRegularFileMap, kEnumeration_up) ;
-  while (enumerator_102524.hasCurrentObject ()) {
-    const enumGalgasBool test_0 = enumerator_102524.current_mIsTextFile (HERE).boolEnum () ;
+  cEnumerator_wrapperFileMap enumerator_98288 (constinArgument_inFilewrapperRegularFileMap, kEnumeration_up) ;
+  while (enumerator_98288.hasCurrentObject ()) {
+    const enumGalgasBool test_0 = enumerator_98288.current_mIsTextFile (HERE).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_string var_contents = GALGAS_string::constructor_stringWithContentsOfFile (enumerator_102524.current_mAbsoluteFilePath (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2657)) ;
-      ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- File '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658)).add_operation (enumerator_102524.current_lkey (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2658)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658)).add_operation (GALGAS_string ("'\n"
-        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658)).add_operation (GALGAS_string ("const char * gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658)).add_operation (enumerator_102524.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2660)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2659)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2660)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2661)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2660)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2661)).add_operation (var_contents.reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2662)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2661)).add_operation (GALGAS_string (" ;\n"
-        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2662)).add_operation (GALGAS_string ("const cRegularFileWrapper gWrapperFile_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2662)).add_operation (enumerator_102524.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2663)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2663)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2663)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2664)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2663)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2664)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2664)).add_operation (enumerator_102524.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2665)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2665)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2665)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2665)).add_operation (enumerator_102524.current_lkey (HERE).mAttribute_string.reader_pathExtension (SOURCE_FILE ("semanticGeneration.galgas", 2666)).reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2666)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2666)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2666)).add_operation (GALGAS_string ("  true, // Text file\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2666)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2667)).add_operation (var_contents.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2668)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2668)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2668)).add_operation (GALGAS_string (", // Text length\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2668)).add_operation (GALGAS_string ("  gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2668)).add_operation (enumerator_102524.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2669)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2669)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2669)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2669)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2669)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2669)).add_operation (GALGAS_string (") ;\n"
-        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2669))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658)) ;
+      GALGAS_string var_contents = GALGAS_string::constructor_stringWithContentsOfFile (enumerator_98288.current_mAbsoluteFilePath (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2537)) ;
+      ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- File '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2538)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2538)).add_operation (enumerator_98288.current_lkey (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2538)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2538)).add_operation (GALGAS_string ("'\n"
+        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2538)).add_operation (GALGAS_string ("const char * gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2538)).add_operation (enumerator_98288.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2540)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2539)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2540)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2541)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2540)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2541)).add_operation (var_contents.reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2542)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2541)).add_operation (GALGAS_string (" ;\n"
+        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2542)).add_operation (GALGAS_string ("const cRegularFileWrapper gWrapperFile_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2542)).add_operation (enumerator_98288.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2543)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2543)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2543)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2544)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2543)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2544)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2544)).add_operation (enumerator_98288.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2545)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2545)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2545)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2545)).add_operation (enumerator_98288.current_lkey (HERE).mAttribute_string.reader_pathExtension (SOURCE_FILE ("semanticGeneration.galgas", 2546)).reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2546)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2546)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2546)).add_operation (GALGAS_string ("  true, // Text file\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2546)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2547)).add_operation (var_contents.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2548)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2548)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2548)).add_operation (GALGAS_string (", // Text length\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2548)).add_operation (GALGAS_string ("  gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2548)).add_operation (enumerator_98288.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2549)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2549)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2549)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2549)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2549)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2549)).add_operation (GALGAS_string (") ;\n"
+        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2549))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2538)) ;
     }else if (kBoolFalse == test_0) {
-      GALGAS_data var_contents = GALGAS_data::constructor_dataWithContentsOfFile (enumerator_102524.current_mAbsoluteFilePath (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2672)) ;
-      ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- File '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2673)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2673)).add_operation (enumerator_102524.current_lkey (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2673)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2673)).add_operation (GALGAS_string ("'\n"
-        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2673)).add_operation (GALGAS_string ("const uint8_t gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2673)).add_operation (enumerator_102524.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2675)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2674)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2675)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2676)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2675)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2676)).add_operation (var_contents.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2676)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2676)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2676)).add_operation (GALGAS_string ("] = {"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2676)).add_operation (var_contents.reader_cStringRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2677)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2676)).add_operation (GALGAS_string ("} ;\n"
-        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2677)).add_operation (GALGAS_string ("const cRegularFileWrapper gWrapperFile_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2677)).add_operation (enumerator_102524.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2678)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2678)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2678)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2679)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2678)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2679)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2679)).add_operation (enumerator_102524.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2680)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2680)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2680)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2680)).add_operation (enumerator_102524.current_lkey (HERE).mAttribute_string.reader_pathExtension (SOURCE_FILE ("semanticGeneration.galgas", 2681)).reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2681)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2681)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2681)).add_operation (GALGAS_string ("  false, // binary file\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2681)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2682)).add_operation (var_contents.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2683)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2683)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2683)).add_operation (GALGAS_string (", // Length\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2683)).add_operation (GALGAS_string ("  (const char *) gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2683)).add_operation (enumerator_102524.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2684)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2684)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2684)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2684)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2684)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2684)).add_operation (GALGAS_string (") ;\n"
-        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2684))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2673)) ;
+      GALGAS_data var_contents = GALGAS_data::constructor_dataWithContentsOfFile (enumerator_98288.current_mAbsoluteFilePath (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2552)) ;
+      ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- File '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2553)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2553)).add_operation (enumerator_98288.current_lkey (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2553)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2553)).add_operation (GALGAS_string ("'\n"
+        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2553)).add_operation (GALGAS_string ("const uint8_t gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2553)).add_operation (enumerator_98288.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2555)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2554)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2555)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2556)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2555)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2556)).add_operation (var_contents.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2556)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2556)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2556)).add_operation (GALGAS_string ("] = {"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2556)).add_operation (var_contents.reader_cStringRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2557)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2556)).add_operation (GALGAS_string ("} ;\n"
+        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2557)).add_operation (GALGAS_string ("const cRegularFileWrapper gWrapperFile_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2557)).add_operation (enumerator_98288.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2558)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2558)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2558)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2559)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2558)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2559)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2559)).add_operation (enumerator_98288.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2560)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2560)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2560)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2560)).add_operation (enumerator_98288.current_lkey (HERE).mAttribute_string.reader_pathExtension (SOURCE_FILE ("semanticGeneration.galgas", 2561)).reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2561)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2561)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2561)).add_operation (GALGAS_string ("  false, // binary file\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2561)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2562)).add_operation (var_contents.reader_length (SOURCE_FILE ("semanticGeneration.galgas", 2563)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2563)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2563)).add_operation (GALGAS_string (", // Length\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2563)).add_operation (GALGAS_string ("  (const char *) gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2563)).add_operation (enumerator_98288.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2564)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2564)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2564)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2564)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2564)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2564)).add_operation (GALGAS_string (") ;\n"
+        "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2564))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2553)) ;
     }
-    enumerator_102524.gotoNextObject () ;
+    enumerator_98288.gotoNextObject () ;
   }
-  cEnumerator_wrapperDirectoryMap enumerator_104397 (constinArgument_inFilewrapperDirectoryMap, kEnumeration_up) ;
-  while (enumerator_104397.hasCurrentObject ()) {
+  cEnumerator_wrapperDirectoryMap enumerator_100161 (constinArgument_inFilewrapperDirectoryMap, kEnumeration_up) ;
+  while (enumerator_100161.hasCurrentObject ()) {
     {
-    routine_generateWrapperContents (constinArgument_inFilewrapperName, enumerator_104397.current_lkey (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2692)), enumerator_104397.current_mWrapperDirectoryIndex (HERE), enumerator_104397.current_mRegularFileMap (HERE), enumerator_104397.current_mDirectoryMap (HERE), ioArgument_ioImplementation, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2690)) ;
+    routine_generateWrapperContents (constinArgument_inFilewrapperName, enumerator_100161.current_lkey (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2572)), enumerator_100161.current_mWrapperDirectoryIndex (HERE), enumerator_100161.current_mRegularFileMap (HERE), enumerator_100161.current_mDirectoryMap (HERE), ioArgument_ioImplementation, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2570)) ;
     }
-    enumerator_104397.gotoNextObject () ;
+    enumerator_100161.gotoNextObject () ;
   }
-  ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- All files of '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2700)).add_operation (GALGAS_string ("' directory\n"
-    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2700)).add_operation (GALGAS_string ("static const cRegularFileWrapper * gWrapperAllFiles_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2700)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2702)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2701)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2702)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2702)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2702)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2702)).add_operation (constinArgument_inFilewrapperRegularFileMap.reader_count (SOURCE_FILE ("semanticGeneration.galgas", 2703)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2703)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2703)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2703)).add_operation (GALGAS_string ("] = {\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2703))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2700)) ;
-  cEnumerator_wrapperFileMap enumerator_104977 (constinArgument_inFilewrapperRegularFileMap, kEnumeration_up) ;
-  while (enumerator_104977.hasCurrentObject ()) {
-    ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("  & gWrapperFile_").add_operation (enumerator_104977.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2705)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2705)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2705)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2705)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2705)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2705))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2705)) ;
-    enumerator_104977.gotoNextObject () ;
-  }
-  ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("  NULL\n").add_operation (GALGAS_string ("} ;\n"
-    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2707))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2707)) ;
-  ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- All sub-directories of '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2710)).add_operation (GALGAS_string ("' directory\n"
-    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2710)).add_operation (GALGAS_string ("static const cDirectoryWrapper * gWrapperAllDirectories_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2710)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2712)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2711)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2712)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2712)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2712)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2712)).add_operation (constinArgument_inFilewrapperDirectoryMap.reader_count (SOURCE_FILE ("semanticGeneration.galgas", 2713)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2713)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2713)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2713)).add_operation (GALGAS_string ("] = {\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2713))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2710)) ;
-  cEnumerator_wrapperDirectoryMap enumerator_105574 (constinArgument_inFilewrapperDirectoryMap, kEnumeration_up) ;
-  while (enumerator_105574.hasCurrentObject ()) {
-    ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("  & gWrapperDirectory_").add_operation (enumerator_105574.current_mWrapperDirectoryIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2715)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2715)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2715)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2715)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2715)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2715))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2715)) ;
-    enumerator_105574.gotoNextObject () ;
+  ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- All files of '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2580)).add_operation (GALGAS_string ("' directory\n"
+    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2580)).add_operation (GALGAS_string ("static const cRegularFileWrapper * gWrapperAllFiles_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2580)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2582)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2581)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2582)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2582)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2582)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2582)).add_operation (constinArgument_inFilewrapperRegularFileMap.reader_count (SOURCE_FILE ("semanticGeneration.galgas", 2583)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2583)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2583)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2583)).add_operation (GALGAS_string ("] = {\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2583))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2580)) ;
+  cEnumerator_wrapperFileMap enumerator_100741 (constinArgument_inFilewrapperRegularFileMap, kEnumeration_up) ;
+  while (enumerator_100741.hasCurrentObject ()) {
+    ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("  & gWrapperFile_").add_operation (enumerator_100741.current_mWrapperFileIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2585)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2585)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2585)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2585)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2585)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2585))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2585)) ;
+    enumerator_100741.gotoNextObject () ;
   }
   ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("  NULL\n").add_operation (GALGAS_string ("} ;\n"
-    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2717))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2717)) ;
-  ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- Directory '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2720)).add_operation (GALGAS_string ("'\n"
-    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2720)).add_operation (GALGAS_string ("const cDirectoryWrapper gWrapperDirectory_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2720)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2721)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2721)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2721)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2722)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2721)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2722)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2722)).add_operation (constinArgument_inFilewrapperDirectory.reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2723)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2723)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2723)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2723)).add_operation (constinArgument_inFilewrapperRegularFileMap.reader_count (SOURCE_FILE ("semanticGeneration.galgas", 2724)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2724)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2724)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2724)).add_operation (GALGAS_string ("  gWrapperAllFiles_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2724)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2725)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2725)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2725)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2725)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2725)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2725)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2725)).add_operation (constinArgument_inFilewrapperDirectoryMap.reader_count (SOURCE_FILE ("semanticGeneration.galgas", 2726)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2726)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2726)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2726)).add_operation (GALGAS_string ("  gWrapperAllDirectories_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2726)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2727)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2727)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2727)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2727)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2727)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2727)).add_operation (GALGAS_string (") ;\n"
-    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2727))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2720)) ;
+    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2587))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2587)) ;
+  ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- All sub-directories of '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2590)).add_operation (GALGAS_string ("' directory\n"
+    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2590)).add_operation (GALGAS_string ("static const cDirectoryWrapper * gWrapperAllDirectories_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2590)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2592)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2591)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2592)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2592)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2592)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2592)).add_operation (constinArgument_inFilewrapperDirectoryMap.reader_count (SOURCE_FILE ("semanticGeneration.galgas", 2593)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2593)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2593)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2593)).add_operation (GALGAS_string ("] = {\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2593))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2590)) ;
+  cEnumerator_wrapperDirectoryMap enumerator_101338 (constinArgument_inFilewrapperDirectoryMap, kEnumeration_up) ;
+  while (enumerator_101338.hasCurrentObject ()) {
+    ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("  & gWrapperDirectory_").add_operation (enumerator_101338.current_mWrapperDirectoryIndex (HERE).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2595)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2595)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2595)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2595)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2595)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2595))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2595)) ;
+    enumerator_101338.gotoNextObject () ;
+  }
+  ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("  NULL\n").add_operation (GALGAS_string ("} ;\n"
+    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2597))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2597)) ;
+  ioArgument_ioImplementation.dotAssign_operation (GALGAS_string ("//--- Directory '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2600)).add_operation (GALGAS_string ("'\n"
+    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2600)).add_operation (GALGAS_string ("const cDirectoryWrapper gWrapperDirectory_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2600)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2601)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2601)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2601)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2602)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2601)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2602)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2602)).add_operation (constinArgument_inFilewrapperDirectory.reader_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2603)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2603)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2603)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2603)).add_operation (constinArgument_inFilewrapperRegularFileMap.reader_count (SOURCE_FILE ("semanticGeneration.galgas", 2604)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2604)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2604)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2604)).add_operation (GALGAS_string ("  gWrapperAllFiles_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2604)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2605)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2605)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2605)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2605)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2605)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2605)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2605)).add_operation (constinArgument_inFilewrapperDirectoryMap.reader_count (SOURCE_FILE ("semanticGeneration.galgas", 2606)).reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2606)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2606)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2606)).add_operation (GALGAS_string ("  gWrapperAllDirectories_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2606)).add_operation (constinArgument_inFilewrapperName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2607)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2607)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2607)).add_operation (constinArgument_inFilewrapperDirectoryIndex.reader_string (SOURCE_FILE ("semanticGeneration.galgas", 2607)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2607)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2607)).add_operation (GALGAS_string (") ;\n"
+    "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2607))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2600)) ;
 }
 
 
@@ -4549,69 +4549,69 @@ void routine_generatePredefinedTypeFiles (const GALGAS_string constinArgument_in
                                           COMMA_UNUSED_LOCATION_ARGS) {
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inDirectory.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
-    const enumGalgasBool test_1 = constinArgument_inDirectory.reader_directoryExists (SOURCE_FILE ("semanticGeneration.galgas", 2897)).operator_not (SOURCE_FILE ("semanticGeneration.galgas", 2897)).boolEnum () ;
+    const enumGalgasBool test_1 = constinArgument_inDirectory.reader_directoryExists (SOURCE_FILE ("semanticGeneration.galgas", 2777)).operator_not (SOURCE_FILE ("semanticGeneration.galgas", 2777)).boolEnum () ;
     if (kBoolTrue == test_1) {
-      inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2898)), GALGAS_string ("the '").add_operation (constinArgument_inDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2898)).add_operation (GALGAS_string ("' directory does not exist"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2898))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2898)) ;
+      inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2778)), GALGAS_string ("the '").add_operation (constinArgument_inDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2778)).add_operation (GALGAS_string ("' directory does not exist"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2778))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2778)) ;
     }else if (kBoolFalse == test_1) {
-      GALGAS_semanticDeclarationListAST var_predefinedTypeASTlist = GALGAS_semanticDeclarationListAST::constructor_emptyList (SOURCE_FILE ("semanticGeneration.galgas", 2901)) ;
+      GALGAS_semanticDeclarationListAST var_predefinedTypeASTlist = GALGAS_semanticDeclarationListAST::constructor_emptyList (SOURCE_FILE ("semanticGeneration.galgas", 2781)) ;
       {
-      routine_appendPredefinedTypesASTs (var_predefinedTypeASTlist, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2902)) ;
+      routine_appendPredefinedTypesASTs (var_predefinedTypeASTlist, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2782)) ;
       }
       GALGAS_semanticContext var_semanticContext ;
       {
-      routine_buildSemanticContext (var_predefinedTypeASTlist, var_semanticContext, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2904)) ;
+      routine_buildSemanticContext (var_predefinedTypeASTlist, var_semanticContext, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2784)) ;
       }
       GALGAS_semanticDeclarationSortedListForGeneration var_decoratedDeclarationListForGeneration ;
       {
-      routine_performSemanticAnalysis (constinArgument_inDirectory, var_predefinedTypeASTlist, var_semanticContext, var_decoratedDeclarationListForGeneration, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2910)) ;
+      routine_performSemanticAnalysis (constinArgument_inDirectory, var_predefinedTypeASTlist, var_semanticContext, var_decoratedDeclarationListForGeneration, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2790)) ;
       }
-      GALGAS_string var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (inCompiler, var_semanticContext.mAttribute_mTypeMap.reader_allKeys (SOURCE_FILE ("semanticGeneration.galgas", 2918)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2917))) ;
-      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_114414 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
-      while (enumerator_114414.hasCurrentObject ()) {
-        var_generatedCode.dotAssign_operation (callCategoryReader_appendPrimitiveTypeDeclaration ((const cPtr_semanticDeclarationForGeneration *) enumerator_114414.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2921))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2921)) ;
-        enumerator_114414.gotoNextObject () ;
+      GALGAS_string var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (inCompiler, var_semanticContext.mAttribute_mTypeMap.reader_allKeys (SOURCE_FILE ("semanticGeneration.galgas", 2798)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2797))) ;
+      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_110178 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
+      while (enumerator_110178.hasCurrentObject ()) {
+        var_generatedCode.dotAssign_operation (callCategoryReader_appendPrimitiveTypeDeclaration ((const cPtr_semanticDeclarationForGeneration *) enumerator_110178.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2801))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2801)) ;
+        enumerator_110178.gotoNextObject () ;
       }
-      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_114552 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
-      while (enumerator_114552.hasCurrentObject ()) {
-        GALGAS_stringset var_unusedInclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2924)) ;
+      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_110316 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
+      while (enumerator_110316.hasCurrentObject ()) {
+        GALGAS_stringset var_unusedInclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2804)) ;
         GALGAS_string var_code ;
-        callCategoryMethod_appendDeclaration_31_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_114552.current_mDeclaration (HERE).ptr (), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2925)) ;
-        var_generatedCode.dotAssign_operation (var_code  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2926)) ;
-        enumerator_114552.gotoNextObject () ;
+        callCategoryMethod_appendDeclaration_31_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_110316.current_mDeclaration (HERE).ptr (), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2805)) ;
+        var_generatedCode.dotAssign_operation (var_code  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2806)) ;
+        enumerator_110316.gotoNextObject () ;
       }
-      var_generatedCode.dotAssign_operation (GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2928)))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2928)) ;
-      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_114879 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
-      while (enumerator_114879.hasCurrentObject ()) {
-        GALGAS_stringset var_inclusionSet_32_ = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2930)) ;
+      var_generatedCode.dotAssign_operation (GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2808)))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2808)) ;
+      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_110643 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
+      while (enumerator_110643.hasCurrentObject ()) {
+        GALGAS_stringset var_inclusionSet_32_ = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2810)) ;
         GALGAS_string var_headerString_32_ ;
-        callCategoryMethod_appendDeclaration_32_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_114879.current_mDeclaration (HERE).ptr (), GALGAS_bool (false), constinArgument_inDirectory, var_inclusionSet_32_, var_headerString_32_, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2931)) ;
-        var_generatedCode.dotAssign_operation (var_headerString_32_  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2932)) ;
-        enumerator_114879.gotoNextObject () ;
+        callCategoryMethod_appendDeclaration_32_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_110643.current_mDeclaration (HERE).ptr (), GALGAS_bool (false), constinArgument_inDirectory, var_inclusionSet_32_, var_headerString_32_, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2811)) ;
+        var_generatedCode.dotAssign_operation (var_headerString_32_  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2812)) ;
+        enumerator_110643.gotoNextObject () ;
       }
-      const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticGeneration.galgas", 2934)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticGeneration.galgas", 2814)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_2) {
         {
         GALGAS_string::class_method_generateFileWithPattern (constinArgument_inDirectory, GALGAS_string ("predefined-types.h"), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n"
           "\n"), var_generatedCode, GALGAS_string ("\n"
-          "\n"), GALGAS_string ("#endif\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2935)) ;
+          "\n"), GALGAS_string ("#endif\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2815)) ;
         }
       }
-      var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2948))) ;
-      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_115740 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
-      while (enumerator_115740.hasCurrentObject ()) {
-        var_generatedCode.dotAssign_operation (callCategoryReader_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_115740.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2950))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2950)) ;
-        GALGAS_stringset var_unusedInclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2951)) ;
+      var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2828))) ;
+      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_111504 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
+      while (enumerator_111504.hasCurrentObject ()) {
+        var_generatedCode.dotAssign_operation (callCategoryReader_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_111504.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2830))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2830)) ;
+        GALGAS_stringset var_unusedInclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2831)) ;
         GALGAS_string var_code ;
-        callCategoryMethod_appendSpecificImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_115740.current_mDeclaration (HERE).ptr (), GALGAS_unifiedTypeMap::constructor_emptyMap (SOURCE_FILE ("semanticGeneration.galgas", 2952)), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2952)) ;
-        var_generatedCode.dotAssign_operation (var_code  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2953)) ;
-        enumerator_115740.gotoNextObject () ;
+        callCategoryMethod_appendSpecificImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_111504.current_mDeclaration (HERE).ptr (), GALGAS_unifiedTypeMap::constructor_emptyMap (SOURCE_FILE ("semanticGeneration.galgas", 2832)), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2832)) ;
+        var_generatedCode.dotAssign_operation (var_code  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2833)) ;
+        enumerator_111504.gotoNextObject () ;
       }
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticGeneration.galgas", 2955)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticGeneration.galgas", 2835)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_3) {
         {
         GALGAS_string::class_method_generateFileWithPattern (constinArgument_inDirectory, GALGAS_string ("predefined-types.cpp"), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n"
           "\n"), var_generatedCode, GALGAS_string ("\n"
-          "\n"), GALGAS_string::makeEmptyString (), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2956)) ;
+          "\n"), GALGAS_string::makeEmptyString (), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2836)) ;
         }
       }
     }
@@ -7023,6 +7023,1666 @@ GALGAS_string filewrapperTemplate_mapProxyGenerationTemplate_mapProxyTypeSpecifi
     }
   }
   result << "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        Filewrapper 'listGenerationTemplate'                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+//--- All files of '' directory
+
+static const cRegularFileWrapper * gWrapperAllFiles_listGenerationTemplate_0 [1] = {
+  NULL
+} ;
+
+//--- All sub-directories of '' directory
+
+static const cDirectoryWrapper * gWrapperAllDirectories_listGenerationTemplate_0 [1] = {
+  NULL
+} ;
+
+//--- Directory ''
+
+const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate (
+  "",
+  0,
+  gWrapperAllFiles_listGenerationTemplate_0,
+  0,
+  gWrapperAllDirectories_listGenerationTemplate_0
+) ;
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                            Filewrapper template 'listGenerationTemplate listTypeHeader1'                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (C_Compiler * inCompiler,
+                                                                             const GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  uint32_t columnMarker = 0 ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 3)).add_operation (GALGAS_string (" list"), inCompiler COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " : public AC_GALGAS_list {\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (void) ;\n"
+    "\n"
+    "//--------------------------------- List constructor used by listmap\n"
+    "  public : GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (cSharedList * inSharedListPtr) ;\n"
+    "\n"
+    "//--------------------------------- Element constructor used by listmap\n"
+    "  public : static void makeAttributesFromObjects (" ;
+  columnMarker = result.currentColumn () ;
+  result << "capCollectionElement & outAttributes" ;
+  GALGAS_uint index_1055_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_1055 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1055.hasCurrentObject ()) {
+      result << ",\n" ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      result << "const class GALGAS_" ;
+      result << enumerator_1055.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 17)).stringValue () ;
+      result << " & in_" ;
+      result << enumerator_1055.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 17)).stringValue () ;
+      index_1055_.increment () ;
+      enumerator_1055.gotoNextObject () ;
+    }
+  }
+  result << "\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'listGenerationTemplate listTypeSpecificImplementation'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (C_Compiler * inCompiler,
+                                                                                         const GALGAS_string & /* in_TYPE_5F_NAME */,
+                                                                                         const GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  uint32_t columnMarker = 0 ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("Class for element of '@").add_operation (in_TYPE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("' list"), inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " : public cCollectionElement {\n"
+    "  public : GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "_2D_element mObject ;\n"
+    "\n"
+    "//--- Constructor\n"
+    "  public : cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_823_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_823 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_823.hasCurrentObject ()) {
+      result << "const GALGAS_" ;
+      result << enumerator_823.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 13)).stringValue () ;
+      result << " & in_" ;
+      result << enumerator_823.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 13)).stringValue () ;
+      if (enumerator_823.hasNextObject ()) {
+        result << ",\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_823_.increment () ;
+      enumerator_823.gotoNextObject () ;
+    }
+  }
+  result << "\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) ;\n"
+    "\n"
+    "//--- Virtual method for comparing elements\n"
+    "  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;\n"
+    "\n"
+    "//--- Virtual method that checks that all attributes are valid\n"
+    "  public : virtual bool isValid (void) const ;\n"
+    "\n"
+    "//--- Virtual method that returns a copy of current object\n"
+    "  public : virtual cCollectionElement * copy (void) ;\n"
+    "\n"
+    "//--- Description\n"
+    " public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;\n"
+    "} ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_1714_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_1714 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1714.hasCurrentObject ()) {
+      result << "const GALGAS_" ;
+      result << enumerator_1714.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 36)).stringValue () ;
+      result << " & in_" ;
+      result << enumerator_1714.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 36)).stringValue () ;
+      if (enumerator_1714.hasNextObject ()) {
+        result << ",\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_1714_.increment () ;
+      enumerator_1714.gotoNextObject () ;
+    }
+  }
+  result << "\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) :\n"
+    "cCollectionElement (THERE),\n"
+    "mObject (" ;
+  GALGAS_uint index_1953_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_1953 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1953.hasCurrentObject ()) {
+      result << "in_" ;
+      result << enumerator_1953.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 44)).stringValue () ;
+      if (enumerator_1953.hasNextObject ()) {
+        result << ", " ;
+      }
+      index_1953_.increment () ;
+      enumerator_1953.gotoNextObject () ;
+    }
+  }
+  result << ") {\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "bool cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::isValid (void) const {\n"
+    "  return mObject.isValid () ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "cCollectionElement * cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::copy (void) {\n"
+    "  cCollectionElement * result = NULL ;\n"
+    "  macroMyNew (result, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  GALGAS_uint index_2586_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_2586 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2586.hasCurrentObject ()) {
+      result << "mObject.mAttribute_" ;
+      result << enumerator_2586.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 62)).stringValue () ;
+      if (enumerator_2586.hasNextObject ()) {
+        result << ", " ;
+      }
+      index_2586_.increment () ;
+      enumerator_2586.gotoNextObject () ;
+    }
+  }
+  result << " COMMA_HERE)) ;\n"
+    "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::description (C_String & ioString, const int32_t inIndentation) const {\n" ;
+  GALGAS_uint index_2986_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_2986 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2986.hasCurrentObject ()) {
+      result << "  ioString << \"\\n\" ;\n"
+        "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+        "  ioString << " ;
+      result << enumerator_2986.current_mAttributeName (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 76)).stringValue () ;
+      result << " \":\" ;\n"
+        "  mObject.mAttribute_" ;
+      result << enumerator_2986.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 77)).stringValue () ;
+      result << ".description (ioString, inIndentation) ;\n" ;
+      index_2986_.increment () ;
+      enumerator_2986.gotoNextObject () ;
+    }
+  }
+  result << "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "typeComparisonResult cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::compare (const cCollectionElement * inOperand) const {\n"
+    "  cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " * operand = (cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " *) inOperand ;\n"
+    "  macroValidSharedObject (operand, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << ") ;\n"
+    "  return mObject.objectCompare (operand->mObject) ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (void) :\n"
+    "AC_GALGAS_list () {\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (cSharedList * inSharedListPtr) :\n"
+    "AC_GALGAS_list (inSharedListPtr) {\n"
+    "  if (NULL == inSharedListPtr) {\n"
+    "    createNewEmptyList (HERE) ;\n"
+    "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::constructor_emptyList (LOCATION_ARGS) {\n"
+    "  GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " result ;\n"
+    "  result.createNewEmptyList (THERE) ;\n"
+    "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::constructor_listWithValue (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_4826_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_4826 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_4826.hasCurrentObject ()) {
+      result << "const GALGAS_" ;
+      result << enumerator_4826.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 116)).stringValue () ;
+      result << " & inOperand" ;
+      result << index_4826_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 116)).stringValue () ;
+      if (enumerator_4826.hasNextObject ()) {
+        result << ",\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_4826_IDX.increment () ;
+      enumerator_4826.gotoNextObject () ;
+    }
+  }
+  result << "\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) {\n"
+    "  GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " result ;\n"
+    "  if (" ;
+  GALGAS_uint index_5059_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_5059 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_5059.hasCurrentObject ()) {
+      result << "inOperand" ;
+      result << index_5059_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 123)).stringValue () ;
+      result << ".isValid ()" ;
+      if (enumerator_5059.hasNextObject ()) {
+        result << " && " ;
+      }
+      index_5059_IDX.increment () ;
+      enumerator_5059.gotoNextObject () ;
+    }
+  }
+  result << ") {\n"
+    "    result.createNewEmptyList (THERE) ;\n"
+    "    capCollectionElement attributes ;\n"
+    "    GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::makeAttributesFromObjects (attributes" ;
+  GALGAS_uint index_5321_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_5321 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_5321.hasCurrentObject ()) {
+      result << ", inOperand" ;
+      result << index_5321_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 131)).stringValue () ;
+      index_5321_IDX.increment () ;
+      enumerator_5321.gotoNextObject () ;
+    }
+  }
+  result << " COMMA_THERE) ;\n"
+    "    result.addObject (attributes) ;\n"
+    "  }\n"
+    "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::makeAttributesFromObjects (" ;
+  columnMarker = result.currentColumn () ;
+  result << "capCollectionElement & outAttributes" ;
+  GALGAS_uint index_5695_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_5695 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_5695.hasCurrentObject ()) {
+      result << ",\n" ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      result << "const GALGAS_" ;
+      result << enumerator_5695.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 143)).stringValue () ;
+      result << " & in_" ;
+      result << enumerator_5695.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 143)).stringValue () ;
+      index_5695_.increment () ;
+      enumerator_5695.gotoNextObject () ;
+    }
+  }
+  result << "\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) {\n"
+    "  cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " * p = NULL ;\n"
+    "  macroMyNew (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_5999_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_5999 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_5999.hasCurrentObject ()) {
+      result << "in_" ;
+      result << enumerator_5999.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 150)).stringValue () ;
+      if (enumerator_5999.hasNextObject ()) {
+        result << ",\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_5999_.increment () ;
+      enumerator_5999.gotoNextObject () ;
+    }
+  }
+  result << " COMMA_THERE)) ;\n"
+    "  outAttributes.setPointer (p) ;\n"
+    "  macroDetachSharedObject (p) ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::addAssign_operation (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_6382_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_6382 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_6382.hasCurrentObject ()) {
+      result << "const GALGAS_" ;
+      result << enumerator_6382.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 162)).stringValue () ;
+      result << " & inOperand" ;
+      result << index_6382_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 162)).stringValue () ;
+      if (enumerator_6382.hasNextObject ()) {
+        result << ",\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_6382_IDX.increment () ;
+      enumerator_6382.gotoNextObject () ;
+    }
+  }
+  result << "\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) {\n"
+    "  if (isValid ()" ;
+  GALGAS_uint index_6588_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_6588 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_6588.hasCurrentObject ()) {
+      result << " && inOperand" ;
+      result << index_6588_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 168)).stringValue () ;
+      result << ".isValid ()" ;
+      index_6588_IDX.increment () ;
+      enumerator_6588.gotoNextObject () ;
+    }
+  }
+  result << ") {\n"
+    "    cCollectionElement * p = NULL ;\n"
+    "    macroMyNew (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  GALGAS_uint index_6785_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_6785 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_6785.hasCurrentObject ()) {
+      result << "inOperand" ;
+      result << index_6785_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 174)).stringValue () ;
+      if (enumerator_6785.hasNextObject ()) {
+        result << ", " ;
+      }
+      index_6785_IDX.increment () ;
+      enumerator_6785.gotoNextObject () ;
+    }
+  }
+  result << " COMMA_THERE)) ;\n"
+    "    capCollectionElement attributes ;\n"
+    "    attributes.setPointer (p) ;\n"
+    "    macroDetachSharedObject (p) ;\n"
+    "    addObject (attributes) ;\n"
+    "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::modifier_insertAtIndex (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_7219_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_7219 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_7219.hasCurrentObject ()) {
+      result << "const GALGAS_" ;
+      result << enumerator_7219.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 189)).stringValue () ;
+      result << " inOperand" ;
+      result << index_7219_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 189)).stringValue () ;
+      result << ",\n" ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      index_7219_IDX.increment () ;
+      enumerator_7219.gotoNextObject () ;
+    }
+  }
+  result << "const GALGAS_uint inInsertionIndex,\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "C_Compiler * inCompiler\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) {\n"
+    "  if (isValid () && inInsertionIndex.isValid ()" ;
+  GALGAS_uint index_7520_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_7520 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_7520.hasCurrentObject ()) {
+      result << " && inOperand" ;
+      result << index_7520_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 196)).stringValue () ;
+      result << ".isValid ()" ;
+      index_7520_IDX.increment () ;
+      enumerator_7520.gotoNextObject () ;
+    }
+  }
+  result << ") {\n"
+    "    cCollectionElement * p = NULL ;\n"
+    "    macroMyNew (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  GALGAS_uint index_7717_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_7717 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_7717.hasCurrentObject ()) {
+      result << "inOperand" ;
+      result << index_7717_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 202)).stringValue () ;
+      if (enumerator_7717.hasNextObject ()) {
+        result << ", " ;
+      }
+      index_7717_IDX.increment () ;
+      enumerator_7717.gotoNextObject () ;
+    }
+  }
+  result << " COMMA_THERE)) ;\n"
+    "    capCollectionElement attributes ;\n"
+    "    attributes.setPointer (p) ;\n"
+    "    macroDetachSharedObject (p) ;\n"
+    "    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;\n"
+    "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::modifier_removeAtIndex (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_8213_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_8213 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_8213.hasCurrentObject ()) {
+      result << "GALGAS_" ;
+      result << enumerator_8213.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 217)).stringValue () ;
+      result << " & outOperand" ;
+      result << index_8213_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 217)).stringValue () ;
+      result << ",\n" ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      index_8213_IDX.increment () ;
+      enumerator_8213.gotoNextObject () ;
+    }
+  }
+  result << "const GALGAS_uint inRemoveIndex,\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "C_Compiler * inCompiler\n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) {\n"
+    "  if (isValid () && inRemoveIndex.isValid ()) {\n"
+    "    capCollectionElement attributes ;\n"
+    "    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;\n"
+    "    cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " * p = (cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " *) attributes.ptr () ;\n"
+    "    if (NULL == p) {\n" ;
+  GALGAS_uint index_8766_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_8766 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_8766.hasCurrentObject ()) {
+      result << "      outOperand" ;
+      result << index_8766_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 229)).stringValue () ;
+      result << ".drop () ;\n" ;
+      index_8766_IDX.increment () ;
+      enumerator_8766.gotoNextObject () ;
+    }
+  }
+  result << "    }else{\n"
+    "      macroValidSharedObject (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << ") ;\n" ;
+  GALGAS_uint index_8950_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_8950 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_8950.hasCurrentObject ()) {
+      result << "      outOperand" ;
+      result << index_8950_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 235)).stringValue () ;
+      result << " = p->mObject.mAttribute_" ;
+      result << enumerator_8950.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 235)).stringValue () ;
+      result << " ;\n" ;
+      index_8950_IDX.increment () ;
+      enumerator_8950.gotoNextObject () ;
+    }
+  }
+  result << "    }\n"
+    "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::modifier_popFirst (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_9301_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_9301 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_9301.hasCurrentObject ()) {
+      result << "GALGAS_" ;
+      result << enumerator_9301.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 245)).stringValue () ;
+      result << " & outOperand" ;
+      result << index_9301_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 245)).stringValue () ;
+      result << ",\n" ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      index_9301_IDX.increment () ;
+      enumerator_9301.gotoNextObject () ;
+    }
+  }
+  result << "C_Compiler * inCompiler\n"
+    "  " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) {\n"
+    "  capCollectionElement attributes ;\n"
+    "  removeFirstObject (attributes, inCompiler COMMA_THERE) ;\n"
+    "  cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " * p = (cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " *) attributes.ptr () ;\n"
+    "  if (NULL == p) {\n" ;
+  GALGAS_uint index_9719_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_9719 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_9719.hasCurrentObject ()) {
+      result << "    outOperand" ;
+      result << index_9719_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 255)).stringValue () ;
+      result << ".drop () ;\n" ;
+      index_9719_IDX.increment () ;
+      enumerator_9719.gotoNextObject () ;
+    }
+  }
+  result << "  }else{\n"
+    "    macroValidSharedObject (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << ") ;\n" ;
+  GALGAS_uint index_9897_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_9897 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_9897.hasCurrentObject ()) {
+      result << "    outOperand" ;
+      result << index_9897_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 261)).stringValue () ;
+      result << " = p->mObject.mAttribute_" ;
+      result << enumerator_9897.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 261)).stringValue () ;
+      result << " ;\n" ;
+      index_9897_IDX.increment () ;
+      enumerator_9897.gotoNextObject () ;
+    }
+  }
+  result << "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::modifier_popLast (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_10239_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_10239 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_10239.hasCurrentObject ()) {
+      result << "GALGAS_" ;
+      result << enumerator_10239.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 270)).stringValue () ;
+      result << " & outOperand" ;
+      result << index_10239_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 270)).stringValue () ;
+      result << ",\n" ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      index_10239_IDX.increment () ;
+      enumerator_10239.gotoNextObject () ;
+    }
+  }
+  result << "C_Compiler * inCompiler\n"
+    "  " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) {\n"
+    "  capCollectionElement attributes ;\n"
+    "  removeLastObject (attributes, inCompiler COMMA_THERE) ;\n"
+    "  cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " * p = (cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " *) attributes.ptr () ;\n"
+    "  if (NULL == p) {\n" ;
+  GALGAS_uint index_10656_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_10656 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_10656.hasCurrentObject ()) {
+      result << "    outOperand" ;
+      result << index_10656_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 280)).stringValue () ;
+      result << ".drop () ;\n" ;
+      index_10656_IDX.increment () ;
+      enumerator_10656.gotoNextObject () ;
+    }
+  }
+  result << "  }else{\n"
+    "    macroValidSharedObject (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << ") ;\n" ;
+  GALGAS_uint index_10834_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_10834 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_10834.hasCurrentObject ()) {
+      result << "    outOperand" ;
+      result << index_10834_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 286)).stringValue () ;
+      result << " = p->mObject.mAttribute_" ;
+      result << enumerator_10834.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 286)).stringValue () ;
+      result << " ;\n" ;
+      index_10834_IDX.increment () ;
+      enumerator_10834.gotoNextObject () ;
+    }
+  }
+  result << "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::method_first (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_11172_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_11172 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_11172.hasCurrentObject ()) {
+      result << "GALGAS_" ;
+      result << enumerator_11172.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 295)).stringValue () ;
+      result << " & outOperand" ;
+      result << index_11172_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 295)).stringValue () ;
+      result << ",\n" ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      index_11172_IDX.increment () ;
+      enumerator_11172.gotoNextObject () ;
+    }
+  }
+  result << "C_Compiler * inCompiler\n"
+    "  " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) const {\n"
+    "  capCollectionElement attributes ;\n"
+    "  readFirst (attributes, inCompiler COMMA_THERE) ;\n"
+    "  cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " * p = (cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " *) attributes.ptr () ;\n"
+    "  if (NULL == p) {\n" ;
+  GALGAS_uint index_11588_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_11588 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_11588.hasCurrentObject ()) {
+      result << "    outOperand" ;
+      result << index_11588_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 305)).stringValue () ;
+      result << ".drop () ;\n" ;
+      index_11588_IDX.increment () ;
+      enumerator_11588.gotoNextObject () ;
+    }
+  }
+  result << "  }else{\n"
+    "    macroValidSharedObject (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << ") ;\n" ;
+  GALGAS_uint index_11766_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_11766 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_11766.hasCurrentObject ()) {
+      result << "    outOperand" ;
+      result << index_11766_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 311)).stringValue () ;
+      result << " = p->mObject.mAttribute_" ;
+      result << enumerator_11766.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 311)).stringValue () ;
+      result << " ;\n" ;
+      index_11766_IDX.increment () ;
+      enumerator_11766.gotoNextObject () ;
+    }
+  }
+  result << "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::method_last (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_12103_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_12103 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_12103.hasCurrentObject ()) {
+      result << "GALGAS_" ;
+      result << enumerator_12103.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 320)).stringValue () ;
+      result << " & outOperand" ;
+      result << index_12103_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 320)).stringValue () ;
+      result << ",\n" ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      index_12103_IDX.increment () ;
+      enumerator_12103.gotoNextObject () ;
+    }
+  }
+  result << "C_Compiler * inCompiler\n"
+    "  " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) const {\n"
+    "  capCollectionElement attributes ;\n"
+    "  readLast (attributes, inCompiler COMMA_THERE) ;\n"
+    "  cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " * p = (cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " *) attributes.ptr () ;\n"
+    "  if (NULL == p) {\n" ;
+  GALGAS_uint index_12518_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_12518 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_12518.hasCurrentObject ()) {
+      result << "    outOperand" ;
+      result << index_12518_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 330)).stringValue () ;
+      result << ".drop () ;\n" ;
+      index_12518_IDX.increment () ;
+      enumerator_12518.gotoNextObject () ;
+    }
+  }
+  result << "  }else{\n"
+    "    macroValidSharedObject (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << ") ;\n" ;
+  GALGAS_uint index_12696_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_12696 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_12696.hasCurrentObject ()) {
+      result << "    outOperand" ;
+      result << index_12696_IDX.reader_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 336)).stringValue () ;
+      result << " = p->mObject.mAttribute_" ;
+      result << enumerator_12696.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 336)).stringValue () ;
+      result << " ;\n" ;
+      index_12696_IDX.increment () ;
+      enumerator_12696.gotoNextObject () ;
+    }
+  }
+  result << "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::operator_concat (" ;
+  columnMarker = result.currentColumn () ;
+  result << "const GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " & inOperand\n"
+    "                     " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_UNUSED_LOCATION_ARGS) const {\n"
+    "  GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " result ;\n"
+    "  if (isValid () && inOperand.isValid ()) {\n"
+    "    result = *this ;\n"
+    "    result.appendList (inOperand) ;\n"
+    "  }\n"
+    "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::add_operation (" ;
+  columnMarker = result.currentColumn () ;
+  result << "const GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " & inOperand,\n"
+    "                                            " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "C_Compiler * /* inCompiler */\n"
+    "                                            " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_UNUSED_LOCATION_ARGS) const {\n"
+    "  GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " result ;\n"
+    "  if (isValid () && inOperand.isValid ()) {\n"
+    "    result = *this ;\n"
+    "    result.appendList (inOperand) ;\n"
+    "  }\n"
+    "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::reader_subListWithRange (" ;
+  columnMarker = result.currentColumn () ;
+  result << "const GALGAS_range & inRange,\n"
+    "                                               " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "C_Compiler * inCompiler\n"
+    "                                               " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) const {\n"
+    "  GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " result = GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::constructor_emptyList (THERE) ;\n"
+    "  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;\n"
+    "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::reader_subListFromIndex (" ;
+  columnMarker = result.currentColumn () ;
+  result << "const GALGAS_uint & inIndex,\n"
+    "                                               " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "C_Compiler * inCompiler\n"
+    "                                               " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_LOCATION_ARGS) const {\n"
+    "  GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " result = GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::constructor_emptyList (THERE) ;\n"
+    "  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;\n"
+    "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::dotAssign_operation (" ;
+  columnMarker = result.currentColumn () ;
+  result << "const GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " inOperand\n"
+    "                          " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_UNUSED_LOCATION_ARGS) {\n"
+    "  appendList (inOperand) ;\n"
+    "}\n"
+    "\n" ;
+  GALGAS_uint index_15336_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_15336 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_15336.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = enumerator_15336.current_mHasSetter (HERE).boolEnum () ;
+      if (kBoolTrue == test_0) {
+        result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+          "\n"
+          "void GALGAS_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << "::modifier_set" ;
+        result << enumerator_15336.current_mAttributeName (HERE).mAttribute_string.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 397)).reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 397)).stringValue () ;
+        result << "AtIndex (" ;
+        columnMarker = result.currentColumn () ;
+        result << "GALGAS_" ;
+        result << enumerator_15336.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 397)).stringValue () ;
+        result << " inOperand,\n"
+          "                                              " ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result << "GALGAS_uint inIndex,\n"
+          "                                              " ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result << "C_Compiler * inCompiler\n"
+          "                                              " ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result << "COMMA_LOCATION_ARGS) {\n"
+          "  cCollectionElement_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << " * p = (cCollectionElement_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << " *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n"
+          "  if (NULL != p) {\n"
+          "    macroValidSharedObject (p, cCollectionElement_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << ") ;\n"
+          "    macroUniqueSharedObject (p) ;\n"
+          "    p->mObject.mAttribute_" ;
+        result << enumerator_15336.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 405)).stringValue () ;
+        result << " = inOperand ;\n"
+          "  }\n"
+          "}\n"
+          "\n" ;
+      }else if (kBoolFalse == test_0) {
+      }
+      const enumGalgasBool test_1 = enumerator_15336.current_mHasGetter (HERE).boolEnum () ;
+      if (kBoolTrue == test_1) {
+        result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+          "\n"
+          "GALGAS_" ;
+        result << enumerator_15336.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 412)).stringValue () ;
+        result << " GALGAS_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << "::reader_" ;
+        result << enumerator_15336.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 412)).stringValue () ;
+        result << "AtIndex (" ;
+        columnMarker = result.currentColumn () ;
+        result << "const GALGAS_uint & inIndex,\n"
+          "                                              " ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result << "C_Compiler * inCompiler\n"
+          "                                              " ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result << "COMMA_LOCATION_ARGS) const {\n"
+          "  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n"
+          "  cCollectionElement_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << " * p = (cCollectionElement_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << " *) attributes.ptr () ;\n"
+          "  GALGAS_" ;
+        result << enumerator_15336.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 417)).stringValue () ;
+        result << " result ;\n"
+          "  if (NULL != p) {\n"
+          "    macroValidSharedObject (p, cCollectionElement_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << ") ;\n"
+          "    result = p->mObject.mAttribute_" ;
+        result << enumerator_15336.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 420)).stringValue () ;
+        result << " ;\n"
+          "  }\n"
+          "  return result ;\n"
+          "}\n"
+          "\n" ;
+      }else if (kBoolFalse == test_1) {
+      }
+      index_15336_IDX.increment () ;
+      enumerator_15336.gotoNextObject () ;
+    }
+  }
+  result << "\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "cEnumerator_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::cEnumerator_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  columnMarker = result.currentColumn () ;
+  result << "const GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " & inEnumeratedObject,\n"
+    "                   " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "const typeEnumerationOrder inOrder) :\n"
+    "cGenericAbstractEnumerator () {\n"
+    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "_2D_element cEnumerator_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::current (LOCATION_ARGS) const {\n"
+    "  const cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " * p = (const cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " *) currentObjectPtr (THERE) ;\n"
+    "  macroValidSharedObject (p, cCollectionElement_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << ") ;\n"
+    "  return p->mObject ;\n"
+    "}\n"
+    "\n"
+    "\n" ;
+  GALGAS_uint index_18304_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_18304 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_18304.hasCurrentObject ()) {
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+        "\n"
+        "GALGAS_" ;
+      result << enumerator_18304.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 447)).stringValue () ;
+      result << " cEnumerator_" ;
+      result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+      result << "::current_" ;
+      result << enumerator_18304.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 447)).stringValue () ;
+      result << " (LOCATION_ARGS) const {\n"
+        "  const cCollectionElement_" ;
+      result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+      result << " * p = (const cCollectionElement_" ;
+      result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+      result << " *) currentObjectPtr (THERE) ;\n"
+        "  macroValidSharedObject (p, cCollectionElement_" ;
+      result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+      result << ") ;\n"
+        "  return p->mObject.mAttribute_" ;
+      result << enumerator_18304.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 450)).stringValue () ;
+      result << " ;\n"
+        "}\n"
+        "\n" ;
+      index_18304_IDX.increment () ;
+      enumerator_18304.gotoNextObject () ;
+    }
+  }
+  result << "\n"
+    "\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       Once function 'forbiddenKeysForStruct'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_stringset onceFunction_forbiddenKeysForStruct (C_Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_stringset result_outResult ; // Returned variable
+  result_outResult = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("struct.galgas", 177)) ;
+  result_outResult.addAssign_operation (GALGAS_string ("description")  COMMA_SOURCE_FILE ("struct.galgas", 178)) ;
+  result_outResult.addAssign_operation (GALGAS_string ("object")  COMMA_SOURCE_FILE ("struct.galgas", 179)) ;
+//---
+  return result_outResult ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//  Function implementation                                                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static bool gOnceFunctionResultAvailable_forbiddenKeysForStruct = false ;
+static GALGAS_stringset gOnceFunctionResult_forbiddenKeysForStruct ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringset function_forbiddenKeysForStruct (class C_Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  if (! gOnceFunctionResultAvailable_forbiddenKeysForStruct) {
+    gOnceFunctionResult_forbiddenKeysForStruct = onceFunction_forbiddenKeysForStruct (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_forbiddenKeysForStruct = true ;
+  }
+  return gOnceFunctionResult_forbiddenKeysForStruct ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void releaseOnceFunctionResult_forbiddenKeysForStruct (void) {
+  gOnceFunctionResult_forbiddenKeysForStruct.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForStruct (NULL,
+                                                                    releaseOnceFunctionResult_forbiddenKeysForStruct) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//  Function introspection                                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static const C_galgas_type_descriptor * functionArgs_forbiddenKeysForStruct [1] = {
+  NULL
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_object functionWithGenericHeader_forbiddenKeysForStruct (C_Compiler * inCompiler,
+                                                                       const cObjectArray & /* inEffectiveParameterArray */,
+                                                                       const GALGAS_location & /* inErrorLocation */
+                                                                       COMMA_LOCATION_ARGS) {
+  return function_forbiddenKeysForStruct (inCompiler COMMA_THERE).reader_object (THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_galgas_function_descriptor functionDescriptor_forbiddenKeysForStruct ("forbiddenKeysForStruct",
+                                                                        functionWithGenericHeader_forbiddenKeysForStruct,
+                                                                        & kTypeDescriptor_GALGAS_stringset,
+                                                                        0,
+                                                                        functionArgs_forbiddenKeysForStruct) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       Filewrapper 'structGenerationTemplate'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+//--- All files of '' directory
+
+static const cRegularFileWrapper * gWrapperAllFiles_structGenerationTemplate_0 [1] = {
+  NULL
+} ;
+
+//--- All sub-directories of '' directory
+
+static const cDirectoryWrapper * gWrapperAllDirectories_structGenerationTemplate_0 [1] = {
+  NULL
+} ;
+
+//--- Directory ''
+
+const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate (
+  "",
+  0,
+  gWrapperAllFiles_structGenerationTemplate_0,
+  0,
+  gWrapperAllDirectories_structGenerationTemplate_0
+) ;
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'structGenerationTemplate structTypeHeader1'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_structTypeHeader_31_ (C_Compiler * inCompiler,
+                                                                                 const GALGAS_string & /* in_TYPE_5F_NAME */,
+                                                                                 const GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                 const GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                 const GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  uint32_t columnMarker = 0 ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@").add_operation (in_TYPE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.h1.galgasTemplate", 3)).add_operation (GALGAS_string (" struct"), inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.h1.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_struct.h1.galgasTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " : public AC_GALGAS_root {\n"
+    "//--------------------------------- Public data members\n" ;
+  GALGAS_uint index_709_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_709 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_709.hasCurrentObject ()) {
+      result << "  public : GALGAS_" ;
+      result << enumerator_709.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.h1.galgasTemplate", 11)).stringValue () ;
+      result << " mAttribute_" ;
+      result << enumerator_709.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.h1.galgasTemplate", 11)).stringValue () ;
+      result << " ;\n" ;
+      index_709_.increment () ;
+      enumerator_709.gotoNextObject () ;
+    }
+  }
+  result << "\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;\n"
+    "  public : VIRTUAL_IN_DEBUG void drop (void) ;\n"
+    "\n" ;
+  const enumGalgasBool test_0 = in_HAS_5F_DEFAULT_5F_CONSTRUCTOR.boolEnum () ;
+  if (kBoolTrue == test_0) {
+    result << "//--------------------------------- Default GALGAS constructor\n"
+      "  public : static GALGAS_" ;
+    result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+    result << " constructor_default (LOCATION_ARGS) ;\n"
+      "\n" ;
+  }else if (kBoolFalse == test_0) {
+  }
+  result << "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (void) ;\n"
+    "\n"
+    "//--------------------------------- Virtual destructor (in debug mode)\n"
+    "  public : VIRTUAL_IN_DEBUG ~ GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (void) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_1549_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_1549 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1549.hasCurrentObject ()) {
+      result << "const GALGAS_" ;
+      result << enumerator_1549.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.h1.galgasTemplate", 33)).stringValue () ;
+      result << " & in_" ;
+      result << enumerator_1549.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.h1.galgasTemplate", 33)).stringValue () ;
+      if (enumerator_1549.hasNextObject ()) {
+        result << ",\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_1549_.increment () ;
+      enumerator_1549.gotoNextObject () ;
+    }
+  }
+  result << ") ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'structGenerationTemplate structTypeSpecificImplementation'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_structTypeSpecificImplementation (C_Compiler * inCompiler,
+                                                                                             const GALGAS_string & in_TYPE_5F_NAME,
+                                                                                             const GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                             const GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                             const GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  uint32_t columnMarker = 0 ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (void) :\n" ;
+  GALGAS_uint index_214_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_214 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_214.hasCurrentObject ()) {
+      result << "mAttribute_" ;
+      result << enumerator_214.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 6)).stringValue () ;
+      result << " ()" ;
+      if (enumerator_214.hasNextObject ()) {
+        result << ",\n" ;
+      }
+      index_214_.increment () ;
+      enumerator_214.gotoNextObject () ;
+    }
+  }
+  result << " {\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::~ GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (void) {\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_710_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_710 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_710.hasCurrentObject ()) {
+      result << "const GALGAS_" ;
+      result << enumerator_710.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 20)).stringValue () ;
+      result << " & inOperand" ;
+      result << index_710_IDX.reader_string (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 20)).stringValue () ;
+      if (enumerator_710.hasNextObject ()) {
+        result << ",\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_710_IDX.increment () ;
+      enumerator_710.gotoNextObject () ;
+    }
+  }
+  result << ") :\n" ;
+  GALGAS_uint index_867_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_867 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_867.hasCurrentObject ()) {
+      result << "mAttribute_" ;
+      result << enumerator_867.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 24)).stringValue () ;
+      result << " (inOperand" ;
+      result << index_867_IDX.reader_string (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 24)).stringValue () ;
+      result << ")" ;
+      if (enumerator_867.hasNextObject ()) {
+        result << ",\n" ;
+      }
+      index_867_IDX.increment () ;
+      enumerator_867.gotoNextObject () ;
+    }
+  }
+  result << " {\n"
+    "}\n"
+    "\n" ;
+  const enumGalgasBool test_0 = in_HAS_5F_DEFAULT_5F_CONSTRUCTOR.boolEnum () ;
+  if (kBoolTrue == test_0) {
+    result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+      "\n"
+      "GALGAS_" ;
+    result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+    result << " GALGAS_" ;
+    result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+    result << "::constructor_default (UNUSED_LOCATION_ARGS) {\n"
+      "  return GALGAS_" ;
+    result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+    result << " (" ;
+    columnMarker = result.currentColumn () ;
+    GALGAS_uint index_1303_ (0) ;
+    if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+      cEnumerator_typedPropertyList enumerator_1303 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+      while (enumerator_1303.hasCurrentObject ()) {
+        result << "GALGAS_" ;
+        result << enumerator_1303.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 36)).stringValue () ;
+        result << "::constructor_" ;
+        result << enumerator_1303.current_mAttributeTypeProxy (HERE).reader_mDefaultConstructorName (inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 36)).reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 36)).stringValue () ;
+        result << " (HERE)" ;
+        if (enumerator_1303.hasNextObject ()) {
+          result << ",\n" ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+        }
+        index_1303_.increment () ;
+        enumerator_1303.gotoNextObject () ;
+      }
+    }
+    result << ") ;\n"
+      "}\n"
+      "\n" ;
+  }else if (kBoolFalse == test_0) {
+  }
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::constructor_new (" ;
+  columnMarker = result.currentColumn () ;
+  GALGAS_uint index_1732_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_1732 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1732.hasCurrentObject ()) {
+      result << "const GALGAS_" ;
+      result << enumerator_1732.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 46)).stringValue () ;
+      result << " & inOperand" ;
+      result << index_1732_IDX.reader_string (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 46)).stringValue () ;
+      if (enumerator_1732.hasNextObject ()) {
+        result << ",\n" ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_1732_IDX.increment () ;
+      enumerator_1732.gotoNextObject () ;
+    }
+  }
+  result << " \n" ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "COMMA_UNUSED_LOCATION_ARGS) {\n"
+    "  GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " result ;\n"
+    "  if (" ;
+  GALGAS_uint index_1966_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_1966 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1966.hasCurrentObject ()) {
+      result << "inOperand" ;
+      result << index_1966_IDX.reader_string (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 52)).stringValue () ;
+      result << ".isValid ()" ;
+      if (enumerator_1966.hasNextObject ()) {
+        result << " && " ;
+      }
+      index_1966_IDX.increment () ;
+      enumerator_1966.gotoNextObject () ;
+    }
+  }
+  result << ") {\n"
+    "    result = GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (" ;
+  GALGAS_uint index_2112_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_2112 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2112.hasCurrentObject ()) {
+      result << "inOperand" ;
+      result << index_2112_IDX.reader_string (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 58)).stringValue () ;
+      if (enumerator_2112.hasNextObject ()) {
+        result << ", " ;
+      }
+      index_2112_IDX.increment () ;
+      enumerator_2112.gotoNextObject () ;
+    }
+  }
+  result << ") ;\n"
+    "  }\n"
+    "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "typeComparisonResult GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::objectCompare (const GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " & inOperand) const {\n"
+    "   typeComparisonResult result = kOperandEqual ;\n" ;
+  GALGAS_uint index_2503_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_2503 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2503.hasCurrentObject ()) {
+      result << "  if (result == kOperandEqual) {\n"
+        "    result = mAttribute_" ;
+      result << enumerator_2503.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 73)).stringValue () ;
+      result << ".objectCompare (inOperand.mAttribute_" ;
+      result << enumerator_2503.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 73)).stringValue () ;
+      result << ") ;\n"
+        "  }\n" ;
+      index_2503_.increment () ;
+      enumerator_2503.gotoNextObject () ;
+    }
+  }
+  result << "  return result ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "bool GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::isValid (void) const {\n"
+    "  return " ;
+  GALGAS_uint index_2963_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_2963 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2963.hasCurrentObject ()) {
+      result << "mAttribute_" ;
+      result << enumerator_2963.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 84)).stringValue () ;
+      result << ".isValid ()" ;
+      if (enumerator_2963.hasNextObject ()) {
+        result << " && " ;
+      }
+      index_2963_.increment () ;
+      enumerator_2963.gotoNextObject () ;
+    }
+  }
+  result << " ;\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::drop (void) {\n" ;
+  GALGAS_uint index_3271_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_3271 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3271.hasCurrentObject ()) {
+      result << "  mAttribute_" ;
+      result << enumerator_3271.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 94)).stringValue () ;
+      result << ".drop () ;\n" ;
+      index_3271_.increment () ;
+      enumerator_3271.gotoNextObject () ;
+    }
+  }
+  result << "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "void GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::description (" ;
+  columnMarker = result.currentColumn () ;
+  result << "C_String & ioString,\n"
+    "                              " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "const int32_t inIndentation) const {\n"
+    "  ioString << \"<struct @" ;
+  result << in_TYPE_5F_NAME.stringValue () ;
+  result << ":\" ;\n"
+    "  if (! isValid ()) {\n"
+    "    ioString << \" not built\" ;\n"
+    "  }else{\n" ;
+  GALGAS_uint index_3761_IDX (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_3761 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3761.hasCurrentObject ()) {
+      result << "    mAttribute_" ;
+      result << enumerator_3761.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 108)).stringValue () ;
+      result << ".description (ioString, inIndentation+1) ;\n" ;
+      if (enumerator_3761.hasNextObject ()) {
+        result << "    ioString << \", \" ;\n" ;
+      }
+      index_3761_IDX.increment () ;
+      enumerator_3761.gotoNextObject () ;
+    }
+  }
+  result << "  }\n"
+    "  ioString << \">\" ;\n"
+    "}\n"
+    "\n" ;
+  GALGAS_uint index_3965_ (0) ;
+  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
+    cEnumerator_typedPropertyList enumerator_3965 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3965.hasCurrentObject ()) {
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+        "\n"
+        "GALGAS_" ;
+      result << enumerator_3965.current_mAttributeTypeProxy (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 117)).stringValue () ;
+      result << " GALGAS_" ;
+      result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+      result << "::reader_" ;
+      result << enumerator_3965.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 117)).stringValue () ;
+      result << " (UNUSED_LOCATION_ARGS) const {\n"
+        "  return mAttribute_" ;
+      result << enumerator_3965.current_mAttributeName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("GALGAS_struct.cpp.galgasTemplate", 118)).stringValue () ;
+      result << " ;\n"
+        "}\n"
+        "\n" ;
+      index_3965_.increment () ;
+      enumerator_3965.gotoNextObject () ;
+    }
+  }
+  result << "\n"
+    "\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -13265,3507 +14925,6 @@ GALGAS_string filewrapperTemplate_updaterApplicationFileWrapper_prefix (C_Compil
     "#ifdef __OBJC__\n"
     "  #import <Cocoa/Cocoa.h>\n"
     "#endif\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Filewrapper 'updaterToolFileWrapper'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- All files of '' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_updaterToolFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- All sub-directories of '' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_updaterToolFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- Directory ''
-
-const cDirectoryWrapper gWrapperDirectory_0_updaterToolFileWrapper (
-  "",
-  0,
-  gWrapperAllFiles_updaterToolFileWrapper_0,
-  0,
-  gWrapperAllDirectories_updaterToolFileWrapper_0
-) ;
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                        Filewrapper template 'updaterToolFileWrapper updater_object_protocol'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_object_5F_protocol (C_Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMUpdaterServerProtocol.h\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 29/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <Foundation/Foundation.h>\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@protocol PMUpdaterServerProtocol <NSObject>\n"
-    "\n"
-    "- (NSError *) performInstallationWithApplicationPath: (NSString *) inApplicationPath\n"
-    "              temporaryFilePath: (NSString *) inTemporaryFilePath ;\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Filewrapper template 'updaterToolFileWrapper updater_object_header'                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_object_5F_header (C_Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMUpdaterServerObject.h\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 29/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMUpdaterServerProtocol.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "//#define DEBUG_WITH_SYSLOG\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@interface PMUpdaterServerObject : NSObject <PMUpdaterServerProtocol> {\n"
-    "  @protected BOOL mTerminateHelperTool ;\n"
-    "  @protected pid_t mUpdaterToolPID ;\n"
-    "  @protected NSString * mTemporaryFilePath ; // Temporary location of uncompressed new application\n"
-    "  @protected NSString * mCocoaApplicationPath ;\n"
-    "}\n"
-    "\n"
-    "- (BOOL) shouldExit ;\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                     Filewrapper template 'updaterToolFileWrapper updater_object_implementation'                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_object_5F_implementation (C_Compiler * /* inCompiler */
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMUpdaterServerObject.m\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 29/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMUpdaterServerObject.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#ifdef DEBUG_WITH_SYSLOG\n"
-    "  #import <syslog.h>\n"
-    "#endif\n"
-    "\n"
-    "#import <CommonCrypto/CommonDigest.h>\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@implementation PMUpdaterServerObject\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSError *) performInstallationWithApplicationPath: (NSString *) inApplicationPath\n"
-    "              temporaryFilePath: (NSString *) inTemporaryFilePath {\n"
-    "  mTemporaryFilePath = inTemporaryFilePath ;\n"
-    "  mCocoaApplicationPath = inApplicationPath ;\n"
-    "  #ifdef DEBUG_WITH_SYSLOG\n"
-    "    syslog (LOG_NOTICE, \"Application Temporary path %s\", mTemporaryFilePath.UTF8String) ;\n"
-    "    syslog (LOG_NOTICE, \"Original Application path %s\", mCocoaApplicationPath.UTF8String) ;\n"
-    "  #endif\n"
-    "//--- Remove Canari Application\n"
-    "  NSFileManager * fm = [NSFileManager new] ;\n"
-    "  NSError * error = nil ;\n"
-    "  BOOL ok = [fm removeItemAtPath:mCocoaApplicationPath error:& error] ;\n"
-    "//--- Install new version\n"
-    "  if (ok) {\n"
-    "    ok = [fm\n"
-    "      copyItemAtPath:mTemporaryFilePath\n"
-    "      toPath:mCocoaApplicationPath\n"
-    "      error:& error\n"
-    "    ] ;\n"
-    "  }\n"
-    "//---\n"
-    "  #if ! __has_feature(objc_arc)\n"
-    "    [fm release] ;\n"
-    "  #endif\n"
-    "  fm = nil ;\n"
-    "  mTerminateHelperTool = YES ;\n"
-    "//---\n"
-    "  return ok \? nil : error ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (BOOL) shouldExit {\n"
-    "  return mTerminateHelperTool ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Filewrapper template 'updaterToolFileWrapper updater_object_main'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_object_5F_main (C_Compiler * /* inCompiler */,
-                                                                                    const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
-                                                                                    const GALGAS_string & in_TARGET_5F_NAME
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  main.c\n"
-    "//  CanariInstallerHelperTool\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 27/06/12.\n"
-    "//  Copyright (c) 2012 ECN / IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMUpdaterServerObject.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <launch.h>\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#ifdef DEBUG_WITH_SYSLOG\n"
-    "  #import <syslog.h>\n"
-    "#endif\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "int main (int argc, const char * argv[]) {\n"
-    "  @autoreleasepool {\n"
-    "    #ifdef DEBUG_WITH_SYSLOG\n"
-    "      syslog (LOG_NOTICE, \"Updater Helper Tool launched (pid: %d)\", getpid ());\n"
-    "    #endif\n"
-    "  //-1---\n"
-    "    launch_data_t req = launch_data_new_string (LAUNCH_KEY_CHECKIN) ;\n"
-    "    Boolean ok = NULL != req ;\n"
-    "    #ifdef DEBUG_WITH_SYSLOG\n"
-    "      syslog (LOG_NOTICE, \"HelperTool req: %s\", ok \? \"ok\" : \"failed\") ;\n"
-    "    #endif\n"
-    "  //-2---\n"
-    "    launch_data_t resp = NULL ;\n"
-    "    if (ok) {\n"
-    "      resp = launch_msg (req) ;\n"
-    "      ok = NULL != resp ;\n"
-    "      #ifdef DEBUG_WITH_SYSLOG\n"
-    "        syslog (LOG_NOTICE, \"HelperTool resp: %s\", ok \? \"ok\" : \"failed\");\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-3---\n"
-    "    launch_data_t machData = NULL ;\n"
-    "    if (ok) {\n"
-    "      machData = launch_data_dict_lookup (resp, LAUNCH_JOBKEY_MACHSERVICES);\n"
-    "      ok = NULL != machData ;\n"
-    "      #ifdef DEBUG_WITH_SYSLOG\n"
-    "        syslog (LOG_NOTICE, \"HelperTool machData: %s\", ok \? \"ok\" : \"failed\") ;\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-4---\n"
-    "    launch_data_t machPortData = NULL ;\n"
-    "    if (ok) {\n"
-    "      machPortData = launch_data_dict_lookup (machData, \"" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool.mach\") ;\n"
-    "      ok = NULL != machPortData ;\n"
-    "      #ifdef DEBUG_WITH_SYSLOG\n"
-    "        syslog (LOG_NOTICE, \"HelperTool machPortData: %s\", ok \? \"ok\" : \"failed\") ;\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-5---\n"
-    "    NSConnection * connection = nil ;\n"
-    "    if (ok) {\n"
-    "      mach_port_t mp = launch_data_get_machport (machPortData) ;\n"
-    "      NSMachPort * rp = [[NSMachPort alloc] initWithMachPort:mp] ;\n"
-    "      connection = [NSConnection connectionWithReceivePort:rp sendPort:nil] ;\n"
-    "      #if ! __has_feature(objc_arc)\n"
-    "        [connection retain] ;\n"
-    "        [rp release] ;\n"
-    "      #endif\n"
-    "      rp = nil ;\n"
-    "      ok = nil != connection ;\n"
-    "      #ifdef DEBUG_WITH_SYSLOG\n"
-    "        syslog (LOG_NOTICE, \"HelperTool connection: %s\", ok \? \"ok\" : \"failed\") ;\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-6---\n"
-    "    if (NULL != req) {\n"
-    "      launch_data_free (req) ; req = NULL ;\n"
-    "    }\n"
-    "    if (NULL != resp) {\n"
-    "      launch_data_free (resp) ; resp = NULL ;\n"
-    "    }\n"
-    "  //-7---\n"
-    "    if (ok) {\n"
-    "      PMUpdaterServerObject * serverObject = [PMUpdaterServerObject new] ;\n"
-    "      [connection setRootObject:serverObject] ;\n"
-    "      while (! serverObject.shouldExit) {\n"
-    "        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]] ;\n"
-    "      }\n"
-    "      #if ! __has_feature(objc_arc)\n"
-    "        [serverObject release] ;\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-8---\n"
-    "    [connection invalidate] ;\n"
-    "    #if ! __has_feature(objc_arc)\n"
-    "      [connection release] ;\n"
-    "    #endif\n"
-    "    connection = nil ;\n"
-    "  }\n"
-    "//---\n"
-    "  #ifdef DEBUG_WITH_SYSLOG\n"
-    "    syslog (LOG_NOTICE, \"Helper Tool terminates\") ;\n"
-    "  #endif\n"
-    "  return 0 ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                        Filewrapper template 'updaterToolFileWrapper updater_tool_info_plist'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_tool_5F_info_5F_plist (C_Compiler * /* inCompiler */,
-                                                                                           const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
-                                                                                           const GALGAS_string & in_TARGET_5F_NAME,
-                                                                                           const GALGAS_string & in_CODE_5F_SIGNING_5F_IDENTITY
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
-    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n"
-    "<plist version=\"1.0\">\n"
-    "<dict>\n"
-    "\t<key>CFBundleIdentifier</key>\n"
-    "\t<string>" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool</string>\n"
-    "\t<key>CFBundleInfoDictionaryVersion</key>\n"
-    "\t<string>6.0</string>\n"
-    "\t<key>CFBundleName</key>\n"
-    "\t<string>" ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("updater-tool-Info.plist.txt", 10)).stringValue () ;
-  result << "Updater</string>\n"
-    "\t<key>CFBundleVersion</key>\n"
-    "\t<string>1.0</string>\n"
-    "\t<key>SMAuthorizedClients</key>\n"
-    "\t<array>\n"
-    "\t\t<string>identifier &quot;" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterApp&quot; and certificate leaf[subject.CN]=&quot;" ;
-  result << in_CODE_5F_SIGNING_5F_IDENTITY.stringValue () ;
-  result << "&quot;</string>\n"
-    "\t</array>\n"
-    "</dict>\n"
-    "</plist>\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Filewrapper template 'updaterToolFileWrapper updater_tool_launchd_plist'                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (C_Compiler * /* inCompiler */,
-                                                                                              const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
-                                                                                              const GALGAS_string & in_TARGET_5F_NAME
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
-    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n"
-    "<plist version=\"1.0\">\n"
-    "<dict>\n"
-    "\t<key>Label</key>\n"
-    "\t<string>" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool</string>\n"
-    "\t<key>OnDemand</key>\n"
-    "\t<false/>\n"
-    "\t<key>LaunchOnlyOnce</key>\n"
-    "\t<true/>\n"
-    "\t<key>MachServices</key>\n"
-    "\t<dict>\n"
-    "\t\t<key>" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool.mach</key>\n"
-    "\t\t<true/>\n"
-    "\t</dict>\n"
-    "</dict>\n"
-    "</plist>\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     Filewrapper 'applicationUpdateFileWrapper'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- All files of '' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_applicationUpdateFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- All sub-directories of '' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_applicationUpdateFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- Directory ''
-
-const cDirectoryWrapper gWrapperDirectory_0_applicationUpdateFileWrapper (
-  "",
-  0,
-  gWrapperAllFiles_applicationUpdateFileWrapper_0,
-  0,
-  gWrapperAllDirectories_applicationUpdateFileWrapper_0
-) ;
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                    Filewrapper template 'applicationUpdateFileWrapper application_update_header'                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_application_5F_update_5F_header (C_Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMApplicationUpdate.h\n"
-    "//  galgas\n"
-    "//\n"
-    "//  Created by Pierre MOLINARO on 02/10/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMDownloadFile.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@class WebView ;\n"
-    "@class PMDownloadData ;\n"
-    "@class PMDownloadFile ;\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@interface PMApplicationUpdate : NSObject <PMDownloadDidEndProtocol> {\n"
-    "//--- In New Available Panel\n"
-    "  @private IBOutlet NSPanel * mNewAvailableVersionPanel ;\n"
-    "  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox2 ;\n"
-    "  @private IBOutlet NSButton * mPerformUpdateButton ;\n"
-    "  @private IBOutlet NSTextField * mNewVersionTextField ;\n"
-    "  @private IBOutlet WebView * mChangeLogWebView ;\n"
-    "  @private IBOutlet NSView * mViewForChangeLogInPreferencePane ;\n"
-    "  @private IBOutlet WebView * mChangeLogInPreferencePaneWebView ;\n"
-    "\n"
-    "  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox ;\n"
-    "  \n"
-    "  @private IBOutlet NSButton * mCheckNowButton ;\n"
-    "  \n"
-    "  @private IBOutlet NSTextField * mDownloadTitle ;\n"
-    "  @private IBOutlet NSProgressIndicator * mDownloadProgressIndicator ;\n"
-    "  @private IBOutlet NSTextField * mDownloadSubTitle ;\n"
-    "  @private IBOutlet NSButton * mCancelButton ;\n"
-    "\n"
-    "  @private NSString * mLastAvailableVersion ;\n"
-    "  @private BOOL mSearchForUpdatesInBackground ;\n"
-    "  \n"
-    "  @private PMDownloadData * mDownloadData ;\n"
-    "  @private PMDownloadFile * mDownloadFile ;\n"
-    "}\n"
-    "\n"
-    "- (IBAction) checkForNewVersion: (id) inSender ;\n"
-    "\n"
-    "+ (void) instanciateSingleton ;\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                Filewrapper template 'applicationUpdateFileWrapper application_update_implementation'                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_application_5F_update_5F_implementation (C_Compiler * /* inCompiler */,
-                                                                                                        const GALGAS_string & in_PROJECT_5F_NAME,
-                                                                                                        const GALGAS_string & in_REPOSITORY_5F_URL,
-                                                                                                        const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMApplicationUpdate.m\n"
-    "//\n"
-    "//  Created by Pierre MOLINARO on 02/10/06.\n"
-    "//\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMApplicationUpdate.h\"\n"
-    "#import \"OC_GGS_ApplicationDelegate.h\"\n"
-    "#import \"PMDownloadData.h\"\n"
-    "#import \"PMDownloadFile.h\"\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <WebKit/WebKit.h>\n"
-    "#import <Security/Security.h>\n"
-    "#import <SystemConfiguration/SystemConfiguration.h>\n"
-    "#import <ServiceManagement/ServiceManagement.h>\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "//--- Only for debugging !!!\n"
-    "//#define FORCED_APPLICATION_VERSION @\"0.0.0\"\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "static PMApplicationUpdate * gApplicationUpdate ;\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "@implementation PMApplicationUpdate\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "+ (void) instanciateSingleton {\n"
-    "  gApplicationUpdate = [PMApplicationUpdate new] ;\n"
-    "  const BOOL ok = [NSBundle loadNibNamed:@\"PMApplicationUpdate\" owner:gApplicationUpdate] ;\n"
-    "  if (! ok) {\n"
-    "    NSAlert * alert = [NSAlert\n"
-    "      alertWithMessageText:@\"Cannot load PMApplicationUpdate.xib.\"\n"
-    "      defaultButton:@\"Ok\"\n"
-    "      alternateButton:nil\n"
-    "      otherButton:nil\n"
-    "      informativeTextWithFormat:@\"\"\n"
-    "    ] ;\n"
-    "    [alert\n"
-    "      beginSheetModalForWindow:nil\n"
-    "      modalDelegate:nil\n"
-    "      didEndSelector:NULL\n"
-    "      contextInfo:NULL\n"
-    "    ] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#pragma mark Pathes & URLs\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) applicationArchiveName {\n"
-    "  return @\"Cocoa" ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 62)).stringValue () ;
-  result << ".app.tar.bz2\" ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) serverHTTPPath {\n"
-    "  return @\"" ;
-  result << in_REPOSITORY_5F_URL.stringValue () ;
-  result << "\" ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) lastReleaseHTTPPath {\n"
-    "  return [self.serverHTTPPath stringByAppendingString:@\"/lastRelease.php\"] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) HTTPPathForVersion: (NSString *) inVersionString {\n"
-    "  return [NSString stringWithFormat:@\"%@/%@/%@\", self.serverHTTPPath, inVersionString, self.applicationArchiveName] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) temporaryDir {\n"
-    "  return @\"/tmp/TEMPORARY_DIR_FOR_" ;
-  result << in_PROJECT_5F_NAME.reader_uppercaseString (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 86)).stringValue () ;
-  result << "\" ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) temporaryPathForApplicationArchive {\n"
-    "  return [NSString stringWithFormat:@\"%@/%@\", self.temporaryDir, self.applicationArchiveName] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSComparisonResult) compareVersionString: (NSString *) inVersionString\n"
-    "                       withVersionString: (NSString *) inOtherVersionString {\n"
-    "  NSComparisonResult result = [inVersionString compare:inOtherVersionString] ;\n"
-    "  if (result != NSOrderedSame) {\n"
-    "    NSMutableArray * components = [NSMutableArray new] ;\n"
-    "    [components addObjectsFromArray:[inVersionString componentsSeparatedByString:@\".\"]] ;\n"
-    "    NSMutableArray * otherComponents = [NSMutableArray new] ;\n"
-    "    [otherComponents addObjectsFromArray:[inOtherVersionString componentsSeparatedByString:@\".\"]] ;\n"
-    "    while ([components count] < [otherComponents count]) {\n"
-    "      [components addObject:@\"0\"] ;\n"
-    "    }\n"
-    "    while ([components count] > [otherComponents count]) {\n"
-    "      [otherComponents addObject:@\"0\"] ;\n"
-    "    }\n"
-    "    result = NSOrderedSame ;\n"
-    "    for (NSUInteger i=0 ; (i<[components count]) && (result == NSOrderedSame) ; i++) {\n"
-    "      const int version = [[components objectAtIndex:i] intValue] ;\n"
-    "      const int otherVersion = [[otherComponents objectAtIndex:i] intValue] ;\n"
-    "      if (version < otherVersion) {\n"
-    "        result = NSOrderedAscending ;\n"
-    "      }else if (version > otherVersion) {\n"
-    "        result = NSOrderedDescending ;\n"
-    "      }\n"
-    "    }\n"
-    "  }\n"
-    "  return result ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#pragma mark awakeFromNib\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) awakeFromNib {\n"
-    "  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;\n"
-    "//--- Remove temporary dir, if it exists\n"
-    "  NSFileManager * fm = [NSFileManager defaultManager] ;\n"
-    "  if ([fm fileExistsAtPath:self.temporaryDir]) {\n"
-    "    [fm removeItemAtPath:self.temporaryDir error:nil] ;\n"
-    "  }\n"
-    "//--- Add bindings\n"
-    "  [mCheckUpdateAtStartUpCheckBox\n"
-    "    bind:@\"value\"\n"
-    "    toObject:ud\n"
-    "    withKeyPath:@\"GGS_check_update_at_start_up\"\n"
-    "    options:nil\n"
-    "  ] ;\n"
-    "  [mCheckUpdateAtStartUpCheckBox2\n"
-    "    bind:@\"value\"\n"
-    "    toObject:ud\n"
-    "    withKeyPath:@\"GGS_check_update_at_start_up\"\n"
-    "    options:nil\n"
-    "  ] ;\n"
-    "//----------------------------------------- Change Log Tab Item\n"
-    "//--- Add 'Update' tab item\n"
-    "  NSTabView * prefsTabView = [gCocoaApplicationDelegate preferencesTabView] ;\n"
-    "  NSTabViewItem * tabViewItem = [NSTabViewItem new] ;\n"
-    "  [tabViewItem setView:mViewForChangeLogInPreferencePane] ;\n"
-    "  [tabViewItem setLabel:@\"Update\"] ;\n"
-    "  [prefsTabView addTabViewItem:tabViewItem] ;\n"
-    "//--- Get Last Version\n"
-    "  [self checkForNewVersion:nil] ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "//                                                                          *\n"
-    "//            Check for new version                                         *\n"
-    "//                                                                          *\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (IBAction) checkForNewVersion: (id) inSender {\n"
-    "  mSearchForUpdatesInBackground = nil == inSender ;\n"
-    "  [mCheckNowButton setEnabled:NO] ;\n"
-    "  mDownloadData = [[PMDownloadData alloc]\n"
-    "    initDownloadWithURLString:self.lastReleaseHTTPPath\n"
-    "    delegate:self\n"
-    "    downloadDidEndSelector:@selector (lastVersionStringIsAvailable:)\n"
-    "    userInfo:nil\n"
-    "  ] ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) lastVersionStringIsAvailable: (PMDownloadData *) inDownloader {\n"
-    "  [mCheckNowButton setEnabled:YES] ;\n"
-    "  NSError * error = [inDownloader downloadError] ;\n"
-    "  if (error != nil) {\n"
-    "    if (! mSearchForUpdatesInBackground) {\n"
-    "      NSAlert * alert = [NSAlert\n"
-    "        alertWithMessageText:@\"Cannot connect to the server.\"\n"
-    "        defaultButton:@\"Ok\"\n"
-    "        alternateButton:nil\n"
-    "        otherButton:nil\n"
-    "        informativeTextWithFormat:@\"Reason: '%@'.\", [error localizedDescription]\n"
-    "      ] ;\n"
-    "      [alert\n"
-    "        beginSheetModalForWindow:nil\n"
-    "        modalDelegate:nil\n"
-    "        didEndSelector:NULL\n"
-    "        contextInfo:NULL\n"
-    "      ] ;\n"
-    "    }\n"
-    "  }else{\n"
-    "  //--- Update changeLog Web View\n"
-    "    mLastAvailableVersion = [[NSString alloc] initWithData:inDownloader.downloadedData encoding:NSASCIIStringEncoding] ;\n"
-    "    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@\"%@/%@/changeLog.html\", self.serverHTTPPath, mLastAvailableVersion]] ;\n"
-    "    [mChangeLogInPreferencePaneWebView.mainFrame loadRequest:[NSURLRequest requestWithURL:url]];\n"
-    "    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;\n"
-    "    if ([ud boolForKey:@\"GGS_check_update_at_start_up\"]) {\n"
-    "      [self checkForUpdating] ;\n"
-    "    }\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#pragma mark Check for new version\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) checkForUpdating {\n"
-    "//--- Check Response\n"
-    "  NSScanner * scanner = [NSScanner scannerWithString:mLastAvailableVersion] ;\n"
-    "  const BOOL versionOk = [scanner scanInt:NULL]\n"
-    "               && [scanner scanString:@\".\" intoString:NULL]\n"
-    "               && [scanner scanInt:NULL]\n"
-    "               && [scanner scanString:@\".\" intoString:NULL]\n"
-    "               && [scanner scanInt:NULL]\n"
-    "               && [scanner isAtEnd] ;\n"
-    "  if (versionOk) {\n"
-    "  //--- Get Application Current version\n"
-    "    #ifdef FORCED_APPLICATION_VERSION\n"
-    "      NSString * applicationVersion = FORCED_APPLICATION_VERSION ;\n"
-    "      NSLog (@\"Forced Application version: %@\", applicationVersion) ;\n"
-    "      NSLog (@\"Last Available version: %@\", mLastAvailableVersion) ;\n"
-    "    #else\n"
-    "      NSBundle * mainBundle = [NSBundle mainBundle] ;\n"
-    "      NSDictionary * infoDictionary = [mainBundle infoDictionary] ;\n"
-    "      NSString * applicationVersion = [infoDictionary objectForKey:@\"CFBundleShortVersionString\"] ;\n"
-    "    // NSLog (@\"applicationVersion '%@'\", applicationVersion) ;\n"
-    "    #endif\n"
-    "    const NSComparisonResult r = [self compareVersionString:applicationVersion withVersionString:mLastAvailableVersion] ;\n"
-    "    if (r == NSOrderedAscending) {\n"
-    "    //--- Display change log in Web View\n"
-    "      NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@\"%@/%@/changeLog.html\", self.serverHTTPPath, mLastAvailableVersion]] ;\n"
-    "      [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];\n"
-    "      NSString * s = [NSString stringWithFormat:\n"
-    "        @\"Current version is %@; the %@ version can be downloaded.\",\n"
-    "        applicationVersion,\n"
-    "        mLastAvailableVersion\n"
-    "      ] ;\n"
-    "      [mNewVersionTextField setStringValue:s] ;\n"
-    "      s = [NSString stringWithFormat:\n"
-    "        @\"Install and Launch Version %@\",\n"
-    "        mLastAvailableVersion\n"
-    "      ] ;\n"
-    "      [mPerformUpdateButton setTitle:s] ;\n"
-    "      [NSApp\n"
-    "        beginSheet:mNewAvailableVersionPanel\n"
-    "        modalForWindow:nil\n"
-    "        modalDelegate:self\n"
-    "        didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)\n"
-    "        contextInfo:nil\n"
-    "      ] ;\n"
-    "      [mCheckNowButton setEnabled:NO] ;\n"
-    "    }else if (! mSearchForUpdatesInBackground) {\n"
-    "      NSAlert * alert = [NSAlert\n"
-    "        alertWithMessageText:@\"" ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 265)).stringValue () ;
-  result << " is up to date.\"\n"
-    "        defaultButton:@\"Ok\"\n"
-    "        alternateButton:nil\n"
-    "        otherButton:nil\n"
-    "        informativeTextWithFormat:@\"There is no new version at this time.\"\n"
-    "      ] ;\n"
-    "      [alert\n"
-    "        beginSheetModalForWindow:[mCheckNowButton window]\n"
-    "        modalDelegate:nil\n"
-    "        didEndSelector:NULL\n"
-    "        contextInfo:NULL\n"
-    "      ] ;\n"
-    "    }\n"
-    "  }else if (! mSearchForUpdatesInBackground) {\n"
-    "    NSAlert * alert = [NSAlert\n"
-    "      alertWithMessageText:@\"Cannot get last release number.\"\n"
-    "      defaultButton:@\"Ok\"\n"
-    "      alternateButton:nil\n"
-    "      otherButton:nil\n"
-    "      informativeTextWithFormat:@\"The server answered in an incomprehensible way: '%@'.\", mLastAvailableVersion\n"
-    "    ] ;\n"
-    "    [alert\n"
-    "      beginSheetModalForWindow:nil\n"
-    "      modalDelegate:nil\n"
-    "      didEndSelector:NULL\n"
-    "      contextInfo:NULL\n"
-    "    ] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow\n"
-    "         returnCode:(int) inReturnCode\n"
-    "         contextInfo:(void  *) inContextInfo {\n"
-    "  // NSLog (@\"inReturnCode %d\", inReturnCode) ;\n"
-    "  if (inReturnCode == YES) {\n"
-    "  //--- Remove temporary dir if it exists\n"
-    "    NSFileManager * fm = [NSFileManager defaultManager] ;\n"
-    "    if ([fm fileExistsAtPath:self.temporaryDir]) {\n"
-    "      [fm removeItemAtPath:self.temporaryDir error:nil] ;\n"
-    "    }\n"
-    "  //--- Create temporary dir\n"
-    "    [fm\n"
-    "      createDirectoryAtPath:self.temporaryDir\n"
-    "      withIntermediateDirectories:NO\n"
-    "      attributes:nil\n"
-    "      error:nil\n"
-    "    ] ;\n"
-    "  //--- Start download Application\n"
-    "    [mDownloadTitle setStringValue:[NSString stringWithFormat:@\"Downloading " ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 315)).stringValue () ;
-  result << " %@...\", mLastAvailableVersion]] ;\n"
-    "    [[mCancelButton window] makeKeyAndOrderFront:nil] ;\n"
-    "    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self HTTPPathForVersion:mLastAvailableVersion]\n"
-    "       destinationFileName:[self temporaryPathForApplicationArchive]\n"
-    "       downloadDelegate:self\n"
-    "       cancelButton:mCancelButton\n"
-    "       subtitle:mDownloadSubTitle\n"
-    "       progressIndicator:mDownloadProgressIndicator\n"
-    "       userInfo:mLastAvailableVersion\n"
-    "    ] ;\n"
-    "  }else{\n"
-    "    [mCheckNowButton setEnabled:YES] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadHasBeenCancelled {\n"
-    "  [mCancelButton.window orderOut:nil] ;\n"
-    "  [mCheckNowButton setEnabled:YES] ;\n"
-    "//--- Remove temporary dir if it exists\n"
-    "  NSFileManager * fm = [NSFileManager defaultManager] ;\n"
-    "  if ([fm fileExistsAtPath:self.temporaryDir]) {\n"
-    "    [fm removeItemAtPath:self.temporaryDir error:nil] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadDidFinishOnError: (NSError *) inError {\n"
-    "//--- Note : presentError is not available on 10.3.9 and earlier\n"
-    " // NSString * domain = [inError domain] ;\n"
-    "  NSDictionary * userInfo = [inError userInfo] ;\n"
-    "  //NSLog (@\"userInfo %@\", userInfo) ;\n"
-    "  NSAlert * alert = [NSAlert\n"
-    "    alertWithMessageText:@\"Download error.\"\n"
-    "    defaultButton:@\"Ok\"\n"
-    "    alternateButton:nil\n"
-    "    otherButton:nil\n"
-    "    informativeTextWithFormat:@\"The following error occurs: %@.\", [userInfo objectForKey:@\"NSLocalizedDescription\"]\n"
-    "  ] ;\n"
-    "  [alert\n"
-    "     beginSheetModalForWindow:nil\n"
-    "     modalDelegate:nil\n"
-    "     didEndSelector:NULL\n"
-    "     contextInfo:NULL\n"
-    "  ] ;\n"
-    "  [self downloadHasBeenCancelled] ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (int) uncompressArchive: (NSString *) inArchivePath {\n"
-    "  NSArray * arguments = [NSArray arrayWithObjects:\n"
-    "    @\"-d\",\n"
-    "    inArchivePath,\n"
-    "    nil\n"
-    "  ] ;\n"
-    "  NSTask * task = [NSTask new] ;\n"
-    "  [task setLaunchPath:@\"/usr/bin/bzip2\"] ;\n"
-    "  [task setArguments:arguments] ;\n"
-    "  [task launch] ;\n"
-    "  [task waitUntilExit] ;\n"
-    "  int status = [task terminationStatus] ;\n"
-    "  task = nil ;\n"
-    "  if (status == 0) {\n"
-    "    task = [[NSTask alloc] init] ;\n"
-    "    [task setLaunchPath:@\"/usr/bin/tar\"] ;\n"
-    "    arguments = [NSArray arrayWithObjects:\n"
-    "      @\"-x\",\n"
-    "      @\"-C\",\n"
-    "      self.temporaryDir,\n"
-    "      @\"-f\",\n"
-    "      [inArchivePath stringByDeletingPathExtension],\n"
-    "      nil\n"
-    "    ] ;\n"
-    "    [task setArguments:arguments] ;\n"
-    "    [task launch] ;\n"
-    "    [task waitUntilExit] ;\n"
-    "    status = [task terminationStatus] ;\n"
-    "    task = nil ;\n"
-    "  }\n"
-    "  return status ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadDidEnd: (PMDownloadFile *) inDownloader {\n"
-    "  [mCancelButton.window orderOut:nil] ;\n"
-    "  if ([inDownloader downloadHasBeenCancelled]) {\n"
-    "    [self downloadHasBeenCancelled] ;\n"
-    "  }else{\n"
-    "    NSError * downloadError = [inDownloader downloadError] ;\n"
-    "    if (downloadError != NULL) {\n"
-    "      [self downloadDidFinishOnError:downloadError] ;\n"
-    "    }else{\n"
-    "      [mDownloadTitle setStringValue:[NSString stringWithFormat:@\"Uncompressing archive...\"]] ;\n"
-    "      [mDownloadProgressIndicator setIndeterminate:YES] ;\n"
-    "      [mDownloadProgressIndicator startAnimation:nil] ;\n"
-    "    //--- Uncompressing Archives\n"
-    "      [mDownloadSubTitle setStringValue:@\"\"] ;\n"
-    "      [mCancelButton.window displayIfNeeded] ;\n"
-    "      int status = [self uncompressArchive:self.temporaryPathForApplicationArchive] ;\n"
-    "      if (status == 0) {\n"
-    "        NSString * filePath = [NSString stringWithFormat:@\"%@/application_path.txt\", self.temporaryDir] ;\n"
-    "        NSString * applicationPath = [NSBundle mainBundle].bundlePath ;\n"
-    "        status = ! [applicationPath writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:NULL] ;\n"
-    "      }\n"
-    "      [mCancelButton.window orderOut:nil] ;\n"
-    "      if (status == 0) {\n"
-    "        NSAlert * alert = [NSAlert\n"
-    "          alertWithMessageText:@\"Ready to Install the new version.\"\n"
-    "          defaultButton:@\"Install and Launch\"\n"
-    "          alternateButton:@\"Cancel\"\n"
-    "          otherButton:nil\n"
-    "          informativeTextWithFormat:@\"\"\n"
-    "        ] ;\n"
-    "        [alert\n"
-    "          beginSheetModalForWindow:nil\n"
-    "          modalDelegate:self\n"
-    "          didEndSelector:@selector (performInstallAlertDidEnd:returnCode:contextInfo:)\n"
-    "          contextInfo:NULL\n"
-    "        ] ;\n"
-    "      }else{\n"
-    "        NSAlert * alert = [NSAlert\n"
-    "          alertWithMessageText:@\"Cannot uncompress archive.\"\n"
-    "          defaultButton:@\"Ok\"\n"
-    "          alternateButton:nil\n"
-    "          otherButton:nil\n"
-    "          informativeTextWithFormat:@\"An error occurs during uncompressing (code %d).\", status\n"
-    "        ] ;\n"
-    "        [alert\n"
-    "          beginSheetModalForWindow:nil\n"
-    "          modalDelegate:nil\n"
-    "          didEndSelector:NULL\n"
-    "          contextInfo:NULL\n"
-    "        ] ;\n"
-    "      }\n"
-    "    }  \n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) performInstallAlertDidEnd:(NSAlert *) inUnusedAlert\n"
-    "         returnCode:(int) inReturnCode\n"
-    "         contextInfo:(void  *) inContextInfo {\n"
-    "  if (inReturnCode == YES) {\n"
-    "    [mCheckNowButton setEnabled:YES] ;\n"
-    "  //-------------- Copy\n"
-    "    NSString * updaterAppPath = [NSString stringWithFormat:@\"%@/" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << ".updaterApp.app\", [NSBundle mainBundle].resourcePath] ;\n"
-    "    // NSLog (@\"updaterAppPath %@\", updaterAppPath) ;\n"
-    "    NSString * updaterAppCopyPath = [NSString stringWithFormat:@\"%@/" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << ".updaterApp.app\", self.temporaryDir] ;\n"
-    "    // NSLog (@\"updaterAppCopyPath %@\", updaterAppCopyPath) ;\n"
-    "    NSFileManager * fm = [NSFileManager new] ;\n"
-    "    NSError * error = nil ;\n"
-    "    BOOL ok = [fm\n"
-    "      copyItemAtPath:updaterAppPath\n"
-    "      toPath:updaterAppCopyPath\n"
-    "      error:& error\n"
-    "    ] ;\n"
-    "    if (! ok) {\n"
-    "      [NSApp presentError:error] ;\n"
-    "    }\n"
-    "  //-------------- Launch UpdaterApp copy\n"
-    "    if (ok) {\n"
-    "      error = nil ;\n"
-    "      NSRunningApplication * runningApp = [[NSWorkspace sharedWorkspace]\n"
-    "        launchApplicationAtURL:[NSURL fileURLWithPath:updaterAppCopyPath]\n"
-    "        options:NSWorkspaceLaunchAsync\n"
-    "        configuration:nil\n"
-    "        error:& error\n"
-    "      ] ;\n"
-    "      if (nil == runningApp) {\n"
-    "        ok = false ;\n"
-    "        [NSApp presentError:error] ;\n"
-    "      }\n"
-    "    }\n"
-    "  //-------------- Application self terminates\n"
-    "    if (ok) {\n"
-    "      [[NSRunLoop currentRunLoop]\n"
-    "        performSelector: @selector (terminate:)\n"
-    "        target:NSApp\n"
-    "        argument:nil\n"
-    "        order:NSUIntegerMax\n"
-    "        modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]\n"
-    "      ] ;\n"
-    "    }\n"
-    "  }else{\n"
-    "    [self downloadHasBeenCancelled] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                     Filewrapper template 'applicationUpdateFileWrapper application_update_nib'                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_application_5F_update_5F_nib (C_Compiler * /* inCompiler */,
-                                                                                             const GALGAS_string & in_PROJECT_5F_NAME
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
-    "<archive type=\"com.apple.InterfaceBuilder3.Cocoa.XIB\" version=\"7.10\">\n"
-    " <data>\n"
-    "  <int key=\"IBDocument.SystemTarget\">1050</int>\n"
-    "  <string key=\"IBDocument.SystemVersion\">11E53</string>\n"
-    "  <string key=\"IBDocument.InterfaceBuilderVersion\">2182</string>\n"
-    "  <string key=\"IBDocument.AppKitVersion\">1138.47</string>\n"
-    "  <string key=\"IBDocument.HIToolboxVersion\">569.00</string>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.PluginVersions\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "    <string>com.apple.WebKitIBPlugin</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSArray\" key=\"dict.values\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <string>2182</string>\n"
-    "    <string>1117</string>\n"
-    "   </object>\n"
-    "  </object>\n"
-    "  <object class=\"NSArray\" key=\"IBDocument.IntegratedClassDependencies\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <string>NSObjectController</string>\n"
-    "   <string>NSButton</string>\n"
-    "   <string>NSTextFieldCell</string>\n"
-    "   <string>NSButtonCell</string>\n"
-    "   <string>NSImageView</string>\n"
-    "   <string>NSBox</string>\n"
-    "   <string>NSProgressIndicator</string>\n"
-    "   <string>NSImageCell</string>\n"
-    "   <string>WebView</string>\n"
-    "   <string>NSCustomObject</string>\n"
-    "   <string>NSCustomView</string>\n"
-    "   <string>NSView</string>\n"
-    "   <string>NSWindowTemplate</string>\n"
-    "   <string>NSTextField</string>\n"
-    "  </object>\n"
-    "  <object class=\"NSArray\" key=\"IBDocument.PluginDependencies\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "   <string>com.apple.WebKitIBPlugin</string>\n"
-    "  </object>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.Metadata\">\n"
-    "   <string key=\"NS.key.0\">PluginDependencyRecalculationVersion</string>\n"
-    "   <integer value=\"1\" key=\"NS.object.0\"/>\n"
-    "  </object>\n"
-    "  <object class=\"NSMutableArray\" key=\"IBDocument.RootObjects\" id=\"685716556\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <object class=\"NSCustomObject\" id=\"42341283\">\n"
-    "    <string key=\"NSClassName\">PMApplicationUpdate</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSCustomObject\" id=\"1055328378\">\n"
-    "    <string key=\"NSClassName\">FirstResponder</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSCustomObject\" id=\"382307856\">\n"
-    "    <string key=\"NSClassName\">NSApplication</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSWindowTemplate\" id=\"333224431\">\n"
-    "    <int key=\"NSWindowStyleMask\">1</int>\n"
-    "    <int key=\"NSWindowBacking\">2</int>\n"
-    "    <string key=\"NSWindowRect\">{{409, 459}, {467, 151}}</string>\n"
-    "    <int key=\"NSWTFlags\">1886912512</int>\n"
-    "    <string key=\"NSWindowTitle\">" ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.xib.galgasTemplate", 64)).stringValue () ;
-  result << " Update</string>\n"
-    "    <object class=\"NSMutableString\" key=\"NSWindowClass\">\n"
-    "     <characters key=\"NS.bytes\">NSPanel</characters>\n"
-    "    </object>\n"
-    "    <object class=\"NSMutableString\" key=\"NSViewClass\">\n"
-    "     <characters key=\"NS.bytes\">View</characters>\n"
-    "    </object>\n"
-    "    <nil key=\"NSUserInterfaceItemIdentifier\"/>\n"
-    "    <string key=\"NSWindowContentMinSize\">{213, 107}</string>\n"
-    "    <object class=\"NSView\" key=\"NSWindowView\" id=\"749559358\">\n"
-    "     <nil key=\"NSNextResponder\"/>\n"
-    "     <int key=\"NSvFlags\">256</int>\n"
-    "     <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSTextField\" id=\"1034800840\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <string key=\"NSFrame\">{{105, 113}, {345, 18}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"509148504\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">4194304</int>\n"
-    "        <string key=\"NSContents\">Title\xE2""\x80""\xA6""</string>\n"
-    "        <object class=\"NSFont\" key=\"NSSupport\" id=\"254211308\">\n"
-    "         <string key=\"NSName\">LucidaGrande-Bold</string>\n"
-    "         <double key=\"NSSize\">13</double>\n"
-    "         <int key=\"NSfFlags\">2072</int>\n"
-    "        </object>\n"
-    "        <reference key=\"NSControlView\" ref=\"1034800840\"/>\n"
-    "        <object class=\"NSColor\" key=\"NSBackgroundColor\" id=\"481433827\">\n"
-    "         <int key=\"NSColorSpace\">6</int>\n"
-    "         <string key=\"NSCatalogName\">System</string>\n"
-    "         <string key=\"NSColorName\">controlColor</string>\n"
-    "         <object class=\"NSColor\" key=\"NSColor\">\n"
-    "          <int key=\"NSColorSpace\">3</int>\n"
-    "          <bytes key=\"NSWhite\">MC42NjY2NjY2NjY3AA</bytes>\n"
-    "         </object>\n"
-    "        </object>\n"
-    "        <object class=\"NSColor\" key=\"NSTextColor\" id=\"123369485\">\n"
-    "         <int key=\"NSColorSpace\">6</int>\n"
-    "         <string key=\"NSCatalogName\">System</string>\n"
-    "         <string key=\"NSColorName\">controlTextColor</string>\n"
-    "         <object class=\"NSColor\" key=\"NSColor\">\n"
-    "          <int key=\"NSColorSpace\">3</int>\n"
-    "          <bytes key=\"NSWhite\">MAA</bytes>\n"
-    "         </object>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSTextField\" id=\"490232887\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <string key=\"NSFrame\">{{105, 63}, {345, 18}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"454506579\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">4194304</int>\n"
-    "        <string key=\"NSContents\">Subtitle\xE2""\x80""\xA6""</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"254211308\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"490232887\"/>\n"
-    "        <bool key=\"NSDrawsBackground\">YES</bool>\n"
-    "        <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "        <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSProgressIndicator\" id=\"204285727\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">1280</int>\n"
-    "       <object class=\"NSPSMatrix\" key=\"NSDrawMatrix\"/>\n"
-    "       <string key=\"NSFrame\">{{106, 85}, {343, 20}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSpiFlags\">16394</int>\n"
-    "       <double key=\"NSMaxValue\">100</double>\n"
-    "      </object>\n"
-    "      <object class=\"NSImageView\" id=\"294367161\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <object class=\"NSMutableSet\" key=\"NSDragTypes\">\n"
-    "        <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "        <object class=\"NSArray\" key=\"set.sortedObjects\">\n"
-    "         <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "         <string>Apple PDF pasteboard type</string>\n"
-    "         <string>Apple PICT pasteboard type</string>\n"
-    "         <string>Apple PNG pasteboard type</string>\n"
-    "         <string>NSFilenamesPboardType</string>\n"
-    "         <string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>\n"
-    "         <string>NeXT TIFF v4.0 pasteboard type</string>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "       <string key=\"NSFrame\">{{20, 66}, {62, 62}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSImageCell\" key=\"NSCell\" id=\"450216261\">\n"
-    "        <int key=\"NSCellFlags\">130560</int>\n"
-    "        <int key=\"NSCellFlags2\">33554432</int>\n"
-    "        <object class=\"NSCustomResource\" key=\"NSContents\" id=\"467314799\">\n"
-    "         <string key=\"NSClassName\">NSImage</string>\n"
-    "         <string key=\"NSResourceName\">NSApplicationIcon</string>\n"
-    "        </object>\n"
-    "        <int key=\"NSAlign\">0</int>\n"
-    "        <int key=\"NSScale\">0</int>\n"
-    "        <int key=\"NSStyle\">0</int>\n"
-    "        <bool key=\"NSAnimates\">NO</bool>\n"
-    "       </object>\n"
-    "       <bool key=\"NSEditable\">YES</bool>\n"
-    "      </object>\n"
-    "      <object class=\"NSButton\" id=\"828513968\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <string key=\"NSFrame\">{{371, 15}, {82, 32}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSButtonCell\" key=\"NSCell\" id=\"679983593\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">134217728</int>\n"
-    "        <string key=\"NSContents\">Cancel</string>\n"
-    "        <object class=\"NSFont\" key=\"NSSupport\" id=\"661924512\">\n"
-    "         <string key=\"NSName\">LucidaGrande</string>\n"
-    "         <double key=\"NSSize\">13</double>\n"
-    "         <int key=\"NSfFlags\">1044</int>\n"
-    "        </object>\n"
-    "        <reference key=\"NSControlView\" ref=\"828513968\"/>\n"
-    "        <int key=\"NSButtonFlags\">-2038284033</int>\n"
-    "        <int key=\"NSButtonFlags2\">1</int>\n"
-    "        <reference key=\"NSAlternateImage\" ref=\"661924512\"/>\n"
-    "        <string key=\"NSAlternateContents\"/>\n"
-    "        <object class=\"NSMutableString\" key=\"NSKeyEquivalent\">\n"
-    "         <characters key=\"NS.bytes\"/>\n"
-    "        </object>\n"
-    "        <int key=\"NSPeriodicDelay\">200</int>\n"
-    "        <int key=\"NSPeriodicInterval\">25</int>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string key=\"NSFrameSize\">{467, 151}</string>\n"
-    "    </object>\n"
-    "    <string key=\"NSScreenRect\">{{0, 0}, {2560, 1418}}</string>\n"
-    "    <string key=\"NSMinSize\">{213, 129}</string>\n"
-    "    <string key=\"NSMaxSize\">{10000000000000, 10000000000000}</string>\n"
-    "    <bool key=\"NSWindowIsRestorable\">YES</bool>\n"
-    "   </object>\n"
-    "   <object class=\"NSWindowTemplate\" id=\"216006591\">\n"
-    "    <int key=\"NSWindowStyleMask\">9</int>\n"
-    "    <int key=\"NSWindowBacking\">2</int>\n"
-    "    <string key=\"NSWindowRect\">{{214, 371}, {780, 439}}</string>\n"
-    "    <int key=\"NSWTFlags\">1886912512</int>\n"
-    "    <string key=\"NSWindowTitle\"/>\n"
-    "    <object class=\"NSMutableString\" key=\"NSWindowClass\">\n"
-    "     <characters key=\"NS.bytes\">NSPanel</characters>\n"
-    "    </object>\n"
-    "    <object class=\"NSMutableString\" key=\"NSViewClass\">\n"
-    "     <characters key=\"NS.bytes\">View</characters>\n"
-    "    </object>\n"
-    "    <nil key=\"NSUserInterfaceItemIdentifier\"/>\n"
-    "    <string key=\"NSWindowContentMinSize\">{213, 107}</string>\n"
-    "    <object class=\"NSView\" key=\"NSWindowView\" id=\"5705630\">\n"
-    "     <reference key=\"NSNextResponder\"/>\n"
-    "     <int key=\"NSvFlags\">256</int>\n"
-    "     <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSBox\" id=\"681154887\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">274</int>\n"
-    "       <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "        <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "        <object class=\"NSView\" id=\"614647701\">\n"
-    "         <reference key=\"NSNextResponder\" ref=\"681154887\"/>\n"
-    "         <int key=\"NSvFlags\">274</int>\n"
-    "         <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "          <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "          <object class=\"WebView\" id=\"1035469751\">\n"
-    "           <reference key=\"NSNextResponder\" ref=\"614647701\"/>\n"
-    "           <int key=\"NSvFlags\">274</int>\n"
-    "           <object class=\"NSMutableSet\" key=\"NSDragTypes\">\n"
-    "            <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "            <object class=\"NSArray\" key=\"set.sortedObjects\">\n"
-    "             <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "             <string>Apple HTML pasteboard type</string>\n"
-    "             <string>Apple PDF pasteboard type</string>\n"
-    "             <string>Apple PICT pasteboard type</string>\n"
-    "             <string>Apple URL pasteboard type</string>\n"
-    "             <string>Apple Web Archive pasteboard type</string>\n"
-    "             <string>NSColor pasteboard type</string>\n"
-    "             <string>NSFilenamesPboardType</string>\n"
-    "             <string>NSStringPboardType</string>\n"
-    "             <string>NeXT RTFD pasteboard type</string>\n"
-    "             <string>NeXT Rich Text Format v1.0 pasteboard type</string>\n"
-    "             <string>NeXT TIFF v4.0 pasteboard type</string>\n"
-    "             <string>WebURLsWithTitlesPboardType</string>\n"
-    "             <string>public.png</string>\n"
-    "             <string>public.url</string>\n"
-    "             <string>public.url-name</string>\n"
-    "            </object>\n"
-    "           </object>\n"
-    "           <string key=\"NSFrame\">{{1, 1}, {738, 248}}</string>\n"
-    "           <reference key=\"NSSuperview\" ref=\"614647701\"/>\n"
-    "           <reference key=\"NSNextKeyView\"/>\n"
-    "           <string key=\"FrameName\"/>\n"
-    "           <string key=\"GroupName\"/>\n"
-    "           <object class=\"WebPreferences\" key=\"Preferences\" id=\"794004680\">\n"
-    "            <string key=\"Identifier\"/>\n"
-    "            <object class=\"NSMutableDictionary\" key=\"Values\">\n"
-    "             <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "             <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "              <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "              <string>WebKitDefaultFixedFontSize</string>\n"
-    "              <string>WebKitDefaultFontSize</string>\n"
-    "              <string>WebKitMinimumFontSize</string>\n"
-    "             </object>\n"
-    "             <object class=\"NSArray\" key=\"dict.values\">\n"
-    "              <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "              <integer value=\"12\"/>\n"
-    "              <integer value=\"12\"/>\n"
-    "              <integer value=\"1\"/>\n"
-    "             </object>\n"
-    "            </object>\n"
-    "           </object>\n"
-    "           <bool key=\"UseBackForwardList\">NO</bool>\n"
-    "           <bool key=\"AllowsUndo\">YES</bool>\n"
-    "          </object>\n"
-    "         </object>\n"
-    "         <string key=\"NSFrame\">{{1, 1}, {740, 250}}</string>\n"
-    "         <reference key=\"NSSuperview\" ref=\"681154887\"/>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "       <string key=\"NSFrame\">{{19, 59}, {742, 252}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <string key=\"NSOffsets\">{0, 0}</string>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSTitleCell\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">0</int>\n"
-    "        <string key=\"NSContents\">Box</string>\n"
-    "        <object class=\"NSFont\" key=\"NSSupport\" id=\"26\">\n"
-    "         <string key=\"NSName\">LucidaGrande</string>\n"
-    "         <double key=\"NSSize\">11</double>\n"
-    "         <int key=\"NSfFlags\">3100</int>\n"
-    "        </object>\n"
-    "        <object class=\"NSColor\" key=\"NSBackgroundColor\">\n"
-    "         <int key=\"NSColorSpace\">6</int>\n"
-    "         <string key=\"NSCatalogName\">System</string>\n"
-    "         <string key=\"NSColorName\">textBackgroundColor</string>\n"
-    "         <object class=\"NSColor\" key=\"NSColor\">\n"
-    "          <int key=\"NSColorSpace\">3</int>\n"
-    "          <bytes key=\"NSWhite\">MQA</bytes>\n"
-    "         </object>\n"
-    "        </object>\n"
-    "        <object class=\"NSColor\" key=\"NSTextColor\">\n"
-    "         <int key=\"NSColorSpace\">3</int>\n"
-    "         <bytes key=\"NSWhite\">MCAwLjgwMDAwMDAxAA</bytes>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "       <reference key=\"NSContentView\" ref=\"614647701\"/>\n"
-    "       <int key=\"NSBorderType\">1</int>\n"
-    "       <int key=\"NSBoxType\">3</int>\n"
-    "       <int key=\"NSTitlePosition\">0</int>\n"
-    "       <bool key=\"NSTransparent\">NO</bool>\n"
-    "      </object>\n"
-    "      <object class=\"NSImageView\" id=\"699157213\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">268</int>\n"
-    "       <object class=\"NSMutableSet\" key=\"NSDragTypes\">\n"
-    "        <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "        <object class=\"NSArray\" key=\"set.sortedObjects\">\n"
-    "         <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "         <string>Apple PDF pasteboard type</string>\n"
-    "         <string>Apple PICT pasteboard type</string>\n"
-    "         <string>Apple PNG pasteboard type</string>\n"
-    "         <string>NSFilenamesPboardType</string>\n"
-    "         <string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>\n"
-    "         <string>NeXT TIFF v4.0 pasteboard type</string>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "       <string key=\"NSFrame\">{{20, 329}, {89, 90}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSImageCell\" key=\"NSCell\" id=\"438997373\">\n"
-    "        <int key=\"NSCellFlags\">537001472</int>\n"
-    "        <int key=\"NSCellFlags2\">33554432</int>\n"
-    "        <reference key=\"NSContents\" ref=\"467314799\"/>\n"
-    "        <int key=\"NSAlign\">0</int>\n"
-    "        <int key=\"NSScale\">1</int>\n"
-    "        <int key=\"NSStyle\">0</int>\n"
-    "        <bool key=\"NSAnimates\">NO</bool>\n"
-    "       </object>\n"
-    "       <bool key=\"NSEditable\">YES</bool>\n"
-    "      </object>\n"
-    "      <object class=\"NSTextField\" id=\"475068467\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">268</int>\n"
-    "       <string key=\"NSFrame\">{{141, 402}, {276, 17}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"741497496\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">272629760</int>\n"
-    "        <string key=\"NSContents\">A New " ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.xib.galgasTemplate", 361)).stringValue () ;
-  result << " Version is available.</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"254211308\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"475068467\"/>\n"
-    "        <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "        <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSTextField\" id=\"413993104\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">266</int>\n"
-    "       <string key=\"NSFrame\">{{141, 334}, {622, 48}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"1010471558\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">272629760</int>\n"
-    "        <string key=\"NSContents\">New version text\xE2""\x80""\xA6""</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"26\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"413993104\"/>\n"
-    "        <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "        <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSButton\" id=\"155850099\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">292</int>\n"
-    "       <string key=\"NSFrame\">{{18, 21}, {244, 18}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSButtonCell\" key=\"NSCell\" id=\"400723301\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">0</int>\n"
-    "        <string key=\"NSContents\">Check For New Version At Start-Up</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"155850099\"/>\n"
-    "        <int key=\"NSButtonFlags\">1211912703</int>\n"
-    "        <int key=\"NSButtonFlags2\">2</int>\n"
-    "        <object class=\"NSCustomResource\" key=\"NSNormalImage\">\n"
-    "         <string key=\"NSClassName\">NSImage</string>\n"
-    "         <string key=\"NSResourceName\">NSSwitch</string>\n"
-    "        </object>\n"
-    "        <object class=\"NSButtonImageSource\" key=\"NSAlternateImage\" id=\"170836088\">\n"
-    "         <string key=\"NSImageName\">NSSwitch</string>\n"
-    "        </object>\n"
-    "        <string key=\"NSAlternateContents\"/>\n"
-    "        <string key=\"NSKeyEquivalent\"/>\n"
-    "        <int key=\"NSPeriodicDelay\">200</int>\n"
-    "        <int key=\"NSPeriodicInterval\">25</int>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSButton\" id=\"244651633\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">292</int>\n"
-    "       <string key=\"NSFrame\">{{522, 12}, {244, 32}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSButtonCell\" key=\"NSCell\" id=\"957503088\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">134217728</int>\n"
-    "        <string key=\"NSContents\">Install and Launch Version 7.8.9</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"244651633\"/>\n"
-    "        <int key=\"NSButtonFlags\">-2038284033</int>\n"
-    "        <int key=\"NSButtonFlags2\">1</int>\n"
-    "        <reference key=\"NSAlternateImage\" ref=\"661924512\"/>\n"
-    "        <string key=\"NSAlternateContents\"/>\n"
-    "        <object class=\"NSMutableString\" key=\"NSKeyEquivalent\">\n"
-    "         <characters key=\"NS.bytes\"/>\n"
-    "        </object>\n"
-    "        <int key=\"NSPeriodicDelay\">200</int>\n"
-    "        <int key=\"NSPeriodicInterval\">25</int>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSButton\" id=\"355971570\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <string key=\"NSFrame\">{{400, 12}, {82, 32}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSButtonCell\" key=\"NSCell\" id=\"806186831\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">134217728</int>\n"
-    "        <string key=\"NSContents\">Cancel</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"355971570\"/>\n"
-    "        <int key=\"NSButtonFlags\">-2038284033</int>\n"
-    "        <int key=\"NSButtonFlags2\">1</int>\n"
-    "        <reference key=\"NSAlternateImage\" ref=\"661924512\"/>\n"
-    "        <string key=\"NSAlternateContents\"/>\n"
-    "        <object class=\"NSMutableString\" key=\"NSKeyEquivalent\">\n"
-    "         <characters key=\"NS.bytes\"/>\n"
-    "        </object>\n"
-    "        <int key=\"NSPeriodicDelay\">200</int>\n"
-    "        <int key=\"NSPeriodicInterval\">25</int>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSTextField\" id=\"832757603\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">268</int>\n"
-    "       <string key=\"NSFrame\">{{141, 318}, {112, 14}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"622444291\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">272760832</int>\n"
-    "        <string key=\"NSContents\">Change Log:</string>\n"
-    "        <object class=\"NSFont\" key=\"NSSupport\">\n"
-    "         <string key=\"NSName\">LucidaGrande-Bold</string>\n"
-    "         <double key=\"NSSize\">11</double>\n"
-    "         <int key=\"NSfFlags\">3357</int>\n"
-    "        </object>\n"
-    "        <reference key=\"NSControlView\" ref=\"832757603\"/>\n"
-    "        <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "        <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string key=\"NSFrameSize\">{780, 439}</string>\n"
-    "     <reference key=\"NSSuperview\"/>\n"
-    "    </object>\n"
-    "    <string key=\"NSScreenRect\">{{0, 0}, {2560, 1418}}</string>\n"
-    "    <string key=\"NSMinSize\">{213, 129}</string>\n"
-    "    <string key=\"NSMaxSize\">{10000000000000, 10000000000000}</string>\n"
-    "    <bool key=\"NSWindowIsRestorable\">YES</bool>\n"
-    "   </object>\n"
-    "   <object class=\"NSCustomView\" id=\"706456476\">\n"
-    "    <reference key=\"NSNextResponder\"/>\n"
-    "    <int key=\"NSvFlags\">268</int>\n"
-    "    <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <object class=\"NSButton\" id=\"119113237\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{17, 572}, {233, 18}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"282877588\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"603200122\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">0</int>\n"
-    "       <string key=\"NSContents\">Check for New Version at Launch</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"119113237\"/>\n"
-    "       <int key=\"NSButtonFlags\">1211912703</int>\n"
-    "       <int key=\"NSButtonFlags2\">2</int>\n"
-    "       <reference key=\"NSAlternateImage\" ref=\"170836088\"/>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">200</int>\n"
-    "       <int key=\"NSPeriodicInterval\">25</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"282877588\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{253, 562}, {121, 32}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"108384011\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"175526135\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\">Check Now\xE2""\x80""\xA6""</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"282877588\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2038284033</int>\n"
-    "       <int key=\"NSButtonFlags2\">1</int>\n"
-    "       <object class=\"NSFont\" key=\"NSAlternateImage\" id=\"828379122\">\n"
-    "        <string key=\"NSName\">LucidaGrande</string>\n"
-    "        <double key=\"NSSize\">13</double>\n"
-    "        <int key=\"NSfFlags\">16</int>\n"
-    "       </object>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <object class=\"NSMutableString\" key=\"NSKeyEquivalent\">\n"
-    "        <characters key=\"NS.bytes\"/>\n"
-    "       </object>\n"
-    "       <int key=\"NSPeriodicDelay\">200</int>\n"
-    "       <int key=\"NSPeriodicInterval\">25</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSTextField\" id=\"910425216\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">266</int>\n"
-    "      <string key=\"NSFrame\">{{291, 506}, {303, 17}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"1066463798\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"820983391\">\n"
-    "       <int key=\"NSCellFlags\">68288064</int>\n"
-    "       <int key=\"NSCellFlags2\">272630784</int>\n"
-    "       <string key=\"NSContents\">Label</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"910425216\"/>\n"
-    "       <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "       <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSProgressIndicator\" id=\"155281057\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">1292</int>\n"
-    "      <object class=\"NSPSMatrix\" key=\"NSDrawMatrix\"/>\n"
-    "      <string key=\"NSFrame\">{{270, 506}, {16, 16}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"910425216\"/>\n"
-    "      <int key=\"NSpiFlags\">20746</int>\n"
-    "      <double key=\"NSMaxValue\">100</double>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"1018478293\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{232, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"155281057\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"333272556\">\n"
-    "       <int key=\"NSCellFlags\">-2080244224</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\"/>\n"
-    "       <object class=\"NSFont\" key=\"NSSupport\" id=\"162662537\">\n"
-    "        <string key=\"NSName\">LucidaGrande</string>\n"
-    "        <double key=\"NSSize\">18</double>\n"
-    "        <int key=\"NSfFlags\">16</int>\n"
-    "       </object>\n"
-    "       <reference key=\"NSControlView\" ref=\"1018478293\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2033958657</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <object class=\"NSCustomResource\" key=\"NSNormalImage\">\n"
-    "        <string key=\"NSClassName\">NSImage</string>\n"
-    "        <string key=\"NSResourceName\">NSRefreshTemplate</string>\n"
-    "       </object>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"516363802\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{171, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"1018478293\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"255146468\">\n"
-    "       <int key=\"NSCellFlags\">-2080244224</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\"/>\n"
-    "       <reference key=\"NSSupport\" ref=\"162662537\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"516363802\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2033958657</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <object class=\"NSCustomResource\" key=\"NSNormalImage\">\n"
-    "        <string key=\"NSClassName\">NSImage</string>\n"
-    "        <string key=\"NSResourceName\">NSGoRightTemplate</string>\n"
-    "       </object>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"643835222\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{142, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"516363802\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"903670050\">\n"
-    "       <int key=\"NSCellFlags\">-2080244224</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\"/>\n"
-    "       <reference key=\"NSSupport\" ref=\"162662537\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"643835222\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2033958657</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <object class=\"NSCustomResource\" key=\"NSNormalImage\">\n"
-    "        <string key=\"NSClassName\">NSImage</string>\n"
-    "        <string key=\"NSResourceName\">NSGoLeftTemplate</string>\n"
-    "       </object>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"162979538\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{49, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"940738293\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"756937780\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\">A</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"828379122\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"162979538\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2038152961</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"940738293\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{78, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"643835222\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"570845283\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\">A</string>\n"
-    "       <object class=\"NSFont\" key=\"NSSupport\">\n"
-    "        <string key=\"NSName\">LucidaGrande</string>\n"
-    "        <double key=\"NSSize\">9</double>\n"
-    "        <int key=\"NSfFlags\">16</int>\n"
-    "       </object>\n"
-    "       <reference key=\"NSControlView\" ref=\"940738293\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2038152961</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"108384011\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{20, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"162979538\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"523984443\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\">A</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"162662537\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"108384011\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2038152961</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"WebView\" id=\"1066463798\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">274</int>\n"
-    "      <object class=\"NSMutableSet\" key=\"NSDragTypes\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <object class=\"NSArray\" key=\"set.sortedObjects\">\n"
-    "        <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "        <string>Apple HTML pasteboard type</string>\n"
-    "        <string>Apple PDF pasteboard type</string>\n"
-    "        <string>Apple PICT pasteboard type</string>\n"
-    "        <string>Apple URL pasteboard type</string>\n"
-    "        <string>Apple Web Archive pasteboard type</string>\n"
-    "        <string>NSColor pasteboard type</string>\n"
-    "        <string>NSFilenamesPboardType</string>\n"
-    "        <string>NSStringPboardType</string>\n"
-    "        <string>NeXT RTFD pasteboard type</string>\n"
-    "        <string>NeXT Rich Text Format v1.0 pasteboard type</string>\n"
-    "        <string>NeXT TIFF v4.0 pasteboard type</string>\n"
-    "        <string>WebURLsWithTitlesPboardType</string>\n"
-    "        <string>public.png</string>\n"
-    "        <string>public.url</string>\n"
-    "        <string>public.url-name</string>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <string key=\"NSFrameSize\">{611, 491}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\"/>\n"
-    "      <string key=\"FrameName\"/>\n"
-    "      <string key=\"GroupName\"/>\n"
-    "      <reference key=\"Preferences\" ref=\"794004680\"/>\n"
-    "      <bool key=\"UseBackForwardList\">YES</bool>\n"
-    "      <bool key=\"AllowsUndo\">YES</bool>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "    <string key=\"NSFrameSize\">{611, 608}</string>\n"
-    "    <reference key=\"NSSuperview\"/>\n"
-    "    <reference key=\"NSWindow\"/>\n"
-    "    <reference key=\"NSNextKeyView\" ref=\"119113237\"/>\n"
-    "    <string key=\"NSClassName\">NSView</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSObjectController\" id=\"886630308\">\n"
-    "    <object class=\"NSMutableArray\" key=\"NSDeclaredKeys\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <string>canGoBack</string>\n"
-    "     <string>canGoForward</string>\n"
-    "     <string>canMakeTextLarger</string>\n"
-    "     <string>canMakeTextSmaller</string>\n"
-    "     <string>canMakeTextStandardSize</string>\n"
-    "     <string>isLoading</string>\n"
-    "     <string>mainFrameURL</string>\n"
-    "    </object>\n"
-    "    <bool key=\"NSEditable\">YES</bool>\n"
-    "    <object class=\"_NSManagedProxy\" key=\"_NSManagedProxy\"/>\n"
-    "   </object>\n"
-    "  </object>\n"
-    "  <object class=\"IBObjectContainer\" key=\"IBDocument.Objects\">\n"
-    "   <object class=\"NSMutableArray\" key=\"connectionRecords\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mCancelButton</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"828513968\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">37</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mDownloadProgressIndicator</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"204285727\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">38</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mDownloadSubTitle</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"490232887\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">39</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mDownloadTitle</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"1034800840\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">40</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mChangeLogWebView</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"1035469751\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">56</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mCheckUpdateAtStartUpCheckBox2</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"155850099\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">57</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mNewVersionTextField</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"413993104\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">58</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mNewAvailableVersionPanel</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"216006591\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">59</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mPerformUpdateButton</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"244651633\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">60</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mViewForChangeLogInPreferencePane</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">111</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mChangeLogInPreferencePaneWebView</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"1066463798\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">113</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">checkForNewVersion:</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"282877588\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">182</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mCheckUpdateAtStartUpCheckBox</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"119113237\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">186</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mCheckNowButton</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"282877588\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">187</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">makeTextLarger:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"108384011\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">120</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">makeTextSmaller:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"940738293\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">121</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">makeTextStandardSize:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"162979538\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">125</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">goBack:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"643835222\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">135</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">goForward:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"516363802\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">136</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">reload:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"333272556\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">140</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canMakeTextLarger</string>\n"
-    "      <reference key=\"source\" ref=\"108384011\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"108384011\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canMakeTextLarger</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canMakeTextLarger</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">152</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canMakeTextSmaller</string>\n"
-    "      <reference key=\"source\" ref=\"940738293\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"940738293\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canMakeTextSmaller</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canMakeTextSmaller</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">154</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canMakeTextStandardSize</string>\n"
-    "      <reference key=\"source\" ref=\"162979538\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"162979538\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canMakeTextStandardSize</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canMakeTextStandardSize</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">157</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canGoBack</string>\n"
-    "      <reference key=\"source\" ref=\"903670050\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"903670050\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canGoBack</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canGoBack</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">149</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canGoForward</string>\n"
-    "      <reference key=\"source\" ref=\"516363802\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"516363802\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canGoForward</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canGoForward</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">150</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">contentObject: mChangeLogInPreferencePaneWebView</string>\n"
-    "      <reference key=\"source\" ref=\"886630308\"/>\n"
-    "      <reference key=\"destination\" ref=\"42341283\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"886630308\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"42341283\"/>\n"
-    "       <string key=\"NSLabel\">contentObject: mChangeLogInPreferencePaneWebView</string>\n"
-    "       <string key=\"NSBinding\">contentObject</string>\n"
-    "       <string key=\"NSKeyPath\">mChangeLogInPreferencePaneWebView</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">147</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">animate: selection.isLoading</string>\n"
-    "      <reference key=\"source\" ref=\"155281057\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"155281057\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">animate: selection.isLoading</string>\n"
-    "       <string key=\"NSBinding\">animate</string>\n"
-    "       <string key=\"NSKeyPath\">selection.isLoading</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">160</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">hidden: selection.isLoading</string>\n"
-    "      <reference key=\"source\" ref=\"155281057\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"155281057\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">hidden: selection.isLoading</string>\n"
-    "       <string key=\"NSBinding\">hidden</string>\n"
-    "       <string key=\"NSKeyPath\">selection.isLoading</string>\n"
-    "       <object class=\"NSDictionary\" key=\"NSOptions\">\n"
-    "        <string key=\"NS.key.0\">NSValueTransformerName</string>\n"
-    "        <string key=\"NS.object.0\">NSNegateBoolean</string>\n"
-    "       </object>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">163</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">value: selection.mainFrameURL</string>\n"
-    "      <reference key=\"source\" ref=\"910425216\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"910425216\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">value: selection.mainFrameURL</string>\n"
-    "       <string key=\"NSBinding\">value</string>\n"
-    "       <string key=\"NSKeyPath\">selection.mainFrameURL</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">171</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.mainFrameURL</string>\n"
-    "      <reference key=\"source\" ref=\"820983391\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"820983391\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.mainFrameURL</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.mainFrameURL</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">167</int>\n"
-    "    </object>\n"
-    "   </object>\n"
-    "   <object class=\"IBMutableOrderedSet\" key=\"objectRecords\">\n"
-    "    <object class=\"NSArray\" key=\"orderedObjects\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">0</int>\n"
-    "      <object class=\"NSArray\" key=\"object\" id=\"0\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      </object>\n"
-    "      <reference key=\"children\" ref=\"685716556\"/>\n"
-    "      <nil key=\"parent\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">-2</int>\n"
-    "      <reference key=\"object\" ref=\"42341283\"/>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">File's Owner</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">-1</int>\n"
-    "      <reference key=\"object\" ref=\"1055328378\"/>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">First Responder</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">30</int>\n"
-    "      <reference key=\"object\" ref=\"333224431\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"749559358\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">Panel</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">31</int>\n"
-    "      <reference key=\"object\" ref=\"749559358\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"204285727\"/>\n"
-    "       <reference ref=\"294367161\"/>\n"
-    "       <reference ref=\"828513968\"/>\n"
-    "       <reference ref=\"1034800840\"/>\n"
-    "       <reference ref=\"490232887\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"333224431\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">32</int>\n"
-    "      <reference key=\"object\" ref=\"1034800840\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"509148504\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">33</int>\n"
-    "      <reference key=\"object\" ref=\"490232887\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"454506579\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">34</int>\n"
-    "      <reference key=\"object\" ref=\"204285727\"/>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">35</int>\n"
-    "      <reference key=\"object\" ref=\"294367161\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"450216261\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">36</int>\n"
-    "      <reference key=\"object\" ref=\"828513968\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"679983593\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">44</int>\n"
-    "      <reference key=\"object\" ref=\"216006591\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"5705630\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">AppliUpdateDialog</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">45</int>\n"
-    "      <reference key=\"object\" ref=\"5705630\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"355971570\"/>\n"
-    "       <reference ref=\"699157213\"/>\n"
-    "       <reference ref=\"475068467\"/>\n"
-    "       <reference ref=\"413993104\"/>\n"
-    "       <reference ref=\"155850099\"/>\n"
-    "       <reference ref=\"244651633\"/>\n"
-    "       <reference ref=\"832757603\"/>\n"
-    "       <reference ref=\"681154887\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"216006591\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">46</int>\n"
-    "      <reference key=\"object\" ref=\"355971570\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"806186831\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">47</int>\n"
-    "      <reference key=\"object\" ref=\"699157213\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"438997373\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">48</int>\n"
-    "      <reference key=\"object\" ref=\"475068467\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"741497496\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">49</int>\n"
-    "      <reference key=\"object\" ref=\"413993104\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"1010471558\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">51</int>\n"
-    "      <reference key=\"object\" ref=\"155850099\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"400723301\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">53</int>\n"
-    "      <reference key=\"object\" ref=\"244651633\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"957503088\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">61</int>\n"
-    "      <reference key=\"object\" ref=\"832757603\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"622444291\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">62</int>\n"
-    "      <reference key=\"object\" ref=\"681154887\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"1035469751\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">95</int>\n"
-    "      <reference key=\"object\" ref=\"509148504\"/>\n"
-    "      <reference key=\"parent\" ref=\"1034800840\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">96</int>\n"
-    "      <reference key=\"object\" ref=\"454506579\"/>\n"
-    "      <reference key=\"parent\" ref=\"490232887\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">97</int>\n"
-    "      <reference key=\"object\" ref=\"450216261\"/>\n"
-    "      <reference key=\"parent\" ref=\"294367161\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">98</int>\n"
-    "      <reference key=\"object\" ref=\"679983593\"/>\n"
-    "      <reference key=\"parent\" ref=\"828513968\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">99</int>\n"
-    "      <reference key=\"object\" ref=\"806186831\"/>\n"
-    "      <reference key=\"parent\" ref=\"355971570\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">100</int>\n"
-    "      <reference key=\"object\" ref=\"438997373\"/>\n"
-    "      <reference key=\"parent\" ref=\"699157213\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">101</int>\n"
-    "      <reference key=\"object\" ref=\"741497496\"/>\n"
-    "      <reference key=\"parent\" ref=\"475068467\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">102</int>\n"
-    "      <reference key=\"object\" ref=\"1010471558\"/>\n"
-    "      <reference key=\"parent\" ref=\"413993104\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">103</int>\n"
-    "      <reference key=\"object\" ref=\"400723301\"/>\n"
-    "      <reference key=\"parent\" ref=\"155850099\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">104</int>\n"
-    "      <reference key=\"object\" ref=\"957503088\"/>\n"
-    "      <reference key=\"parent\" ref=\"244651633\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">105</int>\n"
-    "      <reference key=\"object\" ref=\"622444291\"/>\n"
-    "      <reference key=\"parent\" ref=\"832757603\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">-3</int>\n"
-    "      <reference key=\"object\" ref=\"382307856\"/>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">Application</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">50</int>\n"
-    "      <reference key=\"object\" ref=\"1035469751\"/>\n"
-    "      <reference key=\"parent\" ref=\"681154887\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">109</int>\n"
-    "      <reference key=\"object\" ref=\"706456476\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"1066463798\"/>\n"
-    "       <reference ref=\"282877588\"/>\n"
-    "       <reference ref=\"119113237\"/>\n"
-    "       <reference ref=\"108384011\"/>\n"
-    "       <reference ref=\"940738293\"/>\n"
-    "       <reference ref=\"162979538\"/>\n"
-    "       <reference ref=\"643835222\"/>\n"
-    "       <reference ref=\"516363802\"/>\n"
-    "       <reference ref=\"1018478293\"/>\n"
-    "       <reference ref=\"155281057\"/>\n"
-    "       <reference ref=\"910425216\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">View for ChangeLog in Preferences</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">110</int>\n"
-    "      <reference key=\"object\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">116</int>\n"
-    "      <reference key=\"object\" ref=\"108384011\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"523984443\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">117</int>\n"
-    "      <reference key=\"object\" ref=\"523984443\"/>\n"
-    "      <reference key=\"parent\" ref=\"108384011\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">118</int>\n"
-    "      <reference key=\"object\" ref=\"940738293\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"570845283\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">119</int>\n"
-    "      <reference key=\"object\" ref=\"570845283\"/>\n"
-    "      <reference key=\"parent\" ref=\"940738293\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">122</int>\n"
-    "      <reference key=\"object\" ref=\"162979538\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"756937780\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">123</int>\n"
-    "      <reference key=\"object\" ref=\"756937780\"/>\n"
-    "      <reference key=\"parent\" ref=\"162979538\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">129</int>\n"
-    "      <reference key=\"object\" ref=\"643835222\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"903670050\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">130</int>\n"
-    "      <reference key=\"object\" ref=\"903670050\"/>\n"
-    "      <reference key=\"parent\" ref=\"643835222\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">132</int>\n"
-    "      <reference key=\"object\" ref=\"516363802\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"255146468\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">133</int>\n"
-    "      <reference key=\"object\" ref=\"255146468\"/>\n"
-    "      <reference key=\"parent\" ref=\"516363802\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">137</int>\n"
-    "      <reference key=\"object\" ref=\"1018478293\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"333272556\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">138</int>\n"
-    "      <reference key=\"object\" ref=\"333272556\"/>\n"
-    "      <reference key=\"parent\" ref=\"1018478293\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">146</int>\n"
-    "      <reference key=\"object\" ref=\"886630308\"/>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">Web View Object Controller</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">158</int>\n"
-    "      <reference key=\"object\" ref=\"155281057\"/>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">164</int>\n"
-    "      <reference key=\"object\" ref=\"910425216\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"820983391\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">165</int>\n"
-    "      <reference key=\"object\" ref=\"820983391\"/>\n"
-    "      <reference key=\"parent\" ref=\"910425216\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">178</int>\n"
-    "      <reference key=\"object\" ref=\"282877588\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"175526135\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">179</int>\n"
-    "      <reference key=\"object\" ref=\"119113237\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"603200122\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">180</int>\n"
-    "      <reference key=\"object\" ref=\"603200122\"/>\n"
-    "      <reference key=\"parent\" ref=\"119113237\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">181</int>\n"
-    "      <reference key=\"object\" ref=\"175526135\"/>\n"
-    "      <reference key=\"parent\" ref=\"282877588\"/>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "   </object>\n"
-    "   <object class=\"NSMutableDictionary\" key=\"flattenedProperties\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <string>-1.IBPluginDependency</string>\n"
-    "     <string>-2.IBPluginDependency</string>\n"
-    "     <string>-3.IBPluginDependency</string>\n"
-    "     <string>100.IBPluginDependency</string>\n"
-    "     <string>101.IBPluginDependency</string>\n"
-    "     <string>102.IBPluginDependency</string>\n"
-    "     <string>103.IBPluginDependency</string>\n"
-    "     <string>104.IBPluginDependency</string>\n"
-    "     <string>105.IBPluginDependency</string>\n"
-    "     <string>109.IBPluginDependency</string>\n"
-    "     <string>110.IBPluginDependency</string>\n"
-    "     <string>116.IBAttributePlaceholdersKey</string>\n"
-    "     <string>116.IBPluginDependency</string>\n"
-    "     <string>117.IBPluginDependency</string>\n"
-    "     <string>118.IBAttributePlaceholdersKey</string>\n"
-    "     <string>118.IBPluginDependency</string>\n"
-    "     <string>119.IBPluginDependency</string>\n"
-    "     <string>122.IBAttributePlaceholdersKey</string>\n"
-    "     <string>122.IBPluginDependency</string>\n"
-    "     <string>123.IBPluginDependency</string>\n"
-    "     <string>129.IBAttributePlaceholdersKey</string>\n"
-    "     <string>129.IBPluginDependency</string>\n"
-    "     <string>130.IBPluginDependency</string>\n"
-    "     <string>132.IBAttributePlaceholdersKey</string>\n"
-    "     <string>132.IBPluginDependency</string>\n"
-    "     <string>133.IBPluginDependency</string>\n"
-    "     <string>137.IBAttributePlaceholdersKey</string>\n"
-    "     <string>137.IBPluginDependency</string>\n"
-    "     <string>138.IBPluginDependency</string>\n"
-    "     <string>146.IBPluginDependency</string>\n"
-    "     <string>158.IBPluginDependency</string>\n"
-    "     <string>164.IBPluginDependency</string>\n"
-    "     <string>165.IBPluginDependency</string>\n"
-    "     <string>178.IBPluginDependency</string>\n"
-    "     <string>179.IBPluginDependency</string>\n"
-    "     <string>180.IBPluginDependency</string>\n"
-    "     <string>181.IBPluginDependency</string>\n"
-    "     <string>30.IBPluginDependency</string>\n"
-    "     <string>30.IBWindowTemplateEditedContentRect</string>\n"
-    "     <string>31.IBPluginDependency</string>\n"
-    "     <string>32.IBPluginDependency</string>\n"
-    "     <string>33.IBPluginDependency</string>\n"
-    "     <string>34.IBPluginDependency</string>\n"
-    "     <string>35.IBPluginDependency</string>\n"
-    "     <string>36.IBPluginDependency</string>\n"
-    "     <string>44.IBPluginDependency</string>\n"
-    "     <string>44.IBWindowTemplateEditedContentRect</string>\n"
-    "     <string>45.IBPluginDependency</string>\n"
-    "     <string>46.CustomClassName</string>\n"
-    "     <string>46.IBPluginDependency</string>\n"
-    "     <string>47.IBPluginDependency</string>\n"
-    "     <string>48.IBPluginDependency</string>\n"
-    "     <string>49.IBPluginDependency</string>\n"
-    "     <string>50.IBPluginDependency</string>\n"
-    "     <string>51.IBPluginDependency</string>\n"
-    "     <string>53.CustomClassName</string>\n"
-    "     <string>53.IBAttributePlaceholdersKey</string>\n"
-    "     <string>53.IBPluginDependency</string>\n"
-    "     <string>61.IBPluginDependency</string>\n"
-    "     <string>62.IBPluginDependency</string>\n"
-    "     <string>95.IBPluginDependency</string>\n"
-    "     <string>96.IBPluginDependency</string>\n"
-    "     <string>97.IBPluginDependency</string>\n"
-    "     <string>98.IBPluginDependency</string>\n"
-    "     <string>99.IBPluginDependency</string>\n"
-    "    </object>\n"
-    "    <object class=\"NSArray\" key=\"dict.values\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.WebKitIBPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"108384011\"/>\n"
-    "       <string key=\"toolTip\">Make text Larger</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"940738293\"/>\n"
-    "       <string key=\"toolTip\">Make text Smaller</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"162979538\"/>\n"
-    "       <string key=\"toolTip\">Make text Standard Size</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"643835222\"/>\n"
-    "       <string key=\"toolTip\">Make text Larger</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"516363802\"/>\n"
-    "       <string key=\"toolTip\">Make text Larger</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"1018478293\"/>\n"
-    "       <string key=\"toolTip\">Make text Larger</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>{{21, 960}, {467, 151}}</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>{{42, 649}, {780, 439}}</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>PMCancelButtonForPanel</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.WebKitIBPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>PMOkButtonForPanel</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"244651633\"/>\n"
-    "       <string key=\"toolTip\">Download new version, quit canari, install new version, and launch new version.</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "    </object>\n"
-    "   </object>\n"
-    "   <object class=\"NSMutableDictionary\" key=\"unlocalizedProperties\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <reference key=\"dict.sortedKeys\" ref=\"0\"/>\n"
-    "    <reference key=\"dict.values\" ref=\"0\"/>\n"
-    "   </object>\n"
-    "   <nil key=\"activeLocalization\"/>\n"
-    "   <object class=\"NSMutableDictionary\" key=\"localizations\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <reference key=\"dict.sortedKeys\" ref=\"0\"/>\n"
-    "    <reference key=\"dict.values\" ref=\"0\"/>\n"
-    "   </object>\n"
-    "   <nil key=\"sourceID\"/>\n"
-    "   <int key=\"maxID\">187</int>\n"
-    "  </object>\n"
-    "  <object class=\"IBClassDescriber\" key=\"IBDocument.Classes\">\n"
-    "   <object class=\"NSMutableArray\" key=\"referencedPartialClassDescriptions\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <object class=\"IBPartialClassDescription\">\n"
-    "     <string key=\"className\">FirstResponder</string>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"actions\">\n"
-    "      <string key=\"NS.key.0\">:</string>\n"
-    "      <string key=\"NS.object.0\">id</string>\n"
-    "     </object>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"actionInfosByName\">\n"
-    "      <string key=\"NS.key.0\">:</string>\n"
-    "      <object class=\"IBActionInfo\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">:</string>\n"
-    "       <string key=\"candidateClassName\">id</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"IBClassDescriptionSource\" key=\"sourceIdentifier\">\n"
-    "      <string key=\"majorKey\">IBUserSource</string>\n"
-    "      <string key=\"minorKey\"/>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "    <object class=\"IBPartialClassDescription\">\n"
-    "     <string key=\"className\">PMApplicationUpdate</string>\n"
-    "     <string key=\"superclassName\">NSObject</string>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"actions\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>checkForNewVersion:</string>\n"
-    "       <string>performCLIToolInstallation:</string>\n"
-    "       <string>performCLIToolRemove:</string>\n"
-    "      </object>\n"
-    "      <object class=\"NSArray\" key=\"dict.values\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>id</string>\n"
-    "       <string>id</string>\n"
-    "       <string>id</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"actionInfosByName\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>checkForNewVersion:</string>\n"
-    "       <string>performCLIToolInstallation:</string>\n"
-    "       <string>performCLIToolRemove:</string>\n"
-    "      </object>\n"
-    "      <object class=\"NSArray\" key=\"dict.values\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <object class=\"IBActionInfo\">\n"
-    "        <string key=\"name\">checkForNewVersion:</string>\n"
-    "        <string key=\"candidateClassName\">id</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBActionInfo\">\n"
-    "        <string key=\"name\">performCLIToolInstallation:</string>\n"
-    "        <string key=\"candidateClassName\">id</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBActionInfo\">\n"
-    "        <string key=\"name\">performCLIToolRemove:</string>\n"
-    "        <string key=\"candidateClassName\">id</string>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"outlets\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>mCLIToolInstallationPath</string>\n"
-    "       <string>mCancelButton</string>\n"
-    "       <string>mChangeLogInPreferencePaneWebView</string>\n"
-    "       <string>mChangeLogWebView</string>\n"
-    "       <string>mCheckNowButton</string>\n"
-    "       <string>mCheckUpdateAtStartUpCheckBox</string>\n"
-    "       <string>mCheckUpdateAtStartUpCheckBox2</string>\n"
-    "       <string>mDownloadProgressIndicator</string>\n"
-    "       <string>mDownloadSubTitle</string>\n"
-    "       <string>mDownloadTitle</string>\n"
-    "       <string>mNewAvailableVersionPanel</string>\n"
-    "       <string>mNewVersionTextField</string>\n"
-    "       <string>mPerformUpdateButton</string>\n"
-    "       <string>mViewForChangeLogInPreferencePane</string>\n"
-    "      </object>\n"
-    "      <object class=\"NSArray\" key=\"dict.values\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>NSTextField</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>WebView</string>\n"
-    "       <string>WebView</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>NSProgressIndicator</string>\n"
-    "       <string>NSTextField</string>\n"
-    "       <string>NSTextField</string>\n"
-    "       <string>NSPanel</string>\n"
-    "       <string>NSTextField</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>NSView</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"toOneOutletInfosByName\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>mCLIToolInstallationPath</string>\n"
-    "       <string>mCancelButton</string>\n"
-    "       <string>mChangeLogInPreferencePaneWebView</string>\n"
-    "       <string>mChangeLogWebView</string>\n"
-    "       <string>mCheckNowButton</string>\n"
-    "       <string>mCheckUpdateAtStartUpCheckBox</string>\n"
-    "       <string>mCheckUpdateAtStartUpCheckBox2</string>\n"
-    "       <string>mDownloadProgressIndicator</string>\n"
-    "       <string>mDownloadSubTitle</string>\n"
-    "       <string>mDownloadTitle</string>\n"
-    "       <string>mNewAvailableVersionPanel</string>\n"
-    "       <string>mNewVersionTextField</string>\n"
-    "       <string>mPerformUpdateButton</string>\n"
-    "       <string>mViewForChangeLogInPreferencePane</string>\n"
-    "      </object>\n"
-    "      <object class=\"NSArray\" key=\"dict.values\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCLIToolInstallationPath</string>\n"
-    "        <string key=\"candidateClassName\">NSTextField</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCancelButton</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mChangeLogInPreferencePaneWebView</string>\n"
-    "        <string key=\"candidateClassName\">WebView</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mChangeLogWebView</string>\n"
-    "        <string key=\"candidateClassName\">WebView</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCheckNowButton</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCheckUpdateAtStartUpCheckBox</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCheckUpdateAtStartUpCheckBox2</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mDownloadProgressIndicator</string>\n"
-    "        <string key=\"candidateClassName\">NSProgressIndicator</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mDownloadSubTitle</string>\n"
-    "        <string key=\"candidateClassName\">NSTextField</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mDownloadTitle</string>\n"
-    "        <string key=\"candidateClassName\">NSTextField</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mNewAvailableVersionPanel</string>\n"
-    "        <string key=\"candidateClassName\">NSPanel</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mNewVersionTextField</string>\n"
-    "        <string key=\"candidateClassName\">NSTextField</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mPerformUpdateButton</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mViewForChangeLogInPreferencePane</string>\n"
-    "        <string key=\"candidateClassName\">NSView</string>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"IBClassDescriptionSource\" key=\"sourceIdentifier\">\n"
-    "      <string key=\"majorKey\">IBProjectSource</string>\n"
-    "      <string key=\"minorKey\">./Classes/PMApplicationUpdate.h</string>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "    <object class=\"IBPartialClassDescription\">\n"
-    "     <string key=\"className\">PMCancelButtonForPanel</string>\n"
-    "     <string key=\"superclassName\">NSButton</string>\n"
-    "     <object class=\"IBClassDescriptionSource\" key=\"sourceIdentifier\">\n"
-    "      <string key=\"majorKey\">IBProjectSource</string>\n"
-    "      <string key=\"minorKey\">./Classes/PMCancelButtonForPanel.h</string>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "    <object class=\"IBPartialClassDescription\">\n"
-    "     <string key=\"className\">PMOkButtonForPanel</string>\n"
-    "     <string key=\"superclassName\">NSButton</string>\n"
-    "     <object class=\"IBClassDescriptionSource\" key=\"sourceIdentifier\">\n"
-    "      <string key=\"majorKey\">IBProjectSource</string>\n"
-    "      <string key=\"minorKey\">./Classes/PMOkButtonForPanel.h</string>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "   </object>\n"
-    "  </object>\n"
-    "  <int key=\"IBDocument.localizationMode\">0</int>\n"
-    "  <string key=\"IBDocument.TargetRuntimeIdentifier\">IBCocoaFramework</string>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.PluginDeclaredDependencies\">\n"
-    "   <string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>\n"
-    "   <integer value=\"1050\" key=\"NS.object.0\"/>\n"
-    "  </object>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.PluginDeclaredDependencyDefaults\">\n"
-    "   <string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>\n"
-    "   <real value=\"1060\" key=\"NS.object.0\"/>\n"
-    "  </object>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.PluginDeclaredDevelopmentDependencies\">\n"
-    "   <string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>\n"
-    "   <integer value=\"3000\" key=\"NS.object.0\"/>\n"
-    "  </object>\n"
-    "  <bool key=\"IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion\">YES</bool>\n"
-    "  <int key=\"IBDocument.defaultPropertyAccessControl\">3</int>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.LastKnownImageSizes\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <string>NSApplicationIcon</string>\n"
-    "    <string>NSGoLeftTemplate</string>\n"
-    "    <string>NSGoRightTemplate</string>\n"
-    "    <string>NSRefreshTemplate</string>\n"
-    "    <string>NSSwitch</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSArray\" key=\"dict.values\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <string>{128, 128}</string>\n"
-    "    <string>{9, 9}</string>\n"
-    "    <string>{9, 9}</string>\n"
-    "    <string>{10, 12}</string>\n"
-    "    <string>{15, 15}</string>\n"
-    "   </object>\n"
-    "  </object>\n"
-    " </data>\n"
-    "</archive>\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Filewrapper template 'applicationUpdateFileWrapper download_data_header'                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_download_5F_data_5F_header (C_Compiler * /* inCompiler */
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMDownloadData.h\n"
-    "//  canari\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 20/08/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "\n"
-    "#import <Cocoa/Cocoa.h>\n"
-    "\n"
-    "\n"
-    "@interface PMDownloadData : NSObject {\n"
-    "  @protected NSURL * mURL ;\n"
-    "  @protected __weak id mDelegate ;\n"
-    "  @protected SEL mDownloadDidEndSelector ; // - (void) downloadDidEnd: (PMDownloadData *) inDownloader\n"
-    "  @protected NSError * mDownloadError ; // nil if no error\n"
-    "  @protected NSMutableData * mDownloadedData ;\n"
-    "  @protected id mUserInfo ;\n"
-    "  @protected NSURLConnection * mDownloadConnection ;\n"
-    "}\n"
-    "\n"
-    "- (id) initDownloadWithURLString: (NSString *) inURLString\n"
-    "       delegate: (id) inDelegate\n"
-    "       downloadDidEndSelector: (SEL) inDownloadDidEndSelector\n"
-    "       userInfo: (id) inUserInfo ;\n"
-    "\n"
-    "- (NSError *) downloadError ;\n"
-    "- (NSData *) downloadedData ;\n"
-    "- (id) userInfo ;\n"
-    "- (NSString *) urlString ;\n"
-    "\n"
-    "- (void) cancelDownloader ;\n"
-    "@end\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                  Filewrapper template 'applicationUpdateFileWrapper download_data_implementation'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_download_5F_data_5F_implementation (C_Compiler * /* inCompiler */
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMDownloadData.m\n"
-    "//  canari\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 20/08/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "\n"
-    "#import \"PMDownloadData.h\"\n"
-    "\n"
-    "\n"
-    "@implementation PMDownloadData\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) notifyDelegate {\n"
-    "  [[NSRunLoop currentRunLoop]\n"
-    "    performSelector:mDownloadDidEndSelector\n"
-    "    target:mDelegate\n"
-    "    argument:self\n"
-    "    order:0\n"
-    "    modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]\n"
-    "  ] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) initDownloadWithURLString: (NSString *) inURLString\n"
-    "       delegate: (id) inDelegate\n"
-    "       downloadDidEndSelector: (SEL) inDownloadDidEndSelector\n"
-    "       userInfo: (id) inUserInfo {\n"
-    "  self = [super init] ;\n"
-    "  if (self) {\n"
-    "    mDownloadDidEndSelector = inDownloadDidEndSelector ;\n"
-    "    mURL = [NSURL URLWithString:inURLString] ; // mURL is nil is URL string is malformed\n"
-    "    mDelegate = inDelegate ;\n"
-    "    mDownloadedData = [NSMutableData new] ;\n"
-    "    mUserInfo = inUserInfo ;\n"
-    "  //--- Start Download\n"
-    "    if (mURL == nil) {\n"
-    "      mDownloadError = [NSError \n"
-    "        errorWithDomain:@\"PMError\"\n"
-    "        code:0\n"
-    "        userInfo:[NSDictionary dictionaryWithObject:@\"malformed URL\" forKey:NSLocalizedFailureReasonErrorKey]\n"
-    "      ] ;\n"
-    "      [self notifyDelegate] ;\n"
-    "    }else{\n"
-    "      NSURLRequest * request = [NSURLRequest requestWithURL:mURL] ;\n"
-    "      mDownloadConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;\n"
-    "    }\n"
-    "  }\n"
-    "  return self ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "//- (void)URL:(NSURL *)sender resourceDataDidBecomeAvailable:(NSData *) inNewBytes {\n"
-    "- (void)connection: (NSURLConnection *) connection didReceiveData:(NSData *) inNewBytes {\n"
-    "  // NSLog (@\"resourceDataDidBecomeAvailable %u bytes\", [inNewBytes length]) ;\n"
-    "  [mDownloadedData appendData:inNewBytes] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *) inError {\n"
-    "//- (void)URL:(NSURL *)sender resourceDidFailLoadingWithReason:(NSString *) inReason {\n"
-    "  // NSLog (@\"resourceDidFailLoadingWithReason '%@'\", inReason) ;\n"
-    "  mDownloadError = inError ;\n"
-    "  [self notifyDelegate] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) cancelDownloader {\n"
-    "  [mDownloadConnection cancel] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void)connectionDidFinishLoading:(NSURLConnection *)connection {\n"
-    "//- (void) URLResourceDidFinishLoading:(NSURL *)sender {\n"
-    "  // NSLog (@\"URLResourceDidFinishLoading\") ;\n"
-    "  [self notifyDelegate] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSError *) downloadError {\n"
-    "  return mDownloadError ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSData *) downloadedData {\n"
-    "  return mDownloadedData ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) userInfo {\n"
-    "  return mUserInfo ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) urlString {\n"
-    "  return [mURL absoluteString] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Filewrapper template 'applicationUpdateFileWrapper download_file_header'                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_download_5F_file_5F_header (C_Compiler * /* inCompiler */
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMDownloadFile.h\n"
-    "//  canari\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 19/08/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <Cocoa/Cocoa.h>\n"
-    "#import \"PMSnowLeopardLionCompatibility.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@class PMDownloadFile ;\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@protocol PMDownloadDidEndProtocol\n"
-    "  - (void) downloadDidEnd: (PMDownloadFile *) inDownloader ;\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@interface PMDownloadFile : NSObject <NSURLDownloadDelegate> {\n"
-    "  @protected NSURL * mURL ;\n"
-    "  @protected __weak id <PMDownloadDidEndProtocol> mDelegate ;\n"
-    "  @protected NSURLDownload  * mDownload ;\n"
-    "  @protected NSButton * mCancelButton ;\n"
-    "  @protected NSTextField * mSubTitle ;\n"
-    "  @protected NSProgressIndicator * mProgressIndicator ;\n"
-    "  @protected NSError * mDownloadError ; // nil if no error\n"
-    "  @protected long long mExpectedContentLength ;\n"
-    "  @protected long long mReceivedLength ;\n"
-    "  @protected NSString * mDestinationFileName ;\n"
-    "  @protected id mUserInfo ;\n"
-    "  @protected BOOL mDownloadHasBeenCancelled ;\n"
-    "}\n"
-    "\n"
-    "- (id) initWithURLString: (NSString *) inURLString\n"
-    "       destinationFileName: (NSString *) inDestinationFileName\n"
-    "       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate\n"
-    "       cancelButton: (NSButton *) inCancelButton\n"
-    "       subtitle: (NSTextField *) inSubtitle\n"
-    "       progressIndicator: (NSProgressIndicator *) inProgressIndicator\n"
-    "       userInfo: (id) inUserInfo ;\n"
-    "\n"
-    "- (id) initWithURLString: (NSString *) inURLString\n"
-    "       postDictionary: (NSDictionary *) inPOSTDictionary\n"
-    "       destinationFileName: (NSString *) inDestinationFileName\n"
-    "       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate\n"
-    "       cancelButton: (NSButton *) inCancelButton\n"
-    "       subtitle: (NSTextField *) inSubtitle\n"
-    "       progressIndicator: (NSProgressIndicator *) inProgressIndicator\n"
-    "       userInfo: (id) inUserInfo ;\n"
-    "\n"
-    "- (NSError *) downloadError ;\n"
-    "\n"
-    "- (NSString *) destinationFileName ;\n"
-    "\n"
-    "- (id) userInfo ;\n"
-    "\n"
-    "- (BOOL) downloadHasBeenCancelled ;\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                  Filewrapper template 'applicationUpdateFileWrapper download_file_implementation'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_download_5F_file_5F_implementation (C_Compiler * /* inCompiler */
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMDownloadFile.m\n"
-    "//  canari\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 19/08/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "\n"
-    "#import \"PMDownloadFile.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@implementation PMDownloadFile\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) initWithURLString: (NSString *) inURLString\n"
-    "       postDictionary: (NSDictionary *) inPOSTDictionary\n"
-    "       destinationFileName: (NSString *) inDestinationFileName\n"
-    "       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate\n"
-    "       cancelButton: (NSButton *) inCancelButton\n"
-    "       subtitle: (NSTextField *) inSubtitle\n"
-    "       progressIndicator: (NSProgressIndicator *) inProgressIndicator\n"
-    "       userInfo: (id) inUserInfo {\n"
-    "  self = [super init] ;\n"
-    "  if (self) {\n"
-    "    mURL = [NSURL URLWithString:inURLString] ;\n"
-    "    mDelegate = inDelegate ;\n"
-    "    mDestinationFileName = inDestinationFileName ;\n"
-    "    mUserInfo = inUserInfo ;\n"
-    "  //--- Subtitle\n"
-    "    mSubTitle = inSubtitle ;\n"
-    "    [mSubTitle setStringValue:@\"\"] ;\n"
-    "  //--- Progress Indicator\n"
-    "    mProgressIndicator = inProgressIndicator ;\n"
-    "    [mProgressIndicator setIndeterminate:YES] ;\n"
-    "  //--- Cancel button\n"
-    "    mCancelButton = inCancelButton ;\n"
-    "    [mCancelButton setTarget:self] ;\n"
-    "    [mCancelButton setAction:@selector (cancelAction:)] ;\n"
-    "    [mCancelButton setEnabled:YES] ;\n"
-    "  //--- Create the request\n"
-    "    NSMutableURLRequest * theRequest = [NSMutableURLRequest\n"
-    "      requestWithURL:mURL\n"
-    "      cachePolicy:NSURLRequestReloadIgnoringCacheData\n"
-    "      timeoutInterval:60.0\n"
-    "    ] ;\n"
-    "  //--- set method POST\n"
-    "    [theRequest setHTTPMethod:@\"POST\"] ;\n"
-    "  //--- set HTTP body\n"
-    "    NSMutableString * body = [NSMutableString new] ;\n"
-    "    NSEnumerator * enumerator = [inPOSTDictionary keyEnumerator] ;\n"
-    "    NSString * key ;\n"
-    "    while ((key = enumerator.nextObject)) {\n"
-    "      NSString * parameter = [[inPOSTDictionary objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ;\n"
-    "      if ([body length] > 0) {\n"
-    "        [body appendString:@\"&\"] ;\n"
-    "      }\n"
-    "      [body appendFormat:@\"%@=%@\", key, parameter] ;\n"
-    "    }\n"
-    "    //NSLog (@\"HTTP body: '%@'\", body) ;\n"
-    "    [theRequest setHTTPBody:[body dataUsingEncoding:NSASCIIStringEncoding]] ;\n"
-    "  //--- Create the connection with the request, and start loading the data\n"
-    "    mDownload = [[NSURLDownload alloc] initWithRequest:theRequest delegate:self] ;\n"
-    "  //--- Set destination file name\n"
-    "    [mDownload setDestination:inDestinationFileName allowOverwrite:YES];\n"
-    "  }\n"
-    "  return self ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) initWithURLString: (NSString *) inURLString\n"
-    "       destinationFileName: (NSString *) inDestinationFileName\n"
-    "       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate\n"
-    "       cancelButton: (NSButton *) inCancelButton\n"
-    "       subtitle: (NSTextField *) inSubtitle\n"
-    "       progressIndicator: (NSProgressIndicator *) inProgressIndicator\n"
-    "       userInfo: (id) inUserInfo {\n"
-    "  self = [super init] ;\n"
-    "  if (self) {\n"
-    "    mURL = [NSURL URLWithString:inURLString] ;\n"
-    "    mDelegate = inDelegate ;\n"
-    "    mDestinationFileName = inDestinationFileName ;\n"
-    "    mUserInfo = inUserInfo ;\n"
-    "  //--- Subtitle\n"
-    "    mSubTitle = inSubtitle ;\n"
-    "    [mSubTitle setStringValue:@\"\"] ;\n"
-    "  //--- Progress Indicator\n"
-    "    mProgressIndicator = inProgressIndicator ;\n"
-    "    [mProgressIndicator setIndeterminate:YES] ;\n"
-    "  //--- Cancel button\n"
-    "    mCancelButton = inCancelButton ;\n"
-    "    [mCancelButton setTarget:self] ;\n"
-    "    [mCancelButton setAction:@selector (cancelAction:)] ;\n"
-    "    [mCancelButton setEnabled:YES] ;\n"
-    "  //--- Create the request\n"
-    "    NSURLRequest * theRequest = [NSURLRequest\n"
-    "      requestWithURL:mURL\n"
-    "      cachePolicy:NSURLRequestReloadIgnoringCacheData\n"
-    "      timeoutInterval:60.0\n"
-    "    ] ;\n"
-    "  //--- Create the connection with the request, and start loading the data\n"
-    "    mDownload = [[NSURLDownload alloc] initWithRequest:theRequest delegate:self] ;\n"
-    "  //--- Set destination file name\n"
-    "    [mDownload setDestination:inDestinationFileName allowOverwrite:YES];\n"
-    "  }\n"
-    "  return self ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) download:(NSURLDownload *)download didReceiveResponse:(NSURLResponse *)response {\n"
-    "  // NSLog (@\"%s\", __PRETTY_FUNCTION__) ;\n"
-    "  mReceivedLength = 0 ;\n"
-    "  mExpectedContentLength = [response expectedContentLength] ;\n"
-    "//--- Update progress Indicator\n"
-    "  [mProgressIndicator setMinValue:0.0] ;\n"
-    "  [mProgressIndicator setMaxValue: (double) mExpectedContentLength] ;\n"
-    "  [mProgressIndicator setDoubleValue:0.0] ;\n"
-    "  [mProgressIndicator setIndeterminate:NO] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void)download: (NSURLDownload *) inDownload didReceiveDataOfLength:(NSUInteger) inLength {\n"
-    "  // NSLog (@\"%s: received %lu bytes\", __PRETTY_FUNCTION__, inLength) ;\n"
-    "  mReceivedLength += inLength ;\n"
-    "//--- Update Progress Indicator\n"
-    "  [mProgressIndicator setDoubleValue: (double) mReceivedLength] ;\n"
-    "//--- Update subtitle\n"
-    "  NSString * subtitle = [NSString\n"
-    "    stringWithFormat:@\"%lld KB of %lld KB\",\n"
-    "    (mReceivedLength >> 10),\n"
-    "    (mExpectedContentLength >> 10)\n"
-    "  ] ;\n"
-    "  [mSubTitle setStringValue:subtitle] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadingProcessDidEnd {\n"
-    "  // NSLog (@\"%s\", __PRETTY_FUNCTION__) ;\n"
-    "  [mCancelButton setTarget:nil] ;\n"
-    "  [mCancelButton setAction:NULL] ;\n"
-    "  [mCancelButton setEnabled:NO] ;\n"
-    "  [mDelegate downloadDidEnd:self] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) cancelAction: (id) inSender {\n"
-    "  [mDownload cancel] ;\n"
-    "  mDownloadHasBeenCancelled = YES ;\n"
-    "  [self downloadingProcessDidEnd] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) download:(NSURLDownload *)download didFailWithError:(NSError *) inError {\n"
-    "  // NSLog (@\"Download failed\") ;\n"
-    "  mDownloadError = inError ;\n"
-    "  [self downloadingProcessDidEnd] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadDidFinish:(NSURLDownload *)download {\n"
-    "  // NSLog (@\"Download completed\") ;\n"
-    "  [self downloadingProcessDidEnd] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSError *) downloadError {\n"
-    "  return mDownloadError ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) destinationFileName {\n"
-    "  return mDestinationFileName ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) userInfo {\n"
-    "  return mUserInfo ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (BOOL) downloadHasBeenCancelled {\n"
-    "  return mDownloadHasBeenCancelled ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Filewrapper template 'applicationUpdateFileWrapper compatibility_header'                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationUpdateFileWrapper_compatibility_5F_header (C_Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "// #import \"PMSnowLeopardLionCompatibility.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#ifndef  MAC_OS_X_VERSION_10_7\n"
-    "  @protocol NSURLDownloadDelegate <NSObject>\n"
-    "  @optional\n"
-    "    - (void)downloadDidBegin:(NSURLDownload *)download;\n"
-    "    - (NSURLRequest *)download:(NSURLDownload *)download willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse;\n"
-    "    - (BOOL)download:(NSURLDownload *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace;\n"
-    "    - (void)download:(NSURLDownload *)download didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;\n"
-    "    - (void)download:(NSURLDownload *)download didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;\n"
-    "    - (BOOL)downloadShouldUseCredentialStorage:(NSURLDownload *)download;\n"
-    "    - (void)download:(NSURLDownload *)download didReceiveResponse:(NSURLResponse *)response;\n"
-    "    - (void)download:(NSURLDownload *)download willResumeWithResponse:(NSURLResponse *)response fromByte:(long long)startingByte;\n"
-    "    - (void)download:(NSURLDownload *)download didReceiveDataOfLength:(NSUInteger)length;\n"
-    "    - (BOOL)download:(NSURLDownload *)download shouldDecodeSourceDataOfMIMEType:(NSString *)encodingType;\n"
-    "    - (void)download:(NSURLDownload *)download decideDestinationWithSuggestedFilename:(NSString *)filename;\n"
-    "    - (void)download:(NSURLDownload *)download didCreateDestination:(NSString *)path;\n"
-    "    - (void)downloadDidFinish:(NSURLDownload *)download;\n"
-    "    - (void)download:(NSURLDownload *)download didFailWithError:(NSError *)error;\n"
-    "  @end\n"
-    "#endif\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
   return GALGAS_string (result) ;
 }
 

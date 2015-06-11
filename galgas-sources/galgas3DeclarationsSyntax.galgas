@@ -295,66 +295,6 @@ rule <declaration>
   end
 }
 
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    S T R U C T    D E C L A R A T I O N                                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! Struct Declaration
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations {
-  $struct$
-  $type_name$ ?let @lstring structTypeName indexing structDefinition
-  ${$
-  var attributeList =@propertyInCollectionListAST.emptyList{}
-  repeat
-  while
-    <attribute_declaration> !?attributeList
-  while
-    $;$
-  end
-  $}$
-  ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
-    !false # Is not predefined
-    !structTypeName
-    !attributeList
-    !""}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    L I S T    D E C L A R A T I O N                                                                                  *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! List Declaration
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations {
-  $list$
-  $type_name$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
-  ${$
-  var mAttributeList =@propertyInCollectionListAST.emptyList{}
-  repeat
-  while
-    <attribute_declaration> !? mAttributeList
-  while
-    $;$
-  end
-  $}$
-  ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
-    !false # Is not predefined
-    !mListTypeName
-    !mAttributeList}
-}
-
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #    S O R T E D    L I S T    D E C L A R A T I O N                                                                   *

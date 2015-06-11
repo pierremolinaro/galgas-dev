@@ -126,51 +126,6 @@ map @attributeIndexMap {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @listDeclarationAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  var typedAttributeList =@typedPropertyList.emptyList{}
-  var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    var hasGetter = true
-    var hasSetter = false
-    for () in mFeatureList do
-      if mValue.string == "nogetter" then
-        if not hasGetter then
-          error mValue:"duplicate feature"
-        end
-        hasGetter = false
-      elsif mValue.string == "setter" then
-        if hasSetter then
-          error mValue:"duplicate feature"
-        end
-        hasSetter = true
-      else
-        error mValue:"unknown feature; the features available here are: 'nogetter', 'setter'"
-      end
-    end
-    typedAttributeList +=
-      !t
-      !mPropertyName
-      !hasSetter
-      !hasGetter
-    [!?attributeMap insertKey !mPropertyName !t]
-  end
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"list type " + mListTypeName
-    !@listTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mListTypeName}
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}}
-      !typedAttributeList}
-  !""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @sortedListDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -211,56 +166,6 @@ override method @sortedListDeclarationAST semanticAnalysis
       !sortDescriptorList}
     !""
 
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-func %once forbiddenKeysForStruct -> @stringset outResult {
-  outResult = @stringset. emptySet
-  outResult += !"description"
-  outResult += !"object"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @structDeclarationAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  if [mAttributeList length] == 0 then
-    error mStructTypeName: "a structure cannot be empty: it must have at least one field" 
-  end
-  var typedAttributeList =@typedPropertyList.emptyList{}
-  var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    for () in mFeatureList do
-      error mValue : "a struct attribute does not accept any feature"
-    end
-    let @bool hasSetter = false
-    let @bool hasGetter = false
-    typedAttributeList +=
-      !t
-      !mPropertyName
-      !hasSetter
-      !hasGetter
-    if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
-      @string m = "an attribute cannot be named:"
-      for s in forbiddenKeysForStruct () do
-        m+= " " + s
-      end
-      m += "; theses names are reserved"
-      error mPropertyName: m
-    end
-    [!?attributeMap insertKey !mPropertyName !t]
-  end
-  ioSemanticDeclarationListForGeneration +=
-    !"struct " + mStructTypeName
-    !@structTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mStructTypeName}
-      !typedAttributeList}
-    !"~"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
