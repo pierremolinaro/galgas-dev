@@ -98,6 +98,10 @@ project (3:0:10) -> "galgas" {
   "galgas-sources/semanticGeneration.galgas"
   "galgas-sources/semanticsCompilation.galgas"
   "galgas-sources/predefinedTypes.galgas"
+ 
+ #--- Type declaration
+  "galgas-sources/shared-map.galgas"
+  "galgas-sources/map-proxy.galgas"
 
 #--- Syntax Component
   "galgas-sources/syntaxModelBuilder.galgas"

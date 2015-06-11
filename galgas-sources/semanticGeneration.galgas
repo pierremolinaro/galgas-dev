@@ -901,18 +901,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
 
-#---------- MAP PROXY
-  template mapProxyTypeHeader1 "GALGAS_mapproxy.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-
-  template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-
 #---------- MAP
   template mapTypeHeader1 "GALGAS_map.h1.galgasTemplate"
     ?@string TYPE_NAME
@@ -932,30 +920,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE
-
-#---------- UNIQUE MAP
-  template uniqueMapTypeHeader1 "GALGAS_uniqueMap.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-
-  template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-
-  template uniqueMapTypeSpecificImplementation "GALGAS_uniqueMap.cpp.galgasTemplate"
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-    ?@insertMethodListAST INSERT_METHOD_LIST
-    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-#    ?@withAccessorMap WITH_ACCESSOR_MAP
-    ?@mapAutomatonStateMap MAP_AUTOMATON_STATE_MAP
-    ?@mapAutomatonActionMap MAP_AUTOMATON_ACTION_MAP
-    ?@mapStateSortedList MAP_AUTOMATON_DEFINITION_SORTEDLIST
-    ?@mapOverrideList MAP_OVERRIDE_LIST
-    ?@keySortedList MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
 
 #---------- Class
   template classTypeHeader1 "GALGAS_class.h1.galgasTemplate"
@@ -1449,78 +1413,6 @@ override method @mapTypeForGeneration appendSpecificImplementation
  }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#! Unique Map
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @uniqueMapTypeForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader {
-#  ioInclusionSet += !"galgas2/AC_GALGAS_uniqueMap" ;
-  for (t ...) in mTypedAttributeList do
-    [t addHeaderFileName1 !?ioInclusionSet]
-  end
-
-  outHeader = [filewrapper typeGenerationTemplate.uniqueMapTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !mSearchMethodList
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @uniqueMapTypeForGeneration appendDeclaration2
-  ?let @bool unused inGenerateForGalgas3
-  ?let @string unused inOutputDirectory
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  outHeader = [filewrapper typeGenerationTemplate.uniqueMapTypeHeader2
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @uniqueMapTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  var keySortedList =@keySortedList.emptySortedList{}
-  for () in mMapAutomatonStateMap do
-    keySortedList += !lkey.string !mStateIndex
-  end
-  outImplementation = [filewrapper typeGenerationTemplate.uniqueMapTypeSpecificImplementation
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !mInsertMethodList
-    !mSearchMethodList
-    !mMapAutomatonStateMap
-    !mMapAutomatonActionMap
-    !mMapStateSortedList
-    !mMapOverrideList
-    !keySortedList
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
 #! Sorted List
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1639,54 +1531,6 @@ override method @enumTypeForGeneration appendSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mConstantList
     !hasAssociatedValues
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-#! Map proxy
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @mapProxyTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-#  for (t ...) in [mTypeProxy mCurrentTypedAttributeList] do
-#    [t addHeaderFileName1 !?ioInclusionSet] ;
-#  end for ;
-
-  outHeader = [filewrapper typeGenerationTemplate.mapProxyTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-  ] 
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @mapProxyTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mAssociatedMapTypeProxy addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mAssociatedMapTypeProxy identifierRepresentation]
-    !mAssociatedMapTypedAttributeList
-    !mSearchMethodList
   ]
  }
 

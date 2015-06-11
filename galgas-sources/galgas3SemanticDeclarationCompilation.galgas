@@ -102,7 +102,8 @@ proc buildGalgas3SemanticContext
   ?let @semanticDeclarationListAST inSemanticDeclarationList
   ?let @location inEndOfProjectSourceFile
   !@semanticContext outSemanticContext
-  !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
+  !@semanticDeclarationListAST outSortedSemanticDeclarationListAST
+{
 #------ Create associated type (@TYPE-element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
   for () in inSemanticDeclarationList do

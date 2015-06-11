@@ -1,0 +1,1149 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#  sharedmap type                                                                                                      *
+#                                                                                                                      *
+#  Copyright (C) 2015, ..., 2015 Pierre Molinaro.                                                                      *
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+enum @mapAutomatonMessageKind {
+  case noMessage
+  case warningMessage
+  case errorMessage
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+list @mapStateTransitionList {
+  @lstring mActionName %nogetter
+  @lstring mTargetStateName %nogetter
+  @mapAutomatonMessageKind mTransitionMessageKind %nogetter
+  @lstring mTransitionMessage %nogetter
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+list @mapStateList {
+  @lstring mStateName %nogetter
+  @mapAutomatonMessageKind mStateMessageKind %nogetter
+  @lstring mStateMessage %nogetter
+  @mapStateTransitionList mTransitionList %nogetter
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+list @mapOverrideBlockDescriptorAST {
+  @lstring mLeftState %nogetter
+  @lstring mRightState %nogetter
+  @lstring mResultingState %nogetter
+  @mapAutomatonMessageKind mMessageKind %nogetter
+  @lstring mTransitionMessage %nogetter
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+list @mapOverrideBlockListAST {
+  @lstring mOverrideBlockName %nogetter
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST %nogetter
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST %nogetter
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+class @sharedMapDeclarationAST : @semanticDeclarationAST {
+  @lstring mMapTypeName
+  @lstringlist mAttributeList
+  @propertyInCollectionListAST mPropertyList
+  @insertMethodListAST mInsertMethodList
+  @mapSearchMethodListAST mSearchMethodList
+  @mapStateList mMapStateList
+  @mapOverrideBlockListAST mMapOverrideBlockListAST
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration>
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $sharedmap$
+  #--- Map type name
+    $type_name$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
+    let mapProxyTypeName = @lstring.new {!mMapTypeName.string + "-proxy" !mMapTypeName.location}
+  #--- Map attributes
+    @lstringlist mapAttributeList = {}
+    repeat
+    while
+      $attribute$ ?let attribute
+      mapAttributeList += !attribute
+    end
+  #--- Map properties
+    ${$
+    var propertyList =@propertyInCollectionListAST.emptyList{}
+    var mInsertMethodList =@insertMethodListAST.emptyList{}
+    var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
+    var mapStateList =@mapStateList.emptyList{}
+    var mapOverrideBlockListAST =@mapOverrideBlockListAST.emptyList{}
+    repeat
+    while
+      $state$
+      $identifier$ ?let @lstring stateName
+      @mapAutomatonMessageKind stateMessageKind
+      @lstring stateMessage
+      select
+        stateMessageKind = @mapAutomatonMessageKind. noMessage
+        stateMessage = @lstring.new {!"" !@location.here}
+      or
+        $warning$
+        $literal_string$ ? stateMessage
+        stateMessageKind = @mapAutomatonMessageKind. warningMessage
+      or
+        $error$
+        $literal_string$ ? stateMessage
+        stateMessageKind = @mapAutomatonMessageKind. errorMessage
+      end
+      ${$
+      var transitionList =@mapStateTransitionList.emptyList{}
+      repeat
+      while
+        $identifier$ ?var  @lstring actionName
+        $->$
+        $identifier$ ?var  @lstring targetStateName
+        @mapAutomatonMessageKind transitionMessageKind
+        @lstring transitionMessage
+        select
+          transitionMessageKind = @mapAutomatonMessageKind. noMessage
+          transitionMessage = @lstring.new {!"" !@location.here}
+        or
+          $warning$
+          $literal_string$ ? transitionMessage
+          transitionMessageKind = @mapAutomatonMessageKind. warningMessage
+        or
+          $error$
+          $literal_string$ ? transitionMessage
+          transitionMessageKind = @mapAutomatonMessageKind. errorMessage
+        end
+        transitionList +=
+          !actionName
+          !targetStateName
+          !transitionMessageKind
+          !transitionMessage
+      end
+      mapStateList +=
+        !stateName
+        !stateMessageKind
+        !stateMessage
+        !transitionList
+      $}$
+    while
+      <attribute_declaration> !? propertyList
+    while
+      $insert$
+      <insert_method_declaration> !? mInsertMethodList
+    while
+      $search$
+      $identifier$ ?var  @lstring mMethodName
+      @lstring actionName
+      select
+        actionName = @lstring.new {!"" !@location.here}
+      or
+        $do$
+        $identifier$ ? actionName
+      end
+      $error$
+      $message$
+      $literal_string$ ?var  @lstring mErrorMessage
+      mSearchMethodList +=
+        !mMethodName
+        !mErrorMessage
+        !actionName
+    while
+      $override$
+      $identifier$ ?var  @lstring overrideBlockName
+      var mapOverrideBlockDescriptor1AST =@mapOverrideBlockDescriptorAST.emptyList{}
+      ${$
+      repeat
+      while
+        $identifier$ ?var  @lstring sourceState1
+        $:$
+        $identifier$ ?var  @lstring sourceState2
+        $->$
+        $identifier$ ?var  @lstring targetState
+        @mapAutomatonMessageKind messageKind
+        @lstring messageText
+        select
+          messageKind = @mapAutomatonMessageKind. noMessage
+          messageText = @lstring.new {!"" !@location.here}
+        or
+          $warning$
+          messageKind = @mapAutomatonMessageKind. warningMessage
+          $literal_string$ ? messageText
+        or
+          $error$
+          messageKind = @mapAutomatonMessageKind. errorMessage
+          $literal_string$ ? messageText
+        end
+        mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
+      end
+      $}$
+      var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST.emptyList{}
+      ${$
+      repeat
+      while
+        $identifier$ ?var  @lstring sourceState1
+        $:$
+        $identifier$ ?var  @lstring sourceState2
+        $->$
+        $identifier$ ?var  @lstring targetState
+        @mapAutomatonMessageKind messageKind
+        @lstring messageText
+        select
+          messageKind = @mapAutomatonMessageKind. noMessage
+          messageText = @lstring.new {!"" !@location.here}
+        or
+          $warning$
+          messageKind = @mapAutomatonMessageKind. warningMessage
+          $literal_string$ ? messageText
+        or
+          $error$
+          messageKind = @mapAutomatonMessageKind. errorMessage
+          $literal_string$ ? messageText
+        end
+        mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
+      end
+      $}$
+      mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST
+    while
+      $;$
+    end
+    $}$
+  #--- Declare map
+    ioDeclarations.mDeclarationList += !@sharedMapDeclarationAST.new {
+      !false # Is not predefined
+      !mMapTypeName
+      !mapAttributeList
+      !propertyList
+      !mInsertMethodList
+      !mSearchMethodList
+      !mapStateList
+      !mapOverrideBlockListAST
+    }
+  #--- Declare map proxy
+    ioDeclarations.mDeclarationList += !@mapProxyDeclarationAST.new {
+      !false # Is not predefined
+      !mapProxyTypeName
+      !mMapTypeName
+    }
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @sharedMapDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+{
+  let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  for () in mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
+  end
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override getter @sharedMapDeclarationAST keyRepresentation
+  ->@string outString
+{
+  outString = "shared map @" + mMapTypeName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @sharedMapDeclarationAST enterInSemanticContext
+  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
+  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+{
+#--- string type index
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
+#--- lstring type index
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
+#--- lstringlist type index
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let lstringlistTypeIndex]
+#--- Enumeration description
+  @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
+  @stringlist enumerationVariants = {}
+  enumerationVariants += !"up"
+  enumerationVariants += !"down"
+#--- Attributes
+  @bool usesSelectorsInInsertAndSearch = false
+  for (s) in mAttributeList do
+    if s.string == "selectors" then
+      if usesSelectorsInInsertAndSearch then
+        error s : "duplicated attribute"
+      end
+      usesSelectorsInInsertAndSearch = true
+    else
+      error s : "unknown attribute"
+    end
+  end
+#---
+  @constructorMap constructorMap = {}
+  commonReaderMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  @setterMap modifierMap = {}
+  @instanceMethodMap instanceMethodMap = {}
+#--- Constructors
+  enterConstructorWithoutArgument (!?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false )
+#--- Readers
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"allKeys"
+    !returnedTypeName:"stringset"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"allKeyList"
+    !returnedTypeName:"lstringlist"
+    !false
+  )
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"hasKey"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"locationForKey" 
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"location"
+    !true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"count"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"unsolvedProxyCount"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"unsolvedProxyList"
+    !returnedTypeName:"lstringlist"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"edgeGraphvizRepresentation"
+    !returnedTypeName:"string"
+    !false
+  )
+#--- Handle attributes
+  @typedPropertyList typedAttributeList = {}
+  @formalParameterSignature insertMethodFormalArgumentList = {}
+  insertMethodFormalArgumentList +=
+    ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
+    !lstringTypeIndex
+    !.argumentConstantIn
+    !"inLKey"
+  @formalParameterSignature removeMethodFormalArgumentList = {}
+  removeMethodFormalArgumentList +=
+    ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
+    !lstringTypeIndex
+    !.argumentConstantIn
+    !"inLKey"
+  for () in mPropertyList do
+    @unifiedTypeMap-proxy attributeTypeIndex
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    @bool hasGetter = true
+    @bool hasSetter = true
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
+    insertMethodFormalArgumentList +=
+      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex 
+      !.argumentConstantIn
+      !mPropertyName.string
+    removeMethodFormalArgumentList +=
+      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !.argumentOut
+      !mPropertyName.string
+  end
+#-------------------------- Insert Modifiers
+  for () in mInsertMethodList do
+    if [modifierMap hasKey ![mInsertMethodName string]] then
+      error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
+    else
+      [!?modifierMap insertOrReplace
+        !mInsertMethodName
+        !@methodKind.definedAsMember
+        !insertMethodFormalArgumentList
+        !true
+        !@methodQualifier.isBasic
+        !"" # No error message
+      ]
+    end
+  end
+#--------------------------- EnterEdge setter
+  var enterEdgeFormalArgumentList =@formalParameterSignature.emptyList{}
+  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inSource"
+  enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inTarget"
+  [!?modifierMap insertOrReplace
+    !["enterEdge" nowhere]
+    !@methodKind.definedAsMember
+    !enterEdgeFormalArgumentList
+    !false
+    !@methodQualifier. isInherited
+    !"" # No error message
+  ]
+#--------------------------- topologicalSort Method
+  var topologicalSortFormalArgumentList =@formalParameterSignature.emptyList{}
+  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outSortedLKeys"
+  topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outUnsortedLKeys"
+  [!?instanceMethodMap insertKey
+    !["topologicalSort" nowhere]
+    !@methodKind.definedAsMember
+    !topologicalSortFormalArgumentList
+    !@location.here
+    !true
+    !@methodQualifier. isInherited
+    !"" # No error message
+  ]
+#--- Handle search methods (methods if no state, modifiers if states)
+  if [mMapStateList length] == 0 then
+    for () in mSearchMethodList do
+      [!?instanceMethodMap insertKey
+        !mSearchMethodName
+        !@methodKind.definedAsMember
+        !removeMethodFormalArgumentList
+        ![mSearchMethodName location]
+        !true
+        !@methodQualifier.isBasic
+        !"" # No error message
+      ]
+    end
+  else
+    for () in mSearchMethodList do
+      [!?modifierMap insertKey
+        !mSearchMethodName
+        !@methodKind.definedAsMember
+        !removeMethodFormalArgumentList
+        !true
+        !@methodQualifier.isBasic
+        !"" # No error message
+      ]
+    end
+  end
+#--- Enter "enterBranch" and "exitBranch" modifiers (only if there are states)
+  if [mMapStateList length] > 0 then
+    @unifiedTypeMap-proxy locationTypeIndex
+    [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?locationTypeIndex]
+    [!?modifierMap insertKey
+      !@lstring.new {!"openBranch" !@location.here}
+      !@methodKind.definedAsMember
+      !@formalParameterSignature. emptyList
+      !true
+      !@methodQualifier. isInherited
+      !"" # No error message
+    ]
+    [!?modifierMap insertKey
+      !@lstring.new {!"closeBranch" !@location.here}
+      !@methodKind.definedAsMember
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !.argumentIn !"inErrorLocation"}
+      !true
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+    [!?modifierMap insertKey
+      !@lstring.new {!"closeOverride" !@location.here}
+      !@methodKind.definedAsMember
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !.argumentIn !"inErrorLocation"}
+      !true
+      !@methodQualifier. isInherited
+      !"" # No error message
+    ]
+    [!?instanceMethodMap insertKey
+      !@lstring.new {!"checkAutomatonStates" !@location.here}
+      !@methodKind.definedAsMember
+      !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !.argumentIn !"inErrorLocation"}
+      !@location.here
+      !true
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+    for () in mMapOverrideBlockListAST do
+      [!?modifierMap insertKey
+        !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
+        !@methodKind.definedAsMember
+        !@formalParameterSignature. emptyList
+        !true
+        !@methodQualifier.isBasic
+        !"" # No error message
+      ]
+    end
+  end
+#--- Enter "attributeForKey" readers
+  for () in mPropertyList do
+    let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
+    @unifiedTypeMap-proxy attributeTypeIndex
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    [!?getterMap insertOrReplace
+      !accessorName
+      !@methodKind.definedAsMember
+      !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey"}
+      !@location.here
+      !true
+      !attributeTypeIndex
+      !@methodQualifier.isBasic
+      !"" # No Error message
+    ]
+  end
+#---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor parameter
+  for () in mPropertyList do
+    let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !mPropertyName.string
+    [!?modifierMap insertOrReplace
+      !accessorName
+      !@methodKind.definedAsMember
+      !accessorFormalArgumentList
+      !true
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+  end
+#--- Add Categories
+  addCategories (
+    !inCategoryMethodMapForBuildingContext
+    !inCategoryReaderMapForBuildingContext
+    !inCategoryModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mMapTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mMapTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. uniqueMapType
+    !false # Does not support collection value
+    !@typedPropertyList. emptyList
+    !@attributeMap. emptyMap
+    !typedAttributeList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !enumerationDescriptor
+    !enumerationVariants
+    !doNotGenererateObjectCompare () | supportWithAccessor ()
+    !@functionSignature. emptyList
+    !{}
+    !{}
+    !mSearchMethodList
+    !{}
+    !false # Do not generate header in separate file
+    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
+    !"emptyMap"
+    !"uniquemap-" + mMapTypeName
+    !@headerKind. twoHeaders
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+sortedlist @mapStateTransitionSortedList {
+  @uint mActionIndex
+  @string mActionName
+  @uint mTargetStateIndex
+  @string mTargetStateName
+  @mapAutomatonMessageKind mTransitionMessageKind
+  @string mTransitionMessage
+}{
+  mActionIndex <
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+sortedlist @mapStateSortedList {
+  @uint mStateIndex
+  @string mStateName
+  @mapAutomatonMessageKind mStateMessageKind
+  @string mStateMessage
+  @mapStateTransitionSortedList mTransitionList
+}{
+  mStateIndex <
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+map @mapAutomatonStateMap {
+  @uint mStateIndex
+  @mapAutomatonMessageKind mStateMessageKind
+  insert insertKey error message "redefinition of '%K' map automaton state"
+  search searchKey error message "undefined '%K' map automaton state"
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+map @mapAutomatonActionMap {
+  @uint mActionIndex
+  insert insertKey error message "redefinition of '%K' map automaton action"
+  search searchKey error message "undefined '%K' map automaton action"
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+sortedlist @branchBehaviourSortedListForMapOverride {
+  @uint mStartStateIndex
+  @string mStartStateName
+  @uint mCurrentStateIndex
+  @string mCurrentStateName
+  @uint mFinalStateIndex
+  @string mFinalStateName
+  @mapAutomatonMessageKind mBehaviourMessageKind
+  @string mBehaviourMessage
+}{
+  mStartStateIndex <, mCurrentStateIndex <
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+list @mapOverrideList {
+  @string mOverrideName
+  @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride
+  @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @sharedMapDeclarationAST semanticAnalysis
+  ?let @string inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Compute initial state set
+  var initialStateSet = @stringset.emptySet{}
+  for () in mInsertMethodList do
+    if [mMapStateList length] > 0 then
+      if [mInitialStateName string] == "" then
+        error mInsertMethodName: "the '" + mInsertMethodName + "' insert method should name an automaton state"
+      else
+        initialStateSet += ![mInitialStateName string]
+      end
+    elsif [mInitialStateName string] != "" then
+      error mInsertMethodName: "the '" + mInsertMethodName + "' insert method should not name an automaton state"
+    end
+  end
+#--- Analyze map automation actions
+  @mapAutomatonActionMap mapAutomatonActionMap = {}
+  for () in mSearchMethodList do
+    if [mMapStateList length] > 0 then
+      if [mActionName string] == "" then
+        error mSearchMethodName: "the '" + mSearchMethodName + "' search method should name an automaton action"
+      elsif not [mapAutomatonActionMap hasKey ![mActionName string]] then
+#        actionIndex := [mapAutomatonActionMap count] ;
+        [!?mapAutomatonActionMap insertKey !mActionName ![mapAutomatonActionMap count]]
+#      else
+#        [mapAutomatonActionMap searchKey !mActionName ?actionIndex] ;
+      end
+    elsif [mActionName string] != "" then
+      error mSearchMethodName: "the '" + mSearchMethodName + "' search method should not name an automaton action"
+    end
+  end
+#--- Analyze map automaton
+  @mapAutomatonStateMap mapAutomatonStateMap = {}
+  for () in mMapStateList do
+    [!?mapAutomatonStateMap insertKey !mStateName ![mapAutomatonStateMap count] !mStateMessageKind]
+  end
+  for () in mMapStateList do
+    for () in mTransitionList do
+      [mapAutomatonStateMap searchKey !mTargetStateName ?2*]
+    end
+  end
+#--- Check automaton actions are all defined
+  let @stringset allActions = [mapAutomatonActionMap keySet]
+  @mapStateSortedList mapStateSortedList = {}
+  for () in mMapStateList do
+    @stringset actionsForCurrentState = {}
+    @mapStateTransitionSortedList mapStateTransitionSortedList = {}
+    for () in mTransitionList do
+      [mapAutomatonActionMap searchKey !mActionName ?let @uint actionIndex]
+      if [actionsForCurrentState hasKey ![mActionName string]] then
+        error mActionName : "the '" + mActionName + "' action is already used for this state"
+      end
+      actionsForCurrentState += ![mActionName string]
+      [mapAutomatonStateMap searchKey !mTargetStateName ?let @uint targetStateIndex ?*]
+      mapStateTransitionSortedList +=
+        !actionIndex
+        ![mActionName string]
+        !targetStateIndex
+        ![mTargetStateName string]
+        !mTransitionMessageKind
+        ![mTransitionMessage string]
+    end
+    [mapAutomatonStateMap searchKey !mStateName ?let @uint stateIndex ?*]
+    mapStateSortedList +=
+      !stateIndex
+      ![mStateName string]
+      !mStateMessageKind
+      ![mStateMessage string]
+      !mapStateTransitionSortedList
+    let @stringset missingActions = allActions - actionsForCurrentState
+    if [missingActions count] > 0 then
+      @string s = ""
+      for () in missingActions
+        do s += "'" + key + "'"
+        between s += ", "
+      end
+      error mStateName : "the following actions are not named in a transition from this state: " + s
+    end
+  end
+#--- Check for useful automaton states
+  var accessibleStates = initialStateSet
+  @bool progress = true
+  loop( [mMapStateList length] + 1) while progress do
+    progress = false
+    for () in mMapStateList do
+      if [accessibleStates hasKey ![mStateName string]] then
+        for () in mTransitionList do
+          if not [accessibleStates hasKey ![mTargetStateName string]] then
+            accessibleStates += ![mTargetStateName string]
+            progress = true
+          end
+        end
+      end
+    end
+  end
+  let @stringset uselessStates = [mapAutomatonStateMap keySet] - accessibleStates
+  if [uselessStates count] > 0 then
+    var s = ""
+    for () in uselessStates
+      do s += "'" + key + "'"
+      between s += ", "
+    end
+    warning @location.here : "the following map automaton states are useless: " + s
+  end
+#---------------------------------- override methods
+#--- Compute needed associations
+  @stringset neededAssociations = {}
+  @stringset accessibilityGraph = {}
+  for () in mapAutomatonStateMap do
+    @stringset reachableStates = {}
+    reachableStates += ![lkey string]
+    @bool progress = true
+    loop( [mapAutomatonStateMap count] + 1) while progress do
+      progress = false
+      for () in mMapStateList do
+        if [reachableStates hasKey ![mStateName string]] then
+          for () in mTransitionList do
+            if not [reachableStates hasKey ![mTargetStateName string]] then
+              reachableStates += ![mTargetStateName string]
+              accessibilityGraph += ![lkey string] + ":" + [mTargetStateName string]
+              progress = true
+            end
+          end
+        end
+      end
+    end
+    for () in reachableStates do
+      if [lkey string] != key then
+        neededAssociations += ![lkey string] + ":" + key
+      end
+    end
+  end
+#---
+  @mapOverrideList mapOverrideList = {}
+  for () in mMapOverrideBlockListAST do
+    var handledAssociations =@stringset.emptySet{}
+    var neededCombinaisons =@stringset.emptySet{}
+    var branchBehaviourSortedListForMapOverride1 =@branchBehaviourSortedListForMapOverride.emptySortedList{}
+    for () in mMapOverrideBlockDescriptor1AST do
+      [mapAutomatonStateMap searchKey !mLeftState ?let startStateNameIndex ?*]
+      [mapAutomatonStateMap searchKey !mRightState ?let currentStateNameIndex ?*]
+      let @string association = [mLeftState string] + ":" + [mRightState string]
+      if not [neededAssociations hasKey !association] then
+        warning mRightState :"the '" + association + "' association is useless"
+      end
+      if [handledAssociations hasKey !association] then
+        error mRightState
+        :"the '" + association + "' association is already defined"
+      end
+      handledAssociations += !association
+      [mapAutomatonStateMap searchKey !mResultingState ?let finalStateNameIndex ?*]
+      if [mLeftState string] != [mResultingState string] then
+        neededCombinaisons += ![mLeftState string] + ":" + [mResultingState string]
+        neededCombinaisons += ![mResultingState string] + ":" + [mLeftState string]
+        if not [accessibilityGraph hasKey ![mLeftState string] + ":" + [mRightState string]] then
+          error mResultingState
+          : "the '" + mResultingState + "' state is not reachable from '" + mLeftState + "' state"
+        end
+      end
+      check_K_escapeCharacters ( !mTransitionMessage )
+      branchBehaviourSortedListForMapOverride1 +=
+        !startStateNameIndex
+        ![mLeftState string]
+        !currentStateNameIndex
+        ![mRightState string]
+        !finalStateNameIndex
+        ![mResultingState string]
+        !mMessageKind
+        ![mTransitionMessage string]
+    end
+    @stringset forgottenAssociations = neededAssociations - handledAssociations
+    if [forgottenAssociations count] > 0 then
+      @string s = ""
+      for () in forgottenAssociations do
+        s += "\n  - " + key
+      end
+      error @location.here: [[forgottenAssociations count] string] + " associations should be defined:" + s
+    end
+    var definedCombinaisons =@stringset.emptySet{}
+    var branchBehaviourSortedListForMapOverride2 =@branchBehaviourSortedListForMapOverride.emptySortedList{}
+    for () in mMapOverrideBlockDescriptor2AST do
+      [mapAutomatonStateMap searchKey !mLeftState ?let leftStateIndex ?*]
+      [mapAutomatonStateMap searchKey !mRightState ?let rightStateIndex ?*]
+      let @string combinaison = [mLeftState string] + ":" + [mRightState string]
+      if not [neededCombinaisons hasKey !combinaison] then
+        error mRightState
+        :"the '" + mLeftState + ":" + mRightState + "' combinaison is useless"
+      end
+      if [definedCombinaisons hasKey !combinaison] then
+        error mRightState
+        :"the '" + mLeftState + ":" + mRightState + "' combinaison is already defined"
+      end
+      definedCombinaisons += !combinaison
+      [mapAutomatonStateMap searchKey !mResultingState ?let resultingStateNameIndex ?*]
+      if ([mLeftState string] != [mResultingState string])
+       & ([mRightState string] != [mResultingState string])
+       & not [accessibilityGraph hasKey ![mLeftState string] + ":" + [mResultingState string]] then
+        error mResultingState
+        :"the '" + mResultingState + "' state cannot be reached from the '" + mResultingState + "' state"
+      end
+      check_K_escapeCharacters ( !mTransitionMessage )
+      if mMessageKind == @mapAutomatonMessageKind. noMessage then
+        definedCombinaisons += ![mRightState string] + ":" + [mLeftState string]
+        branchBehaviourSortedListForMapOverride2 +=
+          !rightStateIndex
+          ![mRightState string]
+          !leftStateIndex
+          ![mLeftState string]
+          !resultingStateNameIndex
+          ![mResultingState string]
+          !mMessageKind
+          ![mTransitionMessage string]
+      end
+      branchBehaviourSortedListForMapOverride2 +=
+        !leftStateIndex
+        ![mLeftState string]
+        !rightStateIndex
+        ![mRightState string]
+        !resultingStateNameIndex
+        ![mResultingState string]
+        !mMessageKind
+        ![mTransitionMessage string]
+    end
+    if [forgottenAssociations count] == 0 then # Check only if all associations are defined
+      @stringset forgottenCombinaisons = neededCombinaisons - definedCombinaisons
+      if [forgottenCombinaisons count] > 0 then
+        @string s = ""
+        for () in forgottenCombinaisons do
+          s += "\n  - " + key
+        end
+        error @location.here: [[forgottenCombinaisons count] string] + " combinaisons are forgotten:" + s
+      end
+    end
+    mapOverrideList +=
+      ![mOverrideBlockName string]
+      !branchBehaviourSortedListForMapOverride1
+      !branchBehaviourSortedListForMapOverride2
+  end
+#------ Enter attributes
+  @typedPropertyList typedAttributeList = {}
+  @attributeIndexMap attributeMap = {}
+  for () in mPropertyList do
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    let hasSetter = true
+    let hasGetter = true
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#--- Enter insert modifiers
+  @insertMethodMap insertMethodMap = {}
+  for () in mInsertMethodList do
+    [!?insertMethodMap insertKey !mInsertMethodName]
+  #--- Check error message escape sequences : only %K, %L or %%
+    for () in [[mErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
+      [!?explodedArray popFirst ?*]
+      for () in explodedArray do
+        if [mValue length] > 0 then
+          let @char c = [mValue characterAtIndex !0]
+          if (c != 'K') & (c != 'L') then
+            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in an insert error message"
+          end
+        end
+      end
+    end
+  #--- Check shadow error message escape sequences : only %K, %L or %%
+    for () in [[mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
+      [!?explodedArray popFirst ?*]
+      for () in explodedArray do
+        if [mValue length] > 0 then
+          let @char c = [mValue characterAtIndex !0]
+          if (c != 'K') & (c != 'L') then
+            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in a shadow error message"
+          end
+        end
+      end
+    end
+  end
+#--- Enter search methods
+  @searchMethodMap searchMethodMap = {}
+  for () in mSearchMethodList do
+    if [mMapStateList length] == 0 then # §
+      [!?searchMethodMap insertKey !mSearchMethodName]
+    else
+      [!?searchMethodMap insertKey !mSearchMethodName]
+    end
+  #--- Check error message escape sequences : only %K or %%
+    for () in [[mErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
+      [!?explodedArray popFirst ?*]
+      for () in explodedArray do
+        if [mValue length] > 0 then
+          let @char c = [mValue characterAtIndex !0]
+          if c != 'K' then
+            error mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a search error message"
+          end
+        end
+      end
+    end
+  end
+#--- Enter map declaration
+  ioSemanticDeclarationListForGeneration +=
+    !"shared map " + mMapTypeName
+    !@sharedMapTypeForGeneration.new {
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mMapTypeName}
+      !mMapTypeName
+      !typedAttributeList
+      !mInsertMethodList
+      !mSearchMethodList
+      !mapAutomatonStateMap
+      !mapAutomatonActionMap
+      !mapStateSortedList
+      !mapOverrideList
+    }
+    !""
+#--- Build graph for graphviz 
+  let graphFile = inProductDirectory + "/../helpers/shared-map-" + mMapTypeName + ".dot"
+  if [option galgas_cli_options.generateSharedMapAutomatonDotFiles value] then
+    var theGraph = "digraph G {\n"
+    for () in mapAutomatonStateMap do
+      theGraph += "\"" + lkey + "\" [label=\"" + lkey + "\""
+      if [initialStateSet hasKey !lkey.string] then
+        theGraph += " shape=box color=blue"
+      else
+        theGraph += " shape=box"
+      end
+      switch mStateMessageKind
+      case noMessage :
+      case warningMessage :
+        theGraph += " fontcolor=\"orange\""
+      case errorMessage :
+        theGraph += " fontcolor=\"red\""
+      end
+      theGraph += "];\n"
+    end
+    for () in mMapStateList do
+      for () in mTransitionList do
+        theGraph += "\"" + mStateName + "\" -> \"" + mTargetStateName + "\" [label=\"" + mActionName + "\""
+        switch mTransitionMessageKind 
+        case noMessage : 
+        case warningMessage : 
+          theGraph += " fontcolor=\"orange\" color=\"orange\""
+        case errorMessage : 
+          theGraph += " fontcolor=\"red\" color=\"red\""
+        end
+        theGraph += "];\n"
+      end
+    end
+    theGraph += "}\n"
+    [theGraph writeToFileWhenDifferentContents !graphFile ?*]
+  else
+    [@string deleteFileIfExists !graphFile]
+  end
+}
+   
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @sharedMapTypeForGeneration : @semanticTypeForGeneration {
+  @lstring mMapTypeName
+  @typedPropertyList mTypedAttributeList
+  @insertMethodListAST mInsertMethodList
+  @mapSearchMethodListAST mSearchMethodList
+  @mapAutomatonStateMap mMapAutomatonStateMap
+  @mapAutomatonActionMap mMapAutomatonActionMap
+  @mapStateSortedList mMapStateSortedList
+  @mapOverrideList mMapOverrideList
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+filewrapper sharedMapGenerationTemplate in "../generation_templates/type_generation" {
+}{
+}{
+#---------- UNIQUE MAP
+  template uniqueMapTypeHeader1 "GALGAS_uniqueMap.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+
+  template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+
+  template uniqueMapTypeSpecificImplementation "GALGAS_uniqueMap.cpp.galgasTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@insertMethodListAST INSERT_METHOD_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+    ?@mapAutomatonStateMap MAP_AUTOMATON_STATE_MAP
+    ?@mapAutomatonActionMap MAP_AUTOMATON_ACTION_MAP
+    ?@mapStateSortedList MAP_AUTOMATON_DEFINITION_SORTEDLIST
+    ?@mapOverrideList MAP_OVERRIDE_LIST
+    ?@keySortedList MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @sharedMapTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
+{
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet]
+  end
+
+  outHeader = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+    !mSearchMethodList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @sharedMapTypeForGeneration appendDeclaration2
+  ?let @bool unused inGenerateForGalgas3
+  ?let @string unused inOutputDirectory
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeHeader2
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+  ]
+ }
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @sharedMapTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  var keySortedList =@keySortedList.emptySortedList{}
+  for () in mMapAutomatonStateMap do
+    keySortedList += !lkey.string !mStateIndex
+  end
+  outImplementation = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeSpecificImplementation
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
+    !mMapAutomatonStateMap
+    !mMapAutomatonActionMap
+    !mMapStateSortedList
+    !mMapOverrideList
+    !keySortedList
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*

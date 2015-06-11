@@ -359,7 +359,7 @@ rule <semantic_declaration>
   end
   $}$
 #--- Declare map
-  ioSemanticDeclarations += !@uniqueMapDeclarationAST.new {
+  ioSemanticDeclarations += !@sharedMapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
     !{}

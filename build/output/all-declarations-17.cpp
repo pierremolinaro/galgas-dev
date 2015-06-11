@@ -3205,6 +3205,333 @@ GALGAS_uintPredefinedTypeAST GALGAS_uintPredefinedTypeAST::extractObject (const 
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_sharedMapDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMapTypeName.objectCompare (p->mAttribute_mMapTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mAttributeList.objectCompare (p->mAttribute_mAttributeList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mPropertyList.objectCompare (p->mAttribute_mPropertyList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mInsertMethodList.objectCompare (p->mAttribute_mInsertMethodList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSearchMethodList.objectCompare (p->mAttribute_mSearchMethodList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMapStateList.objectCompare (p->mAttribute_mMapStateList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMapOverrideBlockListAST.objectCompare (p->mAttribute_mMapOverrideBlockListAST) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_sharedMapDeclarationAST::objectCompare (const GALGAS_sharedMapDeclarationAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapDeclarationAST::GALGAS_sharedMapDeclarationAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapDeclarationAST GALGAS_sharedMapDeclarationAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_sharedMapDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                          GALGAS_lstring::constructor_default (HERE),
+                                                          GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                          GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE),
+                                                          GALGAS_insertMethodListAST::constructor_emptyList (HERE),
+                                                          GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
+                                                          GALGAS_mapStateList::constructor_emptyList (HERE),
+                                                          GALGAS_mapOverrideBlockListAST::constructor_emptyList (HERE)
+                                                          COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapDeclarationAST::GALGAS_sharedMapDeclarationAST (const cPtr_sharedMapDeclarationAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_sharedMapDeclarationAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapDeclarationAST GALGAS_sharedMapDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                                const GALGAS_lstring & inAttribute_mMapTypeName,
+                                                                                const GALGAS_lstringlist & inAttribute_mAttributeList,
+                                                                                const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList,
+                                                                                const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
+                                                                                const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
+                                                                                const GALGAS_mapStateList & inAttribute_mMapStateList,
+                                                                                const GALGAS_mapOverrideBlockListAST & inAttribute_mMapOverrideBlockListAST
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_sharedMapDeclarationAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapStateList.isValid () && inAttribute_mMapOverrideBlockListAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_sharedMapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mPropertyList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapStateList, inAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_sharedMapDeclarationAST::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+    result = p->mAttribute_mMapTypeName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_sharedMapDeclarationAST::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_sharedMapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstringlist result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+    result = p->mAttribute_mAttributeList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cPtr_sharedMapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_propertyInCollectionListAST GALGAS_sharedMapDeclarationAST::reader_mPropertyList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+    result = p->mAttribute_mPropertyList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_propertyInCollectionListAST cPtr_sharedMapDeclarationAST::reader_mPropertyList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPropertyList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_insertMethodListAST GALGAS_sharedMapDeclarationAST::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_insertMethodListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+    result = p->mAttribute_mInsertMethodList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_insertMethodListAST cPtr_sharedMapDeclarationAST::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInsertMethodList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapSearchMethodListAST GALGAS_sharedMapDeclarationAST::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapSearchMethodListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+    result = p->mAttribute_mSearchMethodList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapSearchMethodListAST cPtr_sharedMapDeclarationAST::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSearchMethodList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapStateList GALGAS_sharedMapDeclarationAST::reader_mMapStateList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapStateList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+    result = p->mAttribute_mMapStateList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapStateList cPtr_sharedMapDeclarationAST::reader_mMapStateList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapStateList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideBlockListAST GALGAS_sharedMapDeclarationAST::reader_mMapOverrideBlockListAST (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapOverrideBlockListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+    result = p->mAttribute_mMapOverrideBlockListAST ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideBlockListAST cPtr_sharedMapDeclarationAST::reader_mMapOverrideBlockListAST (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapOverrideBlockListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                  Pointer class for @sharedMapDeclarationAST class                                   *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_sharedMapDeclarationAST::cPtr_sharedMapDeclarationAST (const GALGAS_bool & in_mIsPredefined,
+                                                            const GALGAS_lstring & in_mMapTypeName,
+                                                            const GALGAS_lstringlist & in_mAttributeList,
+                                                            const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                            const GALGAS_insertMethodListAST & in_mInsertMethodList,
+                                                            const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                            const GALGAS_mapStateList & in_mMapStateList,
+                                                            const GALGAS_mapOverrideBlockListAST & in_mMapOverrideBlockListAST
+                                                            COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
+mAttribute_mMapTypeName (in_mMapTypeName),
+mAttribute_mAttributeList (in_mAttributeList),
+mAttribute_mPropertyList (in_mPropertyList),
+mAttribute_mInsertMethodList (in_mInsertMethodList),
+mAttribute_mSearchMethodList (in_mSearchMethodList),
+mAttribute_mMapStateList (in_mMapStateList),
+mAttribute_mMapOverrideBlockListAST (in_mMapOverrideBlockListAST) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_sharedMapDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sharedMapDeclarationAST ;
+}
+
+void cPtr_sharedMapDeclarationAST::description (C_String & ioString,
+                                                const int32_t inIndentation) const {
+  ioString << "[@sharedMapDeclarationAST:" ;
+  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMapTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mAttributeList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mPropertyList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mInsertMethodList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSearchMethodList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMapStateList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMapOverrideBlockListAST.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_sharedMapDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_sharedMapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mPropertyList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapStateList, mAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @sharedMapDeclarationAST type                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_sharedMapDeclarationAST ("sharedMapDeclarationAST",
+                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_sharedMapDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sharedMapDeclarationAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_sharedMapDeclarationAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_sharedMapDeclarationAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapDeclarationAST GALGAS_sharedMapDeclarationAST::extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_sharedMapDeclarationAST result ;
+  const GALGAS_sharedMapDeclarationAST * p = (const GALGAS_sharedMapDeclarationAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_sharedMapDeclarationAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("sharedMapDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_sortedListDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_sortedListDeclarationAST * p = (const cPtr_sortedListDeclarationAST *) inOperandPtr ;
@@ -3634,333 +3961,6 @@ GALGAS_structDeclarationAST GALGAS_structDeclarationAST::extractObject (const GA
       result = *p ;
     }else{
       inCompiler->castError ("structDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_uniqueMapDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mMapTypeName.objectCompare (p->mAttribute_mMapTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mAttributeList.objectCompare (p->mAttribute_mAttributeList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mPropertyList.objectCompare (p->mAttribute_mPropertyList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mInsertMethodList.objectCompare (p->mAttribute_mInsertMethodList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mSearchMethodList.objectCompare (p->mAttribute_mSearchMethodList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mMapStateList.objectCompare (p->mAttribute_mMapStateList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mMapOverrideBlockListAST.objectCompare (p->mAttribute_mMapOverrideBlockListAST) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_uniqueMapDeclarationAST::objectCompare (const GALGAS_uniqueMapDeclarationAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapDeclarationAST::GALGAS_uniqueMapDeclarationAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapDeclarationAST GALGAS_uniqueMapDeclarationAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_uniqueMapDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                          GALGAS_lstring::constructor_default (HERE),
-                                                          GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                          GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE),
-                                                          GALGAS_insertMethodListAST::constructor_emptyList (HERE),
-                                                          GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
-                                                          GALGAS_mapStateList::constructor_emptyList (HERE),
-                                                          GALGAS_mapOverrideBlockListAST::constructor_emptyList (HERE)
-                                                          COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapDeclarationAST::GALGAS_uniqueMapDeclarationAST (const cPtr_uniqueMapDeclarationAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_uniqueMapDeclarationAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapDeclarationAST GALGAS_uniqueMapDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                                const GALGAS_lstring & inAttribute_mMapTypeName,
-                                                                                const GALGAS_lstringlist & inAttribute_mAttributeList,
-                                                                                const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList,
-                                                                                const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
-                                                                                const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
-                                                                                const GALGAS_mapStateList & inAttribute_mMapStateList,
-                                                                                const GALGAS_mapOverrideBlockListAST & inAttribute_mMapOverrideBlockListAST
-                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_uniqueMapDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapStateList.isValid () && inAttribute_mMapOverrideBlockListAST.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_uniqueMapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mPropertyList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapStateList, inAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_uniqueMapDeclarationAST::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-    result = p->mAttribute_mMapTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_uniqueMapDeclarationAST::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMapTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_uniqueMapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-    result = p->mAttribute_mAttributeList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist cPtr_uniqueMapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAttributeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_propertyInCollectionListAST GALGAS_uniqueMapDeclarationAST::reader_mPropertyList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_propertyInCollectionListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-    result = p->mAttribute_mPropertyList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_propertyInCollectionListAST cPtr_uniqueMapDeclarationAST::reader_mPropertyList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mPropertyList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_insertMethodListAST GALGAS_uniqueMapDeclarationAST::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_insertMethodListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-    result = p->mAttribute_mInsertMethodList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_insertMethodListAST cPtr_uniqueMapDeclarationAST::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mInsertMethodList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapSearchMethodListAST GALGAS_uniqueMapDeclarationAST::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapSearchMethodListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-    result = p->mAttribute_mSearchMethodList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapSearchMethodListAST cPtr_uniqueMapDeclarationAST::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSearchMethodList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateList GALGAS_uniqueMapDeclarationAST::reader_mMapStateList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapStateList result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-    result = p->mAttribute_mMapStateList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateList cPtr_uniqueMapDeclarationAST::reader_mMapStateList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMapStateList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapOverrideBlockListAST GALGAS_uniqueMapDeclarationAST::reader_mMapOverrideBlockListAST (UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapOverrideBlockListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-    result = p->mAttribute_mMapOverrideBlockListAST ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapOverrideBlockListAST cPtr_uniqueMapDeclarationAST::reader_mMapOverrideBlockListAST (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMapOverrideBlockListAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                  Pointer class for @uniqueMapDeclarationAST class                                   *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_uniqueMapDeclarationAST::cPtr_uniqueMapDeclarationAST (const GALGAS_bool & in_mIsPredefined,
-                                                            const GALGAS_lstring & in_mMapTypeName,
-                                                            const GALGAS_lstringlist & in_mAttributeList,
-                                                            const GALGAS_propertyInCollectionListAST & in_mPropertyList,
-                                                            const GALGAS_insertMethodListAST & in_mInsertMethodList,
-                                                            const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                            const GALGAS_mapStateList & in_mMapStateList,
-                                                            const GALGAS_mapOverrideBlockListAST & in_mMapOverrideBlockListAST
-                                                            COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mAttribute_mMapTypeName (in_mMapTypeName),
-mAttribute_mAttributeList (in_mAttributeList),
-mAttribute_mPropertyList (in_mPropertyList),
-mAttribute_mInsertMethodList (in_mInsertMethodList),
-mAttribute_mSearchMethodList (in_mSearchMethodList),
-mAttribute_mMapStateList (in_mMapStateList),
-mAttribute_mMapOverrideBlockListAST (in_mMapOverrideBlockListAST) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_uniqueMapDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_uniqueMapDeclarationAST ;
-}
-
-void cPtr_uniqueMapDeclarationAST::description (C_String & ioString,
-                                                const int32_t inIndentation) const {
-  ioString << "[@uniqueMapDeclarationAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mMapTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mPropertyList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mInsertMethodList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mSearchMethodList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mMapStateList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mMapOverrideBlockListAST.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_uniqueMapDeclarationAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_uniqueMapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mPropertyList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapStateList, mAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            @uniqueMapDeclarationAST type                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uniqueMapDeclarationAST ("uniqueMapDeclarationAST",
-                                                & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_uniqueMapDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_uniqueMapDeclarationAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_uniqueMapDeclarationAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_uniqueMapDeclarationAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapDeclarationAST GALGAS_uniqueMapDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_uniqueMapDeclarationAST result ;
-  const GALGAS_uniqueMapDeclarationAST * p = (const GALGAS_uniqueMapDeclarationAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_uniqueMapDeclarationAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("uniqueMapDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11770,6 +11770,360 @@ GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration::extractObje
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_sharedMapTypeForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypeProxy.objectCompare (p->mAttribute_mTypeProxy) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMapTypeName.objectCompare (p->mAttribute_mMapTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypedAttributeList.objectCompare (p->mAttribute_mTypedAttributeList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mInsertMethodList.objectCompare (p->mAttribute_mInsertMethodList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSearchMethodList.objectCompare (p->mAttribute_mSearchMethodList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMapAutomatonStateMap.objectCompare (p->mAttribute_mMapAutomatonStateMap) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMapAutomatonActionMap.objectCompare (p->mAttribute_mMapAutomatonActionMap) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMapStateSortedList.objectCompare (p->mAttribute_mMapStateSortedList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMapOverrideList.objectCompare (p->mAttribute_mMapOverrideList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_sharedMapTypeForGeneration::objectCompare (const GALGAS_sharedMapTypeForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapTypeForGeneration::GALGAS_sharedMapTypeForGeneration (void) :
+GALGAS_semanticTypeForGeneration () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapTypeForGeneration GALGAS_sharedMapTypeForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_sharedMapTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                             GALGAS_lstring::constructor_default (HERE),
+                                                             GALGAS_typedPropertyList::constructor_emptyList (HERE),
+                                                             GALGAS_insertMethodListAST::constructor_emptyList (HERE),
+                                                             GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
+                                                             GALGAS_mapAutomatonStateMap::constructor_emptyMap (HERE),
+                                                             GALGAS_mapAutomatonActionMap::constructor_emptyMap (HERE),
+                                                             GALGAS_mapStateSortedList::constructor_emptySortedList (HERE),
+                                                             GALGAS_mapOverrideList::constructor_emptyList (HERE)
+                                                             COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapTypeForGeneration::GALGAS_sharedMapTypeForGeneration (const cPtr_sharedMapTypeForGeneration * inSourcePtr) :
+GALGAS_semanticTypeForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_sharedMapTypeForGeneration) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapTypeForGeneration GALGAS_sharedMapTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
+                                                                                      const GALGAS_lstring & inAttribute_mMapTypeName,
+                                                                                      const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
+                                                                                      const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
+                                                                                      const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
+                                                                                      const GALGAS_mapAutomatonStateMap & inAttribute_mMapAutomatonStateMap,
+                                                                                      const GALGAS_mapAutomatonActionMap & inAttribute_mMapAutomatonActionMap,
+                                                                                      const GALGAS_mapStateSortedList & inAttribute_mMapStateSortedList,
+                                                                                      const GALGAS_mapOverrideList & inAttribute_mMapOverrideList
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_sharedMapTypeForGeneration result ;
+  if (inAttribute_mTypeProxy.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapAutomatonStateMap.isValid () && inAttribute_mMapAutomatonActionMap.isValid () && inAttribute_mMapStateSortedList.isValid () && inAttribute_mMapOverrideList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_sharedMapTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapAutomatonStateMap, inAttribute_mMapAutomatonActionMap, inAttribute_mMapStateSortedList, inAttribute_mMapOverrideList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_sharedMapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mMapTypeName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_sharedMapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typedPropertyList GALGAS_sharedMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mTypedAttributeList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typedPropertyList cPtr_sharedMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypedAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_insertMethodListAST GALGAS_sharedMapTypeForGeneration::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_insertMethodListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mInsertMethodList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_insertMethodListAST cPtr_sharedMapTypeForGeneration::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInsertMethodList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapSearchMethodListAST GALGAS_sharedMapTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapSearchMethodListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mSearchMethodList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapSearchMethodListAST cPtr_sharedMapTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSearchMethodList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapAutomatonStateMap GALGAS_sharedMapTypeForGeneration::reader_mMapAutomatonStateMap (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapAutomatonStateMap result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mMapAutomatonStateMap ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapAutomatonStateMap cPtr_sharedMapTypeForGeneration::reader_mMapAutomatonStateMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapAutomatonStateMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapAutomatonActionMap GALGAS_sharedMapTypeForGeneration::reader_mMapAutomatonActionMap (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapAutomatonActionMap result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mMapAutomatonActionMap ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapAutomatonActionMap cPtr_sharedMapTypeForGeneration::reader_mMapAutomatonActionMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapAutomatonActionMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapStateSortedList GALGAS_sharedMapTypeForGeneration::reader_mMapStateSortedList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapStateSortedList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mMapStateSortedList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapStateSortedList cPtr_sharedMapTypeForGeneration::reader_mMapStateSortedList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapStateSortedList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideList GALGAS_sharedMapTypeForGeneration::reader_mMapOverrideList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapOverrideList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mMapOverrideList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideList cPtr_sharedMapTypeForGeneration::reader_mMapOverrideList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapOverrideList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                 Pointer class for @sharedMapTypeForGeneration class                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_sharedMapTypeForGeneration::cPtr_sharedMapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
+                                                                  const GALGAS_lstring & in_mMapTypeName,
+                                                                  const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                  const GALGAS_insertMethodListAST & in_mInsertMethodList,
+                                                                  const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                                  const GALGAS_mapAutomatonStateMap & in_mMapAutomatonStateMap,
+                                                                  const GALGAS_mapAutomatonActionMap & in_mMapAutomatonActionMap,
+                                                                  const GALGAS_mapStateSortedList & in_mMapStateSortedList,
+                                                                  const GALGAS_mapOverrideList & in_mMapOverrideList
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
+mAttribute_mMapTypeName (in_mMapTypeName),
+mAttribute_mTypedAttributeList (in_mTypedAttributeList),
+mAttribute_mInsertMethodList (in_mInsertMethodList),
+mAttribute_mSearchMethodList (in_mSearchMethodList),
+mAttribute_mMapAutomatonStateMap (in_mMapAutomatonStateMap),
+mAttribute_mMapAutomatonActionMap (in_mMapAutomatonActionMap),
+mAttribute_mMapStateSortedList (in_mMapStateSortedList),
+mAttribute_mMapOverrideList (in_mMapOverrideList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_sharedMapTypeForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sharedMapTypeForGeneration ;
+}
+
+void cPtr_sharedMapTypeForGeneration::description (C_String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString << "[@sharedMapTypeForGeneration:" ;
+  mAttribute_mTypeProxy.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMapTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mTypedAttributeList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mInsertMethodList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSearchMethodList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMapAutomatonStateMap.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMapAutomatonActionMap.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMapStateSortedList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMapOverrideList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_sharedMapTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_sharedMapTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mMapTypeName, mAttribute_mTypedAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapAutomatonStateMap, mAttribute_mMapAutomatonActionMap, mAttribute_mMapStateSortedList, mAttribute_mMapOverrideList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @sharedMapTypeForGeneration type                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_sharedMapTypeForGeneration ("sharedMapTypeForGeneration",
+                                                   & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_sharedMapTypeForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sharedMapTypeForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_sharedMapTypeForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_sharedMapTypeForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapTypeForGeneration GALGAS_sharedMapTypeForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_sharedMapTypeForGeneration result ;
+  const GALGAS_sharedMapTypeForGeneration * p = (const GALGAS_sharedMapTypeForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_sharedMapTypeForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("sharedMapTypeForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_sortedListTypeForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_sortedListTypeForGeneration * p = (const cPtr_sortedListTypeForGeneration *) inOperandPtr ;
@@ -12145,360 +12499,6 @@ GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::extractObject (co
       result = *p ;
     }else{
       inCompiler->castError ("structTypeForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_uniqueMapTypeForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypeProxy.objectCompare (p->mAttribute_mTypeProxy) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mMapTypeName.objectCompare (p->mAttribute_mMapTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypedAttributeList.objectCompare (p->mAttribute_mTypedAttributeList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mInsertMethodList.objectCompare (p->mAttribute_mInsertMethodList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mSearchMethodList.objectCompare (p->mAttribute_mSearchMethodList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mMapAutomatonStateMap.objectCompare (p->mAttribute_mMapAutomatonStateMap) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mMapAutomatonActionMap.objectCompare (p->mAttribute_mMapAutomatonActionMap) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mMapStateSortedList.objectCompare (p->mAttribute_mMapStateSortedList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mMapOverrideList.objectCompare (p->mAttribute_mMapOverrideList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_uniqueMapTypeForGeneration::objectCompare (const GALGAS_uniqueMapTypeForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapTypeForGeneration::GALGAS_uniqueMapTypeForGeneration (void) :
-GALGAS_semanticTypeForGeneration () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapTypeForGeneration GALGAS_uniqueMapTypeForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_uniqueMapTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                             GALGAS_lstring::constructor_default (HERE),
-                                                             GALGAS_typedPropertyList::constructor_emptyList (HERE),
-                                                             GALGAS_insertMethodListAST::constructor_emptyList (HERE),
-                                                             GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
-                                                             GALGAS_mapAutomatonStateMap::constructor_emptyMap (HERE),
-                                                             GALGAS_mapAutomatonActionMap::constructor_emptyMap (HERE),
-                                                             GALGAS_mapStateSortedList::constructor_emptySortedList (HERE),
-                                                             GALGAS_mapOverrideList::constructor_emptyList (HERE)
-                                                             COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapTypeForGeneration::GALGAS_uniqueMapTypeForGeneration (const cPtr_uniqueMapTypeForGeneration * inSourcePtr) :
-GALGAS_semanticTypeForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_uniqueMapTypeForGeneration) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapTypeForGeneration GALGAS_uniqueMapTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
-                                                                                      const GALGAS_lstring & inAttribute_mMapTypeName,
-                                                                                      const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
-                                                                                      const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
-                                                                                      const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
-                                                                                      const GALGAS_mapAutomatonStateMap & inAttribute_mMapAutomatonStateMap,
-                                                                                      const GALGAS_mapAutomatonActionMap & inAttribute_mMapAutomatonActionMap,
-                                                                                      const GALGAS_mapStateSortedList & inAttribute_mMapStateSortedList,
-                                                                                      const GALGAS_mapOverrideList & inAttribute_mMapOverrideList
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_uniqueMapTypeForGeneration result ;
-  if (inAttribute_mTypeProxy.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapAutomatonStateMap.isValid () && inAttribute_mMapAutomatonActionMap.isValid () && inAttribute_mMapStateSortedList.isValid () && inAttribute_mMapOverrideList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_uniqueMapTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapAutomatonStateMap, inAttribute_mMapAutomatonActionMap, inAttribute_mMapStateSortedList, inAttribute_mMapOverrideList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_uniqueMapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    result = p->mAttribute_mMapTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_uniqueMapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMapTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typedPropertyList GALGAS_uniqueMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedPropertyList result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    result = p->mAttribute_mTypedAttributeList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typedPropertyList cPtr_uniqueMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypedAttributeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_insertMethodListAST GALGAS_uniqueMapTypeForGeneration::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_insertMethodListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    result = p->mAttribute_mInsertMethodList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_insertMethodListAST cPtr_uniqueMapTypeForGeneration::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mInsertMethodList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapSearchMethodListAST GALGAS_uniqueMapTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapSearchMethodListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    result = p->mAttribute_mSearchMethodList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapSearchMethodListAST cPtr_uniqueMapTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSearchMethodList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapAutomatonStateMap GALGAS_uniqueMapTypeForGeneration::reader_mMapAutomatonStateMap (UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapAutomatonStateMap result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    result = p->mAttribute_mMapAutomatonStateMap ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapAutomatonStateMap cPtr_uniqueMapTypeForGeneration::reader_mMapAutomatonStateMap (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMapAutomatonStateMap ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapAutomatonActionMap GALGAS_uniqueMapTypeForGeneration::reader_mMapAutomatonActionMap (UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapAutomatonActionMap result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    result = p->mAttribute_mMapAutomatonActionMap ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapAutomatonActionMap cPtr_uniqueMapTypeForGeneration::reader_mMapAutomatonActionMap (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMapAutomatonActionMap ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateSortedList GALGAS_uniqueMapTypeForGeneration::reader_mMapStateSortedList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapStateSortedList result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    result = p->mAttribute_mMapStateSortedList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateSortedList cPtr_uniqueMapTypeForGeneration::reader_mMapStateSortedList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMapStateSortedList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapOverrideList GALGAS_uniqueMapTypeForGeneration::reader_mMapOverrideList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapOverrideList result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    result = p->mAttribute_mMapOverrideList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapOverrideList cPtr_uniqueMapTypeForGeneration::reader_mMapOverrideList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMapOverrideList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                 Pointer class for @uniqueMapTypeForGeneration class                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_uniqueMapTypeForGeneration::cPtr_uniqueMapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
-                                                                  const GALGAS_lstring & in_mMapTypeName,
-                                                                  const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                  const GALGAS_insertMethodListAST & in_mInsertMethodList,
-                                                                  const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                  const GALGAS_mapAutomatonStateMap & in_mMapAutomatonStateMap,
-                                                                  const GALGAS_mapAutomatonActionMap & in_mMapAutomatonActionMap,
-                                                                  const GALGAS_mapStateSortedList & in_mMapStateSortedList,
-                                                                  const GALGAS_mapOverrideList & in_mMapOverrideList
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
-mAttribute_mMapTypeName (in_mMapTypeName),
-mAttribute_mTypedAttributeList (in_mTypedAttributeList),
-mAttribute_mInsertMethodList (in_mInsertMethodList),
-mAttribute_mSearchMethodList (in_mSearchMethodList),
-mAttribute_mMapAutomatonStateMap (in_mMapAutomatonStateMap),
-mAttribute_mMapAutomatonActionMap (in_mMapAutomatonActionMap),
-mAttribute_mMapStateSortedList (in_mMapStateSortedList),
-mAttribute_mMapOverrideList (in_mMapOverrideList) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_uniqueMapTypeForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_uniqueMapTypeForGeneration ;
-}
-
-void cPtr_uniqueMapTypeForGeneration::description (C_String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString << "[@uniqueMapTypeForGeneration:" ;
-  mAttribute_mTypeProxy.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mMapTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mInsertMethodList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mSearchMethodList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mMapAutomatonStateMap.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mMapAutomatonActionMap.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mMapStateSortedList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mMapOverrideList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_uniqueMapTypeForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_uniqueMapTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mMapTypeName, mAttribute_mTypedAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapAutomatonStateMap, mAttribute_mMapAutomatonActionMap, mAttribute_mMapStateSortedList, mAttribute_mMapOverrideList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          @uniqueMapTypeForGeneration type                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uniqueMapTypeForGeneration ("uniqueMapTypeForGeneration",
-                                                   & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_uniqueMapTypeForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_uniqueMapTypeForGeneration ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_uniqueMapTypeForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_uniqueMapTypeForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uniqueMapTypeForGeneration GALGAS_uniqueMapTypeForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_uniqueMapTypeForGeneration result ;
-  const GALGAS_uniqueMapTypeForGeneration * p = (const GALGAS_uniqueMapTypeForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_uniqueMapTypeForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("uniqueMapTypeForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
