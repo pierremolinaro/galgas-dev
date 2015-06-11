@@ -1209,70 +1209,6 @@ class @switchInstructionForGeneration : @semanticInstructionForGeneration {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-sortedlist @mapStateTransitionSortedList {
-  @uint mActionIndex
-  @string mActionName
-  @uint mTargetStateIndex
-  @string mTargetStateName
-  @mapAutomatonMessageKind mTransitionMessageKind
-  @string mTransitionMessage
-}{
-  mActionIndex <
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-sortedlist @mapStateSortedList {
-  @uint mStateIndex
-  @string mStateName
-  @mapAutomatonMessageKind mStateMessageKind
-  @string mStateMessage
-  @mapStateTransitionSortedList mTransitionList
-}{
-  mStateIndex <
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-map @mapAutomatonStateMap {
-  @uint mStateIndex
-  insert insertKey error message "redefinition of '%K' map automaton state"
-  search searchKey error message "undefined '%K' map automaton state"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-map @mapAutomatonActionMap {
-  @uint mActionIndex
-  insert insertKey error message "redefinition of '%K' map automaton action"
-  search searchKey error message "undefined '%K' map automaton action"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-sortedlist @branchBehaviourSortedListForMapOverride {
-  @uint mStartStateIndex
-  @string mStartStateName
-  @uint mCurrentStateIndex
-  @string mCurrentStateName
-  @uint mFinalStateIndex
-  @string mFinalStateName
-  @mapAutomatonMessageKind mBehaviourMessageKind
-  @string mBehaviourMessage
-}{
-  mStartStateIndex <, mCurrentStateIndex <
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @mapOverrideList {
-  @string mOverrideName
-  @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride
-  @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 class @mapTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mElementTypeProxy
   @lstring mMapTypeName
@@ -1285,20 +1221,6 @@ class @mapTypeForGeneration : @semanticTypeForGeneration {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-
-class @uniqueMapTypeForGeneration : @semanticTypeForGeneration {
-  @lstring mMapTypeName
-  @typedPropertyList mTypedAttributeList
-  @insertMethodListAST mInsertMethodList
-  @mapSearchMethodListAST mSearchMethodList
-#  @withAccessorMap mWithAccessorMap ; # Method for with accessor
-  @mapAutomatonStateMap mMapAutomatonStateMap
-  @mapAutomatonActionMap mMapAutomatonActionMap
-  @mapStateSortedList mMapStateSortedList
-  @mapOverrideList mMapOverrideList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #    A R R A Y    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
@@ -1307,18 +1229,6 @@ class @uniqueMapTypeForGeneration : @semanticTypeForGeneration {
 class @arrayTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mElementTypeProxy
   @uint mDimension
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    M A P    P R O X Y    D E C L A R A T I O N                                                                       *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @mapProxyTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mAssociatedMapTypeProxy
-  @typedPropertyList mAssociatedMapTypedAttributeList
-  @mapSearchMethodListAST mSearchMethodList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

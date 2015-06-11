@@ -1,0 +1,310 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @mapProxyDeclarationAST : @semanticDeclarationAST {
+  @lstring mMapProxyTypeName
+  @lstring mAssociatedMapTypeName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @mapProxyDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mMapProxyTypeName ![mMapProxyTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedMapTypeName ![mAssociatedMapTypeName location]}]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @mapProxyDeclarationAST enterInSemanticContext
+  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
+  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--- Check associated map is really a map
+  [ioSemanticContext.mTypeMap searchKey
+    !mAssociatedMapTypeName
+    ?3*
+    ?var @typeKindEnum typeKindEnum
+    ?3*
+    ?var @typedPropertyList mapTypedAttributeList
+    ?11*
+    ?var @mapSearchMethodListAST searchMethodList
+    ?6*
+  ]
+  if typeKindEnum != @typeKindEnum. uniqueMapType then
+    error mAssociatedMapTypeName : "the @" + mAssociatedMapTypeName + " should be an unique map type"
+    mapTypedAttributeList = @typedPropertyList. emptyList
+  end
+#---
+  var constructorMap =@constructorMap.emptyMap{}
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var modifierMap =@setterMap.emptyMap{}
+  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  var classMethodMap =@classMethodMap.emptyMap{}
+#--- Associated map type index
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedMapTypeName ?let @unifiedTypeMap-proxy associatedMapTypeIndex]
+#--- string type index
+  @unifiedTypeMap-proxy stringTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?stringTypeIndex]
+#--- lstring type index
+  @unifiedTypeMap-proxy lstringTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?lstringTypeIndex]
+#--- Handle map type name
+  @unifiedTypeMap-proxy mapProxyTypeProxy
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapProxyTypeName ?mapProxyTypeProxy]
+#--- class method : makeProxy
+  var argList =@formalParameterSignature.emptyList{}
+  argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
+  argList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
+  argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST.argumentOut !"outProxy"
+  [!?classMethodMap insertKey
+    !@lstring.new {!"makeProxy" !@location.here}
+    !argList
+    !false
+  ]
+#--- class method : makeProxyFromString
+  argList = @formalParameterSignature. emptyList
+  argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
+  argList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
+  argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST.argumentOut !"outProxy"
+  [!?classMethodMap insertKey
+    !@lstring.new {!"makeProxyFromString" !@location.here}
+    !argList
+    !false
+  ]
+#--- null constructor
+  enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"null" ![mMapProxyTypeName string] !false )
+#--- Search methods of associated map as constructors
+  var constructorAttributeTypeList =@functionSignature.emptyList{}
+  constructorAttributeTypeList += !["" nowhere] !associatedMapTypeIndex !"inMap"
+  constructorAttributeTypeList += !["" nowhere] !lstringTypeIndex !"inLKey"
+  for () in searchMethodList do
+    [!?constructorMap insertKey
+      !mSearchMethodName
+      !constructorAttributeTypeList
+      !true
+      !mapProxyTypeProxy
+    ]
+  end
+#--- readers
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isSolved"
+    !returnedTypeName:"bool"
+    !true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isNull"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isRegular"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"lkey"
+    !returnedTypeName:"lstring"
+    !true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"key"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"identifierRepresentation"
+    !returnedTypeName:"string"
+    !true
+  )
+#--- Enter associated map attribute names as readers
+  let @getterMap inheritedReaderMap = getterMap
+  for () in mapTypedAttributeList do
+    if [inheritedReaderMap hasKey ![mAttributeName string]] then
+      @string s = ""
+      for () in [inheritedReaderMap keySet]
+        do s += "'" + key + "'"
+        between s += ", "
+      end
+      error mAttributeName : "the map has a associated map proxy, which has predefined readers: " + s
+       + "; you cannot use theses names for naming an attribute of this map"
+    else
+      [!?getterMap insertKey
+        !mAttributeName
+        !@methodKind.definedAsMember
+        !@functionSignature {}
+        !@location.here
+        !true
+        !mAttributeTypeProxy
+        !@methodQualifier.isBasic
+        !"" # No Error message
+      ]
+    end
+  end
+#--- Add Categories
+  addCategories (
+    !inCategoryMethodMapForBuildingContext
+    !inCategoryReaderMapForBuildingContext
+    !inCategoryModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mMapProxyTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Enter type in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mMapProxyTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. mapProxyType
+    !false # Does not support collection value
+    !mapTypedAttributeList #[@typedPropertyList emptyList]
+    !@attributeMap. emptyMap
+    !mapTypedAttributeList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !classMethodMap
+    !@enumerationDescriptorList. emptyList
+    !@stringlist. emptyList
+    !doNotGenererateObjectCompare ()
+    !@functionSignature. emptyList
+    !{}
+    !{}
+    !@mapSearchMethodListAST. emptyList
+    !searchMethodList
+    !false # Do not generate header in separate file
+    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !"null" # Default constructor
+    !"mapproxy-" + mMapProxyTypeName
+    !@headerKind. oneHeader
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @mapProxyDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#--- Get attribute list of associated map
+  [inSemanticContext.mTypeMap searchKey
+    !mAssociatedMapTypeName
+    ?7*
+    ?let @typedPropertyList listTypeAttributeList
+    ?11*
+    ?let @mapSearchMethodListAST searchMethodList
+    ?6*
+  ]
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"map proxy " + mMapProxyTypeName
+    !@mapProxyTypeForGeneration.new {
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mMapProxyTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedMapTypeName}
+      !listTypeAttributeList
+      !searchMethodList}
+    !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @mapProxyTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mAssociatedMapTypeProxy
+  @typedPropertyList mAssociatedMapTypedAttributeList
+  @mapSearchMethodListAST mSearchMethodList
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+filewrapper mapProxyGenerationTemplate in "../generation_templates/type_generation" {
+}{
+}{
+  template mapProxyTypeHeader1 "GALGAS_mapproxy.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+
+  template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+}
+
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @mapProxyTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+{
+  outHeader = [filewrapper mapProxyGenerationTemplate.mapProxyTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+  ] 
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @mapProxyTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [mAssociatedMapTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper mapProxyGenerationTemplate.mapProxyTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mAssociatedMapTypeProxy identifierRepresentation]
+    !mAssociatedMapTypedAttributeList
+    !mSearchMethodList
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

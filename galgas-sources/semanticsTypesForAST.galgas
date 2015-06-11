@@ -1321,30 +1321,6 @@ class @listmapDeclarationAST : @semanticDeclarationAST {
 #    M A P    A U T O M A T O N                                                                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
-
-enum @mapAutomatonMessageKind {
-  case noMessage  case warningMessage  case errorMessage
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @mapStateTransitionList {
-  @lstring mActionName %nogetter
-  @lstring mTargetStateName %nogetter
-  @mapAutomatonMessageKind mTransitionMessageKind %nogetter
-  @lstring mTransitionMessage %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @mapStateList {
-  @lstring mStateName %nogetter
-  @mapAutomatonMessageKind mStateMessageKind %nogetter
-  @lstring mStateMessage %nogetter
-  @mapStateTransitionList mTransitionList %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #    M A P    D E C L A R A T I O N                                                                                    *
 #                                                                                                                      *
@@ -1388,47 +1364,6 @@ class @mapDeclarationAST : @semanticDeclarationAST {
   @mapSearchMethodListAST mSearchMethodList
   @mapRemoveMethodListAST mRemoveMethodList
   @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @mapOverrideBlockDescriptorAST {
-  @lstring mLeftState %nogetter
-  @lstring mRightState %nogetter
-  @lstring mResultingState %nogetter
-  @mapAutomatonMessageKind mMessageKind %nogetter
-  @lstring mTransitionMessage %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @mapOverrideBlockListAST {
-  @lstring mOverrideBlockName %nogetter
-  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST %nogetter
-  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @uniqueMapDeclarationAST : @semanticDeclarationAST {
-  @lstring mMapTypeName
-  @lstringlist mAttributeList
-  @propertyInCollectionListAST mPropertyList
-  @insertMethodListAST mInsertMethodList
-  @mapSearchMethodListAST mSearchMethodList
-  @mapStateList mMapStateList
-  @mapOverrideBlockListAST mMapOverrideBlockListAST
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    M A P    P R O X Y    D E C L A R A T I O N                                                                       *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @mapProxyDeclarationAST : @semanticDeclarationAST {
-  @lstring mMapProxyTypeName
-  @lstring mAssociatedMapTypeName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
