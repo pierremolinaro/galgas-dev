@@ -126,50 +126,6 @@ map @attributeIndexMap {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @sortedListDeclarationAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Attribute
-  var typedAttributeList =@typedPropertyList.emptyList{}
-  var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    @bool hasSetter = true
-    @bool hasGetter = true
-    typedAttributeList +=
-      !t
-      !mPropertyName
-      !hasSetter
-      !hasGetter
-    [!?attributeMap insertKey !mPropertyName !t]
-  end
-#--- Sort descriptor
-  var attributesUsedForSorting =@stringset.emptySet{}
-  var sortDescriptorList =@sortDescriptorListForGeneration.emptyList{}
-  for () in mSortDescriptorList do
-    [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-proxy type]
-    sortDescriptorList += !type ![mSortedAttributeName string] !mAscending
-    if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
-      error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
-    end
-    attributesUsedForSorting += ![mSortedAttributeName string]
-  end
-#--- Generate type
-  ioSemanticDeclarationListForGeneration +=
-    !"sorted list " + mSortedListTypeName
-    !@sortedListTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mSortedListTypeName}
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}}
-      !typedAttributeList
-      !sortDescriptorList}
-    !""
-
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @graphDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -220,41 +176,6 @@ override method @externTypeDeclarationAST semanticAnalysis
       !mExternTypeName.string
       !mCppPreDeclarationCode
       !mCppClassCode}
-    !""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @enumDeclarationAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Constant list
-  var constantList =@stringlist.emptyList{}
-  @enumConstantListForGeneration enumConstantListForGeneration = {}
-  var constantMap =@constantIndexMap.emptyMap{}
-  for () in mConstantList do
-    constantList += !mConstantName.string
-    @unifiedTypeMapProxyList associatedTypeList = {}
-    @stringset associatedValueNameSet = {}
-    for () in mAssociatedValueDefinitionList do
-      let associatedTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mValue0}
-      associatedTypeList += !associatedTypeProxy
-      if [associatedValueNameSet hasKey !mValue1.string] then
-        error mValue1 : "duplicated name"
-      end
-      associatedValueNameSet += !mValue1.string
-    end
-    [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList]
-    enumConstantListForGeneration += !mConstantName.string !associatedTypeList
-  end
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"enum " + mEnumTypeName
-    !@enumTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mEnumTypeName}
-      !enumConstantListForGeneration}
     !""
 }
 

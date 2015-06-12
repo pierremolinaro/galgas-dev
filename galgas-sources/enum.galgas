@@ -1,0 +1,351 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @enumDeclarationAST : @semanticDeclarationAST {
+  @lstring mEnumTypeName
+  @enumConstantList mConstantList
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+list @enumConstantList {
+  @lstring mConstantName
+  @2lstringlist mAssociatedValueDefinitionList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+#                                                                                                                      *
+#    E N U M    D E C L A R A T I O N                                                                                  *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+  rule <declaration>
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $enum$
+    $type_name$ ?let @lstring mEnumTypeName indexing enumDefinition
+    ${$
+    var mConstantList =@enumConstantList.emptyList{}
+    repeat
+      $case$
+      $identifier$ ?let @lstring constantName
+      @2lstringlist associatedValueTypeList = {}
+      select
+      or
+        $($
+        repeat
+          $type_name$ ?let @lstring associatedValueType
+          @lstring associatedValueName
+          select
+            associatedValueName = ["" nowhere]
+          or
+            $identifier$ ?associatedValueName
+          end
+          associatedValueTypeList += !associatedValueType !associatedValueName
+        while
+        end
+        $)$
+      end
+      mConstantList += !constantName !associatedValueTypeList
+    while
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
+      !false # Is not predefined
+      !mEnumTypeName
+      !mConstantList}
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @enumDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mEnumTypeName ![mEnumTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  for () in mConstantList do
+    for () in mAssociatedValueDefinitionList do
+      [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mValue0 ![mValue0 location]}]
+    end
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @enumDeclarationAST enterInSemanticContext
+  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
+  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#---
+  @constructorMap constructorMap = {}
+  @setterMap modifierMap = {}
+  @instanceMethodMap instanceMethodMap = {}
+  @classMethodMap classMethodMap = {}
+#--- currentType type index
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mEnumTypeName ?let @unifiedTypeMap-proxy enumTypeProxy]
+#--- Constructors
+  @constantIndexMap constantMap = {}
+  @bool hasAssociatedValues = false
+  for () in mConstantList do
+    @unifiedTypeMapProxyList associatedTypeList = {}
+    @functionSignature argumentTypeList = {}
+    for (typeName selectorName) in mAssociatedValueDefinitionList do
+      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !typeName ?let @unifiedTypeMap-proxy associatedTypeProxy]
+      argumentTypeList += !selectorName !associatedTypeProxy !typeName.string
+      associatedTypeList += !associatedTypeProxy
+      hasAssociatedValues = true
+    end
+    [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList]
+    [!?constructorMap insertOrReplace
+      !mConstantName
+      !argumentTypeList
+      !false
+      !enumTypeProxy
+    ]
+  end
+#--- Methods
+  for () in mConstantList do
+    if [mAssociatedValueDefinitionList length] > 0 then
+      @unifiedTypeMapProxyList associatedTypeList = {}
+      @formalParameterSignature argumentTypeList = {}
+      for (typeName selectorName) in mAssociatedValueDefinitionList do
+        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !typeName ?let @unifiedTypeMap-proxy associatedTypeProxy]
+        argumentTypeList += !selectorName !associatedTypeProxy !.argumentOut !typeName.string
+        associatedTypeList += !associatedTypeProxy
+        hasAssociatedValues = true
+      end
+      [!?instanceMethodMap insertKey
+        !mConstantName
+        !.definedAsMember
+        !argumentTypeList
+        !mConstantName.location
+        !true
+        !.isBasicFinal
+        !""
+      ]
+    end
+  end
+#--- getters
+  commonReaderMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
+  for () in mConstantList do
+    enterBaseReaderWithoutArgument (
+      !?getterMap
+      !?ioSemanticContext.mTypeMap
+      !"is" + [mConstantName stringByCapitalizingFirstCharacter]
+      !returnedTypeName:"bool"
+      !false
+    )
+  end
+#--- Add Categories
+  addCategories (
+    !inCategoryMethodMapForBuildingContext
+    !inCategoryReaderMapForBuildingContext
+    !inCategoryModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mEnumTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Enter type in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mEnumTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. enumType
+    !false # Does not support collection value
+    !@typedPropertyList. emptyList
+    !@attributeMap. emptyMap
+    !@typedPropertyList. emptyList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !@enumerationDescriptorList. emptyList
+    !@stringlist. emptyList
+    !generateDescriptionReaderUtilityMethod () | isComparable ()
+    !@functionSignature. emptyList
+    !constantMap
+    !mConstantList
+    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST. emptyList
+    !false # Do not generate header in separate file
+    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !"" # No default constructor [mConstantList mConstantNameAtIndex !0]->string # Default constructor
+    !"enum-" + mEnumTypeName
+    !if hasAssociatedValues then @headerKind. twoHeaders else @headerKind. oneHeader end
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @enumDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#--- Constant list
+  var constantList =@stringlist.emptyList{}
+  @enumConstantListForGeneration enumConstantListForGeneration = {}
+  var constantMap =@constantIndexMap.emptyMap{}
+  for () in mConstantList do
+    constantList += !mConstantName.string
+    @unifiedTypeMapProxyList associatedTypeList = {}
+    @stringset associatedValueNameSet = {}
+    for () in mAssociatedValueDefinitionList do
+      let associatedTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mValue0}
+      associatedTypeList += !associatedTypeProxy
+      if [associatedValueNameSet hasKey !mValue1.string] then
+        error mValue1 : "duplicated name"
+      end
+      associatedValueNameSet += !mValue1.string
+    end
+    [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList]
+    enumConstantListForGeneration += !mConstantName.string !associatedTypeList
+  end
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"enum " + mEnumTypeName
+    !@enumTypeForGeneration.new {
+      !.searchKey {!inSemanticContext.mTypeMap !mEnumTypeName}
+      !enumConstantListForGeneration
+    }
+    !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @enumConstantListForGeneration {
+  @string mConstantName
+  @unifiedTypeMapProxyList mAssociatedValueTypeList
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+class @enumTypeForGeneration : @semanticTypeForGeneration {
+  @enumConstantListForGeneration mConstantList
+}
+
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+filewrapper enumGenerationTemplate in "../generation_templates/type_generation" {
+}{
+}{
+  template enumTypeHeader1 "GALGAS_enum.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@enumConstantListForGeneration CONSTANT_LIST
+    ?@bool HAS_ASSOCIATED_VALUES
+
+  template enumTypeHeader2 "GALGAS_enum.h2.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@enumConstantListForGeneration CONSTANT_LIST
+    ?@bool HAS_ASSOCIATED_VALUES
+
+  template enumTypeSpecificImplementation "GALGAS_enum.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@enumConstantListForGeneration CONSTANT_LIST
+    ?@bool HAS_ASSOCIATED_VALUES
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @enumTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  @bool hasAssociatedValues = false
+  for () in mConstantList while not hasAssociatedValues do
+    hasAssociatedValues = [mAssociatedValueTypeList length] > 0
+  end
+  outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mConstantList
+    !hasAssociatedValues
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @enumTypeForGeneration appendDeclaration2
+  ?let @bool unused inGenerateForGalgas3
+  ?let @string unused inOutputDirectory
+  ?!@stringset ioInclusionSet
+  !@string outHeader {
+  @bool hasAssociatedValues = false
+  for () in mConstantList while not hasAssociatedValues do
+    hasAssociatedValues = [mAssociatedValueTypeList length] > 0
+  end
+  for () in mConstantList do
+    for () in mAssociatedValueTypeList do
+      [mType addHeaderFileName !?ioInclusionSet]
+    end
+  end
+  outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader2
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mConstantList
+    !hasAssociatedValues
+  ]
+ }
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @enumTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  @bool hasAssociatedValues = false
+  for () in mConstantList while not hasAssociatedValues do
+    hasAssociatedValues = [mAssociatedValueTypeList length] > 0
+  end
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper enumGenerationTemplate.enumTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mConstantList
+    !hasAssociatedValues
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+

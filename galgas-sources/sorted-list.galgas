@@ -1,0 +1,353 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @sortedListSortDescriptorListAST {
+  @lstring mSortedAttributeName %nogetter
+  @bool mAscending %nogetter
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @sortedListDeclarationAST : @semanticDeclarationAST {
+  @lstring mSortedListTypeName
+  @propertyInCollectionListAST mAttributeList
+  @sortedListSortDescriptorListAST mSortDescriptorList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration>
+    ?!@galgas3DeclarationAST ioDeclarations
+  {
+    $sortedlist$
+    $type_name$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    ${$
+    @propertyInCollectionListAST attributeList = {}
+    repeat
+    while
+      <attribute_declaration> !? attributeList
+    while
+      $;$
+    end
+    $}$
+    ${$
+    @sortedListSortDescriptorListAST sortDescriptorList = {}
+    repeat
+      <sortedlist_sort_descriptor> !? sortDescriptorList
+    while
+      $,$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST.new {
+      !false # Is not predefined
+      !sortedListTypeName
+      !attributeList
+      !sortDescriptorList
+    }
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mSortedListTypeName ![mSortedListTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  for () in mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST addAssociatedElement
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
+  var structAttributeList =@propertyInCollectionListAST.emptyList{}
+  for () in mAttributeList do
+    structAttributeList +=
+#      !mIsPrivate
+      !mPropertyTypeName
+      !mPropertyName
+      !@lstringlist. emptyList
+  end
+  ioSemanticDeclarationList += !@structDeclarationAST.new {
+    !mIsPredefined
+    !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}
+    !structAttributeList
+    !""}
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @sortedListDeclarationAST enterInSemanticContext
+  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
+  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--- Type index
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSortedListTypeName ?let @unifiedTypeMap-proxy listTypeIndex]
+#--- Element type index
+  [@unifiedTypeMap-proxy makeProxy
+    !?ioSemanticContext.mTypeMap
+    !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}
+    ?let @unifiedTypeMap-proxy listElementTypeIndex
+  ]
+#--- Enumeration description
+  var enumerationDescriptor =@enumerationDescriptorList.emptyList{}
+  var constructorAttributeTypeList =@functionSignature.emptyList{}
+  var modifierFormalArgumentList =@formalParameterSignature.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  for () in mAttributeList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    @bool hasGetter = true
+    @bool hasSetter = true
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
+    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    modifierFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
+  end
+#--- Constructors
+  var constructorMap =@constructorMap.emptyMap{}
+  enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptySortedList" ![mSortedListTypeName string] !false )
+  [!?constructorMap insertKey
+    !@lstring.new {!"sortedListWithValue" !@location.here}
+    !constructorAttributeTypeList
+    !false
+    !listTypeIndex
+  ]
+#--- Readers
+  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"length"
+    !returnedTypeName:"uint"
+    !false
+  )
+#--- Modifiers
+  var modifierMap =@setterMap.emptyMap{}
+  [!?modifierMap insertOrReplace
+    !@lstring.new {!"popGreatest" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?modifierMap insertOrReplace
+    !@lstring.new {!"popSmallest" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+#--- Instance methods
+  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"greatest" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !@location.here
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"smallest" !@location.here}
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !@location.here
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+#--- Enumeration variants
+  var enumerationVariants =@stringlist.emptyList{}
+  enumerationVariants += !"up"
+  enumerationVariants += !"down"
+#--- Add Categories
+  addCategories (
+    !inCategoryMethodMapForBuildingContext
+    !inCategoryReaderMapForBuildingContext
+    !inCategoryModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mSortedListTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mSortedListTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. sortedListType
+    !true # Support collection value
+    !typedAttributeList
+    !@attributeMap. emptyMap
+    !@typedPropertyList. emptyList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !enumerationDescriptor
+    !enumerationVariants
+    !binaryConcatOperator () | doNotGenererateObjectCompare () | plusEqualOperatorWithExpression ()
+    !constructorAttributeTypeList
+    !{}
+    !{}
+    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST. emptyList
+#    !{} # 'with" accessor is not handled
+#    ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
+    !listElementTypeIndex # Type for enumerated element for "for" instruction
+    !"emptySortedList" # Default constructor
+    !"sortedlist-" + mSortedListTypeName
+    !@headerKind. oneHeader
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#--- Attribute
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  var attributeMap =@attributeIndexMap.emptyMap{}
+  for () in mAttributeList do
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    @bool hasSetter = true
+    @bool hasGetter = true
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#--- Sort descriptor
+  var attributesUsedForSorting =@stringset.emptySet{}
+  var sortDescriptorList =@sortDescriptorListForGeneration.emptyList{}
+  for () in mSortDescriptorList do
+    [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-proxy type]
+    sortDescriptorList += !type ![mSortedAttributeName string] !mAscending
+    if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
+      error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
+    end
+    attributesUsedForSorting += ![mSortedAttributeName string]
+  end
+#--- Generate type
+  ioSemanticDeclarationListForGeneration +=
+    !"sorted list " + mSortedListTypeName
+    !@sortedListTypeForGeneration.new {
+      !.searchKey {!inSemanticContext.mTypeMap !mSortedListTypeName}
+      !.searchKey {!inSemanticContext.mTypeMap !.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}}
+      !typedAttributeList
+      !sortDescriptorList}
+    !""
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @sortDescriptorListForGeneration {
+  @unifiedTypeMap-proxy mAttributeTypeIndex
+  @string mAttributeName
+  @bool mAscendingOrder
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+class @sortedListTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mListElementTypeIndex
+  @typedPropertyList mTypedAttributeList
+  @sortDescriptorListForGeneration mSortDescriptorList
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+filewrapper sortedListGenerationTemplate in "../generation_templates/type_generation" {
+}{
+}{
+  template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+
+  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.galgasTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
+}
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @sortedListTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = [filewrapper sortedListGenerationTemplate.sortedlistTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+
+override method @sortedListTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName !?ioInclusionSet]
+  end
+  [mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper sortedListGenerationTemplate.sortedlistTypeSpecificImplementation
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+    !mSortDescriptorList
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+

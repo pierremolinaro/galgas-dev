@@ -100,10 +100,12 @@ project (3:0:10) -> "galgas" {
   "galgas-sources/predefinedTypes.galgas"
  
  #--- Type declaration
+  "galgas-sources/enum.galgas"
   "galgas-sources/shared-map.galgas"
   "galgas-sources/map-proxy.galgas"
   "galgas-sources/list.galgas"
   "galgas-sources/struct.galgas"
+  "galgas-sources/sorted-list.galgas"
 
 #--- Syntax Component
   "galgas-sources/syntaxModelBuilder.galgas"

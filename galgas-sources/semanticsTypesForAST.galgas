@@ -1382,47 +1382,6 @@ class @classDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S O R T E D    L I S T    D E C L A R A T I O N                                                                   *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @sortedListSortDescriptorListAST {
-  @lstring mSortedAttributeName %nogetter
-  @bool mAscending %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @sortedListDeclarationAST : @semanticDeclarationAST {
-  @lstring mSortedListTypeName
-  @propertyInCollectionListAST mAttributeList
-  @sortedListSortDescriptorListAST mSortDescriptorList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    E N U M    D E C L A R A T I O N                                                                                  *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! enum
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @enumDeclarationAST : @semanticDeclarationAST {
-  @lstring mEnumTypeName
-  @enumConstantList mConstantList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @enumConstantList {
-  @lstring mConstantName
-  @2lstringlist mAssociatedValueDefinitionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
