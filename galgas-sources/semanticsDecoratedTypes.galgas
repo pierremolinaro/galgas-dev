@@ -1288,43 +1288,6 @@ class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S O R T E D    L I S T    D E C L A R A T I O N                                                                   *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @sortDescriptorListForGeneration {
-  @unifiedTypeMap-proxy mAttributeTypeIndex
-  @string mAttributeName
-  @bool mAscendingOrder
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @sortedListTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mListElementTypeIndex
-  @typedPropertyList mTypedAttributeList
-  @sortDescriptorListForGeneration mSortDescriptorList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    E N U M    D E C L A R A T I O N                                                                                  *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @enumConstantListForGeneration {
-  @string mConstantName
-  @unifiedTypeMapProxyList mAssociatedValueTypeList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @enumTypeForGeneration : @semanticTypeForGeneration {
-  @enumConstantListForGeneration mConstantList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    G R A P H    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
