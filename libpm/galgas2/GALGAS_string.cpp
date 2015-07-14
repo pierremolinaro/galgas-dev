@@ -1630,7 +1630,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reader popen
+  #pragma mark Getter popen
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1692,14 +1692,11 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef COMPILE_FOR_WIN32
-  void GALGAS_string::method_popen (GALGAS_string & outOutputString,
-                                    GALGAS_sint & outReturnCode,
-                                    C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const {
-    outOutputString.drop () ;
-    outReturnCode.drop () ;
+  GALGAS_string GALGAS_string::reader_popen (C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
+    GALGAS_string result ;
     if (isValid ()) {
-    // Create a pipe for the child process's STDIN.
+    // Create a pipe for the child process's STDIN. 
       HANDLE g_hChildStd_OUT_Wr = NULL ;
       HANDLE g_hChildStd_OUT_Rd = NULL ;
       HANDLE g_hChildStd_IN_Wr = NULL ;
@@ -1751,27 +1748,23 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
         }
         C_String s ;
         C_String::parseUTF8 (response, 0, s) ;
-        const DWORD returnCode = GetLastError () ;
-        outReturnCode = GALGAS_sint (returnCode) ;
-        outOutputString = GALGAS_string (s) ;
+        result = GALGAS_string (s) ;
       }
       CloseHandle (g_hChildStd_IN_Wr) ;
       CloseHandle (g_hChildStd_IN_Rd) ;
       CloseHandle (g_hChildStd_OUT_Wr) ;
       CloseHandle (g_hChildStd_OUT_Rd) ;
     }
+    return result ;
   }
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef COMPILE_FOR_WIN32
-  void GALGAS_string::method_popen (GALGAS_string & outOutputString,
-                                    GALGAS_sint & outReturnCode,
-                                    C_Compiler * /* inCompiler */
-                                    COMMA_UNUSED_LOCATION_ARGS) const {
-    outOutputString.drop () ;
-    outReturnCode.drop () ;
+  GALGAS_string GALGAS_string::reader_popen (C_Compiler * /* inCompiler */
+                                             COMMA_UNUSED_LOCATION_ARGS) const {
+    GALGAS_string result ;
     if (isValid ()) {
       FILE * f = popen (mString.cString (HERE), "r") ;
       C_Data response ;
@@ -1783,13 +1776,13 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
         loop = readLength > 0 ;
         response.appendDataFromPointer (buffer, (int32_t) readLength) ;
       }
-      const int returnCode = pclose (f) ;
-      outReturnCode = GALGAS_sint (returnCode) ;
+      pclose (f) ;
       C_String s ;
       response.appendByte ('\0') ;
       C_String::parseUTF8 (response, 0, s) ;
-      outOutputString = GALGAS_string (s) ;
+      result = GALGAS_string (s) ;
     }
+    return result ;
   }
 #endif
 

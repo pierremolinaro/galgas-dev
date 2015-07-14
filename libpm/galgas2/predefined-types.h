@@ -3,7 +3,6 @@
 
 //--- END OF USER ZONE 1
 
-
 #ifndef GALGAS2_PREDEFINED_TYPES
 #define GALGAS2_PREDEFINED_TYPES
 
@@ -1584,11 +1583,6 @@ class GALGAS_string : public AC_GALGAS_root
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG void method_popen (class GALGAS_string & outArgument0,
-                                               class GALGAS_sint & outArgument1,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG void method_writeToExecutableFile (class GALGAS_string constinArgument0,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const ;
@@ -1715,6 +1709,9 @@ class GALGAS_string : public AC_GALGAS_root
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_nowhere (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_pathExtension (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_popen (C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_range reader_range (LOCATION_ARGS) const ;
 
@@ -5227,5 +5224,4 @@ class cMapElement : public cCollectionElement {
 
 
 //--- END OF USER ZONE 2
-
 #endif
