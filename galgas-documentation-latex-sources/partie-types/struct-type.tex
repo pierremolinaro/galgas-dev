@@ -2,5 +2,216 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapterLabel{Le type structure}{type-structure}
+\chapterLabel{Le type structure}{typeStructure}
 %-------------------------------------------------------------
+
+
+Le mot-clé \ggs!struct! permet de définir des types de structure. La syntaxe de définition d'un type structure est de la forme :
+
+\begin{galgas}
+struct @nom_de_type
+  # Liste de déclaration de champs, par exemple :
+  @uint mChamp1
+  @bool mChamp2
+\end{galgas}
+
+
+\section{Types structure prédéfinis}
+
+Plusieurs types préféfinis GALGAS sont des structures.
+ 
+\subsectionTypePredefiniLabelIndex{lbool}
+
+\begin{galgas}
+struct @lbool {
+  @bool bool
+  @location location
+}
+\end{galgas}
+
+
+
+
+\subsectionTypePredefiniLabelIndex{lchar}
+
+\begin{galgas}
+struct @lchar {
+  @char char
+  @location location
+}
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{ldouble}
+
+\begin{galgas}
+struct @ldouble {
+  @double double
+  @location location
+}
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{lsint}
+
+\begin{galgas}
+struct @lsint {
+  @sint sint
+  @location location
+}
+\end{galgas}
+
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{lsint64}
+
+\begin{galgas}
+struct @lsint64 {
+  @sint64 sint64
+  @location location
+}
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{lstring}
+
+\begin{galgas}
+struct @lstring {
+  @string string
+  @location location
+}
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{luint}
+
+\begin{galgas}
+struct @luint {
+  @uint uint
+  @location location
+}
+\end{galgas}
+
+
+
+
+
+\subsectionTypePredefiniLabelIndex{luint64}
+
+\begin{galgas}
+struct @luint64 {
+  @uint64 uint64
+  @location location
+}
+\end{galgas}
+
+
+\subsection{le type \texttt{@range}}
+
+\begin{galgas}
+struct @range {
+  @uint start
+  @uint length
+}
+\end{galgas}
+
+Un objet de type \ggs+@range+ peut aussi être instancié au moyen des opérateurs \ggs!...! et \ggs!..<! (voir page \refSectionPage{operateurIntervalleRange}).
+
+
+\section{Constructeurs}
+
+\subsection{Constructeur \texttt{new}}
+
+Tout type structure définit implicitement le constructeur \ggs!new!. Son appel comprend une valeur par attribut déclaré par le type structure.
+
+Par exemple, pour la déclaration :
+\begin{galgas}
+struct @maStructure
+  @uint mChamp1
+  @bool mChamp2
+\end{galgas}
+
+L'appel du constructeur \ggs!new! est :
+\begin{galgas}
+var aVariable = @maStructure.new {!123 !true}
+\end{galgas}
+
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur :
+\begin{galgas}
+@maStructure aVariable = .new {!123 !true}
+\end{galgas}
+
+
+\subsection{Constructeur \texttt{default}}
+
+Si chacun des champs accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggs!@maStructure! définie au dessus : \ggs!@uint! accepte le constructeur par défaut (initialisation à \ggs!0!), ainsi que \ggs!@bool! (initialisation à \ggs!false!). Donc :
+\begin{galgas}
+var aVariable = @maStructure.default
+\end{galgas}
+Initialise les champs de \ggs!aVariable! respectivement à \ggs!0! et \ggs!false!. On peut aussi écrire :
+\begin{galgas}
+@maStructure aVariable = .default
+\end{galgas}
+
+
+\section{Accès aux champs}
+
+La notation pointée \ggs!variable.champ! permet d'accéder à un champ d'une structure, aussi bien en lecture, en écriture et en lecture/écriture.
+
+Exemple d'accès en lecture :
+\begin{galgas}
+@uint v = aVariable.mChamp1
+\end{galgas}
+
+Exemple d'accès en écriture :
+\begin{galgas}
+aVariable.mChamp1 = 10
+\end{galgas}
+
+
+Exemple d'accès en lecture/écriture :
+\begin{galgas}
+aVariable.mChamp1 ++
+\end{galgas}
+
+
+
+
+
+\section{Getters}
+
+Un type structure définit un \emph{getter} sans argument par champ, qui permet d'accéder en lecture à ce champ. Son nom est celui du champ. Par exemple, à la place de :
+\begin{galgas}
+@uint v = aVariable.mChamp1
+\end{galgas}
+
+On peut écrire :
+\begin{galgas}
+@uint v = [aVariable mChamp1]
+\end{galgas}
+

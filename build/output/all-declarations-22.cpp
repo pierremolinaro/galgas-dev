@@ -10,6 +10,671 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_formalInputParameterListAST_2D_element::GALGAS_formalInputParameterListAST_2D_element (void) :
+mAttribute_mFormalSelector (),
+mAttribute_mFormalArgumentTypeName (),
+mAttribute_mFormalArgumentName (),
+mAttribute_mIsUnused (),
+mAttribute_mIsConstant () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListAST_2D_element::~ GALGAS_formalInputParameterListAST_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListAST_2D_element::GALGAS_formalInputParameterListAST_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                              const GALGAS_lstring & inOperand1,
+                                                                                              const GALGAS_lstring & inOperand2,
+                                                                                              const GALGAS_bool & inOperand3,
+                                                                                              const GALGAS_bool & inOperand4) :
+mAttribute_mFormalSelector (inOperand0),
+mAttribute_mFormalArgumentTypeName (inOperand1),
+mAttribute_mFormalArgumentName (inOperand2),
+mAttribute_mIsUnused (inOperand3),
+mAttribute_mIsConstant (inOperand4) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListAST_2D_element GALGAS_formalInputParameterListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_formalInputParameterListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                        GALGAS_lstring::constructor_default (HERE),
+                                                        GALGAS_lstring::constructor_default (HERE),
+                                                        GALGAS_bool::constructor_default (HERE),
+                                                        GALGAS_bool::constructor_default (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListAST_2D_element GALGAS_formalInputParameterListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                              const GALGAS_lstring & inOperand1,
+                                                                                                              const GALGAS_lstring & inOperand2,
+                                                                                                              const GALGAS_bool & inOperand3,
+                                                                                                              const GALGAS_bool & inOperand4 
+                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_formalInputParameterListAST_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result = GALGAS_formalInputParameterListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_formalInputParameterListAST_2D_element::objectCompare (const GALGAS_formalInputParameterListAST_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mFormalSelector.objectCompare (inOperand.mAttribute_mFormalSelector) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFormalArgumentTypeName.objectCompare (inOperand.mAttribute_mFormalArgumentTypeName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFormalArgumentName.objectCompare (inOperand.mAttribute_mFormalArgumentName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mIsUnused.objectCompare (inOperand.mAttribute_mIsUnused) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mIsConstant.objectCompare (inOperand.mAttribute_mIsConstant) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_formalInputParameterListAST_2D_element::isValid (void) const {
+  return mAttribute_mFormalSelector.isValid () && mAttribute_mFormalArgumentTypeName.isValid () && mAttribute_mFormalArgumentName.isValid () && mAttribute_mIsUnused.isValid () && mAttribute_mIsConstant.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_formalInputParameterListAST_2D_element::drop (void) {
+  mAttribute_mFormalSelector.drop () ;
+  mAttribute_mFormalArgumentTypeName.drop () ;
+  mAttribute_mFormalArgumentName.drop () ;
+  mAttribute_mIsUnused.drop () ;
+  mAttribute_mIsConstant.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_formalInputParameterListAST_2D_element::description (C_String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString << "<struct @formalInputParameterListAST-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mFormalSelector.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFormalArgumentTypeName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFormalArgumentName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mIsUnused.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mIsConstant.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::reader_mFormalSelector (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFormalSelector ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::reader_mFormalArgumentTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFormalArgumentTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::reader_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFormalArgumentName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_formalInputParameterListAST_2D_element::reader_mIsUnused (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mIsUnused ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_formalInputParameterListAST_2D_element::reader_mIsConstant (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mIsConstant ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @formalInputParameterListAST-element type                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_formalInputParameterListAST_2D_element ("formalInputParameterListAST-element",
+                                                               NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_formalInputParameterListAST_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formalInputParameterListAST_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_formalInputParameterListAST_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_formalInputParameterListAST_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListAST_2D_element GALGAS_formalInputParameterListAST_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_formalInputParameterListAST_2D_element result ;
+  const GALGAS_formalInputParameterListAST_2D_element * p = (const GALGAS_formalInputParameterListAST_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_formalInputParameterListAST_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("formalInputParameterListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualInputParameterListAST_2D_element::GALGAS_actualInputParameterListAST_2D_element (void) :
+mAttribute_mActualSelector (),
+mAttribute_mInputParameter () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualInputParameterListAST_2D_element::~ GALGAS_actualInputParameterListAST_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualInputParameterListAST_2D_element::GALGAS_actualInputParameterListAST_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                              const GALGAS_abstractInputParameter & inOperand1) :
+mAttribute_mActualSelector (inOperand0),
+mAttribute_mInputParameter (inOperand1) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                              const GALGAS_abstractInputParameter & inOperand1 
+                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_actualInputParameterListAST_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_actualInputParameterListAST_2D_element (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_actualInputParameterListAST_2D_element::objectCompare (const GALGAS_actualInputParameterListAST_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mActualSelector.objectCompare (inOperand.mAttribute_mActualSelector) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mInputParameter.objectCompare (inOperand.mAttribute_mInputParameter) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_actualInputParameterListAST_2D_element::isValid (void) const {
+  return mAttribute_mActualSelector.isValid () && mAttribute_mInputParameter.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_actualInputParameterListAST_2D_element::drop (void) {
+  mAttribute_mActualSelector.drop () ;
+  mAttribute_mInputParameter.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_actualInputParameterListAST_2D_element::description (C_String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString << "<struct @actualInputParameterListAST-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mActualSelector.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mInputParameter.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_actualInputParameterListAST_2D_element::reader_mActualSelector (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mActualSelector ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractInputParameter GALGAS_actualInputParameterListAST_2D_element::reader_mInputParameter (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInputParameter ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @actualInputParameterListAST-element type                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_actualInputParameterListAST_2D_element ("actualInputParameterListAST-element",
+                                                               NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_actualInputParameterListAST_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_actualInputParameterListAST_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_actualInputParameterListAST_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_actualInputParameterListAST_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_actualInputParameterListAST_2D_element result ;
+  const GALGAS_actualInputParameterListAST_2D_element * p = (const GALGAS_actualInputParameterListAST_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_actualInputParameterListAST_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("actualInputParameterListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (void) :
+mAttribute_mOptionalTypeName (),
+mAttribute_mOptionalConstantName () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::~ GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                                                                        const GALGAS_lstring & inOperand1) :
+mAttribute_mOptionalTypeName (inOperand0),
+mAttribute_mOptionalConstantName (inOperand1) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                                             GALGAS_lstring::constructor_default (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                                                                        const GALGAS_lstring & inOperand1 
+                                                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::objectCompare (const GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mOptionalTypeName.objectCompare (inOperand.mAttribute_mOptionalTypeName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mOptionalConstantName.objectCompare (inOperand.mAttribute_mOptionalConstantName) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::isValid (void) const {
+  return mAttribute_mOptionalTypeName.isValid () && mAttribute_mOptionalConstantName.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::drop (void) {
+  mAttribute_mOptionalTypeName.drop () ;
+  mAttribute_mOptionalConstantName.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::description (C_String & ioString,
+                                                                                      const int32_t inIndentation) const {
+  ioString << "<struct @foreachInstructionEnumeratedObjectElementListAST-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mOptionalTypeName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mOptionalConstantName.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::reader_mOptionalTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOptionalTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::reader_mOptionalConstantName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOptionalConstantName ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           @foreachInstructionEnumeratedObjectElementListAST-element type                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element ("foreachInstructionEnumeratedObjectElementListAST-element",
+                                                                                    NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                                                      C_Compiler * inCompiler
+                                                                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element result ;
+  const GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element * p = (const GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("foreachInstructionEnumeratedObjectElementListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element (void) :
+mAttribute_mEnumerationOrder (),
+mAttribute_mEnumeratedExpression (),
+mAttribute_mEndOfEnumerationExpression (),
+mAttribute_mElementList (),
+mAttribute_mEndOfElementList (),
+mAttribute_mEndsWithEllipsis (),
+mAttribute_mPrefix () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::~ GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                                                          const GALGAS_semanticExpressionAST & inOperand1,
+                                                                                                                          const GALGAS_location & inOperand2,
+                                                                                                                          const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand3,
+                                                                                                                          const GALGAS_location & inOperand4,
+                                                                                                                          const GALGAS_bool & inOperand5,
+                                                                                                                          const GALGAS_lstring & inOperand6) :
+mAttribute_mEnumerationOrder (inOperand0),
+mAttribute_mEnumeratedExpression (inOperand1),
+mAttribute_mEndOfEnumerationExpression (inOperand2),
+mAttribute_mElementList (inOperand3),
+mAttribute_mEndOfElementList (inOperand4),
+mAttribute_mEndsWithEllipsis (inOperand5),
+mAttribute_mPrefix (inOperand6) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                                                          const GALGAS_semanticExpressionAST & inOperand1,
+                                                                                                                                          const GALGAS_location & inOperand2,
+                                                                                                                                          const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand3,
+                                                                                                                                          const GALGAS_location & inOperand4,
+                                                                                                                                          const GALGAS_bool & inOperand5,
+                                                                                                                                          const GALGAS_lstring & inOperand6 
+                                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
+    result = GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::objectCompare (const GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mEnumerationOrder.objectCompare (inOperand.mAttribute_mEnumerationOrder) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mEnumeratedExpression.objectCompare (inOperand.mAttribute_mEnumeratedExpression) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mEndOfEnumerationExpression.objectCompare (inOperand.mAttribute_mEndOfEnumerationExpression) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mElementList.objectCompare (inOperand.mAttribute_mElementList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mEndOfElementList.objectCompare (inOperand.mAttribute_mEndOfElementList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mEndsWithEllipsis.objectCompare (inOperand.mAttribute_mEndsWithEllipsis) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mPrefix.objectCompare (inOperand.mAttribute_mPrefix) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::isValid (void) const {
+  return mAttribute_mEnumerationOrder.isValid () && mAttribute_mEnumeratedExpression.isValid () && mAttribute_mEndOfEnumerationExpression.isValid () && mAttribute_mElementList.isValid () && mAttribute_mEndOfElementList.isValid () && mAttribute_mEndsWithEllipsis.isValid () && mAttribute_mPrefix.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::drop (void) {
+  mAttribute_mEnumerationOrder.drop () ;
+  mAttribute_mEnumeratedExpression.drop () ;
+  mAttribute_mEndOfEnumerationExpression.drop () ;
+  mAttribute_mElementList.drop () ;
+  mAttribute_mEndOfElementList.drop () ;
+  mAttribute_mEndsWithEllipsis.drop () ;
+  mAttribute_mPrefix.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::description (C_String & ioString,
+                                                                               const int32_t inIndentation) const {
+  ioString << "<struct @foreachInstructionEnumeratedObjectListAST-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mEnumerationOrder.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mEnumeratedExpression.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mEndOfEnumerationExpression.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mElementList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mEndOfElementList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mEndsWithEllipsis.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mPrefix.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::reader_mEnumerationOrder (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEnumerationOrder ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::reader_mEnumeratedExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEnumeratedExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::reader_mEndOfEnumerationExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfEnumerationExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::reader_mElementList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mElementList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::reader_mEndOfElementList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfElementList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::reader_mEndsWithEllipsis (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndsWithEllipsis ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::reader_mPrefix (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPrefix ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               @foreachInstructionEnumeratedObjectListAST-element type                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element ("foreachInstructionEnumeratedObjectListAST-element",
+                                                                             NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                                        C_Compiler * inCompiler
+                                                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element result ;
+  const GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element * p = (const GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_foreachInstructionEnumeratedObjectListAST_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("foreachInstructionEnumeratedObjectListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_castInstructionBranchListAST_2D_element::GALGAS_castInstructionBranchListAST_2D_element (void) :
 mAttribute_mTypeName (),
 mAttribute_mConstantVarName (),
@@ -17492,353 +18157,4 @@ static void defineCategoryMethod_templateSupOrEqualTestAST_templateExpressionAna
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_templateSupOrEqualTestAST_templateExpressionAnalysis (defineCategoryMethod_templateSupOrEqualTestAST_templateExpressionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Overriding category method '@templateLeftShiftOperationAST templateExpressionAnalysis'                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateLeftShiftOperationAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
-                                                                                     const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
-                                                                                     GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateLeftShiftOperationAST * object = (const cPtr_templateLeftShiftOperationAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateLeftShiftOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression ;
-  callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inAnalysisContext, var_leftExpression, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1063)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression ;
-  callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) object->mAttribute_mRightExpression.ptr (), constinArgument_inAnalysisContext, var_rightExpression, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1066)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType = var_leftExpression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1068)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_rightType = var_rightExpression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1069)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_leftType.reader_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1070)).operator_and (function_binaryShiftOperator (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1070)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1070)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    inCompiler->emitSemanticError (object->mAttribute_mOperatorLocation, GALGAS_string ("left operand type is '@").add_operation (var_leftType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1072)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1072)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1072))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1071)) ;
-    outArgument_outExpression.drop () ; // Release error dropped variable
-  }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_rightType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1074)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
-    if (kBoolTrue == test_1) {
-      inCompiler->emitSemanticError (object->mAttribute_mOperatorLocation, GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (var_rightType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1076)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1076)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1076))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1075)) ;
-      outArgument_outExpression.drop () ; // Release error dropped variable
-    }else if (kBoolFalse == test_1) {
-      outArgument_outExpression = GALGAS_leftShiftExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1080)) ;
-    }
-  }
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateLeftShiftOperationAST_templateExpressionAnalysis (void) {
-  enterCategoryMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLeftShiftOperationAST.mSlotID,
-                                                  categoryMethod_templateLeftShiftOperationAST_templateExpressionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateLeftShiftOperationAST_templateExpressionAnalysis (defineCategoryMethod_templateLeftShiftOperationAST_templateExpressionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Overriding category method '@templateRightShiftOperationAST templateExpressionAnalysis'               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateRightShiftOperationAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
-                                                                                      const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
-                                                                                      GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateRightShiftOperationAST * object = (const cPtr_templateRightShiftOperationAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateRightShiftOperationAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression ;
-  callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) object->mAttribute_mLeftExpression.ptr (), constinArgument_inAnalysisContext, var_leftExpression, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1095)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression ;
-  callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) object->mAttribute_mRightExpression.ptr (), constinArgument_inAnalysisContext, var_rightExpression, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1098)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType = var_leftExpression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1100)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_rightType = var_rightExpression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1101)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_leftType.reader_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1102)).operator_and (function_binaryShiftOperator (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1102)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1102)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    inCompiler->emitSemanticError (object->mAttribute_mOperatorLocation, GALGAS_string ("left operand type is '@").add_operation (var_leftType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1104)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1104)).add_operation (GALGAS_string ("' and does not support a shift operator"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1104))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1103)) ;
-    outArgument_outExpression.drop () ; // Release error dropped variable
-  }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_rightType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1106)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
-    if (kBoolTrue == test_1) {
-      inCompiler->emitSemanticError (object->mAttribute_mOperatorLocation, GALGAS_string ("for a shift operator, right operand type should be '@uint': it is '@").add_operation (var_rightType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1108)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1108)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1108))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1107)) ;
-      outArgument_outExpression.drop () ; // Release error dropped variable
-    }else if (kBoolFalse == test_1) {
-      outArgument_outExpression = GALGAS_rightShiftExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1112)) ;
-    }
-  }
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateRightShiftOperationAST_templateExpressionAnalysis (void) {
-  enterCategoryMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateRightShiftOperationAST.mSlotID,
-                                                  categoryMethod_templateRightShiftOperationAST_templateExpressionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateRightShiftOperationAST_templateExpressionAnalysis (defineCategoryMethod_templateRightShiftOperationAST_templateExpressionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Overriding category method '@templateClassToTypeOperandAST templateExpressionAnalysis'                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateClassToTypeOperandAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
-                                                                                     const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
-                                                                                     GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateClassToTypeOperandAST * object = (const cPtr_templateClassToTypeOperandAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateClassToTypeOperandAST) ;
-  GALGAS_bool joker_52305_26 ; // Joker input parameter
-  GALGAS_bool joker_52305_25 ; // Joker input parameter
-  GALGAS_unifiedTypeMap_2D_proxy joker_52305_24 ; // Joker input parameter
-  GALGAS_typeKindEnum joker_52305_23 ; // Joker input parameter
-  GALGAS_bool joker_52305_22 ; // Joker input parameter
-  GALGAS_typedPropertyList joker_52305_21 ; // Joker input parameter
-  GALGAS_attributeMap joker_52305_20 ; // Joker input parameter
-  GALGAS_typedPropertyList joker_52305_19 ; // Joker input parameter
-  GALGAS_constructorMap joker_52305_18 ; // Joker input parameter
-  GALGAS_getterMap joker_52305_17 ; // Joker input parameter
-  GALGAS_setterMap joker_52305_16 ; // Joker input parameter
-  GALGAS_instanceMethodMap joker_52305_15 ; // Joker input parameter
-  GALGAS_classMethodMap joker_52305_14 ; // Joker input parameter
-  GALGAS_enumerationDescriptorList joker_52305_13 ; // Joker input parameter
-  GALGAS_stringlist joker_52305_12 ; // Joker input parameter
-  GALGAS_uint joker_52305_11 ; // Joker input parameter
-  GALGAS_functionSignature joker_52305_10 ; // Joker input parameter
-  GALGAS_constantIndexMap joker_52305_9 ; // Joker input parameter
-  GALGAS_enumConstantList joker_52305_8 ; // Joker input parameter
-  GALGAS_mapSearchMethodListAST joker_52305_7 ; // Joker input parameter
-  GALGAS_mapSearchMethodListAST joker_52305_6 ; // Joker input parameter
-  GALGAS_bool joker_52305_5 ; // Joker input parameter
-  GALGAS_unifiedTypeMap_2D_proxy joker_52305_4 ; // Joker input parameter
-  GALGAS_string joker_52305_3 ; // Joker input parameter
-  GALGAS_string joker_52305_2 ; // Joker input parameter
-  GALGAS_headerKind joker_52305_1 ; // Joker input parameter
-  constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap.method_searchKey (object->mAttribute_mTypeName, joker_52305_26, joker_52305_25, joker_52305_24, joker_52305_23, joker_52305_22, joker_52305_21, joker_52305_20, joker_52305_19, joker_52305_18, joker_52305_17, joker_52305_16, joker_52305_15, joker_52305_14, joker_52305_13, joker_52305_12, joker_52305_11, joker_52305_10, joker_52305_9, joker_52305_8, joker_52305_7, joker_52305_6, joker_52305_5, joker_52305_4, joker_52305_3, joker_52305_2, joker_52305_1, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1126)) ;
-  outArgument_outExpression = GALGAS_literalTypeInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("type"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1129))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1129)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1129)), object->mAttribute_mTypeName.reader_location (SOURCE_FILE ("templateAnalysis.galgas", 1130)), object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 1131))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1128)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateClassToTypeOperandAST_templateExpressionAnalysis (void) {
-  enterCategoryMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateClassToTypeOperandAST.mSlotID,
-                                                  categoryMethod_templateClassToTypeOperandAST_templateExpressionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateClassToTypeOperandAST_templateExpressionAnalysis (defineCategoryMethod_templateClassToTypeOperandAST_templateExpressionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Overriding category method '@templateInstructionStringAST templateInstructionAnalysis'                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateInstructionStringAST_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
-                                                                                     const GALGAS_templateAnalysisContext /* constinArgument_inAnalysisContext */,
-                                                                                     GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
-                                                                                     C_Compiler * /* inCompiler */
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateInstructionStringAST * object = (const cPtr_templateInstructionStringAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateInstructionStringAST) ;
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionStringForGeneration::constructor_new (object->mAttribute_mTemplateString  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1160))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1160)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateInstructionStringAST_templateInstructionAnalysis (void) {
-  enterCategoryMethod_templateInstructionAnalysis (kTypeDescriptor_GALGAS_templateInstructionStringAST.mSlotID,
-                                                   categoryMethod_templateInstructionStringAST_templateInstructionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateInstructionStringAST_templateInstructionAnalysis (defineCategoryMethod_templateInstructionStringAST_templateInstructionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//             Overriding category method '@templateInstructionExpressionAST templateInstructionAnalysis'              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateInstructionExpressionAST_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
-                                                                                         const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
-                                                                                         GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateInstructionExpressionAST * object = (const cPtr_templateInstructionExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateInstructionExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression ;
-  callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) object->mAttribute_mExpression.ptr (), constinArgument_inAnalysisContext, var_expression, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1169)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_expression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1170)).reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1170)).objectCompare (GALGAS_string ("string"))).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    inCompiler->emitSemanticError (object->mAttribute_mLocation, GALGAS_string ("expression type should be '@string' (it is '@").add_operation (var_expression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1171)).reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1171)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1171)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1171))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1171)) ;
-  }
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionExpressionForGeneration::constructor_new (var_expression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1173))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1173)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateInstructionExpressionAST_templateInstructionAnalysis (void) {
-  enterCategoryMethod_templateInstructionAnalysis (kTypeDescriptor_GALGAS_templateInstructionExpressionAST.mSlotID,
-                                                   categoryMethod_templateInstructionExpressionAST_templateInstructionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateInstructionExpressionAST_templateInstructionAnalysis (defineCategoryMethod_templateInstructionExpressionAST_templateInstructionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                Overriding category method '@templateBlockInstructionAST templateInstructionAnalysis'                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateBlockInstructionAST_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
-                                                                                    const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
-                                                                                    GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateBlockInstructionAST * object = (const cPtr_templateBlockInstructionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateBlockInstructionAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression ;
-  callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) object->mAttribute_mExpression.ptr (), constinArgument_inAnalysisContext, var_expression, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1182)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_expression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1183)).reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1183)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    inCompiler->emitSemanticError (object->mAttribute_mLocation, GALGAS_string ("expression type should be '@uint' (it is '@").add_operation (var_expression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1184)).reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1184)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1184)).add_operation (GALGAS_string ("')"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1184))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1184)) ;
-  }
-  GALGAS_templateInstructionListForGeneration var_blockInstructionList = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1186)) ;
-  {
-  routine_templateInstructionListAnalysis (constinArgument_inAnalysisContext, object->mAttribute_mBlockInstructionList, var_blockInstructionList, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1187)) ;
-  }
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateBlockInstructionForGeneration::constructor_new (var_expression, object->mAttribute_mLocation, var_blockInstructionList  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1188))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1188)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateBlockInstructionAST_templateInstructionAnalysis (void) {
-  enterCategoryMethod_templateInstructionAnalysis (kTypeDescriptor_GALGAS_templateBlockInstructionAST.mSlotID,
-                                                   categoryMethod_templateBlockInstructionAST_templateInstructionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateBlockInstructionAST_templateInstructionAnalysis (defineCategoryMethod_templateBlockInstructionAST_templateInstructionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//          Overriding category method '@templateInstructionGetColumnLocationAST templateInstructionAnalysis'          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateInstructionGetColumnLocationAST_templateInstructionAnalysis (const cPtr_templateInstructionAST * /* inObject */,
-                                                                                                const GALGAS_templateAnalysisContext /* constinArgument_inAnalysisContext */,
-                                                                                                GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
-                                                                                                C_Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_new (SOURCE_FILE ("templateAnalysis.galgas", 1196))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1196)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateInstructionGetColumnLocationAST_templateInstructionAnalysis (void) {
-  enterCategoryMethod_templateInstructionAnalysis (kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationAST.mSlotID,
-                                                   categoryMethod_templateInstructionGetColumnLocationAST_templateInstructionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateInstructionGetColumnLocationAST_templateInstructionAnalysis (defineCategoryMethod_templateInstructionGetColumnLocationAST_templateInstructionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//         Overriding category method '@templateInstructionGotoColumnLocationAST templateInstructionAnalysis'          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateInstructionGotoColumnLocationAST_templateInstructionAnalysis (const cPtr_templateInstructionAST * /* inObject */,
-                                                                                                 const GALGAS_templateAnalysisContext /* constinArgument_inAnalysisContext */,
-                                                                                                 GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
-                                                                                                 C_Compiler * /* inCompiler */
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionGotoColumnLocationForGeneration::constructor_new (SOURCE_FILE ("templateAnalysis.galgas", 1204))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1204)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateInstructionGotoColumnLocationAST_templateInstructionAnalysis (void) {
-  enterCategoryMethod_templateInstructionAnalysis (kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationAST.mSlotID,
-                                                   categoryMethod_templateInstructionGotoColumnLocationAST_templateInstructionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateInstructionGotoColumnLocationAST_templateInstructionAnalysis (defineCategoryMethod_templateInstructionGotoColumnLocationAST_templateInstructionAnalysis, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Overriding category method '@templateInstructionForeachAST templateInstructionAnalysis'               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_templateInstructionForeachAST_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
-                                                                                      const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
-                                                                                      GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateInstructionForeachAST * object = (const cPtr_templateInstructionForeachAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateInstructionForeachAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression ;
-  callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) object->mAttribute_mExpression.ptr (), constinArgument_inAnalysisContext, var_expression, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1214)) ;
-  GALGAS_enumerationDescriptorList var_enumerationDescriptor = var_expression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1216)).reader_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1216)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_enumerationDescriptor.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 1217)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    inCompiler->emitSemanticError (var_expression.reader_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1218)), GALGAS_string ("expression of '@").add_operation (var_expression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1218)).reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1218)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1218)).add_operation (GALGAS_string ("' cannot be enumerated"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1218))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1218)) ;
-  }
-  GALGAS_templateInstructionListForGeneration var_beforeInstructionList = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1221)) ;
-  {
-  routine_templateInstructionListAnalysis (constinArgument_inAnalysisContext, object->mAttribute_mBeforeInstructionList, var_beforeInstructionList, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1222)) ;
-  }
-  GALGAS_string var_enumeratorCppName = GALGAS_string ("enumerator_").add_operation (object->mAttribute_mIndexIdentifier.reader_location (SOURCE_FILE ("templateAnalysis.galgas", 1224)).reader_locationIndex (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1224)).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 1224)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1224)) ;
-  GALGAS_templateVariableMap var_doVariableMap = constinArgument_inAnalysisContext.mAttribute_mTemplateVariableMap ;
-  GALGAS_string var_cppIndexVarName = GALGAS_string ("index_").add_operation (object->mAttribute_mIndexIdentifier.reader_location (SOURCE_FILE ("templateAnalysis.galgas", 1226)).reader_locationIndex (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1226)).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 1226)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1226)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1226)).add_operation (object->mAttribute_mIndexIdentifier.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 1226)).reader_identifierRepresentation (SOURCE_FILE ("templateAnalysis.galgas", 1226)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1226)) ;
-  const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, object->mAttribute_mIndexIdentifier.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 1227)).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-  if (kBoolTrue == test_1) {
-    {
-    var_doVariableMap.modifier_insertKey (object->mAttribute_mIndexIdentifier, constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mUIntType, var_cppIndexVarName, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1228)) ;
-    }
-  }
-  cEnumerator_enumerationDescriptorList enumerator_58155 (var_enumerationDescriptor, kEnumeration_up) ;
-  while (enumerator_58155.hasCurrentObject ()) {
-    {
-    var_doVariableMap.modifier_insertKey (GALGAS_lstring::constructor_new (object->mAttribute_mPrefix.add_operation (enumerator_58155.current_mEnumerationName (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1232)), var_expression.reader_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1232))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1232)), enumerator_58155.current_mEnumeratedType (HERE), var_enumeratorCppName.add_operation (GALGAS_string (".current_"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1234)).add_operation (enumerator_58155.current_mEnumerationName (HERE).reader_identifierRepresentation (SOURCE_FILE ("templateAnalysis.galgas", 1234)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1234)).add_operation (GALGAS_string (" (HERE)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1234)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1231)) ;
-    }
-    enumerator_58155.gotoNextObject () ;
-  }
-  GALGAS_templateAnalysisContext var_doAnalysisContext = GALGAS_templateAnalysisContext::constructor_new (constinArgument_inAnalysisContext.mAttribute_mSemanticContext, constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes, var_doVariableMap  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1237)) ;
-  GALGAS_templateInstructionListForGeneration var_doInstructionList = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1241)) ;
-  {
-  routine_templateInstructionListAnalysis (var_doAnalysisContext, object->mAttribute_mDoInstructionList, var_doInstructionList, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1242)) ;
-  }
-  GALGAS_templateInstructionListForGeneration var_betweenInstructionList = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1244)) ;
-  {
-  routine_templateInstructionListAnalysis (constinArgument_inAnalysisContext, object->mAttribute_mBetweenInstructionList, var_betweenInstructionList, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1245)) ;
-  }
-  GALGAS_templateInstructionListForGeneration var_afterInstructionList = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1247)) ;
-  {
-  routine_templateInstructionListAnalysis (constinArgument_inAnalysisContext, object->mAttribute_mAfterInstructionList, var_afterInstructionList, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1248)) ;
-  }
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionForeachForGeneration::constructor_new (object->mAttribute_mIsAscending, var_expression, var_enumeratorCppName, var_beforeInstructionList, var_doInstructionList, var_cppIndexVarName, var_betweenInstructionList, var_afterInstructionList  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1250))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1250)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_templateInstructionForeachAST_templateInstructionAnalysis (void) {
-  enterCategoryMethod_templateInstructionAnalysis (kTypeDescriptor_GALGAS_templateInstructionForeachAST.mSlotID,
-                                                   categoryMethod_templateInstructionForeachAST_templateInstructionAnalysis) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateInstructionForeachAST_templateInstructionAnalysis (defineCategoryMethod_templateInstructionForeachAST_templateInstructionAnalysis, NULL) ;
 

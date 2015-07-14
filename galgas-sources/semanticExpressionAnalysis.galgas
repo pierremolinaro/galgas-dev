@@ -1345,7 +1345,106 @@ override method @xorExpressionAST analyzeSemanticExpression
     !leftType
     !mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !rightExpression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @closedSliceExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @closedSliceExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  if [leftType key] != "uint" then
+    error [leftExpression mLocation] : "the left expression or '...' operator should an @uint"
+  end
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if [rightType key] != "uint" then
+    error [rightExpression mLocation] : "the right expression or '...' operator should an @uint"
+  end
+#--- Generate expression
+  outExpression = @closedSliceExpressionForGeneration.new {
+    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" ![leftExpression mLocation]}}
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @openedSliceExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @openedSliceExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  if [leftType key] != "uint" then
+    error [leftExpression mLocation] : "the left expression or '...' operator should an @uint"
+  end
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if [rightType key] != "uint" then
+    error [rightExpression mLocation] : "the right expression or '...' operator should an @uint"
+  end
+#--- Generate expression
+  outExpression = @openedSliceExpressionForGeneration.new {
+    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" ![leftExpression mLocation]}}
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

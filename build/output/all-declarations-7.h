@@ -887,6 +887,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
    kToken_signed_5F_literal_5F_integer_36__34_,
    kToken__2E_,
    kToken__2E__2E__2E_,
+   kToken__2E__2E__3C_,
    kToken_type_5F_name,
    kToken_attribute,
    kToken_literal_5F_char,
@@ -1118,7 +1119,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 143 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 144 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

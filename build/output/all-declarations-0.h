@@ -90,6 +90,7 @@ class C_Lexique_galgas_32_Scanner : public C_Lexique {
    kToken__2E_,
    kToken__2E__3D_,
    kToken__2E__2E__2E_,
+   kToken__2E__2E__3C_,
    kToken_type_5F_name,
    kToken_literal_5F_char,
    kToken_terminal,
@@ -340,7 +341,7 @@ class C_Lexique_galgas_32_Scanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 163 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 164 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
@@ -442,6 +443,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
    kToken__2E_,
    kToken__2E__3D_,
    kToken__2E__2E__2E_,
+   kToken__2E__2E__3C_,
    kToken_literal_5F_char,
    kToken_literal_5F_string,
    kToken__3F_,
@@ -629,7 +631,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 155 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 156 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
