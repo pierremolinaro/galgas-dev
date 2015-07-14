@@ -147,20 +147,20 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !"" # No error message
   ]
 #--- popen
-  argList = {}
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
-  argList += !["" nowhere] !t !@formalArgumentPassingModeAST.argumentOut !"outOutputString"
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"sint" ?t]
-  argList += !["" nowhere] !t !@formalArgumentPassingModeAST.argumentOut !"outReturnCode"
-  [!?outInstanceMethodMap insertKey
-    !.new {!"popen" !.here}
-    !@methodKind.definedAsMember
-    !argList
-    !@location.here
-    !true
-    !@methodQualifier.isBasic
-    !"" # No error message
-  ]
+#  argList = {}
+#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
+#  argList += !["" nowhere] !t !@formalArgumentPassingModeAST.argumentOut !"outOutputString"
+#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"sint" ?t]
+#  argList += !["" nowhere] !t !@formalArgumentPassingModeAST.argumentOut !"outReturnCode"
+#  [!?outInstanceMethodMap insertKey
+#    !.new {!"popen" !.here}
+#    !@methodKind.definedAsMember
+#    !argList
+#    !@location.here
+#    !true
+#    !@methodQualifier.isBasic
+#    !"" # No error message
+#  ]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
