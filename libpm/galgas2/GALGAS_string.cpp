@@ -1578,7 +1578,7 @@ AC_OutputStream & operator << (AC_OutputStream & inStream,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//    S Y M B O L I C    L I N K S                                           *
+//    S Y M B O L I C    L I N K S                                                                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1692,11 +1692,14 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef COMPILE_FOR_WIN32
-  GALGAS_string GALGAS_string::reader_popen (C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const {
-    GALGAS_string result ;
+  void GALGAS_string::method_popen (GALGAS_string & outOutputString,
+                                    GALGAS_sint & outReturnCode,
+                                    C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) const {
+    outOutputString.drop () ;
+    outReturnCode.drop () ;
     if (isValid ()) {
-    // Create a pipe for the child process's STDIN. 
+    // Create a pipe for the child process's STDIN.
       HANDLE g_hChildStd_OUT_Wr = NULL ;
       HANDLE g_hChildStd_OUT_Rd = NULL ;
       HANDLE g_hChildStd_IN_Wr = NULL ;
@@ -1748,23 +1751,27 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
         }
         C_String s ;
         C_String::parseUTF8 (response, 0, s) ;
-        result = GALGAS_string (s) ;
+        const DWORD returnCode = GetLastError () ;
+        outReturnCode = GALGAS_sint (returnCode) ;
+        outOutputString = GALGAS_string (s) ;
       }
       CloseHandle (g_hChildStd_IN_Wr) ;
       CloseHandle (g_hChildStd_IN_Rd) ;
       CloseHandle (g_hChildStd_OUT_Wr) ;
       CloseHandle (g_hChildStd_OUT_Rd) ;
     }
-    return result ;
   }
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef COMPILE_FOR_WIN32
-  GALGAS_string GALGAS_string::reader_popen (C_Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) const {
-    GALGAS_string result ;
+  void GALGAS_string::method_popen (GALGAS_string & outOutputString,
+                                    GALGAS_sint & outReturnCode,
+                                    C_Compiler * /* inCompiler */
+                                    COMMA_UNUSED_LOCATION_ARGS) const {
+    outOutputString.drop () ;
+    outReturnCode.drop () ;
     if (isValid ()) {
       FILE * f = popen (mString.cString (HERE), "r") ;
       C_Data response ;
@@ -1776,13 +1783,13 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
         loop = readLength > 0 ;
         response.appendDataFromPointer (buffer, (int32_t) readLength) ;
       }
-      pclose (f) ;
+      const int returnCode = pclose (f) ;
+      outReturnCode = GALGAS_sint (returnCode) ;
       C_String s ;
       response.appendByte ('\0') ;
       C_String::parseUTF8 (response, 0, s) ;
-      result = GALGAS_string (s) ;
+      outOutputString = GALGAS_string (s) ;
     }
-    return result ;
   }
 #endif
 
