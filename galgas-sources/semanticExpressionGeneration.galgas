@@ -363,17 +363,90 @@ override method @xorExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
   [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [mLeftExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let leftTemporaryOperand
+  ]
 #--- Right operand
-  @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let rightTemporaryOperand
+  ]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".operator_xor ("
                   +  rightTemporaryOperand + [mLocation commaSourceFile] + ")"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @closedSliceExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  [mLeftExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let leftTemporaryOperand
+  ]
+#--- Right operand
+  [mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let rightTemporaryOperand
+  ]
+#--- Generate Comparison
+  outCppExpression = 
+   "GALGAS_range (" + leftTemporaryOperand + ", "
+   +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ").add_operation (GALGAS_uint (1), " + compilerCppName () + [mLocation commaSourceFile] + "))"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @openedSliceExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  [mLeftExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let leftTemporaryOperand
+  ]
+#--- Right operand
+  [mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let rightTemporaryOperand
+  ]
+#--- Generate Comparison
+  outCppExpression = 
+   "GALGAS_range (" + leftTemporaryOperand + ", "
+   +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + "))"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

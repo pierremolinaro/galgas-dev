@@ -13924,6 +13924,208 @@ GALGAS_castInExpressionAST GALGAS_castInExpressionAST::extractObject (const GALG
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_closedSliceExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_closedSliceExpressionAST * p = (const cPtr_closedSliceExpressionAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_closedSliceExpressionAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_closedSliceExpressionAST::objectCompare (const GALGAS_closedSliceExpressionAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_closedSliceExpressionAST::GALGAS_closedSliceExpressionAST (void) :
+GALGAS_semanticExpressionAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_closedSliceExpressionAST::GALGAS_closedSliceExpressionAST (const cPtr_closedSliceExpressionAST * inSourcePtr) :
+GALGAS_semanticExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_closedSliceExpressionAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_closedSliceExpressionAST GALGAS_closedSliceExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                                  const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_closedSliceExpressionAST result ;
+  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_closedSliceExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_closedSliceExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_closedSliceExpressionAST * p = (const cPtr_closedSliceExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_closedSliceExpressionAST) ;
+    result = p->mAttribute_mOperatorLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_closedSliceExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOperatorLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_closedSliceExpressionAST * p = (const cPtr_closedSliceExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_closedSliceExpressionAST) ;
+    result = p->mAttribute_mLeftExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST cPtr_closedSliceExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLeftExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_closedSliceExpressionAST * p = (const cPtr_closedSliceExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_closedSliceExpressionAST) ;
+    result = p->mAttribute_mRightExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST cPtr_closedSliceExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mRightExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                  Pointer class for @closedSliceExpressionAST class                                  *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_closedSliceExpressionAST::cPtr_closedSliceExpressionAST (const GALGAS_location & in_mOperatorLocation,
+                                                              const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                              const GALGAS_semanticExpressionAST & in_mRightExpression
+                                                              COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (THERE),
+mAttribute_mOperatorLocation (in_mOperatorLocation),
+mAttribute_mLeftExpression (in_mLeftExpression),
+mAttribute_mRightExpression (in_mRightExpression) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_closedSliceExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_closedSliceExpressionAST ;
+}
+
+void cPtr_closedSliceExpressionAST::description (C_String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString << "[@closedSliceExpressionAST:" ;
+  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_closedSliceExpressionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_closedSliceExpressionAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           @closedSliceExpressionAST type                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_closedSliceExpressionAST ("closedSliceExpressionAST",
+                                                 & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_closedSliceExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_closedSliceExpressionAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_closedSliceExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_closedSliceExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_closedSliceExpressionAST GALGAS_closedSliceExpressionAST::extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_closedSliceExpressionAST result ;
+  const GALGAS_closedSliceExpressionAST * p = (const GALGAS_closedSliceExpressionAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_closedSliceExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("closedSliceExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_collectionValueAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_collectionValueAST * p = (const cPtr_collectionValueAST *) inOperandPtr ;
@@ -19031,208 +19233,6 @@ GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::extractObject (const GALG
       result = *p ;
     }else{
       inCompiler->castError ("moduloExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_multiplicationExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_multiplicationExpressionAST * p = (const cPtr_multiplicationExpressionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_multiplicationExpressionAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_multiplicationExpressionAST::objectCompare (const GALGAS_multiplicationExpressionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_multiplicationExpressionAST::GALGAS_multiplicationExpressionAST (void) :
-GALGAS_semanticExpressionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_multiplicationExpressionAST::GALGAS_multiplicationExpressionAST (const cPtr_multiplicationExpressionAST * inSourcePtr) :
-GALGAS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_multiplicationExpressionAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                        const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                        const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_multiplicationExpressionAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_multiplicationExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_multiplicationExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_multiplicationExpressionAST * p = (const cPtr_multiplicationExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_multiplicationExpressionAST) ;
-    result = p->mAttribute_mOperatorLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_multiplicationExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_multiplicationExpressionAST * p = (const cPtr_multiplicationExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_multiplicationExpressionAST) ;
-    result = p->mAttribute_mLeftExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_multiplicationExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_multiplicationExpressionAST * p = (const cPtr_multiplicationExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_multiplicationExpressionAST) ;
-    result = p->mAttribute_mRightExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_multiplicationExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                Pointer class for @multiplicationExpressionAST class                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_multiplicationExpressionAST::cPtr_multiplicationExpressionAST (const GALGAS_location & in_mOperatorLocation,
-                                                                    const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                    const GALGAS_semanticExpressionAST & in_mRightExpression
-                                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_multiplicationExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_multiplicationExpressionAST ;
-}
-
-void cPtr_multiplicationExpressionAST::description (C_String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString << "[@multiplicationExpressionAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_multiplicationExpressionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_multiplicationExpressionAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          @multiplicationExpressionAST type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_multiplicationExpressionAST ("multiplicationExpressionAST",
-                                                    & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_multiplicationExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_multiplicationExpressionAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_multiplicationExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_multiplicationExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_multiplicationExpressionAST result ;
-  const GALGAS_multiplicationExpressionAST * p = (const GALGAS_multiplicationExpressionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_multiplicationExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("multiplicationExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

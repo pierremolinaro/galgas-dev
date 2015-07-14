@@ -101,6 +101,18 @@ rule <casted_expression> !@semanticExpressionAST outExpression {
     @semanticExpressionAST rightOperand
     <relation_term> ? rightOperand
     outExpression = @xorExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+  while
+    let operatorLocation = @location.here
+    $...$
+    let leftOperand = outExpression
+    <relation_term> ?let rightOperand
+    outExpression = @closedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+  while
+    let operatorLocation = @location.here
+    $..<$
+    let leftOperand = outExpression
+    <relation_term> ?let rightOperand
+    outExpression = @openedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 

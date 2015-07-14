@@ -290,6 +290,7 @@ rule '0'->'9' {
 #------------------------------- Floating point Number ------------------
 $.$  style delimitersStyle error message "the '.' delimitor"
 $...$  style delimitersStyle error message "the '...' delimitor"
+$..<$  style delimitersStyle error message "the '..<' delimitor"
 
 #--- Floating Point constant begining with a dot
 rule '.' {
@@ -309,6 +310,8 @@ rule '.' {
     select
     case ".." :
       send $...$
+    case ".<" :
+      send $..<$
     default
       send $.$
     end

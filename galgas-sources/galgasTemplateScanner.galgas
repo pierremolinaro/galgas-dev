@@ -100,7 +100,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "log",
   "loop",
   "map",
-#  "mapproxy",
   "match",
   "message",
   "method",
@@ -237,6 +236,7 @@ rule '0'->'9' {
 $.$  style delimitersStyle error message "the '.' delimitor"
 $.=$  style delimitersStyle error message "the '.=' delimitor"
 $...$  style delimitersStyle error message "the '...' delimitor"
+$..<$  style delimitersStyle error message "the '..<' delimitor"
 
 #--- Floating Point constant begining with a dot
 rule '.' {
@@ -256,6 +256,8 @@ rule '.' {
     select
     case ".." :
       send $...$
+    case ".<" :
+      send $..<$
     case "=" :
       send $.=$
     default
