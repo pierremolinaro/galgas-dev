@@ -500,10 +500,10 @@ void closeTrace (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#define START_OF_USER_ZONE_1  "--- START OF USER ZONE 1\n"
-#define END_OF_USER_ZONE_1    "--- END OF USER ZONE 1\n\n"
-#define START_OF_USER_ZONE_2  "--- START OF USER ZONE 2\n"
-#define END_OF_USER_ZONE_2    "--- END OF USER ZONE 2\n\n"
+static const char * START_OF_USER_ZONE_1 =  "--- START OF USER ZONE 1\n" ;
+static const char * END_OF_USER_ZONE_1   =  "--- END OF USER ZONE 1\n" ;
+static const char * START_OF_USER_ZONE_2 =  "--- START OF USER ZONE 2\n" ;
+static const char * END_OF_USER_ZONE_2   =  "--- END OF USER ZONE 2\n" ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

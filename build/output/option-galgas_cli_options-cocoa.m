@@ -2,7 +2,6 @@
 
 
 //--- END OF USER ZONE 1
-
 //---------------------------------------------------------------------------------------------------------------------*
 
 #import "option-galgas_cli_options-cocoa.h"
@@ -122,6 +121,5 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
 
 
 //--- END OF USER ZONE 2
-
 
 

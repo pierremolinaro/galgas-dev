@@ -3,7 +3,6 @@
 
 //--- END OF USER ZONE 1
 
-
 #import "lexique-galgas3Scanner-cocoa.h"
 #import "PMDebug.h"
 
@@ -1278,6 +1277,5 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
 
 
 //--- END OF USER ZONE 2
-
 
 

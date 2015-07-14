@@ -419,7 +419,7 @@ override method @stringPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"reversedString" !returnedTypeName:"string" !false)
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"currentColumn" !returnedTypeName:"uint" !false)
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"system" !returnedTypeName:"sint" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"popen" !returnedTypeName:"string" !true)
+#  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"popen" !returnedTypeName:"string" !true)
   enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"inIndex" !returnedTypeName:"char" !true)
   enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"containsCharacter" !"char" !"inCharacter" !returnedTypeName:"bool" !false)
   enterBaseReaderWith2Arguments (
