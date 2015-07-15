@@ -224,6 +224,7 @@
 		CF85AE5418679024002425BA /* closeSourceFile.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF85AE4F18679024002425BA /* closeSourceFile.tiff */; };
 		CF85AE5518679024002425BA /* PMSearchResultDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CF85AE5118679024002425BA /* PMSearchResultDescriptor.m */; };
 		CF85AE5618679024002425BA /* PMTableViewRefusesFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = CF85AE5318679024002425BA /* PMTableViewRefusesFirstResponder.m */; };
+		CF862E261B56477900C8C09D /* OC_GGS_FileEventStream.m in Sources */ = {isa = PBXBuildFile; fileRef = CF862E251B56477900C8C09D /* OC_GGS_FileEventStream.m */; };
 		CF8D51970E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
 		CF93816219ABB22A0074E798 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93816019ABB22A0074E798 /* C_HTMLString.cpp */; };
 		CF93816319ABB22A0074E798 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93816019ABB22A0074E798 /* C_HTMLString.cpp */; };
@@ -574,6 +575,8 @@
 		CF85AE5118679024002425BA /* PMSearchResultDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSearchResultDescriptor.m; sourceTree = "<group>"; };
 		CF85AE5218679024002425BA /* PMTableViewRefusesFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTableViewRefusesFirstResponder.h; sourceTree = "<group>"; };
 		CF85AE5318679024002425BA /* PMTableViewRefusesFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTableViewRefusesFirstResponder.m; sourceTree = "<group>"; };
+		CF862E241B56477900C8C09D /* OC_GGS_FileEventStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_FileEventStream.h; sourceTree = "<group>"; };
+		CF862E251B56477900C8C09D /* OC_GGS_FileEventStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_FileEventStream.m; sourceTree = "<group>"; };
 		CF8A320F1278D21600E3EDC9 /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Compiler.h; sourceTree = "<group>"; };
 		CF8A32101278D21600E3EDC9 /* C_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Lexique.h; sourceTree = "<group>"; };
 		CF8A32111278D21600E3EDC9 /* cProductionNameDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cProductionNameDescriptor.h; sourceTree = "<group>"; };
@@ -1111,6 +1114,8 @@
 				CF06F5C71049592F005F03FA /* OC_GGS_Document.xib */,
 				CF2510C315C8702D00594C07 /* OC_GGS_DocumentData.h */,
 				CF2510C415C8702D00594C07 /* OC_GGS_DocumentData.m */,
+				CF862E241B56477900C8C09D /* OC_GGS_FileEventStream.h */,
+				CF862E251B56477900C8C09D /* OC_GGS_FileEventStream.m */,
 				CF51F02E15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.h */,
 				CF51F02F15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m */,
 				CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */,
@@ -1700,6 +1705,7 @@
 				CF85AE5618679024002425BA /* PMTableViewRefusesFirstResponder.m in Sources */,
 				CF0D340B19D742A7003AD43D /* NSString+identifierRepresentation.m in Sources */,
 				CF759A5219F41344007E49A1 /* gui-cocoa.m in Sources */,
+				CF862E261B56477900C8C09D /* OC_GGS_FileEventStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
