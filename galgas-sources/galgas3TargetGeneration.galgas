@@ -838,6 +838,8 @@ proc updateGalgas3Targets
         !"OC_GGS_Document.m",
         !"OC_GGS_DocumentData.h",
         !"OC_GGS_DocumentData.m",
+        !"OC_GGS_FileEventStream.h",
+        !"OC_GGS_FileEventStream.m",
         !"OC_GGS_RulerViewForBuildOutput.h",
         !"OC_GGS_RulerViewForBuildOutput.m",
         !"OC_GGS_RulerViewForTextView.h",
