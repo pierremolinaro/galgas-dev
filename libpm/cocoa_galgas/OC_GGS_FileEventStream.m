@@ -30,6 +30,18 @@ static NSMutableArray * gFileEventStreamArray = nil ;
 
   //····················································································································
 
+  - (void) callbackMethodForEvents: (NSArray *) inEvents {
+    for (NSString * path in inEvents) {
+      for (OC_GGS_DocumentData * document in mDocuments) {
+        if ([document.fileURL.path isEqualToString:path]) {
+          [document fileDidChangeInFileSystem] ;
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
   static void mycallback (ConstFSEventStreamRef streamRef,
                           void * clientCallBackInfo,
                           size_t numEvents,
@@ -64,13 +76,13 @@ static NSMutableArray * gFileEventStreamArray = nil ;
         mycallback,
         & context,
         (ARC_BRIDGE CFArrayRef) pathsToWatch,
-        kFSEventStreamEventIdSinceNow, // Or a previous event ID
+        kFSEventStreamEventIdSinceNow,
         latency,
-        kFSEventStreamCreateFlagNoDefer //
+        kFSEventStreamCreateFlagNoDefer
         | kFSEventStreamCreateFlagUseCFTypes
         | kFSEventStreamCreateFlagWatchRoot
-        | kFSEventStreamCreateFlagFileEvents
-        | kFSEventStreamCreateFlagIgnoreSelf // Do not report from current application
+        | 0x10 // kFSEventStreamCreateFlagFileEvents // Not defined in 10.6
+        | kFSEventStreamCreateFlagIgnoreSelf // Do not report events from current application
       ) ;
       FSEventStreamScheduleWithRunLoop (mFSEventStream, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
       FSEventStreamStart (mFSEventStream) ;
@@ -108,18 +120,6 @@ static NSMutableArray * gFileEventStreamArray = nil ;
     FSEventStreamInvalidate (mFSEventStream) ;
     FSEventStreamRelease (mFSEventStream) ;
     mFSEventStream = NULL ;
-  }
-
-  //····················································································································
-
-  - (void) callbackMethodForEvents: (NSArray *) inEvents {
-    for (NSString * path in inEvents) {
-      for (OC_GGS_DocumentData * document in mDocuments) {
-        if ([document.fileURL.path isEqualToString:path]) {
-          [document fileDidChangeInFileSystem] ;
-        }
-      }
-    }
   }
 
   //····················································································································
