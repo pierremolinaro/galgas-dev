@@ -185,6 +185,7 @@ proc build_LIBPM_COCOA_GALGAS_group
   append_m_h_files ( !?fileList !"enterDefaultCommandLineOptions" )
   append_m_h_files ( !?fileList !"OC_GGS_Document" )
   append_m_h_files ( !?fileList !"OC_GGS_DocumentData" )
+  append_m_h_files ( !?fileList !"OC_GGS_FileEventStream" )
   append_m_h_files ( !?fileList !"OC_GGS_ApplicationDelegate" )
   append_m_h_files ( !?fileList !"PMIssueDescriptor" )
   append_m_h_files ( !?fileList !"OC_GGS_TextDisplayDescriptor" )
@@ -760,6 +761,7 @@ private proc build_COCOA_APP_files_for_sources_build_phase
   fileList += !"enterDefaultCommandLineOptions.m"
   fileList += !"OC_GGS_Document.m"
   fileList += !"OC_GGS_DocumentData.m"
+  fileList += !"OC!_GGS_FileEventStream"
   fileList += !"OC_GGS_ApplicationDelegate.m"
   fileList += !"PMIssueDescriptor.m"
   fileList += !"OC_GGS_TextDisplayDescriptor.m"

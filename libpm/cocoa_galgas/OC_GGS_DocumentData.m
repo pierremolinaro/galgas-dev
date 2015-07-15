@@ -409,12 +409,17 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   - (void) fileDidChangeInFileSystem {
     NSString * filePath = self.fileURL.path ;
+    NSError * error = nil ;
     NSString * newContents = [NSString
       stringWithContentsOfFile:filePath
       encoding:NSUTF8StringEncoding
-      error:NULL
+      error:& error
     ] ;
-    [self replaceSourceStringWithString:newContents] ;
+    if (error == nil) {
+      [self replaceSourceStringWithString:newContents] ;
+    }else{
+      [NSApp presentError:error] ;
+    }
   }
 
 
