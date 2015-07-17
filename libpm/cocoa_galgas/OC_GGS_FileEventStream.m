@@ -30,12 +30,12 @@ static NSMutableArray * gFileEventStreamArray = nil ;
 
   //····················································································································
 
-  - (void) callbackMethodForEvents: (NSArray *) inEvents {
-    for (NSString * path in inEvents) {
-      for (OC_GGS_DocumentData * document in mDocuments) {
-        if ([document.fileURL.path isEqualToString:path]) {
-          [document fileDidChangeInFileSystem] ;
-        }
+  - (void) callbackMethodForPath: (NSString *) inPath
+           flag: (FSEventStreamEventFlags) inEventFlag {
+    NSLog (@"path '%@' flag:%X", inPath, inEventFlag) ;
+    for (OC_GGS_DocumentData * document in mDocuments) {
+      if ([document.fileURL.path isEqualToString:inPath]) {
+        [document fileDidChangeInFileSystem] ;
       }
     }
   }
@@ -49,9 +49,12 @@ static NSMutableArray * gFileEventStreamArray = nil ;
                           const FSEventStreamEventFlags eventFlags[],
                           const FSEventStreamEventId eventIds[]) {
     OC_GGS_FileEventStream * object = (ARC_BRIDGE OC_GGS_FileEventStream *) clientCallBackInfo ;
-    NSArray * eventArray = (ARC_BRIDGE NSArray *) eventPaths ;
-    [object callbackMethodForEvents:eventArray] ;
-//    NSLog (@"object %@, eventArray %@", object, eventArray) ;
+    NSArray * eventPathArray = (ARC_BRIDGE NSArray *) eventPaths ;
+    NSUInteger idx = 0 ;
+    for (NSString * path in eventPathArray) {
+      [object callbackMethodForPath:path flag:eventFlags [idx]] ;
+      idx ++ ;
+    }
   }
 
   //····················································································································
