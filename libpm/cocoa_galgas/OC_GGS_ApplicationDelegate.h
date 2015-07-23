@@ -48,6 +48,8 @@
 #define GGS_uses_page_guide           @"GGS_USE_PAGE_GUIDE"
 #define GGS_page_guide_column         @"GGS_PAGE_GUIDE_COLUMN"
 #define GGS_editor_background_color   @"GGS_EDITOR_BACKGROUND_COLOR"
+#define GGS_editor_space_for_tab      @"GGS_EDITOR_SPACES_FOR_TAB"
+#define PMShiftLeftInsertedSpaceCount @"PMShiftLeftInsertedSpaceCount"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -79,7 +81,6 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //--- Prefix by time utility
   @private IBOutlet NSButton * mPrefixByTimeUtilityCheckBox ;
 
-//--- "Show ruler" checkbox
   @private IBOutlet NSButton * mEnableCompletionCheckBox ;
   @private IBOutlet NSButton * mConvert_CRLF_And_CR_To_LF_AtStartUpButton ;
   @private IBOutlet NSButton * mConvert_HTAB_To_SPACE_AtStartUpButton ;
@@ -87,6 +88,7 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---
   @private IBOutlet NSTextField * mShiftLeftInsertedSpaceTextField ;
+  @private IBOutlet NSTextField * mTabInsertsSpacesTextField ;
 
 //--- Preference Window
   @private IBOutlet NSWindow * mPreferenceWindow ;

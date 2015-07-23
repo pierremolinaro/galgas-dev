@@ -330,7 +330,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) shiftLeftString {
-  const NSUInteger spaceCount = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:@"PMShiftLeftInsertedSpaceCount"] ;
+  const NSUInteger spaceCount = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:PMShiftLeftInsertedSpaceCount] ;
   //NSLog (@"spaceCount %u", spaceCount) ;
   NSMutableString * s = [[NSMutableString alloc] init] ;
   for (NSUInteger i=0 ; i<spaceCount ; i++) {
