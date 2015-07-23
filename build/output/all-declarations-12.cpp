@@ -5247,25 +5247,33 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
     "//          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                                      *\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "NSArray * nibsAndClasses (void) {\n"
-    "  return [NSArray arrayWithObjects:\n" ;
-  GALGAS_uint index_1209_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 26)).isValid ()) {
-    cEnumerator_stringlist enumerator_1209 (in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 26)), kEnumeration_up) ;
-    while (enumerator_1209.hasCurrentObject ()) {
-      result << "    [NSArray arrayWithObjects:@\"" ;
-      result << enumerator_1209.current_mValue (HERE).stringValue () ;
-      result << "\", [" ;
-      result << enumerator_1209.current_mValue (HERE).stringValue () ;
-      result << " class], nil],\n" ;
-      index_1209_.increment () ;
-      enumerator_1209.gotoNextObject () ;
+    "\n" ;
+  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 25)).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 25)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_1) {
+    result << "NSArray * nibsAndClasses (void) {\n"
+      "  return [NSArray array] ;\n"
+      "}\n" ;
+  }else if (kBoolFalse == test_1) {
+    result << "NSArray * nibsAndClasses (void) {\n"
+      "  return [NSArray arrayWithObjects:\n" ;
+    GALGAS_uint index_1336_ (0) ;
+    if (in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 33)).isValid ()) {
+      cEnumerator_stringlist enumerator_1336 (in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 33)), kEnumeration_up) ;
+      while (enumerator_1336.hasCurrentObject ()) {
+        result << "    [NSArray arrayWithObjects:@\"" ;
+        result << enumerator_1336.current_mValue (HERE).stringValue () ;
+        result << "\", [" ;
+        result << enumerator_1336.current_mValue (HERE).stringValue () ;
+        result << " class], nil],\n" ;
+        index_1336_.increment () ;
+        enumerator_1336.gotoNextObject () ;
+      }
     }
+    result << "    nil\n"
+      "  ] ;\n"
+      "}\n" ;
   }
-  result << "    nil\n"
-    "  ] ;\n"
-    "}\n"
+  result << "\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -5277,20 +5285,20 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  GALGAS_uint index_2126_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 43)).isValid ()) {
-    cEnumerator_stringlist enumerator_2126 (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 43)), kEnumeration_up) ;
-    while (enumerator_2126.hasCurrentObject ()) {
+  GALGAS_uint index_2261_ (0) ;
+  if (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 53)).isValid ()) {
+    cEnumerator_stringlist enumerator_2261 (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 53)), kEnumeration_up) ;
+    while (enumerator_2261.hasCurrentObject ()) {
       result << "#import \"" ;
-      const enumGalgasBool test_1 = in_GENERATE_5F_FOR_5F_GALGAS_33_.boolEnum () ;
-      if (kBoolTrue == test_1) {
+      const enumGalgasBool test_2 = in_GENERATE_5F_FOR_5F_GALGAS_33_.boolEnum () ;
+      if (kBoolTrue == test_2) {
         result << "option-" ;
-      }else if (kBoolFalse == test_1) {
+      }else if (kBoolFalse == test_2) {
       }
-      result << enumerator_2126.current_mValue (HERE).stringValue () ;
+      result << enumerator_2261.current_mValue (HERE).stringValue () ;
       result << "-cocoa.m\"\n" ;
-      index_2126_.increment () ;
-      enumerator_2126.gotoNextObject () ;
+      index_2261_.increment () ;
+      enumerator_2261.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -5300,27 +5308,27 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
     "                   NSMutableArray * ioUIntOptionArray,\n"
     "                   NSMutableArray * ioStringOptionArray,\n"
     "                   NSMutableArray * ioStringListOptionArray) {\n" ;
-  GALGAS_uint index_2617_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 54)).isValid ()) {
-    cEnumerator_stringlist enumerator_2617 (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 54)), kEnumeration_up) ;
-    while (enumerator_2617.hasCurrentObject ()) {
+  GALGAS_uint index_2752_ (0) ;
+  if (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 64)).isValid ()) {
+    cEnumerator_stringlist enumerator_2752 (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 64)), kEnumeration_up) ;
+    while (enumerator_2752.hasCurrentObject ()) {
       result << "  enterOptionsFor_" ;
-      result << enumerator_2617.current_mValue (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 55)).stringValue () ;
+      result << enumerator_2752.current_mValue (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 65)).stringValue () ;
       result << " (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray, ioStringListOptionArray) ;\n" ;
-      index_2617_.increment () ;
-      enumerator_2617.gotoNextObject () ;
+      index_2752_.increment () ;
+      enumerator_2752.gotoNextObject () ;
     }
   }
   result << "}\n"
     "\n" ;
-  GALGAS_uint index_2818_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 59)).isValid ()) {
-    cEnumerator_importedLexiqueList enumerator_2818 (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 59)), kEnumeration_up) ;
-    while (enumerator_2818.hasCurrentObject ()) {
+  GALGAS_uint index_2953_ (0) ;
+  if (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 69)).isValid ()) {
+    cEnumerator_importedLexiqueList enumerator_2953 (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 69)), kEnumeration_up) ;
+    while (enumerator_2953.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "#pragma mark Lexique " ;
-      result << enumerator_2818.current_mLexiqueClassName (HERE).stringValue () ;
+      result << enumerator_2953.current_mLexiqueClassName (HERE).stringValue () ;
       result << "\n"
         "\n"
         "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -5329,58 +5337,58 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "//                                                                                                                     *\n"
         "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n" ;
-      GALGAS_uint index_3657_ (0) ;
-      if (enumerator_2818.current_mLabels (HERE).isValid ()) {
-        cEnumerator_guiLabelListAST enumerator_3657 (enumerator_2818.current_mLabels (HERE), kEnumeration_up) ;
-        while (enumerator_3657.hasCurrentObject ()) {
+      GALGAS_uint index_3792_ (0) ;
+      if (enumerator_2953.current_mLabels (HERE).isValid ()) {
+        cEnumerator_guiLabelListAST enumerator_3792 (enumerator_2953.current_mLabels (HERE), kEnumeration_up) ;
+        while (enumerator_3792.hasCurrentObject ()) {
           result << "static const UInt16 gPopUpData_" ;
-          result << enumerator_2818.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 68)).stringValue () ;
+          result << enumerator_2953.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).stringValue () ;
           result << "_" ;
-          result << enumerator_3657.current_mLocation (HERE).reader_locationIndex (inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 68)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 68)).stringValue () ;
+          result << enumerator_3792.current_mLocation (HERE).reader_locationIndex (inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).stringValue () ;
           result << " [" ;
-          result << GALGAS_uint ((uint32_t) 2U).multiply_operation (enumerator_3657.current_mTerminalList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 68)), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 68)).add_operation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 68)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 68)).stringValue () ;
+          result << GALGAS_uint ((uint32_t) 2U).multiply_operation (enumerator_3792.current_mTerminalList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).add_operation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).stringValue () ;
           result << "] = {\n"
             "  " ;
-          result << enumerator_3657.current_mLeadingCharacterStrippedCount (HERE).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 69)).stringValue () ;
+          result << enumerator_3792.current_mLeadingCharacterStrippedCount (HERE).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 79)).stringValue () ;
           result << ", // Leading character count to strip\n" ;
-          GALGAS_uint index_3955_ (0) ;
-          if (enumerator_3657.current_mTerminalList (HERE).isValid ()) {
-            cEnumerator_terminalLabelListAST enumerator_3955 (enumerator_3657.current_mTerminalList (HERE), kEnumeration_up) ;
-            while (enumerator_3955.hasCurrentObject ()) {
+          GALGAS_uint index_4090_ (0) ;
+          if (enumerator_3792.current_mTerminalList (HERE).isValid ()) {
+            cEnumerator_terminalLabelListAST enumerator_4090 (enumerator_3792.current_mTerminalList (HERE), kEnumeration_up) ;
+            while (enumerator_4090.hasCurrentObject ()) {
               result << "  " ;
-              result << enumerator_2818.current_mLexiqueClassName (HERE).stringValue () ;
+              result << enumerator_2953.current_mLexiqueClassName (HERE).stringValue () ;
               result << "_1_" ;
-              result << enumerator_3955.current_mTerminal (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 71)).stringValue () ;
+              result << enumerator_4090.current_mTerminal (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 81)).stringValue () ;
               result << ", " ;
-              result << enumerator_3955.current_mDisplayFlags (HERE).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 71)).stringValue () ;
+              result << enumerator_4090.current_mDisplayFlags (HERE).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 81)).stringValue () ;
               result << ",\n" ;
-              index_3955_.increment () ;
-              enumerator_3955.gotoNextObject () ;
+              index_4090_.increment () ;
+              enumerator_4090.gotoNextObject () ;
             }
           }
           result << "  0\n"
             "} ;\n"
             "\n" ;
-          index_3657_.increment () ;
-          enumerator_3657.gotoNextObject () ;
+          index_3792_.increment () ;
+          enumerator_3792.gotoNextObject () ;
         }
       }
       result << "static const UInt16 * gPopUpData_" ;
-      result << enumerator_2818.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 76)).stringValue () ;
+      result << enumerator_2953.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 86)).stringValue () ;
       result << " [" ;
-      result << enumerator_2818.current_mLabels (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 76)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 76)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 76)).stringValue () ;
+      result << enumerator_2953.current_mLabels (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 86)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 86)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 86)).stringValue () ;
       result << "] = {\n" ;
-      GALGAS_uint index_4255_ (0) ;
-      if (enumerator_2818.current_mLabels (HERE).isValid ()) {
-        cEnumerator_guiLabelListAST enumerator_4255 (enumerator_2818.current_mLabels (HERE), kEnumeration_up) ;
-        while (enumerator_4255.hasCurrentObject ()) {
+      GALGAS_uint index_4390_ (0) ;
+      if (enumerator_2953.current_mLabels (HERE).isValid ()) {
+        cEnumerator_guiLabelListAST enumerator_4390 (enumerator_2953.current_mLabels (HERE), kEnumeration_up) ;
+        while (enumerator_4390.hasCurrentObject ()) {
           result << "  gPopUpData_" ;
-          result << enumerator_2818.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).stringValue () ;
+          result << enumerator_2953.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 88)).stringValue () ;
           result << "_" ;
-          result << enumerator_4255.current_mLocation (HERE).reader_locationIndex (inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 78)).stringValue () ;
+          result << enumerator_4390.current_mLocation (HERE).reader_locationIndex (inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 88)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 88)).stringValue () ;
           result << ",\n" ;
-          index_4255_.increment () ;
-          enumerator_4255.gotoNextObject () ;
+          index_4390_.increment () ;
+          enumerator_4390.gotoNextObject () ;
         }
       }
       result << "  NULL\n"
@@ -5393,9 +5401,9 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "@interface OC_Tokenizer_" ;
-      result << enumerator_2818.current_mLexiqueClassName (HERE).stringValue () ;
+      result << enumerator_2953.current_mLexiqueClassName (HERE).stringValue () ;
       result << " : OC_Lexique_" ;
-      result << enumerator_2818.current_mLexiqueClassName (HERE).stringValue () ;
+      result << enumerator_2953.current_mLexiqueClassName (HERE).stringValue () ;
       result << " {\n"
         "\n"
         "}\n"
@@ -5417,14 +5425,14 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "@implementation OC_Tokenizer_" ;
-      result << enumerator_2818.current_mLexiqueClassName (HERE).stringValue () ;
+      result << enumerator_2953.current_mLexiqueClassName (HERE).stringValue () ;
       result << "\n"
         "\n"
         "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "- (NSString *) blockComment {\n"
         "  return @" ;
-      result << enumerator_2818.current_mBlockComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 100)).stringValue () ;
+      result << enumerator_2953.current_mBlockComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 110)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n"
@@ -5432,7 +5440,7 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "\n"
         "- (const UInt16 * *) popupListData {\n"
         "  return gPopUpData_" ;
-      result << enumerator_2818.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 104)).stringValue () ;
+      result << enumerator_2953.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 114)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n"
@@ -5440,7 +5448,7 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "\n"
         "- (NSUInteger) textMacroCount {\n"
         "  return " ;
-      result << enumerator_2818.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 108)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 108)).stringValue () ;
+      result << enumerator_2953.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 118)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 118)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n"
@@ -5448,7 +5456,7 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "\n"
         "- (NSString *) tabItemTitle {\n"
         "  return @" ;
-      result << enumerator_2818.current_mTitle (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 112)).stringValue () ;
+      result << enumerator_2953.current_mTitle (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 122)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n"
@@ -5456,17 +5464,17 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "\n"
         "- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n"
         "  static NSString * kTextMacroTitle [" ;
-      result << enumerator_2818.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 116)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 116)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 116)).stringValue () ;
+      result << enumerator_2953.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 126)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 126)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 126)).stringValue () ;
       result << "] = {\n" ;
-      GALGAS_uint index_6898_ (0) ;
-      if (enumerator_2818.current_mTextMacroList (HERE).isValid ()) {
-        cEnumerator_textMacroList enumerator_6898 (enumerator_2818.current_mTextMacroList (HERE), kEnumeration_up) ;
-        while (enumerator_6898.hasCurrentObject ()) {
+      GALGAS_uint index_7033_ (0) ;
+      if (enumerator_2953.current_mTextMacroList (HERE).isValid ()) {
+        cEnumerator_textMacroList enumerator_7033 (enumerator_2953.current_mTextMacroList (HERE), kEnumeration_up) ;
+        while (enumerator_7033.hasCurrentObject ()) {
           result << "    @" ;
-          result << enumerator_6898.current_mKey (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 118)).stringValue () ;
+          result << enumerator_7033.current_mKey (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 128)).stringValue () ;
           result << ",\n" ;
-          index_6898_.increment () ;
-          enumerator_6898.gotoNextObject () ;
+          index_7033_.increment () ;
+          enumerator_7033.gotoNextObject () ;
         }
       }
       result << "    NULL\n"
@@ -5478,17 +5486,17 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "\n"
         "- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n"
         "  static NSString * kTextMacroContent [" ;
-      result << enumerator_2818.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 126)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 126)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 126)).stringValue () ;
+      result << enumerator_2953.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 136)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 136)).reader_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 136)).stringValue () ;
       result << "] = {\n" ;
-      GALGAS_uint index_7347_ (0) ;
-      if (enumerator_2818.current_mTextMacroList (HERE).isValid ()) {
-        cEnumerator_textMacroList enumerator_7347 (enumerator_2818.current_mTextMacroList (HERE), kEnumeration_up) ;
-        while (enumerator_7347.hasCurrentObject ()) {
+      GALGAS_uint index_7482_ (0) ;
+      if (enumerator_2953.current_mTextMacroList (HERE).isValid ()) {
+        cEnumerator_textMacroList enumerator_7482 (enumerator_2953.current_mTextMacroList (HERE), kEnumeration_up) ;
+        while (enumerator_7482.hasCurrentObject ()) {
           result << "    @" ;
-          result << enumerator_7347.current_mContents (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 128)).stringValue () ;
+          result << enumerator_7482.current_mContents (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 138)).stringValue () ;
           result << ",\n" ;
-          index_7347_.increment () ;
-          enumerator_7347.gotoNextObject () ;
+          index_7482_.increment () ;
+          enumerator_7482.gotoNextObject () ;
         }
       }
       result << "    NULL\n"
@@ -5500,8 +5508,8 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
         "\n"
         "@end\n"
         "\n" ;
-      index_2818_.increment () ;
-      enumerator_2818.gotoNextObject () ;
+      index_2953_.increment () ;
+      enumerator_2953.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -5510,27 +5518,27 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
     "\n"
     "OC_Lexique * tokenizerForExtension (const NSString * inExtension) {\n"
     "  OC_Lexique * result = nil ;\n" ;
-  GALGAS_uint index_7914_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mExtensionMap (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 143)).isValid ()) {
-    cEnumerator_extensionMap enumerator_7914 (in_GUI_5F_CONTEXT.reader_mExtensionMap (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 143)), kEnumeration_up) ;
-    const bool nonEmpty_enumerator_7914 = enumerator_7914.hasCurrentObject () ;
-    if (nonEmpty_enumerator_7914) {
+  GALGAS_uint index_8049_ (0) ;
+  if (in_GUI_5F_CONTEXT.reader_mExtensionMap (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 153)).isValid ()) {
+    cEnumerator_extensionMap enumerator_8049 (in_GUI_5F_CONTEXT.reader_mExtensionMap (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 153)), kEnumeration_up) ;
+    const bool nonEmpty_enumerator_8049 = enumerator_8049.hasCurrentObject () ;
+    if (nonEmpty_enumerator_8049) {
       result << "  if" ;
     }
-    while (enumerator_7914.hasCurrentObject ()) {
+    while (enumerator_8049.hasCurrentObject ()) {
       result << " ([inExtension isEqualToString:@" ;
-      result << enumerator_7914.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 145)).stringValue () ;
+      result << enumerator_8049.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 155)).stringValue () ;
       result << "]) {\n"
         "    result = [OC_Tokenizer_" ;
-      result << enumerator_7914.current_mLexiqueName (HERE).stringValue () ;
+      result << enumerator_8049.current_mLexiqueName (HERE).stringValue () ;
       result << " new] ;\n" ;
-      if (enumerator_7914.hasNextObject ()) {
+      if (enumerator_8049.hasNextObject ()) {
         result << "  }else if" ;
       }
-      index_7914_.increment () ;
-      enumerator_7914.gotoNextObject () ;
+      index_8049_.increment () ;
+      enumerator_8049.gotoNextObject () ;
     }
-    if (nonEmpty_enumerator_7914) {
+    if (nonEmpty_enumerator_8049) {
       result << "  }\n" ;
     }
   }
@@ -5541,15 +5549,15 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
     "\n"
     "NSArray * tokenizers (void) {\n"
     "  return [NSArray arrayWithObjects:\n" ;
-  GALGAS_uint index_8340_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 157)).isValid ()) {
-    cEnumerator_importedLexiqueList enumerator_8340 (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 157)), kEnumeration_up) ;
-    while (enumerator_8340.hasCurrentObject ()) {
+  GALGAS_uint index_8475_ (0) ;
+  if (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 167)).isValid ()) {
+    cEnumerator_importedLexiqueList enumerator_8475 (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 167)), kEnumeration_up) ;
+    while (enumerator_8475.hasCurrentObject ()) {
       result << "    [OC_Tokenizer_" ;
-      result << enumerator_8340.current_mLexiqueClassName (HERE).stringValue () ;
+      result << enumerator_8475.current_mLexiqueClassName (HERE).stringValue () ;
       result << " new],\n" ;
-      index_8340_.increment () ;
-      enumerator_8340.gotoNextObject () ;
+      index_8475_.increment () ;
+      enumerator_8475.gotoNextObject () ;
     }
   }
   result << "    nil\n"

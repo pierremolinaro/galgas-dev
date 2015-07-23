@@ -242,15 +242,23 @@
     [super keyDown:inEvent] ;
   }else{
     const unichar c = [keys characterAtIndex:0] ;
-    // NSLog (@"%d", c) ;
     switch (c) {
     case 9 : // A Tab Character ?
       { const NSRange selectedRange = self.selectedRange ;
-        if ((selectedRange.location & 1) !=0) {
-          [self insertText:@"  "] ; // Odd location: insert 2 spaces
-        }else{
-          [self insertText:@" "] ; // Even location: insert 1 space
+        const NSInteger alignment = [[NSUserDefaults standardUserDefaults] integerForKey:GGS_editor_space_for_tab] ;
+        NSInteger spacesToInsert = alignment - ((NSInteger) selectedRange.location) % alignment ;
+        NSInteger characterAfterSelection = (NSInteger) (selectedRange.location + selectedRange.length) ;
+        while ((spacesToInsert > 0)
+            && (characterAfterSelection < (NSInteger) self.string.length)
+            && ([self.string characterAtIndex:(NSUInteger)characterAfterSelection] == ' ')) {
+          characterAfterSelection ++ ;
+          spacesToInsert -- ;
         }
+        NSMutableString * s = [NSMutableString new] ;
+        for (NSInteger i=0 ; i<spacesToInsert ; i++) {
+          [s appendString:@" "] ;
+        }
+        [self insertText:s] ;
       }break ;
     case 13 : // A Carriage Return Character ?
       { const NSRange selectedRange = [self selectedRange] ;

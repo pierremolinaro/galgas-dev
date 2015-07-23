@@ -21,13 +21,23 @@ end%
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-NSArray * nibsAndClasses (void) {
+%
+if [[GUI_CONTEXT mNibAndClassList] length] == 0 then
+%NSArray * nibsAndClasses (void) {
+  return [NSArray array] ;
+}
+%
+else
+%NSArray * nibsAndClasses (void) {
   return [NSArray arrayWithObjects:
 %for () in [GUI_CONTEXT mNibAndClassList] do
   %    [NSArray arrayWithObjects:@"%!mValue%", [%!mValue% class], nil],\n%
 end%    nil
   ] ;
 }
+%
+end
+%
 
 //---------------------------------------------------------------------------------------------------------------------*
 
