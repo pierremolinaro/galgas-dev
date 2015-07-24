@@ -994,17 +994,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     withKeyPath:@"values." GGS_editor_space_for_tab
     options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:NSContinuouslyUpdatesValueBindingOption]
   ] ;
-//--- Check "Shift Left Inserted space count"
-  if ([defaults integerForKey:PMShiftLeftInsertedSpaceCount] == 0) {
-    [defaults setInteger:2 forKey:PMShiftLeftInsertedSpaceCount] ;
-  }
-//--- Bind "Shift Left Inserted space count" Textfield
-  [mShiftLeftInsertedSpaceTextField
-    bind:@"value"
-    toObject:udc
-    withKeyPath:@"values." PMShiftLeftInsertedSpaceCount
-    options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:NSContinuouslyUpdatesValueBindingOption]
-  ] ;
 //--- Make this object delegate of associated window (for tracking window moves and resizes)
   [mPreferenceWindow setDelegate:self] ;
   NSString * preferencesWindowFrameString = [defaults stringForKey:GGS_preference_window_frame] ;
