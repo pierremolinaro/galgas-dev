@@ -916,7 +916,7 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
   case kENUMERATION_ENTER_ORDER :
   case kENUMERATION_REVERSE_ENTER_ORDER :
     MF_RunTimeError ("invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
-    break ;
+//    break ;
   }
   MF_Assert (mCount == inEnumerationArray.count (), "mCount %lld != inEnumerationArray.count () %lld", mCount, inEnumerationArray.count ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
