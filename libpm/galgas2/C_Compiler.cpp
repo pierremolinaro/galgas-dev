@@ -650,8 +650,6 @@ void C_Compiler::generateFileWithPatternFromPathes (
 ) {
 //--- Verbose option ?
   const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
-//--- Very Verbose (?)
-  const bool veryVerboseOptionOn = false ;
 //--- User zones
   const C_String kSTART_OF_USER_ZONE_1 = C_String (inLineCommentPrefix) + START_OF_USER_ZONE_1 ;
   const C_String kEND_OF_USER_ZONE_1   = C_String (inLineCommentPrefix) + END_OF_USER_ZONE_1 ;
@@ -665,11 +663,6 @@ void C_Compiler::generateFileWithPatternFromPathes (
 //--- Search file in directory
   const C_String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
   if (fullPathName.length () == 0) {
-    if (veryVerboseOptionOn) {
-      C_String message ;
-      message << "File '" << inFileName << "' not found.\n" ;
-      ggs_printMessage (message COMMA_HERE) ;
-    }
   //--- File does not exist : create it
     C_String fileName = startPath ;
     fileName.appendString ("/") ;
@@ -689,7 +682,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
       f << inHeader << kSTART_OF_USER_ZONE_1 << inDefaultUserZone1 << kEND_OF_USER_ZONE_1
         << inGeneratedZone2 << kSTART_OF_USER_ZONE_2 << inDefaultUserZone2 << kEND_OF_USER_ZONE_2
         << inGeneratedZone3 ;
-      if (verboseOptionOn || veryVerboseOptionOn) {
+      if (verboseOptionOn) {
         ggs_printFileCreationSuccess (C_String ("Created '") + fileName + "'.\n") ;
       }
       f.close () ;
@@ -705,11 +698,6 @@ void C_Compiler::generateFileWithPatternFromPathes (
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
-    if (veryVerboseOptionOn) {
-      C_String message ;
-      message << "Found '" << fullPathName << "' file.\n" ;
-      ggs_printMessage (message COMMA_HERE) ;
-    }
     C_String firstUserPart ;
     C_String secondUserPart ;
     C_String firstGeneratedPart ;
@@ -756,7 +744,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
         << inGeneratedZone2
         << kSTART_OF_USER_ZONE_2 << secondUserPart << kEND_OF_USER_ZONE_2
         << inGeneratedZone3 ;
-      if (verboseOptionOn || veryVerboseOptionOn) {
+      if (verboseOptionOn) {
         ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
       }
       f.close () ;
