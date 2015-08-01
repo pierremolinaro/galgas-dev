@@ -599,41 +599,14 @@ proc updateGalgas3Targets
     extensionList += !"icns"
     let @stringlist resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   #--- Build pathes
-#    const @string xcodeProjectPath := dir . "/" . inTargetName . "_EX.xcodeproj" ; # Actually a directory
-#    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project_EX.txt" ;
-#    ioAllProductFileSet += !"file-list-for-xcode-project_EX.txt" ;
     let @string newIntermediateFilePath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list-for-xcode-project.txt"
     ioAllProductFileSet += !"file-list-for-xcode-project.txt"
-  #--- Add sources for application
-#    const externSourceSet_app := [@stringset setWithStringList !inHandCodedSourceAppFileList] ;
-  #---
-#    [xcodeProjectPath makeDirectory] ;
-#  #--- Build intermediate
-#    generateXcodeProject
-#      ![@stringset setWithStringList !inHandCodedSourceToolFileList]
-#      ![@stringset setWithStringList !inToolCppFileList]
-#      !"../build/output"
-#      !externSourceSet_app
-#      !guiSourceSet_app
-#      !inTargetName # XCode project base name
-#      !inHandCodedLinkAppFileList
-#      !xcodeProjectPath # Full Path of xxx.xcodeproj file
-#      !resourceFiles
-#      !intermediateFilePath
-#      !SDK
-#      !libpmPath
-#      !"../build/user-headers"
-#      !multiThreadingEnabled
-#      !usesARC
-#      !inProjectQualifiedFeatureMap
-#    ;
   #-------------------------------------------------------- New Xcode project generation
     var xcodeProject = @XcodeProjectDescriptor.default
   #--- Default build configuration
-    [!?xcodeProject addSettingsToDefaultConfiguration !settingList:{
+    @stringlist xcodeSettingList = {
       !"ALWAYS_SEARCH_USER_PATHS = NO",
       !"ARCHS = \"$(ARCHS_STANDARD_64_BIT)\"",
-      !"CLANG_ENABLE_OBJC_ARC = YES",
       !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO",
       !"GCC_PRECOMPILE_PREFIX_HEADER = YES",
       !"GCC_THREADSAFE_STATICS = NO",
@@ -666,7 +639,14 @@ proc updateGalgas3Targets
       !"HEADER_SEARCH_PATHS = (\"../build/output\", \"../build/libpm\", \"../build/user-headers\", \"../hand_coded_sources/**\")",
       !"SDKROOT = " + SDK,
       !"COPY_PHASE_STRIP = NO"
-    }]
+    }
+    if SDK == "macosx10.6" then 
+      xcodeSettingList += !"CLANG_ENABLE_OBJC_ARC = NO"
+      xcodeSettingList += !"GCC_ENABLE_OBJC_GCC = required"
+    else
+      xcodeSettingList += !"CLANG_ENABLE_OBJC_ARC = YES"
+    end
+    [!?xcodeProject addSettingsToDefaultConfiguration !settingList:xcodeSettingList]
   #--- Add "Hand coded sources (App)" group
     @stringlist m_HandCodedSourceFileRefForAppList = {}
     @stringlist m_HandCodedResourceFileRefForAppList = {}
