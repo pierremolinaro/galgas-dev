@@ -536,8 +536,6 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
                                          const C_String & inContents) {
 //--- Verbose option ?
   const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
-//--- Very Verbose (?)
-  const bool veryVerboseOptionOn = false ;
 //--- Start path : by default, use source file directory
   const C_String startPath = (inStartPath.length () == 0)
    ? sourceFilePath ().stringByDeletingLastPathComponent ()
@@ -545,11 +543,6 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
 //--- Search file in directory
   const C_String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
   if (fullPathName.length () == 0) {
-    if (veryVerboseOptionOn) {
-      C_String message ;
-      message << "File '" << inFileName << "' not found.\n" ;
-      ggs_printMessage (message COMMA_HERE) ;
-    }
   //--- File does not exist : create it
     C_String fileName = startPath ;
     fileName.appendString ("/") ;
@@ -567,18 +560,13 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
         onTheFlySemanticError (message COMMA_HERE) ;
       }
       f << inContents ;
-      if (verboseOptionOn || veryVerboseOptionOn) {
+      if (verboseOptionOn) {
         ggs_printFileOperationSuccess (C_String ("Created '") + fileName + "'.\n") ;
       }
     }else{
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
-    if (veryVerboseOptionOn) {
-      C_String message ;
-      message << "Found '" << fullPathName << "' file.\n" ;
-      ggs_printMessage (message COMMA_HERE) ;
-    }
     const C_String previousContents = C_FileManager::stringWithContentOfFile (fullPathName) ;
     const bool same = previousContents == inContents ;
     if (! same) {
@@ -590,7 +578,7 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
           onTheFlySemanticError (message COMMA_HERE) ;
         }else{
           f << inContents ;
-          if (verboseOptionOn || veryVerboseOptionOn) {
+          if (verboseOptionOn) {
             ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
           }
         }
