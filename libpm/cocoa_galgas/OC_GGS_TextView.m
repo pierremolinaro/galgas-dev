@@ -254,6 +254,9 @@
           characterAfterSelection ++ ;
           spacesToInsert -- ;
         }
+        if (spacesToInsert == 0) {
+          spacesToInsert = alignment ;
+        }
         NSMutableString * s = [NSMutableString new] ;
         for (NSInteger i=0 ; i<spacesToInsert ; i++) {
           [s appendString:@" "] ;

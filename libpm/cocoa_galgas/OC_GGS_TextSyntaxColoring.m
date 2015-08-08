@@ -63,25 +63,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*- (void) refreshRulers {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  for (NSLayoutManager * lm in mSourceTextStorage.layoutManagers) {
-    for (NSTextContainer * tc in lm.textContainers) {
-      NSTextView * tw = [tc textView] ;
-      NSScrollView * sv = (NSScrollView *) [[tw superview] superview] ;
-      // NSLog (@"%@", sv) ;
-      if ([sv isKindOfClass:[NSScrollView class]]) {
-        NSRulerView * ruler = [sv verticalRulerView] ;
-        [ruler setNeedsDisplay:YES] ;
-      }
-    }    
-  }
-}*/
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 - (void) computeMaxLineHeight: (BOOL *) outLineHeightDidChange {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
