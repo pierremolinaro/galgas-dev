@@ -707,14 +707,13 @@ NSInteger searchStringInTable (NSString * inSearchedString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   P R E D E F I N E D    S C A N N E R    A C T I O N S                   *
+//   P R E D E F I N E D    S C A N N E R    A C T I O N S                                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (BOOL * ioScanningOk, 
-                                                       UInt32 * ioValue,
-                                                       const utf32 inChar) {
+void scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (BOOL * ioScanningOk,
+                                                            UInt32 * ioValue,
+                                                            const utf32 inChar) {
   if (isxdigit ((int) inChar)) {
     UInt32 tempo = (* ioValue) << 4 ;
     if ((inChar >= '0') && (inChar <= '9')) {
@@ -736,10 +735,9 @@ scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterDigitIntoASCIIcharacter (BOOL * ioScanningOk, 
-                                                    UInt32 * ioValue,
-                                                    const utf32 inChar) {
+void scanner_cocoa_routine_enterDigitIntoASCIIcharacter (BOOL * ioScanningOk,
+                                                         UInt32 * ioValue,
+                                                         const utf32 inChar) {
   if ((inChar >= '0') && (inChar <= '9')) {
     UInt32 tempo = * ioValue ;
     tempo *= 10  ;
@@ -756,56 +754,44 @@ scanner_cocoa_routine_enterDigitIntoASCIIcharacter (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterCharacterIntoString (BOOL * ioScanningOk, 
-                                                NSMutableString * ioString,
-                                                const utf32 inChar) {
+void scanner_cocoa_routine_enterCharacterIntoString (BOOL * ioScanningOk,
+                                                     NSMutableString * ioString,
+                                                     const utf32 inChar) {
   [ioString appendFormat:@"%C", (uint16_t) inChar] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertStringToDouble (BOOL * ioScanningOk, 
-                                             NSMutableString * inString,
-                                             double * outValue) {
+void scanner_cocoa_routine_convertStringToDouble (BOOL * ioScanningOk,
+                                                  NSMutableString * inString,
+                                                  double * outValue) {
   * outValue = [inString doubleValue] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterCharacterIntoCharacter (BOOL * ioScanningOk, 
-                                                   utf32 * outCharacter,
-                                                   const utf32 inCharacter) {
+void scanner_cocoa_routine_enterCharacterIntoCharacter (BOOL * ioScanningOk,
+                                                        utf32 * outCharacter,
+                                                        const utf32 inCharacter) {
   * outCharacter = inCharacter ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-utf32
-scanner_cocoa_function_toLower (const utf32 c) {
+utf32 scanner_cocoa_function_toLower (const utf32 c) {
   return unicodeToLower (c) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-utf32
-scanner_cocoa_function_toUpper (const utf32 c) {
+utf32 scanner_cocoa_function_toUpper (const utf32 c) {
   return unicodeToUpper (c) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Predefined Scanner Actions (from GALGAS 1.4.0)
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void
-scanner_cocoa_routine_negateSInt (BOOL * ioScanningOk, 
-                                  SInt32 * ioValue) {
+void scanner_cocoa_routine_negateSInt (BOOL * ioScanningOk,
+                                       SInt32 * ioValue) {
   if (*ioValue == INT32_MIN) {
     * ioScanningOk = YES ;
   }else{
@@ -815,9 +801,8 @@ scanner_cocoa_routine_negateSInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_negateSInt64 (BOOL * ioScanningOk, 
-                                    SInt64 * ioValue) {
+void scanner_cocoa_routine_negateSInt64 (BOOL * ioScanningOk,
+                                         SInt64 * ioValue) {
   if (* ioValue == INT64_MIN) {
     * ioScanningOk = NO ;
   }else{
@@ -827,10 +812,9 @@ scanner_cocoa_routine_negateSInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertUIntToSInt (BOOL * ioScanningOk, 
-                                  const UInt32 inValue,
-                                  SInt32 * outValue) {
+void scanner_cocoa_routine_convertUIntToSInt (BOOL * ioScanningOk,
+                                              const UInt32 inValue,
+                                              SInt32 * outValue) {
   if (inValue > INT32_MAX) {
     * ioScanningOk = NO ;
   }else{
@@ -840,10 +824,9 @@ scanner_cocoa_routine_convertUIntToSInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertUInt64ToSInt64 (BOOL * ioScanningOk, 
-                                             const UInt64 inValue,
-                                             SInt64 * outValue) {
+void scanner_cocoa_routine_convertUInt64ToSInt64 (BOOL * ioScanningOk,
+                                                  const UInt64 inValue,
+                                                  SInt64 * outValue) {
   if (inValue > INT64_MAX) {
   }else{
     * outValue = (SInt64) inValue ;
@@ -852,10 +835,9 @@ scanner_cocoa_routine_convertUInt64ToSInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterDigitIntoUInt (BOOL * ioScanningOk, 
-                                          const utf32 inCharacter,
-                                          UInt32 * ioValue) {
+void scanner_cocoa_routine_enterDigitIntoUInt (BOOL * ioScanningOk,
+                                               const utf32 inCharacter,
+                                               UInt32 * ioValue) {
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '9')) {
     * ioScanningOk = NO ;
   }else{
@@ -873,10 +855,9 @@ scanner_cocoa_routine_enterDigitIntoUInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterDigitIntoUInt64 (BOOL * ioScanningOk, 
-                                            const utf32 inCharacter,
-                                            UInt64 * ioValue) {
+void scanner_cocoa_routine_enterDigitIntoUInt64 (BOOL * ioScanningOk,
+                                                 const utf32 inCharacter,
+                                                 UInt64 * ioValue) {
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '9')) {
     * ioScanningOk = NO ;
   }else{
@@ -894,10 +875,9 @@ scanner_cocoa_routine_enterDigitIntoUInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterHexDigitIntoUInt (BOOL * ioScanningOk, 
-                                             const utf32 inCharacter,
-                                             UInt32 * ioValue) {
+void scanner_cocoa_routine_enterHexDigitIntoUInt (BOOL * ioScanningOk,
+                                                  const utf32 inCharacter,
+                                                  UInt32 * ioValue) {
   bool carOk = (UNICODE_VALUE (inCharacter) >= '0') && (UNICODE_VALUE (inCharacter) <= '9') ;
   UInt32 digit = UNICODE_VALUE (inCharacter) - '0' ;
   if (! carOk) {
@@ -922,10 +902,9 @@ scanner_cocoa_routine_enterHexDigitIntoUInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterHexDigitIntoUInt64 (BOOL * ioScanningOk, 
-                                               const utf32 inCharacter,
-                                               UInt64 * ioValue) {
+void scanner_cocoa_routine_enterHexDigitIntoUInt64 (BOOL * ioScanningOk,
+                                                    const utf32 inCharacter,
+                                                    UInt64 * ioValue) {
   bool carOk = (UNICODE_VALUE (inCharacter) >= '0') && (UNICODE_VALUE (inCharacter) <= '9') ;
   UInt64 digit = UNICODE_VALUE (inCharacter) - '0' ;
   if (! carOk) {
@@ -950,10 +929,9 @@ scanner_cocoa_routine_enterHexDigitIntoUInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertDecimalStringIntoUInt (BOOL * ioScanningOk, 
-                                                    NSString * inDecimalString,
-                                                    UInt32 * outValue) {
+void scanner_cocoa_routine_convertDecimalStringIntoUInt (BOOL * ioScanningOk,
+                                                         NSString * inDecimalString,
+                                                         UInt32 * outValue) {
   * outValue = 0 ;
   bool ok = true ;
   const UInt32 max = UINT32_MAX / 10 ;
@@ -979,10 +957,9 @@ scanner_cocoa_routine_convertDecimalStringIntoUInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertDecimalStringIntoSInt (BOOL * ioScanningOk, 
-                                                    NSString * inDecimalString,
-                                                    SInt32 * outValue) {
+void scanner_cocoa_routine_convertDecimalStringIntoSInt (BOOL * ioScanningOk,
+                                                         NSString * inDecimalString,
+                                                         SInt32 * outValue) {
   * outValue = 0 ;
   bool ok = true ;
   for (UInt32 i=0 ; (i<[inDecimalString length]) && ok ; i++) {
@@ -1007,10 +984,9 @@ scanner_cocoa_routine_convertDecimalStringIntoSInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertDecimalStringIntoUInt64 (BOOL * ioScanningOk, 
-                                                      NSString * inDecimalString,
-                                                      UInt64 * outValue) {
+void scanner_cocoa_routine_convertDecimalStringIntoUInt64 (BOOL * ioScanningOk,
+                                                           NSString * inDecimalString,
+                                                           UInt64 * outValue) {
   *outValue = 0 ;
   bool ok = true ;
   for (UInt32 i=0 ; (i<[inDecimalString length]) && ok ; i++) {
@@ -1035,10 +1011,9 @@ scanner_cocoa_routine_convertDecimalStringIntoUInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertDecimalStringIntoSInt64 (BOOL * ioScanningOk, 
-                                                      NSString * inDecimalString,
-                                                      SInt64 * outValue) {
+void scanner_cocoa_routine_convertDecimalStringIntoSInt64 (BOOL * ioScanningOk,
+                                                           NSString * inDecimalString,
+                                                           SInt64 * outValue) {
   * outValue = 0 ;
   bool ok = true ;
   for (UInt32 i=0 ; (i<[inDecimalString length]) && ok ; i++) {
@@ -1063,16 +1038,9 @@ scanner_cocoa_routine_convertDecimalStringIntoSInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Predefined Scanner Actions (from GALGAS 1.4.3)
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void
-scanner_cocoa_routine_enterBinDigitIntoUInt (BOOL * ioScanningOk, 
-                                             const utf32 inCharacter,
-                                             UInt32 * ioValue) {
+void scanner_cocoa_routine_enterBinDigitIntoUInt (BOOL * ioScanningOk,
+                                                  const utf32 inCharacter,
+                                                  UInt32 * ioValue) {
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '1')) {
     * ioScanningOk = NO ;
   }else{
@@ -1088,10 +1056,9 @@ scanner_cocoa_routine_enterBinDigitIntoUInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterBinDigitIntoUInt64 (BOOL * ioScanningOk, 
-                                               const utf32 inCharacter,
-                                               UInt64 * ioValue) {
+void scanner_cocoa_routine_enterBinDigitIntoUInt64 (BOOL * ioScanningOk,
+                                                    const utf32 inCharacter,
+                                                    UInt64 * ioValue) {
   if ((inCharacter < '0') || (inCharacter > '1')) {
     * ioScanningOk = NO ;
   }else{
@@ -1107,16 +1074,9 @@ scanner_cocoa_routine_enterBinDigitIntoUInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Predefined Scanner Actions (from GALGAS 1.4.7)
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void
-scanner_cocoa_routine_enterOctDigitIntoUInt (BOOL * ioScanningOk, 
-                                             const utf32 inCharacter,
-                                             UInt32 * ioValue) {
+void scanner_cocoa_routine_enterOctDigitIntoUInt (BOOL * ioScanningOk,
+                                                  const utf32 inCharacter,
+                                                  UInt32 * ioValue) {
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '7')) {
     * ioScanningOk = NO ;
   }else{
@@ -1132,10 +1092,9 @@ scanner_cocoa_routine_enterOctDigitIntoUInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_enterOctDigitIntoUInt64 (BOOL * ioScanningOk, 
-                                               const utf32 inCharacter,
-                                               UInt64 * ioValue) {
+void scanner_cocoa_routine_enterOctDigitIntoUInt64 (BOOL * ioScanningOk,
+                                                    const utf32 inCharacter,
+                                                    UInt64 * ioValue) {
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '7')) {
     * ioScanningOk = NO ;
   }else{
@@ -1151,16 +1110,9 @@ scanner_cocoa_routine_enterOctDigitIntoUInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Predefined Scanner Actions (from GALGAS 1.6.9)
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void
-scanner_cocoa_routine_multiplyUInt (BOOL * ioScanningOk, 
-                                    const UInt32 inFactor,
-                                    UInt32 * ioValue) {
+void scanner_cocoa_routine_multiplyUInt (BOOL * ioScanningOk,
+                                         const UInt32 inFactor,
+                                         UInt32 * ioValue) {
   const UInt64 factor = inFactor ;
   const UInt64 value = *ioValue ;
   const UInt64 result = factor * value ;
@@ -1173,10 +1125,9 @@ scanner_cocoa_routine_multiplyUInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_multiplyUInt64 (BOOL * ioScanningOk, 
-                                      const UInt64 inFactor,
-                                      UInt64 * ioValue) {
+void scanner_cocoa_routine_multiplyUInt64 (BOOL * ioScanningOk,
+                                           const UInt64 inFactor,
+                                           UInt64 * ioValue) {
   const UInt64 lowWord1 = inFactor & ULONG_MAX ;
   const UInt64 highWord1 = inFactor >> 32 ;
   const UInt64 lowWord2 = *ioValue & ULONG_MAX ;
@@ -1193,16 +1144,9 @@ scanner_cocoa_routine_multiplyUInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Predefined Scanner Actions (from GALGAS 1.7.7)
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void
-scanner_cocoa_routine_convertHexStringIntoUInt (BOOL * ioScanningOk, 
-                                                NSString * inHexString,
-                                                UInt32 * outValue) {
+void scanner_cocoa_routine_convertHexStringIntoUInt (BOOL * ioScanningOk,
+                                                     NSString * inHexString,
+                                                     UInt32 * outValue) {
   *outValue = 0 ;
   bool ok = true ;
   const UInt32 max = UINT32_MAX >> 4 ;
@@ -1229,10 +1173,9 @@ scanner_cocoa_routine_convertHexStringIntoUInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertHexStringIntoUInt64 (BOOL * ioScanningOk, 
-                                                  NSString * inHexString,
-                                                  UInt64 * outValue) {
+void scanner_cocoa_routine_convertHexStringIntoUInt64 (BOOL * ioScanningOk,
+                                                       NSString * inHexString,
+                                                       UInt64 * outValue) {
   *outValue = 0 ;
   bool ok = true ;
   const UInt64 max = UINT64_MAX >> 4 ;
@@ -1259,10 +1202,9 @@ scanner_cocoa_routine_convertHexStringIntoUInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertHexStringIntoSInt (BOOL * ioScanningOk, 
-                                                NSString * inHexString,
-                                                SInt32 * outValue) {
+void scanner_cocoa_routine_convertHexStringIntoSInt (BOOL * ioScanningOk,
+                                                     NSString * inHexString,
+                                                     SInt32 * outValue) {
   *outValue = 0 ;
   bool ok = true ;
   const SInt32 max = INT32_MAX >> 4 ;
@@ -1289,10 +1231,9 @@ scanner_cocoa_routine_convertHexStringIntoSInt (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertHexStringIntoSInt64 (BOOL * ioScanningOk, 
-                                                  NSString * inHexString,
-                                                  SInt64 * outValue) {
+void scanner_cocoa_routine_convertHexStringIntoSInt64 (BOOL * ioScanningOk,
+                                                       NSString * inHexString,
+                                                       SInt64 * outValue) {
   *outValue = 0 ;
   bool ok = true ;
   const SInt64 max = LLONG_MAX >> 4 ;
@@ -1319,16 +1260,9 @@ scanner_cocoa_routine_convertHexStringIntoSInt64 (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Predefined Scanner Actions (from GALGAS 1.8.3)
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void
-scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (BOOL * ioScanningOk, 
-                                                          UInt32 * ioValue,
-                                                          utf32 * outUnicodeCharacter) {
+void scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (BOOL * ioScanningOk,
+                                                               UInt32 * ioValue,
+                                                               utf32 * outUnicodeCharacter) {
   *outUnicodeCharacter = TO_UNICODE (*ioValue) ;
   if (! isUnicodeCharacterAssigned (*outUnicodeCharacter)) {
     * ioScanningOk = NO ;
@@ -1338,10 +1272,9 @@ scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (BOOL * ioScanningOk,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioScanningOk, 
-                                                             NSMutableString * ioStringValue,
-                                                             utf32 * outUnicodeCharacter) {
+void scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioScanningOk,
+                                                                  NSMutableString * ioStringValue,
+                                                                  utf32 * outUnicodeCharacter) {
   *outUnicodeCharacter = unicodeCharacterFromHTMLSequence (ioStringValue) ;
   if (UNICODE_VALUE (outUnicodeCharacter) == 0) {
     * ioScanningOk = NO ;
@@ -1351,10 +1284,9 @@ scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioScanningOk
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-scanner_cocoa_routine_codePointToUnicode (BOOL * ioScanningOk, 
-                                          NSString * inElementString,
-                                          NSMutableString * ioTemplateString) {
+void scanner_cocoa_routine_codePointToUnicode (BOOL * ioScanningOk,
+                                               NSString * inElementString,
+                                               NSMutableString * ioTemplateString) {
   if ([inElementString length] == 0) {
     * ioScanningOk = NO ;
   }else if ((UNICODE_VALUE ([inElementString characterAtIndex:0]) == 'x') || (UNICODE_VALUE ([inElementString characterAtIndex:0]) == 'X')) {
@@ -1399,12 +1331,6 @@ scanner_cocoa_routine_codePointToUnicode (BOOL * ioScanningOk,
     }
   }
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Predefined Scanner Actions (from GALGAS 3.0.0)
-#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
