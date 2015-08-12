@@ -649,7 +649,7 @@ proc updateGalgas3Targets
     }
     if SDK == "macosx10.6" then 
       xcodeSettingList += !"CLANG_ENABLE_OBJC_ARC = NO"
-      xcodeSettingList += !"GCC_ENABLE_OBJC_GCC = required"
+      xcodeSettingList += !"GCC_ENABLE_OBJC_GC = required"
     else
       xcodeSettingList += !"CLANG_ENABLE_OBJC_ARC = YES"
     end
