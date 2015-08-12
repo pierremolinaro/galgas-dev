@@ -2,7 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Projet \texttt{Xcode} et application Cocoa}
+\chapterLabel{Projet \texttt{Xcode} et application Cocoa}{appliCocoa}
 %-------------------------------------------------------------
 
 Vous pouvez demander à GALGAS d'engendrer un projet \texttt{Xcode}, qui contiendra :
@@ -19,7 +19,7 @@ Vous pouvez demander à GALGAS d'engendrer un projet \texttt{Xcode}, qui contien
 
 \section{Paramétrage du projet GALGAS}
 
-Pour engendrer un projet \texttt{Xcode}, il vous suffit d'ajouter une déclaration telle que \ggs+%Mavericks+ dans votre fichier projet (d'extension \tpp{.galgasProject}). Par exemple :
+Pour engendrer un projet \texttt{Xcode}, il vous suffit d'ajouter une déclaration telle que \ggs+%Mavericks+ dans votre fichier projet (d'extension \tpp{.galgasProject}, voir \refChapterPage{composantProjet}). Par exemple :
 
 \begin{galgas}
 project (0:0:1) -> "logo" {
@@ -28,21 +28,23 @@ project (0:0:1) -> "logo" {
   ...
 \end{galgas}
 
-Un projet \texttt{Xcode} définit la version de Mac OS pour laquelle il va être compilé : évidemment, \ggs+%Mavericks+ définit la version \texttt{Mavericks} (10.9). Le \refTableau{options-pour-xcode} liste les différents options possibles. GALGAS fixe la version indiquée dans le projet \texttt{Xcode}, et il faut ensuite que la version de \texttt{Xcode} utilisée soit compatible avec ce réglage. L'option \ggs+%LatestMacOS+ correspond au réglage correspondant du projet \texttt{Xcode} engendré.
+Un projet \texttt{Xcode} définit la version de Mac OS pour laquelle il va être compilé : ainsi, \ggs+%Mavericks+ définit la version \texttt{Mavericks} (10.9). Le \refTableau{options-pour-xcode} liste les différents options possibles. GALGAS fixe la version indiquée dans le projet \texttt{Xcode}, et il faut ensuite que la version de \texttt{Xcode} utilisée soit compatible avec ce réglage. L'option \ggs+%LatestMacOS+ correspond au réglage correspondant du projet \texttt{Xcode} engendré. Quand \ggs+%SnowLeopard+ est sélectionné, l'application Cocoa engendrée utilise le \emph{garbage collector}. Sinon, elle adopte l'\emph{Automatic Reference Counting} (\emph{ARC}).
 
 Il y a une seconde option à ajouter dans le projet GALGAS : \ggs+%applicationBundleBase+. Celle-ci fixe le \emph{Bundle Identifier} de l'application Cocoa. À la chaîne définie dans l'option (ici \ggs+"fr.what"+) est ajouté le nom du projet (défini dans l'en-tête, ici \ggs+"logo"+), précédé par un point : le \emph{Bundle Identifier} est donc \tpp{fr.what.logo}.
 
 
 \begin{table}[t]
   \centering
-  \begin{tabular}{rl}
-    \textbf{Option} & \textbf{Version Mac OS correspondante}\\
-    \ggs+%SnowLeopard+ & \texttt{SnowLeopard} (10.6) \\
-    \ggs+%Lion+ & \texttt{Lion} (10.7) \\
-    \ggs+%MountainLion+ & \texttt{Mountain Lion} (10.8) \\
-    \ggs+%Mavericks+ & \texttt{Mavericks} (10.9) \\
-    \ggs+%Yosemite+ & \texttt{Yosemite} (10.10) \\
-    \ggs+%LatestMacOS+ & Dernière version Mac OS supportée par \texttt{Xcode} \\
+  \begin{tabular}{rlll}
+    \textbf{Option} & \textbf{Version SDK Mac OS} & \textbf{Version de deploiement} &  \textbf{Gestion mémoire}\\
+    \ggs+%SnowLeopard+ & \texttt{SnowLeopard} (10.6) & 10.6  & \emph{Garbage Collector}\\
+    \ggs+%Lion+ & \texttt{Lion} (10.7) & 10.7 & \emph{ARC}\\
+    \ggs+%MountainLion+ & \texttt{Mountain Lion} (10.8) & 10.8 & \emph{ARC}\\
+    \ggs+%Mavericks+ & \texttt{Mavericks} (10.9) & 10.9 & \emph{ARC}\\
+    \ggs+%Yosemite+ & \texttt{Yosemite} (10.10) & 10.10  & \emph{ARC}\\
+    \ggs+%YosemiteElCapitan+ & \texttt{Yosemite} (10.11) & 10.10  & \emph{ARC}\\
+    \ggs+%ElCapitan+ & \texttt{Yosemite} (10.11) & 10.11  & \emph{ARC}\\
+    \ggs+%LatestMacOS+ & -- & -- & --\\
   \end{tabular}
   \caption{Options du projet GALGAS indiquant la version Mac OS}
   \labelTableau{options-pour-xcode}

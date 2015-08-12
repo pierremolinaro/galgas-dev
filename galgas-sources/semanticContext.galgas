@@ -2760,7 +2760,7 @@ override method @overridingAbstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
 }
-                                
+
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryModifierAST enterDeclarationInGraph

@@ -162,6 +162,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) drawRect: (NSRect) inRect {
+  // NSLog (@"%s", __PRETTY_FUNCTION__) ;
 //--- Draw page guide
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   if ([ud boolForKey:GGS_uses_page_guide] && (self.string.length > 0)) {

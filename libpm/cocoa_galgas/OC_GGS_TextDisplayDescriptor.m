@@ -101,6 +101,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       displayDescriptor:self
     ] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
+  //  mTextView.wantsLayer = YES ;
     [mTextView setGrammarCheckingEnabled:NO] ;
     [mTextView setContinuousSpellCheckingEnabled:NO] ;
     mTextView.allowsUndo = YES ;
@@ -109,9 +110,9 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     [mTextView setAutomaticQuoteSubstitutionEnabled:NO] ;
     mTextView.smartInsertDeleteEnabled = NO ;
     [mTextView setAutomaticDashSubstitutionEnabled:NO] ;
-    [mTextView.layoutManager setAllowsNonContiguousLayout:YES] ;
+    [mTextView.layoutManager setAllowsNonContiguousLayout:NO] ;
     [mTextView.layoutManager setUsesFontLeading:YES] ;
-    [mTextView.layoutManager setBackgroundLayoutEnabled:NO] ;
+    [mTextView.layoutManager setBackgroundLayoutEnabled:YES] ;
     mTextView.drawsBackground = NO ;
     if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
       [mTextView setValue:[NSNumber numberWithBool:NO] forKey:@"automaticTextReplacementEnabled"] ;
