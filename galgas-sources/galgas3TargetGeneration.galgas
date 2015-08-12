@@ -331,76 +331,83 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"MountainLion"
   availableGenerationFeatures += !"Mavericks"
   availableGenerationFeatures += !"Yosemite"
+  availableGenerationFeatures += !"ElCapitanYosemite"
   availableGenerationFeatures += !"ElCapitan"
   availableGenerationFeatures += !"LatestMacOS"
-  availableGenerationFeatures += !"multi-threading"
+#  availableGenerationFeatures += !"multi-threading"
   var generationFeatures =@stringset.emptySet{}
-  @bool multiThreadingEnabled = false
+#  @bool multiThreadingEnabled = false
 #--- Check xcode target architectures
   @string SDK = ""
-#  @string SDKForToolLink := "" ;
-  @bool usesARC = false
+  @string MACOSX_DEPLOYMENT_TARGET = ""
   for () in inTargetFeatureList do
     if [availableGenerationFeatures hasKey !mValue.string] then
       if [generationFeatures hasKey !mValue.string] then
         error mValue: "duplicate '" + mValue + "' feature"
       end
       let macOsDuplicateMessage = "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\","
-          " \"Yosemite\" and \"ElCapitan\", \"LatestMacOS\" are exclusive"
+          " \"Yosemite\", \"ElCapitanYosemite\" and \"ElCapitan\", \"LatestMacOS\" are exclusive"
     #--- Multi-threading
-      if mValue.string == "multi-threading" then
-        if multiThreadingEnabled then
-          error mValue: "duplicate '" + mValue + "' feature"
-        end
-        multiThreadingEnabled = true
+#      if mValue.string == "multi-threading" then
+#        if multiThreadingEnabled then
+#          error mValue: "duplicate '" + mValue + "' feature"
+#        end
+#        multiThreadingEnabled = true
     #--- SnowLeopard
-      elsif mValue.string == "SnowLeopard" then
+      if mValue.string == "SnowLeopard" then
         if (SDK != "") then
           error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.6"
+        MACOSX_DEPLOYMENT_TARGET = "10.6"
     #--- Lion
       elsif mValue.string == "Lion" then
         if (SDK != "") then
           error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.7"
-        usesARC = true
+        MACOSX_DEPLOYMENT_TARGET = "10.7"
     #--- Mountain Lion
       elsif mValue.string == "MountainLion" then
         if (SDK != "") then
           error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.8"
-        usesARC = true
+        MACOSX_DEPLOYMENT_TARGET = "10.8"
     #--- Mavericks
       elsif mValue.string == "Mavericks" then
         if (SDK != "") then
           error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.9"
-        usesARC = true
+        MACOSX_DEPLOYMENT_TARGET = "10.9"
     #--- Yosemite
       elsif mValue.string == "Yosemite" then
         if (SDK != "") then
           error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.10"
-        usesARC = true
+        MACOSX_DEPLOYMENT_TARGET = "10.10"
+    #--- ElCapitanYosemite
+      elsif mValue.string == "ElCapitanYosemite" then
+        if (SDK != "") then
+          error mValue: macOsDuplicateMessage
+        end
+        SDK = "macosx10.11"
+        MACOSX_DEPLOYMENT_TARGET = "10.10"
     #--- ElCapitan
       elsif mValue.string == "ElCapitan" then
         if (SDK != "") then
           error mValue: macOsDuplicateMessage
         end
         SDK = "macosx10.11"
-        usesARC = true
+        MACOSX_DEPLOYMENT_TARGET = "10.11"
     #--- Lastest MacOS
       elsif mValue.string == "LatestMacOS" then
         if (SDK != "") then
           error mValue: macOsDuplicateMessage
         end
         SDK = "macosx"
-        usesARC = true
       else
         generationFeatures += !mValue.string
       end
@@ -645,6 +652,9 @@ proc updateGalgas3Targets
       xcodeSettingList += !"GCC_ENABLE_OBJC_GCC = required"
     else
       xcodeSettingList += !"CLANG_ENABLE_OBJC_ARC = YES"
+    end
+    if MACOSX_DEPLOYMENT_TARGET != "" then
+      xcodeSettingList += !"MACOSX_DEPLOYMENT_TARGET = \"" + MACOSX_DEPLOYMENT_TARGET + "\""
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList:xcodeSettingList]
   #--- Add "Hand coded sources (App)" group

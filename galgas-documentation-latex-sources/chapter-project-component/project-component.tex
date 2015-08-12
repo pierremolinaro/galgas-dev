@@ -2,12 +2,211 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Le composant \texttt{project}}\index{Component!Project}
+\chapterLabel{Le composant \texttt{project}}{composantProjet}\index{Component!Project}
 %-------------------------------------------------------------
 
 
+Le composant \ggs!project! permet de paramétrer un projet GALGAS. Il doit être placé dans un fichier source particulier, d'extension « \texttt{.galgasProject} ». Sont déclarés dans un fichier projet :
+\begin{itemize}
+  \item la version du projet (dans l'en-tête : \refSectionPage{enTeteProjet}) ;
+  \item le nom des exécutables engendrés (dans l'en-tête : \refSectionPage{enTeteProjet}) ;
+  \item les cibles de compilation : \refSectionPage{ciblesCompilation}  ;
+  \item les fichiers sources : \refSectionPage{defFichierSourceProjet}.
+\end{itemize}
+
+Voici un exemple de composant projet :
+
+\begin{galgas}
+project (1:2:3) -> "logo" {
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-x86linux32-on-macosx
+  %makefile-x86linux64-on-macosx
+  %makefile-win32-on-macosx
+  %makefile-msys32-on-windows
+  %Mavericks
+  %applicationBundleBase : "fr.what"
+  %codeblocks-windows
+  %codeblocks-linux-mac
+
+#--- Source files
+  "galgas-sources/logo-lexique.galgas"
+  "galgas-sources/logo-options.galgas"
+  "galgas-sources/logo-semantics.galgas"
+  "galgas-sources/logo-syntax.galgas"
+  "galgas-sources/logo-grammar.galgas"
+  "galgas-sources/logo-cocoa.galgas"
+  "galgas-sources/logo-program.galgas"
+}
+\end{galgas}
 
 
 
 
- 
+
+
+
+\sectionLabel{En-tête du fichier projet}{enTeteProjet}
+
+L'en-tête d'un projet définit deux informations :
+\begin{itemize}
+  \item la version du projet ;
+  \item le nom des exécutables engendrés.
+\end{itemize}
+
+\subsection{Version du projet}
+
+\begin{galgas}
+project (1:2:3) -> "logo" {
+  ...
+}
+\end{galgas}
+
+La version du projet apparaît sous la forme d'un triplet qui suit le mot-clé \ggs!project! : \ggs!1:2:3! dans le code ci-dessus. C'est ce triplet (sous la forme \texttt{1.2.3}) qui apparaît lorsque l'on invoque l'option \texttt{-{}-version} sur l'utilitaire ligne de commande engendré.
+
+
+\subsection{Nom des exécutables engendrés}
+
+\begin{galgas}
+project (1:2:3) -> "logo" {
+  ...
+}
+\end{galgas}
+
+Le nom des exécutables engendrés est fixé par la chaîne de caractères qui apparaît dans l'en-tête : \texttt{logo} dans l'exemple ci-dessus. Les exécutables compilés en mode \emph{release} portent directement ce nom, ceux compilés en mode \emph{debug} portent ce nom augmenté du suffixe « \texttt{-debug} » : \texttt{logo-debug}.
+
+
+\sectionLabel{Cibles de compilation}{ciblesCompilation}
+
+GALGAS peut engendrer des cibles de compilation pour Mac, Linux et Windows. Les outils engendrés sont des \emph{utilitaires en ligne de commande}, sauf sur Mac où une application Cocoa peut être engendrée.
+
+\subsection{Cibles pour Linux}
+
+Deux choix sont possibles :
+\begin{itemize}
+\item \texttt{Code::Blocks} ;
+\item compilation en ligne de commande.
+\end{itemize}
+
+\subsubsection{\texttt{Code::Blocks} pour Linux}
+
+L'option \ggs!%codeblocks-linux-mac! engendre une cible qui peut être compilée indifféremment sur Linux ou sur Mac, utilisant \texttt{Code::Blocks}\footnote{\url{http://www.codeblocks.org}}.
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  %codeblocks-linux-mac
+  ...
+}
+\end{galgas}
+
+\subsubsection{Compilation en ligne de commande pour Linux}
+
+La déclaration \ggs!%makefile-unix! engendre une cible qui peut être compilée indifféremment sur Linux ou sur Mac.
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  %makefile-unix
+  ...
+}
+\end{galgas}
+
+
+
+\subsection{Cibles pour Mac}
+
+Comme GALGAS est développé sur Mac, c'est pour cette plateforme que l'on trouve le plus grand nombre de cibles :
+\begin{itemize}
+  \item application Cocoa ;
+  \item compilation en ligne de commande ;
+  \item cross-compilation pour Win32 ;
+  \item cross-compilation pour Linux32 ;
+  \item cross-compilation pour Linux64.
+\end{itemize}
+
+\subsubsection{Application Cocoa}
+
+Cette cible est l'objet du \refChapterPage{appliCocoa}.
+
+\subsubsection{Compilation en ligne de commande pour Mac}
+
+La déclaration \ggs!%makefile-macosx! engendre une cible pour obtenir un exécutable en ligne de commande sur Mac. Note : on peut aussi utiliser \ggs!%makefile-unix!.
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  %makefile-macosx
+  ...
+}
+\end{galgas}
+
+
+\subsubsection{Cross-compilation en ligne de commande pour Win32}
+
+La déclaration \ggs!%makefile-win32-on-macosx! engendre une cible pour obtenir sur Mac un exécutable en ligne de commande pour Win32. À la première cross-compilation, le cross-compilateur est téléchargé à partir du site \texttt{rts-software} et placé dans \texttt{$\sim$/galgas-tools-for-cross-compilation}.
+
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  %makefile-win32-on-macosx
+  ...
+}
+\end{galgas}
+
+
+\subsubsection{Cross-compilation en ligne de commande pour Linux32}
+
+La déclaration \ggs!%makefile-x86linux32-on-macosx! engendre une cible pour obtenir sur Mac un exécutable en ligne de commande pour Linux 32 bits sur x86. À la première cross-compilation, le cross-compilateur est téléchargé à partir du site \texttt{rts-software} et placé dans \texttt{$\sim$/galgas-tools-for-cross-compilation}.
+
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  %makefile-x86linux32-on-macosx
+  ...
+}
+\end{galgas}
+
+
+\subsubsection{Cross-compilation en ligne de commande pour Linux64}
+
+La déclaration \ggs!%makefile-x86linux64-on-macosx! engendre une cible pour obtenir sur Mac un exécutable en ligne de commande pour Linux 64 bits sur x86. À la première cross-compilation, le cross-compilateur est téléchargé à partir du site \texttt{rts-software} et placé dans \texttt{$\sim$/galgas-tools-for-cross-compilation}.
+
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  %makefile-x86linux64-on-macosx
+  ...
+}
+\end{galgas}
+
+
+
+\subsection{Cible pour Windows : \texttt{Code::Blocks}}
+
+Sur Windows, la compilation C++ du projet engendré s'effectue avec \texttt{Code::Blocks}\footnote{\url{http://www.codeblocks.org}}. La cible est engendrée par la déclaration \ggs!%codeblocks-windows!.
+
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  %codeblocks-windows
+  ...
+}
+\end{galgas}
+
+
+
+
+
+\sectionLabel{Déclaration des fichiers sources du projet}{defFichierSourceProjet}
+
+Deux types de fichiers sources peuvent être déclarés :
+\begin{itemize}
+  \item des fichiers sources GALGAS ;
+  \item des fichiers sources C++.
+\end{itemize}
+
+Un fichier source est déclaré sous la forme d'une chaîne de caractères qui définit son chemin :
+\begin{itemize}
+\item le chemin est absolu si il commence par un « / » ;
+\item sinon il est relatif au répertoire qui contient le fichier projet ;
+\item l'extension du chemin définit le type : « \texttt{.galgas} » pour un source GALGAS, « \texttt{.cpp} » pour un source C++.
+\end{itemize}
+
+Les sources GALGAS déclarés sont inclus dans la compilation GALGAS. L'ordre dans lequel apparaissent ces fichiers n'a pas d'importance sémantique, il définit simplement l'ordre dans lesquels les analyses lexicale et syntaxique sont effectuées.
+
+Les sources C++ déclarés sont ignorés par la compilation GALGAS, et sont simplement ajoutés à la liste des foichiers C++ à compiler.
+
+
+
