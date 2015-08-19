@@ -20,8 +20,9 @@ proc enterModifierWithInputArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inInputArgumentTypeName
   ?let @string inInputArgumentName
-  ?let @string inModifierName
-  ?let @bool inHasCompilerArgument {
+  ?setterName:let @string inModifierName
+  ?let @bool inHasCompilerArgument
+{
   @unifiedTypeMap-proxy argumentTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex]
   var argList =@formalParameterSignature.emptyList{}
@@ -38,26 +39,27 @@ proc enterModifierWithInputArgument
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc enterModifierWithOutputArgument
-  ?!@setterMap ioModifierMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inOutputArgumentTypeName
-  ?let @string inOutputArgumentName
-  ?let @string inModifierName
-  ?let @bool inHasCompilerArgument {
-  @unifiedTypeMap-proxy argumentTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
-  var argList =@formalParameterSignature.emptyList{}
-  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
-  [!?ioModifierMap insertOrReplace
-    !@lstring.new {!inModifierName !@location.here}
-    !@methodKind. definedAsMember
-    !argList
-    !inHasCompilerArgument
-    !@methodQualifier. isBasic
-    !""
-  ]
-}
+#proc enterModifierWithOutputArgument
+#  ?!@setterMap ioModifierMap
+#  ?!@unifiedTypeMap ioUnifiedTypeMap
+#  ?let @string inOutputArgumentTypeName
+#  ?let @string inOutputArgumentName
+#  ?setterName:let @string inModifierName
+#  ?compilerArg:let @bool inHasCompilerArgument
+#{
+#  @unifiedTypeMap-proxy argumentTypeIndex
+#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
+#  var argList =@formalParameterSignature.emptyList{}
+#  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
+#  [!?ioModifierMap insertOrReplace
+#    !@lstring.new {!inModifierName !@location.here}
+#    !@methodKind. definedAsMember
+#    !argList
+#    !inHasCompilerArgument
+#    !@methodQualifier. isBasic
+#    !""
+#  ]
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -68,20 +70,51 @@ proc enterModifierWith2InputArguments
   ?let @string inInputArgument1Name
   ?let @string inInputArgument2TypeName
   ?let @string inInputArgument2Name
-  ?let @string inModifierName
-  ?let @bool inHasCompilerArgument {
-  var argList =@formalParameterSignature.emptyList{}
-  @unifiedTypeMap-proxy argumentTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?argumentTypeIndex]
-  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgument1Name
+  ?setterName:let @string inModifierName
+  ?compilerArg:let @bool inHasCompilerArgument
+{
+  @formalParameterSignature argList = {}
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?@unifiedTypeMap-proxy argumentTypeIndex]
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument1Name
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex]
-  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgument2Name
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name
   [!?ioModifierMap insertOrReplace
-    !@lstring.new {!inModifierName !@location.here}
+    !@lstring.new {!inModifierName !.here}
     !@methodKind. definedAsMember
     !argList
     !inHasCompilerArgument
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
+    !""
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc enterModifierWith3InputArguments
+  ?!@setterMap ioModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inInputArgument1TypeName
+  ?let @string inInputArgument1Name
+  ?let @string inInputArgument2TypeName
+  ?let @string inInputArgument2Name
+  ?let @string inInputArgument3TypeName
+  ?let @string inInputArgument3Name
+  ?setterName:let @string inModifierName
+  ?compilerArg:let @bool inHasCompilerArgument
+{
+  @formalParameterSignature argList = {}
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?@unifiedTypeMap-proxy argumentTypeIndex]
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument1Name
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex]
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument3TypeName ?argumentTypeIndex]
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument3Name
+  [!?ioModifierMap insertOrReplace
+    !@lstring.new {!inModifierName !.here}
+    !@methodKind. definedAsMember
+    !argList
+    !inHasCompilerArgument
+    !@methodQualifier.isBasic
     !""
   ]
 }
@@ -107,12 +140,19 @@ proc enterModifierWithoutArgument
 override method @stringPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap {
-  outModifierMap = @setterMap. emptyMap
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inCapacity" !"setCapacity" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !"incIndentation" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !"decIndentation" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inColumnIndex" !"appendSpacesUntilColumn" !true )
-  enterModifierWith2InputArguments ( !?outModifierMap !?ioUnifiedTypeMap !"char" !"inChar" !"uint" !"inIndex" !"setCharacterAtIndex" !true )
+  outModifierMap = {}
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inCapacity" !setterName:"setCapacity" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !setterName:"incIndentation" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !setterName:"decIndentation" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inColumnIndex" !setterName:"appendSpacesUntilColumn" !true )
+  enterModifierWith2InputArguments (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"char" !"inChar"
+    !"uint" !"inIndex"
+    !setterName:"setCharacterAtIndex"
+    !compilerArg:true
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -120,14 +160,14 @@ override method @stringPredefinedTypeAST getModifierMap
 override method @dataPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap {
-  outModifierMap = @setterMap. emptyMap
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendByte" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendShortBE" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendShortLE" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendUIntBE" !false )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendUIntLE" !false )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inValue" !"appendUTF8String" !false )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"data" !"inValue" !"appendData" !false )
+  outModifierMap = {}
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendByte" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendShortBE" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendShortLE" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendUIntBE" !false )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendUIntLE" !false )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inValue" !setterName:"appendUTF8String" !false )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"data" !"inValue" !setterName:"appendData" !false )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -135,8 +175,26 @@ override method @dataPredefinedTypeAST getModifierMap
 override method @filewrapperPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap {
-  outModifierMap = @setterMap. emptyMap
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inDirectoryPath" !"setCurrentDirectory" !true )
+  outModifierMap = {}
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inDirectoryPath" !setterName:"setCurrentDirectory" !true )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @bitstringPredefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@setterMap outModifierMap
+{
+  outModifierMap = {}
+  enterModifierWith3InputArguments (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint64" !"inValue"
+    !"uint" !"inStartIndex"
+    !"uint" !"inWidth"
+    !setterName:"orInPlaceWith"
+    !compilerArg:false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

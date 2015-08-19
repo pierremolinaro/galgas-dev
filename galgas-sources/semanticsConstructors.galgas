@@ -276,9 +276,20 @@ override method @typePredefinedTypeAST getConstructorMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @bitstringPredefinedTypeAST getConstructorMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@constructorMap outMap
+{
+  outMap = {}
+  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"zero" !"bitstring" !false)
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @dataPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@constructorMap outMap
+{
   outMap = {}
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"emptyData" !"data" !false)
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"dataWithContentsOfFile" !"string" !"inFilePath" !"data" !true)

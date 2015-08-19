@@ -63,6 +63,49 @@ GALGAS_application GALGAS_application::extractObject (const GALGAS_object & inOb
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                                   @bitstring type                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_bitstring ("bitstring",
+                                  NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_bitstring::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bitstring ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_bitstring::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_bitstring (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bitstring GALGAS_bitstring::extractObject (const GALGAS_object & inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_bitstring result ;
+  const GALGAS_bitstring * p = (const GALGAS_bitstring *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_bitstring *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("bitstring", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                                  @filewrapper type                                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

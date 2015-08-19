@@ -86,6 +86,13 @@ override getter @applicationPredefinedTypeAST getSupportedOperatorFlags
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override getter @bitstringPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod ()
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override getter @objectPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()

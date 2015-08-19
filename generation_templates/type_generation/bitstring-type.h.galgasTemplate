@@ -1,0 +1,20 @@
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["@bitstring type" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bitstring : public AC_GALGAS_root {
+//--------------------------------- Private properties
+  private : bool mIsValid ;
+  private : TC_Array <bool> mBitStringValue ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mIsValid ; }
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_bitstring (void) ;
+
+%
+

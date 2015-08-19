@@ -200,6 +200,7 @@ enum @predefinedTypeKindEnum {
   case predefined_data 
   case predefined_filewrapper 
   case predefined_application
+  case predefined_bitstring
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -393,6 +394,8 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @applicationPredefinedTypeAST : @predefinedTypeAST {}
+
+class @bitstringPredefinedTypeAST : @predefinedTypeAST {}
 
 class @objectPredefinedTypeAST : @predefinedTypeAST {}
 

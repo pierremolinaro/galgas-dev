@@ -1011,6 +1011,7 @@ proc updateGalgas3Targets
         !"cTemplateDelimiter.h",
         !"GALGAS_application.cpp",
         !"GALGAS_binaryset.cpp",
+        !"GALGAS_bitstring.cpp",
         !"GALGAS_bool.cpp",
         !"GALGAS_char.cpp",
         !"GALGAS_data.cpp",

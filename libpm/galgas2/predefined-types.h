@@ -40,6 +40,7 @@ class GALGAS__32_stringlist ;
 class GALGAS__32_stringlist_2D_element ;
 class GALGAS_application ;
 class GALGAS_binaryset ;
+class GALGAS_bitstring ;
 class GALGAS_bool ;
 class GALGAS_char ;
 class GALGAS_data ;
@@ -87,8 +88,7 @@ class GALGAS_uintlist_2D_element ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_application : public AC_GALGAS_root
- {
+class GALGAS_application : public AC_GALGAS_root {
 //--------------------------------- Accessors
   public : inline bool isValid (void) const { return false ; }
   public : inline void drop (void) { }
@@ -178,6 +178,81 @@ class GALGAS_application : public AC_GALGAS_root
 //---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_application ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                   @bitstring type                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bitstring : public AC_GALGAS_root {
+//--------------------------------- Private properties
+  private : bool mIsValid ;
+  private : TC_Array <bool> mBitStringValue ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mIsValid ; }
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_bitstring (void) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_bitstring extractObject (const GALGAS_object & inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_bitstring constructor_zero (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_bitstring & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_orInPlaceWith (class GALGAS_uint_36__34_ constinArgument0,
+                                                         class GALGAS_uint constinArgument1,
+                                                         class GALGAS_uint constinArgument2
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_bitAtIndex (const class GALGAS_uint & constinOperand0
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_byteAtIndex (const class GALGAS_uint & constinOperand0
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isZero (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_size (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_ reader_uint_36__34_AtIndex (const class GALGAS_uint & constinOperand0
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_uintAtIndex (const class GALGAS_uint & constinOperand0
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_bitstring class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bitstring ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

@@ -99,7 +99,7 @@ override method @structDeclarationAST enterInSemanticContext
     enterBaseFinalGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap 
-      ![mAttributeName string]
+      !getterName:[mAttributeName string]
       !returnedTypeName:[mAttributeTypeProxy key]
       !false
     )
