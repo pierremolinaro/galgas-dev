@@ -4,8 +4,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_application : public AC_GALGAS_root
- {
+class GALGAS_application : public AC_GALGAS_root {
 //--------------------------------- Accessors
   public : inline bool isValid (void) const { return false ; }
   public : inline void drop (void) { }

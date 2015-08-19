@@ -34,6 +34,7 @@
 #include "scanner_actions.cpp"
 #include "GALGAS_application.cpp"
 #include "GALGAS_binaryset.cpp"
+#include "GALGAS_bitstring.cpp"
 #include "GALGAS_bool.cpp"
 #include "GALGAS_char.cpp"
 #include "GALGAS_data.cpp"

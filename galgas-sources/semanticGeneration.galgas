@@ -2557,6 +2557,8 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
   template filewrapper_type "filewrapper-type.h.galgasTemplate"
 
   template application_type "application-type.h.galgasTemplate"
+
+  template bitstring_type "bitstring-type.h.galgasTemplate"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2597,6 +2599,8 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     outHeader = [filewrapper predefinedTypeGenerationTemplate.filewrapper_type]
   case predefined_application :
     outHeader = [filewrapper predefinedTypeGenerationTemplate.application_type]
+  case predefined_bitstring :
+    outHeader = [filewrapper predefinedTypeGenerationTemplate.bitstring_type]
   end
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]

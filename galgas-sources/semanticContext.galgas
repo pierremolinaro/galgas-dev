@@ -755,6 +755,7 @@ getter @predefinedTypeKindEnum defaultConstructorName
   case predefined_function : outName = ""
   case predefined_object : outName = ""
   case predefined_filewrapper : outName = ""
+  case predefined_bitstring : outName = "zero"
   end
 }
 
@@ -1375,7 +1376,7 @@ override method @graphDeclarationAST enterInSemanticContext
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"reversedGraph"
+    !getterName:"reversedGraph"
     !returnedTypeName:mGraphTypeName.string
     !false # No compiler argument
   )
