@@ -12756,7 +12756,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
   const enumGalgasBool test_59 = GALGAS_bool (kIsStrictSup, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.reader_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 351)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_59) {
     result << "//---------------------------------------------------------------------------------------------------------------------*\n"
-      "//   Enumerator declaration                                                    *\n"
+      "//   Enumerator declaration                                                                                            *\n"
       "//---------------------------------------------------------------------------------------------------------------------*\n"
       "\n"
       "class cEnumerator_" ;
@@ -12774,17 +12774,17 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result << "const typeEnumerationOrder inOrder) ;\n"
       "\n"
       "//--- Current element access\n" ;
-    GALGAS_uint index_16035_ (0) ;
+    GALGAS_uint index_16075_ (0) ;
     if (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.isValid ()) {
-      cEnumerator_enumerationDescriptorList enumerator_16035 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kEnumeration_up) ;
-      while (enumerator_16035.hasCurrentObject ()) {
+      cEnumerator_enumerationDescriptorList enumerator_16075 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kEnumeration_up) ;
+      while (enumerator_16075.hasCurrentObject ()) {
         result << "  public : class GALGAS_" ;
-        result << enumerator_16035.current_mEnumeratedType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 362)).stringValue () ;
+        result << enumerator_16075.current_mEnumeratedType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 362)).stringValue () ;
         result << " current_" ;
-        result << enumerator_16035.current_mEnumerationName (HERE).reader_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 362)).stringValue () ;
+        result << enumerator_16075.current_mEnumerationName (HERE).reader_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 362)).stringValue () ;
         result << " (LOCATION_ARGS) const ;\n" ;
-        index_16035_.increment () ;
-        enumerator_16035.gotoNextObject () ;
+        index_16075_.increment () ;
+        enumerator_16075.gotoNextObject () ;
       }
     }
     const enumGalgasBool test_60 = in_ENUMERATED_5F_OBJECT_5F_TYPE.reader_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 364)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 364)).boolEnum () ;

@@ -878,7 +878,7 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
 } ; // End of GALGAS_headerCompositionMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_headerCompositionMap : public cGenericAbstractEnumerator {
@@ -1089,7 +1089,7 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
 } ; // End of GALGAS_headerRepartitionMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_headerRepartitionMap : public cGenericAbstractEnumerator {
@@ -1350,7 +1350,7 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
 } ; // End of GALGAS_XCodeGroupList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_XCodeGroupList : public cGenericAbstractEnumerator {
@@ -1686,7 +1686,7 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
 } ; // End of GALGAS_XCodeToolTargetList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_XCodeToolTargetList : public cGenericAbstractEnumerator {
@@ -2103,7 +2103,7 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
 } ; // End of GALGAS_XCodeAppTargetList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_XCodeAppTargetList : public cGenericAbstractEnumerator {
@@ -2395,7 +2395,7 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
 } ; // End of GALGAS_BuildFileList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_BuildFileList : public cGenericAbstractEnumerator {

@@ -56,7 +56,7 @@ class GALGAS_genericCategoryMethodListMap : public AC_GALGAS_listmap {
 } ; // End of GALGAS_genericCategoryMethodListMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_genericCategoryMethodListMap : public cGenericAbstractEnumerator {
@@ -192,7 +192,7 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 } ; // End of GALGAS_descendantClassListMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_descendantClassListMap : public cGenericAbstractEnumerator {
@@ -347,7 +347,7 @@ class GALGAS_categoryMethodMapForGlobalCheckings : public AC_GALGAS_map {
 } ; // End of GALGAS_categoryMethodMapForGlobalCheckings class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_categoryMethodMapForGlobalCheckings : public cGenericAbstractEnumerator {
@@ -522,7 +522,7 @@ class GALGAS_categoryModifierMapForGlobalCheckings : public AC_GALGAS_map {
 } ; // End of GALGAS_categoryModifierMapForGlobalCheckings class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_categoryModifierMapForGlobalCheckings : public cGenericAbstractEnumerator {
@@ -697,7 +697,7 @@ class GALGAS_categoryReaderMapForGlobalCheckings : public AC_GALGAS_map {
 } ; // End of GALGAS_categoryReaderMapForGlobalCheckings class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_categoryReaderMapForGlobalCheckings : public cGenericAbstractEnumerator {
@@ -1290,7 +1290,7 @@ class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
 } ; // End of GALGAS_galgas_33_QualifiedFeatureList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_galgas_33_QualifiedFeatureList : public cGenericAbstractEnumerator {

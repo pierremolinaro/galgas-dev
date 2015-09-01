@@ -127,7 +127,7 @@ class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list {
 } ; // End of GALGAS_enumConstantListForGeneration class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_enumConstantListForGeneration : public cGenericAbstractEnumerator {
@@ -631,7 +631,7 @@ class GALGAS_mapStateTransitionSortedList : public AC_GALGAS_sortedlist {
 } ; // End of GALGAS_mapStateTransitionSortedList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_mapStateTransitionSortedList : public cGenericAbstractEnumerator {
@@ -835,7 +835,7 @@ class GALGAS_mapStateSortedList : public AC_GALGAS_sortedlist {
 } ; // End of GALGAS_mapStateSortedList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_mapStateSortedList : public cGenericAbstractEnumerator {
@@ -1037,7 +1037,7 @@ class GALGAS_mapAutomatonStateMap : public AC_GALGAS_map {
 } ; // End of GALGAS_mapAutomatonStateMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_mapAutomatonStateMap : public cGenericAbstractEnumerator {
@@ -1245,7 +1245,7 @@ class GALGAS_mapAutomatonActionMap : public AC_GALGAS_map {
 } ; // End of GALGAS_mapAutomatonActionMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_mapAutomatonActionMap : public cGenericAbstractEnumerator {
@@ -1474,7 +1474,7 @@ class GALGAS_branchBehaviourSortedListForMapOverride : public AC_GALGAS_sortedli
 } ; // End of GALGAS_branchBehaviourSortedListForMapOverride class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_branchBehaviourSortedListForMapOverride : public cGenericAbstractEnumerator {
@@ -1727,7 +1727,7 @@ class GALGAS_mapOverrideList : public AC_GALGAS_list {
 } ; // End of GALGAS_mapOverrideList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_mapOverrideList : public cGenericAbstractEnumerator {
@@ -2024,7 +2024,7 @@ class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
 } ; // End of GALGAS_sortDescriptorListForGeneration class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_sortDescriptorListForGeneration : public cGenericAbstractEnumerator {
@@ -3488,7 +3488,7 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
 } ; // End of GALGAS_syntaxInstructionListForGrammarAnalysis class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_syntaxInstructionListForGrammarAnalysis : public cGenericAbstractEnumerator {
@@ -3762,7 +3762,7 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
 } ; // End of GALGAS_productionRuleListForGrammarAnalysis class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_productionRuleListForGrammarAnalysis : public cGenericAbstractEnumerator {
@@ -3940,7 +3940,7 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
 } ; // End of GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis : public cGenericAbstractEnumerator {
@@ -4139,7 +4139,7 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
 } ; // End of GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis : public cGenericAbstractEnumerator {
@@ -4339,7 +4339,7 @@ class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
 } ; // End of GALGAS_branchListForGrammarAnalysis class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_branchListForGrammarAnalysis : public cGenericAbstractEnumerator {
@@ -4540,7 +4540,7 @@ class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
 } ; // End of GALGAS_syntaxComponentListForGrammarAnalysis class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_syntaxComponentListForGrammarAnalysis : public cGenericAbstractEnumerator {
@@ -4715,7 +4715,7 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
 } ; // End of GALGAS_terminalSymbolsMapForGrammarAnalysis class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_terminalSymbolsMapForGrammarAnalysis : public cGenericAbstractEnumerator {
@@ -5000,7 +5000,7 @@ class GALGAS_programListForGeneration : public AC_GALGAS_list {
 } ; // End of GALGAS_programListForGeneration class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_programListForGeneration : public cGenericAbstractEnumerator {
@@ -5295,7 +5295,7 @@ class GALGAS_projectSourceList : public AC_GALGAS_list {
 } ; // End of GALGAS_projectSourceList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_projectSourceList : public cGenericAbstractEnumerator {
@@ -5499,7 +5499,7 @@ class GALGAS_qualifiedFeatureList : public AC_GALGAS_list {
 } ; // End of GALGAS_qualifiedFeatureList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_qualifiedFeatureList : public cGenericAbstractEnumerator {
@@ -5706,7 +5706,7 @@ class GALGAS_XcodeObjectReferenceList : public AC_GALGAS_list {
 } ; // End of GALGAS_XcodeObjectReferenceList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_XcodeObjectReferenceList : public cGenericAbstractEnumerator {
@@ -5881,7 +5881,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_map : public AC_GALGAS_map {
 } ; // End of GALGAS_Xcode_5F_PBXFileReference_5F_map class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXFileReference_5F_map : public cGenericAbstractEnumerator {
@@ -6150,7 +6150,7 @@ class GALGAS_Xcode_5F_PBXBuildFile_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_PBXBuildFile_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXBuildFile_5F_list : public cGenericAbstractEnumerator {
@@ -6451,7 +6451,7 @@ class GALGAS_Xcode_5F_PBXSourcesBuildPhase_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_PBXSourcesBuildPhase_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXSourcesBuildPhase_5F_list : public cGenericAbstractEnumerator {
@@ -6735,7 +6735,7 @@ class GALGAS_Xcode_5F_PBXResourcesBuildPhase_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_PBXResourcesBuildPhase_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXResourcesBuildPhase_5F_list : public cGenericAbstractEnumerator {
@@ -7019,7 +7019,7 @@ class GALGAS_Xcode_5F_PBXCopyBuildPhase_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_PBXCopyBuildPhase_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXCopyBuildPhase_5F_list : public cGenericAbstractEnumerator {
@@ -7315,7 +7315,7 @@ class GALGAS_Xcode_5F_PBXFrameworksBuildPhase_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_PBXFrameworksBuildPhase_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXFrameworksBuildPhase_5F_list : public cGenericAbstractEnumerator {
@@ -7599,7 +7599,7 @@ class GALGAS_Xcode_5F_PBXGroup_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_PBXGroup_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXGroup_5F_list : public cGenericAbstractEnumerator {
@@ -7889,7 +7889,7 @@ class GALGAS_Xcode_5F_XCBuildConfiguration_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_XCBuildConfiguration_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_XCBuildConfiguration_5F_list : public cGenericAbstractEnumerator {
@@ -8264,7 +8264,7 @@ class GALGAS_Xcode_5F_PBXNativeTarget_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_PBXNativeTarget_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXNativeTarget_5F_list : public cGenericAbstractEnumerator {
@@ -8562,7 +8562,7 @@ class GALGAS_Xcode_5F_targetDependencyDescription_5F_list : public AC_GALGAS_lis
 } ; // End of GALGAS_Xcode_5F_targetDependencyDescription_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_targetDependencyDescription_5F_list : public cGenericAbstractEnumerator {
@@ -8866,7 +8866,7 @@ class GALGAS_Xcode_5F_PBXVariantGroup_5F_list : public AC_GALGAS_list {
 } ; // End of GALGAS_Xcode_5F_PBXVariantGroup_5F_list class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_Xcode_5F_PBXVariantGroup_5F_list : public cGenericAbstractEnumerator {
@@ -9047,7 +9047,7 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 } ; // End of GALGAS_projectQualifiedFeatureMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_projectQualifiedFeatureMap : public cGenericAbstractEnumerator {

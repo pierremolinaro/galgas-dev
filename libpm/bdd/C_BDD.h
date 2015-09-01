@@ -108,11 +108,10 @@ class C_BDD {
   public : C_BDD compareWithBDD (const compareEnum inComparison, const C_BDD & inOperand) const ;
 
 //--- Build a BDD result of integer comparison
-  public : static C_BDD
-  varCompareVar (const uint32_t inLeftFirstIndex,
-                 const uint32_t inDimension,
-                 const compareEnum inComparison,
-                 const uint32_t inRightFirstIndex) ;
+  public : static C_BDD varCompareVar (const uint32_t inLeftFirstIndex,
+                                       const uint32_t inDimension,
+                                       const compareEnum inComparison,
+                                       const uint32_t inRightFirstIndex) ;
 
   public : static
   C_BDD varCompareConst (const uint32_t inFirstIndex,
@@ -241,27 +240,14 @@ class C_BDD {
 
   public : void printWithHeader (AC_OutputStream & outputStream) const ;
 
-/*  public : void printWithSeparator (AC_OutputStream & outputStream,
-                                    const TC_UniqueArray <C_String> & inSeparatorArray) const ;
-
   public : void print (AC_OutputStream & outputStream,
                        const TC_UniqueArray <C_String> & inVariablesNames,
-                       const int32_t inLeadingSpacesCount) const ;
+                       const TC_UniqueArray <int32_t> & inBitCounts) const ;
 
   public : void print (AC_OutputStream & outputStream,
-                       const TC_UniqueArray <C_String> & inVariablesNames,
-                       const int32_t inVariableCount,
-                       const int32_t inLeadingSpacesCount) const ;
-
-  public : void printHeader (AC_OutputStream & outputStream,
-                             const TC_UniqueArray <C_String> & inVariablesNames,
-                             const int32_t inVariableCount,
-                             const int32_t inLeadingSpacesCount) const ;
-
-  public : void printWithoutHeader (AC_OutputStream & outputStream,
-                                    const TC_UniqueArray <C_String> & inVariablesNames,
-                                    const int32_t inVariableCount,
-                                    const int32_t inLeadingSpacesCount) const ; */
+                       const TC_UniqueArray <int32_t> & inValueSeparation,
+                       const TC_UniqueArray <int32_t> & inBitCounts,
+                       const int32_t inPrefixedSpaceCount) const ;
 
 //--- Buid string compressed representation
   public : void buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
