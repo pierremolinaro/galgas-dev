@@ -2533,6 +2533,8 @@ public : VIRTUAL_IN_DEBUG GALGAS_binaryset right_shift_operation (const GALGAS_u
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_lowerOrEqualTo (const class GALGAS_binaryset & constinOperand0
                                                                           COMMA_LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_ reader_nodeCount (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_notEqualTo (const class GALGAS_binaryset & constinOperand0
                                                                       COMMA_LOCATION_ARGS) const ;
 
@@ -2586,6 +2588,9 @@ public : VIRTUAL_IN_DEBUG GALGAS_binaryset right_shift_operation (const GALGAS_u
                                                                             const class GALGAS_uint & constinOperand1,
                                                                             const class GALGAS_uint & constinOperand2
                                                                             COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_transformedBy (const class GALGAS_uintlist & constinOperand0
+                                                                         COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_transitiveClosure (const class GALGAS_uint & constinOperand0
                                                                              COMMA_LOCATION_ARGS) const ;
