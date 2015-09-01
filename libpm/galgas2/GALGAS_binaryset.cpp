@@ -703,6 +703,32 @@ GALGAS_binaryset GALGAS_binaryset::reader_existOnBitIndexAndBeyond (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_binaryset::reader_print (const GALGAS_stringlist & inVariableList,
+                                              const GALGAS_uintlist & inBDDCount
+                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid () && inVariableList.isValid () && inBDDCount.isValid ()) {
+    TC_UniqueArray <C_String> variablesNames ;
+    TC_UniqueArray <int32_t> bitCounts ;
+    cEnumerator_stringlist variableEnumerator (inVariableList, kEnumeration_up) ;
+    cEnumerator_uintlist bddCountEnumerator (inBDDCount, kEnumeration_up) ;
+    while (variableEnumerator.hasCurrentObject () && bddCountEnumerator.hasCurrentObject ()) {
+      const C_String name = variableEnumerator.current_mValue (HERE).stringValue () ;
+      variablesNames.addObject (name) ;
+      const uint32_t bddCount = bddCountEnumerator.current_mValue (HERE).uintValue () ;
+      bitCounts.addObject ((int32_t) bddCount) ;
+      variableEnumerator.gotoNextObject () ;
+      bddCountEnumerator.gotoNextObject () ;
+    }
+    C_String s ;
+    mBDD.print (s, variablesNames, bitCounts) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_binaryset GALGAS_binaryset::reader_swap_31__30_ (const GALGAS_uint & inBitCount1,
                                                         const GALGAS_uint & inBitCount2
                                                         COMMA_UNUSED_LOCATION_ARGS) const {

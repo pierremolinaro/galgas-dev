@@ -350,7 +350,7 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 
 %if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
