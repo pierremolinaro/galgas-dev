@@ -1939,9 +1939,10 @@ void C_BDD::print (AC_OutputStream & outputStream,
 
 static void buildGraphvizRepresentation (C_String & ioString,
                                          const C_String & inSourceNode,
-                                         const uint32_t inBDDValue) {
+                                         const uint32_t inBDDValue,
+                                         const TC_UniqueArray <C_String> & inBitNames) {
   const uint32_t nodeIndex = nodeIndexForRoot (inBDDValue COMMA_HERE) ;
-  const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+  const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
   const C_String node = C_String ("N") + cStringWithUnsigned (nodeIndex) ;
   if (! isNodeMarkedThenMark (inBDDValue COMMA_HERE)) {
     const uint32_t THENbranch = gNodeArray [nodeIndex].mTHEN ;
@@ -1962,12 +1963,12 @@ static void buildGraphvizRepresentation (C_String & ioString,
     }else{
       ELSElabel << "<f0>" ;
     }
-    ioString << "  " << node << " [label=\"{" << cStringWithUnsigned (var) << "|{" << ELSElabel << "|" << THENlabel << "}}\"]\n" ;
+    ioString << "  " << node << " [label=\"{" << inBitNames (var COMMA_HERE) << "|{" << ELSElabel << "|" << THENlabel << "}}\"]\n" ;
     if (ELSEbranch > 1) {
-      buildGraphvizRepresentation (ioString, node + ":f0:c", ELSEbranch) ;
+      buildGraphvizRepresentation (ioString, node + ":f0:c", ELSEbranch, inBitNames) ;
     }
     if (THENbranch > 1) {
-      buildGraphvizRepresentation (ioString, node + ":f1:c", THENbranch) ;
+      buildGraphvizRepresentation (ioString, node + ":f1:c", THENbranch, inBitNames) ;
     }
   }
   ioString << "  " << inSourceNode << " -> " << node << "" ;
@@ -1980,6 +1981,21 @@ static void buildGraphvizRepresentation (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_BDD::graphvizRepresentation (void) const {
+  int32_t varCount = 0 ;
+  if (mBDDvalue > 1) {
+    const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+    varCount = ((int32_t) gNodeArray [nodeIndex].mVariableIndex) + 1 ;
+  }
+  TC_UniqueArray <C_String> bitNames ;
+  for (int32_t i=0 ; i<varCount ; i++) {
+    bitNames.addObject (cStringWithSigned (i)) ;
+  }
+  return graphvizRepresentationWithNames (bitNames) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_String C_BDD::graphvizRepresentationWithNames (const TC_UniqueArray <C_String> & inBitNames) const {
   unmarkAllExistingBDDnodes () ;
   C_String result ;
   result << "digraph G {\n" ;
@@ -1991,7 +2007,7 @@ C_String C_BDD::graphvizRepresentation (void) const {
     result << "  edge [arrowhead=vee, tailclip=false]\n"
            << "  node [fontname=courier, shape=record]\n"
            << "  N [label=\"\", shape=rectangle]\n" ;
-    buildGraphvizRepresentation (result, "N", mBDDvalue) ;
+    buildGraphvizRepresentation (result, "N", mBDDvalue, inBitNames) ;
   }
   result << "}\n" ;
   return result ;

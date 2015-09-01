@@ -2453,6 +2453,9 @@ public : VIRTUAL_IN_DEBUG GALGAS_binaryset right_shift_operation (const GALGAS_u
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_forAllOnBitIndexAndBeyond (const class GALGAS_uint & constinOperand0
                                                                                      COMMA_LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_graphviz (const class GALGAS_stringlist & constinOperand0
+                                                                 COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_greaterOrEqualTo (const class GALGAS_binaryset & constinOperand0
                                                                             COMMA_LOCATION_ARGS) const ;
 
