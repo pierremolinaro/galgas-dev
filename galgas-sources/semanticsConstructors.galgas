@@ -310,10 +310,21 @@ override method @functionPredefinedTypeAST getConstructorMap
 
 override method @doublePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@constructorMap outMap
+{
   outMap = {}
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"pi" !"double" !false)
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"doubleWithBinaryImage" !"uint64" !"inBinaryImage" !"double" !false)
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @timerPredefinedTypeAST getConstructorMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@constructorMap outMap
+{
+  outMap = {}
+  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"start" !"timer" !false)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

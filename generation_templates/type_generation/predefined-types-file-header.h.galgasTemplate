@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/C_String.h"
+#include "time/C_Timer.h"
 #include "galgas2/AC_GALGAS_root.h"
 #include "galgas2/C_galgas_type_descriptor.h"
 #include "galgas2/typeComparisonResult.h"

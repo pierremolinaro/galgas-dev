@@ -6965,7 +6965,8 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
     kEnum_predefined_5F_data,
     kEnum_predefined_5F_filewrapper,
     kEnum_predefined_5F_application,
-    kEnum_predefined_5F_bitstring
+    kEnum_predefined_5F_bitstring,
+    kEnum_predefined_5F_timer
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -7017,6 +7018,8 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
 
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_stringset (LOCATION_ARGS) ;
 
+  public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_timer (LOCATION_ARGS) ;
+
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_type (LOCATION_ARGS) ;
 
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_uint (LOCATION_ARGS) ;
@@ -7064,6 +7067,8 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_string (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_stringset (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_timer (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_type (LOCATION_ARGS) const ;
 

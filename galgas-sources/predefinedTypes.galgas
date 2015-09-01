@@ -124,6 +124,7 @@ private proc appendStructASTForRangeType
 proc appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 {
+  ioDeclarationListASTs += !@timerPredefinedTypeAST.new {!true !"timer" !.predefined_timer}
   ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!true !"application" !.predefined_application}
   ioDeclarationListASTs += !@bitstringPredefinedTypeAST.new {!true !"bitstring" !.predefined_bitstring}
   ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!true !"filewrapper" !.predefined_filewrapper}

@@ -1024,6 +1024,7 @@ proc updateGalgas3Targets
         !"GALGAS_sint.cpp",
         !"GALGAS_string.cpp",
         !"GALGAS_stringset.cpp",
+        !"GALGAS_timer.cpp",
         !"GALGAS_type.cpp",
         !"GALGAS_uint_36__34_.cpp",
         !"GALGAS_uint.cpp",

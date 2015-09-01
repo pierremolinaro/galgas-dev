@@ -49,6 +49,7 @@
 #include "GALGAS_type.cpp"
 #include "GALGAS_object.cpp"
 #include "GALGAS_uint.cpp"
+#include "GALGAS_timer.cpp"
 #include "GALGAS_uint_36__34_.cpp"
 
 //-----------------------------------------------------------------------------*

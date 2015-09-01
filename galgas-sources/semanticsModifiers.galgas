@@ -124,7 +124,8 @@ proc enterModifierWith3InputArguments
 proc enterModifierWithoutArgument
   ?!@setterMap ioModifierMap
   ?let @string inModifierName
-  ?let @bool inHasCompilerArgument {
+  ?let @bool inHasCompilerArgument
+{
   [!?ioModifierMap insertOrReplace
     !@lstring.new {!inModifierName !@location.here}
     !@methodKind. definedAsMember
@@ -194,6 +195,25 @@ override method @bitstringPredefinedTypeAST getModifierMap
     !"uint" !"inWidth"
     !setterName:"orInPlaceWith"
     !compilerArg:false
+  )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @timerPredefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@setterMap outModifierMap
+{
+  outModifierMap = {}
+  enterModifierWithoutArgument (
+    !?outModifierMap
+    !"stop"
+    !false
+  )
+  enterModifierWithoutArgument (
+    !?outModifierMap
+    !"resume"
+    !false
   )
 }
 
