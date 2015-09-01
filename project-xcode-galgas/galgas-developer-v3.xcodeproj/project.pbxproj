@@ -174,6 +174,8 @@
 		CF702741137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */; };
 		CF702742137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */; };
 		CF72AED81B55AF6A00BE5E3B /* OC_GGS_FileEventStream.m in Sources */ = {isa = PBXBuildFile; fileRef = CF72AED71B55AF6A00BE5E3B /* OC_GGS_FileEventStream.m */; };
+		CF7CB7BC1B95C8BC00B2162E /* GALGAS_timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7CB7BB1B95C8BC00B2162E /* GALGAS_timer.cpp */; settings = {ASSET_TAGS = (); }; };
+		CF7CB7BD1B95C8BC00B2162E /* GALGAS_timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7CB7BB1B95C8BC00B2162E /* GALGAS_timer.cpp */; settings = {ASSET_TAGS = (); }; };
 		CF7FD6A40FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */; };
 		CF7FD6A50FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */; };
 		CF7FD6AE0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */; };
@@ -490,6 +492,7 @@
 		CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_ColoredConsole.cpp; sourceTree = "<group>"; };
 		CF72AED61B55AF6A00BE5E3B /* OC_GGS_FileEventStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_FileEventStream.h; sourceTree = "<group>"; };
 		CF72AED71B55AF6A00BE5E3B /* OC_GGS_FileEventStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_FileEventStream.m; sourceTree = "<group>"; };
+		CF7CB7BB1B95C8BC00B2162E /* GALGAS_timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_timer.cpp; sourceTree = "<group>"; };
 		CF7FD69C0FF13C1C001EA1B7 /* unicode_character_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = unicode_character_base.h; sourceTree = "<group>"; };
 		CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = unicode_character_cpp.cpp; sourceTree = "<group>"; };
 		CF7FD69E0FF13C1C001EA1B7 /* unicode_character_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = unicode_character_cpp.h; sourceTree = "<group>"; };
@@ -1137,6 +1140,7 @@
 				CFA589B410D2A55D00B7E541 /* GALGAS_sint.cpp */,
 				CF1BCEE210D2C1A300A0D648 /* GALGAS_string.cpp */,
 				CF1F0914115164FD00FAFD22 /* GALGAS_stringset.cpp */,
+				CF7CB7BB1B95C8BC00B2162E /* GALGAS_timer.cpp */,
 				CFC51EEE10D3BBB4008BF80F /* GALGAS_type.cpp */,
 				CF1BCEC010D2BAA400A0D648 /* GALGAS_uint_36__34_.cpp */,
 				CFA5892C10D28A2200B7E541 /* GALGAS_uint.cpp */,
@@ -1843,6 +1847,7 @@
 				CF074BC81000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */,
 				CF074C361000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA31000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
+				CF7CB7BC1B95C8BC00B2162E /* GALGAS_timer.cpp in Sources */,
 				CFDACD081003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */,
 				CF82F11210BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */,
 				CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
@@ -1984,6 +1989,7 @@
 				CF074BC71000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */,
 				CF074C341000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA11000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
+				CF7CB7BD1B95C8BC00B2162E /* GALGAS_timer.cpp in Sources */,
 				CFDACD091003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */,
 				CF82F11310BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */,
 				CF63B55410FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,

@@ -2559,6 +2559,8 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
   template application_type "application-type.h.galgasTemplate"
 
   template bitstring_type "bitstring-type.h.galgasTemplate"
+
+  template timer_type "timer-type.h.galgasTemplate"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2601,6 +2603,8 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     outHeader = [filewrapper predefinedTypeGenerationTemplate.application_type]
   case predefined_bitstring :
     outHeader = [filewrapper predefinedTypeGenerationTemplate.bitstring_type]
+  case predefined_timer :
+    outHeader = [filewrapper predefinedTypeGenerationTemplate.timer_type]
   end
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]

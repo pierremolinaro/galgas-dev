@@ -201,6 +201,7 @@ enum @predefinedTypeKindEnum {
   case predefined_filewrapper 
   case predefined_application
   case predefined_bitstring
+  case predefined_timer
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -428,6 +429,8 @@ class @functionPredefinedTypeAST : @predefinedTypeAST {}
 class @typePredefinedTypeAST : @predefinedTypeAST {}
 
 class @dataPredefinedTypeAST : @predefinedTypeAST {}
+
+class @timerPredefinedTypeAST : @predefinedTypeAST {}
 
 #----------------------------------------------------------------------------------------------------------------------*
 

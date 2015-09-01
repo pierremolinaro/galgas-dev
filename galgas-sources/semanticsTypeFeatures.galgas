@@ -93,6 +93,14 @@ override getter @bitstringPredefinedTypeAST getSupportedOperatorFlags
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override getter @timerPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags
+{
+  outFlags = generateDescriptionReaderUtilityMethod ()
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override getter @objectPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
@@ -236,7 +244,8 @@ override getter @filewrapperPredefinedTypeAST getSupportedOperatorFlags
 
 override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@functionSignature outAddAssignArgumentList {
+  !@functionSignature outAddAssignArgumentList
+{
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
   outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
 }

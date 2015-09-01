@@ -795,3 +795,26 @@ override method @bitstringPredefinedTypeAST getReaderMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @timerPredefinedTypeAST getReaderMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@getterMap outMap
+{
+  commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"msFromStart"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
