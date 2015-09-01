@@ -729,6 +729,24 @@ GALGAS_string GALGAS_binaryset::reader_print (const GALGAS_stringlist & inVariab
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_binaryset::reader_graphviz (const GALGAS_stringlist & inBitNameList
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid () && inBitNameList.isValid ()) {
+    TC_UniqueArray <C_String> bitNameArray ;
+    cEnumerator_stringlist variableEnumerator (inBitNameList, kEnumeration_up) ;
+    while (variableEnumerator.hasCurrentObject ()) {
+      const C_String name = variableEnumerator.current_mValue (HERE).stringValue () ;
+      bitNameArray.addObject (name) ;
+      variableEnumerator.gotoNextObject () ;
+    }
+    result = GALGAS_string (mBDD.graphvizRepresentationWithNames (bitNameArray)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_binaryset GALGAS_binaryset::reader_swap_31__30_ (const GALGAS_uint & inBitCount1,
                                                         const GALGAS_uint & inBitCount2
                                                         COMMA_UNUSED_LOCATION_ARGS) const {

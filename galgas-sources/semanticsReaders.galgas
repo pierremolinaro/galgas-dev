@@ -641,6 +641,14 @@ override method @binarysetPredefinedTypeAST getReaderMap
     !returnedTypeName:"string"
     !false
   )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"graphviz"
+    !"stringlist" !"inBitNameList"
+    !returnedTypeName:"string"
+    !false
+  )
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"forAllOnBitIndex" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"forAllOnBitIndexAndBeyond" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"existOnBitIndex" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)

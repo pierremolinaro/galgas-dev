@@ -113,16 +113,14 @@ class C_BDD {
                                        const compareEnum inComparison,
                                        const uint32_t inRightFirstIndex) ;
 
-  public : static
-  C_BDD varCompareConst (const uint32_t inFirstIndex,
-                         const uint32_t inDimension,
-                         const compareEnum inComparison,
-                         const uint64_t inComparisonConstant) ;
+  public : static C_BDD varCompareConst (const uint32_t inFirstIndex,
+                                         const uint32_t inDimension,
+                                         const compareEnum inComparison,
+                                         const uint64_t inComparisonConstant) ;
 
-  public : static
-  C_BDD bddWithConstants (const uint32_t inValues [],
-                          const uint32_t inBitCount [],
-                          const int32_t inEntryCount) ;
+  public : static C_BDD bddWithConstants (const uint32_t inValues [],
+                                          const uint32_t inBitCount [],
+                                          const int32_t inEntryCount) ;
 
 //--- Buil a BDD from a value list. This method sorts value list in ascending order
   public : static C_BDD buildBDDFromValueList (uint64_t ioValueList [],
@@ -233,6 +231,7 @@ class C_BDD {
 
 //--- Printing
   public : C_String graphvizRepresentation (void) const ;
+  public : C_String graphvizRepresentationWithNames (const TC_UniqueArray <C_String> & inBitNames) const ;
 
   public : void print (AC_OutputStream & outputStream) const ;
 
