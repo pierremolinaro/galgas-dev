@@ -729,6 +729,38 @@ GALGAS_string GALGAS_binaryset::reader_print (const GALGAS_stringlist & inVariab
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_binaryset GALGAS_binaryset::reader_transformedBy (const GALGAS_uintlist & inTransformationArray
+                                                         COMMA_LOCATION_ARGS) const {
+  GALGAS_binaryset result ;
+  if (isValid () && inTransformationArray.isValid ()) {
+    uint32_t * substitutionArray = NULL ;
+    macroMyNewPODArray (substitutionArray, uint32_t, inTransformationArray.count ()) ;
+    cEnumerator_uintlist enumerator (inTransformationArray, kEnumeration_up) ;
+    uint32_t idx = 0 ;
+    while (enumerator.hasCurrentObject ()) {
+      const uint32_t value = enumerator.current_mValue (HERE).uintValue () ;
+      substitutionArray [idx] = value ;
+      idx ++ ;
+      enumerator.gotoNextObject () ;
+    }
+    result = GALGAS_binaryset (mBDD.substitution (substitutionArray, idx COMMA_THERE)) ;
+    macroMyDeletePODArray (substitutionArray) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint_36__34_ GALGAS_binaryset::reader_nodeCount (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint_36__34_ result ;
+  if (isValid ()) {
+    result = GALGAS_uint_36__34_ (mBDD.getBDDnodesCount ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_binaryset::reader_graphviz (const GALGAS_stringlist & inBitNameList
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;

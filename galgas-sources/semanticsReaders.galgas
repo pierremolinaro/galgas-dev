@@ -620,9 +620,34 @@ override method @binarysetPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isFull" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isEmpty" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"significantVariableCount" !returnedTypeName:"uint" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isFull"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"nodeCount"
+    !returnedTypeName:"uint64"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isEmpty"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"significantVariableCount"
+    !returnedTypeName:"uint"
+    !false
+  )
   enterBaseFinalReaderWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
@@ -649,7 +674,22 @@ override method @binarysetPredefinedTypeAST getReaderMap
     !returnedTypeName:"string"
     !false
   )
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"forAllOnBitIndex" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"transformedBy"
+    !"uintlist" !"inTransformationArray"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"forAllOnBitIndex"
+    !"uint" !"inBitIndex"
+    !returnedTypeName:"binaryset"
+    !false
+  )
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"forAllOnBitIndexAndBeyond" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"existOnBitIndex" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"existOnBitIndexAndBeyond" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
