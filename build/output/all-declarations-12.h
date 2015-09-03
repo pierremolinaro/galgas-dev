@@ -2195,6 +2195,21 @@ void routine_enterInstanceMethodWithOutputArgument (class GALGAS_instanceMethodM
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                     Routine 'enterClassMethodWithInputArgument'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_enterClassMethodWithInputArgument (class GALGAS_classMethodMap & ioArgument0,
+                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                const class GALGAS_string constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_string constinArgument4,
+                                                const class GALGAS_bool constinArgument5,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                  Routine 'enterClassMethodWithStringInputArgument'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

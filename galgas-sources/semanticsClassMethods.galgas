@@ -15,18 +15,38 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
+proc enterClassMethodWithInputArgument
+  ?!@classMethodMap ioClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inClassMethodName
+  ?let @string inArgumentTypeName
+  ?let @string inArgumentName
+  ?let @bool inHasCompilerArgument
+{
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgumentTypeName ?let argumentTypeIndex]
+  @formalParameterSignature argList = {}
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inArgumentName
+  [!?ioClassMethodMap insertOrReplace
+    !.new {!inClassMethodName !.here}
+    !argList
+    !inHasCompilerArgument
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 proc enterClassMethodWithStringInputArgument
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inClassMethodName
   ?let @string inStringArgumentName
-  ?let @bool inHasCompilerArgument {
-  @unifiedTypeMap-proxy argumentTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?argumentTypeIndex]
-  var argList =@formalParameterSignature.emptyList{}
-  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn ! inStringArgumentName
+  ?let @bool inHasCompilerArgument
+{
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let argumentTypeIndex]
+  @formalParameterSignature argList = {}
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inStringArgumentName
   [!?ioClassMethodMap insertOrReplace
-    !@lstring.new {!inClassMethodName !@location.here}
+    !.new {!inClassMethodName !.here}
     !argList
     !inHasCompilerArgument
   ]
@@ -36,8 +56,9 @@ proc enterClassMethodWithStringInputArgument
 
 override method @stringPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classMethodMap outClassMethodMap {
-  outClassMethodMap = @classMethodMap. emptyMap
+  !@classMethodMap outClassMethodMap
+{
+  outClassMethodMap = {}
   enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !"inFilePath" !true )
   enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true )
   enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true )
@@ -68,6 +89,31 @@ override method @stringPredefinedTypeAST getClassMethodMap
     !argList
     !true
   ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @binarysetPredefinedTypeAST getClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap
+{
+  outClassMethodMap = {}
+  enterClassMethodWithInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !"setNodeTableSize"
+    !"uint"
+    !"inTableSize"
+    !false
+  )
+  enterClassMethodWithInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !"setAndTableSize"
+    !"uint"
+    !"inTableSize"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

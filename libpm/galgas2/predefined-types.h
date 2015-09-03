@@ -2473,6 +2473,12 @@ public : VIRTUAL_IN_DEBUG GALGAS_binaryset right_shift_operation (const GALGAS_u
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
+  public : static void class_method_setAndTableSize (class GALGAS_uint constinArgument0
+                                                     COMMA_LOCATION_ARGS) ;
+
+  public : static void class_method_setNodeTableSize (class GALGAS_uint constinArgument0
+                                                      COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_ITE (const class GALGAS_binaryset & constinOperand0,
