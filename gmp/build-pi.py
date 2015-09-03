@@ -109,7 +109,7 @@ PRODUCT_DIR = "GMP-PRODUCT"
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 os.chdir (scriptDir)
 #----------------------------------------------------------------- Build
-runCommand (["clang",
+runCommand (["gcc",
              "-O3",
              "-I", PRODUCT_DIR + "/include",
              "gmp-chudnovsky.c",
