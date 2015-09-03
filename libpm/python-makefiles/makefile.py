@@ -8,12 +8,13 @@ import urllib, shutil, subprocess
 import platform, json, operator
 import threading
 
-if sys.version_info >= (2, 6) :
-  import multiprocessing
-
 #----------------------------------------------------------------------------*
 #   processorCount                                                           *
 #----------------------------------------------------------------------------*
+
+if sys.version_info >= (2, 6) :
+  import multiprocessing
+
 
 def processorCount () :
   if sys.version_info >= (2, 6) :
