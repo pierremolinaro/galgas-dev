@@ -36,6 +36,7 @@ def buildForLinux64OnMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, disp
   gmf.mCompilationMessage = "Compiling for Linux64"
   gmf.mLinkingMessage = "Linking for Linux64"
   gmf.mStripMessage = "Stripping"
+  gmf.mCrossCompilation = "Linux-x86_64"
 #--- Options for all compilers
   gmf.mAllCompilerOptions = default_build_options.allCompilerOptions (["-Wconversion"])
 #--- Options for release mode
