@@ -986,3 +986,21 @@ typeComparisonResult GALGAS_binaryset::objectCompare (const GALGAS_binaryset & i
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_binaryset::class_method_setNodeTableSize (class GALGAS_uint inTableSize
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  if (inTableSize.isValid ()) {
+    C_BDD::setHashMapMaxSize (inTableSize.uintValue ()) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_binaryset::class_method_setAndTableSize (class GALGAS_uint inTableSize
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  if (inTableSize.isValid ()) {
+    C_BDD::setANDOperationCacheMaxSize (inTableSize.uintValue ()) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
