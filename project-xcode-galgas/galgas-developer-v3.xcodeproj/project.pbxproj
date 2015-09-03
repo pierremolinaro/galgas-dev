@@ -188,6 +188,8 @@
 		CF873F6A1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF873F681A32333C0014C45A /* C_StringListCommandLineOption.cpp */; };
 		CF873F6B1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF873F681A32333C0014C45A /* C_StringListCommandLineOption.cpp */; };
 		CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
+		CF90FA021B98793E0049CEBA /* PMMPInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF90FA001B98793E0049CEBA /* PMMPInt.cpp */; settings = {ASSET_TAGS = (); }; };
+		CF90FA031B98793E0049CEBA /* PMMPInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF90FA001B98793E0049CEBA /* PMMPInt.cpp */; settings = {ASSET_TAGS = (); }; };
 		CF92AD0612578D3F003F16F7 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
 		CF92AD0712578D40003F16F7 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
 		CF92AD0812578D40003F16F7 /* GALGAS_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF24DF09114C29F300ACF6DE /* GALGAS_object.cpp */; };
@@ -559,6 +561,8 @@
 		CF8A32121278D21600E3EDC9 /* cTemplateDelimiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cTemplateDelimiter.h; sourceTree = "<group>"; };
 		CF8D51940E46334400CFF259 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
+		CF90FA001B98793E0049CEBA /* PMMPInt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PMMPInt.cpp; sourceTree = "<group>"; };
+		CF90FA011B98793E0049CEBA /* PMMPInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMPInt.h; sourceTree = "<group>"; };
 		CF9BA5FC14824EEB009DF1C8 /* OC_GGS_TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_TextView.h; sourceTree = "<group>"; };
 		CF9BA5FD14824EEB009DF1C8 /* OC_GGS_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_TextView.m; sourceTree = "<group>"; };
 		CF9BA6001482733F009DF1C8 /* OC_GGS_Scroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_Scroller.h; sourceTree = "<group>"; };
@@ -846,6 +850,13 @@
 				CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */,
 				CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */,
 				CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF90FA041B98844F0049CEBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1615,6 +1626,8 @@
 				CF825A7408536B780077AEAF /* MF_Assert.h */,
 				CF825A7508536B780077AEAF /* MF_MemoryControl.cpp */,
 				CF825A7608536B780077AEAF /* MF_MemoryControl.h */,
+				CF90FA001B98793E0049CEBA /* PMMPInt.cpp */,
+				CF90FA011B98793E0049CEBA /* PMMPInt.h */,
 				CFC1042A161DFE2000253307 /* PMUInt128.cpp */,
 				CFC1042B161DFE2000253307 /* PMUInt128.h */,
 				CF825A7708536B780077AEAF /* TF_inf.h */,
@@ -1706,6 +1719,7 @@
 			buildConfigurationList = CF6DF18D09E3F23700506859 /* Build configuration list for PBXNativeTarget "GALGAS tool" */;
 			buildPhases = (
 				CF6DF12509E3F23700506859 /* Sources */,
+				CF90FA041B98844F0049CEBA /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1877,6 +1891,7 @@
 				CF92AD0D12578D47003F16F7 /* GALGAS_binaryset.cpp in Sources */,
 				CF23745419967C4F0061D2D8 /* all-declarations-4.cpp in Sources */,
 				CF92AD0E12578D47003F16F7 /* GALGAS_bool.cpp in Sources */,
+				CF90FA021B98793E0049CEBA /* PMMPInt.cpp in Sources */,
 				CF23747019967C4F0061D2D8 /* all-declarations-18.cpp in Sources */,
 				CF92AD0F12578D48003F16F7 /* GALGAS_char.cpp in Sources */,
 				CF23744E19967C4F0061D2D8 /* all-declarations-1.cpp in Sources */,
@@ -2019,6 +2034,7 @@
 				CF92AD2312578D63003F16F7 /* GALGAS_binaryset.cpp in Sources */,
 				CF23745519967C4F0061D2D8 /* all-declarations-4.cpp in Sources */,
 				CF92AD2412578D64003F16F7 /* GALGAS_bool.cpp in Sources */,
+				CF90FA031B98793E0049CEBA /* PMMPInt.cpp in Sources */,
 				CF23747119967C4F0061D2D8 /* all-declarations-18.cpp in Sources */,
 				CF92AD2512578D65003F16F7 /* GALGAS_char.cpp in Sources */,
 				CF23744F19967C4F0061D2D8 /* all-declarations-1.cpp in Sources */,
