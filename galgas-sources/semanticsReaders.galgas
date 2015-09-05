@@ -791,7 +791,55 @@ override method @bigintPredefinedTypeAST getReaderMap
   !@getterMap outMap
 {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-#  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"size" !returnedTypeName:"uint" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUInt"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isSInt"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUInt64"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isSInt64"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bitCountForSignedRepresentation"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint64"
+    !returnedTypeName:"uint64"
+    !true
+  )
 #  enterBaseFinalReaderWithArgument (
 #    !?outMap
 #    !?ioUnifiedTypeMap

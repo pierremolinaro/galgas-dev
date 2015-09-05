@@ -54,7 +54,6 @@ class acPtr_bigUInt : public C_SharedObject {
   public : int32_t compare (const acPtr_bigUInt & inOperand) const ;
   
   public : void addInPlace (const uint32_t inOperand) ;
-//  public : void subtractInPlace (const uint32_t inOperand) ; // Requires *this >= inOperand
 
   public : void addInPlace (const acPtr_bigUInt & inOperand) ;
   public : void subtractInPlace (const acPtr_bigUInt & inOperand) ; // Requires *this >= inOperand
@@ -62,6 +61,8 @@ class acPtr_bigUInt : public C_SharedObject {
   public : void divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder) ;
 
   public : uint32_t requiredBitCountForSignedRepresentation (void) const ;
+
+  public : uint32_t absValue32AtIndex (const uint32_t inIndex) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public : void check (LOCATION_ARGS) const ;
@@ -1034,6 +1035,81 @@ uint32_t acPtr_bigUInt::requiredBitCountForSignedRepresentation (void) const {
   while (v > 0) {
     result ++ ;
     v >>= 1 ;
+  }
+  return result ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Testing Value
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::isUInt32 (void) const {
+  bool result = ! isNegative () ;
+  if (result) {
+    result = requiredBitCountForSignedRepresentation () <= 33 ; // yes, 32 + 1
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::isUInt64 (void) const {
+  bool result = ! isNegative () ;
+  if (result) {
+    result = requiredBitCountForSignedRepresentation () <= 65 ; // yes, 64 + 1
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::isSInt32 (void) const {
+  return requiredBitCountForSignedRepresentation () <= 32 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::isSInt64 (void) const {
+  return requiredBitCountForSignedRepresentation () <= 64 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Value access
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t C_BigInt::absValue32AtIndex (const uint32_t inIndex) const {
+  uint32_t result = 0 ;
+  if (mObjectPtr != NULL) {
+    result = mObjectPtr->absValue32AtIndex (inIndex) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint64_t C_BigInt::absValue64AtIndex (const uint32_t inIndex) const {
+  uint64_t result = 0 ;
+  if (mObjectPtr != NULL) {
+    result = mObjectPtr->absValue32AtIndex (2 * inIndex + 1) ;
+    result <<= 32 ;
+    result |= mObjectPtr->absValue32AtIndex (2 * inIndex) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t acPtr_bigUInt::absValue32AtIndex (const uint32_t inIndex) const {
+  uint32_t result = 0 ;
+  if (inIndex < (uint32_t) mValueArray.count ()) {
+    result = mValueArray ((int32_t) inIndex COMMA_HERE) ;
   }
   return result ;
 }
