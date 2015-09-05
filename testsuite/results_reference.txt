@@ -310,7 +310,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (82 types)
+--- Type list (84 types)
   @1charArray
   @2lstringlist
   @2lstringlist-element
@@ -332,6 +332,7 @@ LOGGING r: <@uint:5>
   @adjMat
   @application
   @baseClassForTypeCastInSetterCall
+  @bigint
   @binaryset
   @bool
   @char
@@ -379,6 +380,7 @@ LOGGING r: <@uint:5>
   @stringlist-element
   @stringset
   @structTest
+  @timer
   @toto
   @toto1
   @toto2
