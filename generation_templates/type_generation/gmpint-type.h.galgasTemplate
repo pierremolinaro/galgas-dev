@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["@gmpint type" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_gmpint : public AC_GALGAS_root {
+//--------------------------------- Private properties
+  private : bool mIsValid ;
+  private : mpz_class mValue ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mIsValid ; }
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_gmpint (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_gmpint (void) ;
+
+%
+
