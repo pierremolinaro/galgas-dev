@@ -220,6 +220,18 @@ scanner_routine_codePointToUnicode (C_Lexique & inLexique,
 void scanner_routine_resetString (C_Lexique & inLexique,
                                   C_String & ioString) ;
 
+//--- Methods introduced in GALGAS 3.1.0
+void scanner_routine_enterDecimalDigitIntoBigInt (C_Lexique & inLexique,
+                                                  const utf32 inCharacter,
+                                                  class C_BigInt & ioBigInt,
+                                                  const utf32 * inCharacterIsNotDecimalDigitError) ;
+
+void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
+                                              const utf32 inCharacter,
+                                              class C_BigInt & ioBigInt,
+                                              const utf32 * inCharacterIsNotDecimalDigitError) ;
+
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Predefined scanner functions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_functions

@@ -51,6 +51,7 @@ class GALGAS_filewrapper ;
 class GALGAS_function ;
 class GALGAS_functionlist ;
 class GALGAS_functionlist_2D_element ;
+class GALGAS_lbigint ;
 class GALGAS_lbool ;
 class GALGAS_lchar ;
 class GALGAS_ldouble ;
@@ -261,6 +262,9 @@ class GALGAS_bigint : public AC_GALGAS_root {
 
 //--------------------------------- Default constructor
   public : GALGAS_bigint (void) ;
+
+//--------------------------------- Constructor
+  public : GALGAS_bigint (const C_BigInt & inValue) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_bigint (void) ;
@@ -4603,6 +4607,77 @@ class GALGAS_lstring : public AC_GALGAS_root {
 //---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstring ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                   @lbigint struct                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lbigint : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_bigint mAttribute_bigint ;
+  public : GALGAS_location mAttribute_location ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_lbigint constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_lbigint (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_lbigint (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_lbigint (const GALGAS_bigint & in_bigint,
+                           const GALGAS_location & in_location) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_lbigint extractObject (const GALGAS_object & inObject,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_lbigint constructor_new (const class GALGAS_bigint & inOperand0,
+                                                  const class GALGAS_location & inOperand1
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_lbigint & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_bigint (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_location (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_lbigint class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigint ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

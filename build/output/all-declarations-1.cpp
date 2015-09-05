@@ -5555,7 +5555,15 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_double
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const char * gEnumNameArrayFor_lexicalTypeEnum [8] = {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_bigint (UNUSED_LOCATION_ARGS) {
+  GALGAS_lexicalTypeEnum result ;
+  result.mEnum = kEnum_lexicalType_5F_bigint ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static const char * gEnumNameArrayFor_lexicalTypeEnum [9] = {
   "(not built)",
   "lexicalType_string",
   "lexicalType_char",
@@ -5563,7 +5571,8 @@ static const char * gEnumNameArrayFor_lexicalTypeEnum [8] = {
   "lexicalType_uint64",
   "lexicalType_sint",
   "lexicalType_sint64",
-  "lexicalType_double"
+  "lexicalType_double",
+  "lexicalType_bigint"
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5606,6 +5615,12 @@ GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_sint_36__34_ (UNUSED
 
 GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_double (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_double == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_bigint (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_bigint == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

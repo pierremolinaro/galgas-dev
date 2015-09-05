@@ -16,6 +16,9 @@ class GALGAS_bigint : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public : GALGAS_bigint (void) ;
 
+//--------------------------------- Constructor
+  public : GALGAS_bigint (const C_BigInt & inValue) ;
+
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_bigint (void) ;
 

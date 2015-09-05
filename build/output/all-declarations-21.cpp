@@ -8862,7 +8862,8 @@ mAttribute_mLSIntType (),
 mAttribute_mLUInt_36__34_Type (),
 mAttribute_mLSInt_36__34_Type (),
 mAttribute_mLDoubleType (),
-mAttribute_mStringListType () {
+mAttribute_mStringListType (),
+mAttribute_mLBigInt () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8889,7 +8890,8 @@ GALGAS_predefinedTypes::GALGAS_predefinedTypes (const GALGAS_unifiedTypeMap_2D_p
                                                 const GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
                                                 const GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
                                                 const GALGAS_unifiedTypeMap_2D_proxy & inOperand16,
-                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand17) :
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand17,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand18) :
 mAttribute_mLocationType (inOperand0),
 mAttribute_mBoolType (inOperand1),
 mAttribute_mCharType (inOperand2),
@@ -8907,13 +8909,15 @@ mAttribute_mLSIntType (inOperand13),
 mAttribute_mLUInt_36__34_Type (inOperand14),
 mAttribute_mLSInt_36__34_Type (inOperand15),
 mAttribute_mLDoubleType (inOperand16),
-mAttribute_mStringListType (inOperand17) {
+mAttribute_mStringListType (inOperand17),
+mAttribute_mLBigInt (inOperand18) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_predefinedTypes (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                  GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                  GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                  GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
@@ -8952,11 +8956,12 @@ GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_new (const GALGAS_uni
                                                                 const GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
                                                                 const GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
                                                                 const GALGAS_unifiedTypeMap_2D_proxy & inOperand16,
-                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand17 
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand17,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand18 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypes result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid ()) {
-    result = GALGAS_predefinedTypes (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid () && inOperand18.isValid ()) {
+    result = GALGAS_predefinedTypes (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17, inOperand18) ;
   }
   return result ;
 }
@@ -9019,13 +9024,16 @@ typeComparisonResult GALGAS_predefinedTypes::objectCompare (const GALGAS_predefi
   if (result == kOperandEqual) {
     result = mAttribute_mStringListType.objectCompare (inOperand.mAttribute_mStringListType) ;
   }
+  if (result == kOperandEqual) {
+    result = mAttribute_mLBigInt.objectCompare (inOperand.mAttribute_mLBigInt) ;
+  }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_predefinedTypes::isValid (void) const {
-  return mAttribute_mLocationType.isValid () && mAttribute_mBoolType.isValid () && mAttribute_mCharType.isValid () && mAttribute_mStringType.isValid () && mAttribute_mUIntType.isValid () && mAttribute_mSIntType.isValid () && mAttribute_mUInt_36__34_Type.isValid () && mAttribute_mSInt_36__34_Type.isValid () && mAttribute_mDoubleType.isValid () && mAttribute_mLBoolType.isValid () && mAttribute_mLCharType.isValid () && mAttribute_mLStringType.isValid () && mAttribute_mLUIntType.isValid () && mAttribute_mLSIntType.isValid () && mAttribute_mLUInt_36__34_Type.isValid () && mAttribute_mLSInt_36__34_Type.isValid () && mAttribute_mLDoubleType.isValid () && mAttribute_mStringListType.isValid () ;
+  return mAttribute_mLocationType.isValid () && mAttribute_mBoolType.isValid () && mAttribute_mCharType.isValid () && mAttribute_mStringType.isValid () && mAttribute_mUIntType.isValid () && mAttribute_mSIntType.isValid () && mAttribute_mUInt_36__34_Type.isValid () && mAttribute_mSInt_36__34_Type.isValid () && mAttribute_mDoubleType.isValid () && mAttribute_mLBoolType.isValid () && mAttribute_mLCharType.isValid () && mAttribute_mLStringType.isValid () && mAttribute_mLUIntType.isValid () && mAttribute_mLSIntType.isValid () && mAttribute_mLUInt_36__34_Type.isValid () && mAttribute_mLSInt_36__34_Type.isValid () && mAttribute_mLDoubleType.isValid () && mAttribute_mStringListType.isValid () && mAttribute_mLBigInt.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9049,6 +9057,7 @@ void GALGAS_predefinedTypes::drop (void) {
   mAttribute_mLSInt_36__34_Type.drop () ;
   mAttribute_mLDoubleType.drop () ;
   mAttribute_mStringListType.drop () ;
+  mAttribute_mLBigInt.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9094,6 +9103,8 @@ void GALGAS_predefinedTypes::description (C_String & ioString,
     mAttribute_mLDoubleType.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mStringListType.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mLBigInt.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -9204,6 +9215,12 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLDoubleType (UNUS
 
 GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mStringListType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStringListType ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLBigInt (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLBigInt ;
 }
 
 

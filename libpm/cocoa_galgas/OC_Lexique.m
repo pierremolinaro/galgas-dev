@@ -1347,3 +1347,31 @@ void scanner_cocoa_routine_resetString (BOOL * ioNoLexicalError,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_cocoa_routine_enterDecimalDigitIntoBigInt (BOOL * ioScanningOk,
+                                                        const utf32 inChar,
+                                                        NSMutableString * ioString) {
+  if ((UNICODE_VALUE (inChar) >= '0') && (UNICODE_VALUE (inChar) <= '9')) {
+    [ioString appendFormat:@"%C", (uint16_t) inChar] ;
+  }else{
+    * ioScanningOk = NO ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_cocoa_routine_enterHexDigitIntoBigInt (BOOL * ioScanningOk,
+                                                    const utf32 inChar,
+                                                    NSMutableString * ioString) {
+  if ((UNICODE_VALUE (inChar) >= '0') && (UNICODE_VALUE (inChar) <= '9')) {
+    [ioString appendFormat:@"%C", (uint16_t) inChar] ;
+  }else if ((UNICODE_VALUE (inChar) >= 'A') && (UNICODE_VALUE (inChar) <= 'F')) {
+    [ioString appendFormat:@"%C", (uint16_t) inChar] ;
+  }else if ((UNICODE_VALUE (inChar) >= 'a') && (UNICODE_VALUE (inChar) <= 'f')) {
+    [ioString appendFormat:@"%C", (uint16_t) inChar] ;
+  }else{
+    * ioScanningOk = NO ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*

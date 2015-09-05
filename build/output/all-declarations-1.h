@@ -2976,7 +2976,8 @@ class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
     kEnum_lexicalType_5F_uint_36__34_,
     kEnum_lexicalType_5F_sint,
     kEnum_lexicalType_5F_sint_36__34_,
-    kEnum_lexicalType_5F_double
+    kEnum_lexicalType_5F_double,
+    kEnum_lexicalType_5F_bigint
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -2998,6 +2999,8 @@ class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
+  public : static GALGAS_lexicalTypeEnum constructor_lexicalType_5F_bigint (LOCATION_ARGS) ;
+
   public : static GALGAS_lexicalTypeEnum constructor_lexicalType_5F_char (LOCATION_ARGS) ;
 
   public : static GALGAS_lexicalTypeEnum constructor_lexicalType_5F_double (LOCATION_ARGS) ;
@@ -3024,6 +3027,8 @@ class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isLexicalType_5F_bigint (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isLexicalType_5F_char (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isLexicalType_5F_double (LOCATION_ARGS) const ;

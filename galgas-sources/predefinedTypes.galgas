@@ -161,6 +161,7 @@ proc appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"char" )
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"double" )
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"string" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bigint" )
 
   appendPredefined2StringListTypeAST (!?ioDeclarationListASTs )
   appendPredefined2LStringListTypeAST (!?ioDeclarationListASTs )

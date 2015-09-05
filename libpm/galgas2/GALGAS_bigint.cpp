@@ -33,6 +33,14 @@ mValue (0) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bigint::GALGAS_bigint (const C_BigInt & inValue) :
+AC_GALGAS_root (),
+mIsValid (true),
+mValue (inValue) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_bigint::~GALGAS_bigint (void) {
 }
 
@@ -65,3 +73,19 @@ GALGAS_bigint GALGAS_bigint::constructor_zero (UNUSED_LOCATION_ARGS) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_bigint::objectCompare (const GALGAS_bigint & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t cmp = mValue.compare (inOperand.mValue) ;
+    if (cmp < 0) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (cmp > 0) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+

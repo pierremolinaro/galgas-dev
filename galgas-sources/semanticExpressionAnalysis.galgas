@@ -390,6 +390,7 @@ struct @predefinedTypes {
   @unifiedTypeMap-proxy mLSInt64Type
   @unifiedTypeMap-proxy mLDoubleType
   @unifiedTypeMap-proxy mStringListType
+  @unifiedTypeMap-proxy mLBigInt
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

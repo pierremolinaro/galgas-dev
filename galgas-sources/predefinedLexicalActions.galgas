@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'lexique' component metamodel                                            *
+#  'lexique' component metamodel                                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -15,10 +15,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 getter @lexicalTypeEnum lexicalTypeBaseName -> @string outResult {
   switch self
     case lexicalType_string : outResult = "string"
@@ -28,427 +24,447 @@ getter @lexicalTypeEnum lexicalTypeBaseName -> @string outResult {
     case lexicalType_sint   : outResult = "sint"
     case lexicalType_sint64 : outResult = "sint64"
     case lexicalType_double : outResult = "double"
+    case lexicalType_bigint : outResult = "bigint"
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         buildLexicalRoutineMap                            *
+#                         buildLexicalRoutineMap                                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
-  outLexicalRoutineMap = @lexicalRoutineMap. emptyMap
+  outLexicalRoutineMap = {}
 #--- enterHexDigitIntoASCIIcharacter
-  var mLexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList.emptyList{}
-  var mErrorMessageList =@stringlist.emptyList{}
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_char !"ioASCIICharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inHexDigitCharacter"
-  mErrorMessageList += !"inErrorCodeGreaterThan255"
-  mErrorMessageList += !"inErrorNotHexDigitCharacter"
+  @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList = {}
+  @stringlist errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_char !"ioASCIICharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inHexDigitCharacter"
+  errorMessageList += !"inErrorCodeGreaterThan255"
+  errorMessageList += !"inErrorNotHexDigitCharacter"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterHexDigitIntoASCIIcharacter" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterDigitIntoASCIIcharacter
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_char !"ioASCIICharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inDecimalDigitCharacter"
-  mErrorMessageList += !"inErrorCodeGreaterThan255"
-  mErrorMessageList += !"inErrorNotDecimalDigitCharacter"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_char !"ioASCIICharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inDecimalDigitCharacter"
+  errorMessageList += !"inErrorCodeGreaterThan255"
+  errorMessageList += !"inErrorNotDecimalDigitCharacter"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterDigitIntoASCIIcharacter" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterCharacterIntoString
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_string !"ioString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inCharacter"
+  lexicalRoutineFormalArgumentList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_string !"ioString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inCharacter"
   [!?outLexicalRoutineMap insertKey
-    !@lstring.new {!"enterCharacterIntoString" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !.new {!"enterCharacterIntoString" !.here}
+    !lexicalRoutineFormalArgumentList
+    !{}
     !false # Is not extern
   ]
 #--- resetString
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"resetString" !@location.here}
-    !{!@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_string !"ioString"}
+    !{!.lexicalInputOutputMode !.lexicalType_string !"ioString"}
     !{}
     !false # Is not extern
   ]
 #--- convertStringToDouble
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_double !"ioDouble"
-  mErrorMessageList += !"inConversionError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_double !"ioDouble"
+  errorMessageList += !"inConversionError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertStringToDouble" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterCharacterIntoCharacter
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_char !"ioCharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inCharacter"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_char !"ioCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inCharacter"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterCharacterIntoCharacter" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- negateSInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_sint !"ioNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_sint !"ioNumber"
+  errorMessageList += !"inNumberTooLargeError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"negateSInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- negateSInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_sint64 !"ioNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_sint64 !"ioNumber"
+  errorMessageList += !"inNumberTooLargeError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"negateSInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertUIntToSInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_uint !"inUnsignedNumber"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_sint !"ioSignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_uint !"inUnsignedNumber"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_sint !"ioSignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertUIntToSInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertUInt64ToSInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_uint64 !"inUnsignedNumber"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_sint64 !"ioSignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_uint64 !"inUnsignedNumber"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_sint64 !"ioSignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertUInt64ToSInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterDigitIntoUInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inDecimalDigitCharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotDecimalDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inDecimalDigitCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotDecimalDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterDigitIntoUInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterDigitIntoUInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inDecimalDigitCharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint64 !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotDecimalDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inDecimalDigitCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint64 !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotDecimalDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterDigitIntoUInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
+    !false # Is not extern
+  ]
+#--- enterDecimalDigitIntoBigInt
+  lexicalRoutineFormalArgumentList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inDecimalDigitCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_bigint !"ioBigInt"
+  [!?outLexicalRoutineMap insertKey
+    !.new {!"enterDecimalDigitIntoBigInt" !.here}
+    !lexicalRoutineFormalArgumentList
+    !{!"inCharacterIsNotDecimalDigitError"}
+    !false # Is not extern
+  ]
+#--- enterHexDigitIntoBigInt
+  lexicalRoutineFormalArgumentList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inHexDigitCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_bigint !"ioBigInt"
+  [!?outLexicalRoutineMap insertKey
+    !.new {!"enterHexDigitIntoBigInt" !.here}
+    !lexicalRoutineFormalArgumentList
+    !{!"inCharacterIsNotHexDigitError"}
     !false # Is not extern
   ]
 #--- enterHexDigitIntoUInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inHexDigitCharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotHexDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inHexDigitCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotHexDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterHexDigitIntoUInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterHexDigitIntoUInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inHexDigitCharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint64 !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotHexDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inHexDigitCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint64 !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotHexDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterHexDigitIntoUInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertDecimalStringIntoUInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotDecimalDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotDecimalDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertDecimalStringIntoUInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertDecimalStringIntoSInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_sint !"ioSignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotDecimalDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_sint !"ioSignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotDecimalDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertDecimalStringIntoSInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertDecimalStringIntoUInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint64 !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotDecimalDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint64 !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotDecimalDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertDecimalStringIntoUInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertDecimalStringIntoSInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_sint64 !"ioSignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotDecimalDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_sint64 !"ioSignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotDecimalDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertDecimalStringIntoSInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterBinDigitIntoUInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inCharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotBinDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotBinDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterBinDigitIntoUInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterBinDigitIntoUInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inCharacter"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint64 !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotBinDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint64 !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotBinDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterBinDigitIntoUInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterOctDigitIntoUInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotOctDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotOctDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterOctDigitIntoUInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- enterOctDigitIntoUInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_char !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint64 !"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotOctDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint64 !"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotOctDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"enterOctDigitIntoUInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- multiplyUInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_uint !"inUnsignedNumber"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint !"ioUnsignedNumber"
-  mErrorMessageList += !"inResultTooLargeError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_uint !"inUnsignedNumber"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint !"ioUnsignedNumber"
+  errorMessageList += !"inResultTooLargeError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"multiplyUInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- multiplyUInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_uint!"inUnsignedNumber"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint64 !"ioUnsignedNumber"
-  mErrorMessageList += !"inResultTooLargeError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_uint!"inUnsignedNumber"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint64 !"ioUnsignedNumber"
+  errorMessageList += !"inResultTooLargeError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"multiplyUInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertHexStringIntoUInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint!"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotHexDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint!"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotHexDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertHexStringIntoUInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertHexStringIntoUInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint64!"ioUnsignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotHexDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint64!"ioUnsignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotHexDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertHexStringIntoUInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertHexStringIntoSInt
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string!"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_sint!"ioSignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotHexDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string!"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_sint!"ioSignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotHexDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertHexStringIntoSInt" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertHexStringIntoSInt64
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string!"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_sint64!"ioSignedNumber"
-  mErrorMessageList += !"inNumberTooLargeError"
-  mErrorMessageList += !"inCharacterIsNotHexDigitError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string!"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_sint64!"ioSignedNumber"
+  errorMessageList += !"inNumberTooLargeError"
+  errorMessageList += !"inCharacterIsNotHexDigitError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertHexStringIntoSInt64" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertUnsignedNumberToUnicodeChar
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_uint !"inUnsignedNumber"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_char !"ioUnicodeCharacter"
-  mErrorMessageList += !"inUnassignedUnicodeValueError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint !"inUnsignedNumber"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_char !"ioUnicodeCharacter"
+  errorMessageList += !"inUnassignedUnicodeValueError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertUnsignedNumberToUnicodeChar" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- convertHTMLSequenceToUnicodeCharacter
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_string !"inString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_char !"ioUnicodeCharacter"
-  mErrorMessageList += !"inUnassignedHTMLSequenceError"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_char !"ioUnicodeCharacter"
+  errorMessageList += !"inUnassignedHTMLSequenceError"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"convertHTMLSequenceToUnicodeCharacter" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 #--- codePointToUnicode
-  mLexicalRoutineFormalArgumentList = @lexicalRoutineFormalArgumentList. emptyList
-  mErrorMessageList = @stringlist. emptyList
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputMode !@lexicalTypeEnum. lexicalType_string !"inCodePointString"
-  mLexicalRoutineFormalArgumentList += !@lexicalArgumentModeAST. lexicalInputOutputMode !@lexicalTypeEnum. lexicalType_string !"ioString"
+  lexicalRoutineFormalArgumentList = {}
+  errorMessageList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inCodePointString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_string !"ioString"
   [!?outLexicalRoutineMap insertKey
     !@lstring.new {!"codePointToUnicode" !@location.here}
-    !mLexicalRoutineFormalArgumentList
-    !mErrorMessageList
+    !lexicalRoutineFormalArgumentList
+    !errorMessageList
     !false # Is not extern
   ]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         buildLexicalFunctionMap                           *
+#                         buildLexicalFunctionMap                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
   outLexicalFunctionMap = @lexicalFunctionMap. emptyMap
 #--- toLower
   var lexicalTypeList =@lexicalFunctionFormalArgumentList.emptyList{}
-  lexicalTypeList += !@lexicalTypeEnum. lexicalType_char !"inCharacter"
+  lexicalTypeList += !.lexicalType_char !"inCharacter"
   [!?outLexicalFunctionMap insertKey
     !@lstring.new {!"toLower" !@location.here}
     !lexicalTypeList
-    !@lexicalTypeEnum. lexicalType_char
+    !.lexicalType_char
     !""
     !false # Is not extern
   ]
 #--- toUpper
   lexicalTypeList = @lexicalFunctionFormalArgumentList. emptyList
-  lexicalTypeList += !@lexicalTypeEnum. lexicalType_char !"inCharacter"
+  lexicalTypeList += !.lexicalType_char !"inCharacter"
   [!?outLexicalFunctionMap insertKey
     !@lstring.new {!"toUpper" !@location.here}
     !lexicalTypeList
-    !@lexicalTypeEnum. lexicalType_char
+    !.lexicalType_char
     !""
     !false # Is not extern
   ]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                    printPredefinedLexicalActions                          *
+#                    printPredefinedLexicalActions                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc printPredefinedLexicalActions {
