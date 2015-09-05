@@ -96,13 +96,16 @@ class C_BigInt {
   public : void divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder COMMA_LOCATION_ARGS) ;
 //  public : void operator /= (const uint32_t inMultiplicand) ;
 
-//--- Bit access
-//  public : bool valueAtBitIndex (const uint32_t inIndex) const ;
-//  public : void setValueAtBitIndex (const bool inValue, const uint32_t inIndex) ;
+//--- Value access
+  public : uint32_t absValue32AtIndex (const uint32_t inIndex) const ;
+  public : uint64_t absValue64AtIndex (const uint32_t inIndex) const ;
 
-//--- Value as string
-//  public : C_String decimalString (void) const ;
-
+//--- Testing value
+  public : bool isUInt32 (void) const ;
+  public : bool isUInt64 (void) const ;
+  public : bool isSInt32 (void) const ;
+  public : bool isSInt64 (void) const ;
+  
 //--- Utilities
   public : uint32_t requiredBitCountForSignedRepresentation (void) const ;
 
