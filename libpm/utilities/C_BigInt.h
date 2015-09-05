@@ -68,6 +68,7 @@ class C_BigInt {
 
 //--- String
   public : C_String hexString (void) const ;
+  public : C_String decimalString (void) const ;
 
 //--- Add, subtract
   public : void operator += (const C_BigInt inValue) ;
@@ -84,7 +85,7 @@ class C_BigInt {
   public : C_BigInt operator * (const uint32_t inMultiplicand) const ;
 
 //--- Division
-//  public : void divideBy (const uint32_t inDivisor, uint32_t & outRemainder) ;
+  public : void divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder COMMA_LOCATION_ARGS) ;
 //  public : void operator /= (const uint32_t inMultiplicand) ;
 
 //--- Bit access
@@ -93,6 +94,9 @@ class C_BigInt {
 
 //--- Value as string
 //  public : C_String decimalString (void) const ;
+
+//--- Utilities
+  public : uint32_t requiredBitCountForSignedRepresentation (void) const ;
 
 //--- Example
   public : static void example (void) ;

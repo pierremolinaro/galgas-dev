@@ -203,8 +203,7 @@ class C_String : public AC_OutputStream {
   public : C_String stringByReplacingStringByString (const C_String inSearchedString,
                                                      const C_String & inReplacementString,
                                                      uint32_t & outReplacementCount,
-                                                     bool & outOk
-                                                     COMMA_LOCATION_ARGS) const ;
+                                                     bool & outOk) const ;
 
 //--- Get character last occurrence (returns -1 if not found)
   public : int32_t lastOccurrenceIndexOfChar (const utf32 inChar) const ;
@@ -274,6 +273,7 @@ class C_String : public AC_OutputStream {
 
 //--- Return reversed string
   public : C_String reversedString (void) const ;
+  public : void reverseStringInPlace (void) ;
 
 //--- Return unsigned integer value
   public : uint32_t unsignedIntegerValue (void) const ;

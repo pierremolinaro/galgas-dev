@@ -38,6 +38,7 @@ class acPtr_bigUInt : public C_SharedObject {
   public : void decrement (void) ;
 
   public : C_String hexString (void) const ;
+  public : C_String decimalString (void) const ;
   
   public : bool isZero (void) const ;
 
@@ -55,6 +56,9 @@ class acPtr_bigUInt : public C_SharedObject {
   public : void addInPlace (const acPtr_bigUInt & inOperand) ;
   public : void subtractInPlace (const acPtr_bigUInt & inOperand) ; // Requires *this >= inOperand
   public : void multiplyInPlace (const uint32_t inOperand) ;
+  public : void divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder) ;
+
+  public : uint32_t requiredBitCountForSignedRepresentation (void) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public : void check (LOCATION_ARGS) const ;
@@ -399,6 +403,34 @@ C_String acPtr_bigUInt::hexString (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+C_String C_BigInt::decimalString (void) const {
+  C_String result ;
+  switch (mSign) {
+  case zero :
+    result << "0" ;
+    break;
+  case positive:
+  case negative:
+    C_BigInt temporary = *this ;
+    C_String tempString ;
+    while (!temporary.isZero ()) {
+      uint32_t remainder ;
+      temporary.divideInPlace (10, remainder COMMA_HERE) ;
+      tempString.appendUnicodeCharacter (TO_UNICODE (remainder + '0') COMMA_HERE) ;
+    }
+    tempString.reverseStringInPlace () ;
+    if (mSign == negative) {
+      result << "-" << tempString ;
+    }else{
+      result = tempString ;
+    }
+    break;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Add, subtract
 #endif
@@ -661,6 +693,42 @@ C_BigInt C_BigInt::operator * (const uint32_t inMultiplicand) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Division
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder COMMA_LOCATION_ARGS) {
+  MF_AssertThere (inDivisor > 0, "inDivisor == 0", 0, 0) ;
+  outRemainder = 0 ;
+  if (mSign != zero) {
+    insulate (HERE) ;
+    mObjectPtr->divideInPlace (inDivisor, outRemainder) ;
+    normalize () ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void acPtr_bigUInt::divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder) {
+  macroUniqueSharedObject (this) ;
+  outRemainder = 0 ;
+  uint64_t carry = 0 ;
+  for (int32_t i= mValueArray.count () - 1 ; i>= 0 ; i--) {
+    carry <<= 32 ;
+    carry += mValueArray (i COMMA_HERE) ;
+    mValueArray (i COMMA_HERE) = (uint32_t) (carry / inDivisor) ;
+    carry %= inDivisor ;
+  }
+  outRemainder = (uint32_t) (carry) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Shift left
 #endif
 
@@ -778,6 +846,37 @@ int32_t acPtr_bigUInt::compare (const acPtr_bigUInt & inOperand) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Utilities
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t C_BigInt::requiredBitCountForSignedRepresentation (void) const {
+  uint32_t result = 1 ;
+  if (mSign != zero) {
+    result = mObjectPtr->requiredBitCountForSignedRepresentation () ;
+    if (mSign == positive) {
+      result ++ ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t acPtr_bigUInt::requiredBitCountForSignedRepresentation (void) const {
+  uint32_t result = 32 * (uint32_t) (mValueArray.count () - 1) ;
+  uint32_t v = mValueArray.lastObject (HERE) ;
+  while (v > 0) {
+    result ++ ;
+    v >>= 1 ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Example
 #endif
 
@@ -855,6 +954,30 @@ void C_BigInt::example (void) {
       co << "Error for combining " << cStringWithSigned (a) << " and " << cStringWithUnsigned (b) << "\n" ;
     }
   }
+  co << "Display in decimal\n" ;
+  for (int32_t i=0 ; i<1000 ; i++) {
+    uint64_t v = (uint32_t) rand () ;
+    v <<= 32 ;
+    v |= (uint32_t) rand () ;
+    const C_BigInt bigV (v, false) ;
+    const C_String strV = cStringWithUnsigned (v) ;
+    const C_String strBigV = bigV.decimalString () ;
+    if (strV != strV) {
+      co << "Error for decimalString: '" << strV << "' != '" << strBigV << "'\n" ;
+    }
+  }
+  co << "Calcul de 100!\n" ;
+  C_BigInt f (1, false) ;
+  for (uint32_t i=2 ; i<=100 ; i++) {
+    f *= i ;
+  }
+  co << "100! = " << f.decimalString() << "\n" ;
+  co << "Calcul de 1000!\n" ;
+  f = C_BigInt (1, false) ;
+  for (uint32_t i=2 ; i<=1000 ; i++) {
+    f *= i ;
+  }
+  co << "1000! = " << f.decimalString() << "\n" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
