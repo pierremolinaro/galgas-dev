@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["@bigint type" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bigint : public AC_GALGAS_root {
+//--------------------------------- Private properties
+  private : bool mIsValid ;
+  private : C_BigInt mValue ;
+
+//--------------------------------- Accessors
+  public : inline bool isValid (void) const { return mIsValid ; }
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_bigint (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_bigint (void) ;
+
+%
+

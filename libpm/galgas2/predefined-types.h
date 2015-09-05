@@ -3,12 +3,10 @@
 
 //--- END OF USER ZONE 1
 
-#ifndef GALGAS2_PREDEFINED_TYPES
-#define GALGAS2_PREDEFINED_TYPES
+#ifndef GALGAS2_INCLUDED_DEFINITIONS
+#define GALGAS2_INCLUDED_DEFINITIONS
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#include "gmpxx.h"
 
 #include "strings/C_String.h"
 #include "time/C_Timer.h"
@@ -30,6 +28,7 @@
 #include "command_line_interface/C_StringCommandLineOption.h"
 #include "command_line_interface/C_StringListCommandLineOption.h"
 #include "utilities/C_PrologueEpilogue.h"
+#include "utilities/C_BigInt.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -42,6 +41,7 @@ class GALGAS__32_lstringlist_2D_element ;
 class GALGAS__32_stringlist ;
 class GALGAS__32_stringlist_2D_element ;
 class GALGAS_application ;
+class GALGAS_bigint ;
 class GALGAS_binaryset ;
 class GALGAS_bool ;
 class GALGAS_char ;
@@ -51,7 +51,6 @@ class GALGAS_filewrapper ;
 class GALGAS_function ;
 class GALGAS_functionlist ;
 class GALGAS_functionlist_2D_element ;
-class GALGAS_gmpint ;
 class GALGAS_lbool ;
 class GALGAS_lchar ;
 class GALGAS_ldouble ;
@@ -247,22 +246,24 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_application ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                                    @gmpint type                                                     *
+//                                                    @bigint type                                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_gmpint : public AC_GALGAS_root {
+class GALGAS_bigint : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private : bool mIsValid ;
-  private : mpz_class mValue ;
+  private : C_BigInt mValue ;
 
 //--------------------------------- Accessors
   public : inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_gmpint (void) ;
-  public : virtual ~GALGAS_gmpint (void) ;
+  public : GALGAS_bigint (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_bigint (void) ;
 
 //-- Start of generic part --*
 
@@ -270,21 +271,21 @@ class GALGAS_gmpint : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_gmpint extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_bigint extractObject (const GALGAS_object & inObject,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_gmpint constructor_uint (const class GALGAS_uint & inOperand0
+  public : static GALGAS_bigint constructor_uint (const class GALGAS_uint & inOperand0
                                                   COMMA_LOCATION_ARGS) ;
 
-  public : static GALGAS_gmpint constructor_zero (LOCATION_ARGS) ;
+  public : static GALGAS_bigint constructor_zero (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_gmpint & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_bigint & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -296,12 +297,12 @@ class GALGAS_gmpint : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_gmpint class
+} ; // End of GALGAS_bigint class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_gmpint ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

@@ -755,7 +755,7 @@ getter @predefinedTypeKindEnum defaultConstructorName
   case predefined_function : outName = ""
   case predefined_object : outName = ""
   case predefined_filewrapper : outName = ""
-  case predefined_gmpint : outName = "zero"
+  case predefined_bigint : outName = "zero"
   case predefined_timer : outName = "start"
   end
 }

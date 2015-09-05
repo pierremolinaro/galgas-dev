@@ -4,8 +4,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "gmpxx.h"
-
 #include "strings/C_String.h"
 #include "time/C_Timer.h"
 #include "galgas2/AC_GALGAS_root.h"
@@ -26,6 +24,7 @@
 #include "command_line_interface/C_StringCommandLineOption.h"
 #include "command_line_interface/C_StringListCommandLineOption.h"
 #include "utilities/C_PrologueEpilogue.h"
+#include "utilities/C_BigInt.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 

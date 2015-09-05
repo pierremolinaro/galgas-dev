@@ -6965,7 +6965,7 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
     kEnum_predefined_5F_data,
     kEnum_predefined_5F_filewrapper,
     kEnum_predefined_5F_application,
-    kEnum_predefined_5F_gmpint,
+    kEnum_predefined_5F_bigint,
     kEnum_predefined_5F_timer
   } enumeration ;
   
@@ -6990,6 +6990,8 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_application (LOCATION_ARGS) ;
 
+  public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_bigint (LOCATION_ARGS) ;
+
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_binaryset (LOCATION_ARGS) ;
 
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_bool (LOCATION_ARGS) ;
@@ -7003,8 +7005,6 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_filewrapper (LOCATION_ARGS) ;
 
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_function (LOCATION_ARGS) ;
-
-  public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_gmpint (LOCATION_ARGS) ;
 
   public : static GALGAS_predefinedTypeKindEnum constructor_predefined_5F_location (LOCATION_ARGS) ;
 
@@ -7040,6 +7040,8 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_application (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_bigint (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_binaryset (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_bool (LOCATION_ARGS) const ;
@@ -7053,8 +7055,6 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_filewrapper (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_function (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_gmpint (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isPredefined_5F_location (LOCATION_ARGS) const ;
 

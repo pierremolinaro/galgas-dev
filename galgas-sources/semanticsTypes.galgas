@@ -200,7 +200,7 @@ enum @predefinedTypeKindEnum {
   case predefined_data 
   case predefined_filewrapper 
   case predefined_application
-  case predefined_gmpint
+  case predefined_bigint
   case predefined_timer
 }
 
@@ -396,7 +396,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
 class @applicationPredefinedTypeAST : @predefinedTypeAST {}
 
-class @gmpintPredefinedTypeAST : @predefinedTypeAST {}
+class @bigintPredefinedTypeAST : @predefinedTypeAST {}
 
 class @objectPredefinedTypeAST : @predefinedTypeAST {}
 

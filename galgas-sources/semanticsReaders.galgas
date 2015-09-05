@@ -786,7 +786,7 @@ override method @filewrapperPredefinedTypeAST getReaderMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @gmpintPredefinedTypeAST getReaderMap
+override method @bigintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap
 {

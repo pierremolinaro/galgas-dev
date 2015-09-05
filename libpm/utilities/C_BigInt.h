@@ -42,10 +42,13 @@ class C_BigInt {
   public : C_BigInt (const C_BigInt & inOperand) ;
   public : C_BigInt & operator = (const C_BigInt & inOperand) ;
 
-//--- Is Zero
+//--- Set to value
+  public : void setToZero (void) ;
+
+//--- Sign
   public : bool isZero (void) const { return mSign == zero ; }
-  public : bool isPositive (void) const { return mSign == positive ; }
-  public : bool isNegative (void) const { return mSign == negative ; }
+  public : bool isPositive (void) const { return mSign == positive ; } // >0
+  public : bool isNegative (void) const { return mSign == negative ; } // <0
 
 //--- Comparison
   public : bool operator == (const C_BigInt & inValue) const ;
@@ -56,8 +59,8 @@ class C_BigInt {
   public : bool operator <= (const uint32_t inOperand) const ; */
 
 //--- Incrementation, decrementation
-  public : void operator ++ (void) ;
-  public : void operator -- (void) ;
+  public : C_BigInt & operator ++ (void) ;
+  public : C_BigInt & operator -- (void) ;
 
 //--- Shift
   public : C_BigInt operator << (const uint32_t inValue) const ;
