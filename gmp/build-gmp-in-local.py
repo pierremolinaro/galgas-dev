@@ -135,9 +135,16 @@ runCommand (["rm", "-f", GMP_TARFILE])
 runCommand (["bunzip2", "-k", GMP_ARCHIVE])
 runCommand (["tar", "xf", GMP_TARFILE])
 runCommand (["rm", "-f", GMP_TARFILE])
+runCommand (["cp", "modified-headers/gmp-h.in", scriptDir + "/" + GMP_DIR + "/gmp-h.in"])
+runCommand (["cp", "modified-headers/gmpxx.h", scriptDir + "/" + GMP_DIR + "/gmpxx.h"])
 os.chdir (scriptDir + "/" + GMP_DIR)
 runCommand (["./configure", "--help"])
-runCommand (["./configure", "--prefix=" + INSTALL_DIR, "--enable-cxx", "--disable-shared", "--enable-fat"])
+runCommand (["./configure",
+             "--prefix=" + INSTALL_DIR,
+             "--enable-cxx",
+             "--disable-shared",
+             "--disable-assembly"
+            ])
 runCommand (["make", "-j" + str (processorCount ())])
 runCommand (["make", "install"])
 runCommand (["make", "check"])

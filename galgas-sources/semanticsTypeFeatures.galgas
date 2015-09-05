@@ -86,7 +86,7 @@ override getter @applicationPredefinedTypeAST getSupportedOperatorFlags
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @bitstringPredefinedTypeAST getSupportedOperatorFlags
+override getter @gmpintPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }

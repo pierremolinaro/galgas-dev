@@ -182,20 +182,20 @@ override method @filewrapperPredefinedTypeAST getModifierMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @bitstringPredefinedTypeAST getModifierMap
+override method @gmpintPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap
 {
   outModifierMap = {}
-  enterModifierWith3InputArguments (
-    !?outModifierMap
-    !?ioUnifiedTypeMap
-    !"uint64" !"inValue"
-    !"uint" !"inStartIndex"
-    !"uint" !"inWidth"
-    !setterName:"orInPlaceWith"
-    !compilerArg:false
-  )
+#  enterModifierWith3InputArguments (
+#    !?outModifierMap
+#    !?ioUnifiedTypeMap
+#    !"uint64" !"inValue"
+#    !"uint" !"inStartIndex"
+#    !"uint" !"inWidth"
+#    !setterName:"orInPlaceWith"
+#    !compilerArg:false
+#  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

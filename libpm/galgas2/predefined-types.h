@@ -8,6 +8,8 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#include "gmpxx.h"
+
 #include "strings/C_String.h"
 #include "time/C_Timer.h"
 #include "galgas2/AC_GALGAS_root.h"
@@ -41,7 +43,6 @@ class GALGAS__32_stringlist ;
 class GALGAS__32_stringlist_2D_element ;
 class GALGAS_application ;
 class GALGAS_binaryset ;
-class GALGAS_bitstring ;
 class GALGAS_bool ;
 class GALGAS_char ;
 class GALGAS_data ;
@@ -50,6 +51,7 @@ class GALGAS_filewrapper ;
 class GALGAS_function ;
 class GALGAS_functionlist ;
 class GALGAS_functionlist_2D_element ;
+class GALGAS_gmpint ;
 class GALGAS_lbool ;
 class GALGAS_lchar ;
 class GALGAS_ldouble ;
@@ -245,21 +247,22 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_application ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                                   @bitstring type                                                   *
+//                                                    @gmpint type                                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bitstring : public AC_GALGAS_root {
+class GALGAS_gmpint : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private : bool mIsValid ;
-  private : TC_Array <bool> mBitStringValue ;
+  private : mpz_class mValue ;
 
 //--------------------------------- Accessors
   public : inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_bitstring (void) ;
+  public : GALGAS_gmpint (void) ;
+  public : virtual ~GALGAS_gmpint (void) ;
 
 //-- Start of generic part --*
 
@@ -267,56 +270,38 @@ class GALGAS_bitstring : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_bitstring extractObject (const GALGAS_object & inObject,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_gmpint extractObject (const GALGAS_object & inObject,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_bitstring constructor_zero (LOCATION_ARGS) ;
+  public : static GALGAS_gmpint constructor_uint (const class GALGAS_uint & inOperand0
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public : static GALGAS_gmpint constructor_zero (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_bitstring & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_gmpint & inOperand) const ;
 
 //--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void modifier_orInPlaceWith (class GALGAS_uint_36__34_ constinArgument0,
-                                                         class GALGAS_uint constinArgument1,
-                                                         class GALGAS_uint constinArgument2
-                                                         COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_bitAtIndex (const class GALGAS_uint & constinOperand0
-                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_byteAtIndex (const class GALGAS_uint & constinOperand0
-                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isZero (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_size (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_ reader_uint_36__34_AtIndex (const class GALGAS_uint & constinOperand0
-                                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_uintAtIndex (const class GALGAS_uint & constinOperand0
-                                                                  COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_bitstring class
+} ; // End of GALGAS_gmpint class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bitstring ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_gmpint ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

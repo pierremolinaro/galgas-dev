@@ -1,8 +1,10 @@
 
-#ifndef GALGAS2_PREDEFINED_TYPES
-#define GALGAS2_PREDEFINED_TYPES
+#ifndef GALGAS2_INCLUDED_DEFINITIONS
+#define GALGAS2_INCLUDED_DEFINITIONS
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+#include "gmpxx.h"
 
 #include "strings/C_String.h"
 #include "time/C_Timer.h"
