@@ -36,46 +36,29 @@ class acPtr_bigUInt : public C_SharedObject {
   
   public : void increment (void) ;
   public : void decrement (void) ;
-  
-  public : bool isZero (void) const {
-    macroUniqueSharedObject (this) ;
-    bool result = true ;
-    for (int32_t i=0 ; result && (i<mValueArray.count ()) ; i++) {
-      result = mValueArray (i COMMA_HERE) == 0 ;
-    }
-    return result ;
-  }
-  
-  public : C_String hexString (void) const {
-    macroUniqueSharedObject (this) ;
-    C_String s ;
-    for (int32_t i=mValueArray.count () - 1 ; i>=0 ; i--) {
-      s.appendUnsignedHex8 (mValueArray (i COMMA_HERE)) ;
-    }
-    while ((s.length() > 0) && (UNICODE_VALUE (s (0 COMMA_HERE)) == '0')) {
-      s.suppress (0, 1 COMMA_HERE) ;
-    }
-    return s ;
-  }
 
-  public : void normalize (void) {
-    macroUniqueSharedObject (this) ;
-    while ((mValueArray.count () > 1) && (mValueArray.lastObject(HERE) == 0)) {
-      mValueArray.removeLastObject (HERE) ;
-    }
-  }
+  public : C_String hexString (void) const ;
+  
+  public : bool isZero (void) const ;
 
+  public : void normalize (void) ;
   public : void shiftLeft (const uint32_t inValue) ;
 
-  public : bool isEqualTo (const acPtr_bigUInt & inOperand) const {
-    macroUniqueSharedObject (this) ;
-    bool equal = mValueArray.count () == inOperand.mValueArray.count () ;
-    for (int32_t i=0 ; equal && (i < mValueArray.count ()) ; i++) {
-      equal = mValueArray (i COMMA_HERE) == inOperand.mValueArray (i COMMA_HERE) ;
-    }
-    return equal ;
-  }
+  public : bool operator == (const acPtr_bigUInt & inOperand) const ;
+  public : bool operator != (const acPtr_bigUInt & inOperand) const ;
+  public : bool operator >= (const acPtr_bigUInt & inOperand) const ;
+  public : bool operator >  (const acPtr_bigUInt & inOperand) const ;
+  public : bool operator <= (const acPtr_bigUInt & inOperand) const ;
+  public : bool operator <  (const acPtr_bigUInt & inOperand) const ;
+  public : int32_t compare (const acPtr_bigUInt & inOperand) const ;
   
+  public : void addInPlace (const acPtr_bigUInt & inOperand) ;
+  public : void subtractInPlace (const acPtr_bigUInt & inOperand) ; // Requires *this >= inOperand
+  public : void multiplyInPlace (const uint32_t inOperand) ;
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public : void check (LOCATION_ARGS) const ;
+  #endif
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -91,6 +74,9 @@ class acPtr_bigUInt : public C_SharedObject {
 C_BigInt::C_BigInt (void) :
 mObjectPtr (NULL),
 mSign (zero) {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -109,6 +95,9 @@ C_BigInt::C_BigInt (const C_BigInt & inOperand) :
 mObjectPtr (NULL) {
   macroAssignSharedObject (mObjectPtr, inOperand.mObjectPtr) ;
   mSign = inOperand.mSign ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -116,11 +105,53 @@ mObjectPtr (NULL) {
 C_BigInt & C_BigInt::operator = (const C_BigInt & inOperand) {
   macroAssignSharedObject (mObjectPtr, inOperand.mObjectPtr) ;
   mSign = inOperand.mSign ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
   return *this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-// Default Constructor: init from uint64_t
+// Normalize and tests
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark normalize and tests
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::normalize (void) {
+  macroValidPointer (mObjectPtr) ;
+  mObjectPtr->normalize () ;
+  if (mObjectPtr->isZero ()) {
+    macroDetachSharedObject (mObjectPtr) ;
+    mSign = zero ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool acPtr_bigUInt::isZero (void) const {
+  macroUniqueSharedObject (this) ;
+  bool result = true ;
+  for (int32_t i=0 ; result && (i<mValueArray.count ()) ; i++) {
+    result = mValueArray (i COMMA_HERE) == 0 ;
+  }
+  return result ;
+}
+  
+//---------------------------------------------------------------------------------------------------------------------*
+
+void acPtr_bigUInt::normalize (void) {
+  macroUniqueSharedObject (this) ;
+  while ((mValueArray.count () > 1) && (mValueArray.lastObject(HERE) == 0)) {
+    mValueArray.removeLastObject (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+// Constructor: init from uint64_t
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -129,12 +160,29 @@ C_BigInt & C_BigInt::operator = (const C_BigInt & inOperand) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_BigInt::C_BigInt (const uint64_t inValue) :
+C_BigInt::C_BigInt (const uint64_t inValue, const bool inNegate) :
 mObjectPtr (NULL),
 mSign (zero) {
   if (inValue > 0) {
     macroMyNew (mObjectPtr, acPtr_bigUInt (inValue COMMA_HERE)) ;
+    mSign = inNegate ? negative : positive ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt::C_BigInt (const int64_t inValue) :
+mObjectPtr (NULL),
+mSign (zero) {
+  if (inValue > 0) {
+    macroMyNew (mObjectPtr, acPtr_bigUInt ((uint64_t) inValue COMMA_HERE)) ;
     mSign = positive ;
+  }else if (inValue < 0) {
+    macroMyNew (mObjectPtr, acPtr_bigUInt ((uint64_t) (- inValue) COMMA_HERE)) ;
+    mSign = negative ;
   }
 }
 
@@ -150,6 +198,40 @@ mValueArray () {
     mValueArray.addObject ((uint32_t) hi) ;
   }
 }
+
+//---------------------------------------------------------------------------------------------------------------------*
+// Ckeck
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Check
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void C_BigInt::checkBigInt (LOCATION_ARGS) const {
+    switch (mSign) {
+    case zero :
+      macroVoidPointerThere (mObjectPtr) ;
+      break ;
+    case positive :
+    case negative :
+      macroValidPointerThere (mObjectPtr) ;
+      mObjectPtr->check (THERE) ;
+    break ;
+    }
+  }
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void acPtr_bigUInt::check (LOCATION_ARGS) const {
+    MF_AssertThere (mValueArray.count () > 0, "mValueArray.count () == 0", 0, 0) ;
+    MF_AssertThere (mValueArray.lastObject (THERE) != 0, "mValueArray.lastObject (THERE) == 0", 0, 0) ;
+  }
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 // Insulate
@@ -201,12 +283,12 @@ void C_BigInt::operator ++ (void) {
   case negative:
     insulate (HERE) ;
     mObjectPtr->decrement () ;
-    if (mObjectPtr->isZero ()) {
-      macroDetachSharedObject (mObjectPtr) ;
-      mSign = zero ;
-    }
+    normalize () ;
     break;
   }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -220,16 +302,16 @@ void C_BigInt::operator -- (void) {
   case positive:
     insulate (HERE) ;
     mObjectPtr->decrement () ;
-    if (mObjectPtr->isZero ()) {
-      macroDetachSharedObject (mObjectPtr) ;
-      mSign = zero ;
-    }
+    normalize () ;
     break;
   case negative:
     insulate (HERE) ;
     mObjectPtr->increment () ;
     break;
   }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -291,85 +373,278 @@ C_String C_BigInt::hexString (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*uint32_t C_BigInt::uint32AtIndex (const int32_t inIndex) const {
-  uint32_t result = 0 ;
-  if (inIndex < mUnsignedValue.count ()) {
-    result = mUnsignedValue (inIndex COMMA_HERE) ;
+C_String acPtr_bigUInt::hexString (void) const {
+  macroUniqueSharedObject (this) ;
+  C_String s ;
+  for (int32_t i=mValueArray.count () - 1 ; i>=0 ; i--) {
+    s.appendUnsignedHex8 (mValueArray (i COMMA_HERE)) ;
   }
-  return result ;
-} */
+  while ((s.length() > 0) && (UNICODE_VALUE (s (0 COMMA_HERE)) == '0')) {
+    s.suppress (0, 1 COMMA_HERE) ;
+  }
+  return s ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*bool C_BigInt::valueAtBitIndex (const uint32_t inIndex) const {
-  bool result = false ;
-  if (inIndex < 64) {
-    result = ((mLow >> inIndex) & 1) != 0 ;
-  }else if (inIndex < 128) {
-    result = ((mHigh >> (inIndex - 64)) & 1) != 0 ;
-  }
-  return result ;
-}*/
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Add, subtract
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*void C_BigInt::setValueAtBitIndex (const bool inValue, const uint32_t inIndex) {
-  if (inIndex < 64) {
-    const uint64_t mask = ((uint64_t) 1) << inIndex ;
-    if (inValue) {
-      mLow |= mask ;
-    }else{
-      mLow &= ~mask ;
+void C_BigInt::operator += (const C_BigInt inOperand) {
+  switch (mSign) {
+  case zero :  // 0 + inOperand --> inOperand
+    *this = inOperand ;
+    break ;
+  case positive :
+    switch (inOperand.mSign) {
+    case zero : // Add zero
+      break ;
+    case positive : // Add positive, positive
+      insulate (HERE) ;
+      mObjectPtr->addInPlace (* inOperand.mObjectPtr) ;
+      break ;
+    case negative :  // Add positive, negative
+      if ((*mObjectPtr) >= (* inOperand.mObjectPtr)) { // Result is >= 0
+        insulate (HERE) ;
+        mObjectPtr->subtractInPlace (* inOperand.mObjectPtr) ;
+        normalize () ;
+      }else{  // Result is < 0 ; compute - (- Operand - *this)
+        C_BigInt result = inOperand ;
+        result.negateInPlace () ;
+        result -= *this ;
+        *this = result ;
+        negateInPlace () ;
+      }
+      break ;
     }
-  }else if (inIndex < 128) {
-    const uint64_t mask = ((uint64_t) 1) << (inIndex - 64) ;
-    if (inValue) {
-      mHigh |= mask ;
-    }else{
-      mHigh &= ~mask ;
+    break ;
+  case negative :
+    switch (inOperand.mSign) {
+    case zero :  // Add zero
+      break ;
+    case positive : // Add negative, positive
+      if ((*mObjectPtr) >= (* inOperand.mObjectPtr)) { // Result is <= 0
+        insulate (HERE) ;
+        mObjectPtr->subtractInPlace (* inOperand.mObjectPtr) ;
+        normalize () ;
+      }else{  // Result is > 0 ; compute - (- Operand - *this)
+        C_BigInt result = inOperand ;
+        result.negateInPlace () ;
+        result -= *this ;
+        *this = result ;
+        negateInPlace () ;
+      }
+      break ;
+    case negative : // Add negative, negative
+      insulate (HERE) ;
+      mObjectPtr->addInPlace (* inOperand.mObjectPtr) ;
+      break ;
     }
+    break ;
   }
-}*/
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*C_BigInt & C_BigInt::operator -- (void) {
-  if (0 == mLow) {
-    mHigh -- ;
+void C_BigInt::operator -= (const C_BigInt inOperand) {
+  switch (mSign) {
+  case zero :  // 0 - inOperand --> - inOperand
+    *this = inOperand ;
+    negateInPlace () ;
+    break ;
+  case positive :
+    switch (inOperand.mSign) {
+    case zero : // substract zero
+      break ;
+    case positive : // positive - positive
+      if ((*mObjectPtr) >= (* inOperand.mObjectPtr)) { // Result is >= 0
+        insulate (HERE) ;
+        mObjectPtr->subtractInPlace (* inOperand.mObjectPtr) ;
+        normalize () ;
+      }else{  // Result is < 0 ; compute - (Operand - *this)
+        C_BigInt result = inOperand ;
+        result -= *this ;
+        *this = result ;
+        negateInPlace () ;
+      }
+      break ;
+    case negative :  // substract positive, negative --> result is >0
+      insulate (HERE) ;
+      mObjectPtr->addInPlace (* inOperand.mObjectPtr) ;
+      break ;
+    }
+    break ;
+  case negative :
+    switch (inOperand.mSign) {
+    case zero :  // subtract zero
+      break ;
+    case positive :   // substract negative, positive --> result is <0
+      insulate (HERE) ;
+      mObjectPtr->addInPlace (* inOperand.mObjectPtr) ;
+      break ;
+    case negative : // negative - negative
+      if ((*mObjectPtr) >= (* inOperand.mObjectPtr)) { // Result is <= 0
+        insulate (HERE) ;
+        mObjectPtr->subtractInPlace (* inOperand.mObjectPtr) ;
+        normalize () ;
+      }else{  // Result is > 0 ; compute - (Operand - *this)
+        C_BigInt result = inOperand ;
+        result -= *this ;
+        *this = result ;
+        negateInPlace () ;
+      }
+      break ;
+    }
+    break ;
   }
-  mLow -- ;
-  return *this ;
-}*/
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*void C_BigInt::operator += (const C_BigInt & inValue) {
-  const uint64_t previousLow = mLow ;
-  mLow += inValue.mLow ;
-  const uint64_t carry = mLow < previousLow ;
-  mHigh += inValue.mHigh + carry ;
-} */
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-/*C_BigInt C_BigInt::operator + (const C_BigInt & inValue) const {
-  C_BigInt result ;
-  const int32_t leftCount = uint32WordCount () ;
-  const int32_t rightCount = inValue.uint32WordCount () ;
-  const int32_t count = (leftCount > rightCount) ? leftCount : rightCount ;
-  uint32_t carry = 0 ;
-  for (int32_t i=0 ; i<count ; i++) {
-    const uint64_t left = uint32AtIndex (i) ;
-    const uint64_t right = inValue.uint32AtIndex (i) ;
-    const uint64_t r = left + right + carry ;
-    result.mUnsignedValue.addObject((uint32_t) (r & UINT32_MAX)) ;
-    carry = (uint32_t) (r >> 32) ;
+void acPtr_bigUInt::addInPlace (const acPtr_bigUInt & inOperand) {
+  macroUniqueSharedObject (this) ;
+  if (mValueArray.count () < inOperand.mValueArray.count ()) {
+    mValueArray.addObjects (inOperand.mValueArray.count () - mValueArray.count (), 0) ;
+  }
+  uint64_t carry = 0 ;
+  for (int32_t i=0 ; i<mValueArray.count () ; i++) {
+    const uint64_t a = mValueArray (i COMMA_HERE) ;
+    if (i < inOperand.mValueArray.count ()) {
+      const uint64_t b = inOperand.mValueArray (i COMMA_HERE) ;
+      carry += a + b ;
+    }else{
+      carry += a ;
+    }
+    mValueArray (i COMMA_HERE) = ((uint32_t) (carry & UINT32_MAX)) ;
+    carry >>= 32 ;
   }
   if (carry > 0) {
-    result.mUnsignedValue.addObject (carry) ;
+    mValueArray.addObject ((uint32_t) carry) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void acPtr_bigUInt::subtractInPlace (const acPtr_bigUInt & inOperand) {
+  macroUniqueSharedObject (this) ;
+  uint64_t carry = 0 ;
+  for (int32_t i=0 ; i<mValueArray.count () ; i++) {
+    const uint64_t a = mValueArray (i COMMA_HERE) ;
+    if (i < inOperand.mValueArray.count ()) {
+      const uint64_t b = inOperand.mValueArray (i COMMA_HERE) ;
+      carry += a - b ;
+    }else{
+      carry += a ;
+    }
+    mValueArray (i COMMA_HERE) = ((uint32_t) (carry & UINT32_MAX)) ;
+    carry >>= 32 ;
+  }
+  MF_Assert (carry == 0, "carry (0x%x) should be 0", (int64_t) carry, 0) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator + (const C_BigInt & inOperand) const {
+  C_BigInt resultat = *this ;
+  resultat += inOperand ;
+  return resultat ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator - (const C_BigInt & inOperand) const {
+  C_BigInt resultat = *this ;
+  resultat -= inOperand ;
+  return resultat ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//    Negate
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Negate
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator - (void) const {
+  C_BigInt result = *this ;
+  result.negateInPlace () ;
   return result ;
-} */
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::negateInPlace (void) {
+  switch (mSign) {
+  case zero :
+    break ;
+  case positive :
+    mSign = negative ;
+    break ;
+  case negative :
+    mSign = positive ;
+    break ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Multiplication
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator *= (const uint32_t inMultiplicand) {
+  if (inMultiplicand == 0) {
+    macroDetachSharedObject (mObjectPtr) ;
+    mSign = zero ;
+  }else if ((inMultiplicand != 1) && (mSign != zero)) {
+    insulate (HERE) ;
+    mObjectPtr->multiplyInPlace (inMultiplicand) ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void acPtr_bigUInt::multiplyInPlace (const uint32_t inMultiplicand) {
+  macroUniqueSharedObject (this) ;
+  uint64_t carry = 0 ;
+  for (int32_t i=0 ; i<mValueArray.count () ; i++) {
+    const uint64_t a = mValueArray (i COMMA_HERE) ;
+    carry += a * inMultiplicand ;
+    mValueArray (i COMMA_HERE) = ((uint32_t) (carry & UINT32_MAX)) ;
+    carry >>= 32 ;
+  }
+  if (carry > 0) {
+    mValueArray.addObject ((uint32_t) carry) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator * (const uint32_t inMultiplicand) const {
+  C_BigInt result = *this ;
+  result *= inMultiplicand ;
+  return result ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -379,12 +654,21 @@ C_String C_BigInt::hexString (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_BigInt C_BigInt::operator << (const uint32_t inValue) const {
-  C_BigInt result = *this ;
+void C_BigInt::shiftLeftInPlace (const uint32_t inValue) {
   if ((inValue > 0) && (mSign != zero)) {
-    result.insulate (HERE) ;
+    insulate (HERE) ;
     mObjectPtr->shiftLeft (inValue) ;
   }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator << (const uint32_t inValue) const {
+  C_BigInt result = *this ;
+  result.shiftLeftInPlace (inValue) ;
   return result ;
 }
 
@@ -410,7 +694,7 @@ void acPtr_bigUInt::shiftLeft (const uint32_t inValue) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Equality
+  #pragma mark Compare
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -418,7 +702,7 @@ void acPtr_bigUInt::shiftLeft (const uint32_t inValue) {
 bool C_BigInt::operator == (const C_BigInt & inOperand) const {
   bool equal = mSign == inOperand.mSign ;
   if (equal && (mSign != zero)) {
-    equal = mObjectPtr->isEqualTo (* inOperand.mObjectPtr) ;
+    equal = (*mObjectPtr) == (* inOperand.mObjectPtr) ;
   }
   return equal ;
 }
@@ -427,6 +711,56 @@ bool C_BigInt::operator == (const C_BigInt & inOperand) const {
 
 bool C_BigInt::operator != (const C_BigInt & inValue) const {
   return ! (*this == inValue) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool acPtr_bigUInt::operator == (const acPtr_bigUInt & inOperand) const {
+  return compare (inOperand) == 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool acPtr_bigUInt::operator != (const acPtr_bigUInt & inOperand) const {
+  return compare (inOperand) != 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool acPtr_bigUInt::operator >= (const acPtr_bigUInt & inOperand) const {
+  return compare (inOperand) >= 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool acPtr_bigUInt::operator > (const acPtr_bigUInt & inOperand) const {
+  return compare (inOperand) > 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool acPtr_bigUInt::operator < (const acPtr_bigUInt & inOperand) const {
+  return compare (inOperand) < 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool acPtr_bigUInt::operator <= (const acPtr_bigUInt & inOperand) const {
+  return compare (inOperand) <= 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+int32_t acPtr_bigUInt::compare (const acPtr_bigUInt & inOperand) const {
+  int32_t result = mValueArray.count () - inOperand.mValueArray.count () ;
+  for (int32_t i=0 ; (result == 0) && (i < mValueArray.count ()) ; i++) {
+    if (mValueArray (i COMMA_HERE) > inOperand.mValueArray (i COMMA_HERE)) {
+      result = 1 ;
+    }else if (mValueArray (i COMMA_HERE) < inOperand.mValueArray (i COMMA_HERE)) {
+      result = -1 ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -447,7 +781,7 @@ void C_BigInt::example (void) {
   co << "Decrement : " << bigint.hexString() << "\n" ;
   -- bigint ;
   co << "Decrement : " << bigint.hexString() << "\n" ;
-  C_BigInt bigint2 (0xFFFFFFFF) ;
+  C_BigInt bigint2 (UINT32_MAX) ;
   co << "0xFFFFFFFF : " << bigint2.hexString() << "\n" ;
   ++ bigint2 ;
   co << "increment : " << bigint2.hexString() << "\n" ;
@@ -459,6 +793,56 @@ void C_BigInt::example (void) {
   co << "<< 40 : " << bigint2.hexString() << "\n" ;
   -- bigint2 ;
   co << "Decrement : " << bigint2.hexString() << "\n" ;
+//--- Random tests
+  co << "Add and subtract random test\n" ;
+  for (int32_t i=0 ; i<1000 ; i++) {
+    const int64_t a = (int32_t) random () ;
+    const int64_t b = (int32_t) random () ;
+    const C_BigInt bigA (a) ;
+    const C_BigInt bigB (b) ;
+    const C_BigInt bigAdd = bigA + bigB ;
+    const C_BigInt bigAddVerif (a + b) ;
+    if (bigAdd != bigAddVerif) {
+      co << "Error for " << cStringWithSigned (a) << " + " << cStringWithSigned (b) << "\n" ;
+    }
+    const C_BigInt bigNeg = bigA - bigB ;
+    const C_BigInt bigNegVerif (a - b) ;
+    if (bigNeg != bigNegVerif) {
+      co << "Error for " << cStringWithSigned (a) << " - " << cStringWithSigned (b) << "\n" ;
+    }
+    const C_BigInt bigNeg2 = (- bigA) + bigB ;
+    const C_BigInt bigNeg2Verif (b - a) ;
+    if (bigNeg2 != bigNeg2Verif) {
+      co << "Error for -" << cStringWithSigned (a) << " + " << cStringWithSigned (b) << "\n" ;
+    }
+  }
+  co << "Multiply random test\n" ;
+  for (int32_t i=0 ; i<1000 ; i++) {
+    const uint64_t a = (uint32_t) random () ;
+    const uint32_t b = (uint32_t) random () ;
+    const C_BigInt bigA (a, false) ;
+    const C_BigInt bigMul = bigA * b ;
+    const C_BigInt bigMulVerif (a * b, false) ;
+    if (bigMul != bigMulVerif) {
+      co << "Error for " << cStringWithUnsigned (a) << " + " << cStringWithUnsigned (b) << "\n" ;
+    }
+  }
+  co << "Other random test\n" ;
+  for (int32_t i=0 ; i<1000 ; i++) {
+    const int32_t a = (int32_t) random () ;
+    const uint32_t b = (uint32_t) random () ;
+    C_BigInt bigA (a) ;
+    for (int32_t j=0 ; j<10 ; j++) {
+      bigA *= b ;
+    }
+    C_BigInt bigB = bigA ;
+    ++ bigB ;
+    const C_BigInt bigC = bigA - bigB ;
+    const C_BigInt bigCVerif (-1) ;
+    if (bigC != bigCVerif) {
+      co << "Error for combining " << cStringWithSigned (a) << " and " << cStringWithUnsigned (b) << "\n" ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

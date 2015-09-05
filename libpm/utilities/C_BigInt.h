@@ -32,7 +32,8 @@
 class C_BigInt {
 //--- Constructors
   public : C_BigInt (void) ;
-  public : C_BigInt (const uint64_t inValue) ;
+  public : C_BigInt (const uint64_t inValue, const bool inNegate) ;
+  public : C_BigInt (const int64_t inValue) ;
 
 //--- Destructor
   public : virtual ~ C_BigInt (void) ;
@@ -49,7 +50,10 @@ class C_BigInt {
 //--- Comparison
   public : bool operator == (const C_BigInt & inValue) const ;
   public : bool operator != (const C_BigInt & inValue) const ;
-  public : bool operator > (const uint32_t inOperand) const ;
+/*  public : bool operator > (const uint32_t inOperand) const ;
+  public : bool operator >= (const uint32_t inOperand) const ;
+  public : bool operator < (const uint32_t inOperand) const ;
+  public : bool operator <= (const uint32_t inOperand) const ; */
 
 //--- Incrementation, decrementation
   public : void operator ++ (void) ;
@@ -57,28 +61,35 @@ class C_BigInt {
 
 //--- Shift
   public : C_BigInt operator << (const uint32_t inValue) const ;
+  public : void shiftLeftInPlace (const uint32_t inValue) ;
 
 //--- String
   public : C_String hexString (void) const ;
 
-//--- Addition
-  public : void operator += (const C_BigInt & inValue) ;
+//--- Add, subtract
+  public : void operator += (const C_BigInt inValue) ;
   public : C_BigInt operator + (const C_BigInt & inValue) const ;
+  public : void operator -= (const C_BigInt inValue) ;
+  public : C_BigInt operator - (const C_BigInt & inValue) const ;
+
+//--- Negate
+  public : C_BigInt operator - (void) const ;
+  public : void negateInPlace (void) ;
 
 //--- Multiplication
   public : void operator *= (const uint32_t inMultiplicand) ;
+  public : C_BigInt operator * (const uint32_t inMultiplicand) const ;
 
 //--- Division
-  public : void divideBy (const uint32_t inDivisor,
-                          uint32_t & outRemainder) ;
-  public : void operator /= (const uint32_t inMultiplicand) ;
+//  public : void divideBy (const uint32_t inDivisor, uint32_t & outRemainder) ;
+//  public : void operator /= (const uint32_t inMultiplicand) ;
 
 //--- Bit access
-  public : bool valueAtBitIndex (const uint32_t inIndex) const ;
-  public : void setValueAtBitIndex (const bool inValue, const uint32_t inIndex) ;
+//  public : bool valueAtBitIndex (const uint32_t inIndex) const ;
+//  public : void setValueAtBitIndex (const bool inValue, const uint32_t inIndex) ;
 
 //--- Value as string
-  public : C_String decimalString (void) const ;
+//  public : C_String decimalString (void) const ;
 
 //--- Example
   public : static void example (void) ;
@@ -92,7 +103,10 @@ class C_BigInt {
 
 //--- Private methods
   private : void insulate (LOCATION_ARGS) ;
-
+  private : void normalize (void) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    private : void checkBigInt (LOCATION_ARGS) const ;
+  #endif
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
