@@ -32,8 +32,8 @@
 class C_BigInt {
 //--- Constructors
   public : C_BigInt (void) ;
-  public : C_BigInt (const uint64_t inValue, const bool inNegate) ;
-  public : C_BigInt (const int64_t inValue) ;
+  public : explicit C_BigInt (const uint64_t inValue, const bool inNegate) ;
+  public : explicit C_BigInt (const int64_t inValue) ;
 
 //--- Destructor
   public : virtual ~ C_BigInt (void) ;
@@ -53,10 +53,11 @@ class C_BigInt {
 //--- Comparison
   public : bool operator == (const C_BigInt & inValue) const ;
   public : bool operator != (const C_BigInt & inValue) const ;
-/*  public : bool operator > (const uint32_t inOperand) const ;
-  public : bool operator >= (const uint32_t inOperand) const ;
-  public : bool operator < (const uint32_t inOperand) const ;
-  public : bool operator <= (const uint32_t inOperand) const ; */
+  public : bool operator > (const C_BigInt & inOperand) const ;
+  public : bool operator >= (const C_BigInt & inOperand) const ;
+  public : bool operator < (const C_BigInt & inOperand) const ;
+  public : bool operator <= (const C_BigInt & inOperand) const ;
+  public : int32_t compare (const C_BigInt & inValue) const ;
 
 //--- Incrementation, decrementation
   public : C_BigInt & operator ++ (void) ;
@@ -73,8 +74,15 @@ class C_BigInt {
 //--- Add, subtract
   public : void operator += (const C_BigInt inValue) ;
   public : C_BigInt operator + (const C_BigInt & inValue) const ;
+
   public : void operator -= (const C_BigInt inValue) ;
   public : C_BigInt operator - (const C_BigInt & inValue) const ;
+
+  public : void operator += (const uint32_t inValue) ;
+  public : C_BigInt operator + (const uint32_t inValue) const ;
+
+  public : void operator -= (const uint32_t inValue) ;
+  public : C_BigInt operator - (const uint32_t inValue) const ;
 
 //--- Negate
   public : C_BigInt operator - (void) const ;

@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'lexique' component metamodel                                            *
+#  'lexique' component metamodel                                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -14,11 +14,7 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
-
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
+#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N                                             *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalExpressionAST generateCocoaConditionCode
@@ -88,7 +84,7 @@ override getter @lexicalCharacterSetMatchAST generateCocoaConditionCode
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#     R O U T I N E    O R    F U N C T I O N    A R G U M E N T            *
+#     R O U T I N E    O R    F U N C T I O N    A R G U M E N T                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument
@@ -135,7 +131,7 @@ override getter @lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionA
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                   R O U T I N E    A R G U M E N T                        *
+#                   R O U T I N E    A R G U M E N T                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument
@@ -146,11 +142,12 @@ abstract getter @abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArg
 
 override getter @lexicalAttributeInputOutputArgumentAST generateCocoaRoutineArgument
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
+  -> @string outGeneratedCode
+{
   @lexicalTypeEnum lexicalType
   [[inLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?lexicalType]
   outGeneratedCode = ""
-  if lexicalType != @lexicalTypeEnum. lexicalType_string then
+  if [lexicalType needsReferenceInInputOutputInCocoa] then
     outGeneratedCode += "& "
   end
   outGeneratedCode += "mLexicalAttribute_" + mAttributeName
@@ -165,7 +162,7 @@ override getter @lexicalFormalInputArgumentAST generateCocoaRoutineArgument
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T         *
+#  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T                                                    *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalSendDefaultActionAST generateCocoaDefaultSendCode
@@ -189,7 +186,7 @@ override getter @lexicalErrorByDefaultAST generateCocoaDefaultSendCode
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N *
+#  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalInstructionAST generateCocoaInstructionCode
@@ -360,7 +357,7 @@ override getter @lexicalLogInstructionAST generateCocoaInstructionCode
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N         *
+#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N                                                    *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @abstractLexicalRuleAST generateCocoaCode

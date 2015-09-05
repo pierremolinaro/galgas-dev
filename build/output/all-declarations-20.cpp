@@ -10454,6 +10454,11 @@ GALGAS_string categoryReader_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum &
       result_outResult = GALGAS_string ("double") ;
     }
     break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string ("bigint") ;
+    }
+    break ;
   }
 //---
   return result_outResult ;
@@ -11244,6 +11249,11 @@ GALGAS_string categoryReader_cppTypeName (const GALGAS_lexicalTypeEnum & inObjec
       result_outResult = GALGAS_string ("double") ;
     }
     break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string ("C_BigInt") ;
+    }
+    break ;
   }
 //---
   return result_outResult ;
@@ -11299,6 +11309,11 @@ GALGAS_string categoryReader_appendMethodName (const GALGAS_lexicalTypeEnum & in
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
       result_outResult = GALGAS_string ("appendDouble") ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string ("appendCLiteralStringConstant") ;
     }
     break ;
   }
@@ -11358,6 +11373,11 @@ GALGAS_string categoryReader_appendArgumentOfMethod (const GALGAS_lexicalTypeEnu
       result_outResult = GALGAS_string::makeEmptyString () ;
     }
     break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string (".decimalString ()") ;
+    }
+    break ;
   }
 //---
   return result_outResult ;
@@ -11413,6 +11433,11 @@ GALGAS_string categoryReader_initialization (const GALGAS_lexicalTypeEnum & inOb
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
       result_outResult = GALGAS_string (" = 0.0") ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string (".setToZero ()") ;
     }
     break ;
   }
@@ -11472,6 +11497,73 @@ GALGAS_string categoryReader_cocoaTypeName (const GALGAS_lexicalTypeEnum & inObj
       result_outResult = GALGAS_string ("double") ;
     }
     break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string ("NSMutableString *") ;
+    }
+    break ;
+  }
+//---
+  return result_outResult ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Category Reader '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool categoryReader_needsReferenceInInputOutputInCocoa (const GALGAS_lexicalTypeEnum & inObject,
+                                                               C_Compiler * /* inCompiler */
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bool result_outResult ; // Returned variable
+  const GALGAS_lexicalTypeEnum temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GALGAS_lexicalTypeEnum::kNotBuilt:
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+    {
+      result_outResult = GALGAS_bool (false) ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+    {
+      result_outResult = GALGAS_bool (true) ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+    {
+      result_outResult = GALGAS_bool (true) ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+    {
+      result_outResult = GALGAS_bool (true) ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+    {
+      result_outResult = GALGAS_bool (true) ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+    {
+      result_outResult = GALGAS_bool (true) ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+    {
+      result_outResult = GALGAS_bool (true) ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_bool (false) ;
+    }
+    break ;
   }
 //---
   return result_outResult ;
@@ -11527,6 +11619,11 @@ GALGAS_string categoryReader_cocoaInitializationCode (const GALGAS_lexicalTypeEn
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
       result_outResult = GALGAS_string ("0.0") ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string ("[[NSMutableString alloc] init]") ;
     }
     break ;
   }
@@ -11586,6 +11683,11 @@ GALGAS_string categoryReader_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & in
       result_outResult = GALGAS_string::makeEmptyString () ;
     }
     break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string ("[") ;
+    }
+    break ;
   }
 //---
   return result_outResult ;
@@ -11641,6 +11743,11 @@ GALGAS_string categoryReader_cocoaReset (const GALGAS_lexicalTypeEnum & inObject
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
       result_outResult = GALGAS_string (" = 0.0") ;
+    }
+    break ;
+  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+    {
+      result_outResult = GALGAS_string (" setString:@\"\"]") ;
     }
     break ;
   }

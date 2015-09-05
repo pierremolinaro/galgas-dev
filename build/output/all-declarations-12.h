@@ -322,6 +322,7 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLSInt_36__34_Type ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLDoubleType ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mStringListType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLBigInt ;
 
 
 //--------------------------------- Accessors
@@ -355,7 +356,8 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mLUInt_36__34_Type,
                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mLSInt_36__34_Type,
                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mLDoubleType,
-                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mStringListType) ;
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mStringListType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLBigInt) ;
 
 //-- Start of generic part --*
 
@@ -385,7 +387,8 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
                                                           const class GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
                                                           const class GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
                                                           const class GALGAS_unifiedTypeMap_2D_proxy & inOperand16,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand17
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand17,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand18
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -405,6 +408,8 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mCharType (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mDoubleType (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLBigInt (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLBoolType (LOCATION_ARGS) const ;
 

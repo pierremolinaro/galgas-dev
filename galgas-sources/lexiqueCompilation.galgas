@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  'lexique' component metamodel                                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -24,6 +24,7 @@ getter @lexicalTypeEnum cppTypeName -> @string outResult {
     case lexicalType_sint   : outResult = "int32_t"
     case lexicalType_sint64 : outResult = "int64_t"
     case lexicalType_double : outResult = "double"
+    case lexicalType_bigint : outResult = "C_BigInt"
   end
 }
 
@@ -38,6 +39,7 @@ getter @lexicalTypeEnum appendMethodName -> @string outResult {
     case lexicalType_sint   : outResult = "appendSigned"
     case lexicalType_sint64 : outResult = "appendSigned"
     case lexicalType_double : outResult = "appendDouble"
+    case lexicalType_bigint : outResult = "appendCLiteralStringConstant"
   end
 }
 
@@ -52,6 +54,7 @@ getter @lexicalTypeEnum appendArgumentOfMethod -> @string outResult {
     case lexicalType_sint   : outResult = ""
     case lexicalType_sint64 : outResult = ""
     case lexicalType_double : outResult = ""
+    case lexicalType_bigint : outResult = ".decimalString ()"
   end
 }
 
@@ -66,6 +69,7 @@ getter @lexicalTypeEnum initialization -> @string outResult {
     case lexicalType_sint   : outResult = " = 0"
     case lexicalType_sint64 : outResult = " = 0"
     case lexicalType_double : outResult = " = 0.0"
+    case lexicalType_bigint : outResult = ".setToZero ()"
   end
 }
 
@@ -80,6 +84,22 @@ getter @lexicalTypeEnum cocoaTypeName -> @string outResult {
     case lexicalType_sint   : outResult = "SInt32"
     case lexicalType_sint64 : outResult = "SInt64"
     case lexicalType_double : outResult = "double"
+    case lexicalType_bigint : outResult = "NSMutableString *"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum needsReferenceInInputOutputInCocoa -> @bool outResult {
+  switch self
+    case lexicalType_string : outResult = false
+    case lexicalType_char   : outResult = true
+    case lexicalType_uint   : outResult = true
+    case lexicalType_uint64 : outResult = true
+    case lexicalType_sint   : outResult = true
+    case lexicalType_sint64 : outResult = true
+    case lexicalType_double : outResult = true
+    case lexicalType_bigint : outResult = false
   end
 }
 
@@ -94,6 +114,7 @@ getter @lexicalTypeEnum cocoaInitializationCode -> @string outResult {
     case lexicalType_sint   : outResult = "0"
     case lexicalType_sint64 : outResult = "0"
     case lexicalType_double : outResult = "0.0"
+    case lexicalType_bigint : outResult = "[[NSMutableString alloc] init]"
   end
 }
 
@@ -109,6 +130,7 @@ getter @lexicalTypeEnum cocoaResetPrefix -> @string outResult {
     case lexicalType_sint   : outResult = ""
     case lexicalType_sint64 : outResult = ""
     case lexicalType_double : outResult = ""
+    case lexicalType_bigint : outResult = "["
   end
 }
 
@@ -123,6 +145,7 @@ getter @lexicalTypeEnum cocoaReset -> @string outResult {
     case lexicalType_sint   : outResult = " = 0"
     case lexicalType_sint64 : outResult = " = 0"
     case lexicalType_double : outResult = " = 0.0"
+    case lexicalType_bigint : outResult = " setString:@\"\"]"
   end
 }
 

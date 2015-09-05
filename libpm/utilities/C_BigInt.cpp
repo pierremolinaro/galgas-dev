@@ -53,6 +53,9 @@ class acPtr_bigUInt : public C_SharedObject {
   public : bool operator <  (const acPtr_bigUInt & inOperand) const ;
   public : int32_t compare (const acPtr_bigUInt & inOperand) const ;
   
+  public : void addInPlace (const uint32_t inOperand) ;
+//  public : void subtractInPlace (const uint32_t inOperand) ; // Requires *this >= inOperand
+
   public : void addInPlace (const acPtr_bigUInt & inOperand) ;
   public : void subtractInPlace (const acPtr_bigUInt & inOperand) ; // Requires *this >= inOperand
   public : void multiplyInPlace (const uint32_t inOperand) ;
@@ -432,7 +435,100 @@ C_String C_BigInt::decimalString (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Add, subtract
+  #pragma mark Add, subtract uint32_t
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator += (const uint32_t inOperand) {
+  switch (mSign) {
+  case zero :  // 0 + inOperand --> inOperand
+    *this = C_BigInt (inOperand) ;
+    break ;
+  case positive :
+    insulate (HERE) ;
+    mObjectPtr->addInPlace (inOperand) ;
+    break ;
+  case negative :
+    *this += C_BigInt (inOperand) ;
+    break ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator + (const uint32_t inOperand) const {
+  C_BigInt resultat = *this ;
+  resultat += inOperand ;
+  return resultat ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator -= (const uint32_t inOperand) {
+  switch (mSign) {
+  case zero :  // 0 - inOperand --> - inOperand
+    *this = - C_BigInt (inOperand) ;
+    break ;
+  case positive :
+    *this -= C_BigInt (inOperand) ;
+    break ;
+  case negative :
+    insulate (HERE) ;
+    mObjectPtr->addInPlace (inOperand) ;
+    break ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator - (const uint32_t inOperand) const {
+  C_BigInt resultat = *this ;
+  resultat -= inOperand ;
+  return resultat ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void acPtr_bigUInt::addInPlace (const uint32_t inOperand) {
+  macroUniqueSharedObject (this) ;
+  uint64_t carry = inOperand ;
+  for (int32_t i=0 ; i<mValueArray.count () ; i++) {
+    const uint64_t a = mValueArray (i COMMA_HERE) ;
+    carry += a ;
+    mValueArray (i COMMA_HERE) = ((uint32_t) (carry & UINT32_MAX)) ;
+    carry >>= 32 ;
+  }
+  if (carry > 0) {
+    mValueArray.addObject ((uint32_t) carry) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+/* void acPtr_bigUInt::subtractInPlace (const uint32_t inOperand) {
+  macroUniqueSharedObject (this) ;
+  const uint64_t operand = inOperand ;
+  uint64_t carry = (uint64_t) - ((int64_t) operand) ;
+  for (int32_t i=0 ; i<mValueArray.count () ; i++) {
+    const uint64_t a = mValueArray (i COMMA_HERE) ;
+    carry += a ;
+    mValueArray (i COMMA_HERE) = ((uint32_t) (carry & UINT32_MAX)) ;
+    carry >>= 32 ;
+  }
+  MF_Assert (carry == 0, "carry (0x%x) should be 0", (int64_t) carry, 0) ;
+} */
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Add, subtract C_BigInt
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -779,18 +875,100 @@ void acPtr_bigUInt::shiftLeft (const uint32_t inValue) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool C_BigInt::operator == (const C_BigInt & inOperand) const {
-  bool equal = mSign == inOperand.mSign ;
-  if (equal && (mSign != zero)) {
-    equal = (*mObjectPtr) == (* inOperand.mObjectPtr) ;
+int32_t C_BigInt::compare (const C_BigInt & inValue) const {
+  int32_t result = 0 ; // Equal
+  switch (mSign) {
+  case zero :
+    switch (inValue.mSign) {
+    case zero : // 0, 0 -> equal
+      break ;
+    case positive : // 0, positive --> lower
+      result = -1 ;
+      break ;
+    case negative : // 0, negtive --> greater
+      result = 1 ;
+      break ;
+    }
+    break ;
+  case positive :
+    switch (inValue.mSign) {
+    case zero : // positive, 0 --> greater
+      result = 1 ;
+      break ;
+    case positive : // positive, positive
+      result = mObjectPtr->compare (* inValue.mObjectPtr) ;
+      break ;
+    case negative : // positive, 0 --> greater
+      result = 1 ;
+      break ;
+    }
+    break ;
+  case negative :
+    switch (inValue.mSign) {
+    case zero : // negative, 0 --> lower
+      result = -1 ;
+      break ;
+    case positive :  // negative, positive --> lower
+      result = -1 ;
+      break ;
+    case negative :   // negative, negative
+      result = - mObjectPtr->compare (* inValue.mObjectPtr) ;
+      break ;
+    }
+    break ;
+    break ;
   }
-  return equal ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool C_BigInt::operator != (const C_BigInt & inValue) const {
-  return ! (*this == inValue) ;
+int32_t acPtr_bigUInt::compare (const acPtr_bigUInt & inOperand) const {
+  int32_t result = mValueArray.count () - inOperand.mValueArray.count () ;
+  for (int32_t i=0 ; (result == 0) && (i < mValueArray.count ()) ; i++) {
+    if (mValueArray (i COMMA_HERE) > inOperand.mValueArray (i COMMA_HERE)) {
+      result = 1 ;
+    }else if (mValueArray (i COMMA_HERE) < inOperand.mValueArray (i COMMA_HERE)) {
+      result = -1 ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::operator == (const C_BigInt & inOperand) const {
+  return compare (inOperand) == 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::operator != (const C_BigInt & inOperand) const {
+  return compare (inOperand) != 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::operator >= (const C_BigInt & inOperand) const {
+  return compare (inOperand) >= 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::operator > (const C_BigInt & inOperand) const {
+  return compare (inOperand) > 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::operator <= (const C_BigInt & inOperand) const {
+  return compare (inOperand) <= 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool C_BigInt::operator < (const C_BigInt & inOperand) const {
+  return compare (inOperand) < 0 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -827,20 +1005,6 @@ bool acPtr_bigUInt::operator < (const acPtr_bigUInt & inOperand) const {
 
 bool acPtr_bigUInt::operator <= (const acPtr_bigUInt & inOperand) const {
   return compare (inOperand) <= 0 ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-int32_t acPtr_bigUInt::compare (const acPtr_bigUInt & inOperand) const {
-  int32_t result = mValueArray.count () - inOperand.mValueArray.count () ;
-  for (int32_t i=0 ; (result == 0) && (i < mValueArray.count ()) ; i++) {
-    if (mValueArray (i COMMA_HERE) > inOperand.mValueArray (i COMMA_HERE)) {
-      result = 1 ;
-    }else if (mValueArray (i COMMA_HERE) < inOperand.mValueArray (i COMMA_HERE)) {
-      result = -1 ;
-    }
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

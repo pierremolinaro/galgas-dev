@@ -1167,6 +1167,16 @@ class GALGAS_string callCategoryReader_generateCocoaInstructionCode (const class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                 Category Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa' (as function)                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bool categoryReader_needsReferenceInInputOutputInCocoa (const class GALGAS_lexicalTypeEnum & inObject,
+                                                                     class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                  Abstract category method '@lexicalSendDefaultActionAST checkLexicalDefaultAction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

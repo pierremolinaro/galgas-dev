@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  'lexique' component metamodel                                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -459,14 +459,19 @@ list @galgas3LexiqueComponentListAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#           B U I L D    T E R M I N A L    M A P                           *
+#           B U I L D    T E R M I N A L    M A P                                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 enum @lexicalTypeEnum {
-  case lexicalType_string  case lexicalType_char  case lexicalType_uint 
-  case lexicalType_uint64  case lexicalType_sint  case lexicalType_sint64 
+  case lexicalType_string
+  case lexicalType_char
+  case lexicalType_uint 
+  case lexicalType_uint64
+  case lexicalType_sint
+  case lexicalType_sint64 
   case lexicalType_double
+  case lexicalType_bigint
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -498,15 +503,17 @@ map @lexicalTypeMap {
 #----------------------------------------------------------------------------------------------------------------------*
 
 func %once buildLexicalTypeMap
-  ->@lexicalTypeMap outLexicalTypeMap {
-  outLexicalTypeMap = @lexicalTypeMap. emptyMap
-  [!?outLexicalTypeMap insertKey !@lstring.new {!"string" !@location.here} !@lexicalTypeEnum. lexicalType_string]
-  [!?outLexicalTypeMap insertKey !@lstring.new {!"char"   !@location.here} !@lexicalTypeEnum. lexicalType_char]
-  [!?outLexicalTypeMap insertKey !@lstring.new {!"uint"   !@location.here} !@lexicalTypeEnum. lexicalType_uint]
-  [!?outLexicalTypeMap insertKey !@lstring.new {!"uint64" !@location.here} !@lexicalTypeEnum. lexicalType_uint64]
-  [!?outLexicalTypeMap insertKey !@lstring.new {!"sint"   !@location.here} !@lexicalTypeEnum. lexicalType_sint]
-  [!?outLexicalTypeMap insertKey !@lstring.new {!"sint64" !@location.here} !@lexicalTypeEnum. lexicalType_sint64]
-  [!?outLexicalTypeMap insertKey !@lstring.new {!"double" !@location.here} !@lexicalTypeEnum. lexicalType_double]
+  ->@lexicalTypeMap outLexicalTypeMap
+{
+  outLexicalTypeMap = {}
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"string" !@location.here} !.lexicalType_string]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"char"   !@location.here} !.lexicalType_char]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"uint"   !@location.here} !.lexicalType_uint]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"uint64" !@location.here} !.lexicalType_uint64]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"sint"   !@location.here} !.lexicalType_sint]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"sint64" !@location.here} !.lexicalType_sint64]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"double" !@location.here} !.lexicalType_double]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"bigint" !@location.here} !.lexicalType_bigint]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
