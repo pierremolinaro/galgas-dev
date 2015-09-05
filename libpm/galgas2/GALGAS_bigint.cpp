@@ -51,7 +51,7 @@ void GALGAS_bigint::description (C_String & ioString,
   if (!mIsValid) {
     ioString << "not built" ;
   }else{
-    ioString << mValue.hexString () ;
+    ioString << mValue.decimalString () ;
   }
   ioString << ">" ;
 }

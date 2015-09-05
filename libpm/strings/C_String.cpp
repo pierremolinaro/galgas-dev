@@ -639,10 +639,9 @@ void C_String::performActualCharArrayOutput (const char * inCharArray,
 //---------------------------------------------------------------------------------------------------------------------*
 
 
-void C_String::
-setUnicodeCharacterAtIndex (const utf32 inCharacter,
-                            const int32_t inIndex
-                            COMMA_LOCATION_ARGS) {
+void C_String::setUnicodeCharacterAtIndex (const utf32 inCharacter,
+                                           const int32_t inIndex
+                                           COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
@@ -664,9 +663,9 @@ setUnicodeCharacterAtIndex (const utf32 inCharacter,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_String::
-suppress (const int32_t inLocation,
-          const int32_t inLength COMMA_LOCATION_ARGS) {
+void C_String::suppress (const int32_t inLocation,
+                         const int32_t inLength
+                         COMMA_LOCATION_ARGS) {
   if (inLength > 0) {
     insulateEmbeddedString (mEmbeddedString->mCapacity) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -856,9 +855,8 @@ void C_String::componentsSeparatedByString (const C_String & inSeparatorString,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-componentsJoinedByString (const TC_UniqueArray <C_String> & inComponentArray,
-                          const C_String & inSeparator) {
+C_String C_String::componentsJoinedByString (const TC_UniqueArray <C_String> & inComponentArray,
+                                             const C_String & inSeparator) {
   C_String result ;
   if (inComponentArray.count () > 0) {
     result << (inComponentArray (0 COMMA_HERE)) ;
@@ -876,8 +874,7 @@ componentsJoinedByString (const TC_UniqueArray <C_String> & inComponentArray,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-stringByDeletingTailFromString (const C_String & inSearchedString) const {
+C_String C_String::stringByDeletingTailFromString (const C_String & inSearchedString) const {
   C_String result = * this ;
   const int32_t searchedStringLength = inSearchedString.length () ;
   if (searchedStringLength > 0) {
@@ -900,9 +897,8 @@ stringByDeletingTailFromString (const C_String & inSearchedString) const {
 
 //--- Substitute 'inCharacter' by 'inString' ; if the character occurs twice, suppress one
 
-C_String C_String::
-stringByReplacingCharacterByString (const utf32 inCharacter,
-                                    const C_String & inString) const {
+C_String C_String::stringByReplacingCharacterByString (const utf32 inCharacter,
+                                                       const C_String & inString) const {
   const int32_t stringLength = length () ;
   C_String resultingString ;
   bool previousCharIsSubstituteChar = false ;
@@ -935,12 +931,10 @@ stringByReplacingCharacterByString (const utf32 inCharacter,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-stringByReplacingStringByString (const C_String inSearchedString,
-                                 const C_String & inReplacementString,
-                                 uint32_t & outReplacementCount,
-                                 bool & outOk
-                                 COMMA_UNUSED_LOCATION_ARGS) const {
+C_String C_String::stringByReplacingStringByString (const C_String inSearchedString,
+                                                    const C_String & inReplacementString,
+                                                    uint32_t & outReplacementCount,
+                                                    bool & outOk) const {
   C_String result ;
   outReplacementCount = 0 ;
   outOk = inSearchedString.length () != 0 ;
@@ -977,8 +971,7 @@ stringByReplacingStringByString (const C_String inSearchedString,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-int32_t C_String::
-lastOccurrenceIndexOfChar (const utf32 inChar) const {
+int32_t C_String::lastOccurrenceIndexOfChar (const utf32 inChar) const {
   int32_t result = length () ;
   const utf32 * ptr = utf32String (HERE) ;
   bool notFound = true ;
@@ -994,9 +987,8 @@ lastOccurrenceIndexOfChar (const utf32 inChar) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-subString (const int32_t inStartIndex,
-           const int32_t inLength) const {
+C_String C_String::subString (const int32_t inStartIndex,
+                              const int32_t inLength) const {
   C_String s ;
   if (inLength > 0) {
     int32_t last = inStartIndex + inLength ;
@@ -1014,8 +1006,7 @@ subString (const int32_t inStartIndex,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-stringByCapitalizingFirstCharacter (void) const {
+C_String C_String::stringByCapitalizingFirstCharacter (void) const {
   C_String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
@@ -1031,8 +1022,7 @@ stringByCapitalizingFirstCharacter (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-lowercaseString (void) const {
+C_String C_String::lowercaseString (void) const {
   C_String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
@@ -1075,8 +1065,7 @@ C_String C_String::stringByTrimmingSeparators (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-uppercaseString (void) const {
+C_String C_String::uppercaseString (void) const {
   C_String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
@@ -1089,16 +1078,25 @@ uppercaseString (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-reversedString (void) const {
-  C_String s ;
-  const int32_t receiver_length = length () ;
-  s.setCapacity ((uint32_t) receiver_length) ;
-  const utf32 * ptr = utf32String (HERE) ;
-  for (int32_t i=receiver_length-1 ; i>=0 ; i--) {
-    s.appendUnicodeCharacter (ptr [i] COMMA_HERE) ;
-  }
+C_String C_String::reversedString (void) const {
+  C_String s = *this ;
+  s.reverseStringInPlace () ;
   return s ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_String::reverseStringInPlace (void) {
+  if (NULL != mEmbeddedString) {
+    const int32_t receiver_length = length () ;
+    macroUniqueSharedObject (mEmbeddedString) ;
+    insulateEmbeddedString (mEmbeddedString->mCapacity) ;
+    for (int32_t i=0 ; i<(receiver_length/2) ; i++) {
+      const utf32 temp = mEmbeddedString->mString [i] ;
+      mEmbeddedString->mString [i] = mEmbeddedString->mString [receiver_length - i - 1] ;
+      mEmbeddedString->mString [receiver_length - i - 1] = temp ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

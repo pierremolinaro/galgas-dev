@@ -521,7 +521,7 @@ GALGAS_string GALGAS_string::reader_stringByReplacingStringByString (const GALGA
     }else{
       bool ok = false ;
       uint32_t replacementCount = 0 ;
-      const C_String s = mString.stringByReplacingStringByString (inSearchedString.mString, inReplacementString.mString, replacementCount, ok COMMA_THERE) ;
+      const C_String s = mString.stringByReplacingStringByString (inSearchedString.mString, inReplacementString.mString, replacementCount, ok) ;
       result = GALGAS_string (s) ;
     }
   }
