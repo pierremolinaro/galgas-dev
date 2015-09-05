@@ -72,8 +72,8 @@ class acPtr_bigUInt : public C_SharedObject {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (void) :
-mObjectPtr (NULL),
-mSign (zero) {
+mSign (zero),
+mObjectPtr (NULL) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkBigInt (HERE) ;
   #endif
@@ -92,9 +92,9 @@ C_BigInt::~C_BigInt (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (const C_BigInt & inOperand) :
+mSign (inOperand.mSign),
 mObjectPtr (NULL) {
   macroAssignSharedObject (mObjectPtr, inOperand.mObjectPtr) ;
-  mSign = inOperand.mSign ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkBigInt (HERE) ;
   #endif
@@ -116,7 +116,7 @@ C_BigInt & C_BigInt::operator = (const C_BigInt & inOperand) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark normalize and tests
+  #pragma mark Normalize and tests
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -161,8 +161,8 @@ void acPtr_bigUInt::normalize (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (const uint64_t inValue, const bool inNegate) :
-mObjectPtr (NULL),
-mSign (zero) {
+mSign (zero),
+mObjectPtr (NULL) {
   if (inValue > 0) {
     macroMyNew (mObjectPtr, acPtr_bigUInt (inValue COMMA_HERE)) ;
     mSign = inNegate ? negative : positive ;
@@ -175,8 +175,8 @@ mSign (zero) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (const int64_t inValue) :
-mObjectPtr (NULL),
-mSign (zero) {
+mSign (zero),
+mObjectPtr (NULL) {
   if (inValue > 0) {
     macroMyNew (mObjectPtr, acPtr_bigUInt ((uint64_t) inValue COMMA_HERE)) ;
     mSign = positive ;
@@ -197,6 +197,16 @@ mValueArray () {
   if (hi > 0) {
     mValueArray.addObject ((uint32_t) hi) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::setToZero (void) {
+  macroDetachSharedObject (mObjectPtr) ;
+  mSign = zero ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -270,7 +280,7 @@ mValueArray () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_BigInt::operator ++ (void) {
+C_BigInt & C_BigInt::operator ++ (void) {
   switch (mSign) {
   case zero :
     macroMyNew (mObjectPtr, acPtr_bigUInt (1 COMMA_HERE)) ;
@@ -289,11 +299,12 @@ void C_BigInt::operator ++ (void) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkBigInt (HERE) ;
   #endif
+  return *this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_BigInt::operator -- (void) {
+C_BigInt & C_BigInt::operator -- (void) {
   switch (mSign) {
   case zero :
     macroMyNew (mObjectPtr, acPtr_bigUInt (1 COMMA_HERE)) ;
@@ -312,6 +323,7 @@ void C_BigInt::operator -- (void) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkBigInt (HERE) ;
   #endif
+  return *this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -796,8 +808,8 @@ void C_BigInt::example (void) {
 //--- Random tests
   co << "Add and subtract random test\n" ;
   for (int32_t i=0 ; i<1000 ; i++) {
-    const int64_t a = (int32_t) random () ;
-    const int64_t b = (int32_t) random () ;
+    const int64_t a = (int32_t) rand () ;
+    const int64_t b = (int32_t) rand () ;
     const C_BigInt bigA (a) ;
     const C_BigInt bigB (b) ;
     const C_BigInt bigAdd = bigA + bigB ;
@@ -818,8 +830,8 @@ void C_BigInt::example (void) {
   }
   co << "Multiply random test\n" ;
   for (int32_t i=0 ; i<1000 ; i++) {
-    const uint64_t a = (uint32_t) random () ;
-    const uint32_t b = (uint32_t) random () ;
+    const uint64_t a = (uint32_t) rand () ;
+    const uint32_t b = (uint32_t) rand () ;
     const C_BigInt bigA (a, false) ;
     const C_BigInt bigMul = bigA * b ;
     const C_BigInt bigMulVerif (a * b, false) ;
@@ -829,8 +841,8 @@ void C_BigInt::example (void) {
   }
   co << "Other random test\n" ;
   for (int32_t i=0 ; i<1000 ; i++) {
-    const int32_t a = (int32_t) random () ;
-    const uint32_t b = (uint32_t) random () ;
+    const int32_t a = (int32_t) rand () ;
+    const uint32_t b = (uint32_t) rand () ;
     C_BigInt bigA (a) ;
     for (int32_t j=0 ; j<10 ; j++) {
       bigA *= b ;

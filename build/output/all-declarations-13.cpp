@@ -3680,8 +3680,6 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveType
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "#include \"gmpxx.h\"\n"
-    "\n"
     "#include \"strings/C_String.h\"\n"
     "#include \"time/C_Timer.h\"\n"
     "#include \"galgas2/AC_GALGAS_root.h\"\n"
@@ -3702,6 +3700,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveType
     "#include \"command_line_interface/C_StringCommandLineOption.h\"\n"
     "#include \"command_line_interface/C_StringListCommandLineOption.h\"\n"
     "#include \"utilities/C_PrologueEpilogue.h\"\n"
+    "#include \"utilities/C_BigInt.h\"\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
@@ -3709,15 +3708,15 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveType
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  GALGAS_uint index_1376_ (0) ;
+  GALGAS_uint index_1388_ (0) ;
   if (in_TYPE_5F_LIST.isValid ()) {
-    cEnumerator_stringset enumerator_1376 (in_TYPE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1376.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_1388 (in_TYPE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1388.hasCurrentObject ()) {
       result << "class GALGAS_" ;
-      result << enumerator_1376.current_key (HERE).reader_identifierRepresentation (SOURCE_FILE ("predefined-types-file-header.h.galgasTemplate", 38)).stringValue () ;
+      result << enumerator_1388.current_key (HERE).reader_identifierRepresentation (SOURCE_FILE ("predefined-types-file-header.h.galgasTemplate", 37)).stringValue () ;
       result << " ;\n" ;
-      index_1376_.increment () ;
-      enumerator_1376.gotoNextObject () ;
+      index_1388_.increment () ;
+      enumerator_1388.gotoNextObject () ;
     }
   }
   result << "\n" ;
@@ -4542,35 +4541,35 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_application_5
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Filewrapper template 'predefinedTypeGenerationTemplate gmpint_type'                         *
+//                         Filewrapper template 'predefinedTypeGenerationTemplate bigint_type'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_gmpint_5F_type (C_Compiler * /* inCompiler */
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bigint_5F_type (C_Compiler * /* inCompiler */
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("@gmpint type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("gmpint-type.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("@bigint type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("bigint-type.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "class GALGAS_gmpint : public AC_GALGAS_root {\n"
+    "class GALGAS_bigint : public AC_GALGAS_root {\n"
     "//--------------------------------- Private properties\n"
     "  private : bool mIsValid ;\n"
-    "  private : mpz_class mValue ;\n"
+    "  private : C_BigInt mValue ;\n"
     "\n"
     "//--------------------------------- Accessors\n"
     "  public : inline bool isValid (void) const { return mIsValid ; }\n"
     "  public : VIRTUAL_IN_DEBUG void drop (void) ;\n"
     "\n"
     "//--------------------------------- Default constructor\n"
-    "  public : GALGAS_gmpint (void) ;\n"
+    "  public : GALGAS_bigint (void) ;\n"
     "\n"
     "//--------------------------------- Destructor\n"
-    "  public : virtual ~ GALGAS_gmpint (void) ;\n"
+    "  public : virtual ~ GALGAS_bigint (void) ;\n"
     "\n" ;
   return GALGAS_string (result) ;
 }
@@ -5289,7 +5288,7 @@ void routine_appendPredefinedTypesASTs (GALGAS_semanticDeclarationListAST & ioAr
                                         COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_timerPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("timer"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_timer (SOURCE_FILE ("predefinedTypes.galgas", 127))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 127))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 127)) ;
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_applicationPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("application"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_application (SOURCE_FILE ("predefinedTypes.galgas", 128))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 128))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 128)) ;
-  ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_gmpintPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("gmpint"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_gmpint (SOURCE_FILE ("predefinedTypes.galgas", 129))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 129))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 129)) ;
+  ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_bigintPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("bigint"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bigint (SOURCE_FILE ("predefinedTypes.galgas", 129))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 129))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 129)) ;
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_filewrapperPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("filewrapper"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_filewrapper (SOURCE_FILE ("predefinedTypes.galgas", 130))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 130))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 130)) ;
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_objectPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("object"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_object (SOURCE_FILE ("predefinedTypes.galgas", 131))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 131))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 131)) ;
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_boolPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("bool"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bool (SOURCE_FILE ("predefinedTypes.galgas", 132))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 132))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 132)) ;

@@ -141,6 +141,7 @@ SOURCES += cPtr_object.cpp
 SOURCES += predefined-types.cpp
 SOURCES += scanner_actions.cpp
 SOURCES += GALGAS_application.cpp
+SOURCES += GALGAS_bigint.cpp
 SOURCES += GALGAS_binaryset.cpp
 SOURCES += GALGAS_bool.cpp
 SOURCES += GALGAS_char.cpp

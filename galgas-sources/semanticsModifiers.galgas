@@ -182,7 +182,7 @@ override method @filewrapperPredefinedTypeAST getModifierMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @gmpintPredefinedTypeAST getModifierMap
+override method @bigintPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap
 {

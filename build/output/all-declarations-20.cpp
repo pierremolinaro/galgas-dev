@@ -13971,7 +13971,7 @@ GALGAS_string categoryReader_defaultConstructorName (const GALGAS_predefinedType
       result_outName = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_gmpint:
+  case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_bigint:
     {
       result_outName = GALGAS_string ("zero") ;
     }

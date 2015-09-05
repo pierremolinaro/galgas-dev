@@ -4202,11 +4202,11 @@ C_PrologueEpilogue gReader_applicationPredefinedTypeAST_getSupportedOperatorFlag
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category reader '@gmpintPredefinedTypeAST getSupportedOperatorFlags'                   *
+//                   Overriding category reader '@bigintPredefinedTypeAST getSupportedOperatorFlags'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint categoryReader_gmpintPredefinedTypeAST_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * /* inObject */,
+static GALGAS_uint categoryReader_bigintPredefinedTypeAST_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * /* inObject */,
                                                                                      C_Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outFlags ; // Returned variable
@@ -4218,14 +4218,14 @@ static GALGAS_uint categoryReader_gmpintPredefinedTypeAST_getSupportedOperatorFl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_gmpintPredefinedTypeAST_getSupportedOperatorFlags (void) {
-  enterCategoryReader_getSupportedOperatorFlags (kTypeDescriptor_GALGAS_gmpintPredefinedTypeAST.mSlotID,
-                                                 categoryReader_gmpintPredefinedTypeAST_getSupportedOperatorFlags) ;
+static void defineCategoryReader_bigintPredefinedTypeAST_getSupportedOperatorFlags (void) {
+  enterCategoryReader_getSupportedOperatorFlags (kTypeDescriptor_GALGAS_bigintPredefinedTypeAST.mSlotID,
+                                                 categoryReader_bigintPredefinedTypeAST_getSupportedOperatorFlags) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_gmpintPredefinedTypeAST_getSupportedOperatorFlags (defineCategoryReader_gmpintPredefinedTypeAST_getSupportedOperatorFlags, NULL) ;
+C_PrologueEpilogue gReader_bigintPredefinedTypeAST_getSupportedOperatorFlags (defineCategoryReader_bigintPredefinedTypeAST_getSupportedOperatorFlags, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5183,33 +5183,33 @@ C_PrologueEpilogue gMethod_typePredefinedTypeAST_getConstructorMap (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@gmpintPredefinedTypeAST getConstructorMap'                       *
+//                       Overriding category method '@bigintPredefinedTypeAST getConstructorMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_gmpintPredefinedTypeAST_getConstructorMap (const cPtr_predefinedTypeAST * /* inObject */,
+static void categoryMethod_bigintPredefinedTypeAST_getConstructorMap (const cPtr_predefinedTypeAST * /* inObject */,
                                                                       GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                       GALGAS_constructorMap & outArgument_outMap,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsConstructors.galgas", 283)) ;
   {
-  routine_enterConstructorWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("zero"), GALGAS_string ("gmpint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 284)) ;
+  routine_enterConstructorWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("zero"), GALGAS_string ("bigint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 284)) ;
   }
   {
-  routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("uint"), GALGAS_string ("uint"), GALGAS_string ("inValue"), GALGAS_string ("gmpint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 285)) ;
+  routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("uint"), GALGAS_string ("uint"), GALGAS_string ("inValue"), GALGAS_string ("bigint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 285)) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_gmpintPredefinedTypeAST_getConstructorMap (void) {
-  enterCategoryMethod_getConstructorMap (kTypeDescriptor_GALGAS_gmpintPredefinedTypeAST.mSlotID,
-                                         categoryMethod_gmpintPredefinedTypeAST_getConstructorMap) ;
+static void defineCategoryMethod_bigintPredefinedTypeAST_getConstructorMap (void) {
+  enterCategoryMethod_getConstructorMap (kTypeDescriptor_GALGAS_bigintPredefinedTypeAST.mSlotID,
+                                         categoryMethod_bigintPredefinedTypeAST_getConstructorMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_gmpintPredefinedTypeAST_getConstructorMap (defineCategoryMethod_gmpintPredefinedTypeAST_getConstructorMap, NULL) ;
+C_PrologueEpilogue gMethod_bigintPredefinedTypeAST_getConstructorMap (defineCategoryMethod_bigintPredefinedTypeAST_getConstructorMap, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6391,11 +6391,11 @@ C_PrologueEpilogue gMethod_filewrapperPredefinedTypeAST_getReaderMap (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@gmpintPredefinedTypeAST getReaderMap'                          *
+//                         Overriding category method '@bigintPredefinedTypeAST getReaderMap'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_gmpintPredefinedTypeAST_getReaderMap (const cPtr_predefinedTypeAST * /* inObject */,
+static void categoryMethod_bigintPredefinedTypeAST_getReaderMap (const cPtr_predefinedTypeAST * /* inObject */,
                                                                  GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                                                  GALGAS_getterMap & outArgument_outMap,
                                                                  C_Compiler * inCompiler
@@ -6406,14 +6406,14 @@ static void categoryMethod_gmpintPredefinedTypeAST_getReaderMap (const cPtr_pred
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_gmpintPredefinedTypeAST_getReaderMap (void) {
-  enterCategoryMethod_getReaderMap (kTypeDescriptor_GALGAS_gmpintPredefinedTypeAST.mSlotID,
-                                    categoryMethod_gmpintPredefinedTypeAST_getReaderMap) ;
+static void defineCategoryMethod_bigintPredefinedTypeAST_getReaderMap (void) {
+  enterCategoryMethod_getReaderMap (kTypeDescriptor_GALGAS_bigintPredefinedTypeAST.mSlotID,
+                                    categoryMethod_bigintPredefinedTypeAST_getReaderMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_gmpintPredefinedTypeAST_getReaderMap (defineCategoryMethod_gmpintPredefinedTypeAST_getReaderMap, NULL) ;
+C_PrologueEpilogue gMethod_bigintPredefinedTypeAST_getReaderMap (defineCategoryMethod_bigintPredefinedTypeAST_getReaderMap, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6560,11 +6560,11 @@ C_PrologueEpilogue gMethod_filewrapperPredefinedTypeAST_getModifierMap (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@gmpintPredefinedTypeAST getModifierMap'                         *
+//                        Overriding category method '@bigintPredefinedTypeAST getModifierMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_gmpintPredefinedTypeAST_getModifierMap (const cPtr_predefinedTypeAST * /* inObject */,
+static void categoryMethod_bigintPredefinedTypeAST_getModifierMap (const cPtr_predefinedTypeAST * /* inObject */,
                                                                    GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
                                                                    GALGAS_setterMap & outArgument_outModifierMap,
                                                                    C_Compiler * /* inCompiler */
@@ -6573,14 +6573,14 @@ static void categoryMethod_gmpintPredefinedTypeAST_getModifierMap (const cPtr_pr
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_gmpintPredefinedTypeAST_getModifierMap (void) {
-  enterCategoryMethod_getModifierMap (kTypeDescriptor_GALGAS_gmpintPredefinedTypeAST.mSlotID,
-                                      categoryMethod_gmpintPredefinedTypeAST_getModifierMap) ;
+static void defineCategoryMethod_bigintPredefinedTypeAST_getModifierMap (void) {
+  enterCategoryMethod_getModifierMap (kTypeDescriptor_GALGAS_bigintPredefinedTypeAST.mSlotID,
+                                      categoryMethod_bigintPredefinedTypeAST_getModifierMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_gmpintPredefinedTypeAST_getModifierMap (defineCategoryMethod_gmpintPredefinedTypeAST_getModifierMap, NULL) ;
+C_PrologueEpilogue gMethod_bigintPredefinedTypeAST_getModifierMap (defineCategoryMethod_bigintPredefinedTypeAST_getModifierMap, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

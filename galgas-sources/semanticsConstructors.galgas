@@ -276,13 +276,13 @@ override method @typePredefinedTypeAST getConstructorMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @gmpintPredefinedTypeAST getConstructorMap
+override method @bigintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 {
   outMap = {}
-  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"zero" !"gmpint" !false)
-  enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"uint" !"uint" !"inValue" !"gmpint" !false)
+  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"zero" !"bigint" !false)
+  enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"uint" !"uint" !"inValue" !"bigint" !false)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
