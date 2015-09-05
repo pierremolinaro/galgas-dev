@@ -10049,9 +10049,9 @@ GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bitstring (UNUSED_LOCATION_ARGS) {
+GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_gmpint (UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypeKindEnum result ;
-  result.mEnum = kEnum_predefined_5F_bitstring ;
+  result.mEnum = kEnum_predefined_5F_gmpint ;
   return result ;
 }
 
@@ -10084,7 +10084,7 @@ static const char * gEnumNameArrayFor_predefinedTypeKindEnum [20] = {
   "predefined_data",
   "predefined_filewrapper",
   "predefined_application",
-  "predefined_bitstring",
+  "predefined_gmpint",
   "predefined_timer"
 } ;
 
@@ -10192,8 +10192,8 @@ GALGAS_bool GALGAS_predefinedTypeKindEnum::reader_isPredefined_5F_application (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_predefinedTypeKindEnum::reader_isPredefined_5F_bitstring (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_bitstring == mEnum) ;
+GALGAS_bool GALGAS_predefinedTypeKindEnum::reader_isPredefined_5F_gmpint (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_predefined_5F_gmpint == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

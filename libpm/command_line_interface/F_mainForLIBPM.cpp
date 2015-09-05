@@ -30,6 +30,7 @@
 #include "utilities/cpp-allocation.h"
 #include "utilities/basic-allocation.h"
 #include "utilities/C_PrologueEpilogue.h"
+//#include "utilities/C_BigInt.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -48,6 +49,8 @@ static const char * gArgv0 ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 int main (int argc, const char * argv []) {
+//   C_BigInt::example () ;
+
   // PMUInt128::example () ;
   // C_DirectedGraph::example () ;
   gArgv0 = argv [0] ;

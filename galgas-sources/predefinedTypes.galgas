@@ -126,7 +126,7 @@ proc appendPredefinedTypesASTs
 {
   ioDeclarationListASTs += !@timerPredefinedTypeAST.new {!true !"timer" !.predefined_timer}
   ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!true !"application" !.predefined_application}
-  ioDeclarationListASTs += !@bitstringPredefinedTypeAST.new {!true !"bitstring" !.predefined_bitstring}
+  ioDeclarationListASTs += !@gmpintPredefinedTypeAST.new {!true !"gmpint" !.predefined_gmpint}
   ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!true !"filewrapper" !.predefined_filewrapper}
   ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!true !"object" !.predefined_object}
   ioDeclarationListASTs += !@boolPredefinedTypeAST.new {!true !"bool" !.predefined_bool}

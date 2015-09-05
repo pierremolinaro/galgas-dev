@@ -3675,10 +3675,12 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveType
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "\n"
-    "#ifndef GALGAS2_PREDEFINED_TYPES\n"
-    "#define GALGAS2_PREDEFINED_TYPES\n"
+    "#ifndef GALGAS2_INCLUDED_DEFINITIONS\n"
+    "#define GALGAS2_INCLUDED_DEFINITIONS\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "#include \"gmpxx.h\"\n"
     "\n"
     "#include \"strings/C_String.h\"\n"
     "#include \"time/C_Timer.h\"\n"
@@ -3707,15 +3709,15 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveType
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  GALGAS_uint index_1348_ (0) ;
+  GALGAS_uint index_1376_ (0) ;
   if (in_TYPE_5F_LIST.isValid ()) {
-    cEnumerator_stringset enumerator_1348 (in_TYPE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1348.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_1376 (in_TYPE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1376.hasCurrentObject ()) {
       result << "class GALGAS_" ;
-      result << enumerator_1348.current_key (HERE).reader_identifierRepresentation (SOURCE_FILE ("predefined-types-file-header.h.galgasTemplate", 36)).stringValue () ;
+      result << enumerator_1376.current_key (HERE).reader_identifierRepresentation (SOURCE_FILE ("predefined-types-file-header.h.galgasTemplate", 38)).stringValue () ;
       result << " ;\n" ;
-      index_1348_.increment () ;
-      enumerator_1348.gotoNextObject () ;
+      index_1376_.increment () ;
+      enumerator_1376.gotoNextObject () ;
     }
   }
   result << "\n" ;
@@ -4540,32 +4542,35 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_application_5
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Filewrapper template 'predefinedTypeGenerationTemplate bitstring_type'                        *
+//                         Filewrapper template 'predefinedTypeGenerationTemplate gmpint_type'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bitstring_5F_type (C_Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_gmpint_5F_type (C_Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("@bitstring type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("bitstring-type.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("@gmpint type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("gmpint-type.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "class GALGAS_bitstring : public AC_GALGAS_root {\n"
+    "class GALGAS_gmpint : public AC_GALGAS_root {\n"
     "//--------------------------------- Private properties\n"
     "  private : bool mIsValid ;\n"
-    "  private : TC_Array <bool> mBitStringValue ;\n"
+    "  private : mpz_class mValue ;\n"
     "\n"
     "//--------------------------------- Accessors\n"
     "  public : inline bool isValid (void) const { return mIsValid ; }\n"
     "  public : VIRTUAL_IN_DEBUG void drop (void) ;\n"
     "\n"
     "//--------------------------------- Default constructor\n"
-    "  public : GALGAS_bitstring (void) ;\n"
+    "  public : GALGAS_gmpint (void) ;\n"
+    "\n"
+    "//--------------------------------- Destructor\n"
+    "  public : virtual ~ GALGAS_gmpint (void) ;\n"
     "\n" ;
   return GALGAS_string (result) ;
 }
@@ -4630,27 +4635,27 @@ void routine_generatePredefinedTypeFiles (const GALGAS_string constinArgument_in
       routine_performSemanticAnalysis (constinArgument_inDirectory, var_predefinedTypeASTlist, var_semanticContext, var_decoratedDeclarationListForGeneration, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2646)) ;
       }
       GALGAS_string var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (inCompiler, var_semanticContext.mAttribute_mTypeMap.reader_allKeys (SOURCE_FILE ("semanticGeneration.galgas", 2654)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2653))) ;
-      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_104991 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
-      while (enumerator_104991.hasCurrentObject ()) {
-        var_generatedCode.dotAssign_operation (callCategoryReader_appendPrimitiveTypeDeclaration ((const cPtr_semanticDeclarationForGeneration *) enumerator_104991.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2657))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2657)) ;
-        enumerator_104991.gotoNextObject () ;
+      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_104979 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
+      while (enumerator_104979.hasCurrentObject ()) {
+        var_generatedCode.dotAssign_operation (callCategoryReader_appendPrimitiveTypeDeclaration ((const cPtr_semanticDeclarationForGeneration *) enumerator_104979.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2657))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2657)) ;
+        enumerator_104979.gotoNextObject () ;
       }
-      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_105129 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
-      while (enumerator_105129.hasCurrentObject ()) {
+      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_105117 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
+      while (enumerator_105117.hasCurrentObject ()) {
         GALGAS_stringset var_unusedInclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2660)) ;
         GALGAS_string var_code ;
-        callCategoryMethod_appendDeclaration_31_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_105129.current_mDeclaration (HERE).ptr (), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2661)) ;
+        callCategoryMethod_appendDeclaration_31_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_105117.current_mDeclaration (HERE).ptr (), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2661)) ;
         var_generatedCode.dotAssign_operation (var_code  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2662)) ;
-        enumerator_105129.gotoNextObject () ;
+        enumerator_105117.gotoNextObject () ;
       }
       var_generatedCode.dotAssign_operation (GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2664)))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2664)) ;
-      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_105456 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
-      while (enumerator_105456.hasCurrentObject ()) {
+      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_105444 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
+      while (enumerator_105444.hasCurrentObject ()) {
         GALGAS_stringset var_inclusionSet_32_ = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2666)) ;
         GALGAS_string var_headerString_32_ ;
-        callCategoryMethod_appendDeclaration_32_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_105456.current_mDeclaration (HERE).ptr (), GALGAS_bool (false), constinArgument_inDirectory, var_inclusionSet_32_, var_headerString_32_, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2667)) ;
+        callCategoryMethod_appendDeclaration_32_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_105444.current_mDeclaration (HERE).ptr (), GALGAS_bool (false), constinArgument_inDirectory, var_inclusionSet_32_, var_headerString_32_, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2667)) ;
         var_generatedCode.dotAssign_operation (var_headerString_32_  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2668)) ;
-        enumerator_105456.gotoNextObject () ;
+        enumerator_105444.gotoNextObject () ;
       }
       const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticGeneration.galgas", 2670)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_2) {
@@ -4661,14 +4666,14 @@ void routine_generatePredefinedTypeFiles (const GALGAS_string constinArgument_in
         }
       }
       var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2684))) ;
-      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_106317 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
-      while (enumerator_106317.hasCurrentObject ()) {
-        var_generatedCode.dotAssign_operation (callCategoryReader_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106317.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2686))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2686)) ;
+      cEnumerator_semanticDeclarationSortedListForGeneration enumerator_106305 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
+      while (enumerator_106305.hasCurrentObject ()) {
+        var_generatedCode.dotAssign_operation (callCategoryReader_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106305.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2686))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2686)) ;
         GALGAS_stringset var_unusedInclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2687)) ;
         GALGAS_string var_code ;
-        callCategoryMethod_appendSpecificImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106317.current_mDeclaration (HERE).ptr (), GALGAS_unifiedTypeMap::constructor_emptyMap (SOURCE_FILE ("semanticGeneration.galgas", 2688)), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2688)) ;
+        callCategoryMethod_appendSpecificImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106305.current_mDeclaration (HERE).ptr (), GALGAS_unifiedTypeMap::constructor_emptyMap (SOURCE_FILE ("semanticGeneration.galgas", 2688)), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2688)) ;
         var_generatedCode.dotAssign_operation (var_code  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2689)) ;
-        enumerator_106317.gotoNextObject () ;
+        enumerator_106305.gotoNextObject () ;
       }
       const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticGeneration.galgas", 2691)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_3) {
@@ -5284,7 +5289,7 @@ void routine_appendPredefinedTypesASTs (GALGAS_semanticDeclarationListAST & ioAr
                                         COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_timerPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("timer"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_timer (SOURCE_FILE ("predefinedTypes.galgas", 127))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 127))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 127)) ;
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_applicationPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("application"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_application (SOURCE_FILE ("predefinedTypes.galgas", 128))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 128))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 128)) ;
-  ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_bitstringPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("bitstring"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bitstring (SOURCE_FILE ("predefinedTypes.galgas", 129))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 129))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 129)) ;
+  ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_gmpintPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("gmpint"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_gmpint (SOURCE_FILE ("predefinedTypes.galgas", 129))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 129))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 129)) ;
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_filewrapperPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("filewrapper"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_filewrapper (SOURCE_FILE ("predefinedTypes.galgas", 130))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 130))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 130)) ;
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_objectPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("object"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_object (SOURCE_FILE ("predefinedTypes.galgas", 131))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 131))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 131)) ;
   ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_boolPredefinedTypeAST::constructor_new (GALGAS_bool (true), GALGAS_string ("bool"), GALGAS_predefinedTypeKindEnum::constructor_predefined_5F_bool (SOURCE_FILE ("predefinedTypes.galgas", 132))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 132))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 132)) ;
@@ -5381,102 +5386,102 @@ void routine_printFeaturesOfType (const GALGAS_string constinArgument_inTypeName
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_s = GALGAS_string ("Features of @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 248)).add_operation (GALGAS_string (" type:\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 248)) ;
   var_s.dotAssign_operation (GALGAS_string (" - kind: ").add_operation (categoryReader_kind (constinArgument_inTypeKindEnum, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 249)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 249)).add_operation (GALGAS_string (";\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 249))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 249)) ;
-  cEnumerator_typedPropertyList enumerator_12942 (constinArgument_inAllTypedAttributeList, kEnumeration_up) ;
+  cEnumerator_typedPropertyList enumerator_12933 (constinArgument_inAllTypedAttributeList, kEnumeration_up) ;
   const bool bool_0 = true ;
-  if (enumerator_12942.hasCurrentObject () && bool_0) {
+  if (enumerator_12933.hasCurrentObject () && bool_0) {
     var_s.dotAssign_operation (GALGAS_string (" - attribute(s):\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 253)) ;
-    while (enumerator_12942.hasCurrentObject () && bool_0) {
-      var_s.dotAssign_operation (GALGAS_string ("    @").add_operation (enumerator_12942.current_mAttributeTypeProxy (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)).add_operation (enumerator_12942.current_mAttributeName (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 255)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)) ;
-      enumerator_12942.gotoNextObject () ;
+    while (enumerator_12933.hasCurrentObject () && bool_0) {
+      var_s.dotAssign_operation (GALGAS_string ("    @").add_operation (enumerator_12933.current_mAttributeTypeProxy (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)).add_operation (enumerator_12933.current_mAttributeName (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 255)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)) ;
+      enumerator_12933.gotoNextObject () ;
     }
   }
-  cEnumerator_constructorMap enumerator_13101 (constinArgument_inConstructorMap, kEnumeration_up) ;
+  cEnumerator_constructorMap enumerator_13092 (constinArgument_inConstructorMap, kEnumeration_up) ;
   const bool bool_1 = true ;
-  if (enumerator_13101.hasCurrentObject () && bool_1) {
+  if (enumerator_13092.hasCurrentObject () && bool_1) {
     var_s.dotAssign_operation (GALGAS_string (" - constructor(s):\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 260)) ;
-    while (enumerator_13101.hasCurrentObject () && bool_1) {
-      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13101.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 262)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 262))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 262)) ;
-      cEnumerator_functionSignature enumerator_13202 (enumerator_13101.current_mArgumentTypeList (HERE), kEnumeration_up) ;
-      while (enumerator_13202.hasCurrentObject ()) {
+    while (enumerator_13092.hasCurrentObject () && bool_1) {
+      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13092.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 262)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 262))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 262)) ;
+      cEnumerator_functionSignature enumerator_13193 (enumerator_13092.current_mArgumentTypeList (HERE), kEnumeration_up) ;
+      while (enumerator_13193.hasCurrentObject ()) {
         GALGAS_string temp_2 ;
-        const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, enumerator_13202.current_mFormalSelector (HERE).mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+        const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, enumerator_13193.current_mFormalSelector (HERE).mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_3) {
-          temp_2 = enumerator_13202.current_mFormalSelector (HERE).mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)) ;
+          temp_2 = enumerator_13193.current_mFormalSelector (HERE).mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)) ;
         }else if (kBoolFalse == test_3) {
           temp_2 = GALGAS_string::makeEmptyString () ;
         }
-        var_s.dotAssign_operation (GALGAS_string (" \?").add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)).add_operation (enumerator_13202.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)) ;
-        enumerator_13202.gotoNextObject () ;
+        var_s.dotAssign_operation (GALGAS_string (" \?").add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)).add_operation (enumerator_13193.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 264)) ;
+        enumerator_13193.gotoNextObject () ;
       }
-      var_s.dotAssign_operation (GALGAS_string (" -> @").add_operation (enumerator_13101.current_mReturnedType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266)) ;
-      enumerator_13101.gotoNextObject () ;
+      var_s.dotAssign_operation (GALGAS_string (" -> @").add_operation (enumerator_13092.current_mReturnedType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266)) ;
+      enumerator_13092.gotoNextObject () ;
     }
   }
-  cEnumerator_getterMap enumerator_13424 (constinArgument_inReaderMap, kEnumeration_up) ;
+  cEnumerator_getterMap enumerator_13415 (constinArgument_inReaderMap, kEnumeration_up) ;
   const bool bool_4 = true ;
-  if (enumerator_13424.hasCurrentObject () && bool_4) {
+  if (enumerator_13415.hasCurrentObject () && bool_4) {
     var_s.dotAssign_operation (GALGAS_string (" - getters(s):\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 271)) ;
-    while (enumerator_13424.hasCurrentObject () && bool_4) {
-      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13424.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 273)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 273))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 273)) ;
-      cEnumerator_functionSignature enumerator_13521 (enumerator_13424.current_mArgumentTypeList (HERE), kEnumeration_up) ;
-      while (enumerator_13521.hasCurrentObject ()) {
+    while (enumerator_13415.hasCurrentObject () && bool_4) {
+      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13415.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 273)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 273))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 273)) ;
+      cEnumerator_functionSignature enumerator_13512 (enumerator_13415.current_mArgumentTypeList (HERE), kEnumeration_up) ;
+      while (enumerator_13512.hasCurrentObject ()) {
         GALGAS_string temp_5 ;
-        const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, enumerator_13521.current_mFormalSelector (HERE).mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+        const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, enumerator_13512.current_mFormalSelector (HERE).mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_6) {
-          temp_5 = enumerator_13521.current_mFormalSelector (HERE).mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)) ;
+          temp_5 = enumerator_13512.current_mFormalSelector (HERE).mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)) ;
         }else if (kBoolFalse == test_6) {
           temp_5 = GALGAS_string::makeEmptyString () ;
         }
-        var_s.dotAssign_operation (GALGAS_string (" \?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)).add_operation (enumerator_13521.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)) ;
-        enumerator_13521.gotoNextObject () ;
+        var_s.dotAssign_operation (GALGAS_string (" \?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)).add_operation (enumerator_13512.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)) ;
+        enumerator_13512.gotoNextObject () ;
       }
-      var_s.dotAssign_operation (GALGAS_string (" -> @").add_operation (enumerator_13424.current_mReturnedType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277)) ;
-      enumerator_13424.gotoNextObject () ;
+      var_s.dotAssign_operation (GALGAS_string (" -> @").add_operation (enumerator_13415.current_mReturnedType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277)) ;
+      enumerator_13415.gotoNextObject () ;
     }
   }
-  cEnumerator_setterMap enumerator_13743 (constinArgument_inSetterMap, kEnumeration_up) ;
+  cEnumerator_setterMap enumerator_13734 (constinArgument_inSetterMap, kEnumeration_up) ;
   const bool bool_7 = true ;
-  if (enumerator_13743.hasCurrentObject () && bool_7) {
+  if (enumerator_13734.hasCurrentObject () && bool_7) {
     var_s.dotAssign_operation (GALGAS_string (" - setter(s):\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 282)) ;
-    while (enumerator_13743.hasCurrentObject () && bool_7) {
-      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13743.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 284)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 284))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 284)) ;
-      cEnumerator_formalParameterSignature enumerator_13836 (enumerator_13743.current_mParameterList (HERE), kEnumeration_up) ;
-      while (enumerator_13836.hasCurrentObject ()) {
-        var_s.dotAssign_operation (GALGAS_string (" ").add_operation (categoryReader_string (enumerator_13836.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)).add_operation (enumerator_13836.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)) ;
-        enumerator_13836.gotoNextObject () ;
+    while (enumerator_13734.hasCurrentObject () && bool_7) {
+      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13734.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 284)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 284))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 284)) ;
+      cEnumerator_formalParameterSignature enumerator_13827 (enumerator_13734.current_mParameterList (HERE), kEnumeration_up) ;
+      while (enumerator_13827.hasCurrentObject ()) {
+        var_s.dotAssign_operation (GALGAS_string (" ").add_operation (categoryReader_string (enumerator_13827.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)).add_operation (enumerator_13827.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 286)) ;
+        enumerator_13827.gotoNextObject () ;
       }
       var_s.dotAssign_operation (GALGAS_string ("\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 288)) ;
-      enumerator_13743.gotoNextObject () ;
+      enumerator_13734.gotoNextObject () ;
     }
   }
-  cEnumerator_instanceMethodMap enumerator_13991 (constinArgument_inInstanceMethodMap, kEnumeration_up) ;
+  cEnumerator_instanceMethodMap enumerator_13982 (constinArgument_inInstanceMethodMap, kEnumeration_up) ;
   const bool bool_8 = true ;
-  if (enumerator_13991.hasCurrentObject () && bool_8) {
+  if (enumerator_13982.hasCurrentObject () && bool_8) {
     var_s.dotAssign_operation (GALGAS_string (" - method(s):\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 293)) ;
-    while (enumerator_13991.hasCurrentObject () && bool_8) {
-      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13991.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 295)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 295))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 295)) ;
-      cEnumerator_formalParameterSignature enumerator_14084 (enumerator_13991.current_mParameterList (HERE), kEnumeration_up) ;
-      while (enumerator_14084.hasCurrentObject ()) {
-        var_s.dotAssign_operation (GALGAS_string (" ").add_operation (categoryReader_string (enumerator_14084.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)).add_operation (enumerator_14084.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)) ;
-        enumerator_14084.gotoNextObject () ;
+    while (enumerator_13982.hasCurrentObject () && bool_8) {
+      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13982.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 295)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 295))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 295)) ;
+      cEnumerator_formalParameterSignature enumerator_14075 (enumerator_13982.current_mParameterList (HERE), kEnumeration_up) ;
+      while (enumerator_14075.hasCurrentObject ()) {
+        var_s.dotAssign_operation (GALGAS_string (" ").add_operation (categoryReader_string (enumerator_14075.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)).add_operation (enumerator_14075.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 297)) ;
+        enumerator_14075.gotoNextObject () ;
       }
       var_s.dotAssign_operation (GALGAS_string ("\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 299)) ;
-      enumerator_13991.gotoNextObject () ;
+      enumerator_13982.gotoNextObject () ;
     }
   }
-  cEnumerator_classMethodMap enumerator_14236 (constinArgument_inClassMethodMap, kEnumeration_up) ;
+  cEnumerator_classMethodMap enumerator_14227 (constinArgument_inClassMethodMap, kEnumeration_up) ;
   const bool bool_9 = true ;
-  if (enumerator_14236.hasCurrentObject () && bool_9) {
+  if (enumerator_14227.hasCurrentObject () && bool_9) {
     var_s.dotAssign_operation (GALGAS_string (" - type proc(s):\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 304)) ;
-    while (enumerator_14236.hasCurrentObject () && bool_9) {
-      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_14236.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 306)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 306))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 306)) ;
-      cEnumerator_formalParameterSignature enumerator_14332 (enumerator_14236.current_mParameterList (HERE), kEnumeration_up) ;
-      while (enumerator_14332.hasCurrentObject ()) {
-        var_s.dotAssign_operation (GALGAS_string (" ").add_operation (categoryReader_string (enumerator_14332.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)).add_operation (enumerator_14332.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)) ;
-        enumerator_14332.gotoNextObject () ;
+    while (enumerator_14227.hasCurrentObject () && bool_9) {
+      var_s.dotAssign_operation (GALGAS_string ("    ").add_operation (enumerator_14227.current_lkey (HERE).reader_string (SOURCE_FILE ("predefinedTypes.galgas", 306)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 306))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 306)) ;
+      cEnumerator_formalParameterSignature enumerator_14323 (enumerator_14227.current_mParameterList (HERE), kEnumeration_up) ;
+      while (enumerator_14323.hasCurrentObject ()) {
+        var_s.dotAssign_operation (GALGAS_string (" ").add_operation (categoryReader_string (enumerator_14323.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)).add_operation (enumerator_14323.current_mFormalArgumentType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)) ;
+        enumerator_14323.gotoNextObject () ;
       }
       var_s.dotAssign_operation (GALGAS_string ("\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 310)) ;
-      enumerator_14236.gotoNextObject () ;
+      enumerator_14227.gotoNextObject () ;
     }
   }
   var_s.dotAssign_operation (GALGAS_string (" - operators(s):\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 313)) ;
@@ -5564,13 +5569,13 @@ void routine_printFeaturesOfType (const GALGAS_string constinArgument_inTypeName
     var_s.dotAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (GALGAS_string (" -- -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)) ;
     var_s.dotAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (GALGAS_string (" &-- -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)) ;
   }
-  cEnumerator_unifiedTypeMapProxyAndParameterList enumerator_17709 (constinArgument_inAddAssignOperatorArguments, kEnumeration_up) ;
+  cEnumerator_unifiedTypeMapProxyAndParameterList enumerator_17700 (constinArgument_inAddAssignOperatorArguments, kEnumeration_up) ;
   const bool bool_30 = true ;
-  if (enumerator_17709.hasCurrentObject () && bool_30) {
+  if (enumerator_17700.hasCurrentObject () && bool_30) {
     var_s.dotAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380)).add_operation (GALGAS_string (" +="), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380)) ;
-    while (enumerator_17709.hasCurrentObject () && bool_30) {
-      var_s.dotAssign_operation (GALGAS_string (" !@").add_operation (enumerator_17709.current_mType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)) ;
-      enumerator_17709.gotoNextObject () ;
+    while (enumerator_17700.hasCurrentObject () && bool_30) {
+      var_s.dotAssign_operation (GALGAS_string (" !@").add_operation (enumerator_17700.current_mType (HERE).reader_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)) ;
+      enumerator_17700.gotoNextObject () ;
     }
     var_s.dotAssign_operation (GALGAS_string ("\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 384)) ;
   }

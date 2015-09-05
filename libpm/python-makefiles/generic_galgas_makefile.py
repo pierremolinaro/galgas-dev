@@ -66,7 +66,8 @@ class GenericGalgasMakefile :
     else:
       SYSTEM_MACHINE = self.mCrossCompilation
   #--- GMP
-    GMP_DIRECTORY_PATH = LIBPM_DIRECTORY_PATH + "/gmp/" + SYSTEM_MACHINE
+    GMP_INCLUDE_DIRECTORY_PATH = LIBPM_DIRECTORY_PATH + "/gmp/include"
+    GMP_LIBRARY_DIRECTORY_PATH = LIBPM_DIRECTORY_PATH + "/gmp/lib-" + SYSTEM_MACHINE
   #--- Source directory list
     SOURCES_DIR = self.mDictionary ["SOURCES_DIR"]
   #--------------------------------------------------------------------------- Include dirs
@@ -79,7 +80,7 @@ class GenericGalgasMakefile :
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/time")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/strings")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/utilities")
-    includeDirs = ["-I" + GMP_DIRECTORY_PATH + "/include"]
+    includeDirs = ["-I" + GMP_INCLUDE_DIRECTORY_PATH]
     for d in SOURCES_DIR:
       includeDirs.append ("-I" + d)
   #--- Make object
@@ -116,7 +117,7 @@ class GenericGalgasMakefile :
     rule.mCommand += self.mLinkerTool
     rule.mCommand += objectFileList
     rule.mCommand += ["-o", EXECUTABLE]
-    rule.mCommand += ["-L", GMP_DIRECTORY_PATH + "/lib", "-lgmp", "-lgmpxx"]
+    rule.mCommand += ["-L", GMP_LIBRARY_DIRECTORY_PATH, "-lgmp", "-lgmpxx"]
     rule.mCommand += self.mLinkerOptions
     postCommand = makefile.PostCommand (self.mStripMessage + " " + EXECUTABLE)
     postCommand.mCommand += self.mStripTool
@@ -156,7 +157,7 @@ class GenericGalgasMakefile :
     rule.mCommand += self.mLinkerTool
     rule.mCommand += debugObjectFileList
     rule.mCommand += ["-o", EXECUTABLE_DEBUG]
-    rule.mCommand += ["-L", GMP_DIRECTORY_PATH + "/lib", "-lgmp", "-lgmpxx"]
+    rule.mCommand += ["-L", GMP_LIBRARY_DIRECTORY_PATH, "-lgmp", "-lgmpxx"]
     rule.mCommand += self.mLinkerOptions
     make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add install EXECUTABLE file rule
