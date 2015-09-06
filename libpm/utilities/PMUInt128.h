@@ -45,7 +45,7 @@ class PMUInt128 {
   public : bool operator != (const PMUInt128 & inValue) const ;
   public : bool operator > (const uint32_t inOperand) const ;
 
-//--- Incrementation, decrmentation
+//--- Incrementation, decrementation
   public : PMUInt128 & operator ++ (void) ;
   public : PMUInt128 & operator -- (void) ;
   

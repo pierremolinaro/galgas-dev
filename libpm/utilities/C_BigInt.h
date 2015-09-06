@@ -33,6 +33,7 @@ class C_BigInt {
 //--- Constructors
   public : C_BigInt (void) ;
   public : explicit C_BigInt (const uint64_t inValue, const bool inNegate) ;
+  public : explicit C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) ;
   public : explicit C_BigInt (const int64_t inValue) ;
 
 //--- Destructor
@@ -65,7 +66,9 @@ class C_BigInt {
 
 //--- Shift
   public : C_BigInt operator << (const uint32_t inValue) const ;
-  public : void shiftLeftInPlace (const uint32_t inValue) ;
+  public : void operator <<= (const uint32_t inValue) ;
+  public : C_BigInt operator >> (const uint32_t inValue) const ;
+  public : void operator >>= (const uint32_t inValue) ;
 
 //--- String
   public : C_String hexString (void) const ;

@@ -42,7 +42,7 @@ static const char * gArgv0 ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-// #include "utilities/C_BigInt.h"
+#include "utilities/C_BigInt.h"
 // #include "utilities/PMUInt128.h"
 // #include "galgas2/C_DirectedGraph.h"
 
