@@ -47,9 +47,7 @@ template <typename TYPE> class TC_UniqueArray ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE>
-void swap (TC_UniqueArray <TYPE> & ioOperand1,
-           TC_UniqueArray <TYPE> & ioOperand2) ;
+template <typename TYPE> void swap (TC_UniqueArray <TYPE> & ioOperand1, TC_UniqueArray <TYPE> & ioOperand2) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -778,8 +776,7 @@ insertObjectsUsingExchangeAndClear (const int32_t inCount, const int32_t inStart
 //---------------------------------------------------------------------------------------------------------------------*
 
 template <typename TYPE>
-void TC_UniqueArray <TYPE>::
-removeLastObject (LOCATION_ARGS) {
+void TC_UniqueArray <TYPE>::removeLastObject (LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (mCount-1 COMMA_THERE) ;
   #endif
@@ -793,8 +790,7 @@ removeLastObject (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 template <typename TYPE>
-void TC_UniqueArray <TYPE>::
-removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) {
+void TC_UniqueArray <TYPE>::removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) {
   if (inCount > 0) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkIndex (mCount-inCount COMMA_THERE) ;
@@ -810,10 +806,9 @@ removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 template <typename TYPE>
-void TC_UniqueArray <TYPE>::
-exchangeObjectAtIndexes (const int32_t inIndex1,
-                         const int32_t inIndex2
-                         COMMA_LOCATION_ARGS) {
+void TC_UniqueArray <TYPE>::exchangeObjectAtIndexes (const int32_t inIndex1,
+                                                     const int32_t inIndex2
+                                                     COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex1 COMMA_THERE) ;
     checkIndex (inIndex2 COMMA_THERE) ;

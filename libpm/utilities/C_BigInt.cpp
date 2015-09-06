@@ -30,6 +30,7 @@
 
 class acPtr_bigUInt : public C_SharedObject {
   public : acPtr_bigUInt (const uint64_t inValue COMMA_LOCATION_ARGS) ;
+  public : acPtr_bigUInt (const uint64_t inHighValue, const uint64_t inLowValue COMMA_LOCATION_ARGS) ;
   public : acPtr_bigUInt (const acPtr_bigUInt & inValue COMMA_LOCATION_ARGS) ;
 
   private : TC_UniqueArray <uint32_t> mValueArray ;
@@ -43,7 +44,10 @@ class acPtr_bigUInt : public C_SharedObject {
   public : bool isZero (void) const ;
 
   public : void normalize (void) ;
-  public : void shiftLeft (const uint32_t inValue) ;
+
+  public : void shiftLeftInPlace (const uint32_t inValue) ;
+  public : void logicalShiftRightInPlace (const uint32_t inValue) ;
+  public : void arithmeticShiftRightInPlace (const uint32_t inValue) ;
 
   public : bool operator == (const acPtr_bigUInt & inOperand) const ;
   public : bool operator != (const acPtr_bigUInt & inOperand) const ;
@@ -159,11 +163,11 @@ void acPtr_bigUInt::normalize (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-// Constructor: init from uint64_t
+// Constructors
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Default Constructor: init from uint64_t
+  #pragma mark Constructors
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -178,6 +182,33 @@ mObjectPtr (NULL) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkBigInt (HERE) ;
   #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt::C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) :
+mSign (zero),
+mObjectPtr (NULL) {
+  if ((inHighValue > 0) && (inLowValue > 0)) {
+    macroMyNew (mObjectPtr, acPtr_bigUInt (inHighValue, inLowValue COMMA_HERE)) ;
+    normalize () ;
+    mSign = inNegate ? negative : positive ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_bigUInt::acPtr_bigUInt (const uint64_t inHighValue, const uint64_t inLowValue COMMA_LOCATION_ARGS) :
+C_SharedObject (THERE),
+mValueArray () {
+  MF_Assert ((inLowValue | inHighValue) > 0, "inValue == 0", 0, 0) ;
+  mValueArray.addObject ((uint32_t) (inLowValue & UINT32_MAX)) ;
+  mValueArray.addObject ((uint32_t) (inLowValue >> 32)) ;
+  mValueArray.addObject ((uint32_t) (inHighValue & UINT32_MAX)) ;
+  mValueArray.addObject ((uint32_t) (inHighValue >> 32)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -831,10 +862,10 @@ void acPtr_bigUInt::divideInPlace (const uint32_t inDivisor, uint32_t & outRemai
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_BigInt::shiftLeftInPlace (const uint32_t inValue) {
+void C_BigInt::operator <<= (const uint32_t inValue) {
   if ((inValue > 0) && (mSign != zero)) {
     insulate (HERE) ;
-    mObjectPtr->shiftLeft (inValue) ;
+    mObjectPtr->shiftLeftInPlace (inValue) ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkBigInt (HERE) ;
@@ -845,13 +876,13 @@ void C_BigInt::shiftLeftInPlace (const uint32_t inValue) {
 
 C_BigInt C_BigInt::operator << (const uint32_t inValue) const {
   C_BigInt result = *this ;
-  result.shiftLeftInPlace (inValue) ;
+  result <<= inValue ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void acPtr_bigUInt::shiftLeft (const uint32_t inValue) {
+void acPtr_bigUInt::shiftLeftInPlace (const uint32_t inValue) {
   macroUniqueSharedObject (this) ;
   const int32_t wordsToInsert = (int32_t) (inValue / 32) ;
   const uint32_t bitsToShift = inValue % 32 ;
@@ -866,6 +897,116 @@ void acPtr_bigUInt::shiftLeft (const uint32_t inValue) {
     mValueArray.addObject ((uint32_t) carry) ;
   }
   mValueArray.insertObjectsAtIndex (wordsToInsert, 0, 0 COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Shift right
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator >>= (const uint32_t inValue) {
+  if (inValue > 0) {
+    switch (mSign) {
+    case zero :
+      break ;
+    case positive :
+      insulate (HERE) ;
+      mObjectPtr->logicalShiftRightInPlace (inValue) ;
+      normalize () ;
+      break ;
+    case negative:
+      insulate (HERE) ;
+      mObjectPtr->arithmeticShiftRightInPlace (inValue) ;
+      normalize () ;
+      break ;
+    }
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkBigInt (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator >> (const uint32_t inValue) const {
+  C_BigInt result = *this ;
+  result >>= inValue ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void acPtr_bigUInt::arithmeticShiftRightInPlace (const uint32_t inValue) {
+  macroUniqueSharedObject (this) ;
+  const int32_t wordsToDelete = (int32_t) (inValue / 32) ;
+  if (wordsToDelete >= mValueArray.count ()) { // Result is 1
+    mValueArray.removeLastObjects (mValueArray.count () - 1 COMMA_HERE) ;
+    mValueArray (0 COMMA_HERE) = 1 ;
+  }else{
+  //--- Add (2 << inValue) - 1 : first, full words
+    uint64_t carry = 0 ;
+    for (int32_t i=0 ; i<wordsToDelete ; i++) {
+      const uint64_t v = mValueArray (i COMMA_HERE) ;
+      carry += v + UINT32_MAX ;
+      mValueArray (i COMMA_HERE) = (uint32_t) (carry & UINT32_MAX) ;
+      carry >>= 32 ;
+    }
+    for (int32_t i=wordsToDelete ; (carry > 0) && (i < mValueArray.count ()) ; i++) {
+      const uint64_t v = mValueArray (i COMMA_HERE) ;
+      carry += v ;
+      mValueArray (i COMMA_HERE) = (uint32_t) (carry & UINT32_MAX) ;
+      carry >>= 32 ;
+    }
+    if (carry > 0) {
+      mValueArray.addObject ((uint32_t) (carry)) ;
+    }
+  //--- Add (2 << inValue) - 1 : then, remaining bits
+    const uint32_t bitsToShift = inValue % 32 ;
+    if (bitsToShift > 0) {
+      uint64_t carry = (1 << bitsToShift) - 1 ;
+      for (int32_t i=wordsToDelete ; (carry > 0) && (i < mValueArray.count ()) ; i++) {
+        const uint64_t v = mValueArray (i COMMA_HERE) ;
+        carry += v ;
+        mValueArray (i COMMA_HERE) = (uint32_t) (carry & UINT32_MAX) ;
+        carry >>= 32 ;
+      }
+      if (carry > 0) {
+        mValueArray.addObject ((uint32_t) (carry)) ;
+      }
+    }
+  //--- Perform shift
+    logicalShiftRightInPlace (inValue) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void acPtr_bigUInt::logicalShiftRightInPlace (const uint32_t inValue) {
+  macroUniqueSharedObject (this) ;
+  const int32_t wordsToDelete = (int32_t) (inValue / 32) ;
+  if (wordsToDelete >= mValueArray.count ()) { // Result is 0
+    mValueArray.removeLastObjects (mValueArray.count () - 1 COMMA_HERE) ;
+    mValueArray (0 COMMA_HERE) = 0 ;
+  }else{
+  //--- Suppress 'wordsToDelete' first entries
+    mValueArray.removeObjectsAtIndex (wordsToDelete, 0 COMMA_HERE) ;
+  //--- Shift remaing entries
+    const uint32_t bitsToShift = inValue % 32 ;
+    if (bitsToShift > 0) {
+      const uint32_t mask = (1 << bitsToShift) - 1 ;
+      uint64_t carry = 0 ;
+      for (int32_t i=mValueArray.count () - 1 ; i>= 0 ; i--) {
+        uint64_t v = mValueArray (i COMMA_HERE) ;
+        carry &= mask ;
+        carry <<= 32 ;
+        carry |= v ;
+        mValueArray (i COMMA_HERE) = (uint32_t) (carry >> bitsToShift) ;
+      }
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1206,18 +1347,51 @@ void C_BigInt::example (void) {
       co << "Error for decimalString: '" << strV << "' != '" << strBigV << "'\n" ;
     }
   }
-  co << "Calcul de 100!\n" ;
+  co << "Computing 100!\n" ;
   C_BigInt f (1, false) ;
   for (uint32_t i=2 ; i<=100 ; i++) {
     f *= i ;
   }
   co << "100! = " << f.decimalString() << "\n" ;
-  co << "Calcul de 1000!\n" ;
+  co << "Computing 1000!\n" ;
   f = C_BigInt (1, false) ;
   for (uint32_t i=2 ; i<=1000 ; i++) {
     f *= i ;
   }
   co << "1000! = " << f.decimalString() << "\n" ;
+  co << "Shift right positive numbers\n" ;
+  for (uint32_t i=2 ; i<=1000 ; i++) {
+    uint64_t low = (uint32_t) rand () ;
+    low <<= 32 ;
+    low |= (uint32_t) rand () ;
+    uint64_t high = (uint32_t) rand () ;
+    const C_BigInt bigV (high, low, false) ;
+    const uint32_t shift = ((uint32_t) rand ()) % 100 ;
+    const C_BigInt bigVLeftShifted = bigV << shift ;
+    const C_BigInt bigResult = bigVLeftShifted >> shift ;
+    if (bigV != bigResult) {
+      co << "Error : " << bigV.decimalString() << " != " << bigResult.decimalString() << "\n" ;
+    }
+  }
+  co << "Shift right negative numbers\n" ;
+  const C_BigInt minusOne (1, true) ;
+  for (uint32_t i=2 ; i<=1000 ; i++) {
+    uint64_t low = (uint32_t) rand () ;
+    low <<= 32 ;
+    low |= (uint32_t) rand () ;
+    uint64_t high = (uint32_t) rand () ;
+    const C_BigInt bigV (high, low, true) ;
+    const uint32_t shift = ((uint32_t) rand ()) % 100 ;
+    const C_BigInt bigVLeftShifted = bigV << shift ;
+    const C_BigInt bigResult = bigVLeftShifted >> shift ;
+    if (bigV != bigResult) {
+      co << "Error : " << bigV.decimalString() << " != " << bigResult.decimalString() << "\n" ;
+    }
+    C_BigInt v = bigVLeftShifted ;
+    while (v != minusOne) {
+      v >>= ((uint32_t) rand ()) % 39 ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
