@@ -111,6 +111,8 @@
 		CF3D9FDE1257733E0037D473 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */; };
 		CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
+		CF4349931B9E157700B90CAC /* libgmp-Darwin-Intel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4349921B9E157700B90CAC /* libgmp-Darwin-Intel.a */; };
+		CF4349941B9E158900B90CAC /* libgmp-Darwin-Intel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4349921B9E157700B90CAC /* libgmp-Darwin-Intel.a */; };
 		CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */; };
 		CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
@@ -460,6 +462,8 @@
 		CF3FDDFB14E66BD40040331C /* C_FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_FileManager.h; sourceTree = "<group>"; };
 		CF3FDE2014E6CD4E0040331C /* C_Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_Data.cpp; sourceTree = "<group>"; };
 		CF3FDE2314E6D3CD0040331C /* C_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_Data.h; sourceTree = "<group>"; };
+		CF43498E1B9E041600B90CAC /* libgmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmp.a; path = "../libpm/gmp/Darwin-i386/libgmp.a"; sourceTree = "<group>"; };
+		CF4349921B9E157700B90CAC /* libgmp-Darwin-Intel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgmp-Darwin-Intel.a"; path = "../libpm/gmp/libgmp-Darwin-Intel.a"; sourceTree = "<group>"; };
 		CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMCancelButtonForPanel.h; sourceTree = "<group>"; };
 		CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMCancelButtonForPanel.m; sourceTree = "<group>"; };
 		CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMOkButtonForPanel.h; sourceTree = "<group>"; };
@@ -842,6 +846,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CF4349901B9E045400B90CAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF4349931B9E157700B90CAC /* libgmp-Darwin-Intel.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF6DF25109E3F3A700506859 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -856,6 +868,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF4349941B9E158900B90CAC /* libgmp-Darwin-Intel.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +948,8 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF4349921B9E157700B90CAC /* libgmp-Darwin-Intel.a */,
+				CF43498E1B9E041600B90CAC /* libgmp.a */,
 				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
@@ -1726,6 +1741,7 @@
 			buildConfigurationList = CF6DF20309E3F30400506859 /* Build configuration list for PBXNativeTarget "GALGAS tool debug" */;
 			buildPhases = (
 				CF6DF19E09E3F30400506859 /* Sources */,
+				CF4349901B9E045400B90CAC /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2289,6 +2305,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
+				OTHER_LDFLAGS = "-L../libpm/gmp";
 				PRODUCT_NAME = "galgas-developer";
 			};
 			name = Default;
@@ -2301,7 +2318,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				LD_OPENMP_FLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-L../libpm/gmp";
 				PRODUCT_NAME = "galgas-developer-debug";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 			};

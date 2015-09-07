@@ -14,7 +14,7 @@
 filewrapper libpmFileWrapper in "../libpm" {
  "h", "cpp", "m", "mak", "pch", "py"
 }{
- "tiff", "png", "xib", "gif", "a", "la"
+ "tiff", "png", "xib", "gif", "a"
 }{
 }
 

@@ -98,11 +98,6 @@ static inline uint32_t uimax32 (const uint32_t inA, const uint32_t inB) {
   class utf32 {
     private : uint32_t mCode ;
     public : inline uint32_t value (void) const { return mCode ; }
-/*    public : inline static utf32 construct (const uint32_t inCode) {
-      utf32 code ;
-      code.mCode = inCode ;
-      return code ;
-    } */
     public : utf32 (void) :
     mCode (0) {
     }

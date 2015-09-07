@@ -100,7 +100,7 @@ typeComparisonResult GALGAS_bigint::objectCompare (const GALGAS_bigint & inOpera
 GALGAS_uint GALGAS_bigint::reader_bitCountForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mValue.requiredBitCountForSignedRepresentation ()) ;
+
   }
   return result ;
 }
@@ -158,7 +158,7 @@ GALGAS_uint GALGAS_bigint::reader_uint (C_Compiler * inCompiler
   GALGAS_uint result ;
   if (isValid ()) {
     if (mValue.isUInt32 ()) {
-      result = GALGAS_uint (mValue.absValue32AtIndex (0)) ;
+      result = GALGAS_uint (mValue.uint32AtIndex ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @uint conversion overflow" COMMA_THERE) ;
     }
@@ -173,7 +173,7 @@ GALGAS_uint_36__34_ GALGAS_bigint::reader_uint_36__34_ (C_Compiler * inCompiler
   GALGAS_uint_36__34_ result ;
   if (isValid ()) {
     if (mValue.isUInt64 ()) {
-      result = GALGAS_uint_36__34_ (mValue.absValue64AtIndex (0)) ;
+      result = GALGAS_uint_36__34_ (mValue.uint64AtIndex ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @uint64 conversion overflow" COMMA_THERE) ;
     }
