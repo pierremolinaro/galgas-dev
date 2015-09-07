@@ -228,18 +228,15 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Sort array with a sort function (does nothing if inSortFunction == NULL)
 //  inSortFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
-  public : void
-  sortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1,
-                                                       const TYPE & inOperand2)) ;
+  public : void sortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) ;
 
 //--- Sort array with a sort function (does nothing if inSortFunction == NULL)
 //  inSortFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
-  public : void
-  reverseSortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1,
-                                                              const TYPE & inOperand2)) ;
+  public : void reverseSortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) ;
 
 //--- Element access (with index checking)
   public : const TYPE lastObject (LOCATION_ARGS) const ;
+  public : TYPE & lastObject (LOCATION_ARGS) ;
 
   public : void setObjectAtIndex (const TYPE & inObject,
                                   const int32_t inIndex
@@ -948,8 +945,16 @@ const TYPE & TC_UniqueArray <TYPE>::operator () (const int32_t inIndex COMMA_LOC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE>
-const TYPE TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
+template <typename TYPE> const TYPE TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkIndex (mCount-1 COMMA_THERE) ;
+  #endif
+  return mArray [mCount-1] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+template <typename TYPE> TYPE & TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (mCount-1 COMMA_THERE) ;
   #endif
