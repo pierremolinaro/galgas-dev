@@ -48,6 +48,8 @@ class C_BigInt {
 
 //--- Sign
   public : bool isZero (void) const { return mSign == zero ; }
+  public : bool isOne (void) const ;
+  public : bool isMinusOne (void) const ;
   public : bool isPositive (void) const { return mSign == positive ; } // >0
   public : bool isNegative (void) const { return mSign == negative ; } // <0
 
@@ -95,9 +97,15 @@ class C_BigInt {
   public : void operator *= (const uint32_t inMultiplicand) ;
   public : C_BigInt operator * (const uint32_t inMultiplicand) const ;
 
+  public : void operator *= (const C_BigInt inMultiplicand) ;
+  public : C_BigInt operator * (const C_BigInt & inMultiplicand) const ;
+
 //--- Division
   public : void divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder COMMA_LOCATION_ARGS) ;
-//  public : void operator /= (const uint32_t inMultiplicand) ;
+  public : void divideBy (const uint32_t inDivisor, C_BigInt & outQuotient, uint32_t & outRemainder COMMA_LOCATION_ARGS) const ;
+
+  public : void divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder COMMA_LOCATION_ARGS) ;
+  public : void divideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder COMMA_LOCATION_ARGS) const ;
 
 //--- Value access
   public : uint32_t absValue32AtIndex (const uint32_t inIndex) const ;
