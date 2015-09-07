@@ -24,17 +24,42 @@
 #define PM_BIG_INT_CLASS_DEFINED
 
 //---------------------------------------------------------------------------------------------------------------------*
+// http://stackoverflow.com/questions/6943862/is-there-a-a-define-for-64-bit-in-gcc
+// http://stackoverflow.com/questions/5272825/detecting-64bit-compile-in-c
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef __APPLE__
+  #include "gmp/gmp-Darwin-Intel.h"
+#elif defined (_WIN32)
+  #include "gmp/gmp-win32.h"
+#elif defined (__linux__)
+  #ifdef __i386__
+    #include "gmp/gmp-Linux-i686.h"
+  #elif defined (__x86_64__)
+    #include "gmp/gmp-Linux-x86_64.h"
+  #else
+    #error "Linux is not 32-bit, nor 64-bit"
+  #endif
+#else
+  #error "Undefined gmp header"
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/C_String.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#include <stdint.h>
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 class C_BigInt {
 //--- Constructors
   public : C_BigInt (void) ;
-  public : explicit C_BigInt (const uint64_t inValue, const bool inNegate) ;
-  public : explicit C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) ;
-  public : explicit C_BigInt (const int64_t inValue) ;
+  public : explicit C_BigInt (const uint32_t inValue, const bool inNegate) ;
+  public : explicit C_BigInt (const uint32_t inHighValue, const uint32_t inLowValue, const bool inNegate) ;
+  public : explicit C_BigInt (const int32_t inValue) ;
 
 //--- Destructor
   public : virtual ~ C_BigInt (void) ;
@@ -47,11 +72,11 @@ class C_BigInt {
   public : void setToZero (void) ;
 
 //--- Sign
-  public : bool isZero (void) const { return mSign == zero ; }
+  public : bool isZero (void) const ;
   public : bool isOne (void) const ;
   public : bool isMinusOne (void) const ;
-  public : bool isPositive (void) const { return mSign == positive ; } // >0
-  public : bool isNegative (void) const { return mSign == negative ; } // <0
+  public : bool isPositive (void) const ; // >0
+  public : bool isNegative (void) const ; // <0
 
 //--- Comparison
   public : bool operator == (const C_BigInt & inValue) const ;
@@ -101,15 +126,17 @@ class C_BigInt {
   public : C_BigInt operator * (const C_BigInt & inMultiplicand) const ;
 
 //--- Division
-  public : void divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder COMMA_LOCATION_ARGS) ;
-  public : void divideBy (const uint32_t inDivisor, C_BigInt & outQuotient, uint32_t & outRemainder COMMA_LOCATION_ARGS) const ;
+  public : void divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder) ;
+  public : void divideBy (const uint32_t inDivisor, C_BigInt & outQuotient, uint32_t & outRemainder) const ;
 
-  public : void divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder COMMA_LOCATION_ARGS) ;
-  public : void divideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder COMMA_LOCATION_ARGS) const ;
+  public : void divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
+  public : void divideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
 
 //--- Value access
-  public : uint32_t absValue32AtIndex (const uint32_t inIndex) const ;
-  public : uint64_t absValue64AtIndex (const uint32_t inIndex) const ;
+  public : uint32_t uint32AtIndex (void) const ;
+  public : uint64_t uint64AtIndex (void) const ;
+  public :  int32_t int32AtIndex (void) const ;
+  public :  int64_t int64AtIndex (void) const ;
 
 //--- Testing value
   public : bool isUInt32 (void) const ;
@@ -117,25 +144,11 @@ class C_BigInt {
   public : bool isSInt32 (void) const ;
   public : bool isSInt64 (void) const ;
   
-//--- Utilities
-  public : uint32_t requiredBitCountForSignedRepresentation (void) const ;
-
 //--- Example
   public : static void example (void) ;
 
-//--- Sign
-  protected : typedef enum {negative, zero, positive} enumBigIntSign ;
-  protected : enumBigIntSign mSign ;
-
 //--- Value
-  protected : class acPtr_bigUInt * mObjectPtr ;
-
-//--- Private methods
-  private : void insulate (LOCATION_ARGS) ;
-  private : void normalize (void) ;
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    private : void checkBigInt (LOCATION_ARGS) const ;
-  #endif
+  protected : mpz_t mValue ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

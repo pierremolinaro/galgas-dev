@@ -36,6 +36,7 @@ def buildForLinux32OnMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, disp
   gmf.mCompilationMessage = "Compiling for Linux32"
   gmf.mLinkingMessage = "Linking for Linux32"
   gmf.mStripMessage = "Stripping"
+  gmf.mCrossCompilation = "Linux-i686"
 #--- Options for all compilers
   gmf.mAllCompilerOptions = default_build_options.allCompilerOptions (["-Wconversion"])
 #--- Options for release mode
