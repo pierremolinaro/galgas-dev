@@ -157,7 +157,9 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project 
     "  %LatestMacOS\n"
     "  %applicationBundleBase : \"fr.what\"\n"
     "  %codeblocks-windows\n"
-    "  %codeblocks-linux-mac\n"
+    "  %codeblocks-linux32\n"
+    "  %codeblocks-linux64\n"
+    "  %codeblocks-mac\n"
     "\n"
     "#--- Source files\n"
     "  \"galgas-sources/" ;

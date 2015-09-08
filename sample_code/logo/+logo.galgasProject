@@ -8,7 +8,9 @@ project (0:0:1) -> "logo" {
   %Mavericks
   %applicationBundleBase : "fr.what"
   %codeblocks-windows
-  %codeblocks-linux-mac
+  %codeblocks-linux32
+  %codeblocks-linux64
+  %codeblocks-mac
 
 #--- Source files
   "galgas-sources/logo-lexique.galgas"
