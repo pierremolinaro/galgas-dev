@@ -204,9 +204,6 @@ extern const char * gWrapperFileContent_14_targetGenerationFileWrapper ;
 extern const char * gWrapperFileContent_15_targetGenerationFileWrapper ;
 extern const char * gWrapperFileContent_16_targetGenerationFileWrapper ;
 extern const char * gWrapperFileContent_17_targetGenerationFileWrapper ;
-extern const char * gWrapperFileContent_18_targetGenerationFileWrapper ;
-extern const char * gWrapperFileContent_19_targetGenerationFileWrapper ;
-extern const char * gWrapperFileContent_20_targetGenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -231,9 +228,6 @@ extern const cRegularFileWrapper gWrapperFile_14_targetGenerationFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_15_targetGenerationFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_16_targetGenerationFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_17_targetGenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_18_targetGenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_19_targetGenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_20_targetGenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -251,7 +245,6 @@ extern const cDirectoryWrapper gWrapperDirectory_10_targetGenerationFileWrapper 
 extern const cDirectoryWrapper gWrapperDirectory_11_targetGenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_12_targetGenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_13_targetGenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_14_targetGenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -302,16 +295,6 @@ GALGAS_string filewrapperTemplate_targetGenerationFileWrapper_makefile_5F_x_38__
 GALGAS_string filewrapperTemplate_targetGenerationFileWrapper_makefile_5F_mingw_5F_on_5F_macosx_5F_makefile (class C_Compiler * inCompiler,
                                                                                                              const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                                              COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                 Filewrapper template 'targetGenerationFileWrapper makefile_msys_on_win32_makefile'                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_targetGenerationFileWrapper_makefile_5F_msys_5F_on_5F_win_33__32__5F_makefile (class C_Compiler * inCompiler,
-                                                                                                                 const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -367,17 +350,6 @@ GALGAS_string filewrapperTemplate_targetGenerationFileWrapper_makefile_5F_file_5
 GALGAS_string filewrapperTemplate_targetGenerationFileWrapper_project_5F_header (class C_Compiler * inCompiler,
                                                                                  const class GALGAS_string & in_VERSION_5F_STRING
                                                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         Routine 'generateMsysOnWin32Target'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_generateMsysOnWin_33__32_Target (const class GALGAS_string constinArgument0,
-                                              const class GALGAS_string constinArgument1,
-                                              class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2995,8 +2967,7 @@ extern const char * gWrapperFileContent_194_libpmFileWrapper ;
 extern const char * gWrapperFileContent_195_libpmFileWrapper ;
 extern const char * gWrapperFileContent_196_libpmFileWrapper ;
 extern const char * gWrapperFileContent_197_libpmFileWrapper ;
-extern const char * gWrapperFileContent_201_libpmFileWrapper ;
-extern const char * gWrapperFileContent_202_libpmFileWrapper ;
+extern const char * gWrapperFileContent_198_libpmFileWrapper ;
 extern const char * gWrapperFileContent_203_libpmFileWrapper ;
 extern const char * gWrapperFileContent_204_libpmFileWrapper ;
 extern const char * gWrapperFileContent_205_libpmFileWrapper ;
@@ -3068,6 +3039,8 @@ extern const char * gWrapperFileContent_270_libpmFileWrapper ;
 extern const char * gWrapperFileContent_271_libpmFileWrapper ;
 extern const char * gWrapperFileContent_272_libpmFileWrapper ;
 extern const char * gWrapperFileContent_273_libpmFileWrapper ;
+extern const char * gWrapperFileContent_274_libpmFileWrapper ;
+extern const char * gWrapperFileContent_275_libpmFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3076,9 +3049,10 @@ extern const uint8_t gWrapperFileContent_61_libpmFileWrapper [] ;
 extern const uint8_t gWrapperFileContent_64_libpmFileWrapper [] ;
 extern const uint8_t gWrapperFileContent_65_libpmFileWrapper [] ;
 extern const uint8_t gWrapperFileContent_66_libpmFileWrapper [] ;
-extern const uint8_t gWrapperFileContent_198_libpmFileWrapper [] ;
 extern const uint8_t gWrapperFileContent_199_libpmFileWrapper [] ;
 extern const uint8_t gWrapperFileContent_200_libpmFileWrapper [] ;
+extern const uint8_t gWrapperFileContent_201_libpmFileWrapper [] ;
+extern const uint8_t gWrapperFileContent_202_libpmFileWrapper [] ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3356,6 +3330,8 @@ extern const cRegularFileWrapper gWrapperFile_270_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_271_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_272_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_273_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_274_libpmFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_275_libpmFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

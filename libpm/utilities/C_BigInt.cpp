@@ -103,10 +103,17 @@ bool C_BigInt::isMinusOne (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_BigInt::C_BigInt (const uint32_t inValue, const bool inNegate) :
+C_BigInt::C_BigInt (const uint64_t inValue, const bool inNegate) :
 mValue () {
   mpz_init (mValue) ;
-  mpz_set_ui (mValue, inValue) ;
+  const uint64_t high = inValue >> 32 ;
+  if (high == 0) {
+    mpz_set_ui (mValue, (uint32_t) inValue) ;
+  }else{
+    mpz_set_ui (mValue, (uint32_t) high) ;
+    mpz_mul_2exp (mValue, mValue, 32) ;
+    mpz_add_ui (mValue, mValue, (uint32_t) (inValue & UINT32_MAX)) ;
+  }
   if (inNegate) {
     mpz_neg (mValue, mValue) ;
   }
@@ -114,12 +121,25 @@ mValue () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_BigInt::C_BigInt (const uint32_t inHighValue, const uint32_t inLowValue, const bool inNegate) :
+C_BigInt::C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) :
 mValue () {
   mpz_init (mValue) ;
-  mpz_set_ui (mValue, inHighValue) ;
+  mpz_set_ui (mValue, 0) ;
+  if (inHighValue != 0) {
+    const uint64_t high = inHighValue >> 32 ;
+    if (high == 0) {
+      mpz_set_ui (mValue, (uint32_t) inHighValue) ;
+    }else{
+      mpz_set_ui (mValue, (uint32_t) high) ;
+      mpz_mul_2exp (mValue, mValue, 32) ;
+      mpz_add_ui (mValue, mValue, (uint32_t) (inHighValue & UINT32_MAX)) ;
+    }
+    mpz_mul_2exp (mValue, mValue, 32) ;
+  }
+  const uint64_t high = inLowValue >> 32 ;
+  mpz_add_ui (mValue, mValue, (uint32_t) high) ;
   mpz_mul_2exp (mValue, mValue, 32) ;
-  mpz_add_ui (mValue, mValue, inLowValue) ;
+  mpz_add_ui (mValue, mValue, (uint32_t) (inLowValue & UINT32_MAX)) ;
   if (inNegate) {
     mpz_neg (mValue, mValue) ;
   }
@@ -127,10 +147,22 @@ mValue () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_BigInt::C_BigInt (const int32_t inValue) :
+C_BigInt::C_BigInt (const int64_t inValue) :
 mValue () {
+  const bool negative = inValue < 0 ;
+  const uint64_t v = (uint64_t) (negative ? (- inValue) : inValue) ;
   mpz_init (mValue) ;
-  mpz_set_si (mValue, inValue) ;
+  const uint64_t high = v >> 32 ;
+  if (high == 0) {
+    mpz_set_ui (mValue, (uint32_t) v) ;
+  }else{
+    mpz_set_ui (mValue, (uint32_t) high) ;
+    mpz_mul_2exp (mValue, mValue, 32) ;
+    mpz_add_ui (mValue, mValue, (uint32_t) (v & UINT32_MAX)) ;
+  }
+  if (negative) {
+    mpz_neg (mValue, mValue) ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -172,10 +204,10 @@ C_BigInt & C_BigInt::operator -- (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_BigInt::hexString (void) const {
-  const size_t neededSize = 1 + (size_t) gmp_snprintf (NULL, 0, "%ZX", mValue) ;
+  const size_t neededSize = mpz_sizeinbase (mValue, 16) + 2 ;
   char * s = NULL ;
   macroMyNewPODArray (s, char, neededSize) ;
-  gmp_snprintf (s, neededSize, "%ZX", mValue) ;
+  mpz_get_str (s, -16, mValue) ; // -16 for getting 'A' to 'F'
   C_String result ;
   result << s ;
   macroMyDeletePODArray (s) ;
@@ -185,14 +217,14 @@ C_String C_BigInt::hexString (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_BigInt::decimalString (void) const {
-  const size_t neededSize = 1 + (size_t) gmp_snprintf (NULL, 0, "%ZX", mValue) ;
+  const size_t neededSize = mpz_sizeinbase (mValue, 10) + 2 ;
   char * s = NULL ;
   macroMyNewPODArray (s, char, neededSize) ;
-  gmp_snprintf (s, neededSize, "%Zs", mValue) ;
+  mpz_get_str (s, 10, mValue) ;
   C_String result ;
   result << s ;
   macroMyDeletePODArray (s) ;
-  return s ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -488,26 +520,33 @@ bool C_BigInt::operator < (const C_BigInt & inOperand) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool C_BigInt::isUInt32 (void) const {
+bool C_BigInt::fitsInUInt32 (void) const {
   return mpz_fits_uint_p (mValue) != 0 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool C_BigInt::isUInt64 (void) const {
-  return mpz_fits_ulong_p (mValue) != 0 ;
+bool C_BigInt::fitsInUInt64 (void) const {
+  return mpz_sizeinbase (mValue, 2) <= 64 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool C_BigInt::isSInt32 (void) const {
+bool C_BigInt::fitsInSInt32 (void) const {
   return mpz_fits_sint_p (mValue) != 0 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool C_BigInt::isSInt64 (void) const {
-  return mpz_fits_slong_p (mValue) != 0 ;
+bool C_BigInt::fitsInSInt64 (void) const {
+  const size_t requiredBitCount = mpz_sizeinbase (mValue, 2) ;
+  bool ok = requiredBitCount <= 63 ;
+  if ((requiredBitCount == 64) && (mpz_sgn (mValue) < 0)) { // INT64_MIN is a particular case
+    int64_t r ;
+    mpz_export (& r, NULL, 1, sizeof (int64_t), 0, 0, mValue) ;
+    ok = r == INT64_MIN ;
+  }
+  return ok ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -518,26 +557,38 @@ bool C_BigInt::isSInt64 (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-uint32_t C_BigInt::uint32AtIndex (void) const {
+uint32_t C_BigInt::uint32 (void) const {
   return (uint32_t) mpz_get_ui (mValue) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-uint64_t C_BigInt::uint64AtIndex (void) const {
-  return mpz_get_ui (mValue) ;
+uint64_t C_BigInt::uint64 (void) const {
+  uint64_t result = UINT64_MAX ;
+  if (fitsInUInt64 ()) {
+    mpz_export (& result, NULL, 1, sizeof (uint64_t), 0, 0, mValue) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-int32_t C_BigInt::int32AtIndex (void) const {
+int32_t C_BigInt::int32 (void) const {
   return (int32_t) mpz_get_si (mValue) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-int64_t C_BigInt::int64AtIndex (void) const {
-  return mpz_get_si (mValue) ;
+int64_t C_BigInt::int64 (void) const {
+  uint64_t r = UINT64_MAX ;
+  if (fitsInUInt64 ()) {
+    mpz_export (& r, NULL, 1, sizeof (uint64_t), 0, 0, mValue) ;
+  }
+  int64_t result = (int64_t) r ;
+  if (mpz_sgn (mValue) < 0) {
+    result = - result ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -545,6 +596,57 @@ int64_t C_BigInt::int64AtIndex (void) const {
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Example
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static bool randomBool (void) {
+  return (rand () & 1) == 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static uint16_t randomU16 (void) {
+  return (uint16_t) rand () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static uint32_t randomU32 (void) {
+  return (uint32_t) rand () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static uint64_t randomU64 (void) {
+  uint64_t v = (uint32_t) rand () ;
+  v <<= 32 ;
+  v |= (uint32_t) rand () ;
+  return v ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static int16_t randomS16 (void) {
+  return (int16_t) rand () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static int32_t randomS32 (void) {
+  return (int32_t) rand () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static int64_t randomS64 (void) {
+  int64_t v = (int32_t) rand () ;
+  v <<= 32 ;
+  v |= (int32_t) rand () ;
+  if (randomBool ()) {
+    v = -v ;
+  }
+  return v ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -573,47 +675,43 @@ void C_BigInt::example (void) {
 //--- Random tests
   co << "Add and subtract random test 1\n" ;
   for (int32_t i=0 ; i<1000 ; i++) {
-    const int32_t a = (int32_t) rand () ;
-    const int32_t b = (int32_t) rand () ;
+    const int32_t a = randomS16 () ;
+    const int32_t b = randomS16 () ;
     const C_BigInt bigA (a) ;
     const C_BigInt bigB (b) ;
     const C_BigInt bigAdd = bigA + bigB ;
     const C_BigInt bigAddVerif (a + b) ;
     if (bigAdd != bigAddVerif) {
-      co << "Error for " << cStringWithSigned (a) << " + " << cStringWithSigned (b) << "\n" ;
+      co << "Error 1 for " << cStringWithSigned (a) << " + " << cStringWithSigned (b) << "\n" ;
     }
     const C_BigInt bigNeg = bigA - bigB ;
     const C_BigInt bigNegVerif (a - b) ;
     if (bigNeg != bigNegVerif) {
-      co << "Error for " << cStringWithSigned (a) << " - " << cStringWithSigned (b) << "\n" ;
+      co << "Error 2 for " << cStringWithSigned (a) << " - " << cStringWithSigned (b) << "\n" ;
     }
     const C_BigInt bigNeg2 = (- bigA) + bigB ;
     const C_BigInt bigNeg2Verif (b - a) ;
     if (bigNeg2 != bigNeg2Verif) {
-      co << "Error for -" << cStringWithSigned (a) << " + " << cStringWithSigned (b) << "\n" ;
+      co << "Error 3 for -" << cStringWithSigned (a) << " + " << cStringWithSigned (b) << "\n" ;
     }
   }
   co << "Add and subtract random test 2\n" ;
   for (int32_t i=0 ; i<1000 ; i++) {
-    const uint32_t lowA = (uint32_t) rand () ;
-    const uint32_t highA = (uint32_t) rand () ;
-    const C_BigInt bigA (highA, lowA, ((uint32_t) rand () & 1) == 0) ;
-    const uint32_t lowB = (uint32_t) rand () ;
-    const uint32_t highB = (uint32_t) rand () ;
-    const C_BigInt bigB (highB, lowB, ((uint32_t) rand () & 1) == 0) ;
+    const C_BigInt bigA (randomU64 (), randomU64 (), randomBool ()) ;
+    const C_BigInt bigB (randomU64 (), randomU64 (), randomBool ()) ;
     const C_BigInt bigC = bigB + bigA - bigB ;
     if (bigA != bigC) {
-      co << "Error for " << bigA.decimalString () << " != " << bigC.decimalString () << "\n" ;
+      co << "Error 1 for " << bigA.decimalString () << " != " << bigC.decimalString () << "\n" ;
     }
-    const C_BigInt bigD = bigA + bigB - bigC ;
+    const C_BigInt bigD = bigA + bigB - bigA ;
     if (bigB != bigD) {
-      co << "Error for " << bigB.decimalString () << " != " << bigD.decimalString () << "\n" ;
+      co << "Error 2 for " << bigB.decimalString () << " != " << bigD.decimalString () << "\n" ;
     }
   }
   co << "Multiply random test\n" ;
   for (int32_t i=0 ; i<1000 ; i++) {
-    const uint32_t a = (uint32_t) rand () ;
-    const uint32_t b = (uint32_t) rand () ;
+    const uint32_t a = randomU16 () ;
+    const uint32_t b = randomU16 () ;
     const C_BigInt bigA (a, false) ;
     const C_BigInt bigMul = bigA * b ;
     const C_BigInt bigMulVerif (a * b, false) ;
@@ -623,8 +721,8 @@ void C_BigInt::example (void) {
   }
   co << "Other random test\n" ;
   for (int32_t i=0 ; i<1000 ; i++) {
-    const int32_t a = (int32_t) rand () ;
-    const uint32_t b = (uint32_t) rand () ;
+    const int32_t a = randomS32 () ;
+    const uint32_t b = randomU32 () ;
     C_BigInt bigA (a) ;
     for (int32_t j=0 ; j<10 ; j++) {
       bigA *= b ;
@@ -639,7 +737,7 @@ void C_BigInt::example (void) {
   }
   co << "Display in decimal\n" ;
   for (int32_t i=0 ; i<1000 ; i++) {
-    const uint32_t v = (uint32_t) rand () ;
+    const uint32_t v = randomU32 () ;
     const C_BigInt bigV (v, false) ;
     const C_String strV = cStringWithUnsigned (v) ;
     const C_String strBigV = bigV.decimalString () ;
@@ -661,10 +759,8 @@ void C_BigInt::example (void) {
   co << "1000! = " << f.decimalString() << "\n" ;
   co << "Shift right positive numbers\n" ;
   for (uint32_t i=2 ; i<=1000 ; i++) {
-    const uint32_t low = (uint32_t) rand () ;
-    const uint32_t high = (uint32_t) rand () ;
-    const C_BigInt bigV (high, low, false) ;
-    const uint32_t shift = ((uint32_t) rand ()) % 100 ;
+    const C_BigInt bigV (randomU64 (), randomU64 (), false) ;
+    const uint32_t shift = randomU32 () % 100 ;
     const C_BigInt bigVLeftShifted = bigV << shift ;
     const C_BigInt bigResult = bigVLeftShifted >> shift ;
     if (bigV != bigResult) {
@@ -674,10 +770,8 @@ void C_BigInt::example (void) {
   co << "Shift right negative numbers\n" ;
   const C_BigInt minusOne (1, true) ;
   for (uint32_t i=1 ; i<1000 ; i++) {
-    const uint32_t low = (uint32_t) rand () ;
-    const uint32_t high = (uint32_t) rand () ;
-    const C_BigInt bigV (high, low, true) ;
-    const uint32_t shift = ((uint32_t) rand ()) % 100 ;
+    const C_BigInt bigV (randomU64 (), randomU64 (), true) ;
+    const uint32_t shift = randomU32 () % 100 ;
     const C_BigInt bigVLeftShifted = bigV << shift ;
     const C_BigInt bigResult = bigVLeftShifted >> shift ;
     if (bigV != bigResult) {
@@ -685,19 +779,17 @@ void C_BigInt::example (void) {
     }
     C_BigInt v = bigVLeftShifted ;
     while (v != minusOne) {
-      v >>= ((uint32_t) rand ()) % 39 ;
+      v >>= randomU32 () % 39 ;
     }
   }
   co << "Multiplication\n" ;
   for (uint32_t i=1 ; i<1000 ; i++) {
-    const uint32_t low = (uint32_t) rand () ;
-    const uint32_t high = (uint32_t) rand () ;
-    const C_BigInt bigA = C_BigInt (high, low, ((uint32_t) rand () & 1) == 0) * (uint32_t) rand () ;
+    const C_BigInt bigA = C_BigInt (randomU64 (), randomU64 (), randomBool ()) * randomU32 () ;
     const C_BigInt bigAM = minusOne * bigA * minusOne ;
     if (bigA != bigAM) {
       co << "Error : A" << bigA.decimalString() << " != -1*A*-1" << bigAM.decimalString() << "\n" ;
     }
-    const C_BigInt bigB = C_BigInt (low, high, ((uint32_t) rand () & 1) == 0) * (uint32_t) rand () ;
+    const C_BigInt bigB = C_BigInt (randomU64 (), randomU64 (), randomBool ()) * randomU32 () ;
     const C_BigInt bigABAB = (bigA + bigB) * (bigA - bigB) ;
     const C_BigInt bigAABB = bigA * bigA  - bigB * bigB ;
     if (bigA != bigAM) {
@@ -711,10 +803,8 @@ void C_BigInt::example (void) {
   }
   co << "Division by uint32_t\n" ;
   for (uint32_t i=1 ; i<1000 ; i++) {
-    const uint32_t low = (uint32_t) rand () ;
-    const uint32_t high = (uint32_t) rand () ;
-    const C_BigInt bigA = C_BigInt (high, low, false) * (uint32_t) rand () ;
-    const uint32_t divisor = (uint32_t) rand () | 1 ;
+    const C_BigInt bigA = C_BigInt (randomU64 (), randomU64 (), false) * randomU32 () ;
+    const uint32_t divisor = randomU32 () | 1 ;
     C_BigInt quotient ;
     uint32_t remainder ;
     bigA.divideBy (divisor, quotient, remainder) ;
@@ -725,19 +815,68 @@ void C_BigInt::example (void) {
   }
   co << "Division by C_BigInt\n" ;
   for (uint32_t i=1 ; i<1000 ; i++) {
-    co << "." ; co.flush () ;
-    const uint32_t low = (uint32_t) rand () ;
-    const uint32_t high = (uint32_t) rand () ;
-    const C_BigInt dividende = C_BigInt (high, low, false) * C_BigInt (low, high, false) ;
-    const uint32_t low2 = (uint32_t) rand () ;
-    const uint32_t high2 = (uint32_t) rand () ;
-    const C_BigInt divisor = C_BigInt (high2, low2, false) + 2 ;
+    const C_BigInt dividende = C_BigInt (randomU64 (), randomU64 (), false) * C_BigInt (randomU64 (), randomU64 (), false) ;
+    const C_BigInt divisor = C_BigInt (randomU64 (), randomU64 (), false) + 2 ;
     C_BigInt quotient ;
     C_BigInt remainder ;
     dividende.divideBy (divisor, quotient, remainder) ;
     const C_BigInt result = quotient * divisor + remainder ;
     if (dividende != result) {
       co << "Error : " << dividende.decimalString() << " != " << result.decimalString() << "\n" ;
+    }
+  }
+  co << "Conversions to uint64\n" ;
+  C_BigInt uint64Test (UINT64_MAX, false) ;
+  if (! uint64Test.fitsInUInt64 ()) {
+   co << "Error : 0x" << uint64Test.hexString () << " is not an uint64\n" ;
+  }
+  uint64Test += 1 ;
+  if (uint64Test.fitsInUInt64 ()) {
+   co << "Error : 0x" << uint64Test.hexString () << " is an uint64\n" ;
+  }
+  for (uint32_t i=1 ; i<1000 ; i++) {
+    const uint32_t v = randomU32 () ;
+    const C_BigInt bigV = C_BigInt (v, false) ;
+    const uint64_t vv = bigV.uint64 () ;
+    if (vv != v) {
+      co << "Error 1: " << cStringWithUnsigned (v) << " != " << cStringWithUnsigned (vv) << "\n" ;
+    }
+    const uint64_t v2 = randomU64 () ;
+    const C_BigInt bigVV = C_BigInt (v2, false) ;
+    const uint64_t vv2 = bigVV.uint64 () ;
+    if (vv2 != v2) {
+      co << "Error 2: " << cStringWithUnsigned (v2) << " != " << cStringWithUnsigned (vv2) << "\n" ;
+    }
+  }
+  co << "Conversions to sint64\n" ;
+  C_BigInt int64Test (INT64_MAX) ;
+  if (! int64Test.fitsInSInt64 ()) {
+   co << "Error : " << int64Test.hexString () << " (INT64_MAX) is not an int64\n" ;
+  }
+  int64Test += 1 ;
+  if (int64Test.fitsInSInt64 ()) {
+   co << "Error : " << int64Test.hexString () << " (INT64_MAX + 1) is an int64\n" ;
+  }
+  int64Test = C_BigInt (INT64_MIN) ;
+  if (! int64Test.fitsInSInt64 ()) {
+   co << "Error : " << int64Test.hexString () << " (INT64_MIN) is not an int64\n" ;
+  }
+  int64Test -= 1 ;
+  if (int64Test.fitsInSInt64 ()) {
+   co << "Error : " << int64Test.hexString () << " (INT64_MIN - 1) is an int64\n" ;
+  }
+  for (uint32_t i=1 ; i<1000 ; i++) {
+    const int64_t v = randomS64 () ;
+    const C_BigInt bigV = C_BigInt (v) ;
+    const int64_t vv = bigV.int64 () ;
+    if (vv != v) {
+      co << "Error 1: " << cStringWithSigned (v) << " != " << cStringWithSigned (vv) << "\n" ;
+    }
+    const uint64_t v2 = randomU64 () ;
+    const C_BigInt bigVV = C_BigInt (v2, false) ;
+    const uint64_t vv2 = bigVV.uint64 () ;
+    if (vv2 != v2) {
+      co << "Error 2: " << cStringWithUnsigned (v2) << " != " << cStringWithUnsigned (vv2) << "\n" ;
     }
   }
 }

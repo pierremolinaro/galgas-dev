@@ -57,9 +57,9 @@
 class C_BigInt {
 //--- Constructors
   public : C_BigInt (void) ;
-  public : explicit C_BigInt (const uint32_t inValue, const bool inNegate) ;
-  public : explicit C_BigInt (const uint32_t inHighValue, const uint32_t inLowValue, const bool inNegate) ;
-  public : explicit C_BigInt (const int32_t inValue) ;
+  public : explicit C_BigInt (const uint64_t inValue, const bool inNegate) ;
+  public : explicit C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) ;
+  public : explicit C_BigInt (const int64_t inValue) ;
 
 //--- Destructor
   public : virtual ~ C_BigInt (void) ;
@@ -133,16 +133,16 @@ class C_BigInt {
   public : void divideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
 
 //--- Value access
-  public : uint32_t uint32AtIndex (void) const ;
-  public : uint64_t uint64AtIndex (void) const ;
-  public :  int32_t int32AtIndex (void) const ;
-  public :  int64_t int64AtIndex (void) const ;
+  public : uint32_t uint32 (void) const ;
+  public : uint64_t uint64 (void) const ;
+  public :  int32_t int32  (void) const ;
+  public :  int64_t int64  (void) const ;
 
 //--- Testing value
-  public : bool isUInt32 (void) const ;
-  public : bool isUInt64 (void) const ;
-  public : bool isSInt32 (void) const ;
-  public : bool isSInt64 (void) const ;
+  public : bool fitsInUInt32 (void) const ;
+  public : bool fitsInUInt64 (void) const ;
+  public : bool fitsInSInt32 (void) const ;
+  public : bool fitsInSInt64 (void) const ;
   
 //--- Example
   public : static void example (void) ;

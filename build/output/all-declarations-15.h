@@ -546,9 +546,6 @@ extern const char * gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper 
 extern const char * gWrapperFileContent_2_targetGalgas_33_GenerationFileWrapper ;
 extern const char * gWrapperFileContent_3_targetGalgas_33_GenerationFileWrapper ;
 extern const char * gWrapperFileContent_4_targetGalgas_33_GenerationFileWrapper ;
-extern const char * gWrapperFileContent_5_targetGalgas_33_GenerationFileWrapper ;
-extern const char * gWrapperFileContent_6_targetGalgas_33_GenerationFileWrapper ;
-extern const char * gWrapperFileContent_7_targetGalgas_33_GenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -560,9 +557,6 @@ extern const cRegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWr
 extern const cRegularFileWrapper gWrapperFile_2_targetGalgas_33_GenerationFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_3_targetGalgas_33_GenerationFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_4_targetGalgas_33_GenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_5_targetGalgas_33_GenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_6_targetGalgas_33_GenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_7_targetGalgas_33_GenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -580,7 +574,6 @@ extern const cDirectoryWrapper gWrapperDirectory_10_targetGalgas_33_GenerationFi
 extern const cDirectoryWrapper gWrapperDirectory_11_targetGalgas_33_GenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_12_targetGalgas_33_GenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_13_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_14_targetGalgas_33_GenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -837,16 +830,6 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_msys32_on_windows_makefile'            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_msys_33__32__5F_on_5F_windows_5F_makefile (class C_Compiler * inCompiler,
-                                                                                                                               const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                                               COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -915,17 +898,6 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (class C_Compiler * inCompiler,
                                                                                            const class GALGAS_string & in_VERSION_5F_STRING
                                                                                            COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     Routine 'generateGalgas3MsysOnWin32Target'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_generateGalgas_33_MsysOnWin_33__32_Target (const class GALGAS_string constinArgument0,
-                                                        const class GALGAS_string constinArgument1,
-                                                        class C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

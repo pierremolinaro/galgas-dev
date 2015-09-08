@@ -52,7 +52,7 @@ def buildForWin32OnMacOSX (dictionary, EXECUTABLE, GOAL, maxParallelJobs, displa
 #--- Options for Objective-C++ compiling (.mm extension)
   gmf.m_ObjectiveCpp_CompilerOptions = default_build_options.ObjectiveCpp_CompilerOptions ([])
 #--- Library to use for gmp
-  gmf.mCrossCompilation = "lib-mingw32"
+  gmf.mCrossCompilation = "win32"
 #--- Run makefile
   gmf.run ()
 
