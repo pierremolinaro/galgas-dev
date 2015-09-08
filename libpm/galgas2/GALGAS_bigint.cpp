@@ -110,7 +110,7 @@ GALGAS_uint GALGAS_bigint::reader_bitCountForSignedRepresentation (UNUSED_LOCATI
 GALGAS_bool GALGAS_bigint::reader_isUInt (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.isUInt32 ()) ;
+    result = GALGAS_bool (mValue.fitsInUInt32 ()) ;
   }
   return result ;
 }
@@ -120,7 +120,7 @@ GALGAS_bool GALGAS_bigint::reader_isUInt (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_bigint::reader_isSInt (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.isSInt32 ()) ;
+    result = GALGAS_bool (mValue.fitsInSInt32 ()) ;
   }
   return result ;
 }
@@ -130,7 +130,7 @@ GALGAS_bool GALGAS_bigint::reader_isSInt (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_bigint::reader_isUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.isUInt64 ()) ;
+    result = GALGAS_bool (mValue.fitsInUInt64 ()) ;
   }
   return result ;
 }
@@ -140,7 +140,7 @@ GALGAS_bool GALGAS_bigint::reader_isUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_bigint::reader_isSInt_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.isSInt64 ()) ;
+    result = GALGAS_bool (mValue.fitsInSInt64 ()) ;
   }
   return result ;
 }
@@ -157,8 +157,8 @@ GALGAS_uint GALGAS_bigint::reader_uint (C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
-    if (mValue.isUInt32 ()) {
-      result = GALGAS_uint (mValue.uint32AtIndex ()) ;
+    if (mValue.fitsInUInt32 ()) {
+      result = GALGAS_uint (mValue.uint32 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @uint conversion overflow" COMMA_THERE) ;
     }
@@ -172,8 +172,8 @@ GALGAS_uint_36__34_ GALGAS_bigint::reader_uint_36__34_ (C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid ()) {
-    if (mValue.isUInt64 ()) {
-      result = GALGAS_uint_36__34_ (mValue.uint64AtIndex ()) ;
+    if (mValue.fitsInUInt64 ()) {
+      result = GALGAS_uint_36__34_ (mValue.uint64 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @uint64 conversion overflow" COMMA_THERE) ;
     }

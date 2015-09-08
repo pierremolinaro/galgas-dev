@@ -102,8 +102,6 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
   template build_debug_win32_on_mac "makefile-win32-on-macosx/build+debug.py.galgasTemplate"
   template build_release_win32_on_mac "makefile-win32-on-macosx/build+release.py.galgasTemplate"
 
-  template makefile_msys32_on_windows_makefile "makefile-msys32-on-windows/makefile.galgasTemplate" ?@string PROJECT_NAME
-
   template codeblocks_project "project-codeblocks.cbp.galgasTemplate"
     ?@string PROJECT_NAME
     ?@stringlist TOOL_CPP_FILE_LIST
@@ -131,19 +129,6 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
 
   template project_header "project.h.galgasTemplate"
     ?@string VERSION_STRING
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-private proc generateGalgas3MsysOnWin32Target
-  ?let @string inProjectDirectory
-  ?let @string inProjectName {
-  let @string dir = inProjectDirectory + "/makefile-msys32-on-windows"
-  [dir makeDirectory]
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_msys_on_win32/build.bat"] writeToFileWhenDifferentContents !dir +"/build.bat" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_msys_on_win32/clean.bat"] writeToFileWhenDifferentContents !dir +"/clean.bat" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_msys_on_win32/install.bat"] writeToFileWhenDifferentContents !dir +"/install.bat" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_msys32_on_windows_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -325,7 +310,6 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"makefile-x86linux32-on-macosx"
   availableGenerationFeatures += !"makefile-x86linux64-on-macosx"
   availableGenerationFeatures += !"makefile-win32-on-macosx"
-  availableGenerationFeatures += !"makefile-msys32-on-windows"
   availableGenerationFeatures += !"SnowLeopard"
   availableGenerationFeatures += !"Lion"
   availableGenerationFeatures += !"MountainLion"
@@ -438,9 +422,6 @@ proc updateGalgas3Targets
   end
   if [generationFeatures hasKey !"makefile-win32-on-macosx"] then
     generateGalgas3MinGWOnMacOSXTarget (!projectDirectory !inTargetName )
-  end
-  if [generationFeatures hasKey !"makefile-msys32-on-windows"] then
-    generateGalgas3MsysOnWin32Target (!projectDirectory !inTargetName )
   end
   if [generationFeatures hasKey !"codeblocks-windows"] then
     generateGalgasCodeBlocksWindowsTarget (

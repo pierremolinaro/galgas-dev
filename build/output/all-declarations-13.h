@@ -4114,7 +4114,6 @@ extern const cDirectoryWrapper gWrapperDirectory_10_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_11_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_12_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_13_typeDumpGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_14_typeDumpGenerationTemplate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

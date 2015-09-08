@@ -84,8 +84,6 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
 
   template makefile_mingw_on_macosx_makefile "makefile_mingw_on_macosx/makefile" ?@string PROJECT_NAME
 
-  template makefile_msys_on_win32_makefile "makefile_msys_on_win32/makefile" ?@string PROJECT_NAME
-
   template makefile_info_plist "project_xcode/Info.plist.txt"
     ?@string PROJECT_NAME
     ?@string APPLICATION_BUNDLE_BASE
@@ -104,19 +102,6 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
 
   template project_header "project.h.galgasTemplate"
     ?@string VERSION_STRING
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc generateMsysOnWin32Target
-  ?let @string inProjectDirectory
-  ?let @string inProjectName {
-  let @string dir = inProjectDirectory + "/makefile_msys_on_win32"
-  [dir makeDirectory]
-  [[filewrapper targetGenerationFileWrapper."makefile_msys_on_win32/build.bat"] writeToFileWhenDifferentContents !dir +"/build.bat" ?*]
-  [[filewrapper targetGenerationFileWrapper."makefile_msys_on_win32/clean.bat"] writeToFileWhenDifferentContents !dir +"/clean.bat" ?*]
-  [[filewrapper targetGenerationFileWrapper."makefile_msys_on_win32/install.bat"] writeToFileWhenDifferentContents !dir +"/install.bat" ?*]
-  [[filewrapper targetGenerationFileWrapper.makefile_msys_on_win32_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -402,9 +387,6 @@ proc updateTargets
   end
   if [generationFeatures hasKey !"makefile_mingw_on_macosx"] then
     generateMinGWOnMacOSXTarget ( !projectDirectory !inTargetName )
-  end
-  if [generationFeatures hasKey !"makefile_msys_on_win32"] then
-    generateMsysOnWin32Target ( !projectDirectory !inTargetName )
   end
 #--- Update makefile file list
   let @string newFileListContents = [filewrapper targetGenerationFileWrapper.makefile_file_list
