@@ -29,6 +29,7 @@
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
+     <Add option="-D_WIN32_WINNT=0x0501" />
     </Compiler>
    </Target>
    <Target title="Debug">
@@ -54,6 +55,7 @@
      <Add option="-std=c++98" />
      <Add option="-Wall" />
      <Add option="-W" />
+     <Add option="-D_WIN32_WINNT=0x0501" />
     </Compiler>
    </Target>
   </Build>
@@ -70,7 +72,7 @@ for () in HAND_CODED_SOURCE_TOOL_DIRECTORY_SET do
 end
 %  </Compiler>
   <Linker>
-%if GENERATE_FOR_WINDOWS then !"   <Add library=\"comdlg32\" />" else end%
+%if GENERATE_FOR_WINDOWS then !"   <Add library=\"comdlg32\" /><Add library=\"Ws2_32\" />" else end%
     <Add library="../libpm/gmp/libgmp-%!GMPLIB_POSTFIX%.a" />
   </Linker>
   <Unit filename="%!LIBPM_PATH%/all-libpm.cpp" />
