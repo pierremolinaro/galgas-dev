@@ -2,7 +2,6 @@ project (1:0:0) -> "LR1_grammar"{
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %makefile-msys32-on-windows
   %SnowLeopard
   %applicationBundleBase : "fr.what"
 #--- Sources

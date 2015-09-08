@@ -2,7 +2,6 @@ project (1:0:0) -> "all_dangling_else_solution" {
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %makefile-msys32-on-windows
   %SnowLeopard
   %applicationBundleBase : "fr.what"
 #--- Sources

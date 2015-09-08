@@ -5,7 +5,6 @@ project (0:0:1) -> "logo" {
   %makefile-x86linux32-on-macosx
   %makefile-x86linux64-on-macosx
   %makefile-win32-on-macosx
-  %makefile-msys32-on-windows
   %Mavericks
   %applicationBundleBase : "fr.what"
   %codeblocks-windows
