@@ -651,6 +651,7 @@ static int64_t randomS64 (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::example (void) {
+  int32_t errorCount = 0 ;
   co << "***** C_BigInt example ******\n" ;
   C_BigInt bigint ;
   co << "Zero : " << bigint.hexString() << "\n" ;
@@ -683,16 +684,19 @@ void C_BigInt::example (void) {
     const C_BigInt bigAddVerif (a + b) ;
     if (bigAdd != bigAddVerif) {
       co << "Error 1 for " << cStringWithSigned (a) << " + " << cStringWithSigned (b) << "\n" ;
+      errorCount ++ ;
     }
     const C_BigInt bigNeg = bigA - bigB ;
     const C_BigInt bigNegVerif (a - b) ;
     if (bigNeg != bigNegVerif) {
       co << "Error 2 for " << cStringWithSigned (a) << " - " << cStringWithSigned (b) << "\n" ;
+      errorCount ++ ;
     }
     const C_BigInt bigNeg2 = (- bigA) + bigB ;
     const C_BigInt bigNeg2Verif (b - a) ;
     if (bigNeg2 != bigNeg2Verif) {
       co << "Error 3 for -" << cStringWithSigned (a) << " + " << cStringWithSigned (b) << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Add and subtract random test 2\n" ;
@@ -702,10 +706,12 @@ void C_BigInt::example (void) {
     const C_BigInt bigC = bigB + bigA - bigB ;
     if (bigA != bigC) {
       co << "Error 1 for " << bigA.decimalString () << " != " << bigC.decimalString () << "\n" ;
+      errorCount ++ ;
     }
     const C_BigInt bigD = bigA + bigB - bigA ;
     if (bigB != bigD) {
       co << "Error 2 for " << bigB.decimalString () << " != " << bigD.decimalString () << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Multiply random test\n" ;
@@ -717,6 +723,7 @@ void C_BigInt::example (void) {
     const C_BigInt bigMulVerif (a * b, false) ;
     if (bigMul != bigMulVerif) {
       co << "Error for " << cStringWithUnsigned (a) << " + " << cStringWithUnsigned (b) << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Other random test\n" ;
@@ -733,6 +740,7 @@ void C_BigInt::example (void) {
     const C_BigInt bigCVerif (-1) ;
     if (bigC != bigCVerif) {
       co << "Error for combining " << cStringWithSigned (a) << " and " << cStringWithUnsigned (b) << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Display in decimal\n" ;
@@ -743,6 +751,7 @@ void C_BigInt::example (void) {
     const C_String strBigV = bigV.decimalString () ;
     if (strV != strV) {
       co << "Error for decimalString: '" << strV << "' != '" << strBigV << "'\n" ;
+      errorCount ++ ;
     }
   }
   co << "Computing 100!\n" ;
@@ -765,6 +774,7 @@ void C_BigInt::example (void) {
     const C_BigInt bigResult = bigVLeftShifted >> shift ;
     if (bigV != bigResult) {
       co << "Error : " << bigV.decimalString() << " != " << bigResult.decimalString() << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Shift right negative numbers\n" ;
@@ -776,6 +786,7 @@ void C_BigInt::example (void) {
     const C_BigInt bigResult = bigVLeftShifted >> shift ;
     if (bigV != bigResult) {
       co << "Error : " << bigV.decimalString() << " != " << bigResult.decimalString() << "\n" ;
+      errorCount ++ ;
     }
     C_BigInt v = bigVLeftShifted ;
     while (v != minusOne) {
@@ -788,17 +799,20 @@ void C_BigInt::example (void) {
     const C_BigInt bigAM = minusOne * bigA * minusOne ;
     if (bigA != bigAM) {
       co << "Error : A" << bigA.decimalString() << " != -1*A*-1" << bigAM.decimalString() << "\n" ;
+      errorCount ++ ;
     }
     const C_BigInt bigB = C_BigInt (randomU64 (), randomU64 (), randomBool ()) * randomU32 () ;
     const C_BigInt bigABAB = (bigA + bigB) * (bigA - bigB) ;
     const C_BigInt bigAABB = bigA * bigA  - bigB * bigB ;
     if (bigA != bigAM) {
       co << "Error : (A+B)*(A-B)" << bigABAB.decimalString() << " != A*A-B*B" << bigAABB.decimalString() << "\n" ;
+      errorCount ++ ;
     }
     const C_BigInt bigF = (bigA + bigB) * (bigB + bigA) ;
     const C_BigInt bigG = bigA * bigA + bigB * bigB + bigA * bigB + bigB * bigA ;
     if (bigF != bigG) {
       co << "Error : (A+B)*(B+A) " << bigF.decimalString() << " != A*A+2*A*B+B*B " << bigG.decimalString() << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Division by uint32_t\n" ;
@@ -811,6 +825,7 @@ void C_BigInt::example (void) {
     const C_BigInt bigAM = quotient * divisor + remainder ;
     if (bigA != bigAM) {
       co << "Error : " << bigA.decimalString() << " != " << bigAM.decimalString() << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Division by C_BigInt\n" ;
@@ -823,16 +838,19 @@ void C_BigInt::example (void) {
     const C_BigInt result = quotient * divisor + remainder ;
     if (dividende != result) {
       co << "Error : " << dividende.decimalString() << " != " << result.decimalString() << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Conversions to uint64\n" ;
   C_BigInt uint64Test (UINT64_MAX, false) ;
   if (! uint64Test.fitsInUInt64 ()) {
-   co << "Error : 0x" << uint64Test.hexString () << " is not an uint64\n" ;
+    co << "Error : 0x" << uint64Test.hexString () << " is not an uint64\n" ;
+    errorCount ++ ;
   }
   uint64Test += 1 ;
   if (uint64Test.fitsInUInt64 ()) {
-   co << "Error : 0x" << uint64Test.hexString () << " is an uint64\n" ;
+    co << "Error : 0x" << uint64Test.hexString () << " is an uint64\n" ;
+    errorCount ++ ;
   }
   for (uint32_t i=1 ; i<1000 ; i++) {
     const uint32_t v = randomU32 () ;
@@ -840,30 +858,36 @@ void C_BigInt::example (void) {
     const uint64_t vv = bigV.uint64 () ;
     if (vv != v) {
       co << "Error 1: " << cStringWithUnsigned (v) << " != " << cStringWithUnsigned (vv) << "\n" ;
+      errorCount ++ ;
     }
     const uint64_t v2 = randomU64 () ;
     const C_BigInt bigVV = C_BigInt (v2, false) ;
     const uint64_t vv2 = bigVV.uint64 () ;
     if (vv2 != v2) {
       co << "Error 2: " << cStringWithUnsigned (v2) << " != " << cStringWithUnsigned (vv2) << "\n" ;
+      errorCount ++ ;
     }
   }
   co << "Conversions to sint64\n" ;
   C_BigInt int64Test (INT64_MAX) ;
   if (! int64Test.fitsInSInt64 ()) {
-   co << "Error : " << int64Test.hexString () << " (INT64_MAX) is not an int64\n" ;
+    co << "Error : " << int64Test.hexString () << " (INT64_MAX) is not an int64\n" ;
+    errorCount ++ ;
   }
   int64Test += 1 ;
   if (int64Test.fitsInSInt64 ()) {
-   co << "Error : " << int64Test.hexString () << " (INT64_MAX + 1) is an int64\n" ;
+    co << "Error : " << int64Test.hexString () << " (INT64_MAX + 1) is an int64\n" ;
+    errorCount ++ ;
   }
   int64Test = C_BigInt (INT64_MIN) ;
   if (! int64Test.fitsInSInt64 ()) {
-   co << "Error : " << int64Test.hexString () << " (INT64_MIN) is not an int64\n" ;
+    co << "Error : " << int64Test.hexString () << " (INT64_MIN) is not an int64\n" ;
+    errorCount ++ ;
   }
   int64Test -= 1 ;
   if (int64Test.fitsInSInt64 ()) {
-   co << "Error : " << int64Test.hexString () << " (INT64_MIN - 1) is an int64\n" ;
+    co << "Error : " << int64Test.hexString () << " (INT64_MIN - 1) is an int64\n" ;
+    errorCount ++ ;
   }
   for (uint32_t i=1 ; i<1000 ; i++) {
     const int64_t v = randomS64 () ;
@@ -871,14 +895,17 @@ void C_BigInt::example (void) {
     const int64_t vv = bigV.int64 () ;
     if (vv != v) {
       co << "Error 1: " << cStringWithSigned (v) << " != " << cStringWithSigned (vv) << "\n" ;
+      errorCount ++ ;
     }
     const uint64_t v2 = randomU64 () ;
     const C_BigInt bigVV = C_BigInt (v2, false) ;
     const uint64_t vv2 = bigVV.uint64 () ;
     if (vv2 != v2) {
       co << "Error 2: " << cStringWithUnsigned (v2) << " != " << cStringWithUnsigned (vv2) << "\n" ;
+      errorCount ++ ;
     }
   }
+  co << "Error count: " << cStringWithSigned (errorCount) << "\n" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
