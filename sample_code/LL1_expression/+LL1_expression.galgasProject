@@ -2,7 +2,6 @@ project (1:0:0) -> "LL1_expression" {
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %makefile-msys32-on-windows
   %Mavericks
   %applicationBundleBase : "fr.what"
 #--- Sources
