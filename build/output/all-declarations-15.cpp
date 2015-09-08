@@ -10603,6 +10603,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "     <Add option=\"-Wall\" />\n"
     "     <Add option=\"-W\" />\n"
     "     <Add option=\"-DDO_NOT_GENERATE_CHECKINGS\" />\n"
+    "     <Add option=\"-D_WIN32_WINNT=0x0501\" />\n"
     "    </Compiler>\n"
     "   </Target>\n"
     "   <Target title=\"Debug\">\n"
@@ -10638,6 +10639,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "     <Add option=\"-std=c++98\" />\n"
     "     <Add option=\"-Wall\" />\n"
     "     <Add option=\"-W\" />\n"
+    "     <Add option=\"-D_WIN32_WINNT=0x0501\" />\n"
     "    </Compiler>\n"
     "   </Target>\n"
     "  </Build>\n"
@@ -10650,22 +10652,22 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result << "\" />\n"
     "   <Add directory=\"../build/user-headers\" />\n"
     "   <Add directory=\"../build/output\" />\n" ;
-  GALGAS_uint index_2346_ (0) ;
+  GALGAS_uint index_2434_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_2346 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kEnumeration_up) ;
-    while (enumerator_2346.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_2434 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kEnumeration_up) ;
+    while (enumerator_2434.hasCurrentObject ()) {
       result << "  <Add directory=\"" ;
-      result << enumerator_2346.current_key (HERE).stringValue () ;
+      result << enumerator_2434.current_key (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2346_.increment () ;
-      enumerator_2346.gotoNextObject () ;
+      index_2434_.increment () ;
+      enumerator_2434.gotoNextObject () ;
     }
   }
   result << "  </Compiler>\n"
     "  <Linker>\n" ;
   const enumGalgasBool test_2 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
   if (kBoolTrue == test_2) {
-    result << GALGAS_string ("   <Add library=\"comdlg32\" />").stringValue () ;
+    result << GALGAS_string ("   <Add library=\"comdlg32\" /><Add library=\"Ws2_32\" />").stringValue () ;
   }else if (kBoolFalse == test_2) {
   }
   result << "\n"
@@ -10679,26 +10681,26 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "  <Unit filename=\"" ;
   result << in_LIBPM_5F_PATH.stringValue () ;
   result << "/galgas2/all-galgas.cpp\" />\n" ;
-  GALGAS_uint index_2701_ (0) ;
+  GALGAS_uint index_2815_ (0) ;
   if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2701 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2701.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_2815 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2815.hasCurrentObject ()) {
       result << "  <Unit filename=\"../build/output/" ;
-      result << enumerator_2701.current_mValue (HERE).stringValue () ;
+      result << enumerator_2815.current_mValue (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2701_.increment () ;
-      enumerator_2701.gotoNextObject () ;
+      index_2815_.increment () ;
+      enumerator_2815.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_2803_ (0) ;
+  GALGAS_uint index_2917_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2803 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2803.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_2917 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2917.hasCurrentObject ()) {
       result << "  <Unit filename=\"../" ;
-      result << enumerator_2803.current_mValue (HERE).stringValue () ;
+      result << enumerator_2917.current_mValue (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2803_.increment () ;
-      enumerator_2803.gotoNextObject () ;
+      index_2917_.increment () ;
+      enumerator_2917.gotoNextObject () ;
     }
   }
   result << "  <Extensions>\n"
