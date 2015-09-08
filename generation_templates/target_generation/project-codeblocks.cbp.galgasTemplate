@@ -7,6 +7,7 @@
   <Option compiler="gcc" />
   <Build>
    <Target title="Release">
+    <Option platforms="%!PLATFORM%;" />
     <Option output="%!PROJECT_NAME if GENERATE_FOR_WINDOWS then !".exe" else end%" prefix_auto="0" extension_auto="0" />
     <Option object_output="objects" />
     <Option type="1" />
@@ -31,6 +32,7 @@
     </Compiler>
    </Target>
    <Target title="Debug">
+    <Option platforms="%!PLATFORM%;" />
     <Option output="%!PROJECT_NAME%-debug% if GENERATE_FOR_WINDOWS then !".exe" else end%" prefix_auto="0" extension_auto="0" />
     <Option object_output="objects_debug" />
     <Option deps_output=".deps_debug" />
@@ -69,6 +71,7 @@ end
 %  </Compiler>
   <Linker>
 %if GENERATE_FOR_WINDOWS then !"   <Add library=\"comdlg32\" />" else end%
+    <Add library="../libpm/gmp/libgmp-%!GMPLIB_POSTFIX%.a" />
   </Linker>
   <Unit filename="%!LIBPM_PATH%/all-libpm.cpp" />
   <Unit filename="%!LIBPM_PATH%/galgas2/all-galgas.cpp" />
