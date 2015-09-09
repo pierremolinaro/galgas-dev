@@ -195,7 +195,7 @@ void scanner_routine_convertHexStringIntoSInt (C_Lexique & inLexique,
                                               const utf32 * inCharacterIsNotHexDigitError) ;
 
 void scanner_routine_convertHexStringIntoSInt64 (C_Lexique & inLexique,
-                                                const C_String & inDecimalString,
+                                                const C_String & inHexString,
                                                 int64_t & outValue,
                                                 const utf32 * inNumberTooLargeError,
                                                 const utf32 * inCharacterIsNotHexDigitError) ;
@@ -231,6 +231,15 @@ void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
                                               class C_BigInt & ioBigInt,
                                               const utf32 * inCharacterIsNotDecimalDigitError) ;
 
+void scanner_routine_convertDecimalStringIntoBigInt (C_Lexique & inLexique,
+                                                     const C_String & inDecimalString,
+                                                     C_BigInt & outValue,
+                                                     const utf32 * inCharacterIsNotDecimalDigitError) ;
+
+void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
+                                                 const C_String & inHexString,
+                                                 C_BigInt & outValue,
+                                                 const utf32 * inCharacterIsNotHexDigitError) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

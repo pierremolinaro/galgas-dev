@@ -843,3 +843,29 @@ void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_routine_convertDecimalStringIntoBigInt (C_Lexique & inLexique,
+                                                     const C_String & inDecimalString,
+                                                     C_BigInt & outValue,
+                                                     const utf32 * inCharacterIsNotDecimalDigitError) {
+  bool ok = true ;
+  outValue = C_BigInt (inDecimalString.cString (HERE), 10, ok) ;
+  if (! ok) {
+    inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
+                                                 const C_String & inHexString,
+                                                 C_BigInt & outValue,
+                                                 const utf32 * inCharacterIsNotHexDigitError) {
+  bool ok = true ;
+  outValue = C_BigInt (inHexString.cString (HERE), 16, ok) ;
+  if (! ok) {
+    inLexique.lexicalError (inCharacterIsNotHexDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*

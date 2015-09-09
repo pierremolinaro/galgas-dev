@@ -31,6 +31,7 @@ enum {galgas3Scanner_1_,
   galgas3Scanner_1_signed_5F_literal_5F_integer,
   galgas3Scanner_1_unsigned_5F_literal_5F_integer_36__34_,
   galgas3Scanner_1_signed_5F_literal_5F_integer_36__34_,
+  galgas3Scanner_1_bigint,
   galgas3Scanner_1__2E_,
   galgas3Scanner_1__2E__2E__2E_,
   galgas3Scanner_1__2E__2E__3C_,
@@ -179,6 +180,7 @@ enum {galgas3Scanner_1_,
 
 @interface OC_Lexique_galgas3Scanner : OC_Lexique {
 //--- Attributes
+  @private NSMutableString * mLexicalAttribute_bigintValue ;
   @private UInt32 mLexicalAttribute_charValue ;
   @private double mLexicalAttribute_floatValue ;
   @private NSMutableString * mLexicalAttribute_identifierString ;

@@ -1375,3 +1375,37 @@ void scanner_cocoa_routine_enterHexDigitIntoBigInt (BOOL * ioScanningOk,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_cocoa_routine_convertDecimalStringIntoBigInt (BOOL * ioScanningOk,
+                                                           NSString * inDecimalString,
+                                                           NSMutableString * ioString) {
+  for (NSUInteger i=0 ; i < inDecimalString.length ; i++) {
+    const unichar c = [inDecimalString characterAtIndex:i] ;
+    if ((c >= '0') && (c <= '9')) {
+      [ioString appendFormat:@"%C", c] ;
+    }else{
+      * ioScanningOk = NO ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_cocoa_routine_convertHexStringIntoBigInt (BOOL * ioScanningOk,
+                                                       NSString * inHexString,
+                                                       NSMutableString * ioString) {
+  for (NSUInteger i=0 ; i < inHexString.length ; i++) {
+    const unichar c = [inHexString characterAtIndex:i] ;
+    if ((c >= '0') && (c <= '9')) {
+      [ioString appendFormat:@"%C", c] ;
+    }else if ((c >= 'A') && (c <= 'F')) {
+      [ioString appendFormat:@"%C", c] ;
+    }else if ((c >= 'a') && (c <= 'f')) {
+      [ioString appendFormat:@"%C", c] ;
+    }else{
+      * ioScanningOk = NO ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*

@@ -91,17 +91,17 @@ Deux choix sont possibles :
 
 \subsubsection{\texttt{Code::Blocks} pour Linux}
 
-L'option \ggs!%codeblocks-linux-mac! engendre une cible qui peut être compilée indifféremment sur Linux ou sur Mac, utilisant \texttt{Code::Blocks}\footnote{\url{http://www.codeblocks.org}}.
+L'option \ggs!%codeblocks-linux32! engendre une cible qui peut être compilée sur Linux 32 bits, et \ggs!%codeblocks-linux64! une cible compilable sur Linux 64 bits, en utilisant \texttt{Code::Blocks}\footnote{\url{http://www.codeblocks.org}}.
 \begin{galgas}
 project (0:0:1) -> "logo" {
-  %codeblocks-linux-mac
+  %codeblocks-linux32
   ...
 }
 \end{galgas}
 
 \subsubsection{Compilation en ligne de commande pour Linux}
 
-La déclaration \ggs!%makefile-unix! engendre une cible qui peut être compilée indifféremment sur Linux ou sur Mac.
+La déclaration \ggs!%makefile-unix! engendre une cible qui peut être compilée indifféremment sur Linux ou sur Mac. L'exécutable engendré est un exécutable 32 bits sur un Linux 32 bits, et un 64 bits sur un Linux 64 bits.
 \begin{galgas}
 project (0:0:1) -> "logo" {
   %makefile-unix
@@ -116,6 +116,7 @@ project (0:0:1) -> "logo" {
 Comme GALGAS est développé sur Mac, c'est pour cette plateforme que l'on trouve le plus grand nombre de cibles :
 \begin{itemize}
   \item application Cocoa ;
+  \item compilation via Code::Blocks ;
   \item compilation en ligne de commande ;
   \item cross-compilation pour Win32 ;
   \item cross-compilation pour Linux32 ;
@@ -136,6 +137,15 @@ project (0:0:1) -> "logo" {
 }
 \end{galgas}
 
+\subsubsection{\texttt{Code::Blocks} pour Mac}
+
+L'option \ggs!%codeblocks-mac! engendre une cible qui peut être compilée sur Mac en utilisant \texttt{Code::Blocks}\footnote{\url{http://www.codeblocks.org}}.
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  %codeblocks-linux32
+  ...
+}
+\end{galgas}
 
 \subsubsection{Cross-compilation en ligne de commande pour Win32}
 

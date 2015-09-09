@@ -2198,6 +2198,7 @@ func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefined
     !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"ldouble"    !.here}}
     !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"stringlist" !.here}}
     !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"lbigint"    !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"bigint"     !.here}}
   }
 }
 
@@ -2581,7 +2582,7 @@ override method @inputParameterVariable analyzeInputParameter
   case lexicalType_sint : expectedType = inAnalysisContext.mPredefinedTypes.mLSIntType
   case lexicalType_sint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLSInt64Type
   case lexicalType_double : expectedType = inAnalysisContext.mPredefinedTypes.mLDoubleType
-  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigInt
+  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigIntType
   end
   if expectedType != type then
     error mActualParameterName
@@ -2612,7 +2613,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   case lexicalType_sint : expectedType = inAnalysisContext.mPredefinedTypes.mLSIntType
   case lexicalType_sint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLSInt64Type
   case lexicalType_double : expectedType = inAnalysisContext.mPredefinedTypes.mLDoubleType
-  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigInt
+  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigIntType
   end
 #--- Type is named, or should be infered ?
   if mActualParameterTypeName.string != "" then
@@ -2650,7 +2651,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   case lexicalType_sint : expectedType = inAnalysisContext.mPredefinedTypes.mLSIntType
   case lexicalType_sint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLSInt64Type
   case lexicalType_double : expectedType = inAnalysisContext.mPredefinedTypes.mLDoubleType
-  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigInt
+  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigIntType
   end
 #--- Type is named, or should be infered ?
   if mActualParameterTypeName.string != "" then

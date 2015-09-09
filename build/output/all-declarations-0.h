@@ -36,6 +36,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cTokenFor_galgas_32_Scanner : public cToken {
+  public : C_BigInt mLexicalAttribute_bigintValue ;
   public : utf32 mLexicalAttribute_charValue ;
   public : double mLexicalAttribute_floatValue ;
   public : C_String mLexicalAttribute_identifierString ;
@@ -87,6 +88,7 @@ class C_Lexique_galgas_32_Scanner : public C_Lexique {
    kToken_signed_5F_literal_5F_integer,
    kToken_unsigned_5F_literal_5F_integer_36__34_,
    kToken_signed_5F_literal_5F_integer_36__34_,
+   kToken_bigint,
    kToken__2E_,
    kToken__2E__3D_,
    kToken__2E__2E__2E_,
@@ -254,6 +256,7 @@ class C_Lexique_galgas_32_Scanner : public C_Lexique {
   
 
 //--- Assign from attribute
+  public : GALGAS_lbigint synthetizedAttribute_bigintValue (void) const ;
   public : GALGAS_lchar synthetizedAttribute_charValue (void) const ;
   public : GALGAS_ldouble synthetizedAttribute_floatValue (void) const ;
   public : GALGAS_lstring synthetizedAttribute_identifierString (void) const ;
@@ -265,6 +268,7 @@ class C_Lexique_galgas_32_Scanner : public C_Lexique {
 
 
 //--- Attribute access
+  public : C_BigInt attributeValue_bigintValue (void) const ;
   public : utf32 attributeValue_charValue (void) const ;
   public : double attributeValue_floatValue (void) const ;
   public : C_String attributeValue_identifierString (void) const ;
@@ -341,7 +345,7 @@ class C_Lexique_galgas_32_Scanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 164 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 165 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
@@ -385,6 +389,7 @@ class C_Lexique_galgas_32_Scanner : public C_Lexique {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cTokenFor_galgasTemplateScanner : public cToken {
+  public : C_BigInt mLexicalAttribute_bigintValue ;
   public : utf32 mLexicalAttribute_charValue ;
   public : double mLexicalAttribute_floatValue ;
   public : C_String mLexicalAttribute_identifierString ;
@@ -440,6 +445,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
    kToken_signed_5F_literal_5F_integer,
    kToken_unsigned_5F_literal_5F_integer_36__34_,
    kToken_signed_5F_literal_5F_integer_36__34_,
+   kToken_bigint,
    kToken__2E_,
    kToken__2E__3D_,
    kToken__2E__2E__2E_,
@@ -598,6 +604,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
   
 
 //--- Assign from attribute
+  public : GALGAS_lbigint synthetizedAttribute_bigintValue (void) const ;
   public : GALGAS_lchar synthetizedAttribute_charValue (void) const ;
   public : GALGAS_ldouble synthetizedAttribute_floatValue (void) const ;
   public : GALGAS_lstring synthetizedAttribute_identifierString (void) const ;
@@ -609,6 +616,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 
 
 //--- Attribute access
+  public : C_BigInt attributeValue_bigintValue (void) const ;
   public : utf32 attributeValue_charValue (void) const ;
   public : double attributeValue_floatValue (void) const ;
   public : C_String attributeValue_identifierString (void) const ;
@@ -631,7 +639,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 156 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 157 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

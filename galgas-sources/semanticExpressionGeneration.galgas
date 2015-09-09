@@ -154,6 +154,21 @@ override method @literalSIntExpressionForGeneration generateExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @literalBigIntExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  outCppExpression = "GALGAS_bigint (\"" + [mValue string]+ "\", "
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  outCppExpression += compilerCppName ()
+  outCppExpression += " " + [mLocation commaSourceFile] + ")"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @literalSInt64ExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@stringset unused ioInclusionSet
@@ -170,7 +185,8 @@ override method @defaultConstructorExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
   [mResultType addHeaderFileName !?ioInclusionSet]
   outCppExpression =
     "GALGAS_"  + [mResultType identifierRepresentation]
@@ -1137,7 +1153,7 @@ override method @readerCallExpressionForGeneration generateExpression
 #--- Receiver expression
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
 #--- Reader operands
-  var readerArgumentCppNameList =@stringlist.emptyList{}
+  @stringlist readerArgumentCppNameList = {}
   for () in mExpressions do
     @string argumentCppName
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?argumentCppName]

@@ -90,6 +90,7 @@ style terminalStyle -> "Terminal Symbols"
 style nonTerminalStyle -> "Non Terminal Symbols"
 style variantStyle -> "Variant Symbols"
 style integerStyle -> "Integer Constants"
+style bigintStyle -> "Big Integer Constants"
 style floatStyle -> "Floating Point Constants" 
 style characterStyle -> "Character Constants"
 style stringStyle -> "String Constants"
@@ -208,7 +209,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
 rule 'a'->'z' |  'A'->'Z' {
   repeat
     enterCharacterIntoString ( !?identifierString !toLower (!*) )
-    enterCharacterIntoString ( !?tokenString !* )
+    enterCharacterIntoString (!?tokenString !* )
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end
   send search identifierString in galgasKeyWordList default $identifier$
@@ -216,11 +217,13 @@ rule 'a'->'z' |  'A'->'Z' {
 
 #------------------------------- Integer, floating Point Constant ------------------
 @double floatValue
+@bigint bigintValue
 $literal_double$ !floatValue !tokenString  style floatStyle error message "a float number"
-$unsigned_literal_integer$ !uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
-$signed_literal_integer$ !sint32value  style integerStyle error message "a 32-bit signed decimal number"
-$unsigned_literal_integer64$ !uint64value  style integerStyle error message "a 64-bit unsigned decimal number"
-$signed_literal_integer64$ !sint64value  style integerStyle error message "a 64-bit signed decimal number"
+$unsigned_literal_integer$ !uint32value  style integerStyle error message "a 32-bit unsigned number"
+$signed_literal_integer$ !sint32value  style integerStyle error message "a 32-bit signed number"
+$unsigned_literal_integer64$ !uint64value  style integerStyle error message "a 64-bit unsigned number"
+$signed_literal_integer64$ !sint64value  style integerStyle error message "a 64-bit signed number"
+$bigint$ !bigintValue  style bigintStyle error message "a big integer number"
 
 message decimalNumberTooLarge : "decimal number too large"
 message floatNumberConversionError : "invalid float number"
@@ -229,57 +232,63 @@ message internalError : "internal error"
 rule "0x" {
   repeat
   while '0'->'9' :
-    enterCharacterIntoString ( !?tokenString !* )
+    enterCharacterIntoString (!?tokenString !* )
   while 'a'->'f' :
-    enterCharacterIntoString ( !?tokenString !* )
+    enterCharacterIntoString (!?tokenString !* )
   while 'A'->'F' :
-    enterCharacterIntoString ( !?tokenString !* )
+    enterCharacterIntoString (!?tokenString !* )
   while '_' :
   end
   select
   case "LS" :
-    convertHexStringIntoSInt64 ( !tokenString !?sint64value error decimalNumberTooLarge, internalError )
+    convertHexStringIntoSInt64 (!tokenString !?sint64value error decimalNumberTooLarge, internalError )
     send $signed_literal_integer64$
   case 'S' | 's' :
-    convertHexStringIntoSInt ( !tokenString !?sint32value error decimalNumberTooLarge, internalError )
+    convertHexStringIntoSInt (!tokenString !?sint32value error decimalNumberTooLarge, internalError )
     send $signed_literal_integer$
   case 'L' :
-    convertHexStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
+    convertHexStringIntoUInt64 (!tokenString !?uint64value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer64$
+  case 'G' :
+    convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError )
+    send $bigint$
   default
-    convertHexStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
+    convertHexStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer$
   end
 }
 
 rule '0'->'9' {
-  enterCharacterIntoString ( !?tokenString !* )
+  enterCharacterIntoString (!?tokenString !* )
   repeat
   while '0'->'9' :
-    enterCharacterIntoString ( !?tokenString !* )
+    enterCharacterIntoString (!?tokenString !* )
   while '_' :
   end
   select
   case 'S' | 's' :
-    convertDecimalStringIntoSInt ( !tokenString !?sint32value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoSInt (!tokenString !?sint32value error decimalNumberTooLarge, internalError )
     send $signed_literal_integer$
   case "LS" :
-    convertDecimalStringIntoSInt64 ( !tokenString !?sint64value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoSInt64 (!tokenString !?sint64value error decimalNumberTooLarge, internalError )
     send $signed_literal_integer64$
   case 'L' :
-    convertDecimalStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoUInt64 (!tokenString !?uint64value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer64$
+  case 'G' :
+    convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
+    send $bigint$
   case '.' :
-    enterCharacterIntoString ( !?tokenString !'.' )
+    enterCharacterIntoString (!?tokenString !'.' )
     repeat
     while '0'->'9' :
-      enterCharacterIntoString ( !?tokenString !* )
+      enterCharacterIntoString (!?tokenString !* )
     while '_' :
     end
-    convertStringToDouble ( !tokenString !?floatValue error floatNumberConversionError )
+    convertStringToDouble (!tokenString !?floatValue error floatNumberConversionError )
     send $literal_double$
   default
-    convertDecimalStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
+    convertDecimalStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer$
   end
 }
@@ -295,15 +304,15 @@ $..<$  style delimitersStyle error message "the '..<' delimitor"
 rule '.' {
   select
   case '0'->'9' :
-    enterCharacterIntoString ( !?tokenString !'0' )
-    enterCharacterIntoString ( !?tokenString !'.' )
-    enterCharacterIntoString ( !?tokenString !* )
+    enterCharacterIntoString (!?tokenString !'0' )
+    enterCharacterIntoString (!?tokenString !'.' )
+    enterCharacterIntoString (!?tokenString !* )
     repeat
     while '0'->'9' :
-      enterCharacterIntoString ( !?tokenString !* )
+      enterCharacterIntoString (!?tokenString !* )
     while '_' :
     end
-    convertStringToDouble ( !tokenString !?floatValue error floatNumberConversionError )
+    convertStringToDouble (!tokenString !?floatValue error floatNumberConversionError )
     send $literal_double$
   default
     select
@@ -485,9 +494,9 @@ rule '\'' {
     case '&' :
       repeat
       while ~ ";" error incorrectHTMLescapeSequence :
-        enterCharacterIntoString ( !?tokenString !* )
+        enterCharacterIntoString (!?tokenString !* )
       end
-      convertHTMLSequenceToUnicodeCharacter ( !?tokenString !?charValue error unknownHTMLescapeSequence )
+      convertHTMLSequenceToUnicodeCharacter (!?tokenString !?charValue error unknownHTMLescapeSequence )
     default
       error incorrectCharConstant
     end
@@ -515,7 +524,7 @@ rule '$' {
   select
   case '!' -> '#' | '%' -> '~'  : # All printable characters, but '$'
     repeat
-      enterCharacterIntoString ( !?tokenString !* )
+      enterCharacterIntoString (!?tokenString !* )
     while '!' -> '#' | '%' -> '~' :
     end
   default
@@ -568,14 +577,14 @@ rule '?' {
     select
     case 'a' -> 'z' | 'A' ->'Z' :
       repeat
-        enterCharacterIntoString ( !?tokenString !* )
+        enterCharacterIntoString (!?tokenString !* )
       while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
       end
       select
       case ':' :
         send $??$
       default
-        resetString ( !?tokenString )
+        resetString (!?tokenString )
         rewind onlyDoubleInterrogationMark send $??$
       end
     default
@@ -586,14 +595,14 @@ rule '?' {
     select
     case 'a' -> 'z' | 'A' ->'Z' :
       repeat
-        enterCharacterIntoString ( !?tokenString !* )
+        enterCharacterIntoString (!?tokenString !* )
       while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
       end
       select
       case ':' :
         send $?!$
       default
-        resetString ( !?tokenString )
+        resetString (!?tokenString )
         rewind onlyExclamationInterrogationMark send $?!$
       end
     default
@@ -601,14 +610,14 @@ rule '?' {
     end
   case 'a' -> 'z' | 'A' ->'Z' :
     repeat
-      enterCharacterIntoString ( !?tokenString !* )
+      enterCharacterIntoString (!?tokenString !* )
     while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
     end
     select
     case ':' :
       send $?$
     default
-      resetString ( !?tokenString )
+      resetString (!?tokenString )
       rewind onlyInterrogationMark send $?$
     end
   default
@@ -624,14 +633,14 @@ rule '!' {
     select
     case 'a' -> 'z' | 'A' ->'Z' :
       repeat
-        enterCharacterIntoString ( !?tokenString !* )
+        enterCharacterIntoString (!?tokenString !* )
       while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
       end
       select
       case ':' :
         send $!?$
       default
-        resetString ( !?tokenString )
+        resetString (!?tokenString )
         rewind onlyInterrogationExclamationMark send $!?$
       end
     default
@@ -639,14 +648,14 @@ rule '!' {
     end
   case 'a' -> 'z' | 'A' ->'Z' :
     repeat
-      enterCharacterIntoString ( !?tokenString !* )
+      enterCharacterIntoString (!?tokenString !* )
     while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
     end
     select
     case ':' :
       send $!$
     default
-      resetString ( !?tokenString )
+      resetString (!?tokenString )
       rewind onlyExclamationMark send $!$
     end
   default
@@ -672,7 +681,7 @@ rule '<' {
     send $<<$
   case 'a' -> 'z' | 'A' ->'Z' :
     repeat
-      enterCharacterIntoString ( !?tokenString !* )
+      enterCharacterIntoString (!?tokenString !* )
     while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
     end
     select
@@ -698,37 +707,37 @@ rule '"' {
   while '\\' :
     select
     case 'f' :
-      enterCharacterIntoString ( !?tokenString !'\f' )
+      enterCharacterIntoString (!?tokenString !'\f' )
     case 'n' :
-      enterCharacterIntoString ( !?tokenString !'\n' )
+      enterCharacterIntoString (!?tokenString !'\n' )
     case 'r' :
-      enterCharacterIntoString ( !?tokenString !'\r' )
+      enterCharacterIntoString (!?tokenString !'\r' )
     case 't' :
-      enterCharacterIntoString ( !?tokenString !'\t' )
+      enterCharacterIntoString (!?tokenString !'\t' )
     case 'v' :
-      enterCharacterIntoString ( !?tokenString !'\v' )
+      enterCharacterIntoString (!?tokenString !'\v' )
     case '\\' :
-      enterCharacterIntoString ( !?tokenString !'\\' )
+      enterCharacterIntoString (!?tokenString !'\\' )
     case '"' :
-      enterCharacterIntoString ( !?tokenString !'"' )
+      enterCharacterIntoString (!?tokenString !'"' )
     case '\'' :
-      enterCharacterIntoString ( !?tokenString !'\'' )
+      enterCharacterIntoString (!?tokenString !'\'' )
     case '?' :
-      enterCharacterIntoString ( !?tokenString !'?' )
+      enterCharacterIntoString (!?tokenString !'?' )
     case '&' :
       repeat
       while ~ ";" error incorrectHTMLescapeSequence :
         enterCharacterIntoString ( !?identifierString !* )
       end
       convertHTMLSequenceToUnicodeCharacter ( !?identifierString !?charValue error unknownHTMLescapeSequence )
-      enterCharacterIntoString ( !?tokenString !charValue )
+      enterCharacterIntoString (!?tokenString !charValue )
     case '0' -> '9' :
       warning obsoleteStringConstruction
       repeat
         enterHexDigitIntoASCIIcharacter ( !?charValue !* error ASCIIcodeTooLargeError, internalError )
       while '0' -> '9' :
       end
-      enterCharacterIntoString ( !?tokenString !charValue )
+      enterCharacterIntoString (!?tokenString !charValue )
     case 'u' :
       select
       case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
@@ -743,7 +752,7 @@ rule '"' {
             case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
               enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
               convertUnsignedNumberToUnicodeChar ( !?uint32value !?charValue error unassignedUnicodeValue )
-              enterCharacterIntoString ( !?tokenString !charValue )
+              enterCharacterIntoString (!?tokenString !charValue )
             default
               error invalideUnicodeDefinition4
             end
@@ -782,7 +791,7 @@ rule '"' {
                     case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
                       enterHexDigitIntoUInt ( !* !?uint32value error internalError, internalError )
                       convertUnsignedNumberToUnicodeChar ( !?uint32value !?charValue error unassignedUnicodeValue )
-                      enterCharacterIntoString ( !?tokenString !charValue )
+                      enterCharacterIntoString (!?tokenString !charValue )
                     default
                       error invalideUnicodeDefinition8
                     end
@@ -811,7 +820,7 @@ rule '"' {
       error incorrectCharConstant
     end
    while ' ' | '!' | '#'-> '\uFFFD' :
-    enterCharacterIntoString ( !?tokenString !* )
+    enterCharacterIntoString (!?tokenString !* )
   end
   select
   case '"' :
