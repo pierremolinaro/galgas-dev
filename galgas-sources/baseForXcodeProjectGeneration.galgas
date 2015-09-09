@@ -1346,10 +1346,11 @@ proc generateXCodeFile
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string in_xcodeproj_filePath
   ?let @stringlist inProjectDefaultSettings
-  ?let @string inReferenceFilePath {
-  @string projectName = [[in_xcodeproj_filePath lastPathComponent] stringByDeletingPathExtension]
+  ?let @string inReferenceFilePath
+{
+  var projectName = [[in_xcodeproj_filePath lastPathComponent] stringByDeletingPathExtension]
 
-  var defaultProjectConfiguration =@Xcode_XCBuildConfiguration.new{
+  @Xcode_XCBuildConfiguration defaultProjectConfiguration = .new{
     ![ioXcodeProjectDescription mSequenceNumber]
     ![ioXcodeProjectDescription mSequenceNumber] + 1
     !inProjectDefaultSettings
@@ -1365,29 +1366,32 @@ proc generateXCodeFile
     ![ioXcodeProjectDescription mProductGroupChildrenList]
   )
 #--- Main Group
-  var mainGroup =@Xcode_PBXGroup.new{![ioXcodeProjectDescription mSequenceNumber] !"" !"" ![ioXcodeProjectDescription mMainGroupChildrenList]}
+  @Xcode_PBXGroup mainGroup =.new {
+    ![ioXcodeProjectDescription mSequenceNumber]
+    !""
+    !""
+    ![ioXcodeProjectDescription mMainGroupChildrenList]
+  }
   ioXcodeProjectDescription.mSequenceNumber ++
   ioXcodeProjectDescription.mProjectGroupList += !mainGroup
 #--- Build Project contents string
-  @string fileNewContents
   buildXcodeProjectString (
     !ioXcodeProjectDescription
     !projectName
     !getPBXFileReferenceKey (!seq:[mainGroup mSequenceNumber])
     !getPBXFileReferenceKey (!seq:[defaultProjectConfiguration mSequenceNumber2])
-    ?fileNewContents
+    ?let fileNewContents
   )
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
   #--- Create .xcodeproj directory (if does not exist)
     [in_xcodeproj_filePath makeDirectory]
   #--- Update (or create) Xcode project file
-    @bool written
-    [fileNewContents writeToFileWhenDifferentContents !inReferenceFilePath ?written]
-    let @string pbxprojFilePath = in_xcodeproj_filePath + "/project.pbxproj"
+    [fileNewContents writeToFileWhenDifferentContents !inReferenceFilePath ?let written]
+    let pbxprojFilePath = in_xcodeproj_filePath + "/project.pbxproj"
     if written | not [pbxprojFilePath fileExists] then
       [fileNewContents writeToFileWhenDifferentContents !pbxprojFilePath ?*]
   #--- Delete all XXX.pbxuser files in this directory
-      @stringlist pbxuser_files = [in_xcodeproj_filePath regularFilesWithExtensions !false !@stringlist. listWithValue {!"pbxuser"}]
+      let pbxuser_files = [in_xcodeproj_filePath regularFilesWithExtensions !false !{!"pbxuser"}]
       for () in pbxuser_files do
         @string fullPath = in_xcodeproj_filePath + "/" + mValue
         [@string deleteFile !fullPath]

@@ -1277,7 +1277,8 @@ proc updateGalgas3Targets
       !buildConfigurationSettingList:{
         !"GCC_OPTIMIZATION_LEVEL = 2",
         !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
-        !"GCC_WARN_UNUSED_PARAMETER = YES"
+        !"GCC_WARN_UNUSED_PARAMETER = YES",
+        !"OTHER_LDFLAGS = \"" + libpmPath + "/gmp/libgmp-Darwin-Intel.a\""
       }
       ?targetRef:let releaseTargetRef
       ?productFileRef:let releaseProductFileRef
@@ -1292,7 +1293,8 @@ proc updateGalgas3Targets
         !"GCC_OPTIMIZATION_LEVEL = 0",
         !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
         !"GCC_PREPROCESSOR_DEFINITIONS = ()",
-        !"GCC_WARN_UNUSED_PARAMETER = YES"
+        !"GCC_WARN_UNUSED_PARAMETER = YES",
+        !"OTHER_LDFLAGS = \"" + libpmPath + "/gmp/libgmp-Darwin-Intel.a\""
       }
       ?targetRef:let debugTargetRef
       ?productFileRef:let debugProductFileRef
