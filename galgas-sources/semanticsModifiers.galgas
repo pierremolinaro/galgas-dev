@@ -183,7 +183,7 @@ override method @filewrapperPredefinedTypeAST getModifierMap
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @bigintPredefinedTypeAST getModifierMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@setterMap outModifierMap
 {
   outModifierMap = {}

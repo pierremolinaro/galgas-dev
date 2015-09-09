@@ -12017,36 +12017,38 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     GALGAS_string var_releaseTargetRef ;
     GALGAS_string var_releaseProductFileRef ;
     {
-    GALGAS_stringlist temp_67 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1280)) ;
+    GALGAS_stringlist temp_67 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1281)) ;
     temp_67.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 2")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1278)) ;
     temp_67.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1279)) ;
     temp_67.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1280)) ;
+    temp_67.addAssign_operation (GALGAS_string ("OTHER_LDFLAGS = \"").add_operation (var_libpmPath, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1281)).add_operation (GALGAS_string ("/gmp/libgmp-Darwin-Intel.a\""), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1281))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1281)) ;
     categoryModifier_addToolTarget (var_xcodeProject, constinArgument_inTargetName.add_operation (GALGAS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1273)), constinArgument_inTargetName, var_buildFileRefListForTool.add_operation (var_mm_5F_FileRefList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1275)), var_toolFrameworksFileRefList, temp_67, var_releaseTargetRef, var_releaseProductFileRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1272)) ;
     }
     GALGAS_string var_debugTargetRef ;
     GALGAS_string var_debugProductFileRef ;
     {
-    GALGAS_stringlist temp_68 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1295)) ;
-    temp_68.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1292)) ;
-    temp_68.addAssign_operation (GALGAS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1293)) ;
-    temp_68.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1294)) ;
-    temp_68.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1295)) ;
-    categoryModifier_addToolTarget (var_xcodeProject, constinArgument_inTargetName.add_operation (GALGAS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1287)), constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1288)), var_buildFileRefListForTool.add_operation (var_mm_5F_FileRefList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1289)), var_toolFrameworksFileRefList, temp_68, var_debugTargetRef, var_debugProductFileRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1286)) ;
+    GALGAS_stringlist temp_68 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1297)) ;
+    temp_68.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1293)) ;
+    temp_68.addAssign_operation (GALGAS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1294)) ;
+    temp_68.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1295)) ;
+    temp_68.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1296)) ;
+    temp_68.addAssign_operation (GALGAS_string ("OTHER_LDFLAGS = \"").add_operation (var_libpmPath, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1297)).add_operation (GALGAS_string ("/gmp/libgmp-Darwin-Intel.a\""), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1297))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1297)) ;
+    categoryModifier_addToolTarget (var_xcodeProject, constinArgument_inTargetName.add_operation (GALGAS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1288)), constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1289)), var_buildFileRefListForTool.add_operation (var_mm_5F_FileRefList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1290)), var_toolFrameworksFileRefList, temp_68, var_debugTargetRef, var_debugProductFileRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1287)) ;
     }
     {
-    GALGAS_stringlist temp_69 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1309)) ;
-    temp_69.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1308)) ;
-    temp_69.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1309)) ;
-    GALGAS_stringlist temp_70 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1311)) ;
-    temp_70.addAssign_operation (var_releaseTargetRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1311)) ;
-    temp_70.addAssign_operation (var_debugTargetRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1311)) ;
-    GALGAS__32_stringlist temp_71 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1312)) ;
-    temp_71.addAssign_operation (var_releaseProductFileRef, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1312)) ;
-    temp_71.addAssign_operation (var_debugProductFileRef, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1312))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1312)) ;
-    GALGAS_string joker_55743 ; // Joker input parameter
-    categoryModifier_addAppTarget (var_xcodeProject, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1302)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1303)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1303)), var_m_5F_FileRefList.add_operation (var_m_5F_HandCodedSourceFileRefForAppList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1304)), var_frameworksFileRefList.add_operation (var_appFrameworksFileRefList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1305)), var_resourceFileBuildRefs.add_operation (var_m_5F_HandCodedResourceFileRefForAppList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1306)), temp_69, temp_70, temp_71, joker_55743, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1301)) ;
+    GALGAS_stringlist temp_69 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1311)) ;
+    temp_69.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1310)) ;
+    temp_69.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1311)) ;
+    GALGAS_stringlist temp_70 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1313)) ;
+    temp_70.addAssign_operation (var_releaseTargetRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1313)) ;
+    temp_70.addAssign_operation (var_debugTargetRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1313)) ;
+    GALGAS__32_stringlist temp_71 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1314)) ;
+    temp_71.addAssign_operation (var_releaseProductFileRef, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1314)) ;
+    temp_71.addAssign_operation (var_debugProductFileRef, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1314))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1314)) ;
+    GALGAS_string joker_55895 ; // Joker input parameter
+    categoryModifier_addAppTarget (var_xcodeProject, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1304)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1305)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1305)), var_m_5F_FileRefList.add_operation (var_m_5F_HandCodedSourceFileRefForAppList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1306)), var_frameworksFileRefList.add_operation (var_appFrameworksFileRefList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1307)), var_resourceFileBuildRefs.add_operation (var_m_5F_HandCodedResourceFileRefForAppList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1308)), temp_69, temp_70, temp_71, joker_55895, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1303)) ;
     }
-    categoryMethod_generateAtPath (var_xcodeProject, var_dir.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1317)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1317)).add_operation (GALGAS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1317)), var_newIntermediateFilePath, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1316)) ;
+    categoryMethod_generateAtPath (var_xcodeProject, var_dir.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1319)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1319)).add_operation (GALGAS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1319)), var_newIntermediateFilePath, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1318)) ;
   }
 }
 

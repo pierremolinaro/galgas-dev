@@ -50,9 +50,9 @@ proc build_LIBPM_BDD_source_files_for_sources_build_phase
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc getGALGAS_2_source_file_list
-  !@stringlist out_fileList {
-
-  out_fileList = @stringlist. emptyList
+  !@stringlist out_fileList
+{
+  out_fileList = {}
   out_fileList += !"typeComparisonResult.cpp"
   out_fileList += !"typeComparisonResult.h"
   out_fileList += !"cIndexingDictionary.cpp"
@@ -826,11 +826,12 @@ proc generateXcodeProject
   ?let @string inLIBPMpath
   ?let @string inAdditionalPathForTool
   ?let @bool inUsesARC
-  ?let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap {
+  ?let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap
+{
   let @bool handleUpdateFromInternet = [inProjectQualifiedFeatureMap hasKey !"repositoryURL"]
 #---
   @string bundleBaseName
-  with "applicationBundleBase" in inProjectQualifiedFeatureMap  do
+  with "applicationBundleBase" in inProjectQualifiedFeatureMap do
     bundleBaseName = mFeatureValue.string
   else
     bundleBaseName = ""
@@ -1175,7 +1176,7 @@ proc generateXcodeProject
       !"" # No precompiled header
       !listForSourceBuildPhaseOfUpdaterTool
       !frameworkList
-      !@stringlist. emptyList # No Dependency
+      !{} # No Dependency
       ?updaterToolTargetKey
     )
     updaterApplicationDependencyList += !updaterToolTargetKey
@@ -1231,7 +1232,7 @@ proc generateXcodeProject
     CocoaApplicationDependencyList += !updaterAppTargetKey
   end
 #-------------------------------------------------- Build "tool" target
-  var listForSourceBuildPhaseOfTool =@Xcode_PBXBuildFile_list.emptyList{}
+  @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfTool = {}
 # HAND CODED SOURCES
   build_HAND_CODED_source_files_for_sources_tool_build_phase (
     !?XcodeProjectDescription
@@ -1292,9 +1293,10 @@ proc generateXcodeProject
     !?listForFrameworksBuildPhaseOfTool
   )
 #--- Target settings
-  var toolTargetSettings =@stringlist.emptyList{}
+  @stringlist toolTargetSettings = {}
   toolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;"
   toolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS) ;"
+  toolTargetSettings += !"OTHER_LDFLAGS = \"" + inLIBPMpath + "/gmp/libgmp-Darwin-Intel.a\";"
 #---
   @string toolTargetKey
   add_tool_target (
@@ -1305,11 +1307,11 @@ proc generateXcodeProject
     !"" # No precompiled header
     !listForSourceBuildPhaseOfTool
     !listForFrameworksBuildPhaseOfTool
-    !@stringlist. emptyList # No Dependency
+    !{} # No Dependency
     ?toolTargetKey
   )
 #-------------------------------------------------- Build "tool_debug" target
-  var listForSourceBuildPhaseOfDebugTool =@Xcode_PBXBuildFile_list.emptyList{}
+  @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfDebugTool = {}
 # HAND CODED SOURCES
   build_HAND_CODED_source_files_for_sources_tool_build_phase (
     !?XcodeProjectDescription
@@ -1370,11 +1372,12 @@ proc generateXcodeProject
     !?listForFrameworksBuildPhaseOfToolDebug
   )
 #--- Target settings
-  var debugToolTargetSettings =@stringlist.emptyList{}
+  @stringlist debugToolTargetSettings ={}
   debugToolTargetSettings += !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES;"
   debugToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 0;"
   debugToolTargetSettings += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;"
   debugToolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = "";"
+  debugToolTargetSettings += !"OTHER_LDFLAGS = \"" + inLIBPMpath + "/gmp/libgmp-Darwin-Intel.a\";"
 #---
   @string toolDebugTargetKey
   add_tool_target (
@@ -1385,7 +1388,7 @@ proc generateXcodeProject
     !"" # No precompiled header
     !listForSourceBuildPhaseOfDebugTool
     !listForFrameworksBuildPhaseOfToolDebug
-    !@stringlist. emptyList # No Dependency
+    !{} # No Dependency
     ?toolDebugTargetKey
   )
 #-------------------------------------------------- Build "Cocoa Application" target
@@ -1451,7 +1454,7 @@ proc generateXcodeProject
     ?*
   )
 #-------------------------------------------------- Define project default configuration
-  var pathes =@stringlist.emptyList{}
+  @stringlist pathes = {}
   pathes += !inGeneratedByGalgasSourcePath
   pathes += !inLIBPMpath
   if inAdditionalPathForTool != "" then
