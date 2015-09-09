@@ -265,6 +265,7 @@ class GALGAS_bigint : public AC_GALGAS_root {
 
 //--------------------------------- Constructor
   public : GALGAS_bigint (const C_BigInt & inValue) ;
+  public : GALGAS_bigint (const char * inDecimalString, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_bigint (void) ;
@@ -280,8 +281,17 @@ class GALGAS_bigint : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
+  public : static GALGAS_bigint constructor_sint (const class GALGAS_sint & inOperand0
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public : static GALGAS_bigint constructor_sint_36__34_ (const class GALGAS_sint_36__34_ & inOperand0
+                                                          COMMA_LOCATION_ARGS) ;
+
   public : static GALGAS_bigint constructor_uint (const class GALGAS_uint & inOperand0
                                                   COMMA_LOCATION_ARGS) ;
+
+  public : static GALGAS_bigint constructor_uint_36__34_ (const class GALGAS_uint_36__34_ & inOperand0
+                                                          COMMA_LOCATION_ARGS) ;
 
   public : static GALGAS_bigint constructor_zero (LOCATION_ARGS) ;
 
@@ -299,13 +309,23 @@ class GALGAS_bigint : public AC_GALGAS_root {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_bitCountForSignedRepresentation (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isSInt (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_fitsInSInt (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isSInt_36__34_ (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_fitsInSInt_36__34_ (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isUInt (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_fitsInUInt (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isUInt_36__34_ (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_fitsInUInt_36__34_ (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_hexString (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_sint reader_sint (C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_sint_36__34_ reader_sint_36__34_ (C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_string (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_uint (C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
@@ -1016,7 +1036,7 @@ class GALGAS_sint : public AC_GALGAS_root {
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline int32_t sintValue (void) const { return mSIntValue ; }
+  public : inline int32_t intValue (void) const { return mSIntValue ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_sint (void) ;
@@ -1180,7 +1200,7 @@ class GALGAS_sint_36__34_ : public AC_GALGAS_root {
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline int64_t uint64Value (void) const { return mSInt64Value ; }
+  public : inline int64_t int64Value (void) const { return mSInt64Value ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_sint_36__34_ (void) ;

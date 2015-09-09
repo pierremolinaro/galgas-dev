@@ -390,7 +390,8 @@ struct @predefinedTypes {
   @unifiedTypeMap-proxy mLSInt64Type
   @unifiedTypeMap-proxy mLDoubleType
   @unifiedTypeMap-proxy mStringListType
-  @unifiedTypeMap-proxy mLBigInt
+  @unifiedTypeMap-proxy mLBigIntType
+  @unifiedTypeMap-proxy mBigIntType
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -613,12 +614,39 @@ override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @literalBigIntExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @literalSInt64ExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalSInt64ExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSInt64Type ![mValue location] ![mValue sint64]}
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalSInt64ExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mSInt64Type
+    ![mValue location]
+    ![mValue sint64]
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @literalBigIntExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalBigIntExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBigIntType
+    ![mValue location]
+    ![mValue bigint]
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

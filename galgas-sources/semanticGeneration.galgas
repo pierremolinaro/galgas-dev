@@ -245,7 +245,8 @@ proc generateProcedure
   ?let @bool inGenerateLocationArgs
   ?let @bool inGenerateResetTemplateString
   ?let @bool inGenerateSyntaxDirectedTranslationString
-  !@string outGeneratedCode {
+  !@string outGeneratedCode
+{
 #--- Build unused variable set
   var unusedVariableCppNameSet =@stringset.emptySet{}
   if inGenerateSyntaxDirectedTranslationString then

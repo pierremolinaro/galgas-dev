@@ -25,6 +25,12 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Native constructors
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_bigint::GALGAS_bigint (void) :
 AC_GALGAS_root (),
 mIsValid (false),
@@ -41,8 +47,27 @@ mValue (inValue) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+static bool gOk ;
+
+GALGAS_bigint::GALGAS_bigint (const char * inDecimalString, C_Compiler * inCompiler COMMA_LOCATION_ARGS) :
+AC_GALGAS_root (),
+mIsValid (true),
+mValue (inDecimalString, 10, gOk) {
+  if (! gOk) {
+    inCompiler->onTheFlyRunTimeError ("@bigint internal construction error" COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_bigint::~GALGAS_bigint (void) {
 }
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark GALGAS internals
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -66,14 +91,6 @@ void GALGAS_bigint::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigint GALGAS_bigint::constructor_zero (UNUSED_LOCATION_ARGS) {
-  GALGAS_bigint result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 typeComparisonResult GALGAS_bigint::objectCompare (const GALGAS_bigint & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
@@ -85,6 +102,64 @@ typeComparisonResult GALGAS_bigint::objectCompare (const GALGAS_bigint & inOpera
     }else{
       result = kOperandEqual ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark GALGAS constructors
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::constructor_zero (UNUSED_LOCATION_ARGS) {
+  GALGAS_bigint result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::constructor_uint (const GALGAS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bigint result ;
+  if (inValue.isValid ()) {
+    result.mIsValid = true ;
+    result.mValue = C_BigInt (inValue.uintValue (), false) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::constructor_uint_36__34_ (const GALGAS_uint_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bigint result ;
+  if (inValue.isValid ()) {
+    result.mIsValid = true ;
+    result.mValue = C_BigInt (inValue.uint64Value (), false) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::constructor_sint (const GALGAS_sint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bigint result ;
+  if (inValue.isValid ()) {
+    result.mIsValid = true ;
+    result.mValue = C_BigInt (inValue.intValue ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::constructor_sint_36__34_ (const GALGAS_sint_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bigint result ;
+  if (inValue.isValid ()) {
+    result.mIsValid = true ;
+    result.mValue = C_BigInt (inValue.int64Value ()) ;
   }
   return result ;
 }
@@ -107,7 +182,7 @@ GALGAS_uint GALGAS_bigint::reader_bitCountForSignedRepresentation (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_isUInt (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::reader_fitsInUInt (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.fitsInUInt32 ()) ;
@@ -117,7 +192,7 @@ GALGAS_bool GALGAS_bigint::reader_isUInt (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_isSInt (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::reader_fitsInSInt (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.fitsInSInt32 ()) ;
@@ -127,7 +202,7 @@ GALGAS_bool GALGAS_bigint::reader_isSInt (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_isUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::reader_fitsInUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.fitsInUInt64 ()) ;
@@ -137,10 +212,30 @@ GALGAS_bool GALGAS_bigint::reader_isUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_isSInt_36__34_ (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::reader_fitsInSInt_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.fitsInSInt64 ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_bigint::reader_string (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mValue.decimalString ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_bigint::reader_hexString (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mValue.hexString ()) ;
   }
   return result ;
 }
@@ -168,6 +263,21 @@ GALGAS_uint GALGAS_bigint::reader_uint (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_sint GALGAS_bigint::reader_sint (C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_sint result ;
+  if (isValid ()) {
+    if (mValue.fitsInSInt32 ()) {
+      result = GALGAS_sint (mValue.int32 ()) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError ("@bigint to @sint conversion overflow" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint_36__34_ GALGAS_bigint::reader_uint_36__34_ (C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
@@ -176,6 +286,21 @@ GALGAS_uint_36__34_ GALGAS_bigint::reader_uint_36__34_ (C_Compiler * inCompiler
       result = GALGAS_uint_36__34_ (mValue.uint64 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @uint64 conversion overflow" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sint_36__34_ GALGAS_bigint::reader_sint_36__34_ (C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_sint_36__34_ result ;
+  if (isValid ()) {
+    if (mValue.fitsInSInt64 ()) {
+      result = GALGAS_sint_36__34_ (mValue.int64 ()) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError ("@bigint to @sint64 conversion overflow" COMMA_THERE) ;
     }
   }
   return result ;

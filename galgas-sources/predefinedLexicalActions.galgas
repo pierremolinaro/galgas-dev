@@ -192,6 +192,26 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !{!"inCharacterIsNotHexDigitError"}
     !false # Is not extern
   ]
+#--- convertDecimalStringIntoBigInt
+  lexicalRoutineFormalArgumentList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_bigint !"ioUnsignedNumber"
+  [!?outLexicalRoutineMap insertKey
+    !.new {!"convertDecimalStringIntoBigInt" !.here}
+    !lexicalRoutineFormalArgumentList
+    !{!"inCharacterIsNotDecimalDigitError"}
+    !false # Is not extern
+  ]
+#--- convertHexStringIntoBigInt
+  lexicalRoutineFormalArgumentList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_bigint !"ioUnsignedNumber"
+  [!?outLexicalRoutineMap insertKey
+    !.new {!"convertHexStringIntoBigInt" !.here}
+    !lexicalRoutineFormalArgumentList
+    !{!"inCharacterIsNotHexDigitError"}
+    !false # Is not extern
+  ]
 #--- enterHexDigitIntoUInt
   lexicalRoutineFormalArgumentList = {}
   errorMessageList = {}
@@ -246,15 +266,12 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   ]
 #--- convertDecimalStringIntoUInt64
   lexicalRoutineFormalArgumentList = {}
-  errorMessageList = {}
   lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
   lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_uint64 !"ioUnsignedNumber"
-  errorMessageList += !"inNumberTooLargeError"
-  errorMessageList += !"inCharacterIsNotDecimalDigitError"
   [!?outLexicalRoutineMap insertKey
-    !@lstring.new {!"convertDecimalStringIntoUInt64" !@location.here}
+    !.new {!"convertDecimalStringIntoUInt64" !.here}
     !lexicalRoutineFormalArgumentList
-    !errorMessageList
+    !{!"inNumberTooLargeError", !"inCharacterIsNotDecimalDigitError"}
     !false # Is not extern
   ]
 #--- convertDecimalStringIntoSInt64

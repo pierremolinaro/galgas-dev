@@ -293,6 +293,14 @@ void scanner_cocoa_routine_enterHexDigitIntoBigInt (BOOL * ioScanningOk,
                                                     const utf32 inChar,
                                                     NSMutableString * ioString) ;
 
+void scanner_cocoa_routine_convertDecimalStringIntoBigInt (BOOL * ioNoLexicalError,
+                                                           NSString * inDecimalString,
+                                                           NSMutableString * ioString) ;
+
+void scanner_cocoa_routine_convertHexStringIntoBigInt (BOOL * ioNoLexicalError,
+                                                       NSString * inHexString,
+                                                       NSMutableString * ioString) ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Predefined scanner functions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_functions

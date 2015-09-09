@@ -37,6 +37,7 @@ style delimitersStyle -> "Delimiters"
 style nonTerminalStyle -> "Non Terminal Symbols"
 style variantStyle -> "Variant Symbols"
 style integerStyle -> "Integer Constants"
+style bigintStyle -> "Big Integer Constants"
 style floatStyle -> "Floating Point Constants"
 style stringStyle -> "String Constants"
 style characterStyle -> "Character Constants"
@@ -189,11 +190,13 @@ rule '@' {
 
 #------------------------------- Integer, floating Point Constant ------------------
 @double floatValue
+@bigint bigintValue
 $literal_double$ !floatValue !tokenString  style floatStyle error message "a float number"
 $unsigned_literal_integer$ ! uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
 $signed_literal_integer$ ! sint32value  style integerStyle error message "a 32-bit signed decimal number"
 $unsigned_literal_integer64$ ! uint64value  style integerStyle error message "a 64-bit unsigned decimal number"
 $signed_literal_integer64$ ! sint64value  style integerStyle error message "a 64-bit signed decimal number"
+$bigint$ !bigintValue  style bigintStyle error message "a big integer number"
 
 message decimalNumberTooLarge : "decimal number too large"
 message floatNumberConversionError : "invalid float number"
@@ -216,6 +219,9 @@ rule '0'->'9' {
   case 'L' :
     convertDecimalStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer64$
+  case 'G' :
+    convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
+    send $bigint$
   case '.' :
     enterCharacterIntoString ( !?tokenString !'.' )
     repeat
@@ -231,6 +237,34 @@ rule '0'->'9' {
   end
 }
 
+rule "0x" {
+  repeat
+  while '0'->'9' :
+    enterCharacterIntoString (!?tokenString !* )
+  while 'a'->'f' :
+    enterCharacterIntoString (!?tokenString !* )
+  while 'A'->'F' :
+    enterCharacterIntoString (!?tokenString !* )
+  while '_' :
+  end
+  select
+  case "LS" :
+    convertHexStringIntoSInt64 ( !tokenString !?sint64value error decimalNumberTooLarge, internalError )
+    send $signed_literal_integer64$
+  case 'S' | 's' :
+    convertHexStringIntoSInt ( !tokenString !?sint32value error decimalNumberTooLarge, internalError )
+    send $signed_literal_integer$
+  case 'L' :
+    convertHexStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
+    send $unsigned_literal_integer64$
+  case 'G' :
+    convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError )
+    send $bigint$
+  default
+    convertHexStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
+    send $unsigned_literal_integer$
+  end
+}
 
 #------------------------------- Floating point Number ------------------
 $.$  style delimitersStyle error message "the '.' delimitor"

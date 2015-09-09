@@ -15,6 +15,12 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
+
+#before {
+#  @bigint v = 1234567890_123456789_01234567890G
+#  message "'" + [v hexString] + "'\n"
+#}
+
 proc enterBaseFinalGetterWithoutArgument
   ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -794,29 +800,43 @@ override method @bigintPredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName:"isUInt"
+    !getterName:"fitsInUInt"
     !returnedTypeName:"bool"
     !false
   )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName:"isSInt"
+    !getterName:"fitsInSInt"
     !returnedTypeName:"bool"
     !false
   )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName:"isUInt64"
+    !getterName:"fitsInUInt64"
     !returnedTypeName:"bool"
     !false
   )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName:"isSInt64"
+    !getterName:"fitsInSInt64"
     !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexString"
+    !returnedTypeName:"string"
     !false
   )
   enterBaseFinalGetterWithoutArgument (
@@ -836,8 +856,22 @@ override method @bigintPredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !getterName:"sint"
+    !returnedTypeName:"sint"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !getterName:"uint64"
     !returnedTypeName:"uint64"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint64"
+    !returnedTypeName:"sint64"
     !true
   )
 #  enterBaseFinalReaderWithArgument (
@@ -905,4 +939,3 @@ override method @timerPredefinedTypeAST getReaderMap
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-

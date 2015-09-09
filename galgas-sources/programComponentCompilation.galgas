@@ -109,9 +109,10 @@ proc compileBeforeClauseGalgas3
       !false # Has no header
       !"proc-before"
       !"before"
-      !@formalParameterListForGeneration. emptyList
+      !@formalParameterListForGeneration.emptyList
       !true # Generate static
-      !semanticInstructionListForGeneration}
+      !semanticInstructionListForGeneration
+    }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

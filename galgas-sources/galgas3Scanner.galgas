@@ -89,6 +89,7 @@ style selectorStyle -> "Selectors"
 style terminalStyle -> "Terminal Symbols"
 style nonTerminalStyle -> "Non Terminal Symbols"
 style integerStyle -> "Integer Constants"
+style bigintStyle -> "Big Integer Constants"
 style floatStyle -> "Floating Point Constants" 
 style characterStyle -> "Character Constants"
 style stringStyle -> "String Constants"
@@ -218,11 +219,13 @@ rule 'a'->'z' |  'A'->'Z' {
 
 #------------------------------- Integer, floating Point Constant ------------------
 @double floatValue
+@bigint bigintValue
 $literal_double$ !floatValue !tokenString  style floatStyle error message "a float number"
 $unsigned_literal_integer$ !uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
 $signed_literal_integer$ !sint32value  style integerStyle error message "a 32-bit signed decimal number"
 $unsigned_literal_integer64$ !uint64value  style integerStyle error message "a 64-bit unsigned decimal number"
 $signed_literal_integer64$ !sint64value  style integerStyle error message "a 64-bit signed decimal number"
+$bigint$ !bigintValue  style bigintStyle error message "a big integer number"
 
 message decimalNumberTooLarge : "decimal number too large"
 message floatNumberConversionError : "invalid float number"
@@ -248,6 +251,9 @@ rule "0x" {
   case 'L' :
     convertHexStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer64$
+  case 'G' :
+    convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError )
+    send $bigint$
   default
     convertHexStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer$
@@ -271,6 +277,9 @@ rule '0'->'9' {
   case 'L' :
     convertDecimalStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer64$
+  case 'G' :
+    convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
+    send $bigint$
   case '.' :
     enterCharacterIntoString (!?tokenString !'.' )
     repeat

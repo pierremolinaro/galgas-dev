@@ -106,6 +106,12 @@ class @literalSInt64ExpressionAST : @semanticExpressionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+class @literalBigIntExpressionAST : @semanticExpressionAST {
+  @lbigint mValue
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 class @constructorExpressionAST : @semanticExpressionAST {
   @lstring mTypeName
   @lstring mConstructorName

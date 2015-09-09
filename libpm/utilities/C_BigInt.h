@@ -60,6 +60,7 @@ class C_BigInt {
   public : explicit C_BigInt (const uint64_t inValue, const bool inNegate) ;
   public : explicit C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) ;
   public : explicit C_BigInt (const int64_t inValue) ;
+  public : explicit C_BigInt (const char * inString, const int32_t inBase, bool & outOk) ;
 
 //--- Destructor
   public : virtual ~ C_BigInt (void) ;

@@ -20,6 +20,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 cTokenFor_galgas_32_Scanner::cTokenFor_galgas_32_Scanner (void) :
+mLexicalAttribute_bigintValue (),
 mLexicalAttribute_charValue (),
 mLexicalAttribute_floatValue (),
 mLexicalAttribute_identifierString (),
@@ -774,14 +775,6 @@ static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
   TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
   TO_UNICODE ('m'),
@@ -808,14 +801,6 @@ static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_in
   TO_UNICODE ('n'),
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
   TO_UNICODE (' '),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
@@ -846,14 +831,6 @@ static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
   TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
   TO_UNICODE ('m'),
@@ -881,13 +858,30 @@ static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_in
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
   TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
   TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
+//--- Syntax error message for terminal '$bigint$' :
+static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_bigint [] = {
   TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('g'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
   TO_UNICODE (' '),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
@@ -4767,13 +4761,14 @@ static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2F_ [] = {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_32_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [165] = {kEndOfSourceLexicalErrorMessage,
+  static const utf32 * syntaxErrorMessageArray [166] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgas_32_Scanner_identifier,
     gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_double,
     gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer,
     gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer,
     gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer_36__34_,
     gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer_36__34_,
+    gSyntaxErrorMessage_galgas_32_Scanner_bigint,
     gSyntaxErrorMessage_galgas_32_Scanner__2E_,
     gSyntaxErrorMessage_galgas_32_Scanner__2E__3D_,
     gSyntaxErrorMessage_galgas_32_Scanner__2E__2E__2E_,
@@ -6495,6 +6490,13 @@ C_String C_Lexique_galgas_32_Scanner::getCurrentTokenString (const cToken * inTo
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendSigned (ptr->mLexicalAttribute_sint_36__34_value) ;
       break ;
+    case kToken_bigint:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("bigint") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
+      break ;
     case kToken__2E_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString (".") ;
@@ -7337,6 +7339,7 @@ bool C_Lexique_galgas_32_Scanner::parseLexicalToken (void) {
   mLoop = true ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+    token.mLexicalAttribute_bigintValue.setToZero () ;
     token.mLexicalAttribute_charValue = TO_UNICODE (0) ;
     token.mLexicalAttribute_floatValue = 0.0 ;
     token.mLexicalAttribute_identifierString.setLengthToZero () ;
@@ -7390,6 +7393,10 @@ bool C_Lexique_galgas_32_Scanner::parseLexicalToken (void) {
           ::scanner_routine_convertHexStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
           enterToken (token) ;
+        }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
+          ::scanner_routine_convertHexStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgas_32_Scanner_internalError) ;
+          token.mTokenCode = kToken_bigint ;
+          enterToken (token) ;
         }else{
           ::scanner_routine_convertHexStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
@@ -7417,6 +7424,10 @@ bool C_Lexique_galgas_32_Scanner::parseLexicalToken (void) {
         }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
           ::scanner_routine_convertDecimalStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
           token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
+          enterToken (token) ;
+        }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
+          ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgas_32_Scanner_internalError) ;
+          token.mTokenCode = kToken_bigint ;
           enterToken (token) ;
         }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('.')) ;
@@ -8097,6 +8108,7 @@ void C_Lexique_galgas_32_Scanner::enterToken (const cTokenFor_galgas_32_Scanner 
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = inToken.mTemplateStringBeforeToken ;
+  ptr->mLexicalAttribute_bigintValue = inToken.mLexicalAttribute_bigintValue ;
   ptr->mLexicalAttribute_charValue = inToken.mLexicalAttribute_charValue ;
   ptr->mLexicalAttribute_floatValue = inToken.mLexicalAttribute_floatValue ;
   ptr->mLexicalAttribute_identifierString = inToken.mLexicalAttribute_identifierString ;
@@ -8110,6 +8122,13 @@ void C_Lexique_galgas_32_Scanner::enterToken (const cTokenFor_galgas_32_Scanner 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //               A T T R I B U T E   A C C E S S                                                                       *
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_Lexique_galgas_32_Scanner::attributeValue_bigintValue (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  return ptr->mLexicalAttribute_bigintValue ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 utf32 C_Lexique_galgas_32_Scanner::attributeValue_charValue (void) const {
@@ -8168,6 +8187,17 @@ uint64_t C_Lexique_galgas_32_Scanner::attributeValue_uint_36__34_value (void) co
 
 //---------------------------------------------------------------------------------------------------------------------*
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lbigint C_Lexique_galgas_32_Scanner::synthetizedAttribute_bigintValue (void) const {
+  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
+  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  GALGAS_bigint value (ptr->mLexicalAttribute_bigintValue) ;
+  GALGAS_lbigint result (value, currentLocation) ;
+  return result ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lchar C_Lexique_galgas_32_Scanner::synthetizedAttribute_charValue (void) const {
@@ -8268,6 +8298,7 @@ GALGAS_stringlist C_Lexique_galgas_32_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("signed_literal_integer") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unsigned_literal_integer64") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("signed_literal_integer64") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("bigint") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (".") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (".=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("...") COMMA_THERE) ;
@@ -8434,19 +8465,20 @@ GALGAS_stringlist C_Lexique_galgas_32_Scanner::symbols (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgas_32_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [165] = {0,
+  static const uint32_t kTerminalSymbolStyles [166] = {0,
     0 /* galgas2Scanner_1_identifier */,
-    8 /* galgas2Scanner_1_literal_5F_double */,
+    9 /* galgas2Scanner_1_literal_5F_double */,
     7 /* galgas2Scanner_1_unsigned_5F_literal_5F_integer */,
     7 /* galgas2Scanner_1_signed_5F_literal_5F_integer */,
     7 /* galgas2Scanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
     7 /* galgas2Scanner_1_signed_5F_literal_5F_integer_36__34_ */,
+    8 /* galgas2Scanner_1_bigint */,
     2 /* galgas2Scanner_1__2E_ */,
     2 /* galgas2Scanner_1__2E__3D_ */,
     2 /* galgas2Scanner_1__2E__2E__2E_ */,
     2 /* galgas2Scanner_1__2E__2E__3C_ */,
-    11 /* galgas2Scanner_1_type_5F_name */,
-    9 /* galgas2Scanner_1_literal_5F_char */,
+    12 /* galgas2Scanner_1_type_5F_name */,
+    10 /* galgas2Scanner_1_literal_5F_char */,
     4 /* galgas2Scanner_1_terminal */,
     3 /* galgas2Scanner_1__3F__3F_ */,
     3 /* galgas2Scanner_1__3F_ */,
@@ -8458,9 +8490,9 @@ uint32_t C_Lexique_galgas_32_Scanner::styleIndexForTerminal (const int32_t inTer
     2 /* galgas2Scanner_1__3C__3D_ */,
     2 /* galgas2Scanner_1__3C__3C_ */,
     5 /* galgas2Scanner_1_non_5F_terminal_5F_symbol */,
-    10 /* galgas2Scanner_1_literal_5F_string */,
-    12 /* galgas2Scanner_1_comment */,
-    12 /* galgas2Scanner_1_commentMark */,
+    11 /* galgas2Scanner_1_literal_5F_string */,
+    13 /* galgas2Scanner_1_comment */,
+    13 /* galgas2Scanner_1_commentMark */,
     1 /* galgas2Scanner_1_abstract */,
     1 /* galgas2Scanner_1_after */,
     1 /* galgas2Scanner_1_array */,
@@ -8609,8 +8641,8 @@ uint32_t C_Lexique_galgas_32_Scanner::styleIndexForTerminal (const int32_t inTer
 
 C_String C_Lexique_galgas_32_Scanner::styleNameForIndex (const uint32_t inStyleIndex) const {
   C_String result ;
-  if (inStyleIndex < 13) {
-    static const char * kStyleArray [13] = {
+  if (inStyleIndex < 14) {
+    static const char * kStyleArray [14] = {
       "",
       "keywordsStyle",
       "delimitersStyle",
@@ -8619,6 +8651,7 @@ C_String C_Lexique_galgas_32_Scanner::styleNameForIndex (const uint32_t inStyleI
       "nonTerminalStyle",
       "variantStyle",
       "integerStyle",
+      "bigintStyle",
       "floatStyle",
       "characterStyle",
       "stringStyle",
@@ -8644,6 +8677,7 @@ C_String C_Lexique_galgas_32_Scanner::styleNameForIndex (const uint32_t inStyleI
 //---------------------------------------------------------------------------------------------------------------------*
 
 cTokenFor_galgasTemplateScanner::cTokenFor_galgasTemplateScanner (void) :
+mLexicalAttribute_bigintValue (),
 mLexicalAttribute_charValue (),
 mLexicalAttribute_floatValue (),
 mLexicalAttribute_identifierString (),
@@ -9475,6 +9509,31 @@ static const utf32 gSyntaxErrorMessage_galgasTemplateScanner_signed_5F_literal_5
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
+//--- Syntax error message for terminal '$bigint$' :
+static const utf32 gSyntaxErrorMessage_galgasTemplateScanner_bigint [] = {
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('g'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
   TO_UNICODE (' '),
   TO_UNICODE ('n'),
   TO_UNICODE ('u'),
@@ -13123,7 +13182,7 @@ static const utf32 gSyntaxErrorMessage_galgasTemplateScanner__26__2F_ [] = {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [157] = {kEndOfSourceLexicalErrorMessage,
+  static const utf32 * syntaxErrorMessageArray [158] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgasTemplateScanner_identifier,
     gSyntaxErrorMessage_galgasTemplateScanner_type_5F_name,
     gSyntaxErrorMessage_galgasTemplateScanner_literal_5F_double,
@@ -13131,6 +13190,7 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
     gSyntaxErrorMessage_galgasTemplateScanner_signed_5F_literal_5F_integer,
     gSyntaxErrorMessage_galgasTemplateScanner_unsigned_5F_literal_5F_integer_36__34_,
     gSyntaxErrorMessage_galgasTemplateScanner_signed_5F_literal_5F_integer_36__34_,
+    gSyntaxErrorMessage_galgasTemplateScanner_bigint,
     gSyntaxErrorMessage_galgasTemplateScanner__2E_,
     gSyntaxErrorMessage_galgasTemplateScanner__2E__3D_,
     gSyntaxErrorMessage_galgasTemplateScanner__2E__2E__2E_,
@@ -13430,6 +13490,13 @@ static const utf32 kUnicodeString_galgasTemplateScanner__2E__3C_ [] = {
 //--- Unicode string for '$_2F_$'
 static const utf32 kUnicodeString_galgasTemplateScanner__2F_ [] = {
   TO_UNICODE ('/'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_30_x$'
+static const utf32 kUnicodeString_galgasTemplateScanner__30_x [] = {
+  TO_UNICODE ('0'),
+  TO_UNICODE ('x'),
   TO_UNICODE (0)
 } ;
 
@@ -14859,6 +14926,13 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendSigned (ptr->mLexicalAttribute_sint_36__34_value) ;
       break ;
+    case kToken_bigint:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("bigint") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
+      break ;
     case kToken__2E_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString (".") ;
@@ -15645,7 +15719,7 @@ static const cTemplateDelimiter kTemplateReplacementArray [3] = {
 //            Terminal Symbols as end of script in template mark                                                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const bool kEndOfScriptInTemplateArray [156] = {
+static const bool kEndOfScriptInTemplateArray [157] = {
   false /* identifier */,
   false /* type_name */,
   false /* literal_double */,
@@ -15653,6 +15727,7 @@ static const bool kEndOfScriptInTemplateArray [156] = {
   false /* signed_literal_integer */,
   false /* unsigned_literal_integer64 */,
   false /* signed_literal_integer64 */,
+  false /* bigint */,
   false /* . */,
   false /* .= */,
   false /* ... */,
@@ -15850,6 +15925,7 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
       }
     }
     if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+    token.mLexicalAttribute_bigintValue.setToZero () ;
     token.mLexicalAttribute_charValue = TO_UNICODE (0) ;
     token.mLexicalAttribute_floatValue = 0.0 ;
     token.mLexicalAttribute_identifierString.setLengthToZero () ;
@@ -15925,6 +16001,10 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
             ::scanner_routine_convertDecimalStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
             token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
             enterToken (token) ;
+          }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
+            ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasTemplateScanner_internalError) ;
+            token.mTokenCode = kToken_bigint ;
+            enterToken (token) ;
           }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('.')) ;
             do {
@@ -15941,6 +16021,41 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
             enterToken (token) ;
           }else{
             ::scanner_routine_convertDecimalStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
+            token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
+            enterToken (token) ;
+          }
+        }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__30_x, 2, true)) {
+          do {
+            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+            }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f'))) {
+              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+            }else if (testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+            }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
+            }else{
+              mLoop = false ;
+            }
+          }while (mLoop) ;
+          mLoop = true ;
+          if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner_LS, 2, true)) {
+            ::scanner_routine_convertHexStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
+            token.mTokenCode = kToken_signed_5F_literal_5F_integer_36__34_ ;
+            enterToken (token) ;
+          }else if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
+            ::scanner_routine_convertHexStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
+            token.mTokenCode = kToken_signed_5F_literal_5F_integer ;
+            enterToken (token) ;
+          }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
+            ::scanner_routine_convertHexStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
+            token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
+            enterToken (token) ;
+          }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
+            ::scanner_routine_convertHexStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasTemplateScanner_internalError) ;
+            token.mTokenCode = kToken_bigint ;
+            enterToken (token) ;
+          }else{
+            ::scanner_routine_convertHexStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
             token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
             enterToken (token) ;
           }
@@ -16492,6 +16607,7 @@ void C_Lexique_galgasTemplateScanner::enterToken (const cTokenFor_galgasTemplate
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = inToken.mTemplateStringBeforeToken ;
+  ptr->mLexicalAttribute_bigintValue = inToken.mLexicalAttribute_bigintValue ;
   ptr->mLexicalAttribute_charValue = inToken.mLexicalAttribute_charValue ;
   ptr->mLexicalAttribute_floatValue = inToken.mLexicalAttribute_floatValue ;
   ptr->mLexicalAttribute_identifierString = inToken.mLexicalAttribute_identifierString ;
@@ -16505,6 +16621,13 @@ void C_Lexique_galgasTemplateScanner::enterToken (const cTokenFor_galgasTemplate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //               A T T R I B U T E   A C C E S S                                                                       *
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_Lexique_galgasTemplateScanner::attributeValue_bigintValue (void) const {
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->mLexicalAttribute_bigintValue ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 utf32 C_Lexique_galgasTemplateScanner::attributeValue_charValue (void) const {
@@ -16563,6 +16686,17 @@ uint64_t C_Lexique_galgasTemplateScanner::attributeValue_uint_36__34_value (void
 
 //---------------------------------------------------------------------------------------------------------------------*
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lbigint C_Lexique_galgasTemplateScanner::synthetizedAttribute_bigintValue (void) const {
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  macroValidSharedObject (ptr, cTokenFor_galgasTemplateScanner) ;
+  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  GALGAS_bigint value (ptr->mLexicalAttribute_bigintValue) ;
+  GALGAS_lbigint result (value, currentLocation) ;
+  return result ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lchar C_Lexique_galgasTemplateScanner::synthetizedAttribute_charValue (void) const {
@@ -16664,6 +16798,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("signed_literal_integer") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unsigned_literal_integer64") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("signed_literal_integer64") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("bigint") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (".") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (".=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("...") COMMA_THERE) ;
@@ -16821,20 +16956,21 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [157] = {0,
+  static const uint32_t kTerminalSymbolStyles [158] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
-    9 /* galgasTemplateScanner_1_type_5F_name */,
-    6 /* galgasTemplateScanner_1_literal_5F_double */,
+    10 /* galgasTemplateScanner_1_type_5F_name */,
+    7 /* galgasTemplateScanner_1_literal_5F_double */,
     5 /* galgasTemplateScanner_1_unsigned_5F_literal_5F_integer */,
     5 /* galgasTemplateScanner_1_signed_5F_literal_5F_integer */,
     5 /* galgasTemplateScanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
     5 /* galgasTemplateScanner_1_signed_5F_literal_5F_integer_36__34_ */,
+    6 /* galgasTemplateScanner_1_bigint */,
     2 /* galgasTemplateScanner_1__2E_ */,
     2 /* galgasTemplateScanner_1__2E__3D_ */,
     2 /* galgasTemplateScanner_1__2E__2E__2E_ */,
     2 /* galgasTemplateScanner_1__2E__2E__3C_ */,
-    8 /* galgasTemplateScanner_1_literal_5F_char */,
-    7 /* galgasTemplateScanner_1_literal_5F_string */,
+    9 /* galgasTemplateScanner_1_literal_5F_char */,
+    8 /* galgasTemplateScanner_1_literal_5F_string */,
     2 /* galgasTemplateScanner_1__3F_ */,
     2 /* galgasTemplateScanner_1__3F__21_ */,
     2 /* galgasTemplateScanner_1__21_ */,
@@ -16842,7 +16978,7 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     2 /* galgasTemplateScanner_1__3C_ */,
     2 /* galgasTemplateScanner_1__3C__3D_ */,
     2 /* galgasTemplateScanner_1__3C__3C_ */,
-    10 /* galgasTemplateScanner_1_comment */,
+    11 /* galgasTemplateScanner_1_comment */,
     1 /* galgasTemplateScanner_1_abstract */,
     1 /* galgasTemplateScanner_1_after */,
     1 /* galgasTemplateScanner_1_array */,
@@ -16988,14 +17124,15 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
 
 C_String C_Lexique_galgasTemplateScanner::styleNameForIndex (const uint32_t inStyleIndex) const {
   C_String result ;
-  if (inStyleIndex < 11) {
-    static const char * kStyleArray [11] = {
+  if (inStyleIndex < 12) {
+    static const char * kStyleArray [12] = {
       "",
       "keywordsStyle",
       "delimitersStyle",
       "nonTerminalStyle",
       "variantStyle",
       "integerStyle",
+      "bigintStyle",
       "floatStyle",
       "stringStyle",
       "characterStyle",

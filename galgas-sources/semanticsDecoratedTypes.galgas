@@ -137,6 +137,12 @@ class @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+class @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
+  @bigint mValue
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 class @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
