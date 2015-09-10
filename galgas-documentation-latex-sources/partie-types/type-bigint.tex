@@ -123,9 +123,9 @@ message [a hexString] + "\n" # Affiche "-18EE90FF6C373E0EE4E3F0AD2"
 
 \section{Arithmétique}
 
-\subsection{Opérateurs \texttt{+} et \texttt{-} unaires}
+\subsection{Opérateurs \texttt{+} et \texttt{-} préfixés}
 
-L'opérateur \texttt{-} unaire effectue la négation de l'expression qui le suit. L'opérateur \texttt{+} unaire n'a aucun effet, il retourne la valeur de l'expression.
+L'opérateur « \texttt{-} » préfixé effectue la négation de l'expression qui le suit. L'opérateur « \texttt{+} » préfixé n'a aucun effet, il retourne la valeur de l'expression.
 
 \begin{galgas}
 @bigint a = +1234567890_1234567890_1234567890_G
@@ -133,3 +133,115 @@ message [a string] + "\n" # Affiche "123456789012345678901234567890"
 \end{galgas}
 
 
+\subsection{Addition et soustraction}
+
+Les opérateurs « \texttt{+} » et « \texttt{-} » infixés effectuent respectivement la somme et la différence de leurs opérandes. Comme la taille des \ggs!@bigint! est non limitée, aucun débordement n'a lieu.
+
+
+
+\subsection{Multiplication}
+
+L'opérateur « \texttt{*} » infixé effectue le produit de ses opérandes. Comme la taille des \ggs!@bigint! est non limitée, aucun débordement n'a lieu.
+
+
+
+
+\subsection{Division}
+
+L'opérateur « \texttt{/} » infixé effectue la division entière de l'expression de gauche par l'expression de droite. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
+
+\begin{galgas}
+@bigint a = 1234567890_1234567890_1234567890_G / 9876543210G
+message [a string] + "\n" # Affiche "12499999887343749990"
+\end{galgas}
+
+Lorsqu'un opérande est négatif, ou lorsque que les deux sont négatifs, l'opération effectuée est la division de leur valeurs absolues, et, si les deux opérandes sont de signe contraire, le résultat est changé de signe. Elle se comporte ainsi comme la division en C, ou GALGAS avec les types \ggs!@sint! et \ggs!@sint64! :
+
+\begin{galgas}
+  message [(-7S) / 2S string] + "\n" # Affiche "-3"
+  message [(-7G) / 2G string] + "\n" # Affiche "-3"
+  message [(-7S) / (-2S) string] + "\n" # Affiche "3"
+  message [(-7G) / (-2G) string] + "\n" # Affiche "3"
+  message [7S / (-2S) string] + "\n" # Affiche "-3"
+  message [7G / (-2G) string] + "\n" # Affiche "-3"
+\end{galgas}
+
+
+
+\subsection{Reste de la division}
+
+L'opérateur « \ggs!mod! » infixé renvoie le reste de la division entière de l'expression de gauche par l'expression de droite, telle que décrite au dessus. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
+
+Lorsque les deux opérandes sont de signe contraire, le reste est négatif ou nul. Cette opération se comporte ainsi comme l'opérateur « \texttt{\%} du C, et comme l'opérateur \ggs!mod! des types \ggs!@sint! et \ggs!@sint64! :
+
+\begin{galgas}
+  message [9876543210G mod 1234567890G string] + "\n" # Affiche "90"
+  message [(-9876543210G) mod 1234567890G string] + "\n" # Affiche "-90"
+  message [(-9876543210G) mod (-1234567890G) string] + "\n"  # Affiche "-90"
+  message [9876543210G mod (-1234567890G) string] + "\n"  # Affiche "90"
+  message [2000S mod 183S string] + "\n" # Affiche "170"
+  message [(-2000S) mod 183S string] + "\n" # Affiche "-170"
+  message [(-2000S) mod (-183S) string] + "\n" # Affiche "-170"
+  message [2000S mod (-183S) string] + "\n" # Affiche "170"
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+\section{Décalages}
+
+\subsection{Opérateur \texttt{<{}<}}
+
+L'opérateur « \texttt{<{}<} » infixé effectue un décalage à gauche. L'expression de droite est toujours un \ggs!@uint!. Un décalage à gauche de $n$ bits est sémantiquement équivalent à une multiplication par $2^n$, que le nombre auquel s'applique le décalage soit signé ou non. C'est la sémantique des décalages à gauche des types \ggs!@sint! et \ggs!@sint64! :
+
+\begin{galgas}
+  message [0x1234567890G << 12 hexString] + "\n" # Affiche "1234567890000"
+  message [(-0x1234567890G) << 12 hexString] + "\n" # Affiche "-1234567890000"
+  message [2000S << 2 string] + "\n" # Affiche "8000"
+  message [(-2000S) << 2 string] + "\n" # Affiche "-8000"
+\end{galgas}
+
+\subsection{Opérateur \texttt{>{}>}}
+
+L'opérateur « \texttt{>{}>} » infixé effectue un décalage à droite. L'expression de droite est toujours un \ggs!@uint! :
+\begin{galgas}
+  message [0x1234567890G >> 12 hexString] + "\n" # Affiche "1234567"
+  message [(-0x1234567890G) >> 12 hexString] + "\n" # Affiche "-1234567"
+  message [2000S >> 2 string] + "\n" # Affiche "500"
+  message [(-2000S) >> 2 string] + "\n" # Affiche "-500"
+\end{galgas}
+
+Un décalage à droite de $n$ bits d'un nombre posifif est sémantiquement équivalent au quotient \emph{par défaut} d'une division par $2^n$ :
+
+\begin{galgas}
+  message [9G >> 1 string] + "\n" # Affiche "4"
+  message [9S >> 1 string] + "\n" # Affiche "4"
+  message [7G >> 1 string] + "\n" # Affiche "3"
+  message [7S >> 1 string] + "\n" # Affiche "3"
+  message [3G >> 1 string] + "\n" # Affiche "1"
+  message [3S >> 1 string] + "\n" # Affiche "1"
+  message [1G >> 1 string] + "\n" # Affiche "0"
+  message [1S >> 1 string] + "\n" # Affiche "0"
+\end{galgas}
+
+
+Un décalage à droite de $n$ bits d'un nombre négatif est sémantiquement équivalent au quotient \emph{par excès} d'une division par $2^n$ :
+
+\begin{galgas}
+  message [-9G >> 1 string] + "\n" # Affiche "-5"
+  message [-9S >> 1 string] + "\n" # Affiche "-5"
+  message [-7G >> 1 string] + "\n" # Affiche "-4"
+  message [-7S >> 1 string] + "\n" # Affiche "-4"
+  message [-3G >> 1 string] + "\n" # Affiche "-2"
+  message [-3S >> 1 string] + "\n" # Affiche "-2"
+  message [-1G >> 1 string] + "\n" # Affiche "-1"
+  message [-1S >> 1 string] + "\n" # Affiche "-1"
+\end{galgas}
+
+Dans tous les cas, la sémantique du décalage à droite du type \ggs!@bigint! est la même que celles des types \ggs!@sint! et \ggs!@sint64!.

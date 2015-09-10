@@ -392,7 +392,11 @@ void C_BigInt::divideBy (const uint32_t inDivisor,
 void C_BigInt::divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder) {
   mpz_t quotient ;
   mpz_init (quotient) ;
-  outRemainder = (uint32_t) mpz_fdiv_q_ui (quotient, mGMPint, inDivisor) ;
+  if (mpz_sgn (mGMPint) >= 0) {
+    outRemainder = (uint32_t) mpz_fdiv_q_ui (quotient, mGMPint, inDivisor) ;
+  }else{
+    outRemainder = (uint32_t) mpz_cdiv_q_ui (quotient, mGMPint, inDivisor) ;
+  }
   mpz_swap (quotient, mGMPint) ;
   mpz_clear (quotient) ;
 }
@@ -408,10 +412,23 @@ void C_BigInt::divideBy (const C_BigInt inDivisor,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+static void division (const mpz_t & inDividende,
+                      const mpz_t & inDivisor,
+                      mpz_t & outQuotient,
+                      mpz_t & outRemainder) {
+  if ((mpz_sgn (inDividende) * mpz_sgn (inDivisor)) >= 0) {
+    mpz_fdiv_qr (outQuotient, outRemainder, inDividende, inDivisor) ;
+  }else{
+    mpz_cdiv_qr (outQuotient, outRemainder, inDividende, inDivisor) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void C_BigInt::divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) {
   mpz_t quotient ;
   mpz_init (quotient) ;
-  mpz_fdiv_qr (quotient, outRemainder.mGMPint, mGMPint, inDivisor.mGMPint) ;
+  division (mGMPint, inDivisor.mGMPint, quotient, outRemainder.mGMPint) ;
   mpz_swap (quotient, mGMPint) ;
   mpz_clear (quotient) ;
 }
@@ -428,6 +445,27 @@ void C_BigInt::operator /= (const C_BigInt inDivisor) {
 C_BigInt C_BigInt::operator / (const C_BigInt & inDivisor) const {
   C_BigInt result = *this ;
   result /= inDivisor ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator %= (const C_BigInt inDivisor) {
+  mpz_t quotient ;
+  mpz_init (quotient) ;
+  mpz_t remainder ;
+  mpz_init (remainder) ;
+  division (mGMPint, inDivisor.mGMPint, quotient, remainder) ;
+  mpz_swap (remainder, mGMPint) ;
+  mpz_clear (quotient) ;
+  mpz_clear (remainder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator % (const C_BigInt & inDivisor) const {
+  C_BigInt result = *this ;
+  result %= inDivisor ;
   return result ;
 }
 
