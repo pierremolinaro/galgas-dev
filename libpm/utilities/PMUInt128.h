@@ -65,11 +65,16 @@ class PMUInt128 {
   public : bool valueAtBitIndex (const uint32_t inIndex) const ;
   public : void setValueAtBitIndex (const bool inValue, const uint32_t inIndex) ;
 
+//--- Value access
+  public : inline uint64_t low  (void) const { return mLow ; }
+  public : inline uint64_t high (void) const { return mHigh ; }
+
 //--- Example
   public : static void example (void) ;
   
 //--- Value as string
   public : C_String decimalString (void) const ;
+
 //--- Attributes
   private : uint64_t mLow ;
   private : uint64_t mHigh ;

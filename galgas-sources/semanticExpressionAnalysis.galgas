@@ -2376,6 +2376,32 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @unaryPlusExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @unaryPlusExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  [mExpression analyzeSemanticExpression !.null !inAnalysisContext !?ioVariableMap ?outExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy type = [outExpression mResultType]
+  if ([type mHandledOperatorFlags] & unaryPlusOperator ()) == 0 then
+    error mOperatorLocation
+    : "operand type is '@" + [type key] + "' and does not support the unary '+' operator"
+    :outExpression
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @notExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {

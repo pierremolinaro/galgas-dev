@@ -2820,14 +2820,14 @@ class cParser_expressionSyntax {
 
   protected : void rule_expressionSyntax_factor_i11_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_primary_i12_ (GALGAS_semanticExpressionAST & outArgument0,
-                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_expressionSyntax_factor_i12_ (GALGAS_semanticExpressionAST & outArgument0,
+                                                      C_String & ioSyntaxDirectedTranslationResult,
+                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_primary_i12_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_expressionSyntax_factor_i12_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                           C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_primary_i12_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_expressionSyntax_factor_i12_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_expressionSyntax_primary_i13_ (GALGAS_semanticExpressionAST & outArgument0,
                                                        C_String & ioSyntaxDirectedTranslationResult,
@@ -3045,14 +3045,14 @@ class cParser_expressionSyntax {
 
   protected : void rule_expressionSyntax_primary_i36_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_collection_5F_value_5F_element_i37_ (GALGAS_abstractCollectionValueElement & outArgument0,
-                                                                              C_String & ioSyntaxDirectedTranslationResult,
-                                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_expressionSyntax_primary_i37_ (GALGAS_semanticExpressionAST & outArgument0,
+                                                       C_String & ioSyntaxDirectedTranslationResult,
+                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_collection_5F_value_5F_element_i37_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_expressionSyntax_primary_i37_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_collection_5F_value_5F_element_i37_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_expressionSyntax_primary_i37_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
   protected : void rule_expressionSyntax_collection_5F_value_5F_element_i38_ (GALGAS_abstractCollectionValueElement & outArgument0,
                                                                               C_String & ioSyntaxDirectedTranslationResult,
@@ -3063,14 +3063,23 @@ class cParser_expressionSyntax {
 
   protected : void rule_expressionSyntax_collection_5F_value_5F_element_i38_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_primary_i39_ (GALGAS_semanticExpressionAST & outArgument0,
+  protected : void rule_expressionSyntax_collection_5F_value_5F_element_i39_ (GALGAS_abstractCollectionValueElement & outArgument0,
+                                                                              C_String & ioSyntaxDirectedTranslationResult,
+                                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_expressionSyntax_collection_5F_value_5F_element_i39_parse (C_String & ioSyntaxDirectedTranslationResult,
+                                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_expressionSyntax_collection_5F_value_5F_element_i39_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+
+  protected : void rule_expressionSyntax_primary_i40_ (GALGAS_semanticExpressionAST & outArgument0,
                                                        C_String & ioSyntaxDirectedTranslationResult,
                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_primary_i39_parse (C_String & ioSyntaxDirectedTranslationResult,
+  protected : void rule_expressionSyntax_primary_i40_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                             C_Lexique_galgas_32_Scanner * inLexique) ;
 
-  protected : void rule_expressionSyntax_primary_i39_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
+  protected : void rule_expressionSyntax_primary_i40_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
 
 
 
@@ -8249,6 +8258,93 @@ class cPtr_unaryMinusNoOverflowExpressionAST : public cPtr_semanticExpressionAST
   public : cPtr_unaryMinusNoOverflowExpressionAST (const GALGAS_location & in_mOperatorLocation,
                                                    const GALGAS_semanticExpressionAST & in_mExpression
                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mOperatorLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST reader_mExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @unaryPlusExpressionAST class                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_unaryPlusExpressionAST : public GALGAS_semanticExpressionAST {
+//--- Constructor
+  public : GALGAS_unaryPlusExpressionAST (void) ;
+
+//---
+  public : inline const class cPtr_unaryPlusExpressionAST * ptr (void) const { return (const cPtr_unaryPlusExpressionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_unaryPlusExpressionAST (const cPtr_unaryPlusExpressionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_unaryPlusExpressionAST extractObject (const GALGAS_object & inObject,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_unaryPlusExpressionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                 const class GALGAS_semanticExpressionAST & inOperand1
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_unaryPlusExpressionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST reader_mExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mOperatorLocation (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_unaryPlusExpressionAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryPlusExpressionAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Pointer class for @unaryPlusExpressionAST class                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
+//--- Attributes
+  public : GALGAS_location mAttribute_mOperatorLocation ;
+  public : GALGAS_semanticExpressionAST mAttribute_mExpression ;
+
+//--- Constructor
+  public : cPtr_unaryPlusExpressionAST (const GALGAS_location & in_mOperatorLocation,
+                                        const GALGAS_semanticExpressionAST & in_mExpression
+                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;

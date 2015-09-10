@@ -71,6 +71,7 @@ class C_BigInt {
 
 //--- Set to value
   public : void setToZero (void) ;
+  public : void setFromUnsigned (const uint32_t inValue) ;
 
 //--- Sign
   public : bool isZero (void) const ;
@@ -133,6 +134,9 @@ class C_BigInt {
   public : void divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
   public : void divideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
 
+  public : void operator /= (const C_BigInt inDivisor) ;
+  public : C_BigInt operator / (const C_BigInt & inDivisor) const ;
+
 //--- Value access
   public : uint32_t uint32 (void) const ;
   public : uint64_t uint64 (void) const ;
@@ -149,7 +153,10 @@ class C_BigInt {
   public : static void example (void) ;
 
 //--- Value
-  protected : mpz_t mValue ;
+  protected : mpz_t mGMPint ;
+
+//--- Friend
+  friend void swap (C_BigInt & ioOp1, C_BigInt & ioOp2) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

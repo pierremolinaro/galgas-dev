@@ -81,21 +81,21 @@ rule <casted_expression> !@semanticExpressionAST outExpression {
   <relation_term> ? outExpression
   repeat
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $|$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <relation_term> ? rightOperand
     outExpression = @orExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $||$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <relation_term> ? rightOperand
     outExpression = @orShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $^$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
@@ -126,14 +126,14 @@ rule <relation_term> !@semanticExpressionAST outExpression {
   <relation_factor> ? outExpression
   repeat
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $&$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <relation_factor> ? rightOperand
     outExpression = @andExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $&&$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
@@ -152,42 +152,42 @@ rule <relation_factor> !@semanticExpressionAST outExpression {
   <simple_expression> ? outExpression
   repeat
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $==$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
     outExpression = @equalExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $!=$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
     outExpression = @notEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $<=$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
     outExpression = @lowerOrEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $>=$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
     outExpression = @greaterOrEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $>$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
     outExpression = @strictGreaterExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $<$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
@@ -206,42 +206,42 @@ rule <simple_expression> !@semanticExpressionAST outExpression {
   <term> ? outExpression
   repeat
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $<<$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
     outExpression = @leftShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $>>$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
     outExpression = @rightShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $+$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
     outExpression = @addExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $&+$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
     outExpression = @addExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $-$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
     outExpression = @subExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $&-$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
@@ -272,21 +272,21 @@ rule <term> !@semanticExpressionAST outExpression {
     <factor> ?let @semanticExpressionAST rightOperand
     outExpression = @multiplicationExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $/$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <factor> ? rightOperand
     outExpression = @divisionExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $&/$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <factor> ? rightOperand
     outExpression = @divisionExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $mod$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
@@ -297,12 +297,25 @@ rule <term> !@semanticExpressionAST outExpression {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
+#   F A C T O R    :    + factor                                                                                       *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpressionAST outExpression {
+  let operatorLocation = @location.here
+  $+$
+  <factor> ? outExpression
+  outExpression = @unaryPlusExpressionAST.new {!operatorLocation !outExpression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   F A C T O R    :    - factor                                                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression {
-  @location operatorLocation = @location.here
+  let operatorLocation = @location.here
   $-$
   <factor> ? outExpression
   outExpression = @unaryMinusExpressionAST.new {!operatorLocation !outExpression}
@@ -315,7 +328,7 @@ rule <factor> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression {
-  @location operatorLocation = @location.here
+  let operatorLocation = @location.here
   $&-$
   <factor> ? outExpression
   outExpression = @unaryMinusNoOverflowExpressionAST.new {!operatorLocation !outExpression}
@@ -328,7 +341,7 @@ rule <factor> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression {
-  @location operatorLocation = @location.here
+  let operatorLocation = @location.here
   $not$
   <factor> ? outExpression
   outExpression = @notExpressionAST.new {!operatorLocation !outExpression}
@@ -341,7 +354,7 @@ rule <factor> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression {
-  @location operatorLocation = @location.here
+  let operatorLocation = @location.here
   $~$
   <factor> ? outExpression
   outExpression = @complementExpressionAST.new {!operatorLocation !outExpression}

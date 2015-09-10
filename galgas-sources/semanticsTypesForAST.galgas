@@ -183,6 +183,7 @@ class @concatExpressionAST,
 
 class @unaryMinusExpressionAST,
       @unaryMinusNoOverflowExpressionAST,
+      @unaryPlusExpressionAST,
       @notExpressionAST,
       @complementExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation

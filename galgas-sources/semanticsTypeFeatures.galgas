@@ -86,10 +86,10 @@ override getter @applicationPredefinedTypeAST getSupportedOperatorFlags
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @bigintPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
-  outFlags = generateDescriptionReaderUtilityMethod ()
-#  outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
+override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags
+{
+  outFlags = generateDescriptionReaderUtilityMethod ()  | unaryPlusOperator () | unaryMinusOperator () |
+             binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
 #    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
 #    | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
 #    | generateDescriptionReaderUtilityMethod () | incDecOperator () | isComparable ()
