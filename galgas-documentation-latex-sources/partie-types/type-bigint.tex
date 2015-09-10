@@ -1,0 +1,135 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{bigint}
+
+Le \ggs+@bigint+ définit les entiers signés d'une taille quelconque, seulement limitée par la mémoire disponible. Ce type est simplement une interface des entiers de la librairie GMP\footnote{\url{http://www.gmplib.org}.}.
+
+\section{Constante littérale}
+
+Utiliser le suffixe « \texttt{G} » pour définir une constante littérale de type \ggs!@bigint! :
+\begin{galgas}
+@bigint a = 1234567890_1234567890_1234567890_G
+message [a string] + "\n" # Affiche "123456789012345678901234567890"
+\end{galgas}
+
+Vous pouvez utiliser le caractère de soulignement « \texttt{\_} » pour séparer les chiffres.
+
+Avec le préfixe « \texttt{0x} », vous pouvez écrire les nombres en héxadécimal :
+\begin{galgas}
+@bigint a = 0x123456789ABCDEF0_123456789abcdefG
+message [a hexString] + "\n" # Affiche "123456789ABCDEF0_123456789ABCDEF"
+\end{galgas}
+
+Les lettres minuscules et majuscules sont utilisables.
+
+\section{Constructeurs}
+
+\subsectionConstructor{zero}{bigint}
+
+Le constructeur \ggs!zero! renvoie un \ggs!@bigint! initialisé à zéro :
+\begin{galgas}
+@bigint a = .zero
+message [a string] + "\n" # Affiche "0"
+\end{galgas}
+
+
+\subsectionConstructor{sint}{bigint}
+
+Le constructeur \ggs!sint! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@sint! :
+\begin{galgas}
+@bigint a = .sint {!-678S}
+message [a string] + "\n" # Affiche "-678"
+\end{galgas}
+
+
+\subsectionConstructor{sint64}{bigint}
+
+Le constructeur \ggs!sint64! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@sint64! :
+\begin{galgas}
+@bigint a = .sint64 {!-678LS}
+message [a string] + "\n" # Affiche "-678"
+\end{galgas}
+
+
+
+
+\subsectionConstructor{uint}{bigint}
+
+Le constructeur \ggs!uint! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@uint! :
+\begin{galgas}
+@bigint a = .uint {!678}
+message [a string] + "\n" # Affiche "678"
+\end{galgas}
+
+
+
+
+\subsectionConstructor{uint64}{bigint}
+
+Le constructeur \ggs!uint64! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@uint64! :
+\begin{galgas}
+@bigint a = .uint64 {!678L}
+message [a string] + "\n" # Affiche "678"
+\end{galgas}
+
+
+
+
+
+
+
+
+
+\section{Conversions en chaîne de caractères}
+
+\subsectionGetter{string}{bigint}
+
+\begin{galgas}
+getter string -> @bigint
+\end{galgas}
+
+Ce getter renvoie la valeur du receveur sous la forme d'une chaîne de caractères décimaux (de \ggs!0! à \ggs!9!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Par exemple :
+
+\begin{galgas}
+@bigint a = -1234567890_1234567890_1234567890_G
+message [a string] + "\n" # Affiche "-123456789012345678901234567890"
+\end{galgas}
+
+
+
+
+
+\subsectionGetter{hexString}{bigint}
+
+\begin{galgas}
+getter hexString -> @bigint
+\end{galgas}
+
+Ce getter renvoie la valeur du receveur sous la forme d'une chaîne de caractères héxadécimaux (\ggs!0! à \ggs!9!, \ggs!A! à \ggs!F!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Il n'y a pas de préfixe « \texttt{0x} ». Exemple :
+
+\begin{galgas}
+@bigint a = -1234567890_1234567890_1234567890_G
+message [a hexString] + "\n" # Affiche "-18EE90FF6C373E0EE4E3F0AD2"
+\end{galgas}
+
+
+
+
+
+
+
+
+
+\section{Arithmétique}
+
+\subsection{Opérateurs \texttt{+} et \texttt{-} unaires}
+
+L'opérateur \texttt{-} unaire effectue la négation de l'expression qui le suit. L'opérateur \texttt{+} unaire n'a aucun effet, il retourne la valeur de l'expression.
+
+\begin{galgas}
+@bigint a = +1234567890_1234567890_1234567890_G
+message [a string] + "\n" # Affiche "123456789012345678901234567890"
+\end{galgas}
+
+
