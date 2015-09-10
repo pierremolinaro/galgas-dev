@@ -16,10 +16,10 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 
-#before {
-#  @bigint v = 1234567890_123456789_01234567890G
-#  message "'" + [v hexString] + "'\n"
-#}
+before {
+  @bigint v = 1234567890_123456789_01234567890G + 9876543210G
+  message "'" + [v string] + "'\n"
+}
 
 proc enterBaseFinalGetterWithoutArgument
   ?!@getterMap ioReaderMap
@@ -699,7 +699,24 @@ override method @binarysetPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"forAllOnBitIndexAndBeyond" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"existOnBitIndex" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"existOnBitIndexAndBeyond" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"valueCount" !"uint" !"inBitCount" !returnedTypeName:"uint64" !true )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"valueCount"
+    !"uint"
+    !"inBitCount"
+    !returnedTypeName:"uint64"
+    !true
+  )
+ enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bigValueCount"
+    !"uint"
+    !"inBitCount"
+    !returnedTypeName:"bigint"
+    !true
+  )
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"compressedValueCount" !returnedTypeName:"uint64" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64ValueList" !"uint" !"inBitCount" !returnedTypeName:"uint64list" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"stringValueList" !"uint" !"inBitCount" !returnedTypeName:"stringlist" !false)

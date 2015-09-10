@@ -295,6 +295,30 @@ class GALGAS_bigint : public AC_GALGAS_root {
 
   public : static GALGAS_bigint constructor_zero (LOCATION_ARGS) ;
 
+//--------------------------------- + operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint add_operation (const GALGAS_bigint & inOperand,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- - operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint substract_operation (const GALGAS_bigint & inOperand,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- * operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint multiply_operation (const GALGAS_bigint & inOperand,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- / operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint divide_operation (const GALGAS_bigint & inOperand,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- unary - operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint operator_unary_minus (C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
@@ -2514,6 +2538,10 @@ public : VIRTUAL_IN_DEBUG GALGAS_binaryset right_shift_operation (const GALGAS_u
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_accessibleStates (const class GALGAS_binaryset & constinOperand0,
                                                                             const class GALGAS_uint & constinOperand1
                                                                             COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_bigValueCount (const class GALGAS_uint & constinOperand0,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset reader_binarySetByTranslatingFromIndex (const class GALGAS_uint & constinOperand0,
                                                                                            const class GALGAS_uint & constinOperand1

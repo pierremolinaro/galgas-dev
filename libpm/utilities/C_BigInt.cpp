@@ -39,8 +39,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (void) :
-mValue () {
-  mpz_init (mValue) ;
+mGMPint () {
+  mpz_init (mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -48,7 +48,7 @@ mValue () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::~C_BigInt (void) {
-  mpz_clear (mValue) ;
+  mpz_clear (mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -56,15 +56,15 @@ C_BigInt::~C_BigInt (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (const C_BigInt & inOperand) :
-mValue () {
-  mpz_init (mValue) ;
-  mpz_set (mValue, inOperand.mValue) ;
+mGMPint () {
+  mpz_init (mGMPint) ;
+  mpz_set (mGMPint, inOperand.mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt & C_BigInt::operator = (const C_BigInt & inOperand) {
-  mpz_set (mValue, inOperand.mValue) ;
+  mpz_set (mGMPint, inOperand.mGMPint) ;
   return *this ;
 }
 
@@ -79,19 +79,19 @@ C_BigInt & C_BigInt::operator = (const C_BigInt & inOperand) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BigInt::isZero (void) const {
-  return mpz_cmp_ui (mValue, 0) == 0 ;
+  return mpz_cmp_ui (mGMPint, 0) == 0 ;
 }
   
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BigInt::isOne (void) const {
-  return mpz_cmp_ui (mValue, 1) == 0 ;
+  return mpz_cmp_ui (mGMPint, 1) == 0 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BigInt::isMinusOne (void) const {
-  return mpz_cmp_si (mValue, -1) == 0 ;
+  return mpz_cmp_si (mGMPint, -1) == 0 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -105,79 +105,85 @@ bool C_BigInt::isMinusOne (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (const uint64_t inValue, const bool inNegate) :
-mValue () {
-  mpz_init (mValue) ;
+mGMPint () {
+  mpz_init (mGMPint) ;
   const uint64_t high = inValue >> 32 ;
   if (high == 0) {
-    mpz_set_ui (mValue, (uint32_t) inValue) ;
+    mpz_set_ui (mGMPint, (uint32_t) inValue) ;
   }else{
-    mpz_set_ui (mValue, (uint32_t) high) ;
-    mpz_mul_2exp (mValue, mValue, 32) ;
-    mpz_add_ui (mValue, mValue, (uint32_t) (inValue & UINT32_MAX)) ;
+    mpz_set_ui (mGMPint, (uint32_t) high) ;
+    mpz_mul_2exp (mGMPint, mGMPint, 32) ;
+    mpz_add_ui (mGMPint, mGMPint, (uint32_t) (inValue & UINT32_MAX)) ;
   }
   if (inNegate) {
-    mpz_neg (mValue, mValue) ;
+    mpz_neg (mGMPint, mGMPint) ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) :
-mValue () {
-  mpz_init (mValue) ;
-  mpz_set_ui (mValue, 0) ;
+mGMPint () {
+  mpz_init (mGMPint) ;
+  mpz_set_ui (mGMPint, 0) ;
   if (inHighValue != 0) {
     const uint64_t high = inHighValue >> 32 ;
     if (high == 0) {
-      mpz_set_ui (mValue, (uint32_t) inHighValue) ;
+      mpz_set_ui (mGMPint, (uint32_t) inHighValue) ;
     }else{
-      mpz_set_ui (mValue, (uint32_t) high) ;
-      mpz_mul_2exp (mValue, mValue, 32) ;
-      mpz_add_ui (mValue, mValue, (uint32_t) (inHighValue & UINT32_MAX)) ;
+      mpz_set_ui (mGMPint, (uint32_t) high) ;
+      mpz_mul_2exp (mGMPint, mGMPint, 32) ;
+      mpz_add_ui (mGMPint, mGMPint, (uint32_t) (inHighValue & UINT32_MAX)) ;
     }
-    mpz_mul_2exp (mValue, mValue, 32) ;
+    mpz_mul_2exp (mGMPint, mGMPint, 32) ;
   }
   const uint64_t high = inLowValue >> 32 ;
-  mpz_add_ui (mValue, mValue, (uint32_t) high) ;
-  mpz_mul_2exp (mValue, mValue, 32) ;
-  mpz_add_ui (mValue, mValue, (uint32_t) (inLowValue & UINT32_MAX)) ;
+  mpz_add_ui (mGMPint, mGMPint, (uint32_t) high) ;
+  mpz_mul_2exp (mGMPint, mGMPint, 32) ;
+  mpz_add_ui (mGMPint, mGMPint, (uint32_t) (inLowValue & UINT32_MAX)) ;
   if (inNegate) {
-    mpz_neg (mValue, mValue) ;
+    mpz_neg (mGMPint, mGMPint) ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (const int64_t inValue) :
-mValue () {
+mGMPint () {
   const bool negative = inValue < 0 ;
   const uint64_t v = (uint64_t) (negative ? (- inValue) : inValue) ;
-  mpz_init (mValue) ;
+  mpz_init (mGMPint) ;
   const uint64_t high = v >> 32 ;
   if (high == 0) {
-    mpz_set_ui (mValue, (uint32_t) v) ;
+    mpz_set_ui (mGMPint, (uint32_t) v) ;
   }else{
-    mpz_set_ui (mValue, (uint32_t) high) ;
-    mpz_mul_2exp (mValue, mValue, 32) ;
-    mpz_add_ui (mValue, mValue, (uint32_t) (v & UINT32_MAX)) ;
+    mpz_set_ui (mGMPint, (uint32_t) high) ;
+    mpz_mul_2exp (mGMPint, mGMPint, 32) ;
+    mpz_add_ui (mGMPint, mGMPint, (uint32_t) (v & UINT32_MAX)) ;
   }
   if (negative) {
-    mpz_neg (mValue, mValue) ;
+    mpz_neg (mGMPint, mGMPint) ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::setToZero (void) {
-  mpz_set_ui (mValue, 0) ;
+  mpz_set_ui (mGMPint, 0) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::setFromUnsigned (const uint32_t inValue) {
+  mpz_set_ui (mGMPint, inValue) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt::C_BigInt (const char * inString, const int32_t inBase, bool & outOk) :
-mValue () {
-  mpz_init (mValue) ;
-  const int r = mpz_set_str (mValue, inString, inBase) ;
+mGMPint () {
+  mpz_init (mGMPint) ;
+  const int r = mpz_set_str (mGMPint, inString, inBase) ;
   outOk = r == 0 ;
 }
 
@@ -192,14 +198,14 @@ mValue () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt & C_BigInt::operator ++ (void) {
-  mpz_add_ui (mValue, mValue, 1) ;
+  mpz_add_ui (mGMPint, mGMPint, 1) ;
   return *this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt & C_BigInt::operator -- (void) {
-  mpz_sub_ui (mValue, mValue, 1) ;
+  mpz_sub_ui (mGMPint, mGMPint, 1) ;
   return *this ;
 }
 
@@ -214,10 +220,10 @@ C_BigInt & C_BigInt::operator -- (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_BigInt::hexString (void) const {
-  const size_t neededSize = mpz_sizeinbase (mValue, 16) + 2 ;
+  const size_t neededSize = mpz_sizeinbase (mGMPint, 16) + 2 ;
   char * s = NULL ;
   macroMyNewPODArray (s, char, neededSize) ;
-  mpz_get_str (s, -16, mValue) ; // -16 for getting 'A' to 'F'
+  mpz_get_str (s, -16, mGMPint) ; // -16 for getting 'A' to 'F'
   C_String result ;
   result << s ;
   macroMyDeletePODArray (s) ;
@@ -227,10 +233,10 @@ C_String C_BigInt::hexString (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_BigInt::decimalString (void) const {
-  const size_t neededSize = mpz_sizeinbase (mValue, 10) + 2 ;
+  const size_t neededSize = mpz_sizeinbase (mGMPint, 10) + 2 ;
   char * s = NULL ;
   macroMyNewPODArray (s, char, neededSize) ;
-  mpz_get_str (s, 10, mValue) ;
+  mpz_get_str (s, 10, mGMPint) ;
   C_String result ;
   result << s ;
   macroMyDeletePODArray (s) ;
@@ -246,7 +252,7 @@ C_String C_BigInt::decimalString (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::operator += (const uint32_t inOperand) {
-  mpz_add_ui (mValue, mValue, inOperand) ;
+  mpz_add_ui (mGMPint, mGMPint, inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -260,7 +266,7 @@ C_BigInt C_BigInt::operator + (const uint32_t inOperand) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::operator -= (const uint32_t inOperand) {
-  mpz_sub_ui (mValue, mValue, inOperand) ;
+  mpz_sub_ui (mGMPint, mGMPint, inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -280,13 +286,13 @@ C_BigInt C_BigInt::operator - (const uint32_t inOperand) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::operator += (const C_BigInt inOperand) {
-  mpz_add (mValue, mValue, inOperand.mValue) ;
+  mpz_add (mGMPint, mGMPint, inOperand.mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::operator -= (const C_BigInt inOperand) {
-  mpz_sub (mValue, mValue, inOperand.mValue) ;
+  mpz_sub (mGMPint, mGMPint, inOperand.mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -324,7 +330,7 @@ C_BigInt C_BigInt::operator - (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::negateInPlace (void) {
-  mpz_neg (mValue, mValue) ;
+  mpz_neg (mGMPint, mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -336,7 +342,7 @@ void C_BigInt::negateInPlace (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::operator *= (const uint32_t inMultiplicand) {
-  mpz_mul_ui (mValue, mValue, inMultiplicand) ;
+  mpz_mul_ui (mGMPint, mGMPint, inMultiplicand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -356,7 +362,7 @@ C_BigInt C_BigInt::operator * (const uint32_t inMultiplicand) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::operator *= (const C_BigInt inMultiplicand) {
-  mpz_mul (mValue, mValue, inMultiplicand.mValue) ;
+  mpz_mul (mGMPint, mGMPint, inMultiplicand.mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -373,13 +379,12 @@ C_BigInt C_BigInt::operator * (const C_BigInt & inMultiplicand) const {
   #pragma mark Division
 #endif
 
-
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::divideBy (const uint32_t inDivisor,
                          C_BigInt & outQuotient,
                          uint32_t & outRemainder) const {
-  outRemainder = (uint32_t) mpz_fdiv_q_ui (outQuotient.mValue, mValue, inDivisor) ;
+  outRemainder = (uint32_t) mpz_fdiv_q_ui (outQuotient.mGMPint, mGMPint, inDivisor) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -387,8 +392,8 @@ void C_BigInt::divideBy (const uint32_t inDivisor,
 void C_BigInt::divideInPlace (const uint32_t inDivisor, uint32_t & outRemainder) {
   mpz_t quotient ;
   mpz_init (quotient) ;
-  outRemainder = (uint32_t) mpz_fdiv_q_ui (quotient, mValue, inDivisor) ;
-  mpz_swap (quotient, mValue) ;
+  outRemainder = (uint32_t) mpz_fdiv_q_ui (quotient, mGMPint, inDivisor) ;
+  mpz_swap (quotient, mGMPint) ;
   mpz_clear (quotient) ;
 }
 
@@ -406,9 +411,24 @@ void C_BigInt::divideBy (const C_BigInt inDivisor,
 void C_BigInt::divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) {
   mpz_t quotient ;
   mpz_init (quotient) ;
-  mpz_fdiv_qr (quotient, outRemainder.mValue, mValue, inDivisor.mValue) ;
-  mpz_swap (quotient, mValue) ;
+  mpz_fdiv_qr (quotient, outRemainder.mGMPint, mGMPint, inDivisor.mGMPint) ;
+  mpz_swap (quotient, mGMPint) ;
   mpz_clear (quotient) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator /= (const C_BigInt inDivisor) {
+  C_BigInt unusedRemainder ;
+  divideInPlace (inDivisor, unusedRemainder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator / (const C_BigInt & inDivisor) const {
+  C_BigInt result = *this ;
+  result /= inDivisor ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -420,7 +440,7 @@ void C_BigInt::divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder)
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_BigInt::operator <<= (const uint32_t inValue) {
-  mpz_mul_2exp (mValue, mValue, inValue) ;
+  mpz_mul_2exp (mGMPint, mGMPint, inValue) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -442,8 +462,8 @@ C_BigInt C_BigInt::operator << (const uint32_t inValue) const {
 void C_BigInt::operator >>= (const uint32_t inValue) {
   mpz_t quotient ;
   mpz_init (quotient) ;
-  mpz_fdiv_q_2exp (quotient, mValue, inValue) ;
-  mpz_swap (quotient, mValue) ;
+  mpz_fdiv_q_2exp (quotient, mGMPint, inValue) ;
+  mpz_swap (quotient, mGMPint) ;
   mpz_clear (quotient) ;
 }
 
@@ -464,7 +484,7 @@ C_BigInt C_BigInt::operator >> (const uint32_t inValue) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t C_BigInt::compare (const C_BigInt & inValue) const {
-  return mpz_cmp (mValue, inValue.mValue) ;
+  return mpz_cmp (mGMPint, inValue.mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -531,29 +551,29 @@ bool C_BigInt::operator < (const C_BigInt & inOperand) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BigInt::fitsInUInt32 (void) const {
-  return mpz_fits_uint_p (mValue) != 0 ;
+  return mpz_fits_uint_p (mGMPint) != 0 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BigInt::fitsInUInt64 (void) const {
-  return mpz_sizeinbase (mValue, 2) <= 64 ;
+  return mpz_sizeinbase (mGMPint, 2) <= 64 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BigInt::fitsInSInt32 (void) const {
-  return mpz_fits_sint_p (mValue) != 0 ;
+  return mpz_fits_sint_p (mGMPint) != 0 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BigInt::fitsInSInt64 (void) const {
-  const size_t requiredBitCount = mpz_sizeinbase (mValue, 2) ;
+  const size_t requiredBitCount = mpz_sizeinbase (mGMPint, 2) ;
   bool ok = requiredBitCount <= 63 ;
-  if ((requiredBitCount == 64) && (mpz_sgn (mValue) < 0)) { // INT64_MIN is a particular case
+  if ((requiredBitCount == 64) && (mpz_sgn (mGMPint) < 0)) { // INT64_MIN is a particular case
     int64_t r ;
-    mpz_export (& r, NULL, 1, sizeof (int64_t), 0, 0, mValue) ;
+    mpz_export (& r, NULL, 1, sizeof (int64_t), 0, 0, mGMPint) ;
     ok = r == INT64_MIN ;
   }
   return ok ;
@@ -568,7 +588,7 @@ bool C_BigInt::fitsInSInt64 (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_BigInt::uint32 (void) const {
-  return (uint32_t) mpz_get_ui (mValue) ;
+  return (uint32_t) mpz_get_ui (mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -576,7 +596,7 @@ uint32_t C_BigInt::uint32 (void) const {
 uint64_t C_BigInt::uint64 (void) const {
   uint64_t result = UINT64_MAX ;
   if (fitsInUInt64 ()) {
-    mpz_export (& result, NULL, 1, sizeof (uint64_t), 0, 0, mValue) ;
+    mpz_export (& result, NULL, 1, sizeof (uint64_t), 0, 0, mGMPint) ;
   }
   return result ;
 }
@@ -584,7 +604,7 @@ uint64_t C_BigInt::uint64 (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t C_BigInt::int32 (void) const {
-  return (int32_t) mpz_get_si (mValue) ;
+  return (int32_t) mpz_get_si (mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -592,13 +612,25 @@ int32_t C_BigInt::int32 (void) const {
 int64_t C_BigInt::int64 (void) const {
   uint64_t r = UINT64_MAX ;
   if (fitsInUInt64 ()) {
-    mpz_export (& r, NULL, 1, sizeof (uint64_t), 0, 0, mValue) ;
+    mpz_export (& r, NULL, 1, sizeof (uint64_t), 0, 0, mGMPint) ;
   }
   int64_t result = (int64_t) r ;
-  if (mpz_sgn (mValue) < 0) {
+  if (mpz_sgn (mGMPint) < 0) {
     result = - result ;
   }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Swap
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void swap (C_BigInt & ioOp1, C_BigInt & ioOp2) {
+  mpz_swap (ioOp1.mGMPint, ioOp2.mGMPint) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

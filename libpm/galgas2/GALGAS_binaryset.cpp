@@ -563,6 +563,23 @@ GALGAS_uint_36__34_ GALGAS_binaryset::reader_valueCount (const GALGAS_uint & inV
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bigint GALGAS_binaryset::reader_bigValueCount (const GALGAS_uint & inVariableCount,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (inVariableCount.isValid ()) {
+    if (mBDD.significantVariableCount () > inVariableCount.uintValue ()) {
+      inCompiler->onTheFlyRunTimeError ("needed variable count is greater than variable count argument" COMMA_THERE) ;
+    }else{
+      const PMUInt128 r = mBDD.valueCount128 (inVariableCount.uintValue ()) ;
+      result = GALGAS_bigint (C_BigInt (r.high (), r.low (), false)) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint_36__34_ GALGAS_binaryset::reader_compressedValueCount (UNUSED_LOCATION_ARGS) const {
   TC_UniqueArray <C_String> valuesArray ;
   mBDD.buildCompressedLittleEndianStringValueArray (valuesArray COMMA_HERE) ;

@@ -308,3 +308,70 @@ GALGAS_sint_36__34_ GALGAS_bigint::reader_sint_36__34_ (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Arithmetics
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::operator_unary_minus (C_Compiler * /* inCompiler */ COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid ()) {
+    result = GALGAS_bigint (- mValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::add_operation (const GALGAS_bigint & inOperand,
+                                            C_Compiler * /* inCompiler */
+                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid() && inOperand.isValid ()) {
+    result = GALGAS_bigint (mValue + inOperand.mValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::substract_operation (const GALGAS_bigint & inOperand,
+                                                  C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid() && inOperand.isValid ()) {
+    result = GALGAS_bigint (mValue - inOperand.mValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::multiply_operation (const GALGAS_bigint & inOperand,
+                                                 C_Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid() && inOperand.isValid ()) {
+    result = GALGAS_bigint (mValue * inOperand.mValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::divide_operation (const GALGAS_bigint & inOperand,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid() && inOperand.isValid ()) {
+    if (inOperand.mValue.isZero ()) {
+      inCompiler->onTheFlyRunTimeError ("@bigint divide by zero" COMMA_THERE) ;
+    }else{
+      result = GALGAS_bigint (mValue / inOperand.mValue) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
