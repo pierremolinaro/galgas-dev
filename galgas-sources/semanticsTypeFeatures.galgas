@@ -88,12 +88,11 @@ override getter @applicationPredefinedTypeAST getSupportedOperatorFlags
 
 override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags
 {
-  outFlags = generateDescriptionReaderUtilityMethod ()  | unaryPlusOperator () | unaryMinusOperator () |
-             binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
-#    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
+  outFlags = generateDescriptionReaderUtilityMethod () | unaryPlusOperator () | unaryMinusOperator () |
+             binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator () |
+             binaryShiftOperator () | binaryModOperator ()
 #    | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
-#    | generateDescriptionReaderUtilityMethod () | incDecOperator () | isComparable ()
-#    | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
+#    | incDecOperator () | isComparable ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

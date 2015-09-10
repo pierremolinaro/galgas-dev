@@ -121,6 +121,14 @@ GALGAS_string GALGAS_sint::reader_string (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_sint::reader_hexString (UNUSED_LOCATION_ARGS) const {
+  const uint32_t v = (uint32_t) mSIntValue ;
+  C_String s ; s.appendUnsignedHex8 (v) ;
+  return GALGAS_string (s) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_sint::description (C_String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString << "<@sint:" ;

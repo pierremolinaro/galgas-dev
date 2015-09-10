@@ -375,3 +375,49 @@ GALGAS_bigint GALGAS_bigint::divide_operation (const GALGAS_bigint & inOperand,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::modulo_operation (const GALGAS_bigint & inOperand2,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid () && inOperand2.isValid ()) {
+    if (inOperand2.mValue.isZero ()) {
+      inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero in modulo operation" COMMA_THERE) ;
+    }else{
+      result = GALGAS_bigint (mValue % inOperand2.mValue) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Shift
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_uint inShiftOperand
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+
+  GALGAS_bigint result ;
+  if (isValid () && inShiftOperand.isValid ()) {
+    result = GALGAS_bigint (mValue << inShiftOperand.uintValue ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_uint inShiftOperand
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid () && inShiftOperand.isValid ()) {
+    result = GALGAS_bigint (mValue >> inShiftOperand.uintValue ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+

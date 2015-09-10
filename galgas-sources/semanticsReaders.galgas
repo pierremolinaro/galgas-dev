@@ -16,10 +16,24 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 
-before {
-  @bigint v = 1234567890_123456789_01234567890G + 9876543210G
-  message "'" + [v string] + "'\n"
-}
+#before {
+#  message [9G >> 1 string] + "\n"
+#  message [9S >> 1 string] + "\n"
+#  message [7G >> 1 string] + "\n"
+#  message [7S >> 1 string] + "\n"
+#  message [3G >> 1 string] + "\n"
+#  message [3S >> 1 string] + "\n"
+#  message [1G >> 1 string] + "\n"
+#  message [1S >> 1 string] + "\n"
+#  message [(-9G) >> 1 string] + "\n"
+#  message [(-9S) >> 1 string] + "\n"
+#  message [(-7G) >> 1 string] + "\n"
+#  message [(-7S) >> 1 string] + "\n"
+#  message [(-3G) >> 1 string] + "\n"
+#  message [(-3S) >> 1 string] + "\n"
+#  message [(-1G) >> 1 string] + "\n"
+#  message [(-1S) >> 1 string] + "\n"
+#}
 
 proc enterBaseFinalGetterWithoutArgument
   ?!@getterMap ioReaderMap
@@ -536,6 +550,7 @@ override method @sintPredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !false)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
+  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"hexString" !returnedTypeName:"string" !false)
 
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canAdd" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canSubstract" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
@@ -575,6 +590,7 @@ override method @sint64PredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
+  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"hexString" !returnedTypeName:"string" !false)
 
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canAdd" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canSubstract" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
