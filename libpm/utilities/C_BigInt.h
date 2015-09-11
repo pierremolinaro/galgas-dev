@@ -134,6 +134,12 @@ class C_BigInt {
   public : void divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
   public : void divideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
 
+  public : void floorDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
+  public : void floorDivideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
+
+  public : void ceilDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
+  public : void ceilDivideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
+
   public : void operator /= (const C_BigInt inDivisor) ;
   public : C_BigInt operator / (const C_BigInt & inDivisor) const ;
 

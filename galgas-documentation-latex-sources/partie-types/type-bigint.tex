@@ -148,14 +148,37 @@ L'opérateur « \texttt{*} » infixé effectue le produit de ses opérandes. Com
 
 \subsection{Division}
 
-L'opérateur « \texttt{/} » infixé effectue la division entière de l'expression de gauche par l'expression de droite. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
-\begin{galgas}
-@bigint a = 1234567890_1234567890_1234567890_G / 9876543210G
-message [a string] + "\n" # Affiche "12499999887343749990"
-\end{galgas}
 
-Lorsqu'un opérande est négatif, ou lorsque que les deux sont négatifs, l'opération effectuée est la division de leur valeurs absolues, et, si les deux opérandes sont de signe contraire, le résultat est changé de signe. Elle se comporte ainsi comme la division en C, ou GALGAS avec les types \ggs!@sint! et \ggs!@sint64! :
+La division d'un entier $n$ par un diviseur $d$ retourne un quotient $q$ et un reste $r$. Dans tous les cas, on a :
+\begin{equation*}
+n = q * d + r\text{, avec 0 } \leqslant \mid r\mid < \mid d\mid
+\end{equation*}
+
+Trois opérations différentes sont possibles, suivant que l'on veuille obtenir un quotient arrondi :
+\begin{itemize}
+\item \emph{vers $+\infty$}, et $r$ a un signe opposé à $d$ ;
+\item \emph{vers $-\infty$}, et $r$ a le même signe que $d$ ;
+\item \emph{vers zéro}, et $r$ a le même signe que $n$.
+\end{itemize}
+
+En C, les opérateurs de division (« \texttt{/} »), et de calcul du reste (« \texttt{\%} ») utilisent un quotient arrondi \emph{vers zéro}. L'opérateur de décalage à droite (« \texttt{>{}>} ») de $n$ bits renvoie le quotient arrondi vers \emph{vers $-\infty$} de la division par $2^n$. En GALGAS, les opérateurs correspondants sur les types \ggs!@uint!, \ggs!@sint!, \ggs!@uint64! et \ggs!@sint64! sont conformes à ce comportement.
+
+Le type \ggs!@bigint! obéit aux mêmes règles :
+\begin{itemize}
+\item les opérateurs \ggs!/! et \ggs!mod! infixés effectuent la division qui calcule le quotient arrondi \emph{vers zéro} ;
+  \item l'opérateur \ggs!>>! infixé calcule le quotient arrondi \emph{vers $-\infty$} de la division par $2^n$ ;
+\end{itemize}
+
+De plus, trois méthodes sont disponibles, qui retournent quotient et reste de la division :
+\begin{itemize}
+  \item la méthode \ggs!divideBy! retourne le le quotient arrondi \emph{vers zéro} et le reste correspondant ;
+  \item la méthode \ggs!floorDivideBy! retourne le le quotient arrondi \emph{vers $-\infty$} et le reste correspondant ;
+  \item la méthode \ggs!ceilDivideBy! retourne le le quotient arrondi \emph{vers $+\infty$} et le reste correspondant.
+\end{itemize}
+
+
+\textbf{Opérateur « \texttt{/} » infixé.} Il effectue la division entière de l'expression de gauche par l'expression de droite et renvoie le quotient. Si l'expression de gauche est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
 \begin{galgas}
   message [(-7S) / 2S string] + "\n" # Affiche "-3"
@@ -168,11 +191,7 @@ Lorsqu'un opérande est négatif, ou lorsque que les deux sont négatifs, l'opé
 
 
 
-\subsection{Reste de la division}
-
-L'opérateur « \ggs!mod! » infixé renvoie le reste de la division entière de l'expression de gauche par l'expression de droite, telle que décrite au dessus. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
-
-Lorsque les deux opérandes sont de signe contraire, le reste est négatif ou nul. Cette opération se comporte ainsi comme l'opérateur « \texttt{\%} du C, et comme l'opérateur \ggs!mod! des types \ggs!@sint! et \ggs!@sint64! :
+\textbf{Opérateur « \texttt{mod} » infixé.} Il renvoie le reste de la division entière de l'expression de gauche par l'expression de droite, telle que décrite au dessus. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
 \begin{galgas}
   message [9876543210G mod 1234567890G string] + "\n" # Affiche "90"
@@ -188,6 +207,109 @@ Lorsque les deux opérandes sont de signe contraire, le reste est négatif ou nu
 
 
 
+\textbf{Méthode \texttt{divideBy}.} Elle effectue la division dont le quotient arrondi \emph{vers zéro}, c'est-à-dire elle combine les opérateurs « \ggs!/! » et « \ggs!mod! » en une seule opération pour retourner quotient et reste.
+
+\begin{galgas}
+  @bigint quotient
+  @bigint remainder
+  [9876543210_9876543210G divideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "80000000737 8280"
+  [-9876543210_9876543210G divideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "-80000000737 -8280"
+  [-9876543210_9876543210G divideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "80000000737 -8280"
+  [9876543210_9876543210G divideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "-80000000737 8280"
+\end{galgas}
+
+
+
+
+
+\textbf{Méthode \texttt{floorDivideBy}.} Elle effectue toujours la division dont le quotient arrondi \emph{vers $-\infty$}.
+
+\begin{galgas}
+  @bigint quotient
+  @bigint remainder
+  [9876543210_9876543210G floorDivideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "80000000737 8280"
+  [-9876543210_9876543210G floorDivideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "-80000000738 1234559610"
+  [-9876543210_9876543210G floorDivideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "80000000737 -8280"
+  [9876543210_9876543210G floorDivideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "-80000000738 -1234559610"
+\end{galgas}
+
+
+
+
+
+
+\textbf{Méthode \texttt{ceilDivideBy}.} Elle effectue toujours la division dont le quotient arrondi \emph{vers $+\infty$}.
+
+\begin{galgas}
+  @bigint quotient
+  @bigint remainder
+  [9876543210_9876543210G ceilDivideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "80000000738 -1234559610"
+  [-9876543210_9876543210G ceilDivideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "-80000000737 -8280"
+  [-9876543210_9876543210G ceilDivideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "80000000738 1234559610"
+  [9876543210_9876543210G ceilDivideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # "-80000000737 8280"
+\end{galgas}
+
+
 
 
 
@@ -198,7 +320,7 @@ Lorsque les deux opérandes sont de signe contraire, le reste est négatif ou nu
 
 \subsection{Opérateur \texttt{<{}<}}
 
-L'opérateur « \texttt{<{}<} » infixé effectue un décalage à gauche. L'expression de droite est toujours un \ggs!@uint!. Un décalage à gauche de $n$ bits est sémantiquement équivalent à une multiplication par $2^n$, que le nombre auquel s'applique le décalage soit signé ou non. C'est la sémantique des décalages à gauche des types \ggs!@sint! et \ggs!@sint64! :
+L'opérateur « \ggs!<<! » infixé effectue un décalage à gauche. L'expression de droite est toujours un \ggs!@uint!. Un décalage à gauche de $n$ bits est sémantiquement équivalent à une multiplication par $2^n$, que le nombre auquel s'applique le décalage soit signé ou non. C'est la sémantique des décalages à gauche des types \ggs!@sint! et \ggs!@sint64! :
 
 \begin{galgas}
   message [0x1234567890G << 12 hexString] + "\n" # Affiche "1234567890000"
@@ -209,7 +331,7 @@ L'opérateur « \texttt{<{}<} » infixé effectue un décalage à gauche. L'expr
 
 \subsection{Opérateur \texttt{>{}>}}
 
-L'opérateur « \texttt{>{}>} » infixé effectue un décalage à droite. L'expression de droite est toujours un \ggs!@uint! :
+L'opérateur « \ggs!>>! » infixé effectue un décalage à droite. L'expression de droite est toujours un \ggs!@uint! :
 \begin{galgas}
   message [0x1234567890G >> 12 hexString] + "\n" # Affiche "1234567"
   message [(-0x1234567890G) >> 12 hexString] + "\n" # Affiche "-1234567"
@@ -217,7 +339,9 @@ L'opérateur « \texttt{>{}>} » infixé effectue un décalage à droite. L'expr
   message [(-2000S) >> 2 string] + "\n" # Affiche "-500"
 \end{galgas}
 
-Un décalage à droite de $n$ bits d'un nombre posifif est sémantiquement équivalent au quotient \emph{par défaut} d'une division par $2^n$ :
+Un décalage à droite de $n$ bits d'un nombre posifif ou négatif est sémantiquement équivalent au quotient \emph{par défaut} d'une division par $2^n$, c'est-à-dire que le reste est toujours positif ou nul.
+
+Quelques exemples de décalage à droite de nombres positifs :
 
 \begin{galgas}
   message [9G >> 1 string] + "\n" # Affiche "4"
@@ -231,7 +355,7 @@ Un décalage à droite de $n$ bits d'un nombre posifif est sémantiquement équi
 \end{galgas}
 
 
-Un décalage à droite de $n$ bits d'un nombre négatif est sémantiquement équivalent au quotient \emph{par excès} d'une division par $2^n$ :
+Et pour des nombres négatifs :
 
 \begin{galgas}
   message [-9G >> 1 string] + "\n" # Affiche "-5"

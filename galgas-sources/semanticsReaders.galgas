@@ -17,22 +17,16 @@
 
 
 #before {
-#  message [9G >> 1 string] + "\n"
-#  message [9S >> 1 string] + "\n"
-#  message [7G >> 1 string] + "\n"
-#  message [7S >> 1 string] + "\n"
-#  message [3G >> 1 string] + "\n"
-#  message [3S >> 1 string] + "\n"
-#  message [1G >> 1 string] + "\n"
-#  message [1S >> 1 string] + "\n"
-#  message [(-9G) >> 1 string] + "\n"
-#  message [(-9S) >> 1 string] + "\n"
-#  message [(-7G) >> 1 string] + "\n"
-#  message [(-7S) >> 1 string] + "\n"
-#  message [(-3G) >> 1 string] + "\n"
-#  message [(-3S) >> 1 string] + "\n"
-#  message [(-1G) >> 1 string] + "\n"
-#  message [(-1S) >> 1 string] + "\n"
+#  @bigint quotient
+#  @bigint remainder
+#  [9876543210_9876543210G divideBy !1234567890G ?quotient:quotient ?remainder:remainder]
+#  message [quotient string] + " " + remainder + "\n"
+#  [-9876543210_9876543210G divideBy !1234567890G ?quotient:quotient ?remainder:remainder]
+#  message [quotient string] + " " + remainder + "\n"
+#  [-9876543210_9876543210G divideBy !-1234567890G ?quotient:quotient ?remainder:remainder]
+#  message [quotient string] + " " + remainder + "\n"
+#  [9876543210_9876543210G divideBy !-1234567890G ?quotient:quotient ?remainder:remainder]
+#  message [quotient string] + " " + remainder + "\n"
 #}
 
 proc enterBaseFinalGetterWithoutArgument

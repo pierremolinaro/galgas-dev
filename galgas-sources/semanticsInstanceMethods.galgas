@@ -165,3 +165,45 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @bigintPredefinedTypeAST getInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap
+{
+  outInstanceMethodMap = {}
+#--- divide, floorDivide, ceilDivide
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bigint" ?let bigIntType]
+  @formalParameterSignature argList = {}
+  argList += !["" nowhere] !bigIntType !.argumentConstantIn !"inDivisor"
+  argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"
+  argList += !["remainder" nowhere] !bigIntType !.argumentOut !"outRemainder"
+  [!?outInstanceMethodMap insertKey
+    !.new {!"divideBy" !.here}
+    !.definedAsMember
+    !argList
+    !.here
+    !true
+    !.isBasic
+    !"" # No error message
+  ]
+  [!?outInstanceMethodMap insertKey
+    !.new {!"floorDivideBy" !.here}
+    !.definedAsMember
+    !argList
+    !.here
+    !true
+    !.isBasic
+    !"" # No error message
+  ]
+  [!?outInstanceMethodMap insertKey
+    !.new {!"ceilDivideBy" !.here}
+    !.definedAsMember
+    !argList
+    !.here
+    !true
+    !.isBasic
+    !"" # No error message
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+

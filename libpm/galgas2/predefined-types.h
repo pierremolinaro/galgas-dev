@@ -340,6 +340,24 @@ public : VIRTUAL_IN_DEBUG GALGAS_bigint right_shift_operation (const GALGAS_uint
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_ceilDivideBy (class GALGAS_bigint constinArgument0,
+                                                      class GALGAS_bigint & outArgument1,
+                                                      class GALGAS_bigint & outArgument2,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_divideBy (class GALGAS_bigint constinArgument0,
+                                                  class GALGAS_bigint & outArgument1,
+                                                  class GALGAS_bigint & outArgument2,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_floorDivideBy (class GALGAS_bigint constinArgument0,
+                                                       class GALGAS_bigint & outArgument1,
+                                                       class GALGAS_bigint & outArgument2,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
