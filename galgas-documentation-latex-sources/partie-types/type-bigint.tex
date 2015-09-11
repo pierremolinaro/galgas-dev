@@ -10,7 +10,7 @@ Le \ggs+@bigint+ définit les entiers signés d'une taille quelconque, seulement
 Utiliser le suffixe « \texttt{G} » pour définir une constante littérale de type \ggs!@bigint! :
 \begin{galgas}
 @bigint a = 1234567890_1234567890_1234567890_G
-message [a string] + "\n" # Affiche "123456789012345678901234567890"
+message [a string] + "\n" # 123456789012345678901234567890
 \end{galgas}
 
 Vous pouvez utiliser le caractère de soulignement « \texttt{\_} » pour séparer les chiffres.
@@ -18,7 +18,7 @@ Vous pouvez utiliser le caractère de soulignement « \texttt{\_} » pour sépar
 Avec le préfixe « \texttt{0x} », vous pouvez écrire les nombres en héxadécimal :
 \begin{galgas}
 @bigint a = 0x123456789ABCDEF0_123456789abcdefG
-message [a hexString] + "\n" # Affiche "123456789ABCDEF0_123456789ABCDEF"
+message [a hexString] + "\n" # 0x123456789ABCDEF0_123456789ABCDEF
 \end{galgas}
 
 Les lettres minuscules et majuscules sont utilisables.
@@ -30,7 +30,7 @@ Les lettres minuscules et majuscules sont utilisables.
 Le constructeur \ggs!zero! renvoie un \ggs!@bigint! initialisé à zéro :
 \begin{galgas}
 @bigint a = .zero
-message [a string] + "\n" # Affiche "0"
+message [a string] + "\n" # 0
 \end{galgas}
 
 
@@ -39,7 +39,7 @@ message [a string] + "\n" # Affiche "0"
 Le constructeur \ggs!sint! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@sint! :
 \begin{galgas}
 @bigint a = .sint {!-678S}
-message [a string] + "\n" # Affiche "-678"
+message [a string] + "\n" # -678
 \end{galgas}
 
 
@@ -48,7 +48,7 @@ message [a string] + "\n" # Affiche "-678"
 Le constructeur \ggs!sint64! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@sint64! :
 \begin{galgas}
 @bigint a = .sint64 {!-678LS}
-message [a string] + "\n" # Affiche "-678"
+message [a string] + "\n" # -678
 \end{galgas}
 
 
@@ -59,21 +59,152 @@ message [a string] + "\n" # Affiche "-678"
 Le constructeur \ggs!uint! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@uint! :
 \begin{galgas}
 @bigint a = .uint {!678}
-message [a string] + "\n" # Affiche "678"
+message [a string] + "\n" # 678
 \end{galgas}
 
 
 
 
-\subsectionGetter{uint64}{bigint}
+\subsectionConstructor{uint64}{bigint}
 
 Le constructeur \ggs!uint64! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@uint64! :
 \begin{galgas}
 @bigint a = .uint64 {!678L}
-message [a string] + "\n" # Affiche "678"
+message [a string] + "\n" # 678
 \end{galgas}
 
 
+
+
+
+
+
+
+
+
+\section{Conversions}
+
+\subsectionGetter{bitCountForSignedRepresentation}{uint}
+
+Ce \emph{getter} permet de connaître le nombre de bits nécessaires pour écrire la valeur du récepteur dans la représentation binaire \emph{complément à deux}.
+
+\begin{galgas}
+message [[0G bitCountForSignedRepresentation] string] + "\n" # 1
+message [[1G bitCountForSignedRepresentation] string] + "\n" # 2
+message [[-1G bitCountForSignedRepresentation] string] + "\n" # 1
+message [[0x8000G bitCountForSignedRepresentation] string] + "\n" # 17
+message [[-0x8000G bitCountForSignedRepresentation] string] + "\n" # 16
+\end{galgas}
+
+
+
+\subsectionGetter{bitCountForUnsignedRepresentation}{uint}
+
+Ce \emph{getter} permet de connaître le nombre de bits nécessaires pour écrire la valeur absolue du récepteur dans la représentation binaire \emph{naturelle}. 
+
+\begin{galgas}
+message [[0G bitCountForUnsignedRepresentation] string] + "\n" # 1
+message [[1G bitCountForUnsignedRepresentation] string] + "\n" # 1
+message [[-1G bitCountForUnsignedRepresentation] string] + "\n" # 1
+message [[0x8000G bitCountForUnsignedRepresentation] string] + "\n" # 16
+message [[-0x8000G bitCountForUnsignedRepresentation] string] + "\n" # 16
+\end{galgas}
+
+Comme c'est la valeur absolue qui est prise en compte, le signe n'intervient pas.
+
+
+\subsectionGetter{fitsInSInt}{bigint}
+
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@sint!.
+
+\begin{galgas}
+message [[0x1234_5678G fitsInSInt] ocString] + "\n" # YES
+message [[0x7FFF_FFFFG fitsInSInt] ocString] + "\n" # YES
+message [[0x8000_0000G fitsInSInt] ocString] + "\n" # NO
+message [[-0x8000_0000G fitsInSInt] ocString] + "\n" # YES
+message [[-0x8000_0001G fitsInSInt] ocString] + "\n" # NO
+\end{galgas}
+
+
+
+
+\subsectionGetter{fitsInSInt64}{bigint}
+
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@sint64!.
+
+\begin{galgas}
+message [[0x1234_5678_9ABC_DEF0G fitsInSInt64] ocString] + "\n" # YES
+message [[0x7FFF_FFFF_FFFF_FFFFG fitsInSInt64] ocString] + "\n" # YES
+message [[0x8000_0000_0000_0000G fitsInSInt64] ocString] + "\n" # NO
+message [[-0x8000_0000_0000_0000G fitsInSInt64] ocString] + "\n" # YES
+message [[-0x8000_0000_0000_0001G fitsInSInt64] ocString] + "\n" # NO
+\end{galgas}
+
+
+
+
+\subsectionGetter{fitsInUInt}{bigint}
+
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@uint!.
+
+\begin{galgas}
+message [[0x1234_5678G fitsInUInt] ocString] + "\n" # YES
+message [[0x1234_5678_9G fitsInUInt] ocString] + "\n" # NO
+message [[-1G fitsInUInt] ocString] + "\n" # NO
+\end{galgas}
+
+
+
+
+
+
+\subsectionGetter{fitsInUInt64}{bigint}
+
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@uint64!.
+
+\begin{galgas}
+message [[0x1234_5678_9ABC_DEF0G fitsInUInt64] ocString] + "\n" # YES
+message [[0x1234_5678_9ABC_DEF0_1G fitsInUInt64] ocString] + "\n" # NO
+message [[-1G fitsInUInt64] ocString] + "\n" # NO
+\end{galgas}
+
+
+\subsectionGetter{sint}{bigint}
+
+Ce \emph{getter} permet de convertir le récepteur en \ggs!@sint!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInSInt}.
+
+\begin{galgas}
+message [[-0x1234_5678G sint] hexString] + "\n" # 0xEDCBA988
+\end{galgas}
+
+
+
+
+\subsectionGetter{sint64}{bigint}
+
+Ce \emph{getter} permet de convertir le récepteur en \ggs!@sint64!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInSInt64}.
+
+\begin{galgas}
+message [[-0x1234_5678_9ABC_DEF0G sint64] hexString] + "\n" # 0xEDCBA98765432110
+\end{galgas}
+
+
+\subsectionGetter{uint}{bigint}
+
+Ce \emph{getter} permet de convertir le récepteur en \ggs!@uint!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInUInt}.
+
+\begin{galgas}
+message [[0x1234_5678G uint] hexString] + "\n" # 0x12345678
+\end{galgas}
+
+
+\subsectionGetter{uint64}{bigint}
+
+Ce \emph{getter} permet de convertir le récepteur en \ggs!@uint64!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInUInt64}.
+
+\begin{galgas}
+message [[0x1234_5678_9ABC_DEFG uint64] hexString] + "\n" # 0x123456789ABCDEF
+\end{galgas}
 
 
 
@@ -85,15 +216,11 @@ message [a string] + "\n" # Affiche "678"
 
 \subsectionGetter{string}{bigint}
 
-\begin{galgas}
-getter string -> @bigint
-\end{galgas}
-
-Ce getter renvoie la valeur du receveur sous la forme d'une chaîne de caractères décimaux (de \ggs!0! à \ggs!9!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Par exemple :
+Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggs!0! à \ggs!9!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Par exemple :
 
 \begin{galgas}
 @bigint a = -1234567890_1234567890_1234567890_G
-message [a string] + "\n" # Affiche "-123456789012345678901234567890"
+message [a string] + "\n" # -123456789012345678901234567890
 \end{galgas}
 
 
@@ -102,15 +229,27 @@ message [a string] + "\n" # Affiche "-123456789012345678901234567890"
 
 \subsectionGetter{hexString}{bigint}
 
-\begin{galgas}
-getter hexString -> @bigint
-\end{galgas}
-
-Ce getter renvoie la valeur du receveur sous la forme d'une chaîne de caractères héxadécimaux (\ggs!0! à \ggs!9!, \ggs!A! à \ggs!F!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Il n'y a pas de préfixe « \texttt{0x} ». Exemple :
+Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères héxadécimaux (\ggs!0! à \ggs!9!, \ggs!A! à \ggs!F!). La valeur retournée est préfixée par « \texttt{0x} », qui est placé après un éventuel signe « \texttt{-} ». Exemple :
 
 \begin{galgas}
 @bigint a = -1234567890_1234567890_1234567890_G
-message [a hexString] + "\n" # Affiche "-18EE90FF6C373E0EE4E3F0AD2"
+message [a hexString] + "\n" # -0x18EE90FF6C373E0EE4E3F0AD2
+\end{galgas}
+
+
+
+
+
+
+
+
+\subsectionGetter{xString}{bigint}
+
+Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères héxadécimaux (\ggs!0! à \ggs!9!, \ggs!A! à \ggs!F!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Il n'y a pas de préfixe « \texttt{0x} ». Exemple :
+
+\begin{galgas}
+@bigint a = -1234567890_1234567890_1234567890_G
+message [a xString] + "\n" # -18EE90FF6C373E0EE4E3F0AD2
 \end{galgas}
 
 
@@ -130,7 +269,7 @@ L'opérateur « \texttt{-} » préfixé effectue la négation de l'expression qu
 
 \begin{galgas}
 @bigint a = +1234567890_1234567890_1234567890_G
-message [a string] + "\n" # Affiche "123456789012345678901234567890"
+message [a string] + "\n" # 123456789012345678901234567890
 \end{galgas}
 
 
@@ -147,7 +286,7 @@ Le \emph{getter} \ggs!abs! retourne la valeur absolue.
 
 \begin{galgas}
 @bigint a = [-1234567890_1234567890_1234567890_G abs]
-message [a string] + "\n" # Affiche "123456789012345678901234567890"
+message [a string] + "\n" # 123456789012345678901234567890
 \end{galgas}
 
 
@@ -203,12 +342,12 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
 \textbf{Opérateur « \texttt{/} » infixé.} Il effectue la division entière de l'expression de gauche par l'expression de droite et renvoie le quotient. Si l'expression de gauche est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
 \begin{galgas}
-  message [(-7S) / 2S string] + "\n" # Affiche "-3"
-  message [(-7G) / 2G string] + "\n" # Affiche "-3"
-  message [(-7S) / (-2S) string] + "\n" # Affiche "3"
-  message [(-7G) / (-2G) string] + "\n" # Affiche "3"
-  message [7S / (-2S) string] + "\n" # Affiche "-3"
-  message [7G / (-2G) string] + "\n" # Affiche "-3"
+  message [(-7S) / 2S string] + "\n" # -3
+  message [(-7G) / 2G string] + "\n" # -3
+  message [(-7S) / (-2S) string] + "\n" # 3
+  message [(-7G) / (-2G) string] + "\n" # 3
+  message [7S / (-2S) string] + "\n" # -3
+  message [7G / (-2G) string] + "\n" # -3
 \end{galgas}
 
 
@@ -216,14 +355,14 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
 \textbf{Opérateur « \texttt{mod} » infixé.} Il renvoie le reste de la division entière de l'expression de gauche par l'expression de droite, telle que décrite au dessus. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
 \begin{galgas}
-  message [9876543210G mod 1234567890G string] + "\n" # Affiche "90"
-  message [(-9876543210G) mod 1234567890G string] + "\n" # Affiche "-90"
-  message [(-9876543210G) mod (-1234567890G) string] + "\n"  # Affiche "-90"
-  message [9876543210G mod (-1234567890G) string] + "\n"  # Affiche "90"
-  message [2000S mod 183S string] + "\n" # Affiche "170"
-  message [(-2000S) mod 183S string] + "\n" # Affiche "-170"
-  message [(-2000S) mod (-183S) string] + "\n" # Affiche "-170"
-  message [2000S mod (-183S) string] + "\n" # Affiche "170"
+  message [9876543210G mod 1234567890G string] + "\n" # 90
+  message [(-9876543210G) mod 1234567890G string] + "\n" # -90
+  message [(-9876543210G) mod (-1234567890G) string] + "\n"  # -90
+  message [9876543210G mod (-1234567890G) string] + "\n"  # 90
+  message [2000S mod 183S string] + "\n" # 170
+  message [(-2000S) mod 183S string] + "\n" # -170
+  message [(-2000S) mod (-183S) string] + "\n" # -170
+  message [2000S mod (-183S) string] + "\n" # 170
 \end{galgas}
 
 
@@ -239,25 +378,25 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "80000000737 8280"
+  message [quotient string] + " " + remainder + "\n" # 80000000737 8280
   [-9876543210_9876543210G divideBy
     !1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "-80000000737 -8280"
+  message [quotient string] + " " + remainder + "\n" # -80000000737 -8280
   [-9876543210_9876543210G divideBy
     !-1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "80000000737 -8280"
+  message [quotient string] + " " + remainder + "\n" 80000000737 -8280
   [9876543210_9876543210G divideBy
     !-1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "-80000000737 8280"
+  message [quotient string] + " " + remainder + "\n" # -80000000737 8280
 \end{galgas}
 
 
@@ -274,25 +413,25 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "80000000737 8280"
+  message [quotient string] + " " + remainder + "\n" # 80000000737 8280
   [-9876543210_9876543210G floorDivideBy
     !1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "-80000000738 1234559610"
+  message [quotient string] + " " + remainder + "\n" # -80000000738 1234559610
   [-9876543210_9876543210G floorDivideBy
     !-1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "80000000737 -8280"
+  message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
   [9876543210_9876543210G floorDivideBy
     !-1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "-80000000738 -1234559610"
+  message [quotient string] + " " + remainder + "\n" # -80000000738 -1234559610
 \end{galgas}
 
 
@@ -310,25 +449,25 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "80000000738 -1234559610"
+  message [quotient string] + " " + remainder + "\n" # 80000000738 -1234559610
   [-9876543210_9876543210G ceilDivideBy
     !1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "-80000000737 -8280"
+  message [quotient string] + " " + remainder + "\n" # -80000000737 -8280
   [-9876543210_9876543210G ceilDivideBy
     !-1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "80000000738 1234559610"
+  message [quotient string] + " " + remainder + "\n" # 80000000738 1234559610
   [9876543210_9876543210G ceilDivideBy
     !-1234567890G
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" # "-80000000737 8280"
+  message [quotient string] + " " + remainder + "\n" # -80000000737 8280
 \end{galgas}
 
 
@@ -345,20 +484,20 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
 L'opérateur « \ggs!<<! » infixé effectue un décalage à gauche. L'expression de droite est toujours un \ggs!@uint!. Un décalage à gauche de $n$ bits est sémantiquement équivalent à une multiplication par $2^n$, que le nombre auquel s'applique le décalage soit signé ou non. C'est la sémantique des décalages à gauche des types \ggs!@sint! et \ggs!@sint64! :
 
 \begin{galgas}
-  message [0x1234567890G << 12 hexString] + "\n" # Affiche "1234567890000"
-  message [(-0x1234567890G) << 12 hexString] + "\n" # Affiche "-1234567890000"
-  message [2000S << 2 string] + "\n" # Affiche "8000"
-  message [(-2000S) << 2 string] + "\n" # Affiche "-8000"
+  message [0x1234567890G << 12 hexString] + "\n" # 0x1234567890000
+  message [(-0x1234567890G) << 12 hexString] + "\n" # -0x1234567890000
+  message [2000S << 2 string] + "\n" # 8000
+  message [(-2000S) << 2 string] + "\n" # -8000
 \end{galgas}
 
 \subsection{Opérateur \texttt{>{}>}}
 
 L'opérateur « \ggs!>>! » infixé effectue un décalage à droite. L'expression de droite est toujours un \ggs!@uint! :
 \begin{galgas}
-  message [0x1234567890G >> 12 hexString] + "\n" # Affiche "1234567"
-  message [(-0x1234567890G) >> 12 hexString] + "\n" # Affiche "-1234567"
-  message [2000S >> 2 string] + "\n" # Affiche "500"
-  message [(-2000S) >> 2 string] + "\n" # Affiche "-500"
+  message [0x1234567890G >> 12 hexString] + "\n" # 0x1234567
+  message [(-0x1234567890G) >> 12 hexString] + "\n" # -0x1234567
+  message [2000S >> 2 string] + "\n" # 500
+  message [(-2000S) >> 2 string] + "\n" # -500
 \end{galgas}
 
 Un décalage à droite de $n$ bits d'un nombre posifif ou négatif est sémantiquement équivalent au quotient \emph{par défaut} d'une division par $2^n$, c'est-à-dire que le reste est toujours positif ou nul.
@@ -366,28 +505,28 @@ Un décalage à droite de $n$ bits d'un nombre posifif ou négatif est sémantiq
 Quelques exemples de décalage à droite de nombres positifs :
 
 \begin{galgas}
-  message [9G >> 1 string] + "\n" # Affiche "4"
-  message [9S >> 1 string] + "\n" # Affiche "4"
-  message [7G >> 1 string] + "\n" # Affiche "3"
-  message [7S >> 1 string] + "\n" # Affiche "3"
-  message [3G >> 1 string] + "\n" # Affiche "1"
-  message [3S >> 1 string] + "\n" # Affiche "1"
-  message [1G >> 1 string] + "\n" # Affiche "0"
-  message [1S >> 1 string] + "\n" # Affiche "0"
+  message [9G >> 1 string] + "\n" # 4
+  message [9S >> 1 string] + "\n" # 4
+  message [7G >> 1 string] + "\n" # 3
+  message [7S >> 1 string] + "\n" # 3
+  message [3G >> 1 string] + "\n" # 1
+  message [3S >> 1 string] + "\n" # 1
+  message [1G >> 1 string] + "\n" # 0
+  message [1S >> 1 string] + "\n" # 0
 \end{galgas}
 
 
 Et pour des nombres négatifs :
 
 \begin{galgas}
-  message [-9G >> 1 string] + "\n" # Affiche "-5"
-  message [-9 S >> 1 string] + "\n" # Affiche "-5"
-  message [-7G >> 1 string] + "\n" # Affiche "-4"
-  message [-7S >> 1 string] + "\n" # Affiche "-4"
-  message [-3G >> 1 string] + "\n" # Affiche "-2"
-  message [-3S >> 1 string] + "\n" # Affiche "-2"
-  message [-1G >> 1 string] + "\n" # Affiche "-1"
-  message [-1S >> 1 string] + "\n" # Affiche "-1"
+  message [-9G >> 1 string] + "\n" # -5
+  message [-9S >> 1 string] + "\n" # -5
+  message [-7G >> 1 string] + "\n" # -4
+  message [-7S >> 1 string] + "\n" # -4
+  message [-3G >> 1 string] + "\n" # -2
+  message [-3S >> 1 string] + "\n" # -2
+  message [-1G >> 1 string] + "\n" # -1
+  message [-1S >> 1 string] + "\n" # -1
 \end{galgas}
 
 Dans tous les cas, la sémantique du décalage à droite du type \ggs!@bigint! est la même que celles des types \ggs!@sint! et \ggs!@sint64!.
@@ -403,17 +542,92 @@ Dans tous les cas, la sémantique du décalage à droite du type \ggs!@bigint! e
 
 \section{Opérations logiques}
 
-Le type \ggs!@bigint! implémente les opérations logiques \ggs!&!, \ggs!|!, \ggs!^| et \ggs!~!.
+Le type \ggs!@bigint! implémente les opérations logiques \ggs!&! (\emph{et logique}), \ggs!|! (\emph{ou logique}), \ggs!^! (\emph{ou exclusif logique}) et \ggs!~! (\emph{négation logique}). Si les opérandes sont positifs ou nuls, le comportement de ces opérateurs est celui attendu. Pour comprendre le comportement avec des opérandes négatifs, ou de signe contraire, il faut considérer que la représentation des \ggs!@bigint! est la suivante :
+\begin{itemize}
+  \item la valeur d'un nombre positif ou nul est préfixée par une infinité de zéros ;
+  \item la valeur d'un nombre strictement négatif est préfixée par une infinité de uns.
+\end{itemize}
+
+Par exemple :
+\begin{itemize}
+  \item \texttt{0x1234} est représenté par \texttt{0x…01234} ;
+  \item \texttt{-0x1234} est représenté par \texttt{0x…FEDCC}.
+\end{itemize}
+
 
 \subsection{Opérateur \texttt{\&} infixé}
 
+L'opérateur \ggs!&! infixé réalise un « \emph{et logique} » entre ses opérandes. Le résultat est positif ou nul dès qu'un des deux opérandes est positif.
+
+\begin{galgas}
+message [0x1234G & 0x4321G hexString] + "\n" # 0x220
+message [-0x1234G & 0x4321G hexString] + "\n" # 0x4100
+message [-0x80G & 0xFFG hexString] + "\n" # 0x80
+\end{galgas}
+
+Considérons le deuxième exemple et voyons comment le résultat est obtenu :
+
+\begin{tabular}{llll}
+Premier opérande & \texttt{0x…FEDCC} & représentation théorique de \texttt{-0x1234}\\
+Second opérande  & \texttt{0x…04321} & représentation théorique de \texttt{0x4321} \\
+Résultat & \texttt{0x…04100} & représentation théorique de \texttt{0x4100} \\
+\end{tabular}
 
 \subsection{Opérateur \texttt{|} infixé}
+
+
+L'opérateur \ggs!|! infixé réalise un « \emph{ou logique} » entre ses opérandes. Le résultat est négatif dès qu'un des deux opérandes est négatif.
+
+\begin{galgas}
+message [0x1234G | 0x4321G hexString] + "\n" # 0x5335
+message [-0x1234G | 0x4321G hexString] + "\n" # -0x1013
+message [-0x80G | 0xFFG hexString] + "\n" # -0x1
+\end{galgas}
+
+Considérons le deuxième exemple et voyons comment le résultat est obtenu :
+
+\begin{tabular}{llll}
+Premier opérande & \texttt{0x…FEDCC} & représentation théorique de \texttt{-0x1234}\\
+Second opérande  & \texttt{0x…04321} & représentation théorique de \texttt{0x4321} \\
+Résultat & \texttt{0x…FEFED} & représentation théorique de \texttt{-0x1013} \\
+\end{tabular}
 
 
 \subsection{Opérateur $\wedge$ infixé}
 
 
+
+L'opérateur \ggs!^! infixé réalise un « \emph{ou exclusif logique} » entre ses opérandes. Le résultat est négatif quand les deux opérandes sont de signe contraire, et positif si ils sont de même signe.
+
+\begin{galgas}
+message [0x1234G ^ 0x4321G hexString] + "\n" # 0x5115
+message [-0x1234G ^ 0x4321G hexString] + "\n" # -0x5113
+message [-0x80G ^ 0xFFG hexString] + "\n" # -0x81
+message [-0x80G ^ -0xFFG hexString] + "\n" # 0x81
+\end{galgas}
+
+Considérons le deuxième exemple et voyons comment le résultat est obtenu :
+
+\begin{tabular}{llll}
+Premier opérande & \texttt{0x…FEDCC} & représentation théorique de \texttt{-0x1234}\\
+Second opérande  & \texttt{0x…04321} & représentation théorique de \texttt{0x4321} \\
+Résultat & \texttt{0x…FAEED} & représentation théorique de \texttt{-0x5113} \\
+\end{tabular}
+
+
 \subsection{Opérateur $\sim$ préfixé}
 
+L'opérateur \ggs!~! préfixé réalise la complémentation logique de son opérande. Le résultat est négatif si l'opérande est positif ou nul, et positif si il est négatif.
+
+\begin{galgas}
+message [~  0x1234G hexString] + "\n" # -0x1235
+message [~ -0x1234G hexString] + "\n" # 0x1233
+\end{galgas}
+
+Considérons le second exemple et voyons comment le résultat est obtenu :
+
+\begin{tabular}{llll}
+Opérande & \texttt{0x…FEDCC} & représentation théorique de \texttt{-0x1234}\\
+Résultat & \texttt{0x…01233} & représentation théorique de \texttt{0x1233} \\
+\end{tabular}
 

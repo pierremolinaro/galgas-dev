@@ -140,6 +140,16 @@ GALGAS_string GALGAS_sint_36__34_::reader_string (UNUSED_LOCATION_ARGS) const {
 
 GALGAS_string GALGAS_sint_36__34_::reader_hexString (UNUSED_LOCATION_ARGS) const {
   const uint64_t v = (uint64_t) mSInt64Value ;
+  C_String s ;
+  s << "0x" ;
+  s.appendUnsignedHex16 (v) ;
+  return GALGAS_string (s) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_sint_36__34_::reader_xString (UNUSED_LOCATION_ARGS) const {
+  const uint64_t v = (uint64_t) mSInt64Value ;
   C_String s ; s.appendUnsignedHex16 (v) ;
   return GALGAS_string (s) ;
 }
