@@ -65,7 +65,7 @@ message [a string] + "\n" # Affiche "678"
 
 
 
-\subsectionConstructor{uint64}{bigint}
+\subsectionGetter{uint64}{bigint}
 
 Le constructeur \ggs!uint64! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@uint64! :
 \begin{galgas}
@@ -123,6 +123,7 @@ message [a hexString] + "\n" # Affiche "-18EE90FF6C373E0EE4E3F0AD2"
 
 \section{Arithmétique}
 
+
 \subsection{Opérateurs \texttt{+} et \texttt{-} préfixés}
 
 L'opérateur « \texttt{-} » préfixé effectue la négation de l'expression qui le suit. L'opérateur « \texttt{+} » préfixé n'a aucun effet, il retourne la valeur de l'expression.
@@ -131,6 +132,27 @@ L'opérateur « \texttt{-} » préfixé effectue la négation de l'expression qu
 @bigint a = +1234567890_1234567890_1234567890_G
 message [a string] + "\n" # Affiche "123456789012345678901234567890"
 \end{galgas}
+
+
+
+
+
+
+
+
+
+\subsectionGetter{abs}{bigint}
+
+Le \emph{getter} \ggs!abs! retourne la valeur absolue.
+
+\begin{galgas}
+@bigint a = [-1234567890_1234567890_1234567890_G abs]
+message [a string] + "\n" # Affiche "123456789012345678901234567890"
+\end{galgas}
+
+
+
+
 
 
 \subsection{Addition et soustraction}
@@ -150,7 +172,7 @@ L'opérateur « \texttt{*} » infixé effectue le produit de ses opérandes. Com
 
 
 
-La division d'un entier $n$ par un diviseur $d$ retourne un quotient $q$ et un reste $r$. Dans tous les cas, on a :
+La division d'un entier $n$ par un diviseur $d$ retourne un quotient $q$ et un reste $r$ :
 \begin{equation*}
 n = q * d + r\text{, avec 0 } \leqslant \mid r\mid < \mid d\mid
 \end{equation*}
@@ -359,7 +381,7 @@ Et pour des nombres négatifs :
 
 \begin{galgas}
   message [-9G >> 1 string] + "\n" # Affiche "-5"
-  message [-9S >> 1 string] + "\n" # Affiche "-5"
+  message [-9 S >> 1 string] + "\n" # Affiche "-5"
   message [-7G >> 1 string] + "\n" # Affiche "-4"
   message [-7S >> 1 string] + "\n" # Affiche "-4"
   message [-3G >> 1 string] + "\n" # Affiche "-2"
@@ -369,3 +391,29 @@ Et pour des nombres négatifs :
 \end{galgas}
 
 Dans tous les cas, la sémantique du décalage à droite du type \ggs!@bigint! est la même que celles des types \ggs!@sint! et \ggs!@sint64!.
+
+
+
+
+
+
+
+
+
+
+\section{Opérations logiques}
+
+Le type \ggs!@bigint! implémente les opérations logiques \ggs!&!, \ggs!|!, \ggs!^| et \ggs!~!.
+
+\subsection{Opérateur \texttt{\&} infixé}
+
+
+\subsection{Opérateur \texttt{|} infixé}
+
+
+\subsection{Opérateur $\wedge$ infixé}
+
+
+\subsection{Opérateur $\sim$ préfixé}
+
+

@@ -302,6 +302,21 @@ public : VIRTUAL_IN_DEBUG GALGAS_bigint left_shift_operation (const GALGAS_uint 
 public : VIRTUAL_IN_DEBUG GALGAS_bigint right_shift_operation (const GALGAS_uint inShiftOperand
                                                                COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- & operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint operator_and (const GALGAS_bigint & inOperand
+                                                        COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- | operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint operator_or (const GALGAS_bigint & inOperand
+                                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ^ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint operator_xor (const GALGAS_bigint & inOperand
+                                                        COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ~ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_bigint operator_tilde (LOCATION_ARGS) const ;
+
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_bigint add_operation (const GALGAS_bigint & inOperand,
                                                          C_Compiler * inCompiler
@@ -361,6 +376,9 @@ public : VIRTUAL_IN_DEBUG GALGAS_bigint right_shift_operation (const GALGAS_uint
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_abs (C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_bitCountForSignedRepresentation (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_fitsInSInt (LOCATION_ARGS) const ;

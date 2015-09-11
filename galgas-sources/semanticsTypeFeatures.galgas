@@ -90,8 +90,8 @@ override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @uint outF
 {
   outFlags = generateDescriptionReaderUtilityMethod () | unaryPlusOperator () | unaryMinusOperator () |
              binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator () |
-             binaryShiftOperator () | binaryModOperator ()
-#    | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
+             binaryShiftOperator () | binaryModOperator () |
+             binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
 #    | incDecOperator () | isComparable ()
 }
 
