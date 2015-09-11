@@ -146,6 +146,21 @@ class C_BigInt {
   public : void operator %= (const C_BigInt inDivisor) ;
   public : C_BigInt operator % (const C_BigInt & inDivisor) const ;
 
+//--- Absolute value
+  public : C_BigInt abs (void) const ;
+
+//--- Logical operators
+  public : void operator &= (const C_BigInt inOperand) ;
+  public : C_BigInt operator & (const C_BigInt & inOperand) const ;
+
+  public : void operator |= (const C_BigInt inOperand) ;
+  public : C_BigInt operator | (const C_BigInt & inOperand) const ;
+
+  public : void operator ^= (const C_BigInt inOperand) ;
+  public : C_BigInt operator ^ (const C_BigInt & inOperand) const ;
+
+  public : C_BigInt operator ~ (void) const ;
+
 //--- Value access
   public : uint32_t uint32 (void) const ;
   public : uint64_t uint64 (void) const ;

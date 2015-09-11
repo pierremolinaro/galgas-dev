@@ -246,7 +246,77 @@ C_String C_BigInt::decimalString (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Add, subtract uint64_t
+  #pragma mark Absolute value
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::abs (void) const {
+  C_BigInt result ;
+  mpz_abs (result.mGMPint, mGMPint) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Logical operations
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator &= (const C_BigInt inOperand) {
+  mpz_and (mGMPint, mGMPint, inOperand.mGMPint) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator & (const C_BigInt & inOperand) const {
+  C_BigInt result = *this ;
+  result &= inOperand ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator |= (const C_BigInt inOperand) {
+  mpz_ior (mGMPint, mGMPint, inOperand.mGMPint) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator | (const C_BigInt & inOperand) const {
+  C_BigInt result = *this ;
+  result |= inOperand ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::operator ^= (const C_BigInt inOperand) {
+  mpz_xor (mGMPint, mGMPint, inOperand.mGMPint) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator ^ (const C_BigInt & inOperand) const {
+  C_BigInt result = *this ;
+  result ^= inOperand ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_BigInt C_BigInt::operator ~ (void) const {
+  C_BigInt result ;
+  mpz_com (result.mGMPint, mGMPint) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Add, subtract uint32_t
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -258,9 +328,9 @@ void C_BigInt::operator += (const uint32_t inOperand) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt C_BigInt::operator + (const uint32_t inOperand) const {
-  C_BigInt resultat = *this ;
-  resultat += inOperand ;
-  return resultat ;
+  C_BigInt result = *this ;
+  result += inOperand ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -272,9 +342,9 @@ void C_BigInt::operator -= (const uint32_t inOperand) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt C_BigInt::operator - (const uint32_t inOperand) const {
-  C_BigInt resultat = *this ;
-  resultat -= inOperand ;
-  return resultat ;
+  C_BigInt result = *this ;
+  result -= inOperand ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -298,17 +368,17 @@ void C_BigInt::operator -= (const C_BigInt inOperand) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt C_BigInt::operator + (const C_BigInt & inOperand) const {
-  C_BigInt resultat = *this ;
-  resultat += inOperand ;
-  return resultat ;
+  C_BigInt result = *this ;
+  result += inOperand ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt C_BigInt::operator - (const C_BigInt & inOperand) const {
-  C_BigInt resultat = *this ;
-  resultat -= inOperand ;
-  return resultat ;
+  C_BigInt result = *this ;
+  result -= inOperand ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

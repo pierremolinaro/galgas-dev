@@ -248,6 +248,17 @@ GALGAS_string GALGAS_bigint::reader_hexString (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bigint GALGAS_bigint::reader_abs (C_Compiler * /* inCompiler */
+                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid ()) {
+    result = GALGAS_bigint (mValue.abs ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_bigint::reader_uint (C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
@@ -454,6 +465,55 @@ void GALGAS_bigint::method_floorDivideBy (GALGAS_bigint inDivisor,
       outRemainder = GALGAS_bigint (remainder) ;
     }
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Logical
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::operator_and (const GALGAS_bigint & inOperand
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_bigint (mValue & inOperand.mValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::operator_or (const GALGAS_bigint & inOperand
+                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_bigint (mValue | inOperand.mValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::operator_xor (const GALGAS_bigint & inOperand
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_bigint (mValue ^ inOperand.mValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_bigint::operator_tilde (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid ()) {
+    result = GALGAS_bigint (~ mValue) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

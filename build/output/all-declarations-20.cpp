@@ -9744,6 +9744,10 @@ static const char * kSourceFileHelpMessages [] = {
 static void routine_before (C_Compiler * inCompiler
                             COMMA_UNUSED_LOCATION_ARGS) {
   {
+    GALGAS_bigint var_a = GALGAS_bigint ("4660", inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 20)).operator_unary_minus (inCompiler COMMA_SOURCE_FILE ("semanticsReaders.galgas", 20)).operator_and (GALGAS_bigint ("17185", inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 20)) COMMA_SOURCE_FILE ("semanticsReaders.galgas", 20)) ;
+    inCompiler->printMessage (var_a.reader_hexString (SOURCE_FILE ("semanticsReaders.galgas", 21)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticsReaders.galgas", 21))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 21)) ;
+  }
+  {
     GALGAS_string var_creationProjectName = GALGAS_string (gOption_galgas_5F_cli_5F_options_create_5F_project.reader_value ()) ;
     {
     routine_projectCreation (var_creationProjectName, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 20)) ;
