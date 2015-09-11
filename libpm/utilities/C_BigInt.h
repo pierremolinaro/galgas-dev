@@ -88,6 +88,7 @@ class C_BigInt {
   public : bool operator < (const C_BigInt & inOperand) const ;
   public : bool operator <= (const C_BigInt & inOperand) const ;
   public : int32_t compare (const C_BigInt & inValue) const ;
+  public : int32_t sign (void) const ;
 
 //--- Incrementation, decrementation
   public : C_BigInt & operator ++ (void) ;
@@ -100,8 +101,9 @@ class C_BigInt {
   public : void operator >>= (const uint32_t inValue) ;
 
 //--- String
-  public : C_String hexString (void) const ;
   public : C_String decimalString (void) const ;
+  public : C_String hexString (void) const ;
+  public : C_String xString (void) const ;
 
 //--- Add, subtract
   public : void operator += (const C_BigInt inValue) ;
@@ -172,6 +174,8 @@ class C_BigInt {
   public : bool fitsInUInt64 (void) const ;
   public : bool fitsInSInt32 (void) const ;
   public : bool fitsInSInt64 (void) const ;
+  public : uint32_t requiredBitCountForSignedRepresentation (void) const ;
+  public : uint32_t requiredBitCountForUnsignedRepresentation (void) const ;
   
 //--- Example
   public : static void example (void) ;

@@ -16,10 +16,20 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 
-before {
-@bigint a = -0x1234G & 0x4321G
-message [a hexString] + "\n"
-}
+#before {
+#message [0x1234G & 0x4321G hexString] + "\n"
+#message [-0x1234G & 0x4321G hexString] + "\n"
+#message [-0x80G & 0xFFG hexString] + "\n"
+#message [0x1234G | 0x4321G hexString] + "\n"
+#message [-0x1234G | 0x4321G hexString] + "\n"
+#message [-0x80G | 0xFFG hexString] + "\n"
+#message [0x1234G ^ 0x4321G hexString] + "\n"
+#message [-0x1234G ^ 0x4321G hexString] + "\n"
+#message [-0x80G ^ 0xFFG hexString] + "\n"
+#message [-0x80G ^ -0xFFG hexString] + "\n"
+#message [~  0x1234G hexString] + "\n"
+#message [~ -0x1234G hexString] + "\n"
+#}
 
 proc enterBaseFinalGetterWithoutArgument
   ?!@getterMap ioReaderMap
@@ -536,7 +546,20 @@ override method @sintPredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !false)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"hexString" !returnedTypeName:"string" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"xString"
+    !returnedTypeName:"string"
+    !false
+  )
 
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canAdd" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canSubstract" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
@@ -576,7 +599,20 @@ override method @sint64PredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"hexString" !returnedTypeName:"string" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"xString"
+    !returnedTypeName:"string"
+    !false
+  )
 
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canAdd" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
   enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canSubstract" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
@@ -861,7 +897,21 @@ override method @bigintPredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !getterName:"xString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !getterName:"bitCountForSignedRepresentation"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bitCountForUnsignedRepresentation"
     !returnedTypeName:"uint"
     !false
   )
@@ -898,7 +948,7 @@ override method @bigintPredefinedTypeAST getReaderMap
     !?ioUnifiedTypeMap
     !getterName:"abs"
     !returnedTypeName:"bigint"
-    !true
+    !false
   )
 #  enterBaseFinalReaderWithArgument (
 #    !?outMap

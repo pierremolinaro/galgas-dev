@@ -123,6 +123,16 @@ GALGAS_string GALGAS_sint::reader_string (UNUSED_LOCATION_ARGS) const {
 
 GALGAS_string GALGAS_sint::reader_hexString (UNUSED_LOCATION_ARGS) const {
   const uint32_t v = (uint32_t) mSIntValue ;
+  C_String s ;
+  s << "0x" ;
+  s.appendUnsignedHex8 (v) ;
+  return GALGAS_string (s) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_sint::reader_xString (UNUSED_LOCATION_ARGS) const {
+  const uint32_t v = (uint32_t) mSIntValue ;
   C_String s ; s.appendUnsignedHex8 (v) ;
   return GALGAS_string (s) ;
 }

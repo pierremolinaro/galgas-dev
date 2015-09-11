@@ -175,7 +175,17 @@ GALGAS_bigint GALGAS_bigint::constructor_sint_36__34_ (const GALGAS_sint_36__34_
 GALGAS_uint GALGAS_bigint::reader_bitCountForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
+    result = GALGAS_uint (mValue.requiredBitCountForSignedRepresentation ()) ;
+  }
+  return result ;
+}
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_bigint::reader_bitCountForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint (mValue.requiredBitCountForUnsignedRepresentation ()) ;
   }
   return result ;
 }
@@ -242,14 +252,23 @@ GALGAS_string GALGAS_bigint::reader_hexString (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_bigint::reader_xString (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mValue.xString ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Value access
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigint GALGAS_bigint::reader_abs (C_Compiler * /* inCompiler */
-                                        COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_bigint GALGAS_bigint::reader_abs (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
     result = GALGAS_bigint (mValue.abs ()) ;

@@ -95,6 +95,12 @@ bool C_BigInt::isMinusOne (void) const {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+int32_t C_BigInt::sign (void) const {
+  return mpz_sgn (mGMPint) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 // Constructors
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -219,11 +225,11 @@ C_BigInt & C_BigInt::operator -- (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_BigInt::hexString (void) const {
-  const size_t neededSize = mpz_sizeinbase (mGMPint, 16) + 2 ;
+C_String C_BigInt::decimalString (void) const {
+  const size_t neededSize = mpz_sizeinbase (mGMPint, 10) + 2 ;
   char * s = NULL ;
   macroMyNewPODArray (s, char, neededSize) ;
-  mpz_get_str (s, -16, mGMPint) ; // -16 for getting 'A' to 'F'
+  mpz_get_str (s, 10, mGMPint) ;
   C_String result ;
   result << s ;
   macroMyDeletePODArray (s) ;
@@ -232,11 +238,23 @@ C_String C_BigInt::hexString (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_BigInt::decimalString (void) const {
-  const size_t neededSize = mpz_sizeinbase (mGMPint, 10) + 2 ;
+C_String C_BigInt::hexString (void) const {
+  C_String result ;
+  if (sign () >= 0) {
+    result << "0x" << xString () ;
+  }else{
+    result << "-0x" << abs ().xString () ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_String C_BigInt::xString (void) const {
   char * s = NULL ;
+  const size_t neededSize = mpz_sizeinbase (mGMPint, 16) + 2 ;
   macroMyNewPODArray (s, char, neededSize) ;
-  mpz_get_str (s, 10, mGMPint) ;
+  mpz_get_str (s, -16, mGMPint) ; // -16 for getting 'A' to 'F' (16 provides 'a' to 'f')
   C_String result ;
   result << s ;
   macroMyDeletePODArray (s) ;
@@ -690,7 +708,7 @@ bool C_BigInt::fitsInUInt32 (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BigInt::fitsInUInt64 (void) const {
-  return mpz_sizeinbase (mGMPint, 2) <= 64 ;
+  return (mpz_sgn (mGMPint) >= 0) && (mpz_sizeinbase (mGMPint, 2) <= 64) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -710,6 +728,22 @@ bool C_BigInt::fitsInSInt64 (void) const {
     ok = r == INT64_MIN ;
   }
   return ok ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t C_BigInt::requiredBitCountForSignedRepresentation (void) const {
+  size_t requiredBitCount = mpz_sizeinbase (mGMPint, 2) ;
+  if (mpz_sgn (mGMPint) > 0) {
+    requiredBitCount ++ ;
+  }
+  return (uint32_t) requiredBitCount ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t C_BigInt::requiredBitCountForUnsignedRepresentation (void) const {
+  return (uint32_t) mpz_sizeinbase (mGMPint, 2) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -744,7 +778,7 @@ int32_t C_BigInt::int32 (void) const {
 
 int64_t C_BigInt::int64 (void) const {
   uint64_t r = UINT64_MAX ;
-  if (fitsInUInt64 ()) {
+  if (fitsInSInt64 ()) {
     mpz_export (& r, NULL, 1, sizeof (uint64_t), 0, 0, mGMPint) ;
   }
   int64_t result = (int64_t) r ;

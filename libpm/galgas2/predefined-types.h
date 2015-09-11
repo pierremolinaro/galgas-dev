@@ -376,10 +376,11 @@ public : VIRTUAL_IN_DEBUG GALGAS_bigint right_shift_operation (const GALGAS_uint
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_abs (C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_abs (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_bitCountForSignedRepresentation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_bitCountForUnsignedRepresentation (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_fitsInSInt (LOCATION_ARGS) const ;
 
@@ -404,6 +405,8 @@ public : VIRTUAL_IN_DEBUG GALGAS_bigint right_shift_operation (const GALGAS_uint
 
   public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_ reader_uint_36__34_ (C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_xString (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -1249,6 +1252,8 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
   public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_ reader_uint_36__34_ (C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_xString (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -1415,6 +1420,8 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
 
   public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_ reader_uint_36__34_ (C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_xString (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
