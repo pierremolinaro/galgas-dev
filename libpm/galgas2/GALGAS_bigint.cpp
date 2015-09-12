@@ -232,6 +232,32 @@ GALGAS_bool GALGAS_bigint::reader_fitsInSInt_36__34_ (UNUSED_LOCATION_ARGS) cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_bigint::reader_isZero (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid ()) {
+    result = GALGAS_bool (mValue.isZero ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sint GALGAS_bigint::reader_sign (UNUSED_LOCATION_ARGS) const {
+  GALGAS_sint result ;
+  if (isValid ()) {
+    result = GALGAS_sint (mValue.sign ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Convert to string
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_bigint::reader_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
@@ -283,22 +309,6 @@ void GALGAS_bigint::decrement_operation (C_Compiler * /* inCompiler */
     -- mValue ;
   }
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-/*void GALGAS_bigint::increment_operation_no_overflow (void) {
-  if (isValid ()) {
-    ++ mValue ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_bigint::decrement_operation_no_overflow (void) {
-  if (isValid ()) {
-    -- mValue ;
-  }
-}*/
 
 //---------------------------------------------------------------------------------------------------------------------*
 

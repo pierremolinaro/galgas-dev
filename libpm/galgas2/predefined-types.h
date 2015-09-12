@@ -409,6 +409,10 @@ public : VIRTUAL_IN_DEBUG GALGAS_bigint right_shift_operation (const GALGAS_uint
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_hexString (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isZero (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_sint reader_sign (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_sint reader_sint (C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
 
