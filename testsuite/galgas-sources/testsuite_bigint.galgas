@@ -14,6 +14,8 @@ proc testsuite_bigint_type {
   message [-1234567890_1234567890_1234567890_G hexString] + "\n"
   message "--- getter xString\n"
   message [-1234567890_1234567890_1234567890_G xString] + "\n"
+  message [123_456_789_012_345_678G spacedString !3] + "\n"
+  message [-123_456_789_012_345_678G spacedString !3] + "\n"
   message "--- extract8ForUnsignedRepresentation\n"
 # Parcours dans le sens des indices croissants : little endian
   @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract8ForUnsignedRepresentation]

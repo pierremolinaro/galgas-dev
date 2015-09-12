@@ -679,11 +679,11 @@ void C_String::suppress (const int32_t inLocation,
     MF_AssertThere ((uint32_t) inLength <= mEmbeddedString->mLength,
                    "inLength (%ld) > string length (%ld)",
                     inLength, mEmbeddedString->mLength) ;
-    const int32_t longueurAdeplacer = 1 + ((int32_t) mEmbeddedString->mLength) - inLength - inLocation ;
-    if ((inLocation >= 0) && (longueurAdeplacer > 0)) {
+    const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inLength - inLocation ;
+    if ((inLocation >= 0) && (bytesToMove > 0)) {
       ::memmove (& mEmbeddedString->mString [inLocation],
                  & mEmbeddedString->mString [inLocation + inLength],
-                 ((size_t) longueurAdeplacer) * sizeof (utf32)) ;
+                 ((size_t) bytesToMove) * sizeof (utf32)) ;
       MF_Assert (mEmbeddedString->mLength >= (uint32_t) inLength,
                "mLength (%lld) < inLength (%lld)",
                 mEmbeddedString->mLength, inLength) ;
@@ -694,6 +694,39 @@ void C_String::suppress (const int32_t inLocation,
       macroUniqueSharedObject (mEmbeddedString) ;
     }
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//   I N S E R T    C H A R A C T E R                                                                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_String::insertCharacterAtIndex (const utf32 inChar,
+                                       const int32_t inIndex
+                                       COMMA_LOCATION_ARGS) {
+  const uint32_t kNewLength = mEmbeddedString->mLength + 1 ;
+  insulateEmbeddedString (kNewLength) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkString (HERE) ;
+  #endif
+  macroValidPointerThere (mEmbeddedString) ;
+  MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+  MF_AssertThere ((uint32_t) inIndex <= mEmbeddedString->mLength,
+                 "inIndex (%ld) > mLength (%ld)",
+                  inIndex, mEmbeddedString->mLength) ;
+  const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inIndex ;
+  if (bytesToMove > 0) {
+    ::memmove (& mEmbeddedString->mString [inIndex + 1],
+               & mEmbeddedString->mString [inIndex],
+               ((size_t) bytesToMove) * sizeof (utf32)) ;
+  }
+  mEmbeddedString->mString [inIndex] = inChar ;
+  mEmbeddedString->mLength += 1 ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkString (HERE) ;
+  #endif
+  macroUniqueSharedObject (mEmbeddedString) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

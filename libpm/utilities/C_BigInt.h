@@ -102,6 +102,7 @@ class C_BigInt {
 
 //--- String
   public : C_String decimalString (void) const ;
+  public : C_String spacedDecimalString (const uint32_t inSeparation) const ;
   public : C_String hexString (void) const ;
   public : C_String xString (void) const ;
 
