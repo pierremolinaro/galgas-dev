@@ -137,6 +137,17 @@ message [[-0x8000G bitCountForSignedRepresentation] string] + "\n" # 16
 \end{galgas}
 
 
+Pour connaître le nombre d'octets nécessaires pour représenter la valeur du récepteur dans la représentation binaire \emph{complément à deux}, on calcule :
+\begin{galgas}
+([bigint bitCountForSignedRepresentation] - 1) / 8 + 1 
+\end{galgas}
+
+Et pour le nombre de mots de 32 bits :
+\begin{galgas}
+([bigint bitCountForSignedRepresentation] - 1) / 32 + 1 
+\end{galgas}
+
+
 
 \subsectionGetter{bitCountForUnsignedRepresentation}{uint}
 
@@ -152,6 +163,15 @@ message [[-0x8000G bitCountForUnsignedRepresentation] string] + "\n" # 16
 
 Comme c'est la valeur absolue qui est prise en compte, le signe n'intervient pas.
 
+Pour connaître le nombre d'octets nécessaires pour représenter la valeur absolue du récepteur dans la représentation binaire \emph{naturelle}, on calcule :
+\begin{galgas}
+([bigint bitCountForUnsignedRepresentation] - 1) / 8 + 1 
+\end{galgas}
+
+Et pour le nombre de mots de 32 bits :
+\begin{galgas}
+([bigint bitCountForUnsignedRepresentation] - 1) / 32 + 1 
+\end{galgas}
 
 \subsectionGetter{fitsInSInt}{bigint}
 
@@ -300,6 +320,188 @@ message [a xString] + "\n" # -18EE90FF6C373E0EE4E3F0AD2
 
 
 
+\section{Extraction}
+
+\subsectionGetter{extractBytesForUnsignedRepresentation}{bigint}
+
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+  extractBytesForUnsignedRepresentation
+]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x11 0x22 0x33 0x44 . . . 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
+\end{galgas}
+
+Si le récepteur est nul, le vecteur retourné comprend un seul élément de valeur $0$.
+
+\begin{galgas}
+@uintlist a = [0G extractBytesForUnsignedRepresentation]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x0
+\end{galgas}
+
+\subsectionGetter{extractBytesForSignedRepresentation}{bigint}
+
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggs!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+
+Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée. Dans l'exemple ci-dessus, c'est la valeur \texttt{0xFF\_EEDD\_...\_2211G} qui est utilisée, comme pour le premier exemple du \emph{getter} \ggs!extractBytesForUnsignedRepresentation!. Comme le bit de poids fort de ce nombre est $1$, l'extraction en \emph{signé} retourne un élément de plus que l'extraction en \emph{non signé}, élément dont la valeur est $0$.
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+  extractBytesForSignedRepresentation
+]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x11 0x22 0x33 0x44 . . . 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x00
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
+\end{galgas}
+
+Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ : 
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uintlist a = [-0x4433_2211G extractBytesForSignedRepresentation]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xEF 0xDD 0xCC 0xBB
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xBB 0xCC 0xDD 0xEF
+\end{galgas}
+
+\subsectionGetter{extract32ForUnsignedRepresentation}{bigint}
+
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uintlist!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+  extract32ForUnsignedRepresentation
+]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0xFFEEDD 
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" #0xFFEEDD 0xCCBBAA99 0x88776655 0x44332211
+\end{galgas}
+
+Si le récepteur est nul, le vecteur retourné comprend un seul élément de valeur $0$.
+
+\begin{galgas}
+@uintlist a = [0G extract32ForUnsignedRepresentation]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x0
+\end{galgas}
+
+
+
+
+\subsectionGetter{extract32ForSignedRepresentation}{bigint}
+
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggs!@uintlist!. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+
+Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée.
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+  extract32ForSignedRepresentation
+]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x11 0x22 0x33 0x44 . . . 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x00
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
+\end{galgas}
+
+Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ : 
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uintlist a = [-0x55_4433_2211G extract32ForSignedRepresentation]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xBBCCDDEF 0xFFFFFFAA
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xFFFFFFAA 0xBBCCDDEF
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Arithmétique}
 
 
@@ -345,7 +547,7 @@ Le type \ggs!@bigint! accepte les opérateurs d'incrémentation \ggs!++! et de d
 
 \subsection{Multiplication}
 
-L'opérateur « \texttt{*} » infixé effectue le produit de ses opérandes. Comme la taille des \ggs!@bigint! est non limitée, aucun débordement n'a lieu.
+L'opérateur \ggs!*! infixé effectue le produit de ses opérandes. Comme la taille des \ggs!@bigint! est non limitée, aucun débordement n'a lieu.
 
 
 

@@ -252,6 +252,84 @@ GALGAS_sint GALGAS_bigint::reader_sign (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_uintlist GALGAS_bigint::reader_extract_33__32_ForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uintlist result ;
+  if (isValid ()) {
+    TC_UniqueArray <uint8_t> valueArray ;
+    mValue.extractBytesForSignedRepresentation (valueArray) ;
+    const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
+    valueArray.addObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;
+    result = GALGAS_uintlist::constructor_emptyList (HERE) ;
+    for (int32_t i=0 ; i<valueArray.count () ; i+=4) {
+      uint32_t v = valueArray (i+3 COMMA_HERE) ;
+      v <<= 8 ;
+      v |= valueArray (i+2 COMMA_HERE) ;
+      v <<= 8 ;
+      v |= valueArray (i+1 COMMA_HERE) ;
+      v <<= 8 ;
+      v |= valueArray (i COMMA_HERE) ;
+      result.addAssign_operation (GALGAS_uint (v) COMMA_HERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uintlist GALGAS_bigint::reader_extract_33__32_ForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uintlist result ;
+  if (isValid ()) {
+    TC_UniqueArray <uint8_t> valueArray ;
+    mValue.extractBytesForUnsignedRepresentation (valueArray) ;
+    const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
+    valueArray.addObjects (paddingCount, 0) ;
+    result = GALGAS_uintlist::constructor_emptyList (HERE) ;
+    for (int32_t i=0 ; i<valueArray.count () ; i+=4) {
+      uint32_t v = valueArray (i+3 COMMA_HERE) ;
+      v <<= 8 ;
+      v |= valueArray (i+2 COMMA_HERE) ;
+      v <<= 8 ;
+      v |= valueArray (i+1 COMMA_HERE) ;
+      v <<= 8 ;
+      v |= valueArray (i COMMA_HERE) ;
+      result.addAssign_operation (GALGAS_uint (v) COMMA_HERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uintlist GALGAS_bigint::reader_extractBytesForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uintlist result ;
+  if (isValid ()) {
+    TC_UniqueArray <uint8_t> valueArray ;
+    mValue.extractBytesForUnsignedRepresentation (valueArray) ;
+    result = GALGAS_uintlist::constructor_emptyList (HERE) ;
+    for (int32_t i=0 ; i<valueArray.count () ; i++) {
+      result.addAssign_operation (GALGAS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uintlist GALGAS_bigint::reader_extractBytesForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uintlist result ;
+  if (isValid ()) {
+    TC_UniqueArray <uint8_t> valueArray ;
+    mValue.extractBytesForSignedRepresentation (valueArray) ;
+    result = GALGAS_uintlist::constructor_emptyList (HERE) ;
+    for (int32_t i=0 ; i<valueArray.count () ; i++) {
+      result.addAssign_operation (GALGAS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Convert to string
 #endif
