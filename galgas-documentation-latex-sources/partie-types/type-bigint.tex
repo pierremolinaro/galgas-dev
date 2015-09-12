@@ -82,6 +82,46 @@ message [a string] + "\n" # 678
 
 
 
+\section{Comparaison}
+
+Le type \ggs!@bigint! implémente les six opérateurs de comparaison \ggs!==!, \ggs+!=+, \ggs!<!, \ggs!<=!, \ggs!>! et \ggs!>=!. Il  implémente aussi les \emph{getters} \ggs!isZero! et \ggs!sign! qui permettent de comparer un \ggs!@bigint! avec zéro.
+
+
+\subsectionGetter{isZero}{bigint}
+
+Ce \emph{getter} renvoie \ggs!true! si valeur du récepteur est nulle, et \ggs!false! dans le cas contraire.
+
+\begin{galgas}
+message [[0G isZero] ocString] + "\n" # YES
+message [[1G isZero] ocString] + "\n" # NO
+\end{galgas}
+
+
+
+\subsectionGetter{sign}{bigint}
+
+Ce \emph{getter} renvoie :
+\begin{itemize}
+\item \ggs!-1S! si la valeur du récepteur est strictement négative ;
+\item \ggs!0S! si la valeur du récepteur est nulle ;
+\item \ggs!1S! si la valeur du récepteur est strictement positive.
+\end{itemize}
+
+\begin{galgas}
+message [[0G sign] >= 0S ocString] + "\n" # YES
+message [[1G sign] < 0S ocString] + "\n" # NO
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
 \section{Conversions}
 
 \subsectionGetter{bitCountForSignedRepresentation}{uint}

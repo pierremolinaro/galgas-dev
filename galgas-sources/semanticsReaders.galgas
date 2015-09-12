@@ -952,37 +952,20 @@ override method @bigintPredefinedTypeAST getReaderMap
     !returnedTypeName:"bool"
     !false
   )
-#  enterBaseFinalReaderWithArgument (
-#    !?outMap
-#    !?ioUnifiedTypeMap
-#    !getterName:"uintAtIndex"
-#    !"uint" !"inUint32Index"
-#    !returnedTypeName:"uint"
-#    !false
-#  )
-#  enterBaseFinalReaderWithArgument (
-#    !?outMap
-#    !?ioUnifiedTypeMap
-#    !getterName:"uint64AtIndex"
-#    !"uint" !"inUint64Index"
-#    !returnedTypeName:"uint64"
-#    !false
-#  )
-#  enterBaseFinalReaderWithArgument (
-#    !?outMap
-#    !?ioUnifiedTypeMap
-#    !getterName:"byteAtIndex"
-#    !"uint" !"inByteIndex"
-#    !returnedTypeName:"uint"
-#    !false
-#  )
-#  enterBaseFinalGetterWithoutArgument (
-#    !?outMap
-#    !?ioUnifiedTypeMap
-#    !getterName:"isZero"
-#    !returnedTypeName:"bool"
-#    !false
-#  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isZero"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sign"
+    !returnedTypeName:"sint"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

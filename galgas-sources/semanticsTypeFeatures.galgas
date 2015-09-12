@@ -79,28 +79,23 @@ override method @stringsetPredefinedTypeAST getModifierMap
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @applicationPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @applicationPredefinedTypeAST getSupportedOperatorFlags ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags
-{
+override getter @bigintPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod () | unaryPlusOperator () | unaryMinusOperator () |
              binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator () |
              binaryShiftOperator () | binaryModOperator () |
              binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator () |
-             incDecOperator ()
-# | isComparable ()
+             incDecOperator () | isComparable ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @timerPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags
-{
+override getter @timerPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }
 
