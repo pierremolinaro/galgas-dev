@@ -15,27 +15,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-#before {
-## Parcours dans le sens des indices croissants : little endian
-#@uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
-#  extract32ForSignedRepresentation
-#]
-#var s = ""
-#for (n) in a
-#  do s += [n hexString]
-#  between s += " "
-#end
-#message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0xFFEEDD 
-## Parcours dans le sens des indices décroissants : big endian
-#s = ""
-#for > (n) in a
-#  do s += [n hexString]
-#  between s += " "
-#end
-#message s + "\n" #0xFFEEDD 0xCCBBAA99 0x88776655 0x44332211
-#}
-
 proc enterBaseFinalGetterWithoutArgument
   ?!@getterMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -946,6 +925,14 @@ override method @bigintPredefinedTypeAST getReaderMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"spacedString"
+    !"uint" !"inSeparation"
     !returnedTypeName:"string"
     !false
   )

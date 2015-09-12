@@ -346,6 +346,16 @@ GALGAS_string GALGAS_bigint::reader_string (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_bigint::reader_spacedString (const GALGAS_uint & inSeparation COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid () && inSeparation.isValid ()) {
+    result = GALGAS_string (mValue.spacedDecimalString (inSeparation.uintValue ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_bigint::reader_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {

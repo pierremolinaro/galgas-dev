@@ -8304,10 +8304,10 @@ void routine_enterBaseFinalGetterWithoutArgument (GALGAS_getterMap & ioArgument_
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 46)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 25)) ;
   }
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 48))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 48)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 49)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 50)), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 51)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticsReaders.galgas", 54)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 47)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 27))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 27)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 28)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 29)), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 30)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticsReaders.galgas", 33)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 26)) ;
   }
 }
 
@@ -8327,10 +8327,10 @@ void routine_enterInheritedGetterWithoutArgument (GALGAS_getterMap & ioArgument_
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 68)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 47)) ;
   }
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 70))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 70)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 71)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 72)), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 73)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isInherited (SOURCE_FILE ("semanticsReaders.galgas", 76)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 69)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 49))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 49)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 50)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 51)), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 52)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isInherited (SOURCE_FILE ("semanticsReaders.galgas", 55)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 48)) ;
   }
 }
 
@@ -8352,16 +8352,16 @@ void routine_enterInheritedGetterWithArgument (GALGAS_getterMap & ioArgument_ioR
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 92)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 71)) ;
   }
-  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 93)) ;
+  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 72)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_t ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 95)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 74)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 96)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 96)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 75)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 75)) ;
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 98))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 98)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 99)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 101)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isInherited (SOURCE_FILE ("semanticsReaders.galgas", 104)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 97)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 77))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 77)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 78)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 80)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isInherited (SOURCE_FILE ("semanticsReaders.galgas", 83)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 76)) ;
   }
 }
 
@@ -8385,20 +8385,20 @@ void routine_enterInheritedReaderWith_32_Arguments (GALGAS_getterMap & ioArgumen
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 122)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 101)) ;
   }
-  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 123)) ;
+  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 102)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_t ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 125)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 104)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 126)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 126)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 105)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 105)) ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 127)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 106)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 128)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 128)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 107)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 107)) ;
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 130))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 130)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 131)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 133)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isInherited (SOURCE_FILE ("semanticsReaders.galgas", 136)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 129)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 109))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 109)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 110)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 112)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isInherited (SOURCE_FILE ("semanticsReaders.galgas", 115)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 108)) ;
   }
 }
 
@@ -8418,10 +8418,10 @@ void routine_enterBaseReaderWithoutArgument (GALGAS_getterMap & ioArgument_ioRea
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 150)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 129)) ;
   }
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 152))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 152)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 153)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 154)), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 155)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsReaders.galgas", 158)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 151)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 131))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 131)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 132)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 133)), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 134)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsReaders.galgas", 137)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 130)) ;
   }
 }
 
@@ -8443,16 +8443,16 @@ void routine_enterBaseReaderWithArgument (GALGAS_getterMap & ioArgument_ioReader
                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 174)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 153)) ;
   }
-  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 175)) ;
+  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 154)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_t ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 177)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 156)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 178)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 178)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 157)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 157)) ;
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 180))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 180)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 181)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 183)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsReaders.galgas", 186)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 179)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 159))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 159)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 160)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 162)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsReaders.galgas", 165)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 158)) ;
   }
 }
 
@@ -8474,16 +8474,16 @@ void routine_enterBaseFinalReaderWithArgument (GALGAS_getterMap & ioArgument_ioR
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 202)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 181)) ;
   }
-  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 203)) ;
+  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 182)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_t ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 205)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 184)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 206)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 206)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 185)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 185)) ;
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 208))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 208)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 209)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 211)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticsReaders.galgas", 214)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 207)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 187))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 187)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 188)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 190)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticsReaders.galgas", 193)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 186)) ;
   }
 }
 
@@ -8507,20 +8507,20 @@ void routine_enterBaseReaderWith_32_Arguments (GALGAS_getterMap & ioArgument_ioR
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 232)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 211)) ;
   }
-  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 233)) ;
+  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 212)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_t ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 235)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 214)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 236)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 236)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 215)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 215)) ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 237)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 216)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 238)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 238)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 217)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 217)) ;
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 240))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 240)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 241)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 243)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsReaders.galgas", 246)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 239)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 219))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 219)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 220)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 222)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsReaders.galgas", 225)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 218)) ;
   }
 }
 
@@ -8544,20 +8544,20 @@ void routine_enterBaseFinalReaderWith_32_Arguments (GALGAS_getterMap & ioArgumen
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 264)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 243)) ;
   }
-  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 265)) ;
+  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 244)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_t ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 267)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 246)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 268)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 268)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 247)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 247)) ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 269)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 248)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 270)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 270)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 249)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 249)) ;
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 272))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 272)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 273)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 275)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticsReaders.galgas", 278)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 271)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 251))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 251)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 252)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 254)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticsReaders.galgas", 257)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 250)) ;
   }
 }
 
@@ -8583,24 +8583,24 @@ void routine_enterBaseReaderWith_33_Arguments (GALGAS_getterMap & ioArgument_ioR
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 298)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 277)) ;
   }
-  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 299)) ;
+  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 278)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_t ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 301)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 280)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 302)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 302)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 281)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 281)) ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 303)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 282)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 304)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 304)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 283)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 283)) ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_33_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 305)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_33_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 284)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 306)), var_t, constinArgument_inArgument_33_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 306)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 285)), var_t, constinArgument_inArgument_33_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 285)) ;
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 308))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 308)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 309)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 311)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsReaders.galgas", 314)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 307)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 287))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 287)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 288)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 290)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsReaders.galgas", 293)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 286)) ;
   }
 }
 
@@ -8626,24 +8626,24 @@ void routine_enterBaseFinalReaderWith_33_Arguments (GALGAS_getterMap & ioArgumen
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeIndex ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 334)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex COMMA_SOURCE_FILE ("semanticsReaders.galgas", 313)) ;
   }
-  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 335)) ;
+  GALGAS_functionSignature var_argList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsReaders.galgas", 314)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_t ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 337)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 316)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 338)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 338)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 317)), var_t, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 317)) ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 339)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 318)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 340)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 340)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 319)), var_t, constinArgument_inArgument_32_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 319)) ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_33_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 341)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_33_TypeName, var_t COMMA_SOURCE_FILE ("semanticsReaders.galgas", 320)) ;
   }
-  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 342)), var_t, constinArgument_inArgument_33_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 342)) ;
+  var_argList.addAssign_operation (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticsReaders.galgas", 321)), var_t, constinArgument_inArgument_33_Name  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 321)) ;
   {
-  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 344))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 344)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 345)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 347)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticsReaders.galgas", 350)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 343)) ;
+  ioArgument_ioReaderMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (constinArgument_inReaderName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 323))  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 323)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsReaders.galgas", 324)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 326)), constinArgument_inHasLexiqueAndLocationArguments, var_returnedTypeIndex, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticsReaders.galgas", 329)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsReaders.galgas", 322)) ;
   }
 }
 
@@ -8659,18 +8659,18 @@ void routine_commonReaderMapForAllTypes (GALGAS_unifiedTypeMap & ioArgument_ioUn
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outMap.drop () ; // Release 'out' argument
-  outArgument_outMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsReaders.galgas", 360)) ;
+  outArgument_outMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsReaders.galgas", 339)) ;
   {
-  routine_enterInheritedGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("description"), GALGAS_string ("string"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 361)) ;
+  routine_enterInheritedGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("description"), GALGAS_string ("string"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 340)) ;
   }
   {
-  routine_enterInheritedGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("staticType"), GALGAS_string ("type"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 368)) ;
+  routine_enterInheritedGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("staticType"), GALGAS_string ("type"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 347)) ;
   }
   {
-  routine_enterInheritedGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("dynamicType"), GALGAS_string ("type"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 375)) ;
+  routine_enterInheritedGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("dynamicType"), GALGAS_string ("type"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 354)) ;
   }
   {
-  routine_enterInheritedGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("object"), GALGAS_string ("object"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 382)) ;
+  routine_enterInheritedGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("object"), GALGAS_string ("object"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsReaders.galgas", 361)) ;
   }
 }
 
