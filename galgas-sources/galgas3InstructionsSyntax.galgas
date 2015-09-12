@@ -404,26 +404,39 @@ rule <semantic_instruction>
     $identifier$ ?let attributeName
     mStructAttributeList += !attributeName
   end
-  @incDecKind kind
   select
     $++$
-    kind = .incWithOverflowDetect
+    outInstruction = @incDecInstructionAST.new {
+      ![mReceiverName location]
+      !mReceiverName
+      !mStructAttributeList
+      !.increment
+    }
   or
     $&++$
-    kind = .incNoOverflowDetect
+    outInstruction = @incDecNoOVFInstructionAST.new {
+      ![mReceiverName location]
+      !mReceiverName
+      !mStructAttributeList
+      !.increment
+    }
   or
     $&--$
-    kind = .decNoOverflowDetect
+    outInstruction = @incDecNoOVFInstructionAST.new {
+      ![mReceiverName location]
+      !mReceiverName
+      !mStructAttributeList
+      !.decrement
+    }
   or
     $--$
-    kind = .decWithOverflowDetect
+    outInstruction = @incDecInstructionAST.new {
+      ![mReceiverName location]
+      !mReceiverName
+      !mStructAttributeList
+      !.decrement
+    }
   end
-  outInstruction = @incDecInstructionAST.new {
-    ![mReceiverName location]
-    !mReceiverName
-    !mStructAttributeList
-    !kind
-  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -440,24 +453,31 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $self$
   let instructionLocation = @location.here
-  @incDecKind kind
   select
     $++$
-    kind = .incWithOverflowDetect
+    outInstruction = @selfIncDecInstructionAST.new {
+      !instructionLocation
+      !.increment
+    }
   or
     $--$
-    kind = .decWithOverflowDetect
+    outInstruction = @selfIncDecInstructionAST.new {
+      !instructionLocation
+      !.decrement
+    }
   or
     $&++$
-    kind = .incNoOverflowDetect
+    outInstruction = @selfIncDecNoOVFInstructionAST.new {
+      !instructionLocation
+      !.increment
+    }
   or
     $&--$
-    kind = .decNoOverflowDetect
+    outInstruction = @selfIncDecNoOVFInstructionAST.new {
+      !instructionLocation
+      !.decrement
+    }
   end
-  outInstruction = @selfIncDecInstructionAST.new {
-    !instructionLocation
-    !kind
-  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

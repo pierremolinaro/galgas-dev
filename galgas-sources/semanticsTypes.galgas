@@ -279,6 +279,7 @@ func %once binarySubOperatorNoOVF   -> @uint outMask { outMask = 1 << 18 }
 func %once binaryMulOperatorNoOVF   -> @uint outMask { outMask = 1 << 19 }
 func %once binaryDivOperatorNoOVF   -> @uint outMask { outMask = 1 << 20 }
 func %once unaryMinusOperatorNoOVF  -> @uint outMask { outMask = 1 << 21 }
+func %once incDecOperatorNoOVF      -> @uint outMask { outMask = 1 << 22 }
 
 func %once supportWithAccessor                            -> @uint outMask { outMask = 1 << 26 }
 func %once plusEqualOperatorWithFieldListNeedsCompilerArg -> @uint outMask { outMask = 1 << 27 }

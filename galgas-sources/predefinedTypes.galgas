@@ -372,8 +372,10 @@ proc printFeaturesOfType
   end
   if (inHandledOperatorFlags & incDecOperator ()) != 0 then
     s += "    @" + inTypeName + " ++ -> @" + inTypeName + "\n"
-    s += "    @" + inTypeName + " &++ -> @" + inTypeName + "\n"
     s += "    @" + inTypeName + " -- -> @" + inTypeName + "\n"
+  end
+  if (inHandledOperatorFlags & incDecOperatorNoOVF ()) != 0 then
+    s += "    @" + inTypeName + " &++ -> @" + inTypeName + "\n"
     s += "    @" + inTypeName + " &-- -> @" + inTypeName + "\n"
   end
   for () in inAddAssignOperatorArguments

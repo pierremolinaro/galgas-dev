@@ -8140,10 +8140,8 @@ class GALGAS_incDecKind : public AC_GALGAS_root {
 //--------------------------------- Enumeration
   public : typedef enum {
     kNotBuilt,
-    kEnum_incWithOverflowDetect,
-    kEnum_decWithOverflowDetect,
-    kEnum_incNoOverflowDetect,
-    kEnum_decNoOverflowDetect
+    kEnum_increment,
+    kEnum_decrement
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -8165,13 +8163,9 @@ class GALGAS_incDecKind : public AC_GALGAS_root {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_incDecKind constructor_decNoOverflowDetect (LOCATION_ARGS) ;
+  public : static GALGAS_incDecKind constructor_decrement (LOCATION_ARGS) ;
 
-  public : static GALGAS_incDecKind constructor_decWithOverflowDetect (LOCATION_ARGS) ;
-
-  public : static GALGAS_incDecKind constructor_incNoOverflowDetect (LOCATION_ARGS) ;
-
-  public : static GALGAS_incDecKind constructor_incWithOverflowDetect (LOCATION_ARGS) ;
+  public : static GALGAS_incDecKind constructor_increment (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -8185,13 +8179,9 @@ class GALGAS_incDecKind : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isDecNoOverflowDetect (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isDecrement (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isDecWithOverflowDetect (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isIncNoOverflowDetect (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isIncWithOverflowDetect (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_isIncrement (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

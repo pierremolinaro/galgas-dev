@@ -263,6 +263,46 @@ GALGAS_string GALGAS_bigint::reader_xString (UNUSED_LOCATION_ARGS) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Incrementation, decrementation
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_bigint::increment_operation (C_Compiler * /* inCompiler */
+                                         COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    ++ mValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_bigint::decrement_operation (C_Compiler * /* inCompiler */
+                                         COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    -- mValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+/*void GALGAS_bigint::increment_operation_no_overflow (void) {
+  if (isValid ()) {
+    ++ mValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_bigint::decrement_operation_no_overflow (void) {
+  if (isValid ()) {
+    -- mValue ;
+  }
+}*/
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Bit manipulation
 #endif
 
