@@ -1,0 +1,346 @@
+
+
+proc testsuite_bigint_type {
+  message "*************************************** begin of @bigint test\n"
+  message "--- getter string\n"
+  message [-1234567890_1234567890_1234567890_G string] + "\n"
+  message "--- getter hexString\n"
+  message [-1234567890_1234567890_1234567890_G hexString] + "\n"
+  message "--- getter xString\n"
+  message [-1234567890_1234567890_1234567890_G xString] + "\n"
+  message "--- extract8ForUnsignedRepresentation\n"
+# Parcours dans le sens des indices croissants : little endian
+  @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract8ForUnsignedRepresentation]
+  var s = ""
+  for (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x11 0x22 0x33 0x44 . . . 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 
+# Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
+  a = [0G extract8ForUnsignedRepresentation]
+  s = ""
+  for (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x0
+  message "--- extract8ForSignedRepresentation\n"
+# Parcours dans le sens des indices croissants : little endian
+  a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract8ForSignedRepresentation]
+  s = ""
+  for (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x11 0x22 0x33 0x44 . . . 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x00
+  # Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
+  # Parcours dans le sens des indices croissants : little endian
+  a = [-0x4433_2211G extract8ForSignedRepresentation]
+  s = ""
+  for (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0xEF 0xDD 0xCC 0xBB
+  # Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0xBB 0xCC 0xDD 0xEF
+  message "--- extract32ForUnsignedRepresentation\n"
+  # Parcours dans le sens des indices croissants : little endian
+  a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract32ForUnsignedRepresentation]
+  s = ""
+  for (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD 
+  # Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
+  a = [0G extract32ForUnsignedRepresentation]
+  s = ""
+  for (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x0
+  message "--- extract32ForSignedRepresentation\n"
+  # Parcours dans le sens des indices croissants : little endian
+  a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract32ForSignedRepresentation]
+  s = ""
+  for (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD
+  # Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
+  # Parcours dans le sens des indices croissants : little endian
+  a = [-0x55_4433_2211G extract32ForSignedRepresentation]
+  s = ""
+  for (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0xBBCCDDEF 0xFFFFFFAA
+  # Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in a
+    do s += [n hexString]
+    between s += " "
+  end
+  drop a
+  message s + "\n" # 0xFFFFFFAA 0xBBCCDDEF
+  message "--- extract64ForUnsignedRepresentation\n"
+  # Parcours dans le sens des indices croissants : little endian
+  @uint64list aa = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract64ForUnsignedRepresentation]
+  s = ""
+  for (n) in aa
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x8877665544332211 0xFFEEDDCCBBAA99
+  # Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in aa
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
+  aa = [0G extract64ForUnsignedRepresentation]
+  s = ""
+  for (n) in aa
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x0
+  message "--- extract64ForSignedRepresentation\n"
+  # Parcours dans le sens des indices croissants : little endian
+  aa = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G extract64ForSignedRepresentation]
+  s = ""
+  for (n) in aa
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0x8877665544332211 0xFFEEDDCCBBAA99
+  # Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in aa
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
+  # Parcours dans le sens des indices croissants : little endian
+  aa = [-0x55_4433_2211G extract64ForSignedRepresentation]
+  s = ""
+  for (n) in aa
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0xFFFFFFAABBCCDDEF
+  # Parcours dans le sens des indices décroissants : big endian
+  s = ""
+  for > (n) in aa
+    do s += [n hexString]
+    between s += " "
+  end
+  message s + "\n" # 0xFFFFFFAABBCCDDEF
+  message "--- Addition\n"
+  message [12345_67890_12345_67890G + 98765_43210_98765_43210G string] + "\n"
+  message "--- Subtract\n"
+  message [12345_67890_12345_67890G - 98765_43210_98765_43210G string] + "\n"
+  message "--- Multiply\n"
+  message [12345_67890_12345_67890G * 98765_43210_98765_43210G string] + "\n"
+  message "--- Divide\n"
+  message [98765_43210_98765_43210G / 12345_67890_12345_67890G string] + "\n"
+  message [(-98765_43210_98765_43210G) / 12345_67890_12345_67890G string] + "\n"
+  message [(-98765_43210_98765_43210G) / (-12345_67890_12345_67890G) string] + "\n"
+  message [98765_43210_98765_43210G / (-12345_67890_12345_67890G) string] + "\n"
+  message [(-7S) / 2S string] + "\n" # -3
+  message [(-7G) / 2G string] + "\n" # -3
+  message [(-7S) / (-2S) string] + "\n" # 3
+  message [(-7G) / (-2G) string] + "\n" # 3
+  message [7S / (-2S) string] + "\n" # -3
+  message [7G / (-2G) string] + "\n" # -3
+  message "--- mod\n"
+  message [9876543210G mod 1234567890G string] + "\n" # 90
+  message [(-9876543210G) mod 1234567890G string] + "\n" # -90
+  message [(-9876543210G) mod (-1234567890G) string] + "\n"  # -90
+  message [9876543210G mod (-1234567890G) string] + "\n"  # 90
+  message [2000S mod 183S string] + "\n" # 170
+  message [(-2000S) mod 183S string] + "\n" # -170
+  message [(-2000S) mod (-183S) string] + "\n" # -170
+  message [2000S mod (-183S) string] + "\n" # 170
+  message "--- divideBy\n"
+  @bigint quotient
+  @bigint remainder
+  [9876543210_9876543210G divideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # 80000000737 8280
+  [-9876543210_9876543210G divideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # -80000000737 -8280
+  [-9876543210_9876543210G divideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
+  [9876543210_9876543210G divideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # -80000000737 8280
+  message "--- floorDivideBy\n"
+  [9876543210_9876543210G floorDivideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # 80000000737 8280
+  [-9876543210_9876543210G floorDivideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # -80000000738 1234559610
+  [-9876543210_9876543210G floorDivideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
+  [9876543210_9876543210G floorDivideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # -80000000738 -1234559610
+  message "--- ceilDivideBy\n"
+  [9876543210_9876543210G ceilDivideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # 80000000738 -1234559610
+  [-9876543210_9876543210G ceilDivideBy
+    !1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # -80000000737 -8280
+  [-9876543210_9876543210G ceilDivideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # 80000000738 1234559610
+  [9876543210_9876543210G ceilDivideBy
+    !-1234567890G
+    ?quotient:quotient
+    ?remainder:remainder
+  ]
+  message [quotient string] + " " + remainder + "\n" # -80000000737 8280
+  message "--- operator <<\n"
+  message [0x1234567890G << 12 hexString] + "\n" # 0x1234567890000
+  message [(-0x1234567890G) << 12 hexString] + "\n" # -0x1234567890000
+  message [2000S << 2 string] + "\n" # 8000
+  message [(-2000S) << 2 string] + "\n" # -8000
+  message "--- operator >>\n"
+  message [0x1234567890G >> 12 hexString] + "\n" # 0x1234567
+  message [(-0x1234567890G) >> 12 hexString] + "\n" # -0x1234567
+  message [2000S >> 2 string] + "\n" # 500
+  message [(-2000S) >> 2 string] + "\n" # -500
+  message [9G >> 1 string] + "\n" # 4
+  message [9S >> 1 string] + "\n" # 4
+  message [7G >> 1 string] + "\n" # 3
+  message [7S >> 1 string] + "\n" # 3
+  message [3G >> 1 string] + "\n" # 1
+  message [3S >> 1 string] + "\n" # 1
+  message [1G >> 1 string] + "\n" # 0
+  message [1S >> 1 string] + "\n" # 0
+  message [-9G >> 1 string] + "\n" # -5
+  message [-9S >> 1 string] + "\n" # -5
+  message [-7G >> 1 string] + "\n" # -4
+  message [-7S >> 1 string] + "\n" # -4
+  message [-3G >> 1 string] + "\n" # -2
+  message [-3S >> 1 string] + "\n" # -2
+  message [-1G >> 1 string] + "\n" # -1
+  message [-1S >> 1 string] + "\n" # -1
+  message "--- operator &\n"
+  message [0x1234G & 0x4321G hexString] + "\n" # 0x220
+  message [-0x1234G & 0x4321G hexString] + "\n" # 0x4100
+  message [-0x80G & 0xFFG hexString] + "\n" # 0x80
+  message "--- operator |\n"
+  message [0x1234G | 0x4321G hexString] + "\n" # 0x5335
+  message [-0x1234G | 0x4321G hexString] + "\n" # -0x1013
+  message [-0x80G | 0xFFG hexString] + "\n" # -0x1
+  message "--- operator ^\n"
+  message [0x1234G ^ 0x4321G hexString] + "\n" # 0x5115
+  message [-0x1234G ^ 0x4321G hexString] + "\n" # -0x5113
+  message [-0x80G ^ 0xFFG hexString] + "\n" # -0x81
+  message [-0x80G ^ -0xFFG hexString] + "\n" # 0x81
+  message "--- operator ~\n"
+  message [~  0x1234G hexString] + "\n" # -0x1235
+  message [~ -0x1234G hexString] + "\n" # 0x1233
+  message "--- bitAtIndex\n"
+  message [[0x1234G bitAtIndex !7] ocString] + "\n" # NO
+  message [[0x1234G bitAtIndex !5] ocString] + "\n" # YES
+  message [[0x1234G bitAtIndex !25] ocString] + "\n" # NO
+  message [[-0x1234G bitAtIndex !7] ocString] + "\n" # YES
+  message [[-0x1234G bitAtIndex !5] ocString] + "\n" # NO
+  message [[-0x1234G bitAtIndex !25] ocString] + "\n" # YES
+  message "--- setBitAtIndex\n"
+  var b = 0x1234G
+  [!?b setBitAtIndex !true !14]
+  message [b hexString] + "\n" # 0x5234
+  [!?b setBitAtIndex !true !40]
+  message [b hexString] + "\n" # 0x10000005234
+  b = -0x1234G
+  [!?b setBitAtIndex !false !14]
+  message [b hexString] + "\n" # -0x5234
+  [!?b setBitAtIndex !false !40] # -0x10000005234
+  message [b hexString] + "\n"
+  message "--- complementBitAtIndex\n"
+  b = 0x1234G
+  [!?b complementBitAtIndex !14]
+  message [b hexString] + "\n" # 0x5234
+  b = -0x1234G
+  [!?b complementBitAtIndex !40]
+  message [b hexString] + "\n" # -0x10000005234
+}
+
+

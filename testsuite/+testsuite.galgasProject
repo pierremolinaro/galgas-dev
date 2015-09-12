@@ -23,6 +23,7 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_strings.galgas"
   "galgas-sources/testsuite_range.galgas"
   "galgas-sources/testsuite_array.galgas"
+  "galgas-sources/testsuite_bigint.galgas"
 
   "galgas-sources/testsuite_extern_type.galgas"
   %tool-source : "hand_coded_sources/extern_type_implementation.cpp"

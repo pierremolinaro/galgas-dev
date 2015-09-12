@@ -310,7 +310,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (84 types)
+--- Type list (85 types)
   @1charArray
   @2lstringlist
   @2lstringlist-element
@@ -345,6 +345,7 @@ LOGGING r: <@uint:5>
   @functionlist
   @functionlist-element
   @inheritedClassForTypeCastInSetterCall
+  @lbigint
   @lbool
   @lchar
   @ldouble
@@ -482,3 +483,135 @@ LOGGING : <@string:"Ciao">
 LOGGING complex: <@complex:1, -1>
 LOGGING real: <@double:1>
 LOGGING imaginary: <@double:-1>
+*************************************** begin of @bigint test
+--- getter string
+-123456789012345678901234567890
+--- getter hexString
+-0x18EE90FF6C373E0EE4E3F0AD2
+--- getter xString
+-18EE90FF6C373E0EE4E3F0AD2
+--- extract8ForUnsignedRepresentation
+0x11 0x22 0x33 0x44 0x55 0x66 0x77 0x88 0x99 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF
+0xFF 0xEE 0xDD 0xCC 0xBB 0xAA 0x99 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
+0x0
+--- extract8ForSignedRepresentation
+0x11 0x22 0x33 0x44 0x55 0x66 0x77 0x88 0x99 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x0
+0x0 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA 0x99 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
+0xEF 0xDD 0xCC 0xBB
+0xBB 0xCC 0xDD 0xEF
+--- extract32ForUnsignedRepresentation
+0x44332211 0x88776655 0xCCBBAA99 0xFFEEDD
+0xFFEEDD 0xCCBBAA99 0x88776655 0x44332211
+0x0
+--- extract32ForSignedRepresentation
+0x44332211 0x88776655 0xCCBBAA99 0xFFEEDD
+0xFFEEDD 0xCCBBAA99 0x88776655 0x44332211
+0xBBCCDDEF 0xFFFFFFAA
+0xFFFFFFAA 0xBBCCDDEF
+--- extract64ForUnsignedRepresentation
+0x8877665544332211 0xFFEEDDCCBBAA99
+0xFFEEDDCCBBAA99 0x8877665544332211
+0x0
+--- extract64ForSignedRepresentation
+0x8877665544332211 0xFFEEDDCCBBAA99
+0xFFEEDDCCBBAA99 0x8877665544332211
+0xFFFFFFAABBCCDDEF
+0xFFFFFFAABBCCDDEF
+--- Addition
+111111111011111111100
+--- Subtract
+-86419753208641975320
+--- Multiply
+1219326311370217952237463801111263526900
+--- Divide
+8
+-8
+8
+-8
+-3
+-3
+3
+3
+-3
+-3
+--- mod
+90
+-90
+-90
+90
+170
+-170
+-170
+170
+--- divideBy
+80000000737 8280
+-80000000737 -8280
+80000000737 -8280
+-80000000737 8280
+--- floorDivideBy
+80000000737 8280
+-80000000738 1234559610
+80000000737 -8280
+-80000000738 -1234559610
+--- ceilDivideBy
+80000000738 -1234559610
+-80000000737 -8280
+80000000738 1234559610
+-80000000737 8280
+--- operator <<
+0x1234567890000
+-0x1234567890000
+8000
+-8000
+--- operator >>
+0x1234567
+-0x1234568
+500
+-500
+4
+4
+3
+3
+1
+1
+0
+0
+-5
+-5
+-4
+-4
+-2
+-2
+-1
+-1
+--- operator &
+0x220
+0x4100
+0x80
+--- operator |
+0x5335
+-0x1013
+-0x1
+--- operator ^
+0x5115
+-0x5113
+-0x81
+0x81
+--- operator ~
+-0x1235
+0x1233
+--- bitAtIndex
+NO
+YES
+NO
+YES
+NO
+YES
+--- setBitAtIndex
+0x5234
+0x10000005234
+-0x5234
+-0x10000005234
+--- complementBitAtIndex
+0x5234
+-0x10000001234
