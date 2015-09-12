@@ -20,6 +20,7 @@ before {
   testsuite_range ()
   testsuite_array ()
   testsuite_extern_type ()
+  testsuite_bigint_type ()
 }
 
 #--- 'when' clauses

@@ -155,7 +155,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 % Exemple d'appel : \refGetterPage{bool}{string} -- affiche --> @bool string getter (page xx)
-\newcommand\refGetterPage[2] {\hyperref[getter:#1:#2]{getter \texttt{@#1 #2} à la page \pageref{getter:#1:#2}}}
+\newcommand\refGetterPage[2] {\hyperref[getter:#1:#2]{\em getter \texttt{#2} du type \texttt{@#1} (page \pageref{getter:#1:#2})}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %   S E T T E R   C R O S S    R E F E R E N C I N G                                                                    *
@@ -166,7 +166,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 % Exemple d'appel : \refSetterPage{bool}{string} -- affiche --> @bool string setter (page xx)
-\newcommand\refSetterPage[2] {\hyperref[setter:#1:#2]{setter \texttt{@#1 #2} à la page \pageref{setter:#1:#2}}}
+\newcommand\refSetterPage[2] {\hyperref[setter:#1:#2]{\em setter \texttt{#2} du type \texttt{@#1} (page \pageref{setter:#1:#2})}}
 
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -178,7 +178,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 % Exemple d'appel : \refSetterPage{bool}{string} -- affiche --> @bool string setter (page xx)
-\newcommand\refMethodPage[2] {\hyperref[setter:#1:#2]{méthode \texttt{@#1 #2} à la page \pageref{method:#1:#2}}}
+\newcommand\refMethodPage[2] {\hyperref[setter:#1:#2]{\em méthode \texttt{#2} du type \texttt{@#1} (page \pageref{method:#1:#2})}}
 
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -189,6 +189,6 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\newcommand \refConstructorPage[2] {\hyperref[constructor:#1:#2]{#2 constructor (page \pageref{constructor:#1:#2})}}
+\newcommand \refConstructorPage[2] {\hyperref[constructor:#1:#2]{\em constructeur \texttt{#2} du type \texttt{@#1} (page \pageref{constructor:#1:#2})}}
 
 %-----------------------------------------------------------------------------------------------------------------------*

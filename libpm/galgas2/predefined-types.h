@@ -403,9 +403,13 @@ public : VIRTUAL_IN_DEBUG GALGAS_bigint right_shift_operation (const GALGAS_uint
 
   public : VIRTUAL_IN_DEBUG class GALGAS_uintlist reader_extract_33__32_ForUnsignedRepresentation (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_uintlist reader_extractBytesForSignedRepresentation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_list reader_extract_36__34_ForSignedRepresentation (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_uintlist reader_extractBytesForUnsignedRepresentation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_list reader_extract_36__34_ForUnsignedRepresentation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uintlist reader_extract_38_ForSignedRepresentation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uintlist reader_extract_38_ForUnsignedRepresentation (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_fitsInSInt (LOCATION_ARGS) const ;
 

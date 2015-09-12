@@ -4057,6 +4057,7 @@
       GCC_OPTIMIZATION_LEVEL = 2 ;
       GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS) ;
       GCC_WARN_UNUSED_PARAMETER = YES ;
+      OTHER_LDFLAGS = "../build/libpm/gmp/libgmp-Darwin-Intel.a" ;
       PRODUCT_NAME = "LL1_expression" ;
     };
     name = Default;
@@ -4069,6 +4070,7 @@
       GCC_GENERATE_DEBUGGING_SYMBOLS = YES ;
       GCC_PREPROCESSOR_DEFINITIONS = () ;
       GCC_WARN_UNUSED_PARAMETER = YES ;
+      OTHER_LDFLAGS = "../build/libpm/gmp/libgmp-Darwin-Intel.a" ;
       PRODUCT_NAME = "LL1_expression-debug" ;
     };
     name = Default;

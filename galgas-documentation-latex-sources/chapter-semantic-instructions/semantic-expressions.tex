@@ -95,7 +95,7 @@ Les parenthèses \ggs+(+ et \ggs+)+ permettent de forcer le groupement d'opéran
 
 \ggs+true+ et \ggs+false+ sont les constantes du type \ggs+@bool+.
 
-\subsection{Constante Chaîne de caractères}
+\subsection{Constante chaîne de caractères}
 
 \subsection{Constante caractère}
 
@@ -106,7 +106,8 @@ Une constante entière est une séquence de chiffres décimaux, éventuellement 
   \item pas de suffixe : \ggs+@uint+ ;
   \item suffixe \texttt{S} : \ggs+@sint+ ;
   \item suffixe \texttt{L} : \ggs+@uint64+ ;
-  \item suffixe \texttt{LS} : \ggs+@sint64+.
+  \item suffixe \texttt{LS} : \ggs+@sint64+ ;
+  \item suffixe \texttt{G} : \ggs+@bigint+.
 \end{itemize}
 
 \subsection{Constante flottante}
@@ -227,9 +228,10 @@ Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du co
   \begin{tabular}{@{}lllllll@{}}
   \textbf{Type} & \textbf{Constructeur par défaut} \\
   \ggs+abstract class @T+ & \emph{Pas de constructeur par défaut} \\
-  \ggs+@bool+ & Initialisation à \ggs+false+ \\
   \ggs+@application+ & \emph{Pas de constructeur par défaut} \\
   \ggs+array @T+ & \emph{Pas de constructeur par défaut} \\
+  \ggs+@bigint+ & Équivalent au constructeur \ggs+zero+, initialisation à \ggs!0G! \\
+  \ggs+@bool+ & Initialisation à \ggs+false+ \\
   \ggs+@char+ & Initialisation au caractère \texttt{NULL} : \ggs!'\0'! \\
   \ggs+class @T+ & Oui, si tous les attributs possèdent un constructeur par défaut \\
   \ggs+@data+ & Équivalent au constructeur \ggs+emptyData+ \\

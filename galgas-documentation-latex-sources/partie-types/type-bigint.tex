@@ -34,6 +34,15 @@ message [a string] + "\n" # 0
 \end{galgas}
 
 
+\subsectionConstructor{default}{bigint}
+
+
+Le constructeur \ggs!default!, comme le constructeur \ggs!zero!, renvoie un \ggs!@bigint! initialisé à zéro :
+\begin{galgas}
+@bigint a = .default
+message [a string] + "\n" # 0
+\end{galgas}
+
 \subsectionConstructor{sint}{bigint}
 
 Le constructeur \ggs!sint! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@sint! :
@@ -322,14 +331,26 @@ message [a xString] + "\n" # -18EE90FF6C373E0EE4E3F0AD2
 
 \section{Extraction}
 
-\subsectionGetter{extractBytesForUnsignedRepresentation}{bigint}
+Six \emph{getters} d'extraction sont définis. Ils permettent d'obtenir la valeur d'un \ggs!@bigint! sous la forme d'un \ggs!@uintlist! ou d'un \ggs!@uint64list!. Ces getters sont :
+\begin{itemize}
+  \item \refGetterPage{bigint}{extract8ForUnsignedRepresentation} ;
+  \item \refGetterPage{bigint}{extract8ForSignedRepresentation} ;
+  \item \refGetterPage{bigint}{extract32ForUnsignedRepresentation} ;
+  \item \refGetterPage{bigint}{extract32ForSignedRepresentation} ;
+  \item \refGetterPage{bigint}{extract64ForUnsignedRepresentation} ;
+  \item \refGetterPage{bigint}{extract64ForSignedRepresentation}.
+\end{itemize}
+
+L'extraction permet d'obtenir des mots de $8$, $32$ et $64$ bits. Les \emph{getters} « \texttt{…Unsigned…} » extraient la valeur absolue du nombre, et retournent une représentation \emph{binaire naturelle}. Les \emph{getters} « \texttt{…Signed…} » extraient la valeur du nombre en tenant compte de son signe, et retournent une représentation \emph{complément à deux}.
+
+\subsectionGetter{extract8ForUnsignedRepresentation}{bigint}
 
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
 \begin{galgas}
 # Parcours dans le sens des indices croissants : little endian
 @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
-  extractBytesForUnsignedRepresentation
+  extract8ForUnsignedRepresentation
 ]
 var s = ""
 for (n) in a
@@ -349,7 +370,7 @@ message s + "\n" # 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
 Si le récepteur est nul, le vecteur retourné comprend un seul élément de valeur $0$.
 
 \begin{galgas}
-@uintlist a = [0G extractBytesForUnsignedRepresentation]
+@uintlist a = [0G extract8ForUnsignedRepresentation]
 var s = ""
 for (n) in a
   do s += [n hexString]
@@ -358,16 +379,16 @@ end
 message s + "\n" # 0x0
 \end{galgas}
 
-\subsectionGetter{extractBytesForSignedRepresentation}{bigint}
+\subsectionGetter{extract8ForSignedRepresentation}{bigint}
 
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggs!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
-Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée. Dans l'exemple ci-dessus, c'est la valeur \texttt{0xFF\_EEDD\_...\_2211G} qui est utilisée, comme pour le premier exemple du \emph{getter} \ggs!extractBytesForUnsignedRepresentation!. Comme le bit de poids fort de ce nombre est $1$, l'extraction en \emph{signé} retourne un élément de plus que l'extraction en \emph{non signé}, élément dont la valeur est $0$.
+Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée. Dans l'exemple ci-dessus, c'est la valeur \texttt{0xFF\_EEDD\_...\_2211G} qui est utilisée, comme pour le premier exemple du \emph{getter} \ggs!extract8ForUnsignedRepresentation!. Comme le bit de poids fort de ce nombre est $1$, l'extraction en \emph{signé} retourne un élément de plus que l'extraction en \emph{non signé}, élément dont la valeur est $0$.
 
 \begin{galgas}
 # Parcours dans le sens des indices croissants : little endian
 @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
-  extractBytesForSignedRepresentation
+  extract8ForSignedRepresentation
 ]
 var s = ""
 for (n) in a
@@ -388,7 +409,7 @@ Un nombre négatif est représenté sous la forme de son complément à deux, so
 
 \begin{galgas}
 # Parcours dans le sens des indices croissants : little endian
-@uintlist a = [-0x4433_2211G extractBytesForSignedRepresentation]
+@uintlist a = [-0x4433_2211G extract8ForSignedRepresentation]
 var s = ""
 for (n) in a
   do s += [n hexString]
@@ -418,14 +439,14 @@ for (n) in a
   do s += [n hexString]
   between s += " "
 end
-message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0xFFEEDD 
+message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD 
 # Parcours dans le sens des indices décroissants : big endian
 s = ""
 for > (n) in a
   do s += [n hexString]
   between s += " "
 end
-message s + "\n" #0xFFEEDD 0xCCBBAA99 0x88776655 0x44332211
+message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
 \end{galgas}
 
 Si le récepteur est nul, le vecteur retourné comprend un seul élément de valeur $0$.
@@ -459,14 +480,14 @@ for (n) in a
   do s += [n hexString]
   between s += " "
 end
-message s + "\n" # 0x11 0x22 0x33 0x44 . . . 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x00
+message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD
 # Parcours dans le sens des indices décroissants : big endian
 s = ""
 for > (n) in a
   do s += [n hexString]
   between s += " "
 end
-message s + "\n" # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
+message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
 \end{galgas}
 
 Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ : 
@@ -487,6 +508,95 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0xFFFFFFAA 0xBBCCDDEF
+\end{galgas}
+
+
+
+
+
+\subsectionGetter{extract64ForUnsignedRepresentation}{bigint}
+
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uint64list!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uint64list a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+  extract64ForUnsignedRepresentation
+]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x8877665544332211 0xFFEEDDCCBBAA99
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
+\end{galgas}
+
+Si le récepteur est nul, le vecteur retourné comprend un seul élément de valeur $0$.
+
+\begin{galgas}
+@uint64list a = [0G extract64ForUnsignedRepresentation]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x0
+\end{galgas}
+
+
+
+
+\subsectionGetter{extract64ForSignedRepresentation}{bigint}
+
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggs!@uintlist!. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+
+Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée.
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uint64list a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+  extract64ForSignedRepresentation
+]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0x8877665544332211 0xFFEEDDCCBBAA99
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
+\end{galgas}
+
+Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ : 
+
+\begin{galgas}
+# Parcours dans le sens des indices croissants : little endian
+@uint64list a = [-0x55_4433_2211G extract64ForSignedRepresentation]
+var s = ""
+for (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xFFFFFFAABBCCDDEF
+# Parcours dans le sens des indices décroissants : big endian
+s = ""
+for > (n) in a
+  do s += [n hexString]
+  between s += " "
+end
+message s + "\n" # 0xFFFFFFAABBCCDDEF
 \end{galgas}
 
 
@@ -638,7 +748,7 @@ Elle effectue la division dont le quotient arrondi \emph{vers zéro}, c'est-à-d
     ?quotient:quotient
     ?remainder:remainder
   ]
-  message [quotient string] + " " + remainder + "\n" 80000000737 -8280
+  message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
   [9876543210_9876543210G divideBy
     !-1234567890G
     ?quotient:quotient
