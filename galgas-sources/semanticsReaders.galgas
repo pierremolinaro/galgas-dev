@@ -17,12 +17,19 @@
 
 
 #before {
-#message [[0x1234G bitAtIndex !7] ocString] + "\n"
-#message [[0x1234G bitAtIndex !5] ocString] + "\n"
-#message [[0x1234G bitAtIndex !25] ocString] + "\n"
-#message [[-0x1234G bitAtIndex !7] ocString] + "\n"
-#message [[-0x1234G bitAtIndex !5] ocString] + "\n"
-#message [[-0x1234G bitAtIndex !25] ocString] + "\n"
+#@uintlist a = [-0x55_4433_2211G extract32ForSignedRepresentation]
+#var s = ""
+#for (n) in a
+#  do s += [n hexString]
+#  between s += " "
+#  after message s + "\n"
+#end
+#s = ""
+#for > (n) in a
+#  do s += [n hexString]
+#  between s += " "
+#  after message s + "\n"
+#end
 #}
 
 proc enterBaseFinalGetterWithoutArgument
@@ -841,6 +848,29 @@ override method @filewrapperPredefinedTypeAST getReaderMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @timerPredefinedTypeAST getReaderMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@getterMap outMap
+{
+  commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"msFromStart"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @bigintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap
@@ -966,27 +996,32 @@ override method @bigintPredefinedTypeAST getReaderMap
     !returnedTypeName:"sint"
     !false
   )
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @timerPredefinedTypeAST getReaderMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@getterMap outMap
-{
-  commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName:"msFromStart"
-    !returnedTypeName:"uint"
+    !getterName:"extract32ForSignedRepresentation"
+    !returnedTypeName:"uintlist"
     !false
   )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName:"string"
-    !returnedTypeName:"string"
+    !getterName:"extract32ForUnsignedRepresentation"
+    !returnedTypeName:"uintlist"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"extractBytesForUnsignedRepresentation"
+    !returnedTypeName:"uintlist"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"extractBytesForSignedRepresentation"
+    !returnedTypeName:"uintlist"
     !false
   )
 }

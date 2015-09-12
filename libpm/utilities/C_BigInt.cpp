@@ -799,6 +799,44 @@ int64_t C_BigInt::int64 (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void C_BigInt::extractBytesForUnsignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
+  size_t count = 0 ;
+  const uint8_t * ptr = (const uint8_t *) mpz_export (NULL, & count, -1, sizeof (uint8_t), 0, 0, mGMPint) ;
+  outValue.setCountToZero () ;
+  for (size_t i=0 ; i<count ; i++) {
+    outValue.addObject (ptr [i]) ;
+  }
+  ::free ((void *) ptr) ;
+  if (count == 0) {
+    outValue.addObject (0) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::extractBytesForSignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
+  if (mpz_sgn (mGMPint) == 0) { // zero
+    outValue.setCountToZero () ;
+    outValue.addObject (0) ;
+  }else if (mpz_sgn (mGMPint) > 0) { // > 0
+    extractBytesForUnsignedRepresentation (outValue) ;
+    if ((outValue.lastObject (HERE) & 0x80) != 0) {
+      outValue.addObject (0) ;
+    }
+  }else{ // < 0
+    extractBytesForUnsignedRepresentation (outValue) ;
+  //--- Perform two's complement
+    uint8_t carry = 1 ;
+    for (int32_t i=0 ; i<outValue.count () ; i++) {
+      const uint8_t v = carry + ~ outValue (i COMMA_HERE) ;
+      outValue (i COMMA_HERE) = v ;
+      carry = v == 0 ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Swap
 #endif
