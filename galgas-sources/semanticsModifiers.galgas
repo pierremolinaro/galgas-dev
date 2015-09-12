@@ -21,7 +21,7 @@ proc enterModifierWithInputArgument
   ?let @string inInputArgumentTypeName
   ?let @string inInputArgumentName
   ?setterName:let @string inModifierName
-  ?let @bool inHasCompilerArgument
+  ?compilerArg:let @bool inHasCompilerArgument
 {
   @unifiedTypeMap-proxy argumentTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex]
@@ -142,10 +142,34 @@ override method @stringPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap {
   outModifierMap = {}
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inCapacity" !setterName:"setCapacity" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !setterName:"incIndentation" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !setterName:"decIndentation" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inColumnIndex" !setterName:"appendSpacesUntilColumn" !true )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inCapacity"
+    !setterName:"setCapacity"
+    !compilerArg:true
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inAmount"
+    !setterName:"incIndentation"
+    !compilerArg:true
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inAmount"
+    !setterName:"decIndentation"
+    !compilerArg:true
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inColumnIndex"
+    !setterName:"appendSpacesUntilColumn"
+    !compilerArg:true
+  )
   enterModifierWith2InputArguments (
     !?outModifierMap
     !?ioUnifiedTypeMap
@@ -162,13 +186,55 @@ override method @dataPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap {
   outModifierMap = {}
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendByte" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendShortBE" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendShortLE" !true )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendUIntBE" !false )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !setterName:"appendUIntLE" !false )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inValue" !setterName:"appendUTF8String" !false )
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"data" !"inValue" !setterName:"appendData" !false )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inValue"
+    !setterName:"appendByte"
+    !compilerArg:true
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inValue"
+    !setterName:"appendShortBE"
+    !compilerArg:true
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inValue"
+    !setterName:"appendShortLE"
+    !compilerArg:true
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inValue"
+    !setterName:"appendUIntBE"
+    !compilerArg:false
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inValue"
+    !setterName:"appendUIntLE"
+    !compilerArg:false
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"string" !"inValue"
+    !setterName:"appendUTF8String"
+    !compilerArg:false
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"data" !"inValue"
+    !setterName:"appendData"
+    !compilerArg:false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -177,25 +243,37 @@ override method @filewrapperPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap {
   outModifierMap = {}
-  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inDirectoryPath" !setterName:"setCurrentDirectory" !true )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"string" !"inDirectoryPath"
+    !setterName:"setCurrentDirectory"
+    !compilerArg:true
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @bigintPredefinedTypeAST getModifierMap
-  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outModifierMap
 {
   outModifierMap = {}
-#  enterModifierWith3InputArguments (
-#    !?outModifierMap
-#    !?ioUnifiedTypeMap
-#    !"uint64" !"inValue"
-#    !"uint" !"inStartIndex"
-#    !"uint" !"inWidth"
-#    !setterName:"orInPlaceWith"
-#    !compilerArg:false
-#  )
+  enterModifierWith2InputArguments (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"bool" !"inBit"
+    !"uint" !"inIndex"
+    !setterName:"setBitAtIndex"
+    !compilerArg:false
+  )
+  enterModifierWithInputArgument (
+    !?outModifierMap
+    !?ioUnifiedTypeMap
+    !"uint" !"inIndex"
+    !setterName:"complementBitAtIndex"
+    !compilerArg:false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
