@@ -153,7 +153,6 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project 
     "  %makefile-x86linux32-on-macosx\n"
     "  %makefile-x86linux64-on-macosx\n"
     "  %makefile-win32-on-macosx\n"
-    "  %makefile-msys32-on-windows\n"
     "  %LatestMacOS\n"
     "  %applicationBundleBase : \"fr.what\"\n"
     "  %codeblocks-windows\n"
