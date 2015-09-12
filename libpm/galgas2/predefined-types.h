@@ -346,6 +346,13 @@ public : VIRTUAL_IN_DEBUG GALGAS_bigint right_shift_operation (const GALGAS_uint
   public : VIRTUAL_IN_DEBUG GALGAS_bigint operator_unary_minus (C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- ++, -- operators
+  public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void decrement_operation (C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
@@ -856,13 +863,14 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint right_shift_operation (const GALGAS_uint i
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- ++, --, &++, &-- operators
+//--------------------------------- ++, -- operators
   public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void decrement_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- &++, &-- operators
   public : VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;
 
   public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;
@@ -1039,13 +1047,14 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ right_shift_operation (const GALGA
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- ++, --, &++, &-- operators
+//--------------------------------- ++, -- operators
   public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void decrement_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- &++, &-- operators
   public : VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;
 
   public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;
@@ -1213,13 +1222,14 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
 //--------------------------------- unary &- operator
   public : VIRTUAL_IN_DEBUG GALGAS_sint operator_unary_minus_no_ovf (void) const ;
 
-//--------------------------------- ++, --, &++, &-- operators
+//--------------------------------- ++, -- operators
   public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void decrement_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- &++, &-- operators
   public : VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;
 
   public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;
@@ -1381,13 +1391,14 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
 //--------------------------------- unary &- operator
   public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ operator_unary_minus_no_ovf (void) const ;
 
-//--------------------------------- ++, --, &++, &-- operators
+//--------------------------------- ++, -- operators
   public : VIRTUAL_IN_DEBUG void increment_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void decrement_operation (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- &++, &-- operators
   public : VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;
 
   public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;

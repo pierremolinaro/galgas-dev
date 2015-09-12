@@ -968,6 +968,16 @@ class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
+
+class @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mReceiverCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstringlist mStructAttributeList
+  @incDecKind mKind
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #    L O O P    I N S T R U C T I O N                                                                                  *
 #                                                                                                                      *

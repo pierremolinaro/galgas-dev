@@ -1755,12 +1755,8 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
-#      ??@bool isPrivate
       ?targetType
     ]
-#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-#      error mValue : "this field is private" ;
-#    end if ;
   end
 #--- Check target type accepts incrementation
   if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
@@ -1775,6 +1771,82 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     !mStructAttributeList
     !mKind
   }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @incDecNoOVFInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext unused inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
+  for () in mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey
+      !mValue
+      ?targetType
+    ]
+  end
+#--- Check target type accepts incrementation
+  if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '&++', '&--' operators"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
+    !mInstructionLocation
+    !targetVariableCppName
+    !targetType
+    !mStructAttributeList
+    !mKind
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfIncDecNoOVFInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target type accepts incrementation
+  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '&++' and  '&--' operators"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
+    !mInstructionLocation
+    !selfObjectCppName
+    !selfTypeProxy
+    !@lstringlist. emptyList
+    !mKind
+   }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1802,7 +1874,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 #--- Check target type accepts incrementation
   if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
     error mInstructionLocation
-    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' operator"
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' and  '--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {

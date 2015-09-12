@@ -856,17 +856,37 @@ override method @incDecInstructionForGeneration generateInstruction
   end
 #--- Invoke incrementation
   switch mKind
-  case incWithOverflowDetect :
+  case increment :
     ioGeneratedCode += receiverCppName + ".increment_operation (" + compilerCppName ()
                     + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  case decWithOverflowDetect :
+  case decrement :
     ioGeneratedCode += receiverCppName + ".decrement_operation (" + compilerCppName ()
                     + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  case incNoOverflowDetect :
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @incDecNoOVFInstructionForGeneration generateInstruction
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+#--- Receiver
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
+  @string receiverCppName = mReceiverCppName
+  for () in mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- Invoke incrementation
+  switch mKind
+  case increment :
     ioGeneratedCode += receiverCppName + ".increment_operation_no_overflow () ;\n"
-  case decNoOverflowDetect :
+  case decrement :
     ioGeneratedCode += receiverCppName + ".decrement_operation_no_overflow () ;\n"
   end
 }

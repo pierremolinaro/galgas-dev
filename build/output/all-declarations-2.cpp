@@ -12036,68 +12036,38 @@ mEnum (kNotBuilt) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_incDecKind GALGAS_incDecKind::constructor_incWithOverflowDetect (UNUSED_LOCATION_ARGS) {
+GALGAS_incDecKind GALGAS_incDecKind::constructor_increment (UNUSED_LOCATION_ARGS) {
   GALGAS_incDecKind result ;
-  result.mEnum = kEnum_incWithOverflowDetect ;
+  result.mEnum = kEnum_increment ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_incDecKind GALGAS_incDecKind::constructor_decWithOverflowDetect (UNUSED_LOCATION_ARGS) {
+GALGAS_incDecKind GALGAS_incDecKind::constructor_decrement (UNUSED_LOCATION_ARGS) {
   GALGAS_incDecKind result ;
-  result.mEnum = kEnum_decWithOverflowDetect ;
+  result.mEnum = kEnum_decrement ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_incDecKind GALGAS_incDecKind::constructor_incNoOverflowDetect (UNUSED_LOCATION_ARGS) {
-  GALGAS_incDecKind result ;
-  result.mEnum = kEnum_incNoOverflowDetect ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_incDecKind GALGAS_incDecKind::constructor_decNoOverflowDetect (UNUSED_LOCATION_ARGS) {
-  GALGAS_incDecKind result ;
-  result.mEnum = kEnum_decNoOverflowDetect ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static const char * gEnumNameArrayFor_incDecKind [5] = {
+static const char * gEnumNameArrayFor_incDecKind [3] = {
   "(not built)",
-  "incWithOverflowDetect",
-  "decWithOverflowDetect",
-  "incNoOverflowDetect",
-  "decNoOverflowDetect"
+  "increment",
+  "decrement"
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_incDecKind::reader_isIncWithOverflowDetect (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_incWithOverflowDetect == mEnum) ;
+GALGAS_bool GALGAS_incDecKind::reader_isIncrement (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_increment == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_incDecKind::reader_isDecWithOverflowDetect (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_decWithOverflowDetect == mEnum) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_incDecKind::reader_isIncNoOverflowDetect (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_incNoOverflowDetect == mEnum) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_incDecKind::reader_isDecNoOverflowDetect (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_decNoOverflowDetect == mEnum) ;
+GALGAS_bool GALGAS_incDecKind::reader_isDecrement (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_decrement == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -911,15 +911,21 @@ class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
 #----------------------------------------------------------------------------------------------------------------------*
 
 enum @incDecKind {
-  case incWithOverflowDetect
-  case decWithOverflowDetect
-  case incNoOverflowDetect
-  case decNoOverflowDetect
+  case increment
+  case decrement
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @incDecInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+  @incDecKind mKind
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @incDecNoOVFInstructionAST : @semanticInstructionAST {
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @incDecKind mKind
@@ -932,6 +938,12 @@ class @incDecInstructionAST : @semanticInstructionAST {
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @selfIncDecInstructionAST : @semanticInstructionAST {
+  @incDecKind mKind
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
   @incDecKind mKind
 }
 

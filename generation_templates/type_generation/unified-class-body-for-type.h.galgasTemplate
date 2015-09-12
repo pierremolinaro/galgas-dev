@@ -166,11 +166,14 @@ if (SUPPORTED_OPERATORS & unaryMinusOperatorNoOVF ()) != 0 then
 end
 
 if (SUPPORTED_OPERATORS & incDecOperator ()) != 0 then
-  %//--------------------------------- ++, --, &++, &-- operators\n%
+  %//--------------------------------- ++, -- operators\n%
   %  public : VIRTUAL_IN_DEBUG void increment_operation (%?^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
   %  public : VIRTUAL_IN_DEBUG void decrement_operation (%?^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
+end
+if (SUPPORTED_OPERATORS & incDecOperatorNoOVF ()) != 0 then
+  %//--------------------------------- &++, &-- operators\n%
   %  public : VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;\n\n%
   %  public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;\n\n%
 end
