@@ -282,10 +282,6 @@ override method @bigintPredefinedTypeAST getConstructorMap
 {
   outMap = {}
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"zero" !"bigint" !false)
-  enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"uint" !"uint" !"inValue" !"bigint" !false)
-  enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"sint" !"sint" !"inValue" !"bigint" !false)
-  enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"uint64" !"uint64" !"inValue" !"bigint" !false)
-  enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"sint64" !"sint64" !"inValue" !"bigint" !false)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

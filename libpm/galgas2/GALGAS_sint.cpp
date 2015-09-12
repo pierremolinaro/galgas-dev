@@ -114,6 +114,16 @@ GALGAS_double GALGAS_sint::reader_double (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bigint GALGAS_sint::reader_bigint (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid ()) {
+    result = GALGAS_bigint (C_BigInt (mSIntValue)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_sint::reader_string (UNUSED_LOCATION_ARGS) const {
   C_String s ; s.appendSigned (mSIntValue) ;
   return GALGAS_string (s) ;

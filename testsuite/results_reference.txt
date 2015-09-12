@@ -484,6 +484,12 @@ LOGGING complex: <@complex:1, -1>
 LOGGING real: <@double:1>
 LOGGING imaginary: <@double:-1>
 *************************************** begin of @bigint test
+--- construction
+0
+1234
+-1234
+1234
+-1234
 --- getter string
 -123456789012345678901234567890
 --- getter hexString

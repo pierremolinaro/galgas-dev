@@ -40,6 +40,15 @@ Returns an \ggs+@sint+ object that the maximum value of the 32-bit signed range 
 
 \section{Getters}
 
+\subsectionGetter{bigint}{sint}
+
+Ce \emph{getter} permet de convertir un \ggs!@sint! en \ggs!@bigint!. Comme la plage des valeurs des \ggs!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+
+\begin{galgas}
+  message [[-1234S bigint] string] + "\n" # -1234
+\end{galgas}
+
+
 \subsectionGetter{double}{sint}
 
 \begin{galgas}

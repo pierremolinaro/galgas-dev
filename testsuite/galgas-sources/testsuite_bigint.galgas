@@ -2,6 +2,12 @@
 
 proc testsuite_bigint_type {
   message "*************************************** begin of @bigint test\n"
+  message "--- construction\n"
+  message [@bigint.zero string] + "\n"
+  message [[1234 bigint] string] + "\n"
+  message [[-1234S bigint] string] + "\n"
+  message [[1234L bigint] string] + "\n"
+  message [[-1234LS bigint] string] + "\n"
   message "--- getter string\n"
   message [-1234567890_1234567890_1234567890_G string] + "\n"
   message "--- getter hexString\n"

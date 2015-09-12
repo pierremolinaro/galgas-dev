@@ -281,18 +281,6 @@ class GALGAS_bigint : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_bigint constructor_sint (const class GALGAS_sint & inOperand0
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public : static GALGAS_bigint constructor_sint_36__34_ (const class GALGAS_sint_36__34_ & inOperand0
-                                                          COMMA_LOCATION_ARGS) ;
-
-  public : static GALGAS_bigint constructor_uint (const class GALGAS_uint & inOperand0
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public : static GALGAS_bigint constructor_uint_36__34_ (const class GALGAS_uint_36__34_ & inOperand0
-                                                          COMMA_LOCATION_ARGS) ;
-
   public : static GALGAS_bigint constructor_zero (LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
@@ -903,6 +891,8 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint right_shift_operation (const GALGAS_uint i
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_bigint (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canAdd (const class GALGAS_uint & constinOperand0
                                                              COMMA_LOCATION_ARGS) const ;
 
@@ -1087,6 +1077,8 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ right_shift_operation (const GALGA
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_bigint (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canAdd (const class GALGAS_uint_36__34_ & constinOperand0
                                                              COMMA_LOCATION_ARGS) const ;
 
@@ -1262,6 +1254,8 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_bigint (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canAdd (const class GALGAS_sint & constinOperand0
                                                              COMMA_LOCATION_ARGS) const ;
 
@@ -1431,6 +1425,8 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_bigint (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_canAdd (const class GALGAS_sint_36__34_ & constinOperand0
                                                              COMMA_LOCATION_ARGS) const ;
 

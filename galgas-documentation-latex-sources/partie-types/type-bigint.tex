@@ -21,9 +21,25 @@ Avec le préfixe « \texttt{0x} », vous pouvez écrire les nombres en héxadéc
 message [a hexString] + "\n" # 0x123456789ABCDEF0_123456789ABCDEF
 \end{galgas}
 
-Les lettres minuscules et majuscules sont utilisables.
+Les lettres minuscules « \texttt{a} » à « \texttt{f} » et majuscules « \texttt{A} » à « \texttt{F} » sont utilisées pour définir les constantes entières en héxadécimal.
 
-\section{Constructeurs}
+\section{Construction}
+
+Le type \ggs!@bigint! ne définit que deux constructeurs :
+\begin{itemize}
+  \item \refConstructorPage{bigint}{zero} ;
+  \item \refConstructorPage{bigint}{default}.
+\end{itemize}
+
+Ces deux constructeurs renvoient un \ggs!@bigint! initilisé à $0$.
+
+Pour construire un \ggs!@bigint!, vous pouvez aussi utiliser les \emph{getters} suivants :
+\begin{itemize}
+  \item \refGetterPage{sint}{bigint} ;
+  \item \refGetterPage{sint64}{bigint} ;
+  \item \refGetterPage{uint}{bigint} ;
+  \item \refGetterPage{uint64}{bigint}.
+\end{itemize}
 
 \subsectionConstructor{zero}{bigint}
 
@@ -43,44 +59,6 @@ Le constructeur \ggs!default!, comme le constructeur \ggs!zero!, renvoie un \ggs
 message [a string] + "\n" # 0
 \end{galgas}
 
-\subsectionConstructor{sint}{bigint}
-
-Le constructeur \ggs!sint! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@sint! :
-\begin{galgas}
-@bigint a = .sint {!-678S}
-message [a string] + "\n" # -678
-\end{galgas}
-
-
-\subsectionConstructor{sint64}{bigint}
-
-Le constructeur \ggs!sint64! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@sint64! :
-\begin{galgas}
-@bigint a = .sint64 {!-678LS}
-message [a string] + "\n" # -678
-\end{galgas}
-
-
-
-
-\subsectionConstructor{uint}{bigint}
-
-Le constructeur \ggs!uint! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@uint! :
-\begin{galgas}
-@bigint a = .uint {!678}
-message [a string] + "\n" # 678
-\end{galgas}
-
-
-
-
-\subsectionConstructor{uint64}{bigint}
-
-Le constructeur \ggs!uint64! permet de construire un \ggs!@bigint! à partir d'une valeur de type \ggs!@uint64! :
-\begin{galgas}
-@bigint a = .uint64 {!678L}
-message [a string] + "\n" # 678
-\end{galgas}
 
 
 
@@ -184,7 +162,7 @@ Et pour le nombre de mots de 32 bits :
 
 \subsectionGetter{fitsInSInt}{bigint}
 
-Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@sint!.
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@sint!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{sint}.
 
 \begin{galgas}
 message [[0x1234_5678G fitsInSInt] ocString] + "\n" # YES
@@ -199,7 +177,7 @@ message [[-0x8000_0001G fitsInSInt] ocString] + "\n" # NO
 
 \subsectionGetter{fitsInSInt64}{bigint}
 
-Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@sint64!.
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@sint64!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{sint64}.
 
 \begin{galgas}
 message [[0x1234_5678_9ABC_DEF0G fitsInSInt64] ocString] + "\n" # YES
@@ -214,7 +192,7 @@ message [[-0x8000_0000_0000_0001G fitsInSInt64] ocString] + "\n" # NO
 
 \subsectionGetter{fitsInUInt}{bigint}
 
-Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@uint!.
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@uint!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{uint}.
 
 \begin{galgas}
 message [[0x1234_5678G fitsInUInt] ocString] + "\n" # YES
@@ -229,7 +207,7 @@ message [[-1G fitsInUInt] ocString] + "\n" # NO
 
 \subsectionGetter{fitsInUInt64}{bigint}
 
-Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@uint64!.
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@uint64!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{uint64}.
 
 \begin{galgas}
 message [[0x1234_5678_9ABC_DEF0G fitsInUInt64] ocString] + "\n" # YES

@@ -490,6 +490,16 @@ GALGAS_uint GALGAS_uint_36__34_::reader_uint (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bigint GALGAS_uint_36__34_::reader_bigint (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid ()) {
+    result = GALGAS_bigint (C_BigInt (mUInt64Value, false)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_double GALGAS_uint_36__34_::reader_double (UNUSED_LOCATION_ARGS) const {
   return GALGAS_double ((double) mUInt64Value) ;
 }

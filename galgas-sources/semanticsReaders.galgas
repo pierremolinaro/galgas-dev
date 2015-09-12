@@ -523,7 +523,20 @@ override method @uintPredefinedTypeAST getReaderMap
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"double" !returnedTypeName:"double" !false)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint64"
+    !returnedTypeName:"sint64"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bigint"
+    !returnedTypeName:"bigint"
+    !false
+  )
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !false)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"lsbIndex" !returnedTypeName:"uint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"significantBitCount" !returnedTypeName:"uint" !false)
@@ -550,6 +563,13 @@ override method @sintPredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !false)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bigint"
+    !returnedTypeName:"bigint"
+    !false
+  )
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
   enterBaseFinalGetterWithoutArgument (
     !?outMap
@@ -579,6 +599,13 @@ override method @uint64PredefinedTypeAST getReaderMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"double" !returnedTypeName:"double" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bigint"
+    !returnedTypeName:"bigint"
+    !false
+  )
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
@@ -603,6 +630,13 @@ override method @sint64PredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bigint"
+    !returnedTypeName:"bigint"
+    !false
+  )
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
   enterBaseFinalGetterWithoutArgument (
     !?outMap

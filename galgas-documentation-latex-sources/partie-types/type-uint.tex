@@ -71,6 +71,15 @@ Returns an \ggs+@uint+ object that contains the number of warnings. The returned
 
 \section{Getters}
 
+\subsectionGetter{bigint}{uint}
+
+Ce \emph{getter} permet de convertir un \ggs!@uint! en \ggs!@bigint!. Comme la plage des valeurs des \ggs!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+
+\begin{galgas}
+  message [[1234 bigint] string] + "\n" # 1234
+\end{galgas}
+
+
 \subsectionGetter{double}{uint}
 
 \begin{galgas}

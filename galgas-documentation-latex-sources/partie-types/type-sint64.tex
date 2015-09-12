@@ -36,6 +36,16 @@ Returns an \ggs+@sint64+ object that the maximum value of the 64-bit signed rang
 \section{Getters}
 
 
+\subsectionGetter{bigint}{sint64}
+
+Ce \emph{getter} permet de convertir un \ggs!@sint64! en \ggs!@bigint!. Comme la plage des valeurs des \ggs!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+
+\begin{galgas}
+  message [[-1234LS bigint] string] + "\n" # -1234
+\end{galgas}
+
+
+
 \subsectionGetter{double}{sint64}
 
 \begin{galgas}

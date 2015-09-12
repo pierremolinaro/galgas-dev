@@ -100,6 +100,15 @@ log v ; # Displays <@uint64:5> ;
 
 \section{Getters}
 
+\subsectionGetter{bigint}{uint64}
+
+Ce \emph{getter} permet de convertir un \ggs!@uint64! en \ggs!@bigint!. Comme la plage des valeurs des \ggs!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+
+\begin{galgas}
+  message [[1234L bigint] string] + "\n" # 1234
+\end{galgas}
+
+
 \subsectionGetter{double}{uint64}
 
 \begin{galgas}
