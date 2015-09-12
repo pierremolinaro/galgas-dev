@@ -122,50 +122,6 @@ GALGAS_bigint GALGAS_bigint::constructor_zero (UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigint GALGAS_bigint::constructor_uint (const GALGAS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bigint result ;
-  if (inValue.isValid ()) {
-    result.mIsValid = true ;
-    result.mValue = C_BigInt (inValue.uintValue (), false) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bigint GALGAS_bigint::constructor_uint_36__34_ (const GALGAS_uint_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bigint result ;
-  if (inValue.isValid ()) {
-    result.mIsValid = true ;
-    result.mValue = C_BigInt (inValue.uint64Value (), false) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bigint GALGAS_bigint::constructor_sint (const GALGAS_sint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bigint result ;
-  if (inValue.isValid ()) {
-    result.mIsValid = true ;
-    result.mValue = C_BigInt (inValue.intValue ()) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bigint GALGAS_bigint::constructor_sint_36__34_ (const GALGAS_sint_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bigint result ;
-  if (inValue.isValid ()) {
-    result.mIsValid = true ;
-    result.mValue = C_BigInt (inValue.int64Value ()) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Testing value representation
 #endif

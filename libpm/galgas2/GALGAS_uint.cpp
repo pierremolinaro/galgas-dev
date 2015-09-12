@@ -229,6 +229,16 @@ GALGAS_double GALGAS_uint::reader_double (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bigint GALGAS_uint::reader_bigint (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid ()) {
+    result = GALGAS_bigint (C_BigInt (mUIntValue, false)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_uint::reader_string (UNUSED_LOCATION_ARGS) const {
   C_String s ;
   s.appendUnsigned (mUIntValue) ;

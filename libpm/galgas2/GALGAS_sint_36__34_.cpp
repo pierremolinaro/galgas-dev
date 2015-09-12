@@ -124,6 +124,16 @@ GALGAS_sint GALGAS_sint_36__34_::reader_sint (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bigint GALGAS_sint_36__34_::reader_bigint (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid ()) {
+    result = GALGAS_bigint (C_BigInt (mSInt64Value)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_double GALGAS_sint_36__34_::reader_double (UNUSED_LOCATION_ARGS) const {
   return GALGAS_double ((double) mSInt64Value) ;
 }
