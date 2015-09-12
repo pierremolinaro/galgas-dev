@@ -828,7 +828,7 @@ void C_BigInt::extractBytesForSignedRepresentation (TC_UniqueArray <uint8_t> & o
   //--- Perform two's complement
     uint8_t carry = 1 ;
     for (int32_t i=0 ; i<outValue.count () ; i++) {
-      const uint8_t v = carry + ~ outValue (i COMMA_HERE) ;
+      const uint8_t v = (uint8_t) (carry + ~ outValue (i COMMA_HERE)) ;
       outValue (i COMMA_HERE) = v ;
       carry = v == 0 ;
     }
