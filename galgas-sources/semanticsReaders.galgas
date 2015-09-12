@@ -17,18 +17,12 @@
 
 
 #before {
-#message [0x1234G & 0x4321G hexString] + "\n"
-#message [-0x1234G & 0x4321G hexString] + "\n"
-#message [-0x80G & 0xFFG hexString] + "\n"
-#message [0x1234G | 0x4321G hexString] + "\n"
-#message [-0x1234G | 0x4321G hexString] + "\n"
-#message [-0x80G | 0xFFG hexString] + "\n"
-#message [0x1234G ^ 0x4321G hexString] + "\n"
-#message [-0x1234G ^ 0x4321G hexString] + "\n"
-#message [-0x80G ^ 0xFFG hexString] + "\n"
-#message [-0x80G ^ -0xFFG hexString] + "\n"
-#message [~  0x1234G hexString] + "\n"
-#message [~ -0x1234G hexString] + "\n"
+#message [[0x1234G bitAtIndex !7] ocString] + "\n"
+#message [[0x1234G bitAtIndex !5] ocString] + "\n"
+#message [[0x1234G bitAtIndex !25] ocString] + "\n"
+#message [[-0x1234G bitAtIndex !7] ocString] + "\n"
+#message [[-0x1234G bitAtIndex !5] ocString] + "\n"
+#message [[-0x1234G bitAtIndex !25] ocString] + "\n"
 #}
 
 proc enterBaseFinalGetterWithoutArgument
@@ -950,14 +944,14 @@ override method @bigintPredefinedTypeAST getReaderMap
     !returnedTypeName:"bigint"
     !false
   )
-#  enterBaseFinalReaderWithArgument (
-#    !?outMap
-#    !?ioUnifiedTypeMap
-#    !getterName:"bitAtIndex"
-#    !"uint" !"inBitIndex"
-#    !returnedTypeName:"bool"
-#    !false
-#  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bitAtIndex"
+    !"uint" !"inBitIndex"
+    !returnedTypeName:"bool"
+    !false
+  )
 #  enterBaseFinalReaderWithArgument (
 #    !?outMap
 #    !?ioUnifiedTypeMap

@@ -677,21 +677,30 @@ bool C_BigInt::operator < (const C_BigInt & inOperand) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Utilities
+  #pragma mark Bit manipulation
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*uint32_t C_BigInt::requiredBitCountForSignedRepresentation (void) const {
-  uint32_t result = 1 ;
-  if (mSign != zero) {
-    result = mObjectPtr->requiredBitCountForSignedRepresentation () ;
-    if (mSign == positive) {
-      result ++ ;
-    }
+bool C_BigInt::bitAtIndex (const uint32_t inIndex) const {
+  return mpz_tstbit (mGMPint, inIndex) != 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::setBitAtIndex (const bool inBit, const uint32_t inIndex) {
+  if (inBit) {
+    mpz_setbit (mGMPint, inIndex) ;
+  }else{
+    mpz_clrbit (mGMPint, inIndex) ;
   }
-  return result ;
-}*/
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_BigInt::complementBitAtIndex (const uint32_t inIndex) {
+  mpz_combit (mGMPint, inIndex) ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 

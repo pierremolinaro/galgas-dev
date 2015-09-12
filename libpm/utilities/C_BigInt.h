@@ -163,6 +163,11 @@ class C_BigInt {
 
   public : C_BigInt operator ~ (void) const ;
 
+//--- Bit manipulation
+  public : bool bitAtIndex (const uint32_t inIndex) const ;
+  public : void setBitAtIndex (const bool inBit, const uint32_t inIndex) ;
+  public : void complementBitAtIndex (const uint32_t inIndex) ;
+  
 //--- Value access
   public : uint32_t uint32 (void) const ;
   public : uint64_t uint64 (void) const ;

@@ -307,7 +307,7 @@ L'opérateur « \texttt{*} » infixé effectue le produit de ses opérandes. Com
 
 
 
-\subsection{Division}
+\section{Division}
 
 
 
@@ -339,7 +339,8 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
 \end{itemize}
 
 
-\textbf{Opérateur « \texttt{/} » infixé.} Il effectue la division entière de l'expression de gauche par l'expression de droite et renvoie le quotient. Si l'expression de gauche est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
+\subsection{Opérateur « \texttt{/} » infixé}
+Il effectue la division entière de l'expression de gauche par l'expression de droite et renvoie le quotient. Si l'expression de gauche est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
 \begin{galgas}
   message [(-7S) / 2S string] + "\n" # -3
@@ -352,7 +353,8 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
 
 
 
-\textbf{Opérateur « \texttt{mod} » infixé.} Il renvoie le reste de la division entière de l'expression de gauche par l'expression de droite, telle que décrite au dessus. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
+\subsection{Opérateur « \texttt{mod} » infixé}
+Il renvoie le reste de la division entière de l'expression de gauche par l'expression de droite, telle que décrite au dessus. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
 \begin{galgas}
   message [9876543210G mod 1234567890G string] + "\n" # 90
@@ -368,7 +370,8 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
 
 
 
-\textbf{Méthode \texttt{divideBy}.} Elle effectue la division dont le quotient arrondi \emph{vers zéro}, c'est-à-dire elle combine les opérateurs « \ggs!/! » et « \ggs!mod! » en une seule opération pour retourner quotient et reste.
+\subsectionMethod{divideBy}{bigint}
+Elle effectue la division dont le quotient arrondi \emph{vers zéro}, c'est-à-dire elle combine les opérateurs « \ggs!/! » et « \ggs!mod! » en une seule opération pour retourner quotient et reste.
 
 \begin{galgas}
   @bigint quotient
@@ -402,8 +405,8 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
 
 
 
-
-\textbf{Méthode \texttt{floorDivideBy}.} Elle effectue toujours la division dont le quotient arrondi \emph{vers $-\infty$}.
+\subsectionMethod{floorDivideBy}{bigint}
+Elle effectue toujours la division dont le quotient arrondi \emph{vers $-\infty$}.
 
 \begin{galgas}
   @bigint quotient
@@ -438,8 +441,8 @@ De plus, trois méthodes sont disponibles, qui retournent quotient et reste de l
 
 
 
-
-\textbf{Méthode \texttt{ceilDivideBy}.} Elle effectue toujours la division dont le quotient arrondi \emph{vers $+\infty$}.
+\subsectionMethod{ceilDivideBy}{bigint}
+Elle effectue toujours la division dont le quotient arrondi \emph{vers $+\infty$}.
 
 \begin{galgas}
   @bigint quotient
@@ -629,5 +632,92 @@ Considérons le second exemple et voyons comment le résultat est obtenu :
 \begin{tabular}{llll}
 Opérande & \texttt{0x…FEDCC} & représentation théorique de \texttt{-0x1234}\\
 Résultat & \texttt{0x…01233} & représentation théorique de \texttt{0x1233} \\
+\end{tabular}
+
+
+
+
+
+
+
+
+
+
+
+\section{Manipulation de bits}
+
+Les constructions suivantes permettent d'accéder à un bit particulier de la représentation signée en \emph{complément à deux} de la valeur d'un \ggs!@bitint!.
+
+Pour comprendre le comportement avec un récepteur négatif, il faut considérer, comme pour les opérateurs logiques, que la représentation des \ggs!@bigint! est la suivante :
+\begin{itemize}
+  \item la valeur d'un nombre positif ou nul est préfixée par une infinité de zéros ;
+  \item la valeur d'un nombre strictement négatif est préfixée par une infinité de uns.
+\end{itemize}
+
+Par exemple :
+\begin{itemize}
+  \item \texttt{0x1234} est représenté par \texttt{0x…01234} ;
+  \item \texttt{-0x1234} est représenté par \texttt{0x…FEDCC}.
+\end{itemize}
+
+\subsectionGetter{bitAtIndex}{bigint}
+
+Ce \emph{getter} permet d'obtenir la valeur d'un bit particulier de la représentation signée en \emph{complément à deux} du récepteur. À partir d'un certain rang, la valeur obtenue pour un nombre positif est toujours \ggs!false!, et pour un nombre négatif toujours \ggs!true!.
+
+\begin{galgas}
+message [[0x1234G bitAtIndex !7] ocString] + "\n" # NO
+message [[0x1234G bitAtIndex !5] ocString] + "\n" # YES
+message [[0x1234G bitAtIndex !25] ocString] + "\n" # NO
+message [[-0x1234G bitAtIndex !7] ocString] + "\n" # YES
+message [[-0x1234G bitAtIndex !5] ocString] + "\n" # NO
+message [[-0x1234G bitAtIndex !25] ocString] + "\n" # YES
+\end{galgas}
+
+\subsectionSetter{setBitAtIndex}{bigint}
+
+Ce \emph{setter} permet de mettre à zéro ou à un bit particulier de la représentation signée en \emph{complément à deux} du récepteur. Noter que cette opération ne change jamais le signe d'un nombre.
+
+\begin{galgas}
+var a = 0x1234G
+[!?a setBitAtIndex !true !14]
+message [a hexString] + "\n" # 0x5234
+[!?a setBitAtIndex !true !40]
+message [a hexString] + "\n" # 0x10000005234
+a = -0x1234G
+[!?a setBitAtIndex !false !14]
+message [a hexString] + "\n" # -0x5234
+[!?a setBitAtIndex !false !40] # -0x10000005234
+message [a hexString] + "\n"
+\end{galgas}
+
+Considérons le dernier exemple et voyons comment le résultat est obtenu :
+
+\begin{tabular}{llll}
+Récepteur & \texttt{0x…FFFF\_FFFF\_EDCC} & représentation théorique de \texttt{-0x1234}\\
+Valeur de $2^{40}$ & \texttt{0x…0100\_0000\_0000} & représentation théorique de $2^{40}$ \\
+Valeur de $\sim2^{40}$ & \texttt{0x…FEFF\_FFFF\_FFFF} & représentation théorique de $\sim2^{40}$ \\
+Résultat & \texttt{0x…FEFF\_FFFF\_EDCC} & représentation théorique de \texttt{-0x10000005234} \\
+\end{tabular}
+
+Le résultat est un \emph{et logique} entre la valeur du récepteur et  $\sim2^{40}$.
+
+\subsectionSetter{complementBitAtIndex}{bigint}
+
+Ce \emph{setter} permet de complémenter un bit particulier de la représentation signée en \emph{complément à deux} du récepteur. Noter que cette opération ne change jamais le signe d'un nombre.
+
+\begin{galgas}
+var a = 0x1234G
+[!?a complementBitAtIndex !14]
+message [a hexString] + "\n" # 0x5234
+a = -0x1234G
+[!?a complementBitAtIndex !40]
+message [a hexString] + "\n" # -0x10000005234
+\end{galgas}
+
+Considérons le dernier exemple et voyons comment le résultat est obtenu :
+
+\begin{tabular}{llll}
+Récepteur & \texttt{0x…FFFF\_FFFF\_EDCC} & représentation théorique de \texttt{-0x1234}\\
+Résultat & \texttt{0x…FEFF\_FFFF\_EDCC} & représentation théorique de \texttt{-0x10000005234} \\
 \end{tabular}
 

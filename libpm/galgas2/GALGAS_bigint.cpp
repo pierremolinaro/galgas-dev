@@ -263,6 +263,42 @@ GALGAS_string GALGAS_bigint::reader_xString (UNUSED_LOCATION_ARGS) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Bit manipulation
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_bigint::reader_bitAtIndex (const GALGAS_uint & inBitIndex
+                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inBitIndex.isValid ()) {
+    result = GALGAS_bool (mValue.bitAtIndex (inBitIndex.uintValue ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_bigint::modifier_complementBitAtIndex (const GALGAS_uint inBitIndex
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inBitIndex.isValid ()) {
+    mValue.complementBitAtIndex (inBitIndex.uintValue ()) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_bigint::modifier_setBitAtIndex (const GALGAS_bool inBitValue,
+                                            const GALGAS_uint inBitIndex
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inBitValue.isValid () && inBitIndex.isValid ()) {
+    mValue.setBitAtIndex (inBitValue.boolValue(), inBitIndex.uintValue ()) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Value access
 #endif
 
