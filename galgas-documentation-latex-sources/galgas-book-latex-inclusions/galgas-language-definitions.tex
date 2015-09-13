@@ -11,13 +11,17 @@
 %   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
 %-----------------------------------------------------------------------------------------------------------------------*
 
+% http://latexcolor.com
+
+\definecolor{modebeige}{rgb}{0.59, 0.44, 0.09}
+
 \newcommand\keywordsStyleGalgas[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\delimitersStyleGalgas[1]{\textcolor{brown}{\textbf{#1}}}
 \newcommand\selectorStyleGalgas[1]{\textcolor{PineGreen}{#1}}
 \newcommand\terminalStyleGalgas[1]{\textcolor{orange}{#1}}
 \newcommand\nonTerminalStyleGalgas[1]{\textcolor{orange}{#1}}
 \newcommand\integerStyleGalgas[1]{\textcolor{Mulberry}{#1}}
-\newcommand\bigintStyleGalgas[1]{\textcolor{Mulberry}{#1}}
+\newcommand\bigintStyleGalgas[1]{\textcolor{modebeige}{#1}}
 \newcommand\floatStyleGalgas[1]{\textcolor{magenta}{#1}}
 \newcommand\characterStyleGalgas[1]{\textcolor{cyan}{#1}}
 \newcommand\stringStyleGalgas[1]{\textcolor{gray}{#1}}
@@ -33,7 +37,7 @@
 \newcommand\terminalStylegalgas[1]{\textcolor{orange}{#1}}
 \newcommand\nonTerminalStylegalgas[1]{\textcolor{orange}{#1}}
 \newcommand\integerStylegalgas[1]{\textcolor{Mulberry}{#1}}
-\newcommand\bigintStylegalgas[1]{\textcolor{Mulberry}{#1}}
+\newcommand\bigintStylegalgas[1]{\textcolor{modebeige}{#1}}
 \newcommand\floatStylegalgas[1]{\textcolor{magenta}{#1}}
 \newcommand\characterStylegalgas[1]{\textcolor{cyan}{#1}}
 \newcommand\stringStylegalgas[1]{\textcolor{gray}{#1}}
@@ -47,9 +51,10 @@
   topline=false,
   bottomline=false,
   rightline=false,
-%  skipabove=\topsep,
-%  skipbelow=\topsep,
+  skipabove=0pt,
+  skipbelow=0pt,
   linecolor=blue!25,
+  backgroundcolor=gray!5,
   linewidth=2pt
 ]{siderules}
 
@@ -73,6 +78,39 @@
   \endgroup
   \immediate\write18{galgas --mode=latex:Galgas temp.galgas}
   {\singlespacing\begin{siderules}\ttfamily\input{temp.galgas.tex}\end{siderules}}
+}
+\makeatother
+
+%-----------------------------------------------------------------------------------------------------------------------*
+% ENVIRONNEMENT \galgasbox : affichage de code galgas encadré                                                           *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\newmdenv[
+  skipabove=0pt,
+  skipbelow=0pt,
+  linecolor=blue!25,
+  backgroundcolor=gray!5,
+  linewidth=1pt
+]{boxrules}
+
+\makeatletter
+\newenvironment{galgasbox}{%
+  \begingroup
+  \@bsphack
+  \immediate\openout\tempfile=temp.galgas%
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active
+  \verbatim@startline
+  \verbatim@addtoline
+  \verbatim@finish
+  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
+  \verbatim@start
+}{
+  \immediate\closeout\tempfile
+  \@esphack
+  \endgroup
+  \immediate\write18{galgas --mode=latex:Galgas temp.galgas}
+  {\singlespacing\begin{boxrules}\ttfamily\input{temp.galgas.tex}\end{boxrules}}
 }
 \makeatother
 

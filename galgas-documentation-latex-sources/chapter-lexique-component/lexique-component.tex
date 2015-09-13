@@ -371,7 +371,16 @@ codePointToUnicode !@string inCodePointString
                    ?!@string ioString
 \end{galgas}
 
-\subsection{Routine \texttt{convertDecimalStringIntoSInt}}
+\subsection{\texttt{convertDecimalStringIntoBigInt}}
+
+\begin{galgas}
+convertDecimalStringIntoBigInt !@string inString
+                               ?!@bigint ioSignedNumber
+                               error inCharacterIsNotDecimalDigitError
+\end{galgas}
+
+
+\subsection{\texttt{convertDecimalStringIntoSInt}}
 
 \begin{galgas}
 convertDecimalStringIntoSInt !@string inString
@@ -406,6 +415,16 @@ convertDecimalStringIntoUInt64 !@string inString
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
 \end{galgas}
+
+\subsection{\texttt{convertHexStringIntoBigInt}}
+
+\begin{galgas}
+convertHexStringIntoBigInt !@string inString
+                           ?!@bigint ioSignedNumber
+                           error inCharacterIsNotHexDigitError
+\end{galgas}
+
+
 
 \subsection{Routine \texttt{convertHTMLSequenceToUnicodeCharacter}}
 
@@ -525,6 +544,14 @@ enterCharacterIntoString ?!@string ioString
 
 Appends the character value of the second argument to the string value of the first argument. The resulting string is set to the first argument.
 
+\subsection{Routine \texttt{enterDecimalDigitIntoBigInt}}
+
+\begin{galgas}
+enterDecimalDigitIntoBigInt !@char inCharacter
+                            ?!@bigint ioBigInt
+                            error inCharacterIsNotDecimalDigitError
+\end{galgas}
+
 \subsection{Routine \texttt{enterDigitIntoASCIIcharacter}}
 
 \begin{galgas}
@@ -576,6 +603,24 @@ Build an ASCII character from its hexadecimal definition.
 First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that is in one of the ranges ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]'', ''[\textquotesingle{a}\textquotesingle, \textquotesingle{f}\textquotesingle]'', ''[\textquotesingle{A}\textquotesingle, \textquotesingle{F}\textquotesingle]''. On failure, the ''inErrorNotHexDigitCharacter'' error message is displayed. On success, the unsigned value of the first argument is multiplied by sixteen, and is added the hexadecimal value corresponding to ''ioASCIICharacter'' argument. If the result is lower or equal to ''2<sup>8</sup>-1'', it is set to the ''ioASCIICharacter'' argument. Otherwise, the ''inErrorCodeGreaterThan255'' error is raised.
 
 Note: this lexical action treats characters as unsigned values.
+
+
+
+
+\subsection{Routine \texttt{enterHexDigitIntoBigInt}}
+
+\begin{galgas}
+enterHexDigitIntoBigInt !@char inCharacter
+                        ?!@bigint ioBigInt
+                        error inCharacterIsNotHexDigitError
+\end{galgas}
+
+
+
+
+
+
+
 
 \subsection{Routine \texttt{enterHexDigitIntoUInt}}
 
