@@ -3,17 +3,18 @@
 
 \chapitreTypePredefiniLabelIndex{bool}
 
-An \ggs+@bool+ object has a boolean value. The two keywords \ggs+true+ and \ggs+false+ belong to the \ggs+@bool+ type, and denotes the true and false values. No constructor is defined for the \ggs+@bool+ type.
+Le type \ggs+@bool+ est le type booléen. Les deux mots réservés \ggs+true+ et \ggs+false+ sont du type \ggs+@bool+ type, et dénote les valeurs \emph{vari} et \emph{faux}. Le seul constructeur du \ggs+@bool+ type est le constructeur \ggs!default!, qui initialise un booléen à \ggs+false+.
 
-\section{Getters}
+
+\section{Conversion en chaîne de caractères}
 
 \subsectionGetter{cString}{bool}
 
-\begin{galgas}
+\begin{galgasbox}
 getter cString -> @string
-\end{galgas}
+\end{galgasbox}
 
-Returns a string representation of the receiver's value: the \ggs+"true"+ string if the receiver's value is true, and the \ggs+"false"+ string otherwise.
+Retourne la chaîne \ggs!"true"! si le booléen est vrai, et la chaîne \ggs!"false"! dans le cas contraire.
 
 
 
@@ -23,85 +24,78 @@ Returns a string representation of the receiver's value: the \ggs+"true"+ string
 
 \subsectionGetter{ocString}{bool}
 
-\begin{galgas}
+\begin{galgasbox}
 getter ocString -> @string
-\end{galgas}
+\end{galgasbox}
 
-Returns a string representation of the receiver's value: the \ggs+"YES"+ string if the receiver's value is true, and the \ggs+"NO"+ string otherwise.
+Retourne la chaîne \ggs!"YES"! si le booléen est vrai, et la chaîne \ggs!"NO"! dans le cas contraire.
 
 
+
+
+\section{Conversion en entier}
 
 
 \subsectionGetter{sint}{bool}
 
-\begin{galgas}
+\begin{galgasbox}
 getter sint -> @sint
-\end{galgas}
+\end{galgasbox}
 
-Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object: the \ggs+1S+ \refTypePredefini{sint} value if the receiver's value is true, and the \ggs+0S+ \refTypePredefini{sint} value otherwise.
+Retourne l'entier \ggs!1S! si le booléen est vrai, et l'entier \ggs!0S! dans le cas contraire.
 
 
 
 
 \subsectionGetter{sint64}{bool}
 
-\begin{galgas}
+\begin{galgasbox}
 getter sint64 -> @sint64
-\end{galgas}
+\end{galgasbox}
 
-Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object: the ±ggs+1LS+ \refTypePredefini{sint64} value if the receiver's value is true, and the \ggs+0LS+ \refTypePredefini{sint64} value otherwise.
+Retourne l'entier \ggs!1LS! si le booléen est vrai, et l'entier \ggs!0LS! dans le cas contraire.
 
 
 
 
 \subsectionGetter{uint}{bool}
 
-\begin{galgas}
-getter uint -> @iuint
-\end{galgas}
+\begin{galgasbox}
+getter uint -> @uint
+\end{galgasbox}
 
-Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object: the \ggs+1+ \refTypePredefini{uint} value if the receiver's value is true, and the \ggs+0+ \refTypePredefini{uint} value otherwise.
+Retourne l'entier \ggs!1! si le booléen est vrai, et l'entier \ggs!0! dans le cas contraire.
 
 
 
 
 \subsectionGetter{uint64}{bool}
 
-\begin{galgas}
+\begin{galgasbox}
 getter uint64 -> @uint64
-\end{galgas}
+\end{galgasbox}
 
-Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object: the \ggs+1L+ \refTypePredefini{uint64} value if the receiver's value is true, and the \ggs+0L+ \refTypePredefini{uint64} value otherwise.
-
-
+Retourne l'entier \ggs!1L! si le booléen est vrai, et l'entier \ggs!0L! dans le cas contraire.
 
 
-\section{Logical Operators}
-
-The \ggs+@bool+ type supports the three logical operators:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-\& & And \\
-\hline
-\textbar & Or \\
-\hline
-\textasciicircum   & Exclusive or \\
-\hline
-\end{tabular}
-
-Theses operators require both arguments to be \ggs+@bool+ objects and return an \ggs+@bool+ object.\newline
 
 
-The \ggs+@bool+ type supports the logical unary operator:\newline
+\section{Opérateurs logiques}
 
-\begin{tabular}{|c|c|}
-\hline
-\ggs+not+ & Complementation \\
-\hline
-\end{tabular}
+\begin{galgasbox}
+operator @bool & @bool -> @bool
+operator @bool | @bool -> @bool
+operator @bool ^ @bool -> @bool
+operator not @bool -> @bool
+\end{galgasbox}
 
-This operator returns an \ggs+@bool+ object.
+Le type \ggs+@bool+ accepte les trois opérateurs suivants
+\begin{itemize}
+\item l'opérateur \ggs!&! infixé qui effectue un \emph{et logique} ;
+\item l'opérateur \ggs!|! infixé qui effectue un \emph{ou logique} ;
+\item l'opérateur \ggs!^! infixé qui effectue un \emph{ou exclusif logique} ;
+\item l'opérateur \ggs!not! infixe qui effectue la\emph{négation logique}.
+\end{itemize}
 
 
 
@@ -109,26 +103,7 @@ This operator returns an \ggs+@bool+ object.
 
 
 
-\section{Comparison Operators}
 
-The \ggs+@bool+ type supports the six comparison operators:\newline
+\section{Comparaison}
 
-\begin{tabular}{|c|c|}
-\hline
-$==$ & Equality \\
-\hline
-$!=$ & Non Equality \\
-\hline
-$<$  & Strict Lower Than \\
-\hline
-$<=$  & Lower or Equal \\
-\hline
-$>$  & Strict Greater Than \\
-\hline
-$>=$  & Greater or Equal \\
-\hline
-\end{tabular}
-
-Theses operators require both arguments to be \ggs+@bool+ objects, and return a \ggs+@bool+ object.
-
-
+Le type \ggs!@bool! implémente les six opérateurs de comparaison \ggs!==!, \ggs+!=+, \ggs!<!, \ggs!<=!, \ggs!>! et \ggs!>=!, avec \ggs!false < true!.
