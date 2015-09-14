@@ -74,7 +74,7 @@ instruction1 ;;;; instruction2
 \section{Instruction de déclaration de variable}
 
 
-Une déclaration de variable peut citer une \ggs+expression+ qui lui fournit sa valeur initiale. Dans le cas constraire, la variable est \emph{non construite} jusqu'à ce qu'une valeur lui soit affectée.
+Une déclaration de variable peut citer une \ggs+expression+ qui lui fournit sa valeur initiale. Dans le cas contraire, la variable est \emph{non construite} jusqu'à ce qu'une valeur lui soit affectée.
 
 Les deux formes de déclaration sont donc :
 \begin{itemize}
@@ -83,33 +83,33 @@ Les deux formes de déclaration sont donc :
 \end{itemize}
 
 
-
-La forme générale de déclaration d'une variable \emph{non construite} est :
-\begin{galgas}
-var @type variable
-\end{galgas}
-
-
-La forme générale de déclaration d'une variable \emph{construite} est :
-\begin{galgas}
-var @type variable = expression
-\end{galgas}
-
 \subsection{Déclaration « \texttt{var @type variable} »}
 
+La forme générale de déclaration d'une variable \emph{non construite} est :
+\begin{galgasbox}
+var @type variable
+\end{galgasbox}
+
+
 On peut alléger l'écriture en ommettant le mot clé \ggs+var+ :
-\begin{galgas}
+\begin{galgasbox}
 @type variable
-\end{galgas}
+\end{galgasbox}
 
 
 \subsectionLabel{Déclaration « \texttt{var @type variable = expression} »}{declarationVariableAvecExpression}
 
 
+
+La forme générale de déclaration d'une variable \emph{construite} est :
+\begin{galgasbox}
+var @type variable = expression
+\end{galgasbox}
+
 On peut alléger l'écriture en ommettant le mot clé \ggs+var+ :
-\begin{galgas}
+\begin{galgasbox}
 @type variable = expression
-\end{galgas}
+\end{galgasbox}
 
 On peut omettre le type (mais il faut alors garder le mot-clé \ggs+var+), à la condition que l'expression puisse fournir l'information de type. Par exemple, dans l'écriture suivante :
 \begin{galgas}
@@ -170,9 +170,9 @@ var sl = .here # Erreur : le type est indéterminé
 
 La forme générale de cette instruction est la suivante :
 
-\begin{galgas}
+\begin{galgasbox}
 let @type nom = expression
-\end{galgas}
+\end{galgasbox}
 
 Le mot clé \ggs+let+ caractérise une déclaration de constante. L'annotation de type peut être omis si le type peut être déduit de l'expression, comme pour l'instruction de déclaration de variable (\refSubsectionPage{declarationVariableAvecExpression}). On peut donc reprendre les exemples de la section précédente :
 \begin{galgas}
@@ -247,21 +247,21 @@ let sl = .here # Erreur : le type est indéterminé
 
 L'instruction d'affectation peut prendre plusieurs formes. La plus courante est :
 
-\begin{galgas}
+\begin{galgasbox}
 variable = expression
-\end{galgas}
+\end{galgasbox}
 
 Si \ggs+variable+ est une instance de structure (\refChapterPage{typeStructure}), on peut directement en modifier un champ en utilisant l'opérateur \ggs+.+ :
 
-\begin{galgas}
+\begin{galgasbox}
 variable.champ = expression
-\end{galgas}
+\end{galgasbox}
 
 Si \ggs+champ+ est lui-même une structure, on peut accéder à l'un de ses champs (et ainsi de suite) :
 
-\begin{galgas}
+\begin{galgasbox}
 variable.champ.champ1 = expression
-\end{galgas}
+\end{galgasbox}
 
 
 
@@ -279,7 +279,7 @@ variable.champ.champ1 = expression
 
 L'instruction \ggs+cast+ permet simplement d'exprimer de manière élégante une série de tests de conversions polymorphiques inverses. Sa syntaxe est :
 
-\begin{galgas}
+\begin{galgasbox}
 cast expression
 case conversion @T1 nom1 :
   ...
@@ -288,7 +288,7 @@ case conversion @T2 nom2 :
 else
   ...
 end
-\end{galgas}
+\end{galgasbox}
 
 L'instruction accepte une ou plusieurs branches \ggs+case+, et zéro ou une branche \ggs+else+. \ggs+conversion+ est soit \ggs+==+, soit \ggs+>=+. \ggs+nom1+ et \ggs+nom2+ sont des constantes dont le type est le type nommé dans la branche \ggs+case+ qui la déclare, et dont la portée est limitée à cette branche \ggs+case+.
 
@@ -303,7 +303,7 @@ alors la constante prend la valeur de \ggs+expression+ et les instructions de la
 Si toutes les comparaisons échouent, la branche \ggs+else+ est exécutée (si elle existe). La forme typique de cette instruction est donc :
 
 
-\begin{galgas}
+\begin{galgasbox}
 cast expression
 case >= @B v1 :
   ...
@@ -312,7 +312,7 @@ case >= @C v2 :
 else
   message "conversion impossible"
 end
-\end{galgas}
+\end{galgasbox}
 
 Note : si la variable \ggs+nom1+ ou  \ggs+nom2+ n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \ggs+case >= @T :+.
 
@@ -487,28 +487,28 @@ table += !clef !2 !"a"
 
 \sectionLabel{Décrémentation \texttt{-{}-} et \texttt{\&-{}-}}{decrementInstruction}
 
-L'instruction de décrémentation s'applique aux types \refTypePredefini{sint}, \refTypePredefini{sint64}, \refTypePredefini{uint} et \ggs+uint64+ ; sa syntaxe est la suivante :
+L'instruction de décrémentation s'applique aux types \refTypePredefini{sint}, \refTypePredefini{sint64}, \refTypePredefini{uint}, \refTypePredefini{uint64} et \refTypePredefini{bigint} ; sa syntaxe est la suivante :
 
-\begin{galgas}
+\begin{galgasbox}
 variable --
-\end{galgas}
+\end{galgasbox}
 
 Les champs de structure peuvent être décrémentés :
-\begin{galgas}
+\begin{galgasbox}
 variable.champ --
-\end{galgas}
+\end{galgasbox}
 
 Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 
 L'opérateur \ggs+&--+ effectue une décrémentation sans déclencher d'erreur en cas de dépassement de capacité :
-\begin{galgas}
+\begin{galgasbox}
 variable &--
-\end{galgas}
+\end{galgasbox}
 
 Les champs de structure peuvent être décrémentés sans déclencher d'erreur en cas de dépassement de capacité :
-\begin{galgas}
+\begin{galgasbox}
 variable.champ &--
-\end{galgas}
+\end{galgasbox}
 
 
 
@@ -518,9 +518,9 @@ variable.champ &--
 
 La syntaxe de l'instruction \ggs+drop+ est la suivante :
 
-\begin{galgas}
+\begin{galgasbox}
 drop variable, ...
-\end{galgas}
+\end{galgasbox}
 
 Chaque variable nommée est placée dans l'état \emph{non construit}.
 
@@ -536,9 +536,9 @@ Chaque variable nommée est placée dans l'état \emph{non construit}.
 
 L'instruction \ggs+error+ permet de signaler une erreur à l'utilisateur. Elle est constituée de trois champs séparés par un double-point (\ggs+:+) :
 
-\begin{galgas}
+\begin{galgasbox}
 error localisation : message_erreur : variable1, ..., variableN
-\end{galgas}
+\end{galgasbox}
 
 
 
@@ -623,7 +623,7 @@ L'instruction \ggs+for+ permet d'énumérer :
 
 Pour énumérer une collection, la syntaxe est la suivante :
 
-\begin{galgas}
+\begin{galgasbox}
 for enumeration_collection
 while condition # Optionnel
 before instructions_before  # Optionnel
@@ -633,11 +633,11 @@ do
 between instructions_between  # Optionnel
 after instructions_after  # Optionnel
 end
-\end{galgas}
+\end{galgasbox}
 
 
 Énumérer plusieurs collections s'exprime en séparant les différentes énumérations par une virgule :
-\begin{galgas}
+\begin{galgasbox}
 for enumeration_collection1, enumeration_collection2, ...
 while condition # Optionnel
 before instructions_before  # Optionnel
@@ -647,7 +647,7 @@ do
 between instructions_between  # Optionnel
 after instructions_after  # Optionnel
 end
-\end{galgas}
+\end{galgasbox}
 
 
 \subsection{Les quatre formes d'une énumération}
@@ -1147,26 +1147,26 @@ log v # "A", "B", "C", "A", "B", "C"
 
 L'instruction d'incrémentation s'applique aux types  \refTypePredefini{sint},  \refTypePredefini{sint64}, \refTypePredefini{uint} et \ggs+uint64+ ; sa syntaxe est la suivante :
 
-\begin{galgas}
+\begin{galgasbox}
 variable ++
-\end{galgas}
+\end{galgasbox}
 
 Les champs de structure peuvent être incrémentés :
-\begin{galgas}
+\begin{galgasbox}
 variable.champ ++
-\end{galgas}
+\end{galgasbox}
 
 Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 
 L'opérateur \ggs-&++- effectue une incrémentation sans déclencher d'erreur en cas de dépassement de capacité :
-\begin{galgas}
+\begin{galgasbox}
 variable &++
-\end{galgas}
+\end{galgasbox}
 
 Les champs de structure peuvent être incrémentés sans déclencher d'erreur en cas de dépassement de capacité :
-\begin{galgas}
+\begin{galgasbox}
 variable.champ &++
-\end{galgas}
+\end{galgasbox}
 
 
 
@@ -1180,7 +1180,7 @@ variable.champ &++
 
 Dans sa forme la plus générale, l'instruction \ggs+if+ a la syntaxe suivante:
 
-\begin{galgas}
+\begin{galgasbox}
 if condition then
   instructions
 elsif condition2 then
@@ -1189,7 +1189,7 @@ elsif condition2 then
 else
   instructions_else
 end
-\end{galgas}
+\end{galgasbox}
 
 
 Plus précisement, elle contient :
@@ -1322,24 +1322,24 @@ end
 L'instruction \ggs+grammar+ permet d'exécuter l'analyse d'un texte par une grammaire. Le texte peut être contenu dans un fichier ou dans une chaîne de caractères.
 
 Si le texte est contenu dans un fichier :
-\begin{galgas}
+\begin{galgasbox}
 grammar
   nom_grammaire
   label_grammaire # Optionnel
   in expression_de_type_lstring # Chemin du fichier source
   liste_parametres
   traduction_dirigee_par_la_syntaxe # Optionnel
-\end{galgas}
+\end{galgasbox}
 
 Si le texte est contenu dans une chaîne de caractères :
-\begin{galgas}
+\begin{galgasbox}
 grammar
   nom_grammaire
   label_grammaire # Optionnel
   on expression_de_type_string # Texte source
   liste_parametres
   traduction_dirigee_par_la_syntaxe # Optionnel
-\end{galgas}
+\end{galgasbox}
 
 Dans ces écritures :
 \begin{itemize}
@@ -1429,13 +1429,13 @@ log x, "valeur" : x * 2
 
 
 L'instruction \ggs+loop+ a la syntaxe suivante :
-\begin{galgas}
+\begin{galgasbox}
 loop (variant_expression)
   instructions_1
 while expression do
   instructions_2
 end
-\end{galgas}
+\end{galgasbox}
 
 
 Les \ggs+instructions_1+ et \ggs+instructions_2+ sont des listes d'instructions qui peuvent être vides.
@@ -1507,9 +1507,9 @@ L'exécution de l'instruction \ggs+loop+ est illustrée par l'organigramme de la
 \sectionLabel{L'instruction d'appel de procédure}{instructionAppelProcedure}
 
 La syntaxe de l'appel d'une procédure est :
-\begin{galgas}
+\begin{galgasbox}
 nom_procedure (liste_parametres_effectifs)
-\end{galgas}
+\end{galgasbox}
 
 Les parenthèses sont obligatoires. La déclaration d'un procédure est présentée à la \refSectionPage{declarationProcedure}.
 

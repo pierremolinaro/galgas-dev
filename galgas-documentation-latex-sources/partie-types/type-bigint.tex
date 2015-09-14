@@ -882,7 +882,9 @@ message [2000S mod (-183S) string] + "\n" # 170
 \subsectionMethod{divideBy}{bigint}
 
 \begin{galgasbox}
-method @bigint divideBy ?@bigint inDivisor !@bigint outQuotient !@bigint outRemainder
+method @bigint divideBy ?@bigint inDivisor
+                        !@bigint outQuotient
+                        !@bigint outRemainder
 \end{galgasbox}
 
 Elle effectue la division dont le quotient arrondi \emph{vers zéro}, c'est-à-dire elle combine les opérateurs « \ggs!/! » et « \ggs!mod! » en une seule opération pour retourner quotient et reste.
@@ -922,7 +924,9 @@ message [quotient string] + " " + remainder + "\n" # -80000000737 8280
 \subsectionMethod{floorDivideBy}{bigint}
 
 \begin{galgasbox}
-method @bigint floorDivideBy ?@bigint inDivisor !@bigint outQuotient !@bigint outRemainder
+method @bigint floorDivideBy ?@bigint inDivisor
+                             !@bigint outQuotient
+                             !@bigint outRemainder
 \end{galgasbox}
 
 Elle effectue toujours la division dont le quotient arrondi \emph{vers $-\infty$}.
@@ -963,7 +967,9 @@ message [quotient string] + " " + remainder + "\n" # -80000000738 -1234559610
 \subsectionMethod{ceilDivideBy}{bigint}
 
 \begin{galgasbox}
-method @bigint ceilDivideBy ?@bigint inDivisor !@bigint outQuotient !@bigint outRemainder
+method @bigint ceilDivideBy ?@bigint inDivisor
+                            !@bigint outQuotient
+                            !@bigint outRemainder
 \end{galgasbox}
 
 Elle effectue toujours la division dont le quotient arrondi \emph{vers $+\infty$}.
