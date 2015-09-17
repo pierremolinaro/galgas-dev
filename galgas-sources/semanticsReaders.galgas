@@ -491,7 +491,20 @@ override method @boolPredefinedTypeAST getReaderMap
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !false)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !false)
   enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint64"
+    !returnedTypeName:"sint64"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"bigint"
+    !returnedTypeName:"bigint"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

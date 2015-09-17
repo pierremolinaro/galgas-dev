@@ -1905,7 +1905,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryAddOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & binaryAddOperatorNoOVF ()) != 0
     !"+"
     !mOperatorLocation
     !?rightExpression
@@ -2004,7 +2004,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binarySubOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & binarySubOperatorNoOVF ()) != 0
     !"-"
     !mOperatorLocation
     !?rightExpression
@@ -2102,7 +2102,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryMulOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & binaryMulOperatorNoOVF ()) != 0
     !"*"
     !mOperatorLocation
     !?rightExpression
@@ -2198,7 +2198,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryDivOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & binaryDivOperatorNoOVF ()) != 0
     !"/"
     !mOperatorLocation
     !?rightExpression
