@@ -36,6 +36,20 @@ Retourne la chaîne \ggs!"YES"! si le booléen est vrai, et la chaîne \ggs!"NO"
 \section{Conversion en entier}
 
 
+\subsectionGetter{bigint}{bool}
+
+\begin{galgasbox}
+getter bigint -> @bigint
+\end{galgasbox}
+
+Retourne l'entier \ggs!1G! si le booléen est vrai, et l'entier \ggs!0G! dans le cas contraire.
+
+\begin{galgas}
+  message [[false bigint] string] + "\n" # 0
+  message [[true bigint] string] + "\n" # 1
+\end{galgas}
+
+
 \subsectionGetter{sint}{bool}
 
 \begin{galgasbox}

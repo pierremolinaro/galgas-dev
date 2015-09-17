@@ -10,9 +10,9 @@ Le type \ggs+@binaryset+ encode des ensembles, des relations binaires, des expre
 
 \subsectionConstructor{binarySetWithBit}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithBit ?@uint inBitIndex -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ dont le bit \ggs+inBitIndex+ est égal à 1.
@@ -27,13 +27,13 @@ log s # Affiche <@binaryset: 1XX>
 
 \subsectionConstructor{binarySetWithEqualComparison}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithEqualComparison
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint inRightFirstIndex
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 
@@ -53,13 +53,13 @@ log s # Affiche <@binaryset: 00x00, 01X01, 10X10, 11X11>
 
 \subsectionConstructor{binarySetWithEqualToConstant}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithEqualToConstant
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint64 inConstant
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object that encodes a equality relation between a variable and a constant.
@@ -77,13 +77,13 @@ log s # Affiche <@binaryset: 10111>
 
 \subsectionConstructor{binarySetWithGreaterOrEqualComparison}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithGreaterOrEqualComparison
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint inRightFirstIndex
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object qui encode la relation \emph{supérieur ou égal} entre deux variables.
@@ -100,13 +100,13 @@ log s # Affiche <@binaryset: 00XXX, 01X01, 01X1X, 10X1X, 11X11>
 
 \subsectionConstructor{binarySetWithGreaterOrEqualToConstant}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithGreaterOrEqualToConstant
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint64 inConstant
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 
@@ -119,13 +119,13 @@ The constructor returns a binary set that encodes the \emph{a~>=~cst} relation, 
 
 \subsectionConstructor{binarySetWithLowerOrEqualComparison}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithLowerOrEqualComparison
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint inRightFirstIndex
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object that encodes a lower or equal relation between two variables.
@@ -143,13 +143,13 @@ log s # Affiche <@binaryset: 00X00, 01X0X, 10X0X, 10X10, 11XXX>
 
 \subsectionConstructor{binarySetWithLowerOrEqualToConstant}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithLowerOrEqualToConstant
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint64 inConstant
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object that encodes a lower or equal relation between a variable and a constant.
@@ -161,13 +161,13 @@ The constructor returns a binary set that encodes the \emph{a~<=~cst} relation, 
 
 \subsectionConstructor{binarySetWithNotEqualComparison}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithNotEqualComparison
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint inRightFirstIndex
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 
@@ -186,13 +186,13 @@ log s # Affiche <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 11
 
 \subsectionConstructor{binarySetWithNotEqualToConstant}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithNotEqualToConstant
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint64 inConstant
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object that encodes an inequality relation between a variable and a constant.
@@ -207,9 +207,9 @@ The constructor returns a binary set that encodes the \emph{a~!=~cst} relation, 
 
 \subsectionConstructor{binarySetWithPredicateString}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithPredicateString ?@string inPredicateString -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the \ggs+@binaryset+ object described by the \emph{inPredicateString} argument.
 
@@ -268,13 +268,13 @@ log s # Affiche <@binaryset: 1100X0, 111XXX>
 
 \subsectionConstructor{binarySetWithStrictGreaterComparison}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithStrictGreaterComparison
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint inRightFirstIndex
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object that encodes a strict greater than relation between two variables.
@@ -292,13 +292,13 @@ log s # Affiche <@binaryset: 00X01, 00X1X, 01X1X, 10X11>
 
 \subsectionConstructor{binarySetWithStrictGreaterThanConstant}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithStrictGreaterThanConstant
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint64 inConstant
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object that encodes a strict greater than relation between a variable and a constant.
@@ -310,13 +310,13 @@ The constructor returns a binary set that encodes the \emph{a~>~cst} relation, w
 
 \subsectionConstructor{binarySetWithStrictLowerComparison}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithStrictLowerComparison
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint inRightFirstIndex
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object that encodes a strict lower than relation between two variables.
@@ -334,13 +334,13 @@ log s # Affiche <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 
 \subsectionConstructor{binarySetWithStrictLowerThanConstant}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor binarySetWithStrictLowerThanConstant
   ?@uint inLeftFirstIndex
   ?@uint inBitCount
   ?@uint64 inConstant
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@binaryset+ object that encodes a strict lower than relation between a variable and a constant.
@@ -352,9 +352,9 @@ The constructor returns a binary set that encodes the \emph{a~<~cst} relation, w
 
 \subsectionConstructor{emptyBinarySet}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor emptyBinarySet -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un empty \ggs+@binaryset+ object.
@@ -365,9 +365,9 @@ Retourne un empty \ggs+@binaryset+ object.
 
 \subsectionConstructor{fullBinarySet}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 constructor fullBinarySet -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns a full \ggs+@binaryset+ object.
 
@@ -378,9 +378,9 @@ Returns a full \ggs+@binaryset+ object.
 
 \subsectionGetter{accessibleStates}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter accessibleStates -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the set of accessible states from an initial state set. It computes the set of accessible states from the \emph{inInitialStateSet} state set using the accessibility relation encoded by the receiver.
 
@@ -408,9 +408,9 @@ This program Affiche: \texttt{Accessible: 0 1 2 3 4 5}.
 
 \subsectionGetter{binarySetByTranslatingFromIndex}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter binarySetByTranslatingFromIndex ?@uint inFirstIndex ?@uint inTranslation -> @string
-\end{galgas}
+\end{galgasbox}
 
 
 Returns a \ggs+@binaryset+ value computed by translating the receiver's value by \emph{inTranslation} bits from index \emph{inFirstIndex}.
@@ -419,9 +419,9 @@ Returns a \ggs+@binaryset+ value computed by translating the receiver's value by
 
 \subsectionGetter{compressedValueCount}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter compressedValueCount -> @uint64
-\end{galgas}
+\end{galgasbox}
 
 Returns in an \ggs+@uint64+ value the number of different compressed string values encoded by receiver's value.
 
@@ -429,9 +429,9 @@ Returns in an \ggs+@uint64+ value the number of different compressed string valu
 
 \subsectionGetter{compressedStringValueList}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter compressedStringValueList ?@uint inBitCount -> @stringlist
-\end{galgas}
+\end{galgasbox}
 
 Returns the list of compressed string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
 
@@ -446,9 +446,9 @@ Returns the list of compressed string values corresponding to receiver's value, 
 
 \subsectionGetter{containsValue}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter containsValue ?@uint inFirstBit ?@uint inBitCount -> @bool
-\end{galgas}
+\end{galgasbox}
 
 
 Retourne un \ggs+@bool+ value indicating whether the receiver'value contains a given value: \ggs+true+ if the receiver's contains a value, and \ggs+false+ otherwise; this value is computed from the \emph{inBitCount} first bits of \emph{inValue} value, shifted left by \emph{inFirstBit}.
@@ -481,9 +481,9 @@ log b # Affiche <@bool:true>
 
 \subsectionGetter{equalTo}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter equalTo ?@binaryset inOperand -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the complement of the exclusive or between the receiver's value and the operand's value.
 
@@ -499,9 +499,9 @@ This operation returns un \ggs+@binaryset+ value; do not confuse with \ggs+==+ o
 
 \subsectionGetter{existOnBitIndex}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter existOnBitIndex ?@uint inBitIndex -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the binary computed by applying the \emph{exist} operator on the \emph{inBitIndex} bit of the receiver's value.
 
@@ -512,9 +512,9 @@ Returns the binary computed by applying the \emph{exist} operator on the \emph{i
 
 \subsectionGetter{existsOnBitRange}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter existsOnBitRange ?@uint inFirstBitIndex ?@uint inBitCount -> @bool
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the binary computed by applying the \emph{exist} operator on the receiver's value, from \emph{inFirstBitIndex} bit index until the \emph{inFirstBitIndex + inBitCount - 1} bit index.
@@ -536,9 +536,9 @@ log s # Affiche <@binaryset: 011XXX10>
 
 \subsectionGetter{existOnBitIndexAndBeyond}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter existOnBitIndexAndBeyond ?@uint inBitIndex -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the binary set computed by applying the \emph{exist} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.
 
@@ -550,9 +550,9 @@ Returns the binary set computed by applying the \emph{exist} operator on all bit
 
 \subsectionGetter{forAllOnBitIndex}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter forAllOnBitIndex ?@uint inBitIndex -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the binary set computed by applying the \emph{for all} operator on the \emph{inFirstBitIndex} bit index of the receiver's value.
 
@@ -564,9 +564,9 @@ Returns the binary set computed by applying the \emph{for all} operator on the \
 
 \subsectionGetter{forAllOnBitIndexAndBeyond}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter forAllOnBitIndexAndBeyond ?@uint inBitIndex -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the binary computed by applying the \emph{for all} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.
@@ -580,9 +580,9 @@ Returns the binary computed by applying the \emph{for all} operator on all bits 
 
 \subsectionGetter{greaterOrEqualTo}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter greaterOrEqualTo ?@binaryset inOperand -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the complement of the exclusive or between the receiver's value and the operand's value.
@@ -598,9 +598,9 @@ Note that \ggs+[a greaterOrEqualTo !b]+ is equivalent to \texttt{(a \textbar ~$\
 
 \subsectionGetter{isEmpty}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter isEmpty -> @bool
-\end{galgas}
+\end{galgasbox}
 
 Returns a \ggs+@bool+ value that indicates whether the receiver's value is the empty set :  \ggs+true+ if receiver's value is the empty set, and \ggs+false+ otherwise.
 
@@ -612,9 +612,9 @@ Returns a \ggs+@bool+ value that indicates whether the receiver's value is the e
 
 \subsectionGetter{isFull}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter isFull -> @bool
-\end{galgas}
+\end{galgasbox}
 
 Returns a \ggs+@bool+ value that indicates whether the receiver's value is the full set : \ggs+true+ if receiver's value is the full set, and \ggs+false+ otherwise.
 
@@ -626,9 +626,9 @@ Returns a \ggs+@bool+ value that indicates whether the receiver's value is the f
 
 \subsectionGetter{ITE}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter ITE ?@binaryset inThenOperand ?@binaryset inElseOperand -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the binary set computed by applying the \emph{ite} operator on the receiver's value, the \emph{inThenOperand} argument, and the  \emph{inElseOperand} argument.
@@ -643,9 +643,9 @@ Returns the binary set computed by applying the \emph{ite} operator on the recei
 
 \subsectionGetter{lowerOrEqualTo}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter lowerOrEqualTo ?@binaryset inOperand -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the binary set computed by applying the \emph{lower or equal} operator on the receiver's value and the \emph{inOperand} argument.
@@ -659,9 +659,9 @@ Returns the binary set computed by applying the \emph{lower or equal} operator o
 
 \subsectionGetter{notEqualTo}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter notEqualTo ?@binaryset inOperand -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the binary set computed by applying the \emph{not equal} operator on the receiver's value and the \emph{inOperand} argument.
@@ -675,9 +675,9 @@ Returns the binary set computed by applying the \emph{not equal} operator on the
 
 \subsectionGetter{predicateStringValue}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter predicateStringValue -> @string
-\end{galgas}
+\end{galgasbox}
 
 Returns a string representation of the receiver's value. The returned string is compatible with the \refConstructorPage{binaryset}{binarySetWithPredicateString}.
 
@@ -689,9 +689,9 @@ Returns a string representation of the receiver's value. The returned string is 
 
 \subsectionGetter{strictGreaterThan}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter strictGreaterThan ?@binaryset inOperand -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the binary set computed by applying the \emph{strict greater} operator on the receiver's value and the \emph{inOperand} argument.
 {\texttt{[a strictGreaterThan !b]} is \texttt{(x \& $\sim$y)}.}
@@ -704,9 +704,9 @@ Returns the binary set computed by applying the \emph{strict greater} operator o
 
 \subsectionGetter{strictLowerThan}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter strictLowerThan ?@binaryset inOperand -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the binary set computed by applying the \emph{strict lower} operator on the receiver's value and the \emph{inOperand} argument.
 {\texttt{[a strictLowerThan !b]} is \texttt{($\sim$x \& y)}.}
@@ -719,9 +719,9 @@ Returns the binary set computed by applying the \emph{strict lower} operator on 
 
 \subsectionGetter{stringValueList}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter stringValueList ?@uint inBitCount -> @stringlist
-\end{galgas}
+\end{galgasbox}
 
 Returns the list of string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
 
@@ -733,12 +733,12 @@ Returns the list of string values corresponding to receiver's value, considering
 
 \subsectionGetter{stringValueListWithNameList}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter stringValueListWithNameList
   ?@uint inBitCount
   ?@stringlist inNameList
   -> @stringlist
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the list of named values corresponding to receiver's value, considering it uses \emph{inBitCount} bits. First, the receiver is enumerated, considering it uses \emph{inBitCount} bits. Each enumerated value is used as an index of \emph{inNameList}, and the string value at this index is appended at the end of the returned value.
@@ -751,13 +751,13 @@ Returns the list of named values corresponding to receiver's value, considering 
 
 \subsectionGetter{swap021}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter swap021
   ?@uint inBitCount1
   ?@uint inBitCount2
   ?@uint inBitCount3
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 
@@ -773,9 +773,9 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 
 \subsectionGetter{swap01}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter swap01 ?@uint inBitCount1 ?@uint inBitCount2 -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the transposed \emph{(y, x)} relation.
@@ -788,13 +788,13 @@ This getter considers that the receiver encodes an \emph{(x, y)} relation, where
 
 \subsectionGetter{swap102}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter swap102
   ?@uint inBitCount1
   ?@uint inBitCount2
   ?@uint inBitCount3
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the transposed \emph{(y, x, z)} relation.
 
@@ -807,13 +807,13 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 
 \subsectionGetter{swap120}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter swap120
   ?@uint inBitCount1
   ?@uint inBitCount2
   ?@uint inBitCount3
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the transposed \emph{(y, z, x)} relation.
 
@@ -826,13 +826,13 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 
 \subsectionGetter{swap201}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter swap201
   ?@uint inBitCount1
   ?@uint inBitCount2
   ?@uint inBitCount3
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the transposed \emph{(z, x, y)} relation.
 
@@ -845,13 +845,13 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 
 \subsectionGetter{swap210}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter swap210
   ?@uint inBitCount1
   ?@uint inBitCount2
   ?@uint inBitCount3
   -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 Returns the transposed \emph{(z, y, x)} relation.
 
@@ -866,9 +866,9 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 
 \subsectionGetter{transitiveClosure}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter transitiveClosure ?@uint inBitCount -> @binaryset
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the transitive closure of the relation encoded by the receiver.
@@ -884,9 +884,9 @@ This getter considers that the receiver encodes an \emph{(x, y)} relation, where
 
 \subsectionGetter{uint64ValueList}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter uint64ValueList ?@uint inBitCount -> @uint64list
-\end{galgas}
+\end{galgasbox}
 
 
 Returns the list of \ggs+@uint64+ values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
@@ -900,9 +900,9 @@ Returns the list of \ggs+@uint64+ values corresponding to receiver's value, cons
 
 \subsectionGetter{valueCount}{binaryset}
 
-\begin{galgas}
+\begin{galgasbox}
 getter valueCount ?@uint inBitCount -> @uint64
-\end{galgas}
+\end{galgasbox}
 
 
 Returns in an \ggs+@uint64+ object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits. No overflow test in performed.

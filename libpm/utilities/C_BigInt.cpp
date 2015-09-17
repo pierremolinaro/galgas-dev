@@ -64,7 +64,9 @@ mGMPint () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BigInt & C_BigInt::operator = (const C_BigInt & inOperand) {
-  mpz_set (mGMPint, inOperand.mGMPint) ;
+  if (this != & inOperand) {
+    mpz_set (mGMPint, inOperand.mGMPint) ;
+  }
   return *this ;
 }
 

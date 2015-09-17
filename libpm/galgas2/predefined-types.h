@@ -737,6 +737,8 @@ class GALGAS_bool : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint reader_bigint (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_cString (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_ocString (LOCATION_ARGS) const ;
