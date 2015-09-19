@@ -10848,71 +10848,182 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "{\n"
-    "  \"LIBPM_DIRECTORY_PATH\" : \"" ;
+    "    \"LIBPM_DIRECTORY_PATH\"  :  \"" ;
   result << in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue () ;
   result << "\",\n"
-    "  \"SOURCES_DIR\" : [\"../build/output\", \"../build/user-headers\", \"" ;
+    "    \"SOURCES_DIR\"  :  [\"../build/output\",  \"../build/user-headers\",  \"" ;
   result << in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue () ;
   result << "\"" ;
-  GALGAS_uint index_183_ (0) ;
+  GALGAS_uint index_197_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_183 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, kEnumeration_up) ;
-    while (enumerator_183.hasCurrentObject ()) {
-      result << ", \"" ;
-      result << enumerator_183.current_key (HERE).stringValue () ;
+    cEnumerator_stringset enumerator_197 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, kEnumeration_up) ;
+    while (enumerator_197.hasCurrentObject ()) {
+      result << ",  \"" ;
+      result << enumerator_197.current_key (HERE).stringValue () ;
       result << "\"" ;
-      index_183_.increment () ;
-      enumerator_183.gotoNextObject () ;
+      index_197_.increment () ;
+      enumerator_197.gotoNextObject () ;
     }
   }
   result << "],\n"
-    "  \"SOURCES\" : [\n"
-    "    \"all-galgas.cpp\",\n"
-    "    \"all-libpm.cpp\"" ;
-  GALGAS_uint index_297_ (0) ;
+    "    \"SOURCES\"  :  [\n"
+    "        \"all-galgas.cpp\",\n"
+    "        \"all-libpm.cpp\",\n" ;
+  GALGAS_uint index_332_ (0) ;
   if (in_MAKEFILE_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_297 (in_MAKEFILE_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_297.hasCurrentObject ()) {
-      result << ",\n"
-        "    \"" ;
-      result << enumerator_297.current_mValue (HERE).stringValue () ;
-      result << "\"" ;
-      index_297_.increment () ;
-      enumerator_297.gotoNextObject () ;
+    cEnumerator_stringlist enumerator_332 (in_MAKEFILE_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_332.hasCurrentObject ()) {
+      result << "        \"" ;
+      result << enumerator_332.current_mValue (HERE).stringValue () ;
+      result << "\",\n" ;
+      index_332_.increment () ;
+      enumerator_332.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_365_ (0) ;
+  GALGAS_uint index_410_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_365 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_365.hasCurrentObject ()) {
-      result << ",\n"
-        "    \"" ;
-      result << enumerator_365.current_mValue (HERE).stringValue () ;
-      result << "\"" ;
-      index_365_.increment () ;
-      enumerator_365.gotoNextObject () ;
+    cEnumerator_stringlist enumerator_410 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_410.hasCurrentObject ()) {
+      result << "        \"" ;
+      result << enumerator_410.current_mValue (HERE).stringValue () ;
+      result << "\",\n" ;
+      index_410_.increment () ;
+      enumerator_410.gotoNextObject () ;
     }
   }
   result << "\n"
-    "  ],\n"
-    "  \"USER_LINK_OPTIONS\" : [" ;
-  GALGAS_uint index_456_ (0) ;
+    "        \"32-mp_bases.c\",\n"
+    "        \"mpn-invertappr.c\",\n"
+    "        \"mpn-sub_1.c\",\n"
+    "        \"mpn-toom_eval_dgr3_pm1.c\",\n"
+    "        \"mpz-clrbit.c\", \n"
+    "        \"mpz-set_ui.c\",\n"
+    "        \"mpn-lshift.c\",\n"
+    "        \"mpn-sub_n.c\",\n"
+    "        \"mpn-toom_eval_dgr3_pm2.c\",\n"
+    "        \"mpz-cmp.c\",\n"
+    "        \"mpz-setbit.c\",\n"
+    "        \"64-mp_bases.c\",\n"
+    "        \"mpn-lshiftc.c\",\n"
+    "        \"mpn-submul_1.c\",\n"
+    "        \"mpn-toom_eval_pm1.c\",\n"
+    "        \"mpz-com.c\",\n"
+    "        \"mpz-sizeinbase.c\",\n"
+    "        \"mpn-mu_div_qr.c\",\n"
+    "        \"mpn-tdiv_qr.c\", \n"
+    "        \"mpn-toom_eval_pm2.c\",\n"
+    "        \"mpz-combit.c\", \n"
+    "        \"mpz-sub.c\",\n"
+    "        \"mpn-mul.c\",\n"
+    "        \"mpn-toom22_mul.c\",\n"
+    "        \"mpn-toom_eval_pm2exp.c\",\n"
+    "        \"mpz-export.c\",\n"
+    "        \"mpz-sub_ui.c\",\n"
+    "        \"mpn-mul_1.c\",\n"
+    "        \"mpn-toom2_sqr.c\",\n"
+    "        \"mpn-toom_eval_pm2rexp.c\",\n"
+    "        \"mpz-fdiv_qr.c\",\n"
+    "        \"mpz-swap.c\",\n"
+    "        \"mpn-mul_basecase.c\",\n"
+    "        \"mpn-toom32_mul.c\",\n"
+    "        \"mpn-toom_interpolate_12pts.c\",\n"
+    "        \"mpz-tdiv_qr.c\",\n"
+    "        \"mpn-mul_fft.c\",\n"
+    "        \"mpn-toom33_mul.c\",\n"
+    "        \"mpn-toom_interpolate_16pts.c\",\n"
+    "        \"mpz-fits_sint.c\",\n"
+    "        \"mpz-tstbit.c\",\n"
+    "        \"mpn-mul_n.c\",\n"
+    "        \"mpn-toom3_sqr.c\",\n"
+    "        \"mpn-toom_interpolate_5pts.c\",\n"
+    "        \"mpz-fits_uint.c\",\n"
+    "        \"mpz-xor.c\",\n"
+    "        \"mpn-add.c\",\n"
+    "        \"mpn-mulmod_bnm1.c\",\n"
+    "        \"mpn-toom42_mul.c\",\n"
+    "        \"mpn-toom_interpolate_6pts.c\",\n"
+    "        \"mpz-get_si.c\",\n"
+    "        \"mpn-add_1.c\",\n"
+    "        \"mpn-nussbaumer_mul.c\",\n"
+    "        \"mpn-toom43_mul.c\",\n"
+    "        \"mpn-toom_interpolate_7pts.c\",\n"
+    "        \"mpz-get_str.c\",\n"
+    "        \"root-assert.c\",\n"
+    "        \"mpn-add_n.c\",\n"
+    "        \"mpn-pre_divrem_1.c\",\n"
+    "        \"mpn-toom44_mul.c\",\n"
+    "        \"mpn-toom_interpolate_8pts.c\",\n"
+    "        \"mpz-get_ui.c\",\n"
+    "        \"mpn-addmul_1.c\",\n"
+    "        \"mpn-rshift.c\",\n"
+    "        \"mpn-toom4_sqr.c\",\n"
+    "        \"mpz-abs.c\",\n"
+    "        \"mpz-init.c\",\n"
+    "        \"root-errno.c\",\n"
+    "        \"mpn-bdiv_dbm1c.c\",\n"
+    "        \"mpn-sbpi1_div_qr.c\",\n"
+    "        \"mpn-toom53_mul.c\",\n"
+    "        \"mpz-add.c\",\n"
+    "        \"mpz-ior.c\",\n"
+    "        \"root-memory.c\",\n"
+    "        \"mpn-cmp.c\",\n"
+    "        \"mpn-sbpi1_divappr_q.c\",\n"
+    "        \"mpn-toom63_mul.c\",\n"
+    "        \"mpz-add_ui.c\",\n"
+    "        \"mpz-mul.c\",\n"
+    "        \"root-mp_bpl.c\",\n"
+    "        \"mpn-dcpi1_div_qr.c\",\n"
+    "        \"mpn-set_str.c\",\n"
+    "        \"mpn-toom6_sqr.c\",\n"
+    "        \"mpz-and.c\",\n"
+    "        \"mpz-mul_2exp.c\",\n"
+    "        \"root-mp_clz_tab.c\",\n"
+    "        \"mpn-dive_1.c\",\n"
+    "        \"mpn-sqr.c\",\n"
+    "        \"mpn-toom6h_mul.c\",\n"
+    "        \"mpz-neg.c\",\n"
+    "        \"root-mp_dv_tab.c\",\n"
+    "        \"mpn-divrem_1.c\",\n"
+    "        \"mpn-sqr_basecase.c\",\n"
+    "        \"mpn-toom8_sqr.c\",\n"
+    "        \"mpz-cdiv_qr.c\",\n"
+    "        \"mpz-realloc.c\",\n"
+    "        \"root-mp_minv_tab.c\",\n"
+    "        \"mpn-divrem_2.c\",\n"
+    "        \"mpn-sqrmod_bnm1.c\",\n"
+    "        \"mpn-toom8h_mul.c\",\n"
+    "        \"mpz-cfdiv_q_2exp.c\",\n"
+    "        \"mpz-set.c\",\n"
+    "        \"root-tal-notreent.c\",\n"
+    "        \"mpn-get_str.c\",\n"
+    "        \"mpn-sub.c\",\n"
+    "        \"mpn-toom_couple_handling.c\",\n"
+    "        \"mpz-clear.c\",\n"
+    "        \"mpz-set_str.c\",\n"
+    "        \"mpz-mul_ui.c\",\n"
+    "        \"mpz-cmp_ui.c\",\n"
+    "        \"mpz-cmp_si.c\",\n"
+    "        \"mpz-fdiv_q_ui.c\",\n"
+    "        \"mpz-cdiv_q_ui.c\"\n"
+    "    ],\n"
+    "    \"USER_LINK_OPTIONS\"  :  [" ;
+  GALGAS_uint index_3531_ (0) ;
   if (in_TOOL_5F_LINK_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_456 (in_TOOL_5F_LINK_5F_LIST, kEnumeration_up) ;
-    while (enumerator_456.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_3531 (in_TOOL_5F_LINK_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3531.hasCurrentObject ()) {
       result << "\n"
-        "    \"" ;
-      result << enumerator_456.current_mValue (HERE).stringValue () ;
+        "        \"" ;
+      result << enumerator_3531.current_mValue (HERE).stringValue () ;
       result << "\"" ;
-      if (enumerator_456.hasNextObject ()) {
+      if (enumerator_3531.hasNextObject ()) {
         result << "," ;
       }
-      index_456_.increment () ;
-      enumerator_456.gotoNextObject () ;
+      index_3531_.increment () ;
+      enumerator_3531.gotoNextObject () ;
     }
   }
   result << "\n"
-    "  ]\n"
+    "    ]\n"
     "}\n"
     "\n" ;
   return GALGAS_string (result) ;
@@ -16478,190 +16589,6 @@ GALGAS_expressionCollectionValue GALGAS_expressionCollectionValue::extractObject
       result = *p ;
     }else{
       inCompiler->castError ("expressionCollectionValue", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_expressionListCollectionValue::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_expressionListCollectionValue * p = (const cPtr_expressionListCollectionValue *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_expressionListCollectionValue) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mExpressionList.objectCompare (p->mAttribute_mExpressionList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndOfExpressionLocation.objectCompare (p->mAttribute_mEndOfExpressionLocation) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_expressionListCollectionValue::objectCompare (const GALGAS_expressionListCollectionValue & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_expressionListCollectionValue::GALGAS_expressionListCollectionValue (void) :
-GALGAS_abstractCollectionValueElement () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::constructor_default (LOCATION_ARGS) {
-  return GALGAS_expressionListCollectionValue::constructor_new (GALGAS_actualOutputExpressionList::constructor_emptyList (HERE),
-                                                                GALGAS_location::constructor_nowhere (HERE)
-                                                                COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_expressionListCollectionValue::GALGAS_expressionListCollectionValue (const cPtr_expressionListCollectionValue * inSourcePtr) :
-GALGAS_abstractCollectionValueElement (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionListCollectionValue) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::constructor_new (const GALGAS_actualOutputExpressionList & inAttribute_mExpressionList,
-                                                                                            const GALGAS_location & inAttribute_mEndOfExpressionLocation
-                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_expressionListCollectionValue result ;
-  if (inAttribute_mExpressionList.isValid () && inAttribute_mEndOfExpressionLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_expressionListCollectionValue (inAttribute_mExpressionList, inAttribute_mEndOfExpressionLocation COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_actualOutputExpressionList GALGAS_expressionListCollectionValue::reader_mExpressionList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_actualOutputExpressionList result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_expressionListCollectionValue * p = (const cPtr_expressionListCollectionValue *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_expressionListCollectionValue) ;
-    result = p->mAttribute_mExpressionList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_actualOutputExpressionList cPtr_expressionListCollectionValue::reader_mExpressionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpressionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_expressionListCollectionValue::reader_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_expressionListCollectionValue * p = (const cPtr_expressionListCollectionValue *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_expressionListCollectionValue) ;
-    result = p->mAttribute_mEndOfExpressionLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_expressionListCollectionValue::reader_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfExpressionLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                               Pointer class for @expressionListCollectionValue class                                *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_expressionListCollectionValue::cPtr_expressionListCollectionValue (const GALGAS_actualOutputExpressionList & in_mExpressionList,
-                                                                        const GALGAS_location & in_mEndOfExpressionLocation
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_abstractCollectionValueElement (THERE),
-mAttribute_mExpressionList (in_mExpressionList),
-mAttribute_mEndOfExpressionLocation (in_mEndOfExpressionLocation) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_expressionListCollectionValue::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_expressionListCollectionValue ;
-}
-
-void cPtr_expressionListCollectionValue::description (C_String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString << "[@expressionListCollectionValue:" ;
-  mAttribute_mExpressionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndOfExpressionLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_expressionListCollectionValue::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_expressionListCollectionValue (mAttribute_mExpressionList, mAttribute_mEndOfExpressionLocation COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @expressionListCollectionValue type                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_expressionListCollectionValue ("expressionListCollectionValue",
-                                                      & kTypeDescriptor_GALGAS_abstractCollectionValueElement) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_expressionListCollectionValue::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_expressionListCollectionValue ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_expressionListCollectionValue::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_expressionListCollectionValue (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_expressionListCollectionValue result ;
-  const GALGAS_expressionListCollectionValue * p = (const GALGAS_expressionListCollectionValue *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_expressionListCollectionValue *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("expressionListCollectionValue", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
