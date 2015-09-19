@@ -28,7 +28,7 @@
 // http://stackoverflow.com/questions/5272825/detecting-64bit-compile-in-c
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef __APPLE__
+/* #ifdef __APPLE__
   #include "gmp/gmp-Darwin-Intel.h"
 #elif defined (_WIN32)
   #include "gmp/gmp-win32.h"
@@ -42,7 +42,9 @@
   #endif
 #else
   #error "Undefined gmp header"
-#endif
+#endif */
+
+#include "gmp/gmp-modified.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
