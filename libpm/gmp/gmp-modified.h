@@ -37,12 +37,36 @@ see https://www.gnu.org/licenses/.  */
 
 
 /* Instantiated by configure. */
-#if ! defined (__GMP_WITHIN_CONFIGURE)
+//--- Deleted by PM
+//#if ! defined (__GMP_WITHIN_CONFIGURE)
+//--- End deleted by PM
 #define __GMP_HAVE_HOST_CPU_FAMILY_power   0
 #define __GMP_HAVE_HOST_CPU_FAMILY_powerpc 0
-#define GMP_LIMB_BITS                      64
-#define GMP_NAIL_BITS                      0
+//--- Modified by PM
+#include <limits.h>
+#include <stdint.h>
+#ifndef INT64_MAX
+  #error "Undefined INT64_MAX"
 #endif
+#ifndef INT32_MAX
+  #error "Undefined INT32_MAX"
+#endif
+#ifdef _WIN32
+  #define GMP_LIMB_BITS 32
+#else
+  #if LLONG_MAX == INT32_MAX
+    #define GMP_LIMB_BITS 32
+  #elif LLONG_MAX == INT64_MAX
+    #define GMP_LIMB_BITS 64
+  #else
+    #error "LLONG_MAX is != 32 and != 64"
+  #endif
+#endif
+//--- End modified by PM
+#define GMP_NAIL_BITS                      0
+//--- Deleted by PM
+//#endif
+//--- End deleted by PM
 #define GMP_NUMB_BITS     (GMP_LIMB_BITS - GMP_NAIL_BITS)
 #define GMP_NUMB_MASK     ((~ __GMP_CAST (mp_limb_t, 0)) >> GMP_NAIL_BITS)
 #define GMP_NUMB_MAX      GMP_NUMB_MASK
@@ -2247,14 +2271,16 @@ mpn_neg (mp_ptr __gmp_rp, mp_srcptr __gmp_up, mp_size_t __gmp_n)
 
 /**************** C++ routines ****************/
 
-#ifdef __cplusplus
-__GMP_DECLSPEC_XX std::ostream& operator<< (std::ostream &, mpz_srcptr);
-__GMP_DECLSPEC_XX std::ostream& operator<< (std::ostream &, mpq_srcptr);
-__GMP_DECLSPEC_XX std::ostream& operator<< (std::ostream &, mpf_srcptr);
-__GMP_DECLSPEC_XX std::istream& operator>> (std::istream &, mpz_ptr);
-__GMP_DECLSPEC_XX std::istream& operator>> (std::istream &, mpq_ptr);
-__GMP_DECLSPEC_XX std::istream& operator>> (std::istream &, mpf_ptr);
-#endif
+// Commented out by PM
+// #ifdef __cplusplus
+// __GMP_DECLSPEC_XX std::ostream& operator<< (std::ostream &, mpz_srcptr);
+// __GMP_DECLSPEC_XX std::ostream& operator<< (std::ostream &, mpq_srcptr);
+// __GMP_DECLSPEC_XX std::ostream& operator<< (std::ostream &, mpf_srcptr);
+// __GMP_DECLSPEC_XX std::istream& operator>> (std::istream &, mpz_ptr);
+// __GMP_DECLSPEC_XX std::istream& operator>> (std::istream &, mpq_ptr);
+// __GMP_DECLSPEC_XX std::istream& operator>> (std::istream &, mpf_ptr);
+// #endif
+// End of commented out by PM
 
 
 /* Source-level compatibility with GMP 2 and earlier. */
@@ -2289,8 +2315,9 @@ enum
 };
 
 /* Define CC and CFLAGS which were used to build this version of GMP */
-#define __GMP_CC "gcc"
-#define __GMP_CFLAGS "-O2 -pedantic -fomit-frame-pointer -m64"
+//--- 2 lines commented out by PM
+//#define __GMP_CC "/Users/pierremolinaro/galgas-tools-for-cross-compilation/binutils-2.25-gcc-4.9.2-for-mingw32/bin/i586-mingw32-gcc -std=gnu99"
+// #define __GMP_CFLAGS "-m32 -O2 -pedantic -fomit-frame-pointer -mtune=pentium -march=pentium -DNO_ASM"
 
 /* Major version number is the value of __GNU_MP__ too, above and in mp.h. */
 #define __GNU_MP_VERSION            6
