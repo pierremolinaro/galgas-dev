@@ -28,23 +28,7 @@
 // http://stackoverflow.com/questions/5272825/detecting-64bit-compile-in-c
 //---------------------------------------------------------------------------------------------------------------------*
 
-/* #ifdef __APPLE__
-  #include "gmp/gmp-Darwin-Intel.h"
-#elif defined (_WIN32)
-  #include "gmp/gmp-win32.h"
-#elif defined (__linux__)
-  #ifdef __i386__
-    #include "gmp/gmp-Linux-i686.h"
-  #elif defined (__x86_64__)
-    #include "gmp/gmp-Linux-x86_64.h"
-  #else
-    #error "Linux is not 32-bit, nor 64-bit"
-  #endif
-#else
-  #error "Undefined gmp header"
-#endif */
-
-#include "gmp/gmp-modified.h"
+#include "gmp/gmp.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 

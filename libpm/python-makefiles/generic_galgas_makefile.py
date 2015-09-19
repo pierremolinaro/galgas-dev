@@ -75,6 +75,7 @@ class GenericGalgasMakefile :
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/files")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/galgas")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/galgas2")
+    SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/gmp")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/streams")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/time")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/strings")
@@ -94,6 +95,7 @@ class GenericGalgasMakefile :
       objectFileList.append (objectFile)
       sourcePath = make.searchFileInDirectories (source, SOURCES_DIR)
       if sourcePath != "" :
+        extension = os.path.splitext (source) [1]
         rule = makefile.Rule (objectFile, self.mCompilationMessage + ": " + source)
         rule.deleteTargetDirectoryOnClean ()
         rule.mDependences.append (sourcePath)
@@ -101,7 +103,10 @@ class GenericGalgasMakefile :
         rule.mCommand += self.mCompilerTool
         rule.mCommand += self.mCompilerReleaseOptions
         rule.mCommand += self.mAllCompilerOptions
-        rule.mCommand += self.m_Cpp_CompilerOptions
+        if extension == ".c":
+          rule.mCommand += self.m_C_CompilerOptions
+        elif extension == ".cpp":
+          rule.mCommand += self.m_Cpp_CompilerOptions
         rule.mCommand += ["-c", sourcePath]
         rule.mCommand += ["-o", objectFile]
         rule.mCommand += includeDirs
@@ -116,7 +121,7 @@ class GenericGalgasMakefile :
     rule.mCommand += self.mLinkerTool
     rule.mCommand += objectFileList
     rule.mCommand += ["-o", EXECUTABLE]
-    rule.mCommand += ["-L", GMP_DIRECTORY_PATH, "-lgmp-" + SYSTEM_MACHINE]
+#    rule.mCommand += ["-L", GMP_DIRECTORY_PATH, "-lgmp-" + SYSTEM_MACHINE]
     rule.mCommand += self.mLinkerOptions
     postCommand = makefile.PostCommand (self.mStripMessage + " " + EXECUTABLE)
     postCommand.mCommand += self.mStripTool
@@ -134,6 +139,7 @@ class GenericGalgasMakefile :
       debugObjectFileList.append (objectFile)
       sourcePath = make.searchFileInDirectories (source, SOURCES_DIR)
       if sourcePath != "" :
+        extension = os.path.splitext (source) [1]
         rule = makefile.Rule (objectFile, self.mCompilationMessage + " (debug): " + source)
         rule.deleteTargetDirectoryOnClean ()
         rule.mDependences.append (sourcePath)
@@ -141,7 +147,10 @@ class GenericGalgasMakefile :
         rule.mCommand += self.mCompilerTool
         rule.mCommand += self.mCompilerDebugOptions
         rule.mCommand += self.mAllCompilerOptions
-        rule.mCommand += self.m_Cpp_CompilerOptions
+        if extension == ".c":
+          rule.mCommand += self.m_C_CompilerOptions
+        elif extension == ".cpp":
+          rule.mCommand += self.m_Cpp_CompilerOptions
         rule.mCommand += ["-c", sourcePath]
         rule.mCommand += ["-o", objectFile]
         rule.mCommand += includeDirs
@@ -156,7 +165,7 @@ class GenericGalgasMakefile :
     rule.mCommand += self.mLinkerTool
     rule.mCommand += debugObjectFileList
     rule.mCommand += ["-o", EXECUTABLE_DEBUG]
-    rule.mCommand += ["-L", GMP_DIRECTORY_PATH, "-lgmp-" + SYSTEM_MACHINE]
+#    rule.mCommand += ["-L", GMP_DIRECTORY_PATH, "-lgmp-" + SYSTEM_MACHINE]
     rule.mCommand += self.mLinkerOptions
     make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add install EXECUTABLE file rule
