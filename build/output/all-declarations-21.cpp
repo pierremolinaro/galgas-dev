@@ -9,6 +9,347 @@
 
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeProjectDescription::GALGAS_XcodeProjectDescription (void) :
+mAttribute_mFileReferenceMap (),
+mAttribute_mAllBuildFileList (),
+mAttribute_mMainGroupChildrenList (),
+mAttribute_mProjectGroupList (),
+mAttribute_mTargetList (),
+mAttribute_mProductGroupChildrenList (),
+mAttribute_mBuildConfigurationList (),
+mAttribute_mPBXSourcesBuildPhase_5F_list (),
+mAttribute_mPBXFrameworksBuildPhase_5F_list (),
+mAttribute_mPBXResourcesBuildPhase_5F_list (),
+mAttribute_mPBXCopyBuildPhase_5F_list (),
+mAttribute_mDependencyList (),
+mAttribute_mPBXVariantGroup_5F_list (),
+mAttribute_mSequenceNumber () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeProjectDescription::~ GALGAS_XcodeProjectDescription (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeProjectDescription::GALGAS_XcodeProjectDescription (const GALGAS_Xcode_5F_PBXFileReference_5F_map & inOperand0,
+                                                                const GALGAS_Xcode_5F_PBXBuildFile_5F_list & inOperand1,
+                                                                const GALGAS_XcodeObjectReferenceList & inOperand2,
+                                                                const GALGAS_Xcode_5F_PBXGroup_5F_list & inOperand3,
+                                                                const GALGAS_Xcode_5F_PBXNativeTarget_5F_list & inOperand4,
+                                                                const GALGAS_XcodeObjectReferenceList & inOperand5,
+                                                                const GALGAS_Xcode_5F_XCBuildConfiguration_5F_list & inOperand6,
+                                                                const GALGAS_Xcode_5F_PBXSourcesBuildPhase_5F_list & inOperand7,
+                                                                const GALGAS_Xcode_5F_PBXFrameworksBuildPhase_5F_list & inOperand8,
+                                                                const GALGAS_Xcode_5F_PBXResourcesBuildPhase_5F_list & inOperand9,
+                                                                const GALGAS_Xcode_5F_PBXCopyBuildPhase_5F_list & inOperand10,
+                                                                const GALGAS_Xcode_5F_targetDependencyDescription_5F_list & inOperand11,
+                                                                const GALGAS_Xcode_5F_PBXVariantGroup_5F_list & inOperand12,
+                                                                const GALGAS_uint & inOperand13) :
+mAttribute_mFileReferenceMap (inOperand0),
+mAttribute_mAllBuildFileList (inOperand1),
+mAttribute_mMainGroupChildrenList (inOperand2),
+mAttribute_mProjectGroupList (inOperand3),
+mAttribute_mTargetList (inOperand4),
+mAttribute_mProductGroupChildrenList (inOperand5),
+mAttribute_mBuildConfigurationList (inOperand6),
+mAttribute_mPBXSourcesBuildPhase_5F_list (inOperand7),
+mAttribute_mPBXFrameworksBuildPhase_5F_list (inOperand8),
+mAttribute_mPBXResourcesBuildPhase_5F_list (inOperand9),
+mAttribute_mPBXCopyBuildPhase_5F_list (inOperand10),
+mAttribute_mDependencyList (inOperand11),
+mAttribute_mPBXVariantGroup_5F_list (inOperand12),
+mAttribute_mSequenceNumber (inOperand13) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeProjectDescription GALGAS_XcodeProjectDescription::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XcodeProjectDescription (GALGAS_Xcode_5F_PBXFileReference_5F_map::constructor_emptyMap (HERE),
+                                         GALGAS_Xcode_5F_PBXBuildFile_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_XcodeObjectReferenceList::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_PBXGroup_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_PBXNativeTarget_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_XcodeObjectReferenceList::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_XCBuildConfiguration_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_PBXSourcesBuildPhase_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_PBXFrameworksBuildPhase_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_PBXResourcesBuildPhase_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_PBXCopyBuildPhase_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_targetDependencyDescription_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_Xcode_5F_PBXVariantGroup_5F_list::constructor_emptyList (HERE),
+                                         GALGAS_uint::constructor_default (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeProjectDescription GALGAS_XcodeProjectDescription::constructor_new (const GALGAS_Xcode_5F_PBXFileReference_5F_map & inOperand0,
+                                                                                const GALGAS_Xcode_5F_PBXBuildFile_5F_list & inOperand1,
+                                                                                const GALGAS_XcodeObjectReferenceList & inOperand2,
+                                                                                const GALGAS_Xcode_5F_PBXGroup_5F_list & inOperand3,
+                                                                                const GALGAS_Xcode_5F_PBXNativeTarget_5F_list & inOperand4,
+                                                                                const GALGAS_XcodeObjectReferenceList & inOperand5,
+                                                                                const GALGAS_Xcode_5F_XCBuildConfiguration_5F_list & inOperand6,
+                                                                                const GALGAS_Xcode_5F_PBXSourcesBuildPhase_5F_list & inOperand7,
+                                                                                const GALGAS_Xcode_5F_PBXFrameworksBuildPhase_5F_list & inOperand8,
+                                                                                const GALGAS_Xcode_5F_PBXResourcesBuildPhase_5F_list & inOperand9,
+                                                                                const GALGAS_Xcode_5F_PBXCopyBuildPhase_5F_list & inOperand10,
+                                                                                const GALGAS_Xcode_5F_targetDependencyDescription_5F_list & inOperand11,
+                                                                                const GALGAS_Xcode_5F_PBXVariantGroup_5F_list & inOperand12,
+                                                                                const GALGAS_uint & inOperand13 
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_XcodeProjectDescription result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
+    result = GALGAS_XcodeProjectDescription (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XcodeProjectDescription::objectCompare (const GALGAS_XcodeProjectDescription & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mFileReferenceMap.objectCompare (inOperand.mAttribute_mFileReferenceMap) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mAllBuildFileList.objectCompare (inOperand.mAttribute_mAllBuildFileList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mMainGroupChildrenList.objectCompare (inOperand.mAttribute_mMainGroupChildrenList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mProjectGroupList.objectCompare (inOperand.mAttribute_mProjectGroupList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTargetList.objectCompare (inOperand.mAttribute_mTargetList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mProductGroupChildrenList.objectCompare (inOperand.mAttribute_mProductGroupChildrenList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationList.objectCompare (inOperand.mAttribute_mBuildConfigurationList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mPBXSourcesBuildPhase_5F_list.objectCompare (inOperand.mAttribute_mPBXSourcesBuildPhase_5F_list) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mPBXFrameworksBuildPhase_5F_list.objectCompare (inOperand.mAttribute_mPBXFrameworksBuildPhase_5F_list) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mPBXResourcesBuildPhase_5F_list.objectCompare (inOperand.mAttribute_mPBXResourcesBuildPhase_5F_list) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mPBXCopyBuildPhase_5F_list.objectCompare (inOperand.mAttribute_mPBXCopyBuildPhase_5F_list) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mDependencyList.objectCompare (inOperand.mAttribute_mDependencyList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mPBXVariantGroup_5F_list.objectCompare (inOperand.mAttribute_mPBXVariantGroup_5F_list) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mSequenceNumber.objectCompare (inOperand.mAttribute_mSequenceNumber) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_XcodeProjectDescription::isValid (void) const {
+  return mAttribute_mFileReferenceMap.isValid () && mAttribute_mAllBuildFileList.isValid () && mAttribute_mMainGroupChildrenList.isValid () && mAttribute_mProjectGroupList.isValid () && mAttribute_mTargetList.isValid () && mAttribute_mProductGroupChildrenList.isValid () && mAttribute_mBuildConfigurationList.isValid () && mAttribute_mPBXSourcesBuildPhase_5F_list.isValid () && mAttribute_mPBXFrameworksBuildPhase_5F_list.isValid () && mAttribute_mPBXResourcesBuildPhase_5F_list.isValid () && mAttribute_mPBXCopyBuildPhase_5F_list.isValid () && mAttribute_mDependencyList.isValid () && mAttribute_mPBXVariantGroup_5F_list.isValid () && mAttribute_mSequenceNumber.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XcodeProjectDescription::drop (void) {
+  mAttribute_mFileReferenceMap.drop () ;
+  mAttribute_mAllBuildFileList.drop () ;
+  mAttribute_mMainGroupChildrenList.drop () ;
+  mAttribute_mProjectGroupList.drop () ;
+  mAttribute_mTargetList.drop () ;
+  mAttribute_mProductGroupChildrenList.drop () ;
+  mAttribute_mBuildConfigurationList.drop () ;
+  mAttribute_mPBXSourcesBuildPhase_5F_list.drop () ;
+  mAttribute_mPBXFrameworksBuildPhase_5F_list.drop () ;
+  mAttribute_mPBXResourcesBuildPhase_5F_list.drop () ;
+  mAttribute_mPBXCopyBuildPhase_5F_list.drop () ;
+  mAttribute_mDependencyList.drop () ;
+  mAttribute_mPBXVariantGroup_5F_list.drop () ;
+  mAttribute_mSequenceNumber.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XcodeProjectDescription::description (C_String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString << "<struct @XcodeProjectDescription:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mFileReferenceMap.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mAllBuildFileList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mMainGroupChildrenList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mProjectGroupList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTargetList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mProductGroupChildrenList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mPBXSourcesBuildPhase_5F_list.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mPBXFrameworksBuildPhase_5F_list.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mPBXResourcesBuildPhase_5F_list.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mPBXCopyBuildPhase_5F_list.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mDependencyList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mPBXVariantGroup_5F_list.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mSequenceNumber.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXFileReference_5F_map GALGAS_XcodeProjectDescription::reader_mFileReferenceMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFileReferenceMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXBuildFile_5F_list GALGAS_XcodeProjectDescription::reader_mAllBuildFileList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAllBuildFileList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeObjectReferenceList GALGAS_XcodeProjectDescription::reader_mMainGroupChildrenList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMainGroupChildrenList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXGroup_5F_list GALGAS_XcodeProjectDescription::reader_mProjectGroupList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mProjectGroupList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXNativeTarget_5F_list GALGAS_XcodeProjectDescription::reader_mTargetList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTargetList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeObjectReferenceList GALGAS_XcodeProjectDescription::reader_mProductGroupChildrenList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mProductGroupChildrenList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_XCBuildConfiguration_5F_list GALGAS_XcodeProjectDescription::reader_mBuildConfigurationList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXSourcesBuildPhase_5F_list GALGAS_XcodeProjectDescription::reader_mPBXSourcesBuildPhase_5F_list (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPBXSourcesBuildPhase_5F_list ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXFrameworksBuildPhase_5F_list GALGAS_XcodeProjectDescription::reader_mPBXFrameworksBuildPhase_5F_list (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPBXFrameworksBuildPhase_5F_list ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXResourcesBuildPhase_5F_list GALGAS_XcodeProjectDescription::reader_mPBXResourcesBuildPhase_5F_list (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPBXResourcesBuildPhase_5F_list ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXCopyBuildPhase_5F_list GALGAS_XcodeProjectDescription::reader_mPBXCopyBuildPhase_5F_list (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPBXCopyBuildPhase_5F_list ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_targetDependencyDescription_5F_list GALGAS_XcodeProjectDescription::reader_mDependencyList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mDependencyList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXVariantGroup_5F_list GALGAS_XcodeProjectDescription::reader_mPBXVariantGroup_5F_list (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPBXVariantGroup_5F_list ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_XcodeProjectDescription::reader_mSequenceNumber (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSequenceNumber ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @XcodeProjectDescription type                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_XcodeProjectDescription ("XcodeProjectDescription",
+                                                NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_XcodeProjectDescription::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_XcodeProjectDescription ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_XcodeProjectDescription::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_XcodeProjectDescription (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeProjectDescription GALGAS_XcodeProjectDescription::extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_XcodeProjectDescription result ;
+  const GALGAS_XcodeProjectDescription * p = (const GALGAS_XcodeProjectDescription *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_XcodeProjectDescription *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("XcodeProjectDescription", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Category method '@semanticDeclarationAST buildCategoryListMaps'                           *
 //                                                                                                                     *
@@ -19052,485 +19393,6 @@ GALGAS_commandLineOptionListAST_2D_element GALGAS_commandLineOptionListAST_2D_el
       result = *p ;
     }else{
       inCompiler->castError ("commandLineOptionListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_commandLineOptionMap_2D_element::GALGAS_commandLineOptionMap_2D_element (void) :
-mAttribute_lkey (),
-mAttribute_mOptionChar (),
-mAttribute_mOptionString (),
-mAttribute_mComment (),
-mAttribute_mDefaultValue () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_commandLineOptionMap_2D_element::~ GALGAS_commandLineOptionMap_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_commandLineOptionMap_2D_element::GALGAS_commandLineOptionMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                const GALGAS_char & inOperand1,
-                                                                                const GALGAS_string & inOperand2,
-                                                                                const GALGAS_string & inOperand3,
-                                                                                const GALGAS_string & inOperand4) :
-mAttribute_lkey (inOperand0),
-mAttribute_mOptionChar (inOperand1),
-mAttribute_mOptionString (inOperand2),
-mAttribute_mComment (inOperand3),
-mAttribute_mDefaultValue (inOperand4) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_commandLineOptionMap_2D_element GALGAS_commandLineOptionMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_commandLineOptionMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                 GALGAS_char::constructor_default (HERE),
-                                                 GALGAS_string::constructor_default (HERE),
-                                                 GALGAS_string::constructor_default (HERE),
-                                                 GALGAS_string::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_commandLineOptionMap_2D_element GALGAS_commandLineOptionMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                const GALGAS_char & inOperand1,
-                                                                                                const GALGAS_string & inOperand2,
-                                                                                                const GALGAS_string & inOperand3,
-                                                                                                const GALGAS_string & inOperand4 
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_commandLineOptionMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_commandLineOptionMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_commandLineOptionMap_2D_element::objectCompare (const GALGAS_commandLineOptionMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mOptionChar.objectCompare (inOperand.mAttribute_mOptionChar) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mOptionString.objectCompare (inOperand.mAttribute_mOptionString) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mComment.objectCompare (inOperand.mAttribute_mComment) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mDefaultValue.objectCompare (inOperand.mAttribute_mDefaultValue) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_commandLineOptionMap_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mOptionChar.isValid () && mAttribute_mOptionString.isValid () && mAttribute_mComment.isValid () && mAttribute_mDefaultValue.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_commandLineOptionMap_2D_element::drop (void) {
-  mAttribute_lkey.drop () ;
-  mAttribute_mOptionChar.drop () ;
-  mAttribute_mOptionString.drop () ;
-  mAttribute_mComment.drop () ;
-  mAttribute_mDefaultValue.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_commandLineOptionMap_2D_element::description (C_String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString << "<struct @commandLineOptionMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mOptionChar.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mOptionString.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mComment.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mDefaultValue.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_commandLineOptionMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_char GALGAS_commandLineOptionMap_2D_element::reader_mOptionChar (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOptionChar ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_commandLineOptionMap_2D_element::reader_mOptionString (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOptionString ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_commandLineOptionMap_2D_element::reader_mComment (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mComment ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_commandLineOptionMap_2D_element::reader_mDefaultValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mDefaultValue ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @commandLineOptionMap-element type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_commandLineOptionMap_2D_element ("commandLineOptionMap-element",
-                                                        NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_commandLineOptionMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_commandLineOptionMap_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_commandLineOptionMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_commandLineOptionMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_commandLineOptionMap_2D_element GALGAS_commandLineOptionMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_commandLineOptionMap_2D_element result ;
-  const GALGAS_commandLineOptionMap_2D_element * p = (const GALGAS_commandLineOptionMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_commandLineOptionMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("commandLineOptionMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiSimpleAttributeListAST_2D_element::GALGAS_guiSimpleAttributeListAST_2D_element (void) :
-mAttribute_mKey (),
-mAttribute_mValue () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiSimpleAttributeListAST_2D_element::~ GALGAS_guiSimpleAttributeListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiSimpleAttributeListAST_2D_element::GALGAS_guiSimpleAttributeListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_lstring & inOperand1) :
-mAttribute_mKey (inOperand0),
-mAttribute_mValue (inOperand1) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiSimpleAttributeListAST_2D_element GALGAS_guiSimpleAttributeListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_guiSimpleAttributeListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_lstring::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiSimpleAttributeListAST_2D_element GALGAS_guiSimpleAttributeListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                          const GALGAS_lstring & inOperand1 
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_guiSimpleAttributeListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_guiSimpleAttributeListAST_2D_element (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_guiSimpleAttributeListAST_2D_element::objectCompare (const GALGAS_guiSimpleAttributeListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mKey.objectCompare (inOperand.mAttribute_mKey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_guiSimpleAttributeListAST_2D_element::isValid (void) const {
-  return mAttribute_mKey.isValid () && mAttribute_mValue.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_guiSimpleAttributeListAST_2D_element::drop (void) {
-  mAttribute_mKey.drop () ;
-  mAttribute_mValue.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_guiSimpleAttributeListAST_2D_element::description (C_String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString << "<struct @guiSimpleAttributeListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mKey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_guiSimpleAttributeListAST_2D_element::reader_mKey (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mKey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_guiSimpleAttributeListAST_2D_element::reader_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @guiSimpleAttributeListAST-element type                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiSimpleAttributeListAST_2D_element ("guiSimpleAttributeListAST-element",
-                                                             NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_guiSimpleAttributeListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_guiSimpleAttributeListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_guiSimpleAttributeListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_guiSimpleAttributeListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiSimpleAttributeListAST_2D_element GALGAS_guiSimpleAttributeListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_guiSimpleAttributeListAST_2D_element result ;
-  const GALGAS_guiSimpleAttributeListAST_2D_element * p = (const GALGAS_guiSimpleAttributeListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_guiSimpleAttributeListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("guiSimpleAttributeListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiCompoundAttributeListAST_2D_element::GALGAS_guiCompoundAttributeListAST_2D_element (void) :
-mAttribute_mKey (),
-mAttribute_mAttributeName (),
-mAttribute_mValue () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiCompoundAttributeListAST_2D_element::~ GALGAS_guiCompoundAttributeListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiCompoundAttributeListAST_2D_element::GALGAS_guiCompoundAttributeListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                              const GALGAS_lstring & inOperand1,
-                                                                                              const GALGAS_lstring & inOperand2) :
-mAttribute_mKey (inOperand0),
-mAttribute_mAttributeName (inOperand1),
-mAttribute_mValue (inOperand2) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiCompoundAttributeListAST_2D_element GALGAS_guiCompoundAttributeListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_guiCompoundAttributeListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                        GALGAS_lstring::constructor_default (HERE),
-                                                        GALGAS_lstring::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiCompoundAttributeListAST_2D_element GALGAS_guiCompoundAttributeListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                              const GALGAS_lstring & inOperand1,
-                                                                                                              const GALGAS_lstring & inOperand2 
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_guiCompoundAttributeListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_guiCompoundAttributeListAST_2D_element (inOperand0, inOperand1, inOperand2) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_guiCompoundAttributeListAST_2D_element::objectCompare (const GALGAS_guiCompoundAttributeListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mKey.objectCompare (inOperand.mAttribute_mKey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mAttributeName.objectCompare (inOperand.mAttribute_mAttributeName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_guiCompoundAttributeListAST_2D_element::isValid (void) const {
-  return mAttribute_mKey.isValid () && mAttribute_mAttributeName.isValid () && mAttribute_mValue.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_guiCompoundAttributeListAST_2D_element::drop (void) {
-  mAttribute_mKey.drop () ;
-  mAttribute_mAttributeName.drop () ;
-  mAttribute_mValue.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_guiCompoundAttributeListAST_2D_element::description (C_String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString << "<struct @guiCompoundAttributeListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mKey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mAttributeName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::reader_mKey (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mKey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::reader_mAttributeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAttributeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::reader_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      @guiCompoundAttributeListAST-element type                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_guiCompoundAttributeListAST_2D_element ("guiCompoundAttributeListAST-element",
-                                                               NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_guiCompoundAttributeListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_guiCompoundAttributeListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_guiCompoundAttributeListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_guiCompoundAttributeListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiCompoundAttributeListAST_2D_element GALGAS_guiCompoundAttributeListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_guiCompoundAttributeListAST_2D_element result ;
-  const GALGAS_guiCompoundAttributeListAST_2D_element * p = (const GALGAS_guiCompoundAttributeListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_guiCompoundAttributeListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("guiCompoundAttributeListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

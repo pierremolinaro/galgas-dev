@@ -113,6 +113,7 @@
   <Unit filename="../hand_coded_sources/LL1_computations.cpp" />
   <Unit filename="../hand_coded_sources/LR1_computations.cpp" />
   <Unit filename="../hand_coded_sources/SLR_computations.cpp" />
+  <Unit filename="../hand_coded_sources/check-gmp.cpp" />
 
   <Unit filename="../libpm/gmp/32-mp_bases.c" />
   <Unit filename="../libpm/gmp/64-mp_bases.c" />
