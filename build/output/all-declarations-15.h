@@ -842,8 +842,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
                                                                                                const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
                                                                                                const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET,
                                                                                                const class GALGAS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
-                                                                                               const class GALGAS_string & in_PLATFORM,
-                                                                                               const class GALGAS_string & in_GMPLIB_5F_POSTFIX
+                                                                                               const class GALGAS_string & in_PLATFORM
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*

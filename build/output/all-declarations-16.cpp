@@ -12,6 +12,401 @@
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_Xcode_5F_XCBuildConfiguration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_Xcode_5F_XCBuildConfiguration * p = (const cPtr_Xcode_5F_XCBuildConfiguration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_Xcode_5F_XCBuildConfiguration) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mSequenceNumber_31_.objectCompare (p->mAttribute_mSequenceNumber_31_) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSequenceNumber_32_.objectCompare (p->mAttribute_mSequenceNumber_32_) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSettings.objectCompare (p->mAttribute_mSettings) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_Xcode_5F_XCBuildConfiguration::objectCompare (const GALGAS_Xcode_5F_XCBuildConfiguration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_XCBuildConfiguration::GALGAS_Xcode_5F_XCBuildConfiguration (void) :
+AC_GALGAS_class () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_XCBuildConfiguration GALGAS_Xcode_5F_XCBuildConfiguration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_Xcode_5F_XCBuildConfiguration::constructor_new (GALGAS_uint::constructor_default (HERE),
+                                                                GALGAS_uint::constructor_default (HERE),
+                                                                GALGAS_stringlist::constructor_emptyList (HERE)
+                                                                COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_XCBuildConfiguration::GALGAS_Xcode_5F_XCBuildConfiguration (const cPtr_Xcode_5F_XCBuildConfiguration * inSourcePtr) :
+AC_GALGAS_class (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_Xcode_5F_XCBuildConfiguration) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_XCBuildConfiguration GALGAS_Xcode_5F_XCBuildConfiguration::constructor_new (const GALGAS_uint & inAttribute_mSequenceNumber_31_,
+                                                                                            const GALGAS_uint & inAttribute_mSequenceNumber_32_,
+                                                                                            const GALGAS_stringlist & inAttribute_mSettings
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_Xcode_5F_XCBuildConfiguration result ;
+  if (inAttribute_mSequenceNumber_31_.isValid () && inAttribute_mSequenceNumber_32_.isValid () && inAttribute_mSettings.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_Xcode_5F_XCBuildConfiguration (inAttribute_mSequenceNumber_31_, inAttribute_mSequenceNumber_32_, inAttribute_mSettings COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_Xcode_5F_XCBuildConfiguration::reader_mSequenceNumber_31_ (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_Xcode_5F_XCBuildConfiguration * p = (const cPtr_Xcode_5F_XCBuildConfiguration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_Xcode_5F_XCBuildConfiguration) ;
+    result = p->mAttribute_mSequenceNumber_31_ ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cPtr_Xcode_5F_XCBuildConfiguration::reader_mSequenceNumber_31_ (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSequenceNumber_31_ ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_Xcode_5F_XCBuildConfiguration::reader_mSequenceNumber_32_ (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_Xcode_5F_XCBuildConfiguration * p = (const cPtr_Xcode_5F_XCBuildConfiguration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_Xcode_5F_XCBuildConfiguration) ;
+    result = p->mAttribute_mSequenceNumber_32_ ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cPtr_Xcode_5F_XCBuildConfiguration::reader_mSequenceNumber_32_ (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSequenceNumber_32_ ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_Xcode_5F_XCBuildConfiguration::reader_mSettings (UNUSED_LOCATION_ARGS) const {
+  GALGAS_stringlist result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_Xcode_5F_XCBuildConfiguration * p = (const cPtr_Xcode_5F_XCBuildConfiguration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_Xcode_5F_XCBuildConfiguration) ;
+    result = p->mAttribute_mSettings ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist cPtr_Xcode_5F_XCBuildConfiguration::reader_mSettings (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSettings ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                 Pointer class for @Xcode_XCBuildConfiguration class                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_Xcode_5F_XCBuildConfiguration::cPtr_Xcode_5F_XCBuildConfiguration (const GALGAS_uint & in_mSequenceNumber_31_,
+                                                                        const GALGAS_uint & in_mSequenceNumber_32_,
+                                                                        const GALGAS_stringlist & in_mSettings
+                                                                        COMMA_LOCATION_ARGS) :
+acPtr_class (THERE),
+mAttribute_mSequenceNumber_31_ (in_mSequenceNumber_31_),
+mAttribute_mSequenceNumber_32_ (in_mSequenceNumber_32_),
+mAttribute_mSettings (in_mSettings) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_Xcode_5F_XCBuildConfiguration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_Xcode_5F_XCBuildConfiguration ;
+}
+
+void cPtr_Xcode_5F_XCBuildConfiguration::description (C_String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString << "[@Xcode_XCBuildConfiguration:" ;
+  mAttribute_mSequenceNumber_31_.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSequenceNumber_32_.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSettings.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_Xcode_5F_XCBuildConfiguration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_Xcode_5F_XCBuildConfiguration (mAttribute_mSequenceNumber_31_, mAttribute_mSequenceNumber_32_, mAttribute_mSettings COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @Xcode_XCBuildConfiguration type                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_Xcode_5F_XCBuildConfiguration ("Xcode_XCBuildConfiguration",
+                                                      NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_Xcode_5F_XCBuildConfiguration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_Xcode_5F_XCBuildConfiguration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_Xcode_5F_XCBuildConfiguration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_Xcode_5F_XCBuildConfiguration (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_XCBuildConfiguration GALGAS_Xcode_5F_XCBuildConfiguration::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_Xcode_5F_XCBuildConfiguration result ;
+  const GALGAS_Xcode_5F_XCBuildConfiguration * p = (const GALGAS_Xcode_5F_XCBuildConfiguration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_Xcode_5F_XCBuildConfiguration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("Xcode_XCBuildConfiguration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_Xcode_5F_targetDependencyDescription::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_Xcode_5F_targetDependencyDescription * p = (const cPtr_Xcode_5F_targetDependencyDescription *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_Xcode_5F_targetDependencyDescription) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mSequenceNumber.objectCompare (p->mAttribute_mSequenceNumber) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mDependencyTarget.objectCompare (p->mAttribute_mDependencyTarget) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_Xcode_5F_targetDependencyDescription::objectCompare (const GALGAS_Xcode_5F_targetDependencyDescription & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_targetDependencyDescription::GALGAS_Xcode_5F_targetDependencyDescription (void) :
+AC_GALGAS_class () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_targetDependencyDescription GALGAS_Xcode_5F_targetDependencyDescription::constructor_default (LOCATION_ARGS) {
+  return GALGAS_Xcode_5F_targetDependencyDescription::constructor_new (GALGAS_uint::constructor_default (HERE),
+                                                                       GALGAS_string::constructor_default (HERE)
+                                                                       COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_targetDependencyDescription::GALGAS_Xcode_5F_targetDependencyDescription (const cPtr_Xcode_5F_targetDependencyDescription * inSourcePtr) :
+AC_GALGAS_class (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_Xcode_5F_targetDependencyDescription) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_targetDependencyDescription GALGAS_Xcode_5F_targetDependencyDescription::constructor_new (const GALGAS_uint & inAttribute_mSequenceNumber,
+                                                                                                          const GALGAS_string & inAttribute_mDependencyTarget
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_Xcode_5F_targetDependencyDescription result ;
+  if (inAttribute_mSequenceNumber.isValid () && inAttribute_mDependencyTarget.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_Xcode_5F_targetDependencyDescription (inAttribute_mSequenceNumber, inAttribute_mDependencyTarget COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_Xcode_5F_targetDependencyDescription::reader_mSequenceNumber (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_Xcode_5F_targetDependencyDescription * p = (const cPtr_Xcode_5F_targetDependencyDescription *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_Xcode_5F_targetDependencyDescription) ;
+    result = p->mAttribute_mSequenceNumber ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cPtr_Xcode_5F_targetDependencyDescription::reader_mSequenceNumber (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSequenceNumber ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_Xcode_5F_targetDependencyDescription::reader_mDependencyTarget (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_Xcode_5F_targetDependencyDescription * p = (const cPtr_Xcode_5F_targetDependencyDescription *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_Xcode_5F_targetDependencyDescription) ;
+    result = p->mAttribute_mDependencyTarget ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_Xcode_5F_targetDependencyDescription::reader_mDependencyTarget (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mDependencyTarget ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                             Pointer class for @Xcode_targetDependencyDescription class                              *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_Xcode_5F_targetDependencyDescription::cPtr_Xcode_5F_targetDependencyDescription (const GALGAS_uint & in_mSequenceNumber,
+                                                                                      const GALGAS_string & in_mDependencyTarget
+                                                                                      COMMA_LOCATION_ARGS) :
+acPtr_class (THERE),
+mAttribute_mSequenceNumber (in_mSequenceNumber),
+mAttribute_mDependencyTarget (in_mDependencyTarget) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_Xcode_5F_targetDependencyDescription::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_Xcode_5F_targetDependencyDescription ;
+}
+
+void cPtr_Xcode_5F_targetDependencyDescription::description (C_String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString << "[@Xcode_targetDependencyDescription:" ;
+  mAttribute_mSequenceNumber.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mDependencyTarget.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_Xcode_5F_targetDependencyDescription::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_Xcode_5F_targetDependencyDescription (mAttribute_mSequenceNumber, mAttribute_mDependencyTarget COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       @Xcode_targetDependencyDescription type                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_Xcode_5F_targetDependencyDescription ("Xcode_targetDependencyDescription",
+                                                             NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_Xcode_5F_targetDependencyDescription::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_Xcode_5F_targetDependencyDescription ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_Xcode_5F_targetDependencyDescription::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_Xcode_5F_targetDependencyDescription (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_targetDependencyDescription GALGAS_Xcode_5F_targetDependencyDescription::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_Xcode_5F_targetDependencyDescription result ;
+  const GALGAS_Xcode_5F_targetDependencyDescription * p = (const GALGAS_Xcode_5F_targetDependencyDescription *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_Xcode_5F_targetDependencyDescription *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("Xcode_targetDependencyDescription", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 
 
 typeComparisonResult GALGAS_abstractCollectionValueElement::objectCompare (const GALGAS_abstractCollectionValueElement & inOperand) const {
@@ -18913,471 +19308,6 @@ GALGAS_overridingAbstractCategoryMethodAST GALGAS_overridingAbstractCategoryMeth
       result = *p ;
     }else{
       inCompiler->castError ("overridingAbstractCategoryMethodAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_overridingAbstractCategoryModifierAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_overridingAbstractCategoryModifierAST * p = (const cPtr_overridingAbstractCategoryModifierAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_overridingAbstractCategoryModifierAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mOverridingCategoryModifierName.objectCompare (p->mAttribute_mOverridingCategoryModifierName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mOverridingCategoryModifierFormalParameterList.objectCompare (p->mAttribute_mOverridingCategoryModifierFormalParameterList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_overridingAbstractCategoryModifierAST::objectCompare (const GALGAS_overridingAbstractCategoryModifierAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryModifierAST::GALGAS_overridingAbstractCategoryModifierAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryModifierAST GALGAS_overridingAbstractCategoryModifierAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_overridingAbstractCategoryModifierAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                                        GALGAS_lstring::constructor_default (HERE),
-                                                                        GALGAS_lstring::constructor_default (HERE),
-                                                                        GALGAS_formalParameterListAST::constructor_emptyList (HERE)
-                                                                        COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryModifierAST::GALGAS_overridingAbstractCategoryModifierAST (const cPtr_overridingAbstractCategoryModifierAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractCategoryModifierAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryModifierAST GALGAS_overridingAbstractCategoryModifierAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                                                            const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                                            const GALGAS_lstring & inAttribute_mOverridingCategoryModifierName,
-                                                                                                            const GALGAS_formalParameterListAST & inAttribute_mOverridingCategoryModifierFormalParameterList
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_overridingAbstractCategoryModifierAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingCategoryModifierName.isValid () && inAttribute_mOverridingCategoryModifierFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overridingAbstractCategoryModifierAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingCategoryModifierName, inAttribute_mOverridingCategoryModifierFormalParameterList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_overridingAbstractCategoryModifierAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractCategoryModifierAST * p = (const cPtr_overridingAbstractCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryModifierAST) ;
-    result = p->mAttribute_mTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_overridingAbstractCategoryModifierAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_overridingAbstractCategoryModifierAST::reader_mOverridingCategoryModifierName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractCategoryModifierAST * p = (const cPtr_overridingAbstractCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryModifierAST) ;
-    result = p->mAttribute_mOverridingCategoryModifierName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_overridingAbstractCategoryModifierAST::reader_mOverridingCategoryModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOverridingCategoryModifierName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST GALGAS_overridingAbstractCategoryModifierAST::reader_mOverridingCategoryModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalParameterListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractCategoryModifierAST * p = (const cPtr_overridingAbstractCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryModifierAST) ;
-    result = p->mAttribute_mOverridingCategoryModifierFormalParameterList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST cPtr_overridingAbstractCategoryModifierAST::reader_mOverridingCategoryModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOverridingCategoryModifierFormalParameterList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                           Pointer class for @overridingAbstractCategoryModifierAST class                            *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_overridingAbstractCategoryModifierAST::cPtr_overridingAbstractCategoryModifierAST (const GALGAS_bool & in_mIsPredefined,
-                                                                                        const GALGAS_lstring & in_mTypeName,
-                                                                                        const GALGAS_lstring & in_mOverridingCategoryModifierName,
-                                                                                        const GALGAS_formalParameterListAST & in_mOverridingCategoryModifierFormalParameterList
-                                                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mAttribute_mTypeName (in_mTypeName),
-mAttribute_mOverridingCategoryModifierName (in_mOverridingCategoryModifierName),
-mAttribute_mOverridingCategoryModifierFormalParameterList (in_mOverridingCategoryModifierFormalParameterList) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_overridingAbstractCategoryModifierAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overridingAbstractCategoryModifierAST ;
-}
-
-void cPtr_overridingAbstractCategoryModifierAST::description (C_String & ioString,
-                                                              const int32_t inIndentation) const {
-  ioString << "[@overridingAbstractCategoryModifierAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mOverridingCategoryModifierName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mOverridingCategoryModifierFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_overridingAbstractCategoryModifierAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_overridingAbstractCategoryModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingCategoryModifierName, mAttribute_mOverridingCategoryModifierFormalParameterList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     @overridingAbstractCategoryModifierAST type                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractCategoryModifierAST ("overridingAbstractCategoryModifierAST",
-                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_overridingAbstractCategoryModifierAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overridingAbstractCategoryModifierAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_overridingAbstractCategoryModifierAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_overridingAbstractCategoryModifierAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryModifierAST GALGAS_overridingAbstractCategoryModifierAST::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_overridingAbstractCategoryModifierAST result ;
-  const GALGAS_overridingAbstractCategoryModifierAST * p = (const GALGAS_overridingAbstractCategoryModifierAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_overridingAbstractCategoryModifierAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("overridingAbstractCategoryModifierAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_overridingAbstractCategoryReaderAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_overridingAbstractCategoryReaderAST * p = (const cPtr_overridingAbstractCategoryReaderAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_overridingAbstractCategoryReaderAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryReaderName.objectCompare (p->mAttribute_mAbstractCategoryReaderName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryReaderFormalInputParameterList.objectCompare (p->mAttribute_mAbstractCategoryReaderFormalInputParameterList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryReaderReturnedTypeName.objectCompare (p->mAttribute_mAbstractCategoryReaderReturnedTypeName) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_overridingAbstractCategoryReaderAST::objectCompare (const GALGAS_overridingAbstractCategoryReaderAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryReaderAST::GALGAS_overridingAbstractCategoryReaderAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryReaderAST GALGAS_overridingAbstractCategoryReaderAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_overridingAbstractCategoryReaderAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                                      GALGAS_lstring::constructor_default (HERE),
-                                                                      GALGAS_lstring::constructor_default (HERE),
-                                                                      GALGAS_formalInputParameterListAST::constructor_emptyList (HERE),
-                                                                      GALGAS_lstring::constructor_default (HERE)
-                                                                      COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryReaderAST::GALGAS_overridingAbstractCategoryReaderAST (const cPtr_overridingAbstractCategoryReaderAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractCategoryReaderAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryReaderAST GALGAS_overridingAbstractCategoryReaderAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                                                        const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                                        const GALGAS_lstring & inAttribute_mAbstractCategoryReaderName,
-                                                                                                        const GALGAS_formalInputParameterListAST & inAttribute_mAbstractCategoryReaderFormalInputParameterList,
-                                                                                                        const GALGAS_lstring & inAttribute_mAbstractCategoryReaderReturnedTypeName
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_overridingAbstractCategoryReaderAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mAbstractCategoryReaderName.isValid () && inAttribute_mAbstractCategoryReaderFormalInputParameterList.isValid () && inAttribute_mAbstractCategoryReaderReturnedTypeName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overridingAbstractCategoryReaderAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mAbstractCategoryReaderName, inAttribute_mAbstractCategoryReaderFormalInputParameterList, inAttribute_mAbstractCategoryReaderReturnedTypeName COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_overridingAbstractCategoryReaderAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractCategoryReaderAST * p = (const cPtr_overridingAbstractCategoryReaderAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryReaderAST) ;
-    result = p->mAttribute_mTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_overridingAbstractCategoryReaderAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_overridingAbstractCategoryReaderAST::reader_mAbstractCategoryReaderName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractCategoryReaderAST * p = (const cPtr_overridingAbstractCategoryReaderAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryReaderAST) ;
-    result = p->mAttribute_mAbstractCategoryReaderName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_overridingAbstractCategoryReaderAST::reader_mAbstractCategoryReaderName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryReaderName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalInputParameterListAST GALGAS_overridingAbstractCategoryReaderAST::reader_mAbstractCategoryReaderFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalInputParameterListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractCategoryReaderAST * p = (const cPtr_overridingAbstractCategoryReaderAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryReaderAST) ;
-    result = p->mAttribute_mAbstractCategoryReaderFormalInputParameterList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalInputParameterListAST cPtr_overridingAbstractCategoryReaderAST::reader_mAbstractCategoryReaderFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryReaderFormalInputParameterList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_overridingAbstractCategoryReaderAST::reader_mAbstractCategoryReaderReturnedTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractCategoryReaderAST * p = (const cPtr_overridingAbstractCategoryReaderAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryReaderAST) ;
-    result = p->mAttribute_mAbstractCategoryReaderReturnedTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_overridingAbstractCategoryReaderAST::reader_mAbstractCategoryReaderReturnedTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryReaderReturnedTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                            Pointer class for @overridingAbstractCategoryReaderAST class                             *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_overridingAbstractCategoryReaderAST::cPtr_overridingAbstractCategoryReaderAST (const GALGAS_bool & in_mIsPredefined,
-                                                                                    const GALGAS_lstring & in_mTypeName,
-                                                                                    const GALGAS_lstring & in_mAbstractCategoryReaderName,
-                                                                                    const GALGAS_formalInputParameterListAST & in_mAbstractCategoryReaderFormalInputParameterList,
-                                                                                    const GALGAS_lstring & in_mAbstractCategoryReaderReturnedTypeName
-                                                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mAttribute_mTypeName (in_mTypeName),
-mAttribute_mAbstractCategoryReaderName (in_mAbstractCategoryReaderName),
-mAttribute_mAbstractCategoryReaderFormalInputParameterList (in_mAbstractCategoryReaderFormalInputParameterList),
-mAttribute_mAbstractCategoryReaderReturnedTypeName (in_mAbstractCategoryReaderReturnedTypeName) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_overridingAbstractCategoryReaderAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overridingAbstractCategoryReaderAST ;
-}
-
-void cPtr_overridingAbstractCategoryReaderAST::description (C_String & ioString,
-                                                            const int32_t inIndentation) const {
-  ioString << "[@overridingAbstractCategoryReaderAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mAbstractCategoryReaderName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mAbstractCategoryReaderFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mAbstractCategoryReaderReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_overridingAbstractCategoryReaderAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_overridingAbstractCategoryReaderAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractCategoryReaderName, mAttribute_mAbstractCategoryReaderFormalInputParameterList, mAttribute_mAbstractCategoryReaderReturnedTypeName COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      @overridingAbstractCategoryReaderAST type                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractCategoryReaderAST ("overridingAbstractCategoryReaderAST",
-                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_overridingAbstractCategoryReaderAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overridingAbstractCategoryReaderAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_overridingAbstractCategoryReaderAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_overridingAbstractCategoryReaderAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_overridingAbstractCategoryReaderAST GALGAS_overridingAbstractCategoryReaderAST::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_overridingAbstractCategoryReaderAST result ;
-  const GALGAS_overridingAbstractCategoryReaderAST * p = (const GALGAS_overridingAbstractCategoryReaderAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_overridingAbstractCategoryReaderAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("overridingAbstractCategoryReaderAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -110,7 +110,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
     ?@stringset HAND_CODED_SOURCE_TOOL_DIRECTORY_SET
     ?windows:@bool GENERATE_FOR_WINDOWS
     ?platform:@string PLATFORM
-    ?gmpPostix:@string GMPLIB_POSTFIX
+#    ?gmpPostix:@string GMPLIB_POSTFIX
 
   template makefile_info_plist "project_xcode/Info.plist.txt"
     ?@string PROJECT_NAME
@@ -153,7 +153,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
     !inHandCodedSourceDirectorySet
     !windows:true
     !platform:"Windows"
-    !gmpPostix:"win32"
+#    !gmpPostix:"win32"
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -178,7 +178,7 @@ private proc generateGalgasCodeBlocksMacTarget
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Mac"
-    !gmpPostix:"Darwin-Intel"
+#    !gmpPostix:"Darwin-Intel"
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -203,7 +203,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Unix"
-    !gmpPostix:"Linux-i686"
+#    !gmpPostix:"Linux-i686"
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -228,7 +228,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Unix"
-    !gmpPostix:"Linux-x86_64"
+#    !gmpPostix:"Linux-x86_64"
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }

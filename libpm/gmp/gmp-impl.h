@@ -54,6 +54,7 @@ see https://www.gnu.org/licenses/.  */
 #pragma GCC diagnostic ignored "-Wall"
 #pragma GCC diagnostic ignored "-Wpointer-arith"
 #pragma GCC diagnostic ignored "-Werror"
+#pragma GCC diagnostic ignored "-Wundef"
 #pragma GCC diagnostic error "-w"
 
 #ifdef __cplusplus
@@ -187,21 +188,21 @@ see https://www.gnu.org/licenses/.  */
   #error "SIZEOF_MP_LIMB_T ?"
 #endif */
 /*--- Added by PM */
-#if WANT_FAT_BINARY
+/*#if WANT_FAT_BINARY
 #include "fat.h"
-#endif
+#endif */
 #endif
 
 /*--- Added by PM */
 #define WANT_TMP_NOTREENTRANT
 
-#if HAVE_INTTYPES_H      /* for uint_least32_t */
-# include <inttypes.h>
-#else
-# if HAVE_STDINT_H
-#  include <stdint.h>
-# endif
-#endif
+/* #ifdef HAVE_INTTYPES_H  */    /* for uint_least32_t */
+#include <inttypes.h>
+/* #else */
+/* # if HAVE_STDINT_H */
+#include <stdint.h>
+/* # endif
+#endif */
 
 #ifdef __cplusplus
 #include <cstring>  /* for strlen */
@@ -272,23 +273,24 @@ see https://www.gnu.org/licenses/.  */
 
 
 /* gmp_uint_least32_t is an unsigned integer type with at least 32 bits. */
-#if HAVE_UINT_LEAST32_T
-typedef uint_least32_t      gmp_uint_least32_t;
+/*#ifdef HAVE_UINT_LEAST32_T
+  typedef uint_least32_t      gmp_uint_least32_t;
 #else
-#if SIZEOF_UNSIGNED_SHORT >= 4
-typedef unsigned short      gmp_uint_least32_t;
-#else
-#if SIZEOF_UNSIGNED >= 4
-typedef unsigned            gmp_uint_least32_t;
-#else
-typedef unsigned long       gmp_uint_least32_t;
-#endif
-#endif
-#endif
+  #if SIZEOF_UNSIGNED_SHORT >= 4
+    typedef unsigned short      gmp_uint_least32_t;
+  #else
+    #if SIZEOF_UNSIGNED >= 4
+      typedef unsigned            gmp_uint_least32_t;
+    #else
+      typedef unsigned long       gmp_uint_least32_t;
+    #endif
+  #endif
+#endif */
+      typedef unsigned long       gmp_uint_least32_t;
 
 
 /* gmp_intptr_t, for pointer to integer casts */
-#if HAVE_INTPTR_T
+#ifdef HAVE_INTPTR_T
 typedef intptr_t            gmp_intptr_t;
 #else /* fallback */
 typedef size_t              gmp_intptr_t;
@@ -306,13 +308,13 @@ typedef struct {mp_limb_t inv21, inv32, inv53;} gmp_pi2_t;
    is more restrictive than "pure".  See info node "(gcc)Function
    Attributes".  __GMP_NO_ATTRIBUTE_CONST_PURE lets tune/common.c etc turn
    this off when trying to write timing loops.  */
-#if HAVE_ATTRIBUTE_CONST && ! defined (__GMP_NO_ATTRIBUTE_CONST_PURE)
+#if defined (HAVE_ATTRIBUTE_CONST) && ! defined (__GMP_NO_ATTRIBUTE_CONST_PURE)
 #define ATTRIBUTE_CONST  __attribute__ ((const))
 #else
 #define ATTRIBUTE_CONST
 #endif
 
-#if HAVE_ATTRIBUTE_NORETURN
+#ifdef HAVE_ATTRIBUTE_NORETURN
 #define ATTRIBUTE_NORETURN  __attribute__ ((noreturn))
 #else
 #define ATTRIBUTE_NORETURN
@@ -320,7 +322,7 @@ typedef struct {mp_limb_t inv21, inv32, inv53;} gmp_pi2_t;
 
 /* "malloc" means a function behaves like malloc in that the pointer it
    returns doesn't alias anything.  */
-#if HAVE_ATTRIBUTE_MALLOC
+#ifdef HAVE_ATTRIBUTE_MALLOC
 #define ATTRIBUTE_MALLOC  __attribute__ ((malloc))
 #else
 #define ATTRIBUTE_MALLOC
@@ -359,10 +361,10 @@ typedef struct {mp_limb_t inv21, inv32, inv53;} gmp_pi2_t;
 
 /* HAVE_HOST_CPU_alpha_CIX is 1 on an alpha with the CIX instructions
    (ie. ctlz, ctpop, cttz).  */
-#if HAVE_HOST_CPU_alphaev67 || HAVE_HOST_CPU_alphaev68  \
+/*#if HAVE_HOST_CPU_alphaev67 || HAVE_HOST_CPU_alphaev68  \
   || HAVE_HOST_CPU_alphaev7
 #define HAVE_HOST_CPU_alpha_CIX 1
-#endif
+#endif */
 
 
 #if defined (__cplusplus)
@@ -414,7 +416,7 @@ __GMP_DECLSPEC void *__gmp_tmp_reentrant_alloc (struct tmp_reentrant_t **, size_
 __GMP_DECLSPEC void  __gmp_tmp_reentrant_free (struct tmp_reentrant_t *);
 #endif
 
-#if WANT_TMP_ALLOCA
+#ifdef WANT_TMP_ALLOCA
 #define TMP_SDECL
 #define TMP_DECL		struct tmp_reentrant_t *__tmp_marker
 #define TMP_SMARK
@@ -431,7 +433,7 @@ __GMP_DECLSPEC void  __gmp_tmp_reentrant_free (struct tmp_reentrant_t *);
   } while (0)
 #endif
 
-#if WANT_TMP_REENTRANT
+#ifdef WANT_TMP_REENTRANT
 #define TMP_SDECL		TMP_DECL
 #define TMP_DECL		struct tmp_reentrant_t *__tmp_marker
 #define TMP_SMARK		TMP_MARK
@@ -811,15 +813,15 @@ __GMP_DECLSPEC void __gmp_default_free (void *, size_t);
    bother to try to detect this.  regparm is only an optimization so we just
    disable it when profiling (profiling being a slowdown anyway).  */
 
-#if HAVE_HOST_CPU_FAMILY_x86 && __GMP_GNUC_PREREQ (2,96) && ! defined (PIC) \
+/* #if HAVE_HOST_CPU_FAMILY_x86 && __GMP_GNUC_PREREQ (2,96) && ! defined (PIC) \
   && ! WANT_PROFILING_PROF && ! WANT_PROFILING_GPROF
 #define USE_LEADING_REGPARM 1
 #else
 #define USE_LEADING_REGPARM 0
-#endif
+#endif */
 
 /* Macros for altering parameter order according to regparm usage. */
-#if USE_LEADING_REGPARM
+#ifdef USE_LEADING_REGPARM
 #define REGPARM_2_1(a,b,x)    x,a,b
 #define REGPARM_3_1(a,b,c,x)  x,a,b,c
 #define REGPARM_ATTR(n) __attribute__ ((regparm (n)))
@@ -843,7 +845,7 @@ __GMP_DECLSPEC void __gmp_default_free (void *, size_t);
 #define ASM_L(name)  LSYM_PREFIX "asm_%=_" #name
 
 
-#if defined (__GNUC__) && HAVE_HOST_CPU_FAMILY_x86
+#if defined (__GNUC__) && defined (HAVE_HOST_CPU_FAMILY_x86)
 #if 0
 /* FIXME: Check that these actually improve things.
    FIXME: Need a cld after each std.
@@ -906,14 +908,14 @@ __GMP_DECLSPEC mp_limb_t mpn_addlsh1_n (mp_ptr, mp_srcptr, mp_srcptr, mp_size_t)
 #endif
 #define mpn_addlsh1_nc __MPN(addlsh1_nc)
 __GMP_DECLSPEC mp_limb_t mpn_addlsh1_nc (mp_ptr, mp_srcptr, mp_srcptr, mp_size_t, mp_limb_t);
-#if HAVE_NATIVE_mpn_addlsh1_n && ! HAVE_NATIVE_mpn_addlsh1_n_ip1
+#if defined (HAVE_NATIVE_mpn_addlsh1_n) && ! defined (HAVE_NATIVE_mpn_addlsh1_n_ip1)
 #define mpn_addlsh1_n_ip1(dst,src,n) mpn_addlsh1_n(dst,dst,src,n)
 #define HAVE_NATIVE_mpn_addlsh1_n_ip1 1
 #else
 #define mpn_addlsh1_n_ip1 __MPN(addlsh1_n_ip1)
 __GMP_DECLSPEC mp_limb_t mpn_addlsh1_n_ip1 (mp_ptr, mp_srcptr, mp_size_t);
 #endif
-#if HAVE_NATIVE_mpn_addlsh1_nc && ! HAVE_NATIVE_mpn_addlsh1_nc_ip1
+#if defined (HAVE_NATIVE_mpn_addlsh1_nc) && ! defined (HAVE_NATIVE_mpn_addlsh1_nc_ip1)
 #define mpn_addlsh1_nc_ip1(dst,src,n,c) mpn_addlsh1_nc(dst,dst,src,n,c)
 #define HAVE_NATIVE_mpn_addlsh1_nc_ip1 1
 #else
