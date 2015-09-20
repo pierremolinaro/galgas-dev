@@ -176,6 +176,7 @@ project (3:1:0) -> "galgas" {
   %tool-source : "hand_coded_sources/LL1_computations.cpp"
   %tool-source : "hand_coded_sources/LR1_computations.cpp"
   %tool-source : "hand_coded_sources/SLR_computations.cpp"
+  %tool-source : "hand_coded_sources/check-gmp.cpp"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -29,6 +29,7 @@ option galgas_cli_options {
   @string cppCompile : '\0', "compile" -> "Perform C++ compilation on 'string' target"
 
   @bool generateSharedMapAutomatonDotFiles : '\0', "generate-shared-map-automaton-dot-files" -> "Generate shared map automaton dot files"
+  @bool check_gmp : '\0', "check-gmp" -> "Run a GMP check"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

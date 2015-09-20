@@ -44,6 +44,7 @@
         "LL1_computations.cpp",
         "LR1_computations.cpp",
         "SLR_computations.cpp",
+        "check-gmp.cpp",
 
         "32-mp_bases.c",
         "mpn-invertappr.c",

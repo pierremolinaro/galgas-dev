@@ -16,6 +16,8 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ;
+
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_convertToGalgas_33_ ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;

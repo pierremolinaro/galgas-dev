@@ -47,6 +47,7 @@ class C_BigInt {
   public : explicit C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) ;
   public : explicit C_BigInt (const int64_t inValue) ;
   public : explicit C_BigInt (const char * inString, const int32_t inBase, bool & outOk) ;
+  public : static C_BigInt randomNumber (void) ;
 
 //--- Destructor
   public : virtual ~ C_BigInt (void) ;
@@ -171,9 +172,6 @@ class C_BigInt {
   public : uint32_t requiredBitCountForSignedRepresentation (void) const ;
   public : uint32_t requiredBitCountForUnsignedRepresentation (void) const ;
   
-//--- Example
-  public : static void example (void) ;
-
 //--- Value
   protected : mpz_t mGMPint ;
 
