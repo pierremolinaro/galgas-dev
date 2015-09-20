@@ -38,8 +38,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp.h"
 #include "gmp-impl.h"
 
-#pragma GCC diagnostic ignored "-Wconversion"
-#pragma GCC diagnostic ignored "-Wsign-compare"
 
 /* Gets {pp,n} and (sign?-1:1)*{np,n}. Computes at once:
      {pp,n} <- ({pp,n}+{np,n})/2^{ps+1}

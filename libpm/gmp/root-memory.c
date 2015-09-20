@@ -34,7 +34,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp.h"
 #include "gmp-impl.h"
 
-#pragma GCC diagnostic ignored "-Wunused-parameter"
 
 
 void * (*__gmp_allocate_func) (size_t) = __gmp_default_allocate;

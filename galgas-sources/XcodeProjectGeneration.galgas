@@ -49,9 +49,154 @@ proc build_LIBPM_BDD_source_files_for_sources_build_phase
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc getGALGAS_2_source_file_list
-  !@stringlist out_fileList
+proc getGMP_source_file_list !@stringlist out_fileList {
+  out_fileList = {
+   !"32-mp_bases.c",
+   !"32-mp_bases.h",
+   !"64-mp_bases.c",
+   !"64-mp_bases.h",
+   !"gmp-impl.h",
+   !"gmp.h",
+   !"longlong.h",
+   !"mini-gmp.c.h",
+   !"mini-gmp.h",
+   !"mpn-add.c",
+   !"mpn-add_1.c",
+   !"mpn-add_n.c",
+   !"mpn-addmul_1.c",
+   !"mpn-bdiv_dbm1c.c",
+   !"mpn-cmp.c",
+   !"mpn-dcpi1_div_qr.c",
+   !"mpn-dive_1.c",
+   !"mpn-divrem_1.c",
+   !"mpn-divrem_2.c",
+   !"mpn-get_str.c",
+   !"mpn-invertappr.c",
+   !"mpn-lshift.c",
+   !"mpn-lshiftc.c",
+   !"mpn-mu_div_qr.c",
+   !"mpn-mul.c",
+   !"mpn-mul_1.c",
+   !"mpn-mul_basecase.c",
+   !"mpn-mul_fft.c",
+   !"mpn-mul_n.c",
+   !"mpn-mulmod_bnm1.c",
+   !"mpn-nussbaumer_mul.c",
+   !"mpn-pre_divrem_1.c",
+   !"mpn-rshift.c",
+   !"mpn-sbpi1_div_qr.c",
+   !"mpn-sbpi1_divappr_q.c",
+   !"mpn-set_str.c",
+   !"mpn-sqr.c",
+   !"mpn-sqr_basecase.c",
+   !"mpn-sqrmod_bnm1.c",
+   !"mpn-sub.c",
+   !"mpn-sub_1.c",
+   !"mpn-sub_n.c",
+   !"mpn-submul_1.c",
+   !"mpn-tdiv_qr.c",
+   !"mpn-toom22_mul.c",
+   !"mpn-toom2_sqr.c",
+   !"mpn-toom32_mul.c",
+   !"mpn-toom33_mul.c",
+   !"mpn-toom3_sqr.c",
+   !"mpn-toom42_mul.c",
+   !"mpn-toom43_mul.c",
+   !"mpn-toom44_mul.c",
+   !"mpn-toom4_sqr.c",
+   !"mpn-toom53_mul.c",
+   !"mpn-toom63_mul.c",
+   !"mpn-toom6_sqr.c",
+   !"mpn-toom6h_mul.c",
+   !"mpn-toom8_sqr.c",
+   !"mpn-toom8h_mul.c",
+   !"mpn-toom_couple_handling.c",
+   !"mpn-toom_eval_dgr3_pm1.c",
+   !"mpn-toom_eval_dgr3_pm2.c",
+   !"mpn-toom_eval_pm1.c",
+   !"mpn-toom_eval_pm2.c",
+   !"mpn-toom_eval_pm2exp.c",
+   !"mpn-toom_eval_pm2rexp.c",
+   !"mpn-toom_interpolate_12pts.c",
+   !"mpn-toom_interpolate_16pts.c",
+   !"mpn-toom_interpolate_5pts.c",
+   !"mpn-toom_interpolate_6pts.c",
+   !"mpn-toom_interpolate_7pts.c",
+   !"mpn-toom_interpolate_8pts.c",
+   !"mpz-abs.c",
+   !"mpz-add.c",
+   !"mpz-add_ui.c",
+   !"mpz-and.c",
+   !"mpz-aors.h",
+   !"mpz-aors_ui.h",
+   !"mpz-cdiv_q_ui.c",
+   !"mpz-cdiv_qr.c",
+   !"mpz-cfdiv_q_2exp.c",
+   !"mpz-clear.c",
+   !"mpz-clrbit.c",
+   !"mpz-cmp.c",
+   !"mpz-cmp_si.c",
+   !"mpz-cmp_ui.c",
+   !"mpz-com.c",
+   !"mpz-combit.c",
+   !"mpz-export.c",
+   !"mpz-fdiv_q_ui.c",
+   !"mpz-fdiv_qr.c",
+   !"mpz-fits_s.h",
+   !"mpz-fits_sint.c",
+   !"mpz-fits_uint.c",
+   !"mpz-get_si.c",
+   !"mpz-get_str.c",
+   !"mpz-get_ui.c",
+   !"mpz-init.c",
+   !"mpz-ior.c",
+   !"mpz-mul.c",
+   !"mpz-mul_2exp.c",
+   !"mpz-mul_i.h",
+   !"mpz-mul_ui.c",
+   !"mpz-neg.c",
+   !"mpz-realloc.c",
+   !"mpz-set.c",
+   !"mpz-set_str.c",
+   !"mpz-set_ui.c",
+   !"mpz-setbit.c",
+   !"mpz-sizeinbase.c",
+   !"mpz-sub.c",
+   !"mpz-sub_ui.c",
+   !"mpz-swap.c",
+   !"mpz-tdiv_qr.c",
+   !"mpz-tstbit.c",
+   !"mpz-xor.c",
+   !"root-assert.c",
+   !"root-bootstrap.c.h",
+   !"root-errno.c",
+   !"root-memory.c",
+   !"root-mp_bpl.c",
+   !"root-mp_clz_tab.c",
+   !"root-mp_dv_tab.c",
+   !"root-mp_minv_tab.c",
+   !"root-tal-notreent.c"
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc build_LIBPM_GMP_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 {
+  getGMP_source_file_list (?let fileList)
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc getGALGAS_2_source_file_list !@stringlist out_fileList {
   out_fileList = {}
   out_fileList += !"typeComparisonResult.cpp"
   out_fileList += !"typeComparisonResult.h"
@@ -138,8 +283,7 @@ proc getGALGAS_2_source_file_list
 proc build_LIBPM_GALGAS_2_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  @stringlist fileList
-  getGALGAS_2_source_file_list ( ?fileList )
+  getGALGAS_2_source_file_list (?let fileList)
 #---
   enter_files_in_group (
    !?ioXcodeProjectDescription
@@ -959,7 +1103,7 @@ proc generateXcodeProject
     !?libpmGroupChildrenList
   )
 #---------- LIBPM / GALGAS 2
-  var fileListOf_LIBPM_GALGAS_2_group =@XcodeObjectReferenceList.emptyList{}
+  @XcodeObjectReferenceList fileListOf_LIBPM_GALGAS_2_group = {}
   build_LIBPM_GALGAS_2_group (
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_GALGAS_2_group
@@ -970,6 +1114,20 @@ proc generateXcodeProject
     !"GALGAS 2"
     !"galgas2"
     !fileListOf_LIBPM_GALGAS_2_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / GMP
+  @XcodeObjectReferenceList fileListOf_LIBPM_GMP_group = {}
+  build_LIBPM_GMP_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_GMP_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"GMP"
+    !"gmp"
+    !fileListOf_LIBPM_GMP_group
     !?libpmGroupChildrenList
   )
 #---------- LIBPM / STREAMS
@@ -1296,7 +1454,7 @@ proc generateXcodeProject
   @stringlist toolTargetSettings = {}
   toolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;"
   toolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS) ;"
-  toolTargetSettings += !"OTHER_LDFLAGS = \"" + inLIBPMpath + "/gmp/libgmp-Darwin-Intel.a\";"
+#  toolTargetSettings += !"OTHER_LDFLAGS = \"" + inLIBPMpath + "/gmp/libgmp-Darwin-Intel.a\";"
 #---
   @string toolTargetKey
   add_tool_target (
@@ -1377,7 +1535,7 @@ proc generateXcodeProject
   debugToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 0;"
   debugToolTargetSettings += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;"
   debugToolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = "";"
-  debugToolTargetSettings += !"OTHER_LDFLAGS = \"" + inLIBPMpath + "/gmp/libgmp-Darwin-Intel.a\";"
+#  debugToolTargetSettings += !"OTHER_LDFLAGS = \"" + inLIBPMpath + "/gmp/libgmp-Darwin-Intel.a\";"
 #---
   @string toolDebugTargetKey
   add_tool_target (

@@ -37,7 +37,6 @@ see https://www.gnu.org/licenses/.  */
 
 #define xmalloc gmp_default_alloc
 
-#pragma GCC diagnostic ignored "-Wmissing-prototypes"
 
 int
 isprime (unsigned long int t)

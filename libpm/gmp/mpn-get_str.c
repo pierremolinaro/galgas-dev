@@ -40,8 +40,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp-impl.h"
 #include "longlong.h"
 
-#pragma GCC diagnostic ignored "-Wconversion"
-#pragma GCC diagnostic ignored "-Wsign-compare"
 
 /* Conversion of U {up,un} to a string in base b.  Internally, we convert to
    base B = b^m, the largest power of b that fits a limb.  Basic algorithms:

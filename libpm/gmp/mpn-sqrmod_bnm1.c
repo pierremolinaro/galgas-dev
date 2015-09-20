@@ -40,10 +40,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp-impl.h"
 #include "longlong.h"
 
-#pragma GCC diagnostic ignored "-Wconversion"
-#pragma GCC diagnostic ignored "-Wsign-compare"
-#pragma GCC diagnostic ignored "-Wunused-value"
-#pragma GCC diagnostic ignored "-Wunused-parameter"
 
 /* Input is {ap,rn}; output is {rp,rn}, computation is
    mod B^rn - 1, and values are semi-normalised; zero is represented

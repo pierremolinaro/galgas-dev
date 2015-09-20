@@ -2335,6 +2335,27 @@ void routine_build_5F_LIBPM_5F_BDD_5F_source_5F_files_5F_for_5F_sources_5F_build
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                          Routine 'getGMP_source_file_list'                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_getGMP_5F_source_5F_file_5F_list (class GALGAS_stringlist & outArgument0,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           Routine 'build_LIBPM_GMP_group'                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_build_5F_LIBPM_5F_GMP_5F_group (class GALGAS_XcodeProjectDescription & ioArgument0,
+                                             class GALGAS_XcodeObjectReferenceList & ioArgument1,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                       Routine 'getGALGAS_2_source_file_list'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

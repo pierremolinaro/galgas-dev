@@ -68,7 +68,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp-impl.h"
 #include "longlong.h"
 
-#pragma GCC diagnostic ignored "-Wconversion"
 
 mp_size_t
 mpn_set_str (mp_ptr rp, const unsigned char *str, size_t str_len, int base)
