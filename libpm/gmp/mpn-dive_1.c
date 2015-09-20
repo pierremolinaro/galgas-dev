@@ -36,11 +36,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp-impl.h"
 #include "longlong.h"
 
-#pragma GCC diagnostic ignored "-Wconversion"
-#pragma GCC diagnostic ignored "-Wsign-compare"
-#pragma GCC diagnostic ignored "-Wunused-value"
-
-
 /* Divide a={src,size} by d=divisor and store the quotient in q={dst,size}.
    q will only be correct if d divides a exactly.
 

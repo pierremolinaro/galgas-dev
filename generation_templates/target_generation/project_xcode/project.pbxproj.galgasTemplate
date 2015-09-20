@@ -17,6 +17,16 @@ for () in BUILD_FILE_LIST do
 end
 %  /*------------------------------------------------------------------ PBXFileReference */
 %
+for () in C_FILE_LIST do
+%  %!mValue0% /* %!mValue1% */ = {\n%
+%    isa = PBXFileReference;\n%
+%    fileEncoding = 4;\n%
+%    lastKnownFileType = sourcecode.c.c;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n\n%
+end
 for () in CPP_FILE_LIST do
 %  %!mValue0% /* %!mValue1% */ = {\n%
 %    isa = PBXFileReference;\n%

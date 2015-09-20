@@ -33,8 +33,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp-impl.h"
 #include "longlong.h"
 
-#pragma GCC diagnostic ignored "-Wconversion"
-#pragma GCC diagnostic ignored "-Wsign-compare"
 
 /* The size where udiv_qrnnd_preinv should be used rather than udiv_qrnnd,
    meaning the quotient size where that should happen, the quotient size

@@ -31,8 +31,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp.h"
 #include "gmp-impl.h"
 
-#pragma GCC diagnostic ignored "-Wconversion"
-#pragma GCC diagnostic ignored "-Wsign-compare"
 
 void
 mpz_clrbit (mpz_ptr d, mp_bitcnt_t bit_idx)

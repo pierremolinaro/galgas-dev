@@ -78,6 +78,15 @@ setter @XcodeProjectDescriptor addCppFile
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+setter @XcodeProjectDescriptor addCFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  mCFileList += !outFileRef !inFileName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 setter @XcodeProjectDescriptor addHeaderFile
   ?fileName:let @string inFileName
   !fileRef:@string outFileRef {
@@ -197,6 +206,7 @@ setter @XcodeProjectDescriptor addGroupWithFiles
   ?groupName:let @string inGroupName
   ?groupPath:let @string inGroupPath
   ?fileNames:let @stringset inFileNames
+  ?!cFileRefs:@stringlist ioCFileBuildRefs
   ?!cppFileRefs:@stringlist ioCppFileBuildRefs
   ?!mFileRefs:@stringlist ioMFileBuildRefs
   ?!mmFileRefs:@stringlist ioMMFileBuildRefs
@@ -216,7 +226,12 @@ setter @XcodeProjectDescriptor addGroupWithFiles
 #---
   @stringlist childrenRefs = {}
   for (f) in inFileNames do
-    if [f pathExtension] == "cpp" then
+    if [f pathExtension] == "c" then
+      [!?self addCFile !fileName:f ?fileRef:let @string cFileRef]
+      childrenRefs += !cFileRef
+      [!?self addBuildFile !fileRef:cFileRef !fileName:f ?buildRef:let @string buildRef]
+      ioCFileBuildRefs += !buildRef
+    elsif [f pathExtension] == "cpp" then
       [!?self addCppFile !fileName:f ?fileRef:let @string cppFileRef]
       childrenRefs += !cppFileRef
       [!?self addBuildFile !fileRef:cppFileRef !fileName:f ?buildRef:let @string buildRef]
@@ -352,6 +367,7 @@ struct @XcodeProjectDescriptor {
   @XCodeGroupList mGroupList
   @XCodeToolTargetList mToolTargetList
   @XCodeAppTargetList mAppTargetList
+  @2stringlist mCFileList
   @2stringlist mCppFileList
   @2stringlist m_M_FileList
   @2stringlist m_MM_FileList
@@ -381,6 +397,7 @@ private filewrapper xcodeProjectGenerationFilewrapper in "../generation_template
     ?@stringlist MAIN_GROUP_CHILDREN_REFS
     ?@XCodeToolTargetList TOOL_TARGET_LIST
     ?@XCodeAppTargetList APP_TARGET_LIST
+    ?@2stringlist C_FILE_LIST
     ?@2stringlist CPP_FILE_LIST
     ?@2stringlist M_FILE_LIST
     ?@2stringlist MM_FILE_LIST
@@ -408,6 +425,7 @@ method @XcodeProjectDescriptor generateAtPath
     !mMainGroupChildrenRefs
     !mToolTargetList
     !mAppTargetList
+    !mCFileList
     !mCppFileList
     !m_M_FileList
     !m_MM_FileList

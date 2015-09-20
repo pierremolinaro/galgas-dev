@@ -38,7 +38,6 @@ see https://www.gnu.org/licenses/.  */
 #include "gmp.h"
 #include "gmp-impl.h"
 
-#pragma GCC diagnostic ignored "-Wunused-value"
 
 void
 mpn_toom_interpolate_5pts (mp_ptr c, mp_ptr v2, mp_ptr vm1,
