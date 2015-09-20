@@ -9,6 +9,100 @@
 
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Category method '@semanticDeclarationAST buildCategoryListMaps'                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static TC_UniqueArray <categoryMethodSignature_semanticDeclarationAST_buildCategoryListMaps> gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryMethod_buildCategoryListMaps (const int32_t inClassIndex,
+                                                categoryMethodSignature_semanticDeclarationAST_buildCategoryListMaps inMethod) {
+  gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callCategoryMethod_buildCategoryListMaps (const cPtr_semanticDeclarationAST * inObject,
+                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryModifierListMapAST,
+                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryModifierListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryModifierListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryModifierListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryMethodListMapAST,
+                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryMethodListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryMethodListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryMethodListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryReaderListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryReaderListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryReaderListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryReaderListMap,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const int32_t classIndex = info->mSlotID ;
+    categoryMethodSignature_semanticDeclarationAST_buildCategoryListMaps f = NULL ;
+    if (classIndex < gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.count ()) {
+      f = gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.count ()) {
+           f = gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
+    }else{
+      f (inObject, io_ioAbstractCategoryModifierListMapAST, io_ioCategoryModifierListMap, io_ioOverridingCategoryModifierListMap, io_ioOverridingAbstractCategoryModifierListMap, io_ioAbstractCategoryMethodListMapAST, io_ioCategoryMethodListMap, io_ioOverridingCategoryMethodListMap, io_ioOverridingAbstractCategoryMethodListMap, io_ioAbstractCategoryReaderListMap, io_ioCategoryReaderListMap, io_ioOverridingCategoryReaderListMap, io_ioOverridingAbstractCategoryReaderListMap, inCompiler COMMA_THERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_semanticDeclarationAST_buildCategoryListMaps (const cPtr_semanticDeclarationAST * /* inObject */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioAbstractCategoryModifierListMapAST */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryModifierListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryModifierListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryModifierListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioAbstractCategoryMethodListMapAST */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryMethodListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryMethodListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryMethodListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioAbstractCategoryReaderListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryReaderListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryReaderListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryReaderListMap */,
+                                                                         C_Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_semanticDeclarationAST_buildCategoryListMaps (void) {
+  enterCategoryMethod_buildCategoryListMaps (kTypeDescriptor_GALGAS_semanticDeclarationAST.mSlotID,
+                                             categoryMethod_semanticDeclarationAST_buildCategoryListMaps) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void freeCategoryMethod_semanticDeclarationAST_buildCategoryListMaps (void) {
+  gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticDeclarationAST_buildCategoryListMaps (defineCategoryMethod_semanticDeclarationAST_buildCategoryListMaps,
+                                                                         freeCategoryMethod_semanticDeclarationAST_buildCategoryListMaps) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListAST_2D_element::GALGAS_templateInstructionListAST_2D_element (void) :
 mAttribute_mInstruction () {
@@ -19437,143 +19531,6 @@ GALGAS_guiCompoundAttributeListAST_2D_element GALGAS_guiCompoundAttributeListAST
       result = *p ;
     }else{
       inCompiler->castError ("guiCompoundAttributeListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_terminalLabelListAST_2D_element::GALGAS_terminalLabelListAST_2D_element (void) :
-mAttribute_mTerminal (),
-mAttribute_mDisplayFlags () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_terminalLabelListAST_2D_element::~ GALGAS_terminalLabelListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_terminalLabelListAST_2D_element::GALGAS_terminalLabelListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                const GALGAS_uint & inOperand1) :
-mAttribute_mTerminal (inOperand0),
-mAttribute_mDisplayFlags (inOperand1) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_terminalLabelListAST_2D_element GALGAS_terminalLabelListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_terminalLabelListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                 GALGAS_uint::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_terminalLabelListAST_2D_element GALGAS_terminalLabelListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                const GALGAS_uint & inOperand1 
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_terminalLabelListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_terminalLabelListAST_2D_element (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_terminalLabelListAST_2D_element::objectCompare (const GALGAS_terminalLabelListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mTerminal.objectCompare (inOperand.mAttribute_mTerminal) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mDisplayFlags.objectCompare (inOperand.mAttribute_mDisplayFlags) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_terminalLabelListAST_2D_element::isValid (void) const {
-  return mAttribute_mTerminal.isValid () && mAttribute_mDisplayFlags.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_terminalLabelListAST_2D_element::drop (void) {
-  mAttribute_mTerminal.drop () ;
-  mAttribute_mDisplayFlags.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_terminalLabelListAST_2D_element::description (C_String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString << "<struct @terminalLabelListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mTerminal.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mDisplayFlags.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_terminalLabelListAST_2D_element::reader_mTerminal (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTerminal ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_terminalLabelListAST_2D_element::reader_mDisplayFlags (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mDisplayFlags ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @terminalLabelListAST-element type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_terminalLabelListAST_2D_element ("terminalLabelListAST-element",
-                                                        NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_terminalLabelListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_terminalLabelListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_terminalLabelListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_terminalLabelListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_terminalLabelListAST_2D_element GALGAS_terminalLabelListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_terminalLabelListAST_2D_element result ;
-  const GALGAS_terminalLabelListAST_2D_element * p = (const GALGAS_terminalLabelListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_terminalLabelListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("terminalLabelListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
