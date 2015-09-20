@@ -129,6 +129,232 @@
 		CF63B55210FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
 		CF69B2820A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF69B2840A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
+		CF6B675D1BAEC7EE00E67F0D /* 32-mp_bases.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66E01BAEC7ED00E67F0D /* 32-mp_bases.c */; };
+		CF6B675E1BAEC7EE00E67F0D /* 32-mp_bases.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66E01BAEC7ED00E67F0D /* 32-mp_bases.c */; };
+		CF6B675F1BAEC7EE00E67F0D /* 64-mp_bases.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66E21BAEC7ED00E67F0D /* 64-mp_bases.c */; };
+		CF6B67601BAEC7EE00E67F0D /* 64-mp_bases.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66E21BAEC7ED00E67F0D /* 64-mp_bases.c */; };
+		CF6B67611BAEC7EE00E67F0D /* mpn-add.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66E91BAEC7ED00E67F0D /* mpn-add.c */; };
+		CF6B67621BAEC7EE00E67F0D /* mpn-add.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66E91BAEC7ED00E67F0D /* mpn-add.c */; };
+		CF6B67631BAEC7EE00E67F0D /* mpn-add_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EA1BAEC7ED00E67F0D /* mpn-add_1.c */; };
+		CF6B67641BAEC7EE00E67F0D /* mpn-add_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EA1BAEC7ED00E67F0D /* mpn-add_1.c */; };
+		CF6B67651BAEC7EE00E67F0D /* mpn-add_n.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EB1BAEC7ED00E67F0D /* mpn-add_n.c */; };
+		CF6B67661BAEC7EE00E67F0D /* mpn-add_n.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EB1BAEC7ED00E67F0D /* mpn-add_n.c */; };
+		CF6B67671BAEC7EE00E67F0D /* mpn-addmul_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EC1BAEC7ED00E67F0D /* mpn-addmul_1.c */; };
+		CF6B67681BAEC7EE00E67F0D /* mpn-addmul_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EC1BAEC7ED00E67F0D /* mpn-addmul_1.c */; };
+		CF6B67691BAEC7EE00E67F0D /* mpn-bdiv_dbm1c.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66ED1BAEC7ED00E67F0D /* mpn-bdiv_dbm1c.c */; };
+		CF6B676A1BAEC7EE00E67F0D /* mpn-bdiv_dbm1c.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66ED1BAEC7ED00E67F0D /* mpn-bdiv_dbm1c.c */; };
+		CF6B676B1BAEC7EE00E67F0D /* mpn-cmp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EE1BAEC7ED00E67F0D /* mpn-cmp.c */; };
+		CF6B676C1BAEC7EE00E67F0D /* mpn-cmp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EE1BAEC7ED00E67F0D /* mpn-cmp.c */; };
+		CF6B676D1BAEC7EE00E67F0D /* mpn-dcpi1_div_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EF1BAEC7ED00E67F0D /* mpn-dcpi1_div_qr.c */; };
+		CF6B676E1BAEC7EE00E67F0D /* mpn-dcpi1_div_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66EF1BAEC7ED00E67F0D /* mpn-dcpi1_div_qr.c */; };
+		CF6B676F1BAEC7EE00E67F0D /* mpn-dive_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F01BAEC7ED00E67F0D /* mpn-dive_1.c */; };
+		CF6B67701BAEC7EE00E67F0D /* mpn-dive_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F01BAEC7ED00E67F0D /* mpn-dive_1.c */; };
+		CF6B67711BAEC7EE00E67F0D /* mpn-divrem_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F11BAEC7ED00E67F0D /* mpn-divrem_1.c */; };
+		CF6B67721BAEC7EE00E67F0D /* mpn-divrem_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F11BAEC7ED00E67F0D /* mpn-divrem_1.c */; };
+		CF6B67731BAEC7EE00E67F0D /* mpn-divrem_2.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F21BAEC7ED00E67F0D /* mpn-divrem_2.c */; };
+		CF6B67741BAEC7EE00E67F0D /* mpn-divrem_2.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F21BAEC7ED00E67F0D /* mpn-divrem_2.c */; };
+		CF6B67751BAEC7EE00E67F0D /* mpn-get_str.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F31BAEC7ED00E67F0D /* mpn-get_str.c */; };
+		CF6B67761BAEC7EE00E67F0D /* mpn-get_str.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F31BAEC7ED00E67F0D /* mpn-get_str.c */; };
+		CF6B67771BAEC7EE00E67F0D /* mpn-invertappr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F41BAEC7ED00E67F0D /* mpn-invertappr.c */; };
+		CF6B67781BAEC7EE00E67F0D /* mpn-invertappr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F41BAEC7ED00E67F0D /* mpn-invertappr.c */; };
+		CF6B67791BAEC7EE00E67F0D /* mpn-lshift.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F51BAEC7ED00E67F0D /* mpn-lshift.c */; };
+		CF6B677A1BAEC7EE00E67F0D /* mpn-lshift.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F51BAEC7ED00E67F0D /* mpn-lshift.c */; };
+		CF6B677B1BAEC7EE00E67F0D /* mpn-lshiftc.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F61BAEC7ED00E67F0D /* mpn-lshiftc.c */; };
+		CF6B677C1BAEC7EE00E67F0D /* mpn-lshiftc.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F61BAEC7ED00E67F0D /* mpn-lshiftc.c */; };
+		CF6B677D1BAEC7EE00E67F0D /* mpn-mu_div_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F71BAEC7ED00E67F0D /* mpn-mu_div_qr.c */; };
+		CF6B677E1BAEC7EE00E67F0D /* mpn-mu_div_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F71BAEC7ED00E67F0D /* mpn-mu_div_qr.c */; };
+		CF6B677F1BAEC7EE00E67F0D /* mpn-mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F81BAEC7ED00E67F0D /* mpn-mul.c */; };
+		CF6B67801BAEC7EE00E67F0D /* mpn-mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F81BAEC7ED00E67F0D /* mpn-mul.c */; };
+		CF6B67811BAEC7EE00E67F0D /* mpn-mul_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F91BAEC7ED00E67F0D /* mpn-mul_1.c */; };
+		CF6B67821BAEC7EE00E67F0D /* mpn-mul_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66F91BAEC7ED00E67F0D /* mpn-mul_1.c */; };
+		CF6B67831BAEC7EE00E67F0D /* mpn-mul_basecase.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FA1BAEC7ED00E67F0D /* mpn-mul_basecase.c */; };
+		CF6B67841BAEC7EE00E67F0D /* mpn-mul_basecase.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FA1BAEC7ED00E67F0D /* mpn-mul_basecase.c */; };
+		CF6B67851BAEC7EE00E67F0D /* mpn-mul_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FB1BAEC7ED00E67F0D /* mpn-mul_fft.c */; };
+		CF6B67861BAEC7EE00E67F0D /* mpn-mul_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FB1BAEC7ED00E67F0D /* mpn-mul_fft.c */; };
+		CF6B67871BAEC7EE00E67F0D /* mpn-mul_n.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FC1BAEC7ED00E67F0D /* mpn-mul_n.c */; };
+		CF6B67881BAEC7EE00E67F0D /* mpn-mul_n.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FC1BAEC7ED00E67F0D /* mpn-mul_n.c */; };
+		CF6B67891BAEC7EE00E67F0D /* mpn-mulmod_bnm1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FD1BAEC7ED00E67F0D /* mpn-mulmod_bnm1.c */; };
+		CF6B678A1BAEC7EE00E67F0D /* mpn-mulmod_bnm1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FD1BAEC7ED00E67F0D /* mpn-mulmod_bnm1.c */; };
+		CF6B678B1BAEC7EE00E67F0D /* mpn-nussbaumer_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FE1BAEC7ED00E67F0D /* mpn-nussbaumer_mul.c */; };
+		CF6B678C1BAEC7EE00E67F0D /* mpn-nussbaumer_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FE1BAEC7ED00E67F0D /* mpn-nussbaumer_mul.c */; };
+		CF6B678D1BAEC7EE00E67F0D /* mpn-pre_divrem_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FF1BAEC7ED00E67F0D /* mpn-pre_divrem_1.c */; };
+		CF6B678E1BAEC7EE00E67F0D /* mpn-pre_divrem_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B66FF1BAEC7ED00E67F0D /* mpn-pre_divrem_1.c */; };
+		CF6B678F1BAEC7EE00E67F0D /* mpn-rshift.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67001BAEC7ED00E67F0D /* mpn-rshift.c */; };
+		CF6B67901BAEC7EE00E67F0D /* mpn-rshift.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67001BAEC7ED00E67F0D /* mpn-rshift.c */; };
+		CF6B67911BAEC7EE00E67F0D /* mpn-sbpi1_div_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67011BAEC7ED00E67F0D /* mpn-sbpi1_div_qr.c */; };
+		CF6B67921BAEC7EE00E67F0D /* mpn-sbpi1_div_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67011BAEC7ED00E67F0D /* mpn-sbpi1_div_qr.c */; };
+		CF6B67931BAEC7EE00E67F0D /* mpn-sbpi1_divappr_q.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67021BAEC7ED00E67F0D /* mpn-sbpi1_divappr_q.c */; };
+		CF6B67941BAEC7EE00E67F0D /* mpn-sbpi1_divappr_q.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67021BAEC7ED00E67F0D /* mpn-sbpi1_divappr_q.c */; };
+		CF6B67951BAEC7EE00E67F0D /* mpn-set_str.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67031BAEC7ED00E67F0D /* mpn-set_str.c */; };
+		CF6B67961BAEC7EE00E67F0D /* mpn-set_str.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67031BAEC7ED00E67F0D /* mpn-set_str.c */; };
+		CF6B67971BAEC7EE00E67F0D /* mpn-sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67041BAEC7ED00E67F0D /* mpn-sqr.c */; };
+		CF6B67981BAEC7EE00E67F0D /* mpn-sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67041BAEC7ED00E67F0D /* mpn-sqr.c */; };
+		CF6B67991BAEC7EE00E67F0D /* mpn-sqr_basecase.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67051BAEC7ED00E67F0D /* mpn-sqr_basecase.c */; };
+		CF6B679A1BAEC7EE00E67F0D /* mpn-sqr_basecase.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67051BAEC7ED00E67F0D /* mpn-sqr_basecase.c */; };
+		CF6B679B1BAEC7EE00E67F0D /* mpn-sqrmod_bnm1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67061BAEC7ED00E67F0D /* mpn-sqrmod_bnm1.c */; };
+		CF6B679C1BAEC7EE00E67F0D /* mpn-sqrmod_bnm1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67061BAEC7ED00E67F0D /* mpn-sqrmod_bnm1.c */; };
+		CF6B679D1BAEC7EE00E67F0D /* mpn-sub.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67071BAEC7ED00E67F0D /* mpn-sub.c */; };
+		CF6B679E1BAEC7EE00E67F0D /* mpn-sub.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67071BAEC7ED00E67F0D /* mpn-sub.c */; };
+		CF6B679F1BAEC7EE00E67F0D /* mpn-sub_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67081BAEC7ED00E67F0D /* mpn-sub_1.c */; };
+		CF6B67A01BAEC7EE00E67F0D /* mpn-sub_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67081BAEC7ED00E67F0D /* mpn-sub_1.c */; };
+		CF6B67A11BAEC7EE00E67F0D /* mpn-sub_n.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67091BAEC7ED00E67F0D /* mpn-sub_n.c */; };
+		CF6B67A21BAEC7EE00E67F0D /* mpn-sub_n.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67091BAEC7ED00E67F0D /* mpn-sub_n.c */; };
+		CF6B67A31BAEC7EE00E67F0D /* mpn-submul_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670A1BAEC7ED00E67F0D /* mpn-submul_1.c */; };
+		CF6B67A41BAEC7EE00E67F0D /* mpn-submul_1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670A1BAEC7ED00E67F0D /* mpn-submul_1.c */; };
+		CF6B67A51BAEC7EE00E67F0D /* mpn-tdiv_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670B1BAEC7ED00E67F0D /* mpn-tdiv_qr.c */; };
+		CF6B67A61BAEC7EE00E67F0D /* mpn-tdiv_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670B1BAEC7ED00E67F0D /* mpn-tdiv_qr.c */; };
+		CF6B67A71BAEC7EE00E67F0D /* mpn-toom22_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670C1BAEC7ED00E67F0D /* mpn-toom22_mul.c */; };
+		CF6B67A81BAEC7EE00E67F0D /* mpn-toom22_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670C1BAEC7ED00E67F0D /* mpn-toom22_mul.c */; };
+		CF6B67A91BAEC7EE00E67F0D /* mpn-toom2_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670D1BAEC7ED00E67F0D /* mpn-toom2_sqr.c */; };
+		CF6B67AA1BAEC7EE00E67F0D /* mpn-toom2_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670D1BAEC7ED00E67F0D /* mpn-toom2_sqr.c */; };
+		CF6B67AB1BAEC7EE00E67F0D /* mpn-toom32_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670E1BAEC7ED00E67F0D /* mpn-toom32_mul.c */; };
+		CF6B67AC1BAEC7EE00E67F0D /* mpn-toom32_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670E1BAEC7ED00E67F0D /* mpn-toom32_mul.c */; };
+		CF6B67AD1BAEC7EE00E67F0D /* mpn-toom33_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670F1BAEC7ED00E67F0D /* mpn-toom33_mul.c */; };
+		CF6B67AE1BAEC7EE00E67F0D /* mpn-toom33_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B670F1BAEC7ED00E67F0D /* mpn-toom33_mul.c */; };
+		CF6B67AF1BAEC7EE00E67F0D /* mpn-toom3_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67101BAEC7ED00E67F0D /* mpn-toom3_sqr.c */; };
+		CF6B67B01BAEC7EE00E67F0D /* mpn-toom3_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67101BAEC7ED00E67F0D /* mpn-toom3_sqr.c */; };
+		CF6B67B11BAEC7EE00E67F0D /* mpn-toom42_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67111BAEC7ED00E67F0D /* mpn-toom42_mul.c */; };
+		CF6B67B21BAEC7EE00E67F0D /* mpn-toom42_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67111BAEC7ED00E67F0D /* mpn-toom42_mul.c */; };
+		CF6B67B31BAEC7EE00E67F0D /* mpn-toom43_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67121BAEC7ED00E67F0D /* mpn-toom43_mul.c */; };
+		CF6B67B41BAEC7EE00E67F0D /* mpn-toom43_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67121BAEC7ED00E67F0D /* mpn-toom43_mul.c */; };
+		CF6B67B51BAEC7EE00E67F0D /* mpn-toom44_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67131BAEC7ED00E67F0D /* mpn-toom44_mul.c */; };
+		CF6B67B61BAEC7EE00E67F0D /* mpn-toom44_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67131BAEC7ED00E67F0D /* mpn-toom44_mul.c */; };
+		CF6B67B71BAEC7EE00E67F0D /* mpn-toom4_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67141BAEC7ED00E67F0D /* mpn-toom4_sqr.c */; };
+		CF6B67B81BAEC7EE00E67F0D /* mpn-toom4_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67141BAEC7ED00E67F0D /* mpn-toom4_sqr.c */; };
+		CF6B67B91BAEC7EE00E67F0D /* mpn-toom53_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67151BAEC7ED00E67F0D /* mpn-toom53_mul.c */; };
+		CF6B67BA1BAEC7EE00E67F0D /* mpn-toom53_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67151BAEC7ED00E67F0D /* mpn-toom53_mul.c */; };
+		CF6B67BB1BAEC7EE00E67F0D /* mpn-toom63_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67161BAEC7ED00E67F0D /* mpn-toom63_mul.c */; };
+		CF6B67BC1BAEC7EE00E67F0D /* mpn-toom63_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67161BAEC7ED00E67F0D /* mpn-toom63_mul.c */; };
+		CF6B67BD1BAEC7EE00E67F0D /* mpn-toom6_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67171BAEC7ED00E67F0D /* mpn-toom6_sqr.c */; };
+		CF6B67BE1BAEC7EE00E67F0D /* mpn-toom6_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67171BAEC7ED00E67F0D /* mpn-toom6_sqr.c */; };
+		CF6B67BF1BAEC7EE00E67F0D /* mpn-toom6h_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67181BAEC7ED00E67F0D /* mpn-toom6h_mul.c */; };
+		CF6B67C01BAEC7EE00E67F0D /* mpn-toom6h_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67181BAEC7ED00E67F0D /* mpn-toom6h_mul.c */; };
+		CF6B67C11BAEC7EE00E67F0D /* mpn-toom8_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67191BAEC7ED00E67F0D /* mpn-toom8_sqr.c */; };
+		CF6B67C21BAEC7EE00E67F0D /* mpn-toom8_sqr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67191BAEC7ED00E67F0D /* mpn-toom8_sqr.c */; };
+		CF6B67C31BAEC7EE00E67F0D /* mpn-toom8h_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671A1BAEC7ED00E67F0D /* mpn-toom8h_mul.c */; };
+		CF6B67C41BAEC7EE00E67F0D /* mpn-toom8h_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671A1BAEC7ED00E67F0D /* mpn-toom8h_mul.c */; };
+		CF6B67C51BAEC7EE00E67F0D /* mpn-toom_couple_handling.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671B1BAEC7ED00E67F0D /* mpn-toom_couple_handling.c */; };
+		CF6B67C61BAEC7EE00E67F0D /* mpn-toom_couple_handling.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671B1BAEC7ED00E67F0D /* mpn-toom_couple_handling.c */; };
+		CF6B67C71BAEC7EE00E67F0D /* mpn-toom_eval_dgr3_pm1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671C1BAEC7ED00E67F0D /* mpn-toom_eval_dgr3_pm1.c */; };
+		CF6B67C81BAEC7EE00E67F0D /* mpn-toom_eval_dgr3_pm1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671C1BAEC7ED00E67F0D /* mpn-toom_eval_dgr3_pm1.c */; };
+		CF6B67C91BAEC7EE00E67F0D /* mpn-toom_eval_dgr3_pm2.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671D1BAEC7ED00E67F0D /* mpn-toom_eval_dgr3_pm2.c */; };
+		CF6B67CA1BAEC7EE00E67F0D /* mpn-toom_eval_dgr3_pm2.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671D1BAEC7ED00E67F0D /* mpn-toom_eval_dgr3_pm2.c */; };
+		CF6B67CB1BAEC7EE00E67F0D /* mpn-toom_eval_pm1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671E1BAEC7ED00E67F0D /* mpn-toom_eval_pm1.c */; };
+		CF6B67CC1BAEC7EE00E67F0D /* mpn-toom_eval_pm1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671E1BAEC7ED00E67F0D /* mpn-toom_eval_pm1.c */; };
+		CF6B67CD1BAEC7EE00E67F0D /* mpn-toom_eval_pm2.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671F1BAEC7ED00E67F0D /* mpn-toom_eval_pm2.c */; };
+		CF6B67CE1BAEC7EE00E67F0D /* mpn-toom_eval_pm2.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B671F1BAEC7ED00E67F0D /* mpn-toom_eval_pm2.c */; };
+		CF6B67CF1BAEC7EE00E67F0D /* mpn-toom_eval_pm2exp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67201BAEC7ED00E67F0D /* mpn-toom_eval_pm2exp.c */; };
+		CF6B67D01BAEC7EE00E67F0D /* mpn-toom_eval_pm2exp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67201BAEC7ED00E67F0D /* mpn-toom_eval_pm2exp.c */; };
+		CF6B67D11BAEC7EE00E67F0D /* mpn-toom_eval_pm2rexp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67211BAEC7ED00E67F0D /* mpn-toom_eval_pm2rexp.c */; };
+		CF6B67D21BAEC7EE00E67F0D /* mpn-toom_eval_pm2rexp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67211BAEC7ED00E67F0D /* mpn-toom_eval_pm2rexp.c */; };
+		CF6B67D31BAEC7EE00E67F0D /* mpn-toom_interpolate_12pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67221BAEC7ED00E67F0D /* mpn-toom_interpolate_12pts.c */; };
+		CF6B67D41BAEC7EE00E67F0D /* mpn-toom_interpolate_12pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67221BAEC7ED00E67F0D /* mpn-toom_interpolate_12pts.c */; };
+		CF6B67D51BAEC7EE00E67F0D /* mpn-toom_interpolate_16pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67231BAEC7ED00E67F0D /* mpn-toom_interpolate_16pts.c */; };
+		CF6B67D61BAEC7EE00E67F0D /* mpn-toom_interpolate_16pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67231BAEC7ED00E67F0D /* mpn-toom_interpolate_16pts.c */; };
+		CF6B67D71BAEC7EE00E67F0D /* mpn-toom_interpolate_5pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67241BAEC7ED00E67F0D /* mpn-toom_interpolate_5pts.c */; };
+		CF6B67D81BAEC7EE00E67F0D /* mpn-toom_interpolate_5pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67241BAEC7ED00E67F0D /* mpn-toom_interpolate_5pts.c */; };
+		CF6B67D91BAEC7EE00E67F0D /* mpn-toom_interpolate_6pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67251BAEC7ED00E67F0D /* mpn-toom_interpolate_6pts.c */; };
+		CF6B67DA1BAEC7EE00E67F0D /* mpn-toom_interpolate_6pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67251BAEC7ED00E67F0D /* mpn-toom_interpolate_6pts.c */; };
+		CF6B67DB1BAEC7EE00E67F0D /* mpn-toom_interpolate_7pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67261BAEC7ED00E67F0D /* mpn-toom_interpolate_7pts.c */; };
+		CF6B67DC1BAEC7EE00E67F0D /* mpn-toom_interpolate_7pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67261BAEC7ED00E67F0D /* mpn-toom_interpolate_7pts.c */; };
+		CF6B67DD1BAEC7EE00E67F0D /* mpn-toom_interpolate_8pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67271BAEC7ED00E67F0D /* mpn-toom_interpolate_8pts.c */; };
+		CF6B67DE1BAEC7EE00E67F0D /* mpn-toom_interpolate_8pts.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67271BAEC7ED00E67F0D /* mpn-toom_interpolate_8pts.c */; };
+		CF6B67DF1BAEC7EE00E67F0D /* mpz-abs.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67281BAEC7ED00E67F0D /* mpz-abs.c */; };
+		CF6B67E01BAEC7EE00E67F0D /* mpz-abs.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67281BAEC7ED00E67F0D /* mpz-abs.c */; };
+		CF6B67E11BAEC7EE00E67F0D /* mpz-add.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67291BAEC7ED00E67F0D /* mpz-add.c */; };
+		CF6B67E21BAEC7EE00E67F0D /* mpz-add.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67291BAEC7ED00E67F0D /* mpz-add.c */; };
+		CF6B67E31BAEC7EE00E67F0D /* mpz-add_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B672A1BAEC7ED00E67F0D /* mpz-add_ui.c */; };
+		CF6B67E41BAEC7EE00E67F0D /* mpz-add_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B672A1BAEC7ED00E67F0D /* mpz-add_ui.c */; };
+		CF6B67E51BAEC7EE00E67F0D /* mpz-and.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B672B1BAEC7ED00E67F0D /* mpz-and.c */; };
+		CF6B67E61BAEC7EE00E67F0D /* mpz-and.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B672B1BAEC7ED00E67F0D /* mpz-and.c */; };
+		CF6B67E71BAEC7EE00E67F0D /* mpz-cdiv_q_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B672E1BAEC7ED00E67F0D /* mpz-cdiv_q_ui.c */; };
+		CF6B67E81BAEC7EE00E67F0D /* mpz-cdiv_q_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B672E1BAEC7ED00E67F0D /* mpz-cdiv_q_ui.c */; };
+		CF6B67E91BAEC7EE00E67F0D /* mpz-cdiv_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B672F1BAEC7ED00E67F0D /* mpz-cdiv_qr.c */; };
+		CF6B67EA1BAEC7EE00E67F0D /* mpz-cdiv_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B672F1BAEC7ED00E67F0D /* mpz-cdiv_qr.c */; };
+		CF6B67EB1BAEC7EE00E67F0D /* mpz-cfdiv_q_2exp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67301BAEC7ED00E67F0D /* mpz-cfdiv_q_2exp.c */; };
+		CF6B67EC1BAEC7EE00E67F0D /* mpz-cfdiv_q_2exp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67301BAEC7ED00E67F0D /* mpz-cfdiv_q_2exp.c */; };
+		CF6B67ED1BAEC7EE00E67F0D /* mpz-clear.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67311BAEC7ED00E67F0D /* mpz-clear.c */; };
+		CF6B67EE1BAEC7EE00E67F0D /* mpz-clear.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67311BAEC7ED00E67F0D /* mpz-clear.c */; };
+		CF6B67EF1BAEC7EE00E67F0D /* mpz-clrbit.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67321BAEC7ED00E67F0D /* mpz-clrbit.c */; };
+		CF6B67F01BAEC7EE00E67F0D /* mpz-clrbit.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67321BAEC7ED00E67F0D /* mpz-clrbit.c */; };
+		CF6B67F11BAEC7EE00E67F0D /* mpz-cmp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67331BAEC7ED00E67F0D /* mpz-cmp.c */; };
+		CF6B67F21BAEC7EE00E67F0D /* mpz-cmp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67331BAEC7ED00E67F0D /* mpz-cmp.c */; };
+		CF6B67F31BAEC7EE00E67F0D /* mpz-cmp_si.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67341BAEC7ED00E67F0D /* mpz-cmp_si.c */; };
+		CF6B67F41BAEC7EE00E67F0D /* mpz-cmp_si.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67341BAEC7ED00E67F0D /* mpz-cmp_si.c */; };
+		CF6B67F51BAEC7EE00E67F0D /* mpz-cmp_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67351BAEC7ED00E67F0D /* mpz-cmp_ui.c */; };
+		CF6B67F61BAEC7EE00E67F0D /* mpz-cmp_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67351BAEC7ED00E67F0D /* mpz-cmp_ui.c */; };
+		CF6B67F71BAEC7EE00E67F0D /* mpz-com.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67361BAEC7ED00E67F0D /* mpz-com.c */; };
+		CF6B67F81BAEC7EE00E67F0D /* mpz-com.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67361BAEC7ED00E67F0D /* mpz-com.c */; };
+		CF6B67F91BAEC7EE00E67F0D /* mpz-combit.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67371BAEC7ED00E67F0D /* mpz-combit.c */; };
+		CF6B67FA1BAEC7EE00E67F0D /* mpz-combit.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67371BAEC7ED00E67F0D /* mpz-combit.c */; };
+		CF6B67FB1BAEC7EE00E67F0D /* mpz-export.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67381BAEC7ED00E67F0D /* mpz-export.c */; };
+		CF6B67FC1BAEC7EE00E67F0D /* mpz-export.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67381BAEC7ED00E67F0D /* mpz-export.c */; };
+		CF6B67FD1BAEC7EE00E67F0D /* mpz-fdiv_q_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67391BAEC7ED00E67F0D /* mpz-fdiv_q_ui.c */; };
+		CF6B67FE1BAEC7EE00E67F0D /* mpz-fdiv_q_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67391BAEC7ED00E67F0D /* mpz-fdiv_q_ui.c */; };
+		CF6B67FF1BAEC7EE00E67F0D /* mpz-fdiv_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673A1BAEC7ED00E67F0D /* mpz-fdiv_qr.c */; };
+		CF6B68001BAEC7EE00E67F0D /* mpz-fdiv_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673A1BAEC7ED00E67F0D /* mpz-fdiv_qr.c */; };
+		CF6B68011BAEC7EE00E67F0D /* mpz-fits_sint.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673C1BAEC7ED00E67F0D /* mpz-fits_sint.c */; };
+		CF6B68021BAEC7EE00E67F0D /* mpz-fits_sint.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673C1BAEC7ED00E67F0D /* mpz-fits_sint.c */; };
+		CF6B68031BAEC7EE00E67F0D /* mpz-fits_uint.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673D1BAEC7ED00E67F0D /* mpz-fits_uint.c */; };
+		CF6B68041BAEC7EE00E67F0D /* mpz-fits_uint.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673D1BAEC7ED00E67F0D /* mpz-fits_uint.c */; };
+		CF6B68051BAEC7EE00E67F0D /* mpz-get_si.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673E1BAEC7ED00E67F0D /* mpz-get_si.c */; };
+		CF6B68061BAEC7EE00E67F0D /* mpz-get_si.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673E1BAEC7ED00E67F0D /* mpz-get_si.c */; };
+		CF6B68071BAEC7EE00E67F0D /* mpz-get_str.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673F1BAEC7ED00E67F0D /* mpz-get_str.c */; };
+		CF6B68081BAEC7EE00E67F0D /* mpz-get_str.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B673F1BAEC7ED00E67F0D /* mpz-get_str.c */; };
+		CF6B68091BAEC7EE00E67F0D /* mpz-get_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67401BAEC7ED00E67F0D /* mpz-get_ui.c */; };
+		CF6B680A1BAEC7EE00E67F0D /* mpz-get_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67401BAEC7ED00E67F0D /* mpz-get_ui.c */; };
+		CF6B680B1BAEC7EE00E67F0D /* mpz-init.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67411BAEC7ED00E67F0D /* mpz-init.c */; };
+		CF6B680C1BAEC7EE00E67F0D /* mpz-init.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67411BAEC7ED00E67F0D /* mpz-init.c */; };
+		CF6B680D1BAEC7EE00E67F0D /* mpz-ior.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67421BAEC7ED00E67F0D /* mpz-ior.c */; };
+		CF6B680E1BAEC7EE00E67F0D /* mpz-ior.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67421BAEC7ED00E67F0D /* mpz-ior.c */; };
+		CF6B680F1BAEC7EE00E67F0D /* mpz-mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67431BAEC7ED00E67F0D /* mpz-mul.c */; };
+		CF6B68101BAEC7EE00E67F0D /* mpz-mul.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67431BAEC7ED00E67F0D /* mpz-mul.c */; };
+		CF6B68111BAEC7EE00E67F0D /* mpz-mul_2exp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67441BAEC7ED00E67F0D /* mpz-mul_2exp.c */; };
+		CF6B68121BAEC7EE00E67F0D /* mpz-mul_2exp.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67441BAEC7ED00E67F0D /* mpz-mul_2exp.c */; };
+		CF6B68131BAEC7EE00E67F0D /* mpz-mul_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67461BAEC7ED00E67F0D /* mpz-mul_ui.c */; };
+		CF6B68141BAEC7EE00E67F0D /* mpz-mul_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67461BAEC7ED00E67F0D /* mpz-mul_ui.c */; };
+		CF6B68151BAEC7EE00E67F0D /* mpz-neg.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67471BAEC7ED00E67F0D /* mpz-neg.c */; };
+		CF6B68161BAEC7EE00E67F0D /* mpz-neg.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67471BAEC7ED00E67F0D /* mpz-neg.c */; };
+		CF6B68171BAEC7EE00E67F0D /* mpz-realloc.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67481BAEC7ED00E67F0D /* mpz-realloc.c */; };
+		CF6B68181BAEC7EE00E67F0D /* mpz-realloc.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67481BAEC7ED00E67F0D /* mpz-realloc.c */; };
+		CF6B68191BAEC7EE00E67F0D /* mpz-set.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67491BAEC7ED00E67F0D /* mpz-set.c */; };
+		CF6B681A1BAEC7EE00E67F0D /* mpz-set.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67491BAEC7ED00E67F0D /* mpz-set.c */; };
+		CF6B681B1BAEC7EE00E67F0D /* mpz-set_str.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674A1BAEC7ED00E67F0D /* mpz-set_str.c */; };
+		CF6B681C1BAEC7EE00E67F0D /* mpz-set_str.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674A1BAEC7ED00E67F0D /* mpz-set_str.c */; };
+		CF6B681D1BAEC7EE00E67F0D /* mpz-set_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674B1BAEC7ED00E67F0D /* mpz-set_ui.c */; };
+		CF6B681E1BAEC7EE00E67F0D /* mpz-set_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674B1BAEC7ED00E67F0D /* mpz-set_ui.c */; };
+		CF6B681F1BAEC7EE00E67F0D /* mpz-setbit.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674C1BAEC7ED00E67F0D /* mpz-setbit.c */; };
+		CF6B68201BAEC7EE00E67F0D /* mpz-setbit.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674C1BAEC7ED00E67F0D /* mpz-setbit.c */; };
+		CF6B68211BAEC7EE00E67F0D /* mpz-sizeinbase.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674D1BAEC7ED00E67F0D /* mpz-sizeinbase.c */; };
+		CF6B68221BAEC7EE00E67F0D /* mpz-sizeinbase.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674D1BAEC7ED00E67F0D /* mpz-sizeinbase.c */; };
+		CF6B68231BAEC7EE00E67F0D /* mpz-sub.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674E1BAEC7ED00E67F0D /* mpz-sub.c */; };
+		CF6B68241BAEC7EE00E67F0D /* mpz-sub.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674E1BAEC7ED00E67F0D /* mpz-sub.c */; };
+		CF6B68251BAEC7EE00E67F0D /* mpz-sub_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674F1BAEC7ED00E67F0D /* mpz-sub_ui.c */; };
+		CF6B68261BAEC7EE00E67F0D /* mpz-sub_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B674F1BAEC7ED00E67F0D /* mpz-sub_ui.c */; };
+		CF6B68271BAEC7EE00E67F0D /* mpz-swap.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67501BAEC7ED00E67F0D /* mpz-swap.c */; };
+		CF6B68281BAEC7EE00E67F0D /* mpz-swap.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67501BAEC7ED00E67F0D /* mpz-swap.c */; };
+		CF6B68291BAEC7EE00E67F0D /* mpz-tdiv_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67511BAEC7ED00E67F0D /* mpz-tdiv_qr.c */; };
+		CF6B682A1BAEC7EE00E67F0D /* mpz-tdiv_qr.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67511BAEC7ED00E67F0D /* mpz-tdiv_qr.c */; };
+		CF6B682B1BAEC7EE00E67F0D /* mpz-tstbit.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67521BAEC7ED00E67F0D /* mpz-tstbit.c */; };
+		CF6B682C1BAEC7EE00E67F0D /* mpz-tstbit.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67521BAEC7ED00E67F0D /* mpz-tstbit.c */; };
+		CF6B682D1BAEC7EE00E67F0D /* mpz-xor.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67531BAEC7ED00E67F0D /* mpz-xor.c */; };
+		CF6B682E1BAEC7EE00E67F0D /* mpz-xor.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67531BAEC7ED00E67F0D /* mpz-xor.c */; };
+		CF6B682F1BAEC7EE00E67F0D /* root-assert.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67541BAEC7ED00E67F0D /* root-assert.c */; };
+		CF6B68301BAEC7EE00E67F0D /* root-assert.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67541BAEC7ED00E67F0D /* root-assert.c */; };
+		CF6B68311BAEC7EE00E67F0D /* root-errno.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67561BAEC7ED00E67F0D /* root-errno.c */; };
+		CF6B68321BAEC7EE00E67F0D /* root-errno.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67561BAEC7ED00E67F0D /* root-errno.c */; };
+		CF6B68331BAEC7EE00E67F0D /* root-memory.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67571BAEC7ED00E67F0D /* root-memory.c */; };
+		CF6B68341BAEC7EE00E67F0D /* root-memory.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67571BAEC7ED00E67F0D /* root-memory.c */; };
+		CF6B68351BAEC7EE00E67F0D /* root-mp_bpl.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67581BAEC7ED00E67F0D /* root-mp_bpl.c */; };
+		CF6B68361BAEC7EE00E67F0D /* root-mp_bpl.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67581BAEC7ED00E67F0D /* root-mp_bpl.c */; };
+		CF6B68371BAEC7EE00E67F0D /* root-mp_clz_tab.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67591BAEC7ED00E67F0D /* root-mp_clz_tab.c */; };
+		CF6B68381BAEC7EE00E67F0D /* root-mp_clz_tab.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67591BAEC7ED00E67F0D /* root-mp_clz_tab.c */; };
+		CF6B68391BAEC7EE00E67F0D /* root-mp_dv_tab.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B675A1BAEC7ED00E67F0D /* root-mp_dv_tab.c */; };
+		CF6B683A1BAEC7EE00E67F0D /* root-mp_dv_tab.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B675A1BAEC7ED00E67F0D /* root-mp_dv_tab.c */; };
+		CF6B683B1BAEC7EE00E67F0D /* root-mp_minv_tab.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B675B1BAEC7ED00E67F0D /* root-mp_minv_tab.c */; };
+		CF6B683C1BAEC7EE00E67F0D /* root-mp_minv_tab.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B675B1BAEC7ED00E67F0D /* root-mp_minv_tab.c */; };
+		CF6B683D1BAEC7EE00E67F0D /* root-tal-notreent.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B675C1BAEC7ED00E67F0D /* root-tal-notreent.c */; };
+		CF6B683E1BAEC7EE00E67F0D /* root-tal-notreent.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B675C1BAEC7ED00E67F0D /* root-tal-notreent.c */; };
 		CF6CEB7A1278B57400E8F785 /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB6F1278B57400E8F785 /* C_Compiler.cpp */; };
 		CF6CEB7B1278B57400E8F785 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB711278B57400E8F785 /* C_galgas_io.cpp */; };
 		CF6CEB7C1278B57400E8F785 /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB731278B57400E8F785 /* C_Lexique.cpp */; };
@@ -463,6 +689,131 @@
 		CF63B55010FC6A5E00B5E41F /* C_PrologueEpilogue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_PrologueEpilogue.h; sourceTree = "<group>"; };
 		CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_ErrorOut.cpp; sourceTree = "<group>"; };
 		CF69B2810A31EFF0002AE337 /* C_ErrorOut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_ErrorOut.h; sourceTree = "<group>"; };
+		CF6B66E01BAEC7ED00E67F0D /* 32-mp_bases.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "32-mp_bases.c"; sourceTree = "<group>"; };
+		CF6B66E11BAEC7ED00E67F0D /* 32-mp_bases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "32-mp_bases.h"; sourceTree = "<group>"; };
+		CF6B66E21BAEC7ED00E67F0D /* 64-mp_bases.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "64-mp_bases.c"; sourceTree = "<group>"; };
+		CF6B66E31BAEC7ED00E67F0D /* 64-mp_bases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "64-mp_bases.h"; sourceTree = "<group>"; };
+		CF6B66E41BAEC7ED00E67F0D /* gmp-impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gmp-impl.h"; sourceTree = "<group>"; };
+		CF6B66E51BAEC7ED00E67F0D /* gmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gmp.h; sourceTree = "<group>"; };
+		CF6B66E61BAEC7ED00E67F0D /* longlong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = longlong.h; sourceTree = "<group>"; };
+		CF6B66E71BAEC7ED00E67F0D /* mini-gmp.c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mini-gmp.c.h"; sourceTree = "<group>"; };
+		CF6B66E81BAEC7ED00E67F0D /* mini-gmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mini-gmp.h"; sourceTree = "<group>"; };
+		CF6B66E91BAEC7ED00E67F0D /* mpn-add.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-add.c"; sourceTree = "<group>"; };
+		CF6B66EA1BAEC7ED00E67F0D /* mpn-add_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-add_1.c"; sourceTree = "<group>"; };
+		CF6B66EB1BAEC7ED00E67F0D /* mpn-add_n.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-add_n.c"; sourceTree = "<group>"; };
+		CF6B66EC1BAEC7ED00E67F0D /* mpn-addmul_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-addmul_1.c"; sourceTree = "<group>"; };
+		CF6B66ED1BAEC7ED00E67F0D /* mpn-bdiv_dbm1c.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-bdiv_dbm1c.c"; sourceTree = "<group>"; };
+		CF6B66EE1BAEC7ED00E67F0D /* mpn-cmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-cmp.c"; sourceTree = "<group>"; };
+		CF6B66EF1BAEC7ED00E67F0D /* mpn-dcpi1_div_qr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-dcpi1_div_qr.c"; sourceTree = "<group>"; };
+		CF6B66F01BAEC7ED00E67F0D /* mpn-dive_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-dive_1.c"; sourceTree = "<group>"; };
+		CF6B66F11BAEC7ED00E67F0D /* mpn-divrem_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-divrem_1.c"; sourceTree = "<group>"; };
+		CF6B66F21BAEC7ED00E67F0D /* mpn-divrem_2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-divrem_2.c"; sourceTree = "<group>"; };
+		CF6B66F31BAEC7ED00E67F0D /* mpn-get_str.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-get_str.c"; sourceTree = "<group>"; };
+		CF6B66F41BAEC7ED00E67F0D /* mpn-invertappr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-invertappr.c"; sourceTree = "<group>"; };
+		CF6B66F51BAEC7ED00E67F0D /* mpn-lshift.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-lshift.c"; sourceTree = "<group>"; };
+		CF6B66F61BAEC7ED00E67F0D /* mpn-lshiftc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-lshiftc.c"; sourceTree = "<group>"; };
+		CF6B66F71BAEC7ED00E67F0D /* mpn-mu_div_qr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-mu_div_qr.c"; sourceTree = "<group>"; };
+		CF6B66F81BAEC7ED00E67F0D /* mpn-mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-mul.c"; sourceTree = "<group>"; };
+		CF6B66F91BAEC7ED00E67F0D /* mpn-mul_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-mul_1.c"; sourceTree = "<group>"; };
+		CF6B66FA1BAEC7ED00E67F0D /* mpn-mul_basecase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-mul_basecase.c"; sourceTree = "<group>"; };
+		CF6B66FB1BAEC7ED00E67F0D /* mpn-mul_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-mul_fft.c"; sourceTree = "<group>"; };
+		CF6B66FC1BAEC7ED00E67F0D /* mpn-mul_n.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-mul_n.c"; sourceTree = "<group>"; };
+		CF6B66FD1BAEC7ED00E67F0D /* mpn-mulmod_bnm1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-mulmod_bnm1.c"; sourceTree = "<group>"; };
+		CF6B66FE1BAEC7ED00E67F0D /* mpn-nussbaumer_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-nussbaumer_mul.c"; sourceTree = "<group>"; };
+		CF6B66FF1BAEC7ED00E67F0D /* mpn-pre_divrem_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-pre_divrem_1.c"; sourceTree = "<group>"; };
+		CF6B67001BAEC7ED00E67F0D /* mpn-rshift.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-rshift.c"; sourceTree = "<group>"; };
+		CF6B67011BAEC7ED00E67F0D /* mpn-sbpi1_div_qr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-sbpi1_div_qr.c"; sourceTree = "<group>"; };
+		CF6B67021BAEC7ED00E67F0D /* mpn-sbpi1_divappr_q.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-sbpi1_divappr_q.c"; sourceTree = "<group>"; };
+		CF6B67031BAEC7ED00E67F0D /* mpn-set_str.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-set_str.c"; sourceTree = "<group>"; };
+		CF6B67041BAEC7ED00E67F0D /* mpn-sqr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-sqr.c"; sourceTree = "<group>"; };
+		CF6B67051BAEC7ED00E67F0D /* mpn-sqr_basecase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-sqr_basecase.c"; sourceTree = "<group>"; };
+		CF6B67061BAEC7ED00E67F0D /* mpn-sqrmod_bnm1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-sqrmod_bnm1.c"; sourceTree = "<group>"; };
+		CF6B67071BAEC7ED00E67F0D /* mpn-sub.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-sub.c"; sourceTree = "<group>"; };
+		CF6B67081BAEC7ED00E67F0D /* mpn-sub_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-sub_1.c"; sourceTree = "<group>"; };
+		CF6B67091BAEC7ED00E67F0D /* mpn-sub_n.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-sub_n.c"; sourceTree = "<group>"; };
+		CF6B670A1BAEC7ED00E67F0D /* mpn-submul_1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-submul_1.c"; sourceTree = "<group>"; };
+		CF6B670B1BAEC7ED00E67F0D /* mpn-tdiv_qr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-tdiv_qr.c"; sourceTree = "<group>"; };
+		CF6B670C1BAEC7ED00E67F0D /* mpn-toom22_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom22_mul.c"; sourceTree = "<group>"; };
+		CF6B670D1BAEC7ED00E67F0D /* mpn-toom2_sqr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom2_sqr.c"; sourceTree = "<group>"; };
+		CF6B670E1BAEC7ED00E67F0D /* mpn-toom32_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom32_mul.c"; sourceTree = "<group>"; };
+		CF6B670F1BAEC7ED00E67F0D /* mpn-toom33_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom33_mul.c"; sourceTree = "<group>"; };
+		CF6B67101BAEC7ED00E67F0D /* mpn-toom3_sqr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom3_sqr.c"; sourceTree = "<group>"; };
+		CF6B67111BAEC7ED00E67F0D /* mpn-toom42_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom42_mul.c"; sourceTree = "<group>"; };
+		CF6B67121BAEC7ED00E67F0D /* mpn-toom43_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom43_mul.c"; sourceTree = "<group>"; };
+		CF6B67131BAEC7ED00E67F0D /* mpn-toom44_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom44_mul.c"; sourceTree = "<group>"; };
+		CF6B67141BAEC7ED00E67F0D /* mpn-toom4_sqr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom4_sqr.c"; sourceTree = "<group>"; };
+		CF6B67151BAEC7ED00E67F0D /* mpn-toom53_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom53_mul.c"; sourceTree = "<group>"; };
+		CF6B67161BAEC7ED00E67F0D /* mpn-toom63_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom63_mul.c"; sourceTree = "<group>"; };
+		CF6B67171BAEC7ED00E67F0D /* mpn-toom6_sqr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom6_sqr.c"; sourceTree = "<group>"; };
+		CF6B67181BAEC7ED00E67F0D /* mpn-toom6h_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom6h_mul.c"; sourceTree = "<group>"; };
+		CF6B67191BAEC7ED00E67F0D /* mpn-toom8_sqr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom8_sqr.c"; sourceTree = "<group>"; };
+		CF6B671A1BAEC7ED00E67F0D /* mpn-toom8h_mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom8h_mul.c"; sourceTree = "<group>"; };
+		CF6B671B1BAEC7ED00E67F0D /* mpn-toom_couple_handling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_couple_handling.c"; sourceTree = "<group>"; };
+		CF6B671C1BAEC7ED00E67F0D /* mpn-toom_eval_dgr3_pm1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_eval_dgr3_pm1.c"; sourceTree = "<group>"; };
+		CF6B671D1BAEC7ED00E67F0D /* mpn-toom_eval_dgr3_pm2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_eval_dgr3_pm2.c"; sourceTree = "<group>"; };
+		CF6B671E1BAEC7ED00E67F0D /* mpn-toom_eval_pm1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_eval_pm1.c"; sourceTree = "<group>"; };
+		CF6B671F1BAEC7ED00E67F0D /* mpn-toom_eval_pm2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_eval_pm2.c"; sourceTree = "<group>"; };
+		CF6B67201BAEC7ED00E67F0D /* mpn-toom_eval_pm2exp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_eval_pm2exp.c"; sourceTree = "<group>"; };
+		CF6B67211BAEC7ED00E67F0D /* mpn-toom_eval_pm2rexp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_eval_pm2rexp.c"; sourceTree = "<group>"; };
+		CF6B67221BAEC7ED00E67F0D /* mpn-toom_interpolate_12pts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_interpolate_12pts.c"; sourceTree = "<group>"; };
+		CF6B67231BAEC7ED00E67F0D /* mpn-toom_interpolate_16pts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_interpolate_16pts.c"; sourceTree = "<group>"; };
+		CF6B67241BAEC7ED00E67F0D /* mpn-toom_interpolate_5pts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_interpolate_5pts.c"; sourceTree = "<group>"; };
+		CF6B67251BAEC7ED00E67F0D /* mpn-toom_interpolate_6pts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_interpolate_6pts.c"; sourceTree = "<group>"; };
+		CF6B67261BAEC7ED00E67F0D /* mpn-toom_interpolate_7pts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_interpolate_7pts.c"; sourceTree = "<group>"; };
+		CF6B67271BAEC7ED00E67F0D /* mpn-toom_interpolate_8pts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpn-toom_interpolate_8pts.c"; sourceTree = "<group>"; };
+		CF6B67281BAEC7ED00E67F0D /* mpz-abs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-abs.c"; sourceTree = "<group>"; };
+		CF6B67291BAEC7ED00E67F0D /* mpz-add.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-add.c"; sourceTree = "<group>"; };
+		CF6B672A1BAEC7ED00E67F0D /* mpz-add_ui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-add_ui.c"; sourceTree = "<group>"; };
+		CF6B672B1BAEC7ED00E67F0D /* mpz-and.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-and.c"; sourceTree = "<group>"; };
+		CF6B672C1BAEC7ED00E67F0D /* mpz-aors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpz-aors.h"; sourceTree = "<group>"; };
+		CF6B672D1BAEC7ED00E67F0D /* mpz-aors_ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpz-aors_ui.h"; sourceTree = "<group>"; };
+		CF6B672E1BAEC7ED00E67F0D /* mpz-cdiv_q_ui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-cdiv_q_ui.c"; sourceTree = "<group>"; };
+		CF6B672F1BAEC7ED00E67F0D /* mpz-cdiv_qr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-cdiv_qr.c"; sourceTree = "<group>"; };
+		CF6B67301BAEC7ED00E67F0D /* mpz-cfdiv_q_2exp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-cfdiv_q_2exp.c"; sourceTree = "<group>"; };
+		CF6B67311BAEC7ED00E67F0D /* mpz-clear.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-clear.c"; sourceTree = "<group>"; };
+		CF6B67321BAEC7ED00E67F0D /* mpz-clrbit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-clrbit.c"; sourceTree = "<group>"; };
+		CF6B67331BAEC7ED00E67F0D /* mpz-cmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-cmp.c"; sourceTree = "<group>"; };
+		CF6B67341BAEC7ED00E67F0D /* mpz-cmp_si.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-cmp_si.c"; sourceTree = "<group>"; };
+		CF6B67351BAEC7ED00E67F0D /* mpz-cmp_ui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-cmp_ui.c"; sourceTree = "<group>"; };
+		CF6B67361BAEC7ED00E67F0D /* mpz-com.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-com.c"; sourceTree = "<group>"; };
+		CF6B67371BAEC7ED00E67F0D /* mpz-combit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-combit.c"; sourceTree = "<group>"; };
+		CF6B67381BAEC7ED00E67F0D /* mpz-export.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-export.c"; sourceTree = "<group>"; };
+		CF6B67391BAEC7ED00E67F0D /* mpz-fdiv_q_ui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-fdiv_q_ui.c"; sourceTree = "<group>"; };
+		CF6B673A1BAEC7ED00E67F0D /* mpz-fdiv_qr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-fdiv_qr.c"; sourceTree = "<group>"; };
+		CF6B673B1BAEC7ED00E67F0D /* mpz-fits_s.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpz-fits_s.h"; sourceTree = "<group>"; };
+		CF6B673C1BAEC7ED00E67F0D /* mpz-fits_sint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-fits_sint.c"; sourceTree = "<group>"; };
+		CF6B673D1BAEC7ED00E67F0D /* mpz-fits_uint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-fits_uint.c"; sourceTree = "<group>"; };
+		CF6B673E1BAEC7ED00E67F0D /* mpz-get_si.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-get_si.c"; sourceTree = "<group>"; };
+		CF6B673F1BAEC7ED00E67F0D /* mpz-get_str.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-get_str.c"; sourceTree = "<group>"; };
+		CF6B67401BAEC7ED00E67F0D /* mpz-get_ui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-get_ui.c"; sourceTree = "<group>"; };
+		CF6B67411BAEC7ED00E67F0D /* mpz-init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-init.c"; sourceTree = "<group>"; };
+		CF6B67421BAEC7ED00E67F0D /* mpz-ior.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-ior.c"; sourceTree = "<group>"; };
+		CF6B67431BAEC7ED00E67F0D /* mpz-mul.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-mul.c"; sourceTree = "<group>"; };
+		CF6B67441BAEC7ED00E67F0D /* mpz-mul_2exp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-mul_2exp.c"; sourceTree = "<group>"; };
+		CF6B67451BAEC7ED00E67F0D /* mpz-mul_i.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpz-mul_i.h"; sourceTree = "<group>"; };
+		CF6B67461BAEC7ED00E67F0D /* mpz-mul_ui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-mul_ui.c"; sourceTree = "<group>"; };
+		CF6B67471BAEC7ED00E67F0D /* mpz-neg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-neg.c"; sourceTree = "<group>"; };
+		CF6B67481BAEC7ED00E67F0D /* mpz-realloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-realloc.c"; sourceTree = "<group>"; };
+		CF6B67491BAEC7ED00E67F0D /* mpz-set.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-set.c"; sourceTree = "<group>"; };
+		CF6B674A1BAEC7ED00E67F0D /* mpz-set_str.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-set_str.c"; sourceTree = "<group>"; };
+		CF6B674B1BAEC7ED00E67F0D /* mpz-set_ui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-set_ui.c"; sourceTree = "<group>"; };
+		CF6B674C1BAEC7ED00E67F0D /* mpz-setbit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-setbit.c"; sourceTree = "<group>"; };
+		CF6B674D1BAEC7ED00E67F0D /* mpz-sizeinbase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-sizeinbase.c"; sourceTree = "<group>"; };
+		CF6B674E1BAEC7ED00E67F0D /* mpz-sub.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-sub.c"; sourceTree = "<group>"; };
+		CF6B674F1BAEC7ED00E67F0D /* mpz-sub_ui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-sub_ui.c"; sourceTree = "<group>"; };
+		CF6B67501BAEC7ED00E67F0D /* mpz-swap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-swap.c"; sourceTree = "<group>"; };
+		CF6B67511BAEC7ED00E67F0D /* mpz-tdiv_qr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-tdiv_qr.c"; sourceTree = "<group>"; };
+		CF6B67521BAEC7ED00E67F0D /* mpz-tstbit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-tstbit.c"; sourceTree = "<group>"; };
+		CF6B67531BAEC7ED00E67F0D /* mpz-xor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpz-xor.c"; sourceTree = "<group>"; };
+		CF6B67541BAEC7ED00E67F0D /* root-assert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "root-assert.c"; sourceTree = "<group>"; };
+		CF6B67551BAEC7ED00E67F0D /* root-bootstrap.c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "root-bootstrap.c.h"; sourceTree = "<group>"; };
+		CF6B67561BAEC7ED00E67F0D /* root-errno.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "root-errno.c"; sourceTree = "<group>"; };
+		CF6B67571BAEC7ED00E67F0D /* root-memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "root-memory.c"; sourceTree = "<group>"; };
+		CF6B67581BAEC7ED00E67F0D /* root-mp_bpl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "root-mp_bpl.c"; sourceTree = "<group>"; };
+		CF6B67591BAEC7ED00E67F0D /* root-mp_clz_tab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "root-mp_clz_tab.c"; sourceTree = "<group>"; };
+		CF6B675A1BAEC7ED00E67F0D /* root-mp_dv_tab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "root-mp_dv_tab.c"; sourceTree = "<group>"; };
+		CF6B675B1BAEC7ED00E67F0D /* root-mp_minv_tab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "root-mp_minv_tab.c"; sourceTree = "<group>"; };
+		CF6B675C1BAEC7ED00E67F0D /* root-tal-notreent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "root-tal-notreent.c"; sourceTree = "<group>"; };
 		CF6CEB6F1278B57400E8F785 /* C_Compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Compiler.cpp; sourceTree = "<group>"; };
 		CF6CEB711278B57400E8F785 /* C_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_io.cpp; sourceTree = "<group>"; };
 		CF6CEB721278B57400E8F785 /* C_galgas_io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_io.h; sourceTree = "<group>"; };
@@ -939,6 +1290,138 @@
 				CF443914144E144600E38AA4 /* TC_prime_cache4.h */,
 			);
 			path = cache;
+			sourceTree = "<group>";
+		};
+		CF6B66DF1BAEC7ED00E67F0D /* gmp */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B66E01BAEC7ED00E67F0D /* 32-mp_bases.c */,
+				CF6B66E11BAEC7ED00E67F0D /* 32-mp_bases.h */,
+				CF6B66E21BAEC7ED00E67F0D /* 64-mp_bases.c */,
+				CF6B66E31BAEC7ED00E67F0D /* 64-mp_bases.h */,
+				CF6B66E41BAEC7ED00E67F0D /* gmp-impl.h */,
+				CF6B66E51BAEC7ED00E67F0D /* gmp.h */,
+				CF6B66E61BAEC7ED00E67F0D /* longlong.h */,
+				CF6B66E71BAEC7ED00E67F0D /* mini-gmp.c.h */,
+				CF6B66E81BAEC7ED00E67F0D /* mini-gmp.h */,
+				CF6B66E91BAEC7ED00E67F0D /* mpn-add.c */,
+				CF6B66EA1BAEC7ED00E67F0D /* mpn-add_1.c */,
+				CF6B66EB1BAEC7ED00E67F0D /* mpn-add_n.c */,
+				CF6B66EC1BAEC7ED00E67F0D /* mpn-addmul_1.c */,
+				CF6B66ED1BAEC7ED00E67F0D /* mpn-bdiv_dbm1c.c */,
+				CF6B66EE1BAEC7ED00E67F0D /* mpn-cmp.c */,
+				CF6B66EF1BAEC7ED00E67F0D /* mpn-dcpi1_div_qr.c */,
+				CF6B66F01BAEC7ED00E67F0D /* mpn-dive_1.c */,
+				CF6B66F11BAEC7ED00E67F0D /* mpn-divrem_1.c */,
+				CF6B66F21BAEC7ED00E67F0D /* mpn-divrem_2.c */,
+				CF6B66F31BAEC7ED00E67F0D /* mpn-get_str.c */,
+				CF6B66F41BAEC7ED00E67F0D /* mpn-invertappr.c */,
+				CF6B66F51BAEC7ED00E67F0D /* mpn-lshift.c */,
+				CF6B66F61BAEC7ED00E67F0D /* mpn-lshiftc.c */,
+				CF6B66F71BAEC7ED00E67F0D /* mpn-mu_div_qr.c */,
+				CF6B66F81BAEC7ED00E67F0D /* mpn-mul.c */,
+				CF6B66F91BAEC7ED00E67F0D /* mpn-mul_1.c */,
+				CF6B66FA1BAEC7ED00E67F0D /* mpn-mul_basecase.c */,
+				CF6B66FB1BAEC7ED00E67F0D /* mpn-mul_fft.c */,
+				CF6B66FC1BAEC7ED00E67F0D /* mpn-mul_n.c */,
+				CF6B66FD1BAEC7ED00E67F0D /* mpn-mulmod_bnm1.c */,
+				CF6B66FE1BAEC7ED00E67F0D /* mpn-nussbaumer_mul.c */,
+				CF6B66FF1BAEC7ED00E67F0D /* mpn-pre_divrem_1.c */,
+				CF6B67001BAEC7ED00E67F0D /* mpn-rshift.c */,
+				CF6B67011BAEC7ED00E67F0D /* mpn-sbpi1_div_qr.c */,
+				CF6B67021BAEC7ED00E67F0D /* mpn-sbpi1_divappr_q.c */,
+				CF6B67031BAEC7ED00E67F0D /* mpn-set_str.c */,
+				CF6B67041BAEC7ED00E67F0D /* mpn-sqr.c */,
+				CF6B67051BAEC7ED00E67F0D /* mpn-sqr_basecase.c */,
+				CF6B67061BAEC7ED00E67F0D /* mpn-sqrmod_bnm1.c */,
+				CF6B67071BAEC7ED00E67F0D /* mpn-sub.c */,
+				CF6B67081BAEC7ED00E67F0D /* mpn-sub_1.c */,
+				CF6B67091BAEC7ED00E67F0D /* mpn-sub_n.c */,
+				CF6B670A1BAEC7ED00E67F0D /* mpn-submul_1.c */,
+				CF6B670B1BAEC7ED00E67F0D /* mpn-tdiv_qr.c */,
+				CF6B670C1BAEC7ED00E67F0D /* mpn-toom22_mul.c */,
+				CF6B670D1BAEC7ED00E67F0D /* mpn-toom2_sqr.c */,
+				CF6B670E1BAEC7ED00E67F0D /* mpn-toom32_mul.c */,
+				CF6B670F1BAEC7ED00E67F0D /* mpn-toom33_mul.c */,
+				CF6B67101BAEC7ED00E67F0D /* mpn-toom3_sqr.c */,
+				CF6B67111BAEC7ED00E67F0D /* mpn-toom42_mul.c */,
+				CF6B67121BAEC7ED00E67F0D /* mpn-toom43_mul.c */,
+				CF6B67131BAEC7ED00E67F0D /* mpn-toom44_mul.c */,
+				CF6B67141BAEC7ED00E67F0D /* mpn-toom4_sqr.c */,
+				CF6B67151BAEC7ED00E67F0D /* mpn-toom53_mul.c */,
+				CF6B67161BAEC7ED00E67F0D /* mpn-toom63_mul.c */,
+				CF6B67171BAEC7ED00E67F0D /* mpn-toom6_sqr.c */,
+				CF6B67181BAEC7ED00E67F0D /* mpn-toom6h_mul.c */,
+				CF6B67191BAEC7ED00E67F0D /* mpn-toom8_sqr.c */,
+				CF6B671A1BAEC7ED00E67F0D /* mpn-toom8h_mul.c */,
+				CF6B671B1BAEC7ED00E67F0D /* mpn-toom_couple_handling.c */,
+				CF6B671C1BAEC7ED00E67F0D /* mpn-toom_eval_dgr3_pm1.c */,
+				CF6B671D1BAEC7ED00E67F0D /* mpn-toom_eval_dgr3_pm2.c */,
+				CF6B671E1BAEC7ED00E67F0D /* mpn-toom_eval_pm1.c */,
+				CF6B671F1BAEC7ED00E67F0D /* mpn-toom_eval_pm2.c */,
+				CF6B67201BAEC7ED00E67F0D /* mpn-toom_eval_pm2exp.c */,
+				CF6B67211BAEC7ED00E67F0D /* mpn-toom_eval_pm2rexp.c */,
+				CF6B67221BAEC7ED00E67F0D /* mpn-toom_interpolate_12pts.c */,
+				CF6B67231BAEC7ED00E67F0D /* mpn-toom_interpolate_16pts.c */,
+				CF6B67241BAEC7ED00E67F0D /* mpn-toom_interpolate_5pts.c */,
+				CF6B67251BAEC7ED00E67F0D /* mpn-toom_interpolate_6pts.c */,
+				CF6B67261BAEC7ED00E67F0D /* mpn-toom_interpolate_7pts.c */,
+				CF6B67271BAEC7ED00E67F0D /* mpn-toom_interpolate_8pts.c */,
+				CF6B67281BAEC7ED00E67F0D /* mpz-abs.c */,
+				CF6B67291BAEC7ED00E67F0D /* mpz-add.c */,
+				CF6B672A1BAEC7ED00E67F0D /* mpz-add_ui.c */,
+				CF6B672B1BAEC7ED00E67F0D /* mpz-and.c */,
+				CF6B672C1BAEC7ED00E67F0D /* mpz-aors.h */,
+				CF6B672D1BAEC7ED00E67F0D /* mpz-aors_ui.h */,
+				CF6B672E1BAEC7ED00E67F0D /* mpz-cdiv_q_ui.c */,
+				CF6B672F1BAEC7ED00E67F0D /* mpz-cdiv_qr.c */,
+				CF6B67301BAEC7ED00E67F0D /* mpz-cfdiv_q_2exp.c */,
+				CF6B67311BAEC7ED00E67F0D /* mpz-clear.c */,
+				CF6B67321BAEC7ED00E67F0D /* mpz-clrbit.c */,
+				CF6B67331BAEC7ED00E67F0D /* mpz-cmp.c */,
+				CF6B67341BAEC7ED00E67F0D /* mpz-cmp_si.c */,
+				CF6B67351BAEC7ED00E67F0D /* mpz-cmp_ui.c */,
+				CF6B67361BAEC7ED00E67F0D /* mpz-com.c */,
+				CF6B67371BAEC7ED00E67F0D /* mpz-combit.c */,
+				CF6B67381BAEC7ED00E67F0D /* mpz-export.c */,
+				CF6B67391BAEC7ED00E67F0D /* mpz-fdiv_q_ui.c */,
+				CF6B673A1BAEC7ED00E67F0D /* mpz-fdiv_qr.c */,
+				CF6B673B1BAEC7ED00E67F0D /* mpz-fits_s.h */,
+				CF6B673C1BAEC7ED00E67F0D /* mpz-fits_sint.c */,
+				CF6B673D1BAEC7ED00E67F0D /* mpz-fits_uint.c */,
+				CF6B673E1BAEC7ED00E67F0D /* mpz-get_si.c */,
+				CF6B673F1BAEC7ED00E67F0D /* mpz-get_str.c */,
+				CF6B67401BAEC7ED00E67F0D /* mpz-get_ui.c */,
+				CF6B67411BAEC7ED00E67F0D /* mpz-init.c */,
+				CF6B67421BAEC7ED00E67F0D /* mpz-ior.c */,
+				CF6B67431BAEC7ED00E67F0D /* mpz-mul.c */,
+				CF6B67441BAEC7ED00E67F0D /* mpz-mul_2exp.c */,
+				CF6B67451BAEC7ED00E67F0D /* mpz-mul_i.h */,
+				CF6B67461BAEC7ED00E67F0D /* mpz-mul_ui.c */,
+				CF6B67471BAEC7ED00E67F0D /* mpz-neg.c */,
+				CF6B67481BAEC7ED00E67F0D /* mpz-realloc.c */,
+				CF6B67491BAEC7ED00E67F0D /* mpz-set.c */,
+				CF6B674A1BAEC7ED00E67F0D /* mpz-set_str.c */,
+				CF6B674B1BAEC7ED00E67F0D /* mpz-set_ui.c */,
+				CF6B674C1BAEC7ED00E67F0D /* mpz-setbit.c */,
+				CF6B674D1BAEC7ED00E67F0D /* mpz-sizeinbase.c */,
+				CF6B674E1BAEC7ED00E67F0D /* mpz-sub.c */,
+				CF6B674F1BAEC7ED00E67F0D /* mpz-sub_ui.c */,
+				CF6B67501BAEC7ED00E67F0D /* mpz-swap.c */,
+				CF6B67511BAEC7ED00E67F0D /* mpz-tdiv_qr.c */,
+				CF6B67521BAEC7ED00E67F0D /* mpz-tstbit.c */,
+				CF6B67531BAEC7ED00E67F0D /* mpz-xor.c */,
+				CF6B67541BAEC7ED00E67F0D /* root-assert.c */,
+				CF6B67551BAEC7ED00E67F0D /* root-bootstrap.c.h */,
+				CF6B67561BAEC7ED00E67F0D /* root-errno.c */,
+				CF6B67571BAEC7ED00E67F0D /* root-memory.c */,
+				CF6B67581BAEC7ED00E67F0D /* root-mp_bpl.c */,
+				CF6B67591BAEC7ED00E67F0D /* root-mp_clz_tab.c */,
+				CF6B675A1BAEC7ED00E67F0D /* root-mp_dv_tab.c */,
+				CF6B675B1BAEC7ED00E67F0D /* root-mp_minv_tab.c */,
+				CF6B675C1BAEC7ED00E67F0D /* root-tal-notreent.c */,
+			);
+			path = gmp;
 			sourceTree = "<group>";
 		};
 		CF7599DA19F3FE4D007E49A1 /* Generated by GALGAS (Tool) */ = {
@@ -1454,14 +1937,15 @@
 		CFF5381C057A545B00854C83 /* libpm */ = {
 			isa = PBXGroup;
 			children = (
-				CF443911144E144600E38AA4 /* cache */,
-				CFB9E4850DF28AC500885084 /* collections */,
-				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
 				CFF538F7057A560F00854C83 /* BDD */,
+				CF443911144E144600E38AA4 /* cache */,
 				CFAD482E0591BCF700BF8381 /* cocoa_galgas */,
+				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
+				CFB9E4850DF28AC500885084 /* collections */,
 				CF31E0ED0598DF5400814123 /* command_line_interface */,
 				CFF538CC057A559D00854C83 /* files */,
 				CFA5890010D285C800B7E541 /* galgas2 */,
+				CF6B66DF1BAEC7ED00E67F0D /* gmp */,
 				CFF53851057A54FB00854C83 /* streams */,
 				CFD3E8510FA0C0F800C4995E /* strings */,
 				CFF53846057A54DF00854C83 /* time */,
@@ -1876,6 +2360,119 @@
 				CF376F851BA4AC84003FC3A3 /* C_BigInt.cpp in Sources */,
 				CF376F871BA4AC84003FC3A3 /* C_CRC32.cpp in Sources */,
 				CF376F891BA4AC84003FC3A3 /* PMUInt128.cpp in Sources */,
+				CF6B675D1BAEC7EE00E67F0D /* 32-mp_bases.c in Sources */,
+				CF6B675F1BAEC7EE00E67F0D /* 64-mp_bases.c in Sources */,
+				CF6B67611BAEC7EE00E67F0D /* mpn-add.c in Sources */,
+				CF6B67631BAEC7EE00E67F0D /* mpn-add_1.c in Sources */,
+				CF6B67651BAEC7EE00E67F0D /* mpn-add_n.c in Sources */,
+				CF6B67671BAEC7EE00E67F0D /* mpn-addmul_1.c in Sources */,
+				CF6B67691BAEC7EE00E67F0D /* mpn-bdiv_dbm1c.c in Sources */,
+				CF6B676B1BAEC7EE00E67F0D /* mpn-cmp.c in Sources */,
+				CF6B676D1BAEC7EE00E67F0D /* mpn-dcpi1_div_qr.c in Sources */,
+				CF6B676F1BAEC7EE00E67F0D /* mpn-dive_1.c in Sources */,
+				CF6B67711BAEC7EE00E67F0D /* mpn-divrem_1.c in Sources */,
+				CF6B67731BAEC7EE00E67F0D /* mpn-divrem_2.c in Sources */,
+				CF6B67751BAEC7EE00E67F0D /* mpn-get_str.c in Sources */,
+				CF6B67771BAEC7EE00E67F0D /* mpn-invertappr.c in Sources */,
+				CF6B67791BAEC7EE00E67F0D /* mpn-lshift.c in Sources */,
+				CF6B677B1BAEC7EE00E67F0D /* mpn-lshiftc.c in Sources */,
+				CF6B677D1BAEC7EE00E67F0D /* mpn-mu_div_qr.c in Sources */,
+				CF6B677F1BAEC7EE00E67F0D /* mpn-mul.c in Sources */,
+				CF6B67811BAEC7EE00E67F0D /* mpn-mul_1.c in Sources */,
+				CF6B67831BAEC7EE00E67F0D /* mpn-mul_basecase.c in Sources */,
+				CF6B67851BAEC7EE00E67F0D /* mpn-mul_fft.c in Sources */,
+				CF6B67871BAEC7EE00E67F0D /* mpn-mul_n.c in Sources */,
+				CF6B67891BAEC7EE00E67F0D /* mpn-mulmod_bnm1.c in Sources */,
+				CF6B678B1BAEC7EE00E67F0D /* mpn-nussbaumer_mul.c in Sources */,
+				CF6B678D1BAEC7EE00E67F0D /* mpn-pre_divrem_1.c in Sources */,
+				CF6B678F1BAEC7EE00E67F0D /* mpn-rshift.c in Sources */,
+				CF6B67911BAEC7EE00E67F0D /* mpn-sbpi1_div_qr.c in Sources */,
+				CF6B67931BAEC7EE00E67F0D /* mpn-sbpi1_divappr_q.c in Sources */,
+				CF6B67951BAEC7EE00E67F0D /* mpn-set_str.c in Sources */,
+				CF6B67971BAEC7EE00E67F0D /* mpn-sqr.c in Sources */,
+				CF6B67991BAEC7EE00E67F0D /* mpn-sqr_basecase.c in Sources */,
+				CF6B679B1BAEC7EE00E67F0D /* mpn-sqrmod_bnm1.c in Sources */,
+				CF6B679D1BAEC7EE00E67F0D /* mpn-sub.c in Sources */,
+				CF6B679F1BAEC7EE00E67F0D /* mpn-sub_1.c in Sources */,
+				CF6B67A11BAEC7EE00E67F0D /* mpn-sub_n.c in Sources */,
+				CF6B67A31BAEC7EE00E67F0D /* mpn-submul_1.c in Sources */,
+				CF6B67A51BAEC7EE00E67F0D /* mpn-tdiv_qr.c in Sources */,
+				CF6B67A71BAEC7EE00E67F0D /* mpn-toom22_mul.c in Sources */,
+				CF6B67A91BAEC7EE00E67F0D /* mpn-toom2_sqr.c in Sources */,
+				CF6B67AB1BAEC7EE00E67F0D /* mpn-toom32_mul.c in Sources */,
+				CF6B67AD1BAEC7EE00E67F0D /* mpn-toom33_mul.c in Sources */,
+				CF6B67AF1BAEC7EE00E67F0D /* mpn-toom3_sqr.c in Sources */,
+				CF6B67B11BAEC7EE00E67F0D /* mpn-toom42_mul.c in Sources */,
+				CF6B67B31BAEC7EE00E67F0D /* mpn-toom43_mul.c in Sources */,
+				CF6B67B51BAEC7EE00E67F0D /* mpn-toom44_mul.c in Sources */,
+				CF6B67B71BAEC7EE00E67F0D /* mpn-toom4_sqr.c in Sources */,
+				CF6B67B91BAEC7EE00E67F0D /* mpn-toom53_mul.c in Sources */,
+				CF6B67BB1BAEC7EE00E67F0D /* mpn-toom63_mul.c in Sources */,
+				CF6B67BD1BAEC7EE00E67F0D /* mpn-toom6_sqr.c in Sources */,
+				CF6B67BF1BAEC7EE00E67F0D /* mpn-toom6h_mul.c in Sources */,
+				CF6B67C11BAEC7EE00E67F0D /* mpn-toom8_sqr.c in Sources */,
+				CF6B67C31BAEC7EE00E67F0D /* mpn-toom8h_mul.c in Sources */,
+				CF6B67C51BAEC7EE00E67F0D /* mpn-toom_couple_handling.c in Sources */,
+				CF6B67C71BAEC7EE00E67F0D /* mpn-toom_eval_dgr3_pm1.c in Sources */,
+				CF6B67C91BAEC7EE00E67F0D /* mpn-toom_eval_dgr3_pm2.c in Sources */,
+				CF6B67CB1BAEC7EE00E67F0D /* mpn-toom_eval_pm1.c in Sources */,
+				CF6B67CD1BAEC7EE00E67F0D /* mpn-toom_eval_pm2.c in Sources */,
+				CF6B67CF1BAEC7EE00E67F0D /* mpn-toom_eval_pm2exp.c in Sources */,
+				CF6B67D11BAEC7EE00E67F0D /* mpn-toom_eval_pm2rexp.c in Sources */,
+				CF6B67D31BAEC7EE00E67F0D /* mpn-toom_interpolate_12pts.c in Sources */,
+				CF6B67D51BAEC7EE00E67F0D /* mpn-toom_interpolate_16pts.c in Sources */,
+				CF6B67D71BAEC7EE00E67F0D /* mpn-toom_interpolate_5pts.c in Sources */,
+				CF6B67D91BAEC7EE00E67F0D /* mpn-toom_interpolate_6pts.c in Sources */,
+				CF6B67DB1BAEC7EE00E67F0D /* mpn-toom_interpolate_7pts.c in Sources */,
+				CF6B67DD1BAEC7EE00E67F0D /* mpn-toom_interpolate_8pts.c in Sources */,
+				CF6B67DF1BAEC7EE00E67F0D /* mpz-abs.c in Sources */,
+				CF6B67E11BAEC7EE00E67F0D /* mpz-add.c in Sources */,
+				CF6B67E31BAEC7EE00E67F0D /* mpz-add_ui.c in Sources */,
+				CF6B67E51BAEC7EE00E67F0D /* mpz-and.c in Sources */,
+				CF6B67E71BAEC7EE00E67F0D /* mpz-cdiv_q_ui.c in Sources */,
+				CF6B67E91BAEC7EE00E67F0D /* mpz-cdiv_qr.c in Sources */,
+				CF6B67EB1BAEC7EE00E67F0D /* mpz-cfdiv_q_2exp.c in Sources */,
+				CF6B67ED1BAEC7EE00E67F0D /* mpz-clear.c in Sources */,
+				CF6B67EF1BAEC7EE00E67F0D /* mpz-clrbit.c in Sources */,
+				CF6B67F11BAEC7EE00E67F0D /* mpz-cmp.c in Sources */,
+				CF6B67F31BAEC7EE00E67F0D /* mpz-cmp_si.c in Sources */,
+				CF6B67F51BAEC7EE00E67F0D /* mpz-cmp_ui.c in Sources */,
+				CF6B67F71BAEC7EE00E67F0D /* mpz-com.c in Sources */,
+				CF6B67F91BAEC7EE00E67F0D /* mpz-combit.c in Sources */,
+				CF6B67FB1BAEC7EE00E67F0D /* mpz-export.c in Sources */,
+				CF6B67FD1BAEC7EE00E67F0D /* mpz-fdiv_q_ui.c in Sources */,
+				CF6B67FF1BAEC7EE00E67F0D /* mpz-fdiv_qr.c in Sources */,
+				CF6B68011BAEC7EE00E67F0D /* mpz-fits_sint.c in Sources */,
+				CF6B68031BAEC7EE00E67F0D /* mpz-fits_uint.c in Sources */,
+				CF6B68051BAEC7EE00E67F0D /* mpz-get_si.c in Sources */,
+				CF6B68071BAEC7EE00E67F0D /* mpz-get_str.c in Sources */,
+				CF6B68091BAEC7EE00E67F0D /* mpz-get_ui.c in Sources */,
+				CF6B680B1BAEC7EE00E67F0D /* mpz-init.c in Sources */,
+				CF6B680D1BAEC7EE00E67F0D /* mpz-ior.c in Sources */,
+				CF6B680F1BAEC7EE00E67F0D /* mpz-mul.c in Sources */,
+				CF6B68111BAEC7EE00E67F0D /* mpz-mul_2exp.c in Sources */,
+				CF6B68131BAEC7EE00E67F0D /* mpz-mul_ui.c in Sources */,
+				CF6B68151BAEC7EE00E67F0D /* mpz-neg.c in Sources */,
+				CF6B68171BAEC7EE00E67F0D /* mpz-realloc.c in Sources */,
+				CF6B68191BAEC7EE00E67F0D /* mpz-set.c in Sources */,
+				CF6B681B1BAEC7EE00E67F0D /* mpz-set_str.c in Sources */,
+				CF6B681D1BAEC7EE00E67F0D /* mpz-set_ui.c in Sources */,
+				CF6B681F1BAEC7EE00E67F0D /* mpz-setbit.c in Sources */,
+				CF6B68211BAEC7EE00E67F0D /* mpz-sizeinbase.c in Sources */,
+				CF6B68231BAEC7EE00E67F0D /* mpz-sub.c in Sources */,
+				CF6B68251BAEC7EE00E67F0D /* mpz-sub_ui.c in Sources */,
+				CF6B68271BAEC7EE00E67F0D /* mpz-swap.c in Sources */,
+				CF6B68291BAEC7EE00E67F0D /* mpz-tdiv_qr.c in Sources */,
+				CF6B682B1BAEC7EE00E67F0D /* mpz-tstbit.c in Sources */,
+				CF6B682D1BAEC7EE00E67F0D /* mpz-xor.c in Sources */,
+				CF6B682F1BAEC7EE00E67F0D /* root-assert.c in Sources */,
+				CF6B68311BAEC7EE00E67F0D /* root-errno.c in Sources */,
+				CF6B68331BAEC7EE00E67F0D /* root-memory.c in Sources */,
+				CF6B68351BAEC7EE00E67F0D /* root-mp_bpl.c in Sources */,
+				CF6B68371BAEC7EE00E67F0D /* root-mp_clz_tab.c in Sources */,
+				CF6B68391BAEC7EE00E67F0D /* root-mp_dv_tab.c in Sources */,
+				CF6B683B1BAEC7EE00E67F0D /* root-mp_minv_tab.c in Sources */,
+				CF6B683D1BAEC7EE00E67F0D /* root-tal-notreent.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2020,6 +2617,119 @@
 				CF376F861BA4AC84003FC3A3 /* C_BigInt.cpp in Sources */,
 				CF376F881BA4AC84003FC3A3 /* C_CRC32.cpp in Sources */,
 				CF376F8A1BA4AC84003FC3A3 /* PMUInt128.cpp in Sources */,
+				CF6B675E1BAEC7EE00E67F0D /* 32-mp_bases.c in Sources */,
+				CF6B67601BAEC7EE00E67F0D /* 64-mp_bases.c in Sources */,
+				CF6B67621BAEC7EE00E67F0D /* mpn-add.c in Sources */,
+				CF6B67641BAEC7EE00E67F0D /* mpn-add_1.c in Sources */,
+				CF6B67661BAEC7EE00E67F0D /* mpn-add_n.c in Sources */,
+				CF6B67681BAEC7EE00E67F0D /* mpn-addmul_1.c in Sources */,
+				CF6B676A1BAEC7EE00E67F0D /* mpn-bdiv_dbm1c.c in Sources */,
+				CF6B676C1BAEC7EE00E67F0D /* mpn-cmp.c in Sources */,
+				CF6B676E1BAEC7EE00E67F0D /* mpn-dcpi1_div_qr.c in Sources */,
+				CF6B67701BAEC7EE00E67F0D /* mpn-dive_1.c in Sources */,
+				CF6B67721BAEC7EE00E67F0D /* mpn-divrem_1.c in Sources */,
+				CF6B67741BAEC7EE00E67F0D /* mpn-divrem_2.c in Sources */,
+				CF6B67761BAEC7EE00E67F0D /* mpn-get_str.c in Sources */,
+				CF6B67781BAEC7EE00E67F0D /* mpn-invertappr.c in Sources */,
+				CF6B677A1BAEC7EE00E67F0D /* mpn-lshift.c in Sources */,
+				CF6B677C1BAEC7EE00E67F0D /* mpn-lshiftc.c in Sources */,
+				CF6B677E1BAEC7EE00E67F0D /* mpn-mu_div_qr.c in Sources */,
+				CF6B67801BAEC7EE00E67F0D /* mpn-mul.c in Sources */,
+				CF6B67821BAEC7EE00E67F0D /* mpn-mul_1.c in Sources */,
+				CF6B67841BAEC7EE00E67F0D /* mpn-mul_basecase.c in Sources */,
+				CF6B67861BAEC7EE00E67F0D /* mpn-mul_fft.c in Sources */,
+				CF6B67881BAEC7EE00E67F0D /* mpn-mul_n.c in Sources */,
+				CF6B678A1BAEC7EE00E67F0D /* mpn-mulmod_bnm1.c in Sources */,
+				CF6B678C1BAEC7EE00E67F0D /* mpn-nussbaumer_mul.c in Sources */,
+				CF6B678E1BAEC7EE00E67F0D /* mpn-pre_divrem_1.c in Sources */,
+				CF6B67901BAEC7EE00E67F0D /* mpn-rshift.c in Sources */,
+				CF6B67921BAEC7EE00E67F0D /* mpn-sbpi1_div_qr.c in Sources */,
+				CF6B67941BAEC7EE00E67F0D /* mpn-sbpi1_divappr_q.c in Sources */,
+				CF6B67961BAEC7EE00E67F0D /* mpn-set_str.c in Sources */,
+				CF6B67981BAEC7EE00E67F0D /* mpn-sqr.c in Sources */,
+				CF6B679A1BAEC7EE00E67F0D /* mpn-sqr_basecase.c in Sources */,
+				CF6B679C1BAEC7EE00E67F0D /* mpn-sqrmod_bnm1.c in Sources */,
+				CF6B679E1BAEC7EE00E67F0D /* mpn-sub.c in Sources */,
+				CF6B67A01BAEC7EE00E67F0D /* mpn-sub_1.c in Sources */,
+				CF6B67A21BAEC7EE00E67F0D /* mpn-sub_n.c in Sources */,
+				CF6B67A41BAEC7EE00E67F0D /* mpn-submul_1.c in Sources */,
+				CF6B67A61BAEC7EE00E67F0D /* mpn-tdiv_qr.c in Sources */,
+				CF6B67A81BAEC7EE00E67F0D /* mpn-toom22_mul.c in Sources */,
+				CF6B67AA1BAEC7EE00E67F0D /* mpn-toom2_sqr.c in Sources */,
+				CF6B67AC1BAEC7EE00E67F0D /* mpn-toom32_mul.c in Sources */,
+				CF6B67AE1BAEC7EE00E67F0D /* mpn-toom33_mul.c in Sources */,
+				CF6B67B01BAEC7EE00E67F0D /* mpn-toom3_sqr.c in Sources */,
+				CF6B67B21BAEC7EE00E67F0D /* mpn-toom42_mul.c in Sources */,
+				CF6B67B41BAEC7EE00E67F0D /* mpn-toom43_mul.c in Sources */,
+				CF6B67B61BAEC7EE00E67F0D /* mpn-toom44_mul.c in Sources */,
+				CF6B67B81BAEC7EE00E67F0D /* mpn-toom4_sqr.c in Sources */,
+				CF6B67BA1BAEC7EE00E67F0D /* mpn-toom53_mul.c in Sources */,
+				CF6B67BC1BAEC7EE00E67F0D /* mpn-toom63_mul.c in Sources */,
+				CF6B67BE1BAEC7EE00E67F0D /* mpn-toom6_sqr.c in Sources */,
+				CF6B67C01BAEC7EE00E67F0D /* mpn-toom6h_mul.c in Sources */,
+				CF6B67C21BAEC7EE00E67F0D /* mpn-toom8_sqr.c in Sources */,
+				CF6B67C41BAEC7EE00E67F0D /* mpn-toom8h_mul.c in Sources */,
+				CF6B67C61BAEC7EE00E67F0D /* mpn-toom_couple_handling.c in Sources */,
+				CF6B67C81BAEC7EE00E67F0D /* mpn-toom_eval_dgr3_pm1.c in Sources */,
+				CF6B67CA1BAEC7EE00E67F0D /* mpn-toom_eval_dgr3_pm2.c in Sources */,
+				CF6B67CC1BAEC7EE00E67F0D /* mpn-toom_eval_pm1.c in Sources */,
+				CF6B67CE1BAEC7EE00E67F0D /* mpn-toom_eval_pm2.c in Sources */,
+				CF6B67D01BAEC7EE00E67F0D /* mpn-toom_eval_pm2exp.c in Sources */,
+				CF6B67D21BAEC7EE00E67F0D /* mpn-toom_eval_pm2rexp.c in Sources */,
+				CF6B67D41BAEC7EE00E67F0D /* mpn-toom_interpolate_12pts.c in Sources */,
+				CF6B67D61BAEC7EE00E67F0D /* mpn-toom_interpolate_16pts.c in Sources */,
+				CF6B67D81BAEC7EE00E67F0D /* mpn-toom_interpolate_5pts.c in Sources */,
+				CF6B67DA1BAEC7EE00E67F0D /* mpn-toom_interpolate_6pts.c in Sources */,
+				CF6B67DC1BAEC7EE00E67F0D /* mpn-toom_interpolate_7pts.c in Sources */,
+				CF6B67DE1BAEC7EE00E67F0D /* mpn-toom_interpolate_8pts.c in Sources */,
+				CF6B67E01BAEC7EE00E67F0D /* mpz-abs.c in Sources */,
+				CF6B67E21BAEC7EE00E67F0D /* mpz-add.c in Sources */,
+				CF6B67E41BAEC7EE00E67F0D /* mpz-add_ui.c in Sources */,
+				CF6B67E61BAEC7EE00E67F0D /* mpz-and.c in Sources */,
+				CF6B67E81BAEC7EE00E67F0D /* mpz-cdiv_q_ui.c in Sources */,
+				CF6B67EA1BAEC7EE00E67F0D /* mpz-cdiv_qr.c in Sources */,
+				CF6B67EC1BAEC7EE00E67F0D /* mpz-cfdiv_q_2exp.c in Sources */,
+				CF6B67EE1BAEC7EE00E67F0D /* mpz-clear.c in Sources */,
+				CF6B67F01BAEC7EE00E67F0D /* mpz-clrbit.c in Sources */,
+				CF6B67F21BAEC7EE00E67F0D /* mpz-cmp.c in Sources */,
+				CF6B67F41BAEC7EE00E67F0D /* mpz-cmp_si.c in Sources */,
+				CF6B67F61BAEC7EE00E67F0D /* mpz-cmp_ui.c in Sources */,
+				CF6B67F81BAEC7EE00E67F0D /* mpz-com.c in Sources */,
+				CF6B67FA1BAEC7EE00E67F0D /* mpz-combit.c in Sources */,
+				CF6B67FC1BAEC7EE00E67F0D /* mpz-export.c in Sources */,
+				CF6B67FE1BAEC7EE00E67F0D /* mpz-fdiv_q_ui.c in Sources */,
+				CF6B68001BAEC7EE00E67F0D /* mpz-fdiv_qr.c in Sources */,
+				CF6B68021BAEC7EE00E67F0D /* mpz-fits_sint.c in Sources */,
+				CF6B68041BAEC7EE00E67F0D /* mpz-fits_uint.c in Sources */,
+				CF6B68061BAEC7EE00E67F0D /* mpz-get_si.c in Sources */,
+				CF6B68081BAEC7EE00E67F0D /* mpz-get_str.c in Sources */,
+				CF6B680A1BAEC7EE00E67F0D /* mpz-get_ui.c in Sources */,
+				CF6B680C1BAEC7EE00E67F0D /* mpz-init.c in Sources */,
+				CF6B680E1BAEC7EE00E67F0D /* mpz-ior.c in Sources */,
+				CF6B68101BAEC7EE00E67F0D /* mpz-mul.c in Sources */,
+				CF6B68121BAEC7EE00E67F0D /* mpz-mul_2exp.c in Sources */,
+				CF6B68141BAEC7EE00E67F0D /* mpz-mul_ui.c in Sources */,
+				CF6B68161BAEC7EE00E67F0D /* mpz-neg.c in Sources */,
+				CF6B68181BAEC7EE00E67F0D /* mpz-realloc.c in Sources */,
+				CF6B681A1BAEC7EE00E67F0D /* mpz-set.c in Sources */,
+				CF6B681C1BAEC7EE00E67F0D /* mpz-set_str.c in Sources */,
+				CF6B681E1BAEC7EE00E67F0D /* mpz-set_ui.c in Sources */,
+				CF6B68201BAEC7EE00E67F0D /* mpz-setbit.c in Sources */,
+				CF6B68221BAEC7EE00E67F0D /* mpz-sizeinbase.c in Sources */,
+				CF6B68241BAEC7EE00E67F0D /* mpz-sub.c in Sources */,
+				CF6B68261BAEC7EE00E67F0D /* mpz-sub_ui.c in Sources */,
+				CF6B68281BAEC7EE00E67F0D /* mpz-swap.c in Sources */,
+				CF6B682A1BAEC7EE00E67F0D /* mpz-tdiv_qr.c in Sources */,
+				CF6B682C1BAEC7EE00E67F0D /* mpz-tstbit.c in Sources */,
+				CF6B682E1BAEC7EE00E67F0D /* mpz-xor.c in Sources */,
+				CF6B68301BAEC7EE00E67F0D /* root-assert.c in Sources */,
+				CF6B68321BAEC7EE00E67F0D /* root-errno.c in Sources */,
+				CF6B68341BAEC7EE00E67F0D /* root-memory.c in Sources */,
+				CF6B68361BAEC7EE00E67F0D /* root-mp_bpl.c in Sources */,
+				CF6B68381BAEC7EE00E67F0D /* root-mp_clz_tab.c in Sources */,
+				CF6B683A1BAEC7EE00E67F0D /* root-mp_dv_tab.c in Sources */,
+				CF6B683C1BAEC7EE00E67F0D /* root-mp_minv_tab.c in Sources */,
+				CF6B683E1BAEC7EE00E67F0D /* root-tal-notreent.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2101,8 +2811,8 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				INSTALL_PATH = "$(HOME)/bin";
 				LD_OPENMP_FLAGS = "";
-				OTHER_LDFLAGS = "../libpm/gmp/libgmp-Darwin-Intel.a";
 				PRODUCT_NAME = galgas;
+				WARNING_LDFLAGS = "../libpm/gmp/libgmp-Darwin-Intel.a";
 			};
 			name = Default;
 		};
@@ -2120,7 +2830,6 @@
 				INSTALL_PATH = /usr/local/bin;
 				LD_OPENMP_FLAGS = "";
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "../libpm/gmp/libgmp-Darwin-Intel.a";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "galgas-debug";
 			};
