@@ -486,6 +486,8 @@
 		CFAE5B1B10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
 		CFB566C2193730F10042E6E5 /* C_RelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB566C0193730F10042E6E5 /* C_RelationSingleType.cpp */; };
 		CFB566C3193730F10042E6E5 /* C_RelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB566C0193730F10042E6E5 /* C_RelationSingleType.cpp */; };
+		CFB6BEF81BB325A700664E85 /* check-gmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6BEF71BB325A700664E85 /* check-gmp.cpp */; };
+		CFB6BEF91BB325A700664E85 /* check-gmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6BEF71BB325A700664E85 /* check-gmp.cpp */; };
 		CFB6E59712788349000F1772 /* GALGAS_application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6E59612788349000F1772 /* GALGAS_application.cpp */; };
 		CFB6E59812788349000F1772 /* GALGAS_application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6E59612788349000F1772 /* GALGAS_application.cpp */; };
 		CFBF7012179AF06800789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7011179AF06800789D8A /* PMUndoManager.m */; };
@@ -987,6 +989,7 @@
 		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
 		CFB566C0193730F10042E6E5 /* C_RelationSingleType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = C_RelationSingleType.cpp; path = bdd/C_RelationSingleType.cpp; sourceTree = "<group>"; };
 		CFB566C1193730F10042E6E5 /* C_RelationSingleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_RelationSingleType.h; path = bdd/C_RelationSingleType.h; sourceTree = "<group>"; };
+		CFB6BEF71BB325A700664E85 /* check-gmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "check-gmp.cpp"; sourceTree = "<group>"; };
 		CFB6E59612788349000F1772 /* GALGAS_application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_application.cpp; sourceTree = "<group>"; };
 		CFB7E4B7127F2F7F005B9851 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		CFB9E4870DF28AC500885084 /* TC_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Array.h; sourceTree = "<group>"; };
@@ -1893,6 +1896,7 @@
 		CFF53737057A4E9400854C83 /* Hand Coded Sources (Tool) */ = {
 			isa = PBXGroup;
 			children = (
+				CFB6BEF71BB325A700664E85 /* check-gmp.cpp */,
 				CFF537C7057A524B00854C83 /* Grammar Component */,
 			);
 			fileEncoding = 5;
@@ -2473,6 +2477,7 @@
 				CF6B68391BAEC7EE00E67F0D /* root-mp_dv_tab.c in Sources */,
 				CF6B683B1BAEC7EE00E67F0D /* root-mp_minv_tab.c in Sources */,
 				CF6B683D1BAEC7EE00E67F0D /* root-tal-notreent.c in Sources */,
+				CFB6BEF81BB325A700664E85 /* check-gmp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2730,6 +2735,7 @@
 				CF6B683A1BAEC7EE00E67F0D /* root-mp_dv_tab.c in Sources */,
 				CF6B683C1BAEC7EE00E67F0D /* root-mp_minv_tab.c in Sources */,
 				CF6B683E1BAEC7EE00E67F0D /* root-tal-notreent.c in Sources */,
+				CFB6BEF91BB325A700664E85 /* check-gmp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
