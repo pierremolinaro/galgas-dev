@@ -11955,15 +11955,10 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
       result << ") {\n" ;
       const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_4186.current_mReferenceGrammar (HERE).reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 92)).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_0) {
-        result << "          if (! executionModeIsIndexing ()) {\n"
-          "            routine_" ;
-        result << GALGAS_string ("programRule_").add_operation (index_4186_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 94)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 94)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 94)).stringValue () ;
-        result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
-          "          }\n"
-          "          switch (executionMode ()) {\n"
+        result << "          switch (executionMode ()) {\n"
           "          case kExecutionModeNormal :\n"
           "            routine_" ;
-        result << GALGAS_string ("programRule_").add_operation (index_4186_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 98)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 98)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 98)).stringValue () ;
+        result << GALGAS_string ("programRule_").add_operation (index_4186_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 95)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 95)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 95)).stringValue () ;
         result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
           "            break ;\n"
           "          case kExecutionModeLexicalAnalysisOnly :\n"
@@ -11983,27 +11978,27 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
         result << "          switch (executionMode ()) {\n"
           "          case kExecutionModeNormal :\n"
           "            routine_" ;
-        result << GALGAS_string ("programRule_").add_operation (index_4186_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 116)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 116)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 116)).stringValue () ;
+        result << GALGAS_string ("programRule_").add_operation (index_4186_IDX.reader_string (SOURCE_FILE ("program-file.cpp.galgasTemplate", 113)), inCompiler COMMA_SOURCE_FILE ("program-file.cpp.galgasTemplate", 113)).reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 113)).stringValue () ;
         result << " (sourceFilePath, commonLexique COMMA_HERE) ;\n"
           "            break ;\n"
           "          case kExecutionModeLexicalAnalysisOnly :\n"
           "            cGrammar_" ;
-        result << enumerator_4186.current_mReferenceGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 119)).stringValue () ;
+        result << enumerator_4186.current_mReferenceGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 116)).stringValue () ;
         result << "::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "            break ;\n"
           "          case kExecutionModeSyntaxAnalysisOnly :\n"
           "            cGrammar_" ;
-        result << enumerator_4186.current_mReferenceGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 122)).stringValue () ;
+        result << enumerator_4186.current_mReferenceGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 119)).stringValue () ;
         result << "::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "            break ;\n"
           "          case kExecutionModeIndexing :\n"
           "            cGrammar_" ;
-        result << enumerator_4186.current_mReferenceGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 125)).stringValue () ;
+        result << enumerator_4186.current_mReferenceGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 122)).stringValue () ;
         result << "::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "            break ;\n"
           "          case kExecutionModeLatex :\n"
           "            cGrammar_" ;
-        result << enumerator_4186.current_mReferenceGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 128)).stringValue () ;
+        result << enumerator_4186.current_mReferenceGrammar (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("program-file.cpp.galgasTemplate", 125)).stringValue () ;
         result << "::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n"
           "            break ;\n"
           "          }\n" ;
