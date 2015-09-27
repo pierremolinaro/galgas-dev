@@ -11,3131 +11,1181 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                @grammarInstructionWithSourceFileForGeneration class                                 *
+//                                        Routine 'buildGalgas3SemanticContext'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_grammarInstructionWithSourceFileForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_grammarInstructionWithSourceFileForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_grammarInstructionWithSourceFileForGeneration * ptr (void) const { return (const cPtr_grammarInstructionWithSourceFileForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_grammarInstructionWithSourceFileForGeneration (const cPtr_grammarInstructionWithSourceFileForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_grammarInstructionWithSourceFileForGeneration extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInstructionWithSourceFileForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                                        const class GALGAS_string & inOperand1,
-                                                                                        const class GALGAS_string & inOperand2,
-                                                                                        const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                        const class GALGAS_actualParameterListForGeneration & inOperand4,
-                                                                                        const class GALGAS_bool & inOperand5,
-                                                                                        const class GALGAS_stringlist & inOperand6,
-                                                                                        const class GALGAS_string & inOperand7
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceFileForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mAssignementList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mGrammarHasTranslateFeature (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mGrammarName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mLabelName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mSourceFileExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSyntaxDirectedTranslationResultVarName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_grammarInstructionWithSourceFileForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Pointer class for @grammarInstructionWithSourceFileForGeneration class                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mGrammarName ;
-  public : GALGAS_string mAttribute_mLabelName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSourceFileExpression ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mGrammarHasTranslateFeature ;
-  public : GALGAS_stringlist mAttribute_mAssignementList ;
-  public : GALGAS_string mAttribute_mSyntaxDirectedTranslationResultVarName ;
-
-//--- Constructor
-  public : cPtr_grammarInstructionWithSourceFileForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                               const GALGAS_string & in_mGrammarName,
-                                                               const GALGAS_string & in_mLabelName,
-                                                               const GALGAS_semanticExpressionForGeneration & in_mSourceFileExpression,
-                                                               const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
-                                                               const GALGAS_bool & in_mGrammarHasTranslateFeature,
-                                                               const GALGAS_stringlist & in_mAssignementList,
-                                                               const GALGAS_string & in_mSyntaxDirectedTranslationResultVarName
-                                                               COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mGrammarName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mLabelName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mSourceFileExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mGrammarHasTranslateFeature (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_mAssignementList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mSyntaxDirectedTranslationResultVarName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          @ifInstructionForGeneration class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_ifInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_ifInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_ifInstructionForGeneration * ptr (void) const { return (const cPtr_ifInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_ifInstructionForGeneration (const cPtr_ifInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_ifInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_ifInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand2,
-                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand3
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_ifInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mIFexpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_m_5F_else_5F_instructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_m_5F_then_5F_instructionList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_ifInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Pointer class for @ifInstructionForGeneration class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mIFexpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_m_5F_then_5F_instructionList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_m_5F_else_5F_instructionList ;
-
-//--- Constructor
-  public : cPtr_ifInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                            const GALGAS_semanticExpressionForGeneration & in_mIFexpression,
-                                            const GALGAS_semanticInstructionListForGeneration & in_m_5F_then_5F_instructionList,
-                                            const GALGAS_semanticInstructionListForGeneration & in_m_5F_else_5F_instructionList
-                                            COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mIFexpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_m_5F_then_5F_instructionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_m_5F_else_5F_instructionList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        @incDecInstructionForGeneration class                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_incDecInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_incDecInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_incDecInstructionForGeneration * ptr (void) const { return (const cPtr_incDecInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_incDecInstructionForGeneration (const cPtr_incDecInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_incDecInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_incDecInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_string & inOperand1,
-                                                                         const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
-                                                                         const class GALGAS_lstringlist & inOperand3,
-                                                                         const class GALGAS_incDecKind & inOperand4
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_incDecInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_incDecKind reader_mKind (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_incDecInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Pointer class for @incDecInstructionForGeneration class                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_incDecInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mReceiverCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_incDecKind mAttribute_mKind ;
-
-//--- Constructor
-  public : cPtr_incDecInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                const GALGAS_string & in_mReceiverCppName,
-                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                const GALGAS_lstringlist & in_mStructAttributeList,
-                                                const GALGAS_incDecKind & in_mKind
-                                                COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_incDecKind reader_mKind (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     @incDecNoOVFInstructionForGeneration class                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_incDecNoOVFInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_incDecNoOVFInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_incDecNoOVFInstructionForGeneration * ptr (void) const { return (const cPtr_incDecNoOVFInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_incDecNoOVFInstructionForGeneration (const cPtr_incDecNoOVFInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_incDecNoOVFInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_incDecNoOVFInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_string & inOperand1,
-                                                                              const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
-                                                                              const class GALGAS_lstringlist & inOperand3,
-                                                                              const class GALGAS_incDecKind & inOperand4
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_incDecNoOVFInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_incDecKind reader_mKind (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_incDecNoOVFInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Pointer class for @incDecNoOVFInstructionForGeneration class                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_incDecNoOVFInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mReceiverCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_incDecKind mAttribute_mKind ;
-
-//--- Constructor
-  public : cPtr_incDecNoOVFInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                     const GALGAS_string & in_mReceiverCppName,
-                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                     const GALGAS_lstringlist & in_mStructAttributeList,
-                                                     const GALGAS_incDecKind & in_mKind
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_incDecKind reader_mKind (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    @localVariableDeclarationForGeneration class                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_localVariableDeclarationForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_localVariableDeclarationForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_localVariableDeclarationForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_localVariableDeclarationForGeneration * ptr (void) const { return (const cPtr_localVariableDeclarationForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_localVariableDeclarationForGeneration (const cPtr_localVariableDeclarationForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_localVariableDeclarationForGeneration extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_localVariableDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                const class GALGAS_string & inOperand1
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_localVariableDeclarationForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mCppVariableName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mVariableType (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_localVariableDeclarationForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                           Pointer class for @localVariableDeclarationForGeneration class                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_localVariableDeclarationForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mVariableType ;
-  public : GALGAS_string mAttribute_mCppVariableName ;
-
-//--- Constructor
-  public : cPtr_localVariableDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mVariableType,
-                                                       const GALGAS_string & in_mCppVariableName
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mVariableType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mCppVariableName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      @localVariableOrConstantDeclarationWithConstructorCallForGeneration class                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration * ptr (void) const { return (const cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration (const cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration extractObject (const GALGAS_object & inObject,
-                                                                                                           C_Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                                                             const class GALGAS_bool & inOperand2,
-                                                                                                             const class GALGAS_string & inOperand3,
-                                                                                                             const class GALGAS_string & inOperand4,
-                                                                                                             const class GALGAS_semanticExpressionListForGeneration & inOperand5,
-                                                                                                             const class GALGAS_bool & inOperand6
-                                                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionListForGeneration reader_mConstructorArguments (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mConstructorName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mTargetType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mTargetVariableCppName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//             Pointer class for @localVariableOrConstantDeclarationWithConstructorCallForGeneration class             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_bool mAttribute_mIsConstant ;
-  public : GALGAS_string mAttribute_mTargetVariableCppName ;
-  public : GALGAS_string mAttribute_mConstructorName ;
-  public : GALGAS_semanticExpressionListForGeneration mAttribute_mConstructorArguments ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-
-//--- Constructor
-  public : cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
-                                                                                    const GALGAS_bool & in_mIsConstant,
-                                                                                    const GALGAS_string & in_mTargetVariableCppName,
-                                                                                    const GALGAS_string & in_mConstructorName,
-                                                                                    const GALGAS_semanticExpressionListForGeneration & in_mConstructorArguments,
-                                                                                    const GALGAS_bool & in_mHasCompilerArgument
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mTargetType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mTargetVariableCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mConstructorName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionListForGeneration reader_mConstructorArguments (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                    @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration class                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration * ptr (void) const { return (const cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration (const cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration extractObject (const GALGAS_object & inObject,
-                                                                                                              C_Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                                                                const class GALGAS_bool & inOperand2,
-                                                                                                                const class GALGAS_string & inOperand3
-                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mTargetType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mTargetVariableCppName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//           Pointer class for @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration class            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_bool mAttribute_mIsConstant ;
-  public : GALGAS_string mAttribute_mTargetVariableCppName ;
-
-//--- Constructor
-  public : cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                                       const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
-                                                                                       const GALGAS_bool & in_mIsConstant,
-                                                                                       const GALGAS_string & in_mTargetVariableCppName
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mTargetType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mTargetVariableCppName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                     @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * ptr (void) const { return (const cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                                              const class GALGAS_bool & inOperand1,
-                                                                                                              const class GALGAS_string & inOperand2,
-                                                                                                              const class GALGAS_semanticExpressionForGeneration & inOperand3
-                                                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mCppVariableName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mSourceExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mTargetType (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//            Pointer class for @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_bool mAttribute_mIsConstant ;
-  public : GALGAS_string mAttribute_mCppVariableName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSourceExpression ;
-
-//--- Constructor
-  public : cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
-                                                                                     const GALGAS_bool & in_mIsConstant,
-                                                                                     const GALGAS_string & in_mCppVariableName,
-                                                                                     const GALGAS_semanticExpressionForGeneration & in_mSourceExpression
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mTargetType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mCppVariableName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mSourceExpression (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @logInstructionForGeneration class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_logInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_logInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_logInstructionForGeneration * ptr (void) const { return (const cPtr_logInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_logInstructionForGeneration (const cPtr_logInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_logInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_logInstructionForGeneration constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_logInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mLogExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLogMessage (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_logInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @logInstructionForGeneration class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mLogMessage ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLogExpression ;
-
-//--- Constructor
-  public : cPtr_logInstructionForGeneration (const GALGAS_lstring & in_mLogMessage,
-                                             const GALGAS_semanticExpressionForGeneration & in_mLogExpression
+void routine_buildGalgas_33_SemanticContext (const class GALGAS_semanticDeclarationListAST constinArgument0,
+                                             const class GALGAS_location constinArgument1,
+                                             class GALGAS_semanticContext & outArgument2,
+                                             class GALGAS_semanticDeclarationListAST & outArgument3,
+                                             class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLogMessage (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mLogExpression (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         @loopInstructionForGeneration class                                         *
+//                       Category method '@semanticDeclarationForGeneration appendSpecificFiles'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_loopInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_loopInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_loopInstructionForGeneration * ptr (void) const { return (const cPtr_loopInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_loopInstructionForGeneration (const cPtr_loopInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_loopInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_loopInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand2,
-                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand4
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_loopInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mFirstInstructions (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mLoopExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mSecondInstructions (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mVariantExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_loopInstructionForGeneration class
-
+typedef void (*categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                              const class GALGAS_string constinArgument0,
+                                                                                              class GALGAS_stringset & ioArgument1,
+                                                                                              class C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionForGeneration ;
+void enterCategoryMethod_appendSpecificFiles (const int32_t inClassIndex,
+                                              categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callCategoryMethod_appendSpecificFiles (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                             const GALGAS_string constin_inProductDirectory,
+                                             GALGAS_stringset & io_ioAllProductFileSet,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Pointer class for @loopInstructionForGeneration class                                *
+//                                      Routine 'generateFewImplementationFiles'                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_loopInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mVariantExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mFirstInstructions ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLoopExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mSecondInstructions ;
+void routine_generateFewImplementationFiles (const class GALGAS_unifiedTypeMap constinArgument0,
+                                             const class GALGAS_string constinArgument1,
+                                             const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
+                                             class GALGAS_stringlist & ioArgument3,
+                                             class GALGAS_stringset & ioArgument4,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
-//--- Constructor
-  public : cPtr_loopInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                              const GALGAS_semanticExpressionForGeneration & in_mVariantExpression,
-                                              const GALGAS_semanticInstructionListForGeneration & in_mFirstInstructions,
-                                              const GALGAS_semanticExpressionForGeneration & in_mLoopExpression,
-                                              const GALGAS_semanticInstructionListForGeneration & in_mSecondInstructions
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Routine 'generateFewImplementationFilesWithFewHeaders'                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateFewImplementationFilesWithFewHeaders (const class GALGAS_unifiedTypeMap constinArgument0,
+                                                           const class GALGAS_string constinArgument1,
+                                                           const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
+                                                           class GALGAS_stringlist & ioArgument3,
+                                                           class GALGAS_stringset & ioArgument4,
+                                                           class GALGAS_stringlist & ioArgument5,
+                                                           class C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            Routine 'generateManyHeaders'                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateManyHeaders (const class GALGAS_string constinArgument0,
+                                  const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument1,
+                                  class GALGAS_stringset & ioArgument2,
+                                  class GALGAS_stringlist & ioArgument3,
+                                  class C_Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      Routine 'generateManyImplementationFiles'                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateManyImplementationFiles (const class GALGAS_unifiedTypeMap constinArgument0,
+                                              const class GALGAS_string constinArgument1,
+                                              const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
+                                              class GALGAS_stringlist & ioArgument3,
+                                              class GALGAS_stringset & ioArgument4,
+                                              class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mVariantExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mFirstInstructions (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mLoopExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mSecondInstructions (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        @matchInstructionForGeneration class                                         *
+//                                           Routine 'generateOneBigHeader'                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_matchInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_matchInstructionForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_matchInstructionForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_matchInstructionForGeneration * ptr (void) const { return (const cPtr_matchInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_matchInstructionForGeneration (const cPtr_matchInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_matchInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_matchInstructionForGeneration constructor_new (const class GALGAS_semanticExpressionListForGeneration & inOperand0,
-                                                                        const class GALGAS_matchInstructionBranchListForGeneration & inOperand1,
-                                                                        const class GALGAS_semanticInstructionListForGeneration & inOperand2
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_matchInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mElseInstructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_matchInstructionBranchListForGeneration reader_mMatchInstructionBranchList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionListForGeneration reader_mMatchedExpressionList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_matchInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionForGeneration ;
+void routine_generateOneBigHeader (const class GALGAS_string constinArgument0,
+                                   const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument1,
+                                   class GALGAS_stringset & ioArgument2,
+                                   class GALGAS_stringlist & ioArgument3,
+                                   class C_Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Pointer class for @matchInstructionForGeneration class                                *
+//                       Abstract category reader '@semanticDeclarationForGeneration headerKind'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_matchInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionListForGeneration mAttribute_mMatchedExpressionList ;
-  public : GALGAS_matchInstructionBranchListForGeneration mAttribute_mMatchInstructionBranchList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseInstructionList ;
+typedef class GALGAS_headerKind (*categoryReaderSignature_semanticDeclarationForGeneration_headerKind) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                        class C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
 
-//--- Constructor
-  public : cPtr_matchInstructionForGeneration (const GALGAS_semanticExpressionListForGeneration & in_mMatchedExpressionList,
-                                               const GALGAS_matchInstructionBranchListForGeneration & in_mMatchInstructionBranchList,
-                                               const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList
-                                               COMMA_LOCATION_ARGS) ;
+//---------------------------------------------------------------------------------------------------------------------*
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+void enterCategoryReader_headerKind (const int32_t inClassIndex,
+                                     categoryReaderSignature_semanticDeclarationForGeneration_headerKind inMethod) ;
 
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionListForGeneration reader_mMatchedExpressionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_matchInstructionBranchListForGeneration reader_mMatchInstructionBranchList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mElseInstructionList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
+//---------------------------------------------------------------------------------------------------------------------*
 
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+class GALGAS_headerKind callCategoryReader_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       @messageInstructionForGeneration class                                        *
+//               Abstract category reader '@semanticDeclarationForGeneration implementationCppFileName'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_messageInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_messageInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_messageInstructionForGeneration * ptr (void) const { return (const cPtr_messageInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_messageInstructionForGeneration (const cPtr_messageInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_messageInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_messageInstructionForGeneration constructor_new (const class GALGAS_semanticExpressionForGeneration & inOperand0,
-                                                                          const class GALGAS_location & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_messageInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_messageInstructionForGeneration class
-
+typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                                   class C_Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionForGeneration ;
+void enterCategoryReader_implementationCppFileName (const int32_t inClassIndex,
+                                                    categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string callCategoryReader_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Pointer class for @messageInstructionForGeneration class                               *
+//                      Abstract category reader '@semanticDeclarationForGeneration isPredefined'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
-  public : GALGAS_location mAttribute_mInstructionLocation ;
+typedef class GALGAS_bool (*categoryReaderSignature_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                    class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
-//--- Constructor
-  public : cPtr_messageInstructionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression,
-                                                 const GALGAS_location & in_mInstructionLocation
-                                                 COMMA_LOCATION_ARGS) ;
+//---------------------------------------------------------------------------------------------------------------------*
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+void enterCategoryReader_isPredefined (const int32_t inClassIndex,
+                                       categoryReaderSignature_semanticDeclarationForGeneration_isPredefined inMethod) ;
 
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
+//---------------------------------------------------------------------------------------------------------------------*
 
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+class GALGAS_bool callCategoryReader_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @methodCallInstructionForGeneration class                                      *
+//                                                Routine 'buildHeader'                                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_methodCallInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_methodCallInstructionForGeneration * ptr (void) const { return (const cPtr_methodCallInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_methodCallInstructionForGeneration (const cPtr_methodCallInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_methodCallInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_methodCallInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                             const class GALGAS_string & inOperand3,
-                                                                             const class GALGAS_methodKind & inOperand4,
-                                                                             const class GALGAS_actualParameterListForGeneration & inOperand5,
-                                                                             const class GALGAS_bool & inOperand6,
-                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & inOperand7
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_methodCallInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mMethodBaseType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mMethodName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_methodCallInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructionForGeneration ;
+void routine_buildHeader (const class GALGAS_headerCompositionMap constinArgument0,
+                          const class GALGAS_string constinArgument1,
+                          const class GALGAS_string constinArgument2,
+                          class GALGAS_headerRepartitionMap & ioArgument3,
+                          class GALGAS_string & ioArgument4,
+                          class C_Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Pointer class for @methodCallInstructionForGeneration class                             *
+//                                          Function 'definitionGroupAmount'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_string mAttribute_mMethodName ;
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mMethodBaseType ;
-
-//--- Constructor
-  public : cPtr_methodCallInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                    const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                    const GALGAS_string & in_mMethodName,
-                                                    const GALGAS_methodKind & in_mKind,
-                                                    const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
-                                                    const GALGAS_bool & in_mHasCompilerArgument,
-                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mMethodBaseType
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mMethodName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mMethodBaseType (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @plusEqualnstructionForGeneration class                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_plusEqualnstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_plusEqualnstructionForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_plusEqualnstructionForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_plusEqualnstructionForGeneration * ptr (void) const { return (const cPtr_plusEqualnstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_plusEqualnstructionForGeneration (const cPtr_plusEqualnstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_plusEqualnstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_plusEqualnstructionForGeneration constructor_new (const class GALGAS_string & inOperand0,
-                                                                           const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                           const class GALGAS_string & inOperand2,
-                                                                           const class GALGAS_location & inOperand3,
-                                                                           const class GALGAS_lstringlist & inOperand4,
-                                                                           const class GALGAS_semanticExpressionListForGeneration & inOperand5
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_plusEqualnstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionListForGeneration reader_mExpressionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mNameForCheckingFormalParameterUsing (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mTargetType (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_plusEqualnstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @plusEqualnstructionForGeneration class                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_plusEqualnstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_string mAttribute_mReceiverCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_string mAttribute_mNameForCheckingFormalParameterUsing ;
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionListForGeneration mAttribute_mExpressionList ;
-
-//--- Constructor
-  public : cPtr_plusEqualnstructionForGeneration (const GALGAS_string & in_mReceiverCppName,
-                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
-                                                  const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
-                                                  const GALGAS_location & in_mInstructionLocation,
-                                                  const GALGAS_lstringlist & in_mStructAttributeList,
-                                                  const GALGAS_semanticExpressionListForGeneration & in_mExpressionList
+class GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mTargetType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mNameForCheckingFormalParameterUsing (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionListForGeneration reader_mExpressionList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     @readOnlyWithInstructionForGeneration class                                     *
+//                    Abstract category reader '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_readOnlyWithInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_readOnlyWithInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_readOnlyWithInstructionForGeneration * ptr (void) const { return (const cPtr_readOnlyWithInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_readOnlyWithInstructionForGeneration (const cPtr_readOnlyWithInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_readOnlyWithInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_readOnlyWithInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                               const class GALGAS_string & inOperand2,
-                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                               const class GALGAS_string & inOperand4,
-                                                                               const class GALGAS_semanticInstructionListForGeneration & inOperand5,
-                                                                               const class GALGAS_semanticInstructionListForGeneration & inOperand6
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_readOnlyWithInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mDoBranchInstructions (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mElseBranchInstructions (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mKeyExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mObjectArrayCppName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSearchMethodNameForErrorSignaling (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_readOnlyWithInstructionForGeneration class
-
+typedef class GALGAS_bool (*categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                        class C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readOnlyWithInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Pointer class for @readOnlyWithInstructionForGeneration class                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_readOnlyWithInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_string mAttribute_mObjectArrayCppName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mKeyExpression ;
-  public : GALGAS_string mAttribute_mSearchMethodNameForErrorSignaling ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mDoBranchInstructions ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseBranchInstructions ;
-
-//--- Constructor
-  public : cPtr_readOnlyWithInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                      const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                      const GALGAS_string & in_mObjectArrayCppName,
-                                                      const GALGAS_semanticExpressionForGeneration & in_mKeyExpression,
-                                                      const GALGAS_string & in_mSearchMethodNameForErrorSignaling,
-                                                      const GALGAS_semanticInstructionListForGeneration & in_mDoBranchInstructions,
-                                                      const GALGAS_semanticInstructionListForGeneration & in_mElseBranchInstructions
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mObjectArrayCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mKeyExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mSearchMethodNameForErrorSignaling (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mDoBranchInstructions (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mElseBranchInstructions (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    @readWriteWithInstructionForGeneration class                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_readWriteWithInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_readWriteWithInstructionForGeneration * ptr (void) const { return (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_readWriteWithInstructionForGeneration (const cPtr_readWriteWithInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_readWriteWithInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_readWriteWithInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                                const class GALGAS_string & inOperand1,
-                                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
-                                                                                const class GALGAS_lstringlist & inOperand3,
-                                                                                const class GALGAS_string & inOperand4,
-                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand5,
-                                                                                const class GALGAS_string & inOperand6,
-                                                                                const class GALGAS_semanticInstructionListForGeneration & inOperand7,
-                                                                                const class GALGAS_semanticInstructionListForGeneration & inOperand8
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_readWriteWithInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mDoBranchInstructions (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mElseBranchInstructions (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mKeyExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mObjectArrayCppName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mReceiverVariableCppName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSearchMethodNameForErrorSignaling (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_readWriteWithInstructionForGeneration class
-
+void enterCategoryReader_hasCppHeaderFile (const int32_t inClassIndex,
+                                           categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readWriteWithInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                           Pointer class for @readWriteWithInstructionForGeneration class                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mReceiverVariableCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_string mAttribute_mObjectArrayCppName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mKeyExpression ;
-  public : GALGAS_string mAttribute_mSearchMethodNameForErrorSignaling ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mDoBranchInstructions ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseBranchInstructions ;
-
-//--- Constructor
-  public : cPtr_readWriteWithInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                       const GALGAS_string & in_mReceiverVariableCppName,
-                                                       const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                       const GALGAS_lstringlist & in_mStructAttributeList,
-                                                       const GALGAS_string & in_mObjectArrayCppName,
-                                                       const GALGAS_semanticExpressionForGeneration & in_mKeyExpression,
-                                                       const GALGAS_string & in_mSearchMethodNameForErrorSignaling,
-                                                       const GALGAS_semanticInstructionListForGeneration & in_mDoBranchInstructions,
-                                                       const GALGAS_semanticInstructionListForGeneration & in_mElseBranchInstructions
+class GALGAS_bool callCategoryReader_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                       C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReceiverVariableCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mObjectArrayCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mKeyExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mSearchMethodNameForErrorSignaling (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mDoBranchInstructions (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mElseBranchInstructions (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     @routineCallInstructionForGeneration class                                      *
+//                                   Filewrapper 'xcodeProjectGenerationFilewrapper'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_routineCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_routineCallInstructionForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_routineCallInstructionForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_routineCallInstructionForGeneration * ptr (void) const { return (const cPtr_routineCallInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_routineCallInstructionForGeneration (const cPtr_routineCallInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_routineCallInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_routineCallInstructionForGeneration constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                              const class GALGAS_actualParameterListForGeneration & inOperand1
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_routineCallInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mRoutineName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_routineCallInstructionForGeneration class
+//---------------------------------------------------------------------------------------------------------------------*
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineCallInstructionForGeneration ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Pointer class for @routineCallInstructionForGeneration class                             *
+//                         Filewrapper template 'xcodeProjectGenerationFilewrapper xcodeproj'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_routineCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mRoutineName ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-
-//--- Constructor
-  public : cPtr_routineCallInstructionForGeneration (const GALGAS_lstring & in_mRoutineName,
-                                                     const GALGAS_actualParameterListForGeneration & in_mActualParameterList
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mRoutineName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (class C_Compiler * inCompiler,
+                                                                               const class GALGAS_string & in_PROJECT_5F_REF,
+                                                                               const class GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
+                                                                               const class GALGAS_XCodeGroupList & in_GROUPS,
+                                                                               const class GALGAS_stringlist & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
+                                                                               const class GALGAS_XCodeToolTargetList & in_TOOL_5F_TARGET_5F_LIST,
+                                                                               const class GALGAS_XCodeAppTargetList & in_APP_5F_TARGET_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_C_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_M_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_MM_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_FRAMEWORK_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_HEADER_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_PLIST_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_TIFF_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_ICNS_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_XIB_5F_FILE_5F_LIST,
+                                                                               const class GALGAS_BuildFileList & in_BUILD_5F_FILE_5F_LIST,
+                                                                               const class GALGAS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
+                                                                               const class GALGAS_stringlist & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
+                                                                               const class GALGAS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   @selfModifierCallInstructionForGeneration class                                   *
+//                                 Filewrapper 'updaterGalgas3ApplicationFileWrapper'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_selfModifierCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_selfModifierCallInstructionForGeneration (void) ;
 
-//---
-  public : inline const class cPtr_selfModifierCallInstructionForGeneration * ptr (void) const { return (const cPtr_selfModifierCallInstructionForGeneration *) mObjectPtr ; }
+//---------------------------------------------------------------------------------------------------------------------*
 
-//--------------------------------- Constructor from pointer
-  public : GALGAS_selfModifierCallInstructionForGeneration (const cPtr_selfModifierCallInstructionForGeneration * inSourcePtr) ;
 
-//-- Start of generic part --*
+//---------------------------------------------------------------------------------------------------------------------*
 
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
-//--------------------------------- Object extraction
-  public : static GALGAS_selfModifierCallInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+//---------------------------------------------------------------------------------------------------------------------*
 
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_selfModifierCallInstructionForGeneration constructor_new (const class GALGAS_string & inOperand0,
-                                                                                   const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                                   const class GALGAS_lstring & inOperand2,
-                                                                                   const class GALGAS_methodKind & inOperand3,
-                                                                                   const class GALGAS_actualParameterListForGeneration & inOperand4,
-                                                                                   const class GALGAS_bool & inOperand5
+extern const cDirectoryWrapper gWrapperDirectory_0_updaterGalgas_33_ApplicationFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'updaterGalgas3ApplicationFileWrapper credits'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credits (class C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_selfModifierCallInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSelfCppName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_selfModifierCallInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfModifierCallInstructionForGeneration ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Pointer class for @selfModifierCallInstructionForGeneration class                          *
+//                   Filewrapper template 'updaterGalgas3ApplicationFileWrapper info_plist_strings'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_selfModifierCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_string mAttribute_mSelfCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstring mAttribute_mModifierName ;
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-
-//--- Constructor
-  public : cPtr_selfModifierCallInstructionForGeneration (const GALGAS_string & in_mSelfCppName,
-                                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                          const GALGAS_lstring & in_mModifierName,
-                                                          const GALGAS_methodKind & in_mKind,
-                                                          const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
-                                                          const GALGAS_bool & in_mHasCompilerArgument
-                                                          COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mSelfCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist_5F_strings (class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @setterCallInstructionForGeneration class                                      *
+//                      Filewrapper template 'updaterGalgas3ApplicationFileWrapper main_menu_xib'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_setterCallInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_setterCallInstructionForGeneration * ptr (void) const { return (const cPtr_setterCallInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_setterCallInstructionForGeneration (const cPtr_setterCallInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_setterCallInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_setterCallInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                             const class GALGAS_string & inOperand1,
-                                                                             const class GALGAS_string & inOperand2,
-                                                                             const class GALGAS_lstringlist & inOperand3,
-                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4,
-                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
-                                                                             const class GALGAS_lstring & inOperand6,
-                                                                             const class GALGAS_methodKind & inOperand7,
-                                                                             const class GALGAS_actualParameterListForGeneration & inOperand8,
-                                                                             const class GALGAS_bool & inOperand9,
-                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & inOperand10
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_setterCallInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mCastType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mMethodBaseType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mReceiverBaseName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mReceiverStructAttributes (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_setterCallInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructionForGeneration ;
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5F_menu_5F_xib (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Pointer class for @setterCallInstructionForGeneration class                             *
+//               Filewrapper template 'updaterGalgas3ApplicationFileWrapper application_delegate_header'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mReceiverCppName ;
-  public : GALGAS_string mAttribute_mReceiverBaseName ;
-  public : GALGAS_lstringlist mAttribute_mReceiverStructAttributes ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mCastType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstring mAttribute_mModifierName ;
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mMethodBaseType ;
-
-//--- Constructor
-  public : cPtr_setterCallInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                    const GALGAS_string & in_mReceiverCppName,
-                                                    const GALGAS_string & in_mReceiverBaseName,
-                                                    const GALGAS_lstringlist & in_mReceiverStructAttributes,
-                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mCastType,
-                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                    const GALGAS_lstring & in_mModifierName,
-                                                    const GALGAS_methodKind & in_mKind,
-                                                    const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
-                                                    const GALGAS_bool & in_mHasCompilerArgument,
-                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mMethodBaseType
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReceiverCppName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReceiverBaseName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mReceiverStructAttributes (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mCastType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mMethodBaseType (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_header (class C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                    @structuredCastInstructionForGeneration class                                    *
+//           Filewrapper template 'updaterGalgas3ApplicationFileWrapper application_delegate_implementation'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_structuredCastInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_structuredCastInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_structuredCastInstructionForGeneration * ptr (void) const { return (const cPtr_structuredCastInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_structuredCastInstructionForGeneration (const cPtr_structuredCastInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_structuredCastInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_structuredCastInstructionForGeneration constructor_new (const class GALGAS_semanticExpressionForGeneration & inOperand0,
-                                                                                 const class GALGAS_castInstructionBranchListForGeneration & inOperand1,
-                                                                                 const class GALGAS_semanticInstructionListForGeneration & inOperand2
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_structuredCastInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_castInstructionBranchListForGeneration reader_mCastBranchList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mElseInstructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_structuredCastInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ;
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_implementation (class C_Compiler * inCompiler,
+                                                                                                                     const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                                                     const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Pointer class for @structuredCastInstructionForGeneration class                           *
+//                       Filewrapper template 'updaterGalgas3ApplicationFileWrapper info_plist'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_structuredCastInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
-  public : GALGAS_castInstructionBranchListForGeneration mAttribute_mCastBranchList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseInstructionList ;
-
-//--- Constructor
-  public : cPtr_structuredCastInstructionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression,
-                                                        const GALGAS_castInstructionBranchListForGeneration & in_mCastBranchList,
-                                                        const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_castInstructionBranchListForGeneration reader_mCastBranchList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mElseInstructionList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TARGET_5F_NAME,
+                                                                                         const class GALGAS_string & in_CODE_5F_SIGNING_5F_IDENTITY
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        @switchInstructionForGeneration class                                        *
+//                          Filewrapper template 'updaterGalgas3ApplicationFileWrapper main'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_switchInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_switchInstructionForGeneration * ptr (void) const { return (const cPtr_switchInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_switchInstructionForGeneration (const cPtr_switchInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_switchInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_switchInstructionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                         const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                         const class GALGAS_switchBranchesForGeneration & inOperand2
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_switchInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_switchBranchesForGeneration reader_mBranches (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mEnumType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mSwitchExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_switchInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Pointer class for @switchInstructionForGeneration class                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mEnumType ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSwitchExpression ;
-  public : GALGAS_switchBranchesForGeneration mAttribute_mBranches ;
-
-//--- Constructor
-  public : cPtr_switchInstructionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mEnumType,
-                                                const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
-                                                const GALGAS_switchBranchesForGeneration & in_mBranches
-                                                COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mEnumType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mSwitchExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_switchBranchesForGeneration reader_mBranches (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     @nonterminalInstructionForGeneration class                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_nonterminalInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_nonterminalInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_nonterminalInstructionForGeneration * ptr (void) const { return (const cPtr_nonterminalInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_nonterminalInstructionForGeneration (const cPtr_nonterminalInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_nonterminalInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_nonterminalInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_string & inOperand1,
-                                                                              const class GALGAS_string & inOperand2,
-                                                                              const class GALGAS_actualParameterListForGeneration & inOperand3,
-                                                                              const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_nonterminalInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mLabelName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mNonterminalName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_nonterminalInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Pointer class for @nonterminalInstructionForGeneration class                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_string mAttribute_mNonterminalName ;
-  public : GALGAS_string mAttribute_mLabelName ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mGrammarInstructionSyntaxDirectedTranslationResult ;
-
-//--- Constructor
-  public : cPtr_nonterminalInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                     const GALGAS_string & in_mNonterminalName,
-                                                     const GALGAS_string & in_mLabelName,
-                                                     const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
-                                                     const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mNonterminalName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mLabelName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      @parseLoopInstructionForGeneration class                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_parseLoopInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_parseLoopInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_parseLoopInstructionForGeneration * ptr (void) const { return (const cPtr_parseLoopInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_parseLoopInstructionForGeneration (const cPtr_parseLoopInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_parseLoopInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_parseLoopInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                            const class GALGAS_semanticInstructionListForGeneration & inOperand3
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_parseLoopInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mInstructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mVariantExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mWhileExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_parseLoopInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                             Pointer class for @parseLoopInstructionForGeneration class                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mVariantExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mWhileExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mInstructionList ;
-
-//--- Constructor
-  public : cPtr_parseLoopInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                   const GALGAS_semanticExpressionForGeneration & in_mVariantExpression,
-                                                   const GALGAS_semanticExpressionForGeneration & in_mWhileExpression,
-                                                   const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mVariantExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mWhileExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mInstructionList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     @parseRewindInstructionForGeneration class                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_parseRewindInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_parseRewindInstructionForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_parseRewindInstructionForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_parseRewindInstructionForGeneration * ptr (void) const { return (const cPtr_parseRewindInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_parseRewindInstructionForGeneration (const cPtr_parseRewindInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_parseRewindInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_parseRewindInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_listOfSemanticInstructionListForGeneration & inOperand1
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_parseRewindInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_listOfSemanticInstructionListForGeneration reader_mListOfSemanticInstructionListForGeneration (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_parseRewindInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Pointer class for @parseRewindInstructionForGeneration class                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_listOfSemanticInstructionListForGeneration mAttribute_mListOfSemanticInstructionListForGeneration ;
-
-//--- Constructor
-  public : cPtr_parseRewindInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                     const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_listOfSemanticInstructionListForGeneration reader_mListOfSemanticInstructionListForGeneration (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      @parseWhenInstructionForGeneration class                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_parseWhenInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_parseWhenInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_parseWhenInstructionForGeneration * ptr (void) const { return (const cPtr_parseWhenInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_parseWhenInstructionForGeneration (const cPtr_parseWhenInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_parseWhenInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_parseWhenInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                            const class GALGAS_semanticInstructionListForGeneration & inOperand2,
-                                                                            const class GALGAS_semanticInstructionListForGeneration & inOperand3
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_parseWhenInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mElseInstructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mInstructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mWhenExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_parseWhenInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                             Pointer class for @parseWhenInstructionForGeneration class                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mWhenExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mInstructionList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseInstructionList ;
-
-//--- Constructor
-  public : cPtr_parseWhenInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                   const GALGAS_semanticExpressionForGeneration & in_mWhenExpression,
-                                                   const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
-                                                   const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mWhenExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mInstructionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mElseInstructionList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        @repeatInstructionForGeneration class                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_repeatInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_repeatInstructionForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_repeatInstructionForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_repeatInstructionForGeneration * ptr (void) const { return (const cPtr_repeatInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_repeatInstructionForGeneration (const cPtr_repeatInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_repeatInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_repeatInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_string & inOperand1,
-                                                                         const class GALGAS_uint & inOperand2,
-                                                                         const class GALGAS_semanticInstructionListForGeneration & inOperand3,
-                                                                         const class GALGAS_location & inOperand4,
-                                                                         const class GALGAS_listOfSemanticInstructionListForGeneration & inOperand5
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_repeatInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mChoiceIndex (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfRepeatedInstructions (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_listOfSemanticInstructionListForGeneration reader_mListOfSemanticInstructionListForGeneration (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSyntaxComponentName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_m_5F_repeated_5F_instructionList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_repeatInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Pointer class for @repeatInstructionForGeneration class                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_string mAttribute_mSyntaxComponentName ;
-  public : GALGAS_uint mAttribute_mChoiceIndex ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_m_5F_repeated_5F_instructionList ;
-  public : GALGAS_location mAttribute_mEndOfRepeatedInstructions ;
-  public : GALGAS_listOfSemanticInstructionListForGeneration mAttribute_mListOfSemanticInstructionListForGeneration ;
-
-//--- Constructor
-  public : cPtr_repeatInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                const GALGAS_string & in_mSyntaxComponentName,
-                                                const GALGAS_uint & in_mChoiceIndex,
-                                                const GALGAS_semanticInstructionListForGeneration & in_m_5F_repeated_5F_instructionList,
-                                                const GALGAS_location & in_mEndOfRepeatedInstructions,
-                                                const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration
-                                                COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mSyntaxComponentName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mChoiceIndex (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_m_5F_repeated_5F_instructionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfRepeatedInstructions (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_listOfSemanticInstructionListForGeneration reader_mListOfSemanticInstructionListForGeneration (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        @selectInstructionForGeneration class                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_selectInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_selectInstructionForGeneration (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_selectInstructionForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_selectInstructionForGeneration * ptr (void) const { return (const cPtr_selectInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_selectInstructionForGeneration (const cPtr_selectInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_selectInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_selectInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_string & inOperand1,
-                                                                         const class GALGAS_uint & inOperand2,
-                                                                         const class GALGAS_listOfSemanticInstructionListForGeneration & inOperand3
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_selectInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mChoiceIndex (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_listOfSemanticInstructionListForGeneration reader_mListOfSemanticInstructionListForGeneration (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSyntaxComponentName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_selectInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Pointer class for @selectInstructionForGeneration class                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_string mAttribute_mSyntaxComponentName ;
-  public : GALGAS_uint mAttribute_mChoiceIndex ;
-  public : GALGAS_listOfSemanticInstructionListForGeneration mAttribute_mListOfSemanticInstructionListForGeneration ;
-
-//--- Constructor
-  public : cPtr_selectInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                const GALGAS_string & in_mSyntaxComponentName,
-                                                const GALGAS_uint & in_mChoiceIndex,
-                                                const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration
-                                                COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mSyntaxComponentName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mChoiceIndex (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_listOfSemanticInstructionListForGeneration reader_mListOfSemanticInstructionListForGeneration (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      @syntaxSendInstructionForGeneration class                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_syntaxSendInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_syntaxSendInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_syntaxSendInstructionForGeneration * ptr (void) const { return (const cPtr_syntaxSendInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_syntaxSendInstructionForGeneration (const cPtr_syntaxSendInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_syntaxSendInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_syntaxSendInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand1
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_syntaxSendInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_syntaxSendInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                             Pointer class for @syntaxSendInstructionForGeneration class                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
-
-//--- Constructor
-  public : cPtr_syntaxSendInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                    const GALGAS_semanticExpressionForGeneration & in_mExpression
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mExpression (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    @terminalCheckInstructionForGeneration class                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_terminalCheckInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_terminalCheckInstructionForGeneration * ptr (void) const { return (const cPtr_terminalCheckInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_terminalCheckInstructionForGeneration (const cPtr_terminalCheckInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_terminalCheckInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_terminalCheckInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                                const class GALGAS_lstring & inOperand1,
-                                                                                const class GALGAS_string & inOperand2,
-                                                                                const class GALGAS_terminalCheckAssignementList & inOperand3,
-                                                                                const class GALGAS__32_lstringlist & inOperand4,
-                                                                                const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5,
-                                                                                const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main (class C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_terminalCheckInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationToken (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS__32_lstringlist reader_mIndexingKeyList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mLexiqueIdentifier (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_terminalCheckAssignementList reader_mTerminalCheckAssignementList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTerminalName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_terminalCheckInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstructionForGeneration ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Pointer class for @terminalCheckInstructionForGeneration class                            *
+//                         Filewrapper template 'updaterGalgas3ApplicationFileWrapper prefix'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mTerminalName ;
-  public : GALGAS_string mAttribute_mLexiqueIdentifier ;
-  public : GALGAS_terminalCheckAssignementList mAttribute_mTerminalCheckAssignementList ;
-  public : GALGAS__32_lstringlist mAttribute_mIndexingKeyList ;
-  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
-  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mGrammarInstructionSyntaxDirectedTranslationToken ;
-
-//--- Constructor
-  public : cPtr_terminalCheckInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                       const GALGAS_lstring & in_mTerminalName,
-                                                       const GALGAS_string & in_mLexiqueIdentifier,
-                                                       const GALGAS_terminalCheckAssignementList & in_mTerminalCheckAssignementList,
-                                                       const GALGAS__32_lstringlist & in_mIndexingKeyList,
-                                                       const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
-                                                       const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTerminalName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mLexiqueIdentifier (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_terminalCheckAssignementList reader_mTerminalCheckAssignementList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS__32_lstringlist reader_mIndexingKeyList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationToken (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_prefix (class C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @typeMethodInstructionForGeneration class                                      *
+//                                     Filewrapper 'updaterGalgas3ToolFileWrapper'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_typeMethodInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_typeMethodInstructionForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typeMethodInstructionForGeneration constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_typeMethodInstructionForGeneration * ptr (void) const { return (const cPtr_typeMethodInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_typeMethodInstructionForGeneration (const cPtr_typeMethodInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_typeMethodInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_typeMethodInstructionForGeneration constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                             const class GALGAS_lstring & inOperand1,
-                                                                             const class GALGAS_actualParameterListForGeneration & inOperand2,
-                                                                             const class GALGAS_bool & inOperand3
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typeMethodInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mMethodName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeMethodInstructionForGeneration class
+//---------------------------------------------------------------------------------------------------------------------*
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeMethodInstructionForGeneration ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_updaterGalgas_33_ToolFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Pointer class for @typeMethodInstructionForGeneration class                             *
+//                    Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_protocol'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_typeMethodInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mMethodName ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_protocol (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
-//--- Constructor
-  public : cPtr_typeMethodInstructionForGeneration (const GALGAS_lstring & in_mTypeName,
-                                                    const GALGAS_lstring & in_mMethodName,
-                                                    const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
-                                                    const GALGAS_bool & in_mHasCompilerArgument
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_header'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_header (class C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_implementation'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_implementation (class C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_main'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_main (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                              const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'updaterGalgas3ToolFileWrapper updater_tool_info_plist'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_info_5F_plist (class C_Compiler * inCompiler,
+                                                                                                     const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                                     const class GALGAS_string & in_TARGET_5F_NAME,
+                                                                                                     const class GALGAS_string & in_CODE_5F_SIGNING_5F_IDENTITY
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'updaterGalgas3ToolFileWrapper updater_tool_launchd_plist'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (class C_Compiler * inCompiler,
+                                                                                                        const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                                        const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Filewrapper 'applicationGalgas3UpdateFileWrapper'                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_applicationGalgas_33_UpdateFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_header'                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_header (class C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//            Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_implementation'             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (class C_Compiler * inCompiler,
+                                                                                                                  const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                                                                  const class GALGAS_string & in_REPOSITORY_5F_URL,
+                                                                                                                  const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME
+                                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_nib'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_nib (class C_Compiler * inCompiler,
+                                                                                                       const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper download_data_header'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_header (class C_Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'applicationGalgas3UpdateFileWrapper download_data_implementation'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_implementation (class C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper download_file_header'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_header (class C_Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'applicationGalgas3UpdateFileWrapper download_file_implementation'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_implementation (class C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper compatibility_header'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compatibility_5F_header (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Filewrapper 'targetGalgas3GenerationFileWrapper'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const char * gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_2_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_3_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_4_targetGalgas_33_GenerationFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cRegularFileWrapper gWrapperFile_0_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_2_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_3_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_4_targetGalgas_33_GenerationFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_1_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_2_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_3_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_9_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_10_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_11_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_12_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_13_targetGalgas_33_GenerationFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'targetGalgas3GenerationFileWrapper build_macosx'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_macosx'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_macosx'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_macosx'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'targetGalgas3GenerationFileWrapper install_macosx'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_macosx (class C_Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'targetGalgas3GenerationFileWrapper clean_macosx'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'targetGalgas3GenerationFileWrapper clean_unix'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'targetGalgas3GenerationFileWrapper build_unix'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_unix'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_unix'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (class C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_unix'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'targetGalgas3GenerationFileWrapper install_unix'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (class C_Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux32_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux32_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux32_on_mac'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux32_on_mac'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux32_on_mac'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux64_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux64_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux64_on_mac'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux64_on_mac'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux64_on_mac'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper clean_win32_on_mac'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                           const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_win32_on_mac'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                           const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_win32_on_mac'                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_win32_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_win32_on_mac'                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                                               const class GALGAS_stringlist & in_TOOL_5F_CPP_5F_FILE_5F_LIST,
+                                                                                               const class GALGAS_string & in_LIBPM_5F_PATH,
+                                                                                               const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
+                                                                                               const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET,
+                                                                                               const class GALGAS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
+                                                                                               const class GALGAS_string & in_PLATFORM
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (class C_Compiler * inCompiler,
+                                                                                                   const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                                                   const class GALGAS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
+                                                                                                   const class GALGAS_string & in_VERSION_5F_STRING,
+                                                                                                   const class GALGAS_stringset & in_HANDLED_5F_EXTENSION_5F_SET
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_build_xcode'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist_strings'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (class C_Compiler * inCompiler,
+                                                                                                              const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'targetGalgas3GenerationFileWrapper json_file_list'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
+                                                                                              const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
+                                                                                              const class GALGAS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
+                                                                                              const class GALGAS_stringlist & in_TOOL_5F_LINK_5F_LIST,
+                                                                                              const class GALGAS_string & in_LIBPM_5F_DIRECTORY_5F_PATH
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'targetGalgas3GenerationFileWrapper project_header'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (class C_Compiler * inCompiler,
+                                                                                           const class GALGAS_string & in_VERSION_5F_STRING
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Routine 'generateGalgasCodeBlocksWindowsTarget'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgasCodeBlocksWindowsTarget (const class GALGAS_string constinArgument0,
+                                                    const class GALGAS_string constinArgument1,
+                                                    const class GALGAS_stringlist constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_stringlist constinArgument4,
+                                                    const class GALGAS_stringset constinArgument5,
+                                                    class C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mMethodName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       @warningInstructionForGeneration class                                        *
+//                                     Routine 'generateGalgasCodeBlocksMacTarget'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_warningInstructionForGeneration (void) ;
+void routine_generateGalgasCodeBlocksMacTarget (const class GALGAS_string constinArgument0,
+                                                const class GALGAS_string constinArgument1,
+                                                const class GALGAS_stringlist constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_stringlist constinArgument4,
+                                                const class GALGAS_stringset constinArgument5,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
-//---
-  public : inline const class cPtr_warningInstructionForGeneration * ptr (void) const { return (const cPtr_warningInstructionForGeneration *) mObjectPtr ; }
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Routine 'generateGalgasCodeBlocksLinuxI686Target'                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-//--------------------------------- Constructor from pointer
-  public : GALGAS_warningInstructionForGeneration (const cPtr_warningInstructionForGeneration * inSourcePtr) ;
+void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (const class GALGAS_string constinArgument0,
+                                                               const class GALGAS_string constinArgument1,
+                                                               const class GALGAS_stringlist constinArgument2,
+                                                               const class GALGAS_string constinArgument3,
+                                                               const class GALGAS_stringlist constinArgument4,
+                                                               const class GALGAS_stringset constinArgument5,
+                                                               class C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Routine 'generateGalgasCodeBlocksLinuxX86_64Target'                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const class GALGAS_string constinArgument0,
+                                                                       const class GALGAS_string constinArgument1,
+                                                                       const class GALGAS_stringlist constinArgument2,
+                                                                       const class GALGAS_string constinArgument3,
+                                                                       const class GALGAS_stringlist constinArgument4,
+                                                                       const class GALGAS_stringset constinArgument5,
+                                                                       class C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    Routine 'generateGalgas3MinGWOnMacOSXTarget'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_MinGWOnMacOSXTarget (const class GALGAS_string constinArgument0,
+                                                    const class GALGAS_string constinArgument1,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    Routine 'generateGalgas3MakefileMacOSXTarget'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_MakefileMacOSXTarget (const class GALGAS_string constinArgument0,
+                                                     const class GALGAS_string constinArgument1,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Routine 'generateGalgas3MakefileUnixTarget'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_MakefileUnixTarget (const class GALGAS_string constinArgument0,
+                                                   const class GALGAS_string constinArgument1,
+                                                   class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Routine 'generateGalgas3Linux32OnMacOSXTarget'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (const class GALGAS_string constinArgument0,
+                                                            const class GALGAS_string constinArgument1,
+                                                            class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Routine 'generateGalgas3Linux64OnMacOSXTarget'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const class GALGAS_string constinArgument0,
+                                                            const class GALGAS_string constinArgument1,
+                                                            class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Category method '@XcodeProjectDescriptor generateAtPath'                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor inObject,
+                                    const class GALGAS_string constin_inPath,
+                                    const class GALGAS_string constin_inCacheFilePath,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Category setter '@XcodeProjectDescriptor addAppTarget'                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                    const class GALGAS_string constin_inTargetName,
+                                    const class GALGAS_string constin_inProductFileName,
+                                    const class GALGAS_stringlist constin_inSourceList,
+                                    const class GALGAS_stringlist constin_inFrameworksFileRefList,
+                                    const class GALGAS_stringlist constin_inResourceFileBuildRefs,
+                                    const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
+                                    const class GALGAS_stringlist constin_inDependentTargetRefList,
+                                    const class GALGAS__32_stringlist constin_inProductCopyList,
+                                    class GALGAS_string & out_outProductFileRef,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Category setter '@XcodeProjectDescriptor addGroup'                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                const class GALGAS_string constin_inGroupName,
+                                const class GALGAS_string constin_inGroupPath,
+                                const class GALGAS_stringlist constin_inChildrenRefs,
+                                class GALGAS_string & out_outGroupRef,
+                                class C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Category setter '@XcodeProjectDescriptor addGroupWithFiles'                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                         const class GALGAS_string constin_inGroupName,
+                                         const class GALGAS_string constin_inGroupPath,
+                                         const class GALGAS_stringset constin_inFileNames,
+                                         class GALGAS_stringlist & io_ioCFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioCppFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioMFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioMMFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioFrameWorkFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioResourceFileBuildRefs,
+                                         class GALGAS_string & out_outGroupRef,
+                                         class C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Category setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addSettingsToDefaultConfiguration (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                                         const class GALGAS_stringlist constin_inSettingList,
+                                                         class C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Category setter '@XcodeProjectDescriptor addToolTarget'                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                     const class GALGAS_string constin_inTargetName,
+                                     const class GALGAS_string constin_inProductFileName,
+                                     const class GALGAS_stringlist constin_inSourceList,
+                                     const class GALGAS_stringlist constin_inToolFrameworksFileRefList,
+                                     const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
+                                     class GALGAS_string & out_outTargetRef,
+                                     class GALGAS_string & out_outProductFileRef,
+                                     class C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Category setter '@XcodeProjectDescriptor placeGroupAsMainGroup'                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_placeGroupAsMainGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                             const class GALGAS_string constin_inGroupRef,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           @XcodeProjectDescriptor struct                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_uint mAttribute_mSequenceNumber ;
+  public : GALGAS_string mAttribute_mMainGroupReference ;
+  public : GALGAS_stringlist mAttribute_mMainGroupChildrenRefs ;
+  public : GALGAS_string mAttribute_mProjectObjectReference ;
+  public : GALGAS_XCodeGroupList mAttribute_mGroupList ;
+  public : GALGAS_XCodeToolTargetList mAttribute_mToolTargetList ;
+  public : GALGAS_XCodeAppTargetList mAttribute_mAppTargetList ;
+  public : GALGAS__32_stringlist mAttribute_mCFileList ;
+  public : GALGAS__32_stringlist mAttribute_mCppFileList ;
+  public : GALGAS__32_stringlist mAttribute_m_5F_M_5F_FileList ;
+  public : GALGAS__32_stringlist mAttribute_m_5F_MM_5F_FileList ;
+  public : GALGAS__32_stringlist mAttribute_mFrameworkFileList ;
+  public : GALGAS__32_stringlist mAttribute_mHeaderFileList ;
+  public : GALGAS_BuildFileList mAttribute_mBuildFileList ;
+  public : GALGAS_string mAttribute_mDefaultConfigurationRef ;
+  public : GALGAS_stringlist mAttribute_mDefaultConfigurationSettingList ;
+  public : GALGAS_string mAttribute_mProjectBuildConfigurationRef ;
+  public : GALGAS__32_stringlist mAttribute_mInfoPlistFileList ;
+  public : GALGAS__32_stringlist mAttribute_mXIB_5F_fileList ;
+  public : GALGAS__32_stringlist mAttribute_mTIFF_5F_fileList ;
+  public : GALGAS__32_stringlist mAttribute_mICNS_5F_fileList ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_XcodeProjectDescriptor constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_XcodeProjectDescriptor (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_XcodeProjectDescriptor (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_XcodeProjectDescriptor (const GALGAS_uint & in_mSequenceNumber,
+                                          const GALGAS_string & in_mMainGroupReference,
+                                          const GALGAS_stringlist & in_mMainGroupChildrenRefs,
+                                          const GALGAS_string & in_mProjectObjectReference,
+                                          const GALGAS_XCodeGroupList & in_mGroupList,
+                                          const GALGAS_XCodeToolTargetList & in_mToolTargetList,
+                                          const GALGAS_XCodeAppTargetList & in_mAppTargetList,
+                                          const GALGAS__32_stringlist & in_mCFileList,
+                                          const GALGAS__32_stringlist & in_mCppFileList,
+                                          const GALGAS__32_stringlist & in_m_5F_M_5F_FileList,
+                                          const GALGAS__32_stringlist & in_m_5F_MM_5F_FileList,
+                                          const GALGAS__32_stringlist & in_mFrameworkFileList,
+                                          const GALGAS__32_stringlist & in_mHeaderFileList,
+                                          const GALGAS_BuildFileList & in_mBuildFileList,
+                                          const GALGAS_string & in_mDefaultConfigurationRef,
+                                          const GALGAS_stringlist & in_mDefaultConfigurationSettingList,
+                                          const GALGAS_string & in_mProjectBuildConfigurationRef,
+                                          const GALGAS__32_stringlist & in_mInfoPlistFileList,
+                                          const GALGAS__32_stringlist & in_mXIB_5F_fileList,
+                                          const GALGAS__32_stringlist & in_mTIFF_5F_fileList,
+                                          const GALGAS__32_stringlist & in_mICNS_5F_fileList) ;
 
 //-- Start of generic part --*
 
@@ -3143,19 +1193,39 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_warningInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_XcodeProjectDescriptor extractObject (const GALGAS_object & inObject,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_warningInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                          const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                          const class GALGAS_bool & inOperand2,
-                                                                          const class GALGAS_semanticExpressionForGeneration & inOperand3
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_XcodeProjectDescriptor constructor_new (const class GALGAS_uint & inOperand0,
+                                                                 const class GALGAS_string & inOperand1,
+                                                                 const class GALGAS_stringlist & inOperand2,
+                                                                 const class GALGAS_string & inOperand3,
+                                                                 const class GALGAS_XCodeGroupList & inOperand4,
+                                                                 const class GALGAS_XCodeToolTargetList & inOperand5,
+                                                                 const class GALGAS_XCodeAppTargetList & inOperand6,
+                                                                 const class GALGAS__32_stringlist & inOperand7,
+                                                                 const class GALGAS__32_stringlist & inOperand8,
+                                                                 const class GALGAS__32_stringlist & inOperand9,
+                                                                 const class GALGAS__32_stringlist & inOperand10,
+                                                                 const class GALGAS__32_stringlist & inOperand11,
+                                                                 const class GALGAS__32_stringlist & inOperand12,
+                                                                 const class GALGAS_BuildFileList & inOperand13,
+                                                                 const class GALGAS_string & inOperand14,
+                                                                 const class GALGAS_stringlist & inOperand15,
+                                                                 const class GALGAS_string & inOperand16,
+                                                                 const class GALGAS__32_stringlist & inOperand17,
+                                                                 const class GALGAS__32_stringlist & inOperand18,
+                                                                 const class GALGAS__32_stringlist & inOperand19,
+                                                                 const class GALGAS__32_stringlist & inOperand20
+                                                                 COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_warningInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_XcodeProjectDescriptor & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3163,61 +1233,57 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_XCodeAppTargetList reader_mAppTargetList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_BuildFileList reader_mBuildFileList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mUseLocationReader (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mCFileList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mWarningExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mCppFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mDefaultConfigurationRef (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mDefaultConfigurationSettingList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mFrameworkFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_XCodeGroupList reader_mGroupList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mHeaderFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mICNS_5F_fileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mInfoPlistFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mMainGroupChildrenRefs (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mMainGroupReference (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mProjectBuildConfigurationRef (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mProjectObjectReference (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mSequenceNumber (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mTIFF_5F_fileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_XCodeToolTargetList reader_mToolTargetList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mXIB_5F_fileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_m_5F_MM_5F_FileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_m_5F_M_5F_FileList (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_warningInstructionForGeneration class
+} ; // End of GALGAS_XcodeProjectDescriptor class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @warningInstructionForGeneration class                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_bool mAttribute_mUseLocationReader ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mWarningExpression ;
-
-//--- Constructor
-  public : cPtr_warningInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                 const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                 const GALGAS_bool & in_mUseLocationReader,
-                                                 const GALGAS_semanticExpressionForGeneration & in_mWarningExpression
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mUseLocationReader (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mWarningExpression (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ;
 
 #endif
