@@ -148,7 +148,8 @@ proc parseOptionComponent
   !@commandLineOptionMap outBoolOptionMap
   !@commandLineOptionMap outUIntOptionMap
   !@commandLineOptionMap outStringOptionMap
-  !@commandLineOptionMap outStringListOptionMap {
+  !@commandLineOptionMap outStringListOptionMap
+{
   outOptionComponentName = @lstring.new {![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]}
   if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [outOptionComponentName string]] then
     [ioParsedComponentStruct.mParsedOptionComponentMap searchKey
@@ -202,7 +203,8 @@ proc compileOptionComponentAST
   ?let @commandLineOptionMap boolOptionMap
   ?let @commandLineOptionMap uintOptionMap
   ?let @commandLineOptionMap stringOptionMap
-  ?let @commandLineOptionMap stringListOptionMap {
+  ?let @commandLineOptionMap stringListOptionMap
+{
 #--- Generate header
   if @uint. errorCount == 0 then
     [@string generateFileWithPattern

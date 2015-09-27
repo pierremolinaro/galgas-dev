@@ -180,19 +180,14 @@ proc buildGalgas3SemanticContext
 #! Generation
 #----------------------------------------------------------------------------------------------------------------------*
 
-private func %once definitionGroupAmount -> @uint outResult {
-  outResult = 100
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 proc generateSemanticDeclarationsGalgas3
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
   ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringlist ioToolHeaderFileList
-  ?!@stringset ioAllProductFileSet {
+  ?!@stringset ioAllProductFileSet
+{
 #--- Generate specific files
   for () in inSemanticDeclarationSortedListForGeneration do
     [mDeclaration appendSpecificFiles
@@ -473,12 +468,19 @@ private proc buildHeader
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+private func %once definitionGroupAmount -> @uint outResult {
+  outResult = 50
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 private proc generateFewImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
   ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
-  ?!@stringset ioAllProductFileSet {
+  ?!@stringset ioAllProductFileSet
+{
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
 #------------- all-declarations.cpp
   var n = 0
@@ -494,15 +496,15 @@ private proc generateFewImplementationFiles
       implementationString += code
       implementationString += [mDeclaration appendTypeGenericImplementation]
       n ++
-      if n == definitionGroupAmount () then
+      if n >= definitionGroupAmount () then
         if useOneHugeHeader then
-          inclusionSet = @stringset. setWithString {!"all-declarations"}
+          inclusionSet = {!"all-declarations"}
         end
         let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![inclusionSet stringList]
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
-        ioToolProductFileList = @stringlist. listWithValue {!fileName} + ioToolProductFileList
+        ioToolProductFileList = @stringlist.listWithValue {!fileName} + ioToolProductFileList
         ioAllProductFileSet += !fileName
         [@string generateFile
           !inProductDirectory
@@ -512,24 +514,20 @@ private proc generateFewImplementationFiles
         n = 0
         fileIdx ++
         implementationString = ""
-        inclusionSet = @stringset. emptySet
+        inclusionSet = {}
       end
     end
   end
 #--- Last file
   if implementationString != "" then
     if useOneHugeHeader then
-      inclusionSet = @stringset. setWithString {!"all-declarations"}
+      inclusionSet = {!"all-declarations"}
     end
-#    for () in inSemanticContext->mGrammarMap do
-#      inclusionSet += !"grammar-" . lkey->string ;
-#    end for ;
     let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-#      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
       ![inclusionSet stringList]
     ]
     let fileName = "all-declarations-" + fileIdx + ".cpp"
-    ioToolProductFileList = @stringlist. listWithValue {!fileName} + ioToolProductFileList
+    ioToolProductFileList = @stringlist.listWithValue {!fileName} + ioToolProductFileList
     ioAllProductFileSet += !fileName
     [@string generateFile
       !inProductDirectory
@@ -596,9 +594,9 @@ private proc generateFewImplementationFilesWithFewHeaders
       end
       implementationString += code
       implementationString += [mDeclaration appendTypeGenericImplementation]
-      if [implementationString length] > 1048576 then
+      if [implementationString length] > 786432 then # 1048576 then
         if useOneHugeHeader then
-          inclusionSet = @stringset. setWithString {!"all-declarations"}
+          inclusionSet = {!"all-declarations"}
         else
           inclusionSet = {!"all-declarations-" + fileIdx}
         end
@@ -630,7 +628,7 @@ private proc generateFewImplementationFilesWithFewHeaders
         implementationString = ""
         headerString = ""
         headerFileName = "all-declarations-" + fileIdx
-        inclusionSet = @stringset. emptySet
+        inclusionSet = {}
       end
     end
   end
