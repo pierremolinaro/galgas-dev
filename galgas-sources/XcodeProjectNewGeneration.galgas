@@ -6,6 +6,14 @@
 #  details.                                                                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
+map @projectQualifiedFeatureMap {
+  @lstring mFeatureValue
+  insert insertKey error message "the '%K' feature is already declared"
+  search searchKey error message "the '%K' feature is not declared"  
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 setter @XcodeProjectDescriptor addICNS_file
   ?fileName:let @string inFileName
   !fileRef:@string outFileRef {

@@ -24,13 +24,9 @@ list @programListForGeneration {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
+private filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
 }{
 }{
-  template programFileHeader "program-file.h.galgasTemplate"
-    ?@string COMPONENT_NAME
-    ?@stringlist IMPORTED_COMPONENT_LIST
-
   template programFileImplementation "program-file.cpp.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
@@ -42,43 +38,6 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
 #                                                                                                                      *
 #           C O M P I L E    ' B E F O R E '                                                                           *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc compileBeforeClause
-  ?let @analysisContext inAnalysisContext
-  ?let @prologueEpilogueList inPrologueList
-  ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration {
-#--- Compile 'before' routines
-  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
-  for () in inPrologueList do
-    analyzeRoutineBody (
-      !inAnalysisContext
-      !@formalParameterListAST. emptyList # Routine signature : no argument
-      !@localConstantList. emptyList # No local constant
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !""
-      !mInstructionList
-      !mEndOfInstructionList
-      ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
-      ?*
-    )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration.new {
-      !blockSemanticInstructionListForGeneration}
-  end
-#---
-  ioDecoratedDeclarationListForGeneration +=
-    !"before"
-    !@routineImplementationForGeneration.new {
-      !false # Has no header
-      !"proc-before"
-      !"before"
-      !@formalParameterListForGeneration. emptyList
-      !false # Do not generate static
-      !semanticInstructionListForGeneration}
-    !""
-}
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc compileBeforeClauseGalgas3
@@ -121,57 +80,6 @@ proc compileBeforeClauseGalgas3
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc compileProgramRules
-  ?let @analysisContext inAnalysisContext
-  ?let @programRuleList inProgramRules
-  ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
- {
-  @uint ruleIndex = 0
-  for () in inProgramRules do
-#    if mGrammar.string != "" then
-#      ioHasIndexing = true
-#      [inAnalysisContext.mSemanticContext.mGrammarMap searchKey !mGrammar ?* ?let @bool hasIndexing ?*]
-#      if not hasIndexing then
-#        error mGrammar : "the '" + mGrammar + "' grammar does not enable indexing"
-#      end
-#    end
-    let @formalParameterListAST argumentList = {
-      !["" nowhere]
-      !@formalArgumentPassingModeAST. argumentConstantIn
-      !@lstring.new {!"lstring" !@location.here}
-      !mSourceFileVariableName
-      !mSourceFileVariableNameIsUnused
-    }
-    @semanticInstructionListForGeneration semanticInstructionListForGeneration
-    @formalParameterListForGeneration routineSignature
-    analyzeRoutineBody (
-      !inAnalysisContext
-      !argumentList
-      !@localConstantList. emptyList # No local constant
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !""
-      !mInstructionList
-      !mEndOfInstructionList
-      ?semanticInstructionListForGeneration
-      ?routineSignature
-    )
-    ioDecoratedDeclarationListForGeneration +=
-      !"source rule " + ruleIndex
-      !@routineImplementationForGeneration.new {
-        !false # Has no header
-        !"proc-programrule"
-        !"programRule_" + [ruleIndex string]
-        !routineSignature
-        !false # Do not generate static
-        !semanticInstructionListForGeneration}
-    !""
-    ruleIndex ++
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 private proc compileProgramRulesGalgas3
   ?let @analysisContext inAnalysisContext
   ?let @programRuleList inProgramRules
@@ -179,13 +87,6 @@ private proc compileProgramRulesGalgas3
 {
   @uint ruleIndex = 0
   for () in inProgramRules do
-#    if mGrammar.string != "" then
-#      ioHasIndexing = true
-#      [inAnalysisContext.mSemanticContext.mGrammarMap searchKey !mGrammar ?* ?let @bool hasIndexing ?*]
-#      if not hasIndexing then
-#        error mGrammar : "the '" + mGrammar + "' grammar does not enable indexing"
-#      end
-#    end
     let @formalParameterListAST argumentList = {
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
@@ -225,43 +126,6 @@ private proc compileProgramRulesGalgas3
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc compileAfterClause
-  ?let @analysisContext inAnalysisContext
-  ?let @prologueEpilogueList inEpilogueList
-  ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration {
-#--- Compile 'before' routines
-  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
-  for () in inEpilogueList do
-    analyzeRoutineBody (
-      !inAnalysisContext
-      !@formalParameterListAST. emptyList # Routine signature : no argument
-      !@localConstantList. emptyList # No local constant
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !""
-      !mInstructionList
-      !mEndOfInstructionList
-      ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
-      ?*
-    )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration.new {
-      !blockSemanticInstructionListForGeneration}
-  end
-#---
-  ioDecoratedDeclarationListForGeneration +=
-    !"after"
-    !@routineImplementationForGeneration.new {
-      !false # Has no header
-      !"proc-after"
-      !"after"
-      !@formalParameterListForGeneration. emptyList
-      !false # Do not generate static
-      !semanticInstructionListForGeneration}
-    !""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 proc compileAfterClauseGalgas3
   ?let @analysisContext inAnalysisContext
   ?let @prologueEpilogueList inEpilogueList
@@ -293,184 +157,6 @@ proc compileAfterClauseGalgas3
       !@formalParameterListForGeneration. emptyList
       !true # Generate static
       !semanticInstructionListForGeneration}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#           C O M P I L E    P R O G R A M    C O M P O N E N T                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc compileProgramComponentFromAST
-  ?let @lstring inSourceFile
-  ?let @string inProductDirectory
-  ?let @programComponentAST inProgramComponentAST
-  ?!@parsedComponentStruct ioParsedComponentStruct {
-  let @string basename = [[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-#--- Check component name
-  let @lstring componentName = [inProgramComponentAST mProgramComponentName]
-  if [componentName string] != basename then
-    warning componentName: "GALGAS checks "
-      "the component name ('" + [componentName string]
-    + "') against the source file base name ('" + basename + "'): they should be identical"
-  end 
-#--- Recursively parse all imported files
-  @semanticDeclarationListAST semanticDeclarationList = [inProgramComponentAST mSemanticDeclarationList]
-  var parsedFileSet =@stringset.setWithString{![inSourceFile string]}
-  var optionComponentFileNameList =@lstringlist.emptyList{}
-  var grammarComponentASTList =@grammarComponentASTList.emptyList{}
-  var headerIncludeList =@stringlist.emptyList{}
-  @stringlist implementationIncludeList = {!componentName.string}
-  recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics (
-    !inSourceFile
-    !?ioParsedComponentStruct
-    !?optionComponentFileNameList
-    !?grammarComponentASTList
-    !?semanticDeclarationList
-    !?parsedFileSet
-    !?headerIncludeList
-    !?implementationIncludeList
-    ![inProgramComponentAST mImportedComponentFileNameList]
-    ![inSourceFile stringByDeletingLastPathComponent]
-  )
-#------ Add predefined types to semantics declarations
-  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = semanticDeclarationList
-  appendPredefinedTypesASTs ( !?semanticDeclarationListWithPredefinedTypes )
-#------ Build semantic context
-  buildSemanticContext (
-    !semanticDeclarationListWithPredefinedTypes
-    ?var @semanticContext semanticContext
-  )
-#--- Perform semantic analysis of grammar components
-  buildGrammarComponentMapForSemanticAnalysis (
-    !grammarComponentASTList
-    !?semanticContext
-  )
-#--- Build option component map for analysis
-  buildOptionComponentMapForSemanticAnalysis (
-    !optionComponentFileNameList
-    !?ioParsedComponentStruct
-    !?semanticContext.mOptionComponentMapForSemanticAnalysis
-  )
-#--- Build lexique component map for semantic analysis
-  buildLexiqueComponentMapForSemanticAnalysis (
-    !ioParsedComponentStruct
-    ?var @lexiqueComponentMapForSemanticAnalysis lexiqueMap
-  )
-  semanticContext.mLexiqueComponentMapForSemanticAnalysis = lexiqueMap
-#------ Semantic Analysis
-  @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
-  performSemanticAnalysis (
-    !inProductDirectory
-    ![inProgramComponentAST mSemanticDeclarationList]
-    !semanticContext
-    ?decoratedDeclarationListForGeneration
-  )
-#--- Analysis context
-  let analysisContext =  @analysisContext.new {
-    !semanticContext
-    !buildPredefinedTypes (!semanticContext)
-    !@unifiedTypeMap-proxy. null
-    !""
-    !@unifiedTypeMap-proxy. null}
-#--- Analyse 'before' instructions
-  compileBeforeClause (
-    !analysisContext
-    !inProgramComponentAST.mPrologueList
-    !?decoratedDeclarationListForGeneration
-  )
-#--- Analyse program rules
-  compileProgramRules (
-    !analysisContext
-    !inProgramComponentAST.mProgramRules
-    !?decoratedDeclarationListForGeneration
-  )
-#--- Analyse 'after' instructions
-  compileAfterClause (
-    !analysisContext
-    !inProgramComponentAST.mEpilogueList
-    !?decoratedDeclarationListForGeneration
-  )
-#------ Generate Header File
-  if @uint. errorCount == 0 then
-    @string headerString = [filewrapper programFileGenerationTemplate.programFileHeader
-      ![componentName string]
-      !headerIncludeList
-    ]
-    for () in decoratedDeclarationListForGeneration do
-      var unusedInclusionSet = @stringset. emptySet
-      [mDeclaration appendDeclaration1 !?unusedInclusionSet ?let @string code]
-      headerString += code
-    end
-    for () in decoratedDeclarationListForGeneration do
-      var inclusionSet2 = @stringset. emptySet
-      [mDeclaration appendDeclaration2 !false !inProductDirectory !?inclusionSet2 ?let @string headerString2]
-      headerString += headerString2
-    end
-    [@string generateFileWithPattern
-      !startPath:inProductDirectory
-      !fileName:[componentName string] + ".h"
-      !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
-      !generatedZone2:headerString
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:"#endif\n"
-      !makeExecutable:false
-    ]
-  end
-#------ Generate Implementation File
-  if @uint. errorCount == 0 then
-    var beforAfterRulesImplementationString = ""
-    for () in decoratedDeclarationListForGeneration do
-      beforAfterRulesImplementationString += [mDeclaration appendTypeGenericImplementation]
-      var unusedInclusionSet = @stringset. emptySet
-      [mDeclaration appendSpecificImplementation !semanticContext.mTypeMap !?unusedInclusionSet ?let @string code]
-      beforAfterRulesImplementationString += code
-    end
-    let implementationString = [filewrapper programFileGenerationTemplate.programFileImplementation
-      ![componentName string]
-      !implementationIncludeList
-      !beforAfterRulesImplementationString
-      ![inProgramComponentAST mProgramRules]
-    ]
-    [@string generateFileWithPattern
-      !startPath:inProductDirectory
-      !fileName:[componentName string] + ".cpp"
-      !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
-      !generatedZone2:implementationString
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:"\n"
-      !makeExecutable:false
-    ]
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc compileProgramComponentFromSourceFile
-  ?let @lstring inSourceFile
-  ?let @string inProductDirectory
-  ?!@parsedComponentStruct ioParsedComponentStruct {
-#--- Parse source file
-  let basename = [[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-  let basenameKey = @lstring.new {!basename !@location.here}
-  @programComponentAST programComponentAST
-  if [ioParsedComponentStruct.mParsedProgramComponentMap hasKey !basename] then
-    [ioParsedComponentStruct.mParsedProgramComponentMap searchKey !basenameKey ?* ?programComponentAST]
-  else
-    grammar programSLRgrammar in inSourceFile ?programComponentAST
-    [!?ioParsedComponentStruct.mParsedProgramComponentMap insertKey !basenameKey !inSourceFile !programComponentAST]
-  end
-#---
-  compileProgramComponentFromAST (
-    !inSourceFile
-    !inProductDirectory
-    !programComponentAST
-    !?ioParsedComponentStruct
-  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

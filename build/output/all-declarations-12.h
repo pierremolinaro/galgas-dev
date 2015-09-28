@@ -10,869 +10,1285 @@
 #include "all-declarations-11.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  GRAMMAR syntaxSLRgrammar
+//                                                                                                                     *
+//                                             Routine 'updateLIBPMatPath'                                             *
+//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cGrammar_syntaxSLRgrammar : public cParser_syntaxModelBuilder,
-                                  public cParser_expressionSyntax,
-                                  public cParser_parameterArgumentSyntax,
-                                  public cParser_semanticInstructionsSyntax,
-                                  public cParser_semanticDeclarationsSyntax {
-//------------------------------------- 'actual_input_parameter' non terminal
-//--- 'parse' label
-  public : virtual void nt_actual_5F_input_5F_parameter_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                               C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_actual_5F_input_5F_parameter_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_actual_5F_input_5F_parameter_ (GALGAS_lstring & outArgument0,
-                                                          GALGAS_abstractInputParameter & outArgument1,
-                                                          C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'actual_input_parameter_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_actual_5F_input_5F_parameter_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_actual_5F_input_5F_parameter_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_actual_5F_input_5F_parameter_5F_list_ (GALGAS_actualInputParameterListAST & outArgument0,
-                                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'actual_parameter_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_actual_5F_parameter_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_actual_5F_parameter_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_actual_5F_parameter_5F_list_ (GALGAS_actualParameterListAST & outArgument0,
-                                                         C_String & ioSyntaxDirectedTranslationResult,
-                                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'attribute_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_attribute_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_attribute_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_attribute_5F_declaration_ (GALGAS_propertyInCollectionListAST & ioArgument0,
-                                                      C_String & ioSyntaxDirectedTranslationResult,
-                                                      C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'branchOfParseWhenInstruction' non terminal
-//--- 'parse' label
-  public : virtual void nt_branchOfParseWhenInstruction_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                               C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_branchOfParseWhenInstruction_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_branchOfParseWhenInstruction_ (GALGAS_syntaxInstructionList & outArgument0,
-                                                          C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'cast_else_or_default' non terminal
-//--- 'parse' label
-  public : virtual void nt_cast_5F_else_5F_or_5F_default_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_cast_5F_else_5F_or_5F_default_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_cast_5F_else_5F_or_5F_default_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'cast_instruction_branch' non terminal
-//--- 'parse' label
-  public : virtual void nt_cast_5F_instruction_5F_branch_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_cast_5F_instruction_5F_branch_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_cast_5F_instruction_5F_branch_ (GALGAS_castInstructionBranchListAST & ioArgument0,
-                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'collection_value_element' non terminal
-//--- 'parse' label
-  public : virtual void nt_collection_5F_value_5F_element_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_collection_5F_value_5F_element_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_collection_5F_value_5F_element_ (GALGAS_abstractCollectionValueElement & outArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
-                                                            C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'concatenation_term' non terminal
-//--- 'parse' label
-  public : virtual void nt_concatenation_5F_term_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                        C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_concatenation_5F_term_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_concatenation_5F_term_ (GALGAS_semanticExpressionAST & outArgument0,
-                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                   C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'expression' non terminal
-//--- 'parse' label
-  public : virtual void nt_expression_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_expression_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_expression_ (GALGAS_semanticExpressionAST & outArgument0,
-                                        C_String & ioSyntaxDirectedTranslationResult,
-                                        C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'factor' non terminal
-//--- 'parse' label
-  public : virtual void nt_factor_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_factor_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_factor_ (GALGAS_semanticExpressionAST & outArgument0,
-                                    C_String & ioSyntaxDirectedTranslationResult,
-                                    C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'for_instruction_element' non terminal
-//--- 'parse' label
-  public : virtual void nt_for_5F_instruction_5F_element_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_for_5F_instruction_5F_element_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_for_5F_instruction_5F_element_ (GALGAS_foreachInstructionEnumeratedObjectElementListAST & ioArgument0,
-                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'for_instruction_enumerated_object' non terminal
-//--- 'parse' label
-  public : virtual void nt_for_5F_instruction_5F_enumerated_5F_object_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
-                                                                        C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'foreach_enumerated_object' non terminal
-//--- 'parse' label
-  public : virtual void nt_foreach_5F_enumerated_5F_object_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_foreach_5F_enumerated_5F_object_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_foreach_5F_enumerated_5F_object_ (GALGAS_foreachInstructionEnumeratedObjectListAST & ioArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
-                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'formal_input_parameter_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_formal_5F_input_5F_parameter_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_formal_5F_input_5F_parameter_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (GALGAS_formalInputParameterListAST & outArgument0,
-                                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'formal_parameter_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_formal_5F_parameter_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_formal_5F_parameter_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_formal_5F_parameter_5F_list_ (GALGAS_formalParameterListAST & outArgument0,
-                                                         C_String & ioSyntaxDirectedTranslationResult,
-                                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'if_branch' non terminal
-//--- 'parse' label
-  public : virtual void nt_if_5F_branch_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                               C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_if_5F_branch_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_if_5F_branch_ (GALGAS_semanticInstructionAST & outArgument0,
-                                          C_String & ioSyntaxDirectedTranslationResult,
-                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'insert_method_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_insert_5F_method_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_insert_5F_method_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_insert_5F_method_5F_declaration_ (GALGAS_insertMethodListAST & ioArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
-                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'local_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_local_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_local_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_local_5F_declaration_ (GALGAS_bool & outArgument0,
-                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'match_entry' non terminal
-//--- 'parse' label
-  public : virtual void nt_match_5F_entry_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                 C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_match_5F_entry_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_match_5F_entry_ (GALGAS_matchEntryListAST & ioArgument0,
-                                            C_String & ioSyntaxDirectedTranslationResult,
-                                            C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'match_instruction_branch' non terminal
-//--- 'parse' label
-  public : virtual void nt_match_5F_instruction_5F_branch_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_match_5F_instruction_5F_branch_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_match_5F_instruction_5F_branch_ (GALGAS_matchInstructionBranchListAST & ioArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
-                                                            C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'nonterminal_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_nonterminal_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_nonterminal_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_nonterminal_5F_declaration_ (GALGAS_nonterminalDeclarationListAST & ioArgument0,
-                                                        C_String & ioSyntaxDirectedTranslationResult,
-                                                        C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'nonterminal_label_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_nonterminal_5F_label_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                      C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_nonterminal_5F_label_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_nonterminal_5F_label_5F_declaration_ (const GALGAS_lstring inArgument0,
-                                                                 GALGAS_nonTerminalLabelListAST & ioArgument1,
-                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'output_expression_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_output_5F_expression_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                               C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_output_5F_expression_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_output_5F_expression_5F_list_ (GALGAS_actualOutputExpressionList & outArgument0,
-                                                          C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'primary' non terminal
-//--- 'parse' label
-  public : virtual void nt_primary_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_primary_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_primary_ (GALGAS_semanticExpressionAST & outArgument0,
-                                     C_String & ioSyntaxDirectedTranslationResult,
-                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'relation_factor' non terminal
-//--- 'parse' label
-  public : virtual void nt_relation_5F_factor_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_relation_5F_factor_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_relation_5F_factor_ (GALGAS_semanticExpressionAST & outArgument0,
-                                                C_String & ioSyntaxDirectedTranslationResult,
-                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'relation_term' non terminal
-//--- 'parse' label
-  public : virtual void nt_relation_5F_term_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                   C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_relation_5F_term_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_relation_5F_term_ (GALGAS_semanticExpressionAST & outArgument0,
-                                              C_String & ioSyntaxDirectedTranslationResult,
-                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'semantic_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_semantic_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_semantic_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_semantic_5F_declaration_ (GALGAS_semanticDeclarationListAST & ioArgument0,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'semantic_instruction' non terminal
-//--- 'parse' label
-  public : virtual void nt_semantic_5F_instruction_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_semantic_5F_instruction_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_semantic_5F_instruction_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'semantic_instruction_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_semantic_5F_instruction_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_semantic_5F_instruction_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_semantic_5F_instruction_5F_list_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
-                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'simple_expression' non terminal
-//--- 'parse' label
-  public : virtual void nt_simple_5F_expression_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_simple_5F_expression_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_simple_5F_expression_ (GALGAS_semanticExpressionAST & outArgument0,
-                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'sortedlist_sort_descriptor' non terminal
-//--- 'parse' label
-  public : virtual void nt_sortedlist_5F_sort_5F_descriptor_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_sortedlist_5F_sort_5F_descriptor_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_sortedlist_5F_sort_5F_descriptor_ (GALGAS_sortedListSortDescriptorListAST & ioArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'syntax_component_start_symbol' non terminal
-//--- 'parse' label
-  public : virtual void nt_syntax_5F_component_5F_start_5F_symbol_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_syntax_5F_component_5F_start_5F_symbol_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_syntax_5F_component_5F_start_5F_symbol_ (GALGAS_galgas_33_SyntaxComponentListAST_2D_element & outArgument0,
-                                                                    C_String & ioSyntaxDirectedTranslationResult,
-                                                                    C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- Start symbol
-  public : static void _performSourceFileParsing_ (C_Compiler * inCompiler,
-                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                   GALGAS_lstring inFileName,
-                                                   GALGAS_galgas_33_SyntaxComponentListAST_2D_element & outArgument0
+void routine_updateLIBPMatPath (const class GALGAS_string constinArgument0,
+                                class C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        Routine 'buildGalgas3SemanticContext'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_buildGalgas_33_SemanticContext (const class GALGAS_semanticDeclarationListAST constinArgument0,
+                                             const class GALGAS_location constinArgument1,
+                                             class GALGAS_semanticContext & outArgument2,
+                                             class GALGAS_semanticDeclarationListAST & outArgument3,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Category method '@semanticDeclarationForGeneration appendSpecificFiles'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef void (*categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                              const class GALGAS_string constinArgument0,
+                                                                                              class GALGAS_stringset & ioArgument1,
+                                                                                              class C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryMethod_appendSpecificFiles (const int32_t inClassIndex,
+                                              categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callCategoryMethod_appendSpecificFiles (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                             const GALGAS_string constin_inProductDirectory,
+                                             GALGAS_stringset & io_ioAllProductFileSet,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      Routine 'generateFewImplementationFiles'                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateFewImplementationFiles (const class GALGAS_unifiedTypeMap constinArgument0,
+                                             const class GALGAS_string constinArgument1,
+                                             const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
+                                             class GALGAS_stringlist & ioArgument3,
+                                             class GALGAS_stringset & ioArgument4,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Routine 'generateFewImplementationFilesWithFewHeaders'                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateFewImplementationFilesWithFewHeaders (const class GALGAS_unifiedTypeMap constinArgument0,
+                                                           const class GALGAS_string constinArgument1,
+                                                           const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
+                                                           class GALGAS_stringlist & ioArgument3,
+                                                           class GALGAS_stringset & ioArgument4,
+                                                           class GALGAS_stringlist & ioArgument5,
+                                                           class C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            Routine 'generateManyHeaders'                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateManyHeaders (const class GALGAS_string constinArgument0,
+                                  const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument1,
+                                  class GALGAS_stringset & ioArgument2,
+                                  class GALGAS_stringlist & ioArgument3,
+                                  class C_Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      Routine 'generateManyImplementationFiles'                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateManyImplementationFiles (const class GALGAS_unifiedTypeMap constinArgument0,
+                                              const class GALGAS_string constinArgument1,
+                                              const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
+                                              class GALGAS_stringlist & ioArgument3,
+                                              class GALGAS_stringset & ioArgument4,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           Routine 'generateOneBigHeader'                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateOneBigHeader (const class GALGAS_string constinArgument0,
+                                   const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument1,
+                                   class GALGAS_stringset & ioArgument2,
+                                   class GALGAS_stringlist & ioArgument3,
+                                   class C_Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Abstract category reader '@semanticDeclarationForGeneration headerKind'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef class GALGAS_headerKind (*categoryReaderSignature_semanticDeclarationForGeneration_headerKind) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                        class C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryReader_headerKind (const int32_t inClassIndex,
+                                     categoryReaderSignature_semanticDeclarationForGeneration_headerKind inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_headerKind callCategoryReader_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Abstract category reader '@semanticDeclarationForGeneration implementationCppFileName'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                                   class C_Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryReader_implementationCppFileName (const int32_t inClassIndex,
+                                                    categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string callCategoryReader_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Abstract category reader '@semanticDeclarationForGeneration isPredefined'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef class GALGAS_bool (*categoryReaderSignature_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                    class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryReader_isPredefined (const int32_t inClassIndex,
+                                       categoryReaderSignature_semanticDeclarationForGeneration_isPredefined inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bool callCategoryReader_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                   C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     GALGAS_string inSourceString,
-                                                     GALGAS_galgas_33_SyntaxComponentListAST_2D_element & outArgument0
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Indexing
-  public : static void performIndexing (C_Compiler * inCompiler,
-                                        const C_String & inSourceFilePath) ;
-
-//--- Only lexical analysis
-  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-                                                   const C_String & inSourceFilePath) ;
-
-//--- Only syntax analysis
-  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-                                                  const C_String & inSourceFilePath) ;
-
-//------------------------------------- 'syntax_directed_translation_result' non terminal
-//--- 'parse' label
-  public : virtual void nt_syntax_5F_directed_5F_translation_5F_result_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_syntax_5F_directed_5F_translation_5F_result_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_syntax_5F_directed_5F_translation_5F_result_ (GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & outArgument0,
-                                                                         C_String & ioSyntaxDirectedTranslationResult,
-                                                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'syntax_instruction' non terminal
-//--- 'parse' label
-  public : virtual void nt_syntax_5F_instruction_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                        C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_syntax_5F_instruction_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_syntax_5F_instruction_ (GALGAS_syntaxInstructionAST & outArgument0,
-                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                   C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'syntax_instruction_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_syntax_5F_instruction_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_syntax_5F_instruction_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_syntax_5F_instruction_5F_list_ (GALGAS_syntaxInstructionList & outArgument0,
-                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'syntax_rule_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_syntax_5F_rule_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_syntax_5F_rule_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_syntax_5F_rule_5F_declaration_ (GALGAS_syntaxRuleListAST & ioArgument0,
-                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'syntax_rule_label' non terminal
-//--- 'parse' label
-  public : virtual void nt_syntax_5F_rule_5F_label_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_syntax_5F_rule_5F_label_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_syntax_5F_rule_5F_label_ (const GALGAS_lstring inArgument0,
-                                                     GALGAS_syntaxRuleLabelListAST & ioArgument1,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'term' non terminal
-//--- 'parse' label
-  public : virtual void nt_term_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_term_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_term_ (GALGAS_semanticExpressionAST & outArgument0,
-                                  C_String & ioSyntaxDirectedTranslationResult,
-                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_syntaxModelBuilder_14 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_14 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_15 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_16 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_14 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_15 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_16 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_17 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_18 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_19 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_20 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_21 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_22 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_23 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_24 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_25 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_26 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_27 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_28 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_29 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_30 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_31 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_32 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_33 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_34 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_35 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_36 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_37 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_38 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_39 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_40 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_41 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_42 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_43 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_44 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_45 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_46 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_47 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_48 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_49 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_50 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_51 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_52 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_53 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_54 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_55 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_56 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_57 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_58 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_59 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_60 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_61 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_62 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_63 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_64 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_65 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_66 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_67 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_68 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_69 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_14 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_15 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_16 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_17 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_18 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_19 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_20 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_21 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_22 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_23 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_24 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_25 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_26 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_27 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_28 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_29 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_30 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_31 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_32 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_33 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_34 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_35 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_36 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_37 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_38 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_39 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_40 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_41 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_42 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_43 (C_Lexique_galgas_32_Scanner *) ;
-} ;
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                Routine 'buildHeader'                                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_buildHeader (const class GALGAS_headerCompositionMap constinArgument0,
+                          const class GALGAS_string constinArgument1,
+                          const class GALGAS_string constinArgument2,
+                          class GALGAS_headerRepartitionMap & ioArgument3,
+                          class GALGAS_string & ioArgument4,
+                          class C_Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          Function 'definitionGroupAmount'                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Abstract category reader '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef class GALGAS_bool (*categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                        class C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryReader_hasCppHeaderFile (const int32_t inClassIndex,
+                                           categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bool callCategoryReader_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Filewrapper 'xcodeProjectGenerationFilewrapper'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'xcodeProjectGenerationFilewrapper xcodeproj'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (class C_Compiler * inCompiler,
+                                                                               const class GALGAS_string & in_PROJECT_5F_REF,
+                                                                               const class GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
+                                                                               const class GALGAS_XCodeGroupList & in_GROUPS,
+                                                                               const class GALGAS_stringlist & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
+                                                                               const class GALGAS_XCodeToolTargetList & in_TOOL_5F_TARGET_5F_LIST,
+                                                                               const class GALGAS_XCodeAppTargetList & in_APP_5F_TARGET_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_C_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_M_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_MM_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_FRAMEWORK_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_HEADER_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_PLIST_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_TIFF_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_ICNS_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_XIB_5F_FILE_5F_LIST,
+                                                                               const class GALGAS_BuildFileList & in_BUILD_5F_FILE_5F_LIST,
+                                                                               const class GALGAS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
+                                                                               const class GALGAS_stringlist & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
+                                                                               const class GALGAS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Filewrapper 'updaterGalgas3ApplicationFileWrapper'                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_updaterGalgas_33_ApplicationFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'updaterGalgas3ApplicationFileWrapper credits'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credits (class C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'updaterGalgas3ApplicationFileWrapper info_plist_strings'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist_5F_strings (class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'updaterGalgas3ApplicationFileWrapper main_menu_xib'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5F_menu_5F_xib (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'updaterGalgas3ApplicationFileWrapper application_delegate_header'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_header (class C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//           Filewrapper template 'updaterGalgas3ApplicationFileWrapper application_delegate_implementation'           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_implementation (class C_Compiler * inCompiler,
+                                                                                                                     const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                                                     const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'updaterGalgas3ApplicationFileWrapper info_plist'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TARGET_5F_NAME,
+                                                                                         const class GALGAS_string & in_CODE_5F_SIGNING_5F_IDENTITY
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'updaterGalgas3ApplicationFileWrapper main'                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main (class C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'updaterGalgas3ApplicationFileWrapper prefix'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_prefix (class C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Filewrapper 'updaterGalgas3ToolFileWrapper'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_updaterGalgas_33_ToolFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_protocol'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_protocol (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_header'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_header (class C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_implementation'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_implementation (class C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_main'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_main (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                              const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'updaterGalgas3ToolFileWrapper updater_tool_info_plist'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_info_5F_plist (class C_Compiler * inCompiler,
+                                                                                                     const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                                     const class GALGAS_string & in_TARGET_5F_NAME,
+                                                                                                     const class GALGAS_string & in_CODE_5F_SIGNING_5F_IDENTITY
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'updaterGalgas3ToolFileWrapper updater_tool_launchd_plist'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (class C_Compiler * inCompiler,
+                                                                                                        const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
+                                                                                                        const class GALGAS_string & in_TARGET_5F_NAME
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Filewrapper 'applicationGalgas3UpdateFileWrapper'                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_applicationGalgas_33_UpdateFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_header'                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_header (class C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//            Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_implementation'             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (class C_Compiler * inCompiler,
+                                                                                                                  const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                                                                  const class GALGAS_string & in_REPOSITORY_5F_URL,
+                                                                                                                  const class GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME
+                                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_nib'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_nib (class C_Compiler * inCompiler,
+                                                                                                       const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper download_data_header'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_header (class C_Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'applicationGalgas3UpdateFileWrapper download_data_implementation'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_implementation (class C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper download_file_header'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_header (class C_Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'applicationGalgas3UpdateFileWrapper download_file_implementation'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_implementation (class C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper compatibility_header'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compatibility_5F_header (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Filewrapper 'targetGalgas3GenerationFileWrapper'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const char * gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_2_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_3_targetGalgas_33_GenerationFileWrapper ;
+extern const char * gWrapperFileContent_4_targetGalgas_33_GenerationFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cRegularFileWrapper gWrapperFile_0_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_2_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_3_targetGalgas_33_GenerationFileWrapper ;
+extern const cRegularFileWrapper gWrapperFile_4_targetGalgas_33_GenerationFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_1_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_2_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_3_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'targetGalgas3GenerationFileWrapper build_macosx'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_macosx'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_macosx'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_macosx'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'targetGalgas3GenerationFileWrapper install_macosx'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_macosx (class C_Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'targetGalgas3GenerationFileWrapper clean_macosx'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'targetGalgas3GenerationFileWrapper clean_unix'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'targetGalgas3GenerationFileWrapper build_unix'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_unix'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_unix'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (class C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_unix'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (class C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'targetGalgas3GenerationFileWrapper install_unix'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (class C_Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux32_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux32_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux32_on_mac'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux32_on_mac'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux32_on_mac'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux64_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux64_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                                      const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux64_on_mac'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux64_on_mac'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux64_on_mac'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper clean_win32_on_mac'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                           const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_win32_on_mac'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler,
+                                                                                                           const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_win32_on_mac'                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_win32_on_mac'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_win32_on_mac'                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                                               const class GALGAS_stringlist & in_TOOL_5F_CPP_5F_FILE_5F_LIST,
+                                                                                               const class GALGAS_string & in_LIBPM_5F_PATH,
+                                                                                               const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
+                                                                                               const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET,
+                                                                                               const class GALGAS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
+                                                                                               const class GALGAS_string & in_PLATFORM
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (class C_Compiler * inCompiler,
+                                                                                                   const class GALGAS_string & in_PROJECT_5F_NAME,
+                                                                                                   const class GALGAS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
+                                                                                                   const class GALGAS_string & in_VERSION_5F_STRING,
+                                                                                                   const class GALGAS_stringset & in_HANDLED_5F_EXTENSION_5F_SET
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_build_xcode'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (class C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist_strings'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (class C_Compiler * inCompiler,
+                                                                                                              const class GALGAS_string & in_PROJECT_5F_NAME
+                                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'targetGalgas3GenerationFileWrapper json_file_list'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
+                                                                                              const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
+                                                                                              const class GALGAS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
+                                                                                              const class GALGAS_stringlist & in_TOOL_5F_LINK_5F_LIST,
+                                                                                              const class GALGAS_string & in_LIBPM_5F_DIRECTORY_5F_PATH
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'targetGalgas3GenerationFileWrapper project_header'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (class C_Compiler * inCompiler,
+                                                                                           const class GALGAS_string & in_VERSION_5F_STRING
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Routine 'generateGalgasCodeBlocksWindowsTarget'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgasCodeBlocksWindowsTarget (const class GALGAS_string constinArgument0,
+                                                    const class GALGAS_string constinArgument1,
+                                                    const class GALGAS_stringlist constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_stringlist constinArgument4,
+                                                    const class GALGAS_stringset constinArgument5,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Routine 'generateGalgasCodeBlocksMacTarget'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgasCodeBlocksMacTarget (const class GALGAS_string constinArgument0,
+                                                const class GALGAS_string constinArgument1,
+                                                const class GALGAS_stringlist constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_stringlist constinArgument4,
+                                                const class GALGAS_stringset constinArgument5,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Routine 'generateGalgasCodeBlocksLinuxI686Target'                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (const class GALGAS_string constinArgument0,
+                                                               const class GALGAS_string constinArgument1,
+                                                               const class GALGAS_stringlist constinArgument2,
+                                                               const class GALGAS_string constinArgument3,
+                                                               const class GALGAS_stringlist constinArgument4,
+                                                               const class GALGAS_stringset constinArgument5,
+                                                               class C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Routine 'generateGalgasCodeBlocksLinuxX86_64Target'                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const class GALGAS_string constinArgument0,
+                                                                       const class GALGAS_string constinArgument1,
+                                                                       const class GALGAS_stringlist constinArgument2,
+                                                                       const class GALGAS_string constinArgument3,
+                                                                       const class GALGAS_stringlist constinArgument4,
+                                                                       const class GALGAS_stringset constinArgument5,
+                                                                       class C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    Routine 'generateGalgas3MinGWOnMacOSXTarget'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_MinGWOnMacOSXTarget (const class GALGAS_string constinArgument0,
+                                                    const class GALGAS_string constinArgument1,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    Routine 'generateGalgas3MakefileMacOSXTarget'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_MakefileMacOSXTarget (const class GALGAS_string constinArgument0,
+                                                     const class GALGAS_string constinArgument1,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Routine 'generateGalgas3MakefileUnixTarget'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_MakefileUnixTarget (const class GALGAS_string constinArgument0,
+                                                   const class GALGAS_string constinArgument1,
+                                                   class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Routine 'generateGalgas3Linux32OnMacOSXTarget'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (const class GALGAS_string constinArgument0,
+                                                            const class GALGAS_string constinArgument1,
+                                                            class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Routine 'generateGalgas3Linux64OnMacOSXTarget'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const class GALGAS_string constinArgument0,
+                                                            const class GALGAS_string constinArgument1,
+                                                            class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Category method '@XcodeProjectDescriptor generateAtPath'                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor inObject,
+                                    const class GALGAS_string constin_inPath,
+                                    const class GALGAS_string constin_inCacheFilePath,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Category setter '@XcodeProjectDescriptor addAppTarget'                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                    const class GALGAS_string constin_inTargetName,
+                                    const class GALGAS_string constin_inProductFileName,
+                                    const class GALGAS_stringlist constin_inSourceList,
+                                    const class GALGAS_stringlist constin_inFrameworksFileRefList,
+                                    const class GALGAS_stringlist constin_inResourceFileBuildRefs,
+                                    const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
+                                    const class GALGAS_stringlist constin_inDependentTargetRefList,
+                                    const class GALGAS__32_stringlist constin_inProductCopyList,
+                                    class GALGAS_string & out_outProductFileRef,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Category setter '@XcodeProjectDescriptor addGroup'                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                const class GALGAS_string constin_inGroupName,
+                                const class GALGAS_string constin_inGroupPath,
+                                const class GALGAS_stringlist constin_inChildrenRefs,
+                                class GALGAS_string & out_outGroupRef,
+                                class C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Category setter '@XcodeProjectDescriptor addGroupWithFiles'                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                         const class GALGAS_string constin_inGroupName,
+                                         const class GALGAS_string constin_inGroupPath,
+                                         const class GALGAS_stringset constin_inFileNames,
+                                         class GALGAS_stringlist & io_ioCFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioCppFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioMFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioMMFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioFrameWorkFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioResourceFileBuildRefs,
+                                         class GALGAS_string & out_outGroupRef,
+                                         class C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Category setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addSettingsToDefaultConfiguration (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                                         const class GALGAS_stringlist constin_inSettingList,
+                                                         class C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Category setter '@XcodeProjectDescriptor addToolTarget'                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                     const class GALGAS_string constin_inTargetName,
+                                     const class GALGAS_string constin_inProductFileName,
+                                     const class GALGAS_stringlist constin_inSourceList,
+                                     const class GALGAS_stringlist constin_inToolFrameworksFileRefList,
+                                     const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
+                                     class GALGAS_string & out_outTargetRef,
+                                     class GALGAS_string & out_outProductFileRef,
+                                     class C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Category setter '@XcodeProjectDescriptor placeGroupAsMainGroup'                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_placeGroupAsMainGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                             const class GALGAS_string constin_inGroupRef,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           @XcodeProjectDescriptor struct                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_uint mAttribute_mSequenceNumber ;
+  public : GALGAS_string mAttribute_mMainGroupReference ;
+  public : GALGAS_stringlist mAttribute_mMainGroupChildrenRefs ;
+  public : GALGAS_string mAttribute_mProjectObjectReference ;
+  public : GALGAS_XCodeGroupList mAttribute_mGroupList ;
+  public : GALGAS_XCodeToolTargetList mAttribute_mToolTargetList ;
+  public : GALGAS_XCodeAppTargetList mAttribute_mAppTargetList ;
+  public : GALGAS__32_stringlist mAttribute_mCFileList ;
+  public : GALGAS__32_stringlist mAttribute_mCppFileList ;
+  public : GALGAS__32_stringlist mAttribute_m_5F_M_5F_FileList ;
+  public : GALGAS__32_stringlist mAttribute_m_5F_MM_5F_FileList ;
+  public : GALGAS__32_stringlist mAttribute_mFrameworkFileList ;
+  public : GALGAS__32_stringlist mAttribute_mHeaderFileList ;
+  public : GALGAS_BuildFileList mAttribute_mBuildFileList ;
+  public : GALGAS_string mAttribute_mDefaultConfigurationRef ;
+  public : GALGAS_stringlist mAttribute_mDefaultConfigurationSettingList ;
+  public : GALGAS_string mAttribute_mProjectBuildConfigurationRef ;
+  public : GALGAS__32_stringlist mAttribute_mInfoPlistFileList ;
+  public : GALGAS__32_stringlist mAttribute_mXIB_5F_fileList ;
+  public : GALGAS__32_stringlist mAttribute_mTIFF_5F_fileList ;
+  public : GALGAS__32_stringlist mAttribute_mICNS_5F_fileList ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_XcodeProjectDescriptor constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_XcodeProjectDescriptor (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_XcodeProjectDescriptor (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_XcodeProjectDescriptor (const GALGAS_uint & in_mSequenceNumber,
+                                          const GALGAS_string & in_mMainGroupReference,
+                                          const GALGAS_stringlist & in_mMainGroupChildrenRefs,
+                                          const GALGAS_string & in_mProjectObjectReference,
+                                          const GALGAS_XCodeGroupList & in_mGroupList,
+                                          const GALGAS_XCodeToolTargetList & in_mToolTargetList,
+                                          const GALGAS_XCodeAppTargetList & in_mAppTargetList,
+                                          const GALGAS__32_stringlist & in_mCFileList,
+                                          const GALGAS__32_stringlist & in_mCppFileList,
+                                          const GALGAS__32_stringlist & in_m_5F_M_5F_FileList,
+                                          const GALGAS__32_stringlist & in_m_5F_MM_5F_FileList,
+                                          const GALGAS__32_stringlist & in_mFrameworkFileList,
+                                          const GALGAS__32_stringlist & in_mHeaderFileList,
+                                          const GALGAS_BuildFileList & in_mBuildFileList,
+                                          const GALGAS_string & in_mDefaultConfigurationRef,
+                                          const GALGAS_stringlist & in_mDefaultConfigurationSettingList,
+                                          const GALGAS_string & in_mProjectBuildConfigurationRef,
+                                          const GALGAS__32_stringlist & in_mInfoPlistFileList,
+                                          const GALGAS__32_stringlist & in_mXIB_5F_fileList,
+                                          const GALGAS__32_stringlist & in_mTIFF_5F_fileList,
+                                          const GALGAS__32_stringlist & in_mICNS_5F_fileList) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_XcodeProjectDescriptor extractObject (const GALGAS_object & inObject,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_XcodeProjectDescriptor constructor_new (const class GALGAS_uint & inOperand0,
+                                                                 const class GALGAS_string & inOperand1,
+                                                                 const class GALGAS_stringlist & inOperand2,
+                                                                 const class GALGAS_string & inOperand3,
+                                                                 const class GALGAS_XCodeGroupList & inOperand4,
+                                                                 const class GALGAS_XCodeToolTargetList & inOperand5,
+                                                                 const class GALGAS_XCodeAppTargetList & inOperand6,
+                                                                 const class GALGAS__32_stringlist & inOperand7,
+                                                                 const class GALGAS__32_stringlist & inOperand8,
+                                                                 const class GALGAS__32_stringlist & inOperand9,
+                                                                 const class GALGAS__32_stringlist & inOperand10,
+                                                                 const class GALGAS__32_stringlist & inOperand11,
+                                                                 const class GALGAS__32_stringlist & inOperand12,
+                                                                 const class GALGAS_BuildFileList & inOperand13,
+                                                                 const class GALGAS_string & inOperand14,
+                                                                 const class GALGAS_stringlist & inOperand15,
+                                                                 const class GALGAS_string & inOperand16,
+                                                                 const class GALGAS__32_stringlist & inOperand17,
+                                                                 const class GALGAS__32_stringlist & inOperand18,
+                                                                 const class GALGAS__32_stringlist & inOperand19,
+                                                                 const class GALGAS__32_stringlist & inOperand20
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_XcodeProjectDescriptor & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_XCodeAppTargetList reader_mAppTargetList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_BuildFileList reader_mBuildFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mCFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mCppFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mDefaultConfigurationRef (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mDefaultConfigurationSettingList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mFrameworkFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_XCodeGroupList reader_mGroupList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mHeaderFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mICNS_5F_fileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mInfoPlistFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mMainGroupChildrenRefs (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mMainGroupReference (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mProjectBuildConfigurationRef (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mProjectObjectReference (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mSequenceNumber (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mTIFF_5F_fileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_XCodeToolTargetList reader_mToolTargetList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mXIB_5F_fileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_m_5F_MM_5F_FileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_m_5F_M_5F_FileList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_XcodeProjectDescriptor class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ;
+
 #endif

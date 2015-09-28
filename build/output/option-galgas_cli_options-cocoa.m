@@ -25,15 +25,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"convertToGalgas3"
-    commandChar:0
-    commandString:@"convert-to-galgas-3"
-    comment:@"Convert to GALGAS 3"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
     identifier:@"generateManyFiles"
     commandChar:0
     commandString:@"generate-many-cpp-files"

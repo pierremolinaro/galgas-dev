@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  'gui' component compilation                                                                                         *
 #                                                                                                                      *
-#  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2008, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -15,10 +15,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 list @guiCommandLineOptionList {
   @string mOptionComponent
   @string mOptionIdentifier
@@ -27,7 +23,7 @@ list @guiCommandLineOptionList {
   @string mComment
 }
 
-#------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @extensionMap {
   @string mLexiqueName
@@ -64,7 +60,7 @@ struct @guiAnalysisContext {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#         G E N E R A T I O N    T E M P L A T E S                          *
+#         G E N E R A T I O N    T E M P L A T E S                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper guiGenerationTemplates in "../generation_templates/gui_generation" {
@@ -73,182 +69,6 @@ filewrapper guiGenerationTemplates in "../generation_templates/gui_generation" {
   template gui_implementation "gui-implementation.m.galgasTemplate"
     ?galgas3:@bool GENERATE_FOR_GALGAS3
     ?@guiAnalysisContext GUI_CONTEXT
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#       C O M P I L E   G U I   C O M P O N E N T   F R O M   A S T         *
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc compileGuiComponentFromAST
-  ?let @lstring inSourceFile
-  ?let @string inOutputDirectory
-  ?let @guiComponentAST inGuiComponentRoot
-  ?!@parsedComponentStruct ioParsedComponentStruct {
-#--- Check component name
-  @lstring componentName = [inGuiComponentRoot mGUIName]
-  @string basename = [[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension]
-  if [componentName string] != basename then
-    warning componentName: "GALGAS checks "
-      "the component name ('" + [componentName string]
-    + "') against the source file base name ('" + basename + "'): they should be identical"
-  end
-#--- 
-  var context =@guiAnalysisContext.new{
-    !@stringlist. emptyList
-    !@guiCommandLineOptionList. emptyList # Bool options
-    !@guiCommandLineOptionList. emptyList # UInt options
-    !@guiCommandLineOptionList. emptyList # string options
-    !@stringlist. emptyList
-    !@extensionMap. emptyMap
-    !@importedLexiqueList. emptyList
-  }
-#--- Check imported options components
-  for () in [inGuiComponentRoot mImportedOptionList] do 
-    if [[mValue string] pathExtension] != "gOption" then
-      error mValue: "only an option component (path extension '.gOption') can be imported here"
-    else
-      parseOptionComponent (
-        !@lstring.new {
-          ![[mValue string] absolutePathFromPath ![[inSourceFile string] stringByDeletingLastPathComponent]]
-          ![mValue location]}
-        !?ioParsedComponentStruct
-        ?5*
-      )
-      context.mImportedOptionComponentList += ![[[mValue string] lastPathComponent] stringByDeletingPathExtension]
-    end
-  end
-#--- Nib and main classes
-  for () in [inGuiComponentRoot mGlobalSimpleAttributeList] do
-    if [mKey string] != "nibAndMainClass" then
-      warning mKey:"the '" + mKey + "' key is invalid and has no effect"
-    else
-      for () in [mValue.string componentsSeparatedByString !"."] do
-        context.mNibAndClassList += !mValue
-      end
-    end
-  end
-#--- 'with lexique' construct analysis
-  for () in [inGuiComponentRoot mWithLexiqueList] do
-  #--- Check lexique
-    @galgas3LexiqueComponentListAST-element lexiqueComponentRoot
-    if [[mLexiqueFileName string] pathExtension] != "gLexique" then
-      error mLexiqueFileName:"the file extension for a lexique component should be 'gLexique'" : lexiqueComponentRoot
-    else
-      var lexiqueFullPathName =@lstring.new{
-        ![[mLexiqueFileName string] absolutePathFromPath ![[inSourceFile string] stringByDeletingLastPathComponent]]
-        ![mLexiqueFileName location]
-      }
-      parseLexiqueComponent (
-        !lexiqueFullPathName
-        !?ioParsedComponentStruct
-        ?lexiqueComponentRoot
-      )
-    end
-  #--- Build terminal symbol set
-    var terminalSymbolSet =@stringset.emptySet{}
-    for () in [lexiqueComponentRoot mTerminalDeclarationList] do
-      terminalSymbolSet += ![mName string]
-    end
-    for () in [lexiqueComponentRoot mLexicalListDeclarationList] do
-      for () in mEntryList do
-        terminalSymbolSet += ![mTerminalSpelling string]
-      end
-    end
-  #--- Check labels
-    for () in mLabels do
-      for () in mTerminalList do
-        if not [terminalSymbolSet hasKey ![mTerminal string]] then
-          error mTerminal: "the '$"
-            + mTerminal
-            + "$' terminal symbol is not declared by the '"
-            + mLexiqueFileName
-            + "' lexique"
-        end
-      end
-    end
-  #--- Compound attributes
-    var textMacroList =@textMacroList.emptyList{}
-    for () in mCompoundAttributes do
-      if [mKey string] != "textMacro" then
-        error mKey: "for a compound attribute, only the 'textMacro' key is valid"
-      else
-        textMacroList += ![mAttributeName string] ![mValue string]
-      end
-    end
-  #--- Simple attributes
-    @bool hasAssociatedExtension = false
-    @bool hasTabViewTitle = false
-    @bool hasBlockComment = false
-    @string tabViewTitle = ""
-    @string blockComment = ""
-    for () in mSimpleAttributes do
-      if [mKey string] == "fileExtension" then
-        [!?context.mExtensionMap insertKey !mValue ![[[mLexiqueFileName string] lastPathComponent] stringByDeletingPathExtension]]
-        hasAssociatedExtension = true
-      elsif [mKey string] == "title" then
-        if hasTabViewTitle then
-          error mKey: "the '" + mKey + "' key should be defined once"
-        end
-        hasTabViewTitle = true
-        tabViewTitle = [mValue string]
-      elsif [mKey string] == "blockComment" then
-        if hasBlockComment then
-          error mKey: "the '" + mKey + "' key should be defined once"
-        end
-        hasBlockComment = true
-        blockComment = [mValue string]
-      else
-        error mKey: "the '" + mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"
-      end
-    end
-  #--- has an extension ?
-    if not hasAssociatedExtension then
-      error mLexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")"
-    end
-  #--- has title ?
-    if not hasTabViewTitle then
-      error mLexiqueFileName:"the 'title' key should be defined once (it is not defined)"
-    end
-  #---
-    context.mWithLexiqueList +=
-      ![[[mLexiqueFileName string] lastPathComponent] stringByDeletingPathExtension]
-      !blockComment
-      !tabViewTitle
-      !textMacroList
-      !mLabels
-  end
-#--- Generation
-  if @uint. errorCount == 0 then
-    [@string generateFileWithPattern
-      !startPath:inOutputDirectory
-      !fileName:componentName.string + ".m"
-      !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
-      !generatedZone2:[filewrapper guiGenerationTemplates.gui_implementation !galgas3:false !context]
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:"\n\n" # Zone 3
-      !makeExecutable:false
-    ]
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#C O M P I L E   G U I   C O M P O N E N T   F R O M   S O U R C E   F I L E                                           *
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc compileGuiComponentFromSourceFile
-  ?let @lstring inSourceFile
-  ?let @string inOutputDirectory
-  ?!@parsedComponentStruct ioParsedComponentStruct {
-  grammar guiGrammar in inSourceFile ?let @guiComponentAST guiComponentRoot
-#---
-  compileGuiComponentFromAST (
-    !inSourceFile
-    !inOutputDirectory
-    !guiComponentRoot
-    !?ioParsedComponentStruct
-  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

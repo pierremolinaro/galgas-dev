@@ -10,847 +10,859 @@
 #include "all-declarations-12.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  GRAMMAR grammarLL1grammar
+//                                                                                                                     *
+//                                    @expressionCollectionValueForGeneration class                                    *
+//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cGrammar_grammarLL_31_grammar : public cParser_grammarModelBuilder {
-//------------------------------------- 'grammar_component_start_symbol' non terminal
-//--- 'parse' label
-  public : virtual void nt_grammar_5F_component_5F_start_5F_symbol_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
+class GALGAS_expressionCollectionValueForGeneration : public GALGAS_abstractCollectionValueElementForGeneration {
+//--- Constructor
+  public : GALGAS_expressionCollectionValueForGeneration (void) ;
 
-//--- indexing
-  public : virtual void nt_grammar_5F_component_5F_start_5F_symbol_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
+//---
+  public : inline const class cPtr_expressionCollectionValueForGeneration * ptr (void) const { return (const cPtr_expressionCollectionValueForGeneration *) mObjectPtr ; }
 
-//----------- '' label
-  public : virtual void nt_grammar_5F_component_5F_start_5F_symbol_ (GALGAS_galgas_33_GrammarComponentListAST_2D_element & outArgument0,
-                                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
+//--------------------------------- Constructor from pointer
+  public : GALGAS_expressionCollectionValueForGeneration (const cPtr_expressionCollectionValueForGeneration * inSourcePtr) ;
 
-//--- Start symbol
-  public : static void _performSourceFileParsing_ (C_Compiler * inCompiler,
-                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                   GALGAS_lstring inFileName,
-                                                   GALGAS_galgas_33_GrammarComponentListAST_2D_element & outArgument0
-                                                   COMMA_LOCATION_ARGS) ;
+//-- Start of generic part --*
 
-  public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     GALGAS_string inSourceString,
-                                                     GALGAS_galgas_33_GrammarComponentListAST_2D_element & outArgument0
-                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
-//--- Indexing
-  public : static void performIndexing (C_Compiler * inCompiler,
-                                        const C_String & inSourceFilePath) ;
+//--------------------------------- Object extraction
+  public : static GALGAS_expressionCollectionValueForGeneration extractObject (const GALGAS_object & inObject,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
-//--- Only lexical analysis
-  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-                                                   const C_String & inSourceFilePath) ;
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_expressionCollectionValueForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand1
+                                                                                 COMMA_LOCATION_ARGS) ;
 
-//--- Only syntax analysis
-  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-                                                  const C_String & inSourceFilePath) ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_expressionCollectionValueForGeneration & inOperand) const ;
 
-//------------------------------------- 'grammar_start_symbol_label' non terminal
-//--- 'parse' label
-  public : virtual void nt_grammar_5F_start_5F_symbol_5F_label_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                      C_Lexique_galgas_32_Scanner * inCompiler) ;
+//--------------------------------- Setters
 
-//--- indexing
-  public : virtual void nt_grammar_5F_start_5F_symbol_5F_label_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
 
-//----------- '' label
-  public : virtual void nt_grammar_5F_start_5F_symbol_5F_label_ (const GALGAS_lstring inArgument0,
-                                                                 GALGAS_nonTerminalLabelListAST & ioArgument1,
-                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inCompiler) ;
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mExpression (LOCATION_ARGS) const ;
 
-//------------------------------------- 'label_formal_parameter' non terminal
-//--- 'parse' label
-  public : virtual void nt_label_5F_formal_5F_parameter_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                               C_Lexique_galgas_32_Scanner * inCompiler) ;
 
-//--- indexing
-  public : virtual void nt_label_5F_formal_5F_parameter_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_expressionCollectionValueForGeneration class
 
-//----------- '' label
-  public : virtual void nt_label_5F_formal_5F_parameter_ (GALGAS_lstring & outArgument0,
-                                                          GALGAS_formalParameterListAST & ioArgument1,
-                                                          C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
 
-  public : virtual int32_t select_grammarModelBuilder_0 (C_Lexique_galgas_32_Scanner *) ;
+//---------------------------------------------------------------------------------------------------------------------*
 
-  public : virtual int32_t select_grammarModelBuilder_1 (C_Lexique_galgas_32_Scanner *) ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration ;
 
-  public : virtual int32_t select_grammarModelBuilder_2 (C_Lexique_galgas_32_Scanner *) ;
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Pointer class for @expressionCollectionValueForGeneration class                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-  public : virtual int32_t select_grammarModelBuilder_3 (C_Lexique_galgas_32_Scanner *) ;
+class cPtr_expressionCollectionValueForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
+//--- Attributes
+  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
 
-  public : virtual int32_t select_grammarModelBuilder_4 (C_Lexique_galgas_32_Scanner *) ;
+//--- Constructor
+  public : cPtr_expressionCollectionValueForGeneration (const GALGAS_location & in_mExpressionLocation,
+                                                        const GALGAS_semanticExpressionForGeneration & in_mExpression
+                                                        COMMA_LOCATION_ARGS) ;
 
-  public : virtual int32_t select_grammarModelBuilder_5 (C_Lexique_galgas_32_Scanner *) ;
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
-  public : virtual int32_t select_grammarModelBuilder_6 (C_Lexique_galgas_32_Scanner *) ;
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
 
-  public : virtual int32_t select_grammarModelBuilder_7 (C_Lexique_galgas_32_Scanner *) ;
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
-  public : virtual int32_t select_grammarModelBuilder_8 (C_Lexique_galgas_32_Scanner *) ;
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 
-  public : virtual int32_t select_grammarModelBuilder_9 (C_Lexique_galgas_32_Scanner *) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    @expressionListCollectionForGeneration class                                     *
+//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
-//  GRAMMAR programSLRgrammar
+
+class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractCollectionValueElementForGeneration {
+//--- Constructor
+  public : GALGAS_expressionListCollectionForGeneration (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_expressionListCollectionForGeneration constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_expressionListCollectionForGeneration * ptr (void) const { return (const cPtr_expressionListCollectionForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_expressionListCollectionForGeneration (const cPtr_expressionListCollectionForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_expressionListCollectionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_expressionListCollectionForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                                const class GALGAS_semanticExpressionListForGeneration & inOperand1
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_expressionListCollectionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionListForGeneration reader_mExpressionList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_expressionListCollectionForGeneration class
+
+
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cGrammar_programSLRgrammar : public cParser_expressionSyntax,
-                                   public cParser_parameterArgumentSyntax,
-                                   public cParser_semanticInstructionsSyntax,
-                                   public cParser_programModelBuilder,
-                                   public cParser_semanticDeclarationsSyntax {
-//------------------------------------- 'actual_input_parameter' non terminal
-//--- 'parse' label
-  public : virtual void nt_actual_5F_input_5F_parameter_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                               C_Lexique_galgas_32_Scanner * inCompiler) ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionListCollectionForGeneration ;
 
-//--- indexing
-  public : virtual void nt_actual_5F_input_5F_parameter_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Pointer class for @expressionListCollectionForGeneration class                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-//----------- '' label
-  public : virtual void nt_actual_5F_input_5F_parameter_ (GALGAS_lstring & outArgument0,
-                                                          GALGAS_abstractInputParameter & outArgument1,
-                                                          C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
+class cPtr_expressionListCollectionForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
+//--- Attributes
+  public : GALGAS_semanticExpressionListForGeneration mAttribute_mExpressionList ;
 
-//------------------------------------- 'actual_input_parameter_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_actual_5F_input_5F_parameter_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
+//--- Constructor
+  public : cPtr_expressionListCollectionForGeneration (const GALGAS_location & in_mExpressionLocation,
+                                                       const GALGAS_semanticExpressionListForGeneration & in_mExpressionList
+                                                       COMMA_LOCATION_ARGS) ;
 
-//--- indexing
-  public : virtual void nt_actual_5F_input_5F_parameter_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
-//----------- '' label
-  public : virtual void nt_actual_5F_input_5F_parameter_5F_list_ (GALGAS_actualInputParameterListAST & outArgument0,
-                                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionListForGeneration reader_mExpressionList (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
 
-//------------------------------------- 'actual_parameter_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_actual_5F_parameter_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
-//--- indexing
-  public : virtual void nt_actual_5F_parameter_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 
-//----------- '' label
-  public : virtual void nt_actual_5F_parameter_5F_list_ (GALGAS_actualParameterListAST & outArgument0,
-                                                         C_String & ioSyntaxDirectedTranslationResult,
-                                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'attribute_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_attribute_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_attribute_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_attribute_5F_declaration_ (GALGAS_propertyInCollectionListAST & ioArgument0,
-                                                      C_String & ioSyntaxDirectedTranslationResult,
-                                                      C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'cast_else_or_default' non terminal
-//--- 'parse' label
-  public : virtual void nt_cast_5F_else_5F_or_5F_default_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_cast_5F_else_5F_or_5F_default_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_cast_5F_else_5F_or_5F_default_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'cast_instruction_branch' non terminal
-//--- 'parse' label
-  public : virtual void nt_cast_5F_instruction_5F_branch_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_cast_5F_instruction_5F_branch_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_cast_5F_instruction_5F_branch_ (GALGAS_castInstructionBranchListAST & ioArgument0,
-                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'collection_value_element' non terminal
-//--- 'parse' label
-  public : virtual void nt_collection_5F_value_5F_element_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_collection_5F_value_5F_element_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_collection_5F_value_5F_element_ (GALGAS_abstractCollectionValueElement & outArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
-                                                            C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'concatenation_term' non terminal
-//--- 'parse' label
-  public : virtual void nt_concatenation_5F_term_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                        C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_concatenation_5F_term_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_concatenation_5F_term_ (GALGAS_semanticExpressionAST & outArgument0,
-                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                   C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'expression' non terminal
-//--- 'parse' label
-  public : virtual void nt_expression_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_expression_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_expression_ (GALGAS_semanticExpressionAST & outArgument0,
-                                        C_String & ioSyntaxDirectedTranslationResult,
-                                        C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'factor' non terminal
-//--- 'parse' label
-  public : virtual void nt_factor_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_factor_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_factor_ (GALGAS_semanticExpressionAST & outArgument0,
-                                    C_String & ioSyntaxDirectedTranslationResult,
-                                    C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'for_instruction_element' non terminal
-//--- 'parse' label
-  public : virtual void nt_for_5F_instruction_5F_element_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_for_5F_instruction_5F_element_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_for_5F_instruction_5F_element_ (GALGAS_foreachInstructionEnumeratedObjectElementListAST & ioArgument0,
-                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                           C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'for_instruction_enumerated_object' non terminal
-//--- 'parse' label
-  public : virtual void nt_for_5F_instruction_5F_enumerated_5F_object_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
-                                                                        C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'foreach_enumerated_object' non terminal
-//--- 'parse' label
-  public : virtual void nt_foreach_5F_enumerated_5F_object_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_foreach_5F_enumerated_5F_object_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_foreach_5F_enumerated_5F_object_ (GALGAS_foreachInstructionEnumeratedObjectListAST & ioArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
-                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'formal_input_parameter_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_formal_5F_input_5F_parameter_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_formal_5F_input_5F_parameter_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (GALGAS_formalInputParameterListAST & outArgument0,
-                                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'formal_parameter_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_formal_5F_parameter_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_formal_5F_parameter_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_formal_5F_parameter_5F_list_ (GALGAS_formalParameterListAST & outArgument0,
-                                                         C_String & ioSyntaxDirectedTranslationResult,
-                                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'if_branch' non terminal
-//--- 'parse' label
-  public : virtual void nt_if_5F_branch_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                               C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_if_5F_branch_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_if_5F_branch_ (GALGAS_semanticInstructionAST & outArgument0,
-                                          C_String & ioSyntaxDirectedTranslationResult,
-                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'insert_method_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_insert_5F_method_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_insert_5F_method_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_insert_5F_method_5F_declaration_ (GALGAS_insertMethodListAST & ioArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
-                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'local_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_local_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_local_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_local_5F_declaration_ (GALGAS_bool & outArgument0,
-                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'match_entry' non terminal
-//--- 'parse' label
-  public : virtual void nt_match_5F_entry_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                 C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_match_5F_entry_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_match_5F_entry_ (GALGAS_matchEntryListAST & ioArgument0,
-                                            C_String & ioSyntaxDirectedTranslationResult,
-                                            C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'match_instruction_branch' non terminal
-//--- 'parse' label
-  public : virtual void nt_match_5F_instruction_5F_branch_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_match_5F_instruction_5F_branch_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_match_5F_instruction_5F_branch_ (GALGAS_matchInstructionBranchListAST & ioArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
-                                                            C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'output_expression_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_output_5F_expression_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                               C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_output_5F_expression_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_output_5F_expression_5F_list_ (GALGAS_actualOutputExpressionList & outArgument0,
-                                                          C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'primary' non terminal
-//--- 'parse' label
-  public : virtual void nt_primary_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_primary_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_primary_ (GALGAS_semanticExpressionAST & outArgument0,
-                                     C_String & ioSyntaxDirectedTranslationResult,
-                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'program_component_start_symbol' non terminal
-//--- 'parse' label
-  public : virtual void nt_program_5F_component_5F_start_5F_symbol_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_program_5F_component_5F_start_5F_symbol_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_program_5F_component_5F_start_5F_symbol_ (GALGAS_programComponentAST & outArgument0,
-                                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- Start symbol
-  public : static void _performSourceFileParsing_ (C_Compiler * inCompiler,
-                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                   GALGAS_lstring inFileName,
-                                                   GALGAS_programComponentAST & outArgument0
-                                                   COMMA_LOCATION_ARGS) ;
-
-  public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     GALGAS_string inSourceString,
-                                                     GALGAS_programComponentAST & outArgument0
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Indexing
-  public : static void performIndexing (C_Compiler * inCompiler,
-                                        const C_String & inSourceFilePath) ;
-
-//--- Only lexical analysis
-  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-                                                   const C_String & inSourceFilePath) ;
-
-//--- Only syntax analysis
-  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-                                                  const C_String & inSourceFilePath) ;
-
-//------------------------------------- 'relation_factor' non terminal
-//--- 'parse' label
-  public : virtual void nt_relation_5F_factor_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_relation_5F_factor_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_relation_5F_factor_ (GALGAS_semanticExpressionAST & outArgument0,
-                                                C_String & ioSyntaxDirectedTranslationResult,
-                                                C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'relation_term' non terminal
-//--- 'parse' label
-  public : virtual void nt_relation_5F_term_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                   C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_relation_5F_term_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_relation_5F_term_ (GALGAS_semanticExpressionAST & outArgument0,
-                                              C_String & ioSyntaxDirectedTranslationResult,
-                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'semantic_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_semantic_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_semantic_5F_declaration_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_semantic_5F_declaration_ (GALGAS_semanticDeclarationListAST & ioArgument0,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'semantic_instruction' non terminal
-//--- 'parse' label
-  public : virtual void nt_semantic_5F_instruction_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_semantic_5F_instruction_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_semantic_5F_instruction_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'semantic_instruction_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_semantic_5F_instruction_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_semantic_5F_instruction_5F_list_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_semantic_5F_instruction_5F_list_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
-                                                             C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'simple_expression' non terminal
-//--- 'parse' label
-  public : virtual void nt_simple_5F_expression_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_simple_5F_expression_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_simple_5F_expression_ (GALGAS_semanticExpressionAST & outArgument0,
-                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'sortedlist_sort_descriptor' non terminal
-//--- 'parse' label
-  public : virtual void nt_sortedlist_5F_sort_5F_descriptor_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_sortedlist_5F_sort_5F_descriptor_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_sortedlist_5F_sort_5F_descriptor_ (GALGAS_sortedListSortDescriptorListAST & ioArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'syntax_directed_translation_result' non terminal
-//--- 'parse' label
-  public : virtual void nt_syntax_5F_directed_5F_translation_5F_result_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                              C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_syntax_5F_directed_5F_translation_5F_result_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_syntax_5F_directed_5F_translation_5F_result_ (GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & outArgument0,
-                                                                         C_String & ioSyntaxDirectedTranslationResult,
-                                                                         C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//------------------------------------- 'term' non terminal
-//--- 'parse' label
-  public : virtual void nt_term_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                       C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_term_indexing (C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_term_ (GALGAS_semanticExpressionAST & outArgument0,
-                                  C_String & ioSyntaxDirectedTranslationResult,
-                                  C_Lexique_galgas_32_Scanner * inCompiler) ;
-
-  public : virtual int32_t select_expressionSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_14 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_15 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_expressionSyntax_16 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_parameterArgumentSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_14 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_15 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_16 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_17 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_18 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_19 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_20 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_21 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_22 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_23 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_24 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_25 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_26 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_27 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_28 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_29 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_30 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_31 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_32 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_33 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_34 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_35 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_36 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_37 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_38 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_39 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_40 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_41 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_42 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_43 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_44 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_45 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_46 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_47 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_48 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_49 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_50 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_51 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_52 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_53 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_54 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_55 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_56 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_57 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_58 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_59 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_60 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_61 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_62 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_63 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_64 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_65 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_66 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_67 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_68 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticInstructionsSyntax_69 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_programModelBuilder_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_programModelBuilder_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_programModelBuilder_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_programModelBuilder_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_0 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_1 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_2 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_3 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_4 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_5 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_6 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_7 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_8 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_9 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_10 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_11 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_12 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_13 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_14 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_15 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_16 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_17 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_18 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_19 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_20 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_21 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_22 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_23 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_24 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_25 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_26 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_27 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_28 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_29 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_30 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_31 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_32 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_33 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_34 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_35 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_36 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_37 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_38 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_39 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_40 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_41 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_42 (C_Lexique_galgas_32_Scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_43 (C_Lexique_galgas_32_Scanner *) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   @nonTerminalInstructionForGrammarAnalysis class                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
+//--- Constructor
+  public : GALGAS_nonTerminalInstructionForGrammarAnalysis (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_nonTerminalInstructionForGrammarAnalysis constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_nonTerminalInstructionForGrammarAnalysis * ptr (void) const { return (const cPtr_nonTerminalInstructionForGrammarAnalysis *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_nonTerminalInstructionForGrammarAnalysis (const cPtr_nonTerminalInstructionForGrammarAnalysis * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_nonTerminalInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_nonTerminalInstructionForGrammarAnalysis constructor_new (const class GALGAS_location & inOperand0,
+                                                                                   const class GALGAS_lstring & inOperand1,
+                                                                                   const class GALGAS_uint & inOperand2
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_nonTerminalInstructionForGrammarAnalysis & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mNonterminalSymbolIndex (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mNonterminalSymbolName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_nonTerminalInstructionForGrammarAnalysis class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalInstructionForGrammarAnalysis ;
+
+#include "separateHeaderFor_nonTerminalInstructionForGrammarAnalysis.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     @repeatInstructionForGrammarAnalysis class                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_repeatInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
+//--- Constructor
+  public : GALGAS_repeatInstructionForGrammarAnalysis (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_repeatInstructionForGrammarAnalysis constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_repeatInstructionForGrammarAnalysis * ptr (void) const { return (const cPtr_repeatInstructionForGrammarAnalysis *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_repeatInstructionForGrammarAnalysis (const cPtr_repeatInstructionForGrammarAnalysis * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_repeatInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_repeatInstructionForGrammarAnalysis constructor_new (const class GALGAS_location & inOperand0,
+                                                                              const class GALGAS_branchListForGrammarAnalysis & inOperand1,
+                                                                              const class GALGAS_uint & inOperand2
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_repeatInstructionForGrammarAnalysis & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mAddedNonTerminalSymbolIndex (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_branchListForGrammarAnalysis reader_mRepeatBranchList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_repeatInstructionForGrammarAnalysis class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis ;
+
+#include "separateHeaderFor_repeatInstructionForGrammarAnalysis.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     @selectInstructionForGrammarAnalysis class                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_selectInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
+//--- Constructor
+  public : GALGAS_selectInstructionForGrammarAnalysis (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_selectInstructionForGrammarAnalysis constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_selectInstructionForGrammarAnalysis * ptr (void) const { return (const cPtr_selectInstructionForGrammarAnalysis *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_selectInstructionForGrammarAnalysis (const cPtr_selectInstructionForGrammarAnalysis * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_selectInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_selectInstructionForGrammarAnalysis constructor_new (const class GALGAS_location & inOperand0,
+                                                                              const class GALGAS_branchListForGrammarAnalysis & inOperand1,
+                                                                              const class GALGAS_uint & inOperand2
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_selectInstructionForGrammarAnalysis & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mAddedNonTerminalSymbolIndex (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_branchListForGrammarAnalysis reader_mSelectBranchList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_selectInstructionForGrammarAnalysis class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis ;
+
+#include "separateHeaderFor_selectInstructionForGrammarAnalysis.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    @terminalInstructionForGrammarAnalysis class                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
+//--- Constructor
+  public : GALGAS_terminalInstructionForGrammarAnalysis (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_terminalInstructionForGrammarAnalysis constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_terminalInstructionForGrammarAnalysis * ptr (void) const { return (const cPtr_terminalInstructionForGrammarAnalysis *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_terminalInstructionForGrammarAnalysis (const cPtr_terminalInstructionForGrammarAnalysis * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_terminalInstructionForGrammarAnalysis extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_terminalInstructionForGrammarAnalysis constructor_new (const class GALGAS_location & inOperand0,
+                                                                                const class GALGAS_lstring & inOperand1,
+                                                                                const class GALGAS_uint & inOperand2
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mTerminalSymbolIndex (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTerminalSymbolName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_terminalInstructionForGrammarAnalysis class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis ;
+
+#include "separateHeaderFor_terminalInstructionForGrammarAnalysis.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @inputActualParameterForGeneration class                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_inputActualParameterForGeneration : public GALGAS_actualParameterForGeneration {
+//--- Constructor
+  public : GALGAS_inputActualParameterForGeneration (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_inputActualParameterForGeneration constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_inputActualParameterForGeneration * ptr (void) const { return (const cPtr_inputActualParameterForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_inputActualParameterForGeneration (const cPtr_inputActualParameterForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_inputActualParameterForGeneration extractObject (const GALGAS_object & inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_inputActualParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                            const class GALGAS_string & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_inputActualParameterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mInputActualCppName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputActualParameterForGeneration class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualParameterForGeneration ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Pointer class for @inputActualParameterForGeneration class                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
+//--- Attributes
+  public : GALGAS_string mAttribute_mInputActualCppName ;
+
+//--- Constructor
+  public : cPtr_inputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
+                                                   const GALGAS_string & in_mInputActualCppName
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mInputActualCppName (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       @inputJokerParameterForGeneration class                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterForGeneration {
+//--- Constructor
+  public : GALGAS_inputJokerParameterForGeneration (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_inputJokerParameterForGeneration constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_inputJokerParameterForGeneration * ptr (void) const { return (const cPtr_inputJokerParameterForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_inputJokerParameterForGeneration (const cPtr_inputJokerParameterForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_inputJokerParameterForGeneration extractObject (const GALGAS_object & inObject,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_inputJokerParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                           const class GALGAS_string & inOperand1
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_inputJokerParameterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mInputActualCppName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputJokerParameterForGeneration class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Pointer class for @inputJokerParameterForGeneration class                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGeneration {
+//--- Attributes
+  public : GALGAS_string mAttribute_mInputActualCppName ;
+
+//--- Constructor
+  public : cPtr_inputJokerParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
+                                                  const GALGAS_string & in_mInputActualCppName
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mInputActualCppName (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @outputActualParameterForGeneration class                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterForGeneration {
+//--- Constructor
+  public : GALGAS_outputActualParameterForGeneration (void) ;
+
+//---
+  public : inline const class cPtr_outputActualParameterForGeneration * ptr (void) const { return (const cPtr_outputActualParameterForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_outputActualParameterForGeneration (const cPtr_outputActualParameterForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_outputActualParameterForGeneration extractObject (const GALGAS_object & inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_outputActualParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand1
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_outputActualParameterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mOutputActualParameterExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_outputActualParameterForGeneration class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Pointer class for @outputActualParameterForGeneration class                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
+//--- Attributes
+  public : GALGAS_semanticExpressionForGeneration mAttribute_mOutputActualParameterExpression ;
+
+//--- Constructor
+  public : cPtr_outputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
+                                                    const GALGAS_semanticExpressionForGeneration & in_mOutputActualParameterExpression
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mOutputActualParameterExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   @outputInputActualParameterForGeneration class                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParameterForGeneration {
+//--- Constructor
+  public : GALGAS_outputInputActualParameterForGeneration (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_outputInputActualParameterForGeneration constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_outputInputActualParameterForGeneration * ptr (void) const { return (const cPtr_outputInputActualParameterForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_outputInputActualParameterForGeneration (const cPtr_outputInputActualParameterForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_outputInputActualParameterForGeneration extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_outputInputActualParameterForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                                  const class GALGAS_string & inOperand1,
+                                                                                  const class GALGAS_lstringlist & inOperand2,
+                                                                                  const class GALGAS_unifiedTypeMapProxyList & inOperand3
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_outputInputActualParameterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mOutputInputVariableCppName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxyList reader_mTypeList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_outputInputActualParameterForGeneration class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Pointer class for @outputInputActualParameterForGeneration class                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
+//--- Attributes
+  public : GALGAS_string mAttribute_mOutputInputVariableCppName ;
+  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
+  public : GALGAS_unifiedTypeMapProxyList mAttribute_mTypeList ;
+
+//--- Constructor
+  public : cPtr_outputInputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
+                                                         const GALGAS_string & in_mOutputInputVariableCppName,
+                                                         const GALGAS_lstringlist & in_mStructAttributeList,
+                                                         const GALGAS_unifiedTypeMapProxyList & in_mTypeList
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mOutputInputVariableCppName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMapProxyList reader_mTypeList (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              @optionComponentAST class                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_optionComponentAST : public AC_GALGAS_class {
+//--- Constructor
+  public : GALGAS_optionComponentAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_optionComponentAST constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_optionComponentAST * ptr (void) const { return (const cPtr_optionComponentAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_optionComponentAST (const cPtr_optionComponentAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_optionComponentAST extractObject (const GALGAS_object & inObject,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_optionComponentAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                             const class GALGAS_commandLineOptionListAST & inOperand1
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_optionComponentAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOptionComponentName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_commandLineOptionListAST reader_mOptions (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_optionComponentAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Pointer class for @optionComponentAST class                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_optionComponentAST : public acPtr_class {
+//--- Attributes
+  public : GALGAS_lstring mAttribute_mOptionComponentName ;
+  public : GALGAS_commandLineOptionListAST mAttribute_mOptions ;
+
+//--- Constructor
+  public : cPtr_optionComponentAST (const GALGAS_lstring & in_mOptionComponentName,
+                                    const GALGAS_commandLineOptionListAST & in_mOptions
+                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOptionComponentName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionListAST reader_mOptions (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
 #endif

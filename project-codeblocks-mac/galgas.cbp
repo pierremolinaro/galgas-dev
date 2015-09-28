@@ -73,14 +73,6 @@
   </Linker>
   <Unit filename="../libpm/all-libpm.cpp" />
   <Unit filename="../libpm/galgas2/all-galgas.cpp" />
-  <Unit filename="../build/output/all-declarations-34.cpp" />
-  <Unit filename="../build/output/all-declarations-33.cpp" />
-  <Unit filename="../build/output/all-declarations-32.cpp" />
-  <Unit filename="../build/output/all-declarations-31.cpp" />
-  <Unit filename="../build/output/all-declarations-30.cpp" />
-  <Unit filename="../build/output/all-declarations-29.cpp" />
-  <Unit filename="../build/output/all-declarations-28.cpp" />
-  <Unit filename="../build/output/all-declarations-27.cpp" />
   <Unit filename="../build/output/all-declarations-26.cpp" />
   <Unit filename="../build/output/all-declarations-25.cpp" />
   <Unit filename="../build/output/all-declarations-24.cpp" />

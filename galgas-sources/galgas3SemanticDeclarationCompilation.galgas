@@ -504,7 +504,7 @@ private proc generateFewImplementationFiles
           ![inclusionSet stringList]
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
-        ioToolProductFileList = @stringlist.listWithValue {!fileName} + ioToolProductFileList
+        ioToolProductFileList = @stringlist {!fileName} + ioToolProductFileList
         ioAllProductFileSet += !fileName
         [@string generateFile
           !inProductDirectory
@@ -527,7 +527,7 @@ private proc generateFewImplementationFiles
       ![inclusionSet stringList]
     ]
     let fileName = "all-declarations-" + fileIdx + ".cpp"
-    ioToolProductFileList = @stringlist.listWithValue {!fileName} + ioToolProductFileList
+    ioToolProductFileList = @stringlist {!fileName} + ioToolProductFileList
     ioAllProductFileSet += !fileName
     [@string generateFile
       !inProductDirectory
@@ -545,24 +545,25 @@ private proc generateFewImplementationFilesWithFewHeaders
   ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
-  ?!@stringlist ioToolHeaderFileList {
+  ?!@stringlist ioToolHeaderFileList
+{
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
   @headerCompositionMap headerCompositionMap = {}
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      var inclusionSet1 = @stringset. emptySet
+      @stringset inclusionSet1 = {}
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
-      var inclusionSet2 = @stringset. emptySet
+      @stringset inclusionSet2 = {}
       [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ?let @string headerString2]
-      if [mDeclaration headerKind] != @headerKind. noHeader then
-        let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == @headerKind. twoHeaders then "-1" else "" end
+      if [mDeclaration headerKind] != .noHeader then
+        let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == .twoHeaders then "-1" else "" end
         [!?headerCompositionMap insertKey
           ![headerFileName nowhere]
           !inclusionSet1
           !headerString1
         ]
       end
-      if [mDeclaration headerKind] == @headerKind. twoHeaders then
+      if [mDeclaration headerKind] == .twoHeaders then
         [!?headerCompositionMap insertKey
           ![[mDeclaration implementationCppFileName] nowhere]
           !inclusionSet2 | @stringset {![mDeclaration implementationCppFileName] + "-1"}
@@ -581,16 +582,16 @@ private proc generateFewImplementationFilesWithFewHeaders
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       if not [mDeclaration isPredefined] then
-        if [mDeclaration headerKind] == @headerKind. twoHeaders then
-          buildHeader ( !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] +"-1" !?headerRepartitionMap !?headerString )
-          buildHeader ( !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString )
-        elsif [mDeclaration headerKind] == @headerKind. oneHeader then
-          buildHeader ( !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString )
+        if [mDeclaration headerKind] == .twoHeaders then
+          buildHeader (!headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] +"-1" !?headerRepartitionMap !?headerString )
+          buildHeader (!headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString )
+        elsif [mDeclaration headerKind] == .oneHeader then
+          buildHeader (!headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString )
         end
       end
       [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
       for (s) in inclusionSet do
-        buildHeader ( !headerCompositionMap !headerFileName !s !?headerRepartitionMap !?headerString )
+        buildHeader (!headerCompositionMap !headerFileName !s !?headerRepartitionMap !?headerString)
       end
       implementationString += code
       implementationString += [mDeclaration appendTypeGenericImplementation]
@@ -604,7 +605,7 @@ private proc generateFewImplementationFilesWithFewHeaders
           ![inclusionSet stringList]
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
-        ioToolProductFileList = @stringlist. listWithValue {!fileName} + ioToolProductFileList
+        ioToolProductFileList = @stringlist {!fileName} + ioToolProductFileList
         ioAllProductFileSet += !fileName
         [@string generateFile
           !inProductDirectory
@@ -641,7 +642,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       !{!"all-declarations-" + fileIdx}
     ]
     let fileName = "all-declarations-" + fileIdx + ".cpp"
-    ioToolProductFileList = @stringlist. listWithValue {!fileName} + ioToolProductFileList
+    ioToolProductFileList = @stringlist {!fileName} + ioToolProductFileList
     ioAllProductFileSet += !fileName
     [@string generateFile
       !inProductDirectory
