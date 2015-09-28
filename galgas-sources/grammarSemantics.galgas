@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Grammar Semantics                                                        *
+#  Grammar Semantics                                                                                                   *
 #                                                                                                                      *
-#  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -19,7 +19,7 @@
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#         Instruction abstract class for grammar component                  *
+#         Instruction abstract class for grammar component                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -29,8 +29,8 @@ abstract class @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparate
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        Syntax signature                                                   *
-#      (sequence of terminal, nonterminal, select and repeat)               *
+#        Syntax signature                                                                                              *
+#      (sequence of terminal, nonterminal, select and repeat)                                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -40,7 +40,7 @@ list @syntaxInstructionListForGrammarAnalysis {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   Production rules list (for a grammar component)                         *
+#   Production rules list (for a grammar component)                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -60,7 +60,7 @@ map @unusedNonTerminalSymbolMapForGrammarAnalysis {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#             nonterminal symbols sorted list                               *
+#             nonterminal symbols sorted list                                                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -74,7 +74,7 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   Terminal call instruction                                               *
+#   Terminal call instruction                                                                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -85,7 +85,7 @@ class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGram
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   Nonterminal call instruction                                            *
+#   Nonterminal call instruction                                                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -96,7 +96,7 @@ class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForG
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# Liste of branches of a 'select' or 'repeat' instruction                   *
+# Liste of branches of a 'select' or 'repeat' instruction                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -106,7 +106,7 @@ list @branchListForGrammarAnalysis {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   select instruction (for a grammar component)                            *
+#   select instruction (for a grammar component)                                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -117,7 +117,7 @@ class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGramma
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   repeat instruction                                                      *
+#   repeat instruction                                                                                                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -128,7 +128,7 @@ class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGramma
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    List of syntax components For Grammar                                  *
+#    List of syntax components For Grammar                                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -139,7 +139,7 @@ list @syntaxComponentListForGrammarAnalysis {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#      Terminal symbol map                                                  *
+#      Terminal symbol map                                                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

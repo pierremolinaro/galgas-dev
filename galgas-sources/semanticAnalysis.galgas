@@ -1,8 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  metamodel that defines expression                                                                                   *
-#                                                                                                                      *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -2306,21 +2304,12 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
 filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
 }{
 }{
-  template syntaxFileHeader "syntax-file.h.galgasTemplate"
-    ?@string COMPONENT_NAME
-    ?@string LEXIQUE_NAME
-    ?@stringlist IMPORTED_COMPONENT_LIST
-
   template syntaxFileHeaderGalgas3 "syntax-file-galgas3.h.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@stringset INCLUSION_SET
 
   template syntaxFileImplementationGalgas3 "syntax-file-galgas3.cpp.galgasTemplate"
     ?@stringset INCLUSION_SET
-
-  template syntaxFileImplementation "syntax-file.cpp.galgasTemplate"
-    ?@string COMPONENT_NAME
-    ?@stringlist IMPORTED_COMPONENT_LIST
 
   template syntaxAnalyserClassDeclaration "syntax-analyser-class.galgasTemplate"
     ?@string COMPONENT_NAME
@@ -2334,7 +2323,7 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#           B U I L D    N O N T E R M I N A L    M A P                     *
+#           B U I L D    N O N T E R M I N A L    M A P                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -2408,7 +2397,7 @@ proc buildNonterminalDeclarationsMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S                *
+#    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -3572,7 +3561,7 @@ proc semanticAnalysisOfRuleLabel
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#           S E M A N T I C    A N A L Y S I S                              *
+#           S E M A N T I C    A N A L Y S I S                                                                         *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

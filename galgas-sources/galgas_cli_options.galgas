@@ -22,7 +22,6 @@ option galgas_cli_options {
   @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate C++ files of predefined types (reserved for GALGAS development)"
   @string extractLIBPMOption: '\0', "extract-libpm" -> "Extract embedded LIBPM at given path"
   
-  @bool convertToGalgas3 : '\0', "convert-to-galgas-3" -> "Convert to GALGAS 3"
   @bool generateOneHeader : '\0', "generate-one-cpp-header" -> "Generate one C++ header file for all declarations"
   @bool generateManyFiles : '\0', "generate-many-cpp-files" -> "Generate many C++ implementation files"
   

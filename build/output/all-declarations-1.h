@@ -6502,1310 +6502,149 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      Parser class 'lexiqueSyntax' declaration                                       *
+//                                                @lexicalTypeList list                                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cParser_lexiqueSyntax {
-//--- Virtual destructor
-  public : virtual ~ cParser_lexiqueSyntax (void) {}
-
-//--- Non terminal declarations
-  protected : virtual void nt_extern_5F_routine_5F_or_5F_function_5F_declaration_ (class GALGAS_externRoutineListAST & ioArgument0,
-                                                                                   class GALGAS_externFunctionListAST & ioArgument1,
-                                                                                   class C_String & ioSyntaxDirectedTranslationResult,
-                                                                                   class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_extern_5F_routine_5F_or_5F_function_5F_declaration_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                                        class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_extern_5F_routine_5F_or_5F_function_5F_declaration_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_function_5F_call_5F_or_5F_attribute_ (const class GALGAS_lstring constinArgument0,
-                                                                    class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument1,
-                                                                    class C_String & ioSyntaxDirectedTranslationResult,
-                                                                    class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_function_5F_call_5F_or_5F_attribute_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                         class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_function_5F_call_5F_or_5F_attribute_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_attribute_5F_declaration_ (class GALGAS_lexicalAttributeListAST & ioArgument0,
-                                                                    class C_String & ioSyntaxDirectedTranslationResult,
-                                                                    class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_attribute_5F_declaration_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                         class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_attribute_5F_declaration_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_explicit_5F_rule_ (class GALGAS_lexicalRuleListAST & ioArgument0,
-                                                            class C_String & ioSyntaxDirectedTranslationResult,
-                                                            class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_explicit_5F_rule_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                 class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_explicit_5F_rule_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_expression_ (class GALGAS_lexicalExpressionAST & outArgument0,
-                                                      class C_String & ioSyntaxDirectedTranslationResult,
-                                                      class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_expression_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                           class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_expression_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_factor_ (class GALGAS_lexicalExpressionAST & outArgument0,
-                                                  class C_String & ioSyntaxDirectedTranslationResult,
-                                                  class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_factor_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                       class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_factor_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_implicit_5F_rule_ (class GALGAS_lexicalRuleListAST & ioArgument0,
-                                                            class C_String & ioSyntaxDirectedTranslationResult,
-                                                            class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_implicit_5F_rule_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                 class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_implicit_5F_rule_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_instruction_ (class GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                       class C_String & ioSyntaxDirectedTranslationResult,
-                                                       class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_instruction_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                            class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_instruction_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_list_5F_declaration_ (class GALGAS_lexicalListDeclarationListAST & ioArgument0,
-                                                               class C_String & ioSyntaxDirectedTranslationResult,
-                                                               class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_list_5F_declaration_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                    class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_list_5F_declaration_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_list_5F_entry_ (class GALGAS_lexicalListEntryListAST & ioArgument0,
-                                                         class C_String & ioSyntaxDirectedTranslationResult,
-                                                         class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_list_5F_entry_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                              class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_list_5F_entry_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_message_5F_declaration_ (class GALGAS_lexicalMessageDeclarationListAST & ioArgument0,
-                                                                  class C_String & ioSyntaxDirectedTranslationResult,
-                                                                  class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_message_5F_declaration_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                       class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_message_5F_declaration_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_output_5F_effective_5F_argument_ (class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                           class C_String & ioSyntaxDirectedTranslationResult,
-                                                                           class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_output_5F_effective_5F_argument_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                                class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_output_5F_effective_5F_argument_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_send_5F_instruction_ (class GALGAS_lexicalInstructionAST & outArgument0,
-                                                               class C_String & ioSyntaxDirectedTranslationResult,
-                                                               class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_send_5F_instruction_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                    class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_send_5F_instruction_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_term_ (class GALGAS_lexicalExpressionAST & outArgument0,
-                                                class C_String & ioSyntaxDirectedTranslationResult,
-                                                class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_term_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                     class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexical_5F_term_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexique_5F_component_5F_start_5F_symbol_ (class GALGAS_galgas_33_LexiqueComponentListAST_2D_element & outArgument0,
-                                                                        class C_String & ioSyntaxDirectedTranslationResult,
-                                                                        class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexique_5F_component_5F_start_5F_symbol_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                             class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_lexique_5F_component_5F_start_5F_symbol_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_repeat_5F_while_5F_branch_ (class GALGAS_lexicalWhileBranchListAST & ioArgument0,
-                                                          class C_String & ioSyntaxDirectedTranslationResult,
-                                                          class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_repeat_5F_while_5F_branch_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                               class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_repeat_5F_while_5F_branch_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_style_5F_declaration_ (class GALGAS_lexicalStyleListAST & ioArgument0,
-                                                     class C_String & ioSyntaxDirectedTranslationResult,
-                                                     class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_style_5F_declaration_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                          class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_style_5F_declaration_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_template_5F_delimitor_ (class GALGAS_metamodelTemplateDelimitorListAST & ioArgument0,
-                                                      class C_String & ioSyntaxDirectedTranslationResult,
-                                                      class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_template_5F_delimitor_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                           class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_template_5F_delimitor_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_template_5F_replacement_ (class GALGAS_templateReplacementListAST & ioArgument0,
-                                                        class C_String & ioSyntaxDirectedTranslationResult,
-                                                        class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_template_5F_replacement_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                             class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_template_5F_replacement_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_terminal_5F_declaration_ (class GALGAS_terminalDeclarationListAST & ioArgument0,
-                                                        class C_String & ioSyntaxDirectedTranslationResult,
-                                                        class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_terminal_5F_declaration_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                             class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_terminal_5F_declaration_indexing (class C_Lexique_galgas_32_Scanner * inLexique) = 0 ;
-
-
-//--- Rule declarations
-  protected : void rule_lexiqueSyntax_lexique_5F_component_5F_start_5F_symbol_i0_ (GALGAS_galgas_33_LexiqueComponentListAST_2D_element & outArgument0,
-                                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexique_5F_component_5F_start_5F_symbol_i0_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexique_5F_component_5F_start_5F_symbol_i0_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_template_5F_delimitor_i1_ (GALGAS_metamodelTemplateDelimitorListAST & ioArgument0,
-                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_template_5F_delimitor_i1_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_template_5F_delimitor_i1_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_template_5F_replacement_i2_ (GALGAS_templateReplacementListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_template_5F_replacement_i2_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_template_5F_replacement_i2_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_message_5F_declaration_i3_ (GALGAS_lexicalMessageDeclarationListAST & ioArgument0,
-                                                                             C_String & ioSyntaxDirectedTranslationResult,
-                                                                             C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_message_5F_declaration_i3_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                  C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_message_5F_declaration_i3_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_implicit_5F_rule_i4_ (GALGAS_lexicalRuleListAST & ioArgument0,
-                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_implicit_5F_rule_i4_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_implicit_5F_rule_i4_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_explicit_5F_rule_i5_ (GALGAS_lexicalRuleListAST & ioArgument0,
-                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_explicit_5F_rule_i5_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_explicit_5F_rule_i5_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i6_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i6_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i6_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_send_5F_instruction_i7_ (GALGAS_lexicalInstructionAST & outArgument0,
-                                                                          C_String & ioSyntaxDirectedTranslationResult,
-                                                                          C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_send_5F_instruction_i7_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                               C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_send_5F_instruction_i7_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_send_5F_instruction_i8_ (GALGAS_lexicalInstructionAST & outArgument0,
-                                                                          C_String & ioSyntaxDirectedTranslationResult,
-                                                                          C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_send_5F_instruction_i8_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                               C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_send_5F_instruction_i8_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i9_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i9_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i9_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_repeat_5F_while_5F_branch_i10_ (GALGAS_lexicalWhileBranchListAST & ioArgument0,
-                                                                      C_String & ioSyntaxDirectedTranslationResult,
-                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_repeat_5F_while_5F_branch_i10_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                           C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_repeat_5F_while_5F_branch_i10_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i11_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i11_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i11_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i12_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i12_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i12_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i13_ (GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i13_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i13_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i14_ (GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i14_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i14_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i15_ (GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i15_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i15_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i16_ (GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                                       C_String & ioSyntaxDirectedTranslationResult,
-                                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i16_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_output_5F_effective_5F_argument_i16_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_function_5F_call_5F_or_5F_attribute_i17_ (const GALGAS_lstring constinArgument0,
-                                                                                GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument1,
-                                                                                C_String & ioSyntaxDirectedTranslationResult,
-                                                                                C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_function_5F_call_5F_or_5F_attribute_i17_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                     C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_function_5F_call_5F_or_5F_attribute_i17_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_function_5F_call_5F_or_5F_attribute_i18_ (const GALGAS_lstring constinArgument0,
-                                                                                GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument1,
-                                                                                C_String & ioSyntaxDirectedTranslationResult,
-                                                                                C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_function_5F_call_5F_or_5F_attribute_i18_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                     C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_function_5F_call_5F_or_5F_attribute_i18_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i19_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i19_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i19_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i20_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i20_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i20_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i21_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i21_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i21_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i22_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i22_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i22_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i23_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i23_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i23_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i24_ (GALGAS_lexicalInstructionListAST & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i24_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_instruction_i24_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_expression_i25_ (GALGAS_lexicalExpressionAST & outArgument0,
-                                                                  C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_expression_i25_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                       C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_expression_i25_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_term_i26_ (GALGAS_lexicalExpressionAST & outArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
-                                                            C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_term_i26_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_term_i26_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i27_ (GALGAS_lexicalExpressionAST & outArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i27_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i27_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i28_ (GALGAS_lexicalExpressionAST & outArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i28_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i28_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i29_ (GALGAS_lexicalExpressionAST & outArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i29_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i29_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i30_ (GALGAS_lexicalExpressionAST & outArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
-                                                              C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i30_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_factor_i30_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_list_5F_declaration_i31_ (GALGAS_lexicalListDeclarationListAST & ioArgument0,
-                                                                           C_String & ioSyntaxDirectedTranslationResult,
-                                                                           C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_list_5F_declaration_i31_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_list_5F_declaration_i31_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_list_5F_entry_i32_ (GALGAS_lexicalListEntryListAST & ioArgument0,
-                                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                                     C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_list_5F_entry_i32_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                          C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_list_5F_entry_i32_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_attribute_5F_declaration_i33_ (GALGAS_lexicalAttributeListAST & ioArgument0,
-                                                                                C_String & ioSyntaxDirectedTranslationResult,
-                                                                                C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_attribute_5F_declaration_i33_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                     C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_lexical_5F_attribute_5F_declaration_i33_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_terminal_5F_declaration_i34_ (GALGAS_terminalDeclarationListAST & ioArgument0,
-                                                                    C_String & ioSyntaxDirectedTranslationResult,
-                                                                    C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_terminal_5F_declaration_i34_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                         C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_terminal_5F_declaration_i34_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_style_5F_declaration_i35_ (GALGAS_lexicalStyleListAST & ioArgument0,
-                                                                 C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_style_5F_declaration_i35_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                      C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_style_5F_declaration_i35_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_extern_5F_routine_5F_or_5F_function_5F_declaration_i36_ (GALGAS_externRoutineListAST & ioArgument0,
-                                                                                               GALGAS_externFunctionListAST & ioArgument1,
-                                                                                               C_String & ioSyntaxDirectedTranslationResult,
-                                                                                               C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_extern_5F_routine_5F_or_5F_function_5F_declaration_i36_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                                    C_Lexique_galgas_32_Scanner * inLexique) ;
-
-  protected : void rule_lexiqueSyntax_extern_5F_routine_5F_or_5F_function_5F_declaration_i36_indexing (C_Lexique_galgas_32_Scanner * inLexique) ;
-
-
-
-//--- Select methods
-  protected : virtual int32_t select_lexiqueSyntax_0 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_1 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_2 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_3 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_4 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_5 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_6 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_7 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_8 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_9 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_10 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_11 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_12 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_13 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_14 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_15 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_16 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_17 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_18 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_19 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_20 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_21 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_22 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_23 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_24 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_25 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_26 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_27 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_28 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_29 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_30 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_31 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_32 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_33 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_34 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_35 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_lexiqueSyntax_36 (C_Lexique_galgas_32_Scanner *) = 0 ;
-
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @lexicalAttributeInputArgumentAST class                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalAttributeInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
-  public : GALGAS_lexicalAttributeInputArgumentAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalAttributeInputArgumentAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalAttributeInputArgumentAST * ptr (void) const { return (const cPtr_lexicalAttributeInputArgumentAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalAttributeInputArgumentAST (const cPtr_lexicalAttributeInputArgumentAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalAttributeInputArgumentAST extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalAttributeInputArgumentAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalAttributeInputArgumentAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAttributeName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalAttributeInputArgumentAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @lexicalAttributeInputArgumentAST class                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mAttributeName ;
-
-//--- Constructor
-  public : cPtr_lexicalAttributeInputArgumentAST (const GALGAS_lstring & in_mAttributeName
+class GALGAS_lexicalTypeList : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalTypeList (void) ;
+
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_lexicalTypeList (cSharedList * inSharedListPtr) ;
+
+//--------------------------------- Element constructor used by listmap
+  public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                  const class GALGAS_lexicalTypeEnum & in_mLexicalType
                                                   COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAttributeName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    @lexicalAttributeInputOutputArgumentAST class                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalAttributeInputOutputArgumentAST : public GALGAS_abstractLexicalRoutineActualArgumentAST {
-//--- Constructor
-  public : GALGAS_lexicalAttributeInputOutputArgumentAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalAttributeInputOutputArgumentAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalAttributeInputOutputArgumentAST * ptr (void) const { return (const cPtr_lexicalAttributeInputOutputArgumentAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalAttributeInputOutputArgumentAST (const cPtr_lexicalAttributeInputOutputArgumentAST * inSourcePtr) ;
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lexicalAttributeInputOutputArgumentAST extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalAttributeInputOutputArgumentAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAttributeName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalAttributeInputOutputArgumentAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                           Pointer class for @lexicalAttributeInputOutputArgumentAST class                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalRoutineActualArgumentAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mAttributeName ;
-
-//--- Constructor
-  public : cPtr_lexicalAttributeInputOutputArgumentAST (const GALGAS_location & in_mActualPassingModeLocation,
-                                                        const GALGAS_lstring & in_mAttributeName
+  public : static GALGAS_lexicalTypeList extractObject (const GALGAS_object & inObject,
+                                                        C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAttributeName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @lexicalCharacterInputArgumentAST class                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalCharacterInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
-  public : GALGAS_lexicalCharacterInputArgumentAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalCharacterInputArgumentAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalCharacterInputArgumentAST * ptr (void) const { return (const cPtr_lexicalCharacterInputArgumentAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalCharacterInputArgumentAST (const cPtr_lexicalCharacterInputArgumentAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalCharacterInputArgumentAST extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCharacterInputArgumentAST constructor_new (const class GALGAS_lchar & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_lexicalTypeList constructor_emptyList (LOCATION_ARGS) ;
 
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterInputArgumentAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lchar reader_mCharacter (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalCharacterInputArgumentAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @lexicalCharacterInputArgumentAST class                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Attributes
-  public : GALGAS_lchar mAttribute_mCharacter ;
-
-//--- Constructor
-  public : cPtr_lexicalCharacterInputArgumentAST (const GALGAS_lchar & in_mCharacter
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mCharacter (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @lexicalCharacterIntervalMatchAST class                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalCharacterIntervalMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
-  public : GALGAS_lexicalCharacterIntervalMatchAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalCharacterIntervalMatchAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalCharacterIntervalMatchAST * ptr (void) const { return (const cPtr_lexicalCharacterIntervalMatchAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalCharacterIntervalMatchAST (const cPtr_lexicalCharacterIntervalMatchAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalCharacterIntervalMatchAST extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCharacterIntervalMatchAST constructor_new (const class GALGAS_lchar & inOperand0,
-                                                                           const class GALGAS_lchar & inOperand1
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lchar reader_mLowerBound (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lchar reader_mUpperBound (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalCharacterIntervalMatchAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @lexicalCharacterIntervalMatchAST class                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
-//--- Attributes
-  public : GALGAS_lchar mAttribute_mLowerBound ;
-  public : GALGAS_lchar mAttribute_mUpperBound ;
-
-//--- Constructor
-  public : cPtr_lexicalCharacterIntervalMatchAST (const GALGAS_lchar & in_mLowerBound,
-                                                  const GALGAS_lchar & in_mUpperBound
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mLowerBound (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mUpperBound (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @lexicalCharacterMatchAST class                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalCharacterMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
-  public : GALGAS_lexicalCharacterMatchAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalCharacterMatchAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalCharacterMatchAST * ptr (void) const { return (const cPtr_lexicalCharacterMatchAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalCharacterMatchAST (const cPtr_lexicalCharacterMatchAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalCharacterMatchAST extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCharacterMatchAST constructor_new (const class GALGAS_lchar & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterMatchAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lchar reader_mCharacter (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalCharacterMatchAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMatchAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Pointer class for @lexicalCharacterMatchAST class                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
-//--- Attributes
-  public : GALGAS_lchar mAttribute_mCharacter ;
-
-//--- Constructor
-  public : cPtr_lexicalCharacterMatchAST (const GALGAS_lchar & in_mCharacter
-                                          COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mCharacter (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @lexicalCharacterSetMatchAST class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalCharacterSetMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
-  public : GALGAS_lexicalCharacterSetMatchAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalCharacterSetMatchAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalCharacterSetMatchAST * ptr (void) const { return (const cPtr_lexicalCharacterSetMatchAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalCharacterSetMatchAST (const cPtr_lexicalCharacterSetMatchAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalCharacterSetMatchAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
+  public : static GALGAS_lexicalTypeList constructor_listWithValue (const class GALGAS_lexicalTypeEnum & inOperand0
                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCharacterSetMatchAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_lexicalTypeList inOperand
+                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const ;
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lexicalTypeEnum & inOperand0
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- . (concat) operator
+  public : VIRTUAL_IN_DEBUG GALGAS_lexicalTypeList operator_concat (const GALGAS_lexicalTypeList & inOperand
+                                                                    COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- + operator
+  public : VIRTUAL_IN_DEBUG GALGAS_lexicalTypeList add_operation (const GALGAS_lexicalTypeList & inOperand,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mCharacterSetName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalCharacterSetMatchAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @lexicalCharacterSetMatchAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mCharacterSetName ;
-
-//--- Constructor
-  public : cPtr_lexicalCharacterSetMatchAST (const GALGAS_lstring & in_mCharacterSetName
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mCharacterSetName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   @lexicalCurrentCharacterInputArgumentAST class                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalCurrentCharacterInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
-  public : GALGAS_lexicalCurrentCharacterInputArgumentAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalCurrentCharacterInputArgumentAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalCurrentCharacterInputArgumentAST * ptr (void) const { return (const cPtr_lexicalCurrentCharacterInputArgumentAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalCurrentCharacterInputArgumentAST (const cPtr_lexicalCurrentCharacterInputArgumentAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalCurrentCharacterInputArgumentAST extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCurrentCharacterInputArgumentAST constructor_new (const class GALGAS_location & inOperand0
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mLocation (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalCurrentCharacterInputArgumentAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Pointer class for @lexicalCurrentCharacterInputArgumentAST class                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Attributes
-  public : GALGAS_location mAttribute_mLocation ;
-
-//--- Constructor
-  public : cPtr_lexicalCurrentCharacterInputArgumentAST (const GALGAS_location & in_mLocation
+  public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_lexicalTypeEnum constinArgument0,
+                                                         class GALGAS_uint constinArgument1,
+                                                         C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_lexicalTypeEnum & outArgument0,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mLocation (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
+  public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_lexicalTypeEnum & outArgument0,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_lexicalTypeEnum & outArgument0,
+                                                         class GALGAS_uint constinArgument1,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          @lexicalDropInstructionAST class                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalDropInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalDropInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalDropInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalDropInstructionAST * ptr (void) const { return (const cPtr_lexicalDropInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalDropInstructionAST (const cPtr_lexicalDropInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalDropInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalDropInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
 
 //--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lexicalTypeEnum & outArgument0,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lexicalTypeEnum & outArgument0,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTerminalName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalTypeEnum reader_mLexicalTypeAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                     C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalTypeList reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalTypeList reader_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_lexicalTypeList ;
  
-} ; // End of GALGAS_lexicalDropInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
+} ; // End of GALGAS_lexicalTypeList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Pointer class for @lexicalDropInstructionAST class                                  *
-//                                                                                                                     *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mTerminalName ;
+class cEnumerator_lexicalTypeList : public cGenericAbstractEnumerator {
+  public : cEnumerator_lexicalTypeList (const GALGAS_lexicalTypeList & inEnumeratedObject,
+                                        const typeEnumerationOrder inOrder) ;
 
-//--- Constructor
-  public : cPtr_lexicalDropInstructionAST (const GALGAS_lstring & in_mTerminalName
-                                           COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTerminalName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
+//--- Current element access
+  public : class GALGAS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_lexicalTypeList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeList ;
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         @lexicalSendDefaultActionAST class                                          *
+//                                         @lexicalTypeList_2D_element struct                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_class {
-//--- Constructor
-  public : GALGAS_lexicalSendDefaultActionAST (void) ;
+class GALGAS_lexicalTypeList_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_lexicalTypeEnum mAttribute_mLexicalType ;
 
-//---
-  public : inline const class cPtr_lexicalSendDefaultActionAST * ptr (void) const { return (const cPtr_lexicalSendDefaultActionAST *) mObjectPtr ; }
 
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalSendDefaultActionAST (const cPtr_lexicalSendDefaultActionAST * inSourcePtr) ;
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalTypeList_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalTypeList_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_lexicalTypeList_2D_element (const GALGAS_lexicalTypeEnum & in_mLexicalType) ;
 
 //-- Start of generic part --*
 
@@ -7813,172 +6652,19 @@ class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_class {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lexicalSendDefaultActionAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalSendDefaultActionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalSendDefaultActionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @lexicalSendDefaultActionAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalSendDefaultActionAST : public acPtr_class {
-//--- Attributes
-
-//--- Constructor
-  public : cPtr_lexicalSendDefaultActionAST (LOCATION_ARGS) ;
-
-//--- Attribute accessors
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const = 0 ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @lexicalErrorByDefaultAST class                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalErrorByDefaultAST : public GALGAS_lexicalSendDefaultActionAST {
-//--- Constructor
-  public : GALGAS_lexicalErrorByDefaultAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalErrorByDefaultAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalErrorByDefaultAST * ptr (void) const { return (const cPtr_lexicalErrorByDefaultAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalErrorByDefaultAST (const cPtr_lexicalErrorByDefaultAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalErrorByDefaultAST extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalErrorByDefaultAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalErrorByDefaultAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mDefaultErrorMessageName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalErrorByDefaultAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Pointer class for @lexicalErrorByDefaultAST class                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mDefaultErrorMessageName ;
-
-//--- Constructor
-  public : cPtr_lexicalErrorByDefaultAST (const GALGAS_lstring & in_mDefaultErrorMessageName
-                                          COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mDefaultErrorMessageName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          @lexicalErrorInstructionAST class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalErrorInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalErrorInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalErrorInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalErrorInstructionAST * ptr (void) const { return (const cPtr_lexicalErrorInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalErrorInstructionAST (const cPtr_lexicalErrorInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalErrorInstructionAST extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_lexicalTypeList_2D_element extractObject (const GALGAS_object & inObject,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalErrorInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
+  public : static GALGAS_lexicalTypeList_2D_element constructor_new (const class GALGAS_lexicalTypeEnum & inOperand0
                                                                      COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalErrorInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalTypeList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -7986,63 +6672,41 @@ class GALGAS_lexicalErrorInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mErrorMessageName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalTypeEnum reader_mLexicalType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_lexicalErrorInstructionAST class
+} ; // End of GALGAS_lexicalTypeList_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Pointer class for @lexicalErrorInstructionAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mErrorMessageName ;
-
-//--- Constructor
-  public : cPtr_lexicalErrorInstructionAST (const GALGAS_lstring & in_mErrorMessageName
-                                            COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mErrorMessageName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeList_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            @lexicalExplicitRuleAST class                                            *
+//                                                 @terminalList list                                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalExplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
-//--- Constructor
-  public : GALGAS_lexicalExplicitRuleAST (void) ;
+class GALGAS_terminalList : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public : GALGAS_terminalList (void) ;
 
-//---
-  public : inline const class cPtr_lexicalExplicitRuleAST * ptr (void) const { return (const cPtr_lexicalExplicitRuleAST *) mObjectPtr ; }
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_terminalList (cSharedList * inSharedListPtr) ;
 
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalExplicitRuleAST (const cPtr_lexicalExplicitRuleAST * inSourcePtr) ;
+//--------------------------------- Element constructor used by listmap
+  public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                  const class GALGAS_lstring & in_mTerminalName,
+                                                  const class GALGAS_lexicalSentValueList & in_mSentAttributeList,
+                                                  const class GALGAS_string & in_mSyntaxErrorMessage,
+                                                  const class GALGAS_bool & in_mIsEndOfTemplateMark,
+                                                  const class GALGAS_bool & in_mAtomicSelection,
+                                                  const class GALGAS_uint & in_mStyleIndex
+                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of generic part --*
 
@@ -8050,262 +6714,205 @@ class GALGAS_lexicalExplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lexicalExplicitRuleAST extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_terminalList extractObject (const GALGAS_object & inObject,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_terminalList constructor_emptyList (LOCATION_ARGS) ;
+
+  public : static GALGAS_terminalList constructor_listWithValue (const class GALGAS_lstring & inOperand0,
+                                                                 const class GALGAS_lexicalSentValueList & inOperand1,
+                                                                 const class GALGAS_string & inOperand2,
+                                                                 const class GALGAS_bool & inOperand3,
+                                                                 const class GALGAS_bool & inOperand4,
+                                                                 const class GALGAS_uint & inOperand5
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_terminalList inOperand
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                      const class GALGAS_lexicalSentValueList & inOperand1,
+                                                      const class GALGAS_string & inOperand2,
+                                                      const class GALGAS_bool & inOperand3,
+                                                      const class GALGAS_bool & inOperand4,
+                                                      const class GALGAS_uint & inOperand5
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- . (concat) operator
+  public : VIRTUAL_IN_DEBUG GALGAS_terminalList operator_concat (const GALGAS_terminalList & inOperand
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- + operator
+  public : VIRTUAL_IN_DEBUG GALGAS_terminalList add_operation (const GALGAS_terminalList & inOperand,
                                                                C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+                                                               COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalExplicitRuleAST constructor_new (const class GALGAS_lexicalExpressionAST & inOperand0,
-                                                                 const class GALGAS_lexicalInstructionListAST & inOperand1
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalExplicitRuleAST & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_lstring constinArgument0,
+                                                         class GALGAS_lexicalSentValueList constinArgument1,
+                                                         class GALGAS_string constinArgument2,
+                                                         class GALGAS_bool constinArgument3,
+                                                         class GALGAS_bool constinArgument4,
+                                                         class GALGAS_uint constinArgument5,
+                                                         class GALGAS_uint constinArgument6,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_lstring & outArgument0,
+                                                    class GALGAS_lexicalSentValueList & outArgument1,
+                                                    class GALGAS_string & outArgument2,
+                                                    class GALGAS_bool & outArgument3,
+                                                    class GALGAS_bool & outArgument4,
+                                                    class GALGAS_uint & outArgument5,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_lstring & outArgument0,
+                                                   class GALGAS_lexicalSentValueList & outArgument1,
+                                                   class GALGAS_string & outArgument2,
+                                                   class GALGAS_bool & outArgument3,
+                                                   class GALGAS_bool & outArgument4,
+                                                   class GALGAS_uint & outArgument5,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_lstring & outArgument0,
+                                                         class GALGAS_lexicalSentValueList & outArgument1,
+                                                         class GALGAS_string & outArgument2,
+                                                         class GALGAS_bool & outArgument3,
+                                                         class GALGAS_bool & outArgument4,
+                                                         class GALGAS_uint & outArgument5,
+                                                         class GALGAS_uint constinArgument6,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
+                                               class GALGAS_lexicalSentValueList & outArgument1,
+                                               class GALGAS_string & outArgument2,
+                                               class GALGAS_bool & outArgument3,
+                                               class GALGAS_bool & outArgument4,
+                                               class GALGAS_uint & outArgument5,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
+                                              class GALGAS_lexicalSentValueList & outArgument1,
+                                              class GALGAS_string & outArgument2,
+                                              class GALGAS_bool & outArgument3,
+                                              class GALGAS_bool & outArgument4,
+                                              class GALGAS_uint & outArgument5,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalInstructionListAST reader_mInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mAtomicSelectionAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalExpressionAST reader_mLexicalRuleExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsEndOfTemplateMarkAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalSentValueList reader_mSentAttributeListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mStyleIndexAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSyntaxErrorMessageAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTerminalNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_terminalList reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_terminalList reader_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_terminalList ;
  
-} ; // End of GALGAS_lexicalExplicitRuleAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitRuleAST ;
+} ; // End of GALGAS_terminalList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Pointer class for @lexicalExplicitRuleAST class                                   *
-//                                                                                                                     *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
-//--- Attributes
-  public : GALGAS_lexicalExpressionAST mAttribute_mLexicalRuleExpression ;
-  public : GALGAS_lexicalInstructionListAST mAttribute_mInstructionList ;
+class cEnumerator_terminalList : public cGenericAbstractEnumerator {
+  public : cEnumerator_terminalList (const GALGAS_terminalList & inEnumeratedObject,
+                                     const typeEnumerationOrder inOrder) ;
 
-//--- Constructor
-  public : cPtr_lexicalExplicitRuleAST (const GALGAS_lexicalExpressionAST & in_mLexicalRuleExpression,
-                                        const GALGAS_lexicalInstructionListAST & in_mInstructionList
-                                        COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalExpressionAST reader_mLexicalRuleExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalInstructionListAST reader_mInstructionList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
+//--- Current element access
+  public : class GALGAS_lstring current_mTerminalName (LOCATION_ARGS) const ;
+  public : class GALGAS_lexicalSentValueList current_mSentAttributeList (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mSyntaxErrorMessage (LOCATION_ARGS) const ;
+  public : class GALGAS_bool current_mIsEndOfTemplateMark (LOCATION_ARGS) const ;
+  public : class GALGAS_bool current_mAtomicSelection (LOCATION_ARGS) const ;
+  public : class GALGAS_uint current_mStyleIndex (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_terminalList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        @lexicalFormalInputArgumentAST class                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalFormalInputArgumentAST : public GALGAS_abstractLexicalRoutineActualArgumentAST {
-//--- Constructor
-  public : GALGAS_lexicalFormalInputArgumentAST (void) ;
-
-//---
-  public : inline const class cPtr_lexicalFormalInputArgumentAST * ptr (void) const { return (const cPtr_lexicalFormalInputArgumentAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalFormalInputArgumentAST (const cPtr_lexicalFormalInputArgumentAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalFormalInputArgumentAST extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalFormalInputArgumentAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand1
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalFormalInputArgumentAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST reader_mRoutineOrFunctionFormalInputArgument (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalFormalInputArgumentAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Pointer class for @lexicalFormalInputArgumentAST class                                *
+//                                           @terminalList_2D_element struct                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineActualArgumentAST {
-//--- Attributes
-  public : GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mAttribute_mRoutineOrFunctionFormalInputArgument ;
+class GALGAS_terminalList_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_lstring mAttribute_mTerminalName ;
+  public : GALGAS_lexicalSentValueList mAttribute_mSentAttributeList ;
+  public : GALGAS_string mAttribute_mSyntaxErrorMessage ;
+  public : GALGAS_bool mAttribute_mIsEndOfTemplateMark ;
+  public : GALGAS_bool mAttribute_mAtomicSelection ;
+  public : GALGAS_uint mAttribute_mStyleIndex ;
 
-//--- Constructor
-  public : cPtr_lexicalFormalInputArgumentAST (const GALGAS_location & in_mActualPassingModeLocation,
-                                               const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument
-                                               COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST reader_mRoutineOrFunctionFormalInputArgument (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @lexicalFunctionInputArgumentAST class                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalFunctionInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
-  public : GALGAS_lexicalFunctionInputArgumentAST (void) ;
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalFunctionInputArgumentAST constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_terminalList_2D_element constructor_default (LOCATION_ARGS) ;
 
-//---
-  public : inline const class cPtr_lexicalFunctionInputArgumentAST * ptr (void) const { return (const cPtr_lexicalFunctionInputArgumentAST *) mObjectPtr ; }
+//--------------------------------- Default constructor
+  public : GALGAS_terminalList_2D_element (void) ;
 
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalFunctionInputArgumentAST (const cPtr_lexicalFunctionInputArgumentAST * inSourcePtr) ;
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_terminalList_2D_element (void) ;
 
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalFunctionInputArgumentAST extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalFunctionInputArgumentAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_lexicalFunctionCallActualArgumentListAST & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalFunctionInputArgumentAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalFunctionCallActualArgumentListAST reader_mFunctionActualArgumentList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mFunctionName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalFunctionInputArgumentAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @lexicalFunctionInputArgumentAST class                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mFunctionName ;
-  public : GALGAS_lexicalFunctionCallActualArgumentListAST mAttribute_mFunctionActualArgumentList ;
-
-//--- Constructor
-  public : cPtr_lexicalFunctionInputArgumentAST (const GALGAS_lstring & in_mFunctionName,
-                                                 const GALGAS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mFunctionName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalFunctionCallActualArgumentListAST reader_mFunctionActualArgumentList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            @lexicalImplicitRuleAST class                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalImplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
-//--- Constructor
-  public : GALGAS_lexicalImplicitRuleAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalImplicitRuleAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalImplicitRuleAST * ptr (void) const { return (const cPtr_lexicalImplicitRuleAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalImplicitRuleAST (const cPtr_lexicalImplicitRuleAST * inSourcePtr) ;
+//--------------------------------- Native constructor
+  public : GALGAS_terminalList_2D_element (const GALGAS_lstring & in_mTerminalName,
+                                           const GALGAS_lexicalSentValueList & in_mSentAttributeList,
+                                           const GALGAS_string & in_mSyntaxErrorMessage,
+                                           const GALGAS_bool & in_mIsEndOfTemplateMark,
+                                           const GALGAS_bool & in_mAtomicSelection,
+                                           const GALGAS_uint & in_mStyleIndex) ;
 
 //-- Start of generic part --*
 
@@ -8313,16 +6920,24 @@ class GALGAS_lexicalImplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lexicalImplicitRuleAST extractObject (const GALGAS_object & inObject,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_terminalList_2D_element extractObject (const GALGAS_object & inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalImplicitRuleAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_terminalList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                  const class GALGAS_lexicalSentValueList & inOperand1,
+                                                                  const class GALGAS_string & inOperand2,
+                                                                  const class GALGAS_bool & inOperand3,
+                                                                  const class GALGAS_bool & inOperand4,
+                                                                  const class GALGAS_uint & inOperand5
+                                                                  COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalImplicitRuleAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_terminalList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -8330,347 +6945,15 @@ class GALGAS_lexicalImplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mListName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mAtomicSelection (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsEndOfTemplateMark (LOCATION_ARGS) const ;
 
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalImplicitRuleAST class
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalSentValueList reader_mSentAttributeList (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mStyleIndex (LOCATION_ARGS) const ;
 
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Pointer class for @lexicalImplicitRuleAST class                                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mListName ;
-
-//--- Constructor
-  public : cPtr_lexicalImplicitRuleAST (const GALGAS_lstring & in_mListName
-                                        COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mListName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @lexicalLogInstructionAST class                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalLogInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalLogInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalLogInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalLogInstructionAST * ptr (void) const { return (const cPtr_lexicalLogInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalLogInstructionAST (const cPtr_lexicalLogInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalLogInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalLogInstructionAST constructor_new (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalLogInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalLogInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Pointer class for @lexicalLogInstructionAST class                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-
-//--- Constructor
-  public : cPtr_lexicalLogInstructionAST (LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            @lexicalOrExpressionAST class                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalOrExpressionAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
-  public : GALGAS_lexicalOrExpressionAST (void) ;
-
-//---
-  public : inline const class cPtr_lexicalOrExpressionAST * ptr (void) const { return (const cPtr_lexicalOrExpressionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalOrExpressionAST (const cPtr_lexicalOrExpressionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalOrExpressionAST extractObject (const GALGAS_object & inObject,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalOrExpressionAST constructor_new (const class GALGAS_lexicalExpressionAST & inOperand0,
-                                                                 const class GALGAS_lexicalExpressionAST & inOperand1
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalOrExpressionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalExpressionAST reader_mLeftOperand (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalExpressionAST reader_mRightOperand (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalOrExpressionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpressionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Pointer class for @lexicalOrExpressionAST class                                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
-//--- Attributes
-  public : GALGAS_lexicalExpressionAST mAttribute_mLeftOperand ;
-  public : GALGAS_lexicalExpressionAST mAttribute_mRightOperand ;
-
-//--- Constructor
-  public : cPtr_lexicalOrExpressionAST (const GALGAS_lexicalExpressionAST & in_mLeftOperand,
-                                        const GALGAS_lexicalExpressionAST & in_mRightOperand
-                                        COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalExpressionAST reader_mLeftOperand (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalExpressionAST reader_mRightOperand (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @lexicalRepeatInstructionAST class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalRepeatInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalRepeatInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalRepeatInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalRepeatInstructionAST * ptr (void) const { return (const cPtr_lexicalRepeatInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalRepeatInstructionAST (const cPtr_lexicalRepeatInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalRepeatInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalRepeatInstructionAST constructor_new (const class GALGAS_lexicalInstructionListAST & inOperand0,
-                                                                      const class GALGAS_lexicalWhileBranchListAST & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalRepeatInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalWhileBranchListAST reader_mLexicalWhileBranchList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalInstructionListAST reader_mRepeatedInstructionList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalRepeatInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @lexicalRepeatInstructionAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lexicalInstructionListAST mAttribute_mRepeatedInstructionList ;
-  public : GALGAS_lexicalWhileBranchListAST mAttribute_mLexicalWhileBranchList ;
-
-//--- Constructor
-  public : cPtr_lexicalRepeatInstructionAST (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstructionList,
-                                             const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalInstructionListAST reader_mRepeatedInstructionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalWhileBranchListAST reader_mLexicalWhileBranchList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @lexicalRewindInstructionAST class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalRewindInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalRewindInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalRewindInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalRewindInstructionAST * ptr (void) const { return (const cPtr_lexicalRewindInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalRewindInstructionAST (const cPtr_lexicalRewindInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalRewindInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalRewindInstructionAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_lstring & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalRewindInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLexicalTagName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSyntaxErrorMessage (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTerminalName (LOCATION_ARGS) const ;
 
@@ -8678,63 +6961,34 @@ class GALGAS_lexicalRewindInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_lexicalRewindInstructionAST class
+} ; // End of GALGAS_terminalList_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRewindInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @lexicalRewindInstructionAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mLexicalTagName ;
-  public : GALGAS_lstring mAttribute_mTerminalName ;
-
-//--- Constructor
-  public : cPtr_lexicalRewindInstructionAST (const GALGAS_lstring & in_mLexicalTagName,
-                                             const GALGAS_lstring & in_mTerminalName
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLexicalTagName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTerminalName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         @lexicalRoutineInstructionAST class                                         *
+//                                          @lexicalExplicitTokenListMap map                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalRoutineInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalRoutineInstructionAST (void) ;
+class cMapElement_lexicalExplicitTokenListMap ;
 
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalRoutineInstructionAST constructor_default (LOCATION_ARGS) ;
+//---------------------------------------------------------------------------------------------------------------------*
 
-//---
-  public : inline const class cPtr_lexicalRoutineInstructionAST * ptr (void) const { return (const cPtr_lexicalRoutineInstructionAST *) mObjectPtr ; }
+extern const char * kSearchErrorMessage_lexicalExplicitTokenListMap_searchKey ;
 
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalRoutineInstructionAST (const cPtr_lexicalRoutineInstructionAST * inSourcePtr) ;
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalExplicitTokenListMap (void) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap & inSource) ;
+  public : GALGAS_lexicalExplicitTokenListMap & operator = (const GALGAS_lexicalExplicitTokenListMap & inSource) ;
 
 //-- Start of generic part --*
 
@@ -8742,437 +6996,155 @@ class GALGAS_lexicalRoutineInstructionAST : public GALGAS_lexicalInstructionAST 
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lexicalRoutineInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalRoutineInstructionAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                       const class GALGAS_lexicalRoutineCallActualArgumentListAST & inOperand1,
-                                                                       const class GALGAS_lstringlist & inOperand2
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalRoutineInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalRoutineCallActualArgumentListAST reader_mActualArgumentList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mErrorMessageList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mRoutineName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalRoutineInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @lexicalRoutineInstructionAST class                                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalRoutineInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mRoutineName ;
-  public : GALGAS_lexicalRoutineCallActualArgumentListAST mAttribute_mActualArgumentList ;
-  public : GALGAS_lstringlist mAttribute_mErrorMessageList ;
-
-//--- Constructor
-  public : cPtr_lexicalRoutineInstructionAST (const GALGAS_lstring & in_mRoutineName,
-                                              const GALGAS_lexicalRoutineCallActualArgumentListAST & in_mActualArgumentList,
-                                              const GALGAS_lstringlist & in_mErrorMessageList
-                                              COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mRoutineName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalRoutineCallActualArgumentListAST reader_mActualArgumentList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mErrorMessageList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @lexicalSelectInstructionAST class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalSelectInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalSelectInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalSelectInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalSelectInstructionAST * ptr (void) const { return (const cPtr_lexicalSelectInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalSelectInstructionAST (const cPtr_lexicalSelectInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalSelectInstructionAST extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_lexicalExplicitTokenListMap extractObject (const GALGAS_object & inObject,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalSelectInstructionAST constructor_new (const class GALGAS_lexicalSelectBranchListAST & inOperand0,
-                                                                      const class GALGAS_lexicalInstructionListAST & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_lexicalExplicitTokenListMap constructor_emptyMap (LOCATION_ARGS) ;
 
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalSelectInstructionAST & inOperand) const ;
+  public : static GALGAS_lexicalExplicitTokenListMap constructor_mapWithMapToOverride (const class GALGAS_lexicalExplicitTokenListMap & inOperand0
+                                                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalInstructionListAST reader_mDefaultInstructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalSelectBranchListAST reader_mLexicalSelectBranchList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalSelectInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @lexicalSelectInstructionAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lexicalSelectBranchListAST mAttribute_mLexicalSelectBranchList ;
-  public : GALGAS_lexicalInstructionListAST mAttribute_mDefaultInstructionList ;
-
-//--- Constructor
-  public : cPtr_lexicalSelectInstructionAST (const GALGAS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
-                                             const GALGAS_lexicalInstructionListAST & in_mDefaultInstructionList
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalSelectBranchListAST reader_mLexicalSelectBranchList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalInstructionListAST reader_mDefaultInstructionList (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @lexicalSendTerminalByDefaultAST class                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalSendTerminalByDefaultAST : public GALGAS_lexicalSendDefaultActionAST {
-//--- Constructor
-  public : GALGAS_lexicalSendTerminalByDefaultAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalSendTerminalByDefaultAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalSendTerminalByDefaultAST * ptr (void) const { return (const cPtr_lexicalSendTerminalByDefaultAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalSendTerminalByDefaultAST (const cPtr_lexicalSendTerminalByDefaultAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalSendTerminalByDefaultAST extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalSendTerminalByDefaultAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST & inOperand) const ;
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                      const class GALGAS_lstring & inOperand1,
+                                                      const class GALGAS_lstringlist & inOperand2,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
+                                                     class GALGAS_lstring constinArgument1,
+                                                     class GALGAS_lstringlist constinArgument2,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
+  public : VIRTUAL_IN_DEBUG void modifier_setMFeatureListForKey (class GALGAS_lstringlist constinArgument0,
+                                                                 class GALGAS_string constinArgument1,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mDefaultSentTerminal (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalSendTerminalByDefaultAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @lexicalSendTerminalByDefaultAST class                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mDefaultSentTerminal ;
-
-//--- Constructor
-  public : cPtr_lexicalSendTerminalByDefaultAST (const GALGAS_lstring & in_mDefaultSentTerminal
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mDefaultSentTerminal (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @lexicalSimpleSendInstructionAST class                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalSimpleSendInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalSimpleSendInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalSimpleSendInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalSimpleSendInstructionAST * ptr (void) const { return (const cPtr_lexicalSimpleSendInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalSimpleSendInstructionAST (const cPtr_lexicalSimpleSendInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalSimpleSendInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalSimpleSendInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalSimpleSendInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mSentTerminal (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalSimpleSendInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @lexicalSimpleSendInstructionAST class                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mSentTerminal ;
-
-//--- Constructor
-  public : cPtr_lexicalSimpleSendInstructionAST (const GALGAS_lstring & in_mSentTerminal
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mSentTerminal (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            @lexicalStringMatchAST class                                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalStringMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
-  public : GALGAS_lexicalStringMatchAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalStringMatchAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalStringMatchAST * ptr (void) const { return (const cPtr_lexicalStringMatchAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalStringMatchAST (const cPtr_lexicalStringMatchAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalStringMatchAST extractObject (const GALGAS_object & inObject,
+  public : VIRTUAL_IN_DEBUG void modifier_setMTerminalForKey (class GALGAS_lstring constinArgument0,
+                                                              class GALGAS_string constinArgument1,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalStringMatchAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalStringMatchAST & inOperand) const ;
-
-//--------------------------------- Setters
 
 //--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
+                                                   class GALGAS_lstring & outArgument1,
+                                                   class GALGAS_lstringlist & outArgument2,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mString (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mFeatureListForKey (const class GALGAS_string & constinOperand0,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTerminalForKey (const class GALGAS_string & constinOperand0,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalExplicitTokenListMap reader_overriddenMap (C_Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public : VIRTUAL_IN_DEBUG cMapElement_lexicalExplicitTokenListMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                                         const GALGAS_string & inKey
+                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+
+  friend class cEnumerator_lexicalExplicitTokenListMap ;
  
-} ; // End of GALGAS_lexicalStringMatchAST class
+} ; // End of GALGAS_lexicalExplicitTokenListMap class
 
+//---------------------------------------------------------------------------------------------------------------------*
+//   Enumerator declaration                                                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cEnumerator_lexicalExplicitTokenListMap : public cGenericAbstractEnumerator {
+  public : cEnumerator_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap & inEnumeratedObject,
+                                                    const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mTerminal (LOCATION_ARGS) const ;
+  public : class GALGAS_lstringlist current_mFeatureList (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_lexicalExplicitTokenListMap_2D_element current (LOCATION_ARGS) const ;
+} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Pointer class for @lexicalStringMatchAST class                                    *
+//                               Class for element of '@lexicalExplicitTokenListMap' map                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mString ;
+class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
+//--- Map attributes
+  public : GALGAS_lstring mAttribute_mTerminal ;
+  public : GALGAS_lstringlist mAttribute_mFeatureList ;
 
 //--- Constructor
-  public : cPtr_lexicalStringMatchAST (const GALGAS_lstring & in_mString
-                                       COMMA_LOCATION_ARGS) ;
+  public : cMapElement_lexicalExplicitTokenListMap (const GALGAS_lstring & inKey,
+                                                    const GALGAS_lstring & in_mTerminal,
+                                                    const GALGAS_lstringlist & in_mFeatureList
+                                                    COMMA_LOCATION_ARGS) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mString (LOCATION_ARGS) const ;
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cMapElement * copy (void) ;
+
 //--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           @lexicalStringNotMatchAST class                                           *
+//                                   @lexicalExplicitTokenListMap_2D_element struct                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
-//--- Constructor
-  public : GALGAS_lexicalStringNotMatchAST (void) ;
+class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_lstring mAttribute_lkey ;
+  public : GALGAS_lstring mAttribute_mTerminal ;
+  public : GALGAS_lstringlist mAttribute_mFeatureList ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalStringNotMatchAST constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_lexicalExplicitTokenListMap_2D_element constructor_default (LOCATION_ARGS) ;
 
-//---
-  public : inline const class cPtr_lexicalStringNotMatchAST * ptr (void) const { return (const cPtr_lexicalStringNotMatchAST *) mObjectPtr ; }
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalExplicitTokenListMap_2D_element (void) ;
 
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalStringNotMatchAST (const cPtr_lexicalStringNotMatchAST * inSourcePtr) ;
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalExplicitTokenListMap_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_lexicalExplicitTokenListMap_2D_element (const GALGAS_lstring & in_lkey,
+                                                          const GALGAS_lstring & in_mTerminal,
+                                                          const GALGAS_lstringlist & in_mFeatureList) ;
 
 //-- Start of generic part --*
 
@@ -9180,17 +7152,21 @@ class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lexicalStringNotMatchAST extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_lexicalExplicitTokenListMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalStringNotMatchAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_lexicalExplicitTokenListMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                 const class GALGAS_lstring & inOperand1,
+                                                                                 const class GALGAS_lstringlist & inOperand2
+                                                                                 COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalStringNotMatchAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalExplicitTokenListMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -9198,68 +7174,32 @@ class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mErrorMessage (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_lkey (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mString (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mFeatureList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTerminal (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_lexicalStringNotMatchAST class
+} ; // End of GALGAS_lexicalExplicitTokenListMap_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringNotMatchAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Pointer class for @lexicalStringNotMatchAST class                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mString ;
-  public : GALGAS_lstring mAttribute_mErrorMessage ;
-
-//--- Constructor
-  public : cPtr_lexicalStringNotMatchAST (const GALGAS_lstring & in_mString,
-                                          const GALGAS_lstring & in_mErrorMessage
-                                          COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mString (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mErrorMessage (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     @lexicalStructuredSendInstructionAST class                                      *
+//                                            @tokenSortedlist sorted list                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalStructuredSendInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalStructuredSendInstructionAST (void) ;
-
-//---
-  public : inline const class cPtr_lexicalStructuredSendInstructionAST * ptr (void) const { return (const cPtr_lexicalStructuredSendInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalStructuredSendInstructionAST (const cPtr_lexicalStructuredSendInstructionAST * inSourcePtr) ;
+class GALGAS_tokenSortedlist : public AC_GALGAS_sortedlist {
+//--------------------------------- Default constructor
+  public : GALGAS_tokenSortedlist (void) ;
 
 //-- Start of generic part --*
 
@@ -9267,257 +7207,121 @@ class GALGAS_lexicalStructuredSendInstructionAST : public GALGAS_lexicalInstruct
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lexicalStructuredSendInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_tokenSortedlist extractObject (const GALGAS_object & inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalStructuredSendInstructionAST constructor_new (const class GALGAS_lexicalSendSearchListAST & inOperand0,
-                                                                              const class GALGAS_lexicalSendDefaultActionAST & inOperand1
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_tokenSortedlist constructor_emptySortedList (LOCATION_ARGS) ;
 
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalSendDefaultActionAST reader_mLexicalSendDefaultAction (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalSendSearchListAST reader_mLexicalSendSearchList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalStructuredSendInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Pointer class for @lexicalStructuredSendInstructionAST class                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lexicalSendSearchListAST mAttribute_mLexicalSendSearchList ;
-  public : GALGAS_lexicalSendDefaultActionAST mAttribute_mLexicalSendDefaultAction ;
-
-//--- Constructor
-  public : cPtr_lexicalStructuredSendInstructionAST (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
-                                                     const GALGAS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalSendSearchListAST reader_mLexicalSendSearchList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalSendDefaultActionAST reader_mLexicalSendDefaultAction (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @lexicalTagInstructionAST class                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalTagInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalTagInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalTagInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalTagInstructionAST * ptr (void) const { return (const cPtr_lexicalTagInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalTagInstructionAST (const cPtr_lexicalTagInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalTagInstructionAST extractObject (const GALGAS_object & inObject,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalTagInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalTagInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLexicalTagName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lexicalTagInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Pointer class for @lexicalTagInstructionAST class                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mLexicalTagName ;
-
-//--- Constructor
-  public : cPtr_lexicalTagInstructionAST (const GALGAS_lstring & in_mLexicalTagName
-                                          COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLexicalTagName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @lexicalUnsignedInputArgumentAST class                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Constructor
-  public : GALGAS_lexicalUnsignedInputArgumentAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalUnsignedInputArgumentAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_lexicalUnsignedInputArgumentAST * ptr (void) const { return (const cPtr_lexicalUnsignedInputArgumentAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalUnsignedInputArgumentAST (const cPtr_lexicalUnsignedInputArgumentAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_lexicalUnsignedInputArgumentAST extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalUnsignedInputArgumentAST constructor_new (const class GALGAS_luint & inOperand0
+  public : static GALGAS_tokenSortedlist constructor_sortedListWithValue (const class GALGAS_uint & inOperand0,
+                                                                          const class GALGAS_string & inOperand1,
+                                                                          const class GALGAS_string & inOperand2
                                                                           COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST & inOperand) const ;
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_tokenSortedlist inOperand
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_uint & inOperand0,
+                                                      const class GALGAS_string & inOperand1,
+                                                      const class GALGAS_string & inOperand2
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- . (concat) operator
+  public : VIRTUAL_IN_DEBUG GALGAS_tokenSortedlist operator_concat (const GALGAS_tokenSortedlist & inOperand
+                                                                    COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_popGreatest (class GALGAS_uint & outArgument0,
+                                                       class GALGAS_string & outArgument1,
+                                                       class GALGAS_string & outArgument2,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_popSmallest (class GALGAS_uint & outArgument0,
+                                                       class GALGAS_string & outArgument1,
+                                                       class GALGAS_string & outArgument2,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_greatest (class GALGAS_uint & outArgument0,
+                                                  class GALGAS_string & outArgument1,
+                                                  class GALGAS_string & outArgument2,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_smallest (class GALGAS_uint & outArgument0,
+                                                  class GALGAS_string & outArgument1,
+                                                  class GALGAS_string & outArgument2,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_luint reader_mUnsigned (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_tokenSortedlist ;
  
-} ; // End of GALGAS_lexicalUnsignedInputArgumentAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ;
+} ; // End of GALGAS_tokenSortedlist class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Pointer class for @lexicalUnsignedInputArgumentAST class                               *
-//                                                                                                                     *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
-//--- Attributes
-  public : GALGAS_luint mAttribute_mUnsigned ;
+class cEnumerator_tokenSortedlist : public cGenericAbstractEnumerator {
+  public : cEnumerator_tokenSortedlist (const GALGAS_tokenSortedlist & inEnumeratedObject,
+                                        const typeEnumerationOrder inOrder) ;
 
-//--- Constructor
-  public : cPtr_lexicalUnsignedInputArgumentAST (const GALGAS_luint & in_mUnsigned
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_luint reader_mUnsigned (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
+//--- Current element access
+  public : class GALGAS_uint current_mLength (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mName (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mTerminalName (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_tokenSortedlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist ;
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         @lexicalWarningInstructionAST class                                         *
+//                                         @tokenSortedlist_2D_element struct                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST {
-//--- Constructor
-  public : GALGAS_lexicalWarningInstructionAST (void) ;
+class GALGAS_tokenSortedlist_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_uint mAttribute_mLength ;
+  public : GALGAS_string mAttribute_mName ;
+  public : GALGAS_string mAttribute_mTerminalName ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lexicalWarningInstructionAST constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_tokenSortedlist_2D_element constructor_default (LOCATION_ARGS) ;
 
-//---
-  public : inline const class cPtr_lexicalWarningInstructionAST * ptr (void) const { return (const cPtr_lexicalWarningInstructionAST *) mObjectPtr ; }
+//--------------------------------- Default constructor
+  public : GALGAS_tokenSortedlist_2D_element (void) ;
 
-//--------------------------------- Constructor from pointer
-  public : GALGAS_lexicalWarningInstructionAST (const cPtr_lexicalWarningInstructionAST * inSourcePtr) ;
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_tokenSortedlist_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_tokenSortedlist_2D_element (const GALGAS_uint & in_mLength,
+                                              const GALGAS_string & in_mName,
+                                              const GALGAS_string & in_mTerminalName) ;
 
 //-- Start of generic part --*
 
@@ -9525,16 +7329,487 @@ class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST 
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lexicalWarningInstructionAST extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_tokenSortedlist_2D_element extractObject (const GALGAS_object & inObject,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_tokenSortedlist_2D_element constructor_new (const class GALGAS_uint & inOperand0,
+                                                                     const class GALGAS_string & inOperand1,
+                                                                     const class GALGAS_string & inOperand2
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_tokenSortedlist_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mLength (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mTerminalName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_tokenSortedlist_2D_element class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist_2D_element ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         @lexicalExplicitTokenListMapMap map                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cMapElement_lexicalExplicitTokenListMapMap ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const char * kSearchErrorMessage_lexicalExplicitTokenListMapMap_searchKey ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalExplicitTokenListMapMap (void) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap & inSource) ;
+  public : GALGAS_lexicalExplicitTokenListMapMap & operator = (const GALGAS_lexicalExplicitTokenListMapMap & inSource) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_lexicalExplicitTokenListMapMap extractObject (const GALGAS_object & inObject,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_lexicalExplicitTokenListMapMap constructor_emptyMap (LOCATION_ARGS) ;
+
+  public : static GALGAS_lexicalExplicitTokenListMapMap constructor_mapWithMapToOverride (const class GALGAS_lexicalExplicitTokenListMapMap & inOperand0
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                      const class GALGAS_lexicalExplicitTokenListMap & inOperand1,
+                                                      const class GALGAS_tokenSortedlist & inOperand2,
+                                                      const class GALGAS_bool & inOperand3,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
+                                                     class GALGAS_lexicalExplicitTokenListMap constinArgument1,
+                                                     class GALGAS_tokenSortedlist constinArgument2,
+                                                     class GALGAS_bool constinArgument3,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_setMExplicitTokenListMapForKey (class GALGAS_lexicalExplicitTokenListMap constinArgument0,
+                                                                          class GALGAS_string constinArgument1,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_setMShouldBeGeneratedForKey (class GALGAS_bool constinArgument0,
+                                                                       class GALGAS_string constinArgument1,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_setMTokenSortedListForKey (class GALGAS_tokenSortedlist constinArgument0,
+                                                                     class GALGAS_string constinArgument1,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
+                                                   class GALGAS_lexicalExplicitTokenListMap & outArgument1,
+                                                   class GALGAS_tokenSortedlist & outArgument2,
+                                                   class GALGAS_bool & outArgument3,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalExplicitTokenListMap reader_mExplicitTokenListMapForKey (const class GALGAS_string & constinOperand0,
+                                                                                                         C_Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mShouldBeGeneratedForKey (const class GALGAS_string & constinOperand0,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_tokenSortedlist reader_mTokenSortedListForKey (const class GALGAS_string & constinOperand0,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalExplicitTokenListMapMap reader_overriddenMap (C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public : VIRTUAL_IN_DEBUG cMapElement_lexicalExplicitTokenListMapMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                                            const GALGAS_string & inKey
+                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+
+  friend class cEnumerator_lexicalExplicitTokenListMapMap ;
+ 
+} ; // End of GALGAS_lexicalExplicitTokenListMapMap class
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Enumerator declaration                                                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cEnumerator_lexicalExplicitTokenListMapMap : public cGenericAbstractEnumerator {
+  public : cEnumerator_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap & inEnumeratedObject,
+                                                       const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
+  public : class GALGAS_tokenSortedlist current_mTokenSortedList (LOCATION_ARGS) const ;
+  public : class GALGAS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_lexicalExplicitTokenListMapMap_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Class for element of '@lexicalExplicitTokenListMapMap' map                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cMapElement_lexicalExplicitTokenListMapMap : public cMapElement {
+//--- Map attributes
+  public : GALGAS_lexicalExplicitTokenListMap mAttribute_mExplicitTokenListMap ;
+  public : GALGAS_tokenSortedlist mAttribute_mTokenSortedList ;
+  public : GALGAS_bool mAttribute_mShouldBeGenerated ;
+
+//--- Constructor
+  public : cMapElement_lexicalExplicitTokenListMapMap (const GALGAS_lstring & inKey,
+                                                       const GALGAS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
+                                                       const GALGAS_tokenSortedlist & in_mTokenSortedList,
+                                                       const GALGAS_bool & in_mShouldBeGenerated
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cMapElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  @lexicalExplicitTokenListMapMap_2D_element struct                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lexicalExplicitTokenListMapMap_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_lstring mAttribute_lkey ;
+  public : GALGAS_lexicalExplicitTokenListMap mAttribute_mExplicitTokenListMap ;
+  public : GALGAS_tokenSortedlist mAttribute_mTokenSortedList ;
+  public : GALGAS_bool mAttribute_mShouldBeGenerated ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_lexicalExplicitTokenListMapMap_2D_element constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalExplicitTokenListMapMap_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalExplicitTokenListMapMap_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_lexicalExplicitTokenListMapMap_2D_element (const GALGAS_lstring & in_lkey,
+                                                             const GALGAS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
+                                                             const GALGAS_tokenSortedlist & in_mTokenSortedList,
+                                                             const GALGAS_bool & in_mShouldBeGenerated) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_lexicalExplicitTokenListMapMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_lexicalExplicitTokenListMapMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                    const class GALGAS_lexicalExplicitTokenListMap & inOperand1,
+                                                                                    const class GALGAS_tokenSortedlist & inOperand2,
+                                                                                    const class GALGAS_bool & inOperand3
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalExplicitTokenListMapMap_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_lkey (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalExplicitTokenListMap reader_mExplicitTokenListMap (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mShouldBeGenerated (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_tokenSortedlist reader_mTokenSortedList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_lexicalExplicitTokenListMapMap_2D_element class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2D_element ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                               @lexicalMessageMap map                                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cMapElement_lexicalMessageMap ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const char * kSearchErrorMessage_lexicalMessageMap_searchKey ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lexicalMessageMap : public AC_GALGAS_map {
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalMessageMap (void) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_lexicalMessageMap (const GALGAS_lexicalMessageMap & inSource) ;
+  public : GALGAS_lexicalMessageMap & operator = (const GALGAS_lexicalMessageMap & inSource) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_lexicalMessageMap extractObject (const GALGAS_object & inObject,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_lexicalMessageMap constructor_emptyMap (LOCATION_ARGS) ;
+
+  public : static GALGAS_lexicalMessageMap constructor_mapWithMapToOverride (const class GALGAS_lexicalMessageMap & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                      const class GALGAS_lstring & inOperand1,
+                                                      const class GALGAS_bool & inOperand2,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
+                                                     class GALGAS_lstring constinArgument1,
+                                                     class GALGAS_bool constinArgument2,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_setMLexicalMessageForKey (class GALGAS_lstring constinArgument0,
+                                                                    class GALGAS_string constinArgument1,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_setMMessageIsUsedForKey (class GALGAS_bool constinArgument0,
+                                                                   class GALGAS_string constinArgument1,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
+                                                   class GALGAS_lstring & outArgument1,
+                                                   class GALGAS_bool & outArgument2,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLexicalMessageForKey (const class GALGAS_string & constinOperand0,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mMessageIsUsedForKey (const class GALGAS_string & constinOperand0,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalMessageMap reader_overriddenMap (C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public : VIRTUAL_IN_DEBUG cMapElement_lexicalMessageMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                               const GALGAS_string & inKey
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+
+  friend class cEnumerator_lexicalMessageMap ;
+ 
+} ; // End of GALGAS_lexicalMessageMap class
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Enumerator declaration                                                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cEnumerator_lexicalMessageMap : public cGenericAbstractEnumerator {
+  public : cEnumerator_lexicalMessageMap (const GALGAS_lexicalMessageMap & inEnumeratedObject,
+                                          const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mLexicalMessage (LOCATION_ARGS) const ;
+  public : class GALGAS_bool current_mMessageIsUsed (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_lexicalMessageMap_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    Class for element of '@lexicalMessageMap' map                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cMapElement_lexicalMessageMap : public cMapElement {
+//--- Map attributes
+  public : GALGAS_lstring mAttribute_mLexicalMessage ;
+  public : GALGAS_bool mAttribute_mMessageIsUsed ;
+
+//--- Constructor
+  public : cMapElement_lexicalMessageMap (const GALGAS_lstring & inKey,
+                                          const GALGAS_lstring & in_mLexicalMessage,
+                                          const GALGAS_bool & in_mMessageIsUsed
+                                          COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cMapElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        @lexicalMessageMap_2D_element struct                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lexicalMessageMap_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_lstring mAttribute_lkey ;
+  public : GALGAS_lstring mAttribute_mLexicalMessage ;
+  public : GALGAS_bool mAttribute_mMessageIsUsed ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_lexicalMessageMap_2D_element constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalMessageMap_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalMessageMap_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_lexicalMessageMap_2D_element (const GALGAS_lstring & in_lkey,
+                                                const GALGAS_lstring & in_mLexicalMessage,
+                                                const GALGAS_bool & in_mMessageIsUsed) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_lexicalMessageMap_2D_element extractObject (const GALGAS_object & inObject,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalWarningInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
+  public : static GALGAS_lexicalMessageMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                       const class GALGAS_lstring & inOperand1,
+                                                                       const class GALGAS_bool & inOperand2
                                                                        COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lexicalWarningInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalMessageMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -9542,46 +7817,244 @@ class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mWarningMessageName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_lkey (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLexicalMessage (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mMessageIsUsed (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_lexicalWarningInstructionAST class
+} ; // End of GALGAS_lexicalMessageMap_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWarningInstructionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Pointer class for @lexicalWarningInstructionAST class                                *
+//                                       @lexicalRoutineFormalArgumentList list                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mWarningMessageName ;
+class GALGAS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalRoutineFormalArgumentList (void) ;
 
-//--- Constructor
-  public : cPtr_lexicalWarningInstructionAST (const GALGAS_lstring & in_mWarningMessageName
-                                              COMMA_LOCATION_ARGS) ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_lexicalRoutineFormalArgumentList (cSharedList * inSharedListPtr) ;
 
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+//--------------------------------- Element constructor used by listmap
+  public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                  const class GALGAS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
+                                                  const class GALGAS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
+                                                  const class GALGAS_string & in_mArgumentNameForComment
+                                                  COMMA_LOCATION_ARGS) ;
 
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mWarningMessageName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
+//-- Start of generic part --*
 
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+//--------------------------------- Object extraction
+  public : static GALGAS_lexicalRoutineFormalArgumentList extractObject (const GALGAS_object & inObject,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_lexicalRoutineFormalArgumentList constructor_emptyList (LOCATION_ARGS) ;
+
+  public : static GALGAS_lexicalRoutineFormalArgumentList constructor_listWithValue (const class GALGAS_lexicalArgumentModeAST & inOperand0,
+                                                                                     const class GALGAS_lexicalTypeEnum & inOperand1,
+                                                                                     const class GALGAS_string & inOperand2
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_lexicalRoutineFormalArgumentList inOperand
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lexicalArgumentModeAST & inOperand0,
+                                                      const class GALGAS_lexicalTypeEnum & inOperand1,
+                                                      const class GALGAS_string & inOperand2
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- . (concat) operator
+  public : VIRTUAL_IN_DEBUG GALGAS_lexicalRoutineFormalArgumentList operator_concat (const GALGAS_lexicalRoutineFormalArgumentList & inOperand
+                                                                                     COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- + operator
+  public : VIRTUAL_IN_DEBUG GALGAS_lexicalRoutineFormalArgumentList add_operation (const GALGAS_lexicalRoutineFormalArgumentList & inOperand,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_lexicalArgumentModeAST constinArgument0,
+                                                         class GALGAS_lexicalTypeEnum constinArgument1,
+                                                         class GALGAS_string constinArgument2,
+                                                         class GALGAS_uint constinArgument3,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_lexicalArgumentModeAST & outArgument0,
+                                                    class GALGAS_lexicalTypeEnum & outArgument1,
+                                                    class GALGAS_string & outArgument2,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_lexicalArgumentModeAST & outArgument0,
+                                                   class GALGAS_lexicalTypeEnum & outArgument1,
+                                                   class GALGAS_string & outArgument2,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_lexicalArgumentModeAST & outArgument0,
+                                                         class GALGAS_lexicalTypeEnum & outArgument1,
+                                                         class GALGAS_string & outArgument2,
+                                                         class GALGAS_uint constinArgument3,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lexicalArgumentModeAST & outArgument0,
+                                               class GALGAS_lexicalTypeEnum & outArgument1,
+                                               class GALGAS_string & outArgument2,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lexicalArgumentModeAST & outArgument0,
+                                              class GALGAS_lexicalTypeEnum & outArgument1,
+                                              class GALGAS_string & outArgument2,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mArgumentNameForCommentAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalArgumentModeAST reader_mLexicalFormalArgumentModeAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                          C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalTypeEnum reader_mLexicalFormalArgumentTypeAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                   C_Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalRoutineFormalArgumentList reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                   C_Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalRoutineFormalArgumentList reader_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                                                   C_Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_lexicalRoutineFormalArgumentList ;
+ 
+} ; // End of GALGAS_lexicalRoutineFormalArgumentList class
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Enumerator declaration                                                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cEnumerator_lexicalRoutineFormalArgumentList : public cGenericAbstractEnumerator {
+  public : cEnumerator_lexicalRoutineFormalArgumentList (const GALGAS_lexicalRoutineFormalArgumentList & inEnumeratedObject,
+                                                         const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public : class GALGAS_lexicalArgumentModeAST current_mLexicalFormalArgumentMode (LOCATION_ARGS) const ;
+  public : class GALGAS_lexicalTypeEnum current_mLexicalFormalArgumentType (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mArgumentNameForComment (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_lexicalRoutineFormalArgumentList_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 @lexicalRoutineFormalArgumentList_2D_element struct                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lexicalRoutineFormalArgumentList_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_lexicalArgumentModeAST mAttribute_mLexicalFormalArgumentMode ;
+  public : GALGAS_lexicalTypeEnum mAttribute_mLexicalFormalArgumentType ;
+  public : GALGAS_string mAttribute_mArgumentNameForComment ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_lexicalRoutineFormalArgumentList_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalRoutineFormalArgumentList_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_lexicalRoutineFormalArgumentList_2D_element (const GALGAS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
+                                                               const GALGAS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
+                                                               const GALGAS_string & in_mArgumentNameForComment) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_lexicalRoutineFormalArgumentList_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_lexicalRoutineFormalArgumentList_2D_element constructor_new (const class GALGAS_lexicalArgumentModeAST & inOperand0,
+                                                                                      const class GALGAS_lexicalTypeEnum & inOperand1,
+                                                                                      const class GALGAS_string & inOperand2
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalRoutineFormalArgumentList_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mArgumentNameForComment (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalArgumentModeAST reader_mLexicalFormalArgumentMode (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lexicalTypeEnum reader_mLexicalFormalArgumentType (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_lexicalRoutineFormalArgumentList_2D_element class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList_2D_element ;
 
 #endif
