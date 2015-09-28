@@ -75,7 +75,7 @@ grammar galgas3Grammar
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!@lstring.new {!projectFilePath !inSourceFile.location} !inSourceFile.string )
+    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !inSourceFile.string )
   end
 }
 
@@ -113,7 +113,8 @@ grammar galgas3ProjectGrammar
 
 proc parseAndAnalyzeProject
   ?let @lstring inProjectSourceFile
-  ?let @string inSourceToAnalyze {
+  ?let @string inSourceToAnalyze
+{
   if [option .verbose_output value] then
     message "*** Parsing project files\n"
   end
