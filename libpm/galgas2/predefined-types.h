@@ -2064,6 +2064,8 @@ class GALGAS_string : public AC_GALGAS_root
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_utf_38_Representation (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_utf_38_RepresentationWithoutDelimiters (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
