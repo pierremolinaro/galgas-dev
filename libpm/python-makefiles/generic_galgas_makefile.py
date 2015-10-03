@@ -96,7 +96,7 @@ class GenericGalgasMakefile :
       sourcePath = make.searchFileInDirectories (source, SOURCES_DIR)
       if sourcePath != "" :
         extension = os.path.splitext (source) [1]
-        rule = makefile.Rule (objectFile, self.mCompilationMessage + ": " + source)
+        rule = makefile.Rule ([objectFile], self.mCompilationMessage + ": " + source)
         rule.deleteTargetDirectoryOnClean ()
         rule.mDependences.append (sourcePath)
         rule.enterSecondaryDependanceFile (objectFile + ".dep", make)
@@ -114,7 +114,7 @@ class GenericGalgasMakefile :
         make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add EXECUTABLE link rule
     EXECUTABLE = self.mExecutable + self.mExecutableSuffix
-    rule = makefile.Rule (EXECUTABLE, self.mLinkingMessage + ": " + EXECUTABLE)
+    rule = makefile.Rule ([EXECUTABLE], self.mLinkingMessage + ": " + EXECUTABLE)
     rule.mOnErrorDeleteTarget = True
     rule.deleteTargetFileOnClean ()
     rule.mDependences += objectFileList
@@ -140,7 +140,7 @@ class GenericGalgasMakefile :
       sourcePath = make.searchFileInDirectories (source, SOURCES_DIR)
       if sourcePath != "" :
         extension = os.path.splitext (source) [1]
-        rule = makefile.Rule (objectFile, self.mCompilationMessage + " (debug): " + source)
+        rule = makefile.Rule ([objectFile], self.mCompilationMessage + " (debug): " + source)
         rule.deleteTargetDirectoryOnClean ()
         rule.mDependences.append (sourcePath)
         rule.enterSecondaryDependanceFile (objectFile + ".dep", make)
@@ -158,7 +158,7 @@ class GenericGalgasMakefile :
         make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add EXECUTABLE_DEBUG link rule
     EXECUTABLE_DEBUG = self.mExecutable + "-debug" + self.mExecutableSuffix
-    rule = makefile.Rule (EXECUTABLE_DEBUG, self.mLinkingMessage + " (debug): " + EXECUTABLE_DEBUG)
+    rule = makefile.Rule ([EXECUTABLE_DEBUG], self.mLinkingMessage + " (debug): " + EXECUTABLE_DEBUG)
     rule.mOnErrorDeleteTarget = True
     rule.deleteTargetFileOnClean ()
     rule.mDependences += debugObjectFileList
@@ -171,7 +171,7 @@ class GenericGalgasMakefile :
   #--------------------------------------------------------------------------- Add install EXECUTABLE file rule
     if len (self.mSudoTool) > 0:
       INSTALL_EXECUTABLE = "/usr/local/bin/" + EXECUTABLE
-      rule = makefile.Rule (INSTALL_EXECUTABLE, self.mInstallationgMessage + ": " + INSTALL_EXECUTABLE)
+      rule = makefile.Rule ([INSTALL_EXECUTABLE], self.mInstallationgMessage + ": " + INSTALL_EXECUTABLE)
       rule.mDependences.append (EXECUTABLE)
       rule.mCommand += self.mSudoTool
       rule.mCommand += ["cp", EXECUTABLE, INSTALL_EXECUTABLE]
@@ -179,7 +179,7 @@ class GenericGalgasMakefile :
   #--------------------------------------------------------------------------- Add install EXECUTABLE-debug file rule
     if len (self.mSudoTool) > 0:
       INSTALL_EXECUTABLE_DEBUG = "/usr/local/bin/" + EXECUTABLE_DEBUG
-      rule = makefile.Rule (INSTALL_EXECUTABLE_DEBUG, self.mInstallationgMessage + " (debug): " + INSTALL_EXECUTABLE_DEBUG)
+      rule = makefile.Rule ([INSTALL_EXECUTABLE_DEBUG], self.mInstallationgMessage + " (debug): " + INSTALL_EXECUTABLE_DEBUG)
       rule.mDependences.append (INSTALL_EXECUTABLE_DEBUG)
       rule.mCommand += self.mSudoTool
       rule.mCommand += ["cp", EXECUTABLE_DEBUG, INSTALL_EXECUTABLE_DEBUG]

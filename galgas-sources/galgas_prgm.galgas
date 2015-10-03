@@ -323,13 +323,14 @@ proc projectGeneration
   ?let @stringlist inHandCodedSourceToolFileList
   ?let @stringlist inFrameworkToolFileList
   ?let @stringlist inHandCodedSourceAppFileList
-  ?let @stringlist inHandCodedLinkAppFileList {
+  ?let @stringlist inHandCodedLinkAppFileList
+{
   var appProductFileList = inAppProductFileList
 #---------------------------------- File generation
   if [option .verbose_output value] then
     message "*** Generating files\n"
   end
-  var allProductFileSet = @stringset. emptySet
+  @stringset allProductFileSet = {}
 #---------------------------------- Generate GUI components
 #  message "*** Generate GUI\n" ;
   if @uint.errorCount == 0 then
