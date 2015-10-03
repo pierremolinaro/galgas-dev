@@ -396,6 +396,7 @@ override method @stringPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"identifierRepresentation" !returnedTypeName:"string" !false)
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"HTMLRepresentation" !returnedTypeName:"string" !false)
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"utf8Representation" !returnedTypeName:"string" !false)
+  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"utf8RepresentationWithoutDelimiters" !returnedTypeName:"string" !false)
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"utf32Representation" !returnedTypeName:"string" !false)
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringByTrimmingWhiteSpaces" !returnedTypeName:"string" !false)
   enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"md5" !returnedTypeName:"string" !false)

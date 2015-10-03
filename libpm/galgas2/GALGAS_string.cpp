@@ -241,6 +241,18 @@ GALGAS_string GALGAS_string::reader_utf_38_Representation (UNUSED_LOCATION_ARGS)
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_string::reader_utf_38_RepresentationWithoutDelimiters (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s ;
+    s.appendCLiteralStringConstantWithoutDelimiters (mString) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_string::reader_identifierRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
