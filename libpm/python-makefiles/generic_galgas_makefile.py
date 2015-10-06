@@ -121,7 +121,6 @@ class GenericGalgasMakefile :
     rule.mCommand += self.mLinkerTool
     rule.mCommand += objectFileList
     rule.mCommand += ["-o", EXECUTABLE]
-#    rule.mCommand += ["-L", GMP_DIRECTORY_PATH, "-lgmp-" + SYSTEM_MACHINE]
     rule.mCommand += self.mLinkerOptions
     postCommand = makefile.PostCommand (self.mStripMessage + " " + EXECUTABLE)
     postCommand.mCommand += self.mStripTool

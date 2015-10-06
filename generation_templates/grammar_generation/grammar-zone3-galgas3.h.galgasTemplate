@@ -70,7 +70,8 @@ for () in NON_TERMINAL_MAP do
       if HAS_TRANSLATE_FEATURE then
         %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
-      %GALGAS_string inSourceString%
+      %GALGAS_string inSourceString,\n%!^
+      %GALGAS_string inNameString%
       for () in label_mFormalParametersList do index IDX
         %,\n%!^
         if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then

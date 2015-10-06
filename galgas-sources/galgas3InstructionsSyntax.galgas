@@ -754,6 +754,11 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+rule <actual_parameter_list>
+  !@actualParameterListAST outActualParameterList
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $[$
@@ -767,6 +772,32 @@ rule <semantic_instruction>
     !mReceiverExpression
     !mMethodName
     !actualParameterList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <syntax_directed_translation_result>
+  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult {
+  $?$ ?let selector
+  if selector.string != "" then
+    error selector : "the selector should be '?'"
+  end
+  select
+    $*$
+    outResult = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
+  or
+    $type_name$ ?let actualParameterTypeName
+    $identifier$ ?let actualParameterName
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
+  or
+    $let$
+    $type_name$ ?let actualParameterTypeName
+    $identifier$ ?let actualParameterName
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
+  or
+    $identifier$ ?let actualParameterName
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1328,87 +1359,6 @@ rule <semantic_instruction>
   outInstruction = @logInstructionAST.new {
     !instructionLocation
     !logList}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  G R A M M A R    I N S T R U C T I O N                                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! grammar instruction
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <actual_parameter_list>
-  !@actualParameterListAST outActualParameterList
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <syntax_directed_translation_result>
-  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult {
-  $?$ ?let selector
-  if selector.string != "" then
-    error selector : "the selector should be '?'"
-  end
-  select
-    $*$
-    outResult = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
-  or
-    $type_name$ ?let actualParameterTypeName
-    $identifier$ ?let actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
-  or
-    $let$
-    $type_name$ ?let actualParameterTypeName
-    $identifier$ ?let actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
-  or
-    $identifier$ ?let actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
-  $grammar$
-  let instructionLocation = @location.here
-  $identifier$ ?let @lstring mGrammarComponentName indexing grammarComponentReference
-  @lstring mLabelName
-  select
-    mLabelName = @lstring.new {!"" !@location.here}
-  or
-    $label$
-    $identifier$ ?mLabelName
-  end
-  @bool sourceExpressionIsFile
-  select
-    $in$ sourceExpressionIsFile = true
-  or
-    $on$ sourceExpressionIsFile = false
-  end
-  <expression> ?let @semanticExpressionAST mSourceExpression
-  let endOfSourceExpression = @location.here
-  <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-#--- Get syntax directed translation result string
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
-  select
-    grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone. new
-  or
-    $:>$
-    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
-  end
-  outInstruction = @grammarInstructionAST.new {
-    !instructionLocation
-    !mGrammarComponentName
-    !mLabelName
-    !mSourceExpression
-    !endOfSourceExpression
-    !sourceExpressionIsFile
-    !actualParameterList
-    !grammarInstructionSyntaxDirectedTranslationResult}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

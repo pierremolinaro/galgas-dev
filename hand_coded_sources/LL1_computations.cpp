@@ -802,7 +802,9 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
         }
-        ioCppFileContents << "GALGAS_string inSourceString" ;
+        ioCppFileContents << "GALGAS_string inSourceString"
+                          << ",\n                                "
+                          << "GALGAS_string inNameString" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -833,10 +835,11 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
         }
         ioCppFileContents << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
-        ioCppFileContents << "  if (inSourceString.isValid ()) {\n"
+        ioCppFileContents << "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
                           "    const C_String sourceString = inSourceString.stringValue () ;\n"
+                          "    const C_String nameString = inNameString.stringValue () ;\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                          "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, sourceString, \"\" COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
                           "    const bool ok = scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
                           "                                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
