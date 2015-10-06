@@ -7618,6 +7618,8 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : virtual int32_t select_galgas_33_InstructionsSyntax_67 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
+  protected : virtual int32_t select_galgas_33_InstructionsSyntax_68 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
 
 } ;
 
@@ -8722,19 +8724,19 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            @grammarInstructionAST class                                             *
+//                                         @grammarInFileInstructionAST class                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_grammarInstructionAST : public GALGAS_semanticInstructionAST {
+class GALGAS_grammarInFileInstructionAST : public GALGAS_semanticInstructionAST {
 //--- Constructor
-  public : GALGAS_grammarInstructionAST (void) ;
+  public : GALGAS_grammarInFileInstructionAST (void) ;
 
 //---
-  public : inline const class cPtr_grammarInstructionAST * ptr (void) const { return (const cPtr_grammarInstructionAST *) mObjectPtr ; }
+  public : inline const class cPtr_grammarInFileInstructionAST * ptr (void) const { return (const cPtr_grammarInFileInstructionAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_grammarInstructionAST (const cPtr_grammarInstructionAST * inSourcePtr) ;
+  public : GALGAS_grammarInFileInstructionAST (const cPtr_grammarInFileInstructionAST * inSourcePtr) ;
 
 //-- Start of generic part --*
 
@@ -8742,23 +8744,22 @@ class GALGAS_grammarInstructionAST : public GALGAS_semanticInstructionAST {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_grammarInstructionAST extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_grammarInFileInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_lstring & inOperand1,
-                                                                const class GALGAS_lstring & inOperand2,
-                                                                const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                const class GALGAS_location & inOperand4,
-                                                                const class GALGAS_bool & inOperand5,
-                                                                const class GALGAS_actualParameterListAST & inOperand6,
-                                                                const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand7
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_grammarInFileInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_lstring & inOperand1,
+                                                                      const class GALGAS_lstring & inOperand2,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                      const class GALGAS_location & inOperand4,
+                                                                      const class GALGAS_actualParameterListAST & inOperand5,
+                                                                      const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_grammarInFileInstructionAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -8778,45 +8779,41 @@ class GALGAS_grammarInstructionAST : public GALGAS_semanticInstructionAST {
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST reader_mSourceExpression (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mSourceExpressionIsFile (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_grammarInstructionAST class
+} ; // End of GALGAS_grammarInFileInstructionAST class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInFileInstructionAST ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Pointer class for @grammarInstructionAST class                                    *
+//                                Pointer class for @grammarInFileInstructionAST class                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_grammarInstructionAST : public cPtr_semanticInstructionAST {
+class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mGrammarComponentName ;
   public : GALGAS_lstring mAttribute_mLabelName ;
   public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
   public : GALGAS_location mAttribute_mEndOfSourceExpression ;
-  public : GALGAS_bool mAttribute_mSourceExpressionIsFile ;
   public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
   public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
 
 //--- Constructor
-  public : cPtr_grammarInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                       const GALGAS_lstring & in_mGrammarComponentName,
-                                       const GALGAS_lstring & in_mLabelName,
-                                       const GALGAS_semanticExpressionAST & in_mSourceExpression,
-                                       const GALGAS_location & in_mEndOfSourceExpression,
-                                       const GALGAS_bool & in_mSourceExpressionIsFile,
-                                       const GALGAS_actualParameterListAST & in_mActualParameterList,
-                                       const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult
-                                       COMMA_LOCATION_ARGS) ;
+  public : cPtr_grammarInFileInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                             const GALGAS_lstring & in_mGrammarComponentName,
+                                             const GALGAS_lstring & in_mLabelName,
+                                             const GALGAS_semanticExpressionAST & in_mSourceExpression,
+                                             const GALGAS_location & in_mEndOfSourceExpression,
+                                             const GALGAS_actualParameterListAST & in_mActualParameterList,
+                                             const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
@@ -8826,7 +8823,131 @@ class cPtr_grammarInstructionAST : public cPtr_semanticInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLabelName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST reader_mSourceExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfSourceExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mSourceExpressionIsFile (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListAST reader_mActualParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mAbstractGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        @grammarInStringInstructionAST class                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_grammarInStringInstructionAST : public GALGAS_semanticInstructionAST {
+//--- Constructor
+  public : GALGAS_grammarInStringInstructionAST (void) ;
+
+//---
+  public : inline const class cPtr_grammarInStringInstructionAST * ptr (void) const { return (const cPtr_grammarInStringInstructionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_grammarInStringInstructionAST (const cPtr_grammarInStringInstructionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_grammarInStringInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_grammarInStringInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                        const class GALGAS_lstring & inOperand1,
+                                                                        const class GALGAS_lstring & inOperand2,
+                                                                        const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                        const class GALGAS_location & inOperand4,
+                                                                        const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                        const class GALGAS_location & inOperand6,
+                                                                        const class GALGAS_actualParameterListAST & inOperand7,
+                                                                        const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand8
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_grammarInStringInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mAbstractGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST reader_mActualParameterList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfNameExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfSourceExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mGrammarComponentName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLabelName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST reader_mNameExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST reader_mSourceExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_grammarInStringInstructionAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInStringInstructionAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Pointer class for @grammarInStringInstructionAST class                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
+//--- Attributes
+  public : GALGAS_lstring mAttribute_mGrammarComponentName ;
+  public : GALGAS_lstring mAttribute_mLabelName ;
+  public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
+  public : GALGAS_location mAttribute_mEndOfSourceExpression ;
+  public : GALGAS_semanticExpressionAST mAttribute_mNameExpression ;
+  public : GALGAS_location mAttribute_mEndOfNameExpression ;
+  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
+  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
+
+//--- Constructor
+  public : cPtr_grammarInStringInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                               const GALGAS_lstring & in_mGrammarComponentName,
+                                               const GALGAS_lstring & in_mLabelName,
+                                               const GALGAS_semanticExpressionAST & in_mSourceExpression,
+                                               const GALGAS_location & in_mEndOfSourceExpression,
+                                               const GALGAS_semanticExpressionAST & in_mNameExpression,
+                                               const GALGAS_location & in_mEndOfNameExpression,
+                                               const GALGAS_actualParameterListAST & in_mActualParameterList,
+                                               const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+                                               COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mGrammarComponentName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLabelName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST reader_mSourceExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfSourceExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST reader_mNameExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfNameExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListAST reader_mActualParameterList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mAbstractGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) const ;
 //--- Description

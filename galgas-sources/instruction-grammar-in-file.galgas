@@ -1,185 +1,225 @@
 #----------------------------------------------------------------------------------------------------------------------*
-#   AST                                                                                                                *
-#----------------------------------------------------------------------------------------------------------------------*
 #! AST
 #----------------------------------------------------------------------------------------------------------------------*
 
-abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-}
+  abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-class @grammarInstructionSyntaxDirectedTranslationResultNone : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-}
+  class @grammarInstructionSyntaxDirectedTranslationResultNone :
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-class @grammarInstructionSyntaxDirectedTranslationDropResult : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  @location mLocation
-}
+  class @grammarInstructionSyntaxDirectedTranslationDropResult :
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+    @location mLocation
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-class @grammarInstructionSyntaxDirectedTranslationResultInVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  @lstring mActualParameterName
-}
+  class @grammarInstructionSyntaxDirectedTranslationResultInVar :
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+    @lstring mActualParameterName
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  @lstring mActualParameterTypeName
-  @lstring mActualParameterName
-}
+  class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+    @lstring mActualParameterTypeName
+    @lstring mActualParameterName
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  @lstring mActualParameterTypeName
-  @lstring mActualParameterName
-}
+  class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+    @lstring mActualParameterTypeName
+    @lstring mActualParameterName
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-class @grammarInstructionAST : @semanticInstructionAST {
-  @lstring mGrammarComponentName
-  @lstring mLabelName
-  @semanticExpressionAST mSourceExpression
-  @location mEndOfSourceExpression
-  @bool mSourceExpressionIsFile # If false, mSourceExpression should be the source string
-  @actualParameterListAST mActualParameterList
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
-}
+  class @grammarInFileInstructionAST : @semanticInstructionAST {
+    @lstring mGrammarComponentName
+    @lstring mLabelName
+    @semanticExpressionAST mSourceExpression
+    @location mEndOfSourceExpression
+    @actualParameterListAST mActualParameterList
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
-#   SYNTAX                                                                                                             *
+  #····················································································································*
+
+  class @grammarInStringInstructionAST : @semanticInstructionAST {
+    @lstring mGrammarComponentName
+    @lstring mLabelName
+    @semanticExpressionAST mSourceExpression
+    @location mEndOfSourceExpression
+    @semanticExpressionAST mNameExpression
+    @location mEndOfNameExpression
+    @actualParameterListAST mActualParameterList
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+  }
+
 #----------------------------------------------------------------------------------------------------------------------*
 #! SYNTAX
 #----------------------------------------------------------------------------------------------------------------------*
 
 syntax extension galgas3InstructionsSyntax {
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-  $grammar$
-  let instructionLocation = @location.here
-  $identifier$ ?let @lstring mGrammarComponentName indexing grammarComponentReference
-  @lstring mLabelName
-  select
-    mLabelName = @lstring.new {!"" !@location.here}
-  or
-    $label$
-    $identifier$ ?mLabelName
-  end
-  @bool sourceExpressionIsFile
-  select
-    $in$ sourceExpressionIsFile = true
-  or
-    $on$ sourceExpressionIsFile = false
-  end
-  <expression> ?let @semanticExpressionAST mSourceExpression
-  let endOfSourceExpression = @location.here
-  <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-#--- Get syntax directed translation result string
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
-  select
-    grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
-  or
-    $:>$
-    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
-  end
-  outInstruction = @grammarInstructionAST.new {
-    !instructionLocation
-    !mGrammarComponentName
-    !mLabelName
-    !mSourceExpression
-    !endOfSourceExpression
-    !sourceExpressionIsFile
-    !actualParameterList
-    !grammarInstructionSyntaxDirectedTranslationResult}
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $grammar$
+    let instructionLocation = @location.here
+    $identifier$ ?let @lstring mGrammarComponentName indexing grammarComponentReference
+    @lstring mLabelName
+    select
+      mLabelName = @lstring.new {!"" !@location.here}
+    or
+      $label$
+      $identifier$ ?mLabelName
+    end
+    select
+      $in$
+      <expression> ?let @semanticExpressionAST mSourceExpression
+      let endOfSourceExpression = @location.here
+      <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    #--- Get syntax directed translation result string
+      @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+      select
+        grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      or
+        $:>$
+        <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      end
+      outInstruction = @grammarInFileInstructionAST.new {
+        !instructionLocation
+        !mGrammarComponentName
+        !mLabelName
+        !mSourceExpression
+        !endOfSourceExpression
+        !actualParameterList
+        !grammarInstructionSyntaxDirectedTranslationResult}
+    or
+      $on$
+      $($
+      <expression> ?let @semanticExpressionAST mSourceExpression
+      let endOfSourceExpression = @location.here
+      $,$
+      <expression> ?let @semanticExpressionAST mNameExpression
+      let endOfNameExpression = @location.here
+      $)$
+      <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    #--- Get syntax directed translation result string
+      @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+      select
+        grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      or
+        $:>$
+        <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+      end
+      outInstruction = @grammarInStringInstructionAST.new {
+        !instructionLocation
+        !mGrammarComponentName
+        !mLabelName
+        !mSourceExpression
+        !endOfSourceExpression
+        !mNameExpression
+        !endOfNameExpression
+        !actualParameterList
+        !grammarInstructionSyntaxDirectedTranslationResult
+      }
+    end
+  }
+
+  #····················································································································*
+
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
-
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#   CONTEXT                                                                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 #! CONTEXT
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @grammarInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for () in mActualParameterList do
-    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
-  end
-}
+  override method @grammarInFileInstructionAST enterInstructionInSemanticContext
+    ?!@unifiedTypeMap ioTypeMap
+  {
+    [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+    for () in mActualParameterList do
+      [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+    end
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
-#   SEMANTICS                                                                                                          *
+  #····················································································································*
+
+  override method @grammarInStringInstructionAST enterInstructionInSemanticContext
+    ?!@unifiedTypeMap ioTypeMap
+  {
+    [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+    for () in mActualParameterList do
+      [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+    end
+  }
+
 #----------------------------------------------------------------------------------------------------------------------*
 #! SEMANTICS
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @grammarInstructionAST analyzeSemanticInstruction
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
-#--- Search grammar in grammar map
-  [inAnalysisContext.mSemanticContext.mGrammarMap searchKey
-    !mGrammarComponentName
-    ?let @grammarLabelMap grammarLabelMap
-    ?*
-    ?let @bool hasTranslateFeature
-  ]
-#--- Search label
-  [grammarLabelMap searchKey
-    !mLabelName
-    ?let @formalParameterSignature labelSignature
-  ]
-#--- Check actual parameters
-  analyzeRoutineArguments (
-    !inAnalysisContext
-    !mLabelName
-    !"label of the " + mGrammarComponentName + " grammar"
-    !labelSignature
-    !mActualParameterList
-    !?ioVariableMap
-    !?ioInstructionListForGeneration
-    ?let @actualParameterListForGeneration actualParameterListForGeneration
-  )
-#--- Parse source expression
-  [mSourceExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy. null
-    !inAnalysisContext
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration sourceExpression
-  ]
-#--- Check source expression type: @lstring for file, @string for source string itself
-  if mSourceExpressionIsFile then
+  override method @grammarInFileInstructionAST analyzeSemanticInstruction
+    ?let @analysisContext inAnalysisContext
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+    ?!@variableMap ioVariableMap {
+  #--- Search grammar in grammar map
+    [inAnalysisContext.mSemanticContext.mGrammarMap searchKey
+      !mGrammarComponentName
+      ?let @grammarLabelMap grammarLabelMap
+      ?*
+      ?let @bool hasTranslateFeature
+    ]
+  #--- Search label
+    [grammarLabelMap searchKey
+      !mLabelName
+      ?let @formalParameterSignature labelSignature
+    ]
+  #--- Check actual parameters
+    analyzeRoutineArguments (
+      !inAnalysisContext
+      !mLabelName
+      !"label of the " + mGrammarComponentName + " grammar"
+      !labelSignature
+      !mActualParameterList
+      !?ioVariableMap
+      !?ioInstructionListForGeneration
+      ?let @actualParameterListForGeneration actualParameterListForGeneration
+    )
+  #--- Parse source expression
+    [mSourceExpression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration sourceExpression
+    ]
+  #--- Check source expression type: @lstring for file, @string for source string itself
     if [sourceExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLStringType then
       error mEndOfSourceExpression
-      :"this expression is the source file path and its type should be '@lstring', but it is '@" + [[sourceExpression mResultType] key] + "'"
+      :"this expression is the source file path and its type should be '@lstring', but it is '@"
+       + [[sourceExpression mResultType] key] + "'"
     end
-  elsif [sourceExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
-    error mEndOfSourceExpression
-    :"this expression is the source string and its type should be '@string', but it is '@" + [[sourceExpression mResultType] key] + "'"
-  end
-#--- Check syntax directed translation result parameter
-  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [mGrammarComponentName.location locationIndex]
-  var assignementList =@stringlist.emptyList{}
-  [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
-    !inAnalysisContext
-    !hasTranslateFeature
-    !syntaxDirectedTranslationResultVarName
-    !?assignementList
-    !?ioVariableMap
-  ]
-#--- Generate instructions
-  if mSourceExpressionIsFile then
+  #--- Check syntax directed translation result parameter
+    let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [mGrammarComponentName.location locationIndex]
+    var assignementList =@stringlist.emptyList{}
+    [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
+      !inAnalysisContext
+      !hasTranslateFeature
+      !syntaxDirectedTranslationResultVarName
+      !?assignementList
+      !?ioVariableMap
+    ]
+  #--- Generate instructions
     ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration.new {
       !mInstructionLocation
       ![mGrammarComponentName string]
@@ -188,162 +228,236 @@ override method @grammarInstructionAST analyzeSemanticInstruction
       !actualParameterListForGeneration
       !hasTranslateFeature
       !assignementList
-      !syntaxDirectedTranslationResultVarName}
-  else
+      !syntaxDirectedTranslationResultVarName
+    }
+  }
+
+  #····················································································································*
+
+  override method @grammarInStringInstructionAST analyzeSemanticInstruction
+    ?let @analysisContext inAnalysisContext
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+    ?!@variableMap ioVariableMap {
+  #--- Search grammar in grammar map
+    [inAnalysisContext.mSemanticContext.mGrammarMap searchKey
+      !mGrammarComponentName
+      ?let @grammarLabelMap grammarLabelMap
+      ?*
+      ?let @bool hasTranslateFeature
+    ]
+  #--- Search label
+    [grammarLabelMap searchKey
+      !mLabelName
+      ?let @formalParameterSignature labelSignature
+    ]
+  #--- Check actual parameters
+    analyzeRoutineArguments (
+      !inAnalysisContext
+      !mLabelName
+      !"label of the " + mGrammarComponentName + " grammar"
+      !labelSignature
+      !mActualParameterList
+      !?ioVariableMap
+      !?ioInstructionListForGeneration
+      ?let @actualParameterListForGeneration actualParameterListForGeneration
+    )
+  #--- Parse source expression
+    [mSourceExpression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration sourceExpression
+    ]
+  #--- Check source expression type: @string
+    if [sourceExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+      error mEndOfSourceExpression
+      :"this expression is the source string and its type should be '@string', but it is '@"
+       + [[sourceExpression mResultType] key] + "'"
+    end
+  #--- Parse name expression
+    [mNameExpression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration nameExpression
+    ]
+  #--- Check name expression type: @string
+    if [nameExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+      error mEndOfNameExpression
+      :"this expression is the name string and its type should be '@string', but it is '@"
+       + [[sourceExpression mResultType] key] + "'"
+    end
+  #--- Check syntax directed translation result parameter
+    let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [mGrammarComponentName.location locationIndex]
+    var assignementList =@stringlist.emptyList{}
+    [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
+      !inAnalysisContext
+      !hasTranslateFeature
+      !syntaxDirectedTranslationResultVarName
+      !?assignementList
+      !?ioVariableMap
+    ]
+  #--- Generate instructions
     ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration.new {
       !mInstructionLocation
       ![mGrammarComponentName string]
       ![mLabelName string]
       !sourceExpression
+      !nameExpression
       !actualParameterListForGeneration
       !hasTranslateFeature
       !assignementList
-      !syntaxDirectedTranslationResultVarName}
-  end
-}
+      !syntaxDirectedTranslationResultVarName
+    }
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
-#  GENERATION (source file)                                                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 #! GENERATION (source file)
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mGrammarName
-  @string mLabelName
-  @semanticExpressionForGeneration mSourceFileExpression
-  @actualParameterListForGeneration mActualParameterList
-  @bool mGrammarHasTranslateFeature
-  @stringlist mAssignementList
-  @string mSyntaxDirectedTranslationResultVarName
-}
+  class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
+    @location mInstructionLocation
+    @string mGrammarName
+    @string mLabelName
+    @semanticExpressionForGeneration mSourceFileExpression
+    @actualParameterListForGeneration mActualParameterList
+    @bool mGrammarHasTranslateFeature
+    @stringlist mAssignementList
+    @string mSyntaxDirectedTranslationResultVarName
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-override method @grammarInstructionWithSourceFileForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  ioInclusionSet += !"grammar-" + mGrammarName
-#--- Source string
-  [mSourceFileExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string sourceVar
-  ]
-#--- Parameters
-  var parameterCppNameList =@stringlist.emptyList{}
-  var jokerParametersToReleaseList =@stringlist.emptyList{}
-  var inputVariableList =@stringlist.emptyList{}
-  for () in mActualParameterList do
-    [mActualParameter generateActualParameter
+  override method @grammarInstructionWithSourceFileForGeneration generateInstruction
+    ?!@stringset ioInclusionSet
+    ?!@uint ioTemporaryVariableIndex
+    ?!@stringset ioUnusedVariableCppNameSet
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString
+    ?!@string ioGeneratedCode {
+    ioInclusionSet += !"grammar-" + mGrammarName
+  #--- Source string
+    [mSourceFileExpression generateExpression
+      !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
-      !?ioGeneratedCode
-      !?jokerParametersToReleaseList
-      !?inputVariableList
       !?ioUnusedVariableCppNameSet
-      ?let @string parameterCppName
+      ?let @string sourceVar
     ]
-    parameterCppNameList += !parameterCppName
-    if (mActualParameter is >= @inputActualParameterForGeneration) then
-      ioGeneratedCode += parameterCppName + ".drop () ;\n"
+  #--- Parameters
+    var parameterCppNameList =@stringlist.emptyList{}
+    var jokerParametersToReleaseList =@stringlist.emptyList{}
+    var inputVariableList =@stringlist.emptyList{}
+    for () in mActualParameterList do
+      [mActualParameter generateActualParameter
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioGeneratedCode
+        !?jokerParametersToReleaseList
+        !?inputVariableList
+        !?ioUnusedVariableCppNameSet
+        ?let @string parameterCppName
+      ]
+      parameterCppNameList += !parameterCppName
+      if (mActualParameter is >= @inputActualParameterForGeneration) then
+        ioGeneratedCode += parameterCppName + ".drop () ;\n"
+      end
     end
-  end
-  if mGrammarHasTranslateFeature then
-    ioGeneratedCode += "C_String " + mSyntaxDirectedTranslationResultVarName + " ;\n"
-  end
-  ioGeneratedCode += "cGrammar_" + [mGrammarName identifierRepresentation]
-                  +  "::_performSourceFileParsing_" + [mLabelName identifierRepresentation] 
-                  +  " ("
-                  + compilerCppName () + ", "
-                  + if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName + ", " else "" end
-                  + sourceVar
-  for () in parameterCppNameList do
-    ioGeneratedCode += ", " + mValue
-  end
-  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  for s in mAssignementList do
-    ioGeneratedCode += s.mValue + "\n"
-  end
-}
+    if mGrammarHasTranslateFeature then
+      ioGeneratedCode += "C_String " + mSyntaxDirectedTranslationResultVarName + " ;\n"
+    end
+    ioGeneratedCode += "cGrammar_" + [mGrammarName identifierRepresentation]
+                    +  "::_performSourceFileParsing_" + [mLabelName identifierRepresentation] 
+                    +  " ("
+                    + compilerCppName () + ", "
+                    + if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName + ", " else "" end
+                    + sourceVar
+    for () in parameterCppNameList do
+      ioGeneratedCode += ", " + mValue
+    end
+    ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    for s in mAssignementList do
+      ioGeneratedCode += s.mValue + "\n"
+    end
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
-#  GENERATION (source string)                                                                                          *
 #----------------------------------------------------------------------------------------------------------------------*
 #! GENERATION (source string)
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mGrammarName
-  @string mLabelName
-  @semanticExpressionForGeneration mSourceStringExpression
-  @actualParameterListForGeneration mActualParameterList
-  @bool mGrammarHasTranslateFeature
-  @stringlist mAssignementList
-  @string mSyntaxDirectedTranslationResultVarName
-}
+  class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
+    @location mInstructionLocation
+    @string mGrammarName
+    @string mLabelName
+    @semanticExpressionForGeneration mSourceStringExpression
+    @semanticExpressionForGeneration mNameStringExpression
+    @actualParameterListForGeneration mActualParameterList
+    @bool mGrammarHasTranslateFeature
+    @stringlist mAssignementList
+    @string mSyntaxDirectedTranslationResultVarName
+  }
 
-#----------------------------------------------------------------------------------------------------------------------*
+  #····················································································································*
 
-override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  ioInclusionSet += !"grammar-" + mGrammarName
-#--- Source string
-  [mSourceStringExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string sourceVar
-  ]
-#--- Parameters
-  var parameterCppNameList =@stringlist.emptyList{}
-  var jokerParametersToReleaseList =@stringlist.emptyList{}
-  var inputVariableList =@stringlist.emptyList{}
-  for () in mActualParameterList do
-    [mActualParameter generateActualParameter
-       !?ioInclusionSet
-       !?ioTemporaryVariableIndex
-       !?ioGeneratedCode
-       !?jokerParametersToReleaseList
-       !?inputVariableList
-       !?ioUnusedVariableCppNameSet
-       ?let @string parameterCppName
+  override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction
+    ?!@stringset ioInclusionSet
+    ?!@uint ioTemporaryVariableIndex
+    ?!@stringset ioUnusedVariableCppNameSet
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString
+    ?!@string ioGeneratedCode {
+    ioInclusionSet += !"grammar-" + mGrammarName
+  #--- Source string
+    [mSourceStringExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let @string sourceVar
     ]
-    parameterCppNameList += !parameterCppName
-    if (mActualParameter is >= @inputActualParameterForGeneration) then
-      ioGeneratedCode += parameterCppName + ".drop () ;\n"
+  #--- Name string
+    [mNameStringExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let @string nameVar
+    ]
+  #--- Parameters
+    var parameterCppNameList =@stringlist.emptyList{}
+    var jokerParametersToReleaseList =@stringlist.emptyList{}
+    var inputVariableList =@stringlist.emptyList{}
+    for () in mActualParameterList do
+      [mActualParameter generateActualParameter
+         !?ioInclusionSet
+         !?ioTemporaryVariableIndex
+         !?ioGeneratedCode
+         !?jokerParametersToReleaseList
+         !?inputVariableList
+         !?ioUnusedVariableCppNameSet
+         ?let @string parameterCppName
+      ]
+      parameterCppNameList += !parameterCppName
+      if (mActualParameter is >= @inputActualParameterForGeneration) then
+        ioGeneratedCode += parameterCppName + ".drop () ;\n"
+      end
     end
-  end
-  if mGrammarHasTranslateFeature then
-    ioGeneratedCode += "C_String " + mSyntaxDirectedTranslationResultVarName + " ;\n"
-  end
-  ioGeneratedCode += "cGrammar_" + [mGrammarName identifierRepresentation]
-                  +  "::_performSourceStringParsing_" + [mLabelName identifierRepresentation] 
-                  +  " (" + compilerCppName () + ", "
-                  + if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName + ", " else "" end
-                  + sourceVar
-                  + ", GALGAS_string (\"\")"
-  for () in parameterCppNameList do
-    ioGeneratedCode += ", " + mValue
-  end
-  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  for s in mAssignementList do
-    ioGeneratedCode += s.mValue + "\n"
-  end
-}
+    if mGrammarHasTranslateFeature then
+      ioGeneratedCode += "C_String " + mSyntaxDirectedTranslationResultVarName + " ;\n"
+    end
+    ioGeneratedCode += "cGrammar_" + [mGrammarName identifierRepresentation]
+                    +  "::_performSourceStringParsing_" + [mLabelName identifierRepresentation] 
+                    +  " (" + compilerCppName () + ", "
+                    + if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName + ", " else "" end
+                    + sourceVar
+                    + ", " + nameVar
+    for () in parameterCppNameList do
+      ioGeneratedCode += ", " + mValue
+    end
+    ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    for s in mAssignementList do
+      ioGeneratedCode += s.mValue + "\n"
+    end
+  }
 
 #----------------------------------------------------------------------------------------------------------------------*

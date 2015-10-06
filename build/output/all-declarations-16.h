@@ -5949,10 +5949,11 @@ class GALGAS_grammarInstructionWithSourceExpressionForGeneration : public GALGAS
                                                                                               const class GALGAS_string & inOperand1,
                                                                                               const class GALGAS_string & inOperand2,
                                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                              const class GALGAS_actualParameterListForGeneration & inOperand4,
-                                                                                              const class GALGAS_bool & inOperand5,
-                                                                                              const class GALGAS_stringlist & inOperand6,
-                                                                                              const class GALGAS_string & inOperand7
+                                                                                              const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                                              const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                              const class GALGAS_bool & inOperand6,
+                                                                                              const class GALGAS_stringlist & inOperand7,
+                                                                                              const class GALGAS_string & inOperand8
                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5975,6 +5976,8 @@ class GALGAS_grammarInstructionWithSourceExpressionForGeneration : public GALGAS
   public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mLabelName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mNameStringExpression (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mSourceStringExpression (LOCATION_ARGS) const ;
 
@@ -6003,6 +6006,7 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
   public : GALGAS_string mAttribute_mGrammarName ;
   public : GALGAS_string mAttribute_mLabelName ;
   public : GALGAS_semanticExpressionForGeneration mAttribute_mSourceStringExpression ;
+  public : GALGAS_semanticExpressionForGeneration mAttribute_mNameStringExpression ;
   public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
   public : GALGAS_bool mAttribute_mGrammarHasTranslateFeature ;
   public : GALGAS_stringlist mAttribute_mAssignementList ;
@@ -6013,6 +6017,7 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
                                                                      const GALGAS_string & in_mGrammarName,
                                                                      const GALGAS_string & in_mLabelName,
                                                                      const GALGAS_semanticExpressionForGeneration & in_mSourceStringExpression,
+                                                                     const GALGAS_semanticExpressionForGeneration & in_mNameStringExpression,
                                                                      const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
                                                                      const GALGAS_bool & in_mGrammarHasTranslateFeature,
                                                                      const GALGAS_stringlist & in_mAssignementList,
@@ -6027,6 +6032,7 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mGrammarName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mLabelName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mSourceStringExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mNameStringExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration reader_mActualParameterList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mGrammarHasTranslateFeature (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_mAssignementList (LOCATION_ARGS) const ;
@@ -6154,105 +6160,6 @@ class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticI
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mGrammarHasTranslateFeature (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_mAssignementList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mSyntaxDirectedTranslationResultVarName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          @ifInstructionForGeneration class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_ifInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
-//--- Constructor
-  public : GALGAS_ifInstructionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_ifInstructionForGeneration * ptr (void) const { return (const cPtr_ifInstructionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_ifInstructionForGeneration (const cPtr_ifInstructionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_ifInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_ifInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand2,
-                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand3
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_ifInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mIFexpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_m_5F_else_5F_instructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_m_5F_then_5F_instructionList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_ifInstructionForGeneration class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionForGeneration ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Pointer class for @ifInstructionForGeneration class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
-//--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mIFexpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_m_5F_then_5F_instructionList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_m_5F_else_5F_instructionList ;
-
-//--- Constructor
-  public : cPtr_ifInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                            const GALGAS_semanticExpressionForGeneration & in_mIFexpression,
-                                            const GALGAS_semanticInstructionListForGeneration & in_m_5F_then_5F_instructionList,
-                                            const GALGAS_semanticInstructionListForGeneration & in_m_5F_else_5F_instructionList
-                                            COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mIFexpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_m_5F_then_5F_instructionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_m_5F_else_5F_instructionList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
