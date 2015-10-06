@@ -1015,36 +1015,6 @@ class @logInstructionForGeneration : @semanticInstructionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  G R A M M A R    I N S T R U C T I O N S                                                                            *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mGrammarName
-  @string mLabelName
-  @semanticExpressionForGeneration mSourceFileExpression
-  @actualParameterListForGeneration mActualParameterList
-  @bool mGrammarHasTranslateFeature
-  @stringlist mAssignementList
-  @string mSyntaxDirectedTranslationResultVarName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @string mGrammarName
-  @string mLabelName
-  @semanticExpressionForGeneration mSourceStringExpression
-  @actualParameterListForGeneration mActualParameterList
-  @bool mGrammarHasTranslateFeature
-  @stringlist mAssignementList
-  @string mSyntaxDirectedTranslationResultVarName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #  R E A D  /  W R I T E    ' W I T H '    I N S T R U C T I O N                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

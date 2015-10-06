@@ -1089,7 +1089,9 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
         }
-        ioCppFileContents << "GALGAS_string inSourceString" ;
+        ioCppFileContents << "GALGAS_string inSourceString"
+                          << ",\n                                "
+                          << "GALGAS_string inNameString" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1119,20 +1121,23 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
           numeroParametre ++ ;
         }
         ioCppFileContents << "\n                                "
-                          "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
-        ioCppFileContents << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                          "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
-                       << " (inCompiler, inSourceString.stringValue (), \"\" COMMA_HERE)) ;\n"
-                          "  if (scanner->sourceText () != NULL) {\n"
-                          "    const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
-                          "                                                     gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
-                          "                                                     gProductionsTable_" << inTargetFileName << ") ;\n"
-                          "    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
-                          "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
-                          "      " ;
-        ioCppFileContents << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                       << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                       << " (" ;
+                             "COMMA_UNUSED_LOCATION_ARGS) {\n"
+                          << "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
+                             "    const C_String sourceString = inSourceString.stringValue () ;\n"
+                             "    const C_String nameString = inNameString.stringValue () ;\n"
+                          << "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                             "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
+                          << " (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
+                             "    if (scanner->sourceText () != NULL) {\n"
+                             "      const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
+                             "                                                       gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
+                             "                                                       gProductionsTable_" << inTargetFileName << ") ;\n"
+                             "      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
+                             "        cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                             "        "
+                          << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                          << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                          << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1145,12 +1150,13 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
         }
         ioCppFileContents << "scanner) ;\n" ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          ioCppFileContents << "        scanner->appendLastSeparatorTo (" << inSyntaxDirectedTranslationVarName << ") ;\n" ;
+          ioCppFileContents << "          scanner->appendLastSeparatorTo (" << inSyntaxDirectedTranslationVarName << ") ;\n" ;
         }
         ioCppFileContents << "      }\n"
-                          "  }\n"
-                          "  macroDetachSharedObject (scanner) ;\n"
-                          "}\n\n" ;
+                             "    }\n"
+                             "    macroDetachSharedObject (scanner) ;\n"
+                             "  }\n"
+                             "}\n\n" ;
         currentAltForNonTerminal.gotoNextObject () ;
       }
     }

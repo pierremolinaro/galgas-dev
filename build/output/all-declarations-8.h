@@ -3669,6 +3669,7 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 
   public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
                                                      GALGAS_string inSourceString,
+                                                     GALGAS_string inNameString,
                                                      GALGAS_templateInstructionListAST & outArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -3776,6 +3777,7 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
 
   public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
                                                      GALGAS_string inSourceString,
+                                                     GALGAS_string inNameString,
                                                      GALGAS_galgas_33_ProjectComponentAST & outArgument0
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -4419,6 +4421,7 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
   public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
                                                      GALGAS_string inSourceString,
+                                                     GALGAS_string inNameString,
                                                      GALGAS_galgas_33_DeclarationAST & ioArgument0
                                                      COMMA_LOCATION_ARGS) ;
 

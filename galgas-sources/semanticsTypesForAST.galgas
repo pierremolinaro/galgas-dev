@@ -1004,58 +1004,6 @@ class @dropInstructionAST : @semanticInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  G R A M M A R    I N S T R U C T I O N                                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @grammarInstructionSyntaxDirectedTranslationResultNone : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @grammarInstructionSyntaxDirectedTranslationDropResult : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  @location mLocation
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @grammarInstructionSyntaxDirectedTranslationResultInVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  @lstring mActualParameterName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  @lstring mActualParameterTypeName
-  @lstring mActualParameterName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-  @lstring mActualParameterTypeName
-  @lstring mActualParameterName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @grammarInstructionAST : @semanticInstructionAST {
-  @lstring mGrammarComponentName
-  @lstring mLabelName
-  @semanticExpressionAST mSourceExpression
-  @location mEndOfSourceExpression
-  @bool mSourceExpressionIsFile # If false, mSourceExpression should be the source string
-  @actualParameterListAST mActualParameterList
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #  W I T H    I N S T R U C T I O N    ( R E A D    A C C E S S )                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
