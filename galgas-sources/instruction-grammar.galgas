@@ -107,13 +107,26 @@ syntax extension galgas3InstructionsSyntax {
         !grammarInstructionSyntaxDirectedTranslationResult}
     or
       $on$
-      $($
-      <expression> ?let @semanticExpressionAST mSourceExpression
-      let endOfSourceExpression = @location.here
-      $,$
-      <expression> ?let @semanticExpressionAST mNameExpression
-      let endOfNameExpression = @location.here
-      $)$
+      @semanticExpressionAST sourceExpression
+      @location endOfSourceExpression
+      @semanticExpressionAST nameExpression
+      @location endOfNameExpression
+      select
+        <expression> ?sourceExpression
+        endOfSourceExpression = .here
+        nameExpression = @literalStringExpressionAST.new {!.here !{!""}}
+        endOfNameExpression = .here
+        warning .here : "obsolete syntax, use '... on (source_string, name_string) ...'"
+          + " instead of '... on source_string ...' ; you can use empty string \"\" for name_string"
+      or
+        $($
+        <expression> ?sourceExpression
+        endOfSourceExpression = .here
+        $,$
+        <expression> ?nameExpression
+        endOfNameExpression = .here
+        $)$
+      end
       <actual_parameter_list> ?let @actualParameterListAST actualParameterList
     #--- Get syntax directed translation result string
       @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -127,9 +140,9 @@ syntax extension galgas3InstructionsSyntax {
         !instructionLocation
         !mGrammarComponentName
         !mLabelName
-        !mSourceExpression
+        !sourceExpression
         !endOfSourceExpression
-        !mNameExpression
+        !nameExpression
         !endOfNameExpression
         !actualParameterList
         !grammarInstructionSyntaxDirectedTranslationResult

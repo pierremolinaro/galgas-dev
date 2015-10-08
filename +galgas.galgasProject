@@ -90,7 +90,7 @@ project (3:1:1) -> "galgas" {
   "galgas-sources/predefinedTypes.galgas"
 
 #--- Instructions
-  "galgas-sources/instruction-grammar-in-file.galgas"
+  "galgas-sources/instruction-grammar.galgas"
 #--- Type declaration
   "galgas-sources/enum.galgas"
   "galgas-sources/shared-map.galgas"
