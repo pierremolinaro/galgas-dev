@@ -62,35 +62,35 @@ with lexique galgas3Scanner {
   label $terminal$, $error$ -
 
   
-  textMacro "GALGAS 3/Class" :
+  textMacro "Class" :
     "class @aClassName : @superClassName {\n"
     "  @aType mAnAttribute\n"
     "}\n"
   
-  textMacro "GALGAS 3/Enum" :
+  textMacro "Enum" :
     "enum @aType {\n"
     "  constant1, constant2\n"
     "}\n"
   
-  textMacro "GALGAS 3/List" :
+  textMacro "List" :
     "list @type {\n"
     "  @aType mAnAttribute\n"
     "}\n"
   
-  textMacro "GALGAS 3/List Map" :
+  textMacro "List Map" :
     "list @type {\n"
     "  @aType mAnAttribute\n"
     "}\n"
     "listmap @myListMap (@aList)\n"
   
-  textMacro "GALGAS 3/Map" :
+  textMacro "Map" :
     "map @type {\n"
     "  @aType mAnAttribute\n"
     "  insert insertKey error message \"the '%K' key is already declared in %L\"\n"
     "  search searchKey error message \"there is no '%K' key\"\n"
     "}\n"
   
-  textMacro "GALGAS 3/Sorted List" :
+  textMacro "Sorted List" :
     "sortedlist @type {\n"
     "  @string mFirstAttribute\n"
     "  @bool mSecondAttribute\n"
@@ -98,95 +98,9 @@ with lexique galgas3Scanner {
     "  mFirstAttribute >, mSecondAttribute <\n"
     "}\n"
   
-  textMacro "GALGAS 3/Struct" :
+  textMacro "Struct" :
     "struct @type {\n"
     "  @aType mAnAttribute\n"
-    "}\n"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-with lexique galgas2Scanner {
-  fileExtension : "gLexique"
-  fileExtension : "gSemantics"
-  fileExtension : "gSyntax"
-  fileExtension : "gGrammar"
-  fileExtension : "gProgram"
-  fileExtension : "gOption"
-  fileExtension : "gGui"
-  fileExtension : "gProject"
-  blockComment : "#"
-  title: "Source GALGAS ≤ 2"
-  label $before$, ${$
-  label $after$, ${$
-  label $map$, $type_name$
-  label $sharedmap$, $type_name$
-  label $list$, $type_name$
-  label $sortedlist$, $type_name$
-  label $enum$, $type_name$
-  label $class$, $type_name$
-  label $extern$, $type_name$
-  label $struct$, $type_name$
-  label $nonterminal$, $non_terminal_symbol$
-  label $rule$, $non_terminal_symbol$
-  label $routine$, $identifier$
-  label $function$, $identifier$
-  label $once$, $identifier$
-  label $filewrapper$, $identifier$, $in$
-  label $abstract$, $method$, $type_name$, $identifier$
-  label $override$, $method$, $type_name$, $identifier$
-  label $method$, $type_name$, $identifier$
-  label $abstract$, $reader$, $type_name$, $identifier$
-  label $override$, $reader$, $type_name$, $identifier$
-  label $reader$, $type_name$, $identifier$
-  label $abstract$, $modifier$, $type_name$, $identifier$
-  label $override$, $modifier$, $type_name$, $identifier$
-  label $modifier$, $type_name$, $identifier$
-  label $when$, $.$, $literal_string$
-  label * $commentMark$ (2, 0)
-  label $terminal$, $!$ -
-  label $terminal$, $error$ -
-
-  
-  textMacro "GALGAS 2/Class" :
-    "class @aClassName extends @superClassName {\n"
-    "  @aType mAnAttribute ;\n"
-    "}\n"
-  
-  textMacro "GALGAS 2/Enum" :
-    "enum @aType {\n"
-    "  constant1, constant2\n"
-    "}\n"
-  
-  textMacro "GALGAS 2/List" :
-    "list @type {\n"
-    "  @aType mAnAttribute ;\n"
-    "}\n"
-  
-  textMacro "GALGAS 2/List Map" :
-    "list @type {\n"
-    "  @aType mAnAttribute ;\n"
-    "}\n"
-    "listmap @myListMap (@aList) ;\n"
-  
-  textMacro "GALGAS 2/Map" :
-    "map @type {\n"
-    "  @aType mAnAttribute ;\n"
-    "  insert insertKey error message \"the '%K' key is already declared in %L\" ;\n"
-    "  search searchKey error message \"there is no '%K' key\" ;\n"
-    "}\n"
-  
-  textMacro "GALGAS 2/Sorted List" :
-    "sortedlist @type {\n"
-    "  @string mFirstAttribute ;\n"
-    "  @bool mSecondAttribute ;\n"
-    "}{\n"
-    "  mFirstAttribute >, mSecondAttribute <\n"
-    "}\n"
-  
-  textMacro "GALGAS 2/Struct" :
-    "struct @type {\n"
-    "  @aType mAnAttribute ;\n"
     "}\n"
 }
 

@@ -375,7 +375,7 @@ message [a string] + "\n" # -123456789012345678901234567890
 getter @bigint spacedString ?@uint inSeparation -> @string
 \end{galgasbox}
 
-Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggs!0! à \ggs!9!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Un espace est inséré entre \texttt{inSeparation} caractères consécutifs. Si la valeur du récepteur est négative, aucun espace n'est ajouté après le signe « texttt{-} ». Par exemple :
+Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggs!0! à \ggs!9!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Un espace est inséré entre \texttt{inSeparation} caractères consécutifs. Si la valeur du récepteur est négative, aucun espace n'est ajouté après le signe « \texttt{-} ». Par exemple :
 
 \begin{galgas}
 message [123_456_789_012_345_678G spacedString !3] + "\n" # "123 456 789 012 345 678"
