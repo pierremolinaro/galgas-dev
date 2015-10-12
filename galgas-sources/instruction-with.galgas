@@ -1,0 +1,502 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @readAccessWithInstructionAST : @semanticInstructionAST {
+  @lstring mPrefix
+  @semanticExpressionAST mReceiverExpression
+  @location mEndOfReceiverExpression
+  @semanticExpressionAST mKeyExpression
+  @location mEndOfKeyExpression
+  @lstring mSearchMethodNameForErrorSignaling
+  @semanticInstructionListAST mDoBranchInstructions
+  @location mEndOf_do_instructions
+  @semanticInstructionListAST mElseBranchInstructions
+  @location mEndOf_else_instructions
+}
+
+#······················································································································*
+
+class @readWriteAccessWithInstructionAST : @semanticInstructionAST {
+  @lstring mPrefix
+  @lstring mReceiverName
+  @lstringlist mFieldList
+  @location mEndOfReceiverExpression
+  @semanticExpressionAST mKeyExpression
+  @location mEndOfKeyExpression
+  @lstring mSearchMethodNameForErrorSignaling
+  @semanticInstructionListAST m_do_Instructions
+  @location mEndOf_do_instructions
+  @semanticInstructionListAST m_else_Instructions
+  @location mEndOf_else_instructions
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $with$
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST keyExpression
+    let endOfKeyExpression = @location.here
+    @lstring withPrefix
+    select
+      withPrefix = @lstring.new {!"" !@location.here}
+    or
+      $:$
+      $identifier$ ? withPrefix
+    end
+    $in$
+    select
+       <expression> ?let @semanticExpressionAST receiverExpression
+      let endOfReceiverExpression = @location.here
+      @lstring searchMethodNameForErrorSignaling
+      select
+        searchMethodNameForErrorSignaling = ["" nowhere]
+      or
+        $error$
+        $message$
+        $identifier$ ?searchMethodNameForErrorSignaling
+      end
+      $do$
+      <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
+      let endOfDoInstructions = @location.here
+      @semanticInstructionListAST mElseBranchInstructions
+      select
+        mElseBranchInstructions = {}
+      or
+        $else$
+        if searchMethodNameForErrorSignaling.string != "" then
+          error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
+        end
+        <semantic_instruction_list> ?mElseBranchInstructions
+      end
+      outInstruction = @readAccessWithInstructionAST.new {
+        !instructionLocation
+        !withPrefix
+        !receiverExpression
+        !endOfReceiverExpression
+        !keyExpression
+        !endOfKeyExpression
+        !searchMethodNameForErrorSignaling
+        !mDoBranchInstructions
+        !endOfDoInstructions
+        !mElseBranchInstructions
+        !@location.here}
+    or
+      $!?$ ?let selector
+      if selector.string != "" then
+        error selector : "an empty selector '!?' is required here"
+      end
+      $identifier$ ?let mTargetObjectName
+      var structAttributeList =@lstringlist.emptyList{}
+      repeat
+      while
+        $.$
+        $identifier$ ?let mStructFieldName
+        structAttributeList += !mStructFieldName
+      end
+      let endOfReceiverExpression = @location.here
+      @lstring searchMethodNameForErrorSignaling
+      select
+        searchMethodNameForErrorSignaling = ["" nowhere]
+      or
+        $error$
+        $message$
+        $identifier$ ?searchMethodNameForErrorSignaling
+      end
+      $do$
+      <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
+      let endOf_do_instructions = @location.here
+      @semanticInstructionListAST mElseBranchInstructions
+      select
+        mElseBranchInstructions = @semanticInstructionListAST. emptyList
+      or
+        $else$
+        if searchMethodNameForErrorSignaling.string != "" then
+          error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
+        end
+        <semantic_instruction_list> ? mElseBranchInstructions
+      end
+      let endOf_else_instructions = @location.here
+      outInstruction = @readWriteAccessWithInstructionAST.new {
+        !instructionLocation
+        !withPrefix
+        !mTargetObjectName
+        !structAttributeList
+        !endOfReceiverExpression
+        !keyExpression
+        !endOfKeyExpression
+        !searchMethodNameForErrorSignaling
+        !mDoBranchInstructions
+        !endOf_do_instructions
+        !mElseBranchInstructions
+        !endOf_else_instructions}
+    end
+    $end$
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "with" then
+        error terminator : "the terminator attribute should be '%with'"
+      end
+    end
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @readAccessWithInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mKeyExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mDoBranchInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [mElseBranchInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+}
+
+#······················································································································*
+
+override method @readWriteAccessWithInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mKeyExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [m_do_Instructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [m_else_Instructions enterInstructionListInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @readAccessWithInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze receiver expression
+  [mReceiverExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration receiverExpression
+  ]
+  let receiverType = [receiverExpression mResultType]
+#--- Check search method
+  if mSearchMethodNameForErrorSignaling.string != "" then
+    @bool found = false
+    for () in [receiverType mMapSearchMethodList] while not found do
+      found = mSearchMethodName.string == mSearchMethodNameForErrorSignaling.string
+    end
+    if not found then
+      error mSearchMethodNameForErrorSignaling : "there is no '" + mSearchMethodNameForErrorSignaling + "' search method declared in the '@" + [receiverType key] + "' map"
+    end
+  end
+#--- Analyze key expression
+  [mKeyExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration keyExpression
+  ]
+#--- Object Array cpp name
+  let objectArrayCppName = "objectArray_" + [mInstructionLocation locationIndex]
+#--- Check this type handle 'with' access
+  if ([receiverType mHandledOperatorFlags] & supportWithAccessor ()) == 0 then
+    error mEndOfReceiverExpression : "the '@"+ [receiverType key] + "' type cannot be used in a 'with' instruction"
+  end  
+#--- Enter in a select block
+  [!?ioVariableMap openOverrideForSelectBlock]
+#--- 'do' branch : add attributes as constant
+  var localConstantList =@localConstantList.emptyList{}
+  for () in [receiverType mCurrentTypedAttributeList] do
+    localConstantList +=
+      !mAttributeTypeProxy
+      !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
+      !true # Do not warn if unused
+      !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
+  end
+#--- Add lkey as @lstring constant
+  localConstantList +=
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@lstring.new {!mPrefix.string + "lkey" !mEndOfReceiverExpression}
+    !true # Do not warn if unused
+    !objectArrayCppName + "->mAttribute_lkey"
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !localConstantList
+    !@localInitializedVariableList. emptyList
+    !mDoBranchInstructions
+    !mEndOf_do_instructions
+    !?ioVariableMap
+    ?let @semanticInstructionListForGeneration do_instructionList
+  )
+#--- else branch
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mElseBranchInstructions
+    !mEndOf_else_instructions
+    !?ioVariableMap
+    ?let @semanticInstructionListForGeneration else_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_else_instructions]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@readOnlyWithInstructionForGeneration.new {
+    !mInstructionLocation
+    !receiverExpression
+    !objectArrayCppName
+    !keyExpression
+    !mSearchMethodNameForErrorSignaling.string
+    !do_instructionList
+    !else_instructionList}
+}
+
+#······················································································································*
+
+override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  [mKeyExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration keyExpression
+  ]
+#--- Check key is an @lstring or @string object
+  if mSearchMethodNameForErrorSignaling.string == "" then
+    if [[keyExpression mResultType] key] != "string" then
+      error mEndOfKeyExpression : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@string'"
+    end
+  elsif [[keyExpression mResultType] key] != "lstring" then
+    error mEndOfKeyExpression : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@lstring'"
+  end
+#--- Object Array cpp name
+  let objectArrayCppName = "objectArray_" + [mInstructionLocation locationIndex]
+#--- Read/write access to receiver variable
+  [!?ioVariableMap searchForReadWriteAccess
+    !mReceiverName
+    ?var @unifiedTypeMap-proxy targetType
+    ?let @string receiverVariableCppName
+    ?*
+  ]
+  for () in mFieldList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
+  end
+#--- Check this type handle 'with' access
+  if ([targetType mHandledOperatorFlags] & supportWithAccessor ()) == 0 then
+    error mEndOfReceiverExpression : "the '@"+ [targetType key] + "' type cannot be used in a 'with' instruction"
+  end  
+#--- Check search method
+  if mSearchMethodNameForErrorSignaling.string != "" then
+    @bool found = false
+    for () in [targetType mMapSearchMethodList] while not found do
+      found = mSearchMethodName.string == mSearchMethodNameForErrorSignaling.string
+    end
+    if not found then
+      error mSearchMethodNameForErrorSignaling : "there is no '" + mSearchMethodNameForErrorSignaling + "' search method declared in the '@" + [targetType key] + "' map"
+    end
+  end
+#--- Enter in a select block
+  [!?ioVariableMap openOverrideForSelectBlock]
+#--- 'do' branch
+  @localInitializedVariableList localInitializedVariableList = {}
+  for () in [targetType mCurrentTypedAttributeList] do
+    localInitializedVariableList +=
+      !mAttributeTypeProxy
+      !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
+      !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
+  end
+  let localConstantList = @localConstantList {
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@lstring.new {!mPrefix.string + "lkey" !mEndOfReceiverExpression}
+    !true # Do not warn if unused
+    !objectArrayCppName + "->mAttribute_lkey"
+  }
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !localConstantList
+    !localInitializedVariableList
+    !m_do_Instructions
+    !mEndOf_do_instructions
+    !?ioVariableMap
+    ?let @semanticInstructionListForGeneration do_instructionList
+  )
+#--- else branch
+  @semanticInstructionListForGeneration else_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !m_else_Instructions
+    !mEndOf_else_instructions
+    !?ioVariableMap
+    ?else_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_else_instructions]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@readWriteWithInstructionForGeneration.new {
+    !mInstructionLocation
+    !receiverVariableCppName
+    !targetType
+    !mFieldList
+    !objectArrayCppName
+    !keyExpression
+    !mSearchMethodNameForErrorSignaling.string
+    !do_instructionList
+    !else_instructionList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mReceiverExpression
+  @string mObjectArrayCppName
+  @semanticExpressionForGeneration mKeyExpression
+  @string mSearchMethodNameForErrorSignaling
+  @semanticInstructionListForGeneration mDoBranchInstructions
+  @semanticInstructionListForGeneration mElseBranchInstructions
+}
+
+#······················································································································*
+
+class @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mReceiverVariableCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstringlist mStructAttributeList
+  @string mObjectArrayCppName
+  @semanticExpressionForGeneration mKeyExpression
+  @string mSearchMethodNameForErrorSignaling
+  @semanticInstructionListForGeneration mDoBranchInstructions
+  @semanticInstructionListForGeneration mElseBranchInstructions
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @readOnlyWithInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver expression
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverVarCppName]
+  let receiverType = [mReceiverExpression mResultType]
+#--- key expression
+  [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string keyVarCppName]
+#---
+  ioGeneratedCode += "const cMapElement_" + [receiverType identifierRepresentation]
+                  + " * " + mObjectArrayCppName + " = (const cMapElement_" + [receiverType identifierRepresentation]
+                  + " *) " + receiverVarCppName + "."
+  if mSearchMethodNameForErrorSignaling == "" then
+    ioGeneratedCode += "readAccessForWithInstruction (" + keyVarCppName + ") ;\n"
+  else
+    ioGeneratedCode += "performSearch (" + keyVarCppName
+                    + ", " + compilerCppName ()
+                    + ", kSearchErrorMessage_" + [receiverType identifierRepresentation] + "_" + mSearchMethodNameForErrorSignaling
+                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  end
+  ioGeneratedCode +=  "if (NULL != " + mObjectArrayCppName + ") {\n"
+                  +  "    macroValidSharedObject (" + mObjectArrayCppName + ", cMapElement_" + [receiverType identifierRepresentation] + ") ;\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mDoBranchInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  if [mElseBranchInstructions length] > 0 then
+    ioGeneratedCode += "}else{\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mElseBranchInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  end
+  ioGeneratedCode += "}\n"
+}
+
+#······················································································································*
+
+override method @readWriteWithInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  @string receiverCppName = mReceiverVariableCppName
+  for () in mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- key expression
+  [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string keyVarCppName]
+#---
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName]
+  ioGeneratedCode += "cMapElement_" + [mReceiverType identifierRepresentation]
+                  + " * " + mObjectArrayCppName + " = (cMapElement_" + [mReceiverType identifierRepresentation]
+                  + " *) " + receiverCppName + "."
+  if mSearchMethodNameForErrorSignaling == "" then
+    ioGeneratedCode += "readWriteAccessForWithInstruction (" + compilerCppName () +  ", " + keyVarCppName
+  else
+    ioGeneratedCode += "readWriteAccessForWithInstructionWithErrorMessage (" + compilerCppName () +  ", " + keyVarCppName
+    ioGeneratedCode += ", kSearchErrorMessage_" + [mReceiverType identifierRepresentation] + "_" + mSearchMethodNameForErrorSignaling
+  end
+  ioGeneratedCode +=  " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+                  +  "if (NULL != " + mObjectArrayCppName + ") {\n"
+                  +  "    macroValidSharedObject (" + mObjectArrayCppName + ", cMapElement_" + [mReceiverType identifierRepresentation] + ") ;\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mDoBranchInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  if [mElseBranchInstructions length] > 0 then
+    ioGeneratedCode += "}else{\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mElseBranchInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  end
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

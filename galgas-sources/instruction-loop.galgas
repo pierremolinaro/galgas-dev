@@ -1,0 +1,226 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @loopInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mVariantExpression
+  @location mEndOfVariantExpression
+  @semanticInstructionListAST mFirstInstructions
+  @location mEndOfFirstInstructions
+  @semanticExpressionAST mLoopExpression
+  @location mEndOfLoopExpression
+  @semanticInstructionListAST mSecondInstructions
+  @location mEndOfSecondInstructions
+  @location mEndOfLoopInstruction
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $loop$
+    let instructionLocation = @location.here
+  #--- Variant
+    $($
+    <expression> ?var @semanticExpressionAST mVariantExpression
+    let mEndOfVariantExpression = @location.here
+    $)$
+  #---
+    <semantic_instruction_list> ?var @semanticInstructionListAST mFirstInstructions
+  #---
+    let mEndOfFirstInstructions = @location.here
+    $while$
+    <expression> ?let @semanticExpressionAST mLoopExpression
+    let mEndOfLoopExpression = @location.here
+    $do$
+    <semantic_instruction_list> ?let @semanticInstructionListAST mSecondInstructions
+    let mEndOfSecondInstructions = @location.here
+    $end$
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "loop" then
+        error terminator : "the terminator attribute should be '%loop'"
+      end
+    end
+    let mEndOfLoopInstruction = @location.here
+    outInstruction = @loopInstructionAST.new {
+      !instructionLocation
+      !mVariantExpression
+      !mEndOfVariantExpression
+      !mFirstInstructions
+      !mEndOfFirstInstructions
+      !mLoopExpression
+      !mEndOfLoopExpression
+      !mSecondInstructions
+      !mEndOfSecondInstructions
+      !mEndOfLoopInstruction
+    }
+  }  
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @loopInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mVariantExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mLoopExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mFirstInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @loopInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Variant expression
+  @semanticExpressionForGeneration variantExpression
+  [mVariantExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?variantExpression
+  ]
+#--- Check variant expression type is @uint
+  if [variantExpression mResultType] != inAnalysisContext.mPredefinedTypes.mUIntType then
+    error mEndOfVariantExpression
+    : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType key] + "', but it has '@" + [[variantExpression mResultType] key] + "' type"
+  end
+#--- Loop expression
+  @semanticExpressionForGeneration loopExpression
+  [mLoopExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?loopExpression
+  ]
+#--- Check loop expression type is @bool
+  if [loopExpression mResultType] != inAnalysisContext.mPredefinedTypes.mBoolType then
+    error mEndOfLoopExpression
+    : "the loop expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType key] + "', but it has '@" + [[loopExpression mResultType] key] + "' type"
+  end
+#--- Begin override for analyze loop instruction list
+  [!?ioVariableMap openOverrideForRepeatBlock]
+#--- First branch
+  @semanticInstructionListForGeneration first_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mFirstInstructions
+    !mEndOfFirstInstructions
+    !?ioVariableMap
+    ?first_instructionList
+  )
+#--- Second branch
+  @semanticInstructionListForGeneration second_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mSecondInstructions
+    !mEndOfSecondInstructions
+    !?ioVariableMap
+    ?second_instructionList
+  )
+#--- End override
+  [!?ioVariableMap closeOverride !mEndOfLoopInstruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@loopInstructionForGeneration.new {
+    !mInstructionLocation
+    !variantExpression
+    !first_instructionList
+    !loopExpression
+    !second_instructionList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @loopInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mVariantExpression
+  @semanticInstructionListForGeneration mFirstInstructions
+  @semanticExpressionForGeneration mLoopExpression
+  @semanticInstructionListForGeneration mSecondInstructions
+}
+
+#······················································································································*
+
+override method @loopInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+#--- Variant expression
+  [mVariantExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string variantCppVarName
+  ]
+  ioGeneratedCode += "if (" + variantCppVarName + ".isValid ()) {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  let @string variantVar = "variant_" + [[mInstructionLocation locationIndex] string]
+  ioGeneratedCode += "uint32_t " + variantVar + " = " + variantCppVarName + ".uintValue () ;\n"
+  let @string loopVar = "loop_" + [[mInstructionLocation locationIndex] string]
+  ioGeneratedCode += "bool " + loopVar + " = true ;\n"
+                  + "while (" + loopVar + ") {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  generateInstructionList (
+    !?ioInclusionSet
+    !mFirstInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  @string loopExpressionVar
+  [mLoopExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?loopExpressionVar]
+  ioGeneratedCode += loopVar + " = " + loopExpressionVar + ".isValid () ;\n"
+                   + "if (" + loopVar + ") {\n"
+                   + "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"
+                   + "}\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode += "if (" + loopVar + " && (0 == " + variantVar + ")) {\n"
+                     "  " + loopVar + " = false ;\n"
+                     "  " + compilerCppName () + "->loopRunTimeVariantError (" + [mInstructionLocation sourceFile] + ") ;\n"
+                     "}\n"
+                   + "if (" + loopVar + ") {\n"
+  ioGeneratedCode += "  " + variantVar + " -- ;\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mSecondInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

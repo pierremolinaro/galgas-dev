@@ -1,0 +1,308 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @castInstructionBranchListAST {
+  @lstring mTypeName
+  @lstring mConstantVarName # Empty string if no constant var
+  @semanticInstructionListAST mInstructionList
+  @dynamicTypeComparisonKind mTypeComparisonKind
+  @location mEndOfInstructions
+}
+
+#······················································································································*
+
+class @structuredCastInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mCastExpression
+  @castInstructionBranchListAST mCastInstructionBranchList
+  @semanticInstructionListAST mElseInstructionList
+  @location mEndOfCastInstruction
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+  
+  rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList {
+    $case$
+    @dynamicTypeComparisonKind kind
+    select
+      $==$ kind = @dynamicTypeComparisonKind. equal
+    or
+      $>=$ kind = @dynamicTypeComparisonKind. inherited
+    or
+      $>$ kind = @dynamicTypeComparisonKind. strictlyInherited
+    end
+    $type_name$ ?let mTypeName
+    @lstring mConstantVarName # Empty string if no constant var
+    select
+      $identifier$ ?mConstantVarName
+    or
+      mConstantVarName = @lstring.new {!"" !@location.here}
+    end
+    $:$
+    <semantic_instruction_list> ?var @semanticInstructionListAST mCastBranchInstructionList
+    ioCastInstructionBranchList +=
+      !mTypeName
+      !mConstantVarName
+      !mCastBranchInstructionList
+      !kind
+      !@location.here
+  }
+  
+  #····················································································································*
+  
+  rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
+    outElseOrDefault = @semanticInstructionListAST. emptyList
+  }
+  
+  #····················································································································*
+  
+  rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
+    $else$
+    <semantic_instruction_list> ? outElseOrDefault
+  }
+  
+  #····················································································································*
+  
+  rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
+    $default$
+    let instructionLocation = @location.here
+    $error$
+    <expression> ?let @semanticExpressionAST errorLocationExpression
+    outElseOrDefault = @semanticInstructionListAST. emptyList
+    outElseOrDefault += !@errorInstructionAST.new {
+      !instructionLocation
+      !errorLocationExpression
+      !@literalStringExpressionAST.new {
+        !instructionLocation
+        !@stringlist. listWithValue {!"cast instruction run-time error"}}
+      !@lstringlist. emptyList}
+  }
+  
+  #····················································································································*
+  
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $cast$
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST expression
+    var mCastInstructionBranchList =@castInstructionBranchListAST.emptyList{}
+    repeat
+      <cast_instruction_branch> !? mCastInstructionBranchList
+    while
+    end
+    <cast_else_or_default> ?let @semanticInstructionListAST mElseOrDefault
+    $end$
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "cast" then
+        error terminator : "the terminator attribute should be '%cast'"
+      end
+    end
+    let endOfInstructionLocation = @location.here
+    outInstruction = @structuredCastInstructionAST.new {
+      !instructionLocation
+      !expression
+      !mCastInstructionBranchList
+      !mElseOrDefault
+      !endOfInstructionLocation}
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @structuredCastInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mCastExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mElseInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  for () in mCastInstructionBranchList do
+    [mInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @structuredCastInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Expression
+  @semanticExpressionForGeneration castExpression
+  [mCastExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?castExpression
+  ]
+#--- Begin override for analyze loop instruction list
+  [!?ioVariableMap openOverrideForSelectBlock]
+#--- Branches
+  var castBranchList =@castInstructionBranchListForGeneration.emptyList{}
+  for () in mCastInstructionBranchList do
+  #--- Get named type
+    let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  #--- Check named type is a descendant of receiver type
+    @unifiedTypeMap-proxy t = type
+    @bool found = t == [castExpression mResultType]
+    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    while (not found) & not [[t mSuperType] isNull] do
+      t = [t mSuperType]
+      found = t == [castExpression mResultType]
+    end
+    if not found then
+      error mTypeName
+      :"the '@" + mTypeName + "' is not a descendant of the '@" + [[castExpression mResultType] key] + "' type of the cast expression"
+    end
+  #--- Declare a local constant ?
+    @string localConstantName
+    var localConstantList =@localConstantList.emptyList{}
+    if [mConstantVarName length] > 0 then
+      localConstantName = "cast_" + [mConstantVarName.location locationIndex] + "_" + mConstantVarName
+      localConstantList +=
+        !type
+        !mConstantVarName
+        !true # Warns if unused
+        !localConstantName
+    else
+      localConstantName = "" # No constant
+    end
+  #--- Analyze instruction list
+    @semanticInstructionListForGeneration instructionList
+    analyzeSemanticInstructionList (
+      !inAnalysisContext
+      !localConstantList
+      !@localInitializedVariableList. emptyList
+      !mInstructionList
+      !mEndOfInstructions
+      !?ioVariableMap
+      ?instructionList
+    )
+    castBranchList += !mTypeComparisonKind !type !localConstantName !instructionList
+  end
+#--- else or default branch
+  @semanticInstructionListForGeneration else_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mElseInstructionList
+    !mEndOfCastInstruction
+    !?ioVariableMap
+    ?else_instructionList
+  )
+#--- End override
+  [!?ioVariableMap closeOverride !mEndOfCastInstruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@structuredCastInstructionForGeneration.new {
+    !castExpression
+    !castBranchList
+    !else_instructionList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @castInstructionBranchListForGeneration {
+  @dynamicTypeComparisonKind mTypeComparisonKind
+  @unifiedTypeMap-proxy mType
+  @string mCastedVarCppName # Empty string if no var
+  @semanticInstructionListForGeneration mInstructionList
+}
+
+#······················································································································*
+
+class @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression
+  @castInstructionBranchListForGeneration mCastBranchList
+  @semanticInstructionListForGeneration mElseInstructionList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @structuredCastInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Cast expression
+  [mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string castCppVarName
+  ]
+#---
+  ioGeneratedCode += "if (" + castCppVarName + ".isValid ()) {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  for () in mCastBranchList do
+   [mType addHeaderFileName !?ioInclusionSet]
+    switch mTypeComparisonKind
+    case equal :
+      ioGeneratedCode += "if (" + castCppVarName
+      + ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
+      + [mType identifierRepresentation] + ") {\n"
+    case inherited :
+      ioGeneratedCode += "if (NULL != dynamic_cast <const cPtr_"
+      + [mType identifierRepresentation]
+      + " *> (" + castCppVarName + ".ptr ())) {\n"
+    case strictlyInherited :
+      ioGeneratedCode += "if ((" + castCppVarName
+      + ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
+      + [mType identifierRepresentation] + ") && (NULL != dynamic_cast <const cPtr_"
+      + [mType identifierRepresentation]
+      + " *> (" + castCppVarName + ".ptr ()))) {\n"
+    end
+    if [mCastedVarCppName length] > 0 then
+      ioGeneratedCode +=
+        "  GALGAS_" + [mType identifierRepresentation]
+      + " " + mCastedVarCppName + " ((cPtr_" + [mType identifierRepresentation]
+      + " *) " + castCppVarName + ".ptr ()) ;\n"
+    end
+    generateInstructionList (
+      !?ioInclusionSet
+      !mInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  between ioGeneratedCode += "}else "
+  end
+#--- 'else' branch
+  if [mElseInstructionList length] > 0 then
+    ioGeneratedCode += "}else{\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mElseInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )  
+  end
+#---
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

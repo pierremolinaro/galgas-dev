@@ -1,0 +1,126 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @procCallInstructionAST : @semanticInstructionAST {
+  @lstring mRoutineName
+  @actualParameterListAST mActualParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $identifier$ ?let mRoutineName indexing routineCall
+    $($
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    $)$
+    outInstruction = @procCallInstructionAST.new {
+      ![mRoutineName location]
+      !mRoutineName
+      !actualParameterList}
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @procCallInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @procCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Get routine signature
+  [inAnalysisContext.mSemanticContext.mRoutineMap searchKey
+     !mRoutineName
+     ?let @formalParameterSignature routineSignature
+     ?let @bool isInternal
+   ]
+#--- Check internal
+  if isInternal then
+    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mRoutineMap locationForKey !mRoutineName.string]
+    if [mRoutineName.location file] != [procDeclarationLocation file] then
+      error mRoutineName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+    end
+  end
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mRoutineName
+    !"'" + mRoutineName + "' routine header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@procCallInstructionForGeneration.new {
+    !mRoutineName
+    !actualParameterListForGeneration}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @lstring mRoutineName
+  @actualParameterListForGeneration mActualParameterList
+}
+
+#·····················································································································*
+
+override method @procCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioInclusionSet += !"proc-" + mRoutineName
+  ioGeneratedCode += "{\n"
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in mActualParameterList do
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?let parameterCppName
+    ]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  ioGeneratedCode += "routine_" + [[mRoutineName string] identifierRepresentation] + " ("
+  for () in parameterCppNameList do
+    ioGeneratedCode += mValue + ", "
+  end
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode +=  compilerCppName () + " " + [[mRoutineName location] commaSourceFile] + ") ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

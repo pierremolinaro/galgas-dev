@@ -11,24 +11,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                             Routine 'generateFunction'                                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_generateFunction (const class GALGAS_string constinArgument0,
-                               class GALGAS_stringset & ioArgument1,
-                               const class GALGAS_formalInputParameterListForGeneration constinArgument2,
-                               const class GALGAS_semanticInstructionListForGeneration constinArgument3,
-                               const class GALGAS_string constinArgument4,
-                               const class GALGAS_unifiedTypeMap_2D_proxy constinArgument5,
-                               const class GALGAS_string constinArgument6,
-                               const class GALGAS_bool constinArgument7,
-                               class GALGAS_string & outArgument8,
-                               class C_Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                         Routine 'generateCategoryModifier'                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2952,6 +2934,35 @@ void routine_printFeaturesOfType (const class GALGAS_string constinArgument0,
 class GALGAS_string categoryReader_kind (const class GALGAS_typeKindEnum & inObject,
                                          class C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Routine 'analyzeErrorOrWarningInstruction'                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_analyzeErrorOrWarningInstruction (const class GALGAS_analysisContext constinArgument0,
+                                               const class GALGAS_semanticExpressionAST constinArgument1,
+                                               const class GALGAS_semanticExpressionAST constinArgument2,
+                                               const class GALGAS_location constinArgument3,
+                                               const class GALGAS_string constinArgument4,
+                                               class GALGAS_variableMap & ioArgument5,
+                                               class GALGAS_semanticExpressionForGeneration & outArgument6,
+                                               class GALGAS_semanticExpressionForGeneration & outArgument7,
+                                               class GALGAS_bool & outArgument8,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Function 'checkModifierImplementationInSuperClasses'                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string function_checkModifierImplementationInSuperClasses (const class GALGAS_lstring & constinArgument0,
+                                                                        const class GALGAS_unifiedTypeMap_2D_proxy & constinArgument1,
+                                                                        class C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

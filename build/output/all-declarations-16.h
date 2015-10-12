@@ -5797,19 +5797,19 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       @foreachInstructionForGeneration class                                        *
+//                                         @forInstructionForGeneration class                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_foreachInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
+class GALGAS_forInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
-  public : GALGAS_foreachInstructionForGeneration (void) ;
+  public : GALGAS_forInstructionForGeneration (void) ;
 
 //---
-  public : inline const class cPtr_foreachInstructionForGeneration * ptr (void) const { return (const cPtr_foreachInstructionForGeneration *) mObjectPtr ; }
+  public : inline const class cPtr_forInstructionForGeneration * ptr (void) const { return (const cPtr_forInstructionForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_foreachInstructionForGeneration (const cPtr_foreachInstructionForGeneration * inSourcePtr) ;
+  public : GALGAS_forInstructionForGeneration (const cPtr_forInstructionForGeneration * inSourcePtr) ;
 
 //-- Start of generic part --*
 
@@ -5817,23 +5817,23 @@ class GALGAS_foreachInstructionForGeneration : public GALGAS_semanticInstruction
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_foreachInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_forInstructionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_foreachInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
-                                                                          const class GALGAS_foreachInstructionEnumeratedObjectListForGeneration & inOperand1,
-                                                                          const class GALGAS_string & inOperand2,
-                                                                          const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                          const class GALGAS_semanticInstructionListForGeneration & inOperand4,
-                                                                          const class GALGAS_semanticInstructionListForGeneration & inOperand5,
-                                                                          const class GALGAS_semanticInstructionListForGeneration & inOperand6,
-                                                                          const class GALGAS_semanticInstructionListForGeneration & inOperand7
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_forInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_forInstructionEnumeratedObjectListForGeneration & inOperand1,
+                                                                      const class GALGAS_string & inOperand2,
+                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand4,
+                                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand5,
+                                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand6,
+                                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand7
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_foreachInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_forInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5849,7 +5849,7 @@ class GALGAS_foreachInstructionForGeneration : public GALGAS_semanticInstruction
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mDoInstructionList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_foreachInstructionEnumeratedObjectListForGeneration reader_mEnumeratedObjectList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_forInstructionEnumeratedObjectListForGeneration reader_mEnumeratedObjectList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mIndexVariableCppName (LOCATION_ARGS) const ;
 
@@ -5861,23 +5861,23 @@ class GALGAS_foreachInstructionForGeneration : public GALGAS_semanticInstruction
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_foreachInstructionForGeneration class
+} ; // End of GALGAS_forInstructionForGeneration class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_foreachInstructionForGeneration ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionForGeneration ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Pointer class for @foreachInstructionForGeneration class                               *
+//                                Pointer class for @forInstructionForGeneration class                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_foreachInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
   public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_foreachInstructionEnumeratedObjectListForGeneration mAttribute_mEnumeratedObjectList ;
+  public : GALGAS_forInstructionEnumeratedObjectListForGeneration mAttribute_mEnumeratedObjectList ;
   public : GALGAS_string mAttribute_mIndexVariableCppName ;
   public : GALGAS_semanticExpressionForGeneration mAttribute_mWhileExpression ;
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mBeforeInstructionList ;
@@ -5886,22 +5886,22 @@ class cPtr_foreachInstructionForGeneration : public cPtr_semanticInstructionForG
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mAfterInstructionList ;
 
 //--- Constructor
-  public : cPtr_foreachInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                 const GALGAS_foreachInstructionEnumeratedObjectListForGeneration & in_mEnumeratedObjectList,
-                                                 const GALGAS_string & in_mIndexVariableCppName,
-                                                 const GALGAS_semanticExpressionForGeneration & in_mWhileExpression,
-                                                 const GALGAS_semanticInstructionListForGeneration & in_mBeforeInstructionList,
-                                                 const GALGAS_semanticInstructionListForGeneration & in_mBetweenInstructionList,
-                                                 const GALGAS_semanticInstructionListForGeneration & in_mDoInstructionList,
-                                                 const GALGAS_semanticInstructionListForGeneration & in_mAfterInstructionList
-                                                 COMMA_LOCATION_ARGS) ;
+  public : cPtr_forInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                             const GALGAS_forInstructionEnumeratedObjectListForGeneration & in_mEnumeratedObjectList,
+                                             const GALGAS_string & in_mIndexVariableCppName,
+                                             const GALGAS_semanticExpressionForGeneration & in_mWhileExpression,
+                                             const GALGAS_semanticInstructionListForGeneration & in_mBeforeInstructionList,
+                                             const GALGAS_semanticInstructionListForGeneration & in_mBetweenInstructionList,
+                                             const GALGAS_semanticInstructionListForGeneration & in_mDoInstructionList,
+                                             const GALGAS_semanticInstructionListForGeneration & in_mAfterInstructionList
+                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_foreachInstructionEnumeratedObjectListForGeneration reader_mEnumeratedObjectList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_forInstructionEnumeratedObjectListForGeneration reader_mEnumeratedObjectList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mIndexVariableCppName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mWhileExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mBeforeInstructionList (LOCATION_ARGS) const ;

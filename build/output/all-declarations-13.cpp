@@ -1028,7 +1028,7 @@ GALGAS_abstractEnumeratedCollectionAST (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInExpAST::constructor_new (const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inAttribute_mElementList,
+GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInExpAST::constructor_new (const GALGAS_forInstructionEnumeratedObjectElementListAST & inAttribute_mElementList,
                                                                                                         const GALGAS_bool & inAttribute_mEndsWithEllipsis,
                                                                                                         const GALGAS_semanticExpressionAST & inAttribute_mEnumeratedExpression,
                                                                                                         const GALGAS_location & inAttribute_mEndOfEnumerationExpression
@@ -1042,8 +1042,8 @@ GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_enumeratedCollectionCstListInExpAST::reader_mElementList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
+GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_enumeratedCollectionCstListInExpAST::reader_mElementList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_forInstructionEnumeratedObjectElementListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_enumeratedCollectionCstListInExpAST * p = (const cPtr_enumeratedCollectionCstListInExpAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_enumeratedCollectionCstListInExpAST) ;
@@ -1054,7 +1054,7 @@ GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_enumeratedCollect
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST cPtr_enumeratedCollectionCstListInExpAST::reader_mElementList (UNUSED_LOCATION_ARGS) const {
+GALGAS_forInstructionEnumeratedObjectElementListAST cPtr_enumeratedCollectionCstListInExpAST::reader_mElementList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mElementList ;
 }
 
@@ -1116,7 +1116,7 @@ GALGAS_location cPtr_enumeratedCollectionCstListInExpAST::reader_mEndOfEnumerati
 //                            Pointer class for @enumeratedCollectionCstListInExpAST class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_enumeratedCollectionCstListInExpAST::cPtr_enumeratedCollectionCstListInExpAST (const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mElementList,
+cPtr_enumeratedCollectionCstListInExpAST::cPtr_enumeratedCollectionCstListInExpAST (const GALGAS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
                                                                                     const GALGAS_bool & in_mEndsWithEllipsis,
                                                                                     const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
                                                                                     const GALGAS_location & in_mEndOfEnumerationExpression

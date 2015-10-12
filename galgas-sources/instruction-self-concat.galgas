@@ -1,0 +1,161 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
+  @actualOutputExpressionList mExpressions
+}
+
+#·····················································································································*
+
+class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mExpression
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $self$
+    let instructionLocation = @location.here
+    $+=$
+    <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+    outInstruction = @selfPlusEqualElementsInstructionAST.new {
+      !instructionLocation
+      !expressionList
+    }
+  }
+  
+  #····················································································································*
+  
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $self$
+    let instructionLocation = @location.here
+    $+=$
+    <expression> ?let @semanticExpressionAST expression
+    outInstruction = @selfPlusEqualExpressionInstructionAST.new {
+      !instructionLocation
+      !expression
+    }
+  }  
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································*
+
+override method @selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mExpressions enterInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target variable type support '+=' operator
+  let addAssignOperatorArguments= [selfTypeProxy mAddAssignOperatorArguments] # Empty list if += operator is not supported
+  if [addAssignOperatorArguments length] == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '+=' operator"
+#--- Analyze source expressions
+  elsif [mExpressions length] != [addAssignOperatorArguments length] then
+    error mInstructionLocation
+    : "calling the '+=' operator on an '@" + [selfTypeProxy key] + "' object requires "
+    + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
+    + [[mExpressions length] string] + " parameter(s)"
+  else
+    var effectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
+    for () in mExpressions, () in addAssignOperatorArguments do
+      [mExpression analyzeSemanticExpression
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let @semanticExpressionForGeneration exp
+      ]
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+      end
+      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      effectiveParameterList += !exp
+    end
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {
+      !selfObjectCppName
+      !selfTypeProxy
+      !""
+      !mInstructionLocation
+      !@lstringlist. emptyList
+      !effectiveParameterList}
+  end
+}
+
+#·····················································································································*
+
+override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target variable type support '+= exp' operator
+  if ([selfTypeProxy mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '+=' operator"
+  end
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !selfTypeProxy
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !selfTypeProxy ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@concatInstructionForGeneration.new {
+    !mInstructionLocation
+    !selfTypeProxy
+    !selfObjectCppName
+    !""
+    !@lstringlist. emptyList
+    !expression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

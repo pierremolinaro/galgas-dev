@@ -1,0 +1,434 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @setterCallInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mReceiverStructAttributes
+  @lstring mTypeNameForCasting
+  @lstring mModifierName
+  @actualParameterListAST mActualParameterList
+}
+
+#·····················································································································*
+
+class @selfSetterCallInstructionAST : @semanticInstructionAST {
+  @lstring mModifierName
+  @actualParameterListAST mActualParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $[$
+    let instructionLocation = @location.here
+    $!?$ ?let selector
+    if selector.string != "" then
+      error selector : "an empty selector '!?' is required here"
+    end
+    $identifier$ ?let mReceiverName
+    var mReceiverStructAttributes =@lstringlist.emptyList{}
+    repeat
+    while
+      $.$
+      $identifier$ ?let structAttribute
+      mReceiverStructAttributes += !structAttribute
+    end
+    @lstring typeNameForCasting
+    select
+      typeNameForCasting = ["" nowhere]
+    or
+      $as$
+      $type_name$ ?typeNameForCasting
+    end
+    $identifier$ ?let mModifierName
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    $]$
+    outInstruction = @setterCallInstructionAST.new {
+      !instructionLocation
+      !mReceiverName
+      !mReceiverStructAttributes
+      !typeNameForCasting
+      !mModifierName
+      !actualParameterList
+    }
+  }
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $[$
+    let instructionLocation = @location.here
+    $!?$ ?let selector
+    if selector.string != "" then
+      error selector : "an empty selector '!?' is required here"
+    end
+    $self$
+    $identifier$ ?let mModifierName
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    $]$
+    outInstruction = @selfSetterCallInstructionAST.new {
+      !instructionLocation
+      !mModifierName
+      !actualParameterList
+    }
+  }  
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @setterCallInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+#  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#·····················································································································*
+
+override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+#  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @setterCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+#--- Check receiver object
+  [!?ioVariableMap searchForReadWriteAccess
+     !mReceiverName
+     ?@unifiedTypeMap-proxy receiverType
+     ?let @string receiverVariableCppName
+     ?let @string receiverVariableBaseName
+  ]
+  for () in mReceiverStructAttributes do
+    let attributeMap = [receiverType mAttributeMap]
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?receiverType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
+  end
+#--- Type cast ?
+  @unifiedTypeMap-proxy castType
+  if mTypeNameForCasting.string != "" then
+    castType = @unifiedTypeMap-proxy. searchKey {
+      !inAnalysisContext.mSemanticContext.mTypeMap
+      !mTypeNameForCasting
+    }
+    checkAssignmentTypes (!receiverType !castType !mTypeNameForCasting.location)
+  else 
+    castType = receiverType
+  end
+#--- Get modifier signature
+  @formalParameterSignature routineSignature
+  @bool hasCompilerArgument
+  @string modifierErrorMessage
+  @methodKind kind
+  [[castType mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage]
+  if modifierErrorMessage != "" then
+    error mModifierName : modifierErrorMessage
+  end
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mModifierName
+    !"'" + mModifierName + "' setter header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Search base type that declares the method
+  var baseType = castType
+  var searching = true
+  if @uint.errorCount == 0 then
+    loop (@uint.max) while searching do
+      if [[baseType mSuperType] isNull] then
+        searching = false
+      else
+        if [[[baseType mSuperType] mModifierMap] hasKey !mModifierName.string] then
+          baseType = [baseType mSuperType]
+        else
+          searching = false
+        end
+      end  
+    end
+  end
+#--- Generate instructions
+  ioInstructionListForGeneration += !@setterCallInstructionForGeneration.new {
+    !mReceiverName.location
+    !receiverVariableCppName
+    !receiverVariableBaseName
+    !mReceiverStructAttributes
+    !castType
+    !receiverType
+    !mModifierName
+    !kind
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+    !baseType
+  }
+}
+
+#·····················································································································*
+
+override method @selfSetterCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mModifierName: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Get modifier signature
+  @formalParameterSignature routineSignature
+  @bool hasCompilerArgument
+  @methodKind kind
+  [[selfTypeProxy mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?*]
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mModifierName
+    !"'" + mModifierName + "' modifier header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Generate instructions
+  ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration.new {
+    !selfObjectCppName
+    !selfTypeProxy
+    !mModifierName
+    !kind
+    !actualParameterListForGeneration
+    !hasCompilerArgument}
+}
+
+#·····················································································································*
+
+private func checkModifierImplementationInSuperClasses
+  ?let @lstring inModifierName
+  ?let @unifiedTypeMap-proxy inSuperClass
+  -> @string outResult {
+  if [inSuperClass isNull] then
+    outResult = ""
+  else
+    @methodQualifier qualifier
+    [[inSuperClass mModifierMap] searchKey !inModifierName ?3* ?qualifier ?*]
+    switch qualifier
+    case isAbstract :
+      outResult = ""
+    case isBasic, isBasicFinal, isOverriding : # Ok
+      outResult = [inSuperClass key]
+    case isInherited, isOverridingAbstract :
+      outResult = checkModifierImplementationInSuperClasses (!inModifierName ![inSuperClass mSuperType])
+    end
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mReceiverCppName
+  @string mReceiverBaseName
+  @lstringlist mReceiverStructAttributes
+  @unifiedTypeMap-proxy mCastType
+  @unifiedTypeMap-proxy mReceiverType
+  @lstring mModifierName
+  @methodKind mKind
+  @actualParameterListForGeneration mActualParameterList
+  @bool mHasCompilerArgument
+  @unifiedTypeMap-proxy mMethodBaseType
+}
+
+#·····················································································································*
+
+class @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @string mSelfCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstring mModifierName
+  @methodKind mKind
+  @actualParameterListForGeneration mActualParameterList
+  @bool mHasCompilerArgument
+}
+
+#·····················································································································*
+
+override method @setterCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  ioGeneratedCode += "{\n"
+  var receiverCppName = mReceiverCppName
+  for () in mReceiverStructAttributes do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverBaseName]
+#--- Parameters
+  @stringlist parameterCppNameList = {}
+  @stringlist jokerParametersToReleaseList = {}
+  @stringlist inputVariableList = {}
+  for () in mActualParameterList do
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?let parameterCppName
+    ]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  switch mKind
+  case definedAsCategory :
+    ioInclusionSet += !"setter-" + [mMethodBaseType key]+ "-" + mModifierName
+    if [mReceiverType mTypeKindEnum] == @typeKindEnum.classType then
+      if ([[mReceiverType mAllTypedAttributeList] length] > 0) & [mReceiverType mIsConcrete] then
+        ioGeneratedCode += receiverCppName + ".insulate (HERE) ;\n"
+      end
+      let pointerUniqueName = "ptr_" + [mInstructionLocation locationIndex]
+      ioGeneratedCode += "cPtr_" + [mReceiverType identifierRepresentation] + " * " + pointerUniqueName
+      ioGeneratedCode += " = (cPtr_" + [mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
+      if [mCastType key] != [mReceiverType key] then
+        ioInclusionSet += !"class-" + [mCastType identifierRepresentation]
+        ioGeneratedCode += "if ((NULL != " + pointerUniqueName
+                        + ") && (dynamic_cast <cPtr_" + [mCastType identifierRepresentation] + " *> ("
+                        + pointerUniqueName + ") == NULL)) {\n"
+        [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+        ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@" 
+                        + [mCastType key] + "'\"" + [mInstructionLocation commaSourceFile] + ") ;\n"
+        ioGeneratedCode += "  " + pointerUniqueName + " = NULL ;\n"
+        ioGeneratedCode += "}\n"
+      end
+      ioGeneratedCode += "callCategoryModifier_" + [mModifierName identifierRepresentation]
+                      +  " ((cPtr_" + [mCastType identifierRepresentation] + " *) " + pointerUniqueName + ", "
+    else
+      ioGeneratedCode += "categoryModifier_" + [mModifierName identifierRepresentation] + " (" + receiverCppName + ", "
+    end
+  case definedAsMember :
+    [mReceiverType addHeaderFileName !?ioInclusionSet]
+    ioGeneratedCode += receiverCppName + ".modifier_" + [[mModifierName string] identifierRepresentation] + " ("
+  end
+  for () in parameterCppNameList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if mHasCompilerArgument then
+    if [parameterCppNameList length] != 0 then
+      ioGeneratedCode +=  ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode +=  compilerCppName ()
+    ioGeneratedCode += " COMMA_"
+  elsif [parameterCppNameList length] != 0 then
+    ioGeneratedCode += " COMMA_"
+  end
+  ioGeneratedCode += [[mModifierName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#·····················································································································*
+
+override method @selfSetterCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioGeneratedCode += "{\n"
+  [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName]
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in mActualParameterList do
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?let @string parameterCppName]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate modifier call
+  switch mKind
+  case definedAsCategory :
+    ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mModifierName
+    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+      ioGeneratedCode += "callCategoryModifier_" + [mModifierName identifierRepresentation] + " (" + mSelfCppName + ", "
+    else
+      ioGeneratedCode += "categoryModifier_" + [mModifierName identifierRepresentation] + " (" + mSelfCppName + ", "
+    end
+  case definedAsMember :
+    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+      ioGeneratedCode += mSelfCppName + "->modifier_" + [mModifierName identifierRepresentation] + " ("
+    else
+      ioGeneratedCode += mSelfCppName + ".modifier_" + [mModifierName identifierRepresentation] + " ("
+    end
+  end
+  for () in parameterCppNameList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if mHasCompilerArgument then
+    if [parameterCppNameList length] != 0 then
+      ioGeneratedCode +=  ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode +=  compilerCppName ()
+    ioGeneratedCode += " COMMA_"
+  elsif [parameterCppNameList length] != 0 then
+    ioGeneratedCode += " COMMA_"
+  end
+  ioGeneratedCode += [[mModifierName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

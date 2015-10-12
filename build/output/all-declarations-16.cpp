@@ -12703,10 +12703,10 @@ GALGAS_errorInstructionForGeneration GALGAS_errorInstructionForGeneration::extra
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cPtr_foreachInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+typeComparisonResult cPtr_forInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
-  const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+  const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
   if (kOperandEqual == result) {
     result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
   }
@@ -12737,7 +12737,7 @@ typeComparisonResult cPtr_foreachInstructionForGeneration::dynamicObjectCompare 
 //---------------------------------------------------------------------------------------------------------------------*
 
 
-typeComparisonResult GALGAS_foreachInstructionForGeneration::objectCompare (const GALGAS_foreachInstructionForGeneration & inOperand) const {
+typeComparisonResult GALGAS_forInstructionForGeneration::objectCompare (const GALGAS_forInstructionForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
@@ -12755,42 +12755,42 @@ typeComparisonResult GALGAS_foreachInstructionForGeneration::objectCompare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionForGeneration::GALGAS_foreachInstructionForGeneration (void) :
+GALGAS_forInstructionForGeneration::GALGAS_forInstructionForGeneration (void) :
 GALGAS_semanticInstructionForGeneration () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionForGeneration::GALGAS_foreachInstructionForGeneration (const cPtr_foreachInstructionForGeneration * inSourcePtr) :
+GALGAS_forInstructionForGeneration::GALGAS_forInstructionForGeneration (const cPtr_forInstructionForGeneration * inSourcePtr) :
 GALGAS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_foreachInstructionForGeneration) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_forInstructionForGeneration) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionForGeneration GALGAS_foreachInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                const GALGAS_foreachInstructionEnumeratedObjectListForGeneration & inAttribute_mEnumeratedObjectList,
-                                                                                                const GALGAS_string & inAttribute_mIndexVariableCppName,
-                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mWhileExpression,
-                                                                                                const GALGAS_semanticInstructionListForGeneration & inAttribute_mBeforeInstructionList,
-                                                                                                const GALGAS_semanticInstructionListForGeneration & inAttribute_mBetweenInstructionList,
-                                                                                                const GALGAS_semanticInstructionListForGeneration & inAttribute_mDoInstructionList,
-                                                                                                const GALGAS_semanticInstructionListForGeneration & inAttribute_mAfterInstructionList
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_foreachInstructionForGeneration result ;
+GALGAS_forInstructionForGeneration GALGAS_forInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                                        const GALGAS_forInstructionEnumeratedObjectListForGeneration & inAttribute_mEnumeratedObjectList,
+                                                                                        const GALGAS_string & inAttribute_mIndexVariableCppName,
+                                                                                        const GALGAS_semanticExpressionForGeneration & inAttribute_mWhileExpression,
+                                                                                        const GALGAS_semanticInstructionListForGeneration & inAttribute_mBeforeInstructionList,
+                                                                                        const GALGAS_semanticInstructionListForGeneration & inAttribute_mBetweenInstructionList,
+                                                                                        const GALGAS_semanticInstructionListForGeneration & inAttribute_mDoInstructionList,
+                                                                                        const GALGAS_semanticInstructionListForGeneration & inAttribute_mAfterInstructionList
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_forInstructionForGeneration result ;
   if (inAttribute_mInstructionLocation.isValid () && inAttribute_mEnumeratedObjectList.isValid () && inAttribute_mIndexVariableCppName.isValid () && inAttribute_mWhileExpression.isValid () && inAttribute_mBeforeInstructionList.isValid () && inAttribute_mBetweenInstructionList.isValid () && inAttribute_mDoInstructionList.isValid () && inAttribute_mAfterInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_foreachInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mEnumeratedObjectList, inAttribute_mIndexVariableCppName, inAttribute_mWhileExpression, inAttribute_mBeforeInstructionList, inAttribute_mBetweenInstructionList, inAttribute_mDoInstructionList, inAttribute_mAfterInstructionList COMMA_THERE)) ;
+    macroMyNew (result.mObjectPtr, cPtr_forInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mEnumeratedObjectList, inAttribute_mIndexVariableCppName, inAttribute_mWhileExpression, inAttribute_mBeforeInstructionList, inAttribute_mBetweenInstructionList, inAttribute_mDoInstructionList, inAttribute_mAfterInstructionList COMMA_THERE)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_foreachInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_forInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
-    const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+    const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
     result = p->mAttribute_mInstructionLocation ;
   }
   return result ;
@@ -12798,17 +12798,17 @@ GALGAS_location GALGAS_foreachInstructionForGeneration::reader_mInstructionLocat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_foreachInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_forInstructionForGeneration::reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructionLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectListForGeneration GALGAS_foreachInstructionForGeneration::reader_mEnumeratedObjectList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_foreachInstructionEnumeratedObjectListForGeneration result ;
+GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionForGeneration::reader_mEnumeratedObjectList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_forInstructionEnumeratedObjectListForGeneration result ;
   if (NULL != mObjectPtr) {
-    const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+    const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
     result = p->mAttribute_mEnumeratedObjectList ;
   }
   return result ;
@@ -12816,17 +12816,17 @@ GALGAS_foreachInstructionEnumeratedObjectListForGeneration GALGAS_foreachInstruc
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectListForGeneration cPtr_foreachInstructionForGeneration::reader_mEnumeratedObjectList (UNUSED_LOCATION_ARGS) const {
+GALGAS_forInstructionEnumeratedObjectListForGeneration cPtr_forInstructionForGeneration::reader_mEnumeratedObjectList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEnumeratedObjectList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_foreachInstructionForGeneration::reader_mIndexVariableCppName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_forInstructionForGeneration::reader_mIndexVariableCppName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
-    const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+    const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
     result = p->mAttribute_mIndexVariableCppName ;
   }
   return result ;
@@ -12834,17 +12834,17 @@ GALGAS_string GALGAS_foreachInstructionForGeneration::reader_mIndexVariableCppNa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_foreachInstructionForGeneration::reader_mIndexVariableCppName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_forInstructionForGeneration::reader_mIndexVariableCppName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndexVariableCppName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionForGeneration GALGAS_foreachInstructionForGeneration::reader_mWhileExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_forInstructionForGeneration::reader_mWhileExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionForGeneration result ;
   if (NULL != mObjectPtr) {
-    const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+    const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
     result = p->mAttribute_mWhileExpression ;
   }
   return result ;
@@ -12852,17 +12852,17 @@ GALGAS_semanticExpressionForGeneration GALGAS_foreachInstructionForGeneration::r
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionForGeneration cPtr_foreachInstructionForGeneration::reader_mWhileExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration cPtr_forInstructionForGeneration::reader_mWhileExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mWhileExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration GALGAS_foreachInstructionForGeneration::reader_mBeforeInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_forInstructionForGeneration::reader_mBeforeInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result ;
   if (NULL != mObjectPtr) {
-    const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+    const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
     result = p->mAttribute_mBeforeInstructionList ;
   }
   return result ;
@@ -12870,17 +12870,17 @@ GALGAS_semanticInstructionListForGeneration GALGAS_foreachInstructionForGenerati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration cPtr_foreachInstructionForGeneration::reader_mBeforeInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration cPtr_forInstructionForGeneration::reader_mBeforeInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBeforeInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration GALGAS_foreachInstructionForGeneration::reader_mBetweenInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_forInstructionForGeneration::reader_mBetweenInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result ;
   if (NULL != mObjectPtr) {
-    const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+    const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
     result = p->mAttribute_mBetweenInstructionList ;
   }
   return result ;
@@ -12888,17 +12888,17 @@ GALGAS_semanticInstructionListForGeneration GALGAS_foreachInstructionForGenerati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration cPtr_foreachInstructionForGeneration::reader_mBetweenInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration cPtr_forInstructionForGeneration::reader_mBetweenInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBetweenInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration GALGAS_foreachInstructionForGeneration::reader_mDoInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_forInstructionForGeneration::reader_mDoInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result ;
   if (NULL != mObjectPtr) {
-    const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+    const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
     result = p->mAttribute_mDoInstructionList ;
   }
   return result ;
@@ -12906,17 +12906,17 @@ GALGAS_semanticInstructionListForGeneration GALGAS_foreachInstructionForGenerati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration cPtr_foreachInstructionForGeneration::reader_mDoInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration cPtr_forInstructionForGeneration::reader_mDoInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDoInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration GALGAS_foreachInstructionForGeneration::reader_mAfterInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_forInstructionForGeneration::reader_mAfterInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result ;
   if (NULL != mObjectPtr) {
-    const cPtr_foreachInstructionForGeneration * p = (const cPtr_foreachInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_foreachInstructionForGeneration) ;
+    const cPtr_forInstructionForGeneration * p = (const cPtr_forInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_forInstructionForGeneration) ;
     result = p->mAttribute_mAfterInstructionList ;
   }
   return result ;
@@ -12924,23 +12924,23 @@ GALGAS_semanticInstructionListForGeneration GALGAS_foreachInstructionForGenerati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration cPtr_foreachInstructionForGeneration::reader_mAfterInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration cPtr_forInstructionForGeneration::reader_mAfterInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAfterInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                              Pointer class for @foreachInstructionForGeneration class                               *
+//                                Pointer class for @forInstructionForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_foreachInstructionForGeneration::cPtr_foreachInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                            const GALGAS_foreachInstructionEnumeratedObjectListForGeneration & in_mEnumeratedObjectList,
-                                                                            const GALGAS_string & in_mIndexVariableCppName,
-                                                                            const GALGAS_semanticExpressionForGeneration & in_mWhileExpression,
-                                                                            const GALGAS_semanticInstructionListForGeneration & in_mBeforeInstructionList,
-                                                                            const GALGAS_semanticInstructionListForGeneration & in_mBetweenInstructionList,
-                                                                            const GALGAS_semanticInstructionListForGeneration & in_mDoInstructionList,
-                                                                            const GALGAS_semanticInstructionListForGeneration & in_mAfterInstructionList
-                                                                            COMMA_LOCATION_ARGS) :
+cPtr_forInstructionForGeneration::cPtr_forInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                                    const GALGAS_forInstructionEnumeratedObjectListForGeneration & in_mEnumeratedObjectList,
+                                                                    const GALGAS_string & in_mIndexVariableCppName,
+                                                                    const GALGAS_semanticExpressionForGeneration & in_mWhileExpression,
+                                                                    const GALGAS_semanticInstructionListForGeneration & in_mBeforeInstructionList,
+                                                                    const GALGAS_semanticInstructionListForGeneration & in_mBetweenInstructionList,
+                                                                    const GALGAS_semanticInstructionListForGeneration & in_mDoInstructionList,
+                                                                    const GALGAS_semanticInstructionListForGeneration & in_mAfterInstructionList
+                                                                    COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
 mAttribute_mInstructionLocation (in_mInstructionLocation),
 mAttribute_mEnumeratedObjectList (in_mEnumeratedObjectList),
@@ -12954,13 +12954,13 @@ mAttribute_mAfterInstructionList (in_mAfterInstructionList) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * cPtr_foreachInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_foreachInstructionForGeneration ;
+const C_galgas_type_descriptor * cPtr_forInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_forInstructionForGeneration ;
 }
 
-void cPtr_foreachInstructionForGeneration::description (C_String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString << "[@foreachInstructionForGeneration:" ;
+void cPtr_forInstructionForGeneration::description (C_String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString << "[@forInstructionForGeneration:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mEnumeratedObjectList.description (ioString, inIndentation+1) ;
@@ -12981,51 +12981,51 @@ void cPtr_foreachInstructionForGeneration::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-acPtr_class * cPtr_foreachInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_forInstructionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_foreachInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mEnumeratedObjectList, mAttribute_mIndexVariableCppName, mAttribute_mWhileExpression, mAttribute_mBeforeInstructionList, mAttribute_mBetweenInstructionList, mAttribute_mDoInstructionList, mAttribute_mAfterInstructionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_forInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mEnumeratedObjectList, mAttribute_mIndexVariableCppName, mAttribute_mWhileExpression, mAttribute_mBeforeInstructionList, mAttribute_mBetweenInstructionList, mAttribute_mDoInstructionList, mAttribute_mAfterInstructionList COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        @foreachInstructionForGeneration type                                        *
+//                                          @forInstructionForGeneration type                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_foreachInstructionForGeneration ("foreachInstructionForGeneration",
-                                                        & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+kTypeDescriptor_GALGAS_forInstructionForGeneration ("forInstructionForGeneration",
+                                                    & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_foreachInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_foreachInstructionForGeneration ;
+const C_galgas_type_descriptor * GALGAS_forInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_forInstructionForGeneration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_foreachInstructionForGeneration::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_forInstructionForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_foreachInstructionForGeneration (*this)) ;
+    macroMyNew (result, GALGAS_forInstructionForGeneration (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionForGeneration GALGAS_foreachInstructionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_foreachInstructionForGeneration result ;
-  const GALGAS_foreachInstructionForGeneration * p = (const GALGAS_foreachInstructionForGeneration *) inObject.embeddedObject () ;
+GALGAS_forInstructionForGeneration GALGAS_forInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_forInstructionForGeneration result ;
+  const GALGAS_forInstructionForGeneration * p = (const GALGAS_forInstructionForGeneration *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_foreachInstructionForGeneration *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_forInstructionForGeneration *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("foreachInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("forInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

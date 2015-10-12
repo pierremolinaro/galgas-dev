@@ -1,0 +1,340 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @matchEntryListAST {
+  @bool mIsType %nogetter # true if type, false if enum
+  @lstring mTypeNameOrEnumerationConstantName %nogetter
+  @lstring mLocalConstantName %nogetter # Empty string if no constant
+}
+
+#······················································································································*
+
+list @matchInstructionBranchListAST {
+  @matchEntryListAST mMatchEntryList %nogetter
+  @location mEndOfMatchEntryList %nogetter
+  @semanticInstructionListAST mMatchBranchInstructionList %nogetter
+  @location mEndOf_instructionList %nogetter
+}
+
+#······················································································································*
+
+class @matchInstructionAST : @semanticInstructionAST {
+  @semanticExpressionListAST mMatchedExpressionList
+  @matchInstructionBranchListAST mMatchInstructionBranchList
+  @semanticInstructionListAST mElseInstructionList
+  @location mEndOf_match_instruction
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+  
+  rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
+    $identifier$ ?let enumerationConstantName
+    ioMatchEntryList +=
+      !false
+      !enumerationConstantName
+      !@lstring.new {!"" !@location.here}
+  }
+
+  #···················································································································
+  
+  rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
+    $type_name$ ?let className
+    @lstring localConstant
+    select
+      localConstant = @lstring.new {!"" !@location.here}
+    or
+      $identifier$ ?localConstant
+    end
+    ioMatchEntryList +=
+      !true
+      !className
+      !localConstant
+  }
+  
+  #···················································································································
+  
+  rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList {
+    $case$
+    var mMatchEntryList = @matchEntryListAST.emptyList
+    repeat
+      <match_entry> !? mMatchEntryList
+    while
+      $,$
+    end
+    let endOfMatchEntryList = @location.here
+    $:$
+    @semanticInstructionListAST mMatchBranchInstructionList
+    <semantic_instruction_list> ? mMatchBranchInstructionList
+    ioMatchInstructionBranchList +=
+      !mMatchEntryList
+      !endOfMatchEntryList
+      !mMatchBranchInstructionList
+      !@location.here
+  }
+  
+  #···················································································································
+  
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $match$
+    var matchedExpressionNameList =@semanticExpressionListAST.emptyList{}
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST receiverExpression
+    matchedExpressionNameList += !receiverExpression !@location.here
+    $,$
+    repeat
+      @semanticExpressionAST receiverExpression
+      <expression> ? receiverExpression
+      matchedExpressionNameList += !receiverExpression !@location.here
+    while
+      $,$
+    end
+    var matchInstructionBranchList =@matchInstructionBranchListAST.emptyList{}
+    repeat
+      <match_instruction_branch> !? matchInstructionBranchList
+    while
+    end
+    @semanticInstructionListAST elseInstructionList
+    select
+      elseInstructionList = @semanticInstructionListAST. emptyList
+    or
+      $else$
+      <semantic_instruction_list> ? elseInstructionList
+    end
+    $end$
+    let @location endOf_match_instruction = @location.here
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "match" then
+        error terminator : "the terminator attribute should be '%match'"
+      end
+    end
+    outInstruction = @matchInstructionAST.new {
+      !instructionLocation
+      !matchedExpressionNameList
+      !matchInstructionBranchList
+      !elseInstructionList
+      !endOf_match_instruction}
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @matchInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  for () in mMatchedExpressionList do
+    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end
+  for () in mMatchInstructionBranchList do
+    [mMatchBranchInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @matchInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+  var expressionList =@semanticExpressionListForGeneration.emptyList{}
+  for () in mMatchedExpressionList do
+  #--- Analyze expression
+    [mExpression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration matchedExpression
+    ]
+    expressionList += !matchedExpression
+  #--- Check expression is an enum or a class instance
+    let type = [matchedExpression mResultType]
+    if ([type mTypeKindEnum] != @typeKindEnum. classType) & ([type mTypeKindEnum] != @typeKindEnum. enumType) then
+      error mEndOfExpressionLocation
+      :"this expression is an instance of '@" + [type key] + "' type, but this type is neither an enumeration, neither a class"
+    end
+  end
+#--- Analyze branches
+  [!?ioVariableMap openOverrideForSelectBlock]
+  var matchInstructionBranchList =@matchInstructionBranchListForGeneration.emptyList{}
+  for () in mMatchInstructionBranchList do
+  #--- Match list
+    var localConstantList =@localConstantList.emptyList{}
+    var matchListForGeneration = @matchListForGeneration.emptyList{}
+    if [expressionList length] == [mMatchEntryList length] then
+      for () in expressionList, () in mMatchEntryList do
+        let type = [mExpression mResultType]
+        if [type mTypeKindEnum] == @typeKindEnum. classType then
+          if mIsType then
+            let namedType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
+            @unifiedTypeMap-proxy t = type
+            @bool found = t == namedType
+            loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+            while (not found) & not [[t mSuperType] isNull] do
+              t = [t mSuperType]
+              found = t == namedType
+            end
+            if not found then
+              error mTypeNameOrEnumerationConstantName
+              :"the '@" + mTypeNameOrEnumerationConstantName + "' is not a descendant of the '@" + [type key] + "' type of the cast expression"
+            elsif [[mLocalConstantName string] length] > 0 then
+              localConstantList += !t !mLocalConstantName !false !"match_instruction_constant_name"
+            end
+          else
+            error mTypeNameOrEnumerationConstantName
+            :"a type that inherits from '@" + [[mExpression mResultType] key] + "' class is expected here"
+          end
+          matchListForGeneration += !true ![mTypeNameOrEnumerationConstantName string] ![mLocalConstantName string]
+        elsif [type mTypeKindEnum] == @typeKindEnum. enumType then
+          if mIsType then
+            error mTypeNameOrEnumerationConstantName
+            :"a constant of the '@" + [[mExpression mResultType] key] + "' enumeration type is expected here"          
+          elsif not [[type mEnumConstantMap] hasKey ![mTypeNameOrEnumerationConstantName string]] then
+            error mTypeNameOrEnumerationConstantName
+            :"the '" + mTypeNameOrEnumerationConstantName + "' symbol is not a constant of the '@" + [[mExpression mResultType] key] + "' enumeration type"
+          end
+          matchListForGeneration +=
+            !false
+            ![mTypeNameOrEnumerationConstantName string]
+            ![[mExpression mResultType] key]
+        else
+          error mTypeNameOrEnumerationConstantName: "internal error"
+        end
+      end
+    else
+      error mEndOfMatchEntryList
+      : "this match list should contain " + [[expressionList length] string] + " elements, but it acually contains "
+      + [[mMatchEntryList length] string]
+    end
+  #--- Instruction list
+    @semanticInstructionListForGeneration instructionList
+    analyzeSemanticInstructionList (
+      !inAnalysisContext
+      !localConstantList
+      !@localInitializedVariableList. emptyList
+      !mMatchBranchInstructionList
+      !mEndOf_instructionList
+      !?ioVariableMap
+      ?instructionList
+    )
+  #---
+    matchInstructionBranchList += !matchListForGeneration !instructionList
+  end
+#--- 'else' branch
+  @semanticInstructionListForGeneration elseInstructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mElseInstructionList
+    !mEndOf_match_instruction
+    !?ioVariableMap
+    ?elseInstructionList
+  )
+#---
+  [!?ioVariableMap closeOverride !mEndOf_match_instruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@matchInstructionForGeneration.new {
+    !expressionList
+    !matchInstructionBranchList
+    !elseInstructionList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @matchListForGeneration {
+  @bool mIsType
+  @string mTypeNameOrEnumerationConstantName
+  @string mLocalConstantName # Empy string if no variable
+}
+
+#······················································································································*
+
+list @matchInstructionBranchListForGeneration {
+  @matchListForGeneration mMatchListForGeneration
+  @semanticInstructionListForGeneration mMatchBranchInstructionList
+}
+
+#······················································································································*
+
+class @matchInstructionForGeneration : @semanticInstructionForGeneration {
+  @semanticExpressionListForGeneration mMatchedExpressionList
+  @matchInstructionBranchListForGeneration mMatchInstructionBranchList
+  @semanticInstructionListForGeneration mElseInstructionList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @matchInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  var receiverList =@stringlist.emptyList{}
+  for () in mMatchedExpressionList do
+    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string variable]
+    receiverList += !variable
+  end
+  ioGeneratedCode += "if ("
+  for () in receiverList
+    do ioGeneratedCode += mValue + ".isValid ()"
+    between ioGeneratedCode += " && "
+  end
+  ioGeneratedCode += ") {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  for () in mMatchInstructionBranchList do
+    ioGeneratedCode += "if ("
+    for () in mMatchListForGeneration, () in receiverList do
+      if mIsType then
+        ioGeneratedCode += "(NULL != dynamic_cast <const cPtr_" + [mTypeNameOrEnumerationConstantName identifierRepresentation]
+                        + " *> (" + mValue + ".ptr ()))"
+      else
+        ioGeneratedCode += "(" + mValue + ".enumValue () == GALGAS_"
+                        + [mLocalConstantName identifierRepresentation]
+                        + "::kEnum_" + [mTypeNameOrEnumerationConstantName identifierRepresentation] + ")"
+      end
+      between ioGeneratedCode += " && "
+    end
+    ioGeneratedCode += ") {\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mMatchBranchInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  between ioGeneratedCode += "}else "
+  end
+  ioGeneratedCode += "}else{\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mElseInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

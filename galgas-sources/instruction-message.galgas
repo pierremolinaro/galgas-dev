@@ -1,0 +1,100 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @messageInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $message$
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST expression
+    outInstruction = @messageInstructionAST.new {
+      !instructionLocation
+      !expression
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @messageInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @messageInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression
+  [mExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
+#--- Check message type is @string
+  if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+    error mInstructionLocation
+    :"the expression has the '@" + [[expression mResultType] key] + "' type, but the 'message' instruction requires an '@string' expression"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@messageInstructionForGeneration.new {
+    !expression
+    !mInstructionLocation}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @messageInstructionForGeneration : @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression
+  @location mInstructionLocation
+}
+
+#·····················································································································*
+
+override method @messageInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+#--- Message expression
+  [mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string messageCppVarName
+  ]
+#--- Invoke 'printMessage' method of C_Compiler
+  ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
+  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

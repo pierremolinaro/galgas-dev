@@ -1,0 +1,91 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @dropInstructionAST : @semanticInstructionAST {
+  @lstringlist mDropList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $drop$
+    let instructionLocation = @location.here
+    @lstringlist dropList = {}
+    repeat
+      $identifier$ ?let variableName
+      dropList += !variableName
+    while
+      $,$
+    end
+    outInstruction = @dropInstructionAST.new {!instructionLocation !dropList}
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dropInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dropInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext unused inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+  var cppNameDropList =@stringlist.emptyList{}
+  var dropTypeList = @unifiedTypeMapProxyList. emptyList
+  for () in mDropList do
+    @string variableCppName
+    [!?ioVariableMap searchForDropAccess !mValue ?let @unifiedTypeMap-proxy t ?variableCppName ?*]
+    cppNameDropList += !variableCppName
+    dropTypeList += !t
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@dropInstructionForGeneration.new {
+     !cppNameDropList
+     !"drop instruction"
+     !dropTypeList}  
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @dropInstructionForGeneration : @semanticInstructionForGeneration {
+  @stringlist mDropList
+  @string mComment
+  @unifiedTypeMapProxyList mDropTypeList
+}
+
+#·····················································································································*
+
+override method @dropInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  for (t) in mDropTypeList do
+    [t addHeaderFileName !?ioInclusionSet]
+  end
+  for () in mDropList do
+    ioGeneratedCode += mValue + ".drop () ; // " + mComment + "\n"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
