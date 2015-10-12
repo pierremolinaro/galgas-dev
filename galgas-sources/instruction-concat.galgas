@@ -1,0 +1,282 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @plusEqualElementsInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+  @actualOutputExpressionList mExpressions
+}
+
+#······················································································································*
+
+class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+  @semanticExpressionAST mExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    @lstring mReceiverName
+    $identifier$ ? mReceiverName
+    let instructionLocation = @location.here
+    var mStructAttributeList = @lstringlist.emptyList{}
+    repeat
+    while
+      $.$
+      $identifier$ ?let attributeName
+      mStructAttributeList += !attributeName
+    end
+    $+=$
+    select
+      <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+      outInstruction = @plusEqualElementsInstructionAST.new {
+        !instructionLocation
+        !mReceiverName
+        !mStructAttributeList
+        !expressionList}
+    or
+      <expression> ?let @semanticExpressionAST expression
+      outInstruction = @plusEqualExpressionInstructionAST.new {
+        !instructionLocation
+        !mReceiverName
+        !mStructAttributeList
+        !expression}
+    end
+  }  
+
+  #····················································································································*
+
+  rule <non_empty_output_expression_list>
+    !@actualOutputExpressionList outExpressionList {
+    outExpressionList = {}
+    repeat
+      $!$ ?let selector
+      <expression> ?let @semanticExpressionAST expression
+      outExpressionList += !selector !expression !@location.here
+    while
+    end
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @plusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································*
+
+override method @plusEqualElementsInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mExpressions enterInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  @string nameForCheckingFormalParameterUsing
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+  for () in mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
+  end
+#--- Check target variable type support '+= exp' operator
+  if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
+  end
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@concatInstructionForGeneration.new {
+    !mInstructionLocation
+    !targetType
+    !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
+    !mStructAttributeList
+    !expression}
+}
+
+#·····················································································································*
+
+override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # += !… !…
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  @string nameForCheckingFormalParameterUsing
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+  for () in mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
+  end
+#--- Check target variable type support '+=' operator
+  let addAssignOperatorArguments= [targetType mAddAssignOperatorArguments] # Empty list if += operator is not supported
+  if [addAssignOperatorArguments length] == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
+#--- Analyze source expressions
+  elsif [mExpressions length] != [addAssignOperatorArguments length] then
+    error mInstructionLocation
+    : "calling the '+=' operator on an '@" + [targetType key] + "' object requires "
+    + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
+    + [[mExpressions length] string] + " parameter(s)"
+  else
+    var effectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
+    for () in mExpressions, () in addAssignOperatorArguments do
+      [mExpression analyzeSemanticExpression
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let @semanticExpressionForGeneration exp
+      ]
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+      end
+      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      effectiveParameterList += !exp
+    end
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {
+      !targetVariableCppName
+      !targetType
+      !nameForCheckingFormalParameterUsing
+      !mInstructionLocation
+      !mStructAttributeList
+      !effectiveParameterList}
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
+  @string mReceiverCppName
+  @unifiedTypeMap-proxy mTargetType
+  @string mNameForCheckingFormalParameterUsing
+  @location mInstructionLocation
+  @lstringlist mStructAttributeList
+  @semanticExpressionListForGeneration mExpressionList
+}
+
+#·····················································································································*
+
+override method @plusEqualnstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Parameters
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  var parameterList =@stringlist.emptyList{}
+  for () in mExpressionList do
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let @string parameter
+    ]
+    parameterList += !parameter  
+  end
+#--- Receiver
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+  ioGeneratedCode += mReceiverCppName
+  for () in mStructAttributeList do
+    ioGeneratedCode += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- Call add assign (+=) operator
+  ioGeneratedCode += ".addAssign_operation ("
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
+  for () in parameterList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if ([mTargetType mHandledOperatorFlags] & plusEqualOperatorWithFieldListNeedsCompilerArg ()) != 0 then
+    ioGeneratedCode  += ", " + compilerCppName ()
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  end
+  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+}
+
+#·····················································································································*
+
+class @concatInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @unifiedTypeMap-proxy mTargetType
+  @string mTargetVariableCppName
+  @string mNameForCheckingFormalParameterUsing
+  @lstringlist mStructAttributeList
+  @semanticExpressionForGeneration mSourceExpression
+}
+
+#·····················································································································*
+
+override method @concatInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  [mSourceExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string sourceVar
+  ]
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+  ioGeneratedCode += mTargetVariableCppName
+  for () in mStructAttributeList do
+    ioGeneratedCode += ".mAttribute_" + mValue
+  end
+  ioGeneratedCode += ".dotAssign_operation (" + sourceVar + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName]
+}
+#----------------------------------------------------------------------------------------------------------------------*

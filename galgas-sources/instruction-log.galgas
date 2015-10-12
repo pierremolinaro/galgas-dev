@@ -1,0 +1,110 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @logListAST {
+  @lstring mLogMessage
+  @semanticExpressionAST mLogExpression
+}
+
+#·····················································································································*
+
+class @logInstructionAST : @semanticInstructionAST {
+  @logListAST mLogList
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $log$
+    let instructionLocation = @location.here
+    var logList =@logListAST.emptyList{}
+    repeat
+      select
+        $identifier$ ?let @lstring loggedVariableName
+        logList += !loggedVariableName !@varInExpressionAST.new {!loggedVariableName}
+      or
+        $literal_string$ ?let logMessage
+        $:$
+        <expression> ?let @semanticExpressionAST logExpression
+        logList += !logMessage !logExpression
+      end
+    while
+      $,$
+    end
+    outInstruction = @logInstructionAST.new {
+      !instructionLocation
+      !logList
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @logInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mLogList do
+    [mLogExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end 
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @logInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+  for () in mLogList do
+  #--- Analyze source expression
+    @semanticExpressionForGeneration expression
+    [mLogExpression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?expression
+    ]
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@logInstructionForGeneration.new {
+      !mLogMessage
+      !expression}  
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @logInstructionForGeneration : @semanticInstructionForGeneration {
+  @lstring mLogMessage
+  @semanticExpressionForGeneration mLogExpression
+}
+
+#·····················································································································*
+
+override method @logInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mLogExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string logVar]
+  ioGeneratedCode += logVar + ".log (" + [mLogMessage utf8Representation]
+  + " " + [[mLogMessage location] commaSourceFile] + ") ;\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

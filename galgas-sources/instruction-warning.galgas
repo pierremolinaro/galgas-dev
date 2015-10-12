@@ -1,0 +1,113 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @warningInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mLocationExpression
+  @semanticExpressionAST mMessageExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $warning$
+    let instructionLocation = @location.here
+    <expression> ?var @semanticExpressionAST mReceiverExpression
+    $:$
+    <expression> ?let @semanticExpressionAST mWarningExpression
+    outInstruction = @warningInstructionAST.new {
+      !instructionLocation
+      !mReceiverExpression
+      !mWarningExpression
+    }
+  }
+  
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @warningInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @warningInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#---
+  analyzeErrorOrWarningInstruction (
+    !inAnalysisContext
+    !mLocationExpression
+    !mMessageExpression
+    !mInstructionLocation
+    !"warning"
+    !?ioVariableMap
+    ?let locationExpression
+    ?let messageExpression
+    ?let useLocationReader
+  )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@warningInstructionForGeneration.new {
+    !mInstructionLocation
+    !locationExpression
+    !useLocationReader
+    !messageExpression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @warningInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mReceiverExpression
+  @bool mUseLocationReader
+  @semanticExpressionForGeneration mWarningExpression
+}
+
+#······················································································································*
+
+override method @warningInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver expression
+  @string receiverCppVarName
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
+#--- Receiver expression
+  @string messageCppVarName
+  [mWarningExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName]
+#--- Use location reader ?
+  if mUseLocationReader then
+    let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".reader_location (HERE)) ; // Implicit use of 'location' reader\n"
+    receiverCppVarName = locationVar
+  end
+#--- Generate warning instruction
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode += compilerCppName () + "->emitSemanticWarning (" + receiverCppVarName + ", " + messageCppVarName
+                  + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

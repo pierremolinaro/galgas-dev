@@ -2535,24 +2535,6 @@ void callCategoryMethod_analyzeSemanticInstruction (const class cPtr_semanticIns
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Routine 'analyzeErrorOrWarningInstruction'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_analyzeErrorOrWarningInstruction (const class GALGAS_analysisContext constinArgument0,
-                                               const class GALGAS_semanticExpressionAST constinArgument1,
-                                               const class GALGAS_semanticExpressionAST constinArgument2,
-                                               const class GALGAS_location constinArgument3,
-                                               const class GALGAS_string constinArgument4,
-                                               class GALGAS_variableMap & ioArgument5,
-                                               class GALGAS_semanticExpressionForGeneration & outArgument6,
-                                               class GALGAS_semanticExpressionForGeneration & outArgument7,
-                                               class GALGAS_bool & outArgument8,
-                                               class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                          Routine 'analyzeRoutineArguments'                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2615,17 +2597,6 @@ class GALGAS_string function_checkMethodImplementationInSuperClasses (const clas
                                                                       const class GALGAS_unifiedTypeMap_2D_proxy & constinArgument1,
                                                                       class C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Function 'checkModifierImplementationInSuperClasses'                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_string function_checkModifierImplementationInSuperClasses (const class GALGAS_lstring & constinArgument0,
-                                                                        const class GALGAS_unifiedTypeMap_2D_proxy & constinArgument1,
-                                                                        class C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3126,5 +3097,23 @@ void categoryMethod_addHeaderFileName (const class GALGAS_unifiedTypeMap_2D_prox
                                        class GALGAS_stringset & io_ioInclusions,
                                        class C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                             Routine 'generateFunction'                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateFunction (const class GALGAS_string constinArgument0,
+                               class GALGAS_stringset & ioArgument1,
+                               const class GALGAS_formalInputParameterListForGeneration constinArgument2,
+                               const class GALGAS_semanticInstructionListForGeneration constinArgument3,
+                               const class GALGAS_string constinArgument4,
+                               const class GALGAS_unifiedTypeMap_2D_proxy constinArgument5,
+                               const class GALGAS_string constinArgument6,
+                               const class GALGAS_bool constinArgument7,
+                               class GALGAS_string & outArgument8,
+                               class C_Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
 
 #endif

@@ -1,0 +1,184 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+  class @ifInstructionAST : @semanticInstructionAST {
+    @semanticExpressionAST m_if_expression
+    @semanticInstructionListAST m_then_instructionList
+    @location mEndOf_then_branch
+    @semanticInstructionListAST m_else_instructionList
+    @location mEndOf_if_instruction
+  }
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <if_branch> !@semanticInstructionAST outInstruction {
+    let instructionLocation = @location.here
+    <expression> ?let if_expression
+    $then$
+    <semantic_instruction_list> ?let then_instructionList
+    let endOf_then_branchLocation = @location.here
+    @semanticInstructionListAST else_instructionList
+    select
+      else_instructionList = @semanticInstructionListAST. emptyList
+    or
+      $else$
+      <semantic_instruction_list> ? else_instructionList
+    or
+      $elsif$
+      <if_branch> ?let instruction
+      else_instructionList = {!instruction}
+    end
+    outInstruction = @ifInstructionAST.new {
+      !instructionLocation
+      !if_expression
+      !then_instructionList
+      !endOf_then_branchLocation
+      !else_instructionList
+      !@location.here}
+  }
+  
+  #····················································································································*
+  
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $if$
+    <if_branch> ?outInstruction
+    $end$
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "if" then
+        error terminator : "the terminator attribute should be '%if'"
+      end
+    end
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+  override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [m_if_expression enterExpressionInSemanticContext !?ioTypeMap]
+    [m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+    [m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  }
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+  override method @ifInstructionAST analyzeSemanticInstruction
+    ?let @analysisContext inAnalysisContext
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+    ?!@variableMap ioVariableMap
+  {
+  #--- Test expression
+    [m_if_expression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?let analyzed_if_expression
+    ]
+    [!?ioVariableMap openOverrideForSelectBlock]
+  #--- Check tested expression type
+    checkExpressionIsBoolean (
+      !inAnalysisContext
+      !mEndOf_if_instruction
+      !analyzed_if_expression
+      ?let if_expression
+    )
+  #--- Then branch
+    analyzeSemanticInstructionList (
+      !inAnalysisContext
+      !@localConstantList. emptyList
+      !@localInitializedVariableList. emptyList
+      !m_then_instructionList
+      !mEndOf_then_branch
+      !?ioVariableMap
+      ?let then_instructionList
+    )
+  #--- else branch
+    analyzeSemanticInstructionList (
+      !inAnalysisContext
+      !@localConstantList. emptyList
+      !@localInitializedVariableList. emptyList
+      !m_else_instructionList
+      !mEndOf_if_instruction
+      !?ioVariableMap
+      ?let else_instructionList
+    )
+    [!?ioVariableMap closeOverride !mEndOf_if_instruction]
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@ifInstructionForGeneration.new {
+      !mEndOf_then_branch
+      !if_expression
+      !then_instructionList
+      !else_instructionList
+    }
+  }
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+  class @ifInstructionForGeneration : @semanticInstructionForGeneration {
+    @location mInstructionLocation
+    @semanticExpressionForGeneration mIFexpression
+    @semanticInstructionListForGeneration m_then_instructionList
+    @semanticInstructionListForGeneration m_else_instructionList
+  }
+
+  #····················································································································*
+
+  override method @ifInstructionForGeneration generateInstruction
+    ?!@stringset ioInclusionSet
+    ?!@uint ioTemporaryVariableIndex
+    ?!@stringset ioUnusedVariableCppNameSet
+    ?let @bool inGenerateSyntaxDirectedTranslationString
+    ?!@string ioGeneratedCode {
+  #--- Generate test expression
+    @string cppVarName
+    [mIFexpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?cppVarName
+    ]
+    let testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + cppVarName + ".boolEnum () ;\n"
+  #--- If test expression is not valuated or false, execute 'else' part
+    ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !m_then_instructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+    if [m_else_instructionList length] > 0 then
+      ioGeneratedCode += "}else if (kBoolFalse == " + testVar + ") {\n"
+      generateInstructionList (
+        !?ioInclusionSet
+        !m_else_instructionList
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        !inGenerateSyntaxDirectedTranslationString
+        !?ioGeneratedCode
+      )
+    end
+    ioGeneratedCode += "}\n"
+  }
+
+#----------------------------------------------------------------------------------------------------------------------*

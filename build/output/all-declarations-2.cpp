@@ -14334,17 +14334,18 @@ GALGAS_semanticDeclarationListAST GALGAS_semanticDeclarationListAST::extractObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Class for element of '@foreachInstructionEnumeratedObjectElementListAST' list                    *
+//                              Class for element of '@propertyInCollectionListAST' list                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cCollectionElement_foreachInstructionEnumeratedObjectElementListAST : public cCollectionElement {
-  public : GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element mObject ;
+class cCollectionElement_propertyInCollectionListAST : public cCollectionElement {
+  public : GALGAS_propertyInCollectionListAST_2D_element mObject ;
 
 //--- Constructor
-  public : cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
-                                                                                const GALGAS_lstring & in_mOptionalConstantName
-                                                                                COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_propertyInCollectionListAST (const GALGAS_lstring & in_mPropertyTypeName,
+                                                           const GALGAS_lstring & in_mPropertyName,
+                                                           const GALGAS_lstringlist & in_mFeatureList
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -14361,57 +14362,62 @@ class cCollectionElement_foreachInstructionEnumeratedObjectElementListAST : publ
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
-                                                                                                                                          const GALGAS_lstring & in_mOptionalConstantName
-                                                                                                                                          COMMA_LOCATION_ARGS) :
+cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GALGAS_lstring & in_mPropertyTypeName,
+                                                                                                const GALGAS_lstring & in_mPropertyName,
+                                                                                                const GALGAS_lstringlist & in_mFeatureList
+                                                                                                COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mOptionalTypeName, in_mOptionalConstantName) {
+mObject (in_mPropertyTypeName, in_mPropertyName, in_mFeatureList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::isValid (void) const {
+bool cCollectionElement_propertyInCollectionListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement * cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::copy (void) {
+cCollectionElement * cCollectionElement_propertyInCollectionListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (mObject.mAttribute_mOptionalTypeName, mObject.mAttribute_mOptionalConstantName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mAttribute_mPropertyTypeName, mObject.mAttribute_mPropertyName, mObject.mAttribute_mFeatureList COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_propertyInCollectionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mOptionalTypeName" ":" ;
-  mObject.mAttribute_mOptionalTypeName.description (ioString, inIndentation) ;
+  ioString << "mPropertyTypeName" ":" ;
+  mObject.mAttribute_mPropertyTypeName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mOptionalConstantName" ":" ;
-  mObject.mAttribute_mOptionalConstantName.description (ioString, inIndentation) ;
+  ioString << "mPropertyName" ":" ;
+  mObject.mAttribute_mPropertyName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mFeatureList" ":" ;
+  mObject.mAttribute_mFeatureList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * operand = (cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
+typeComparisonResult cCollectionElement_propertyInCollectionListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_propertyInCollectionListAST * operand = (cCollectionElement_propertyInCollectionListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_propertyInCollectionListAST) ;
   return mObject.objectCompare (operand->mObject) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST::GALGAS_foreachInstructionEnumeratedObjectElementListAST (void) :
+GALGAS_propertyInCollectionListAST::GALGAS_propertyInCollectionListAST (void) :
 AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST::GALGAS_foreachInstructionEnumeratedObjectElementListAST (cSharedList * inSharedListPtr) :
+GALGAS_propertyInCollectionListAST::GALGAS_propertyInCollectionListAST (cSharedList * inSharedListPtr) :
 AC_GALGAS_list (inSharedListPtr) {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
@@ -14420,22 +14426,23 @@ AC_GALGAS_list (inSharedListPtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructionEnumeratedObjectElementListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_propertyInCollectionListAST result ;
   result.createNewEmptyList (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructionEnumeratedObjectElementListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                                                            const GALGAS_lstring & inOperand1
-                                                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                  const GALGAS_lstring & inOperand1,
+                                                                                                  const GALGAS_lstringlist & inOperand2
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_propertyInCollectionListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
-    GALGAS_foreachInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.addObject (attributes) ;
   }
   return result ;
@@ -14443,25 +14450,28 @@ GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                                         const GALGAS_lstring & in_mOptionalTypeName,
-                                                                                         const GALGAS_lstring & in_mOptionalConstantName
-                                                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = NULL ;
-  macroMyNew (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (in_mOptionalTypeName,
-                                                                                      in_mOptionalConstantName COMMA_THERE)) ;
+void GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                    const GALGAS_lstring & in_mPropertyTypeName,
+                                                                    const GALGAS_lstring & in_mPropertyName,
+                                                                    const GALGAS_lstringlist & in_mFeatureList
+                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement_propertyInCollectionListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_propertyInCollectionListAST (in_mPropertyTypeName,
+                                                                 in_mPropertyName,
+                                                                 in_mFeatureList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
-                                                                                   const GALGAS_lstring & inOperand1
-                                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+void GALGAS_propertyInCollectionListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                              const GALGAS_lstring & inOperand1,
+                                                              const GALGAS_lstringlist & inOperand2
+                                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_propertyInCollectionListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -14471,14 +14481,15 @@ void GALGAS_foreachInstructionEnumeratedObjectElementListAST::addAssign_operatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                                                      const GALGAS_lstring inOperand1,
-                                                                                      const GALGAS_uint inInsertionIndex,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+void GALGAS_propertyInCollectionListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                 const GALGAS_lstring inOperand1,
+                                                                 const GALGAS_lstringlist inOperand2,
+                                                                 const GALGAS_uint inInsertionIndex,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_propertyInCollectionListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -14488,107 +14499,122 @@ void GALGAS_foreachInstructionEnumeratedObjectElementListAST::modifier_insertAtI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                                                      GALGAS_lstring & outOperand1,
-                                                                                      const GALGAS_uint inRemoveIndex,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_propertyInCollectionListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                 GALGAS_lstring & outOperand1,
+                                                                 GALGAS_lstringlist & outOperand2,
+                                                                 const GALGAS_uint inRemoveIndex,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+    cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
     if (NULL == p) {
       outOperand0.drop () ;
       outOperand1.drop () ;
+      outOperand2.drop () ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-      outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
-      outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
+      macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+      outOperand0 = p->mObject.mAttribute_mPropertyTypeName ;
+      outOperand1 = p->mObject.mAttribute_mPropertyName ;
+      outOperand2 = p->mObject.mAttribute_mFeatureList ;
     }
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
-                                                                                 GALGAS_lstring & outOperand1,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_propertyInCollectionListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                            GALGAS_lstring & outOperand1,
+                                                            GALGAS_lstringlist & outOperand2,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
-    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    outOperand0 = p->mObject.mAttribute_mPropertyTypeName ;
+    outOperand1 = p->mObject.mAttribute_mPropertyName ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::modifier_popLast (GALGAS_lstring & outOperand0,
-                                                                                GALGAS_lstring & outOperand1,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_propertyInCollectionListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                           GALGAS_lstring & outOperand1,
+                                                           GALGAS_lstringlist & outOperand2,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
-    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    outOperand0 = p->mObject.mAttribute_mPropertyTypeName ;
+    outOperand1 = p->mObject.mAttribute_mPropertyName ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::method_first (GALGAS_lstring & outOperand0,
-                                                                            GALGAS_lstring & outOperand1,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
+void GALGAS_propertyInCollectionListAST::method_first (GALGAS_lstring & outOperand0,
+                                                       GALGAS_lstring & outOperand1,
+                                                       GALGAS_lstringlist & outOperand2,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
-    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    outOperand0 = p->mObject.mAttribute_mPropertyTypeName ;
+    outOperand1 = p->mObject.mAttribute_mPropertyName ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::method_last (GALGAS_lstring & outOperand0,
-                                                                           GALGAS_lstring & outOperand1,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
+void GALGAS_propertyInCollectionListAST::method_last (GALGAS_lstring & outOperand0,
+                                                      GALGAS_lstring & outOperand1,
+                                                      GALGAS_lstringlist & outOperand2,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
-    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    outOperand0 = p->mObject.mAttribute_mPropertyTypeName ;
+    outOperand1 = p->mObject.mAttribute_mPropertyName ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructionEnumeratedObjectElementListAST::operator_concat (const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand
-                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::operator_concat (const GALGAS_propertyInCollectionListAST & inOperand
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.appendList (inOperand) ;
@@ -14598,10 +14624,10 @@ GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructionEnumeratedObjectElementListAST::add_operation (const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand,
-                                                                                                                                C_Compiler * /* inCompiler */
-                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::add_operation (const GALGAS_propertyInCollectionListAST & inOperand,
+                                                                                      C_Compiler * /* inCompiler */
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.appendList (inOperand) ;
@@ -14611,107 +14637,160 @@ GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructionEnumeratedObjectElementListAST::reader_subListWithRange (const GALGAS_range & inRange,
-                                                                                                                                          C_Compiler * inCompiler
-                                                                                                                                          COMMA_LOCATION_ARGS) const {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result = GALGAS_foreachInstructionEnumeratedObjectElementListAST::constructor_emptyList (THERE) ;
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result = GALGAS_propertyInCollectionListAST::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructionEnumeratedObjectElementListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                                                          C_Compiler * inCompiler
-                                                                                                                                          COMMA_LOCATION_ARGS) const {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result = GALGAS_foreachInstructionEnumeratedObjectElementListAST::constructor_emptyList (THERE) ;
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result = GALGAS_propertyInCollectionListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_foreachInstructionEnumeratedObjectElementListAST::dotAssign_operation (const GALGAS_foreachInstructionEnumeratedObjectElementListAST inOperand
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_propertyInCollectionListAST::dotAssign_operation (const GALGAS_propertyInCollectionListAST inOperand
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
-
-
 //---------------------------------------------------------------------------------------------------------------------*
 
-cEnumerator_foreachInstructionEnumeratedObjectElementListAST::cEnumerator_foreachInstructionEnumeratedObjectElementListAST (const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inEnumeratedObject,
-                                                                                                                            const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element cEnumerator_foreachInstructionEnumeratedObjectElementListAST::current (LOCATION_ARGS) const {
-  const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-  return p->mObject ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_foreachInstructionEnumeratedObjectElementListAST::current_mOptionalTypeName (LOCATION_ARGS) const {
-  const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-  return p->mObject.mAttribute_mOptionalTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_foreachInstructionEnumeratedObjectElementListAST::current_mOptionalConstantName (LOCATION_ARGS) const {
-  const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-  return p->mObject.mAttribute_mOptionalConstantName ;
-}
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               @foreachInstructionEnumeratedObjectElementListAST type                                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_foreachInstructionEnumeratedObjectElementListAST ("foreachInstructionEnumeratedObjectElementListAST",
-                                                                         NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_foreachInstructionEnumeratedObjectElementListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_foreachInstructionEnumeratedObjectElementListAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_foreachInstructionEnumeratedObjectElementListAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_foreachInstructionEnumeratedObjectElementListAST (*this)) ;
+GALGAS_lstring GALGAS_propertyInCollectionListAST::reader_mPropertyTypeNameAtIndex (const GALGAS_uint & inIndex,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    result = p->mObject.mAttribute_mPropertyTypeName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructionEnumeratedObjectElementListAST::extractObject (const GALGAS_object & inObject,
-                                                                                                                                C_Compiler * inCompiler
-                                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
-  const GALGAS_foreachInstructionEnumeratedObjectElementListAST * p = (const GALGAS_foreachInstructionEnumeratedObjectElementListAST *) inObject.embeddedObject () ;
+GALGAS_lstring GALGAS_propertyInCollectionListAST::reader_mPropertyNameAtIndex (const GALGAS_uint & inIndex,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_foreachInstructionEnumeratedObjectElementListAST *> (p)) {
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    result = p->mObject.mAttribute_mPropertyName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_propertyInCollectionListAST::reader_mFeatureListAtIndex (const GALGAS_uint & inIndex,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
+  GALGAS_lstringlist result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    result = p->mObject.mAttribute_mFeatureList ;
+  }
+  return result ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_propertyInCollectionListAST::cEnumerator_propertyInCollectionListAST (const GALGAS_propertyInCollectionListAST & inEnumeratedObject,
+                                                                                  const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_propertyInCollectionListAST_2D_element cEnumerator_propertyInCollectionListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_propertyInCollectionListAST::current_mPropertyTypeName (LOCATION_ARGS) const {
+  const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+  return p->mObject.mAttribute_mPropertyTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_propertyInCollectionListAST::current_mPropertyName (LOCATION_ARGS) const {
+  const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+  return p->mObject.mAttribute_mPropertyName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cEnumerator_propertyInCollectionListAST::current_mFeatureList (LOCATION_ARGS) const {
+  const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+  return p->mObject.mAttribute_mFeatureList ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @propertyInCollectionListAST type                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_propertyInCollectionListAST ("propertyInCollectionListAST",
+                                                    NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_propertyInCollectionListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyInCollectionListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_propertyInCollectionListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_propertyInCollectionListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::extractObject (const GALGAS_object & inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_propertyInCollectionListAST result ;
+  const GALGAS_propertyInCollectionListAST * p = (const GALGAS_propertyInCollectionListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_propertyInCollectionListAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("foreachInstructionEnumeratedObjectElementListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("propertyInCollectionListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

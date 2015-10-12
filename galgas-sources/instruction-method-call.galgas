@@ -1,0 +1,184 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @methodCallInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mReceiverExpression
+  @lstring mMethodName
+  @actualParameterListAST mActualParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $[$
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST mReceiverExpression
+    $identifier$ ?let mMethodName
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    $]$
+    outInstruction = @methodCallInstructionAST.new {
+      !instructionLocation
+      !mReceiverExpression
+      !mMethodName
+      !actualParameterList
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @methodCallInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @methodCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze receiver expression
+  [mReceiverExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration receiverExpression
+  ]
+#--- Get type method signature
+  @formalParameterSignature routineSignature
+  @bool hasCompilerArgument
+  @methodKind kind
+  @string errorMessage
+  [[[receiverExpression mResultType] mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage]
+  if errorMessage != "" then
+    error mMethodName : errorMessage
+  end
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mMethodName
+    !"'" + mMethodName + "' instance method header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Search base type that declares the method
+  var baseType = [receiverExpression mResultType]
+  var searching = true
+  if @uint. errorCount == 0 then
+    loop( @uint. max) while searching do
+      if [[baseType mSuperType] isNull] then
+        searching = false
+      else
+        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mMethodName.string] then
+          baseType = [baseType mSuperType]
+        else
+          searching = false
+        end
+      end  
+    end
+  end
+#--- Generate instructions
+  ioInstructionListForGeneration += !@methodCallInstructionForGeneration.new {
+    !mInstructionLocation
+    ![receiverExpression mResultType]
+    !receiverExpression
+    ![mMethodName string]
+    !kind
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+    !baseType
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @unifiedTypeMap-proxy mReceiverType
+  @semanticExpressionForGeneration mReceiverExpression
+  @string mMethodName
+  @methodKind mKind
+  @actualParameterListForGeneration mActualParameterList
+  @bool mHasCompilerArgument
+  @unifiedTypeMap-proxy mMethodBaseType
+}
+
+#·····················································································································*
+
+override method @methodCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver expression
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
+  [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
+#---
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in mActualParameterList do
+    @string parameterCppName
+    [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  switch mKind
+  case definedAsCategory :
+    ioInclusionSet += !"method-" + [mMethodBaseType key] + "-" + mMethodName
+    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+      ioGeneratedCode += "callCategoryMethod_" + [mMethodName identifierRepresentation]
+                      + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
+    else
+      ioGeneratedCode += "categoryMethod_" + [mMethodName identifierRepresentation] + " (" + receiverCppName + ", "
+    end
+  case definedAsMember :
+    ioGeneratedCode += receiverCppName + ".method_" + [mMethodName identifierRepresentation] + " ("
+  end
+  for () in parameterCppNameList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if [parameterCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      ioGeneratedCode += compilerCppName ()
+      ioGeneratedCode += " COMMA_"
+    end
+  elsif mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode += ", " + compilerCppName ()
+    ioGeneratedCode += " COMMA_"
+  else
+    ioGeneratedCode += " COMMA_"
+  end
+  ioGeneratedCode += [mInstructionLocation sourceFile] + ") ;\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

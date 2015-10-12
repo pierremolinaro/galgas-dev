@@ -1,0 +1,197 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @errorInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mLocationExpression
+  @semanticExpressionAST mMessageExpression
+  @lstringlist mBuiltVariableList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $error$
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST mReceiverExpression
+    $:$
+    <expression> ?let @semanticExpressionAST mErrorExpression
+    var mBuiltVariableList =@lstringlist.emptyList{}
+    select
+    or
+      $:$
+      repeat
+       $identifier$ ?let builtVariableName
+       mBuiltVariableList += !builtVariableName
+      while
+        $,$
+      end
+    end
+    outInstruction = @errorInstructionAST.new {
+      !instructionLocation
+      !mReceiverExpression
+      !mErrorExpression
+      !mBuiltVariableList
+    }
+  }  
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @errorInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc analyzeErrorOrWarningInstruction
+  ?let @analysisContext inAnalysisContext
+  ?let @semanticExpressionAST inLocationExpression
+  ?let @semanticExpressionAST inMessageExpression
+  ?let @location inErrorLocation
+  ?let @string inErrorOrWarningString
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outLocationExpression
+  !@semanticExpressionForGeneration outMessageExpression
+  !@bool outUseLocationReader
+{
+#--- Analyze location expression
+  let locationType = @unifiedTypeMap-proxy.searchKey {
+    !inAnalysisContext.mSemanticContext.mTypeMap
+    !["location" nowhere]
+  }
+  [inLocationExpression analyzeSemanticExpression
+    !locationType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outLocationExpression
+  ]
+#--- Check location expression type is either @location either has a correct location reader
+  outUseLocationReader = [outLocationExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLocationType
+  if outUseLocationReader then
+    let getterMap = [[outLocationExpression mResultType] mReaderMap]
+    with "location" in getterMap  do
+      if [mArgumentTypeList length] != 0 then
+        error inErrorLocation
+        :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
+        + "' and defines a 'location' reader with arguments; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"      
+      elsif mReturnedType != inAnalysisContext.mPredefinedTypes.mLocationType then
+        error inErrorLocation
+        :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
+        + "' and defines a 'location' reader that returns an '@" + [mReturnedType key]
+        + "' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"      
+      end
+    else
+      error inErrorLocation
+      :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
+      + "' and does not define a 'location' reader; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
+    end
+  end
+#--- Analyze message expression
+  [inMessageExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outMessageExpression
+  ]
+#--- Check message expression type is @string
+  if [outMessageExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+    error inErrorLocation
+    :"the " + inErrorOrWarningString + " message expression type is '@" + [[outMessageExpression mResultType] key] + "'; it should be of the '@string' type"
+  end
+}
+
+#······················································································································*
+
+override method @errorInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#---
+  analyzeErrorOrWarningInstruction (
+    !inAnalysisContext
+    !mLocationExpression
+    !mMessageExpression
+    !mInstructionLocation
+    !"error"
+    !?ioVariableMap
+    ?let locationExpression
+    ?let messageExpression
+    ?let useLocationReader
+  )
+#--- Handle dropped variables
+  var builtVariableCppNameList =@stringlist.emptyList{}
+  for () in mBuiltVariableList do
+    @string varCppName
+    [!?ioVariableMap searchForWriteAccess !mValue ?* ?varCppName ?*]
+    builtVariableCppNameList += !varCppName
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@errorInstructionForGeneration.new {
+    !mInstructionLocation
+    !locationExpression
+    !useLocationReader
+    !messageExpression
+    !builtVariableCppNameList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @errorInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mReceiverExpression
+  @bool mUseLocationReader
+  @semanticExpressionForGeneration mErrorExpression
+  @stringlist mBuiltVariableCppNameList
+}
+
+#·····················································································································*
+
+override method @errorInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver expression
+  @string receiverCppVarName
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
+#--- Receiver expression
+  @string messageCppVarName
+  [mErrorExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName]
+#--- Use location reader ?
+  if mUseLocationReader then
+    let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".reader_location (HERE)) ; // Implicit use of 'location' reader\n"
+    receiverCppVarName = locationVar
+  end
+#--- Generate error instruction
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode += compilerCppName () + "->emitSemanticError (" + receiverCppVarName + ", " + messageCppVarName
+                   + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+#--- Release dropped variables
+  for () in mBuiltVariableCppNameList do
+    [!?ioUnusedVariableCppNameSet removeKey !mValue]
+    ioGeneratedCode += mValue + ".drop () ; // Release error dropped variable\n"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

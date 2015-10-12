@@ -1,0 +1,136 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @typeMethodCallInstructionAST : @semanticInstructionAST {
+  @lstring mTypeName
+  @lstring mMethodName
+  @actualParameterListAST mActualParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $[$
+    let instructionLocation = @location.here
+    $type_name$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
+    $identifier$ ?let @lstring mMethodName
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    $]$
+    outInstruction = @typeMethodCallInstructionAST.new {
+      !instructionLocation
+      !mTypeName
+      !mMethodName
+      !actualParameterList}
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @typeMethodCallInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @typeMethodCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Get type method map for the named type
+  let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+#--- Get type method signature
+  @formalParameterSignature routineSignature
+  @bool hasCompilerArgument
+  [[type mClassMethodMap] searchKey !mMethodName ?routineSignature ?hasCompilerArgument]
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mMethodName
+    !"'" + mMethodName + "' type proc header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let  @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Generate instructions
+  ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration.new {
+    !mTypeName
+    !mMethodName
+    !actualParameterListForGeneration
+    !hasCompilerArgument}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @lstring mTypeName
+  @lstring mMethodName
+  @actualParameterListForGeneration mActualParameterList
+  @bool mHasCompilerArgument
+}
+
+#·····················································································································*
+
+override method @typeMethodCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioGeneratedCode += "{\n"
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in mActualParameterList do
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?let @string parameterCppName]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  ioGeneratedCode += "GALGAS_" + [[mTypeName string] identifierRepresentation]
+                  + "::class_method_" + [[mMethodName string] identifierRepresentation] + " ("
+  for () in parameterCppNameList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    if [parameterCppNameList length] > 0 then
+      ioGeneratedCode += ", "
+    end
+    ioGeneratedCode +=  compilerCppName ()
+  end
+  if mHasCompilerArgument | ([parameterCppNameList length] > 0) then
+    ioGeneratedCode += " COMMA_"
+  end
+  ioGeneratedCode += [[mMethodName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

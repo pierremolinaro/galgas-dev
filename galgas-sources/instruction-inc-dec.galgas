@@ -1,0 +1,349 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+enum @incDecKind {
+  case increment
+  case decrement
+}
+
+#·····················································································································*
+
+class @incDecInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+  @incDecKind mKind
+}
+
+#·····················································································································*
+
+class @incDecNoOVFInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+  @incDecKind mKind
+}
+
+#·····················································································································*
+
+class @selfIncDecInstructionAST : @semanticInstructionAST {
+  @incDecKind mKind
+}
+
+#·····················································································································*
+
+class @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
+  @incDecKind mKind
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $identifier$ ?let mReceiverName
+    var mStructAttributeList =@lstringlist.emptyList{}
+    repeat
+    while
+      $.$
+      $identifier$ ?let attributeName
+      mStructAttributeList += !attributeName
+    end
+    select
+      $++$
+      outInstruction = @incDecInstructionAST.new {
+        ![mReceiverName location]
+        !mReceiverName
+        !mStructAttributeList
+        !.increment
+      }
+    or
+      $&++$
+      outInstruction = @incDecNoOVFInstructionAST.new {
+        ![mReceiverName location]
+        !mReceiverName
+        !mStructAttributeList
+        !.increment
+      }
+    or
+      $&--$
+      outInstruction = @incDecNoOVFInstructionAST.new {
+        ![mReceiverName location]
+        !mReceiverName
+        !mStructAttributeList
+        !.decrement
+      }
+    or
+      $--$
+      outInstruction = @incDecInstructionAST.new {
+        ![mReceiverName location]
+        !mReceiverName
+        !mStructAttributeList
+        !.decrement
+      }
+    end
+  }
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $self$
+    let instructionLocation = @location.here
+    select
+      $++$
+      outInstruction = @selfIncDecInstructionAST.new {
+        !instructionLocation
+        !.increment
+      }
+    or
+      $--$
+      outInstruction = @selfIncDecInstructionAST.new {
+        !instructionLocation
+        !.decrement
+      }
+    or
+      $&++$
+      outInstruction = @selfIncDecNoOVFInstructionAST.new {
+        !instructionLocation
+        !.increment
+      }
+    or
+      $&--$
+      outInstruction = @selfIncDecNoOVFInstructionAST.new {
+        !instructionLocation
+        !.decrement
+      }
+    end
+  }  
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @incDecInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#·····················································································································*
+
+override method @incDecNoOVFInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#·····················································································································*
+
+override method @selfIncDecInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#·····················································································································*
+
+override method @selfIncDecNoOVFInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @incDecInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext unused inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
+  for () in mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey
+      !mValue
+      ?targetType
+    ]
+  end
+#--- Check target type accepts incrementation
+  if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '++', '--' operators"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
+    !mInstructionLocation
+    !targetVariableCppName
+    !targetType
+    !mStructAttributeList
+    !mKind
+  }
+}
+
+#·····················································································································*
+
+override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext unused inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
+  for () in mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey
+      !mValue
+      ?targetType
+    ]
+  end
+#--- Check target type accepts incrementation
+  if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '&++', '&--' operators"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
+    !mInstructionLocation
+    !targetVariableCppName
+    !targetType
+    !mStructAttributeList
+    !mKind
+  }
+}
+
+#·····················································································································*
+
+override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target type accepts incrementation
+  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '&++' and  '&--' operators"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
+    !mInstructionLocation
+    !selfObjectCppName
+    !selfTypeProxy
+    !@lstringlist. emptyList
+    !mKind
+   }
+}
+
+#·····················································································································*
+
+override method @selfIncDecInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target type accepts incrementation
+  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' and  '--' operators"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
+    !mInstructionLocation
+    !selfObjectCppName
+    !selfTypeProxy
+    !@lstringlist. emptyList
+    !mKind
+   }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mReceiverCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstringlist mStructAttributeList
+  @incDecKind mKind
+}
+
+#·····················································································································*
+
+class @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mReceiverCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstringlist mStructAttributeList
+  @incDecKind mKind
+}
+
+#·····················································································································*
+
+override method @incDecInstructionForGeneration generateInstruction
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+#--- Receiver
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
+  @string receiverCppName = mReceiverCppName
+  for () in mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- Invoke incrementation
+  switch mKind
+  case increment :
+    ioGeneratedCode += receiverCppName + ".increment_operation (" + compilerCppName ()
+                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  case decrement :
+    ioGeneratedCode += receiverCppName + ".decrement_operation (" + compilerCppName ()
+                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  end
+}
+
+#·····················································································································*
+
+override method @incDecNoOVFInstructionForGeneration generateInstruction
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+#--- Receiver
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
+  @string receiverCppName = mReceiverCppName
+  for () in mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- Invoke incrementation
+  switch mKind
+  case increment :
+    ioGeneratedCode += receiverCppName + ".increment_operation_no_overflow () ;\n"
+  case decrement :
+    ioGeneratedCode += receiverCppName + ".decrement_operation_no_overflow () ;\n"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

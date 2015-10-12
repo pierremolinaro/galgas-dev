@@ -1,0 +1,302 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @switchExtractedValuesListAST {
+  @lstring mExtractedValueTypeName
+  @lstring mExtractedValueName
+  @bool mMarkedAsUnused
+}
+
+#·····················································································································*
+
+list @switchBranchesAST {
+  @lstringlist mSwitchConstantList
+  @switchExtractedValuesListAST mAssociatedValuesExtraction
+  @semanticInstructionListAST mInstructions
+  @location mEndOfBranch
+}
+
+#·····················································································································*
+
+class @switchInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mSwitchExpression
+  @location mEndOfSwitchExpression
+  @switchBranchesAST mBranches
+  @location mEndOf_switch_instruction
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $switch$
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST switchExpression
+    let endOfSwitchExpression = @location.here
+    var switchBranches =@switchBranchesAST.emptyList{}
+    repeat
+      $case$
+      var constantNameList =@lstringlist.emptyList{}
+      repeat
+        $identifier$ ?let @lstring constantName
+        constantNameList += !constantName
+      while
+        $,$
+      end
+      @switchExtractedValuesListAST associatedValuesExtraction = {}
+      select
+      or
+        $($
+        repeat
+          select
+            $*$
+            associatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+           or
+            @lstring typeName
+            select
+              $type_name$ ?typeName
+            or
+              typeName = ["" nowhere]
+            end
+            @bool constantMarkedAsUnused
+            select
+              constantMarkedAsUnused = false
+            or
+              $unused$
+              constantMarkedAsUnused = true
+            end
+            $identifier$ ?let @lstring constantName
+            associatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
+          end
+        while
+        end
+        $)$
+      end
+      $:$
+      <semantic_instruction_list> ?let @semanticInstructionListAST instructions
+      switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
+    while
+    end
+    $end$
+    let endOfSwitchInstruction = @location.here
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "switch" then
+        error terminator : "the terminator attribute should be '%switch'"
+      end
+    end
+    outInstruction = @switchInstructionAST.new {
+      !instructionLocation
+      !switchExpression
+      !endOfSwitchExpression
+      !switchBranches
+      !endOfSwitchInstruction
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @switchInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in mBranches do
+    [mInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @switchInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze switch expression
+  @semanticExpressionForGeneration switchExpression
+  [mSwitchExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?switchExpression
+  ]
+#--- Check switch expression type is and enum instance
+  if [[switchExpression mResultType] mTypeKindEnum] != @typeKindEnum. enumType then
+    error mEndOfSwitchExpression
+    : "the switch expression type should be an instance of an enumeration type (the '@"
+      + [[switchExpression mResultType] key] + "' type is not an enumeration type)"
+  end
+#--- Enum constant map
+  let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
+  var constantsNamedInSwitchInstruction =@stringset.emptySet{}
+#--- Analyze branches
+  [!?ioVariableMap openOverrideForSelectBlock]
+  var switchBranchesForGeneration =@switchBranchesForGeneration.emptyList{}
+  for () in mBranches do
+    @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
+    @bool firstConstant = true
+    for () in mSwitchConstantList do
+      if [enumConstantMap hasKey ![mValue string]] then
+        if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
+          error mValue
+          :"the '" + mValue + "' constant is already named in this switch instruction"
+        end
+        constantsNamedInSwitchInstruction += ![mValue string]
+        [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapProxyList associatedTypeList]
+        if ([associatedTypeList length] > 0) & ([mAssociatedValuesExtraction length] == 0) then
+          error mValue
+            :"the associated values of '" + mValue + "' constant should be extracted"
+        elsif ([associatedTypeList length] == 0) & ([mAssociatedValuesExtraction length] > 0) then
+          error mValue
+            :"the '" + mValue + "' constant has no associated value"
+        elsif [associatedTypeList length]  != [mAssociatedValuesExtraction length] then
+          error mValue
+            :"the '" + mValue + "' constant requires " + [associatedTypeList length] + "  associated value"
+            + if [associatedTypeList length] > 1 then "s" else "" end
+        else
+          var associatedValueIndex = 0
+          for () in associatedTypeList, () in mAssociatedValuesExtraction do
+            if mExtractedValueTypeName.string != "" then # Explicit type ?
+              if [mType key] != mExtractedValueTypeName.string then
+                error mExtractedValueTypeName : "the required type is '@" + [mType key] + "'"
+              end
+            end
+            if firstConstant & (mExtractedValueName.string != "") then
+              let cppName = "extractedValue_" + mExtractedValueName
+              extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
+              if mMarkedAsUnused then
+                [!?ioVariableMap insertUsedLocalConstant !mExtractedValueName !mType !cppName !cppName]
+              else
+                [!?ioVariableMap insertLocalConstant !mExtractedValueName !mType !cppName !cppName]
+              end
+            end
+            associatedValueIndex ++
+          end%for
+        end
+      else
+        error mValue
+        :"'" + mValue + "' is not a constant of '@" + [[switchExpression mResultType] key] + "' enumeration type"
+      end
+      firstConstant = false
+    end
+    analyzeSemanticInstructionList (
+      !inAnalysisContext
+      !@localConstantList. emptyList
+      !@localInitializedVariableList. emptyList
+      !mInstructions
+      !mEndOfBranch
+      !?ioVariableMap
+      ?let @semanticInstructionListForGeneration instructionList
+    )
+    switchBranchesForGeneration += !mSwitchConstantList !extractedAssociatedValuesForGeneration ![mEndOfBranch locationIndex] !instructionList
+  end
+  [!?ioVariableMap closeOverride !mEndOf_switch_instruction]
+#--- Check all constants have been named
+  let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
+  if [forgottenConstants count] > 0 then
+    @string s = ""
+    for () in forgottenConstants do
+      s += "\n  - " + key
+    end
+    error mEndOf_switch_instruction
+    : "the switch instruction should name all enumeration constants; missing constants are:" + s
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@switchInstructionForGeneration.new {
+    ![switchExpression mResultType]
+    !switchExpression
+    !switchBranchesForGeneration}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @extractedAssociatedValuesForGeneration {
+  @unifiedTypeMap-proxy mType
+  @string mCppName
+  @uint mIndex
+}
+
+#·····················································································································*
+
+list @switchBranchesForGeneration {
+  @lstringlist mSwitchConstantList
+  @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
+  @uint mLocationIndex
+  @semanticInstructionListForGeneration mInstructions
+}
+
+#·····················································································································*
+
+class @switchInstructionForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mEnumType
+  @semanticExpressionForGeneration mSwitchExpression
+  @switchBranchesForGeneration mBranches
+}
+
+#·····················································································································*
+
+override method @switchInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Switch expression
+  [mSwitchExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string switchVar
+  ]
+  ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
+  ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt:\n"
+  ioGeneratedCode += "  break ;\n"
+  for () in mBranches do
+    for () in mSwitchConstantList do
+      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + ":\n"
+    end
+    [!?ioGeneratedCode incIndentation !2]
+    ioGeneratedCode += "{\n"
+    if [mExtractedAssociatedValuesForGeneration length] > 0 then
+      let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation]
+        + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
+      let varPtr = "extractPtr_" + mLocationIndex
+      ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVar + ".unsafePointer ()) ;\n"
+      for () in mExtractedAssociatedValuesForGeneration do
+        ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName
+          + " = " + varPtr + "->mAssociatedValue" + mIndex + " ;\n"
+      end
+    end
+    generateInstructionList (
+      !?ioInclusionSet
+      !mInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+    ioGeneratedCode += "}\n"
+    ioGeneratedCode += "break ;\n"
+    [!?ioGeneratedCode decIndentation !2]
+  end
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
