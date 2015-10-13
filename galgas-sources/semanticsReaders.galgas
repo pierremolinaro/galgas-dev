@@ -20,7 +20,8 @@ proc enterBaseFinalGetterWithoutArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?getterName:let @string inReaderName
   ?returnedTypeName:let @string inReturnedTypeName
-  ?let @bool inHasLexiqueAndLocationArguments {
+  ?let @bool inHasLexiqueAndLocationArguments
+{
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
   [!?ioReaderMap insertOrReplace
@@ -373,12 +374,48 @@ override method @locationPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"locationString" !returnedTypeName:"string" !true)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"locationIndex" !returnedTypeName:"uint" !true)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"file" !returnedTypeName:"string" !true)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"line" !returnedTypeName:"uint" !true)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"column" !returnedTypeName:"uint" !true)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"isNowhere" !returnedTypeName:"bool" !false)
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"locationString"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"locationIndex"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"file"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"line"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"column"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"isNowhere"
+    !returnedTypeName:"bool"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -387,42 +424,258 @@ override method @stringPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"lastCharacter" !returnedTypeName:"char" !true)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"nowhere" !returnedTypeName:"lstring" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"doesEnvironmentVariableExist" !returnedTypeName:"bool" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"length" !returnedTypeName:"uint" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"range" !returnedTypeName:"range" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"nameRepresentation" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"identifierRepresentation" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"HTMLRepresentation" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"utf8Representation" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"utf8RepresentationWithoutDelimiters" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"utf32Representation" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringByTrimmingWhiteSpaces" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"md5" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"decimalUnsignedNumber" !returnedTypeName:"uint" !true)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"isDecimalUnsignedNumber" !returnedTypeName:"bool" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"capacity" !returnedTypeName:"uint" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"isSymbolicLink" !returnedTypeName:"bool" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"fileExists" !returnedTypeName:"bool" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"directoryExists" !returnedTypeName:"bool" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"pathExtension" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"nativePathWithUnixPath" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"unixPathWithNativePath" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"lastPathComponent" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringByDeletingPathExtension" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringByCapitalizingFirstCharacter" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"firstCharacterOrNul" !returnedTypeName:"char" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringByDeletingLastPathComponent" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringByStandardizingPath" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"lowercaseString" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"uppercaseString" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"reversedString" !returnedTypeName:"string" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"currentColumn" !returnedTypeName:"uint" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"system" !returnedTypeName:"sint" !false)
-  enterBaseReaderWithoutArgument (!?outMap !?ioUnifiedTypeMap !"popen" !returnedTypeName:"string" !true)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"inIndex" !returnedTypeName:"char" !true)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"containsCharacter" !"char" !"inCharacter" !returnedTypeName:"bool" !false)
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"lastCharacter"
+    !returnedTypeName:"char"
+    !true
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"nowhere"
+    !returnedTypeName:"lstring"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"doesEnvironmentVariableExist"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"length"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"range"
+    !returnedTypeName:"range"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"nameRepresentation"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"identifierRepresentation"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"HTMLRepresentation"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"utf8Representation"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"utf8RepresentationWithoutDelimiters"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"utf32Representation"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByTrimmingWhiteSpaces"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"md5"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"decimalUnsignedNumber"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"isDecimalUnsignedNumber"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"capacity"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"isSymbolicLink"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"fileExists"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"directoryExists"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"pathExtension"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"nativePathWithUnixPath"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"unixPathWithNativePath"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"lastPathComponent"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByDeletingPathExtension"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByCapitalizingFirstCharacter"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"firstCharacterOrNul"
+    !returnedTypeName:"char"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByDeletingLastPathComponent"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByStandardizingPath"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"lowercaseString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"uppercaseString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"reversedString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"currentColumn"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"system"
+    !returnedTypeName:"sint"
+    !false
+  )
+  enterBaseReaderWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"popen"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"characterAtIndex" !"uint" !"inIndex"
+    !returnedTypeName:"char"
+    !true
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"containsCharacter" !"char" !"inCharacter"
+    !returnedTypeName:"bool"
+    !false
+  )
   enterBaseReaderWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
@@ -434,23 +687,125 @@ override method @stringPredefinedTypeAST getReaderMap
     !returnedTypeName:"bool"
     !false
  )
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"stringByRemovingCharacterAtIndex" !"uint" !"inIndex" !returnedTypeName:"string" !true)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"subStringFromIndex" !"uint" !"inIndex" !returnedTypeName:"string" !false)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"rightSubString" !"uint" !"inLength" !returnedTypeName:"string" !false)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"leftSubString" !"uint" !"inLength" !returnedTypeName:"string" !false)
-  enterBaseReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"subString" !"uint" !"inStart" !"uint" !"inLength" !returnedTypeName:"string" !false)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"absolutePathFromPath" !"string" !"inPath" !returnedTypeName:"string" !false)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"relativePathFromPath" !"string" !"inPath" !returnedTypeName:"string" !false)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"componentsSeparatedByString" !"string" !"inSeparator" !returnedTypeName:"stringlist" !false)
-  enterBaseReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringByLeftPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar" !returnedTypeName:"string" !false)
-  enterBaseReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringByRightPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar" !returnedTypeName:"string" !false)
-  enterBaseReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringByLeftAndRightPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar" !returnedTypeName:"string" !false)
-  enterBaseReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringByReplacingStringByString" !"string" !"inSearchedString" !"string" !"inReplacementString" !returnedTypeName:"string" !true)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"regularFiles" !"bool" !"inRecursiveSearch" !returnedTypeName:"stringlist" !false)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"hiddenFiles" !"bool" !"inRecursiveSearch" !returnedTypeName:"stringlist" !false)
-  enterBaseReaderWithArgument (!?outMap !?ioUnifiedTypeMap !"directories"  !"bool" !"inRecursiveSearch" !returnedTypeName:"stringlist" !false)
-  enterBaseReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"directoriesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList" !returnedTypeName:"stringlist" !false)
-  enterBaseReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"regularFilesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList" !returnedTypeName:"stringlist" !false)
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByRemovingCharacterAtIndex" !"uint" !"inIndex"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"subStringFromIndex" !"uint" !"inIndex"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"rightSubString" !"uint" !"inLength"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"leftSubString" !"uint" !"inLength"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"subString" !"uint" !"inStart" !"uint" !"inLength"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"absolutePathFromPath" !"string" !"inPath"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"relativePathFromPath" !"string" !"inPath"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"componentsSeparatedByString" !"string" !"inSeparator"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByLeftPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByRightPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByLeftAndRightPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringByReplacingStringByString" !"string" !"inSearchedString" !"string" !"inReplacementString"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"regularFiles" !"bool" !"inRecursiveSearch"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"hiddenFiles" !"bool" !"inRecursiveSearch"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"directories"  !"bool" !"inRecursiveSearch"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"directoriesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"regularFilesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList"
+    !returnedTypeName:"stringlist"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -459,26 +814,146 @@ override method @charPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"utf32CharConstantRepresentation" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isalnum" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isalpha" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"iscntrl" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isdigit" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"islower" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isupper" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isxdigit" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isUnicodeLetter" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isUnicodeMark" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isUnicodeNumber" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isUnicodeSeparator" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isUnicodeCommand" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isUnicodePunctuation" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isUnicodeSymbol" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"unicodeName" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"unicodeToLower" !returnedTypeName:"char" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"unicodeToUpper" !returnedTypeName:"char" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"utf32CharConstantRepresentation"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isalnum"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isalpha"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"iscntrl"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isdigit"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"islower"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isupper"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isxdigit"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUnicodeLetter"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUnicodeMark"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUnicodeNumber"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUnicodeSeparator"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUnicodeCommand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUnicodePunctuation"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUnicodeSymbol"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"unicodeName"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"unicodeToLower"
+    !returnedTypeName:"char"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"unicodeToUpper"
+    !returnedTypeName:"char"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -487,11 +962,41 @@ override method @boolPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"cString" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"ocString" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"cString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"ocString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint"
+    !returnedTypeName:"sint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint64"
+    !returnedTypeName:"uint64"
+    !false
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -514,8 +1019,20 @@ override method @uintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"double" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"double"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint"
+    !returnedTypeName:"sint"
+    !true
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -530,20 +1047,98 @@ override method @uintPredefinedTypeAST getReaderMap
     !returnedTypeName:"bigint"
     !false
   )
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"lsbIndex" !returnedTypeName:"uint" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"significantBitCount" !returnedTypeName:"uint" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"oneBitCount" !returnedTypeName:"uint" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"hexString" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"xString" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isUnicodeValueAssigned" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"isInRange" !"range" !"inRange" !returnedTypeName:"bool" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint64"
+    !returnedTypeName:"uint64"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"lsbIndex"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"significantBitCount"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"oneBitCount"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"xString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isUnicodeValueAssigned"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isInRange" !"range" !"inRange"
+    !returnedTypeName:"bool"
+    !false
+  )
 
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canAdd" !"uint" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canSubstract" !"uint" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canMultiply" !"uint" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canDivide" !"uint" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canAdd" !"uint" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canSubstract" !"uint" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canMultiply" !"uint" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canDivide" !"uint" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -552,10 +1147,34 @@ override method @sintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"double" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"double"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint64"
+    !returnedTypeName:"uint64"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint64"
+    !returnedTypeName:"sint64"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint"
+    !returnedTypeName:"uint"
+    !true
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -563,7 +1182,13 @@ override method @sintPredefinedTypeAST getReaderMap
     !returnedTypeName:"bigint"
     !false
   )
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -579,19 +1204,50 @@ override method @sintPredefinedTypeAST getReaderMap
     !false
   )
 
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canAdd" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canSubstract" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canMultiply" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canDivide" !"sint" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canAdd" !"sint" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canSubstract" !"sint" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canMultiply" !"sint" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canDivide" !"sint" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @uint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@getterMap outMap {
+  !@getterMap outMap
+{
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"double" !returnedTypeName:"double" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"double"
+    !returnedTypeName:"double"
+    !false
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -599,18 +1255,83 @@ override method @uint64PredefinedTypeAST getReaderMap
     !returnedTypeName:"bigint"
     !false
   )
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
-  enterBaseFinalReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"uintSlice" !"uint" !"inStartBit" !"uint" !"inBitCount" !returnedTypeName:"uint" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"hexString" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"xString" !returnedTypeName:"string" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint"
+    !returnedTypeName:"sint"
+    !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint64"
+    !returnedTypeName:"sint64"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseFinalReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"uintSlice" !"uint" !"inStartBit" !"uint" !"inBitCount"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexString"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"xString"
+    !returnedTypeName:"string"
+    !false
+  )
 
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canAdd" !"uint64" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canSubstract" !"uint64" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canMultiply" !"uint64" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canDivide" !"uint64" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canAdd" !"uint64" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canSubstract" !"uint64" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canMultiply" !"uint64" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canDivide" !"uint64" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -619,10 +1340,34 @@ override method @sint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"double" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"double"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint64"
+    !returnedTypeName:"uint64"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint"
+    !returnedTypeName:"sint"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint"
+    !returnedTypeName:"uint"
+    !true
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -630,7 +1375,13 @@ override method @sint64PredefinedTypeAST getReaderMap
     !returnedTypeName:"bigint"
     !false
   )
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -646,10 +1397,34 @@ override method @sint64PredefinedTypeAST getReaderMap
     !false
   )
 
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canAdd" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canSubstract" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canMultiply" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"canDivide" !"sint64" !"inOperand" !returnedTypeName:"bool" !false)
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canAdd" !"sint64" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canSubstract" !"sint64" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canMultiply" !"sint64" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"canDivide" !"sint64" !"inOperand"
+    !returnedTypeName:"bool"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -658,24 +1433,132 @@ override method @doublePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"string" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint" !returnedTypeName:"uint" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint" !returnedTypeName:"sint" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64" !returnedTypeName:"uint64" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sint64" !returnedTypeName:"sint64" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"cos" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sin" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"tan" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"log10" !returnedTypeName:"double" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"log2" !returnedTypeName:"double" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"logn" !returnedTypeName:"double" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"exp" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"cosDegree" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sinDegree" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"tanDegree" !returnedTypeName:"double" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"sqrt" !returnedTypeName:"double" !true)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"power" !"double" !"inExponant" !returnedTypeName:"double" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"binaryImage" !returnedTypeName:"uint64" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"string"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint"
+    !returnedTypeName:"uint"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint"
+    !returnedTypeName:"sint"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint64"
+    !returnedTypeName:"uint64"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sint64"
+    !returnedTypeName:"sint64"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"cos"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sin"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"tan"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"log10"
+    !returnedTypeName:"double"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"log2"
+    !returnedTypeName:"double"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"logn"
+    !returnedTypeName:"double"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"exp"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"cosDegree"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sinDegree"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"tanDegree"
+    !returnedTypeName:"double"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"sqrt"
+    !returnedTypeName:"double"
+    !true
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"power" !"double" !"inExponant"
+    !returnedTypeName:"double"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"binaryImage"
+    !returnedTypeName:"uint64"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -684,10 +1567,34 @@ override method @stringsetPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"hasKey" !"string" !"inString" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"count" !returnedTypeName:"uint" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"anyString" !returnedTypeName:"string" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"stringList" !returnedTypeName:"stringlist" !false)
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hasKey" !"string" !"inString"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"count"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"anyString"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"stringList"
+    !returnedTypeName:"stringlist"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -742,6 +1649,13 @@ override method @binarysetPredefinedTypeAST getReaderMap
     !returnedTypeName:"string"
     !false
   )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"graphvizDump"
+    !returnedTypeName:"string"
+    !false
+  )
   enterBaseFinalReaderWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -766,9 +1680,27 @@ override method @binarysetPredefinedTypeAST getReaderMap
     !returnedTypeName:"binaryset"
     !false
   )
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"forAllOnBitIndexAndBeyond" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"existOnBitIndex" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"existOnBitIndexAndBeyond" !"uint" !"inBitIndex" !returnedTypeName:"binaryset" !false)
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"forAllOnBitIndexAndBeyond" !"uint" !"inBitIndex"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"existOnBitIndex" !"uint" !"inBitIndex"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"existOnBitIndexAndBeyond" !"uint" !"inBitIndex"
+    !returnedTypeName:"binaryset"
+    !false
+  )
   enterBaseFinalReaderWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -787,30 +1719,174 @@ override method @binarysetPredefinedTypeAST getReaderMap
     !returnedTypeName:"bigint"
     !true
   )
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"compressedValueCount" !returnedTypeName:"uint64" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"uint64ValueList" !"uint" !"inBitCount" !returnedTypeName:"uint64list" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"stringValueList" !"uint" !"inBitCount" !returnedTypeName:"stringlist" !false)
-  enterBaseFinalReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringValueListWithNameList" !"uint" !"inBitCount" !"stringlist" !"inNameList" !returnedTypeName:"stringlist" !true)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"predicateStringValue" !returnedTypeName:"string" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"compressedStringValueList" !"uint" !"inBitCount" !returnedTypeName:"stringlist" !true)
-  enterBaseFinalReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"swap10" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWith3Arguments (!?outMap !?ioUnifiedTypeMap !"swap021" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWith3Arguments (!?outMap !?ioUnifiedTypeMap !"swap102" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWith3Arguments (!?outMap !?ioUnifiedTypeMap !"swap120" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWith3Arguments (!?outMap !?ioUnifiedTypeMap !"swap201" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWith3Arguments (!?outMap !?ioUnifiedTypeMap !"swap210" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"transitiveClosure" !"uint" !"inBitCount" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"implies" !"binaryset" !"inOperand" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"equalTo" !"binaryset" !"inOperand" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"notEqualTo" !"binaryset" !"inOperand" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"lowerOrEqualTo" !"binaryset" !"inOperand" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"greaterOrEqualTo" !"binaryset" !"inOperand" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"strictGreaterThan" !"binaryset" !"inOperand" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"strictLowerThan" !"binaryset" !"inOperand" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"binarySetByTranslatingFromIndex" !"uint" !"inFirstIndexToTranslate" !"uint" !"inTranslation" !returnedTypeName:"binaryset" !false)
-  enterBaseFinalReaderWith3Arguments (!?outMap !?ioUnifiedTypeMap !"containsValue" !"uint64" !"inValue" !"uint" !"inFirstBit" !"uint" !"inBitCount" !returnedTypeName:"bool" !false)
-  enterBaseFinalReaderWith2Arguments (!?outMap !?ioUnifiedTypeMap !"existsOnBitRange" !"uint" !"inFirstBit" !"uint" !"inBitCount" !returnedTypeName:"binaryset" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"compressedValueCount"
+    !returnedTypeName:"uint64"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"uint64ValueList" !"uint" !"inBitCount"
+    !returnedTypeName:"uint64list"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"stringValueList" !"uint" !"inBitCount"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseFinalReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"stringValueListWithNameList" !"uint" !"inBitCount" !"stringlist" !"inNameList"
+    !returnedTypeName:"stringlist"
+    !true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"predicateStringValue"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"compressedStringValueList" !"uint" !"inBitCount"
+    !returnedTypeName:"stringlist"
+    !true
+  )
+  enterBaseFinalReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"swap10" !"uint" !"inBitCount1" !"uint" !"inBitCount2"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWith3Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"swap021" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWith3Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"swap102" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWith3Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"swap120" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWith3Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"swap201" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWith3Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"swap210" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"transitiveClosure" !"uint" !"inBitCount"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"implies" !"binaryset" !"inOperand"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"equalTo" !"binaryset" !"inOperand"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"notEqualTo" !"binaryset" !"inOperand"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"lowerOrEqualTo" !"binaryset" !"inOperand"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"greaterOrEqualTo" !"binaryset" !"inOperand"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"strictGreaterThan" !"binaryset" !"inOperand"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"strictLowerThan" !"binaryset" !"inOperand"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"binarySetByTranslatingFromIndex" !"uint" !"inFirstIndexToTranslate" !"uint" !"inTranslation"
+    !returnedTypeName:"binaryset"
+    !false
+  )
+  enterBaseFinalReaderWith3Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"containsValue" !"uint64" !"inValue" !"uint" !"inFirstBit" !"uint" !"inBitCount"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalReaderWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"existsOnBitRange" !"uint" !"inFirstBit" !"uint" !"inBitCount"
+    !returnedTypeName:"binaryset"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -819,9 +1895,27 @@ override method @typePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"name" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"hasSuperclass" !returnedTypeName:"bool" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"superclass" !returnedTypeName:"type" !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"name"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hasSuperclass"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"superclass"
+    !returnedTypeName:"type"
+    !true
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -830,8 +1924,20 @@ override method @dataPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"length" !returnedTypeName:"uint" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"cStringRepresentation" !returnedTypeName:"string" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"length"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"cStringRepresentation"
+    !returnedTypeName:"string"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -840,10 +1946,31 @@ override method @functionPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"name" !returnedTypeName:"string" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"resultType" !returnedTypeName:"type" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"formalParameterTypeList" !returnedTypeName:"typelist" !false)
-  enterBaseFinalReaderWith2Arguments ( !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"inParameters" !"location" !"inErrorLocation" !returnedTypeName:"object" !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"name"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"resultType"
+    !returnedTypeName:"type"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"formalParameterTypeList"
+    !returnedTypeName:"typelist"
+    !false
+  )
+  enterBaseFinalReaderWith2Arguments ( !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"inParameters" !"location" !"inErrorLocation"
+    !returnedTypeName:"object"
+    !true
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -852,8 +1979,20 @@ override method @objectPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"objectStaticType" !returnedTypeName:"type" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"objectDynamicType" !returnedTypeName:"type" !false)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"objectStaticType"
+    !returnedTypeName:"type"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"objectDynamicType"
+    !returnedTypeName:"type"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -862,19 +2001,97 @@ override method @filewrapperPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@getterMap outMap {
   commonReaderMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"allTextFilePathes" !returnedTypeName:"stringlist" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"allBinaryFilePathes" !returnedTypeName:"stringlist" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"allDirectoryPathes" !returnedTypeName:"stringlist" !false)
-  enterBaseFinalGetterWithoutArgument (!?outMap !?ioUnifiedTypeMap !getterName:"currentDirectory" !returnedTypeName:"string" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"allFilePathesWithExtension" !"string" !"inExtension" !returnedTypeName:"stringlist" !false)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"directoryExistsAtPath" !"string" !"inPath" !returnedTypeName:"bool" !true)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"fileExistsAtPath" !"string" !"inPath" !returnedTypeName:"bool" !true)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"textFileContentsAtPath" !"string" !"inPath" !returnedTypeName:"string" !true)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"binaryFileContentsAtPath" !"string" !"inPath" !returnedTypeName:"data" !true)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"absolutePathForPath" !"string" !"inPath" !returnedTypeName:"string" !true)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"directoriesAtPath" !"string" !"inPath" !returnedTypeName:"stringlist" !true)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"binaryFilesAtPath" !"string" !"inPath" !returnedTypeName:"stringlist" !true)
-  enterBaseFinalReaderWithArgument (!?outMap !?ioUnifiedTypeMap !getterName:"textFilesAtPath" !"string" !"inPath" !returnedTypeName:"stringlist" !true)
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"allTextFilePathes"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"allBinaryFilePathes"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"allDirectoryPathes"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"currentDirectory"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"allFilePathesWithExtension" !"string" !"inExtension"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"directoryExistsAtPath" !"string" !"inPath"
+    !returnedTypeName:"bool"
+    !true
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"fileExistsAtPath" !"string" !"inPath"
+    !returnedTypeName:"bool"
+    !true
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"textFileContentsAtPath" !"string" !"inPath"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"binaryFileContentsAtPath" !"string" !"inPath"
+    !returnedTypeName:"data"
+    !true
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"absolutePathForPath" !"string" !"inPath"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"directoriesAtPath" !"string" !"inPath"
+    !returnedTypeName:"stringlist"
+    !true
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"binaryFilesAtPath" !"string" !"inPath"
+    !returnedTypeName:"stringlist"
+    !true
+  )
+  enterBaseFinalReaderWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"textFilesAtPath" !"string" !"inPath"
+    !returnedTypeName:"stringlist"
+    !true
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

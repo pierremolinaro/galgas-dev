@@ -796,6 +796,16 @@ GALGAS_string GALGAS_binaryset::reader_graphviz (const GALGAS_stringlist & inBit
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_binaryset::reader_graphvizDump (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mBDD.graphvizRepresentation ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_binaryset GALGAS_binaryset::reader_swap_31__30_ (const GALGAS_uint & inBitCount1,
                                                         const GALGAS_uint & inBitCount2
                                                         COMMA_UNUSED_LOCATION_ARGS) const {
