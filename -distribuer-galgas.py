@@ -210,7 +210,7 @@ runCommand (["cp", DIR + "/galgas/AUTHORS", DIR + "/COCOA-TOOL"])
 runCommand (["cp", DIR + "/galgas/COPYING", DIR + "/COCOA-TOOL"])
 runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app/Contents/Resources/galgas", DIR + "/COCOA-TOOL/galgas"])
 runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app/Contents/Resources/galgas-debug", DIR + "/COCOA-TOOL/galgas-debug"])
-runCommand (["hdiutil", "create", "-srcfolder", DIR + "/COCOA-TOOL", DIR + "/cocoa-tool.dmg"])
+runCommand (["hdiutil", "create", "-srcfolder", DIR + "/COCOA-TOOL", DIR + "/galgas-tool.dmg"])
 runCommand (["rm", "-fr", DIR + "/COCOA-TOOL"])
 #-------------------- Supprimer les repertoires sources
 runCommand (["rm", "-fr", DIR + "/galgas"])
