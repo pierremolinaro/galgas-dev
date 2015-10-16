@@ -14,9 +14,7 @@ class @structDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
-  rule <declaration>
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $struct$
     $type_name$ ?let @lstring structTypeName indexing structDefinition
     ${$
@@ -51,7 +49,8 @@ override method @structDeclarationAST enterDeclarationInGraph
   let key = @lstring.new {!"@" + mStructTypeName ![mStructTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
+    let propertyKey = @lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
   end
 }
 
