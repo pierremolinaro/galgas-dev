@@ -25,9 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-  rule <declaration>
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $enum$
     $type_name$ ?let @lstring mEnumTypeName indexing enumDefinition
     ${$
@@ -76,9 +74,27 @@ override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mEnumTypeName ![mEnumTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+#--- There is a circular reference if all constant names current type in associated values
+  var circularReference = true
+  for () in mConstantList do
+    var namesCurrentType = false
+    for () in mAssociatedValueDefinitionList do
+      let propertyKey = @lstring.new {!"@" + mValue0 ![mValue0 location]}
+      if propertyKey.string == key.string then
+        namesCurrentType = true
+      end
+    end
+    if not namesCurrentType then
+      circularReference = false
+    end
+  end
+#--- Enter dependances, and only circular reference
   for () in mConstantList do
     for () in mAssociatedValueDefinitionList do
-      [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mValue0 ![mValue0 location]}]
+      let propertyKey = @lstring.new {!"@" + mValue0 ![mValue0 location]}
+      if (propertyKey.string != key.string) || circularReference then
+        [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+      end
     end
   end
 }

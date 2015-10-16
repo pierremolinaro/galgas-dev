@@ -28,20 +28,24 @@ Plusieurs types énumérés peuvent définir des constantes de même nom.
 Chaque constante définit un constructeur de même nom. On peut ainsi écrire :
 
 \begin{galgas}
-@feuTricolore feu = [@feuTricolore vert] ;
+@feuTricolore feu = @feuTricolore.vert
 \end{galgas}
 
-Ou encore :
+L'annotation de type peut être omise :
 
 \begin{galgas}
-@feuTricolore feu [vert] ;
+@feuTricolore feu = .vert
+\end{galgas}
+
+\begin{galgas}
+var feu = @feuTricolore.vert
 \end{galgas}
 
 \section{Comparaison}
 
 Un type enuméré accpete les six opérateurs de comparaison (\ggs+==+, \ggs+!=+, \ggs+<+, \ggs+<=+, \ggs+>+ et \ggs+>+). L'ordre est celui de la déclaration, c'est-à-dire que :
 \begin{galgas}
-  [@feuTricolore vert] < [@feuTricolore orange] < [@feuTricolore rouge]
+  @feuTricolore.vert < @feuTricolore.orange < @feuTricolore.rouge
 \end{galgas}
 
 
@@ -49,7 +53,7 @@ Un type enuméré accpete les six opérateurs de comparaison (\ggs+==+, \ggs+!=+
 
 Il y a deux façons de tester une valeur d'un type énuméré. La première consiste à comparer avec une valeur obtenue par un constructeur, par exemple :
 \begin{galgas}
-  if feu == [@feuTricolore orange] then ...
+  if feu == @feuTricolore.orange then ...
 \end{galgas}
 
 La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \texttt{is<Constante>} (le préfixe \texttt{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \ggs+@bool+ qui est vrai si le récepteur a la valeur correspondante :
