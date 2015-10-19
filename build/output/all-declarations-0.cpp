@@ -19,8571 +19,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cTokenFor_galgas_32_Scanner::cTokenFor_galgas_32_Scanner (void) :
-mLexicalAttribute_bigintValue (),
-mLexicalAttribute_charValue (),
-mLexicalAttribute_floatValue (),
-mLexicalAttribute_identifierString (),
-mLexicalAttribute_sint_33__32_value (),
-mLexicalAttribute_sint_36__34_value (),
-mLexicalAttribute_tokenString (),
-mLexicalAttribute_uint_33__32_value (),
-mLexicalAttribute_uint_36__34_value () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_Lexique_galgas_32_Scanner::C_Lexique_galgas_32_Scanner (C_Compiler * inCallerCompiler,
-                const C_String & inDependencyFileExtension,
-                const C_String & inDependencyFilePath,
-                const C_String & inSourceFileName
-                COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_Lexique_galgas_32_Scanner::C_Lexique_galgas_32_Scanner (C_Compiler * inCallerCompiler,
-                const C_String & inSourceString,
-                const C_String & inStringForError
-                COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                 I N D E X I N G    D I R E C T O R Y                                                                *
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_String C_Lexique_galgas_32_Scanner::indexingDirectory (void) const {
-  return "../build/indexes" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                        Lexical error message list                                                                   *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_ASCIIcodeTooLargeError [] = {
-  TO_UNICODE ('A'),
-  TO_UNICODE ('S'),
-  TO_UNICODE ('C'),
-  TO_UNICODE ('I'),
-  TO_UNICODE ('I'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('>'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('2'),
-  TO_UNICODE ('5'),
-  TO_UNICODE ('5'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge [] = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_floatNumberConversionError [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_incorrectCharConstant [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_incorrectHTMLescapeSequence [] = {
-  TO_UNICODE ('I'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('H'),
-  TO_UNICODE ('T'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('L'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (','),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (';'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_incorrectStringEnd [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\"'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_incorrectTypeNameError [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (','),
-  TO_UNICODE (' '),
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('w'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('@'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_incorrect_terminal_end [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('$'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_incorrect_terminal_start [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_internalError [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 [] = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('u'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('y'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('y'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 [] = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('U'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('y'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('y'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_obsoleteCharConstruction [] = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (':'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('w'),
-  TO_UNICODE (','),
-  TO_UNICODE (' '),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('U'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_obsoleteStringConstruction [] = {
-  TO_UNICODE ('\\'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('y'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (':'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('w'),
-  TO_UNICODE (','),
-  TO_UNICODE (' '),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\\'),
-  TO_UNICODE ('U'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('U'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-static const utf32 gLexicalMessage_galgas_32_Scanner_unknownHTMLescapeSequence [] = {
-  TO_UNICODE ('I'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (';'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('H'),
-  TO_UNICODE ('T'),
-  TO_UNICODE ('M'),
-  TO_UNICODE ('L'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//          Syntax error messages, for every terminal symbol                                                           *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- Syntax error message for terminal '$identifier$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_identifier [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$literal_double$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_double [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$unsigned_literal_integer$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('3'),
-  TO_UNICODE ('2'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$signed_literal_integer$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('3'),
-  TO_UNICODE ('2'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$unsigned_literal_integer64$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer_36__34_ [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('6'),
-  TO_UNICODE ('4'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$signed_literal_integer64$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer_36__34_ [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('6'),
-  TO_UNICODE ('4'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$bigint$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_bigint [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$.$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$.=$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2E__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$...$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2E__2E__2E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$..<$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2E__2E__3C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$type_name$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_type_5F_name [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('('),
-  TO_UNICODE ('@'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (')'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$literal_char$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_char [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$terminal$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_terminal [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('('),
-  TO_UNICODE ('$'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('$'),
-  TO_UNICODE (')'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$??$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3F__3F_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (':'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$?$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3F_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (':'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$?!$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3F__21_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (':'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$!$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__21_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (':'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$!?$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__21__3F_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('\?'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (':'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$<$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$<->$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3C__2D__3E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$<=$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3C__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$<<$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3C__3C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$non_terminal_symbol$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_non_5F_terminal_5F_symbol [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('<'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('>'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$literal_string$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_string [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\"'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE ('\"'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$comment$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_comment [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$commentMark$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_commentMark [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$abstract$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_abstract [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$after$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_after [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$array$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_array [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$before$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_before [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$between$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_between [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$block$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_block [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$case$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_case [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$cast$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_cast [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$class$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_class [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$const$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_const [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$constructor$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_constructor [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$default$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_default [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$do$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_do [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$drop$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_drop [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$else$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_else [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$elsif$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_elsif [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$end$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_end [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$enum$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_enum [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$error$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_error [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$extension$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_extension [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$extends$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_extends [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$extern$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_extern [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$false$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_false [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$feature$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_feature [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$filewrapper$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_filewrapper [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$for$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_for [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$foreach$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_foreach [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$func$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_func [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$function$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_function [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$getter$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_getter [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$grammar$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_grammar [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$graph$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_graph [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$gui$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_gui [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$here$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_here [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$if$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_if [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$import$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_import [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$in$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_in [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$index$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_index [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$indexing$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_indexing [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$insert$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_insert [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$is$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_is [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$label$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_label [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$let$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_let [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$lexique$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_lexique [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$list$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_list [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$listmap$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_listmap [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$local$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_local [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$log$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_log [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$loop$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_loop [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$map$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_map [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$match$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_match [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$message$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_message [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$method$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_method [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$mod$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_mod [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$modifier$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_modifier [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$nonterminal$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_nonterminal [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$not$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_not [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$on$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_on [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$once$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_once [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$operator$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_operator [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$option$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_option [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$or$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_or [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$override$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_override [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$parse$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_parse [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$private$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_private [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$proc$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_proc [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$project$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_project [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('j'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$remove$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_remove [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$replace$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_replace [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$repeat$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_repeat [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$rewind$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_rewind [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$root$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_root [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$routine$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_routine [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$rule$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_rule [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$search$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_search [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$select$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_select [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$self$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_self [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$selfcopy$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_selfcopy [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$semantics$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_semantics [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$send$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_send [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$setter$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_setter [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$sortedlist$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_sortedlist [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$state$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_state [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$struct$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_struct [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$style$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_style [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$switch$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_switch [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$syntax$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_syntax [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$tag$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_tag [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$template$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_template [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$then$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_then [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$true$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_true [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$sharedmap$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_sharedmap [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$unused$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_unused [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$var$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_var [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$warning$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_warning [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$when$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_when [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$while$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_while [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$with$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner_with [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('k'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$*$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2A_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('*'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$|$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('|'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$,$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (','),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$+$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$:>$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3A__3E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (':'),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$>$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$;$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (';'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$:$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3A_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (':'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$::$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3A__3A_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (':'),
-  TO_UNICODE (':'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$&&$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__26_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$-$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$($' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__28_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('('),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$)$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__29_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (')'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$->$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2D__3E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$==$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3D__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('='),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$:=$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3A__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (':'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$||$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7C__7C_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('|'),
-  TO_UNICODE ('|'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$&+$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$&-$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$&*$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2A_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('*'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$[$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__5B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('['),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$]$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__5D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE (']'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$+=$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2B__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$/$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2F_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('/'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$!=$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__21__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('!'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$>=$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3E__3D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('='),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$&$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '${$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('{'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$}$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('}'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$`$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__60_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('`'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$^$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__5E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('^'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$>>$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__3E__3E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('>'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$~$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__7E_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('~'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$--$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2D__2D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$++$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__2B__2B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$&--$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2D__2D_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$&++$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2B__2B_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Syntax error message for terminal '$&/$' :
-static const utf32 gSyntaxErrorMessage_galgas_32_Scanner__26__2F_ [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('\''),
-  TO_UNICODE ('&'),
-  TO_UNICODE ('/'),
-  TO_UNICODE ('\''),
-  TO_UNICODE (' '),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                getMessageForTerminal                                                                                *
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_String C_Lexique_galgas_32_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [164] = {kEndOfSourceLexicalErrorMessage,
-    gSyntaxErrorMessage_galgas_32_Scanner_identifier,
-    gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_double,
-    gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer,
-    gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer,
-    gSyntaxErrorMessage_galgas_32_Scanner_unsigned_5F_literal_5F_integer_36__34_,
-    gSyntaxErrorMessage_galgas_32_Scanner_signed_5F_literal_5F_integer_36__34_,
-    gSyntaxErrorMessage_galgas_32_Scanner_bigint,
-    gSyntaxErrorMessage_galgas_32_Scanner__2E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2E__3D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2E__2E__2E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2E__2E__3C_,
-    gSyntaxErrorMessage_galgas_32_Scanner_type_5F_name,
-    gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_char,
-    gSyntaxErrorMessage_galgas_32_Scanner_terminal,
-    gSyntaxErrorMessage_galgas_32_Scanner__3F__3F_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3F_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3F__21_,
-    gSyntaxErrorMessage_galgas_32_Scanner__21_,
-    gSyntaxErrorMessage_galgas_32_Scanner__21__3F_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3C_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3C__2D__3E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3C__3D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3C__3C_,
-    gSyntaxErrorMessage_galgas_32_Scanner_non_5F_terminal_5F_symbol,
-    gSyntaxErrorMessage_galgas_32_Scanner_literal_5F_string,
-    gSyntaxErrorMessage_galgas_32_Scanner_comment,
-    gSyntaxErrorMessage_galgas_32_Scanner_commentMark,
-    gSyntaxErrorMessage_galgas_32_Scanner_abstract,
-    gSyntaxErrorMessage_galgas_32_Scanner_after,
-    gSyntaxErrorMessage_galgas_32_Scanner_array,
-    gSyntaxErrorMessage_galgas_32_Scanner_before,
-    gSyntaxErrorMessage_galgas_32_Scanner_between,
-    gSyntaxErrorMessage_galgas_32_Scanner_block,
-    gSyntaxErrorMessage_galgas_32_Scanner_case,
-    gSyntaxErrorMessage_galgas_32_Scanner_cast,
-    gSyntaxErrorMessage_galgas_32_Scanner_class,
-    gSyntaxErrorMessage_galgas_32_Scanner_const,
-    gSyntaxErrorMessage_galgas_32_Scanner_constructor,
-    gSyntaxErrorMessage_galgas_32_Scanner_default,
-    gSyntaxErrorMessage_galgas_32_Scanner_do,
-    gSyntaxErrorMessage_galgas_32_Scanner_drop,
-    gSyntaxErrorMessage_galgas_32_Scanner_else,
-    gSyntaxErrorMessage_galgas_32_Scanner_elsif,
-    gSyntaxErrorMessage_galgas_32_Scanner_end,
-    gSyntaxErrorMessage_galgas_32_Scanner_enum,
-    gSyntaxErrorMessage_galgas_32_Scanner_error,
-    gSyntaxErrorMessage_galgas_32_Scanner_extension,
-    gSyntaxErrorMessage_galgas_32_Scanner_extends,
-    gSyntaxErrorMessage_galgas_32_Scanner_extern,
-    gSyntaxErrorMessage_galgas_32_Scanner_false,
-    gSyntaxErrorMessage_galgas_32_Scanner_feature,
-    gSyntaxErrorMessage_galgas_32_Scanner_filewrapper,
-    gSyntaxErrorMessage_galgas_32_Scanner_for,
-    gSyntaxErrorMessage_galgas_32_Scanner_foreach,
-    gSyntaxErrorMessage_galgas_32_Scanner_func,
-    gSyntaxErrorMessage_galgas_32_Scanner_function,
-    gSyntaxErrorMessage_galgas_32_Scanner_getter,
-    gSyntaxErrorMessage_galgas_32_Scanner_grammar,
-    gSyntaxErrorMessage_galgas_32_Scanner_graph,
-    gSyntaxErrorMessage_galgas_32_Scanner_gui,
-    gSyntaxErrorMessage_galgas_32_Scanner_here,
-    gSyntaxErrorMessage_galgas_32_Scanner_if,
-    gSyntaxErrorMessage_galgas_32_Scanner_import,
-    gSyntaxErrorMessage_galgas_32_Scanner_in,
-    gSyntaxErrorMessage_galgas_32_Scanner_index,
-    gSyntaxErrorMessage_galgas_32_Scanner_indexing,
-    gSyntaxErrorMessage_galgas_32_Scanner_insert,
-    gSyntaxErrorMessage_galgas_32_Scanner_is,
-    gSyntaxErrorMessage_galgas_32_Scanner_label,
-    gSyntaxErrorMessage_galgas_32_Scanner_let,
-    gSyntaxErrorMessage_galgas_32_Scanner_lexique,
-    gSyntaxErrorMessage_galgas_32_Scanner_list,
-    gSyntaxErrorMessage_galgas_32_Scanner_listmap,
-    gSyntaxErrorMessage_galgas_32_Scanner_local,
-    gSyntaxErrorMessage_galgas_32_Scanner_log,
-    gSyntaxErrorMessage_galgas_32_Scanner_loop,
-    gSyntaxErrorMessage_galgas_32_Scanner_map,
-    gSyntaxErrorMessage_galgas_32_Scanner_match,
-    gSyntaxErrorMessage_galgas_32_Scanner_message,
-    gSyntaxErrorMessage_galgas_32_Scanner_method,
-    gSyntaxErrorMessage_galgas_32_Scanner_mod,
-    gSyntaxErrorMessage_galgas_32_Scanner_modifier,
-    gSyntaxErrorMessage_galgas_32_Scanner_nonterminal,
-    gSyntaxErrorMessage_galgas_32_Scanner_not,
-    gSyntaxErrorMessage_galgas_32_Scanner_on,
-    gSyntaxErrorMessage_galgas_32_Scanner_once,
-    gSyntaxErrorMessage_galgas_32_Scanner_operator,
-    gSyntaxErrorMessage_galgas_32_Scanner_option,
-    gSyntaxErrorMessage_galgas_32_Scanner_or,
-    gSyntaxErrorMessage_galgas_32_Scanner_override,
-    gSyntaxErrorMessage_galgas_32_Scanner_parse,
-    gSyntaxErrorMessage_galgas_32_Scanner_private,
-    gSyntaxErrorMessage_galgas_32_Scanner_proc,
-    gSyntaxErrorMessage_galgas_32_Scanner_project,
-    gSyntaxErrorMessage_galgas_32_Scanner_remove,
-    gSyntaxErrorMessage_galgas_32_Scanner_replace,
-    gSyntaxErrorMessage_galgas_32_Scanner_repeat,
-    gSyntaxErrorMessage_galgas_32_Scanner_rewind,
-    gSyntaxErrorMessage_galgas_32_Scanner_root,
-    gSyntaxErrorMessage_galgas_32_Scanner_routine,
-    gSyntaxErrorMessage_galgas_32_Scanner_rule,
-    gSyntaxErrorMessage_galgas_32_Scanner_search,
-    gSyntaxErrorMessage_galgas_32_Scanner_select,
-    gSyntaxErrorMessage_galgas_32_Scanner_self,
-    gSyntaxErrorMessage_galgas_32_Scanner_selfcopy,
-    gSyntaxErrorMessage_galgas_32_Scanner_semantics,
-    gSyntaxErrorMessage_galgas_32_Scanner_send,
-    gSyntaxErrorMessage_galgas_32_Scanner_setter,
-    gSyntaxErrorMessage_galgas_32_Scanner_sortedlist,
-    gSyntaxErrorMessage_galgas_32_Scanner_state,
-    gSyntaxErrorMessage_galgas_32_Scanner_struct,
-    gSyntaxErrorMessage_galgas_32_Scanner_style,
-    gSyntaxErrorMessage_galgas_32_Scanner_switch,
-    gSyntaxErrorMessage_galgas_32_Scanner_syntax,
-    gSyntaxErrorMessage_galgas_32_Scanner_tag,
-    gSyntaxErrorMessage_galgas_32_Scanner_template,
-    gSyntaxErrorMessage_galgas_32_Scanner_then,
-    gSyntaxErrorMessage_galgas_32_Scanner_true,
-    gSyntaxErrorMessage_galgas_32_Scanner_sharedmap,
-    gSyntaxErrorMessage_galgas_32_Scanner_unused,
-    gSyntaxErrorMessage_galgas_32_Scanner_var,
-    gSyntaxErrorMessage_galgas_32_Scanner_warning,
-    gSyntaxErrorMessage_galgas_32_Scanner_when,
-    gSyntaxErrorMessage_galgas_32_Scanner_while,
-    gSyntaxErrorMessage_galgas_32_Scanner_with,
-    gSyntaxErrorMessage_galgas_32_Scanner__2A_,
-    gSyntaxErrorMessage_galgas_32_Scanner__7C_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2C_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2B_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3A__3E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3B_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3A_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3A__3A_,
-    gSyntaxErrorMessage_galgas_32_Scanner__26__26_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__28_,
-    gSyntaxErrorMessage_galgas_32_Scanner__29_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2D__3E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3D__3D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3A__3D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__7C__7C_,
-    gSyntaxErrorMessage_galgas_32_Scanner__26__2B_,
-    gSyntaxErrorMessage_galgas_32_Scanner__26__2D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__26__2A_,
-    gSyntaxErrorMessage_galgas_32_Scanner__5B_,
-    gSyntaxErrorMessage_galgas_32_Scanner__5D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2B__3D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2F_,
-    gSyntaxErrorMessage_galgas_32_Scanner__21__3D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3E__3D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__26_,
-    gSyntaxErrorMessage_galgas_32_Scanner__7B_,
-    gSyntaxErrorMessage_galgas_32_Scanner__7D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__60_,
-    gSyntaxErrorMessage_galgas_32_Scanner__5E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__3E__3E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__7E_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2D__2D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__2B__2B_,
-    gSyntaxErrorMessage_galgas_32_Scanner__26__2D__2D_,
-    gSyntaxErrorMessage_galgas_32_Scanner__26__2B__2B_,
-    gSyntaxErrorMessage_galgas_32_Scanner__26__2F_} ;
-  return syntaxErrorMessageArray [inTerminalIndex] ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                      U N I C O D E    S T R I N G S                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- Unicode string for '$_21__3D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__21__3D_ [] = {
-  TO_UNICODE ('!'),
-  TO_UNICODE ('='),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_26_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__26_ [] = {
-  TO_UNICODE ('&'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_26__26_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__26__26_ [] = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('&'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_26__2A_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__26__2A_ [] = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('*'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_26__2B_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__26__2B_ [] = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('+'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_26__2B__2B_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__26__2B__2B_ [] = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('+'),
-  TO_UNICODE ('+'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_26__2D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__26__2D_ [] = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('-'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_26__2D__2D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__26__2D__2D_ [] = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('-'),
-  TO_UNICODE ('-'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_26__2F_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__26__2F_ [] = {
-  TO_UNICODE ('&'),
-  TO_UNICODE ('/'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_28_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__28_ [] = {
-  TO_UNICODE ('('),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_29_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__29_ [] = {
-  TO_UNICODE (')'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2A_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2A_ [] = {
-  TO_UNICODE ('*'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2B_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2B_ [] = {
-  TO_UNICODE ('+'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2B__2B_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2B__2B_ [] = {
-  TO_UNICODE ('+'),
-  TO_UNICODE ('+'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2B__3D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2B__3D_ [] = {
-  TO_UNICODE ('+'),
-  TO_UNICODE ('='),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2C_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2C_ [] = {
-  TO_UNICODE (','),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2D_ [] = {
-  TO_UNICODE ('-'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2D__2D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2D__2D_ [] = {
-  TO_UNICODE ('-'),
-  TO_UNICODE ('-'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2D__3E_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2D__3E_ [] = {
-  TO_UNICODE ('-'),
-  TO_UNICODE ('>'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2E__2E_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2E__2E_ [] = {
-  TO_UNICODE ('.'),
-  TO_UNICODE ('.'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2E__3C_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2E__3C_ [] = {
-  TO_UNICODE ('.'),
-  TO_UNICODE ('<'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_2F_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__2F_ [] = {
-  TO_UNICODE ('/'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_30_x$'
-static const utf32 kUnicodeString_galgas_32_Scanner__30_x [] = {
-  TO_UNICODE ('0'),
-  TO_UNICODE ('x'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3A_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3A_ [] = {
-  TO_UNICODE (':'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3A__3A_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3A__3A_ [] = {
-  TO_UNICODE (':'),
-  TO_UNICODE (':'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3A__3D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3A__3D_ [] = {
-  TO_UNICODE (':'),
-  TO_UNICODE ('='),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3A__3E_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3A__3E_ [] = {
-  TO_UNICODE (':'),
-  TO_UNICODE ('>'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3B_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3B_ [] = {
-  TO_UNICODE (';'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3D_ [] = {
-  TO_UNICODE ('='),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3D__3D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3D__3D_ [] = {
-  TO_UNICODE ('='),
-  TO_UNICODE ('='),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3E_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3E_ [] = {
-  TO_UNICODE ('>'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3E__3D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3E__3D_ [] = {
-  TO_UNICODE ('>'),
-  TO_UNICODE ('='),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_3E__3E_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__3E__3E_ [] = {
-  TO_UNICODE ('>'),
-  TO_UNICODE ('>'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$LS$'
-static const utf32 kUnicodeString_galgas_32_Scanner_LS [] = {
-  TO_UNICODE ('L'),
-  TO_UNICODE ('S'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_5B_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__5B_ [] = {
-  TO_UNICODE ('['),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_5D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__5D_ [] = {
-  TO_UNICODE (']'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_5E_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__5E_ [] = {
-  TO_UNICODE ('^'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_60_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__60_ [] = {
-  TO_UNICODE ('`'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$abstract$'
-static const utf32 kUnicodeString_galgas_32_Scanner_abstract [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$after$'
-static const utf32 kUnicodeString_galgas_32_Scanner_after [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$array$'
-static const utf32 kUnicodeString_galgas_32_Scanner_array [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('y'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$before$'
-static const utf32 kUnicodeString_galgas_32_Scanner_before [] = {
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$between$'
-static const utf32 kUnicodeString_galgas_32_Scanner_between [] = {
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$block$'
-static const utf32 kUnicodeString_galgas_32_Scanner_block [] = {
-  TO_UNICODE ('b'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('k'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$case$'
-static const utf32 kUnicodeString_galgas_32_Scanner_case [] = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$cast$'
-static const utf32 kUnicodeString_galgas_32_Scanner_cast [] = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$class$'
-static const utf32 kUnicodeString_galgas_32_Scanner_class [] = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$const$'
-static const utf32 kUnicodeString_galgas_32_Scanner_const [] = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$constructor$'
-static const utf32 kUnicodeString_galgas_32_Scanner_constructor [] = {
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$default$'
-static const utf32 kUnicodeString_galgas_32_Scanner_default [] = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$do$'
-static const utf32 kUnicodeString_galgas_32_Scanner_do [] = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$drop$'
-static const utf32 kUnicodeString_galgas_32_Scanner_drop [] = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$else$'
-static const utf32 kUnicodeString_galgas_32_Scanner_else [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$elsif$'
-static const utf32 kUnicodeString_galgas_32_Scanner_elsif [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$end$'
-static const utf32 kUnicodeString_galgas_32_Scanner_end [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$enum$'
-static const utf32 kUnicodeString_galgas_32_Scanner_enum [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$error$'
-static const utf32 kUnicodeString_galgas_32_Scanner_error [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$extends$'
-static const utf32 kUnicodeString_galgas_32_Scanner_extends [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$extension$'
-static const utf32 kUnicodeString_galgas_32_Scanner_extension [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$extern$'
-static const utf32 kUnicodeString_galgas_32_Scanner_extern [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$false$'
-static const utf32 kUnicodeString_galgas_32_Scanner_false [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$feature$'
-static const utf32 kUnicodeString_galgas_32_Scanner_feature [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$filewrapper$'
-static const utf32 kUnicodeString_galgas_32_Scanner_filewrapper [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$for$'
-static const utf32 kUnicodeString_galgas_32_Scanner_for [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$foreach$'
-static const utf32 kUnicodeString_galgas_32_Scanner_foreach [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$func$'
-static const utf32 kUnicodeString_galgas_32_Scanner_func [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$function$'
-static const utf32 kUnicodeString_galgas_32_Scanner_function [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$getter$'
-static const utf32 kUnicodeString_galgas_32_Scanner_getter [] = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$grammar$'
-static const utf32 kUnicodeString_galgas_32_Scanner_grammar [] = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$graph$'
-static const utf32 kUnicodeString_galgas_32_Scanner_graph [] = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$gui$'
-static const utf32 kUnicodeString_galgas_32_Scanner_gui [] = {
-  TO_UNICODE ('g'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('i'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$here$'
-static const utf32 kUnicodeString_galgas_32_Scanner_here [] = {
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$if$'
-static const utf32 kUnicodeString_galgas_32_Scanner_if [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$import$'
-static const utf32 kUnicodeString_galgas_32_Scanner_import [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$in$'
-static const utf32 kUnicodeString_galgas_32_Scanner_in [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$index$'
-static const utf32 kUnicodeString_galgas_32_Scanner_index [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$indexing$'
-static const utf32 kUnicodeString_galgas_32_Scanner_indexing [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$insert$'
-static const utf32 kUnicodeString_galgas_32_Scanner_insert [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$is$'
-static const utf32 kUnicodeString_galgas_32_Scanner_is [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$label$'
-static const utf32 kUnicodeString_galgas_32_Scanner_label [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$let$'
-static const utf32 kUnicodeString_galgas_32_Scanner_let [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$lexique$'
-static const utf32 kUnicodeString_galgas_32_Scanner_lexique [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$list$'
-static const utf32 kUnicodeString_galgas_32_Scanner_list [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$listmap$'
-static const utf32 kUnicodeString_galgas_32_Scanner_listmap [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$local$'
-static const utf32 kUnicodeString_galgas_32_Scanner_local [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$log$'
-static const utf32 kUnicodeString_galgas_32_Scanner_log [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$loop$'
-static const utf32 kUnicodeString_galgas_32_Scanner_loop [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$map$'
-static const utf32 kUnicodeString_galgas_32_Scanner_map [] = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$match$'
-static const utf32 kUnicodeString_galgas_32_Scanner_match [] = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$message$'
-static const utf32 kUnicodeString_galgas_32_Scanner_message [] = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$method$'
-static const utf32 kUnicodeString_galgas_32_Scanner_method [] = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$mod$'
-static const utf32 kUnicodeString_galgas_32_Scanner_mod [] = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$modifier$'
-static const utf32 kUnicodeString_galgas_32_Scanner_modifier [] = {
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$nonterminal$'
-static const utf32 kUnicodeString_galgas_32_Scanner_nonterminal [] = {
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$not$'
-static const utf32 kUnicodeString_galgas_32_Scanner_not [] = {
-  TO_UNICODE ('n'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$on$'
-static const utf32 kUnicodeString_galgas_32_Scanner_on [] = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$once$'
-static const utf32 kUnicodeString_galgas_32_Scanner_once [] = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$operator$'
-static const utf32 kUnicodeString_galgas_32_Scanner_operator [] = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$option$'
-static const utf32 kUnicodeString_galgas_32_Scanner_option [] = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$or$'
-static const utf32 kUnicodeString_galgas_32_Scanner_or [] = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$override$'
-static const utf32 kUnicodeString_galgas_32_Scanner_override [] = {
-  TO_UNICODE ('o'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$parse$'
-static const utf32 kUnicodeString_galgas_32_Scanner_parse [] = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$private$'
-static const utf32 kUnicodeString_galgas_32_Scanner_private [] = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$proc$'
-static const utf32 kUnicodeString_galgas_32_Scanner_proc [] = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$project$'
-static const utf32 kUnicodeString_galgas_32_Scanner_project [] = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('j'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$remove$'
-static const utf32 kUnicodeString_galgas_32_Scanner_remove [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$repeat$'
-static const utf32 kUnicodeString_galgas_32_Scanner_repeat [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$replace$'
-static const utf32 kUnicodeString_galgas_32_Scanner_replace [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$rewind$'
-static const utf32 kUnicodeString_galgas_32_Scanner_rewind [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$root$'
-static const utf32 kUnicodeString_galgas_32_Scanner_root [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$routine$'
-static const utf32 kUnicodeString_galgas_32_Scanner_routine [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$rule$'
-static const utf32 kUnicodeString_galgas_32_Scanner_rule [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$search$'
-static const utf32 kUnicodeString_galgas_32_Scanner_search [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$select$'
-static const utf32 kUnicodeString_galgas_32_Scanner_select [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$self$'
-static const utf32 kUnicodeString_galgas_32_Scanner_self [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('f'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$selfcopy$'
-static const utf32 kUnicodeString_galgas_32_Scanner_selfcopy [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('y'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$semantics$'
-static const utf32 kUnicodeString_galgas_32_Scanner_semantics [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$send$'
-static const utf32 kUnicodeString_galgas_32_Scanner_send [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$setter$'
-static const utf32 kUnicodeString_galgas_32_Scanner_setter [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$sharedmap$'
-static const utf32 kUnicodeString_galgas_32_Scanner_sharedmap [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$sortedlist$'
-static const utf32 kUnicodeString_galgas_32_Scanner_sortedlist [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$state$'
-static const utf32 kUnicodeString_galgas_32_Scanner_state [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$struct$'
-static const utf32 kUnicodeString_galgas_32_Scanner_struct [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$style$'
-static const utf32 kUnicodeString_galgas_32_Scanner_style [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$switch$'
-static const utf32 kUnicodeString_galgas_32_Scanner_switch [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$syntax$'
-static const utf32 kUnicodeString_galgas_32_Scanner_syntax [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('y'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('x'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$tag$'
-static const utf32 kUnicodeString_galgas_32_Scanner_tag [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$template$'
-static const utf32 kUnicodeString_galgas_32_Scanner_template [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$then$'
-static const utf32 kUnicodeString_galgas_32_Scanner_then [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$true$'
-static const utf32 kUnicodeString_galgas_32_Scanner_true [] = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$unused$'
-static const utf32 kUnicodeString_galgas_32_Scanner_unused [] = {
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$var$'
-static const utf32 kUnicodeString_galgas_32_Scanner_var [] = {
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$warning$'
-static const utf32 kUnicodeString_galgas_32_Scanner_warning [] = {
-  TO_UNICODE ('w'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('g'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$when$'
-static const utf32 kUnicodeString_galgas_32_Scanner_when [] = {
-  TO_UNICODE ('w'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$while$'
-static const utf32 kUnicodeString_galgas_32_Scanner_while [] = {
-  TO_UNICODE ('w'),
-  TO_UNICODE ('h'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$with$'
-static const utf32 kUnicodeString_galgas_32_Scanner_with [] = {
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('h'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_7B_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__7B_ [] = {
-  TO_UNICODE ('{'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_7C_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__7C_ [] = {
-  TO_UNICODE ('|'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_7C__7C_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__7C__7C_ [] = {
-  TO_UNICODE ('|'),
-  TO_UNICODE ('|'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_7D_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__7D_ [] = {
-  TO_UNICODE ('}'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$_7E_$'
-static const utf32 kUnicodeString_galgas_32_Scanner__7E_ [] = {
-  TO_UNICODE ('~'),
-  TO_UNICODE (0)
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//             Key words table 'galgasDelimitorsList'                            *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static const int32_t ktable_size_galgas_32_Scanner_galgasDelimitorsList = 38 ;
-
-static const C_unicode_lexique_table_entry ktable_for_galgas_32_Scanner_galgasDelimitorsList [ktable_size_galgas_32_Scanner_galgasDelimitorsList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26_, 1, C_Lexique_galgas_32_Scanner::kToken__26_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__28_, 1, C_Lexique_galgas_32_Scanner::kToken__28_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__29_, 1, C_Lexique_galgas_32_Scanner::kToken__29_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2A_, 1, C_Lexique_galgas_32_Scanner::kToken__2A_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2B_, 1, C_Lexique_galgas_32_Scanner::kToken__2B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2C_, 1, C_Lexique_galgas_32_Scanner::kToken__2C_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2D_, 1, C_Lexique_galgas_32_Scanner::kToken__2D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2F_, 1, C_Lexique_galgas_32_Scanner::kToken__2F_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3A_, 1, C_Lexique_galgas_32_Scanner::kToken__3A_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3B_, 1, C_Lexique_galgas_32_Scanner::kToken__3B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3E_, 1, C_Lexique_galgas_32_Scanner::kToken__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__5B_, 1, C_Lexique_galgas_32_Scanner::kToken__5B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__5D_, 1, C_Lexique_galgas_32_Scanner::kToken__5D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__5E_, 1, C_Lexique_galgas_32_Scanner::kToken__5E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__60_, 1, C_Lexique_galgas_32_Scanner::kToken__60_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7B_, 1, C_Lexique_galgas_32_Scanner::kToken__7B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7C_, 1, C_Lexique_galgas_32_Scanner::kToken__7C_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7D_, 1, C_Lexique_galgas_32_Scanner::kToken__7D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7E_, 1, C_Lexique_galgas_32_Scanner::kToken__7E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__21__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__21__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__26_, 2, C_Lexique_galgas_32_Scanner::kToken__26__26_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2A_, 2, C_Lexique_galgas_32_Scanner::kToken__26__2A_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2B_, 2, C_Lexique_galgas_32_Scanner::kToken__26__2B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2D_, 2, C_Lexique_galgas_32_Scanner::kToken__26__2D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2F_, 2, C_Lexique_galgas_32_Scanner::kToken__26__2F_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2B__2B_, 2, C_Lexique_galgas_32_Scanner::kToken__2B__2B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2B__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__2B__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2D__2D_, 2, C_Lexique_galgas_32_Scanner::kToken__2D__2D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__2D__3E_, 2, C_Lexique_galgas_32_Scanner::kToken__2D__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3A__3A_, 2, C_Lexique_galgas_32_Scanner::kToken__3A__3A_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3A__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__3A__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3A__3E_, 2, C_Lexique_galgas_32_Scanner::kToken__3A__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3D__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__3D__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3E__3D_, 2, C_Lexique_galgas_32_Scanner::kToken__3E__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__3E__3E_, 2, C_Lexique_galgas_32_Scanner::kToken__3E__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__7C__7C_, 2, C_Lexique_galgas_32_Scanner::kToken__7C__7C_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2B__2B_, 3, C_Lexique_galgas_32_Scanner::kToken__26__2B__2B_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner__26__2D__2D_, 3, C_Lexique_galgas_32_Scanner::kToken__26__2D__2D_)
-} ;
-
-int16_t C_Lexique_galgas_32_Scanner::search_into_galgasDelimitorsList (const C_String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_galgas_32_Scanner_galgasDelimitorsList, ktable_size_galgas_32_Scanner_galgasDelimitorsList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//             Key words table 'galgasKeyWordList'                            *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static const int32_t ktable_size_galgas_32_Scanner_galgasKeyWordList = 98 ;
-
-static const C_unicode_lexique_table_entry ktable_for_galgas_32_Scanner_galgasKeyWordList [ktable_size_galgas_32_Scanner_galgasKeyWordList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_do, 2, C_Lexique_galgas_32_Scanner::kToken_do),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_if, 2, C_Lexique_galgas_32_Scanner::kToken_if),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_in, 2, C_Lexique_galgas_32_Scanner::kToken_in),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_is, 2, C_Lexique_galgas_32_Scanner::kToken_is),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_on, 2, C_Lexique_galgas_32_Scanner::kToken_on),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_or, 2, C_Lexique_galgas_32_Scanner::kToken_or),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_end, 3, C_Lexique_galgas_32_Scanner::kToken_end),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_for, 3, C_Lexique_galgas_32_Scanner::kToken_for),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_gui, 3, C_Lexique_galgas_32_Scanner::kToken_gui),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_let, 3, C_Lexique_galgas_32_Scanner::kToken_let),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_log, 3, C_Lexique_galgas_32_Scanner::kToken_log),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_map, 3, C_Lexique_galgas_32_Scanner::kToken_map),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_mod, 3, C_Lexique_galgas_32_Scanner::kToken_mod),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_not, 3, C_Lexique_galgas_32_Scanner::kToken_not),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_tag, 3, C_Lexique_galgas_32_Scanner::kToken_tag),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_var, 3, C_Lexique_galgas_32_Scanner::kToken_var),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_case, 4, C_Lexique_galgas_32_Scanner::kToken_case),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_cast, 4, C_Lexique_galgas_32_Scanner::kToken_cast),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_drop, 4, C_Lexique_galgas_32_Scanner::kToken_drop),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_else, 4, C_Lexique_galgas_32_Scanner::kToken_else),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_enum, 4, C_Lexique_galgas_32_Scanner::kToken_enum),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_func, 4, C_Lexique_galgas_32_Scanner::kToken_func),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_here, 4, C_Lexique_galgas_32_Scanner::kToken_here),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_list, 4, C_Lexique_galgas_32_Scanner::kToken_list),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_loop, 4, C_Lexique_galgas_32_Scanner::kToken_loop),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_once, 4, C_Lexique_galgas_32_Scanner::kToken_once),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_proc, 4, C_Lexique_galgas_32_Scanner::kToken_proc),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_root, 4, C_Lexique_galgas_32_Scanner::kToken_root),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_rule, 4, C_Lexique_galgas_32_Scanner::kToken_rule),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_self, 4, C_Lexique_galgas_32_Scanner::kToken_self),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_send, 4, C_Lexique_galgas_32_Scanner::kToken_send),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_then, 4, C_Lexique_galgas_32_Scanner::kToken_then),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_true, 4, C_Lexique_galgas_32_Scanner::kToken_true),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_when, 4, C_Lexique_galgas_32_Scanner::kToken_when),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_with, 4, C_Lexique_galgas_32_Scanner::kToken_with),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_after, 5, C_Lexique_galgas_32_Scanner::kToken_after),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_array, 5, C_Lexique_galgas_32_Scanner::kToken_array),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_block, 5, C_Lexique_galgas_32_Scanner::kToken_block),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_class, 5, C_Lexique_galgas_32_Scanner::kToken_class),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_const, 5, C_Lexique_galgas_32_Scanner::kToken_const),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_elsif, 5, C_Lexique_galgas_32_Scanner::kToken_elsif),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_error, 5, C_Lexique_galgas_32_Scanner::kToken_error),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_false, 5, C_Lexique_galgas_32_Scanner::kToken_false),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_graph, 5, C_Lexique_galgas_32_Scanner::kToken_graph),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_index, 5, C_Lexique_galgas_32_Scanner::kToken_index),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_label, 5, C_Lexique_galgas_32_Scanner::kToken_label),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_local, 5, C_Lexique_galgas_32_Scanner::kToken_local),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_match, 5, C_Lexique_galgas_32_Scanner::kToken_match),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_parse, 5, C_Lexique_galgas_32_Scanner::kToken_parse),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_state, 5, C_Lexique_galgas_32_Scanner::kToken_state),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_style, 5, C_Lexique_galgas_32_Scanner::kToken_style),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_while, 5, C_Lexique_galgas_32_Scanner::kToken_while),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_before, 6, C_Lexique_galgas_32_Scanner::kToken_before),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_extern, 6, C_Lexique_galgas_32_Scanner::kToken_extern),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_getter, 6, C_Lexique_galgas_32_Scanner::kToken_getter),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_import, 6, C_Lexique_galgas_32_Scanner::kToken_import),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_insert, 6, C_Lexique_galgas_32_Scanner::kToken_insert),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_method, 6, C_Lexique_galgas_32_Scanner::kToken_method),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_option, 6, C_Lexique_galgas_32_Scanner::kToken_option),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_remove, 6, C_Lexique_galgas_32_Scanner::kToken_remove),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_repeat, 6, C_Lexique_galgas_32_Scanner::kToken_repeat),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_rewind, 6, C_Lexique_galgas_32_Scanner::kToken_rewind),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_search, 6, C_Lexique_galgas_32_Scanner::kToken_search),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_select, 6, C_Lexique_galgas_32_Scanner::kToken_select),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_setter, 6, C_Lexique_galgas_32_Scanner::kToken_setter),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_struct, 6, C_Lexique_galgas_32_Scanner::kToken_struct),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_switch, 6, C_Lexique_galgas_32_Scanner::kToken_switch),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_syntax, 6, C_Lexique_galgas_32_Scanner::kToken_syntax),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_unused, 6, C_Lexique_galgas_32_Scanner::kToken_unused),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_between, 7, C_Lexique_galgas_32_Scanner::kToken_between),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_default, 7, C_Lexique_galgas_32_Scanner::kToken_default),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_extends, 7, C_Lexique_galgas_32_Scanner::kToken_extends),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_feature, 7, C_Lexique_galgas_32_Scanner::kToken_feature),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_foreach, 7, C_Lexique_galgas_32_Scanner::kToken_foreach),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_grammar, 7, C_Lexique_galgas_32_Scanner::kToken_grammar),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_lexique, 7, C_Lexique_galgas_32_Scanner::kToken_lexique),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_listmap, 7, C_Lexique_galgas_32_Scanner::kToken_listmap),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_message, 7, C_Lexique_galgas_32_Scanner::kToken_message),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_private, 7, C_Lexique_galgas_32_Scanner::kToken_private),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_project, 7, C_Lexique_galgas_32_Scanner::kToken_project),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_replace, 7, C_Lexique_galgas_32_Scanner::kToken_replace),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_routine, 7, C_Lexique_galgas_32_Scanner::kToken_routine),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_warning, 7, C_Lexique_galgas_32_Scanner::kToken_warning),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_abstract, 8, C_Lexique_galgas_32_Scanner::kToken_abstract),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_function, 8, C_Lexique_galgas_32_Scanner::kToken_function),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_indexing, 8, C_Lexique_galgas_32_Scanner::kToken_indexing),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_modifier, 8, C_Lexique_galgas_32_Scanner::kToken_modifier),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_operator, 8, C_Lexique_galgas_32_Scanner::kToken_operator),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_override, 8, C_Lexique_galgas_32_Scanner::kToken_override),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_selfcopy, 8, C_Lexique_galgas_32_Scanner::kToken_selfcopy),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_template, 8, C_Lexique_galgas_32_Scanner::kToken_template),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_extension, 9, C_Lexique_galgas_32_Scanner::kToken_extension),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_semantics, 9, C_Lexique_galgas_32_Scanner::kToken_semantics),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_sharedmap, 9, C_Lexique_galgas_32_Scanner::kToken_sharedmap),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_sortedlist, 10, C_Lexique_galgas_32_Scanner::kToken_sortedlist),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_constructor, 11, C_Lexique_galgas_32_Scanner::kToken_constructor),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_filewrapper, 11, C_Lexique_galgas_32_Scanner::kToken_filewrapper),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_32_Scanner_nonterminal, 11, C_Lexique_galgas_32_Scanner::kToken_nonterminal)
-} ;
-
-int16_t C_Lexique_galgas_32_Scanner::search_into_galgasKeyWordList (const C_String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_galgas_32_Scanner_galgasKeyWordList, ktable_size_galgas_32_Scanner_galgasKeyWordList) ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                          getCurrentTokenString                                                                      *
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_String C_Lexique_galgas_32_Scanner::getCurrentTokenString (const cToken * inTokenPtr) const {
-  const cTokenFor_galgas_32_Scanner * ptr = (const cTokenFor_galgas_32_Scanner *) inTokenPtr ;
-  C_String s ;
-  if (ptr == NULL) {
-    s.appendCString("$$") ;
-  }else{
-    switch (ptr->mTokenCode) {
-    case kToken_:
-      s.appendCString("$$") ;
-      break ;
-    case kToken_identifier:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("identifier") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_literal_5F_double:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("literal_double") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendDouble (ptr->mLexicalAttribute_floatValue) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_unsigned_5F_literal_5F_integer:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("unsigned_literal_integer") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendUnsigned (ptr->mLexicalAttribute_uint_33__32_value) ;
-      break ;
-    case kToken_signed_5F_literal_5F_integer:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("signed_literal_integer") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendSigned (ptr->mLexicalAttribute_sint_33__32_value) ;
-      break ;
-    case kToken_unsigned_5F_literal_5F_integer_36__34_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("unsigned_literal_integer64") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendUnsigned (ptr->mLexicalAttribute_uint_36__34_value) ;
-      break ;
-    case kToken_signed_5F_literal_5F_integer_36__34_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("signed_literal_integer64") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendSigned (ptr->mLexicalAttribute_sint_36__34_value) ;
-      break ;
-    case kToken_bigint:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("bigint") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
-      break ;
-    case kToken__2E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (".") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2E__3D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (".=") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2E__2E__2E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("...") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2E__2E__3C_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("..<") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_type_5F_name:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("type_name") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_literal_5F_char:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("literal_char") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendUnicodeCharacter (ptr->mLexicalAttribute_charValue COMMA_HERE) ;
-      break ;
-    case kToken_terminal:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("terminal") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken__3F__3F_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("\?\?") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken__3F_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("\?") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken__3F__21_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("\?!") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken__21_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("!") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken__21__3F_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("!\?") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken__3C_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("<") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3C__2D__3E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("<->") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3C__3D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("<=") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3C__3C_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("<<") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_non_5F_terminal_5F_symbol:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("non_terminal_symbol") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_literal_5F_string:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("literal_string") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
-      s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_comment:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("comment") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_commentMark:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("commentMark") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_abstract:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("abstract") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_after:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("after") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_array:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("array") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_before:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("before") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_between:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("between") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_block:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("block") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_case:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("case") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_cast:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("cast") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_class:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("class") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_const:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("const") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_constructor:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("constructor") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_default:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("default") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_do:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("do") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_drop:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("drop") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_else:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("else") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_elsif:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("elsif") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_end:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("end") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_enum:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("enum") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_error:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("error") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_extension:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("extension") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_extends:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("extends") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_extern:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("extern") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_false:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("false") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_feature:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("feature") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_filewrapper:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("filewrapper") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_for:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("for") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_foreach:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("foreach") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_func:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("func") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_function:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("function") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_getter:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("getter") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_grammar:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("grammar") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_graph:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("graph") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_gui:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("gui") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_here:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("here") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_if:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("if") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_import:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("import") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_in:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("in") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_index:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("index") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_indexing:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("indexing") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_insert:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("insert") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_is:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("is") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_label:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("label") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_let:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("let") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_lexique:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("lexique") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_list:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("list") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_listmap:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("listmap") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_local:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("local") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_log:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("log") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_loop:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("loop") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_map:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("map") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_match:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("match") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_message:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("message") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_method:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("method") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_mod:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("mod") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_modifier:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("modifier") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_nonterminal:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("nonterminal") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_not:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("not") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_on:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("on") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_once:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("once") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_operator:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("operator") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_option:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("option") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_or:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("or") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_override:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("override") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_parse:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("parse") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_private:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("private") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_proc:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("proc") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_project:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("project") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_remove:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("remove") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_replace:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("replace") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_repeat:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("repeat") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_rewind:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("rewind") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_root:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("root") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_routine:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("routine") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_rule:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("rule") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_search:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("search") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_select:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("select") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_self:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("self") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_selfcopy:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("selfcopy") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_semantics:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("semantics") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_send:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("send") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_setter:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("setter") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_sortedlist:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("sortedlist") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_state:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("state") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_struct:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("struct") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_style:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("style") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_switch:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("switch") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_syntax:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("syntax") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_tag:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("tag") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_template:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("template") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_then:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("then") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_true:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("true") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_sharedmap:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("sharedmap") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_unused:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("unused") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_var:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("var") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_warning:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("warning") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_when:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("when") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_while:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("while") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_with:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("with") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2A_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("*") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__7C_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("|") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2C_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (",") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2B_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("+") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3A__3E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (":>") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (">") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3B_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (";") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3A_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (":") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3A__3A_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("::") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__26__26_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("&&") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("-") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__28_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("(") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__29_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (")") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2D__3E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("->") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3D__3D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("==") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3A__3D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (":=") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__7C__7C_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("||") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__26__2B_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("&+") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__26__2D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("&-") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__26__2A_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("&*") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__5B_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("[") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__5D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("]") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2B__3D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("+=") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2F_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("/") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__21__3D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("!=") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3E__3D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (">=") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__26_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("&") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__7B_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("{") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__7D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("}") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__60_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("`") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__5E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("^") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__3E__3E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString (">>") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__7E_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("~") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2D__2D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("--") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__2B__2B_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("++") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__26__2D__2D_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("&--") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__26__2B__2B_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("&++") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken__26__2F_:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("&/") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    default:
-      break ;
-    }
-  }
-  return s ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                           Template Delimiters                                                                       *
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                           Template Replacements                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//            Terminal Symbols as end of script in template mark                                                       *
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//               P A R S E    L E X I C A L    T O K E N                                                               *
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool C_Lexique_galgas_32_Scanner::parseLexicalToken (void) {
-  cTokenFor_galgas_32_Scanner token ;
-  mLoop = true ;
-  token.mTokenCode = -1 ;
-  while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
-    token.mLexicalAttribute_bigintValue.setToZero () ;
-    token.mLexicalAttribute_charValue = TO_UNICODE (0) ;
-    token.mLexicalAttribute_floatValue = 0.0 ;
-    token.mLexicalAttribute_identifierString.setLengthToZero () ;
-    token.mLexicalAttribute_sint_33__32_value = 0 ;
-    token.mLexicalAttribute_sint_36__34_value = 0 ;
-    token.mLexicalAttribute_tokenString.setLengthToZero () ;
-    token.mLexicalAttribute_uint_33__32_value = 0 ;
-    token.mLexicalAttribute_uint_36__34_value = 0 ;
-    mTokenStartLocation = mCurrentLocation ;
-    try{
-      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-        do {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, ::scanner_function_toLower (*this, previousChar ())) ;
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-          }else{
-            mLoop = false ;
-          }
-        }while (mLoop) ;
-        mLoop = true ;
-        if (token.mTokenCode == -1) {
-          token.mTokenCode = search_into_galgasKeyWordList (token.mLexicalAttribute_identifierString) ;
-        }
-        if (token.mTokenCode == -1) {
-          token.mTokenCode = kToken_identifier ;
-        }
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__30_x, 2, true)) {
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          }else if (testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
-          }else{
-            mLoop = false ;
-          }
-        }while (mLoop) ;
-        mLoop = true ;
-        if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner_LS, 2, true)) {
-          ::scanner_routine_convertHexStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_signed_5F_literal_5F_integer_36__34_ ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
-          ::scanner_routine_convertHexStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_signed_5F_literal_5F_integer ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-          ::scanner_routine_convertHexStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
-          ::scanner_routine_convertHexStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_bigint ;
-          enterToken (token) ;
-        }else{
-          ::scanner_routine_convertHexStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
-          enterToken (token) ;
-        }
-      }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
-          }else{
-            mLoop = false ;
-          }
-        }while (mLoop) ;
-        mLoop = true ;
-        if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
-          ::scanner_routine_convertDecimalStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_signed_5F_literal_5F_integer ;
-          enterToken (token) ;
-        }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner_LS, 2, true)) {
-          ::scanner_routine_convertDecimalStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_signed_5F_literal_5F_integer_36__34_ ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-          ::scanner_routine_convertDecimalStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
-          ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_bigint ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('.')) ;
-          do {
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          ::scanner_routine_convertStringToDouble (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_floatValue, gLexicalMessage_galgas_32_Scanner_floatNumberConversionError) ;
-          token.mTokenCode = kToken_literal_5F_double ;
-          enterToken (token) ;
-        }else{
-          ::scanner_routine_convertDecimalStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_decimalNumberTooLarge, gLexicalMessage_galgas_32_Scanner_internalError) ;
-          token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
-          enterToken (token) ;
-        }
-      }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
-        if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('0')) ;
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('.')) ;
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          do {
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          ::scanner_routine_convertStringToDouble (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_floatValue, gLexicalMessage_galgas_32_Scanner_floatNumberConversionError) ;
-          token.mTokenCode = kToken_literal_5F_double ;
-          enterToken (token) ;
-        }else{
-          if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2E__2E_, 2, true)) {
-            token.mTokenCode = kToken__2E__2E__2E_ ;
-            enterToken (token) ;
-          }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2E__3C_, 2, true)) {
-            token.mTokenCode = kToken__2E__2E__3C_ ;
-            enterToken (token) ;
-          }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3D_, 1, true)) {
-            token.mTokenCode = kToken__2E__3D_ ;
-            enterToken (token) ;
-          }else{
-            token.mTokenCode = kToken__2E_ ;
-            enterToken (token) ;
-          }
-        }
-      }else if (testForInputUTF32Char (TO_UNICODE ('@'))) {
-        if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-          do {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          if (testForInputUTF32Char (TO_UNICODE ('-'))) {
-            do {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              }else{
-                mLoop = false ;
-              }
-            }while (mLoop) ;
-            mLoop = true ;
-          }
-        }else{
-          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
-        }
-        token.mTokenCode = kToken_type_5F_name ;
-        enterToken (token) ;
-      }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
-        if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-          if (testForInputUTF32Char (TO_UNICODE ('f'))) {
-            ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\f')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('n'))) {
-            ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\n')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('r'))) {
-            ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\r')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('t'))) {
-            ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\t')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('v'))) {
-            ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\v')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-            ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\\')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('0'))) {
-            ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\0')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
-            ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, TO_UNICODE ('\'')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('u'))) {
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                  if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                    ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue) ;
-                  }else{
-                    lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-                  }
-                }else{
-                  lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-                }
-              }else{
-                lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-              }
-            }else{
-              lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else if (testForInputUTF32Char (TO_UNICODE ('U'))) {
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                  if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                    if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                      if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                        if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                            ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue) ;
-                          }else{
-                            lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                          }
-                        }else{
-                          lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                        }
-                      }else{
-                        lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                      }
-                    }else{
-                      lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                    }
-                  }else{
-                    lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                  }
-                }else{
-                  lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                }
-              }else{
-                lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-              }
-            }else{
-              lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else if (testForInputUTF32Char (TO_UNICODE ('x')) || testForInputUTF32Char (TO_UNICODE ('X'))) {
-            lexicalWarning (gLexicalMessage_galgas_32_Scanner_obsoleteCharConstruction COMMA_LINE_AND_SOURCE_FILE) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-              do {
-                ::scanner_routine_enterHexDigitIntoASCIIcharacter (*this, token.mLexicalAttribute_charValue, previousChar (), gLexicalMessage_galgas_32_Scanner_ASCIIcodeTooLargeError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                }else{
-                  mLoop = false ;
-                }
-              }while (mLoop) ;
-              mLoop = true ;
-            }else{
-              lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
-            do {
-              if (notTestForInputUTF32String (kUnicodeString_galgas_32_Scanner__3B_, 1, gLexicalMessage_galgas_32_Scanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
-                ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-              }else{
-                mLoop = false ;
-              }
-            }while (mLoop) ;
-            mLoop = true ;
-            ::scanner_routine_convertHTMLSequenceToUnicodeCharacter (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unknownHTMLescapeSequence) ;
-          }else{
-            lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-          }
-        }else if (testForInputUTF32CharRange (TO_UNICODE (' '), TO_UNICODE (65533))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, previousChar ()) ;
-        }else{
-          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-        }
-        if (testForInputUTF32Char (TO_UNICODE ('\''))) {
-          token.mTokenCode = kToken_literal_5F_char ;
-          enterToken (token) ;
-        }else{
-          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-        }
-      }else if (testForInputUTF32Char (TO_UNICODE ('$'))) {
-        if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
-          do {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-        }else{
-          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrect_terminal_start COMMA_LINE_AND_SOURCE_FILE) ;
-        }
-        if (testForInputUTF32Char (TO_UNICODE ('$'))) {
-        }else{
-          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrect_terminal_end COMMA_LINE_AND_SOURCE_FILE) ;
-        }
-        token.mTokenCode = kToken_terminal ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2D__2D_, 3, true)) {
-        token.mTokenCode = kToken__26__2D__2D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2B__2B_, 3, true)) {
-        token.mTokenCode = kToken__26__2B__2B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7C__7C_, 2, true)) {
-        token.mTokenCode = kToken__7C__7C_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3E__3E_, 2, true)) {
-        token.mTokenCode = kToken__3E__3E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3E__3D_, 2, true)) {
-        token.mTokenCode = kToken__3E__3D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3D__3D_, 2, true)) {
-        token.mTokenCode = kToken__3D__3D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3A__3E_, 2, true)) {
-        token.mTokenCode = kToken__3A__3E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3A__3D_, 2, true)) {
-        token.mTokenCode = kToken__3A__3D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3A__3A_, 2, true)) {
-        token.mTokenCode = kToken__3A__3A_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2D__3E_, 2, true)) {
-        token.mTokenCode = kToken__2D__3E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2D__2D_, 2, true)) {
-        token.mTokenCode = kToken__2D__2D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2B__3D_, 2, true)) {
-        token.mTokenCode = kToken__2B__3D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2B__2B_, 2, true)) {
-        token.mTokenCode = kToken__2B__2B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2F_, 2, true)) {
-        token.mTokenCode = kToken__26__2F_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2D_, 2, true)) {
-        token.mTokenCode = kToken__26__2D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2B_, 2, true)) {
-        token.mTokenCode = kToken__26__2B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__2A_, 2, true)) {
-        token.mTokenCode = kToken__26__2A_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26__26_, 2, true)) {
-        token.mTokenCode = kToken__26__26_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__21__3D_, 2, true)) {
-        token.mTokenCode = kToken__21__3D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7E_, 1, true)) {
-        token.mTokenCode = kToken__7E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7D_, 1, true)) {
-        token.mTokenCode = kToken__7D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7C_, 1, true)) {
-        token.mTokenCode = kToken__7C_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__7B_, 1, true)) {
-        token.mTokenCode = kToken__7B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__60_, 1, true)) {
-        token.mTokenCode = kToken__60_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__5E_, 1, true)) {
-        token.mTokenCode = kToken__5E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__5D_, 1, true)) {
-        token.mTokenCode = kToken__5D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__5B_, 1, true)) {
-        token.mTokenCode = kToken__5B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3E_, 1, true)) {
-        token.mTokenCode = kToken__3E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3B_, 1, true)) {
-        token.mTokenCode = kToken__3B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__3A_, 1, true)) {
-        token.mTokenCode = kToken__3A_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2F_, 1, true)) {
-        token.mTokenCode = kToken__2F_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2D_, 1, true)) {
-        token.mTokenCode = kToken__2D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2C_, 1, true)) {
-        token.mTokenCode = kToken__2C_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2B_, 1, true)) {
-        token.mTokenCode = kToken__2B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2A_, 1, true)) {
-        token.mTokenCode = kToken__2A_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__29_, 1, true)) {
-        token.mTokenCode = kToken__29_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__28_, 1, true)) {
-        token.mTokenCode = kToken__28_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__26_, 1, true)) {
-        token.mTokenCode = kToken__26_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-        const C_LocationInSource currentLocationForTag_onlyInterrogationMark = mCurrentLocation ;
-        const C_LocationInSource endLocationForTag_onlyInterrogationMark = mTokenEndLocation ;
-        const utf32 currentCharForTag_onlyInterrogationMark = mCurrentChar ;
-        if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-          const C_LocationInSource currentLocationForTag_onlyDoubleInterrogationMark = mCurrentLocation ;
-          const C_LocationInSource endLocationForTag_onlyDoubleInterrogationMark = mTokenEndLocation ;
-          const utf32 currentCharForTag_onlyDoubleInterrogationMark = mCurrentChar ;
-          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-            do {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-              }else{
-                mLoop = false ;
-              }
-            }while (mLoop) ;
-            mLoop = true ;
-            if (testForInputUTF32Char (TO_UNICODE (':'))) {
-              token.mTokenCode = kToken__3F__3F_ ;
-              enterToken (token) ;
-            }else{
-              ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
-              mCurrentLocation = currentLocationForTag_onlyDoubleInterrogationMark ;
-              mTokenEndLocation = endLocationForTag_onlyDoubleInterrogationMark ;
-              mCurrentChar = currentCharForTag_onlyDoubleInterrogationMark ;
-              token.mTokenCode = kToken__3F__3F_ ;
-              enterToken (token) ;
-            }
-          }else{
-            token.mTokenCode = kToken__3F__3F_ ;
-            enterToken (token) ;
-          }
-        }else if (testForInputUTF32Char (TO_UNICODE ('!'))) {
-          const C_LocationInSource currentLocationForTag_onlyExclamationInterrogationMark = mCurrentLocation ;
-          const C_LocationInSource endLocationForTag_onlyExclamationInterrogationMark = mTokenEndLocation ;
-          const utf32 currentCharForTag_onlyExclamationInterrogationMark = mCurrentChar ;
-          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-            do {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-              }else{
-                mLoop = false ;
-              }
-            }while (mLoop) ;
-            mLoop = true ;
-            if (testForInputUTF32Char (TO_UNICODE (':'))) {
-              token.mTokenCode = kToken__3F__21_ ;
-              enterToken (token) ;
-            }else{
-              ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
-              mCurrentLocation = currentLocationForTag_onlyExclamationInterrogationMark ;
-              mTokenEndLocation = endLocationForTag_onlyExclamationInterrogationMark ;
-              mCurrentChar = currentCharForTag_onlyExclamationInterrogationMark ;
-              token.mTokenCode = kToken__3F__21_ ;
-              enterToken (token) ;
-            }
-          }else{
-            token.mTokenCode = kToken__3F__21_ ;
-            enterToken (token) ;
-          }
-        }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-          do {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          if (testForInputUTF32Char (TO_UNICODE (':'))) {
-            token.mTokenCode = kToken__3F_ ;
-            enterToken (token) ;
-          }else{
-            ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
-            mCurrentLocation = currentLocationForTag_onlyInterrogationMark ;
-            mTokenEndLocation = endLocationForTag_onlyInterrogationMark ;
-            mCurrentChar = currentCharForTag_onlyInterrogationMark ;
-            token.mTokenCode = kToken__3F_ ;
-            enterToken (token) ;
-          }
-        }else{
-          token.mTokenCode = kToken__3F_ ;
-          enterToken (token) ;
-        }
-      }else if (testForInputUTF32Char (TO_UNICODE ('!'))) {
-        const C_LocationInSource currentLocationForTag_onlyExclamationMark = mCurrentLocation ;
-        const C_LocationInSource endLocationForTag_onlyExclamationMark = mTokenEndLocation ;
-        const utf32 currentCharForTag_onlyExclamationMark = mCurrentChar ;
-        if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-          const C_LocationInSource currentLocationForTag_onlyInterrogationExclamationMark = mCurrentLocation ;
-          const C_LocationInSource endLocationForTag_onlyInterrogationExclamationMark = mTokenEndLocation ;
-          const utf32 currentCharForTag_onlyInterrogationExclamationMark = mCurrentChar ;
-          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-            do {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-              }else{
-                mLoop = false ;
-              }
-            }while (mLoop) ;
-            mLoop = true ;
-            if (testForInputUTF32Char (TO_UNICODE (':'))) {
-              token.mTokenCode = kToken__21__3F_ ;
-              enterToken (token) ;
-            }else{
-              ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
-              mCurrentLocation = currentLocationForTag_onlyInterrogationExclamationMark ;
-              mTokenEndLocation = endLocationForTag_onlyInterrogationExclamationMark ;
-              mCurrentChar = currentCharForTag_onlyInterrogationExclamationMark ;
-              token.mTokenCode = kToken__21__3F_ ;
-              enterToken (token) ;
-            }
-          }else{
-            token.mTokenCode = kToken__21__3F_ ;
-            enterToken (token) ;
-          }
-        }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-          do {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          if (testForInputUTF32Char (TO_UNICODE (':'))) {
-            token.mTokenCode = kToken__21_ ;
-            enterToken (token) ;
-          }else{
-            ::scanner_routine_resetString (*this, token.mLexicalAttribute_tokenString) ;
-            mCurrentLocation = currentLocationForTag_onlyExclamationMark ;
-            mTokenEndLocation = endLocationForTag_onlyExclamationMark ;
-            mCurrentChar = currentCharForTag_onlyExclamationMark ;
-            token.mTokenCode = kToken__21_ ;
-            enterToken (token) ;
-          }
-        }else{
-          token.mTokenCode = kToken__21_ ;
-          enterToken (token) ;
-        }
-      }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
-        const C_LocationInSource currentLocationForTag_onlyInfDelimiter = mCurrentLocation ;
-        const C_LocationInSource endLocationForTag_onlyInfDelimiter = mTokenEndLocation ;
-        const utf32 currentCharForTag_onlyInfDelimiter = mCurrentChar ;
-        if (testForInputUTF32Char (TO_UNICODE ('='))) {
-          token.mTokenCode = kToken__3C__3D_ ;
-          enterToken (token) ;
-        }else if (testForInputUTF32String (kUnicodeString_galgas_32_Scanner__2D__3E_, 2, true)) {
-          token.mTokenCode = kToken__3C__2D__3E_ ;
-          enterToken (token) ;
-        }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
-          token.mTokenCode = kToken__3C__3C_ ;
-          enterToken (token) ;
-        }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-          do {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          if (testForInputUTF32Char (TO_UNICODE ('>'))) {
-            token.mTokenCode = kToken_non_5F_terminal_5F_symbol ;
-            enterToken (token) ;
-          }else{
-            mCurrentLocation = currentLocationForTag_onlyInfDelimiter ;
-            mTokenEndLocation = endLocationForTag_onlyInfDelimiter ;
-            mCurrentChar = currentCharForTag_onlyInfDelimiter ;
-            token.mTokenCode = kToken__3C_ ;
-            enterToken (token) ;
-          }
-        }else{
-          token.mTokenCode = kToken__3C_ ;
-          enterToken (token) ;
-        }
-      }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
-        do {
-          if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-            if (testForInputUTF32Char (TO_UNICODE ('f'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\f')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('n'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\n')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('r'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\r')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('t'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\t')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('v'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\v')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\\')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\"')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\'')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\?')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
-              do {
-                if (notTestForInputUTF32String (kUnicodeString_galgas_32_Scanner__3B_, 1, gLexicalMessage_galgas_32_Scanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
-                  ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, previousChar ()) ;
-                }else{
-                  mLoop = false ;
-                }
-              }while (mLoop) ;
-              mLoop = true ;
-              ::scanner_routine_convertHTMLSequenceToUnicodeCharacter (*this, token.mLexicalAttribute_identifierString, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unknownHTMLescapeSequence) ;
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
-            }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              lexicalWarning (gLexicalMessage_galgas_32_Scanner_obsoleteStringConstruction COMMA_LINE_AND_SOURCE_FILE) ;
-              do {
-                ::scanner_routine_enterHexDigitIntoASCIIcharacter (*this, token.mLexicalAttribute_charValue, previousChar (), gLexicalMessage_galgas_32_Scanner_ASCIIcodeTooLargeError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-                }else{
-                  mLoop = false ;
-                }
-              }while (mLoop) ;
-              mLoop = true ;
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('u'))) {
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                  if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                    if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                      ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue) ;
-                      ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
-                    }else{
-                      lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-                    }
-                  }else{
-                    lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-                  }
-                }else{
-                  lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-                }
-              }else{
-                lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-              }
-            }else if (testForInputUTF32Char (TO_UNICODE ('U'))) {
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                  if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                    if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                      if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                        if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-                              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgas_32_Scanner_internalError, gLexicalMessage_galgas_32_Scanner_internalError) ;
-                              ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_galgas_32_Scanner_unassignedUnicodeValue) ;
-                              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
-                            }else{
-                              lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                            }
-                          }else{
-                            lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                          }
-                        }else{
-                          lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                        }
-                      }else{
-                        lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                      }
-                    }else{
-                      lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                    }
-                  }else{
-                    lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                  }
-                }else{
-                  lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                }
-              }else{
-                lexicalError (gLexicalMessage_galgas_32_Scanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-              }
-            }else{
-              lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else if (testForInputUTF32Char (TO_UNICODE (' ')) || testForInputUTF32Char (TO_UNICODE ('!')) || testForInputUTF32CharRange (TO_UNICODE ('#'), TO_UNICODE (65533))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          }else{
-            mLoop = false ;
-          }
-        }while (mLoop) ;
-        mLoop = true ;
-        if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
-          token.mTokenCode = kToken_literal_5F_string ;
-          enterToken (token) ;
-        }else{
-          lexicalError (gLexicalMessage_galgas_32_Scanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
-        }
-      }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
-        if (testForInputUTF32Char (TO_UNICODE ('!'))) {
-          do {
-            if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          enterDroppedTerminal (kToken_commentMark) ;
-        }else{
-          do {
-            if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          enterDroppedTerminal (kToken_comment) ;
-        }
-      }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
-      }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
-        token.mTokenCode = kToken_ ; // Empty string code
-      }else{ // Unknown input character
-        unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
-      }
-    }catch (const C_lexicalErrorException &) {
-      token.mTokenCode = -1 ; // No token
-      advance () ; // ... go throught unknown character
-    }
-  }
-  if ((UNICODE_VALUE (mCurrentChar) == '\0') && (token.mTemplateStringBeforeToken.length () > 0)) {
-    token.mTokenCode = 0 ;
-    enterToken (token) ;
-  }
-  return token.mTokenCode > 0 ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                         E N T E R    T O K E N                                                                      *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void C_Lexique_galgas_32_Scanner::enterToken (const cTokenFor_galgas_32_Scanner & inToken) {
-  cTokenFor_galgas_32_Scanner * ptr = NULL ;
-  macroMyNew (ptr, cTokenFor_galgas_32_Scanner ()) ;
-  ptr->mTokenCode = inToken.mTokenCode ;
-  ptr->mStartLocation = mTokenStartLocation ;
-  ptr->mEndLocation = mTokenEndLocation ;
-  ptr->mTemplateStringBeforeToken = inToken.mTemplateStringBeforeToken ;
-  ptr->mLexicalAttribute_bigintValue = inToken.mLexicalAttribute_bigintValue ;
-  ptr->mLexicalAttribute_charValue = inToken.mLexicalAttribute_charValue ;
-  ptr->mLexicalAttribute_floatValue = inToken.mLexicalAttribute_floatValue ;
-  ptr->mLexicalAttribute_identifierString = inToken.mLexicalAttribute_identifierString ;
-  ptr->mLexicalAttribute_sint_33__32_value = inToken.mLexicalAttribute_sint_33__32_value ;
-  ptr->mLexicalAttribute_sint_36__34_value = inToken.mLexicalAttribute_sint_36__34_value ;
-  ptr->mLexicalAttribute_tokenString = inToken.mLexicalAttribute_tokenString ;
-  ptr->mLexicalAttribute_uint_33__32_value = inToken.mLexicalAttribute_uint_33__32_value ;
-  ptr->mLexicalAttribute_uint_36__34_value = inToken.mLexicalAttribute_uint_36__34_value ;
-  enterTokenFromPointer (ptr) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//               A T T R I B U T E   A C C E S S                                                                       *
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_BigInt C_Lexique_galgas_32_Scanner::attributeValue_bigintValue (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_bigintValue ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-utf32 C_Lexique_galgas_32_Scanner::attributeValue_charValue (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_charValue ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-double C_Lexique_galgas_32_Scanner::attributeValue_floatValue (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_floatValue ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_String C_Lexique_galgas_32_Scanner::attributeValue_identifierString (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_identifierString ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-int32_t C_Lexique_galgas_32_Scanner::attributeValue_sint_33__32_value (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_sint_33__32_value ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-int64_t C_Lexique_galgas_32_Scanner::attributeValue_sint_36__34_value (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_sint_36__34_value ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_String C_Lexique_galgas_32_Scanner::attributeValue_tokenString (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_tokenString ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-uint32_t C_Lexique_galgas_32_Scanner::attributeValue_uint_33__32_value (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_uint_33__32_value ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-uint64_t C_Lexique_galgas_32_Scanner::attributeValue_uint_36__34_value (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  return ptr->mLexicalAttribute_uint_36__34_value ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//         A S S I G N    F R O M    A T T R I B U T E                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lbigint C_Lexique_galgas_32_Scanner::synthetizedAttribute_bigintValue (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_bigint value (ptr->mLexicalAttribute_bigintValue) ;
-  GALGAS_lbigint result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lchar C_Lexique_galgas_32_Scanner::synthetizedAttribute_charValue (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_char value (ptr->mLexicalAttribute_charValue) ;
-  GALGAS_lchar result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_ldouble C_Lexique_galgas_32_Scanner::synthetizedAttribute_floatValue (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_double value (ptr->mLexicalAttribute_floatValue) ;
-  GALGAS_ldouble result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring C_Lexique_galgas_32_Scanner::synthetizedAttribute_identifierString (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_string value (ptr->mLexicalAttribute_identifierString) ;
-  GALGAS_lstring result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lsint C_Lexique_galgas_32_Scanner::synthetizedAttribute_sint_33__32_value (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_sint value (ptr->mLexicalAttribute_sint_33__32_value) ;
-  GALGAS_lsint result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lsint_36__34_ C_Lexique_galgas_32_Scanner::synthetizedAttribute_sint_36__34_value (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_sint_36__34_ value (ptr->mLexicalAttribute_sint_36__34_value) ;
-  GALGAS_lsint_36__34_ result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring C_Lexique_galgas_32_Scanner::synthetizedAttribute_tokenString (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_string value (ptr->mLexicalAttribute_tokenString) ;
-  GALGAS_lstring result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_luint C_Lexique_galgas_32_Scanner::synthetizedAttribute_uint_33__32_value (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_uint value (ptr->mLexicalAttribute_uint_33__32_value) ;
-  GALGAS_luint result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_luint_36__34_ C_Lexique_galgas_32_Scanner::synthetizedAttribute_uint_36__34_value (void) const {
-  cTokenFor_galgas_32_Scanner * ptr = (cTokenFor_galgas_32_Scanner *) mCurrentTokenPtr ;
-  macroValidSharedObject (ptr, cTokenFor_galgas_32_Scanner) ;
-  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GALGAS_uint_36__34_ value (ptr->mLexicalAttribute_uint_36__34_value) ;
-  GALGAS_luint_36__34_ result (value, currentLocation) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                         I N T R O S P E C T I O N                                                                   *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_stringlist C_Lexique_galgas_32_Scanner::symbols (LOCATION_ARGS) {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-  result.addAssign_operation (GALGAS_string ("identifier") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("literal_double") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("unsigned_literal_integer") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("signed_literal_integer") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("unsigned_literal_integer64") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("signed_literal_integer64") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("bigint") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (".") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (".=") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("...") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("..<") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("type_name") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("literal_char") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("terminal") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\?\?") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\?!") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("!\?") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("<") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("<->") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("<=") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("<<") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("non_terminal_symbol") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("literal_string") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("comment") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("commentMark") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("abstract") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("after") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("array") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("before") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("between") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("block") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("case") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("cast") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("class") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("const") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("constructor") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("default") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("do") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("drop") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("else") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("elsif") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("end") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("enum") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("error") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("extension") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("extends") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("extern") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("false") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("feature") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("filewrapper") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("for") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("foreach") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("func") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("function") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("getter") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("grammar") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("graph") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("gui") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("here") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("if") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("import") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("in") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("index") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("indexing") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("insert") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("is") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("label") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("let") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("lexique") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("list") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("listmap") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("local") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("log") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("loop") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("map") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("match") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("message") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("method") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("mod") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("modifier") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("nonterminal") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("not") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("on") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("once") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("operator") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("option") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("or") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("override") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("parse") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("private") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("proc") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("project") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("remove") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("replace") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("repeat") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("rewind") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("root") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("routine") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("rule") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("search") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("select") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("self") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("selfcopy") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("semantics") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("send") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("setter") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("sortedlist") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("state") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("struct") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("style") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("switch") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("syntax") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("tag") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("template") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("sharedmap") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("when") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("while") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("with") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("*") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("|") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (",") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("+") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (":>") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (">") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (";") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (":") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("::") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("&&") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("-") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("(") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (")") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("->") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("==") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (":=") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("||") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("&+") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("&-") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("&*") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("[") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("]") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("+=") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("/") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("!=") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (">=") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("&") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("{") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("}") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("`") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("^") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string (">>") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("~") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("--") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("++") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("&--") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("&++") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("&/") COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-uint32_t C_Lexique_galgas_32_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [164] = {0,
-    0 /* galgas2Scanner_1_identifier */,
-    9 /* galgas2Scanner_1_literal_5F_double */,
-    7 /* galgas2Scanner_1_unsigned_5F_literal_5F_integer */,
-    7 /* galgas2Scanner_1_signed_5F_literal_5F_integer */,
-    7 /* galgas2Scanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
-    7 /* galgas2Scanner_1_signed_5F_literal_5F_integer_36__34_ */,
-    8 /* galgas2Scanner_1_bigint */,
-    2 /* galgas2Scanner_1__2E_ */,
-    2 /* galgas2Scanner_1__2E__3D_ */,
-    2 /* galgas2Scanner_1__2E__2E__2E_ */,
-    2 /* galgas2Scanner_1__2E__2E__3C_ */,
-    12 /* galgas2Scanner_1_type_5F_name */,
-    10 /* galgas2Scanner_1_literal_5F_char */,
-    4 /* galgas2Scanner_1_terminal */,
-    3 /* galgas2Scanner_1__3F__3F_ */,
-    3 /* galgas2Scanner_1__3F_ */,
-    3 /* galgas2Scanner_1__3F__21_ */,
-    3 /* galgas2Scanner_1__21_ */,
-    3 /* galgas2Scanner_1__21__3F_ */,
-    2 /* galgas2Scanner_1__3C_ */,
-    2 /* galgas2Scanner_1__3C__2D__3E_ */,
-    2 /* galgas2Scanner_1__3C__3D_ */,
-    2 /* galgas2Scanner_1__3C__3C_ */,
-    5 /* galgas2Scanner_1_non_5F_terminal_5F_symbol */,
-    11 /* galgas2Scanner_1_literal_5F_string */,
-    13 /* galgas2Scanner_1_comment */,
-    13 /* galgas2Scanner_1_commentMark */,
-    1 /* galgas2Scanner_1_abstract */,
-    1 /* galgas2Scanner_1_after */,
-    1 /* galgas2Scanner_1_array */,
-    1 /* galgas2Scanner_1_before */,
-    1 /* galgas2Scanner_1_between */,
-    1 /* galgas2Scanner_1_block */,
-    1 /* galgas2Scanner_1_case */,
-    1 /* galgas2Scanner_1_cast */,
-    1 /* galgas2Scanner_1_class */,
-    1 /* galgas2Scanner_1_const */,
-    1 /* galgas2Scanner_1_constructor */,
-    1 /* galgas2Scanner_1_default */,
-    1 /* galgas2Scanner_1_do */,
-    1 /* galgas2Scanner_1_drop */,
-    1 /* galgas2Scanner_1_else */,
-    1 /* galgas2Scanner_1_elsif */,
-    1 /* galgas2Scanner_1_end */,
-    1 /* galgas2Scanner_1_enum */,
-    1 /* galgas2Scanner_1_error */,
-    1 /* galgas2Scanner_1_extension */,
-    1 /* galgas2Scanner_1_extends */,
-    1 /* galgas2Scanner_1_extern */,
-    1 /* galgas2Scanner_1_false */,
-    1 /* galgas2Scanner_1_feature */,
-    1 /* galgas2Scanner_1_filewrapper */,
-    1 /* galgas2Scanner_1_for */,
-    1 /* galgas2Scanner_1_foreach */,
-    1 /* galgas2Scanner_1_func */,
-    1 /* galgas2Scanner_1_function */,
-    1 /* galgas2Scanner_1_getter */,
-    1 /* galgas2Scanner_1_grammar */,
-    1 /* galgas2Scanner_1_graph */,
-    1 /* galgas2Scanner_1_gui */,
-    1 /* galgas2Scanner_1_here */,
-    1 /* galgas2Scanner_1_if */,
-    1 /* galgas2Scanner_1_import */,
-    1 /* galgas2Scanner_1_in */,
-    1 /* galgas2Scanner_1_index */,
-    1 /* galgas2Scanner_1_indexing */,
-    1 /* galgas2Scanner_1_insert */,
-    1 /* galgas2Scanner_1_is */,
-    1 /* galgas2Scanner_1_label */,
-    1 /* galgas2Scanner_1_let */,
-    1 /* galgas2Scanner_1_lexique */,
-    1 /* galgas2Scanner_1_list */,
-    1 /* galgas2Scanner_1_listmap */,
-    1 /* galgas2Scanner_1_local */,
-    1 /* galgas2Scanner_1_log */,
-    1 /* galgas2Scanner_1_loop */,
-    1 /* galgas2Scanner_1_map */,
-    1 /* galgas2Scanner_1_match */,
-    1 /* galgas2Scanner_1_message */,
-    1 /* galgas2Scanner_1_method */,
-    1 /* galgas2Scanner_1_mod */,
-    1 /* galgas2Scanner_1_modifier */,
-    1 /* galgas2Scanner_1_nonterminal */,
-    1 /* galgas2Scanner_1_not */,
-    1 /* galgas2Scanner_1_on */,
-    1 /* galgas2Scanner_1_once */,
-    1 /* galgas2Scanner_1_operator */,
-    1 /* galgas2Scanner_1_option */,
-    1 /* galgas2Scanner_1_or */,
-    1 /* galgas2Scanner_1_override */,
-    1 /* galgas2Scanner_1_parse */,
-    1 /* galgas2Scanner_1_private */,
-    1 /* galgas2Scanner_1_proc */,
-    1 /* galgas2Scanner_1_project */,
-    1 /* galgas2Scanner_1_remove */,
-    1 /* galgas2Scanner_1_replace */,
-    1 /* galgas2Scanner_1_repeat */,
-    1 /* galgas2Scanner_1_rewind */,
-    1 /* galgas2Scanner_1_root */,
-    1 /* galgas2Scanner_1_routine */,
-    1 /* galgas2Scanner_1_rule */,
-    1 /* galgas2Scanner_1_search */,
-    1 /* galgas2Scanner_1_select */,
-    1 /* galgas2Scanner_1_self */,
-    1 /* galgas2Scanner_1_selfcopy */,
-    1 /* galgas2Scanner_1_semantics */,
-    1 /* galgas2Scanner_1_send */,
-    1 /* galgas2Scanner_1_setter */,
-    1 /* galgas2Scanner_1_sortedlist */,
-    1 /* galgas2Scanner_1_state */,
-    1 /* galgas2Scanner_1_struct */,
-    1 /* galgas2Scanner_1_style */,
-    1 /* galgas2Scanner_1_switch */,
-    1 /* galgas2Scanner_1_syntax */,
-    1 /* galgas2Scanner_1_tag */,
-    1 /* galgas2Scanner_1_template */,
-    1 /* galgas2Scanner_1_then */,
-    1 /* galgas2Scanner_1_true */,
-    1 /* galgas2Scanner_1_sharedmap */,
-    1 /* galgas2Scanner_1_unused */,
-    1 /* galgas2Scanner_1_var */,
-    1 /* galgas2Scanner_1_warning */,
-    1 /* galgas2Scanner_1_when */,
-    1 /* galgas2Scanner_1_while */,
-    1 /* galgas2Scanner_1_with */,
-    2 /* galgas2Scanner_1__2A_ */,
-    2 /* galgas2Scanner_1__7C_ */,
-    2 /* galgas2Scanner_1__2C_ */,
-    2 /* galgas2Scanner_1__2B_ */,
-    2 /* galgas2Scanner_1__3A__3E_ */,
-    2 /* galgas2Scanner_1__3E_ */,
-    2 /* galgas2Scanner_1__3B_ */,
-    2 /* galgas2Scanner_1__3A_ */,
-    2 /* galgas2Scanner_1__3A__3A_ */,
-    2 /* galgas2Scanner_1__26__26_ */,
-    2 /* galgas2Scanner_1__2D_ */,
-    2 /* galgas2Scanner_1__28_ */,
-    2 /* galgas2Scanner_1__29_ */,
-    2 /* galgas2Scanner_1__2D__3E_ */,
-    2 /* galgas2Scanner_1__3D__3D_ */,
-    2 /* galgas2Scanner_1__3A__3D_ */,
-    2 /* galgas2Scanner_1__7C__7C_ */,
-    2 /* galgas2Scanner_1__26__2B_ */,
-    2 /* galgas2Scanner_1__26__2D_ */,
-    2 /* galgas2Scanner_1__26__2A_ */,
-    2 /* galgas2Scanner_1__5B_ */,
-    2 /* galgas2Scanner_1__5D_ */,
-    2 /* galgas2Scanner_1__2B__3D_ */,
-    2 /* galgas2Scanner_1__2F_ */,
-    2 /* galgas2Scanner_1__21__3D_ */,
-    2 /* galgas2Scanner_1__3E__3D_ */,
-    2 /* galgas2Scanner_1__26_ */,
-    2 /* galgas2Scanner_1__7B_ */,
-    2 /* galgas2Scanner_1__7D_ */,
-    2 /* galgas2Scanner_1__60_ */,
-    2 /* galgas2Scanner_1__5E_ */,
-    2 /* galgas2Scanner_1__3E__3E_ */,
-    2 /* galgas2Scanner_1__7E_ */,
-    2 /* galgas2Scanner_1__2D__2D_ */,
-    2 /* galgas2Scanner_1__2B__2B_ */,
-    2 /* galgas2Scanner_1__26__2D__2D_ */,
-    2 /* galgas2Scanner_1__26__2B__2B_ */,
-    2 /* galgas2Scanner_1__26__2F_ */
-  } ;
-  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_String C_Lexique_galgas_32_Scanner::styleNameForIndex (const uint32_t inStyleIndex) const {
-  C_String result ;
-  if (inStyleIndex < 14) {
-    static const char * kStyleArray [14] = {
-      "",
-      "keywordsStyle",
-      "delimitersStyle",
-      "selectorStyle",
-      "terminalStyle",
-      "nonTerminalStyle",
-      "variantStyle",
-      "integerStyle",
-      "bigintStyle",
-      "floatStyle",
-      "characterStyle",
-      "stringStyle",
-      "typeNameStyle",
-      "commentStyle"
-    } ;
-    result = kStyleArray [inStyleIndex] ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//     L E X I Q U E                                                                                                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-#include "strings/unicode_character_cpp.h"
-#include "galgas2/scanner_actions.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 cTokenFor_galgasTemplateScanner::cTokenFor_galgasTemplateScanner (void) :
 mLexicalAttribute_bigintValue (),
 mLexicalAttribute_charValue (),
@@ -20897,6 +12332,5233 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionIfBranchListForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Class for element of '@templateInstructionSwitchBranchListForGeneration' list                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_templateInstructionSwitchBranchListForGeneration : public cCollectionElement {
+  public : GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_templateInstructionSwitchBranchListForGeneration (const GALGAS_lstringlist & in_mConstantList,
+                                                                                const GALGAS_templateInstructionListForGeneration & in_mInstructionList
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_templateInstructionSwitchBranchListForGeneration::cCollectionElement_templateInstructionSwitchBranchListForGeneration (const GALGAS_lstringlist & in_mConstantList,
+                                                                                                                                          const GALGAS_templateInstructionListForGeneration & in_mInstructionList
+                                                                                                                                          COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mConstantList, in_mInstructionList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_templateInstructionSwitchBranchListForGeneration::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_templateInstructionSwitchBranchListForGeneration::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_templateInstructionSwitchBranchListForGeneration (mObject.mAttribute_mConstantList, mObject.mAttribute_mInstructionList COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_templateInstructionSwitchBranchListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mConstantList" ":" ;
+  mObject.mAttribute_mConstantList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mInstructionList" ":" ;
+  mObject.mAttribute_mInstructionList.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_templateInstructionSwitchBranchListForGeneration::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_templateInstructionSwitchBranchListForGeneration * operand = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration::GALGAS_templateInstructionSwitchBranchListForGeneration (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration::GALGAS_templateInstructionSwitchBranchListForGeneration (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_templateInstructionSwitchBranchListForGeneration result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_listWithValue (const GALGAS_lstringlist & inOperand0,
+                                                                                                                                            const GALGAS_templateInstructionListForGeneration & inOperand1
+                                                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionSwitchBranchListForGeneration result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_templateInstructionSwitchBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                                         const GALGAS_lstringlist & in_mConstantList,
+                                                                                         const GALGAS_templateInstructionListForGeneration & in_mInstructionList
+                                                                                         COMMA_LOCATION_ARGS) {
+  cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = NULL ;
+  macroMyNew (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration (in_mConstantList,
+                                                                                      in_mInstructionList COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::addAssign_operation (const GALGAS_lstringlist & inOperand0,
+                                                                                   const GALGAS_templateInstructionListForGeneration & inOperand1
+                                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::modifier_insertAtIndex (const GALGAS_lstringlist inOperand0,
+                                                                                      const GALGAS_templateInstructionListForGeneration inOperand1,
+                                                                                      const GALGAS_uint inInsertionIndex,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::modifier_removeAtIndex (GALGAS_lstringlist & outOperand0,
+                                                                                      GALGAS_templateInstructionListForGeneration & outOperand1,
+                                                                                      const GALGAS_uint inRemoveIndex,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+      outOperand0 = p->mObject.mAttribute_mConstantList ;
+      outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::modifier_popFirst (GALGAS_lstringlist & outOperand0,
+                                                                                 GALGAS_templateInstructionListForGeneration & outOperand1,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mConstantList ;
+    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::modifier_popLast (GALGAS_lstringlist & outOperand0,
+                                                                                GALGAS_templateInstructionListForGeneration & outOperand1,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mConstantList ;
+    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::method_first (GALGAS_lstringlist & outOperand0,
+                                                                            GALGAS_templateInstructionListForGeneration & outOperand1,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mConstantList ;
+    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::method_last (GALGAS_lstringlist & outOperand0,
+                                                                           GALGAS_templateInstructionListForGeneration & outOperand1,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mConstantList ;
+    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::operator_concat (const GALGAS_templateInstructionSwitchBranchListForGeneration & inOperand
+                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_templateInstructionSwitchBranchListForGeneration result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::add_operation (const GALGAS_templateInstructionSwitchBranchListForGeneration & inOperand,
+                                                                                                                                C_Compiler * /* inCompiler */
+                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_templateInstructionSwitchBranchListForGeneration result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                                                                          C_Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionSwitchBranchListForGeneration result = GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                                                          C_Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionSwitchBranchListForGeneration result = GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateInstructionSwitchBranchListForGeneration::dotAssign_operation (const GALGAS_templateInstructionSwitchBranchListForGeneration inOperand
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_templateInstructionSwitchBranchListForGeneration::reader_mConstantListAtIndex (const GALGAS_uint & inIndex,
+                                                                                                         C_Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) attributes.ptr () ;
+  GALGAS_lstringlist result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+    result = p->mObject.mAttribute_mConstantList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::reader_mInstructionListAtIndex (const GALGAS_uint & inIndex,
+                                                                                                                                     C_Compiler * inCompiler
+                                                                                                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) attributes.ptr () ;
+  GALGAS_templateInstructionListForGeneration result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+    result = p->mObject.mAttribute_mInstructionList ;
+  }
+  return result ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateInstructionSwitchBranchListForGeneration::cEnumerator_templateInstructionSwitchBranchListForGeneration (const GALGAS_templateInstructionSwitchBranchListForGeneration & inEnumeratedObject,
+                                                                                                                            const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element cEnumerator_templateInstructionSwitchBranchListForGeneration::current (LOCATION_ARGS) const {
+  const cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (const cCollectionElement_templateInstructionSwitchBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cEnumerator_templateInstructionSwitchBranchListForGeneration::current_mConstantList (LOCATION_ARGS) const {
+  const cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (const cCollectionElement_templateInstructionSwitchBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+  return p->mObject.mAttribute_mConstantList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionListForGeneration cEnumerator_templateInstructionSwitchBranchListForGeneration::current_mInstructionList (LOCATION_ARGS) const {
+  const cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (const cCollectionElement_templateInstructionSwitchBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
+  return p->mObject.mAttribute_mInstructionList ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               @templateInstructionSwitchBranchListForGeneration type                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration ("templateInstructionSwitchBranchListForGeneration",
+                                                                         NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionSwitchBranchListForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_templateInstructionSwitchBranchListForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionSwitchBranchListForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                                                C_Compiler * inCompiler
+                                                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionSwitchBranchListForGeneration result ;
+  const GALGAS_templateInstructionSwitchBranchListForGeneration * p = (const GALGAS_templateInstructionSwitchBranchListForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateInstructionSwitchBranchListForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionSwitchBranchListForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cMapElement_templateVariableMap::cMapElement_templateVariableMap (const GALGAS_lstring & inKey,
+                                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
+                                                                  const GALGAS_string & in_mCppName
+                                                                  COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mAttribute_mTypeProxy (in_mTypeProxy),
+mAttribute_mCppName (in_mCppName) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cMapElement_templateVariableMap::isValid (void) const {
+  return mAttribute_lkey.isValid () && mAttribute_mTypeProxy.isValid () && mAttribute_mCppName.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cMapElement * cMapElement_templateVariableMap::copy (void) {
+  cMapElement * result = NULL ;
+  macroMyNew (result, cMapElement_templateVariableMap (mAttribute_lkey, mAttribute_mTypeProxy, mAttribute_mCppName COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cMapElement_templateVariableMap::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mTypeProxy" ":" ;
+  mAttribute_mTypeProxy.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mCppName" ":" ;
+  mAttribute_mCppName.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cMapElement_templateVariableMap::compare (const cCollectionElement * inOperand) const {
+  cMapElement_templateVariableMap * operand = (cMapElement_templateVariableMap *) inOperand ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypeProxy.objectCompare (operand->mAttribute_mTypeProxy) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mCppName.objectCompare (operand->mAttribute_mCppName) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateVariableMap::GALGAS_templateVariableMap (void) :
+AC_GALGAS_map () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateVariableMap::GALGAS_templateVariableMap (const GALGAS_templateVariableMap & inSource) :
+AC_GALGAS_map (inSource) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateVariableMap & GALGAS_templateVariableMap::operator = (const GALGAS_templateVariableMap & inSource) {
+  * ((AC_GALGAS_map *) this) = inSource ;
+  return * this ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateVariableMap GALGAS_templateVariableMap::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_templateVariableMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateVariableMap GALGAS_templateVariableMap::constructor_mapWithMapToOverride (const GALGAS_templateVariableMap & inMapToOverride
+                                                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_templateVariableMap result ;
+  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateVariableMap GALGAS_templateVariableMap::reader_overriddenMap (C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const {
+  GALGAS_templateVariableMap result ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateVariableMap::addAssign_operation (const GALGAS_lstring & inKey,
+                                                      const GALGAS_unifiedTypeMap_2D_proxy & inArgument0,
+                                                      const GALGAS_string & inArgument1,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  cMapElement_templateVariableMap * p = NULL ;
+  macroMyNew (p, cMapElement_templateVariableMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@templateVariableMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateVariableMap::modifier_insertKey (GALGAS_lstring inKey,
+                                                     GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                     GALGAS_string inArgument1,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  cMapElement_templateVariableMap * p = NULL ;
+  macroMyNew (p, cMapElement_templateVariableMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "the '%K' variable is already declared in %L" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const char * kSearchErrorMessage_templateVariableMap_searchKey = "the '%K' variable is not declared" ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
+                                                   GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                   GALGAS_string & outArgument1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) performSearch (inKey,
+                                                                                                         inCompiler,
+                                                                                                         kSearchErrorMessage_templateVariableMap_searchKey
+                                                                                                         COMMA_THERE) ;
+  if (NULL == p) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+    outArgument0 = p->mAttribute_mTypeProxy ;
+    outArgument1 = p->mAttribute_mCppName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_templateVariableMap::reader_mTypeProxyForKey (const GALGAS_string & inKey,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) attributes ;
+  GALGAS_unifiedTypeMap_2D_proxy result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+    result = p->mAttribute_mTypeProxy ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_templateVariableMap::reader_mCppNameForKey (const GALGAS_string & inKey,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) attributes ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+    result = p->mAttribute_mCppName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateVariableMap::modifier_setMTypeProxyForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
+                                                               GALGAS_string inKey,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+    p->mAttribute_mTypeProxy = inAttributeValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateVariableMap::modifier_setMCppNameForKey (GALGAS_string inAttributeValue,
+                                                             GALGAS_string inKey,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+    p->mAttribute_mCppName = inAttributeValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cMapElement_templateVariableMap * GALGAS_templateVariableMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                                 const GALGAS_string & inKey
+                                                                                                 COMMA_LOCATION_ARGS) {
+  cMapElement_templateVariableMap * result = (cMapElement_templateVariableMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_templateVariableMap) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateVariableMap::cEnumerator_templateVariableMap (const GALGAS_templateVariableMap & inEnumeratedObject,
+                                                                  const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateVariableMap_2D_element cEnumerator_templateVariableMap::current (LOCATION_ARGS) const {
+  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+  return GALGAS_templateVariableMap_2D_element (p->mAttribute_lkey, p->mAttribute_mTypeProxy, p->mAttribute_mCppName) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_templateVariableMap::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mAttribute_lkey ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy cEnumerator_templateVariableMap::current_mTypeProxy (LOCATION_ARGS) const {
+  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+  return p->mAttribute_mTypeProxy ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cEnumerator_templateVariableMap::current_mCppName (LOCATION_ARGS) const {
+  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+  return p->mAttribute_mCppName ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              @templateVariableMap type                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateVariableMap ("templateVariableMap",
+                                            NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_templateVariableMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateVariableMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_templateVariableMap::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateVariableMap (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateVariableMap GALGAS_templateVariableMap::extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_templateVariableMap result ;
+  const GALGAS_templateVariableMap * p = (const GALGAS_templateVariableMap *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateVariableMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateVariableMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Class for element of '@lexicalInstructionListAST' list                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalInstructionListAST : public cCollectionElement {
+  public : GALGAS_lexicalInstructionListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalInstructionListAST (const GALGAS_lexicalInstructionAST & in_mInstruction
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalInstructionListAST::cCollectionElement_lexicalInstructionListAST (const GALGAS_lexicalInstructionAST & in_mInstruction
+                                                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mInstruction) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalInstructionListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalInstructionListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalInstructionListAST (mObject.mAttribute_mInstruction COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalInstructionListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mInstruction" ":" ;
+  mObject.mAttribute_mInstruction.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalInstructionListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalInstructionListAST * operand = (cCollectionElement_lexicalInstructionListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalInstructionListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST::GALGAS_lexicalInstructionListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST::GALGAS_lexicalInstructionListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalInstructionListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::constructor_listWithValue (const GALGAS_lexicalInstructionAST & inOperand0
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalInstructionListAST result ;
+  if (inOperand0.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalInstructionListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                  const GALGAS_lexicalInstructionAST & in_mInstruction
+                                                                  COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalInstructionListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalInstructionListAST (in_mInstruction COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::addAssign_operation (const GALGAS_lexicalInstructionAST & inOperand0
+                                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalInstructionListAST (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::modifier_insertAtIndex (const GALGAS_lexicalInstructionAST inOperand0,
+                                                               const GALGAS_uint inInsertionIndex,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalInstructionListAST (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::modifier_removeAtIndex (GALGAS_lexicalInstructionAST & outOperand0,
+                                                               const GALGAS_uint inRemoveIndex,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalInstructionListAST * p = (cCollectionElement_lexicalInstructionListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalInstructionListAST) ;
+      outOperand0 = p->mObject.mAttribute_mInstruction ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::modifier_popFirst (GALGAS_lexicalInstructionAST & outOperand0,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalInstructionListAST * p = (cCollectionElement_lexicalInstructionListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalInstructionListAST) ;
+    outOperand0 = p->mObject.mAttribute_mInstruction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::modifier_popLast (GALGAS_lexicalInstructionAST & outOperand0,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalInstructionListAST * p = (cCollectionElement_lexicalInstructionListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalInstructionListAST) ;
+    outOperand0 = p->mObject.mAttribute_mInstruction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::method_first (GALGAS_lexicalInstructionAST & outOperand0,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalInstructionListAST * p = (cCollectionElement_lexicalInstructionListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalInstructionListAST) ;
+    outOperand0 = p->mObject.mAttribute_mInstruction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::method_last (GALGAS_lexicalInstructionAST & outOperand0,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalInstructionListAST * p = (cCollectionElement_lexicalInstructionListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalInstructionListAST) ;
+    outOperand0 = p->mObject.mAttribute_mInstruction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::operator_concat (const GALGAS_lexicalInstructionListAST & inOperand
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalInstructionListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::add_operation (const GALGAS_lexicalInstructionListAST & inOperand,
+                                                                                  C_Compiler * /* inCompiler */
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalInstructionListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalInstructionListAST result = GALGAS_lexicalInstructionListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalInstructionListAST result = GALGAS_lexicalInstructionListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalInstructionListAST::dotAssign_operation (const GALGAS_lexicalInstructionListAST inOperand
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalInstructionListAST::cEnumerator_lexicalInstructionListAST (const GALGAS_lexicalInstructionListAST & inEnumeratedObject,
+                                                                              const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST_2D_element cEnumerator_lexicalInstructionListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalInstructionListAST * p = (const cCollectionElement_lexicalInstructionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalInstructionListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionAST cEnumerator_lexicalInstructionListAST::current_mInstruction (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalInstructionListAST * p = (const cCollectionElement_lexicalInstructionListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalInstructionListAST) ;
+  return p->mObject.mAttribute_mInstruction ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           @lexicalInstructionListAST type                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalInstructionListAST ("lexicalInstructionListAST",
+                                                  NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalInstructionListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalInstructionListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalInstructionListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalInstructionListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalInstructionListAST result ;
+  const GALGAS_lexicalInstructionListAST * p = (const GALGAS_lexicalInstructionListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalInstructionListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalInstructionListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Class for element of '@metamodelTemplateDelimitorListAST' list                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_metamodelTemplateDelimitorListAST : public cCollectionElement {
+  public : GALGAS_metamodelTemplateDelimitorListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_metamodelTemplateDelimitorListAST (const GALGAS_lstring & in_mStartString,
+                                                                 const GALGAS_lstringlist & in_mOptionList,
+                                                                 const GALGAS_lstring & in_mEndString
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_metamodelTemplateDelimitorListAST::cCollectionElement_metamodelTemplateDelimitorListAST (const GALGAS_lstring & in_mStartString,
+                                                                                                            const GALGAS_lstringlist & in_mOptionList,
+                                                                                                            const GALGAS_lstring & in_mEndString
+                                                                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mStartString, in_mOptionList, in_mEndString) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_metamodelTemplateDelimitorListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_metamodelTemplateDelimitorListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_metamodelTemplateDelimitorListAST (mObject.mAttribute_mStartString, mObject.mAttribute_mOptionList, mObject.mAttribute_mEndString COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_metamodelTemplateDelimitorListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mStartString" ":" ;
+  mObject.mAttribute_mStartString.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mOptionList" ":" ;
+  mObject.mAttribute_mOptionList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEndString" ":" ;
+  mObject.mAttribute_mEndString.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_metamodelTemplateDelimitorListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_metamodelTemplateDelimitorListAST * operand = (cCollectionElement_metamodelTemplateDelimitorListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST::GALGAS_metamodelTemplateDelimitorListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST::GALGAS_metamodelTemplateDelimitorListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_metamodelTemplateDelimitorListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                              const GALGAS_lstringlist & inOperand1,
+                                                                                                              const GALGAS_lstring & inOperand2
+                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_metamodelTemplateDelimitorListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_metamodelTemplateDelimitorListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                          const GALGAS_lstring & in_mStartString,
+                                                                          const GALGAS_lstringlist & in_mOptionList,
+                                                                          const GALGAS_lstring & in_mEndString
+                                                                          COMMA_LOCATION_ARGS) {
+  cCollectionElement_metamodelTemplateDelimitorListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_metamodelTemplateDelimitorListAST (in_mStartString,
+                                                                       in_mOptionList,
+                                                                       in_mEndString COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                                    const GALGAS_lstringlist & inOperand1,
+                                                                    const GALGAS_lstring & inOperand2
+                                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_metamodelTemplateDelimitorListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                       const GALGAS_lstringlist inOperand1,
+                                                                       const GALGAS_lstring inOperand2,
+                                                                       const GALGAS_uint inInsertionIndex,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_metamodelTemplateDelimitorListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                       GALGAS_lstringlist & outOperand1,
+                                                                       GALGAS_lstring & outOperand2,
+                                                                       const GALGAS_uint inRemoveIndex,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_metamodelTemplateDelimitorListAST * p = (cCollectionElement_metamodelTemplateDelimitorListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+      outOperand0 = p->mObject.mAttribute_mStartString ;
+      outOperand1 = p->mObject.mAttribute_mOptionList ;
+      outOperand2 = p->mObject.mAttribute_mEndString ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                                  GALGAS_lstringlist & outOperand1,
+                                                                  GALGAS_lstring & outOperand2,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_metamodelTemplateDelimitorListAST * p = (cCollectionElement_metamodelTemplateDelimitorListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+    outOperand0 = p->mObject.mAttribute_mStartString ;
+    outOperand1 = p->mObject.mAttribute_mOptionList ;
+    outOperand2 = p->mObject.mAttribute_mEndString ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                                 GALGAS_lstringlist & outOperand1,
+                                                                 GALGAS_lstring & outOperand2,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_metamodelTemplateDelimitorListAST * p = (cCollectionElement_metamodelTemplateDelimitorListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+    outOperand0 = p->mObject.mAttribute_mStartString ;
+    outOperand1 = p->mObject.mAttribute_mOptionList ;
+    outOperand2 = p->mObject.mAttribute_mEndString ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::method_first (GALGAS_lstring & outOperand0,
+                                                             GALGAS_lstringlist & outOperand1,
+                                                             GALGAS_lstring & outOperand2,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_metamodelTemplateDelimitorListAST * p = (cCollectionElement_metamodelTemplateDelimitorListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+    outOperand0 = p->mObject.mAttribute_mStartString ;
+    outOperand1 = p->mObject.mAttribute_mOptionList ;
+    outOperand2 = p->mObject.mAttribute_mEndString ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::method_last (GALGAS_lstring & outOperand0,
+                                                            GALGAS_lstringlist & outOperand1,
+                                                            GALGAS_lstring & outOperand2,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_metamodelTemplateDelimitorListAST * p = (cCollectionElement_metamodelTemplateDelimitorListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+    outOperand0 = p->mObject.mAttribute_mStartString ;
+    outOperand1 = p->mObject.mAttribute_mOptionList ;
+    outOperand2 = p->mObject.mAttribute_mEndString ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::operator_concat (const GALGAS_metamodelTemplateDelimitorListAST & inOperand
+                                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_metamodelTemplateDelimitorListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::add_operation (const GALGAS_metamodelTemplateDelimitorListAST & inOperand,
+                                                                                                  C_Compiler * /* inCompiler */
+                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_metamodelTemplateDelimitorListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_metamodelTemplateDelimitorListAST result = GALGAS_metamodelTemplateDelimitorListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_metamodelTemplateDelimitorListAST result = GALGAS_metamodelTemplateDelimitorListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_metamodelTemplateDelimitorListAST::dotAssign_operation (const GALGAS_metamodelTemplateDelimitorListAST inOperand
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_metamodelTemplateDelimitorListAST::cEnumerator_metamodelTemplateDelimitorListAST (const GALGAS_metamodelTemplateDelimitorListAST & inEnumeratedObject,
+                                                                                              const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST_2D_element cEnumerator_metamodelTemplateDelimitorListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_metamodelTemplateDelimitorListAST * p = (const cCollectionElement_metamodelTemplateDelimitorListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_metamodelTemplateDelimitorListAST::current_mStartString (LOCATION_ARGS) const {
+  const cCollectionElement_metamodelTemplateDelimitorListAST * p = (const cCollectionElement_metamodelTemplateDelimitorListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+  return p->mObject.mAttribute_mStartString ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cEnumerator_metamodelTemplateDelimitorListAST::current_mOptionList (LOCATION_ARGS) const {
+  const cCollectionElement_metamodelTemplateDelimitorListAST * p = (const cCollectionElement_metamodelTemplateDelimitorListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+  return p->mObject.mAttribute_mOptionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_metamodelTemplateDelimitorListAST::current_mEndString (LOCATION_ARGS) const {
+  const cCollectionElement_metamodelTemplateDelimitorListAST * p = (const cCollectionElement_metamodelTemplateDelimitorListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_metamodelTemplateDelimitorListAST) ;
+  return p->mObject.mAttribute_mEndString ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       @metamodelTemplateDelimitorListAST type                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_metamodelTemplateDelimitorListAST ("metamodelTemplateDelimitorListAST",
+                                                          NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_metamodelTemplateDelimitorListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_metamodelTemplateDelimitorListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_metamodelTemplateDelimitorListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_metamodelTemplateDelimitorListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::extractObject (const GALGAS_object & inObject,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_metamodelTemplateDelimitorListAST result ;
+  const GALGAS_metamodelTemplateDelimitorListAST * p = (const GALGAS_metamodelTemplateDelimitorListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_metamodelTemplateDelimitorListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("metamodelTemplateDelimitorListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Class for element of '@templateReplacementListAST' list                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_templateReplacementListAST : public cCollectionElement {
+  public : GALGAS_templateReplacementListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_templateReplacementListAST (const GALGAS_lstring & in_mMatchString,
+                                                          const GALGAS_lstring & in_mReplacementString,
+                                                          const GALGAS_lstring & in_mReplacementFunction
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_templateReplacementListAST::cCollectionElement_templateReplacementListAST (const GALGAS_lstring & in_mMatchString,
+                                                                                              const GALGAS_lstring & in_mReplacementString,
+                                                                                              const GALGAS_lstring & in_mReplacementFunction
+                                                                                              COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mMatchString, in_mReplacementString, in_mReplacementFunction) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_templateReplacementListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_templateReplacementListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_templateReplacementListAST (mObject.mAttribute_mMatchString, mObject.mAttribute_mReplacementString, mObject.mAttribute_mReplacementFunction COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_templateReplacementListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMatchString" ":" ;
+  mObject.mAttribute_mMatchString.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mReplacementString" ":" ;
+  mObject.mAttribute_mReplacementString.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mReplacementFunction" ":" ;
+  mObject.mAttribute_mReplacementFunction.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_templateReplacementListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_templateReplacementListAST * operand = (cCollectionElement_templateReplacementListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_templateReplacementListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST::GALGAS_templateReplacementListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST::GALGAS_templateReplacementListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_templateReplacementListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                const GALGAS_lstring & inOperand1,
+                                                                                                const GALGAS_lstring & inOperand2
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_templateReplacementListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_templateReplacementListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                   const GALGAS_lstring & in_mMatchString,
+                                                                   const GALGAS_lstring & in_mReplacementString,
+                                                                   const GALGAS_lstring & in_mReplacementFunction
+                                                                   COMMA_LOCATION_ARGS) {
+  cCollectionElement_templateReplacementListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_templateReplacementListAST (in_mMatchString,
+                                                                in_mReplacementString,
+                                                                in_mReplacementFunction COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                             const GALGAS_lstring & inOperand1,
+                                                             const GALGAS_lstring & inOperand2
+                                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_templateReplacementListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                const GALGAS_lstring inOperand1,
+                                                                const GALGAS_lstring inOperand2,
+                                                                const GALGAS_uint inInsertionIndex,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_templateReplacementListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                GALGAS_lstring & outOperand1,
+                                                                GALGAS_lstring & outOperand2,
+                                                                const GALGAS_uint inRemoveIndex,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_templateReplacementListAST * p = (cCollectionElement_templateReplacementListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+      outOperand0 = p->mObject.mAttribute_mMatchString ;
+      outOperand1 = p->mObject.mAttribute_mReplacementString ;
+      outOperand2 = p->mObject.mAttribute_mReplacementFunction ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                           GALGAS_lstring & outOperand1,
+                                                           GALGAS_lstring & outOperand2,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateReplacementListAST * p = (cCollectionElement_templateReplacementListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMatchString ;
+    outOperand1 = p->mObject.mAttribute_mReplacementString ;
+    outOperand2 = p->mObject.mAttribute_mReplacementFunction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                          GALGAS_lstring & outOperand1,
+                                                          GALGAS_lstring & outOperand2,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateReplacementListAST * p = (cCollectionElement_templateReplacementListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMatchString ;
+    outOperand1 = p->mObject.mAttribute_mReplacementString ;
+    outOperand2 = p->mObject.mAttribute_mReplacementFunction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::method_first (GALGAS_lstring & outOperand0,
+                                                      GALGAS_lstring & outOperand1,
+                                                      GALGAS_lstring & outOperand2,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateReplacementListAST * p = (cCollectionElement_templateReplacementListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMatchString ;
+    outOperand1 = p->mObject.mAttribute_mReplacementString ;
+    outOperand2 = p->mObject.mAttribute_mReplacementFunction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::method_last (GALGAS_lstring & outOperand0,
+                                                     GALGAS_lstring & outOperand1,
+                                                     GALGAS_lstring & outOperand2,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_templateReplacementListAST * p = (cCollectionElement_templateReplacementListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMatchString ;
+    outOperand1 = p->mObject.mAttribute_mReplacementString ;
+    outOperand2 = p->mObject.mAttribute_mReplacementFunction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::operator_concat (const GALGAS_templateReplacementListAST & inOperand
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_templateReplacementListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::add_operation (const GALGAS_templateReplacementListAST & inOperand,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_templateReplacementListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_templateReplacementListAST result = GALGAS_templateReplacementListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_templateReplacementListAST result = GALGAS_templateReplacementListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateReplacementListAST::dotAssign_operation (const GALGAS_templateReplacementListAST inOperand
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateReplacementListAST::cEnumerator_templateReplacementListAST (const GALGAS_templateReplacementListAST & inEnumeratedObject,
+                                                                                const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST_2D_element cEnumerator_templateReplacementListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_templateReplacementListAST * p = (const cCollectionElement_templateReplacementListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_templateReplacementListAST::current_mMatchString (LOCATION_ARGS) const {
+  const cCollectionElement_templateReplacementListAST * p = (const cCollectionElement_templateReplacementListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+  return p->mObject.mAttribute_mMatchString ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_templateReplacementListAST::current_mReplacementString (LOCATION_ARGS) const {
+  const cCollectionElement_templateReplacementListAST * p = (const cCollectionElement_templateReplacementListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+  return p->mObject.mAttribute_mReplacementString ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_templateReplacementListAST::current_mReplacementFunction (LOCATION_ARGS) const {
+  const cCollectionElement_templateReplacementListAST * p = (const cCollectionElement_templateReplacementListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_templateReplacementListAST) ;
+  return p->mObject.mAttribute_mReplacementFunction ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @templateReplacementListAST type                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateReplacementListAST ("templateReplacementListAST",
+                                                   NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_templateReplacementListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateReplacementListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_templateReplacementListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateReplacementListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_templateReplacementListAST result ;
+  const GALGAS_templateReplacementListAST * p = (const GALGAS_templateReplacementListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateReplacementListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateReplacementListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Class for element of '@lexicalRuleListAST' list                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalRuleListAST : public cCollectionElement {
+  public : GALGAS_lexicalRuleListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalRuleListAST (const GALGAS_abstractLexicalRuleAST & in_mLexicalRule
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalRuleListAST::cCollectionElement_lexicalRuleListAST (const GALGAS_abstractLexicalRuleAST & in_mLexicalRule
+                                                                              COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mLexicalRule) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalRuleListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalRuleListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalRuleListAST (mObject.mAttribute_mLexicalRule COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalRuleListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLexicalRule" ":" ;
+  mObject.mAttribute_mLexicalRule.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalRuleListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalRuleListAST * operand = (cCollectionElement_lexicalRuleListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalRuleListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST::GALGAS_lexicalRuleListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST::GALGAS_lexicalRuleListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalRuleListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::constructor_listWithValue (const GALGAS_abstractLexicalRuleAST & inOperand0
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalRuleListAST result ;
+  if (inOperand0.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalRuleListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                           const GALGAS_abstractLexicalRuleAST & in_mLexicalRule
+                                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalRuleListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalRuleListAST (in_mLexicalRule COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::addAssign_operation (const GALGAS_abstractLexicalRuleAST & inOperand0
+                                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalRuleListAST (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::modifier_insertAtIndex (const GALGAS_abstractLexicalRuleAST inOperand0,
+                                                        const GALGAS_uint inInsertionIndex,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalRuleListAST (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::modifier_removeAtIndex (GALGAS_abstractLexicalRuleAST & outOperand0,
+                                                        const GALGAS_uint inRemoveIndex,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalRuleListAST * p = (cCollectionElement_lexicalRuleListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalRuleListAST) ;
+      outOperand0 = p->mObject.mAttribute_mLexicalRule ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::modifier_popFirst (GALGAS_abstractLexicalRuleAST & outOperand0,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalRuleListAST * p = (cCollectionElement_lexicalRuleListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalRuleListAST) ;
+    outOperand0 = p->mObject.mAttribute_mLexicalRule ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::modifier_popLast (GALGAS_abstractLexicalRuleAST & outOperand0,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalRuleListAST * p = (cCollectionElement_lexicalRuleListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalRuleListAST) ;
+    outOperand0 = p->mObject.mAttribute_mLexicalRule ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::method_first (GALGAS_abstractLexicalRuleAST & outOperand0,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalRuleListAST * p = (cCollectionElement_lexicalRuleListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalRuleListAST) ;
+    outOperand0 = p->mObject.mAttribute_mLexicalRule ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::method_last (GALGAS_abstractLexicalRuleAST & outOperand0,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalRuleListAST * p = (cCollectionElement_lexicalRuleListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalRuleListAST) ;
+    outOperand0 = p->mObject.mAttribute_mLexicalRule ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::operator_concat (const GALGAS_lexicalRuleListAST & inOperand
+                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalRuleListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::add_operation (const GALGAS_lexicalRuleListAST & inOperand,
+                                                                    C_Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalRuleListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalRuleListAST result = GALGAS_lexicalRuleListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalRuleListAST result = GALGAS_lexicalRuleListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalRuleListAST::dotAssign_operation (const GALGAS_lexicalRuleListAST inOperand
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalRuleListAST::cEnumerator_lexicalRuleListAST (const GALGAS_lexicalRuleListAST & inEnumeratedObject,
+                                                                const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST_2D_element cEnumerator_lexicalRuleListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalRuleListAST * p = (const cCollectionElement_lexicalRuleListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalRuleListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractLexicalRuleAST cEnumerator_lexicalRuleListAST::current_mLexicalRule (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalRuleListAST * p = (const cCollectionElement_lexicalRuleListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalRuleListAST) ;
+  return p->mObject.mAttribute_mLexicalRule ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              @lexicalRuleListAST type                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalRuleListAST ("lexicalRuleListAST",
+                                           NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalRuleListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalRuleListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalRuleListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalRuleListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalRuleListAST result ;
+  const GALGAS_lexicalRuleListAST * p = (const GALGAS_lexicalRuleListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalRuleListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalRuleListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                            Class for element of '@lexicalMessageDeclarationListAST' list                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalMessageDeclarationListAST : public cCollectionElement {
+  public : GALGAS_lexicalMessageDeclarationListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalMessageDeclarationListAST (const GALGAS_lstring & in_mMessageName,
+                                                                const GALGAS_lstring & in_mMessageValue
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalMessageDeclarationListAST::cCollectionElement_lexicalMessageDeclarationListAST (const GALGAS_lstring & in_mMessageName,
+                                                                                                          const GALGAS_lstring & in_mMessageValue
+                                                                                                          COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mMessageName, in_mMessageValue) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalMessageDeclarationListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalMessageDeclarationListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalMessageDeclarationListAST (mObject.mAttribute_mMessageName, mObject.mAttribute_mMessageValue COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalMessageDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMessageName" ":" ;
+  mObject.mAttribute_mMessageName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMessageValue" ":" ;
+  mObject.mAttribute_mMessageValue.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalMessageDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalMessageDeclarationListAST * operand = (cCollectionElement_lexicalMessageDeclarationListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalMessageDeclarationListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST::GALGAS_lexicalMessageDeclarationListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST::GALGAS_lexicalMessageDeclarationListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalMessageDeclarationListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                            const GALGAS_lstring & inOperand1
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalMessageDeclarationListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalMessageDeclarationListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                         const GALGAS_lstring & in_mMessageName,
+                                                                         const GALGAS_lstring & in_mMessageValue
+                                                                         COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalMessageDeclarationListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalMessageDeclarationListAST (in_mMessageName,
+                                                                      in_mMessageValue COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                                   const GALGAS_lstring & inOperand1
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalMessageDeclarationListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                      const GALGAS_lstring inOperand1,
+                                                                      const GALGAS_uint inInsertionIndex,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalMessageDeclarationListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                      GALGAS_lstring & outOperand1,
+                                                                      const GALGAS_uint inRemoveIndex,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalMessageDeclarationListAST * p = (cCollectionElement_lexicalMessageDeclarationListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalMessageDeclarationListAST) ;
+      outOperand0 = p->mObject.mAttribute_mMessageName ;
+      outOperand1 = p->mObject.mAttribute_mMessageValue ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                                 GALGAS_lstring & outOperand1,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalMessageDeclarationListAST * p = (cCollectionElement_lexicalMessageDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalMessageDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMessageName ;
+    outOperand1 = p->mObject.mAttribute_mMessageValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                                GALGAS_lstring & outOperand1,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalMessageDeclarationListAST * p = (cCollectionElement_lexicalMessageDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalMessageDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMessageName ;
+    outOperand1 = p->mObject.mAttribute_mMessageValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::method_first (GALGAS_lstring & outOperand0,
+                                                            GALGAS_lstring & outOperand1,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalMessageDeclarationListAST * p = (cCollectionElement_lexicalMessageDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalMessageDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMessageName ;
+    outOperand1 = p->mObject.mAttribute_mMessageValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::method_last (GALGAS_lstring & outOperand0,
+                                                           GALGAS_lstring & outOperand1,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalMessageDeclarationListAST * p = (cCollectionElement_lexicalMessageDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalMessageDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMessageName ;
+    outOperand1 = p->mObject.mAttribute_mMessageValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::operator_concat (const GALGAS_lexicalMessageDeclarationListAST & inOperand
+                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalMessageDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::add_operation (const GALGAS_lexicalMessageDeclarationListAST & inOperand,
+                                                                                                C_Compiler * /* inCompiler */
+                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalMessageDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                                          C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalMessageDeclarationListAST result = GALGAS_lexicalMessageDeclarationListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                          C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalMessageDeclarationListAST result = GALGAS_lexicalMessageDeclarationListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalMessageDeclarationListAST::dotAssign_operation (const GALGAS_lexicalMessageDeclarationListAST inOperand
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalMessageDeclarationListAST::cEnumerator_lexicalMessageDeclarationListAST (const GALGAS_lexicalMessageDeclarationListAST & inEnumeratedObject,
+                                                                                            const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST_2D_element cEnumerator_lexicalMessageDeclarationListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalMessageDeclarationListAST * p = (const cCollectionElement_lexicalMessageDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalMessageDeclarationListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalMessageDeclarationListAST::current_mMessageName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalMessageDeclarationListAST * p = (const cCollectionElement_lexicalMessageDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalMessageDeclarationListAST) ;
+  return p->mObject.mAttribute_mMessageName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalMessageDeclarationListAST::current_mMessageValue (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalMessageDeclarationListAST * p = (const cCollectionElement_lexicalMessageDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalMessageDeclarationListAST) ;
+  return p->mObject.mAttribute_mMessageValue ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       @lexicalMessageDeclarationListAST type                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST ("lexicalMessageDeclarationListAST",
+                                                         NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalMessageDeclarationListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalMessageDeclarationListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalMessageDeclarationListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::extractObject (const GALGAS_object & inObject,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalMessageDeclarationListAST result ;
+  const GALGAS_lexicalMessageDeclarationListAST * p = (const GALGAS_lexicalMessageDeclarationListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalMessageDeclarationListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalMessageDeclarationListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Class for element of '@lexicalAttributeListAST' list                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalAttributeListAST : public cCollectionElement {
+  public : GALGAS_lexicalAttributeListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalAttributeListAST (const GALGAS_lstring & in_mTypeName,
+                                                       const GALGAS_lstring & in_mName
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalAttributeListAST::cCollectionElement_lexicalAttributeListAST (const GALGAS_lstring & in_mTypeName,
+                                                                                        const GALGAS_lstring & in_mName
+                                                                                        COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mTypeName, in_mName) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalAttributeListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalAttributeListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalAttributeListAST (mObject.mAttribute_mTypeName, mObject.mAttribute_mName COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalAttributeListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mTypeName" ":" ;
+  mObject.mAttribute_mTypeName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mName" ":" ;
+  mObject.mAttribute_mName.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalAttributeListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalAttributeListAST * operand = (cCollectionElement_lexicalAttributeListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalAttributeListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST::GALGAS_lexicalAttributeListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST::GALGAS_lexicalAttributeListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalAttributeListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                          const GALGAS_lstring & inOperand1
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalAttributeListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalAttributeListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                const GALGAS_lstring & in_mTypeName,
+                                                                const GALGAS_lstring & in_mName
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalAttributeListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalAttributeListAST (in_mTypeName,
+                                                             in_mName COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                          const GALGAS_lstring & inOperand1
+                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalAttributeListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                             const GALGAS_lstring inOperand1,
+                                                             const GALGAS_uint inInsertionIndex,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalAttributeListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                             GALGAS_lstring & outOperand1,
+                                                             const GALGAS_uint inRemoveIndex,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalAttributeListAST * p = (cCollectionElement_lexicalAttributeListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalAttributeListAST) ;
+      outOperand0 = p->mObject.mAttribute_mTypeName ;
+      outOperand1 = p->mObject.mAttribute_mName ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                        GALGAS_lstring & outOperand1,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalAttributeListAST * p = (cCollectionElement_lexicalAttributeListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalAttributeListAST) ;
+    outOperand0 = p->mObject.mAttribute_mTypeName ;
+    outOperand1 = p->mObject.mAttribute_mName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                       GALGAS_lstring & outOperand1,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalAttributeListAST * p = (cCollectionElement_lexicalAttributeListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalAttributeListAST) ;
+    outOperand0 = p->mObject.mAttribute_mTypeName ;
+    outOperand1 = p->mObject.mAttribute_mName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::method_first (GALGAS_lstring & outOperand0,
+                                                   GALGAS_lstring & outOperand1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalAttributeListAST * p = (cCollectionElement_lexicalAttributeListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalAttributeListAST) ;
+    outOperand0 = p->mObject.mAttribute_mTypeName ;
+    outOperand1 = p->mObject.mAttribute_mName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::method_last (GALGAS_lstring & outOperand0,
+                                                  GALGAS_lstring & outOperand1,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalAttributeListAST * p = (cCollectionElement_lexicalAttributeListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalAttributeListAST) ;
+    outOperand0 = p->mObject.mAttribute_mTypeName ;
+    outOperand1 = p->mObject.mAttribute_mName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::operator_concat (const GALGAS_lexicalAttributeListAST & inOperand
+                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalAttributeListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::add_operation (const GALGAS_lexicalAttributeListAST & inOperand,
+                                                                              C_Compiler * /* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalAttributeListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalAttributeListAST result = GALGAS_lexicalAttributeListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalAttributeListAST result = GALGAS_lexicalAttributeListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalAttributeListAST::dotAssign_operation (const GALGAS_lexicalAttributeListAST inOperand
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalAttributeListAST::cEnumerator_lexicalAttributeListAST (const GALGAS_lexicalAttributeListAST & inEnumeratedObject,
+                                                                          const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST_2D_element cEnumerator_lexicalAttributeListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalAttributeListAST * p = (const cCollectionElement_lexicalAttributeListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalAttributeListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalAttributeListAST::current_mTypeName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalAttributeListAST * p = (const cCollectionElement_lexicalAttributeListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalAttributeListAST) ;
+  return p->mObject.mAttribute_mTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalAttributeListAST::current_mName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalAttributeListAST * p = (const cCollectionElement_lexicalAttributeListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalAttributeListAST) ;
+  return p->mObject.mAttribute_mName ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @lexicalAttributeListAST type                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalAttributeListAST ("lexicalAttributeListAST",
+                                                NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalAttributeListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalAttributeListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalAttributeListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalAttributeListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalAttributeListAST result ;
+  const GALGAS_lexicalAttributeListAST * p = (const GALGAS_lexicalAttributeListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalAttributeListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalAttributeListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Class for element of '@lexicalStyleListAST' list                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalStyleListAST : public cCollectionElement {
+  public : GALGAS_lexicalStyleListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalStyleListAST (const GALGAS_lstring & in_mName,
+                                                   const GALGAS_lstring & in_mComment
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalStyleListAST::cCollectionElement_lexicalStyleListAST (const GALGAS_lstring & in_mName,
+                                                                                const GALGAS_lstring & in_mComment
+                                                                                COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mName, in_mComment) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalStyleListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalStyleListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalStyleListAST (mObject.mAttribute_mName, mObject.mAttribute_mComment COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalStyleListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mName" ":" ;
+  mObject.mAttribute_mName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mComment" ":" ;
+  mObject.mAttribute_mComment.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalStyleListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalStyleListAST * operand = (cCollectionElement_lexicalStyleListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalStyleListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST::GALGAS_lexicalStyleListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST::GALGAS_lexicalStyleListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalStyleListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                  const GALGAS_lstring & inOperand1
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalStyleListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalStyleListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                            const GALGAS_lstring & in_mName,
+                                                            const GALGAS_lstring & in_mComment
+                                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalStyleListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalStyleListAST (in_mName,
+                                                         in_mComment COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                      const GALGAS_lstring & inOperand1
+                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalStyleListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                         const GALGAS_lstring inOperand1,
+                                                         const GALGAS_uint inInsertionIndex,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalStyleListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                         GALGAS_lstring & outOperand1,
+                                                         const GALGAS_uint inRemoveIndex,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalStyleListAST * p = (cCollectionElement_lexicalStyleListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalStyleListAST) ;
+      outOperand0 = p->mObject.mAttribute_mName ;
+      outOperand1 = p->mObject.mAttribute_mComment ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                    GALGAS_lstring & outOperand1,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalStyleListAST * p = (cCollectionElement_lexicalStyleListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalStyleListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mComment ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                   GALGAS_lstring & outOperand1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalStyleListAST * p = (cCollectionElement_lexicalStyleListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalStyleListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mComment ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::method_first (GALGAS_lstring & outOperand0,
+                                               GALGAS_lstring & outOperand1,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalStyleListAST * p = (cCollectionElement_lexicalStyleListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalStyleListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mComment ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::method_last (GALGAS_lstring & outOperand0,
+                                              GALGAS_lstring & outOperand1,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalStyleListAST * p = (cCollectionElement_lexicalStyleListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalStyleListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mComment ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::operator_concat (const GALGAS_lexicalStyleListAST & inOperand
+                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalStyleListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::add_operation (const GALGAS_lexicalStyleListAST & inOperand,
+                                                                      C_Compiler * /* inCompiler */
+                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalStyleListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalStyleListAST result = GALGAS_lexicalStyleListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalStyleListAST result = GALGAS_lexicalStyleListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalStyleListAST::dotAssign_operation (const GALGAS_lexicalStyleListAST inOperand
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalStyleListAST::cEnumerator_lexicalStyleListAST (const GALGAS_lexicalStyleListAST & inEnumeratedObject,
+                                                                  const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST_2D_element cEnumerator_lexicalStyleListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalStyleListAST * p = (const cCollectionElement_lexicalStyleListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalStyleListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalStyleListAST::current_mName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalStyleListAST * p = (const cCollectionElement_lexicalStyleListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalStyleListAST) ;
+  return p->mObject.mAttribute_mName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalStyleListAST::current_mComment (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalStyleListAST * p = (const cCollectionElement_lexicalStyleListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalStyleListAST) ;
+  return p->mObject.mAttribute_mComment ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              @lexicalStyleListAST type                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalStyleListAST ("lexicalStyleListAST",
+                                            NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalStyleListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalStyleListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalStyleListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalStyleListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalStyleListAST result ;
+  const GALGAS_lexicalStyleListAST * p = (const GALGAS_lexicalStyleListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalStyleListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalStyleListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Class for element of '@terminalDeclarationListAST' list                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_terminalDeclarationListAST : public cCollectionElement {
+  public : GALGAS_terminalDeclarationListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_terminalDeclarationListAST (const GALGAS_lstring & in_mName,
+                                                          const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                          const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                          const GALGAS_lstring & in_mStyle,
+                                                          const GALGAS_lstringlist & in_mOptionList
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_terminalDeclarationListAST::cCollectionElement_terminalDeclarationListAST (const GALGAS_lstring & in_mName,
+                                                                                              const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                                              const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                                              const GALGAS_lstring & in_mStyle,
+                                                                                              const GALGAS_lstringlist & in_mOptionList
+                                                                                              COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_mStyle, in_mOptionList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_terminalDeclarationListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_terminalDeclarationListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_terminalDeclarationListAST (mObject.mAttribute_mName, mObject.mAttribute_mSentAttributeList, mObject.mAttribute_mSyntaxErrorMessage, mObject.mAttribute_mStyle, mObject.mAttribute_mOptionList COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_terminalDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mName" ":" ;
+  mObject.mAttribute_mName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSentAttributeList" ":" ;
+  mObject.mAttribute_mSentAttributeList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSyntaxErrorMessage" ":" ;
+  mObject.mAttribute_mSyntaxErrorMessage.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mStyle" ":" ;
+  mObject.mAttribute_mStyle.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mOptionList" ":" ;
+  mObject.mAttribute_mOptionList.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_terminalDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_terminalDeclarationListAST * operand = (cCollectionElement_terminalDeclarationListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_terminalDeclarationListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST::GALGAS_terminalDeclarationListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST::GALGAS_terminalDeclarationListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_terminalDeclarationListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                const GALGAS_sentLexicalAttributeListAST & inOperand1,
+                                                                                                const GALGAS_lstring & inOperand2,
+                                                                                                const GALGAS_lstring & inOperand3,
+                                                                                                const GALGAS_lstringlist & inOperand4
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_terminalDeclarationListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_terminalDeclarationListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                   const GALGAS_lstring & in_mName,
+                                                                   const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                   const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                   const GALGAS_lstring & in_mStyle,
+                                                                   const GALGAS_lstringlist & in_mOptionList
+                                                                   COMMA_LOCATION_ARGS) {
+  cCollectionElement_terminalDeclarationListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_terminalDeclarationListAST (in_mName,
+                                                                in_mSentAttributeList,
+                                                                in_mSyntaxErrorMessage,
+                                                                in_mStyle,
+                                                                in_mOptionList COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                             const GALGAS_sentLexicalAttributeListAST & inOperand1,
+                                                             const GALGAS_lstring & inOperand2,
+                                                             const GALGAS_lstring & inOperand3,
+                                                             const GALGAS_lstringlist & inOperand4
+                                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_terminalDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                const GALGAS_sentLexicalAttributeListAST inOperand1,
+                                                                const GALGAS_lstring inOperand2,
+                                                                const GALGAS_lstring inOperand3,
+                                                                const GALGAS_lstringlist inOperand4,
+                                                                const GALGAS_uint inInsertionIndex,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_terminalDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                                GALGAS_lstring & outOperand2,
+                                                                GALGAS_lstring & outOperand3,
+                                                                GALGAS_lstringlist & outOperand4,
+                                                                const GALGAS_uint inRemoveIndex,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
+      outOperand4.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+      outOperand0 = p->mObject.mAttribute_mName ;
+      outOperand1 = p->mObject.mAttribute_mSentAttributeList ;
+      outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+      outOperand3 = p->mObject.mAttribute_mStyle ;
+      outOperand4 = p->mObject.mAttribute_mOptionList ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                           GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                           GALGAS_lstring & outOperand2,
+                                                           GALGAS_lstring & outOperand3,
+                                                           GALGAS_lstringlist & outOperand4,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mStyle ;
+    outOperand4 = p->mObject.mAttribute_mOptionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                          GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                          GALGAS_lstring & outOperand2,
+                                                          GALGAS_lstring & outOperand3,
+                                                          GALGAS_lstringlist & outOperand4,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mStyle ;
+    outOperand4 = p->mObject.mAttribute_mOptionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::method_first (GALGAS_lstring & outOperand0,
+                                                      GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                      GALGAS_lstring & outOperand2,
+                                                      GALGAS_lstring & outOperand3,
+                                                      GALGAS_lstringlist & outOperand4,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mStyle ;
+    outOperand4 = p->mObject.mAttribute_mOptionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::method_last (GALGAS_lstring & outOperand0,
+                                                     GALGAS_sentLexicalAttributeListAST & outOperand1,
+                                                     GALGAS_lstring & outOperand2,
+                                                     GALGAS_lstring & outOperand3,
+                                                     GALGAS_lstringlist & outOperand4,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_terminalDeclarationListAST * p = (cCollectionElement_terminalDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mStyle ;
+    outOperand4 = p->mObject.mAttribute_mOptionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::operator_concat (const GALGAS_terminalDeclarationListAST & inOperand
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::add_operation (const GALGAS_terminalDeclarationListAST & inOperand,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result = GALGAS_terminalDeclarationListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result = GALGAS_terminalDeclarationListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_terminalDeclarationListAST::dotAssign_operation (const GALGAS_terminalDeclarationListAST inOperand
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_terminalDeclarationListAST::cEnumerator_terminalDeclarationListAST (const GALGAS_terminalDeclarationListAST & inEnumeratedObject,
+                                                                                const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST_2D_element cEnumerator_terminalDeclarationListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_terminalDeclarationListAST::current_mName (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mAttribute_mName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST cEnumerator_terminalDeclarationListAST::current_mSentAttributeList (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mAttribute_mSentAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_terminalDeclarationListAST::current_mSyntaxErrorMessage (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mAttribute_mSyntaxErrorMessage ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_terminalDeclarationListAST::current_mStyle (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mAttribute_mStyle ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cEnumerator_terminalDeclarationListAST::current_mOptionList (LOCATION_ARGS) const {
+  const cCollectionElement_terminalDeclarationListAST * p = (const cCollectionElement_terminalDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_terminalDeclarationListAST) ;
+  return p->mObject.mAttribute_mOptionList ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @terminalDeclarationListAST type                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_terminalDeclarationListAST ("terminalDeclarationListAST",
+                                                   NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_terminalDeclarationListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_terminalDeclarationListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_terminalDeclarationListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_terminalDeclarationListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_terminalDeclarationListAST result ;
+  const GALGAS_terminalDeclarationListAST * p = (const GALGAS_terminalDeclarationListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_terminalDeclarationListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("terminalDeclarationListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Class for element of '@sentLexicalAttributeListAST' list                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_sentLexicalAttributeListAST : public cCollectionElement {
+  public : GALGAS_sentLexicalAttributeListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_sentLexicalAttributeListAST (const GALGAS_lstring & in_mFormalSelector,
+                                                           const GALGAS_lstring & in_mAttributeName
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_sentLexicalAttributeListAST::cCollectionElement_sentLexicalAttributeListAST (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                const GALGAS_lstring & in_mAttributeName
+                                                                                                COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mFormalSelector, in_mAttributeName) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_sentLexicalAttributeListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_sentLexicalAttributeListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_sentLexicalAttributeListAST (mObject.mAttribute_mFormalSelector, mObject.mAttribute_mAttributeName COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_sentLexicalAttributeListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mFormalSelector" ":" ;
+  mObject.mAttribute_mFormalSelector.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mAttributeName" ":" ;
+  mObject.mAttribute_mAttributeName.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_sentLexicalAttributeListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_sentLexicalAttributeListAST * operand = (cCollectionElement_sentLexicalAttributeListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_sentLexicalAttributeListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST::GALGAS_sentLexicalAttributeListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST::GALGAS_sentLexicalAttributeListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_sentLexicalAttributeListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                  const GALGAS_lstring & inOperand1
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_sentLexicalAttributeListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_sentLexicalAttributeListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                    const GALGAS_lstring & in_mFormalSelector,
+                                                                    const GALGAS_lstring & in_mAttributeName
+                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement_sentLexicalAttributeListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_sentLexicalAttributeListAST (in_mFormalSelector,
+                                                                 in_mAttributeName COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                              const GALGAS_lstring & inOperand1
+                                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_sentLexicalAttributeListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                 const GALGAS_lstring inOperand1,
+                                                                 const GALGAS_uint inInsertionIndex,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_sentLexicalAttributeListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                 GALGAS_lstring & outOperand1,
+                                                                 const GALGAS_uint inRemoveIndex,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_sentLexicalAttributeListAST * p = (cCollectionElement_sentLexicalAttributeListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+      outOperand0 = p->mObject.mAttribute_mFormalSelector ;
+      outOperand1 = p->mObject.mAttribute_mAttributeName ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                            GALGAS_lstring & outOperand1,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_sentLexicalAttributeListAST * p = (cCollectionElement_sentLexicalAttributeListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+    outOperand0 = p->mObject.mAttribute_mFormalSelector ;
+    outOperand1 = p->mObject.mAttribute_mAttributeName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                           GALGAS_lstring & outOperand1,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_sentLexicalAttributeListAST * p = (cCollectionElement_sentLexicalAttributeListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+    outOperand0 = p->mObject.mAttribute_mFormalSelector ;
+    outOperand1 = p->mObject.mAttribute_mAttributeName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::method_first (GALGAS_lstring & outOperand0,
+                                                       GALGAS_lstring & outOperand1,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_sentLexicalAttributeListAST * p = (cCollectionElement_sentLexicalAttributeListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+    outOperand0 = p->mObject.mAttribute_mFormalSelector ;
+    outOperand1 = p->mObject.mAttribute_mAttributeName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::method_last (GALGAS_lstring & outOperand0,
+                                                      GALGAS_lstring & outOperand1,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_sentLexicalAttributeListAST * p = (cCollectionElement_sentLexicalAttributeListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+    outOperand0 = p->mObject.mAttribute_mFormalSelector ;
+    outOperand1 = p->mObject.mAttribute_mAttributeName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::operator_concat (const GALGAS_sentLexicalAttributeListAST & inOperand
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_sentLexicalAttributeListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::add_operation (const GALGAS_sentLexicalAttributeListAST & inOperand,
+                                                                                      C_Compiler * /* inCompiler */
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_sentLexicalAttributeListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_sentLexicalAttributeListAST result = GALGAS_sentLexicalAttributeListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_sentLexicalAttributeListAST result = GALGAS_sentLexicalAttributeListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sentLexicalAttributeListAST::dotAssign_operation (const GALGAS_sentLexicalAttributeListAST inOperand
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_sentLexicalAttributeListAST::reader_mFormalSelectorAtIndex (const GALGAS_uint & inIndex,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_sentLexicalAttributeListAST * p = (cCollectionElement_sentLexicalAttributeListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+    result = p->mObject.mAttribute_mFormalSelector ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_sentLexicalAttributeListAST::reader_mAttributeNameAtIndex (const GALGAS_uint & inIndex,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_sentLexicalAttributeListAST * p = (cCollectionElement_sentLexicalAttributeListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+    result = p->mObject.mAttribute_mAttributeName ;
+  }
+  return result ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_sentLexicalAttributeListAST::cEnumerator_sentLexicalAttributeListAST (const GALGAS_sentLexicalAttributeListAST & inEnumeratedObject,
+                                                                                  const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST_2D_element cEnumerator_sentLexicalAttributeListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_sentLexicalAttributeListAST * p = (const cCollectionElement_sentLexicalAttributeListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_sentLexicalAttributeListAST::current_mFormalSelector (LOCATION_ARGS) const {
+  const cCollectionElement_sentLexicalAttributeListAST * p = (const cCollectionElement_sentLexicalAttributeListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+  return p->mObject.mAttribute_mFormalSelector ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_sentLexicalAttributeListAST::current_mAttributeName (LOCATION_ARGS) const {
+  const cCollectionElement_sentLexicalAttributeListAST * p = (const cCollectionElement_sentLexicalAttributeListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_sentLexicalAttributeListAST) ;
+  return p->mObject.mAttribute_mAttributeName ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @sentLexicalAttributeListAST type                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_sentLexicalAttributeListAST ("sentLexicalAttributeListAST",
+                                                    NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_sentLexicalAttributeListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sentLexicalAttributeListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_sentLexicalAttributeListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_sentLexicalAttributeListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::extractObject (const GALGAS_object & inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_sentLexicalAttributeListAST result ;
+  const GALGAS_sentLexicalAttributeListAST * p = (const GALGAS_sentLexicalAttributeListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_sentLexicalAttributeListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("sentLexicalAttributeListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Class for element of '@lexicalListEntryListAST' list                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {
+  public : GALGAS_lexicalListEntryListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalListEntryListAST (const GALGAS_lstring & in_mEntrySpelling,
+                                                       const GALGAS_lstring & in_mTerminalSpelling,
+                                                       const GALGAS_lstringlist & in_mFeatureList
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalListEntryListAST::cCollectionElement_lexicalListEntryListAST (const GALGAS_lstring & in_mEntrySpelling,
+                                                                                        const GALGAS_lstring & in_mTerminalSpelling,
+                                                                                        const GALGAS_lstringlist & in_mFeatureList
+                                                                                        COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mEntrySpelling, in_mTerminalSpelling, in_mFeatureList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalListEntryListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalListEntryListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalListEntryListAST (mObject.mAttribute_mEntrySpelling, mObject.mAttribute_mTerminalSpelling, mObject.mAttribute_mFeatureList COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalListEntryListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEntrySpelling" ":" ;
+  mObject.mAttribute_mEntrySpelling.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mTerminalSpelling" ":" ;
+  mObject.mAttribute_mTerminalSpelling.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mFeatureList" ":" ;
+  mObject.mAttribute_mFeatureList.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalListEntryListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalListEntryListAST * operand = (cCollectionElement_lexicalListEntryListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalListEntryListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST::GALGAS_lexicalListEntryListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST::GALGAS_lexicalListEntryListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalListEntryListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                          const GALGAS_lstring & inOperand1,
+                                                                                          const GALGAS_lstringlist & inOperand2
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalListEntryListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalListEntryListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                const GALGAS_lstring & in_mEntrySpelling,
+                                                                const GALGAS_lstring & in_mTerminalSpelling,
+                                                                const GALGAS_lstringlist & in_mFeatureList
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalListEntryListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalListEntryListAST (in_mEntrySpelling,
+                                                             in_mTerminalSpelling,
+                                                             in_mFeatureList COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                          const GALGAS_lstring & inOperand1,
+                                                          const GALGAS_lstringlist & inOperand2
+                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalListEntryListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                             const GALGAS_lstring inOperand1,
+                                                             const GALGAS_lstringlist inOperand2,
+                                                             const GALGAS_uint inInsertionIndex,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalListEntryListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                             GALGAS_lstring & outOperand1,
+                                                             GALGAS_lstringlist & outOperand2,
+                                                             const GALGAS_uint inRemoveIndex,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalListEntryListAST * p = (cCollectionElement_lexicalListEntryListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+      outOperand0 = p->mObject.mAttribute_mEntrySpelling ;
+      outOperand1 = p->mObject.mAttribute_mTerminalSpelling ;
+      outOperand2 = p->mObject.mAttribute_mFeatureList ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                        GALGAS_lstring & outOperand1,
+                                                        GALGAS_lstringlist & outOperand2,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListEntryListAST * p = (cCollectionElement_lexicalListEntryListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+    outOperand0 = p->mObject.mAttribute_mEntrySpelling ;
+    outOperand1 = p->mObject.mAttribute_mTerminalSpelling ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                       GALGAS_lstring & outOperand1,
+                                                       GALGAS_lstringlist & outOperand2,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListEntryListAST * p = (cCollectionElement_lexicalListEntryListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+    outOperand0 = p->mObject.mAttribute_mEntrySpelling ;
+    outOperand1 = p->mObject.mAttribute_mTerminalSpelling ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::method_first (GALGAS_lstring & outOperand0,
+                                                   GALGAS_lstring & outOperand1,
+                                                   GALGAS_lstringlist & outOperand2,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListEntryListAST * p = (cCollectionElement_lexicalListEntryListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+    outOperand0 = p->mObject.mAttribute_mEntrySpelling ;
+    outOperand1 = p->mObject.mAttribute_mTerminalSpelling ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::method_last (GALGAS_lstring & outOperand0,
+                                                  GALGAS_lstring & outOperand1,
+                                                  GALGAS_lstringlist & outOperand2,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListEntryListAST * p = (cCollectionElement_lexicalListEntryListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+    outOperand0 = p->mObject.mAttribute_mEntrySpelling ;
+    outOperand1 = p->mObject.mAttribute_mTerminalSpelling ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::operator_concat (const GALGAS_lexicalListEntryListAST & inOperand
+                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalListEntryListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::add_operation (const GALGAS_lexicalListEntryListAST & inOperand,
+                                                                              C_Compiler * /* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalListEntryListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalListEntryListAST result = GALGAS_lexicalListEntryListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalListEntryListAST result = GALGAS_lexicalListEntryListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListEntryListAST::dotAssign_operation (const GALGAS_lexicalListEntryListAST inOperand
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalListEntryListAST::cEnumerator_lexicalListEntryListAST (const GALGAS_lexicalListEntryListAST & inEnumeratedObject,
+                                                                          const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST_2D_element cEnumerator_lexicalListEntryListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListEntryListAST * p = (const cCollectionElement_lexicalListEntryListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalListEntryListAST::current_mEntrySpelling (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListEntryListAST * p = (const cCollectionElement_lexicalListEntryListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+  return p->mObject.mAttribute_mEntrySpelling ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalListEntryListAST::current_mTerminalSpelling (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListEntryListAST * p = (const cCollectionElement_lexicalListEntryListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+  return p->mObject.mAttribute_mTerminalSpelling ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cEnumerator_lexicalListEntryListAST::current_mFeatureList (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListEntryListAST * p = (const cCollectionElement_lexicalListEntryListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
+  return p->mObject.mAttribute_mFeatureList ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @lexicalListEntryListAST type                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalListEntryListAST ("lexicalListEntryListAST",
+                                                NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalListEntryListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalListEntryListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalListEntryListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalListEntryListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalListEntryListAST result ;
+  const GALGAS_lexicalListEntryListAST * p = (const GALGAS_lexicalListEntryListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalListEntryListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalListEntryListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Class for element of '@lexicalListDeclarationListAST' list                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalListDeclarationListAST : public cCollectionElement {
+  public : GALGAS_lexicalListDeclarationListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalListDeclarationListAST (const GALGAS_lstring & in_mName,
+                                                             const GALGAS_lstring & in_mStyle,
+                                                             const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                             const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                             const GALGAS_lexicalListEntryListAST & in_mEntryList
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalListDeclarationListAST::cCollectionElement_lexicalListDeclarationListAST (const GALGAS_lstring & in_mName,
+                                                                                                    const GALGAS_lstring & in_mStyle,
+                                                                                                    const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                                                    const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                                                    const GALGAS_lexicalListEntryListAST & in_mEntryList
+                                                                                                    COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mName, in_mStyle, in_mSyntaxErrorMessage, in_mSentAttributeList, in_mEntryList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalListDeclarationListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalListDeclarationListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalListDeclarationListAST (mObject.mAttribute_mName, mObject.mAttribute_mStyle, mObject.mAttribute_mSyntaxErrorMessage, mObject.mAttribute_mSentAttributeList, mObject.mAttribute_mEntryList COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalListDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mName" ":" ;
+  mObject.mAttribute_mName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mStyle" ":" ;
+  mObject.mAttribute_mStyle.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSyntaxErrorMessage" ":" ;
+  mObject.mAttribute_mSyntaxErrorMessage.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSentAttributeList" ":" ;
+  mObject.mAttribute_mSentAttributeList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEntryList" ":" ;
+  mObject.mAttribute_mEntryList.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalListDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalListDeclarationListAST * operand = (cCollectionElement_lexicalListDeclarationListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalListDeclarationListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST::GALGAS_lexicalListDeclarationListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST::GALGAS_lexicalListDeclarationListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalListDeclarationListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                      const GALGAS_lstring & inOperand1,
+                                                                                                      const GALGAS_lstring & inOperand2,
+                                                                                                      const GALGAS_sentLexicalAttributeListAST & inOperand3,
+                                                                                                      const GALGAS_lexicalListEntryListAST & inOperand4
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalListDeclarationListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalListDeclarationListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                      const GALGAS_lstring & in_mName,
+                                                                      const GALGAS_lstring & in_mStyle,
+                                                                      const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                      const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                      const GALGAS_lexicalListEntryListAST & in_mEntryList
+                                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalListDeclarationListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (in_mName,
+                                                                   in_mStyle,
+                                                                   in_mSyntaxErrorMessage,
+                                                                   in_mSentAttributeList,
+                                                                   in_mEntryList COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                                const GALGAS_lstring & inOperand1,
+                                                                const GALGAS_lstring & inOperand2,
+                                                                const GALGAS_sentLexicalAttributeListAST & inOperand3,
+                                                                const GALGAS_lexicalListEntryListAST & inOperand4
+                                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                   const GALGAS_lstring inOperand1,
+                                                                   const GALGAS_lstring inOperand2,
+                                                                   const GALGAS_sentLexicalAttributeListAST inOperand3,
+                                                                   const GALGAS_lexicalListEntryListAST inOperand4,
+                                                                   const GALGAS_uint inInsertionIndex,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                   GALGAS_lstring & outOperand1,
+                                                                   GALGAS_lstring & outOperand2,
+                                                                   GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                                   GALGAS_lexicalListEntryListAST & outOperand4,
+                                                                   const GALGAS_uint inRemoveIndex,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
+      outOperand4.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+      outOperand0 = p->mObject.mAttribute_mName ;
+      outOperand1 = p->mObject.mAttribute_mStyle ;
+      outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+      outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+      outOperand4 = p->mObject.mAttribute_mEntryList ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                              GALGAS_lstring & outOperand1,
+                                                              GALGAS_lstring & outOperand2,
+                                                              GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                              GALGAS_lexicalListEntryListAST & outOperand4,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mStyle ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand4 = p->mObject.mAttribute_mEntryList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                             GALGAS_lstring & outOperand1,
+                                                             GALGAS_lstring & outOperand2,
+                                                             GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                             GALGAS_lexicalListEntryListAST & outOperand4,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mStyle ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand4 = p->mObject.mAttribute_mEntryList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::method_first (GALGAS_lstring & outOperand0,
+                                                         GALGAS_lstring & outOperand1,
+                                                         GALGAS_lstring & outOperand2,
+                                                         GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                         GALGAS_lexicalListEntryListAST & outOperand4,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mStyle ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand4 = p->mObject.mAttribute_mEntryList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::method_last (GALGAS_lstring & outOperand0,
+                                                        GALGAS_lstring & outOperand1,
+                                                        GALGAS_lstring & outOperand2,
+                                                        GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                        GALGAS_lexicalListEntryListAST & outOperand4,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mStyle ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand4 = p->mObject.mAttribute_mEntryList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::operator_concat (const GALGAS_lexicalListDeclarationListAST & inOperand
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::add_operation (const GALGAS_lexicalListDeclarationListAST & inOperand,
+                                                                                          C_Compiler * /* inCompiler */
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result = GALGAS_lexicalListDeclarationListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result = GALGAS_lexicalListDeclarationListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::dotAssign_operation (const GALGAS_lexicalListDeclarationListAST inOperand
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalListDeclarationListAST::cEnumerator_lexicalListDeclarationListAST (const GALGAS_lexicalListDeclarationListAST & inEnumeratedObject,
+                                                                                      const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST_2D_element cEnumerator_lexicalListDeclarationListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mStyle (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mStyle ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mSyntaxErrorMessage (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mSyntaxErrorMessage ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST cEnumerator_lexicalListDeclarationListAST::current_mSentAttributeList (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mSentAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST cEnumerator_lexicalListDeclarationListAST::current_mEntryList (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mEntryList ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         @lexicalListDeclarationListAST type                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ("lexicalListDeclarationListAST",
+                                                      NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalListDeclarationListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalListDeclarationListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalListDeclarationListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalListDeclarationListAST result ;
+  const GALGAS_lexicalListDeclarationListAST * p = (const GALGAS_lexicalListDeclarationListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalListDeclarationListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalListDeclarationListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
