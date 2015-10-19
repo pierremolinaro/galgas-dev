@@ -249,7 +249,7 @@ override method @optionValueExpressionForGeneration generateExpression
     ioInclusionSet += !"option-" + mOptionComponentName
   end
   outCppExpression = "GALGAS_" + [mResultType identifierRepresentation] + " (gOption_" + [mOptionComponentName identifierRepresentation]
-                   + "_" + [mOptionEntryName identifierRepresentation] + ".reader_value ())"
+                   + "_" + [mOptionEntryName identifierRepresentation] + ".getter_value ())"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -264,7 +264,7 @@ override method @optionCharExpressionForGeneration generateExpression
     ioInclusionSet += !"option-" + mOptionComponentName
   end
   outCppExpression = "GALGAS_char (gOption_" + [mOptionComponentName identifierRepresentation]
-                  + "_" + [mOptionEntryName identifierRepresentation] + ".reader_char ())"
+                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_char ())"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -279,7 +279,7 @@ override method @optionStringExpressionForGeneration generateExpression
     ioInclusionSet += !"option-" + mOptionComponentName
   end
   outCppExpression = "GALGAS_string (gOption_" + [mOptionComponentName identifierRepresentation]
-                  + "_" + [mOptionEntryName identifierRepresentation] + ".reader_string ())"
+                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_string ())"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -294,7 +294,7 @@ override method @optionCommentExpressionForGeneration generateExpression
     ioInclusionSet += !"option-" + mOptionComponentName
   end
   outCppExpression = "gOption_" + [mOptionComponentName identifierRepresentation]
-                  + "_" + [mOptionEntryName identifierRepresentation] + ".reader_comment ()"
+                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_comment ()"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1191,7 +1191,7 @@ override method @getterCallExpressionForGeneration generateExpression
       outCppExpression += ".mAttribute_" + [mValue identifierRepresentation]
     end
     [mResultType addHeaderFileName !?ioInclusionSet]
-    outCppExpression +=  ".reader_" + [mGetterName identifierRepresentation] + " ("
+    outCppExpression +=  ".getter_" + [mGetterName identifierRepresentation] + " ("
   end
   for () in getterArgumentCppNameList
     do outCppExpression += mValue

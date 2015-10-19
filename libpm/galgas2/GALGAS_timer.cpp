@@ -70,7 +70,7 @@ void GALGAS_timer::modifier_resume (UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_timer::reader_msFromStart (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_timer::getter_msFromStart (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint (mTimer.msFromStart ()) ;
@@ -80,7 +80,7 @@ GALGAS_uint GALGAS_timer::reader_msFromStart (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_timer::reader_string (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_timer::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     result = GALGAS_string (mTimer.timeString ()) ;

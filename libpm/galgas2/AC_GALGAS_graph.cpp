@@ -142,7 +142,7 @@ class cSharedGraph : public C_SharedObject {
 
   public : GALGAS_lstringlist lkeyList (void) const ;
 
-  public : C_String reader_graphviz (void) const ;
+  public : C_String getter_graphviz (void) const ;
 
   public : void edges (GALGAS__32_stringlist & ioList) const ;
 
@@ -315,7 +315,7 @@ uint32_t AC_GALGAS_graph::count () const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint AC_GALGAS_graph::reader_count (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint AC_GALGAS_graph::getter_count (UNUSED_LOCATION_ARGS) const {
   return GALGAS_uint (count ()) ;
 }
 
@@ -343,12 +343,12 @@ void AC_GALGAS_graph::insulateGraph (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark reader_hasKey
+  #pragma mark getter_hasKey
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool AC_GALGAS_graph::reader_isNodeDefined (const GALGAS_string & inKey
+GALGAS_bool AC_GALGAS_graph::getter_isNodeDefined (const GALGAS_string & inKey
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -371,7 +371,7 @@ bool cSharedGraph::isNodeDefined (const C_String & inKey) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark reader_keyList
+  #pragma mark getter_keyList
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -386,7 +386,7 @@ GALGAS_stringlist cSharedGraph::keyList (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist AC_GALGAS_graph::reader_keyList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist AC_GALGAS_graph::getter_keyList (UNUSED_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
     result = mSharedGraph->keyList () ;
@@ -397,7 +397,7 @@ GALGAS_stringlist AC_GALGAS_graph::reader_keyList (UNUSED_LOCATION_ARGS) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark reader_lkeyList
+  #pragma mark getter_lkeyList
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -417,7 +417,7 @@ GALGAS_lstringlist cSharedGraph::lkeyList (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist AC_GALGAS_graph::reader_lkeyList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist AC_GALGAS_graph::getter_lkeyList (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (isValid ()) {
     result = mSharedGraph->lkeyList () ;
@@ -850,7 +850,7 @@ void AC_GALGAS_graph::modifier_addEdge (const GALGAS_lstring & inSourceNodeKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String cSharedGraph::reader_graphviz (void) const {
+C_String cSharedGraph::getter_graphviz (void) const {
   TC_UniqueArray <C_String> nodeNameArray ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
     nodeNameArray.addObject (mNodeArray (i COMMA_HERE)->mKey) ;
@@ -860,10 +860,10 @@ C_String cSharedGraph::reader_graphviz (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string AC_GALGAS_graph::reader_graphviz (UNUSED_LOCATION_ARGS) const {
+GALGAS_string AC_GALGAS_graph::getter_graphviz (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    result = GALGAS_string (mSharedGraph->reader_graphviz ()) ;
+    result = GALGAS_string (mSharedGraph->getter_graphviz ()) ;
   }
   return result ;
 }
@@ -889,7 +889,7 @@ void cSharedGraph::edges (GALGAS__32_stringlist & ioList) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist AC_GALGAS_graph::reader_edges (LOCATION_ARGS) const {
+GALGAS__32_stringlist AC_GALGAS_graph::getter_edges (LOCATION_ARGS) const {
   GALGAS__32_stringlist result ;
   if (isValid ()) {
     result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
@@ -901,7 +901,7 @@ GALGAS__32_stringlist AC_GALGAS_graph::reader_edges (LOCATION_ARGS) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark reader_undefinedNodeCount
+  #pragma mark getter_undefinedNodeCount
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -918,7 +918,7 @@ static void countUndefinedNodeCount (const cGraphNode * inNode, uint32_t & ioCou
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint AC_GALGAS_graph::reader_undefinedNodeCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint AC_GALGAS_graph::getter_undefinedNodeCount (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     uint32_t undefinedNodeCount = 0 ;
@@ -931,7 +931,7 @@ GALGAS_uint AC_GALGAS_graph::reader_undefinedNodeCount (UNUSED_LOCATION_ARGS) co
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark reader_undefinedNodeKeyList
+  #pragma mark getter_undefinedNodeKeyList
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -948,7 +948,7 @@ static void buildUndefinedNodeKeyList (const cGraphNode * inNode, GALGAS_stringl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist AC_GALGAS_graph::reader_undefinedNodeKeyList (LOCATION_ARGS) const {
+GALGAS_stringlist AC_GALGAS_graph::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
@@ -1209,7 +1209,7 @@ void AC_GALGAS_graph::internalDepthFirstTopologicalSort (cSharedList * & outSort
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark reader_undefinedNodeReferenceList
+  #pragma mark getter_undefinedNodeReferenceList
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1232,7 +1232,7 @@ static void buildUndefinedNodeReferenceList (const cGraphNode * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist AC_GALGAS_graph::reader_undefinedNodeReferenceList (LOCATION_ARGS) const {
+GALGAS_lstringlist AC_GALGAS_graph::getter_undefinedNodeReferenceList (LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (isValid ()) {
     result = GALGAS_lstringlist::constructor_emptyList (THERE) ;

@@ -108,7 +108,7 @@ void GALGAS_data::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_data::reader_length (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_data::getter_length (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint ((uint32_t) mData.length ()) ;
@@ -118,7 +118,7 @@ GALGAS_uint GALGAS_data::reader_length (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_data::reader_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     C_String s (cStringWithUnsigned (mData (0 COMMA_HERE))) ;

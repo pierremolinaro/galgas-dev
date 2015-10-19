@@ -55,7 +55,7 @@ if [FORMAL_ARGUMENT_LIST length] == 0 then
                                              !^%const cObjectArray & /* inEffectiveParameterArray */,\n%
                                              !^%const GALGAS_location & /* inErrorLocation */\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
-  %  return function_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE).reader_object (THERE) ;\n%
+  %  return function_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE).getter_object (THERE) ;\n%
   %}\n%
 else
   %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
@@ -69,7 +69,7 @@ else
   for () in FORMAL_ARGUMENT_LIST do index IDX
     %operand%![IDX string]%, %
   end
-  %inCompiler COMMA_THERE).reader_object (THERE) ;\n%
+  %inCompiler COMMA_THERE).getter_object (THERE) ;\n%
   %}\n%
 end
 %

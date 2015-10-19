@@ -101,7 +101,7 @@ override method @warningInstructionForGeneration generateInstruction
 #--- Use location getter ?
   if mUseLocationGetter then
     let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
-    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".reader_location (HERE)) ; // Implicit use of 'location' getter\n"
+    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".getter_location (HERE)) ; // Implicit use of 'location' getter\n"
     receiverCppVarName = locationVar
   end
 #--- Generate warning instruction

@@ -90,13 +90,13 @@ void GALGAS_genericCategoryMethodListMap_2D_element::description (C_String & ioS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_genericCategoryMethodListMap_2D_element::reader_key (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_genericCategoryMethodListMap_2D_element::getter_key (UNUSED_LOCATION_ARGS) const {
   return mAttribute_key ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_genericCategoryMethodListMap_2D_element::reader_mList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_genericCategoryMethodListMap_2D_element::getter_mList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mList ;
 }
 
@@ -227,13 +227,13 @@ void GALGAS_descendantClassListMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_descendantClassListMap_2D_element::reader_key (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_descendantClassListMap_2D_element::getter_key (UNUSED_LOCATION_ARGS) const {
   return mAttribute_key ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyList GALGAS_descendantClassListMap_2D_element::reader_mList (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapProxyList GALGAS_descendantClassListMap_2D_element::getter_mList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mList ;
 }
 
@@ -386,25 +386,25 @@ void GALGAS_XCodeGroupList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeGroupList_2D_element::reader_mGroupReference (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeGroupList_2D_element::getter_mGroupReference (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGroupReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeGroupList_2D_element::reader_mGroupName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeGroupList_2D_element::getter_mGroupName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGroupName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeGroupList_2D_element::reader_mGroupPath (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeGroupList_2D_element::getter_mGroupPath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGroupPath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeGroupList_2D_element::reader_mChildrenRefs (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeGroupList_2D_element::getter_mChildrenRefs (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mChildrenRefs ;
 }
 
@@ -634,67 +634,67 @@ void GALGAS_XCodeToolTargetList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mTargetRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mTargetRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mTargetName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mTargetName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mProductFileReference (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mProductFileReference (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProductFileReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mProductFileName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mProductFileName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProductFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::reader_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::getter_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildPhaseRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildPhaseRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationListRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::reader_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::getter_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationSettingList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::reader_mFrameworksFileRefList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::getter_mFrameworksFileRefList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFrameworksFileRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mFrameworkBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mFrameworkBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFrameworkBuildPhaseRef ;
 }
 
@@ -957,85 +957,85 @@ void GALGAS_XCodeAppTargetList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mTargetRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mTargetRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mTargetName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mTargetName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mProductFileReference (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mProductFileReference (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProductFileReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mProductFileName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mProductFileName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProductFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildPhaseRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildPhaseRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationListRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationSettingList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mFrameworksFileRefList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mFrameworksFileRefList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFrameworksFileRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mFrameworkBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mFrameworkBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFrameworkBuildPhaseRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mDependentTargets (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mDependentTargets (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDependentTargets ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mResourceBuildRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mResourceBuildRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mResourceBuildRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mResourceFileBuildRefs (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mResourceFileBuildRefs (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mResourceFileBuildRefs ;
 }
 
@@ -1177,19 +1177,19 @@ void GALGAS_BuildFileList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_BuildFileList_2D_element::reader_mFileReference (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_BuildFileList_2D_element::getter_mFileReference (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFileReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_BuildFileList_2D_element::reader_mFileName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_BuildFileList_2D_element::getter_mFileName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_BuildFileList_2D_element::reader_mBuildReference (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_BuildFileList_2D_element::getter_mBuildReference (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildReference ;
 }
 
@@ -1386,49 +1386,49 @@ void GALGAS_semanticContext::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap GALGAS_semanticContext::reader_mTypeMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap GALGAS_semanticContext::getter_mTypeMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_routineMap GALGAS_semanticContext::reader_mRoutineMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_routineMap GALGAS_semanticContext::getter_mRoutineMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRoutineMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionMap GALGAS_semanticContext::reader_mFunctionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_functionMap GALGAS_semanticContext::getter_mFunctionMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFunctionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_filewrapperMap GALGAS_semanticContext::reader_mFilewrapperMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_filewrapperMap GALGAS_semanticContext::getter_mFilewrapperMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_grammarMap GALGAS_semanticContext::reader_mGrammarMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_grammarMap GALGAS_semanticContext::getter_mGrammarMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGrammarMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_optionComponentMapForSemanticAnalysis GALGAS_semanticContext::reader_mOptionComponentMapForSemanticAnalysis (UNUSED_LOCATION_ARGS) const {
+GALGAS_optionComponentMapForSemanticAnalysis GALGAS_semanticContext::getter_mOptionComponentMapForSemanticAnalysis (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionComponentMapForSemanticAnalysis ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexiqueComponentMapForSemanticAnalysis GALGAS_semanticContext::reader_mLexiqueComponentMapForSemanticAnalysis (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexiqueComponentMapForSemanticAnalysis GALGAS_semanticContext::getter_mLexiqueComponentMapForSemanticAnalysis (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueComponentMapForSemanticAnalysis ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_syntaxComponentMap GALGAS_semanticContext::reader_mSyntaxComponentMapForSemanticAnalysis (UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxComponentMap GALGAS_semanticContext::getter_mSyntaxComponentMapForSemanticAnalysis (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxComponentMapForSemanticAnalysis ;
 }
 
@@ -1757,121 +1757,121 @@ void GALGAS_predefinedTypes::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLocationType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLocationType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocationType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mBoolType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mBoolType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBoolType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mCharType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mCharType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCharType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mStringType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mStringType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStringType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mUIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mUIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mUIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mSIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mSIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mUInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mUInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mUInt_36__34_Type ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mSInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mSInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSInt_36__34_Type ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mDoubleType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mDoubleType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDoubleType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLBoolType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLBoolType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLBoolType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLCharType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLCharType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLCharType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLStringType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLStringType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLStringType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLUIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLUIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLUIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLSIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLSIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLSIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLUInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLUInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLUInt_36__34_Type ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLSInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLSInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLSInt_36__34_Type ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLDoubleType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLDoubleType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLDoubleType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mStringListType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mStringListType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStringListType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLBigIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mLBigIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLBigIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mBigIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::getter_mBigIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBigIntType ;
 }
 
@@ -2112,73 +2112,73 @@ void GALGAS_lexiqueAnalysisContext::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexiqueAnalysisContext::reader_mLexiqueName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexiqueAnalysisContext::getter_mLexiqueName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalRoutineMap GALGAS_lexiqueAnalysisContext::reader_mLexicalRoutineMessageMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalRoutineMap GALGAS_lexiqueAnalysisContext::getter_mLexicalRoutineMessageMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalRoutineMessageMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalFunctionMap GALGAS_lexiqueAnalysisContext::reader_mLexicalFunctionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalFunctionMap GALGAS_lexiqueAnalysisContext::getter_mLexicalFunctionMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalFunctionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalMessageMap GALGAS_lexiqueAnalysisContext::reader_mLexicalMessageMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalMessageMap GALGAS_lexiqueAnalysisContext::getter_mLexicalMessageMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalMessageMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_terminalMap GALGAS_lexiqueAnalysisContext::reader_mTerminalMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_terminalMap GALGAS_lexiqueAnalysisContext::getter_mTerminalMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminalMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_terminalList GALGAS_lexiqueAnalysisContext::reader_mTerminalList (UNUSED_LOCATION_ARGS) const {
+GALGAS_terminalList GALGAS_lexiqueAnalysisContext::getter_mTerminalList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminalList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalAttributeMap GALGAS_lexiqueAnalysisContext::reader_mLexicalAttributeMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalAttributeMap GALGAS_lexiqueAnalysisContext::getter_mLexicalAttributeMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalAttributeMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexiqueAnalysisContext::reader_mLexicalTokenListMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexiqueAnalysisContext::getter_mLexicalTokenListMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalTokenListMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset GALGAS_lexiqueAnalysisContext::reader_mUnicodeStringToGenerate (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringset GALGAS_lexiqueAnalysisContext::getter_mUnicodeStringToGenerate (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mUnicodeStringToGenerate ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateDelimitorList GALGAS_lexiqueAnalysisContext::reader_mTemplateDelimitorList (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateDelimitorList GALGAS_lexiqueAnalysisContext::getter_mTemplateDelimitorList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTemplateDelimitorList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_styleMap GALGAS_lexiqueAnalysisContext::reader_mStyleMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_styleMap GALGAS_lexiqueAnalysisContext::getter_mStyleMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStyleMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset GALGAS_lexiqueAnalysisContext::reader_mExternUnicodeTestFunctions (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringset GALGAS_lexiqueAnalysisContext::getter_mExternUnicodeTestFunctions (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExternUnicodeTestFunctions ;
 }
 
@@ -2342,31 +2342,31 @@ void GALGAS_guiComponentAST::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_guiComponentAST::reader_mGUIName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_guiComponentAST::getter_mGUIName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGUIName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_guiComponentAST::reader_mGUIClass (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_guiComponentAST::getter_mGUIClass (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGUIClass ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_guiComponentAST::reader_mImportedOptionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_guiComponentAST::getter_mImportedOptionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mImportedOptionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiSimpleAttributeListAST GALGAS_guiComponentAST::reader_mGlobalSimpleAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiSimpleAttributeListAST GALGAS_guiComponentAST::getter_mGlobalSimpleAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGlobalSimpleAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_withLexiqueListAST GALGAS_guiComponentAST::reader_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
+GALGAS_withLexiqueListAST GALGAS_guiComponentAST::getter_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mWithLexiqueList ;
 }
 
@@ -2629,85 +2629,85 @@ void GALGAS_galgas_33_LexiqueComponentListAST_2D_element::description (C_String 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mIsTemplate (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mIsTemplate (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsTemplate ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_metamodelTemplateDelimitorListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mTemplateDelimitorList (UNUSED_LOCATION_ARGS) const {
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mTemplateDelimitorList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTemplateDelimitorList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateReplacementListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mTemplateReplacementList (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateReplacementListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mTemplateReplacementList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTemplateReplacementList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalAttributeListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mLexicalAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalAttributeListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mLexicalAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalStyleListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mLexicalStyleList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalStyleListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mLexicalStyleList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalStyleList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_terminalDeclarationListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mTerminalDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_terminalDeclarationListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mTerminalDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminalDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalMessageDeclarationListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mLexicalMessageDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalMessageDeclarationListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mLexicalMessageDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalMessageDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalListDeclarationListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mLexicalListDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalListDeclarationListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mLexicalListDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalListDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalRuleListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mLexicalRuleList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalRuleListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mLexicalRuleList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalRuleList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externRoutineListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mExternRoutineList (UNUSED_LOCATION_ARGS) const {
+GALGAS_externRoutineListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mExternRoutineList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExternRoutineList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externFunctionListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mExternFunctionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_externFunctionListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mExternFunctionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExternFunctionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_indexingListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mIndexingListAST (UNUSED_LOCATION_ARGS) const {
+GALGAS_indexingListAST GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mIndexingListAST (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndexingListAST ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_galgas_33_LexiqueComponentListAST_2D_element::reader_mIndexingDirectory (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_galgas_33_LexiqueComponentListAST_2D_element::getter_mIndexingDirectory (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndexingDirectory ;
 }
 
@@ -2904,49 +2904,49 @@ void GALGAS_galgas_33_GrammarComponentListAST_2D_element::description (C_String 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lbool GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mHasIndexing (UNUSED_LOCATION_ARGS) const {
+GALGAS_lbool GALGAS_galgas_33_GrammarComponentListAST_2D_element::getter_mHasIndexing (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mHasIndexing ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mGrammarComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::getter_mGrammarComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGrammarComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mGrammarClass (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::getter_mGrammarClass (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGrammarClass ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mSyntaxComponents (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentListAST_2D_element::getter_mSyntaxComponents (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxComponents ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mStartSymbolName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::getter_mStartSymbolName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStartSymbolName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_nonTerminalLabelListAST GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mStartSymbolLabelList (UNUSED_LOCATION_ARGS) const {
+GALGAS_nonTerminalLabelListAST GALGAS_galgas_33_GrammarComponentListAST_2D_element::getter_mStartSymbolLabelList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStartSymbolLabelList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mUnusedNonterminalList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentListAST_2D_element::getter_mUnusedNonterminalList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mUnusedNonterminalList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_galgas_33_GrammarComponentListAST_2D_element::getter_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mHasTranslateFeature ;
 }
 
@@ -3132,43 +3132,43 @@ void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::description (C_String &
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mImportedLexiqueFilePath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mImportedLexiqueFilePath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mImportedLexiqueFilePath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mImportedComponentFileNameList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mImportedComponentFileNameList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mImportedComponentFileNameList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mNonterminalDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mNonterminalDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mNonterminalDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mRuleList (UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mRuleList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRuleList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mSemanticDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mSemanticDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSemanticDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mHasTranslateFeature ;
 }
 
@@ -3343,37 +3343,37 @@ void GALGAS_programComponentAST::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_programComponentAST::reader_mProgramComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_programComponentAST::getter_mProgramComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProgramComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_programComponentAST::reader_mImportedComponentFileNameList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_programComponentAST::getter_mImportedComponentFileNameList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mImportedComponentFileNameList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_prologueEpilogueList GALGAS_programComponentAST::reader_mPrologueList (UNUSED_LOCATION_ARGS) const {
+GALGAS_prologueEpilogueList GALGAS_programComponentAST::getter_mPrologueList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mPrologueList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_prologueEpilogueList GALGAS_programComponentAST::reader_mEpilogueList (UNUSED_LOCATION_ARGS) const {
+GALGAS_prologueEpilogueList GALGAS_programComponentAST::getter_mEpilogueList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEpilogueList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_programRuleList GALGAS_programComponentAST::reader_mProgramRules (UNUSED_LOCATION_ARGS) const {
+GALGAS_programRuleList GALGAS_programComponentAST::getter_mProgramRules (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProgramRules ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticDeclarationListAST GALGAS_programComponentAST::reader_mSemanticDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticDeclarationListAST GALGAS_programComponentAST::getter_mSemanticDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSemanticDeclarationList ;
 }
 
@@ -3438,9 +3438,9 @@ GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTyp
     uint32_t variant_19159 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 356)).uintValue () ;
     bool loop_19159 = true ;
     while (loop_19159) {
-      loop_19159 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 356)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 356)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 356)).isValid () ;
+      loop_19159 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 356)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 356)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 356)).isValid () ;
       if (loop_19159) {
-        loop_19159 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 356)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 356)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 356)).boolValue () ;
+        loop_19159 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 356)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 356)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 356)).boolValue () ;
       }
       if (loop_19159 && (0 == variant_19159)) {
         loop_19159 = false ;
@@ -3448,7 +3448,7 @@ GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTyp
       }
       if (loop_19159) {
         variant_19159 -- ;
-        result_outBaseType = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)) ;
+        result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)) ;
       }
     }
   }
@@ -3471,10 +3471,10 @@ void categoryMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_proxy inOb
                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   const GALGAS_unifiedTypeMap_2D_proxy temp_1 = inObject ;
-  const enumGalgasBool test_2 = temp_0.reader_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 365)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 365)).operator_and (GALGAS_bool (kIsNotEqual, temp_1.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 365)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 365)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 365)).boolEnum () ;
+  const enumGalgasBool test_2 = temp_0.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 365)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 365)).operator_and (GALGAS_bool (kIsNotEqual, temp_1.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 365)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 365)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 365)).boolEnum () ;
   if (kBoolTrue == test_2) {
     const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
-    ioArgument_ioInclusions.addAssign_operation (temp_3.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 366))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 366)) ;
+    ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 366))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 366)) ;
   }
 }
 
@@ -3490,10 +3490,10 @@ void categoryMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy 
                                            C_Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
-  const enumGalgasBool test_1 = temp_0.reader_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 374)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 374)).boolEnum () ;
+  const enumGalgasBool test_1 = temp_0.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 374)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 374)).boolEnum () ;
   if (kBoolTrue == test_1) {
     const GALGAS_unifiedTypeMap_2D_proxy temp_2 = inObject ;
-    switch (temp_2.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 375)).enumValue ()) {
+    switch (temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 375)).enumValue ()) {
     case GALGAS_headerKind::kNotBuilt:
       break ;
     case GALGAS_headerKind::kEnum_noHeader:
@@ -3503,13 +3503,13 @@ void categoryMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy 
     case GALGAS_headerKind::kEnum_oneHeader:
       {
         const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
-        ioArgument_ioInclusions.addAssign_operation (temp_3.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 378))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 378)) ;
+        ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 378))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 378)) ;
       }
       break ;
     case GALGAS_headerKind::kEnum_twoHeaders:
       {
         const GALGAS_unifiedTypeMap_2D_proxy temp_4 = inObject ;
-        ioArgument_ioInclusions.addAssign_operation (temp_4.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380)) ;
+        ioArgument_ioInclusions.addAssign_operation (temp_4.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 380)) ;
       }
       break ;
     }
@@ -3699,31 +3699,31 @@ void GALGAS_analysisContext::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticContext GALGAS_analysisContext::reader_mSemanticContext (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticContext GALGAS_analysisContext::getter_mSemanticContext (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSemanticContext ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_predefinedTypes GALGAS_analysisContext::reader_mPredefinedTypes (UNUSED_LOCATION_ARGS) const {
+GALGAS_predefinedTypes GALGAS_analysisContext::getter_mPredefinedTypes (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mPredefinedTypes ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_analysisContext::reader_mSelfCopyTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_analysisContext::getter_mSelfCopyTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelfCopyTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_analysisContext::reader_mSelfObjectCppName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_analysisContext::getter_mSelfObjectCppName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelfObjectCppName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_analysisContext::reader_mSelfTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_analysisContext::getter_mSelfTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelfTypeProxy ;
 }
 
@@ -3920,49 +3920,49 @@ void GALGAS_galgas_33_ProjectComponentAST::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_galgas_33_ProjectComponentAST::reader_mProjectSourceList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_galgas_33_ProjectComponentAST::getter_mProjectSourceList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProjectSourceList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint GALGAS_galgas_33_ProjectComponentAST::reader_mMajorVersion (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_galgas_33_ProjectComponentAST::getter_mMajorVersion (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMajorVersion ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint GALGAS_galgas_33_ProjectComponentAST::reader_mMinorVersion (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_galgas_33_ProjectComponentAST::getter_mMinorVersion (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMinorVersion ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint GALGAS_galgas_33_ProjectComponentAST::reader_mRevisionVersion (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_galgas_33_ProjectComponentAST::getter_mRevisionVersion (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRevisionVersion ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_galgas_33_ProjectComponentAST::reader_mGenerationFeatureList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_galgas_33_ProjectComponentAST::getter_mGenerationFeatureList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGenerationFeatureList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_ProjectComponentAST::reader_mQualifiedFeatureList (UNUSED_LOCATION_ARGS) const {
+GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_ProjectComponentAST::getter_mQualifiedFeatureList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mQualifiedFeatureList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_galgas_33_ProjectComponentAST::reader_mTargetName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_galgas_33_ProjectComponentAST::getter_mTargetName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_galgas_33_ProjectComponentAST::reader_mEndOfSourceFile (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_galgas_33_ProjectComponentAST::getter_mEndOfSourceFile (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfSourceFile ;
 }
 
@@ -4302,127 +4302,127 @@ void GALGAS_XcodeProjectDescriptor::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_XcodeProjectDescriptor::reader_mSequenceNumber (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_XcodeProjectDescriptor::getter_mSequenceNumber (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSequenceNumber ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XcodeProjectDescriptor::reader_mMainGroupReference (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XcodeProjectDescriptor::getter_mMainGroupReference (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMainGroupReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XcodeProjectDescriptor::reader_mMainGroupChildrenRefs (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XcodeProjectDescriptor::getter_mMainGroupChildrenRefs (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMainGroupChildrenRefs ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XcodeProjectDescriptor::reader_mProjectObjectReference (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XcodeProjectDescriptor::getter_mProjectObjectReference (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProjectObjectReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeGroupList GALGAS_XcodeProjectDescriptor::reader_mGroupList (UNUSED_LOCATION_ARGS) const {
+GALGAS_XCodeGroupList GALGAS_XcodeProjectDescriptor::getter_mGroupList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGroupList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeToolTargetList GALGAS_XcodeProjectDescriptor::reader_mToolTargetList (UNUSED_LOCATION_ARGS) const {
+GALGAS_XCodeToolTargetList GALGAS_XcodeProjectDescriptor::getter_mToolTargetList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mToolTargetList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeAppTargetList GALGAS_XcodeProjectDescriptor::reader_mAppTargetList (UNUSED_LOCATION_ARGS) const {
+GALGAS_XCodeAppTargetList GALGAS_XcodeProjectDescriptor::getter_mAppTargetList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAppTargetList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mCFileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mCFileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCFileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mCppFileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mCppFileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCppFileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_m_5F_M_5F_FileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_m_5F_M_5F_FileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_m_5F_M_5F_FileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_m_5F_MM_5F_FileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_m_5F_MM_5F_FileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_m_5F_MM_5F_FileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mFrameworkFileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mFrameworkFileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFrameworkFileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mHeaderFileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mHeaderFileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mHeaderFileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_BuildFileList GALGAS_XcodeProjectDescriptor::reader_mBuildFileList (UNUSED_LOCATION_ARGS) const {
+GALGAS_BuildFileList GALGAS_XcodeProjectDescriptor::getter_mBuildFileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildFileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XcodeProjectDescriptor::reader_mDefaultConfigurationRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XcodeProjectDescriptor::getter_mDefaultConfigurationRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDefaultConfigurationRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XcodeProjectDescriptor::reader_mDefaultConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XcodeProjectDescriptor::getter_mDefaultConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDefaultConfigurationSettingList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XcodeProjectDescriptor::reader_mProjectBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XcodeProjectDescriptor::getter_mProjectBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProjectBuildConfigurationRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mInfoPlistFileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mInfoPlistFileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInfoPlistFileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mXIB_5F_fileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mXIB_5F_fileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mXIB_5F_fileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mTIFF_5F_fileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mTIFF_5F_fileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTIFF_5F_fileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mICNS_5F_fileList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mICNS_5F_fileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mICNS_5F_fileList ;
 }
 
@@ -4859,7 +4859,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
   GALGAS_stringlist var_childrenRefs = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 235)) ;
   cEnumerator_stringset enumerator_9391 (constinArgument_inFileNames, kEnumeration_up) ;
   while (enumerator_9391.hasCurrentObject ()) {
-    const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 237)).objectCompare (GALGAS_string ("c"))).boolEnum () ;
+    const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 237)).objectCompare (GALGAS_string ("c"))).boolEnum () ;
     if (kBoolTrue == test_3) {
       GALGAS_string var_cFileRef ;
       {
@@ -4872,7 +4872,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
       }
       ioArgument_ioCFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 241)) ;
     }else if (kBoolFalse == test_3) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 242)).objectCompare (GALGAS_string ("cpp"))).boolEnum () ;
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 242)).objectCompare (GALGAS_string ("cpp"))).boolEnum () ;
       if (kBoolTrue == test_4) {
         GALGAS_string var_cppFileRef ;
         {
@@ -4885,7 +4885,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
         }
         ioArgument_ioCppFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 246)) ;
       }else if (kBoolFalse == test_4) {
-        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 247)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
+        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 247)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
         if (kBoolTrue == test_5) {
           GALGAS_string var_headerFileRef ;
           {
@@ -4893,7 +4893,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
           }
           var_childrenRefs.addAssign_operation (var_headerFileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 249)) ;
         }else if (kBoolFalse == test_5) {
-          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 250)).objectCompare (GALGAS_string ("m"))).boolEnum () ;
+          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 250)).objectCompare (GALGAS_string ("m"))).boolEnum () ;
           if (kBoolTrue == test_6) {
             GALGAS_string var_m_5F_FileRef ;
             {
@@ -4906,7 +4906,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
             var_childrenRefs.addAssign_operation (var_m_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 253)) ;
             ioArgument_ioMFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 254)) ;
           }else if (kBoolFalse == test_6) {
-            const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 255)).objectCompare (GALGAS_string ("mm"))).boolEnum () ;
+            const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 255)).objectCompare (GALGAS_string ("mm"))).boolEnum () ;
             if (kBoolTrue == test_7) {
               GALGAS_string var_m_5F_FileRef ;
               {
@@ -4919,7 +4919,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
               var_childrenRefs.addAssign_operation (var_m_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 258)) ;
               ioArgument_ioMMFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 259)) ;
             }else if (kBoolFalse == test_7) {
-              const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 260)).objectCompare (GALGAS_string ("framework"))).boolEnum () ;
+              const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 260)).objectCompare (GALGAS_string ("framework"))).boolEnum () ;
               if (kBoolTrue == test_8) {
                 GALGAS_string var_framework_5F_FileRef ;
                 {
@@ -4932,7 +4932,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
                 var_childrenRefs.addAssign_operation (var_framework_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 263)) ;
                 ioArgument_ioFrameWorkFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 264)) ;
               }else if (kBoolFalse == test_8) {
-                const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 265)).objectCompare (GALGAS_string ("plist"))).boolEnum () ;
+                const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 265)).objectCompare (GALGAS_string ("plist"))).boolEnum () ;
                 if (kBoolTrue == test_9) {
                   GALGAS_string var_resource_5F_FileRef ;
                   {
@@ -4940,7 +4940,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
                   }
                   var_childrenRefs.addAssign_operation (var_resource_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 267)) ;
                 }else if (kBoolFalse == test_9) {
-                  const enumGalgasBool test_10 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 268)).objectCompare (GALGAS_string ("xib"))).boolEnum () ;
+                  const enumGalgasBool test_10 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 268)).objectCompare (GALGAS_string ("xib"))).boolEnum () ;
                   if (kBoolTrue == test_10) {
                     GALGAS_string var_resource_5F_FileRef ;
                     {
@@ -4953,7 +4953,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
                     }
                     ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 272)) ;
                   }else if (kBoolFalse == test_10) {
-                    const enumGalgasBool test_11 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 273)).objectCompare (GALGAS_string ("tiff"))).boolEnum () ;
+                    const enumGalgasBool test_11 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 273)).objectCompare (GALGAS_string ("tiff"))).boolEnum () ;
                     if (kBoolTrue == test_11) {
                       GALGAS_string var_resource_5F_FileRef ;
                       {
@@ -4966,7 +4966,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
                       }
                       ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 277)) ;
                     }else if (kBoolFalse == test_11) {
-                      const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 278)).objectCompare (GALGAS_string ("icns"))).boolEnum () ;
+                      const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 278)).objectCompare (GALGAS_string ("icns"))).boolEnum () ;
                       if (kBoolTrue == test_12) {
                         GALGAS_string var_resource_5F_FileRef ;
                         {
@@ -5037,10 +5037,10 @@ void categoryModifier_getReferenceKey (GALGAS_XcodeProjectDescriptor & ioObject,
   outArgument_outRef.drop () ; // Release 'out' argument
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mProjectObjectReference.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
-    ioObject.mAttribute_mProjectObjectReference = ioObject.mAttribute_mSequenceNumber.reader_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)).reader_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)).reader_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)) ;
+    ioObject.mAttribute_mProjectObjectReference = ioObject.mAttribute_mSequenceNumber.getter_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)).getter_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)).getter_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)) ;
     ioObject.mAttribute_mSequenceNumber.increment_operation (inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 362)) ;
   }
-  outArgument_outRef = ioObject.mAttribute_mSequenceNumber.reader_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)).reader_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)).reader_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)) ;
+  outArgument_outRef = ioObject.mAttribute_mSequenceNumber.getter_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)).getter_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)).getter_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)) ;
   ioObject.mAttribute_mSequenceNumber.increment_operation (inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 365)) ;
 }
 
@@ -5058,9 +5058,9 @@ void categoryMethod_generateAtPath (const GALGAS_XcodeProjectDescriptor inObject
                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_contents = GALGAS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, inObject.mAttribute_mProjectObjectReference, inObject.mAttribute_mMainGroupReference, inObject.mAttribute_mGroupList, inObject.mAttribute_mMainGroupChildrenRefs, inObject.mAttribute_mToolTargetList, inObject.mAttribute_mAppTargetList, inObject.mAttribute_mCFileList, inObject.mAttribute_mCppFileList, inObject.mAttribute_m_5F_M_5F_FileList, inObject.mAttribute_m_5F_MM_5F_FileList, inObject.mAttribute_mFrameworkFileList, inObject.mAttribute_mHeaderFileList, inObject.mAttribute_mInfoPlistFileList, inObject.mAttribute_mTIFF_5F_fileList, inObject.mAttribute_mICNS_5F_fileList, inObject.mAttribute_mXIB_5F_fileList, inObject.mAttribute_mBuildFileList, inObject.mAttribute_mDefaultConfigurationRef, inObject.mAttribute_mDefaultConfigurationSettingList, inObject.mAttribute_mProjectBuildConfigurationRef COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 429))) ;
   GALGAS_string var_projectCoreFile = constinArgument_inPath.add_operation (GALGAS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 451)) ;
-  GALGAS_bool test_0 = var_projectCoreFile.reader_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)) ;
+  GALGAS_bool test_0 = var_projectCoreFile.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)) ;
   if (kBoolTrue != test_0.boolEnum ()) {
-    test_0 = constinArgument_inCacheFilePath.reader_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)) ;
+    test_0 = constinArgument_inCacheFilePath.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)) ;
   }
   GALGAS_bool test_1 = test_0 ;
   if (kBoolTrue != test_1.boolEnum ()) {
@@ -5160,19 +5160,19 @@ void GALGAS_templateExpressionListAST_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_templateExpressionListAST_2D_element::reader_mActualSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateExpressionListAST_2D_element::getter_mActualSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mActualSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateExpressionAST GALGAS_templateExpressionListAST_2D_element::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateExpressionListAST_2D_element::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_templateExpressionListAST_2D_element::reader_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_templateExpressionListAST_2D_element::getter_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfExpressionLocation ;
 }
 
@@ -5314,19 +5314,19 @@ void GALGAS_templateVariableMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_templateVariableMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateVariableMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_templateVariableMap_2D_element::reader_mTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_templateVariableMap_2D_element::getter_mTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_templateVariableMap_2D_element::reader_mCppName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_templateVariableMap_2D_element::getter_mCppName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCppName ;
 }
 
@@ -5468,19 +5468,19 @@ void GALGAS_metamodelTemplateDelimitorListAST_2D_element::description (C_String 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_metamodelTemplateDelimitorListAST_2D_element::reader_mStartString (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_metamodelTemplateDelimitorListAST_2D_element::getter_mStartString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStartString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_metamodelTemplateDelimitorListAST_2D_element::reader_mOptionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_metamodelTemplateDelimitorListAST_2D_element::getter_mOptionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_metamodelTemplateDelimitorListAST_2D_element::reader_mEndString (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_metamodelTemplateDelimitorListAST_2D_element::getter_mEndString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndString ;
 }
 
@@ -5622,19 +5622,19 @@ void GALGAS_templateReplacementListAST_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_templateReplacementListAST_2D_element::reader_mMatchString (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateReplacementListAST_2D_element::getter_mMatchString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMatchString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_templateReplacementListAST_2D_element::reader_mReplacementString (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateReplacementListAST_2D_element::getter_mReplacementString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReplacementString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_templateReplacementListAST_2D_element::reader_mReplacementFunction (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateReplacementListAST_2D_element::getter_mReplacementFunction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReplacementFunction ;
 }
 
@@ -5765,13 +5765,13 @@ void GALGAS_lexicalMessageDeclarationListAST_2D_element::description (C_String &
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalMessageDeclarationListAST_2D_element::reader_mMessageName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalMessageDeclarationListAST_2D_element::getter_mMessageName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMessageName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalMessageDeclarationListAST_2D_element::reader_mMessageValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalMessageDeclarationListAST_2D_element::getter_mMessageValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMessageValue ;
 }
 
@@ -5902,13 +5902,13 @@ void GALGAS_lexicalAttributeListAST_2D_element::description (C_String & ioString
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalAttributeListAST_2D_element::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalAttributeListAST_2D_element::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalAttributeListAST_2D_element::reader_mName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalAttributeListAST_2D_element::getter_mName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mName ;
 }
 
@@ -6039,13 +6039,13 @@ void GALGAS_lexicalStyleListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalStyleListAST_2D_element::reader_mName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalStyleListAST_2D_element::getter_mName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalStyleListAST_2D_element::reader_mComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalStyleListAST_2D_element::getter_mComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mComment ;
 }
 
@@ -6209,31 +6209,31 @@ void GALGAS_terminalDeclarationListAST_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_terminalDeclarationListAST_2D_element::reader_mName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_terminalDeclarationListAST_2D_element::getter_mName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sentLexicalAttributeListAST GALGAS_terminalDeclarationListAST_2D_element::reader_mSentAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_sentLexicalAttributeListAST GALGAS_terminalDeclarationListAST_2D_element::getter_mSentAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSentAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_terminalDeclarationListAST_2D_element::reader_mSyntaxErrorMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_terminalDeclarationListAST_2D_element::getter_mSyntaxErrorMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxErrorMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_terminalDeclarationListAST_2D_element::reader_mStyle (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_terminalDeclarationListAST_2D_element::getter_mStyle (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStyle ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_terminalDeclarationListAST_2D_element::reader_mOptionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_terminalDeclarationListAST_2D_element::getter_mOptionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionList ;
 }
 
@@ -6375,19 +6375,19 @@ void GALGAS_lexicalListEntryListAST_2D_element::description (C_String & ioString
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalListEntryListAST_2D_element::reader_mEntrySpelling (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalListEntryListAST_2D_element::getter_mEntrySpelling (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEntrySpelling ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalListEntryListAST_2D_element::reader_mTerminalSpelling (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalListEntryListAST_2D_element::getter_mTerminalSpelling (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminalSpelling ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_lexicalListEntryListAST_2D_element::reader_mFeatureList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_lexicalListEntryListAST_2D_element::getter_mFeatureList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFeatureList ;
 }
 
@@ -6518,13 +6518,13 @@ void GALGAS_sentLexicalAttributeListAST_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_sentLexicalAttributeListAST_2D_element::reader_mFormalSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_sentLexicalAttributeListAST_2D_element::getter_mFormalSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_sentLexicalAttributeListAST_2D_element::reader_mAttributeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_sentLexicalAttributeListAST_2D_element::getter_mAttributeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeName ;
 }
 
@@ -6688,31 +6688,31 @@ void GALGAS_lexicalListDeclarationListAST_2D_element::description (C_String & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalListDeclarationListAST_2D_element::reader_mName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalListDeclarationListAST_2D_element::getter_mName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalListDeclarationListAST_2D_element::reader_mStyle (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalListDeclarationListAST_2D_element::getter_mStyle (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStyle ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalListDeclarationListAST_2D_element::reader_mSyntaxErrorMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalListDeclarationListAST_2D_element::getter_mSyntaxErrorMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxErrorMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sentLexicalAttributeListAST GALGAS_lexicalListDeclarationListAST_2D_element::reader_mSentAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_sentLexicalAttributeListAST GALGAS_lexicalListDeclarationListAST_2D_element::getter_mSentAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSentAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalListEntryListAST GALGAS_lexicalListDeclarationListAST_2D_element::reader_mEntryList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListDeclarationListAST_2D_element::getter_mEntryList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEntryList ;
 }
 
@@ -6843,13 +6843,13 @@ void GALGAS_lexicalSendSearchListAST_2D_element::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalSendSearchListAST_2D_element::reader_mAttributeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalSendSearchListAST_2D_element::getter_mAttributeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalSendSearchListAST_2D_element::reader_mSearchListName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalSendSearchListAST_2D_element::getter_mSearchListName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSearchListName ;
 }
 
@@ -6983,19 +6983,19 @@ void GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element::description (C
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalArgumentModeAST GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element::reader_mPassingMode (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalArgumentModeAST GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element::getter_mPassingMode (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mPassingMode ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element::reader_mLexicalTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element::getter_mLexicalTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element::reader_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element::getter_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentName ;
 }
 
@@ -7137,19 +7137,19 @@ void GALGAS_externRoutineListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externRoutineListAST_2D_element::reader_mRoutineName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externRoutineListAST_2D_element::getter_mRoutineName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRoutineName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalExternRoutineFormalArgumentListAST GALGAS_externRoutineListAST_2D_element::reader_mLexicalRoutineFormalArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExternRoutineFormalArgumentListAST GALGAS_externRoutineListAST_2D_element::getter_mLexicalRoutineFormalArgumentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalRoutineFormalArgumentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_externRoutineListAST_2D_element::reader_mErrorMessageList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_externRoutineListAST_2D_element::getter_mErrorMessageList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mErrorMessageList ;
 }
 
@@ -7280,13 +7280,13 @@ void GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element::description (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element::reader_mLexicalTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element::getter_mLexicalTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element::reader_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element::getter_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentName ;
 }
 
@@ -7428,19 +7428,19 @@ void GALGAS_externFunctionListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externFunctionListAST_2D_element::reader_mFunctionName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externFunctionListAST_2D_element::getter_mFunctionName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFunctionName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_externFunctionListAST_2D_element::reader_mLexicalFunctionFormalArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_externFunctionListAST_2D_element::getter_mLexicalFunctionFormalArgumentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalFunctionFormalArgumentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externFunctionListAST_2D_element::reader_mReturnedTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externFunctionListAST_2D_element::getter_mReturnedTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReturnedTypeName ;
 }
 
@@ -7571,13 +7571,13 @@ void GALGAS_indexingListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_indexingListAST_2D_element::reader_mIndexName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_indexingListAST_2D_element::getter_mIndexName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndexName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_indexingListAST_2D_element::reader_mIndexComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_indexingListAST_2D_element::getter_mIndexComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndexComment ;
 }
 
@@ -7711,19 +7711,19 @@ void GALGAS_lexicalSentValueList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalSentValueList_2D_element::reader_mLexicalFormalSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalSentValueList_2D_element::getter_mLexicalFormalSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalFormalSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexicalSentValueList_2D_element::reader_mLexicalAttributeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexicalSentValueList_2D_element::getter_mLexicalAttributeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalAttributeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalSentValueList_2D_element::reader_mLexicalType (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalTypeEnum GALGAS_lexicalSentValueList_2D_element::getter_mLexicalType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalType ;
 }
 
@@ -7854,13 +7854,13 @@ void GALGAS_terminalMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_terminalMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_terminalMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalSentValueList GALGAS_terminalMap_2D_element::reader_mSentAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalSentValueList GALGAS_terminalMap_2D_element::getter_mSentAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSentAttributeList ;
 }
 
@@ -7984,13 +7984,13 @@ void GALGAS_lexicalTypeMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalTypeMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalTypeMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeMap_2D_element::reader_mLexicalType (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeMap_2D_element::getter_mLexicalType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalType ;
 }
 
@@ -8114,13 +8114,13 @@ void GALGAS_lexicalAttributeMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalAttributeMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalAttributeMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalAttributeMap_2D_element::reader_mLexicalType (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalTypeEnum GALGAS_lexicalAttributeMap_2D_element::getter_mLexicalType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalType ;
 }
 
@@ -8295,37 +8295,37 @@ void GALGAS_terminalList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_terminalList_2D_element::reader_mTerminalName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_terminalList_2D_element::getter_mTerminalName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminalName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalSentValueList GALGAS_terminalList_2D_element::reader_mSentAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalSentValueList GALGAS_terminalList_2D_element::getter_mSentAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSentAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_terminalList_2D_element::reader_mSyntaxErrorMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_terminalList_2D_element::getter_mSyntaxErrorMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxErrorMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_terminalList_2D_element::reader_mIsEndOfTemplateMark (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_terminalList_2D_element::getter_mIsEndOfTemplateMark (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsEndOfTemplateMark ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_terminalList_2D_element::reader_mAtomicSelection (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_terminalList_2D_element::getter_mAtomicSelection (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAtomicSelection ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_terminalList_2D_element::reader_mStyleIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_terminalList_2D_element::getter_mStyleIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStyleIndex ;
 }
 
@@ -8467,19 +8467,19 @@ void GALGAS_lexicalExplicitTokenListMap_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalExplicitTokenListMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalExplicitTokenListMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalExplicitTokenListMap_2D_element::reader_mTerminal (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalExplicitTokenListMap_2D_element::getter_mTerminal (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminal ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_lexicalExplicitTokenListMap_2D_element::reader_mFeatureList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_lexicalExplicitTokenListMap_2D_element::getter_mFeatureList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFeatureList ;
 }
 
@@ -8632,25 +8632,25 @@ void GALGAS_lexicalExplicitTokenListMapMap_2D_element::description (C_String & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalExplicitTokenListMapMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalExplicitTokenListMapMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMapMap_2D_element::reader_mExplicitTokenListMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMapMap_2D_element::getter_mExplicitTokenListMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExplicitTokenListMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_tokenSortedlist GALGAS_lexicalExplicitTokenListMapMap_2D_element::reader_mTokenSortedList (UNUSED_LOCATION_ARGS) const {
+GALGAS_tokenSortedlist GALGAS_lexicalExplicitTokenListMapMap_2D_element::getter_mTokenSortedList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTokenSortedList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_lexicalExplicitTokenListMapMap_2D_element::reader_mShouldBeGenerated (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_lexicalExplicitTokenListMapMap_2D_element::getter_mShouldBeGenerated (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mShouldBeGenerated ;
 }
 
@@ -8792,19 +8792,19 @@ void GALGAS_lexicalMessageMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalMessageMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalMessageMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalMessageMap_2D_element::reader_mLexicalMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalMessageMap_2D_element::getter_mLexicalMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_lexicalMessageMap_2D_element::reader_mMessageIsUsed (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_lexicalMessageMap_2D_element::getter_mMessageIsUsed (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMessageIsUsed ;
 }
 
@@ -8957,25 +8957,25 @@ void GALGAS_lexicalRoutineMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalRoutineMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalRoutineMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineMap_2D_element::reader_mLexicalRoutineFormalArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineMap_2D_element::getter_mLexicalRoutineFormalArgumentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalRoutineFormalArgumentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_lexicalRoutineMap_2D_element::reader_mErrorMessageList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_lexicalRoutineMap_2D_element::getter_mErrorMessageList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mErrorMessageList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_lexicalRoutineMap_2D_element::reader_mIsExtern (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_lexicalRoutineMap_2D_element::getter_mIsExtern (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsExtern ;
 }
 
@@ -9129,31 +9129,31 @@ void GALGAS_lexicalFunctionMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalFunctionMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalFunctionMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionMap_2D_element::reader_mLexicalTypeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionMap_2D_element::getter_mLexicalTypeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalTypeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalFunctionMap_2D_element::reader_mReturnedLexicalType (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalTypeEnum GALGAS_lexicalFunctionMap_2D_element::getter_mReturnedLexicalType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReturnedLexicalType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexicalFunctionMap_2D_element::reader_mReplacementFunctionName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexicalFunctionMap_2D_element::getter_mReplacementFunctionName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReplacementFunctionName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_lexicalFunctionMap_2D_element::reader_mIsExtern (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_lexicalFunctionMap_2D_element::getter_mIsExtern (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsExtern ;
 }
 
@@ -9295,19 +9295,19 @@ void GALGAS_templateDelimitorList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_templateDelimitorList_2D_element::reader_mStartString (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateDelimitorList_2D_element::getter_mStartString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStartString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_templateDelimitorList_2D_element::reader_mEndString (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_templateDelimitorList_2D_element::getter_mEndString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_templateDelimitorList_2D_element::reader_mPreservesStartDelimiter (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_templateDelimitorList_2D_element::getter_mPreservesStartDelimiter (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mPreservesStartDelimiter ;
 }
 
@@ -9449,19 +9449,19 @@ void GALGAS_styleMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_styleMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_styleMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_styleMap_2D_element::reader_mComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_styleMap_2D_element::getter_mComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mComment ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_styleMap_2D_element::reader_mStyleIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_styleMap_2D_element::getter_mStyleIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStyleIndex ;
 }
 
@@ -9581,7 +9581,7 @@ void GALGAS_lexicalTagMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexicalTagMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexicalTagMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
@@ -9755,43 +9755,43 @@ void GALGAS_commandLineOptionListAST_2D_element::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::reader_mOptionTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::getter_mOptionTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::reader_mOptionInternalName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::getter_mOptionInternalName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionInternalName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lchar GALGAS_commandLineOptionListAST_2D_element::reader_mOptionInvocationLetter (UNUSED_LOCATION_ARGS) const {
+GALGAS_lchar GALGAS_commandLineOptionListAST_2D_element::getter_mOptionInvocationLetter (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionInvocationLetter ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::reader_mOptionInvocationString (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::getter_mOptionInvocationString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionInvocationString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::reader_mOptionComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::getter_mOptionComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionComment ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::reader_mOptionDefaultValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_commandLineOptionListAST_2D_element::getter_mOptionDefaultValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionDefaultValue ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_optionDefaultValueEnumAST GALGAS_commandLineOptionListAST_2D_element::reader_mOptionDefaultValueKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_optionDefaultValueEnumAST GALGAS_commandLineOptionListAST_2D_element::getter_mOptionDefaultValueKind (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionDefaultValueKind ;
 }
 
@@ -9955,31 +9955,31 @@ void GALGAS_commandLineOptionMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_commandLineOptionMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_commandLineOptionMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_char GALGAS_commandLineOptionMap_2D_element::reader_mOptionChar (UNUSED_LOCATION_ARGS) const {
+GALGAS_char GALGAS_commandLineOptionMap_2D_element::getter_mOptionChar (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionChar ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_commandLineOptionMap_2D_element::reader_mOptionString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_commandLineOptionMap_2D_element::getter_mOptionString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_commandLineOptionMap_2D_element::reader_mComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_commandLineOptionMap_2D_element::getter_mComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mComment ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_commandLineOptionMap_2D_element::reader_mDefaultValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_commandLineOptionMap_2D_element::getter_mDefaultValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDefaultValue ;
 }
 
@@ -10110,13 +10110,13 @@ void GALGAS_guiSimpleAttributeListAST_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_guiSimpleAttributeListAST_2D_element::reader_mKey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_guiSimpleAttributeListAST_2D_element::getter_mKey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mKey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_guiSimpleAttributeListAST_2D_element::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_guiSimpleAttributeListAST_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -10258,19 +10258,19 @@ void GALGAS_guiCompoundAttributeListAST_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::reader_mKey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::getter_mKey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mKey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::reader_mAttributeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::getter_mAttributeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_guiCompoundAttributeListAST_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -10401,13 +10401,13 @@ void GALGAS_terminalLabelListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_terminalLabelListAST_2D_element::reader_mTerminal (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_terminalLabelListAST_2D_element::getter_mTerminal (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminal ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_terminalLabelListAST_2D_element::reader_mDisplayFlags (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_terminalLabelListAST_2D_element::getter_mDisplayFlags (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDisplayFlags ;
 }
 
@@ -10560,25 +10560,25 @@ void GALGAS_withLexiqueListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_withLexiqueListAST_2D_element::reader_mLexiqueFileName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_withLexiqueListAST_2D_element::getter_mLexiqueFileName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiLabelListAST GALGAS_withLexiqueListAST_2D_element::reader_mLabels (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiLabelListAST GALGAS_withLexiqueListAST_2D_element::getter_mLabels (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLabels ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiSimpleAttributeListAST GALGAS_withLexiqueListAST_2D_element::reader_mSimpleAttributes (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiSimpleAttributeListAST GALGAS_withLexiqueListAST_2D_element::getter_mSimpleAttributes (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSimpleAttributes ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCompoundAttributeListAST GALGAS_withLexiqueListAST_2D_element::reader_mCompoundAttributes (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiCompoundAttributeListAST GALGAS_withLexiqueListAST_2D_element::getter_mCompoundAttributes (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCompoundAttributes ;
 }
 
@@ -10709,13 +10709,13 @@ void GALGAS_extensionMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_extensionMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_extensionMap_2D_element::reader_mLexiqueName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_extensionMap_2D_element::getter_mLexiqueName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueName ;
 }
 
@@ -10846,13 +10846,13 @@ void GALGAS_optionComponentMapForGeneration_2D_element::description (C_String & 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_optionComponentMapForGeneration_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_optionComponentMapForGeneration_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiAnalysisContext GALGAS_optionComponentMapForGeneration_2D_element::reader_mGuiComponentContext (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiAnalysisContext GALGAS_optionComponentMapForGeneration_2D_element::getter_mGuiComponentContext (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGuiComponentContext ;
 }
 
@@ -10983,13 +10983,13 @@ void GALGAS_parsedLexiqueComponentMap_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedLexiqueComponentMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedLexiqueComponentMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_LexiqueComponentListAST_2D_element GALGAS_parsedLexiqueComponentMap_2D_element::reader_mLexiqueComponentAST (UNUSED_LOCATION_ARGS) const {
+GALGAS_galgas_33_LexiqueComponentListAST_2D_element GALGAS_parsedLexiqueComponentMap_2D_element::getter_mLexiqueComponentAST (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueComponentAST ;
 }
 
@@ -11153,31 +11153,31 @@ void GALGAS_parsedOptionComponentMap_2D_element::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedOptionComponentMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedOptionComponentMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap_2D_element::reader_mBoolOptionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap_2D_element::getter_mBoolOptionMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBoolOptionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap_2D_element::reader_mUIntOptionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap_2D_element::getter_mUIntOptionMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mUIntOptionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap_2D_element::reader_mStringOptionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap_2D_element::getter_mStringOptionMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStringOptionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap_2D_element::reader_mStringListOptionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_commandLineOptionMap GALGAS_parsedOptionComponentMap_2D_element::getter_mStringListOptionMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStringListOptionMap ;
 }
 
@@ -11319,19 +11319,19 @@ void GALGAS_parsedSemanticsComponentMap_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedSemanticsComponentMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedSemanticsComponentMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedSemanticsComponentMap_2D_element::reader_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedSemanticsComponentMap_2D_element::getter_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSourceFullFilePath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticsComponentAST GALGAS_parsedSemanticsComponentMap_2D_element::reader_mSemanticComponentRoot (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticsComponentAST GALGAS_parsedSemanticsComponentMap_2D_element::getter_mSemanticComponentRoot (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSemanticComponentRoot ;
 }
 
@@ -11473,19 +11473,19 @@ void GALGAS_parsedGrammarComponentMap_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedGrammarComponentMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedGrammarComponentMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedGrammarComponentMap_2D_element::reader_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedGrammarComponentMap_2D_element::getter_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSourceFullFilePath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_GrammarComponentListAST_2D_element GALGAS_parsedGrammarComponentMap_2D_element::reader_mGrammarComponentRoot (UNUSED_LOCATION_ARGS) const {
+GALGAS_galgas_33_GrammarComponentListAST_2D_element GALGAS_parsedGrammarComponentMap_2D_element::getter_mGrammarComponentRoot (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGrammarComponentRoot ;
 }
 
@@ -11627,19 +11627,19 @@ void GALGAS_parsedSyntaxComponentMap_2D_element::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedSyntaxComponentMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedSyntaxComponentMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedSyntaxComponentMap_2D_element::reader_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedSyntaxComponentMap_2D_element::getter_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSourceFullFilePath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_parsedSyntaxComponentMap_2D_element::reader_mSyntaxComponentRoot (UNUSED_LOCATION_ARGS) const {
+GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_parsedSyntaxComponentMap_2D_element::getter_mSyntaxComponentRoot (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxComponentRoot ;
 }
 
@@ -11781,19 +11781,19 @@ void GALGAS_parsedProgramComponentMap_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedProgramComponentMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedProgramComponentMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedProgramComponentMap_2D_element::reader_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedProgramComponentMap_2D_element::getter_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSourceFullFilePath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_programComponentAST GALGAS_parsedProgramComponentMap_2D_element::reader_mProgramComponentAST (UNUSED_LOCATION_ARGS) const {
+GALGAS_programComponentAST GALGAS_parsedProgramComponentMap_2D_element::getter_mProgramComponentAST (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProgramComponentAST ;
 }
 
@@ -11935,19 +11935,19 @@ void GALGAS_parsedGuiComponentMap_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedGuiComponentMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedGuiComponentMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_parsedGuiComponentMap_2D_element::reader_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_parsedGuiComponentMap_2D_element::getter_mSourceFullFilePath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSourceFullFilePath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiComponentAST GALGAS_parsedGuiComponentMap_2D_element::reader_mGuiComponentAST (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiComponentAST GALGAS_parsedGuiComponentMap_2D_element::getter_mGuiComponentAST (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGuiComponentAST ;
 }
 
@@ -12067,7 +12067,7 @@ void GALGAS_grammarComponentASTList_2D_element::description (C_String & ioString
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_GrammarComponentListAST_2D_element GALGAS_grammarComponentASTList_2D_element::reader_mGrammarComponentAST (UNUSED_LOCATION_ARGS) const {
+GALGAS_galgas_33_GrammarComponentListAST_2D_element GALGAS_grammarComponentASTList_2D_element::getter_mGrammarComponentAST (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGrammarComponentAST ;
 }
 
@@ -12201,19 +12201,19 @@ void GALGAS_actualOutputExpressionList_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_actualOutputExpressionList_2D_element::reader_mActualSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_actualOutputExpressionList_2D_element::getter_mActualSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mActualSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_actualOutputExpressionList_2D_element::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_actualOutputExpressionList_2D_element::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_actualOutputExpressionList_2D_element::reader_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_actualOutputExpressionList_2D_element::getter_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfExpressionLocation ;
 }
 
@@ -12367,31 +12367,31 @@ void GALGAS_formalParameterListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalParameterListAST_2D_element::reader_mFormalSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalParameterListAST_2D_element::getter_mFormalSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalArgumentPassingModeAST GALGAS_formalParameterListAST_2D_element::reader_mFormalArgumentPassingMode (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalArgumentPassingModeAST GALGAS_formalParameterListAST_2D_element::getter_mFormalArgumentPassingMode (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentPassingMode ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalParameterListAST_2D_element::reader_mFormalArgumentTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalParameterListAST_2D_element::getter_mFormalArgumentTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalParameterListAST_2D_element::reader_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalParameterListAST_2D_element::getter_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_formalParameterListAST_2D_element::reader_mIsUnused (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_formalParameterListAST_2D_element::getter_mIsUnused (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsUnused ;
 }
 
@@ -12555,31 +12555,31 @@ void GALGAS_formalInputParameterListAST_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::reader_mFormalSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::getter_mFormalSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::reader_mFormalArgumentTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::getter_mFormalArgumentTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::reader_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalInputParameterListAST_2D_element::getter_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_formalInputParameterListAST_2D_element::reader_mIsUnused (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_formalInputParameterListAST_2D_element::getter_mIsUnused (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsUnused ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_formalInputParameterListAST_2D_element::reader_mIsConstant (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_formalInputParameterListAST_2D_element::getter_mIsConstant (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsConstant ;
 }
 
@@ -12703,13 +12703,13 @@ void GALGAS_actualInputParameterListAST_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_actualInputParameterListAST_2D_element::reader_mActualSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_actualInputParameterListAST_2D_element::getter_mActualSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mActualSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractInputParameter GALGAS_actualInputParameterListAST_2D_element::reader_mInputParameter (UNUSED_LOCATION_ARGS) const {
+GALGAS_abstractInputParameter GALGAS_actualInputParameterListAST_2D_element::getter_mInputParameter (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInputParameter ;
 }
 
@@ -12851,19 +12851,19 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_propertyInCollectionListAST_2D_element::reader_mPropertyTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_propertyInCollectionListAST_2D_element::getter_mPropertyTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mPropertyTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_propertyInCollectionListAST_2D_element::reader_mPropertyName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_propertyInCollectionListAST_2D_element::getter_mPropertyName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mPropertyName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_propertyInCollectionListAST_2D_element::reader_mFeatureList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_propertyInCollectionListAST_2D_element::getter_mFeatureList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFeatureList ;
 }
 
@@ -13016,25 +13016,25 @@ void GALGAS_insertMethodListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_insertMethodListAST_2D_element::reader_mInsertMethodName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_insertMethodListAST_2D_element::getter_mInsertMethodName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInsertMethodName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_insertMethodListAST_2D_element::reader_mErrorMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_insertMethodListAST_2D_element::getter_mErrorMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mErrorMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_insertMethodListAST_2D_element::reader_mShadowErrorMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_insertMethodListAST_2D_element::getter_mShadowErrorMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mShadowErrorMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_insertMethodListAST_2D_element::reader_mInitialStateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_insertMethodListAST_2D_element::getter_mInitialStateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInitialStateName ;
 }
 
@@ -13176,19 +13176,19 @@ void GALGAS_mapSearchMethodListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_mapSearchMethodListAST_2D_element::reader_mSearchMethodName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_mapSearchMethodListAST_2D_element::getter_mSearchMethodName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSearchMethodName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_mapSearchMethodListAST_2D_element::reader_mErrorMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_mapSearchMethodListAST_2D_element::getter_mErrorMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mErrorMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_mapSearchMethodListAST_2D_element::reader_mActionName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_mapSearchMethodListAST_2D_element::getter_mActionName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mActionName ;
 }
 
@@ -13319,13 +13319,13 @@ void GALGAS_mapRemoveMethodListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_mapRemoveMethodListAST_2D_element::reader_mMethodName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_mapRemoveMethodListAST_2D_element::getter_mMethodName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMethodName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_mapRemoveMethodListAST_2D_element::reader_mErrorMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_mapRemoveMethodListAST_2D_element::getter_mErrorMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mErrorMessage ;
 }
 
@@ -13478,25 +13478,25 @@ void GALGAS_formalTemplateInputParameterListAST_2D_element::description (C_Strin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalTemplateInputParameterListAST_2D_element::reader_mFormalTemplateSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalTemplateInputParameterListAST_2D_element::getter_mFormalTemplateSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalTemplateSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalTemplateInputParameterListAST_2D_element::reader_mFormalArgumentTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalTemplateInputParameterListAST_2D_element::getter_mFormalArgumentTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_formalTemplateInputParameterListAST_2D_element::reader_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_formalTemplateInputParameterListAST_2D_element::getter_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_formalTemplateInputParameterListAST_2D_element::reader_mIsUnused (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_formalTemplateInputParameterListAST_2D_element::getter_mIsUnused (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsUnused ;
 }
 
@@ -13638,19 +13638,19 @@ void GALGAS_filewrapperTemplateListAST_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_filewrapperTemplateListAST_2D_element::reader_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_filewrapperTemplateListAST_2D_element::getter_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperTemplateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_filewrapperTemplateListAST_2D_element::reader_mFilewrapperTemplatePath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_filewrapperTemplateListAST_2D_element::getter_mFilewrapperTemplatePath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperTemplatePath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalTemplateInputParameterListAST GALGAS_filewrapperTemplateListAST_2D_element::reader_mFilewrapperTemplateFormalInputParameters (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalTemplateInputParameterListAST GALGAS_filewrapperTemplateListAST_2D_element::getter_mFilewrapperTemplateFormalInputParameters (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperTemplateFormalInputParameters ;
 }
 
@@ -13781,13 +13781,13 @@ void GALGAS_graphInsertModifierList_2D_element::description (C_String & ioString
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_graphInsertModifierList_2D_element::reader_mInsertModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_graphInsertModifierList_2D_element::getter_mInsertModifierName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInsertModifierName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_graphInsertModifierList_2D_element::reader_mInsertErrorMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_graphInsertModifierList_2D_element::getter_mInsertErrorMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInsertErrorMessage ;
 }
 
@@ -13929,19 +13929,19 @@ void GALGAS_typeNameFormalParameterNameList_2D_element::description (C_String & 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::reader_mFormalSelector (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::getter_mFormalSelector (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::reader_mFormalParameterTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::getter_mFormalParameterTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalParameterTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::reader_mFormalParameterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::getter_mFormalParameterName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalParameterName ;
 }
 
@@ -14083,19 +14083,19 @@ void GALGAS_externTypeConstructorList_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeConstructorList_2D_element::reader_mConstructorName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeConstructorList_2D_element::getter_mConstructorName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mConstructorName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeConstructorList_2D_element::reader_mResultTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeConstructorList_2D_element::getter_mResultTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mResultTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList GALGAS_externTypeConstructorList_2D_element::reader_mParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typeNameFormalParameterNameList GALGAS_externTypeConstructorList_2D_element::getter_mParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParameterList ;
 }
 
@@ -14237,19 +14237,19 @@ void GALGAS_externTypeGetterList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeGetterList_2D_element::reader_mGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeGetterList_2D_element::getter_mGetterName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGetterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeGetterList_2D_element::reader_mResultTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeGetterList_2D_element::getter_mResultTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mResultTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList GALGAS_externTypeGetterList_2D_element::reader_mParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typeNameFormalParameterNameList GALGAS_externTypeGetterList_2D_element::getter_mParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParameterList ;
 }
 
@@ -14380,13 +14380,13 @@ void GALGAS_externTypeModifierList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeModifierList_2D_element::reader_mModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeModifierList_2D_element::getter_mModifierName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mModifierName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterListAST GALGAS_externTypeModifierList_2D_element::reader_mFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_externTypeModifierList_2D_element::getter_mFormalParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalParameterList ;
 }
 
@@ -14528,19 +14528,19 @@ void GALGAS_externTypeMethodList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeMethodList_2D_element::reader_mMethodName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeMethodList_2D_element::getter_mMethodName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMethodName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterListAST GALGAS_externTypeMethodList_2D_element::reader_mFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_externTypeMethodList_2D_element::getter_mFormalParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalParameterList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_externTypeMethodList_2D_element::reader_mDeclarationLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_externTypeMethodList_2D_element::getter_mDeclarationLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDeclarationLocation ;
 }
 

@@ -18,18 +18,18 @@ void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
                                 C_Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapper var_fw = GALGAS_filewrapper (gWrapperDirectory_0_libpmFileWrapper) ;
-  cEnumerator_stringlist enumerator_1302 (var_fw.reader_allDirectoryPathes (SOURCE_FILE ("libpmHandling.galgas", 22)), kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_1302 (var_fw.getter_allDirectoryPathes (SOURCE_FILE ("libpmHandling.galgas", 22)), kEnumeration_up) ;
   while (enumerator_1302.hasCurrentObject ()) {
     GALGAS_string var_actualDirectory = constinArgument_inLIBPMPath.add_operation (enumerator_1302.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 23)) ;
     var_actualDirectory.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 24)) ;
     enumerator_1302.gotoNextObject () ;
   }
   GALGAS_stringset var_allNeededFileSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("libpmHandling.galgas", 27)) ;
-  cEnumerator_stringlist enumerator_1506 (var_fw.reader_allTextFilePathes (SOURCE_FILE ("libpmHandling.galgas", 28)), kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_1506 (var_fw.getter_allTextFilePathes (SOURCE_FILE ("libpmHandling.galgas", 28)), kEnumeration_up) ;
   while (enumerator_1506.hasCurrentObject ()) {
-    GALGAS_string var_contents = var_fw.reader_textFileContentsAtPath (enumerator_1506.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 29)) ;
+    GALGAS_string var_contents = var_fw.getter_textFileContentsAtPath (enumerator_1506.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 29)) ;
     GALGAS_string var_actualFilePath = constinArgument_inLIBPMPath.add_operation (enumerator_1506.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 30)) ;
-    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_actualFilePath.reader_pathExtension (SOURCE_FILE ("libpmHandling.galgas", 31)).objectCompare (GALGAS_string ("py"))).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_actualFilePath.getter_pathExtension (SOURCE_FILE ("libpmHandling.galgas", 31)).objectCompare (GALGAS_string ("py"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       GALGAS_bool joker_1754 ; // Joker input parameter
       var_contents.method_writeToExecutableFileWhenDifferentContents (var_actualFilePath, joker_1754, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 32)) ;
@@ -40,9 +40,9 @@ void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
     var_allNeededFileSet.addAssign_operation (enumerator_1506.current_mValue (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas", 36)) ;
     enumerator_1506.gotoNextObject () ;
   }
-  cEnumerator_stringlist enumerator_1942 (var_fw.reader_allBinaryFilePathes (SOURCE_FILE ("libpmHandling.galgas", 39)), kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_1942 (var_fw.getter_allBinaryFilePathes (SOURCE_FILE ("libpmHandling.galgas", 39)), kEnumeration_up) ;
   while (enumerator_1942.hasCurrentObject ()) {
-    GALGAS_data var_contents = var_fw.reader_binaryFileContentsAtPath (enumerator_1942.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 40)) ;
+    GALGAS_data var_contents = var_fw.getter_binaryFileContentsAtPath (enumerator_1942.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 40)) ;
     GALGAS_string var_actualFilePath = constinArgument_inLIBPMPath.add_operation (enumerator_1942.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 41)) ;
     GALGAS_bool joker_2127 ; // Joker input parameter
     var_contents.method_writeToFileWhenDifferentContents (var_actualFilePath, joker_2127, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 42)) ;
@@ -50,7 +50,7 @@ void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
     enumerator_1942.gotoNextObject () ;
   }
   GALGAS_stringset var_allActualFileSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("libpmHandling.galgas", 46)) ;
-  cEnumerator_stringlist enumerator_2284 (constinArgument_inLIBPMPath.reader_regularFiles (GALGAS_bool (true) COMMA_SOURCE_FILE ("libpmHandling.galgas", 47)), kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_2284 (constinArgument_inLIBPMPath.getter_regularFiles (GALGAS_bool (true) COMMA_SOURCE_FILE ("libpmHandling.galgas", 47)), kEnumeration_up) ;
   while (enumerator_2284.hasCurrentObject ()) {
     var_allActualFileSet.addAssign_operation (GALGAS_string ("/").add_operation (enumerator_2284.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 48))  COMMA_SOURCE_FILE ("libpmHandling.galgas", 48)) ;
     enumerator_2284.gotoNextObject () ;
@@ -81,7 +81,7 @@ void routine_compileSemanticDeclarationsGalgas_33_ (const GALGAS_string constinA
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outSemanticContext.drop () ; // Release 'out' argument
   outArgument_outSemanticDeclarationSortedListForGeneration.drop () ; // Release 'out' argument
-  const enumGalgasBool test_0 = GALGAS_bool (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.reader_value ()).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.getter_value ()).boolEnum () ;
   if (kBoolTrue == test_0) {
     inCompiler->printMessage (GALGAS_string ("*** Building context\n")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 23)) ;
   }
@@ -92,32 +92,32 @@ void routine_compileSemanticDeclarationsGalgas_33_ (const GALGAS_string constinA
   GALGAS_commandLineOptionListAST var_options = GALGAS_commandLineOptionListAST::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 29)) ;
   cEnumerator__32_stringlist enumerator_2444 (GALGAS_application::constructor_boolOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 30)), kEnumeration_up) ;
   while (enumerator_2444.hasCurrentObject ()) {
-    var_options.addAssign_operation (GALGAS_string ("bool").reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 32)), GALGAS_lstring::constructor_new (enumerator_2444.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 33))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 33)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_boolOptionInvocationLetter (enumerator_2444.current_mValue_30_ (HERE), enumerator_2444.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 34)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 34))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 34)), GALGAS_application::constructor_boolOptionInvocationString (enumerator_2444.current_mValue_30_ (HERE), enumerator_2444.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 35)).reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 35)), GALGAS_application::constructor_boolOptionCommentString (enumerator_2444.current_mValue_30_ (HERE), enumerator_2444.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 36)).reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 36)), GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 37)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 38))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 31)) ;
+    var_options.addAssign_operation (GALGAS_string ("bool").getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 32)), GALGAS_lstring::constructor_new (enumerator_2444.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 33))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 33)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_boolOptionInvocationLetter (enumerator_2444.current_mValue_30_ (HERE), enumerator_2444.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 34)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 34))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 34)), GALGAS_application::constructor_boolOptionInvocationString (enumerator_2444.current_mValue_30_ (HERE), enumerator_2444.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 35)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 35)), GALGAS_application::constructor_boolOptionCommentString (enumerator_2444.current_mValue_30_ (HERE), enumerator_2444.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 36)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 36)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 37)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 38))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 31)) ;
     enumerator_2444.gotoNextObject () ;
   }
   cEnumerator__32_stringlist enumerator_2909 (GALGAS_application::constructor_uintOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 40)), kEnumeration_up) ;
   while (enumerator_2909.hasCurrentObject ()) {
-    var_options.addAssign_operation (GALGAS_string ("uint").reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 42)), GALGAS_lstring::constructor_new (enumerator_2909.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 43))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 43)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_boolOptionInvocationLetter (enumerator_2909.current_mValue_30_ (HERE), enumerator_2909.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 44)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 44))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 44)), GALGAS_application::constructor_boolOptionInvocationString (enumerator_2909.current_mValue_30_ (HERE), enumerator_2909.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 45)).reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 45)), GALGAS_application::constructor_boolOptionCommentString (enumerator_2909.current_mValue_30_ (HERE), enumerator_2909.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 46)).reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 46)), GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 47)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 48))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 41)) ;
+    var_options.addAssign_operation (GALGAS_string ("uint").getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 42)), GALGAS_lstring::constructor_new (enumerator_2909.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 43))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 43)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_boolOptionInvocationLetter (enumerator_2909.current_mValue_30_ (HERE), enumerator_2909.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 44)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 44))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 44)), GALGAS_application::constructor_boolOptionInvocationString (enumerator_2909.current_mValue_30_ (HERE), enumerator_2909.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 45)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 45)), GALGAS_application::constructor_boolOptionCommentString (enumerator_2909.current_mValue_30_ (HERE), enumerator_2909.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 46)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 46)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 47)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 48))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 41)) ;
     enumerator_2909.gotoNextObject () ;
   }
   cEnumerator__32_stringlist enumerator_3376 (GALGAS_application::constructor_stringOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 50)), kEnumeration_up) ;
   while (enumerator_3376.hasCurrentObject ()) {
-    var_options.addAssign_operation (GALGAS_string ("string").reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 52)), GALGAS_lstring::constructor_new (enumerator_3376.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 53))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 53)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_boolOptionInvocationLetter (enumerator_3376.current_mValue_30_ (HERE), enumerator_3376.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 54)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 54))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 54)), GALGAS_application::constructor_boolOptionInvocationString (enumerator_3376.current_mValue_30_ (HERE), enumerator_3376.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 55)).reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 55)), GALGAS_application::constructor_boolOptionCommentString (enumerator_3376.current_mValue_30_ (HERE), enumerator_3376.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 56)).reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 56)), GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 57)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 58))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 51)) ;
+    var_options.addAssign_operation (GALGAS_string ("string").getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 52)), GALGAS_lstring::constructor_new (enumerator_3376.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 53))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 53)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_boolOptionInvocationLetter (enumerator_3376.current_mValue_30_ (HERE), enumerator_3376.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 54)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 54))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 54)), GALGAS_application::constructor_boolOptionInvocationString (enumerator_3376.current_mValue_30_ (HERE), enumerator_3376.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 55)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 55)), GALGAS_application::constructor_boolOptionCommentString (enumerator_3376.current_mValue_30_ (HERE), enumerator_3376.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 56)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 56)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 57)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 58))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 51)) ;
     enumerator_3376.gotoNextObject () ;
   }
-  var_semanticDeclarationListWithPredefinedTypes.addAssign_operation (GALGAS_optionComponentDeclarationAST::constructor_new (GALGAS_bool (true), GALGAS_string ("galgas_builtin_options").reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 62)), var_options  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 60))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 60)) ;
+  var_semanticDeclarationListWithPredefinedTypes.addAssign_operation (GALGAS_optionComponentDeclarationAST::constructor_new (GALGAS_bool (true), GALGAS_string ("galgas_builtin_options").getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 62)), var_options  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 60))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 60)) ;
   GALGAS_semanticDeclarationListAST var_sortedSemanticDeclarationListAST ;
   {
   routine_buildGalgas_33_SemanticContext (var_semanticDeclarationListWithPredefinedTypes, constinArgument_inEndOfProjectSourceFile, outArgument_outSemanticContext, var_sortedSemanticDeclarationListAST, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 66)) ;
   }
-  const enumGalgasBool test_1 = GALGAS_bool (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.reader_value ()).boolEnum () ;
+  const enumGalgasBool test_1 = GALGAS_bool (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.getter_value ()).boolEnum () ;
   if (kBoolTrue == test_1) {
     inCompiler->printMessage (GALGAS_string ("*** Semantic analysis\n")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 74)) ;
   }
-  cEnumerator_lstringlist enumerator_4397 (outArgument_outSemanticContext.mAttribute_mTypeMap.reader_unsolvedProxyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 77)), kEnumeration_up) ;
+  cEnumerator_lstringlist enumerator_4397 (outArgument_outSemanticContext.mAttribute_mTypeMap.getter_unsolvedProxyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 77)), kEnumeration_up) ;
   while (enumerator_4397.hasCurrentObject ()) {
-    GALGAS_location location_2 (enumerator_4397.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_2, GALGAS_string ("the '@").add_operation (enumerator_4397.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)).add_operation (GALGAS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)) ;
+    GALGAS_location location_2 (enumerator_4397.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+    inCompiler->emitSemanticError (location_2, GALGAS_string ("the '@").add_operation (enumerator_4397.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)).add_operation (GALGAS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)) ;
     enumerator_4397.gotoNextObject () ;
   }
   outArgument_outSemanticDeclarationSortedListForGeneration = GALGAS_semanticDeclarationSortedListForGeneration::constructor_emptySortedList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 81)) ;
@@ -163,20 +163,20 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
     callCategoryMethod_enterDeclarationInGraph ((const cPtr_semanticDeclarationAST *) enumerator_6759.current_mSemanticDeclaration (HERE).ptr (), var_semanticTypePrecedenceGraph, var_categoryMethodMapForBuildingContext, var_categoryGetterMapForBuildingContext, var_categoryModifierMapForBuildingContext, var_categoryOverrideDefinitionList, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 122)) ;
     enumerator_6759.gotoNextObject () ;
   }
-  cEnumerator_lstringlist enumerator_7135 (var_semanticTypePrecedenceGraph.reader_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 131)), kEnumeration_up) ;
+  cEnumerator_lstringlist enumerator_7135 (var_semanticTypePrecedenceGraph.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 131)), kEnumeration_up) ;
   while (enumerator_7135.hasCurrentObject ()) {
-    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_7135.current_mValue (HERE).mAttribute_string.reader_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 132)).objectCompare (GALGAS_char (TO_UNICODE (63)))).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_7135.current_mValue (HERE).mAttribute_string.getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 132)).objectCompare (GALGAS_char (TO_UNICODE (63)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      inCompiler->printMessage (GALGAS_string ("Optional '").add_operation (enumerator_7135.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 133)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 133)).add_operation (GALGAS_string ("'\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 133))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 133)) ;
+      inCompiler->printMessage (GALGAS_string ("Optional '").add_operation (enumerator_7135.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 133)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 133)).add_operation (GALGAS_string ("'\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 133))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 133)) ;
     }
     enumerator_7135.gotoNextObject () ;
   }
-  const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, var_semanticTypePrecedenceGraph.reader_undefinedNodeCount (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 137)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, var_semanticTypePrecedenceGraph.getter_undefinedNodeCount (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 137)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
-    cEnumerator_lstringlist enumerator_7377 (var_semanticTypePrecedenceGraph.reader_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 138)), kEnumeration_up) ;
+    cEnumerator_lstringlist enumerator_7377 (var_semanticTypePrecedenceGraph.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 138)), kEnumeration_up) ;
     while (enumerator_7377.hasCurrentObject ()) {
-      GALGAS_location location_2 (enumerator_7377.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_2, GALGAS_string ("the '").add_operation (enumerator_7377.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)).add_operation (GALGAS_string ("' type is not defined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)) ;
+      GALGAS_location location_2 (enumerator_7377.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+      inCompiler->emitSemanticError (location_2, GALGAS_string ("the '").add_operation (enumerator_7377.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)).add_operation (GALGAS_string ("' type is not defined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)) ;
       enumerator_7377.gotoNextObject () ;
     }
     inCompiler->emitSemanticError (constinArgument_inEndOfProjectSourceFile, GALGAS_string ("semantic analysis not performed, due to undefined type error(s)")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 141)) ;
@@ -187,9 +187,9 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
     GALGAS_lstringlist var_unsortedNodeKeyList ;
     GALGAS_lstringlist joker_7732 ; // Joker input parameter
     var_semanticTypePrecedenceGraph.method_topologicalSort (outArgument_outSortedSemanticDeclarationListAST, joker_7732, var_unsortedSemanticDeclarationListAST, var_unsortedNodeKeyList, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 145)) ;
-    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_unsortedSemanticDeclarationListAST.reader_length (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 151)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_unsortedSemanticDeclarationListAST.getter_length (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 151)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_3) {
-      GALGAS_string var_s = GALGAS_string ("semantic analysis not performed, ").add_operation (var_unsortedSemanticDeclarationListAST.reader_length (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 152)).reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 152)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 152)).add_operation (GALGAS_string (" declarations are involved in circular definition:"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 152)) ;
+      GALGAS_string var_s = GALGAS_string ("semantic analysis not performed, ").add_operation (var_unsortedSemanticDeclarationListAST.getter_length (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 152)).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 152)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 152)).add_operation (GALGAS_string (" declarations are involved in circular definition:"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 152)) ;
       cEnumerator_semanticDeclarationListAST enumerator_8132 (var_unsortedSemanticDeclarationListAST, kEnumeration_up) ;
       while (enumerator_8132.hasCurrentObject ()) {
         var_s.dotAssign_operation (GALGAS_string ("\n"
@@ -232,7 +232,7 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const GALGAS_unifiedTypeMap
   }
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 199)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    const enumGalgasBool test_1 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.reader_value ()).operator_and (GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateManyFiles.reader_value ()) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 200)).boolEnum () ;
+    const enumGalgasBool test_1 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()).operator_and (GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateManyFiles.getter_value ()) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 200)).boolEnum () ;
     if (kBoolTrue == test_1) {
       {
       routine_generateOneBigHeader (constinArgument_inProductDirectory, constinArgument_inSemanticDeclarationSortedListForGeneration, ioArgument_ioAllProductFileSet, ioArgument_ioToolHeaderFileList, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 201)) ;
@@ -241,7 +241,7 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const GALGAS_unifiedTypeMap
       routine_generateManyImplementationFiles (constinArgument_inUnifiedTypeMap, constinArgument_inProductDirectory, constinArgument_inSemanticDeclarationSortedListForGeneration, ioArgument_ioToolProductFileList, ioArgument_ioAllProductFileSet, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 207)) ;
       }
     }else if (kBoolFalse == test_1) {
-      const enumGalgasBool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.reader_value ()).operator_and (GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateManyFiles.reader_value ()).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 214)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 214)).boolEnum () ;
+      const enumGalgasBool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()).operator_and (GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateManyFiles.getter_value ()).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 214)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 214)).boolEnum () ;
       if (kBoolTrue == test_2) {
         {
         routine_generateOneBigHeader (constinArgument_inProductDirectory, constinArgument_inSemanticDeclarationSortedListForGeneration, ioArgument_ioAllProductFileSet, ioArgument_ioToolHeaderFileList, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 215)) ;
@@ -250,7 +250,7 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const GALGAS_unifiedTypeMap
         routine_generateFewImplementationFiles (constinArgument_inUnifiedTypeMap, constinArgument_inProductDirectory, constinArgument_inSemanticDeclarationSortedListForGeneration, ioArgument_ioToolProductFileList, ioArgument_ioAllProductFileSet, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 221)) ;
         }
       }else if (kBoolFalse == test_2) {
-        const enumGalgasBool test_3 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.reader_value ()).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 228)).operator_and (GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateManyFiles.reader_value ()) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 228)).boolEnum () ;
+        const enumGalgasBool test_3 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 228)).operator_and (GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateManyFiles.getter_value ()) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 228)).boolEnum () ;
         if (kBoolTrue == test_3) {
           {
           routine_generateManyHeaders (constinArgument_inProductDirectory, constinArgument_inSemanticDeclarationSortedListForGeneration, ioArgument_ioAllProductFileSet, ioArgument_ioToolHeaderFileList, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 229)) ;
@@ -301,7 +301,7 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
       GALGAS_string var_headerDef_31_ ;
       callCategoryMethod_appendDeclaration_31_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), var_inclusionSet_31_, var_headerDef_31_, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 282)) ;
       GALGAS_string var_headerIncludes_31_ = GALGAS_string::makeEmptyString () ;
-      const enumGalgasBool test_1 = var_inclusionSet_31_.reader_hasKey (GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 284)).boolEnum () ;
+      const enumGalgasBool test_1 = var_inclusionSet_31_.getter_hasKey (GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 284)).boolEnum () ;
       if (kBoolTrue == test_1) {
         inCompiler->printMessage (GALGAS_string ("Empty inclusion in ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 285)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 285)).add_operation (GALGAS_string ("headers 1\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 285))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 285)) ;
       }
@@ -315,7 +315,7 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
       GALGAS_string var_headerDef_32_ ;
       callCategoryMethod_appendDeclaration_32_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), GALGAS_bool (true), constinArgument_inProductDirectory, var_inclusionSet_32_, var_headerDef_32_, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 292)) ;
       GALGAS_string var_headerIncludes_32_ = GALGAS_string::makeEmptyString () ;
-      const enumGalgasBool test_2 = var_inclusionSet_32_.reader_hasKey (GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 294)).boolEnum () ;
+      const enumGalgasBool test_2 = var_inclusionSet_32_.getter_hasKey (GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 294)).boolEnum () ;
       if (kBoolTrue == test_2) {
         inCompiler->printMessage (GALGAS_string ("Empty inclusion in ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 295)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 295)).add_operation (GALGAS_string ("headers 2\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 295))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 295)) ;
       }
@@ -332,12 +332,12 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
         {
           const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, var_headerIncludes_31_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_3) {
-            GALGAS_location location_4 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305)).reader_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_4 (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305)).getter_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_4, GALGAS_string ("'noHeader' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes1' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305)) ;
           }
           const enumGalgasBool test_5 = GALGAS_bool (kIsNotEqual, var_headerIncludes_32_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_5) {
-            GALGAS_location location_6 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308)).reader_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_6 (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308)).getter_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_6, GALGAS_string ("'noHeader' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes2' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308)) ;
           }
         }
@@ -346,12 +346,12 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
         {
           const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, var_headerIncludes_31_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_7) {
-            GALGAS_location location_8 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312)).reader_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_8 (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312)).getter_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_8, GALGAS_string ("'oneHeader' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes1' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312)) ;
           }
           const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, var_headerIncludes_32_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_9) {
-            GALGAS_location location_10 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315)).reader_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_10 (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315)).getter_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticWarning (location_10, GALGAS_string ("'oneHeader' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes2' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315)) ;
           }
         }
@@ -360,12 +360,12 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
         {
           const enumGalgasBool test_11 = GALGAS_bool (kIsEqual, var_headerIncludes_31_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_11) {
-            GALGAS_location location_12 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319)).reader_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_12 (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319)).getter_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticWarning (location_12, GALGAS_string ("'twoHeaders' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes1' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319)) ;
           }
           const enumGalgasBool test_13 = GALGAS_bool (kIsEqual, var_headerIncludes_32_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_13) {
-            GALGAS_location location_14 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322)).reader_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_14 (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322)).getter_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticWarning (location_14, GALGAS_string ("'twoHeaders' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes2' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322)) ;
           }
         }
@@ -373,8 +373,8 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
       }
       const enumGalgasBool test_15 = GALGAS_bool (kIsNotEqual, callCategoryGetter_headerKind ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 326)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 326)))).boolEnum () ;
       if (kBoolTrue == test_15) {
-        GALGAS_string var_headerString = GALGAS_string ("#ifndef ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 327)).reader_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 327)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 327)).add_operation (GALGAS_string ("_1_DEFINED\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 327)) ;
-        var_headerString.dotAssign_operation (GALGAS_string ("#define ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)).reader_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)).add_operation (GALGAS_string ("_1_DEFINED\n"
+        GALGAS_string var_headerString = GALGAS_string ("#ifndef ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 327)).getter_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 327)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 327)).add_operation (GALGAS_string ("_1_DEFINED\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 327)) ;
+        var_headerString.dotAssign_operation (GALGAS_string ("#define ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)).getter_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)).add_operation (GALGAS_string ("_1_DEFINED\n"
           "\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)) ;
         var_headerString.dotAssign_operation (GALGAS_string ("//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 329)) ;
@@ -405,8 +405,8 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
       }
       const enumGalgasBool test_18 = GALGAS_bool (kIsEqual, callCategoryGetter_headerKind ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 347)).objectCompare (GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 347)))).boolEnum () ;
       if (kBoolTrue == test_18) {
-        GALGAS_string var_headerString = GALGAS_string ("#ifndef ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 348)).reader_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 348)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 348)).add_operation (GALGAS_string ("_DEFINED\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 348)) ;
-        var_headerString.dotAssign_operation (GALGAS_string ("#define ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)).reader_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)).add_operation (GALGAS_string ("_DEFINED\n"
+        GALGAS_string var_headerString = GALGAS_string ("#ifndef ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 348)).getter_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 348)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 348)).add_operation (GALGAS_string ("_DEFINED\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 348)) ;
+        var_headerString.dotAssign_operation (GALGAS_string ("#define ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12754.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)).getter_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)).add_operation (GALGAS_string ("_DEFINED\n"
           "\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)) ;
         var_headerString.dotAssign_operation (GALGAS_string ("//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 350)) ;
@@ -495,16 +495,16 @@ void routine_buildHeader (const GALGAS_headerCompositionMap constinArgument_inHe
                           GALGAS_string & ioArgument_ioHeaderString,
                           C_Compiler * inCompiler
                           COMMA_UNUSED_LOCATION_ARGS) {
-  const enumGalgasBool test_0 = ioArgument_ioHeaderRepartitionMap.reader_hasKey (constinArgument_inDeclarationName COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 444)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 444)).boolEnum () ;
+  const enumGalgasBool test_0 = ioArgument_ioHeaderRepartitionMap.getter_hasKey (constinArgument_inDeclarationName COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 444)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 444)).boolEnum () ;
   if (kBoolTrue == test_0) {
     {
-    ioArgument_ioHeaderRepartitionMap.modifier_insertKey (constinArgument_inDeclarationName.reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 445)), constinArgument_inHeaderFileName, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 445)) ;
+    ioArgument_ioHeaderRepartitionMap.modifier_insertKey (constinArgument_inDeclarationName.getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 445)), constinArgument_inHeaderFileName, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 445)) ;
     }
-    const enumGalgasBool test_1 = constinArgument_inHeaderCompositionMap.reader_hasKey (constinArgument_inDeclarationName COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 446)).boolEnum () ;
+    const enumGalgasBool test_1 = constinArgument_inHeaderCompositionMap.getter_hasKey (constinArgument_inDeclarationName COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 446)).boolEnum () ;
     if (kBoolTrue == test_1) {
       GALGAS_stringset var_inclusionSet ;
       GALGAS_string var_headerString ;
-      constinArgument_inHeaderCompositionMap.method_searchKey (constinArgument_inDeclarationName.reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 448)), var_inclusionSet, var_headerString, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 447)) ;
+      constinArgument_inHeaderCompositionMap.method_searchKey (constinArgument_inDeclarationName.getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 448)), var_inclusionSet, var_headerString, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 447)) ;
       cEnumerator_stringset enumerator_20899 (var_inclusionSet, kEnumeration_up) ;
       while (enumerator_20899.hasCurrentObject ()) {
         {
@@ -579,7 +579,7 @@ static GALGAS_object functionWithGenericHeader_definitionGroupAmount (C_Compiler
                                                                       const cObjectArray & /* inEffectiveParameterArray */,
                                                                       const GALGAS_location & /* inErrorLocation */
                                                                       COMMA_LOCATION_ARGS) {
-  return function_definitionGroupAmount (inCompiler COMMA_THERE).reader_object (THERE) ;
+  return function_definitionGroupAmount (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -603,7 +603,7 @@ void routine_generateFewImplementationFiles (const GALGAS_unifiedTypeMap constin
                                              GALGAS_stringset & ioArgument_ioAllProductFileSet,
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool var_useOneHugeHeader = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.reader_value ()) ;
+  GALGAS_bool var_useOneHugeHeader = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()) ;
   GALGAS_uint var_n = GALGAS_uint ((uint32_t) 0U) ;
   GALGAS_uint var_fileIdx = GALGAS_uint ((uint32_t) 0U) ;
   GALGAS_string var_implementationString = GALGAS_string::makeEmptyString () ;
@@ -614,7 +614,7 @@ void routine_generateFewImplementationFiles (const GALGAS_unifiedTypeMap constin
     if (kBoolTrue == test_0) {
       GALGAS_string var_code ;
       callCategoryMethod_appendSpecificImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_22098.current_mDeclaration (HERE).ptr (), constinArgument_inUnifiedTypeMap, var_inclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 492)) ;
-      const enumGalgasBool test_1 = var_inclusionSet.reader_hasKey (GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 493)).boolEnum () ;
+      const enumGalgasBool test_1 = var_inclusionSet.getter_hasKey (GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 493)).boolEnum () ;
       if (kBoolTrue == test_1) {
         inCompiler->printMessage (GALGAS_string ("Empty inclusion in ").add_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_22098.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 494)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 494)).add_operation (GALGAS_string (" cpp headers\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 494))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 494)) ;
       }
@@ -629,8 +629,8 @@ void routine_generateFewImplementationFiles (const GALGAS_unifiedTypeMap constin
           temp_4.addAssign_operation (GALGAS_string ("all-declarations")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 501)) ;
           var_inclusionSet = temp_4 ;
         }
-        GALGAS_string var_header = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, var_inclusionSet.reader_stringList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 504)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 503))) ;
-        GALGAS_string var_fileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 506)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 506)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 506)) ;
+        GALGAS_string var_header = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, var_inclusionSet.getter_stringList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 504)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 503))) ;
+        GALGAS_string var_fileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 506)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 506)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 506)) ;
         GALGAS_stringlist temp_5 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 507)) ;
         temp_5.addAssign_operation (var_fileName  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 507)) ;
         ioArgument_ioToolProductFileList = temp_5.add_operation (ioArgument_ioToolProductFileList, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 507)) ;
@@ -654,8 +654,8 @@ void routine_generateFewImplementationFiles (const GALGAS_unifiedTypeMap constin
       temp_8.addAssign_operation (GALGAS_string ("all-declarations")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 524)) ;
       var_inclusionSet = temp_8 ;
     }
-    GALGAS_string var_header = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, var_inclusionSet.reader_stringList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 527)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 526))) ;
-    GALGAS_string var_fileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 529)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 529)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 529)) ;
+    GALGAS_string var_header = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, var_inclusionSet.getter_stringList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 527)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 526))) ;
+    GALGAS_string var_fileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 529)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 529)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 529)) ;
     GALGAS_stringlist temp_9 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 530)) ;
     temp_9.addAssign_operation (var_fileName  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 530)) ;
     ioArgument_ioToolProductFileList = temp_9.add_operation (ioArgument_ioToolProductFileList, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 530)) ;
@@ -681,7 +681,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
                                                            GALGAS_stringlist & ioArgument_ioToolHeaderFileList,
                                                            C_Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool var_useOneHugeHeader = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.reader_value ()) ;
+  GALGAS_bool var_useOneHugeHeader = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()) ;
   GALGAS_headerCompositionMap var_headerCompositionMap = GALGAS_headerCompositionMap::constructor_emptyMap (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 551)) ;
   cEnumerator_semanticDeclarationSortedListForGeneration enumerator_24421 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
   while (enumerator_24421.hasCurrentObject ()) {
@@ -704,7 +704,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
         }
         GALGAS_string var_headerFileName = callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_24421.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 559)).add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 559)) ;
         {
-        var_headerCompositionMap.modifier_insertKey (var_headerFileName.reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 561)), var_inclusionSet_31_, var_headerString_31_, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 560)) ;
+        var_headerCompositionMap.modifier_insertKey (var_headerFileName.getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 561)), var_inclusionSet_31_, var_headerString_31_, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 560)) ;
         }
       }
       const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, callCategoryGetter_headerKind ((const cPtr_semanticDeclarationForGeneration *) enumerator_24421.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 566)).objectCompare (GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 566)))).boolEnum () ;
@@ -712,7 +712,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
         {
         GALGAS_stringset temp_5 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 569)) ;
         temp_5.addAssign_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_24421.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 569)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 569))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 569)) ;
-        var_headerCompositionMap.modifier_insertKey (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_24421.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 568)).reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 568)), var_inclusionSet_32_.operator_or (temp_5 COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 569)), var_headerString_32_, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 567)) ;
+        var_headerCompositionMap.modifier_insertKey (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_24421.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 568)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 568)), var_inclusionSet_32_.operator_or (temp_5 COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 569)), var_headerString_32_, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 567)) ;
         }
       }
     }
@@ -723,7 +723,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
   GALGAS_string var_implementationString = GALGAS_string::makeEmptyString () ;
   GALGAS_string var_headerString = GALGAS_string::makeEmptyString () ;
   GALGAS_stringset var_inclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 580)) ;
-  GALGAS_string var_headerFileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 581)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 581)) ;
+  GALGAS_string var_headerFileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 581)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 581)) ;
   cEnumerator_semanticDeclarationSortedListForGeneration enumerator_25679 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
   while (enumerator_25679.hasCurrentObject ()) {
     const enumGalgasBool test_6 = callCategoryGetter_isPredefined ((const cPtr_semanticDeclarationForGeneration *) enumerator_25679.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 583)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 583)).boolEnum () ;
@@ -758,7 +758,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
       }
       var_implementationString.dotAssign_operation (var_code  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 596)) ;
       var_implementationString.dotAssign_operation (callCategoryGetter_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_25679.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 597))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 597)) ;
-      const enumGalgasBool test_10 = GALGAS_bool (kIsStrictSup, var_implementationString.reader_length (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 598)).objectCompare (GALGAS_uint ((uint32_t) 786432U))).boolEnum () ;
+      const enumGalgasBool test_10 = GALGAS_bool (kIsStrictSup, var_implementationString.getter_length (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 598)).objectCompare (GALGAS_uint ((uint32_t) 786432U))).boolEnum () ;
       if (kBoolTrue == test_10) {
         const enumGalgasBool test_11 = var_useOneHugeHeader.boolEnum () ;
         if (kBoolTrue == test_11) {
@@ -767,11 +767,11 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
           var_inclusionSet = temp_12 ;
         }else if (kBoolFalse == test_11) {
           GALGAS_stringset temp_13 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602)) ;
-          temp_13.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602)) ;
+          temp_13.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602)) ;
           var_inclusionSet = temp_13 ;
         }
-        GALGAS_string var_cppHeader = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, var_inclusionSet.reader_stringList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 605)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 604))) ;
-        GALGAS_string var_fileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 607)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 607)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 607)) ;
+        GALGAS_string var_cppHeader = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, var_inclusionSet.getter_stringList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 605)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 604))) ;
+        GALGAS_string var_fileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 607)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 607)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 607)) ;
         GALGAS_stringlist temp_14 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 608)) ;
         temp_14.addAssign_operation (var_fileName  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 608)) ;
         ioArgument_ioToolProductFileList = temp_14.add_operation (ioArgument_ioToolProductFileList, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 608)) ;
@@ -787,7 +787,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
           temp_15 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620)) ;
         }else if (kBoolFalse == test_16) {
           GALGAS_stringlist temp_17 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620)) ;
-          temp_17.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620)).reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620)) ;
+          temp_17.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620)).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 620)) ;
           temp_15 = temp_17 ;
         }
         GALGAS_string var_startOfHeader = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (inCompiler, var_headerFileName, temp_15 COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 618))) ;
@@ -797,7 +797,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
         var_fileIdx.increment_operation (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 628)) ;
         var_implementationString = GALGAS_string::makeEmptyString () ;
         var_headerString = GALGAS_string::makeEmptyString () ;
-        var_headerFileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 631)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 631)) ;
+        var_headerFileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 631)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 631)) ;
         var_inclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 632)) ;
       }
     }
@@ -810,9 +810,9 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
       var_inclusionSet = GALGAS_stringset::constructor_setWithString (GALGAS_string ("all-declarations")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 639)) ;
     }
     GALGAS_stringlist temp_20 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 642)) ;
-    temp_20.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 642)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 642))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 642)) ;
+    temp_20.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 642)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 642))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 642)) ;
     GALGAS_string var_header = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, temp_20 COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 641))) ;
-    GALGAS_string var_fileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 644)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 644)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 644)) ;
+    GALGAS_string var_fileName = GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 644)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 644)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 644)) ;
     GALGAS_stringlist temp_21 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 645)) ;
     temp_21.addAssign_operation (var_fileName  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 645)) ;
     ioArgument_ioToolProductFileList = temp_21.add_operation (ioArgument_ioToolProductFileList, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 645)) ;
@@ -828,7 +828,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
       temp_22 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657)) ;
     }else if (kBoolFalse == test_23) {
       GALGAS_stringlist temp_24 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657)) ;
-      temp_24.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657)).reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657)) ;
+      temp_24.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657)).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 657)) ;
       temp_22 = temp_24 ;
     }
     GALGAS_string var_startOfHeader = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (inCompiler, var_headerFileName, temp_22 COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 655))) ;
@@ -839,7 +839,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
   ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("all-declarations.h")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 666)) ;
   ioArgument_ioToolHeaderFileList.addAssign_operation (GALGAS_string ("all-declarations.h")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 667)) ;
   GALGAS_stringlist temp_25 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 670)) ;
-  temp_25.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 670)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 670))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 670)) ;
+  temp_25.addAssign_operation (GALGAS_string ("all-declarations-").add_operation (var_fileIdx.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 670)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 670))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 670)) ;
   GALGAS_string var_startOfAllDeclarationsHeader = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (inCompiler, GALGAS_string ("all-declarations"), temp_25 COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 668))) ;
   {
   GALGAS_string::class_method_generateFile (constinArgument_inProductDirectory, GALGAS_string ("all-declarations.h"), var_startOfAllDeclarationsHeader.add_operation (GALGAS_string ("#endif\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 675)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 672)) ;
@@ -860,7 +860,7 @@ void routine_generateManyImplementationFiles (const GALGAS_unifiedTypeMap consti
                                               GALGAS_stringset & ioArgument_ioAllProductFileSet,
                                               C_Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool var_useOneHugeHeader = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.reader_value ()) ;
+  GALGAS_bool var_useOneHugeHeader = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()) ;
   cEnumerator_semanticDeclarationSortedListForGeneration enumerator_30051 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
   while (enumerator_30051.hasCurrentObject ()) {
     GALGAS_stringset var_inclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 689)) ;
@@ -876,7 +876,7 @@ void routine_generateManyImplementationFiles (const GALGAS_unifiedTypeMap consti
       if (kBoolTrue == test_2) {
         var_inclusionSet = GALGAS_stringset::constructor_setWithString (GALGAS_string ("all-declarations")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 696)) ;
       }
-      GALGAS_string var_header = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, var_inclusionSet.reader_stringList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 699)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 698))) ;
+      GALGAS_string var_header = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (inCompiler, var_inclusionSet.getter_stringList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 699)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 698))) ;
       var_implementationString.dotAssign_operation (callCategoryGetter_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_30051.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 701))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 701)) ;
       ioArgument_ioAllProductFileSet.addAssign_operation (callCategoryGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_30051.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 702)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 702))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 702)) ;
       {
@@ -1013,10 +1013,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.c.c;\n"
         "    name = " ;
-      result << enumerator_498.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).stringValue () ;
+      result << enumerator_498.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_498.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 26)).stringValue () ;
+      result << enumerator_498.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 26)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1038,10 +1038,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.cpp.cpp;\n"
         "    name = " ;
-      result << enumerator_828.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).stringValue () ;
+      result << enumerator_828.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_828.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 36)).stringValue () ;
+      result << enumerator_828.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 36)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1063,10 +1063,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.c.obj;\n"
         "    name = " ;
-      result << enumerator_1160.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).stringValue () ;
+      result << enumerator_1160.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_1160.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 46)).stringValue () ;
+      result << enumerator_1160.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 46)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1088,10 +1088,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.cpp.objcpp;\n"
         "    name = " ;
-      result << enumerator_1491.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).stringValue () ;
+      result << enumerator_1491.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_1491.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 56)).stringValue () ;
+      result << enumerator_1491.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 56)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1113,10 +1113,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.c.h;\n"
         "    name = " ;
-      result << enumerator_1831.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).stringValue () ;
+      result << enumerator_1831.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_1831.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 66)).stringValue () ;
+      result << enumerator_1831.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 66)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1137,10 +1137,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    isa = PBXFileReference;\n"
         "    lastKnownFileType = wrapper.framework;\n"
         "    name = " ;
-      result << enumerator_2167.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).stringValue () ;
+      result << enumerator_2167.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_2167.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 75)).stringValue () ;
+      result << enumerator_2167.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 75)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1160,7 +1160,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    explicitFileType = \"compiled.mach-o.executable\";\n"
         "    includeInIndex = 0;\n"
         "    path = " ;
-      result << enumerator_2477.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 84)).stringValue () ;
+      result << enumerator_2477.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 84)).stringValue () ;
       result << ";\n"
         "    sourceTree = BUILT_PRODUCTS_DIR;\n"
         "  };\n"
@@ -1180,7 +1180,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    explicitFileType = \"compiled.mach-o.executable\";\n"
         "    includeInIndex = 0;\n"
         "    path = " ;
-      result << enumerator_2771.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 93)).stringValue () ;
+      result << enumerator_2771.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 93)).stringValue () ;
       result << ";\n"
         "    sourceTree = BUILT_PRODUCTS_DIR;\n"
         "  };\n"
@@ -1200,10 +1200,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = text.plist;\n"
         "    name = " ;
-      result << enumerator_3065.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).stringValue () ;
+      result << enumerator_3065.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_3065.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 103)).stringValue () ;
+      result << enumerator_3065.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 103)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1223,10 +1223,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = wrapper.xib;\n"
         "    name = " ;
-      result << enumerator_3374.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).stringValue () ;
+      result << enumerator_3374.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_3374.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 113)).stringValue () ;
+      result << enumerator_3374.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 113)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1245,10 +1245,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    isa = PBXFileReference;\n"
         "    lastKnownFileType = image.tiff;\n"
         "    name = " ;
-      result << enumerator_3685.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).stringValue () ;
+      result << enumerator_3685.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_3685.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 122)).stringValue () ;
+      result << enumerator_3685.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 122)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1267,10 +1267,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    isa = PBXFileReference;\n"
         "    lastKnownFileType = image.icns;\n"
         "    name = " ;
-      result << enumerator_3969.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).stringValue () ;
+      result << enumerator_3969.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_3969.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 131)).stringValue () ;
+      result << enumerator_3969.current_mValue_31_ (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 131)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
@@ -1285,7 +1285,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     cEnumerator_XCodeToolTargetList enumerator_4357 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
     while (enumerator_4357.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_4357.current_mFrameworksFileRefList (HERE).reader_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_4357.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "  " ;
         result << enumerator_4357.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
@@ -1368,10 +1368,10 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
       }
       result << "    );\n"
         "    name = " ;
-      result << enumerator_5150.current_mGroupName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 174)).stringValue () ;
+      result << enumerator_5150.current_mGroupName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 174)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_5150.current_mGroupPath (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 175)).stringValue () ;
+      result << enumerator_5150.current_mGroupPath (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 175)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n" ;
@@ -1418,7 +1418,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "      " ;
       result << enumerator_5768.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " ,\n" ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_5768.current_mFrameworksFileRefList (HERE).reader_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, enumerator_5768.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "      " ;
         result << enumerator_5768.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
@@ -1431,11 +1431,11 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    dependencies = (\n"
         "    );\n"
         "    name = " ;
-      result << enumerator_5768.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 208)).stringValue () ;
+      result << enumerator_5768.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 208)).stringValue () ;
       result << ";\n"
         "    productInstallPath = \"$(HOME)/bin\";\n"
         "    productName = " ;
-      result << enumerator_5768.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 210)).stringValue () ;
+      result << enumerator_5768.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 210)).stringValue () ;
       result << ";\n"
         "    productReference = " ;
       result << enumerator_5768.current_mProductFileReference (HERE).stringValue () ;
@@ -1487,11 +1487,11 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
       }
       result << "    );\n"
         "    name = " ;
-      result << enumerator_6404.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 234)).stringValue () ;
+      result << enumerator_6404.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 234)).stringValue () ;
       result << ";\n"
         "    productInstallPath = \"$(HOME)/bin\";\n"
         "    productName = " ;
-      result << enumerator_6404.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 236)).stringValue () ;
+      result << enumerator_6404.current_mTargetName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 236)).stringValue () ;
       result << ";\n"
         "    productReference = " ;
       result << enumerator_6404.current_mProductFileReference (HERE).stringValue () ;
@@ -1705,7 +1705,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         }
       }
       result << "      PRODUCT_NAME = " ;
-      result << enumerator_9437.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 343)).stringValue () ;
+      result << enumerator_9437.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 343)).stringValue () ;
       result << " ;\n"
         "    };\n"
         "    name = Default;\n"
@@ -1737,7 +1737,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
       }
       result << "      INFOPLIST_FILE = \"Info.plist\";\n"
         "      PRODUCT_NAME = " ;
-      result << enumerator_9772.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 356)).stringValue () ;
+      result << enumerator_9772.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 356)).stringValue () ;
       result << " ;\n"
         "    };\n"
         "    name = Default;\n"
@@ -1948,7 +1948,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5
     "\t\t\t\t\t<object class=\"NSMenuItem\" id=\"694149608\">\n"
     "\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"649796088\"/>\n"
     "\t\t\t\t\t\t<string key=\"NSTitle\">" ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 40)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 40)).stringValue () ;
   result << "UpdaterApp</string>\n"
     "\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
     "\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
@@ -1964,13 +1964,13 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5
     "\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
     "\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"110575045\">\n"
     "\t\t\t\t\t\t\t<string key=\"NSTitle\">" ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 54)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 54)).stringValue () ;
   result << "UpdaterApp</string>\n"
     "\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
     "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"238522557\">\n"
     "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
     "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">About " ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 58)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 58)).stringValue () ;
   result << "UpdaterApp</string>\n"
     "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
     "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
@@ -2037,7 +2037,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5
     "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"755159360\">\n"
     "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
     "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Hide " ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 123)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 123)).stringValue () ;
   result << "UpdaterApp</string>\n"
     "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">h</string>\n"
     "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
@@ -2077,7 +2077,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5
     "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"632727374\">\n"
     "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
     "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Quit " ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 161)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 161)).stringValue () ;
   result << "UpdaterApp</string>\n"
     "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">q</string>\n"
     "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
@@ -3194,7 +3194,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5
     "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"105068016\">\n"
     "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"992780483\"/>\n"
     "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">" ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 1276)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 1276)).stringValue () ;
   result << "UpdaterApp Help</string>\n"
     "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">\?</string>\n"
     "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
@@ -5256,7 +5256,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "    NSError * error = [updaterToolObjectProxy\n"
     "      performInstallationWithApplicationPath:mCocoaApplicationPath\n"
     "      temporaryFilePath:[NSString stringWithFormat:@\"%@/Cocoa" ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 147)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 147)).stringValue () ;
   result << ".app\", myDirectory]\n"
     "    ] ;\n"
     "    ok = nil == error ;\n"
@@ -5268,12 +5268,12 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "      NSAlert * alert = [NSAlert\n"
     "        alertWithMessageText:@\"Done\"\n"
     "        defaultButton:@\"Launch " ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 157)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 157)).stringValue () ;
   result << "\"\n"
     "        alternateButton:@\"Ok\"\n"
     "        otherButton:nil\n"
     "        informativeTextWithFormat:@\"%@\", @\"The new version of " ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 160)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 160)).stringValue () ;
   result << " has been successfully installed\"\n"
     "      ] ;\n"
     "      [alert setIcon:[NSImage imageNamed:@\"updater_application_icns\"]] ;\n"
@@ -5334,13 +5334,13 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "    if ((nil != inTimer) && (nil == mCocoaApplicationIsStillRunningAlert)) {\n"
     "      mCocoaApplicationIsStillRunningAlert = [NSAlert\n"
     "        alertWithMessageText:@\"Waiting for " ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 219)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 219)).stringValue () ;
   result << " termination\"\n"
     "        defaultButton:@\"Cancel Installation\"\n"
     "        alternateButton:nil\n"
     "        otherButton:nil\n"
     "        informativeTextWithFormat:@\"%@\", @\"" ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 223)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 223)).stringValue () ;
   result << " is still runnning.\"\n"
     "      ] ;\n"
     "      [mCocoaApplicationIsStillRunningAlert setIcon:[NSImage imageNamed:@\"updater_application_icns\"]] ;\n"
@@ -5356,7 +5356,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "    }else if (nil != mCocoaApplicationIsStillRunningAlert) {\n"
     "      [mCocoaApplicationIsStillRunningAlert\n"
     "        setInformativeText:[NSString stringWithFormat:@\"" ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 237)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 237)).stringValue () ;
   result << " is still runnning (%lu s).\", mWaitingTimeInSeconds]\n"
     "      ] ;\n"
     "    }\n"
@@ -5853,7 +5853,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_to
     "\t<string>6.0</string>\n"
     "\t<key>CFBundleName</key>\n"
     "\t<string>" ;
-  result << in_TARGET_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("updater-tool-Info.plist.txt", 10)).stringValue () ;
+  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("updater-tool-Info.plist.txt", 10)).stringValue () ;
   result << "Updater</string>\n"
     "\t<key>CFBundleVersion</key>\n"
     "\t<string>1.0</string>\n"
@@ -6078,7 +6078,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "\n"
     "- (NSString *) applicationArchiveName {\n"
     "  return @\"Cocoa" ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 62)).stringValue () ;
+  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 62)).stringValue () ;
   result << ".app.tar.bz2\" ;\n"
     "}\n"
     "\n"
@@ -6106,7 +6106,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "\n"
     "- (NSString *) temporaryDir {\n"
     "  return @\"/tmp/TEMPORARY_DIR_FOR_" ;
-  result << in_PROJECT_5F_NAME.reader_uppercaseString (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 86)).stringValue () ;
+  result << in_PROJECT_5F_NAME.getter_uppercaseString (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 86)).stringValue () ;
   result << "\" ;\n"
     "}\n"
     "\n"
@@ -6287,7 +6287,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "    }else if (! mSearchForUpdatesInBackground) {\n"
     "      NSAlert * alert = [NSAlert\n"
     "        alertWithMessageText:@\"" ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 265)).stringValue () ;
+  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 265)).stringValue () ;
   result << " is up to date.\"\n"
     "        defaultButton:@\"Ok\"\n"
     "        alternateButton:nil\n"
@@ -6339,7 +6339,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "    ] ;\n"
     "  //--- Start download Application\n"
     "    [mDownloadTitle setStringValue:[NSString stringWithFormat:@\"Downloading " ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 315)).stringValue () ;
+  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 315)).stringValue () ;
   result << " %@...\", mLastAvailableVersion]] ;\n"
     "    [[mCancelButton window] makeKeyAndOrderFront:nil] ;\n"
     "    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self HTTPPathForVersion:mLastAvailableVersion]\n"
@@ -6621,7 +6621,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "    <string key=\"NSWindowRect\">{{409, 459}, {467, 151}}</string>\n"
     "    <int key=\"NSWTFlags\">1886912512</int>\n"
     "    <string key=\"NSWindowTitle\">" ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.xib.galgasTemplate", 64)).stringValue () ;
+  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.xib.galgasTemplate", 64)).stringValue () ;
   result << " Update</string>\n"
     "    <object class=\"NSMutableString\" key=\"NSWindowClass\">\n"
     "     <characters key=\"NS.bytes\">NSPanel</characters>\n"
@@ -6920,7 +6920,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "        <int key=\"NSCellFlags\">67239424</int>\n"
     "        <int key=\"NSCellFlags2\">272629760</int>\n"
     "        <string key=\"NSContents\">A New " ;
-  result << in_PROJECT_5F_NAME.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.xib.galgasTemplate", 361)).stringValue () ;
+  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.xib.galgasTemplate", 361)).stringValue () ;
   result << " Version is available.</string>\n"
     "        <reference key=\"NSSupport\" ref=\"254211308\"/>\n"
     "        <reference key=\"NSControlView\" ref=\"475068467\"/>\n"
@@ -11588,9 +11588,9 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                                       const GALGAS_stringlist constinArgument_inHandCodedLinkAppFileList,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_projectDirectory = constinArgument_inProjectSourceFilePath.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 335)) ;
+  GALGAS_string var_projectDirectory = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 335)) ;
   GALGAS_bool joker_17814 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (inCompiler, constinArgument_inProjectVersionString COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 337))).method_writeToFileWhenDifferentContents (constinArgument_inProjectSourceFilePath.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 338)).add_operation (GALGAS_string ("/build/output/project_header.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 338)), joker_17814, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 337)) ;
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (inCompiler, constinArgument_inProjectVersionString COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 337))).method_writeToFileWhenDifferentContents (constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 338)).add_operation (GALGAS_string ("/build/output/project_header.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 338)), joker_17814, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 337)) ;
   ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("project_header.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 341)) ;
   GALGAS_string var_libpmPath ;
   const cMapElement_projectQualifiedFeatureMap * objectArray_17965 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("libpmAtPath")) ;
@@ -11598,7 +11598,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       macroValidSharedObject (objectArray_17965, cMapElement_projectQualifiedFeatureMap) ;
     const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, objectArray_17965->mAttribute_mFeatureValue.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_location location_1 (objectArray_17965->mAttribute_mFeatureValue.reader_location (HERE)) ; // Implicit use of 'location' getter
+      GALGAS_location location_1 (objectArray_17965->mAttribute_mFeatureValue.getter_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_1, GALGAS_string ("the libpm path should not be empty")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 346)) ;
       var_libpmPath.drop () ; // Release error dropped variable
     }else if (kBoolFalse == test_0) {
@@ -11606,7 +11606,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     }
   }else{
     {
-    routine_updateLIBPMatPath (constinArgument_inProjectSourceFilePath.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 351)).add_operation (GALGAS_string ("/build/libpm"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 351)), inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 351)) ;
+    routine_updateLIBPMatPath (constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 351)).add_operation (GALGAS_string ("/build/libpm"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 351)), inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 351)) ;
     }
     var_libpmPath = GALGAS_string ("../build/libpm") ;
   }
@@ -11635,19 +11635,19 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
   GALGAS_string var_MACOSX_5F_DEPLOYMENT_5F_TARGET = GALGAS_string::makeEmptyString () ;
   cEnumerator_lstringlist enumerator_19782 (constinArgument_inTargetFeatureList, kEnumeration_up) ;
   while (enumerator_19782.hasCurrentObject ()) {
-    const enumGalgasBool test_2 = var_availableGenerationFeatures.reader_hasKey (enumerator_19782.current_mValue (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 386)).boolEnum () ;
+    const enumGalgasBool test_2 = var_availableGenerationFeatures.getter_hasKey (enumerator_19782.current_mValue (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 386)).boolEnum () ;
     if (kBoolTrue == test_2) {
-      const enumGalgasBool test_3 = var_generationFeatures.reader_hasKey (enumerator_19782.current_mValue (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 387)).boolEnum () ;
+      const enumGalgasBool test_3 = var_generationFeatures.getter_hasKey (enumerator_19782.current_mValue (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 387)).boolEnum () ;
       if (kBoolTrue == test_3) {
-        GALGAS_location location_4 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticError (location_4, GALGAS_string ("duplicate '").add_operation (enumerator_19782.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)) ;
+        GALGAS_location location_4 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+        inCompiler->emitSemanticError (location_4, GALGAS_string ("duplicate '").add_operation (enumerator_19782.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)) ;
       }
       GALGAS_string var_macOsDuplicateMessage = GALGAS_string ("the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\", \"Yosemite\", \"ElCapitanYosemite\" and \"ElCapitan\", \"LatestMacOS\" are exclusive") ;
       const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_19782.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("SnowLeopard"))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_6) {
-          GALGAS_location location_7 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
+          GALGAS_location location_7 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
           inCompiler->emitSemanticError (location_7, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401)) ;
         }
         var_SDK = GALGAS_string ("macosx10.6") ;
@@ -11657,7 +11657,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
         if (kBoolTrue == test_8) {
           const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_9) {
-            GALGAS_location location_10 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_10 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_10, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 408)) ;
           }
           var_SDK = GALGAS_string ("macosx10.7") ;
@@ -11667,7 +11667,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
           if (kBoolTrue == test_11) {
             const enumGalgasBool test_12 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_12) {
-              GALGAS_location location_13 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
+              GALGAS_location location_13 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
               inCompiler->emitSemanticError (location_13, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 415)) ;
             }
             var_SDK = GALGAS_string ("macosx10.8") ;
@@ -11677,7 +11677,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
             if (kBoolTrue == test_14) {
               const enumGalgasBool test_15 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
               if (kBoolTrue == test_15) {
-                GALGAS_location location_16 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
+                GALGAS_location location_16 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
                 inCompiler->emitSemanticError (location_16, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 422)) ;
               }
               var_SDK = GALGAS_string ("macosx10.9") ;
@@ -11687,7 +11687,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
               if (kBoolTrue == test_17) {
                 const enumGalgasBool test_18 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                 if (kBoolTrue == test_18) {
-                  GALGAS_location location_19 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
+                  GALGAS_location location_19 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
                   inCompiler->emitSemanticError (location_19, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 429)) ;
                 }
                 var_SDK = GALGAS_string ("macosx10.10") ;
@@ -11697,7 +11697,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                 if (kBoolTrue == test_20) {
                   const enumGalgasBool test_21 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                   if (kBoolTrue == test_21) {
-                    GALGAS_location location_22 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
+                    GALGAS_location location_22 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
                     inCompiler->emitSemanticError (location_22, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 436)) ;
                   }
                   var_SDK = GALGAS_string ("macosx10.11") ;
@@ -11707,7 +11707,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                   if (kBoolTrue == test_23) {
                     const enumGalgasBool test_24 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                     if (kBoolTrue == test_24) {
-                      GALGAS_location location_25 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
+                      GALGAS_location location_25 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
                       inCompiler->emitSemanticError (location_25, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 443)) ;
                     }
                     var_SDK = GALGAS_string ("macosx10.11") ;
@@ -11717,7 +11717,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                     if (kBoolTrue == test_26) {
                       const enumGalgasBool test_27 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                       if (kBoolTrue == test_27) {
-                        GALGAS_location location_28 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
+                        GALGAS_location location_28 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
                         inCompiler->emitSemanticError (location_28, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 450)) ;
                       }
                       var_SDK = GALGAS_string ("macosx") ;
@@ -11739,71 +11739,71 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
           "  - '").add_operation (enumerator_22278.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459)) ;
         enumerator_22278.gotoNextObject () ;
       }
-      GALGAS_location location_29 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_29, GALGAS_string ("unknown '").add_operation (enumerator_19782.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)).add_operation (GALGAS_string ("' feature; available features are:"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)) ;
+      GALGAS_location location_29 (enumerator_19782.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+      inCompiler->emitSemanticError (location_29, GALGAS_string ("unknown '").add_operation (enumerator_19782.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)).add_operation (GALGAS_string ("' feature; available features are:"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)) ;
     }
     enumerator_19782.gotoNextObject () ;
   }
-  const enumGalgasBool test_30 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).operator_and (constinArgument_inProjectQualifiedFeatureMap.reader_hasKey (GALGAS_string ("applicationBundleBase") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 465)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 465)) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 465)).boolEnum () ;
+  const enumGalgasBool test_30 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).operator_and (constinArgument_inProjectQualifiedFeatureMap.getter_hasKey (GALGAS_string ("applicationBundleBase") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 465)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 465)) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 465)).boolEnum () ;
   if (kBoolTrue == test_30) {
     inCompiler->emitSemanticWarning (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 466)), GALGAS_string ("For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 466)) ;
   }
-  const enumGalgasBool test_31 = var_generationFeatures.reader_hasKey (GALGAS_string ("makefile-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 469)).boolEnum () ;
+  const enumGalgasBool test_31 = var_generationFeatures.getter_hasKey (GALGAS_string ("makefile-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 469)).boolEnum () ;
   if (kBoolTrue == test_31) {
     {
     routine_generateGalgas_33_MakefileMacOSXTarget (var_projectDirectory, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 470)) ;
     }
   }
-  const enumGalgasBool test_32 = var_generationFeatures.reader_hasKey (GALGAS_string ("makefile-unix") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 472)).boolEnum () ;
+  const enumGalgasBool test_32 = var_generationFeatures.getter_hasKey (GALGAS_string ("makefile-unix") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 472)).boolEnum () ;
   if (kBoolTrue == test_32) {
     {
     routine_generateGalgas_33_MakefileUnixTarget (var_projectDirectory, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 473)) ;
     }
   }
-  const enumGalgasBool test_33 = var_generationFeatures.reader_hasKey (GALGAS_string ("makefile-x86linux32-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 475)).boolEnum () ;
+  const enumGalgasBool test_33 = var_generationFeatures.getter_hasKey (GALGAS_string ("makefile-x86linux32-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 475)).boolEnum () ;
   if (kBoolTrue == test_33) {
     {
     routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (var_projectDirectory, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 476)) ;
     }
   }
-  const enumGalgasBool test_34 = var_generationFeatures.reader_hasKey (GALGAS_string ("makefile-x86linux64-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 478)).boolEnum () ;
+  const enumGalgasBool test_34 = var_generationFeatures.getter_hasKey (GALGAS_string ("makefile-x86linux64-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 478)).boolEnum () ;
   if (kBoolTrue == test_34) {
     {
     routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (var_projectDirectory, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 479)) ;
     }
   }
-  const enumGalgasBool test_35 = var_generationFeatures.reader_hasKey (GALGAS_string ("makefile-win32-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 481)).boolEnum () ;
+  const enumGalgasBool test_35 = var_generationFeatures.getter_hasKey (GALGAS_string ("makefile-win32-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 481)).boolEnum () ;
   if (kBoolTrue == test_35) {
     {
     routine_generateGalgas_33_MinGWOnMacOSXTarget (var_projectDirectory, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 482)) ;
     }
   }
-  const enumGalgasBool test_36 = var_generationFeatures.reader_hasKey (GALGAS_string ("codeblocks-windows") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 484)).boolEnum () ;
+  const enumGalgasBool test_36 = var_generationFeatures.getter_hasKey (GALGAS_string ("codeblocks-windows") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 484)).boolEnum () ;
   if (kBoolTrue == test_36) {
     {
     routine_generateGalgasCodeBlocksWindowsTarget (var_projectDirectory, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 485)) ;
     }
   }
-  const enumGalgasBool test_37 = var_generationFeatures.reader_hasKey (GALGAS_string ("codeblocks-mac") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 494)).boolEnum () ;
+  const enumGalgasBool test_37 = var_generationFeatures.getter_hasKey (GALGAS_string ("codeblocks-mac") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 494)).boolEnum () ;
   if (kBoolTrue == test_37) {
     {
     routine_generateGalgasCodeBlocksMacTarget (var_projectDirectory, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 495)) ;
     }
   }
-  const enumGalgasBool test_38 = var_generationFeatures.reader_hasKey (GALGAS_string ("codeblocks-linux32") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 504)).boolEnum () ;
+  const enumGalgasBool test_38 = var_generationFeatures.getter_hasKey (GALGAS_string ("codeblocks-linux32") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 504)).boolEnum () ;
   if (kBoolTrue == test_38) {
     {
     routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (var_projectDirectory, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 505)) ;
     }
   }
-  const enumGalgasBool test_39 = var_generationFeatures.reader_hasKey (GALGAS_string ("codeblocks-linux64") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 514)).boolEnum () ;
+  const enumGalgasBool test_39 = var_generationFeatures.getter_hasKey (GALGAS_string ("codeblocks-linux64") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 514)).boolEnum () ;
   if (kBoolTrue == test_39) {
     {
     routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (var_projectDirectory, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 515)) ;
     }
   }
   GALGAS_stringlist var_linkOptionForLinkingFrameworkWithTool = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 525)) ;
-  const enumGalgasBool test_40 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.reader_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 526)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_40 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 526)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_40) {
     const enumGalgasBool test_41 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string ("macosx"))).boolEnum () ;
     if (kBoolTrue == test_41) {
@@ -11813,21 +11813,21 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     cEnumerator_stringlist enumerator_24970 (constinArgument_inFrameworkToolFileList, kEnumeration_up) ;
     while (enumerator_24970.hasCurrentObject ()) {
       var_linkOptionForLinkingFrameworkWithTool.addAssign_operation (GALGAS_string ("-framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 532)) ;
-      var_linkOptionForLinkingFrameworkWithTool.addAssign_operation (enumerator_24970.current_mValue (HERE).reader_stringByDeletingPathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 533))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 533)) ;
+      var_linkOptionForLinkingFrameworkWithTool.addAssign_operation (enumerator_24970.current_mValue (HERE).getter_stringByDeletingPathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 533))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 533)) ;
       enumerator_24970.gotoNextObject () ;
     }
   }
   GALGAS_stringlist var_handCodedSourceToolFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 537)) ;
   cEnumerator_stringlist enumerator_25247 (constinArgument_inHandCodedSourceToolFileList, kEnumeration_up) ;
   while (enumerator_25247.hasCurrentObject ()) {
-    const enumGalgasBool test_42 = GALGAS_bool (kIsNotEqual, enumerator_25247.current_mValue (HERE).reader_pathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 539)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
+    const enumGalgasBool test_42 = GALGAS_bool (kIsNotEqual, enumerator_25247.current_mValue (HERE).getter_pathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 539)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
     if (kBoolTrue == test_42) {
-      var_handCodedSourceToolFileList.addAssign_operation (enumerator_25247.current_mValue (HERE).reader_lastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 540))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 540)) ;
+      var_handCodedSourceToolFileList.addAssign_operation (enumerator_25247.current_mValue (HERE).getter_lastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 540))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 540)) ;
     }
     enumerator_25247.gotoNextObject () ;
   }
   GALGAS_string var_jsonFileListContents = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (inCompiler, constinArgument_inHandCodedSourceDirectorySet, var_handCodedSourceToolFileList, constinArgument_inToolCppFileList, var_linkOptionForLinkingFrameworkWithTool, var_libpmPath COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 543))) ;
-  GALGAS_string var_jsonFileListPath = constinArgument_inProjectSourceFilePath.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 551)).add_operation (GALGAS_string ("/build/output/file-list.json"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 551)) ;
+  GALGAS_string var_jsonFileListPath = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 551)).add_operation (GALGAS_string ("/build/output/file-list.json"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 551)) ;
   GALGAS_bool joker_25810 ; // Joker input parameter
   var_jsonFileListContents.method_writeToFileWhenDifferentContents (var_jsonFileListPath, joker_25810, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 552)) ;
   ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("file-list.json")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 553)) ;
@@ -11846,7 +11846,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     GALGAS_string var_InfoPlistContents = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (inCompiler, constinArgument_inTargetName, var_applicationBundleBase, constinArgument_inProjectVersionString, constinArgument_inHandledExtensionSet COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 565))) ;
     GALGAS_bool joker_26513 ; // Joker input parameter
     var_InfoPlistContents.method_writeToFileWhenDifferentContents (var_dir.add_operation (GALGAS_string ("/Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 571)), joker_26513, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 571)) ;
-    const enumGalgasBool test_44 = var_dir.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)).reader_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)).boolEnum () ;
+    const enumGalgasBool test_44 = var_dir.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)).getter_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)).boolEnum () ;
     if (kBoolTrue == test_44) {
       GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 574))).method_writeToExecutableFile (var_dir.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 574)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 574)) ;
     }
@@ -11855,7 +11855,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     GALGAS_bool joker_26998 ; // Joker input parameter
     GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 579))).method_writeToFileWhenDifferentContents (var_InfoPlist_5F_strings_5F_path, joker_26998, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 579)) ;
     GALGAS_string var_Credits_5F_rtf_5F_path = var_dir.add_operation (GALGAS_string ("/English.lproj/Credits.rtf"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 580)) ;
-    const enumGalgasBool test_45 = var_Credits_5F_rtf_5F_path.reader_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 581)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 581)).boolEnum () ;
+    const enumGalgasBool test_45 = var_Credits_5F_rtf_5F_path.getter_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 581)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 581)).boolEnum () ;
     if (kBoolTrue == test_45) {
       GALGAS_string (gWrapperFileContent_4_targetGalgas_33_GenerationFileWrapper).method_writeToFile (var_Credits_5F_rtf_5F_path, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 582)) ;
     }
@@ -11925,8 +11925,8 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     var_userResourceDir.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 662)) ;
     GALGAS_stringlist var_extensionList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 663)) ;
     var_extensionList.addAssign_operation (GALGAS_string ("icns")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 664)) ;
-    GALGAS_stringlist var_resourceFiles = var_userResourceDir.reader_regularFilesWithExtensions (GALGAS_bool (false), var_extensionList COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 665)) ;
-    GALGAS_string var_newIntermediateFilePath = constinArgument_inProjectSourceFilePath.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 667)).add_operation (GALGAS_string ("/build/output/file-list-for-xcode-project.txt"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 667)) ;
+    GALGAS_stringlist var_resourceFiles = var_userResourceDir.getter_regularFilesWithExtensions (GALGAS_bool (false), var_extensionList COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 665)) ;
+    GALGAS_string var_newIntermediateFilePath = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 667)).add_operation (GALGAS_string ("/build/output/file-list-for-xcode-project.txt"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 667)) ;
     ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("file-list-for-xcode-project.txt")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 668)) ;
     GALGAS_XcodeProjectDescriptor var_xcodeProject = GALGAS_XcodeProjectDescriptor::constructor_default (SOURCE_FILE ("galgas3TargetGeneration.galgas", 670)) ;
     GALGAS_stringlist temp_46 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 706)) ;
@@ -11981,7 +11981,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     }
     GALGAS_stringlist var_m_5F_HandCodedSourceFileRefForAppList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 719)) ;
     GALGAS_stringlist var_m_5F_HandCodedResourceFileRefForAppList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 720)) ;
-    const enumGalgasBool test_49 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceAppFileList.reader_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 721)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    const enumGalgasBool test_49 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceAppFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 721)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_49) {
       GALGAS_stringlist joker_35616 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 726)) ;
       GALGAS_stringlist joker_35640 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 727)) ;
@@ -11996,7 +11996,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       }
     }
     GALGAS_stringlist var_appFrameworksFileRefList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 737)) ;
-    const enumGalgasBool test_50 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkAppFileList.reader_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 738)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    const enumGalgasBool test_50 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkAppFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 738)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_50) {
       GALGAS_stringlist joker_36294 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 743)) ;
       GALGAS_stringlist joker_36318 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 744)) ;
@@ -12017,7 +12017,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     GALGAS_stringlist var_mm_5F_FileRefList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 757)) ;
     GALGAS_stringlist var_frameworksFileRefList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 758)) ;
     GALGAS_stringlist var_resourceFileBuildRefs = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 759)) ;
-    const enumGalgasBool test_51 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceToolFileList.reader_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 761)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    const enumGalgasBool test_51 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 761)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_51) {
       GALGAS_string var_groupRef ;
       {
@@ -12028,7 +12028,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       }
     }
     GALGAS_stringlist var_toolFrameworksFileRefList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 777)) ;
-    const enumGalgasBool test_52 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.reader_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 778)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    const enumGalgasBool test_52 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 778)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_52) {
       GALGAS_stringlist joker_37890 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 783)) ;
       GALGAS_stringlist joker_37914 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 784)) ;
@@ -12560,7 +12560,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     temp_72.addAssign_operation (var_releaseProductFileRef, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1475)) ;
     temp_72.addAssign_operation (var_debugProductFileRef, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1475))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1475)) ;
     GALGAS_string joker_60732 ; // Joker input parameter
-    categoryModifier_addAppTarget (var_xcodeProject, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1465)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.reader_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1466)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1466)), var_m_5F_FileRefList.add_operation (var_m_5F_HandCodedSourceFileRefForAppList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1467)), var_frameworksFileRefList.add_operation (var_appFrameworksFileRefList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1468)), var_resourceFileBuildRefs.add_operation (var_m_5F_HandCodedResourceFileRefForAppList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1469)), temp_70, temp_71, temp_72, joker_60732, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1464)) ;
+    categoryModifier_addAppTarget (var_xcodeProject, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1465)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1466)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1466)), var_m_5F_FileRefList.add_operation (var_m_5F_HandCodedSourceFileRefForAppList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1467)), var_frameworksFileRefList.add_operation (var_appFrameworksFileRefList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1468)), var_resourceFileBuildRefs.add_operation (var_m_5F_HandCodedResourceFileRefForAppList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1469)), temp_70, temp_71, temp_72, joker_60732, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1464)) ;
     }
     categoryMethod_generateAtPath (var_xcodeProject, var_dir.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1480)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1480)).add_operation (GALGAS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1480)), var_newIntermediateFilePath, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1479)) ;
   }

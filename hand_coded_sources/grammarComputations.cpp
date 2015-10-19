@@ -671,7 +671,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
       printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
     #endif
 
-    const GALGAS_location inErrorLocation = inTargetFileName.reader_location (HERE) ;
+    const GALGAS_location inErrorLocation = inTargetFileName.getter_location (HERE) ;
 
     TC_UniqueArray <C_String> implementationFileHeaderList ;
     cEnumerator_stringset enumerator_30239 (inImplementationFileHeaderSet, kEnumeration_up) ;

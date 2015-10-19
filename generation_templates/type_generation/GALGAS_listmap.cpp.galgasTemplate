@@ -36,7 +36,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_string & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_listForKey (%?^%const GALGAS_string & inKey%
+GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_listForKey (%?^%const GALGAS_string & inKey%
   %\n%!^%COMMA_UNUSED_LOCATION_ARGS) const {
   return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (listForKey (inKey)) ;
 }

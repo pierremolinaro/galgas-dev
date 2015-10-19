@@ -383,7 +383,7 @@ end
 
 for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
   %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
   %  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;\n%

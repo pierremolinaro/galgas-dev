@@ -128,7 +128,7 @@ GALGAS_bigint GALGAS_bigint::constructor_zero (UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_bigint::reader_bitCountForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_bigint::getter_bitCountForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint (mValue.requiredBitCountForSignedRepresentation ()) ;
@@ -138,7 +138,7 @@ GALGAS_uint GALGAS_bigint::reader_bitCountForSignedRepresentation (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_bigint::reader_bitCountForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_bigint::getter_bitCountForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint (mValue.requiredBitCountForUnsignedRepresentation ()) ;
@@ -148,7 +148,7 @@ GALGAS_uint GALGAS_bigint::reader_bitCountForUnsignedRepresentation (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_fitsInUInt (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::getter_fitsInUInt (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.fitsInUInt32 ()) ;
@@ -158,7 +158,7 @@ GALGAS_bool GALGAS_bigint::reader_fitsInUInt (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_fitsInSInt (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::getter_fitsInSInt (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.fitsInSInt32 ()) ;
@@ -168,7 +168,7 @@ GALGAS_bool GALGAS_bigint::reader_fitsInSInt (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_fitsInUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::getter_fitsInUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.fitsInUInt64 ()) ;
@@ -178,7 +178,7 @@ GALGAS_bool GALGAS_bigint::reader_fitsInUInt_36__34_ (UNUSED_LOCATION_ARGS) cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_fitsInSInt_36__34_ (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::getter_fitsInSInt_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.fitsInSInt64 ()) ;
@@ -188,7 +188,7 @@ GALGAS_bool GALGAS_bigint::reader_fitsInSInt_36__34_ (UNUSED_LOCATION_ARGS) cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_isZero (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_bigint::getter_isZero (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (mValue.isZero ()) ;
@@ -198,7 +198,7 @@ GALGAS_bool GALGAS_bigint::reader_isZero (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sint GALGAS_bigint::reader_sign (UNUSED_LOCATION_ARGS) const {
+GALGAS_sint GALGAS_bigint::getter_sign (UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid ()) {
     result = GALGAS_sint (mValue.sign ()) ;
@@ -208,7 +208,7 @@ GALGAS_sint GALGAS_bigint::reader_sign (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uintlist GALGAS_bigint::reader_extract_38_ForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_uintlist GALGAS_bigint::getter_extract_38_ForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uintlist result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
@@ -223,7 +223,7 @@ GALGAS_uintlist GALGAS_bigint::reader_extract_38_ForUnsignedRepresentation (UNUS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uintlist GALGAS_bigint::reader_extract_38_ForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_uintlist GALGAS_bigint::getter_extract_38_ForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uintlist result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
@@ -238,7 +238,7 @@ GALGAS_uintlist GALGAS_bigint::reader_extract_38_ForSignedRepresentation (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uintlist GALGAS_bigint::reader_extract_33__32_ForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uintlist result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
@@ -262,7 +262,7 @@ GALGAS_uintlist GALGAS_bigint::reader_extract_33__32_ForUnsignedRepresentation (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uintlist GALGAS_bigint::reader_extract_33__32_ForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uintlist result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
@@ -286,7 +286,7 @@ GALGAS_uintlist GALGAS_bigint::reader_extract_33__32_ForSignedRepresentation (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_list GALGAS_bigint::reader_extract_36__34_ForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint_36__34_list GALGAS_bigint::getter_extract_36__34_ForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint_36__34_list result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
@@ -308,7 +308,7 @@ GALGAS_uint_36__34_list GALGAS_bigint::reader_extract_36__34_ForUnsignedRepresen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_list GALGAS_bigint::reader_extract_36__34_ForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint_36__34_list GALGAS_bigint::getter_extract_36__34_ForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint_36__34_list result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
@@ -336,7 +336,7 @@ GALGAS_uint_36__34_list GALGAS_bigint::reader_extract_36__34_ForSignedRepresenta
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_bigint::reader_string (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_bigint::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     result = GALGAS_string (mValue.decimalString ()) ;
@@ -346,7 +346,7 @@ GALGAS_string GALGAS_bigint::reader_string (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_bigint::reader_spacedString (const GALGAS_uint & inSeparation COMMA_UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_bigint::getter_spacedString (const GALGAS_uint & inSeparation COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inSeparation.isValid ()) {
     result = GALGAS_string (mValue.spacedDecimalString (inSeparation.uintValue ())) ;
@@ -356,7 +356,7 @@ GALGAS_string GALGAS_bigint::reader_spacedString (const GALGAS_uint & inSeparati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_bigint::reader_hexString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_bigint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     result = GALGAS_string (mValue.hexString ()) ;
@@ -366,7 +366,7 @@ GALGAS_string GALGAS_bigint::reader_hexString (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_bigint::reader_xString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_bigint::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     result = GALGAS_string (mValue.xString ()) ;
@@ -406,7 +406,7 @@ void GALGAS_bigint::decrement_operation (C_Compiler * /* inCompiler */
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_bigint::reader_bitAtIndex (const GALGAS_uint & inBitIndex
+GALGAS_bool GALGAS_bigint::getter_bitAtIndex (const GALGAS_uint & inBitIndex
                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inBitIndex.isValid ()) {
@@ -442,7 +442,7 @@ void GALGAS_bigint::modifier_setBitAtIndex (const GALGAS_bool inBitValue,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigint GALGAS_bigint::reader_abs (UNUSED_LOCATION_ARGS) const {
+GALGAS_bigint GALGAS_bigint::getter_abs (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
     result = GALGAS_bigint (mValue.abs ()) ;
@@ -452,7 +452,7 @@ GALGAS_bigint GALGAS_bigint::reader_abs (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_bigint::reader_uint (C_Compiler * inCompiler
+GALGAS_uint GALGAS_bigint::getter_uint (C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
@@ -467,7 +467,7 @@ GALGAS_uint GALGAS_bigint::reader_uint (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sint GALGAS_bigint::reader_sint (C_Compiler * inCompiler
+GALGAS_sint GALGAS_bigint::getter_sint (C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid ()) {
@@ -482,7 +482,7 @@ GALGAS_sint GALGAS_bigint::reader_sint (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_ GALGAS_bigint::reader_uint_36__34_ (C_Compiler * inCompiler
+GALGAS_uint_36__34_ GALGAS_bigint::getter_uint_36__34_ (C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid ()) {
@@ -497,7 +497,7 @@ GALGAS_uint_36__34_ GALGAS_bigint::reader_uint_36__34_ (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sint_36__34_ GALGAS_bigint::reader_sint_36__34_ (C_Compiler * inCompiler
+GALGAS_sint_36__34_ GALGAS_bigint::getter_sint_36__34_ (C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (isValid ()) {
