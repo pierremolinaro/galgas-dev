@@ -2978,9 +2978,9 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
     !mLexiqueComponentName
     ?3*
   ]
-#--- Check reader name
+#--- Check getter name
   if mLexiqueGetterName.string != "symbols" then
-    error mLexiqueGetterName:"unknown reader"
+    error mLexiqueGetterName:"unknown getter"
   end
 #---
   outExpression = @lexiqueIntrospectionForGeneration.new {

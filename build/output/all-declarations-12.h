@@ -1226,7 +1226,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                                  const class GALGAS__32_stringlist & inOperand20
                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison

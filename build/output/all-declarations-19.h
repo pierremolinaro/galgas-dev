@@ -657,7 +657,7 @@ void callCategoryMethod_getClassMethodMap (const class cPtr_predefinedTypeAST * 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category reader '@predefinedTypeAST getSupportedOperatorFlags'                            *
+//                           Category getter '@predefinedTypeAST getSupportedOperatorFlags'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

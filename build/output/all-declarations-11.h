@@ -369,7 +369,7 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Category reader '@semanticInstructionForGeneration compareSyntaxInstruction'                     *
+//                    Category getter '@semanticInstructionForGeneration compareSyntaxInstruction'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

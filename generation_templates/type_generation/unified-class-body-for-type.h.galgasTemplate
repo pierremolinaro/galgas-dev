@@ -178,7 +178,7 @@ if (SUPPORTED_OPERATORS & incDecOperatorNoOVF ()) != 0 then
   %  public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;\n\n%
 end
 if (SUPPORTED_OPERATORS & generateDescriptionGetterUtilityMethod ()) != 0 then
-  %//--------------------------------- Implementation of reader 'description'\n%
+  %//--------------------------------- Implementation of getter 'description'\n%
   %  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,\n%
   %                                              const int32_t inIndentation) const ;\n%
 end

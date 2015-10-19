@@ -8396,14 +8396,14 @@ void GALGAS_getterMap::modifier_insertKey (GALGAS_lstring inKey,
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' reader is already declared" ;
+  const char * kInsertErrorMessage = "the '%K' getter is already declared" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const char * kSearchErrorMessage_getterMap_searchKey = "the '%K' reader is not declared" ;
+const char * kSearchErrorMessage_getterMap_searchKey = "the '%K' getter is not declared" ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

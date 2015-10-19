@@ -638,7 +638,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #--- Check every abstract category reader is implemented by every inherited concrete type
+  #--- Check every abstract category getter is implemented by every inherited concrete type
     for () in overridingAbstractCategoryGetterListMap do
       for () in mList do
         checkCategoryGetterDefinitionForClass (

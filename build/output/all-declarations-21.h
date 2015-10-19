@@ -42,7 +42,7 @@ void callCategoryMethod_generateExpression (const class cPtr_semanticExpressionF
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Category reader '@semanticExpressionForGeneration isTrueExpression'                         *
+//                         Category getter '@semanticExpressionForGeneration isTrueExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

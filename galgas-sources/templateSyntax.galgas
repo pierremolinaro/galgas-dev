@@ -404,7 +404,7 @@ rule <primary>
 #                                                                                                                      *
 #                         F A C T O R                                                                                  *
 #   description          :   [expression description]                                                                  *
-#   reader call          :   [expression reader !... ]                                                                 *
+#   getter call          :   [expression getter !... ]                                                                 *
 #   constructor call     :   [@class constructor !... ]                                                                *
 #   option value         :   [option option_component_name.option_name]                                                *
 #   filewrapper template :   [filewrapper fw.template_name !...]                                                       *
@@ -443,7 +443,7 @@ rule <primary>
     @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
     outExpression = @templateFileWrapperTemplateCallAST.new {!filewrapperName !templateName !expressionList}
-  or #--------------------------------- Reader call
+  or #--------------------------------- Retter call
     @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
     $identifier$ ?var  @lstring getterName

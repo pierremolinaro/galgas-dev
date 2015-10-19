@@ -2782,7 +2782,7 @@ override method @categoryGetterAST enterDeclarationInGraph
   ?!@categoryGetterMapForBuildingContext ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring.new {!"category reader @" + mTypeName + " " + mCategoryGetterName ![mCategoryGetterName location]}
+  let key = @lstring.new {!"category getter @" + mTypeName + " " + mCategoryGetterName ![mCategoryGetterName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -2872,7 +2872,7 @@ override method @abstractCategoryGetterAST enterDeclarationInGraph
   ?!@categoryGetterMapForBuildingContext ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring.new {!"category reader @" + mTypeName + " " + mAbstractCategoryGetterName ![mAbstractCategoryGetterName location]}
+  let key = @lstring.new {!"category getter @" + mTypeName + " " + mAbstractCategoryGetterName ![mAbstractCategoryGetterName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
