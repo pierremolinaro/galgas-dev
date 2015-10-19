@@ -279,11 +279,11 @@ map @categoryModifierMapForBuildingContext {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A T E G O R Y    R E A D E R    M A P                                                                           *
+#    C A T E G O R Y    G E T T E R    M A P                                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @categoryReaderMapForType {
+map @categoryGetterMapForType {
   @lstring mResultTypeName
   @formalInputParameterListAST mInputFormalParameterList
   insert insertKey error message "the '%K' getter has been already declared in %L"
@@ -291,8 +291,8 @@ map @categoryReaderMapForType {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @categoryReaderMapForBuildingContext {
-  @categoryReaderMapForType mCategoryReaderMapForType
+map @categoryGetterMapForBuildingContext {
+  @categoryGetterMapForType mCategoryReaderMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
 }
@@ -391,7 +391,7 @@ override getter @abstractCategoryReaderAST keyRepresentation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @categoryReaderAST keyRepresentation
+override getter @categoryGetterAST keyRepresentation
   ->@string outString {
   outString = "category getter @" + mTypeName + " " + mCategoryReaderName
 }
@@ -537,7 +537,7 @@ override getter @externRoutineDeclarationAST keyRepresentation
 
 proc addCategories
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
   ?let @lstring inTypeName
@@ -569,9 +569,9 @@ proc addCategories
       ]
     end
   end
-#------------------------  Category readers
+#------------------------  Category getters
   if [inCategoryReaderMapForBuildingContext hasKey ![inTypeName string]] then
-    @categoryReaderMapForType categoryReaderMapForType
+    @categoryGetterMapForType categoryReaderMapForType
     [inCategoryReaderMapForBuildingContext searchKey !inTypeName ?categoryReaderMapForType]
     for () in categoryReaderMapForType do
       var formalArgumentList =@functionSignature.emptyList{}
@@ -625,7 +625,7 @@ proc addCategories
 
 abstract method @semanticDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 
@@ -633,7 +633,7 @@ abstract method @semanticDeclarationAST enterInSemanticContext
 
 override method @abstractCategoryMethodAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -642,7 +642,7 @@ override method @abstractCategoryMethodAST enterInSemanticContext
 
 override method @categoryMethodAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -651,7 +651,7 @@ override method @categoryMethodAST enterInSemanticContext
 
 override method @overridingCategoryMethodAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -660,7 +660,7 @@ override method @overridingCategoryMethodAST enterInSemanticContext
 
 override method @overridingAbstractCategoryMethodAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -669,7 +669,7 @@ override method @overridingAbstractCategoryMethodAST enterInSemanticContext
 
 override method @abstractCategoryModifierAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -678,7 +678,7 @@ override method @abstractCategoryModifierAST enterInSemanticContext
 
 override method @categoryModifierAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -687,7 +687,7 @@ override method @categoryModifierAST enterInSemanticContext
 
 override method @overridingCategoryModifierAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -696,7 +696,7 @@ override method @overridingCategoryModifierAST enterInSemanticContext
 
 override method @overridingAbstractCategoryModifierAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -705,16 +705,16 @@ override method @overridingAbstractCategoryModifierAST enterInSemanticContext
 
 override method @abstractCategoryReaderAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryReaderAST enterInSemanticContext
+override method @categoryGetterAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -723,7 +723,7 @@ override method @categoryReaderAST enterInSemanticContext
 
 override method @overridingCategoryReaderAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -732,7 +732,7 @@ override method @overridingCategoryReaderAST enterInSemanticContext
 
 override method @overridingAbstractCategoryReaderAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -764,7 +764,7 @@ getter @predefinedTypeKindEnum defaultConstructorName
 
 override method @predefinedTypeAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
   [self getConstructorMap !?ioSemanticContext.mTypeMap ?var @constructorMap constructorMap]
@@ -844,7 +844,7 @@ func %once elementTypeNameSuffix ->@string outResult {
 
 override method @mapDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- bool type index
@@ -1024,7 +1024,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !"" # No error message
     ]
   end
-#--- Enter "attributeForKey" readers
+#--- Enter "attributeForKey" getters
   for () in mPropertyList do
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     @unifiedTypeMap-proxy attributeTypeIndex
@@ -1122,7 +1122,7 @@ override method @mapDeclarationAST enterInSemanticContext
 
 override method @externTypeDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
@@ -1163,7 +1163,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     end
   #---
     [!?getterMap insertKey
-      !mReaderName
+      !mGetterName
       !@methodKind.definedAsMember
       !arguments
       !@location.here
@@ -1253,7 +1253,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
 
 override method @graphDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- string type proxy
@@ -1665,7 +1665,7 @@ proc recursivelyEnumerateDirectories
 
 override method @filewrapperDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Templates
@@ -1740,7 +1740,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
 
 override method @optionComponentDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
@@ -1816,7 +1816,7 @@ override method @optionComponentDeclarationAST enterInSemanticContext
 
 override method @classDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
   @unifiedTypeMap-proxy uintType
@@ -1880,7 +1880,7 @@ override method @classDeclarationAST enterInSemanticContext
         !"" # No error message
       ] 
     end
-  #--- Mark all readers as inherited
+  #--- Mark all getters as inherited
     getterMap = @getterMap. emptyMap
     for () in inheritedReaderMap do
       [!?getterMap insertKey
@@ -2044,7 +2044,7 @@ override method @classDeclarationAST enterInSemanticContext
 
 override method @externRoutineDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
@@ -2065,7 +2065,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
 
 override method @routineDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
@@ -2088,7 +2088,7 @@ override method @routineDeclarationAST enterInSemanticContext
 
 override method @externFunctionDeclarationAST enterInSemanticContext # Handles also function declaration
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
@@ -2114,7 +2114,7 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
 
 override method @onceFunctionDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Result type
@@ -2127,7 +2127,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
 
 override method @arrayDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
@@ -2277,7 +2277,7 @@ override method @arrayDeclarationAST enterInSemanticContext
 
 override method @listmapDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
@@ -2302,7 +2302,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let @unifiedTypeMap-proxy associatedListTypeIndex]
 #--- currentType type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
-#--- readers
+#--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap 
@@ -2402,7 +2402,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 
 override method @galgas3SyntaxComponentAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
   [!?ioSemanticContext.mSyntaxComponentMapForSemanticAnalysis insertKey
@@ -2418,7 +2418,7 @@ override method @galgas3SyntaxComponentAST enterInSemanticContext
 
 override method @galgas3GrammarComponentAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Analyze start symbol labels
@@ -2452,7 +2452,7 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
 
 override method @lexiqueComponentAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--------------------------------------- Build lexical attribute map
@@ -2514,7 +2514,7 @@ graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
 abstract method @semanticDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 
@@ -2523,7 +2523,7 @@ abstract method @semanticDeclarationAST enterDeclarationInGraph
 override method @predefinedTypeAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mPredefinedTypeName !@location.here}
@@ -2535,7 +2535,7 @@ override method @predefinedTypeAST enterDeclarationInGraph
 override method @galgas3GrammarComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"grammar " + mGrammarComponentName !mGrammarComponentName.location}
@@ -2550,7 +2550,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInGraph
 override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"syntax " + mSyntaxComponentName !mSyntaxComponentName.location}
@@ -2573,7 +2573,7 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
 override method @lexiqueComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"lexique " + mLexiqueComponentName !mLexiqueComponentName.location}
@@ -2585,7 +2585,7 @@ override method @lexiqueComponentAST enterDeclarationInGraph
 override method @classDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mClassTypeName ![mClassTypeName location]}
@@ -2603,7 +2603,7 @@ override method @classDeclarationAST enterDeclarationInGraph
 override method @arrayDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mArrayTypeName ![mArrayTypeName location]}
@@ -2616,7 +2616,7 @@ override method @arrayDeclarationAST enterDeclarationInGraph
 override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mListmapTypeName ![mListmapTypeName location]}
@@ -2629,7 +2629,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
 override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
@@ -2644,7 +2644,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
 override method @graphDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mGraphTypeName ![mGraphTypeName location]}
@@ -2657,7 +2657,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
 override method @externTypeDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mExternTypeName ![mExternTypeName location]}
@@ -2669,7 +2669,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
 override method @externFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2680,7 +2680,7 @@ override method @externFunctionDeclarationAST enterDeclarationInGraph
 override method @onceFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2691,7 +2691,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInGraph
 override method @externRoutineDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2702,7 +2702,7 @@ override method @externRoutineDeclarationAST enterDeclarationInGraph
 override method @filewrapperDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2713,7 +2713,7 @@ override method @filewrapperDeclarationAST enterDeclarationInGraph
 override method @optionComponentDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2724,7 +2724,7 @@ override method @optionComponentDeclarationAST enterDeclarationInGraph
 override method @overridingCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2735,7 +2735,7 @@ override method @overridingCategoryMethodAST enterDeclarationInGraph
 override method @overridingCategoryModifierAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2746,7 +2746,7 @@ override method @overridingCategoryModifierAST enterDeclarationInGraph
 override method @overridingAbstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2757,7 +2757,7 @@ override method @overridingAbstractCategoryReaderAST enterDeclarationInGraph
 override method @overridingAbstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2768,7 +2768,7 @@ override method @overridingAbstractCategoryMethodAST enterDeclarationInGraph
 override method @overridingAbstractCategoryModifierAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2776,23 +2776,23 @@ override method @overridingAbstractCategoryModifierAST enterDeclarationInGraph
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryReaderAST enterDeclarationInGraph
+override method @categoryGetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"category reader @" + mTypeName + " " + mCategoryReaderName ![mCategoryReaderName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
-  if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioCategoryReaderMapForBuildingContext insertKey
+  if not [ioCategoryGetterMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryGetterMapForBuildingContext insertKey
       !mTypeName
-      !@categoryReaderMapForType. emptyMap
+      !@categoryGetterMapForType. emptyMap
     ]
   end
-  with mTypeName in !?ioCategoryReaderMapForBuildingContext error message searchKey  do
+  with mTypeName in !?ioCategoryGetterMapForBuildingContext error message searchKey  do
     [!?mCategoryReaderMapForType insertKey
       !mCategoryReaderName
       !mCategoryReaderReturnedTypeName
@@ -2806,7 +2806,7 @@ override method @categoryReaderAST enterDeclarationInGraph
 override method @categoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"category method @" + mTypeName + " " + mCategoryMethodName ![mCategoryMethodName location]}
@@ -2832,7 +2832,7 @@ override method @categoryMethodAST enterDeclarationInGraph
 override method @categoryModifierAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"category setter @" + mTypeName + " " + mCategoryModifierName ![mCategoryModifierName location]}
@@ -2858,7 +2858,7 @@ override method @categoryModifierAST enterDeclarationInGraph
 override method @overridingCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList {
   ioCategoryOverrideDefinitionList += !self
@@ -2869,20 +2869,20 @@ override method @overridingCategoryReaderAST enterDeclarationInGraph
 override method @abstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"category reader @" + mTypeName + " " + mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
-  if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioCategoryReaderMapForBuildingContext insertKey
+  if not [ioCategoryGetterMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryGetterMapForBuildingContext insertKey
       !mTypeName
-      !@categoryReaderMapForType. emptyMap
+      !@categoryGetterMapForType. emptyMap
     ]
   end
-  with mTypeName in !?ioCategoryReaderMapForBuildingContext error message searchKey  do
+  with mTypeName in !?ioCategoryGetterMapForBuildingContext error message searchKey  do
     [!?mCategoryReaderMapForType insertKey
       !mAbstractCategoryReaderName
       !mAbstractCategoryReaderReturnedTypeName
@@ -2896,7 +2896,7 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
 override method @abstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"category method @" + mTypeName + " " + mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]}
@@ -2922,7 +2922,7 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
 override method @abstractCategoryModifierAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"category setter @" + mTypeName + " " + mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]}
@@ -2998,7 +2998,7 @@ override method @listmapDeclarationAST addAssociatedElement
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    B U I L D    S E M A N T I C    C O N T E X T                          *
+#    B U I L D    S E M A N T I C    C O N T E X T                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -3016,7 +3016,7 @@ proc buildSemanticContext
 #  - a list map appears after its associated list
   var semanticTypePrecedenceGraph =@semanticTypePrecedenceGraph.emptyGraph{}
   var categoryMethodMapForBuildingContext =@categoryMethodMapForBuildingContext.emptyMap{}
-  var categoryReaderMapForBuildingContext =@categoryReaderMapForBuildingContext.emptyMap{}
+  var categoryReaderMapForBuildingContext =@categoryGetterMapForBuildingContext.emptyMap{}
   var categoryModifierMapForBuildingContext =@categoryModifierMapForBuildingContext.emptyMap{}
   var categoryOverrideDefinitionList =@semanticDeclarationListAST.emptyList{}
   for () in semanticDeclarationList do

@@ -186,7 +186,7 @@ sharedmap @variableMap {
     dropAccess      -> droppedInputFormalArgument warning "the input formal parameter is declared as unused"
   }
 
-#--- Current instance attribute in a method or a reader
+#--- Current instance attribute in a method or a getter
   state currentInstanceAttribute {
     neutralAccess   -> currentInstanceAttribute
     readAccess      -> currentInstanceAttribute
@@ -797,7 +797,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @readerCallExpressionAST enterExpressionInSemanticContext
+override method @getterCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [mReceiver enterExpressionInSemanticContext !?ioTypeMap]
@@ -806,7 +806,7 @@ override method @readerCallExpressionAST enterExpressionInSemanticContext
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @readerCallExpressionAST analyzeSemanticExpression
+override method @getterCallExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -821,25 +821,25 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   ]
   let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
 #--- Get getter map
-  let @getterMap getterMap = [receiverType mReaderMap]
+  let @getterMap getterMap = [receiverType mGetterMap]
 #--- Search getter
-  @functionSignature readerFormalArgumentTypeList
+  @functionSignature getterFormalArgumentTypeList
   @methodKind kind
   @bool hasCompilerArgument
   @unifiedTypeMap-proxy returnedType
   @stringlist fieldList = {}
-  with [mReaderName string] in getterMap  do
-    readerFormalArgumentTypeList = mArgumentTypeList
+  with [mGetterName string] in getterMap  do
+    getterFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
     returnedType = mReturnedType
     kind = mKind
     if mErrorMessage != "" then
-      error mReaderName : mErrorMessage
+      error mGetterName : mErrorMessage
     end
   else
     @uint matchingReaderCount = 0
     if [receiverType mTypeKindEnum] == @typeKindEnum.structType then
-      readerFormalArgumentTypeList = {}
+      getterFormalArgumentTypeList = {}
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-proxy. null
       kind = @methodKind. definedAsCategory
@@ -848,41 +848,41 @@ override method @readerCallExpressionAST analyzeSemanticExpression
           !inAnalysisContext.mSemanticContext.mTypeMap
           !@lstring.new {![mAttributeTypeProxy key] !@location.here}
         }
-        let aMap = [attributeType mReaderMap]
-        with mReaderName.string in aMap  do
+        let aMap = [attributeType mGetterMap]
+        with mGetterName.string in aMap  do
           if [attributeType key] == mAttributeName.string then
             matchingReaderCount ++
-            readerFormalArgumentTypeList = mArgumentTypeList
+            getterFormalArgumentTypeList = mArgumentTypeList
             hasCompilerArgument = mHasCompilerArgument
             returnedType = mReturnedType
             kind = mKind
             fieldList += !mAttributeName.string
             if mErrorMessage != "" then
-              error mReaderName : mErrorMessage
+              error mGetterName : mErrorMessage
             end
           end
         end
       end
       if matchingReaderCount == 0 then
-        error mReaderName
-        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mReaderName string]
+        error mGetterName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mGetterName string]
         + "' getter, and none of its fields defines it"
-        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
         @string s = ""
         for () in fieldList
           do s += mValue
           between s += ", "
         end
-        error mReaderName
-        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mReaderName string]
+        error mGetterName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mGetterName string]
         + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
-        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       end
     elsif [getterMap count] == 0 then
-      error mReaderName
+      error mGetterName
       : "the '@"+ [receiverType key] + "' type does not define any getter"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     else
       @string s = ""
       for () in getterMap do
@@ -892,21 +892,21 @@ override method @readerCallExpressionAST analyzeSemanticExpression
         end
         s += " -> @" + [mReturnedType key]
       end
-      error mReaderName
-      : "the '@"+ [receiverType key] + "' type does not define the '" + mReaderName + "' reader; available "
-      + if [getterMap count] > 1 then "readers are" else "reader is" end
+      error mGetterName
+      : "the '@"+ [receiverType key] + "' type does not define the '" + mGetterName + "' getter; available "
+      + if [getterMap count] > 1 then "getters are" else "getter is" end
       + ":" + s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     end
   end
 #--- Analysis arguments
-  if [mExpressions length] != [readerFormalArgumentTypeList length] then
-    error mReaderName: "calling the '" + mReaderName + "' reader of '@" + [receiverType key] + "' requires "
-    + [[readerFormalArgumentTypeList length] string] + " parameter(s), while this call has "
+  if [mExpressions length] != [getterFormalArgumentTypeList length] then
+    error mGetterName: "calling the '" + mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+    + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[mExpressions length] string] + " parameter(s)" : outExpression
   else
     var constructorEffectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
-    for () in mExpressions, () in readerFormalArgumentTypeList do
+    for () in mExpressions, () in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !mFormalArgumentType
         !inAnalysisContext
@@ -919,13 +919,13 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
       constructorEffectiveParameterList += !exp
     end
-    outExpression = @readerCallExpressionForGeneration.new {
+    outExpression = @getterCallExpressionForGeneration.new {
       !returnedType
-      ![mReaderName location]
+      ![mGetterName location]
       !kind
       !receiverExpression
       !fieldList
-      ![mReaderName string]
+      ![mGetterName string]
       !constructorEffectiveParameterList
       !hasCompilerArgument}
   end
@@ -941,7 +941,7 @@ func checkReaderImplementationInSuperClasses
     outResult = ""
   else
     @methodQualifier qualifier
-    [[inSuperClass mReaderMap] searchKey !inReaderName ?5* ?qualifier ?*]
+    [[inSuperClass mGetterMap] searchKey !inReaderName ?5* ?qualifier ?*]
     switch qualifier
     case isAbstract :
       outResult = ""
@@ -1060,11 +1060,11 @@ proc checkDiadicOperator
     
     if not ok then
     #--- Check if there is a conversion getter
-      if [[inRightType mReaderMap] hasKey ![inLeftType key]] then
+      if [[inRightType mGetterMap] hasKey ![inLeftType key]] then
         @bool hasCompilerArgument
         @unifiedTypeMap-proxy returnedType
         @methodKind kind
-        [[inRightType mReaderMap] searchKey
+        [[inRightType mGetterMap] searchKey
           ![inLeftType lkey]
           ?kind
           ?var @functionSignature argumentTypeList
@@ -1075,7 +1075,7 @@ proc checkDiadicOperator
         ]
         ok = ([argumentTypeList length] == 0) & (returnedType == inLeftType)
      #--- Add conversion expression
-        @semanticExpressionForGeneration conversionExpression = @readerCallExpressionForGeneration.new {
+        @semanticExpressionForGeneration conversionExpression = @getterCallExpressionForGeneration.new {
           !inLeftType
           !inErrorLocation
           !kind

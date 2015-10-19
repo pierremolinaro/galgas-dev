@@ -115,7 +115,7 @@ proc buildGalgas3SemanticContext
 #  - a list map appears after its associated list
   var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph.emptyGraph{}
   var categoryMethodMapForBuildingContext = @categoryMethodMapForBuildingContext.emptyMap{}
-  var categoryReaderMapForBuildingContext = @categoryReaderMapForBuildingContext.emptyMap{}
+  var categoryReaderMapForBuildingContext = @categoryGetterMapForBuildingContext.emptyMap{}
   var categoryModifierMapForBuildingContext = @categoryModifierMapForBuildingContext.emptyMap{}
   var categoryOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
   for () in semanticDeclarationList do

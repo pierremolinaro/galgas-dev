@@ -1445,7 +1445,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryReaderAST semanticAnalysis
+override method @categoryGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1532,8 +1532,8 @@ override method @overridingCategoryReaderAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mReaderMap] hasKey ![mOverridingCategoryReaderName string]] then
-      [[superType mReaderMap] searchKey
+    if [[superType mGetterMap] hasKey ![mOverridingCategoryReaderName string]] then
+      [[superType mGetterMap] searchKey
         !mOverridingCategoryReaderName
         ?*
         ?inheritedSignature
@@ -1629,9 +1629,9 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mReaderMap] hasKey ![mAbstractCategoryReaderName string]] then
+    if [[superType mGetterMap] hasKey ![mAbstractCategoryReaderName string]] then
       @methodQualifier qualifier
-      [[superType mReaderMap] searchKey
+      [[superType mGetterMap] searchKey
         !mAbstractCategoryReaderName
         ?*
         ?inheritedSignature

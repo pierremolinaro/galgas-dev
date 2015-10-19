@@ -92,7 +92,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [157] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [155] = {
   NO /* identifier */,
   NO /* type_name */,
   NO /* literal_double */,
@@ -182,8 +182,6 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [157] = {
   NO /* private */,
   NO /* proc */,
   NO /* project */,
-  NO /* program */,
-  NO /* reader */,
   NO /* remove */,
   NO /* replace */,
   NO /* repeat */,
@@ -259,7 +257,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [157] = {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [100] = {
+static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [98] = {
   {"do", galgasTemplateScanner_1_do},
   {"if", galgasTemplateScanner_1_if},
   {"in", galgasTemplateScanner_1_in},
@@ -319,7 +317,6 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"insert", galgasTemplateScanner_1_insert},
   {"method", galgasTemplateScanner_1_method},
   {"option", galgasTemplateScanner_1_option},
-  {"reader", galgasTemplateScanner_1_reader},
   {"remove", galgasTemplateScanner_1_remove},
   {"repeat", galgasTemplateScanner_1_repeat},
   {"rewind", galgasTemplateScanner_1_rewind},
@@ -340,7 +337,6 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"listmap", galgasTemplateScanner_1_listmap},
   {"message", galgasTemplateScanner_1_message},
   {"private", galgasTemplateScanner_1_private},
-  {"program", galgasTemplateScanner_1_program},
   {"project", galgasTemplateScanner_1_project},
   {"replace", galgasTemplateScanner_1_replace},
   {"routine", galgasTemplateScanner_1_routine},
@@ -363,7 +359,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
 } ;
 
 static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_galgasTemplateScanner_galgasKeyWordList, 100) ;
+  return searchStringInTable (inSearchedString, ktable_for_galgasTemplateScanner_galgasKeyWordList, 98) ;
 }
 
 
@@ -984,7 +980,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) terminalVocabularyCount {
-  return 157 ;
+  return 155 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1014,7 +1010,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [158] = {0,
+  static const NSUInteger kTerminalSymbolStyles [156] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1_type_5F_name */,
     7 /* galgasTemplateScanner_1_literal_5F_double */,
@@ -1104,8 +1100,6 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     1 /* galgasTemplateScanner_1_private */,
     1 /* galgasTemplateScanner_1_proc */,
     1 /* galgasTemplateScanner_1_project */,
-    1 /* galgasTemplateScanner_1_program */,
-    1 /* galgasTemplateScanner_1_reader */,
     1 /* galgasTemplateScanner_1_remove */,
     1 /* galgasTemplateScanner_1_replace */,
     1 /* galgasTemplateScanner_1_repeat */,
@@ -1183,7 +1177,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [158] = {NO,
+  static const BOOL kTerminalAtomicSelection [156] = {NO,
     YES /* galgasTemplateScanner_1_identifier */,
     YES /* galgasTemplateScanner_1_type_5F_name */,
     YES /* galgasTemplateScanner_1_literal_5F_double */,
@@ -1273,8 +1267,6 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_private */,
     YES /* galgasTemplateScanner_1_proc */,
     YES /* galgasTemplateScanner_1_project */,
-    YES /* galgasTemplateScanner_1_program */,
-    YES /* galgasTemplateScanner_1_reader */,
     YES /* galgasTemplateScanner_1_remove */,
     YES /* galgasTemplateScanner_1_replace */,
     YES /* galgasTemplateScanner_1_repeat */,

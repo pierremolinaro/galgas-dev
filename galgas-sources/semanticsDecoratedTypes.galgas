@@ -157,11 +157,11 @@ class @constructorExpressionForGeneration : @semanticExpressionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @readerCallExpressionForGeneration : @semanticExpressionForGeneration {
+class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   @methodKind mKind
   @semanticExpressionForGeneration mReceiverExpression
   @stringlist mFieldList
-  @string mReaderName
+  @string mGetterName
   @semanticExpressionListForGeneration mExpressions
   @bool mHasCompilerArgument
 }

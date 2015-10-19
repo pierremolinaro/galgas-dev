@@ -80,7 +80,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
 class @warningInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mReceiverExpression
-  @bool mUseLocationReader
+  @bool mUseLocationGetter
   @semanticExpressionForGeneration mWarningExpression
 }
 
@@ -98,10 +98,10 @@ override method @warningInstructionForGeneration generateInstruction
 #--- Receiver expression
   @string messageCppVarName
   [mWarningExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName]
-#--- Use location reader ?
-  if mUseLocationReader then
+#--- Use location getter ?
+  if mUseLocationGetter then
     let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
-    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".reader_location (HERE)) ; // Implicit use of 'location' reader\n"
+    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".reader_location (HERE)) ; // Implicit use of 'location' getter\n"
     receiverCppVarName = locationVar
   end
 #--- Generate warning instruction

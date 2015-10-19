@@ -126,9 +126,9 @@ class @defaultConstructorExpressionAST : @semanticExpressionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @readerCallExpressionAST : @semanticExpressionAST {
+class @getterCallExpressionAST : @semanticExpressionAST {
   @semanticExpressionAST mReceiver
-  @lstring mReaderName
+  @lstring mGetterName
   @actualOutputExpressionList mExpressions
 }
 
@@ -748,11 +748,11 @@ class @abstractCategoryReaderAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                                       *
+#        C A T E G O R Y    G E T T E R    D E C L A R A T I O N                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @categoryReaderAST : @semanticDeclarationAST {
+class @categoryGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mCategoryReaderName
   @formalInputParameterListAST mCategoryReaderFormalInputParameterList
@@ -987,7 +987,7 @@ list @externTypeConstructorList {
 #----------------------------------------------------------------------------------------------------------------------*
 
 list @externTypeReaderList {
-  @lstring mReaderName
+  @lstring mGetterName
   @lstring mResultTypeName
   @typeNameFormalParameterNameList mParameterList
 }

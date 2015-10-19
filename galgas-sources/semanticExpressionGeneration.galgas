@@ -1142,7 +1142,7 @@ override method @varInExpressionForGeneration generateExpression
 #! Appels
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @readerCallExpressionForGeneration generateExpression
+override method @getterCallExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -1153,11 +1153,11 @@ override method @readerCallExpressionForGeneration generateExpression
 #--- Receiver expression
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
 #--- Reader operands
-  @stringlist readerArgumentCppNameList = {}
+  @stringlist getterArgumentCppNameList = {}
   for () in mExpressions do
     @string argumentCppName
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?argumentCppName]
-    readerArgumentCppNameList += !argumentCppName
+    getterArgumentCppNameList += !argumentCppName
   end
 #--- Generate Reader call
   switch mKind
@@ -1167,7 +1167,7 @@ override method @readerCallExpressionForGeneration generateExpression
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mReaderMap] hasKey !mReaderName] then
+        if [[[baseType mSuperType] mGetterMap] hasKey !mGetterName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -1176,14 +1176,14 @@ override method @readerCallExpressionForGeneration generateExpression
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [baseType key] + "-" + mReaderName
+    ioInclusionSet += !"getter-" + [baseType key] + "-" + mGetterName
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
     if [[mReceiverExpression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
-      outCppExpression = "callCategoryReader_" + [mReaderName identifierRepresentation]
+      outCppExpression = "callCategoryReader_" + [mGetterName identifierRepresentation]
          + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else
       [[mReceiverExpression mResultType] addHeaderFileName !?ioInclusionSet]
-      outCppExpression = "categoryReader_" + [mReaderName identifierRepresentation] + " (" + receiverCppName + ", "
+      outCppExpression = "categoryReader_" + [mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
     end
   case definedAsMember :
     outCppExpression = receiverCppName
@@ -1191,13 +1191,13 @@ override method @readerCallExpressionForGeneration generateExpression
       outCppExpression += ".mAttribute_" + [mValue identifierRepresentation]
     end
     [mResultType addHeaderFileName !?ioInclusionSet]
-    outCppExpression +=  ".reader_" + [mReaderName identifierRepresentation] + " ("
+    outCppExpression +=  ".reader_" + [mGetterName identifierRepresentation] + " ("
   end
-  for () in readerArgumentCppNameList
+  for () in getterArgumentCppNameList
     do outCppExpression += mValue
     between outCppExpression += ", "
   end
-  if [readerArgumentCppNameList length] == 0 then
+  if [getterArgumentCppNameList length] == 0 then
     if mHasCompilerArgument then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       outCppExpression += compilerCppName () + " COMMA_"

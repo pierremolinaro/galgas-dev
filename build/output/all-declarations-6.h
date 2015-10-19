@@ -6544,21 +6544,21 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryModifierMap
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @categoryReaderMapForGlobalCheckings map                                       *
+//                                      @categoryGetterMapForGlobalCheckings map                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryReaderMapForGlobalCheckings ;
+class cMapElement_categoryGetterMapForGlobalCheckings ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryReaderMapForGlobalCheckings : public AC_GALGAS_map {
+class GALGAS_categoryGetterMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public : GALGAS_categoryReaderMapForGlobalCheckings (void) ;
+  public : GALGAS_categoryGetterMapForGlobalCheckings (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_categoryReaderMapForGlobalCheckings (const GALGAS_categoryReaderMapForGlobalCheckings & inSource) ;
-  public : GALGAS_categoryReaderMapForGlobalCheckings & operator = (const GALGAS_categoryReaderMapForGlobalCheckings & inSource) ;
+  public : GALGAS_categoryGetterMapForGlobalCheckings (const GALGAS_categoryGetterMapForGlobalCheckings & inSource) ;
+  public : GALGAS_categoryGetterMapForGlobalCheckings & operator = (const GALGAS_categoryGetterMapForGlobalCheckings & inSource) ;
 
 //-- Start of generic part --*
 
@@ -6566,14 +6566,14 @@ class GALGAS_categoryReaderMapForGlobalCheckings : public AC_GALGAS_map {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryReaderMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_categoryGetterMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryReaderMapForGlobalCheckings constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_categoryGetterMapForGlobalCheckings constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_categoryReaderMapForGlobalCheckings constructor_mapWithMapToOverride (const class GALGAS_categoryReaderMapForGlobalCheckings & inOperand0
+  public : static GALGAS_categoryGetterMapForGlobalCheckings constructor_mapWithMapToOverride (const class GALGAS_categoryGetterMapForGlobalCheckings & inOperand0
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -6591,51 +6591,51 @@ class GALGAS_categoryReaderMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryReaderMapForGlobalCheckings reader_overriddenMap (C_Compiler * inCompiler
+  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForGlobalCheckings reader_overriddenMap (C_Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_categoryReaderMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public : VIRTUAL_IN_DEBUG cMapElement_categoryGetterMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                                  const GALGAS_string & inKey
                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_categoryReaderMapForGlobalCheckings ;
+  friend class cEnumerator_categoryGetterMapForGlobalCheckings ;
  
-} ; // End of GALGAS_categoryReaderMapForGlobalCheckings class
+} ; // End of GALGAS_categoryGetterMapForGlobalCheckings class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_categoryReaderMapForGlobalCheckings : public cGenericAbstractEnumerator {
-  public : cEnumerator_categoryReaderMapForGlobalCheckings (const GALGAS_categoryReaderMapForGlobalCheckings & inEnumeratedObject,
+class cEnumerator_categoryGetterMapForGlobalCheckings : public cGenericAbstractEnumerator {
+  public : cEnumerator_categoryGetterMapForGlobalCheckings (const GALGAS_categoryGetterMapForGlobalCheckings & inEnumeratedObject,
                                                             const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_categoryReaderMapForGlobalCheckings_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_categoryGetterMapForGlobalCheckings_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryReaderMapForGlobalCheckings ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapForGlobalCheckings ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Class for element of '@categoryReaderMapForGlobalCheckings' map                           *
+//                           Class for element of '@categoryGetterMapForGlobalCheckings' map                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryReaderMapForGlobalCheckings : public cMapElement {
+class cMapElement_categoryGetterMapForGlobalCheckings : public cMapElement {
 //--- Map attributes
 
 //--- Constructor
-  public : cMapElement_categoryReaderMapForGlobalCheckings (const GALGAS_lstring & inKey
+  public : cMapElement_categoryGetterMapForGlobalCheckings (const GALGAS_lstring & inKey
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -6653,11 +6653,11 @@ class cMapElement_categoryReaderMapForGlobalCheckings : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               @categoryReaderMapForGlobalCheckings_2D_element struct                                *
+//                               @categoryGetterMapForGlobalCheckings_2D_element struct                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryReaderMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
+class GALGAS_categoryGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
 
@@ -6667,16 +6667,16 @@ class GALGAS_categoryReaderMapForGlobalCheckings_2D_element : public AC_GALGAS_r
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_categoryReaderMapForGlobalCheckings_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_categoryGetterMapForGlobalCheckings_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_categoryReaderMapForGlobalCheckings_2D_element (void) ;
+  public : GALGAS_categoryGetterMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryReaderMapForGlobalCheckings_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryGetterMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_categoryReaderMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
+  public : GALGAS_categoryGetterMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
 
 //-- Start of generic part --*
 
@@ -6684,19 +6684,19 @@ class GALGAS_categoryReaderMapForGlobalCheckings_2D_element : public AC_GALGAS_r
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryReaderMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_categoryGetterMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryReaderMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0
+  public : static GALGAS_categoryGetterMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_categoryReaderMapForGlobalCheckings_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_categoryGetterMapForGlobalCheckings_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6710,12 +6710,12 @@ class GALGAS_categoryReaderMapForGlobalCheckings_2D_element : public AC_GALGAS_r
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_categoryReaderMapForGlobalCheckings_2D_element class
+} ; // End of GALGAS_categoryGetterMapForGlobalCheckings_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryReaderMapForGlobalCheckings_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapForGlobalCheckings_2D_element ;
 
 
 #ifndef galgas_33_Scanner_CLASS_DEFINED

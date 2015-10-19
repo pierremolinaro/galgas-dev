@@ -327,7 +327,7 @@ sharedmap @unifiedTypeMap {
   @attributeMap mAttributeMap # struct, class
   @typedPropertyList mCurrentTypedAttributeList
   @constructorMap mConstructorMap
-  @getterMap mReaderMap
+  @getterMap mGetterMap
   @setterMap mModifierMap
   @instanceMethodMap mInstanceMethodMap
   @classMethodMap mClassMethodMap

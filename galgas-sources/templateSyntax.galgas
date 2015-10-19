@@ -446,26 +446,26 @@ rule <primary>
   or #--------------------------------- Reader call
     @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
-    $identifier$ ?var  @lstring readerName
+    $identifier$ ?var  @lstring getterName
     @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
-    outExpression = @templateReaderCallInExpressionAST.new {
+    outExpression = @templateGetterCallInExpressionAST.new {
       !receiverExpression
-      !readerName
+      !getterName
       !expressionList}
   or
     $option$
     select
       $.$
       $identifier$ ?var @lstring optionName
-      $identifier$ ?var @lstring readerName
-      outExpression = @templateOptionAccessAST.new {!@lstring.new {!"galgas_builtin_options" !@location.here} !optionName !readerName}
+      $identifier$ ?var @lstring getterName
+      outExpression = @templateOptionAccessAST.new {!@lstring.new {!"galgas_builtin_options" !@location.here} !optionName !getterName}
     or
       $identifier$ ?var @lstring optionComponentName
       $.$
       $identifier$ ?var @lstring optionName
-      $identifier$ ?var @lstring readerName
-      outExpression = @templateOptionAccessAST.new {!optionComponentName !optionName !readerName}
+      $identifier$ ?var @lstring getterName
+      outExpression = @templateOptionAccessAST.new {!optionComponentName !optionName !getterName}
     end
   end
   $]$

@@ -30,7 +30,7 @@ list @templateInstructionListAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   E X P R E S S I O N                                                        *
+#   E X P R E S S I O N                                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -46,17 +46,17 @@ list @templateExpressionListAST {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   R E A D E R    C A L L    O P E R A N D                                 *
+#   G E T T E R    C A L L    O P E R A N D                                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @templateReaderCallInExpressionAST : @templateExpressionAST {
+class @templateGetterCallInExpressionAST : @templateExpressionAST {
   @templateExpressionAST mReceiverExpression
-  @lstring mReaderName
+  @lstring mGetterName
   @templateExpressionListAST mExpressionList
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   C O N S T R U C T O R                                                   *
+#   C O N S T R U C T O R                                                                                              *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateConstructorAST : @templateExpressionAST {
@@ -66,7 +66,7 @@ class @templateConstructorAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H              *
+#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateFileWrapperWithStaticPathAST : @templateExpressionAST {
@@ -211,11 +211,11 @@ class @templateLogicalNegateAST : @templateExpressionAST {
 class @templateOptionAccessAST : @templateExpressionAST {
   @lstring mOptionComponentName
   @lstring mOptionName
-  @lstring mReaderName
+  @lstring mGetterName
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   F U N C T I O N    C A L L                                              *
+#   F U N C T I O N    C A L L                                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateFunctionCallAST : @templateExpressionAST {
@@ -224,7 +224,7 @@ class @templateFunctionCallAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   S I M P L E    V A R I A B L E                                          *
+#   S I M P L E    V A R I A B L E                                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateVarInExpressionAST : @templateExpressionAST {

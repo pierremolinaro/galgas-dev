@@ -3044,7 +3044,7 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mUseLocationReader (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mUseLocationGetter (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mWarningExpression (LOCATION_ARGS) const ;
 
@@ -3069,13 +3069,13 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
 //--- Attributes
   public : GALGAS_location mAttribute_mInstructionLocation ;
   public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_bool mAttribute_mUseLocationReader ;
+  public : GALGAS_bool mAttribute_mUseLocationGetter ;
   public : GALGAS_semanticExpressionForGeneration mAttribute_mWarningExpression ;
 
 //--- Constructor
   public : cPtr_warningInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                  const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                 const GALGAS_bool & in_mUseLocationReader,
+                                                 const GALGAS_bool & in_mUseLocationGetter,
                                                  const GALGAS_semanticExpressionForGeneration & in_mWarningExpression
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -3085,7 +3085,7 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mUseLocationReader (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mUseLocationGetter (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mWarningExpression (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,

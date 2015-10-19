@@ -259,7 +259,7 @@ syntax extension galgas3DeclarationsSyntax {
 override method @sharedMapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 {
@@ -284,7 +284,7 @@ override getter @sharedMapDeclarationAST keyRepresentation
 
 override method @sharedMapDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
@@ -524,7 +524,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       ]
     end
   end
-#--- Enter "attributeForKey" readers
+#--- Enter "attributeForKey" getters
   for () in mPropertyList do
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     @unifiedTypeMap-proxy attributeTypeIndex
@@ -1097,7 +1097,7 @@ override method @sharedMapTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
