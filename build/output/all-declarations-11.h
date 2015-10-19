@@ -373,7 +373,7 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_bool (*categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction) (const class cPtr_semanticInstructionForGeneration * inObject,
+typedef class GALGAS_bool (*categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction) (const class cPtr_semanticInstructionForGeneration * inObject,
                                                                                                                 const class GALGAS_semanticInstructionForGeneration & constinArgument0,
                                                                                                                 C_Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) ;
@@ -381,7 +381,7 @@ typedef class GALGAS_bool (*categoryReaderSignature_semanticInstructionForGenera
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_compareSyntaxInstruction (const int32_t inClassIndex,
-                                                   categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction inReader) ;
+                                                   categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction inGetter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -537,13 +537,13 @@ void routine_checkLabelMap (const class GALGAS_location constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category Getter '@formalArgumentPassingModeAST formalArgumentString' (as function)                  *
+//                 Category getter '@formalArgumentPassingModeAST formalArgumentString' (as function)                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_formalArgumentString (const class GALGAS_formalArgumentPassingModeAST & inObject,
-                                                         class C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_formalArgumentString (const class GALGAS_formalArgumentPassingModeAST & inObject,
+                                                          class C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

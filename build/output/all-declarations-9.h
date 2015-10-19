@@ -743,23 +743,23 @@ void routine_printPredefinedLexicalActions (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Category Getter '@lexicalArgumentModeAST lexicalFormalModeName' (as function)                    *
+//                    Category getter '@lexicalArgumentModeAST lexicalFormalModeName' (as function)                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_lexicalFormalModeName (const class GALGAS_lexicalArgumentModeAST & inObject,
-                                                          class C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_lexicalFormalModeName (const class GALGAS_lexicalArgumentModeAST & inObject,
+                                                           class C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Getter '@lexicalTypeEnum lexicalTypeBaseName' (as function)                         *
+//                        Category getter '@lexicalTypeEnum lexicalTypeBaseName' (as function)                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_lexicalTypeBaseName (const class GALGAS_lexicalTypeEnum & inObject,
-                                                        class C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_lexicalTypeBaseName (const class GALGAS_lexicalTypeEnum & inObject,
+                                                         class C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -871,11 +871,11 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category reader '@abstractLexicalRuleAST generateCocoaCode'                         *
+//                        Abstract category getter '@abstractLexicalRuleAST generateCocoaCode'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode) (const class cPtr_abstractLexicalRuleAST * inObject,
+typedef class GALGAS_string (*categoryGetterSignature_abstractLexicalRuleAST_generateCocoaCode) (const class cPtr_abstractLexicalRuleAST * inObject,
                                                                                                  class GALGAS_string inArgument0,
                                                                                                  class GALGAS_lexiqueAnalysisContext inArgument1,
                                                                                                  class C_Compiler * inCompiler
@@ -884,7 +884,7 @@ typedef class GALGAS_string (*categoryReaderSignature_abstractLexicalRuleAST_gen
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCocoaCode (const int32_t inClassIndex,
-                                            categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode inMethod) ;
+                                            categoryGetterSignature_abstractLexicalRuleAST_generateCocoaCode inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -896,11 +896,11 @@ class GALGAS_string callCategoryGetter_generateCocoaCode (const class cPtr_abstr
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Abstract category reader '@abstractLexicalRuleAST generateCode'                           *
+//                           Abstract category getter '@abstractLexicalRuleAST generateCode'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryReaderSignature_abstractLexicalRuleAST_generateCode) (const class cPtr_abstractLexicalRuleAST * inObject,
+typedef class GALGAS_string (*categoryGetterSignature_abstractLexicalRuleAST_generateCode) (const class cPtr_abstractLexicalRuleAST * inObject,
                                                                                             class GALGAS_string inArgument0,
                                                                                             class GALGAS_lexiqueAnalysisContext inArgument1,
                                                                                             class C_Compiler * inCompiler
@@ -909,7 +909,7 @@ typedef class GALGAS_string (*categoryReaderSignature_abstractLexicalRuleAST_gen
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCode (const int32_t inClassIndex,
-                                       categoryReaderSignature_abstractLexicalRuleAST_generateCode inMethod) ;
+                                       categoryGetterSignature_abstractLexicalRuleAST_generateCode inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -921,113 +921,113 @@ class GALGAS_string callCategoryGetter_generateCode (const class cPtr_abstractLe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Category Getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument' (as function)                 *
+//                Category getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument' (as function)                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_cocoaPointerInFormalArgument (const class GALGAS_lexicalArgumentModeAST & inObject,
-                                                                 class C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const class GALGAS_lexicalArgumentModeAST & inObject,
+                                                                  class C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Category Getter '@lexicalArgumentModeAST cppConstInFormalArgument' (as function)                   *
+//                  Category getter '@lexicalArgumentModeAST cppConstInFormalArgument' (as function)                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_cppConstInFormalArgument (const class GALGAS_lexicalArgumentModeAST & inObject,
-                                                             class C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_cppConstInFormalArgument (const class GALGAS_lexicalArgumentModeAST & inObject,
+                                                              class C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Category Getter '@lexicalArgumentModeAST cppReferenceInFormalArgument' (as function)                 *
+//                Category getter '@lexicalArgumentModeAST cppReferenceInFormalArgument' (as function)                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_cppReferenceInFormalArgument (const class GALGAS_lexicalArgumentModeAST & inObject,
-                                                                 class C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_cppReferenceInFormalArgument (const class GALGAS_lexicalArgumentModeAST & inObject,
+                                                                  class C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category Getter '@lexicalTypeEnum appendArgumentOfMethod' (as function)                       *
+//                       Category getter '@lexicalTypeEnum appendArgumentOfMethod' (as function)                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_appendArgumentOfMethod (const class GALGAS_lexicalTypeEnum & inObject,
-                                                           class C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Category Getter '@lexicalTypeEnum appendMethodName' (as function)                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_string categoryReader_appendMethodName (const class GALGAS_lexicalTypeEnum & inObject,
-                                                     class C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Category Getter '@lexicalTypeEnum cocoaInitializationCode' (as function)                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_string categoryReader_cocoaInitializationCode (const class GALGAS_lexicalTypeEnum & inObject,
+class GALGAS_string extensionGetter_appendArgumentOfMethod (const class GALGAS_lexicalTypeEnum & inObject,
                                                             class C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category Getter '@lexicalTypeEnum cocoaReset' (as function)                             *
+//                          Category getter '@lexicalTypeEnum appendMethodName' (as function)                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_cocoaReset (const class GALGAS_lexicalTypeEnum & inObject,
-                                               class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_appendMethodName (const class GALGAS_lexicalTypeEnum & inObject,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Category Getter '@lexicalTypeEnum cocoaResetPrefix' (as function)                          *
+//                      Category getter '@lexicalTypeEnum cocoaInitializationCode' (as function)                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_cocoaResetPrefix (const class GALGAS_lexicalTypeEnum & inObject,
-                                                     class C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_cocoaInitializationCode (const class GALGAS_lexicalTypeEnum & inObject,
+                                                             class C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category Getter '@lexicalTypeEnum cocoaTypeName' (as function)                            *
+//                             Category getter '@lexicalTypeEnum cocoaReset' (as function)                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_cocoaTypeName (const class GALGAS_lexicalTypeEnum & inObject,
-                                                  class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Category Getter '@lexicalTypeEnum cppTypeName' (as function)                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_string categoryReader_cppTypeName (const class GALGAS_lexicalTypeEnum & inObject,
+class GALGAS_string extensionGetter_cocoaReset (const class GALGAS_lexicalTypeEnum & inObject,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category Getter '@lexicalTypeEnum initialization' (as function)                           *
+//                          Category getter '@lexicalTypeEnum cocoaResetPrefix' (as function)                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_initialization (const class GALGAS_lexicalTypeEnum & inObject,
+class GALGAS_string extensionGetter_cocoaResetPrefix (const class GALGAS_lexicalTypeEnum & inObject,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Category getter '@lexicalTypeEnum cocoaTypeName' (as function)                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string extensionGetter_cocoaTypeName (const class GALGAS_lexicalTypeEnum & inObject,
                                                    class C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                            Category getter '@lexicalTypeEnum cppTypeName' (as function)                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string extensionGetter_cppTypeName (const class GALGAS_lexicalTypeEnum & inObject,
+                                                 class C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Category getter '@lexicalTypeEnum initialization' (as function)                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string extensionGetter_initialization (const class GALGAS_lexicalTypeEnum & inObject,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1568,11 +1568,11 @@ class GALGAS_uint function_doNotGenererateObjectCompare (class C_Compiler * inCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Function 'generateDescriptionReaderUtilityMethod'                                  *
+//                                  Function 'generateDescriptionGetterUtilityMethod'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_generateDescriptionReaderUtilityMethod (class C_Compiler * inCompiler
+class GALGAS_uint function_generateDescriptionGetterUtilityMethod (class C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2035,18 +2035,18 @@ void routine_buildSemanticContext (const class GALGAS_semanticDeclarationListAST
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category reader '@semanticDeclarationAST keyRepresentation'                         *
+//                        Abstract category getter '@semanticDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationAST_keyRepresentation) (const class cPtr_semanticDeclarationAST * inObject,
+typedef class GALGAS_string (*categoryGetterSignature_semanticDeclarationAST_keyRepresentation) (const class cPtr_semanticDeclarationAST * inObject,
                                                                                                  class C_Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_keyRepresentation (const int32_t inClassIndex,
-                                            categoryReaderSignature_semanticDeclarationAST_keyRepresentation inMethod) ;
+                                            categoryGetterSignature_semanticDeclarationAST_keyRepresentation inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2697,23 +2697,23 @@ void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category Getter '@formalArgumentPassingModeAST formalArgumentMessage' (as function)                 *
+//                 Category getter '@formalArgumentPassingModeAST formalArgumentMessage' (as function)                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_formalArgumentMessage (const class GALGAS_formalArgumentPassingModeAST & inObject,
-                                                          class C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_formalArgumentMessage (const class GALGAS_formalArgumentPassingModeAST & inObject,
+                                                           class C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Getter '@formalArgumentPassingModeAST string' (as function)                         *
+//                        Category getter '@formalArgumentPassingModeAST string' (as function)                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_string (const class GALGAS_formalArgumentPassingModeAST & inObject,
-                                           class C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_string (const class GALGAS_formalArgumentPassingModeAST & inObject,
+                                            class C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

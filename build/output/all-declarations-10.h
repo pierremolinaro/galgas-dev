@@ -936,14 +936,14 @@ void routine_generatePredefinedTypeFiles (const class GALGAS_string constinArgum
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) (const class cPtr_semanticDeclarationForGeneration * inObject,
+typedef class GALGAS_string (*categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                                         C_Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
-                                                         categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inReader) ;
+                                                         categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inGetter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -957,14 +957,14 @@ class GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPt
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation) (const class cPtr_semanticDeclarationForGeneration * inObject,
+typedef class GALGAS_string (*categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                                          C_Compiler * inCompiler
                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_appendTypeGenericImplementation (const int32_t inClassIndex,
-                                                          categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inReader) ;
+                                                          categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inGetter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2911,13 +2911,13 @@ void routine_printFeaturesOfType (const class GALGAS_string constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category Getter '@typeKindEnum kind' (as function)                                  *
+//                                 Category getter '@typeKindEnum kind' (as function)                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string categoryReader_kind (const class GALGAS_typeKindEnum & inObject,
-                                         class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+class GALGAS_string extensionGetter_kind (const class GALGAS_typeKindEnum & inObject,
+                                          class C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

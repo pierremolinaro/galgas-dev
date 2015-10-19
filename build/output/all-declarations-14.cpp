@@ -10200,6 +10200,368 @@ GALGAS_abstractCategoryModifierForGeneration GALGAS_abstractCategoryModifierForG
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_categoryGetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mReceiverType.objectCompare (p->mAttribute_mReceiverType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mCategoryGetterName.objectCompare (p->mAttribute_mCategoryGetterName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mImplementedAsFunction.objectCompare (p->mAttribute_mImplementedAsFunction) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mResultType.objectCompare (p->mAttribute_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mResultVarCppName.objectCompare (p->mAttribute_mResultVarCppName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mCategoryGetterFormalParameterList.objectCompare (p->mAttribute_mCategoryGetterFormalParameterList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypedAttributeList.objectCompare (p->mAttribute_mTypedAttributeList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSemanticInstructionListForGeneration.objectCompare (p->mAttribute_mSemanticInstructionListForGeneration) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_categoryGetterForGeneration::objectCompare (const GALGAS_categoryGetterForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_categoryGetterForGeneration::GALGAS_categoryGetterForGeneration (void) :
+GALGAS_semanticDeclarationWithHeaderForGeneration () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_categoryGetterForGeneration GALGAS_categoryGetterForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_categoryGetterForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                              GALGAS_string::constructor_default (HERE),
+                                                              GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                              GALGAS_string::constructor_default (HERE),
+                                                              GALGAS_bool::constructor_default (HERE),
+                                                              GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                              GALGAS_string::constructor_default (HERE),
+                                                              GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
+                                                              GALGAS_typedPropertyList::constructor_emptyList (HERE),
+                                                              GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
+                                                              COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_categoryGetterForGeneration::GALGAS_categoryGetterForGeneration (const cPtr_categoryGetterForGeneration * inSourcePtr) :
+GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_categoryGetterForGeneration) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_categoryGetterForGeneration GALGAS_categoryGetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
+                                                                                        const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
+                                                                                        const GALGAS_string & inAttribute_mCategoryGetterName,
+                                                                                        const GALGAS_bool & inAttribute_mImplementedAsFunction,
+                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                        const GALGAS_string & inAttribute_mResultVarCppName,
+                                                                                        const GALGAS_formalInputParameterListForGeneration & inAttribute_mCategoryGetterFormalParameterList,
+                                                                                        const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
+                                                                                        const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_categoryGetterForGeneration result ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mCategoryGetterName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mCategoryGetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_categoryGetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryGetterName, inAttribute_mImplementedAsFunction, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mCategoryGetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_categoryGetterForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+    result = p->mAttribute_mReceiverType ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy cPtr_categoryGetterForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mReceiverType ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_categoryGetterForGeneration::reader_mCategoryGetterName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+    result = p->mAttribute_mCategoryGetterName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_categoryGetterForGeneration::reader_mCategoryGetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mCategoryGetterName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_categoryGetterForGeneration::reader_mImplementedAsFunction (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+    result = p->mAttribute_mImplementedAsFunction ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool cPtr_categoryGetterForGeneration::reader_mImplementedAsFunction (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mImplementedAsFunction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_categoryGetterForGeneration::reader_mResultType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+    result = p->mAttribute_mResultType ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy cPtr_categoryGetterForGeneration::reader_mResultType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mResultType ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_categoryGetterForGeneration::reader_mResultVarCppName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+    result = p->mAttribute_mResultVarCppName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_categoryGetterForGeneration::reader_mResultVarCppName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mResultVarCppName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListForGeneration GALGAS_categoryGetterForGeneration::reader_mCategoryGetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_formalInputParameterListForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+    result = p->mAttribute_mCategoryGetterFormalParameterList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListForGeneration cPtr_categoryGetterForGeneration::reader_mCategoryGetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mCategoryGetterFormalParameterList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typedPropertyList GALGAS_categoryGetterForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+    result = p->mAttribute_mTypedAttributeList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typedPropertyList cPtr_categoryGetterForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypedAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListForGeneration GALGAS_categoryGetterForGeneration::reader_mSemanticInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticInstructionListForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_categoryGetterForGeneration * p = (const cPtr_categoryGetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_categoryGetterForGeneration) ;
+    result = p->mAttribute_mSemanticInstructionListForGeneration ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListForGeneration cPtr_categoryGetterForGeneration::reader_mSemanticInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSemanticInstructionListForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                Pointer class for @categoryGetterForGeneration class                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_categoryGetterForGeneration::cPtr_categoryGetterForGeneration (const GALGAS_bool & in_mHasHeader,
+                                                                    const GALGAS_string & in_mImplementationCppFileName,
+                                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
+                                                                    const GALGAS_string & in_mCategoryGetterName,
+                                                                    const GALGAS_bool & in_mImplementedAsFunction,
+                                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                    const GALGAS_string & in_mResultVarCppName,
+                                                                    const GALGAS_formalInputParameterListForGeneration & in_mCategoryGetterFormalParameterList,
+                                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                    const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                                    COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
+mAttribute_mReceiverType (in_mReceiverType),
+mAttribute_mCategoryGetterName (in_mCategoryGetterName),
+mAttribute_mImplementedAsFunction (in_mImplementedAsFunction),
+mAttribute_mResultType (in_mResultType),
+mAttribute_mResultVarCppName (in_mResultVarCppName),
+mAttribute_mCategoryGetterFormalParameterList (in_mCategoryGetterFormalParameterList),
+mAttribute_mTypedAttributeList (in_mTypedAttributeList),
+mAttribute_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_categoryGetterForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_categoryGetterForGeneration ;
+}
+
+void cPtr_categoryGetterForGeneration::description (C_String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString << "[@categoryGetterForGeneration:" ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mReceiverType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mCategoryGetterName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mImplementedAsFunction.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mResultVarCppName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mCategoryGetterFormalParameterList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mTypedAttributeList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_categoryGetterForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_categoryGetterForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mCategoryGetterName, mAttribute_mImplementedAsFunction, mAttribute_mResultType, mAttribute_mResultVarCppName, mAttribute_mCategoryGetterFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @categoryGetterForGeneration type                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_categoryGetterForGeneration ("categoryGetterForGeneration",
+                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_categoryGetterForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_categoryGetterForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_categoryGetterForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_categoryGetterForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_categoryGetterForGeneration GALGAS_categoryGetterForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_categoryGetterForGeneration result ;
+  const GALGAS_categoryGetterForGeneration * p = (const GALGAS_categoryGetterForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_categoryGetterForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("categoryGetterForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_categoryMethodForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_categoryMethodForGeneration * p = (const cPtr_categoryMethodForGeneration *) inOperandPtr ;
@@ -10807,368 +11169,6 @@ GALGAS_categoryModifierForGeneration GALGAS_categoryModifierForGeneration::extra
       result = *p ;
     }else{
       inCompiler->castError ("categoryModifierForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_categoryReaderForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mReceiverType.objectCompare (p->mAttribute_mReceiverType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryGetterName.objectCompare (p->mAttribute_mCategoryGetterName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mImplementedAsFunction.objectCompare (p->mAttribute_mImplementedAsFunction) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mResultType.objectCompare (p->mAttribute_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mResultVarCppName.objectCompare (p->mAttribute_mResultVarCppName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryGetterFormalParameterList.objectCompare (p->mAttribute_mCategoryGetterFormalParameterList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypedAttributeList.objectCompare (p->mAttribute_mTypedAttributeList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mSemanticInstructionListForGeneration.objectCompare (p->mAttribute_mSemanticInstructionListForGeneration) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_categoryReaderForGeneration::objectCompare (const GALGAS_categoryReaderForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryReaderForGeneration::GALGAS_categoryReaderForGeneration (void) :
-GALGAS_semanticDeclarationWithHeaderForGeneration () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_categoryReaderForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                              GALGAS_string::constructor_default (HERE),
-                                                              GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                              GALGAS_string::constructor_default (HERE),
-                                                              GALGAS_bool::constructor_default (HERE),
-                                                              GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                              GALGAS_string::constructor_default (HERE),
-                                                              GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
-                                                              GALGAS_typedPropertyList::constructor_emptyList (HERE),
-                                                              GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
-                                                              COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryReaderForGeneration::GALGAS_categoryReaderForGeneration (const cPtr_categoryReaderForGeneration * inSourcePtr) :
-GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_categoryReaderForGeneration) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
-                                                                                        const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
-                                                                                        const GALGAS_string & inAttribute_mCategoryGetterName,
-                                                                                        const GALGAS_bool & inAttribute_mImplementedAsFunction,
-                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                        const GALGAS_string & inAttribute_mResultVarCppName,
-                                                                                        const GALGAS_formalInputParameterListForGeneration & inAttribute_mCategoryGetterFormalParameterList,
-                                                                                        const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
-                                                                                        const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mCategoryGetterName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mCategoryGetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_categoryReaderForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryGetterName, inAttribute_mImplementedAsFunction, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mCategoryGetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_categoryReaderForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    result = p->mAttribute_mReceiverType ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy cPtr_categoryReaderForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mReceiverType ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_categoryReaderForGeneration::reader_mCategoryGetterName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    result = p->mAttribute_mCategoryGetterName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cPtr_categoryReaderForGeneration::reader_mCategoryGetterName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryGetterName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_categoryReaderForGeneration::reader_mImplementedAsFunction (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    result = p->mAttribute_mImplementedAsFunction ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool cPtr_categoryReaderForGeneration::reader_mImplementedAsFunction (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mImplementedAsFunction ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_categoryReaderForGeneration::reader_mResultType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMap_2D_proxy result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    result = p->mAttribute_mResultType ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy cPtr_categoryReaderForGeneration::reader_mResultType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mResultType ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_categoryReaderForGeneration::reader_mResultVarCppName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    result = p->mAttribute_mResultVarCppName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cPtr_categoryReaderForGeneration::reader_mResultVarCppName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mResultVarCppName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalInputParameterListForGeneration GALGAS_categoryReaderForGeneration::reader_mCategoryGetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalInputParameterListForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    result = p->mAttribute_mCategoryGetterFormalParameterList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalInputParameterListForGeneration cPtr_categoryReaderForGeneration::reader_mCategoryGetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryGetterFormalParameterList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typedPropertyList GALGAS_categoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedPropertyList result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    result = p->mAttribute_mTypedAttributeList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typedPropertyList cPtr_categoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypedAttributeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListForGeneration GALGAS_categoryReaderForGeneration::reader_mSemanticInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticInstructionListForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    result = p->mAttribute_mSemanticInstructionListForGeneration ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListForGeneration cPtr_categoryReaderForGeneration::reader_mSemanticInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSemanticInstructionListForGeneration ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                Pointer class for @categoryReaderForGeneration class                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_categoryReaderForGeneration::cPtr_categoryReaderForGeneration (const GALGAS_bool & in_mHasHeader,
-                                                                    const GALGAS_string & in_mImplementationCppFileName,
-                                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                                    const GALGAS_string & in_mCategoryGetterName,
-                                                                    const GALGAS_bool & in_mImplementedAsFunction,
-                                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                    const GALGAS_string & in_mResultVarCppName,
-                                                                    const GALGAS_formalInputParameterListForGeneration & in_mCategoryGetterFormalParameterList,
-                                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                    const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
-                                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
-mAttribute_mReceiverType (in_mReceiverType),
-mAttribute_mCategoryGetterName (in_mCategoryGetterName),
-mAttribute_mImplementedAsFunction (in_mImplementedAsFunction),
-mAttribute_mResultType (in_mResultType),
-mAttribute_mResultVarCppName (in_mResultVarCppName),
-mAttribute_mCategoryGetterFormalParameterList (in_mCategoryGetterFormalParameterList),
-mAttribute_mTypedAttributeList (in_mTypedAttributeList),
-mAttribute_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_categoryReaderForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryReaderForGeneration ;
-}
-
-void cPtr_categoryReaderForGeneration::description (C_String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString << "[@categoryReaderForGeneration:" ;
-  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mResultVarCppName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryGetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_categoryReaderForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_categoryReaderForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mCategoryGetterName, mAttribute_mImplementedAsFunction, mAttribute_mResultType, mAttribute_mResultVarCppName, mAttribute_mCategoryGetterFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          @categoryReaderForGeneration type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryReaderForGeneration ("categoryReaderForGeneration",
-                                                    & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_categoryReaderForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryReaderForGeneration ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_categoryReaderForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryReaderForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderForGeneration result ;
-  const GALGAS_categoryReaderForGeneration * p = (const GALGAS_categoryReaderForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryReaderForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("categoryReaderForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

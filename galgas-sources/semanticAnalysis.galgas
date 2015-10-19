@@ -1497,7 +1497,7 @@ override method @categoryGetterAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"extension getter " + mCategoryGetterName
-    !@categoryReaderForGeneration.new {
+    !@categoryGetterForGeneration.new {
       !true # Generate Cpp header file
       !"getter-" + [selfType key] + "-" + mCategoryGetterName
       !selfType

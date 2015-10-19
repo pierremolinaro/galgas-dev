@@ -46,14 +46,14 @@ void callCategoryMethod_generateExpression (const class cPtr_semanticExpressionF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_bool (*categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression) (const class cPtr_semanticExpressionForGeneration * inObject,
+typedef class GALGAS_bool (*categoryGetterSignature_semanticExpressionForGeneration_isTrueExpression) (const class cPtr_semanticExpressionForGeneration * inObject,
                                                                                                        C_Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_isTrueExpression (const int32_t inClassIndex,
-                                           categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression inReader) ;
+                                           categoryGetterSignature_semanticExpressionForGeneration_isTrueExpression inGetter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

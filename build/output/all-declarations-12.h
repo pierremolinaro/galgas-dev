@@ -128,18 +128,18 @@ void routine_generateOneBigHeader (const class GALGAS_string constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Abstract category reader '@semanticDeclarationForGeneration headerKind'                       *
+//                       Abstract category getter '@semanticDeclarationForGeneration headerKind'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_headerKind (*categoryReaderSignature_semanticDeclarationForGeneration_headerKind) (const class cPtr_semanticDeclarationForGeneration * inObject,
+typedef class GALGAS_headerKind (*categoryGetterSignature_semanticDeclarationForGeneration_headerKind) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                         class C_Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_headerKind (const int32_t inClassIndex,
-                                     categoryReaderSignature_semanticDeclarationForGeneration_headerKind inMethod) ;
+                                     categoryGetterSignature_semanticDeclarationForGeneration_headerKind inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -149,18 +149,18 @@ class GALGAS_headerKind callCategoryGetter_headerKind (const class cPtr_semantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Abstract category reader '@semanticDeclarationForGeneration implementationCppFileName'                *
+//               Abstract category getter '@semanticDeclarationForGeneration implementationCppFileName'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName) (const class cPtr_semanticDeclarationForGeneration * inObject,
+typedef class GALGAS_string (*categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                                    class C_Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_implementationCppFileName (const int32_t inClassIndex,
-                                                    categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName inMethod) ;
+                                                    categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -170,18 +170,18 @@ class GALGAS_string callCategoryGetter_implementationCppFileName (const class cP
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category reader '@semanticDeclarationForGeneration isPredefined'                      *
+//                      Abstract category getter '@semanticDeclarationForGeneration isPredefined'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_bool (*categoryReaderSignature_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
+typedef class GALGAS_bool (*categoryGetterSignature_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                     class C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_isPredefined (const int32_t inClassIndex,
-                                       categoryReaderSignature_semanticDeclarationForGeneration_isPredefined inMethod) ;
+                                       categoryGetterSignature_semanticDeclarationForGeneration_isPredefined inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -214,18 +214,18 @@ class GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Abstract category reader '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
+//                    Abstract category getter '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_bool (*categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile) (const class cPtr_semanticDeclarationForGeneration * inObject,
+typedef class GALGAS_bool (*categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                         class C_Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_hasCppHeaderFile (const int32_t inClassIndex,
-                                           categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
+                                           categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
