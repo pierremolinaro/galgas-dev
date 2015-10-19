@@ -31,9 +31,6 @@ project (3:1:1) -> "galgas" {
 #--- Command Line Options
   "galgas-sources/galgas_cli_options.galgas"
 
-#--- Common Scanner
-  "galgas-sources/galgas_scanner.galgas" 
-
 #--- Cocoa Interface
   "galgas-sources/cocoaGalgas.galgas"
 
@@ -70,7 +67,6 @@ project (3:1:1) -> "galgas" {
 
 #--- Semantics Component
   "galgas-sources/semanticsTypesForAST.galgas"
-  "galgas-sources/semanticsComponent.galgas"
   "galgas-sources/semanticsTypes.galgas"
   "galgas-sources/semanticsTypeFeatures.galgas"
   "galgas-sources/semanticsConstructors.galgas"
