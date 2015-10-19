@@ -71,7 +71,7 @@ GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchFo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionSwitchForGeneration::reader_mSwitchExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionSwitchForGeneration::getter_mSwitchExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionSwitchForGeneration * p = (const cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
@@ -83,13 +83,13 @@ GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionSwitchForGenera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionForGeneration cPtr_templateInstructionSwitchForGeneration::reader_mSwitchExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionForGeneration cPtr_templateInstructionSwitchForGeneration::getter_mSwitchExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSwitchExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchForGeneration::reader_mTemplateInstructionSwitchBranchList (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchForGeneration::getter_mTemplateInstructionSwitchBranchList (UNUSED_LOCATION_ARGS) const {
   GALGAS_templateInstructionSwitchBranchListForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionSwitchForGeneration * p = (const cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
@@ -101,7 +101,7 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionSwitchBranchListForGeneration cPtr_templateInstructionSwitchForGeneration::reader_mTemplateInstructionSwitchBranchList (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionSwitchBranchListForGeneration cPtr_templateInstructionSwitchForGeneration::getter_mTemplateInstructionSwitchBranchList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTemplateInstructionSwitchBranchList ;
 }
 
@@ -235,13 +235,13 @@ static const char * kSourceFileHelpMessages [] = {
 static void routine_before (C_Compiler * inCompiler
                             COMMA_UNUSED_LOCATION_ARGS) {
   {
-    GALGAS_string var_creationProjectName = GALGAS_string (gOption_galgas_5F_cli_5F_options_create_5F_project.reader_value ()) ;
+    GALGAS_string var_creationProjectName = GALGAS_string (gOption_galgas_5F_cli_5F_options_create_5F_project.getter_value ()) ;
     {
     routine_projectCreation (var_creationProjectName, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 20)) ;
     }
   }
   {
-    const enumGalgasBool test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions.reader_value ()).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions.getter_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
       {
       routine_printPredefinedLexicalActions (inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 27)) ;
@@ -250,19 +250,19 @@ static void routine_before (C_Compiler * inCompiler
   }
   {
     {
-    routine_generatePredefinedTypeFiles (GALGAS_string (gOption_galgas_5F_cli_5F_options_generatePredefinedTypes.reader_value ()), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 34)) ;
+    routine_generatePredefinedTypeFiles (GALGAS_string (gOption_galgas_5F_cli_5F_options_generatePredefinedTypes.getter_value ()), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 34)) ;
     }
   }
   {
-    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, GALGAS_string (gOption_galgas_5F_cli_5F_options_extractLIBPMOption.reader_value ()).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, GALGAS_string (gOption_galgas_5F_cli_5F_options_extractLIBPMOption.getter_value ()).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_1) {
       {
-      routine_updateLIBPMatPath (GALGAS_string (gOption_galgas_5F_cli_5F_options_extractLIBPMOption.reader_value ()), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 41)) ;
+      routine_updateLIBPMatPath (GALGAS_string (gOption_galgas_5F_cli_5F_options_extractLIBPMOption.getter_value ()), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 41)) ;
       }
     }
   }
   {
-    const enumGalgasBool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_check_5F_gmp.reader_value ()).boolEnum () ;
+    const enumGalgasBool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_check_5F_gmp.getter_value ()).boolEnum () ;
     if (kBoolTrue == test_2) {
       {
       routine_checkGMP (inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 51)) ;
@@ -292,16 +292,16 @@ static void routine_after (C_Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_parentDirectory = constinArgument_inSourceFile.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 66)).reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 66)) ;
+  GALGAS_string var_parentDirectory = constinArgument_inSourceFile.mAttribute_string.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 66)).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 66)) ;
   GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 67)) ;
   temp_0.addAssign_operation (GALGAS_string ("galgasProject")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 67)) ;
-  GALGAS_stringlist var_candidateProjectFiles = var_parentDirectory.reader_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 67)) ;
-  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 68)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_stringlist var_candidateProjectFiles = var_parentDirectory.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 67)) ;
+  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 68)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
-    GALGAS_location location_2 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' getter
+    GALGAS_location location_2 (constinArgument_inSourceFile.getter_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_2, GALGAS_string ("no project file in parent directory of source file")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 69)) ;
   }else if (kBoolFalse == test_1) {
-    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 70)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 70)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_3) {
       GALGAS_string var_s = GALGAS_string ("several project files in source file parent directory:") ;
       cEnumerator_stringlist enumerator_4461 (var_candidateProjectFiles, kEnumeration_up) ;
@@ -310,10 +310,10 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
           "  - ").add_operation (enumerator_4461.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 73))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 73)) ;
         enumerator_4461.gotoNextObject () ;
       }
-      GALGAS_location location_4 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' getter
+      GALGAS_location location_4 (constinArgument_inSourceFile.getter_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_4, var_s  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 75)) ;
     }else if (kBoolFalse == test_3) {
-      GALGAS_string var_projectFilePath = var_parentDirectory.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)).add_operation (var_candidateProjectFiles.reader_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)) ;
+      GALGAS_string var_projectFilePath = var_parentDirectory.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)).add_operation (var_candidateProjectFiles.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)) ;
       {
       routine_parseAndAnalyzeProject (GALGAS_lstring::constructor_new (var_projectFilePath, constinArgument_inSourceFile.mAttribute_location  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 78)), constinArgument_inSourceFile.mAttribute_string, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 78)) ;
       }
@@ -2730,43 +2730,43 @@ void GALGAS_guiAnalysisContext::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_guiAnalysisContext::reader_mImportedOptionComponentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_guiAnalysisContext::getter_mImportedOptionComponentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mImportedOptionComponentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::reader_mBoolOptionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::getter_mBoolOptionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBoolOptionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::reader_mUIntOptionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::getter_mUIntOptionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mUIntOptionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::reader_mStringOptionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiCommandLineOptionList GALGAS_guiAnalysisContext::getter_mStringOptionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStringOptionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_guiAnalysisContext::reader_mNibAndClassList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_guiAnalysisContext::getter_mNibAndClassList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mNibAndClassList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_extensionMap GALGAS_guiAnalysisContext::reader_mExtensionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_extensionMap GALGAS_guiAnalysisContext::getter_mExtensionMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExtensionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_importedLexiqueList GALGAS_guiAnalysisContext::reader_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
+GALGAS_importedLexiqueList GALGAS_guiAnalysisContext::getter_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mWithLexiqueList ;
 }
 
@@ -2952,43 +2952,43 @@ void GALGAS_parsedComponentStruct::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_parsedSemanticsComponentMap GALGAS_parsedComponentStruct::reader_mParsedSemanticsComponentMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_parsedSemanticsComponentMap GALGAS_parsedComponentStruct::getter_mParsedSemanticsComponentMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParsedSemanticsComponentMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_parsedLexiqueComponentMap GALGAS_parsedComponentStruct::reader_mParsedLexiqueComponentMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_parsedLexiqueComponentMap GALGAS_parsedComponentStruct::getter_mParsedLexiqueComponentMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParsedLexiqueComponentMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_parsedSyntaxComponentMap GALGAS_parsedComponentStruct::reader_mParsedSyntaxComponentMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_parsedSyntaxComponentMap GALGAS_parsedComponentStruct::getter_mParsedSyntaxComponentMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParsedSyntaxComponentMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_parsedOptionComponentMap GALGAS_parsedComponentStruct::reader_mParsedOptionComponentMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_parsedOptionComponentMap GALGAS_parsedComponentStruct::getter_mParsedOptionComponentMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParsedOptionComponentMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_parsedGrammarComponentMap GALGAS_parsedComponentStruct::reader_mParsedGrammarComponentMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_parsedGrammarComponentMap GALGAS_parsedComponentStruct::getter_mParsedGrammarComponentMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParsedGrammarComponentMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_parsedProgramComponentMap GALGAS_parsedComponentStruct::reader_mParsedProgramComponentMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_parsedProgramComponentMap GALGAS_parsedComponentStruct::getter_mParsedProgramComponentMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParsedProgramComponentMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_parsedGuiComponentMap GALGAS_parsedComponentStruct::reader_mParsedGuiComponentMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_parsedGuiComponentMap GALGAS_parsedComponentStruct::getter_mParsedGuiComponentMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParsedGuiComponentMap ;
 }
 
@@ -3300,43 +3300,43 @@ void GALGAS_galgas_33_DeclarationAST::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticDeclarationListAST GALGAS_galgas_33_DeclarationAST::reader_mDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticDeclarationListAST GALGAS_galgas_33_DeclarationAST::getter_mDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_DeclarationAST::reader_mSyntaxComponentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_DeclarationAST::getter_mSyntaxComponentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxComponentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_syntaxExtensions GALGAS_galgas_33_DeclarationAST::reader_mSyntaxExtensions (UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxExtensions GALGAS_galgas_33_DeclarationAST::getter_mSyntaxExtensions (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxExtensions ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_DeclarationAST::reader_mGUIComponentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_DeclarationAST::getter_mGUIComponentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGUIComponentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_prologueEpilogueList GALGAS_galgas_33_DeclarationAST::reader_mPrologueDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_prologueEpilogueList GALGAS_galgas_33_DeclarationAST::getter_mPrologueDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mPrologueDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_programRuleList GALGAS_galgas_33_DeclarationAST::reader_mSourceRuleList (UNUSED_LOCATION_ARGS) const {
+GALGAS_programRuleList GALGAS_galgas_33_DeclarationAST::getter_mSourceRuleList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSourceRuleList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_prologueEpilogueList GALGAS_galgas_33_DeclarationAST::reader_mEpilogueDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_prologueEpilogueList GALGAS_galgas_33_DeclarationAST::getter_mEpilogueDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEpilogueDeclarationList ;
 }
 
@@ -4102,13 +4102,13 @@ GALGAS_string extensionGetter_sourceFile (const GALGAS_location & inObject,
                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_location temp_0 = inObject ;
-  const enumGalgasBool test_1 = temp_0.reader_isNowhere (SOURCE_FILE ("semanticContext.galgas", 19)).boolEnum () ;
+  const enumGalgasBool test_1 = temp_0.getter_isNowhere (SOURCE_FILE ("semanticContext.galgas", 19)).boolEnum () ;
   if (kBoolTrue == test_1) {
     result_outResult = GALGAS_string ("SOURCE_FILE (\"\", 0)") ;
   }else if (kBoolFalse == test_1) {
     const GALGAS_location temp_2 = inObject ;
     const GALGAS_location temp_3 = inObject ;
-    result_outResult = GALGAS_string ("SOURCE_FILE (").add_operation (temp_2.reader_file (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).reader_lastPathComponent (SOURCE_FILE ("semanticContext.galgas", 22)).reader_utf_38_Representation (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (temp_3.reader_line (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).reader_string (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)) ;
+    result_outResult = GALGAS_string ("SOURCE_FILE (").add_operation (temp_2.getter_file (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).getter_lastPathComponent (SOURCE_FILE ("semanticContext.galgas", 22)).getter_utf_38_Representation (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (temp_3.getter_line (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).getter_string (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)) ;
   }
 //---
   return result_outResult ;
@@ -6783,7 +6783,7 @@ void GALGAS_templateInstructionListAST_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionAST GALGAS_templateInstructionListAST_2D_element::reader_mInstruction (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionAST GALGAS_templateInstructionListAST_2D_element::getter_mInstruction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstruction ;
 }
 
@@ -6907,13 +6907,13 @@ void GALGAS_templateInstructionIfBranchListAST_2D_element::description (C_String
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateExpressionAST GALGAS_templateInstructionIfBranchListAST_2D_element::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateExpressionAST GALGAS_templateInstructionIfBranchListAST_2D_element::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionIfBranchListAST_2D_element::reader_mInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionIfBranchListAST_2D_element::getter_mInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructionList ;
 }
 
@@ -7044,13 +7044,13 @@ void GALGAS_templateInstructionSwitchBranchListAST_2D_element::description (C_St
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_templateInstructionSwitchBranchListAST_2D_element::reader_mConstantList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_templateInstructionSwitchBranchListAST_2D_element::getter_mConstantList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionSwitchBranchListAST_2D_element::reader_mInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListAST GALGAS_templateInstructionSwitchBranchListAST_2D_element::getter_mInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructionList ;
 }
 
@@ -7181,13 +7181,13 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::descrip
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::reader_mConstantList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::getter_mConstantList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::reader_mInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::getter_mInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructionList ;
 }
 
@@ -7301,7 +7301,7 @@ void GALGAS_lexicalInstructionListAST_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalInstructionAST GALGAS_lexicalInstructionListAST_2D_element::reader_mInstruction (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalInstructionAST GALGAS_lexicalInstructionListAST_2D_element::getter_mInstruction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstruction ;
 }
 
@@ -7415,7 +7415,7 @@ void GALGAS_lexicalRuleListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractLexicalRuleAST GALGAS_lexicalRuleListAST_2D_element::reader_mLexicalRule (UNUSED_LOCATION_ARGS) const {
+GALGAS_abstractLexicalRuleAST GALGAS_lexicalRuleListAST_2D_element::getter_mLexicalRule (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalRule ;
 }
 
@@ -7539,13 +7539,13 @@ void GALGAS_lexicalWhileBranchListAST_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalExpressionAST GALGAS_lexicalWhileBranchListAST_2D_element::reader_mWhileExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExpressionAST GALGAS_lexicalWhileBranchListAST_2D_element::getter_mWhileExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mWhileExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalInstructionListAST GALGAS_lexicalWhileBranchListAST_2D_element::reader_mWhileInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalInstructionListAST GALGAS_lexicalWhileBranchListAST_2D_element::getter_mWhileInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mWhileInstructionList ;
 }
 
@@ -7669,13 +7669,13 @@ void GALGAS_lexicalSelectBranchListAST_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalExpressionAST GALGAS_lexicalSelectBranchListAST_2D_element::reader_mSelectExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalExpressionAST GALGAS_lexicalSelectBranchListAST_2D_element::getter_mSelectExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelectExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalInstructionListAST GALGAS_lexicalSelectBranchListAST_2D_element::reader_mSelectInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalInstructionListAST GALGAS_lexicalSelectBranchListAST_2D_element::getter_mSelectInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelectInstructionList ;
 }
 
@@ -7789,7 +7789,7 @@ void GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::description (C_S
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::reader_mLexicalRoutineActualArgument (UNUSED_LOCATION_ARGS) const {
+GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::getter_mLexicalRoutineActualArgument (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalRoutineActualArgument ;
 }
 
@@ -7903,7 +7903,7 @@ void GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::description (C_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::reader_mLexicalActualInputArgument (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::getter_mLexicalActualInputArgument (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalActualInputArgument ;
 }
 
@@ -8017,7 +8017,7 @@ void GALGAS_lexicalTypeList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalTypeList_2D_element::reader_mLexicalType (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalTypeEnum GALGAS_lexicalTypeList_2D_element::getter_mLexicalType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalType ;
 }
 
@@ -8159,19 +8159,19 @@ void GALGAS_tokenSortedlist_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_tokenSortedlist_2D_element::reader_mLength (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_tokenSortedlist_2D_element::getter_mLength (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLength ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_tokenSortedlist_2D_element::reader_mName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_tokenSortedlist_2D_element::getter_mName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_tokenSortedlist_2D_element::reader_mTerminalName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_tokenSortedlist_2D_element::getter_mTerminalName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminalName ;
 }
 
@@ -8305,19 +8305,19 @@ void GALGAS_lexicalRoutineFormalArgumentList_2D_element::description (C_String &
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalArgumentModeAST GALGAS_lexicalRoutineFormalArgumentList_2D_element::reader_mLexicalFormalArgumentMode (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalArgumentModeAST GALGAS_lexicalRoutineFormalArgumentList_2D_element::getter_mLexicalFormalArgumentMode (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalFormalArgumentMode ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalRoutineFormalArgumentList_2D_element::reader_mLexicalFormalArgumentType (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalTypeEnum GALGAS_lexicalRoutineFormalArgumentList_2D_element::getter_mLexicalFormalArgumentType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalFormalArgumentType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexicalRoutineFormalArgumentList_2D_element::reader_mArgumentNameForComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexicalRoutineFormalArgumentList_2D_element::getter_mArgumentNameForComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mArgumentNameForComment ;
 }
 
@@ -8441,13 +8441,13 @@ void GALGAS_lexicalFunctionFormalArgumentList_2D_element::description (C_String 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalTypeEnum GALGAS_lexicalFunctionFormalArgumentList_2D_element::reader_mLexicalType (UNUSED_LOCATION_ARGS) const {
+GALGAS_lexicalTypeEnum GALGAS_lexicalFunctionFormalArgumentList_2D_element::getter_mLexicalType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexicalType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexicalFunctionFormalArgumentList_2D_element::reader_mArgumentNameForComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexicalFunctionFormalArgumentList_2D_element::getter_mArgumentNameForComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mArgumentNameForComment ;
 }
 
@@ -8611,31 +8611,31 @@ void GALGAS_lexiqueComponentGenerationList_2D_element::description (C_String & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::reader_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::getter_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::reader_mCppHeaderContents (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::getter_mCppHeaderContents (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCppHeaderContents ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::reader_mCppContents (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::getter_mCppContents (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCppContents ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::reader_mCocoaHeaderContents (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::getter_mCocoaHeaderContents (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCocoaHeaderContents ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::reader_mCocoaContents (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexiqueComponentGenerationList_2D_element::getter_mCocoaContents (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCocoaContents ;
 }
 
@@ -8777,19 +8777,19 @@ void GALGAS_guiLabelListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_guiLabelListAST_2D_element::reader_mLeadingCharacterStrippedCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_guiLabelListAST_2D_element::getter_mLeadingCharacterStrippedCount (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeadingCharacterStrippedCount ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_terminalLabelListAST GALGAS_guiLabelListAST_2D_element::reader_mTerminalList (UNUSED_LOCATION_ARGS) const {
+GALGAS_terminalLabelListAST GALGAS_guiLabelListAST_2D_element::getter_mTerminalList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTerminalList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_guiLabelListAST_2D_element::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_guiLabelListAST_2D_element::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocation ;
 }
 
@@ -8953,31 +8953,31 @@ void GALGAS_guiCommandLineOptionList_2D_element::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_guiCommandLineOptionList_2D_element::reader_mOptionComponent (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_guiCommandLineOptionList_2D_element::getter_mOptionComponent (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionComponent ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_guiCommandLineOptionList_2D_element::reader_mOptionIdentifier (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_guiCommandLineOptionList_2D_element::getter_mOptionIdentifier (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionIdentifier ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_char GALGAS_guiCommandLineOptionList_2D_element::reader_mOptionChar (UNUSED_LOCATION_ARGS) const {
+GALGAS_char GALGAS_guiCommandLineOptionList_2D_element::getter_mOptionChar (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionChar ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_guiCommandLineOptionList_2D_element::reader_mOptionString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_guiCommandLineOptionList_2D_element::getter_mOptionString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_guiCommandLineOptionList_2D_element::reader_mComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_guiCommandLineOptionList_2D_element::getter_mComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mComment ;
 }
 
@@ -9108,13 +9108,13 @@ void GALGAS_textMacroList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_textMacroList_2D_element::reader_mKey (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_textMacroList_2D_element::getter_mKey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mKey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_textMacroList_2D_element::reader_mContents (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_textMacroList_2D_element::getter_mContents (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mContents ;
 }
 
@@ -9278,31 +9278,31 @@ void GALGAS_importedLexiqueList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_importedLexiqueList_2D_element::reader_mLexiqueClassName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_importedLexiqueList_2D_element::getter_mLexiqueClassName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueClassName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_importedLexiqueList_2D_element::reader_mBlockComment (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_importedLexiqueList_2D_element::getter_mBlockComment (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBlockComment ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_importedLexiqueList_2D_element::reader_mTitle (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_importedLexiqueList_2D_element::getter_mTitle (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTitle ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_textMacroList GALGAS_importedLexiqueList_2D_element::reader_mTextMacroList (UNUSED_LOCATION_ARGS) const {
+GALGAS_textMacroList GALGAS_importedLexiqueList_2D_element::getter_mTextMacroList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTextMacroList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiLabelListAST GALGAS_importedLexiqueList_2D_element::reader_mLabels (UNUSED_LOCATION_ARGS) const {
+GALGAS_guiLabelListAST GALGAS_importedLexiqueList_2D_element::getter_mLabels (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLabels ;
 }
 
@@ -9426,13 +9426,13 @@ void GALGAS_semanticExpressionListAST_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_semanticExpressionListAST_2D_element::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_semanticExpressionListAST_2D_element::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_semanticExpressionListAST_2D_element::reader_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_semanticExpressionListAST_2D_element::getter_mEndOfExpressionLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfExpressionLocation ;
 }
 
@@ -9546,7 +9546,7 @@ void GALGAS_actualParameterListAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualParameterAST GALGAS_actualParameterListAST_2D_element::reader_mActualParameter (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualParameterAST GALGAS_actualParameterListAST_2D_element::getter_mActualParameter (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mActualParameter ;
 }
 
@@ -9660,7 +9660,7 @@ void GALGAS_semanticInstructionListAST_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionAST GALGAS_semanticInstructionListAST_2D_element::reader_mInstruction (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionAST GALGAS_semanticInstructionListAST_2D_element::getter_mInstruction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstruction ;
 }
 
@@ -9774,7 +9774,7 @@ void GALGAS_semanticDeclarationListAST_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticDeclarationAST GALGAS_semanticDeclarationListAST_2D_element::reader_mSemanticDeclaration (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticDeclarationAST GALGAS_semanticDeclarationListAST_2D_element::getter_mSemanticDeclaration (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSemanticDeclaration ;
 }
 
@@ -9894,7 +9894,7 @@ void GALGAS_insertOrReplaceDeclarationListAST_2D_element::description (C_String 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_insertOrReplaceDeclarationListAST_2D_element::reader_mInsertOrReplaceDeclarationLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_insertOrReplaceDeclarationListAST_2D_element::getter_mInsertOrReplaceDeclarationLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInsertOrReplaceDeclarationLocation ;
 }
 
@@ -10008,7 +10008,7 @@ void GALGAS_syntaxInstructionList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionList_2D_element::reader_mInstruction (UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionList_2D_element::getter_mInstruction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstruction ;
 }
 
@@ -10139,13 +10139,13 @@ void GALGAS_listOfSyntaxInstructionList_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_syntaxInstructionList GALGAS_listOfSyntaxInstructionList_2D_element::reader_mSyntaxInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxInstructionList GALGAS_listOfSyntaxInstructionList_2D_element::getter_mSyntaxInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_listOfSyntaxInstructionList_2D_element::reader_mEndOf_5F_instructions (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_listOfSyntaxInstructionList_2D_element::getter_mEndOf_5F_instructions (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOf_5F_instructions ;
 }
 
@@ -10259,7 +10259,7 @@ void GALGAS_collectionValueElementList_2D_element::description (C_String & ioStr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCollectionValueElement GALGAS_collectionValueElementList_2D_element::reader_mElement (UNUSED_LOCATION_ARGS) const {
+GALGAS_abstractCollectionValueElement GALGAS_collectionValueElementList_2D_element::getter_mElement (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mElement ;
 }
 
@@ -10390,13 +10390,13 @@ void GALGAS_syntaxExtensions_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_syntaxExtensions_2D_element::reader_key (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_syntaxExtensions_2D_element::getter_key (UNUSED_LOCATION_ARGS) const {
   return mAttribute_key ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_SyntaxExtensionListAST GALGAS_syntaxExtensions_2D_element::reader_mList (UNUSED_LOCATION_ARGS) const {
+GALGAS_galgas_33_SyntaxExtensionListAST GALGAS_syntaxExtensions_2D_element::getter_mList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mList ;
 }
 
@@ -10527,13 +10527,13 @@ void GALGAS_prologueEpilogueList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListAST GALGAS_prologueEpilogueList_2D_element::reader_mInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_prologueEpilogueList_2D_element::getter_mInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_prologueEpilogueList_2D_element::reader_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_prologueEpilogueList_2D_element::getter_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfInstructionList ;
 }
 
@@ -10647,7 +10647,7 @@ void GALGAS_templateInstructionListForGeneration_2D_element::description (C_Stri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionForGeneration GALGAS_templateInstructionListForGeneration_2D_element::reader_mInstruction (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionForGeneration GALGAS_templateInstructionListForGeneration_2D_element::getter_mInstruction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstruction ;
 }
 
@@ -10761,7 +10761,7 @@ void GALGAS_semanticInstructionListForGeneration_2D_element::description (C_Stri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionForGeneration GALGAS_semanticInstructionListForGeneration_2D_element::reader_mInstruction (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionForGeneration GALGAS_semanticInstructionListForGeneration_2D_element::getter_mInstruction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstruction ;
 }
 
@@ -10892,13 +10892,13 @@ void GALGAS_listOfSemanticInstructionListForGeneration_2D_element::description (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration GALGAS_listOfSemanticInstructionListForGeneration_2D_element::reader_mInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_listOfSemanticInstructionListForGeneration_2D_element::getter_mInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_listOfSemanticInstructionListForGeneration_2D_element::reader_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_listOfSemanticInstructionListForGeneration_2D_element::getter_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfInstructionList ;
 }
 
@@ -11032,19 +11032,19 @@ void GALGAS_semanticDeclarationSortedListForGeneration_2D_element::description (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_semanticDeclarationSortedListForGeneration_2D_element::reader_mMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_semanticDeclarationSortedListForGeneration_2D_element::getter_mMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticDeclarationForGeneration GALGAS_semanticDeclarationSortedListForGeneration_2D_element::reader_mDeclaration (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticDeclarationForGeneration GALGAS_semanticDeclarationSortedListForGeneration_2D_element::getter_mDeclaration (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDeclaration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_semanticDeclarationSortedListForGeneration_2D_element::reader_mSortKey (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_semanticDeclarationSortedListForGeneration_2D_element::getter_mSortKey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSortKey ;
 }
 
@@ -11175,13 +11175,13 @@ void GALGAS_nonTerminalToAddList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_nonTerminalToAddList_2D_element::reader_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_nonTerminalToAddList_2D_element::getter_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_nonTerminalToAddList_2D_element::reader_mNonTerminalToAddCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_nonTerminalToAddList_2D_element::getter_mNonTerminalToAddCount (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mNonTerminalToAddCount ;
 }
 
@@ -11323,19 +11323,19 @@ void GALGAS_terminalCheckAssignementList_2D_element::description (C_String & ioS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_terminalCheckAssignementList_2D_element::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_terminalCheckAssignementList_2D_element::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_terminalCheckAssignementList_2D_element::reader_mTargetVarCppName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_terminalCheckAssignementList_2D_element::getter_mTargetVarCppName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetVarCppName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_terminalCheckAssignementList_2D_element::reader_mSourceLexicalAttributeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_terminalCheckAssignementList_2D_element::getter_mSourceLexicalAttributeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSourceLexicalAttributeName ;
 }
 
@@ -11477,19 +11477,19 @@ void GALGAS_filewrapperTemplateListForGeneration_2D_element::description (C_Stri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_filewrapperTemplateListForGeneration_2D_element::reader_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_filewrapperTemplateListForGeneration_2D_element::getter_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperTemplateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListForGeneration GALGAS_filewrapperTemplateListForGeneration_2D_element::reader_mFilewrapperTemplateFormalInputParameters (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListForGeneration GALGAS_filewrapperTemplateListForGeneration_2D_element::getter_mFilewrapperTemplateFormalInputParameters (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperTemplateFormalInputParameters ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionListForGeneration GALGAS_filewrapperTemplateListForGeneration_2D_element::reader_mTemplateInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionListForGeneration GALGAS_filewrapperTemplateListForGeneration_2D_element::getter_mTemplateInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTemplateInstructionListForGeneration ;
 }
 
@@ -11603,7 +11603,7 @@ void GALGAS_collectionValueElementListForGeneration_2D_element::description (C_S
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCollectionValueElementForGeneration GALGAS_collectionValueElementListForGeneration_2D_element::reader_mElement (UNUSED_LOCATION_ARGS) const {
+GALGAS_abstractCollectionValueElementForGeneration GALGAS_collectionValueElementListForGeneration_2D_element::getter_mElement (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mElement ;
 }
 
@@ -11745,19 +11745,19 @@ void GALGAS_ruleDeclarationList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_ruleDeclarationList_2D_element::reader_mNonterminalName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_ruleDeclarationList_2D_element::getter_mNonterminalName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mNonterminalName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_ruleDeclarationList_2D_element::reader_mRuleIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_ruleDeclarationList_2D_element::getter_mRuleIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRuleIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_ruleLabelImplementationList GALGAS_ruleDeclarationList_2D_element::reader_mLabelImplementationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_ruleLabelImplementationList GALGAS_ruleDeclarationList_2D_element::getter_mLabelImplementationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLabelImplementationList ;
 }
 
@@ -11888,13 +11888,13 @@ void GALGAS_keySortedList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_keySortedList_2D_element::reader_mKey (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_keySortedList_2D_element::getter_mKey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mKey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_keySortedList_2D_element::reader_mOrder (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_keySortedList_2D_element::getter_mOrder (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOrder ;
 }
 
@@ -12018,13 +12018,13 @@ void GALGAS_forInstructionEnumeratedObjectListAST_2D_element::description (C_Str
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_forInstructionEnumeratedObjectListAST_2D_element::reader_mAscending (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_forInstructionEnumeratedObjectListAST_2D_element::getter_mAscending (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAscending ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractEnumeratedCollectionAST GALGAS_forInstructionEnumeratedObjectListAST_2D_element::reader_mEnumeratedCollection (UNUSED_LOCATION_ARGS) const {
+GALGAS_abstractEnumeratedCollectionAST GALGAS_forInstructionEnumeratedObjectListAST_2D_element::getter_mEnumeratedCollection (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEnumeratedCollection ;
 }
 
@@ -12177,25 +12177,25 @@ void GALGAS_matchInstructionBranchListAST_2D_element::description (C_String & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchEntryListAST GALGAS_matchInstructionBranchListAST_2D_element::reader_mMatchEntryList (UNUSED_LOCATION_ARGS) const {
+GALGAS_matchEntryListAST GALGAS_matchInstructionBranchListAST_2D_element::getter_mMatchEntryList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMatchEntryList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_matchInstructionBranchListAST_2D_element::reader_mEndOfMatchEntryList (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_matchInstructionBranchListAST_2D_element::getter_mEndOfMatchEntryList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfMatchEntryList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListAST GALGAS_matchInstructionBranchListAST_2D_element::reader_mMatchBranchInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_matchInstructionBranchListAST_2D_element::getter_mMatchBranchInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMatchBranchInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_matchInstructionBranchListAST_2D_element::reader_mEndOf_5F_instructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_matchInstructionBranchListAST_2D_element::getter_mEndOf_5F_instructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOf_5F_instructionList ;
 }
 
@@ -12337,19 +12337,19 @@ void GALGAS_matchListForGeneration_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_matchListForGeneration_2D_element::reader_mIsType (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_matchListForGeneration_2D_element::getter_mIsType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_matchListForGeneration_2D_element::reader_mTypeNameOrEnumerationConstantName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_matchListForGeneration_2D_element::getter_mTypeNameOrEnumerationConstantName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeNameOrEnumerationConstantName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_matchListForGeneration_2D_element::reader_mLocalConstantName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_matchListForGeneration_2D_element::getter_mLocalConstantName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocalConstantName ;
 }
 
@@ -12480,13 +12480,13 @@ void GALGAS_matchInstructionBranchListForGeneration_2D_element::description (C_S
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchListForGeneration GALGAS_matchInstructionBranchListForGeneration_2D_element::reader_mMatchListForGeneration (UNUSED_LOCATION_ARGS) const {
+GALGAS_matchListForGeneration GALGAS_matchInstructionBranchListForGeneration_2D_element::getter_mMatchListForGeneration (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMatchListForGeneration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration GALGAS_matchInstructionBranchListForGeneration_2D_element::reader_mMatchBranchInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_matchInstructionBranchListForGeneration_2D_element::getter_mMatchBranchInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMatchBranchInstructionList ;
 }
 
@@ -12639,25 +12639,25 @@ void GALGAS_switchBranchesAST_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_switchBranchesAST_2D_element::reader_mSwitchConstantList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_switchBranchesAST_2D_element::getter_mSwitchConstantList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSwitchConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchExtractedValuesListAST GALGAS_switchBranchesAST_2D_element::reader_mAssociatedValuesExtraction (UNUSED_LOCATION_ARGS) const {
+GALGAS_switchExtractedValuesListAST GALGAS_switchBranchesAST_2D_element::getter_mAssociatedValuesExtraction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedValuesExtraction ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListAST GALGAS_switchBranchesAST_2D_element::reader_mInstructions (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_switchBranchesAST_2D_element::getter_mInstructions (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructions ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_switchBranchesAST_2D_element::reader_mEndOfBranch (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_switchBranchesAST_2D_element::getter_mEndOfBranch (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfBranch ;
 }
 
@@ -12810,25 +12810,25 @@ void GALGAS_switchBranchesForGeneration_2D_element::description (C_String & ioSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_switchBranchesForGeneration_2D_element::reader_mSwitchConstantList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_switchBranchesForGeneration_2D_element::getter_mSwitchConstantList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSwitchConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_extractedAssociatedValuesForGeneration GALGAS_switchBranchesForGeneration_2D_element::reader_mExtractedAssociatedValuesForGeneration (UNUSED_LOCATION_ARGS) const {
+GALGAS_extractedAssociatedValuesForGeneration GALGAS_switchBranchesForGeneration_2D_element::getter_mExtractedAssociatedValuesForGeneration (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExtractedAssociatedValuesForGeneration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_switchBranchesForGeneration_2D_element::reader_mLocationIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_switchBranchesForGeneration_2D_element::getter_mLocationIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocationIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration GALGAS_switchBranchesForGeneration_2D_element::reader_mInstructions (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_switchBranchesForGeneration_2D_element::getter_mInstructions (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstructions ;
 }
 
@@ -12959,13 +12959,13 @@ void GALGAS_enumConstantListForGeneration_2D_element::description (C_String & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_enumConstantListForGeneration_2D_element::reader_mConstantName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_enumConstantListForGeneration_2D_element::getter_mConstantName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mConstantName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyList GALGAS_enumConstantListForGeneration_2D_element::reader_mAssociatedValueTypeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapProxyList GALGAS_enumConstantListForGeneration_2D_element::getter_mAssociatedValueTypeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedValueTypeList ;
 }
 
@@ -13129,37 +13129,37 @@ void GALGAS_mapStateTransitionSortedList_2D_element::description (C_String & ioS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_mapStateTransitionSortedList_2D_element::reader_mActionIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_mapStateTransitionSortedList_2D_element::getter_mActionIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mActionIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_mapStateTransitionSortedList_2D_element::reader_mActionName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_mapStateTransitionSortedList_2D_element::getter_mActionName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mActionName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_mapStateTransitionSortedList_2D_element::reader_mTargetStateIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_mapStateTransitionSortedList_2D_element::getter_mTargetStateIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetStateIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_mapStateTransitionSortedList_2D_element::reader_mTargetStateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_mapStateTransitionSortedList_2D_element::getter_mTargetStateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetStateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapAutomatonMessageKind GALGAS_mapStateTransitionSortedList_2D_element::reader_mTransitionMessageKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapAutomatonMessageKind GALGAS_mapStateTransitionSortedList_2D_element::getter_mTransitionMessageKind (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTransitionMessageKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_mapStateTransitionSortedList_2D_element::reader_mTransitionMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_mapStateTransitionSortedList_2D_element::getter_mTransitionMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTransitionMessage ;
 }
 
@@ -13313,31 +13313,31 @@ void GALGAS_mapStateSortedList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_mapStateSortedList_2D_element::reader_mStateIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_mapStateSortedList_2D_element::getter_mStateIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStateIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_mapStateSortedList_2D_element::reader_mStateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_mapStateSortedList_2D_element::getter_mStateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapAutomatonMessageKind GALGAS_mapStateSortedList_2D_element::reader_mStateMessageKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapAutomatonMessageKind GALGAS_mapStateSortedList_2D_element::getter_mStateMessageKind (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStateMessageKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_mapStateSortedList_2D_element::reader_mStateMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_mapStateSortedList_2D_element::getter_mStateMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStateMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapStateTransitionSortedList GALGAS_mapStateSortedList_2D_element::reader_mTransitionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapStateTransitionSortedList GALGAS_mapStateSortedList_2D_element::getter_mTransitionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTransitionList ;
 }
 
@@ -13521,49 +13521,49 @@ void GALGAS_branchBehaviourSortedListForMapOverride_2D_element::description (C_S
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_branchBehaviourSortedListForMapOverride_2D_element::reader_mStartStateIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_branchBehaviourSortedListForMapOverride_2D_element::getter_mStartStateIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStartStateIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_branchBehaviourSortedListForMapOverride_2D_element::reader_mStartStateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_branchBehaviourSortedListForMapOverride_2D_element::getter_mStartStateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStartStateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_branchBehaviourSortedListForMapOverride_2D_element::reader_mCurrentStateIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_branchBehaviourSortedListForMapOverride_2D_element::getter_mCurrentStateIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCurrentStateIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_branchBehaviourSortedListForMapOverride_2D_element::reader_mCurrentStateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_branchBehaviourSortedListForMapOverride_2D_element::getter_mCurrentStateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCurrentStateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_branchBehaviourSortedListForMapOverride_2D_element::reader_mFinalStateIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_branchBehaviourSortedListForMapOverride_2D_element::getter_mFinalStateIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFinalStateIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_branchBehaviourSortedListForMapOverride_2D_element::reader_mFinalStateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_branchBehaviourSortedListForMapOverride_2D_element::getter_mFinalStateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFinalStateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapAutomatonMessageKind GALGAS_branchBehaviourSortedListForMapOverride_2D_element::reader_mBehaviourMessageKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapAutomatonMessageKind GALGAS_branchBehaviourSortedListForMapOverride_2D_element::getter_mBehaviourMessageKind (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBehaviourMessageKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_branchBehaviourSortedListForMapOverride_2D_element::reader_mBehaviourMessage (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_branchBehaviourSortedListForMapOverride_2D_element::getter_mBehaviourMessage (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBehaviourMessage ;
 }
 
@@ -13705,19 +13705,19 @@ void GALGAS_mapOverrideList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_mapOverrideList_2D_element::reader_mOverrideName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_mapOverrideList_2D_element::getter_mOverrideName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOverrideName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_branchBehaviourSortedListForMapOverride GALGAS_mapOverrideList_2D_element::reader_mBranchBehaviourSortedListForMapOverride (UNUSED_LOCATION_ARGS) const {
+GALGAS_branchBehaviourSortedListForMapOverride GALGAS_mapOverrideList_2D_element::getter_mBranchBehaviourSortedListForMapOverride (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBranchBehaviourSortedListForMapOverride ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_branchBehaviourSortedListForMapOverride GALGAS_mapOverrideList_2D_element::reader_mBranchCombinationSortedListForMapOverride (UNUSED_LOCATION_ARGS) const {
+GALGAS_branchBehaviourSortedListForMapOverride GALGAS_mapOverrideList_2D_element::getter_mBranchCombinationSortedListForMapOverride (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBranchCombinationSortedListForMapOverride ;
 }
 
@@ -13831,7 +13831,7 @@ void GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::description (C_S
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractSyntaxInstructionForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::reader_mInstruction (UNUSED_LOCATION_ARGS) const {
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::getter_mInstruction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInstruction ;
 }
 
@@ -13951,7 +13951,7 @@ void GALGAS_branchListForGrammarAnalysis_2D_element::description (C_String & ioS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_branchListForGrammarAnalysis_2D_element::reader_mSyntaxInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_branchListForGrammarAnalysis_2D_element::getter_mSyntaxInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxInstructionList ;
 }
 
@@ -14065,7 +14065,7 @@ void GALGAS_programListForGeneration_2D_element::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticDeclarationForGeneration GALGAS_programListForGeneration_2D_element::reader_mDeclaration (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticDeclarationForGeneration GALGAS_programListForGeneration_2D_element::getter_mDeclaration (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDeclaration ;
 }
 

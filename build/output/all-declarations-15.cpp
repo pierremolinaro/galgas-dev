@@ -89,7 +89,7 @@ GALGAS_programComponentForGeneration GALGAS_programComponentForGeneration::const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset GALGAS_programComponentForGeneration::reader_mInclusionSet (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringset GALGAS_programComponentForGeneration::getter_mInclusionSet (UNUSED_LOCATION_ARGS) const {
   GALGAS_stringset result ;
   if (NULL != mObjectPtr) {
     const cPtr_programComponentForGeneration * p = (const cPtr_programComponentForGeneration *) mObjectPtr ;
@@ -101,13 +101,13 @@ GALGAS_stringset GALGAS_programComponentForGeneration::reader_mInclusionSet (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset cPtr_programComponentForGeneration::reader_mInclusionSet (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringset cPtr_programComponentForGeneration::getter_mInclusionSet (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInclusionSet ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_programComponentForGeneration::reader_mImplementationString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_programComponentForGeneration::getter_mImplementationString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_programComponentForGeneration * p = (const cPtr_programComponentForGeneration *) mObjectPtr ;
@@ -119,7 +119,7 @@ GALGAS_string GALGAS_programComponentForGeneration::reader_mImplementationString
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_programComponentForGeneration::reader_mImplementationString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_programComponentForGeneration::getter_mImplementationString (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mImplementationString ;
 }
 
@@ -289,7 +289,7 @@ GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_routinePrototypeDeclarationForGeneration::reader_mRoutineName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_routinePrototypeDeclarationForGeneration::getter_mRoutineName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_routinePrototypeDeclarationForGeneration * p = (const cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
@@ -301,13 +301,13 @@ GALGAS_string GALGAS_routinePrototypeDeclarationForGeneration::reader_mRoutineNa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_routinePrototypeDeclarationForGeneration::reader_mRoutineName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_routinePrototypeDeclarationForGeneration::getter_mRoutineName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRoutineName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterListForGeneration GALGAS_routinePrototypeDeclarationForGeneration::reader_mFormalArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_routinePrototypeDeclarationForGeneration::getter_mFormalArgumentList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_routinePrototypeDeclarationForGeneration * p = (const cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
@@ -319,7 +319,7 @@ GALGAS_formalParameterListForGeneration GALGAS_routinePrototypeDeclarationForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterListForGeneration cPtr_routinePrototypeDeclarationForGeneration::reader_mFormalArgumentList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration cPtr_routinePrototypeDeclarationForGeneration::getter_mFormalArgumentList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentList ;
 }
 
@@ -499,7 +499,7 @@ GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGenerat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_routineImplementationForGeneration::reader_mGenerateStatic (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_routineImplementationForGeneration::getter_mGenerateStatic (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_routineImplementationForGeneration * p = (const cPtr_routineImplementationForGeneration *) mObjectPtr ;
@@ -511,13 +511,13 @@ GALGAS_bool GALGAS_routineImplementationForGeneration::reader_mGenerateStatic (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cPtr_routineImplementationForGeneration::reader_mGenerateStatic (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool cPtr_routineImplementationForGeneration::getter_mGenerateStatic (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGenerateStatic ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration GALGAS_routineImplementationForGeneration::reader_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration GALGAS_routineImplementationForGeneration::getter_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_routineImplementationForGeneration * p = (const cPtr_routineImplementationForGeneration *) mObjectPtr ;
@@ -529,7 +529,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_routineImplementationForGener
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration cPtr_routineImplementationForGeneration::reader_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListForGeneration cPtr_routineImplementationForGeneration::getter_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRoutineInstructionList ;
 }
 
@@ -661,7 +661,7 @@ GALGAS_semanticDeclarationForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_semanticTypeForGeneration::reader_mTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_semanticTypeForGeneration::getter_mTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_semanticTypeForGeneration * p = (const cPtr_semanticTypeForGeneration *) mObjectPtr ;
@@ -673,7 +673,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_semanticTypeForGeneration::reader_mTypePro
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_semanticTypeForGeneration::reader_mTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_semanticTypeForGeneration::getter_mTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeProxy ;
 }
 
@@ -807,7 +807,7 @@ GALGAS_arrayTypeForGeneration GALGAS_arrayTypeForGeneration::constructor_new (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_arrayTypeForGeneration::reader_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_arrayTypeForGeneration::getter_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_arrayTypeForGeneration * p = (const cPtr_arrayTypeForGeneration *) mObjectPtr ;
@@ -819,13 +819,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_arrayTypeForGeneration::reader_mElementTyp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_arrayTypeForGeneration::reader_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_arrayTypeForGeneration::getter_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mElementTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_arrayTypeForGeneration::reader_mDimension (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_arrayTypeForGeneration::getter_mDimension (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (NULL != mObjectPtr) {
     const cPtr_arrayTypeForGeneration * p = (const cPtr_arrayTypeForGeneration *) mObjectPtr ;
@@ -837,7 +837,7 @@ GALGAS_uint GALGAS_arrayTypeForGeneration::reader_mDimension (UNUSED_LOCATION_AR
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint cPtr_arrayTypeForGeneration::reader_mDimension (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint cPtr_arrayTypeForGeneration::getter_mDimension (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDimension ;
 }
 
@@ -1019,7 +1019,7 @@ GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::constructor_new (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_classTypeForGeneration::reader_mIsAbstract (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_classTypeForGeneration::getter_mIsAbstract (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
@@ -1031,13 +1031,13 @@ GALGAS_bool GALGAS_classTypeForGeneration::reader_mIsAbstract (UNUSED_LOCATION_A
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cPtr_classTypeForGeneration::reader_mIsAbstract (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool cPtr_classTypeForGeneration::getter_mIsAbstract (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsAbstract ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_classTypeForGeneration::reader_mClassTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_classTypeForGeneration::getter_mClassTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
@@ -1049,13 +1049,13 @@ GALGAS_lstring GALGAS_classTypeForGeneration::reader_mClassTypeName (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_classTypeForGeneration::reader_mClassTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_classTypeForGeneration::getter_mClassTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mClassTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_classTypeForGeneration::reader_mSuperClass (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_classTypeForGeneration::getter_mSuperClass (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
@@ -1067,13 +1067,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_classTypeForGeneration::reader_mSuperClass
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_classTypeForGeneration::reader_mSuperClass (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_classTypeForGeneration::getter_mSuperClass (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSuperClass ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_classTypeForGeneration::reader_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_classTypeForGeneration::getter_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
@@ -1085,13 +1085,13 @@ GALGAS_typedPropertyList GALGAS_classTypeForGeneration::reader_mAllTypedAttribut
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_classTypeForGeneration::reader_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_classTypeForGeneration::getter_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAllTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_classTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_classTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
@@ -1103,13 +1103,13 @@ GALGAS_typedPropertyList GALGAS_classTypeForGeneration::reader_mTypedAttributeLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_classTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_classTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_classTypeForGeneration::reader_mGenerateHeaderInSeparateFile (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_classTypeForGeneration::getter_mGenerateHeaderInSeparateFile (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
@@ -1121,7 +1121,7 @@ GALGAS_bool GALGAS_classTypeForGeneration::reader_mGenerateHeaderInSeparateFile 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cPtr_classTypeForGeneration::reader_mGenerateHeaderInSeparateFile (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool cPtr_classTypeForGeneration::getter_mGenerateHeaderInSeparateFile (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGenerateHeaderInSeparateFile ;
 }
 
@@ -1294,7 +1294,7 @@ GALGAS_enumTypeForGeneration GALGAS_enumTypeForGeneration::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantListForGeneration GALGAS_enumTypeForGeneration::reader_mConstantList (UNUSED_LOCATION_ARGS) const {
+GALGAS_enumConstantListForGeneration GALGAS_enumTypeForGeneration::getter_mConstantList (UNUSED_LOCATION_ARGS) const {
   GALGAS_enumConstantListForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_enumTypeForGeneration * p = (const cPtr_enumTypeForGeneration *) mObjectPtr ;
@@ -1306,7 +1306,7 @@ GALGAS_enumConstantListForGeneration GALGAS_enumTypeForGeneration::reader_mConst
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantListForGeneration cPtr_enumTypeForGeneration::reader_mConstantList (UNUSED_LOCATION_ARGS) const {
+GALGAS_enumConstantListForGeneration cPtr_enumTypeForGeneration::getter_mConstantList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mConstantList ;
 }
 
@@ -1469,7 +1469,7 @@ GALGAS_externTypeDeclarationForGeneration GALGAS_externTypeDeclarationForGenerat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_externTypeDeclarationForGeneration::reader_mExternTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_externTypeDeclarationForGeneration::getter_mExternTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_externTypeDeclarationForGeneration * p = (const cPtr_externTypeDeclarationForGeneration *) mObjectPtr ;
@@ -1481,13 +1481,13 @@ GALGAS_string GALGAS_externTypeDeclarationForGeneration::reader_mExternTypeName 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_externTypeDeclarationForGeneration::reader_mExternTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_externTypeDeclarationForGeneration::getter_mExternTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExternTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_externTypeDeclarationForGeneration::reader_mCppPreDeclarationCode (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_externTypeDeclarationForGeneration::getter_mCppPreDeclarationCode (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_externTypeDeclarationForGeneration * p = (const cPtr_externTypeDeclarationForGeneration *) mObjectPtr ;
@@ -1499,13 +1499,13 @@ GALGAS_string GALGAS_externTypeDeclarationForGeneration::reader_mCppPreDeclarati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_externTypeDeclarationForGeneration::reader_mCppPreDeclarationCode (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_externTypeDeclarationForGeneration::getter_mCppPreDeclarationCode (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCppPreDeclarationCode ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_externTypeDeclarationForGeneration::reader_mCppClassCode (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_externTypeDeclarationForGeneration::getter_mCppClassCode (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_externTypeDeclarationForGeneration * p = (const cPtr_externTypeDeclarationForGeneration *) mObjectPtr ;
@@ -1517,7 +1517,7 @@ GALGAS_string GALGAS_externTypeDeclarationForGeneration::reader_mCppClassCode (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_externTypeDeclarationForGeneration::reader_mCppClassCode (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_externTypeDeclarationForGeneration::getter_mCppClassCode (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCppClassCode ;
 }
 
@@ -1688,7 +1688,7 @@ GALGAS_graphDeclarationForGeneration GALGAS_graphDeclarationForGeneration::const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_graphDeclarationForGeneration::reader_mAssociatedListTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_graphDeclarationForGeneration::getter_mAssociatedListTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_graphDeclarationForGeneration * p = (const cPtr_graphDeclarationForGeneration *) mObjectPtr ;
@@ -1700,13 +1700,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_graphDeclarationForGeneration::reader_mAss
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_graphDeclarationForGeneration::reader_mAssociatedListTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_graphDeclarationForGeneration::getter_mAssociatedListTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedListTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_graphDeclarationForGeneration::reader_mAssociatedListElementTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_graphDeclarationForGeneration::getter_mAssociatedListElementTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_graphDeclarationForGeneration * p = (const cPtr_graphDeclarationForGeneration *) mObjectPtr ;
@@ -1718,13 +1718,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_graphDeclarationForGeneration::reader_mAss
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_graphDeclarationForGeneration::reader_mAssociatedListElementTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_graphDeclarationForGeneration::getter_mAssociatedListElementTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedListElementTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_graphInsertModifierList GALGAS_graphDeclarationForGeneration::reader_mInsertModifierList (UNUSED_LOCATION_ARGS) const {
+GALGAS_graphInsertModifierList GALGAS_graphDeclarationForGeneration::getter_mInsertModifierList (UNUSED_LOCATION_ARGS) const {
   GALGAS_graphInsertModifierList result ;
   if (NULL != mObjectPtr) {
     const cPtr_graphDeclarationForGeneration * p = (const cPtr_graphDeclarationForGeneration *) mObjectPtr ;
@@ -1736,7 +1736,7 @@ GALGAS_graphInsertModifierList GALGAS_graphDeclarationForGeneration::reader_mIns
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_graphInsertModifierList cPtr_graphDeclarationForGeneration::reader_mInsertModifierList (UNUSED_LOCATION_ARGS) const {
+GALGAS_graphInsertModifierList cPtr_graphDeclarationForGeneration::getter_mInsertModifierList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInsertModifierList ;
 }
 
@@ -1902,7 +1902,7 @@ GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_listTypeForGeneration::reader_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_listTypeForGeneration::getter_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_listTypeForGeneration * p = (const cPtr_listTypeForGeneration *) mObjectPtr ;
@@ -1914,13 +1914,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_listTypeForGeneration::reader_mListElement
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_listTypeForGeneration::reader_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_listTypeForGeneration::getter_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mListElementTypeIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_listTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_listTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_listTypeForGeneration * p = (const cPtr_listTypeForGeneration *) mObjectPtr ;
@@ -1932,7 +1932,7 @@ GALGAS_typedPropertyList GALGAS_listTypeForGeneration::reader_mTypedAttributeLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_listTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_listTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -2099,7 +2099,7 @@ GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_listmapTypeForGeneration::reader_mAssociatedListTypeIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_listmapTypeForGeneration::getter_mAssociatedListTypeIndex (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_listmapTypeForGeneration * p = (const cPtr_listmapTypeForGeneration *) mObjectPtr ;
@@ -2111,13 +2111,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_listmapTypeForGeneration::reader_mAssociat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_listmapTypeForGeneration::reader_mAssociatedListTypeIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_listmapTypeForGeneration::getter_mAssociatedListTypeIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedListTypeIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_listmapTypeForGeneration::reader_mAssociatedListTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_listmapTypeForGeneration::getter_mAssociatedListTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_listmapTypeForGeneration * p = (const cPtr_listmapTypeForGeneration *) mObjectPtr ;
@@ -2129,13 +2129,13 @@ GALGAS_typedPropertyList GALGAS_listmapTypeForGeneration::reader_mAssociatedList
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_listmapTypeForGeneration::reader_mAssociatedListTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_listmapTypeForGeneration::getter_mAssociatedListTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedListTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_listmapTypeForGeneration::reader_mAssociatedListMapElementTypeIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_listmapTypeForGeneration::getter_mAssociatedListMapElementTypeIndex (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_listmapTypeForGeneration * p = (const cPtr_listmapTypeForGeneration *) mObjectPtr ;
@@ -2147,7 +2147,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_listmapTypeForGeneration::reader_mAssociat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_listmapTypeForGeneration::reader_mAssociatedListMapElementTypeIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_listmapTypeForGeneration::getter_mAssociatedListMapElementTypeIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedListMapElementTypeIndex ;
 }
 
@@ -2318,7 +2318,7 @@ GALGAS_mapProxyTypeForGeneration GALGAS_mapProxyTypeForGeneration::constructor_n
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_mapProxyTypeForGeneration::reader_mAssociatedMapTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_mapProxyTypeForGeneration::getter_mAssociatedMapTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapProxyTypeForGeneration * p = (const cPtr_mapProxyTypeForGeneration *) mObjectPtr ;
@@ -2330,13 +2330,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_mapProxyTypeForGeneration::reader_mAssocia
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_mapProxyTypeForGeneration::reader_mAssociatedMapTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_mapProxyTypeForGeneration::getter_mAssociatedMapTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedMapTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_mapProxyTypeForGeneration::reader_mAssociatedMapTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_mapProxyTypeForGeneration::getter_mAssociatedMapTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapProxyTypeForGeneration * p = (const cPtr_mapProxyTypeForGeneration *) mObjectPtr ;
@@ -2348,13 +2348,13 @@ GALGAS_typedPropertyList GALGAS_mapProxyTypeForGeneration::reader_mAssociatedMap
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_mapProxyTypeForGeneration::reader_mAssociatedMapTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_mapProxyTypeForGeneration::getter_mAssociatedMapTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedMapTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST GALGAS_mapProxyTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapSearchMethodListAST GALGAS_mapProxyTypeForGeneration::getter_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
   GALGAS_mapSearchMethodListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapProxyTypeForGeneration * p = (const cPtr_mapProxyTypeForGeneration *) mObjectPtr ;
@@ -2366,7 +2366,7 @@ GALGAS_mapSearchMethodListAST GALGAS_mapProxyTypeForGeneration::reader_mSearchMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST cPtr_mapProxyTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapSearchMethodListAST cPtr_mapProxyTypeForGeneration::getter_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSearchMethodList ;
 }
 
@@ -2557,7 +2557,7 @@ GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::constructor_new (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_mapTypeForGeneration::reader_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_mapTypeForGeneration::getter_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
@@ -2569,13 +2569,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_mapTypeForGeneration::reader_mElementTypeP
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_mapTypeForGeneration::reader_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_mapTypeForGeneration::getter_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mElementTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_mapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_mapTypeForGeneration::getter_mMapTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
@@ -2587,13 +2587,13 @@ GALGAS_lstring GALGAS_mapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_mapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_mapTypeForGeneration::getter_mMapTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMapTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_mapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_mapTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
@@ -2605,13 +2605,13 @@ GALGAS_typedPropertyList GALGAS_mapTypeForGeneration::reader_mTypedAttributeList
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_mapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_mapTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_insertMethodListAST GALGAS_mapTypeForGeneration::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_insertMethodListAST GALGAS_mapTypeForGeneration::getter_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
   GALGAS_insertMethodListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
@@ -2623,13 +2623,13 @@ GALGAS_insertMethodListAST GALGAS_mapTypeForGeneration::reader_mInsertMethodList
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_insertMethodListAST cPtr_mapTypeForGeneration::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_insertMethodListAST cPtr_mapTypeForGeneration::getter_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInsertMethodList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST GALGAS_mapTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapSearchMethodListAST GALGAS_mapTypeForGeneration::getter_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
   GALGAS_mapSearchMethodListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
@@ -2641,13 +2641,13 @@ GALGAS_mapSearchMethodListAST GALGAS_mapTypeForGeneration::reader_mSearchMethodL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST cPtr_mapTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapSearchMethodListAST cPtr_mapTypeForGeneration::getter_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSearchMethodList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapRemoveMethodListAST GALGAS_mapTypeForGeneration::reader_mRemoveMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapRemoveMethodListAST GALGAS_mapTypeForGeneration::getter_mRemoveMethodList (UNUSED_LOCATION_ARGS) const {
   GALGAS_mapRemoveMethodListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
@@ -2659,13 +2659,13 @@ GALGAS_mapRemoveMethodListAST GALGAS_mapTypeForGeneration::reader_mRemoveMethodL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapRemoveMethodListAST cPtr_mapTypeForGeneration::reader_mRemoveMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapRemoveMethodListAST cPtr_mapTypeForGeneration::getter_mRemoveMethodList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRemoveMethodList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_mapTypeForGeneration::reader_mHasInsertOrReplaceModifier (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_mapTypeForGeneration::getter_mHasInsertOrReplaceModifier (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
@@ -2677,7 +2677,7 @@ GALGAS_bool GALGAS_mapTypeForGeneration::reader_mHasInsertOrReplaceModifier (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cPtr_mapTypeForGeneration::reader_mHasInsertOrReplaceModifier (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool cPtr_mapTypeForGeneration::getter_mHasInsertOrReplaceModifier (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mHasInsertOrReplaceModifier ;
 }
 
@@ -2850,7 +2850,7 @@ GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_primitiveTypeForGeneration::reader_mPredefinedTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_primitiveTypeForGeneration::getter_mPredefinedTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_primitiveTypeForGeneration * p = (const cPtr_primitiveTypeForGeneration *) mObjectPtr ;
@@ -2862,13 +2862,13 @@ GALGAS_string GALGAS_primitiveTypeForGeneration::reader_mPredefinedTypeName (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_primitiveTypeForGeneration::reader_mPredefinedTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_primitiveTypeForGeneration::getter_mPredefinedTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mPredefinedTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_predefinedTypeKindEnum GALGAS_primitiveTypeForGeneration::reader_mKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_predefinedTypeKindEnum GALGAS_primitiveTypeForGeneration::getter_mKind (UNUSED_LOCATION_ARGS) const {
   GALGAS_predefinedTypeKindEnum result ;
   if (NULL != mObjectPtr) {
     const cPtr_primitiveTypeForGeneration * p = (const cPtr_primitiveTypeForGeneration *) mObjectPtr ;
@@ -2880,7 +2880,7 @@ GALGAS_predefinedTypeKindEnum GALGAS_primitiveTypeForGeneration::reader_mKind (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_predefinedTypeKindEnum cPtr_primitiveTypeForGeneration::reader_mKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_predefinedTypeKindEnum cPtr_primitiveTypeForGeneration::getter_mKind (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mKind ;
 }
 
@@ -3072,7 +3072,7 @@ GALGAS_sharedMapTypeForGeneration GALGAS_sharedMapTypeForGeneration::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_sharedMapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_sharedMapTypeForGeneration::getter_mMapTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
@@ -3084,13 +3084,13 @@ GALGAS_lstring GALGAS_sharedMapTypeForGeneration::reader_mMapTypeName (UNUSED_LO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_sharedMapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_sharedMapTypeForGeneration::getter_mMapTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMapTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_sharedMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_sharedMapTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
@@ -3102,13 +3102,13 @@ GALGAS_typedPropertyList GALGAS_sharedMapTypeForGeneration::reader_mTypedAttribu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_sharedMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_sharedMapTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_insertMethodListAST GALGAS_sharedMapTypeForGeneration::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_insertMethodListAST GALGAS_sharedMapTypeForGeneration::getter_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
   GALGAS_insertMethodListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
@@ -3120,13 +3120,13 @@ GALGAS_insertMethodListAST GALGAS_sharedMapTypeForGeneration::reader_mInsertMeth
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_insertMethodListAST cPtr_sharedMapTypeForGeneration::reader_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_insertMethodListAST cPtr_sharedMapTypeForGeneration::getter_mInsertMethodList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInsertMethodList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST GALGAS_sharedMapTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapSearchMethodListAST GALGAS_sharedMapTypeForGeneration::getter_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
   GALGAS_mapSearchMethodListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
@@ -3138,13 +3138,13 @@ GALGAS_mapSearchMethodListAST GALGAS_sharedMapTypeForGeneration::reader_mSearchM
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST cPtr_sharedMapTypeForGeneration::reader_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapSearchMethodListAST cPtr_sharedMapTypeForGeneration::getter_mSearchMethodList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSearchMethodList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapAutomatonStateMap GALGAS_sharedMapTypeForGeneration::reader_mMapAutomatonStateMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapAutomatonStateMap GALGAS_sharedMapTypeForGeneration::getter_mMapAutomatonStateMap (UNUSED_LOCATION_ARGS) const {
   GALGAS_mapAutomatonStateMap result ;
   if (NULL != mObjectPtr) {
     const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
@@ -3156,13 +3156,13 @@ GALGAS_mapAutomatonStateMap GALGAS_sharedMapTypeForGeneration::reader_mMapAutoma
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapAutomatonStateMap cPtr_sharedMapTypeForGeneration::reader_mMapAutomatonStateMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapAutomatonStateMap cPtr_sharedMapTypeForGeneration::getter_mMapAutomatonStateMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMapAutomatonStateMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapAutomatonActionMap GALGAS_sharedMapTypeForGeneration::reader_mMapAutomatonActionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapAutomatonActionMap GALGAS_sharedMapTypeForGeneration::getter_mMapAutomatonActionMap (UNUSED_LOCATION_ARGS) const {
   GALGAS_mapAutomatonActionMap result ;
   if (NULL != mObjectPtr) {
     const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
@@ -3174,13 +3174,13 @@ GALGAS_mapAutomatonActionMap GALGAS_sharedMapTypeForGeneration::reader_mMapAutom
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapAutomatonActionMap cPtr_sharedMapTypeForGeneration::reader_mMapAutomatonActionMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapAutomatonActionMap cPtr_sharedMapTypeForGeneration::getter_mMapAutomatonActionMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMapAutomatonActionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapStateSortedList GALGAS_sharedMapTypeForGeneration::reader_mMapStateSortedList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapStateSortedList GALGAS_sharedMapTypeForGeneration::getter_mMapStateSortedList (UNUSED_LOCATION_ARGS) const {
   GALGAS_mapStateSortedList result ;
   if (NULL != mObjectPtr) {
     const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
@@ -3192,13 +3192,13 @@ GALGAS_mapStateSortedList GALGAS_sharedMapTypeForGeneration::reader_mMapStateSor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapStateSortedList cPtr_sharedMapTypeForGeneration::reader_mMapStateSortedList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapStateSortedList cPtr_sharedMapTypeForGeneration::getter_mMapStateSortedList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMapStateSortedList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapOverrideList GALGAS_sharedMapTypeForGeneration::reader_mMapOverrideList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapOverrideList GALGAS_sharedMapTypeForGeneration::getter_mMapOverrideList (UNUSED_LOCATION_ARGS) const {
   GALGAS_mapOverrideList result ;
   if (NULL != mObjectPtr) {
     const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
@@ -3210,7 +3210,7 @@ GALGAS_mapOverrideList GALGAS_sharedMapTypeForGeneration::reader_mMapOverrideLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapOverrideList cPtr_sharedMapTypeForGeneration::reader_mMapOverrideList (UNUSED_LOCATION_ARGS) const {
+GALGAS_mapOverrideList cPtr_sharedMapTypeForGeneration::getter_mMapOverrideList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMapOverrideList ;
 }
 
@@ -3401,7 +3401,7 @@ GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_sortedListTypeForGeneration::reader_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_sortedListTypeForGeneration::getter_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_sortedListTypeForGeneration * p = (const cPtr_sortedListTypeForGeneration *) mObjectPtr ;
@@ -3413,13 +3413,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_sortedListTypeForGeneration::reader_mListE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_sortedListTypeForGeneration::reader_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_sortedListTypeForGeneration::getter_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mListElementTypeIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_sortedListTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_sortedListTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_sortedListTypeForGeneration * p = (const cPtr_sortedListTypeForGeneration *) mObjectPtr ;
@@ -3431,13 +3431,13 @@ GALGAS_typedPropertyList GALGAS_sortedListTypeForGeneration::reader_mTypedAttrib
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_sortedListTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_sortedListTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sortDescriptorListForGeneration GALGAS_sortedListTypeForGeneration::reader_mSortDescriptorList (UNUSED_LOCATION_ARGS) const {
+GALGAS_sortDescriptorListForGeneration GALGAS_sortedListTypeForGeneration::getter_mSortDescriptorList (UNUSED_LOCATION_ARGS) const {
   GALGAS_sortDescriptorListForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_sortedListTypeForGeneration * p = (const cPtr_sortedListTypeForGeneration *) mObjectPtr ;
@@ -3449,7 +3449,7 @@ GALGAS_sortDescriptorListForGeneration GALGAS_sortedListTypeForGeneration::reade
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sortDescriptorListForGeneration cPtr_sortedListTypeForGeneration::reader_mSortDescriptorList (UNUSED_LOCATION_ARGS) const {
+GALGAS_sortDescriptorListForGeneration cPtr_sortedListTypeForGeneration::getter_mSortDescriptorList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSortDescriptorList ;
 }
 
@@ -3610,7 +3610,7 @@ GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::constructor_new (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_structTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList GALGAS_structTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_structTypeForGeneration * p = (const cPtr_structTypeForGeneration *) mObjectPtr ;
@@ -3622,7 +3622,7 @@ GALGAS_typedPropertyList GALGAS_structTypeForGeneration::reader_mTypedAttributeL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList cPtr_structTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_structTypeForGeneration::getter_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -3800,7 +3800,7 @@ GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration::con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_syntaxDeclarationForGeneration::reader_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_syntaxDeclarationForGeneration::getter_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
@@ -3812,13 +3812,13 @@ GALGAS_string GALGAS_syntaxDeclarationForGeneration::reader_mSyntaxComponentName
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_syntaxDeclarationForGeneration::reader_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_syntaxDeclarationForGeneration::getter_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSyntaxComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_syntaxDeclarationForGeneration::reader_mLexiqueName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_syntaxDeclarationForGeneration::getter_mLexiqueName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
@@ -3830,13 +3830,13 @@ GALGAS_string GALGAS_syntaxDeclarationForGeneration::reader_mLexiqueName (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_syntaxDeclarationForGeneration::reader_mLexiqueName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_syntaxDeclarationForGeneration::getter_mLexiqueName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_nonterminalMap GALGAS_syntaxDeclarationForGeneration::reader_mNonterminalDeclarationMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_nonterminalMap GALGAS_syntaxDeclarationForGeneration::getter_mNonterminalDeclarationMap (UNUSED_LOCATION_ARGS) const {
   GALGAS_nonterminalMap result ;
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
@@ -3848,13 +3848,13 @@ GALGAS_nonterminalMap GALGAS_syntaxDeclarationForGeneration::reader_mNonterminal
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_nonterminalMap cPtr_syntaxDeclarationForGeneration::reader_mNonterminalDeclarationMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_nonterminalMap cPtr_syntaxDeclarationForGeneration::getter_mNonterminalDeclarationMap (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mNonterminalDeclarationMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_ruleDeclarationList GALGAS_syntaxDeclarationForGeneration::reader_mRuleDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_ruleDeclarationList GALGAS_syntaxDeclarationForGeneration::getter_mRuleDeclarationList (UNUSED_LOCATION_ARGS) const {
   GALGAS_ruleDeclarationList result ;
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
@@ -3866,13 +3866,13 @@ GALGAS_ruleDeclarationList GALGAS_syntaxDeclarationForGeneration::reader_mRuleDe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_ruleDeclarationList cPtr_syntaxDeclarationForGeneration::reader_mRuleDeclarationList (UNUSED_LOCATION_ARGS) const {
+GALGAS_ruleDeclarationList cPtr_syntaxDeclarationForGeneration::getter_mRuleDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRuleDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_syntaxDeclarationForGeneration::reader_mSelectMethodCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_syntaxDeclarationForGeneration::getter_mSelectMethodCount (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
@@ -3884,13 +3884,13 @@ GALGAS_uint GALGAS_syntaxDeclarationForGeneration::reader_mSelectMethodCount (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint cPtr_syntaxDeclarationForGeneration::reader_mSelectMethodCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint cPtr_syntaxDeclarationForGeneration::getter_mSelectMethodCount (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelectMethodCount ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_syntaxDeclarationForGeneration::reader_mHasIndexing (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_syntaxDeclarationForGeneration::getter_mHasIndexing (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
@@ -3902,13 +3902,13 @@ GALGAS_bool GALGAS_syntaxDeclarationForGeneration::reader_mHasIndexing (UNUSED_L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cPtr_syntaxDeclarationForGeneration::reader_mHasIndexing (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_mHasIndexing (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mHasIndexing ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_syntaxDeclarationForGeneration::reader_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_syntaxDeclarationForGeneration::getter_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
@@ -3920,7 +3920,7 @@ GALGAS_bool GALGAS_syntaxDeclarationForGeneration::reader_mHasTranslateFeature (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cPtr_syntaxDeclarationForGeneration::reader_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mHasTranslateFeature ;
 }
 
@@ -4177,7 +4177,7 @@ GALGAS_addExpressionAST GALGAS_addExpressionAST::constructor_new (const GALGAS_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_addExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_addExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_addExpressionAST * p = (const cPtr_addExpressionAST *) mObjectPtr ;
@@ -4189,13 +4189,13 @@ GALGAS_location GALGAS_addExpressionAST::reader_mOperatorLocation (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_addExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_addExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_addExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_addExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_addExpressionAST * p = (const cPtr_addExpressionAST *) mObjectPtr ;
@@ -4207,13 +4207,13 @@ GALGAS_semanticExpressionAST GALGAS_addExpressionAST::reader_mLeftExpression (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_addExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_addExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_addExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_addExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_addExpressionAST * p = (const cPtr_addExpressionAST *) mObjectPtr ;
@@ -4225,7 +4225,7 @@ GALGAS_semanticExpressionAST GALGAS_addExpressionAST::reader_mRightExpression (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_addExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_addExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -4379,7 +4379,7 @@ GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_addExpressionNoOverflowAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_addExpressionNoOverflowAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_addExpressionNoOverflowAST * p = (const cPtr_addExpressionNoOverflowAST *) mObjectPtr ;
@@ -4391,13 +4391,13 @@ GALGAS_location GALGAS_addExpressionNoOverflowAST::reader_mOperatorLocation (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_addExpressionNoOverflowAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_addExpressionNoOverflowAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_addExpressionNoOverflowAST * p = (const cPtr_addExpressionNoOverflowAST *) mObjectPtr ;
@@ -4409,13 +4409,13 @@ GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::reader_mLeftExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_addExpressionNoOverflowAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_addExpressionNoOverflowAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_addExpressionNoOverflowAST * p = (const cPtr_addExpressionNoOverflowAST *) mObjectPtr ;
@@ -4427,7 +4427,7 @@ GALGAS_semanticExpressionAST GALGAS_addExpressionNoOverflowAST::reader_mRightExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_addExpressionNoOverflowAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_addExpressionNoOverflowAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -4581,7 +4581,7 @@ GALGAS_andExpressionAST GALGAS_andExpressionAST::constructor_new (const GALGAS_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_andExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_andExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_andExpressionAST * p = (const cPtr_andExpressionAST *) mObjectPtr ;
@@ -4593,13 +4593,13 @@ GALGAS_location GALGAS_andExpressionAST::reader_mOperatorLocation (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_andExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_andExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_andExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_andExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_andExpressionAST * p = (const cPtr_andExpressionAST *) mObjectPtr ;
@@ -4611,13 +4611,13 @@ GALGAS_semanticExpressionAST GALGAS_andExpressionAST::reader_mLeftExpression (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_andExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_andExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_andExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_andExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_andExpressionAST * p = (const cPtr_andExpressionAST *) mObjectPtr ;
@@ -4629,7 +4629,7 @@ GALGAS_semanticExpressionAST GALGAS_andExpressionAST::reader_mRightExpression (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_andExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_andExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -4783,7 +4783,7 @@ GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_andShortExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_andShortExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_andShortExpressionAST * p = (const cPtr_andShortExpressionAST *) mObjectPtr ;
@@ -4795,13 +4795,13 @@ GALGAS_location GALGAS_andShortExpressionAST::reader_mOperatorLocation (UNUSED_L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_andShortExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_andShortExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_andShortExpressionAST * p = (const cPtr_andShortExpressionAST *) mObjectPtr ;
@@ -4813,13 +4813,13 @@ GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::reader_mLeftExpressio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_andShortExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_andShortExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_andShortExpressionAST * p = (const cPtr_andShortExpressionAST *) mObjectPtr ;
@@ -4831,7 +4831,7 @@ GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::reader_mRightExpressi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_andShortExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_andShortExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -4985,7 +4985,7 @@ GALGAS_castInExpressionAST GALGAS_castInExpressionAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_castInExpressionAST::reader_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_castInExpressionAST::getter_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_castInExpressionAST * p = (const cPtr_castInExpressionAST *) mObjectPtr ;
@@ -4997,13 +4997,13 @@ GALGAS_semanticExpressionAST GALGAS_castInExpressionAST::reader_mReceiverExpress
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_castInExpressionAST::reader_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_castInExpressionAST::getter_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_castInExpressionAST::reader_mEndOfReceiverExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_castInExpressionAST::getter_mEndOfReceiverExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_castInExpressionAST * p = (const cPtr_castInExpressionAST *) mObjectPtr ;
@@ -5015,13 +5015,13 @@ GALGAS_location GALGAS_castInExpressionAST::reader_mEndOfReceiverExpression (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_castInExpressionAST::reader_mEndOfReceiverExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_castInExpressionAST::getter_mEndOfReceiverExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfReceiverExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_castInExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_castInExpressionAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_castInExpressionAST * p = (const cPtr_castInExpressionAST *) mObjectPtr ;
@@ -5033,7 +5033,7 @@ GALGAS_lstring GALGAS_castInExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_castInExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_castInExpressionAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
@@ -5187,7 +5187,7 @@ GALGAS_closedSliceExpressionAST GALGAS_closedSliceExpressionAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_closedSliceExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_closedSliceExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_closedSliceExpressionAST * p = (const cPtr_closedSliceExpressionAST *) mObjectPtr ;
@@ -5199,13 +5199,13 @@ GALGAS_location GALGAS_closedSliceExpressionAST::reader_mOperatorLocation (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_closedSliceExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_closedSliceExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_closedSliceExpressionAST * p = (const cPtr_closedSliceExpressionAST *) mObjectPtr ;
@@ -5217,13 +5217,13 @@ GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::reader_mLeftExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_closedSliceExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_closedSliceExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_closedSliceExpressionAST * p = (const cPtr_closedSliceExpressionAST *) mObjectPtr ;
@@ -5235,7 +5235,7 @@ GALGAS_semanticExpressionAST GALGAS_closedSliceExpressionAST::reader_mRightExpre
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_closedSliceExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_closedSliceExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -5398,7 +5398,7 @@ GALGAS_collectionValueAST GALGAS_collectionValueAST::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_collectionValueAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_collectionValueAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_collectionValueAST * p = (const cPtr_collectionValueAST *) mObjectPtr ;
@@ -5410,13 +5410,13 @@ GALGAS_lstring GALGAS_collectionValueAST::reader_mTypeName (UNUSED_LOCATION_ARGS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_collectionValueAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_collectionValueAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_collectionValueElementList GALGAS_collectionValueAST::reader_mElementList (UNUSED_LOCATION_ARGS) const {
+GALGAS_collectionValueElementList GALGAS_collectionValueAST::getter_mElementList (UNUSED_LOCATION_ARGS) const {
   GALGAS_collectionValueElementList result ;
   if (NULL != mObjectPtr) {
     const cPtr_collectionValueAST * p = (const cPtr_collectionValueAST *) mObjectPtr ;
@@ -5428,13 +5428,13 @@ GALGAS_collectionValueElementList GALGAS_collectionValueAST::reader_mElementList
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_collectionValueElementList cPtr_collectionValueAST::reader_mElementList (UNUSED_LOCATION_ARGS) const {
+GALGAS_collectionValueElementList cPtr_collectionValueAST::getter_mElementList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mElementList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_collectionValueAST::reader_mEndOfCollectionValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_collectionValueAST::getter_mEndOfCollectionValue (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_collectionValueAST * p = (const cPtr_collectionValueAST *) mObjectPtr ;
@@ -5446,7 +5446,7 @@ GALGAS_location GALGAS_collectionValueAST::reader_mEndOfCollectionValue (UNUSED_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_collectionValueAST::reader_mEndOfCollectionValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_collectionValueAST::getter_mEndOfCollectionValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfCollectionValue ;
 }
 
@@ -5596,7 +5596,7 @@ GALGAS_complementExpressionAST GALGAS_complementExpressionAST::constructor_new (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_complementExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_complementExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_complementExpressionAST * p = (const cPtr_complementExpressionAST *) mObjectPtr ;
@@ -5608,13 +5608,13 @@ GALGAS_location GALGAS_complementExpressionAST::reader_mOperatorLocation (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_complementExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_complementExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_complementExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_complementExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_complementExpressionAST * p = (const cPtr_complementExpressionAST *) mObjectPtr ;
@@ -5626,7 +5626,7 @@ GALGAS_semanticExpressionAST GALGAS_complementExpressionAST::reader_mExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_complementExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_complementExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -5776,7 +5776,7 @@ GALGAS_concatExpressionAST GALGAS_concatExpressionAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_concatExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_concatExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_concatExpressionAST * p = (const cPtr_concatExpressionAST *) mObjectPtr ;
@@ -5788,13 +5788,13 @@ GALGAS_location GALGAS_concatExpressionAST::reader_mOperatorLocation (UNUSED_LOC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_concatExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_concatExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_concatExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_concatExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_concatExpressionAST * p = (const cPtr_concatExpressionAST *) mObjectPtr ;
@@ -5806,13 +5806,13 @@ GALGAS_semanticExpressionAST GALGAS_concatExpressionAST::reader_mLeftExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_concatExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_concatExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_concatExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_concatExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_concatExpressionAST * p = (const cPtr_concatExpressionAST *) mObjectPtr ;
@@ -5824,7 +5824,7 @@ GALGAS_semanticExpressionAST GALGAS_concatExpressionAST::reader_mRightExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_concatExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_concatExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -5987,7 +5987,7 @@ GALGAS_constructorExpressionAST GALGAS_constructorExpressionAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_constructorExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_constructorExpressionAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_constructorExpressionAST * p = (const cPtr_constructorExpressionAST *) mObjectPtr ;
@@ -5999,13 +5999,13 @@ GALGAS_lstring GALGAS_constructorExpressionAST::reader_mTypeName (UNUSED_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_constructorExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_constructorExpressionAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_constructorExpressionAST::reader_mConstructorName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_constructorExpressionAST::getter_mConstructorName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_constructorExpressionAST * p = (const cPtr_constructorExpressionAST *) mObjectPtr ;
@@ -6017,13 +6017,13 @@ GALGAS_lstring GALGAS_constructorExpressionAST::reader_mConstructorName (UNUSED_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_constructorExpressionAST::reader_mConstructorName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_constructorExpressionAST::getter_mConstructorName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mConstructorName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList GALGAS_constructorExpressionAST::reader_mExpressions (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList GALGAS_constructorExpressionAST::getter_mExpressions (UNUSED_LOCATION_ARGS) const {
   GALGAS_actualOutputExpressionList result ;
   if (NULL != mObjectPtr) {
     const cPtr_constructorExpressionAST * p = (const cPtr_constructorExpressionAST *) mObjectPtr ;
@@ -6035,7 +6035,7 @@ GALGAS_actualOutputExpressionList GALGAS_constructorExpressionAST::reader_mExpre
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList cPtr_constructorExpressionAST::reader_mExpressions (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList cPtr_constructorExpressionAST::getter_mExpressions (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpressions ;
 }
 
@@ -6188,7 +6188,7 @@ GALGAS_defaultConstructorExpressionAST GALGAS_defaultConstructorExpressionAST::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_defaultConstructorExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_defaultConstructorExpressionAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_defaultConstructorExpressionAST * p = (const cPtr_defaultConstructorExpressionAST *) mObjectPtr ;
@@ -6200,7 +6200,7 @@ GALGAS_lstring GALGAS_defaultConstructorExpressionAST::reader_mTypeName (UNUSED_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_defaultConstructorExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_defaultConstructorExpressionAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
@@ -6346,7 +6346,7 @@ GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_divisionExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_divisionExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_divisionExpressionAST * p = (const cPtr_divisionExpressionAST *) mObjectPtr ;
@@ -6358,13 +6358,13 @@ GALGAS_location GALGAS_divisionExpressionAST::reader_mOperatorLocation (UNUSED_L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_divisionExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_divisionExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_divisionExpressionAST * p = (const cPtr_divisionExpressionAST *) mObjectPtr ;
@@ -6376,13 +6376,13 @@ GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::reader_mLeftExpressio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_divisionExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_divisionExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_divisionExpressionAST * p = (const cPtr_divisionExpressionAST *) mObjectPtr ;
@@ -6394,7 +6394,7 @@ GALGAS_semanticExpressionAST GALGAS_divisionExpressionAST::reader_mRightExpressi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_divisionExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_divisionExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -6548,7 +6548,7 @@ GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_divisionExpressionNoOverflowAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_divisionExpressionNoOverflowAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_divisionExpressionNoOverflowAST * p = (const cPtr_divisionExpressionNoOverflowAST *) mObjectPtr ;
@@ -6560,13 +6560,13 @@ GALGAS_location GALGAS_divisionExpressionNoOverflowAST::reader_mOperatorLocation
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_divisionExpressionNoOverflowAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_divisionExpressionNoOverflowAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_divisionExpressionNoOverflowAST * p = (const cPtr_divisionExpressionNoOverflowAST *) mObjectPtr ;
@@ -6578,13 +6578,13 @@ GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::reader_mLef
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_divisionExpressionNoOverflowAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_divisionExpressionNoOverflowAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_divisionExpressionNoOverflowAST * p = (const cPtr_divisionExpressionNoOverflowAST *) mObjectPtr ;
@@ -6596,7 +6596,7 @@ GALGAS_semanticExpressionAST GALGAS_divisionExpressionNoOverflowAST::reader_mRig
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_divisionExpressionNoOverflowAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_divisionExpressionNoOverflowAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -6750,7 +6750,7 @@ GALGAS_equalExpressionAST GALGAS_equalExpressionAST::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_equalExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_equalExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_equalExpressionAST * p = (const cPtr_equalExpressionAST *) mObjectPtr ;
@@ -6762,13 +6762,13 @@ GALGAS_location GALGAS_equalExpressionAST::reader_mOperatorLocation (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_equalExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_equalExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_equalExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_equalExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_equalExpressionAST * p = (const cPtr_equalExpressionAST *) mObjectPtr ;
@@ -6780,13 +6780,13 @@ GALGAS_semanticExpressionAST GALGAS_equalExpressionAST::reader_mLeftExpression (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_equalExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_equalExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_equalExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_equalExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_equalExpressionAST * p = (const cPtr_equalExpressionAST *) mObjectPtr ;
@@ -6798,7 +6798,7 @@ GALGAS_semanticExpressionAST GALGAS_equalExpressionAST::reader_mRightExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_equalExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_equalExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -6951,7 +6951,7 @@ GALGAS_falseExpressionAST GALGAS_falseExpressionAST::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_falseExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_falseExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_falseExpressionAST * p = (const cPtr_falseExpressionAST *) mObjectPtr ;
@@ -6963,7 +6963,7 @@ GALGAS_location GALGAS_falseExpressionAST::reader_mLocation (UNUSED_LOCATION_ARG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_falseExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_falseExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocation ;
 }
 
@@ -7113,7 +7113,7 @@ GALGAS_filewrapperInExpressionAST GALGAS_filewrapperInExpressionAST::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_filewrapperInExpressionAST::reader_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_filewrapperInExpressionAST::getter_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_filewrapperInExpressionAST * p = (const cPtr_filewrapperInExpressionAST *) mObjectPtr ;
@@ -7125,13 +7125,13 @@ GALGAS_lstring GALGAS_filewrapperInExpressionAST::reader_mFilewrapperName (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_filewrapperInExpressionAST::reader_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_filewrapperInExpressionAST::getter_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_filewrapperInExpressionAST::reader_mFilewrapperPath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_filewrapperInExpressionAST::getter_mFilewrapperPath (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_filewrapperInExpressionAST * p = (const cPtr_filewrapperInExpressionAST *) mObjectPtr ;
@@ -7143,7 +7143,7 @@ GALGAS_lstring GALGAS_filewrapperInExpressionAST::reader_mFilewrapperPath (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_filewrapperInExpressionAST::reader_mFilewrapperPath (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_filewrapperInExpressionAST::getter_mFilewrapperPath (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperPath ;
 }
 
@@ -7292,7 +7292,7 @@ GALGAS_filewrapperObjectInstanciationInExpressionAST GALGAS_filewrapperObjectIns
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_filewrapperObjectInstanciationInExpressionAST::reader_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_filewrapperObjectInstanciationInExpressionAST::getter_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_filewrapperObjectInstanciationInExpressionAST * p = (const cPtr_filewrapperObjectInstanciationInExpressionAST *) mObjectPtr ;
@@ -7304,7 +7304,7 @@ GALGAS_lstring GALGAS_filewrapperObjectInstanciationInExpressionAST::reader_mFil
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_filewrapperObjectInstanciationInExpressionAST::reader_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_filewrapperObjectInstanciationInExpressionAST::getter_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperName ;
 }
 
@@ -7459,7 +7459,7 @@ GALGAS_filewrapperTemplateInExpressionAST GALGAS_filewrapperTemplateInExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_filewrapperTemplateInExpressionAST::reader_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_filewrapperTemplateInExpressionAST::getter_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_filewrapperTemplateInExpressionAST * p = (const cPtr_filewrapperTemplateInExpressionAST *) mObjectPtr ;
@@ -7471,13 +7471,13 @@ GALGAS_lstring GALGAS_filewrapperTemplateInExpressionAST::reader_mFilewrapperNam
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_filewrapperTemplateInExpressionAST::reader_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_filewrapperTemplateInExpressionAST::getter_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_filewrapperTemplateInExpressionAST::reader_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_filewrapperTemplateInExpressionAST::getter_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_filewrapperTemplateInExpressionAST * p = (const cPtr_filewrapperTemplateInExpressionAST *) mObjectPtr ;
@@ -7489,13 +7489,13 @@ GALGAS_lstring GALGAS_filewrapperTemplateInExpressionAST::reader_mFilewrapperTem
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_filewrapperTemplateInExpressionAST::reader_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_filewrapperTemplateInExpressionAST::getter_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFilewrapperTemplateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList GALGAS_filewrapperTemplateInExpressionAST::reader_mExpressions (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList GALGAS_filewrapperTemplateInExpressionAST::getter_mExpressions (UNUSED_LOCATION_ARGS) const {
   GALGAS_actualOutputExpressionList result ;
   if (NULL != mObjectPtr) {
     const cPtr_filewrapperTemplateInExpressionAST * p = (const cPtr_filewrapperTemplateInExpressionAST *) mObjectPtr ;
@@ -7507,7 +7507,7 @@ GALGAS_actualOutputExpressionList GALGAS_filewrapperTemplateInExpressionAST::rea
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList cPtr_filewrapperTemplateInExpressionAST::reader_mExpressions (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList cPtr_filewrapperTemplateInExpressionAST::getter_mExpressions (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpressions ;
 }
 
@@ -7665,7 +7665,7 @@ GALGAS_functionCallExpressionAST GALGAS_functionCallExpressionAST::constructor_n
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_functionCallExpressionAST::reader_mFunctionName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_functionCallExpressionAST::getter_mFunctionName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_functionCallExpressionAST * p = (const cPtr_functionCallExpressionAST *) mObjectPtr ;
@@ -7677,13 +7677,13 @@ GALGAS_lstring GALGAS_functionCallExpressionAST::reader_mFunctionName (UNUSED_LO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_functionCallExpressionAST::reader_mFunctionName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_functionCallExpressionAST::getter_mFunctionName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFunctionName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList GALGAS_functionCallExpressionAST::reader_mExpressionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList GALGAS_functionCallExpressionAST::getter_mExpressionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_actualOutputExpressionList result ;
   if (NULL != mObjectPtr) {
     const cPtr_functionCallExpressionAST * p = (const cPtr_functionCallExpressionAST *) mObjectPtr ;
@@ -7695,7 +7695,7 @@ GALGAS_actualOutputExpressionList GALGAS_functionCallExpressionAST::reader_mExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList cPtr_functionCallExpressionAST::reader_mExpressionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList cPtr_functionCallExpressionAST::getter_mExpressionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpressionList ;
 }
 
@@ -7845,7 +7845,7 @@ GALGAS_getterCallExpressionAST GALGAS_getterCallExpressionAST::constructor_new (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_getterCallExpressionAST::reader_mReceiver (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_getterCallExpressionAST::getter_mReceiver (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_getterCallExpressionAST * p = (const cPtr_getterCallExpressionAST *) mObjectPtr ;
@@ -7857,13 +7857,13 @@ GALGAS_semanticExpressionAST GALGAS_getterCallExpressionAST::reader_mReceiver (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_getterCallExpressionAST::reader_mReceiver (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_getterCallExpressionAST::getter_mReceiver (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiver ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_getterCallExpressionAST::reader_mGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_getterCallExpressionAST::getter_mGetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_getterCallExpressionAST * p = (const cPtr_getterCallExpressionAST *) mObjectPtr ;
@@ -7875,13 +7875,13 @@ GALGAS_lstring GALGAS_getterCallExpressionAST::reader_mGetterName (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_getterCallExpressionAST::reader_mGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_getterCallExpressionAST::getter_mGetterName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGetterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList GALGAS_getterCallExpressionAST::reader_mExpressions (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList GALGAS_getterCallExpressionAST::getter_mExpressions (UNUSED_LOCATION_ARGS) const {
   GALGAS_actualOutputExpressionList result ;
   if (NULL != mObjectPtr) {
     const cPtr_getterCallExpressionAST * p = (const cPtr_getterCallExpressionAST *) mObjectPtr ;
@@ -7893,7 +7893,7 @@ GALGAS_actualOutputExpressionList GALGAS_getterCallExpressionAST::reader_mExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList cPtr_getterCallExpressionAST::reader_mExpressions (UNUSED_LOCATION_ARGS) const {
+GALGAS_actualOutputExpressionList cPtr_getterCallExpressionAST::getter_mExpressions (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpressions ;
 }
 
@@ -8047,7 +8047,7 @@ GALGAS_greaterOrEqualExpressionAST GALGAS_greaterOrEqualExpressionAST::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_greaterOrEqualExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_greaterOrEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_greaterOrEqualExpressionAST * p = (const cPtr_greaterOrEqualExpressionAST *) mObjectPtr ;
@@ -8059,13 +8059,13 @@ GALGAS_location GALGAS_greaterOrEqualExpressionAST::reader_mOperatorLocation (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_greaterOrEqualExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_greaterOrEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_greaterOrEqualExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_greaterOrEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_greaterOrEqualExpressionAST * p = (const cPtr_greaterOrEqualExpressionAST *) mObjectPtr ;
@@ -8077,13 +8077,13 @@ GALGAS_semanticExpressionAST GALGAS_greaterOrEqualExpressionAST::reader_mLeftExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_greaterOrEqualExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_greaterOrEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_greaterOrEqualExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_greaterOrEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_greaterOrEqualExpressionAST * p = (const cPtr_greaterOrEqualExpressionAST *) mObjectPtr ;
@@ -8095,7 +8095,7 @@ GALGAS_semanticExpressionAST GALGAS_greaterOrEqualExpressionAST::reader_mRightEx
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_greaterOrEqualExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_greaterOrEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -8248,7 +8248,7 @@ GALGAS_hereExpressionAST GALGAS_hereExpressionAST::constructor_new (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_hereExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_hereExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_hereExpressionAST * p = (const cPtr_hereExpressionAST *) mObjectPtr ;
@@ -8260,7 +8260,7 @@ GALGAS_location GALGAS_hereExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_hereExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_hereExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocation ;
 }
 
@@ -8410,7 +8410,7 @@ GALGAS_ifExpressionAST GALGAS_ifExpressionAST::constructor_new (const GALGAS_loc
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_ifExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_ifExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_ifExpressionAST * p = (const cPtr_ifExpressionAST *) mObjectPtr ;
@@ -8422,13 +8422,13 @@ GALGAS_location GALGAS_ifExpressionAST::reader_mOperatorLocation (UNUSED_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_ifExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_ifExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::reader_mIfExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::getter_mIfExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_ifExpressionAST * p = (const cPtr_ifExpressionAST *) mObjectPtr ;
@@ -8440,13 +8440,13 @@ GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::reader_mIfExpression (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_ifExpressionAST::reader_mIfExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_ifExpressionAST::getter_mIfExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIfExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::reader_mThenExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::getter_mThenExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_ifExpressionAST * p = (const cPtr_ifExpressionAST *) mObjectPtr ;
@@ -8458,13 +8458,13 @@ GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::reader_mThenExpression (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_ifExpressionAST::reader_mThenExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_ifExpressionAST::getter_mThenExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mThenExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::reader_mElseExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::getter_mElseExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_ifExpressionAST * p = (const cPtr_ifExpressionAST *) mObjectPtr ;
@@ -8476,7 +8476,7 @@ GALGAS_semanticExpressionAST GALGAS_ifExpressionAST::reader_mElseExpression (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_ifExpressionAST::reader_mElseExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_ifExpressionAST::getter_mElseExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mElseExpression ;
 }
 
@@ -8634,7 +8634,7 @@ GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST::constructor_new (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_leftShiftExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_leftShiftExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_leftShiftExpressionAST * p = (const cPtr_leftShiftExpressionAST *) mObjectPtr ;
@@ -8646,13 +8646,13 @@ GALGAS_location GALGAS_leftShiftExpressionAST::reader_mOperatorLocation (UNUSED_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_leftShiftExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_leftShiftExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_leftShiftExpressionAST * p = (const cPtr_leftShiftExpressionAST *) mObjectPtr ;
@@ -8664,13 +8664,13 @@ GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::reader_mLeftExpressi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_leftShiftExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_leftShiftExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_leftShiftExpressionAST * p = (const cPtr_leftShiftExpressionAST *) mObjectPtr ;
@@ -8682,7 +8682,7 @@ GALGAS_semanticExpressionAST GALGAS_leftShiftExpressionAST::reader_mRightExpress
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_leftShiftExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_leftShiftExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -8840,7 +8840,7 @@ GALGAS_lexiqueIntrospectionExpressionAST GALGAS_lexiqueIntrospectionExpressionAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexiqueIntrospectionExpressionAST::reader_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexiqueIntrospectionExpressionAST::getter_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_lexiqueIntrospectionExpressionAST * p = (const cPtr_lexiqueIntrospectionExpressionAST *) mObjectPtr ;
@@ -8852,13 +8852,13 @@ GALGAS_lstring GALGAS_lexiqueIntrospectionExpressionAST::reader_mLexiqueComponen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_lexiqueIntrospectionExpressionAST::reader_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_lexiqueIntrospectionExpressionAST::getter_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexiqueIntrospectionExpressionAST::reader_mLexiqueGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexiqueIntrospectionExpressionAST::getter_mLexiqueGetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_lexiqueIntrospectionExpressionAST * p = (const cPtr_lexiqueIntrospectionExpressionAST *) mObjectPtr ;
@@ -8870,7 +8870,7 @@ GALGAS_lstring GALGAS_lexiqueIntrospectionExpressionAST::reader_mLexiqueGetterNa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_lexiqueIntrospectionExpressionAST::reader_mLexiqueGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_lexiqueIntrospectionExpressionAST::getter_mLexiqueGetterName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLexiqueGetterName ;
 }
 
@@ -9019,7 +9019,7 @@ GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lbigint GALGAS_literalBigIntExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lbigint GALGAS_literalBigIntExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   GALGAS_lbigint result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalBigIntExpressionAST * p = (const cPtr_literalBigIntExpressionAST *) mObjectPtr ;
@@ -9031,7 +9031,7 @@ GALGAS_lbigint GALGAS_literalBigIntExpressionAST::reader_mValue (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lbigint cPtr_literalBigIntExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lbigint cPtr_literalBigIntExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -9176,7 +9176,7 @@ GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lchar GALGAS_literalCharExpressionAST::reader_mCharacter (UNUSED_LOCATION_ARGS) const {
+GALGAS_lchar GALGAS_literalCharExpressionAST::getter_mCharacter (UNUSED_LOCATION_ARGS) const {
   GALGAS_lchar result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalCharExpressionAST * p = (const cPtr_literalCharExpressionAST *) mObjectPtr ;
@@ -9188,7 +9188,7 @@ GALGAS_lchar GALGAS_literalCharExpressionAST::reader_mCharacter (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lchar cPtr_literalCharExpressionAST::reader_mCharacter (UNUSED_LOCATION_ARGS) const {
+GALGAS_lchar cPtr_literalCharExpressionAST::getter_mCharacter (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCharacter ;
 }
 
@@ -9333,7 +9333,7 @@ GALGAS_literalDoubleExpressionAST GALGAS_literalDoubleExpressionAST::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_ldouble GALGAS_literalDoubleExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_ldouble GALGAS_literalDoubleExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   GALGAS_ldouble result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalDoubleExpressionAST * p = (const cPtr_literalDoubleExpressionAST *) mObjectPtr ;
@@ -9345,7 +9345,7 @@ GALGAS_ldouble GALGAS_literalDoubleExpressionAST::reader_mValue (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_ldouble cPtr_literalDoubleExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_ldouble cPtr_literalDoubleExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -9490,7 +9490,7 @@ GALGAS_literalSInt_36__34_ExpressionAST GALGAS_literalSInt_36__34_ExpressionAST:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lsint_36__34_ GALGAS_literalSInt_36__34_ExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lsint_36__34_ GALGAS_literalSInt_36__34_ExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   GALGAS_lsint_36__34_ result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalSInt_36__34_ExpressionAST * p = (const cPtr_literalSInt_36__34_ExpressionAST *) mObjectPtr ;
@@ -9502,7 +9502,7 @@ GALGAS_lsint_36__34_ GALGAS_literalSInt_36__34_ExpressionAST::reader_mValue (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lsint_36__34_ cPtr_literalSInt_36__34_ExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lsint_36__34_ cPtr_literalSInt_36__34_ExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -9647,7 +9647,7 @@ GALGAS_literalSIntExpressionAST GALGAS_literalSIntExpressionAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lsint GALGAS_literalSIntExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lsint GALGAS_literalSIntExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   GALGAS_lsint result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalSIntExpressionAST * p = (const cPtr_literalSIntExpressionAST *) mObjectPtr ;
@@ -9659,7 +9659,7 @@ GALGAS_lsint GALGAS_literalSIntExpressionAST::reader_mValue (UNUSED_LOCATION_ARG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lsint cPtr_literalSIntExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_lsint cPtr_literalSIntExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -9809,7 +9809,7 @@ GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_literalStringExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_literalStringExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalStringExpressionAST * p = (const cPtr_literalStringExpressionAST *) mObjectPtr ;
@@ -9821,13 +9821,13 @@ GALGAS_location GALGAS_literalStringExpressionAST::reader_mLocation (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_literalStringExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_literalStringExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_literalStringExpressionAST::reader_mStringSequence (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_literalStringExpressionAST::getter_mStringSequence (UNUSED_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalStringExpressionAST * p = (const cPtr_literalStringExpressionAST *) mObjectPtr ;
@@ -9839,7 +9839,7 @@ GALGAS_stringlist GALGAS_literalStringExpressionAST::reader_mStringSequence (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist cPtr_literalStringExpressionAST::reader_mStringSequence (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist cPtr_literalStringExpressionAST::getter_mStringSequence (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStringSequence ;
 }
 
@@ -9988,7 +9988,7 @@ GALGAS_literalTypeInExpressionAST GALGAS_literalTypeInExpressionAST::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_literalTypeInExpressionAST::reader_mLiteralTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_literalTypeInExpressionAST::getter_mLiteralTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalTypeInExpressionAST * p = (const cPtr_literalTypeInExpressionAST *) mObjectPtr ;
@@ -10000,7 +10000,7 @@ GALGAS_lstring GALGAS_literalTypeInExpressionAST::reader_mLiteralTypeName (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_literalTypeInExpressionAST::reader_mLiteralTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_literalTypeInExpressionAST::getter_mLiteralTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLiteralTypeName ;
 }
 
@@ -10145,7 +10145,7 @@ GALGAS_literalUInt_36__34_ExpressionAST GALGAS_literalUInt_36__34_ExpressionAST:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint_36__34_ GALGAS_literalUInt_36__34_ExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint_36__34_ GALGAS_literalUInt_36__34_ExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   GALGAS_luint_36__34_ result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalUInt_36__34_ExpressionAST * p = (const cPtr_literalUInt_36__34_ExpressionAST *) mObjectPtr ;
@@ -10157,7 +10157,7 @@ GALGAS_luint_36__34_ GALGAS_literalUInt_36__34_ExpressionAST::reader_mValue (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint_36__34_ cPtr_literalUInt_36__34_ExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint_36__34_ cPtr_literalUInt_36__34_ExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -10302,7 +10302,7 @@ GALGAS_literalUIntExpressionAST GALGAS_literalUIntExpressionAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint GALGAS_literalUIntExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint GALGAS_literalUIntExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   GALGAS_luint result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalUIntExpressionAST * p = (const cPtr_literalUIntExpressionAST *) mObjectPtr ;
@@ -10314,7 +10314,7 @@ GALGAS_luint GALGAS_literalUIntExpressionAST::reader_mValue (UNUSED_LOCATION_ARG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luint cPtr_literalUIntExpressionAST::reader_mValue (UNUSED_LOCATION_ARGS) const {
+GALGAS_luint cPtr_literalUIntExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mValue ;
 }
 
@@ -10460,7 +10460,7 @@ GALGAS_lowerOrEqualExpressionAST GALGAS_lowerOrEqualExpressionAST::constructor_n
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_lowerOrEqualExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_lowerOrEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_lowerOrEqualExpressionAST * p = (const cPtr_lowerOrEqualExpressionAST *) mObjectPtr ;
@@ -10472,13 +10472,13 @@ GALGAS_location GALGAS_lowerOrEqualExpressionAST::reader_mOperatorLocation (UNUS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_lowerOrEqualExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_lowerOrEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_lowerOrEqualExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_lowerOrEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_lowerOrEqualExpressionAST * p = (const cPtr_lowerOrEqualExpressionAST *) mObjectPtr ;
@@ -10490,13 +10490,13 @@ GALGAS_semanticExpressionAST GALGAS_lowerOrEqualExpressionAST::reader_mLeftExpre
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_lowerOrEqualExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_lowerOrEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_lowerOrEqualExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_lowerOrEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_lowerOrEqualExpressionAST * p = (const cPtr_lowerOrEqualExpressionAST *) mObjectPtr ;
@@ -10508,7 +10508,7 @@ GALGAS_semanticExpressionAST GALGAS_lowerOrEqualExpressionAST::reader_mRightExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_lowerOrEqualExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_lowerOrEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -10662,7 +10662,7 @@ GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_moduloExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_moduloExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_moduloExpressionAST * p = (const cPtr_moduloExpressionAST *) mObjectPtr ;
@@ -10674,13 +10674,13 @@ GALGAS_location GALGAS_moduloExpressionAST::reader_mOperatorLocation (UNUSED_LOC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_moduloExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_moduloExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_moduloExpressionAST * p = (const cPtr_moduloExpressionAST *) mObjectPtr ;
@@ -10692,13 +10692,13 @@ GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::reader_mLeftExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_moduloExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_moduloExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_moduloExpressionAST * p = (const cPtr_moduloExpressionAST *) mObjectPtr ;
@@ -10710,7 +10710,7 @@ GALGAS_semanticExpressionAST GALGAS_moduloExpressionAST::reader_mRightExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_moduloExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_moduloExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -10864,7 +10864,7 @@ GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_multiplicationExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_multiplicationExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_multiplicationExpressionAST * p = (const cPtr_multiplicationExpressionAST *) mObjectPtr ;
@@ -10876,13 +10876,13 @@ GALGAS_location GALGAS_multiplicationExpressionAST::reader_mOperatorLocation (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_multiplicationExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_multiplicationExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_multiplicationExpressionAST * p = (const cPtr_multiplicationExpressionAST *) mObjectPtr ;
@@ -10894,13 +10894,13 @@ GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::reader_mLeftExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_multiplicationExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_multiplicationExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_multiplicationExpressionAST * p = (const cPtr_multiplicationExpressionAST *) mObjectPtr ;
@@ -10912,7 +10912,7 @@ GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionAST::reader_mRightEx
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_multiplicationExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_multiplicationExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -11066,7 +11066,7 @@ GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOv
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_multiplicationExpressionNoOverflowAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_multiplicationExpressionNoOverflowAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_multiplicationExpressionNoOverflowAST * p = (const cPtr_multiplicationExpressionNoOverflowAST *) mObjectPtr ;
@@ -11078,13 +11078,13 @@ GALGAS_location GALGAS_multiplicationExpressionNoOverflowAST::reader_mOperatorLo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_multiplicationExpressionNoOverflowAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_multiplicationExpressionNoOverflowAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_multiplicationExpressionNoOverflowAST * p = (const cPtr_multiplicationExpressionNoOverflowAST *) mObjectPtr ;
@@ -11096,13 +11096,13 @@ GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::reade
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_multiplicationExpressionNoOverflowAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_multiplicationExpressionNoOverflowAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_multiplicationExpressionNoOverflowAST * p = (const cPtr_multiplicationExpressionNoOverflowAST *) mObjectPtr ;
@@ -11114,7 +11114,7 @@ GALGAS_semanticExpressionAST GALGAS_multiplicationExpressionNoOverflowAST::reade
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_multiplicationExpressionNoOverflowAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_multiplicationExpressionNoOverflowAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -11268,7 +11268,7 @@ GALGAS_notEqualExpressionAST GALGAS_notEqualExpressionAST::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_notEqualExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_notEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_notEqualExpressionAST * p = (const cPtr_notEqualExpressionAST *) mObjectPtr ;
@@ -11280,13 +11280,13 @@ GALGAS_location GALGAS_notEqualExpressionAST::reader_mOperatorLocation (UNUSED_L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_notEqualExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_notEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_notEqualExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_notEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_notEqualExpressionAST * p = (const cPtr_notEqualExpressionAST *) mObjectPtr ;
@@ -11298,13 +11298,13 @@ GALGAS_semanticExpressionAST GALGAS_notEqualExpressionAST::reader_mLeftExpressio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_notEqualExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_notEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_notEqualExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_notEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_notEqualExpressionAST * p = (const cPtr_notEqualExpressionAST *) mObjectPtr ;
@@ -11316,7 +11316,7 @@ GALGAS_semanticExpressionAST GALGAS_notEqualExpressionAST::reader_mRightExpressi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_notEqualExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_notEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -11466,7 +11466,7 @@ GALGAS_notExpressionAST GALGAS_notExpressionAST::constructor_new (const GALGAS_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_notExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_notExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_notExpressionAST * p = (const cPtr_notExpressionAST *) mObjectPtr ;
@@ -11478,13 +11478,13 @@ GALGAS_location GALGAS_notExpressionAST::reader_mOperatorLocation (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_notExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_notExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_notExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_notExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_notExpressionAST * p = (const cPtr_notExpressionAST *) mObjectPtr ;
@@ -11496,7 +11496,7 @@ GALGAS_semanticExpressionAST GALGAS_notExpressionAST::reader_mExpression (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_notExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_notExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -11646,7 +11646,7 @@ GALGAS_openedSliceExpressionAST GALGAS_openedSliceExpressionAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_openedSliceExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_openedSliceExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_openedSliceExpressionAST * p = (const cPtr_openedSliceExpressionAST *) mObjectPtr ;
@@ -11658,13 +11658,13 @@ GALGAS_location GALGAS_openedSliceExpressionAST::reader_mOperatorLocation (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_openedSliceExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_openedSliceExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_openedSliceExpressionAST * p = (const cPtr_openedSliceExpressionAST *) mObjectPtr ;
@@ -11676,13 +11676,13 @@ GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::reader_mLeftExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_openedSliceExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_openedSliceExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_openedSliceExpressionAST * p = (const cPtr_openedSliceExpressionAST *) mObjectPtr ;
@@ -11694,7 +11694,7 @@ GALGAS_semanticExpressionAST GALGAS_openedSliceExpressionAST::reader_mRightExpre
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_openedSliceExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_openedSliceExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -11857,7 +11857,7 @@ GALGAS_optionExpressionAST GALGAS_optionExpressionAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_optionExpressionAST::reader_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_optionExpressionAST::getter_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_optionExpressionAST * p = (const cPtr_optionExpressionAST *) mObjectPtr ;
@@ -11869,13 +11869,13 @@ GALGAS_lstring GALGAS_optionExpressionAST::reader_mOptionComponentName (UNUSED_L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_optionExpressionAST::reader_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_optionExpressionAST::getter_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_optionExpressionAST::reader_mOptionEntryName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_optionExpressionAST::getter_mOptionEntryName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_optionExpressionAST * p = (const cPtr_optionExpressionAST *) mObjectPtr ;
@@ -11887,13 +11887,13 @@ GALGAS_lstring GALGAS_optionExpressionAST::reader_mOptionEntryName (UNUSED_LOCAT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_optionExpressionAST::reader_mOptionEntryName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_optionExpressionAST::getter_mOptionEntryName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionEntryName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_optionExpressionAST::reader_mOptionGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_optionExpressionAST::getter_mOptionGetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_optionExpressionAST * p = (const cPtr_optionExpressionAST *) mObjectPtr ;
@@ -11905,7 +11905,7 @@ GALGAS_lstring GALGAS_optionExpressionAST::reader_mOptionGetterName (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_optionExpressionAST::reader_mOptionGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_optionExpressionAST::getter_mOptionGetterName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOptionGetterName ;
 }
 
@@ -12059,7 +12059,7 @@ GALGAS_orExpressionAST GALGAS_orExpressionAST::constructor_new (const GALGAS_loc
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_orExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_orExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_orExpressionAST * p = (const cPtr_orExpressionAST *) mObjectPtr ;
@@ -12071,13 +12071,13 @@ GALGAS_location GALGAS_orExpressionAST::reader_mOperatorLocation (UNUSED_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_orExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_orExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_orExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_orExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_orExpressionAST * p = (const cPtr_orExpressionAST *) mObjectPtr ;
@@ -12089,13 +12089,13 @@ GALGAS_semanticExpressionAST GALGAS_orExpressionAST::reader_mLeftExpression (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_orExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_orExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_orExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_orExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_orExpressionAST * p = (const cPtr_orExpressionAST *) mObjectPtr ;
@@ -12107,7 +12107,7 @@ GALGAS_semanticExpressionAST GALGAS_orExpressionAST::reader_mRightExpression (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_orExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_orExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -12261,7 +12261,7 @@ GALGAS_orShortExpressionAST GALGAS_orShortExpressionAST::constructor_new (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_orShortExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_orShortExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_orShortExpressionAST * p = (const cPtr_orShortExpressionAST *) mObjectPtr ;
@@ -12273,13 +12273,13 @@ GALGAS_location GALGAS_orShortExpressionAST::reader_mOperatorLocation (UNUSED_LO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_orShortExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_orShortExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_orShortExpressionAST * p = (const cPtr_orShortExpressionAST *) mObjectPtr ;
@@ -12291,13 +12291,13 @@ GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::reader_mLeftExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_orShortExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_orShortExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_orShortExpressionAST * p = (const cPtr_orShortExpressionAST *) mObjectPtr ;
@@ -12309,7 +12309,7 @@ GALGAS_semanticExpressionAST GALGAS_orShortExpressionAST::reader_mRightExpressio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_orShortExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_orShortExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -12463,7 +12463,7 @@ GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::constructor_new (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_rightShiftExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_rightShiftExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_rightShiftExpressionAST * p = (const cPtr_rightShiftExpressionAST *) mObjectPtr ;
@@ -12475,13 +12475,13 @@ GALGAS_location GALGAS_rightShiftExpressionAST::reader_mOperatorLocation (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_rightShiftExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_rightShiftExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_rightShiftExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_rightShiftExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_rightShiftExpressionAST * p = (const cPtr_rightShiftExpressionAST *) mObjectPtr ;
@@ -12493,13 +12493,13 @@ GALGAS_semanticExpressionAST GALGAS_rightShiftExpressionAST::reader_mLeftExpress
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_rightShiftExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_rightShiftExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_rightShiftExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_rightShiftExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_rightShiftExpressionAST * p = (const cPtr_rightShiftExpressionAST *) mObjectPtr ;
@@ -12511,7 +12511,7 @@ GALGAS_semanticExpressionAST GALGAS_rightShiftExpressionAST::reader_mRightExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_rightShiftExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_rightShiftExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -12664,7 +12664,7 @@ GALGAS_selfCopyInExpressionAST GALGAS_selfCopyInExpressionAST::constructor_new (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_selfCopyInExpressionAST::reader_mSelfLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_selfCopyInExpressionAST::getter_mSelfLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_selfCopyInExpressionAST * p = (const cPtr_selfCopyInExpressionAST *) mObjectPtr ;
@@ -12676,7 +12676,7 @@ GALGAS_location GALGAS_selfCopyInExpressionAST::reader_mSelfLocation (UNUSED_LOC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_selfCopyInExpressionAST::reader_mSelfLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_selfCopyInExpressionAST::getter_mSelfLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelfLocation ;
 }
 
@@ -12822,7 +12822,7 @@ GALGAS_strictGreaterExpressionAST GALGAS_strictGreaterExpressionAST::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_strictGreaterExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_strictGreaterExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_strictGreaterExpressionAST * p = (const cPtr_strictGreaterExpressionAST *) mObjectPtr ;
@@ -12834,13 +12834,13 @@ GALGAS_location GALGAS_strictGreaterExpressionAST::reader_mOperatorLocation (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_strictGreaterExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_strictGreaterExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_strictGreaterExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_strictGreaterExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_strictGreaterExpressionAST * p = (const cPtr_strictGreaterExpressionAST *) mObjectPtr ;
@@ -12852,13 +12852,13 @@ GALGAS_semanticExpressionAST GALGAS_strictGreaterExpressionAST::reader_mLeftExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_strictGreaterExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_strictGreaterExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_strictGreaterExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_strictGreaterExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_strictGreaterExpressionAST * p = (const cPtr_strictGreaterExpressionAST *) mObjectPtr ;
@@ -12870,7 +12870,7 @@ GALGAS_semanticExpressionAST GALGAS_strictGreaterExpressionAST::reader_mRightExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_strictGreaterExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_strictGreaterExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -13024,7 +13024,7 @@ GALGAS_strictLowerExpressionAST GALGAS_strictLowerExpressionAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_strictLowerExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_strictLowerExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_strictLowerExpressionAST * p = (const cPtr_strictLowerExpressionAST *) mObjectPtr ;
@@ -13036,13 +13036,13 @@ GALGAS_location GALGAS_strictLowerExpressionAST::reader_mOperatorLocation (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_strictLowerExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_strictLowerExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_strictLowerExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_strictLowerExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_strictLowerExpressionAST * p = (const cPtr_strictLowerExpressionAST *) mObjectPtr ;
@@ -13054,13 +13054,13 @@ GALGAS_semanticExpressionAST GALGAS_strictLowerExpressionAST::reader_mLeftExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_strictLowerExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_strictLowerExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_strictLowerExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_strictLowerExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_strictLowerExpressionAST * p = (const cPtr_strictLowerExpressionAST *) mObjectPtr ;
@@ -13072,7 +13072,7 @@ GALGAS_semanticExpressionAST GALGAS_strictLowerExpressionAST::reader_mRightExpre
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_strictLowerExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_strictLowerExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -13226,7 +13226,7 @@ GALGAS_structFieldAccessExpressionAST GALGAS_structFieldAccessExpressionAST::con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_structFieldAccessExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_structFieldAccessExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_structFieldAccessExpressionAST * p = (const cPtr_structFieldAccessExpressionAST *) mObjectPtr ;
@@ -13238,13 +13238,13 @@ GALGAS_location GALGAS_structFieldAccessExpressionAST::reader_mOperatorLocation 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_structFieldAccessExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_structFieldAccessExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_structFieldAccessExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_structFieldAccessExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_structFieldAccessExpressionAST * p = (const cPtr_structFieldAccessExpressionAST *) mObjectPtr ;
@@ -13256,13 +13256,13 @@ GALGAS_semanticExpressionAST GALGAS_structFieldAccessExpressionAST::reader_mExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_structFieldAccessExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_structFieldAccessExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_structFieldAccessExpressionAST::reader_mStructFieldName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_structFieldAccessExpressionAST::getter_mStructFieldName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_structFieldAccessExpressionAST * p = (const cPtr_structFieldAccessExpressionAST *) mObjectPtr ;
@@ -13274,7 +13274,7 @@ GALGAS_lstring GALGAS_structFieldAccessExpressionAST::reader_mStructFieldName (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_structFieldAccessExpressionAST::reader_mStructFieldName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_structFieldAccessExpressionAST::getter_mStructFieldName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStructFieldName ;
 }
 
@@ -13428,7 +13428,7 @@ GALGAS_subExpressionAST GALGAS_subExpressionAST::constructor_new (const GALGAS_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_subExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_subExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_subExpressionAST * p = (const cPtr_subExpressionAST *) mObjectPtr ;
@@ -13440,13 +13440,13 @@ GALGAS_location GALGAS_subExpressionAST::reader_mOperatorLocation (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_subExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_subExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_subExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_subExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_subExpressionAST * p = (const cPtr_subExpressionAST *) mObjectPtr ;
@@ -13458,13 +13458,13 @@ GALGAS_semanticExpressionAST GALGAS_subExpressionAST::reader_mLeftExpression (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_subExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_subExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_subExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_subExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_subExpressionAST * p = (const cPtr_subExpressionAST *) mObjectPtr ;
@@ -13476,7 +13476,7 @@ GALGAS_semanticExpressionAST GALGAS_subExpressionAST::reader_mRightExpression (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_subExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_subExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -13630,7 +13630,7 @@ GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_subExpressionNoOverflowAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_subExpressionNoOverflowAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_subExpressionNoOverflowAST * p = (const cPtr_subExpressionNoOverflowAST *) mObjectPtr ;
@@ -13642,13 +13642,13 @@ GALGAS_location GALGAS_subExpressionNoOverflowAST::reader_mOperatorLocation (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_subExpressionNoOverflowAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_subExpressionNoOverflowAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_subExpressionNoOverflowAST * p = (const cPtr_subExpressionNoOverflowAST *) mObjectPtr ;
@@ -13660,13 +13660,13 @@ GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::reader_mLeftExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_subExpressionNoOverflowAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_subExpressionNoOverflowAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_subExpressionNoOverflowAST * p = (const cPtr_subExpressionNoOverflowAST *) mObjectPtr ;
@@ -13678,7 +13678,7 @@ GALGAS_semanticExpressionAST GALGAS_subExpressionNoOverflowAST::reader_mRightExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_subExpressionNoOverflowAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_subExpressionNoOverflowAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -13836,7 +13836,7 @@ GALGAS_testDynamicClassInExpressionAST GALGAS_testDynamicClassInExpressionAST::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_testDynamicClassInExpressionAST::reader_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_testDynamicClassInExpressionAST::getter_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_testDynamicClassInExpressionAST * p = (const cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
@@ -13848,13 +13848,13 @@ GALGAS_semanticExpressionAST GALGAS_testDynamicClassInExpressionAST::reader_mRec
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_testDynamicClassInExpressionAST::reader_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_testDynamicClassInExpressionAST::getter_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_testDynamicClassInExpressionAST::reader_mEndOfReceiverExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_testDynamicClassInExpressionAST::getter_mEndOfReceiverExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_testDynamicClassInExpressionAST * p = (const cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
@@ -13866,13 +13866,13 @@ GALGAS_location GALGAS_testDynamicClassInExpressionAST::reader_mEndOfReceiverExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_testDynamicClassInExpressionAST::reader_mEndOfReceiverExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_testDynamicClassInExpressionAST::getter_mEndOfReceiverExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfReceiverExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_dynamicTypeComparisonKind GALGAS_testDynamicClassInExpressionAST::reader_mTypeComparisonKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_dynamicTypeComparisonKind GALGAS_testDynamicClassInExpressionAST::getter_mTypeComparisonKind (UNUSED_LOCATION_ARGS) const {
   GALGAS_dynamicTypeComparisonKind result ;
   if (NULL != mObjectPtr) {
     const cPtr_testDynamicClassInExpressionAST * p = (const cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
@@ -13884,13 +13884,13 @@ GALGAS_dynamicTypeComparisonKind GALGAS_testDynamicClassInExpressionAST::reader_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_dynamicTypeComparisonKind cPtr_testDynamicClassInExpressionAST::reader_mTypeComparisonKind (UNUSED_LOCATION_ARGS) const {
+GALGAS_dynamicTypeComparisonKind cPtr_testDynamicClassInExpressionAST::getter_mTypeComparisonKind (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeComparisonKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_testDynamicClassInExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_testDynamicClassInExpressionAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_testDynamicClassInExpressionAST * p = (const cPtr_testDynamicClassInExpressionAST *) mObjectPtr ;
@@ -13902,7 +13902,7 @@ GALGAS_lstring GALGAS_testDynamicClassInExpressionAST::reader_mTypeName (UNUSED_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_testDynamicClassInExpressionAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_testDynamicClassInExpressionAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
@@ -14059,7 +14059,7 @@ GALGAS_trueExpressionAST GALGAS_trueExpressionAST::constructor_new (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_trueExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_trueExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_trueExpressionAST * p = (const cPtr_trueExpressionAST *) mObjectPtr ;
@@ -14071,7 +14071,7 @@ GALGAS_location GALGAS_trueExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_trueExpressionAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_trueExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocation ;
 }
 
@@ -14213,7 +14213,7 @@ GALGAS_unaryMinusExpressionAST GALGAS_unaryMinusExpressionAST::constructor_new (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_unaryMinusExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_unaryMinusExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_unaryMinusExpressionAST * p = (const cPtr_unaryMinusExpressionAST *) mObjectPtr ;
@@ -14225,13 +14225,13 @@ GALGAS_location GALGAS_unaryMinusExpressionAST::reader_mOperatorLocation (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_unaryMinusExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_unaryMinusExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_unaryMinusExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_unaryMinusExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_unaryMinusExpressionAST * p = (const cPtr_unaryMinusExpressionAST *) mObjectPtr ;
@@ -14243,7 +14243,7 @@ GALGAS_semanticExpressionAST GALGAS_unaryMinusExpressionAST::reader_mExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_unaryMinusExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_unaryMinusExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -14389,7 +14389,7 @@ GALGAS_unaryMinusNoOverflowExpressionAST GALGAS_unaryMinusNoOverflowExpressionAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_unaryMinusNoOverflowExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_unaryMinusNoOverflowExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_unaryMinusNoOverflowExpressionAST * p = (const cPtr_unaryMinusNoOverflowExpressionAST *) mObjectPtr ;
@@ -14401,13 +14401,13 @@ GALGAS_location GALGAS_unaryMinusNoOverflowExpressionAST::reader_mOperatorLocati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_unaryMinusNoOverflowExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_unaryMinusNoOverflowExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_unaryMinusNoOverflowExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_unaryMinusNoOverflowExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_unaryMinusNoOverflowExpressionAST * p = (const cPtr_unaryMinusNoOverflowExpressionAST *) mObjectPtr ;
@@ -14419,7 +14419,7 @@ GALGAS_semanticExpressionAST GALGAS_unaryMinusNoOverflowExpressionAST::reader_mE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_unaryMinusNoOverflowExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_unaryMinusNoOverflowExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -14565,7 +14565,7 @@ GALGAS_unaryPlusExpressionAST GALGAS_unaryPlusExpressionAST::constructor_new (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_unaryPlusExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_unaryPlusExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_unaryPlusExpressionAST * p = (const cPtr_unaryPlusExpressionAST *) mObjectPtr ;
@@ -14577,13 +14577,13 @@ GALGAS_location GALGAS_unaryPlusExpressionAST::reader_mOperatorLocation (UNUSED_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_unaryPlusExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_unaryPlusExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_unaryPlusExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_unaryPlusExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_unaryPlusExpressionAST * p = (const cPtr_unaryPlusExpressionAST *) mObjectPtr ;
@@ -14595,7 +14595,7 @@ GALGAS_semanticExpressionAST GALGAS_unaryPlusExpressionAST::reader_mExpression (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_unaryPlusExpressionAST::reader_mExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_unaryPlusExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExpression ;
 }
 
@@ -14744,7 +14744,7 @@ GALGAS_varInExpressionAST GALGAS_varInExpressionAST::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_varInExpressionAST::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_varInExpressionAST::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_varInExpressionAST * p = (const cPtr_varInExpressionAST *) mObjectPtr ;
@@ -14756,7 +14756,7 @@ GALGAS_lstring GALGAS_varInExpressionAST::reader_mVarName (UNUSED_LOCATION_ARGS)
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_varInExpressionAST::reader_mVarName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_varInExpressionAST::getter_mVarName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVarName ;
 }
 
@@ -14902,7 +14902,7 @@ GALGAS_xorExpressionAST GALGAS_xorExpressionAST::constructor_new (const GALGAS_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_xorExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_xorExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_xorExpressionAST * p = (const cPtr_xorExpressionAST *) mObjectPtr ;
@@ -14914,13 +14914,13 @@ GALGAS_location GALGAS_xorExpressionAST::reader_mOperatorLocation (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_xorExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_xorExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_xorExpressionAST * p = (const cPtr_xorExpressionAST *) mObjectPtr ;
@@ -14932,13 +14932,13 @@ GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::reader_mLeftExpression (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_xorExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_xorExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_xorExpressionAST * p = (const cPtr_xorExpressionAST *) mObjectPtr ;
@@ -14950,7 +14950,7 @@ GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::reader_mRightExpression (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionAST cPtr_xorExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticExpressionAST cPtr_xorExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRightExpression ;
 }
 
@@ -15074,7 +15074,7 @@ AC_GALGAS_class (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_semanticExpressionForGeneration::reader_mResultType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_semanticExpressionForGeneration::getter_mResultType (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_semanticExpressionForGeneration * p = (const cPtr_semanticExpressionForGeneration *) mObjectPtr ;
@@ -15086,13 +15086,13 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_semanticExpressionForGeneration::reader_mR
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_semanticExpressionForGeneration::reader_mResultType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_semanticExpressionForGeneration::getter_mResultType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mResultType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_semanticExpressionForGeneration::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_semanticExpressionForGeneration::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_semanticExpressionForGeneration * p = (const cPtr_semanticExpressionForGeneration *) mObjectPtr ;
@@ -15104,7 +15104,7 @@ GALGAS_location GALGAS_semanticExpressionForGeneration::reader_mLocation (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_semanticExpressionForGeneration::reader_mLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_semanticExpressionForGeneration::getter_mLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocation ;
 }
 

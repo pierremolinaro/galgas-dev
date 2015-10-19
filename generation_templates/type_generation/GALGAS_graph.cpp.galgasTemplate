@@ -75,7 +75,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GALGAS_%![
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_reversedGraph (LOCATION_ARGS) const {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_reversedGraph (LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.reversedGraphFromGraph (*this COMMA_THERE) ;
   return result ;
@@ -116,7 +116,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GALGAS_%![ASS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subgraphFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
                                         %!^%const GALGAS_stringset & inKeysToExclude,
                                         %!^%C_Compiler * inCompiler
                                         %!^%COMMA_LOCATION_ARGS) const {
@@ -127,7 +127,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subgraphFromNodes (%
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::reader_accessibleNodesFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
+GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
                                         %!^%C_Compiler * inCompiler
                                         %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
@@ -138,7 +138,7 @@ GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::reader_accessibleNodesFromNodes (%
             inCompiler
             COMMA_THERE) ;
   if (resultingGraph.isValid ()) {
-    result = resultingGraph.reader_lkeyList (THERE) ;
+    result = resultingGraph.getter_lkeyList (THERE) ;
   }
   return result ;
 }

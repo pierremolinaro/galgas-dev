@@ -42,7 +42,7 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_attribute) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 41)) ;
     const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_featureName.mAttribute_string.objectCompare (GALGAS_string ("translate"))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_location location_1 (var_featureName.reader_location (HERE)) ; // Implicit use of 'location' getter
+      GALGAS_location location_1 (var_featureName.getter_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_1, GALGAS_string ("only 'feature translate' can be declared here")  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)) ;
     }
     var_hasTranslateFeature = GALGAS_bool (true) ;
@@ -256,12 +256,12 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
     case 2: {
       GALGAS_lstring var_argumentName ;
       nt_label_5F_formal_5F_parameter_ (var_argumentName, var_mFormalParameterList, inCompiler) ;
-      const enumGalgasBool test_1 = var_argumentNameSet.reader_hasKey (var_argumentName.reader_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)).boolEnum () ;
+      const enumGalgasBool test_1 = var_argumentNameSet.getter_hasKey (var_argumentName.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)).boolEnum () ;
       if (kBoolTrue == test_1) {
-        GALGAS_location location_2 (var_argumentName.reader_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticError (location_2, GALGAS_string ("there is already an argument named '").add_operation (var_argumentName.reader_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)) ;
+        GALGAS_location location_2 (var_argumentName.getter_location (HERE)) ; // Implicit use of 'location' getter
+        inCompiler->emitSemanticError (location_2, GALGAS_string ("there is already an argument named '").add_operation (var_argumentName.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)) ;
       }
-      var_argumentNameSet.addAssign_operation (var_argumentName.reader_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 102))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 102)) ;
+      var_argumentNameSet.addAssign_operation (var_argumentName.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 102))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 102)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -596,7 +596,7 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   GALGAS_lstring var_referenceGrammar ;
   switch (select_galgas_33_ProgramDeclarations_0 (inCompiler)) {
   case 1: {
-    var_referenceGrammar = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 76)) ;
+    var_referenceGrammar = GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 76)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_grammar) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 78)) ;
@@ -610,7 +610,7 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 82)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' getter
+    GALGAS_location location_1 (var_selector.getter_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_1, GALGAS_string ("the selector should be '\?sourceFilePath:'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
   }
   switch (select_galgas_33_ProgramDeclarations_1 (inCompiler)) {
@@ -621,7 +621,7 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 88)) ;
     const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_typeName.mAttribute_string.objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
     if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (var_typeName.reader_location (HERE)) ; // Implicit use of 'location' getter
+      GALGAS_location location_3 (var_typeName.getter_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_3, GALGAS_string ("the only type allowed here is '@lstring'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
     }
   } break ;
@@ -827,7 +827,7 @@ GALGAS_headerCompositionMap GALGAS_headerCompositionMap::constructor_mapWithMapT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_headerCompositionMap GALGAS_headerCompositionMap::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_headerCompositionMap GALGAS_headerCompositionMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   GALGAS_headerCompositionMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
@@ -895,7 +895,7 @@ void GALGAS_headerCompositionMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset GALGAS_headerCompositionMap::reader_mInclusionForKey (const GALGAS_string & inKey,
+GALGAS_stringset GALGAS_headerCompositionMap::getter_mInclusionForKey (const GALGAS_string & inKey,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -910,7 +910,7 @@ GALGAS_stringset GALGAS_headerCompositionMap::reader_mInclusionForKey (const GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_headerCompositionMap::reader_mHeaderStringForKey (const GALGAS_string & inKey,
+GALGAS_string GALGAS_headerCompositionMap::getter_mHeaderStringForKey (const GALGAS_string & inKey,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -1127,7 +1127,7 @@ GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::constructor_mapWithMapT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   GALGAS_headerRepartitionMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
@@ -1190,7 +1190,7 @@ void GALGAS_headerRepartitionMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_headerRepartitionMap::reader_mHeaderFileNameForKey (const GALGAS_string & inKey,
+GALGAS_string GALGAS_headerRepartitionMap::getter_mHeaderFileNameForKey (const GALGAS_string & inKey,
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -1385,7 +1385,7 @@ GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   GALGAS_projectQualifiedFeatureMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
@@ -1448,7 +1448,7 @@ void GALGAS_projectQualifiedFeatureMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_projectQualifiedFeatureMap::reader_mFeatureValueForKey (const GALGAS_string & inKey,
+GALGAS_lstring GALGAS_projectQualifiedFeatureMap::getter_mFeatureValueForKey (const GALGAS_string & inKey,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -1893,7 +1893,7 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::add_operation (const GALGAS_XCodeGr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeGroupList GALGAS_XCodeGroupList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeGroupList result = GALGAS_XCodeGroupList::constructor_emptyList (THERE) ;
@@ -1903,7 +1903,7 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::reader_subListWithRange (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeGroupList GALGAS_XCodeGroupList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeGroupList result = GALGAS_XCodeGroupList::constructor_emptyList (THERE) ;
@@ -1920,7 +1920,7 @@ void GALGAS_XCodeGroupList::dotAssign_operation (const GALGAS_XCodeGroupList inO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeGroupList::reader_mGroupReferenceAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeGroupList::getter_mGroupReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -1935,7 +1935,7 @@ GALGAS_string GALGAS_XCodeGroupList::reader_mGroupReferenceAtIndex (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeGroupList::reader_mGroupNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeGroupList::getter_mGroupNameAtIndex (const GALGAS_uint & inIndex,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -1950,7 +1950,7 @@ GALGAS_string GALGAS_XCodeGroupList::reader_mGroupNameAtIndex (const GALGAS_uint
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeGroupList::reader_mGroupPathAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeGroupList::getter_mGroupPathAtIndex (const GALGAS_uint & inIndex,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -1965,7 +1965,7 @@ GALGAS_string GALGAS_XCodeGroupList::reader_mGroupPathAtIndex (const GALGAS_uint
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeGroupList::reader_mChildrenRefsAtIndex (const GALGAS_uint & inIndex,
+GALGAS_stringlist GALGAS_XCodeGroupList::getter_mChildrenRefsAtIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2588,7 +2588,7 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::add_operation (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeToolTargetList result = GALGAS_XCodeToolTargetList::constructor_emptyList (THERE) ;
@@ -2598,7 +2598,7 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::reader_subListWithRange (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeToolTargetList result = GALGAS_XCodeToolTargetList::constructor_emptyList (THERE) ;
@@ -2615,7 +2615,7 @@ void GALGAS_XCodeToolTargetList::dotAssign_operation (const GALGAS_XCodeToolTarg
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList::reader_mTargetRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeToolTargetList::getter_mTargetRefAtIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2630,7 +2630,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::reader_mTargetRefAtIndex (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList::reader_mTargetNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeToolTargetList::getter_mTargetNameAtIndex (const GALGAS_uint & inIndex,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2645,7 +2645,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::reader_mTargetNameAtIndex (const GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList::reader_mProductFileReferenceAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeToolTargetList::getter_mProductFileReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2660,7 +2660,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::reader_mProductFileReferenceAtIndex (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList::reader_mProductFileNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeToolTargetList::getter_mProductFileNameAtIndex (const GALGAS_uint & inIndex,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2675,7 +2675,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::reader_mProductFileNameAtIndex (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeToolTargetList::reader_mBuildPhaseRefListAtIndex (const GALGAS_uint & inIndex,
+GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mBuildPhaseRefListAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2690,7 +2690,7 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::reader_mBuildPhaseRefListAtIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList::reader_mBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2705,7 +2705,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::reader_mBuildPhaseRefAtIndex (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList::reader_mBuildConfigurationListRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildConfigurationListRefAtIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2720,7 +2720,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::reader_mBuildConfigurationListRefAtInd
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeToolTargetList::reader_mBuildConfigurationSettingListAtIndex (const GALGAS_uint & inIndex,
+GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mBuildConfigurationSettingListAtIndex (const GALGAS_uint & inIndex,
                                                                                             C_Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2735,7 +2735,7 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::reader_mBuildConfigurationSettingL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList::reader_mBuildConfigurationRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildConfigurationRefAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2750,7 +2750,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::reader_mBuildConfigurationRefAtIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeToolTargetList::reader_mFrameworksFileRefListAtIndex (const GALGAS_uint & inIndex,
+GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mFrameworksFileRefListAtIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -2765,7 +2765,7 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::reader_mFrameworksFileRefListAtInd
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeToolTargetList::reader_mFrameworkBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeToolTargetList::getter_mFrameworkBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
                                                                                  C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3522,7 +3522,7 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::add_operation (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeAppTargetList result = GALGAS_XCodeAppTargetList::constructor_emptyList (THERE) ;
@@ -3532,7 +3532,7 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::reader_subListWithRange (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeAppTargetList result = GALGAS_XCodeAppTargetList::constructor_emptyList (THERE) ;
@@ -3549,7 +3549,7 @@ void GALGAS_XCodeAppTargetList::dotAssign_operation (const GALGAS_XCodeAppTarget
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mTargetRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mTargetRefAtIndex (const GALGAS_uint & inIndex,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3564,7 +3564,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mTargetRefAtIndex (const GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mTargetNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mTargetNameAtIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3579,7 +3579,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mTargetNameAtIndex (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mProductFileReferenceAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mProductFileReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3594,7 +3594,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mProductFileReferenceAtIndex (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mProductFileNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mProductFileNameAtIndex (const GALGAS_uint & inIndex,
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3609,7 +3609,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mProductFileNameAtIndex (const G
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeAppTargetList::reader_mBuildPhaseRefListAtIndex (const GALGAS_uint & inIndex,
+GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mBuildPhaseRefListAtIndex (const GALGAS_uint & inIndex,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3624,7 +3624,7 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::reader_mBuildPhaseRefListAtIndex (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3639,7 +3639,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mBuildPhaseRefAtIndex (const GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mBuildConfigurationListRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildConfigurationListRefAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3654,7 +3654,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mBuildConfigurationListRefAtInde
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeAppTargetList::reader_mBuildConfigurationSettingListAtIndex (const GALGAS_uint & inIndex,
+GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mBuildConfigurationSettingListAtIndex (const GALGAS_uint & inIndex,
                                                                                            C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3669,7 +3669,7 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::reader_mBuildConfigurationSettingLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mBuildConfigurationRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildConfigurationRefAtIndex (const GALGAS_uint & inIndex,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3684,7 +3684,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mBuildConfigurationRefAtIndex (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeAppTargetList::reader_mFrameworksFileRefListAtIndex (const GALGAS_uint & inIndex,
+GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mFrameworksFileRefListAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3699,7 +3699,7 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::reader_mFrameworksFileRefListAtInde
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mFrameworkBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mFrameworkBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3714,7 +3714,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mFrameworkBuildPhaseRefAtIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS_XCodeAppTargetList::reader_mDependentTargetsAtIndex (const GALGAS_uint & inIndex,
+GALGAS__32_stringlist GALGAS_XCodeAppTargetList::getter_mDependentTargetsAtIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3729,7 +3729,7 @@ GALGAS__32_stringlist GALGAS_XCodeAppTargetList::reader_mDependentTargetsAtIndex
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeAppTargetList::reader_mResourceBuildRefAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_XCodeAppTargetList::getter_mResourceBuildRefAtIndex (const GALGAS_uint & inIndex,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -3744,7 +3744,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::reader_mResourceBuildRefAtIndex (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeAppTargetList::reader_mResourceFileBuildRefsAtIndex (const GALGAS_uint & inIndex,
+GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mResourceFileBuildRefsAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -4239,7 +4239,7 @@ GALGAS_BuildFileList GALGAS_BuildFileList::add_operation (const GALGAS_BuildFile
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_BuildFileList GALGAS_BuildFileList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_BuildFileList result = GALGAS_BuildFileList::constructor_emptyList (THERE) ;
@@ -4249,7 +4249,7 @@ GALGAS_BuildFileList GALGAS_BuildFileList::reader_subListWithRange (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_BuildFileList GALGAS_BuildFileList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_BuildFileList result = GALGAS_BuildFileList::constructor_emptyList (THERE) ;
@@ -4266,7 +4266,7 @@ void GALGAS_BuildFileList::dotAssign_operation (const GALGAS_BuildFileList inOpe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_BuildFileList::reader_mFileReferenceAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_BuildFileList::getter_mFileReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -4281,7 +4281,7 @@ GALGAS_string GALGAS_BuildFileList::reader_mFileReferenceAtIndex (const GALGAS_u
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_BuildFileList::reader_mFileNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_BuildFileList::getter_mFileNameAtIndex (const GALGAS_uint & inIndex,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -4296,7 +4296,7 @@ GALGAS_string GALGAS_BuildFileList::reader_mFileNameAtIndex (const GALGAS_uint &
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_BuildFileList::reader_mBuildReferenceAtIndex (const GALGAS_uint & inIndex,
+GALGAS_string GALGAS_BuildFileList::getter_mBuildReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -8741,7 +8741,7 @@ void cGrammar_templateGrammar::_performSourceFileParsing_ (C_Compiler * inCompil
                                 GALGAS_templateInstructionListAST &  parameter_1
                                 COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
-    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;
+    const GALGAS_string filePathAsString = inFilePath.getter_string (HERE) ;
     C_String filePath = filePathAsString.stringValue () ;
     if (! C_FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
@@ -8760,14 +8760,14 @@ void cGrammar_templateGrammar::_performSourceFileParsing_ (C_Compiler * inCompil
       }else{
         C_String message ;
         message << "the '" << filePath << "' file exists, but cannot be read" ;
-        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;
+        const GALGAS_location errorLocation (inFilePath.getter_location (THERE)) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       C_String message ;
       message << "the '" << filePath << "' file does not exist" ;
-      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;
+      const GALGAS_location errorLocation (inFilePath.getter_location (THERE)) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;
     }
   }
@@ -9153,7 +9153,7 @@ void GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (GALGAS_un
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mIsPredefined (C_Compiler * inCompiler
+GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::getter_mIsPredefined (C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mIsPredefined" COMMA_THERE) ;
@@ -9166,7 +9166,7 @@ GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mIsPredefined (C_Compiler * i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mIsConcrete (C_Compiler * inCompiler
+GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::getter_mIsConcrete (C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mIsConcrete" COMMA_THERE) ;
@@ -9179,7 +9179,7 @@ GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mIsConcrete (C_Compiler * inC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_proxy::reader_mSuperType (C_Compiler * inCompiler
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_proxy::getter_mSuperType (C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mSuperType" COMMA_THERE) ;
@@ -9192,7 +9192,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_proxy::reader_mSuperType
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeKindEnum GALGAS_unifiedTypeMap_2D_proxy::reader_mTypeKindEnum (C_Compiler * inCompiler
+GALGAS_typeKindEnum GALGAS_unifiedTypeMap_2D_proxy::getter_mTypeKindEnum (C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_typeKindEnum result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mTypeKindEnum" COMMA_THERE) ;
@@ -9205,7 +9205,7 @@ GALGAS_typeKindEnum GALGAS_unifiedTypeMap_2D_proxy::reader_mTypeKindEnum (C_Comp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mSupportCollectionValue (C_Compiler * inCompiler
+GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::getter_mSupportCollectionValue (C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mSupportCollectionValue" COMMA_THERE) ;
@@ -9218,7 +9218,7 @@ GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mSupportCollectionValue (C_Co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_proxy::reader_mAllTypedAttributeList (C_Compiler * inCompiler
+GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_proxy::getter_mAllTypedAttributeList (C_Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mAllTypedAttributeList" COMMA_THERE) ;
@@ -9231,7 +9231,7 @@ GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_proxy::reader_mAllTypedAttribu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap GALGAS_unifiedTypeMap_2D_proxy::reader_mAttributeMap (C_Compiler * inCompiler
+GALGAS_attributeMap GALGAS_unifiedTypeMap_2D_proxy::getter_mAttributeMap (C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_attributeMap result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mAttributeMap" COMMA_THERE) ;
@@ -9244,7 +9244,7 @@ GALGAS_attributeMap GALGAS_unifiedTypeMap_2D_proxy::reader_mAttributeMap (C_Comp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_proxy::reader_mCurrentTypedAttributeList (C_Compiler * inCompiler
+GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_proxy::getter_mCurrentTypedAttributeList (C_Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_typedPropertyList result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mCurrentTypedAttributeList" COMMA_THERE) ;
@@ -9257,7 +9257,7 @@ GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_proxy::reader_mCurrentTypedAtt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_constructorMap GALGAS_unifiedTypeMap_2D_proxy::reader_mConstructorMap (C_Compiler * inCompiler
+GALGAS_constructorMap GALGAS_unifiedTypeMap_2D_proxy::getter_mConstructorMap (C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_constructorMap result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mConstructorMap" COMMA_THERE) ;
@@ -9270,7 +9270,7 @@ GALGAS_constructorMap GALGAS_unifiedTypeMap_2D_proxy::reader_mConstructorMap (C_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_getterMap GALGAS_unifiedTypeMap_2D_proxy::reader_mGetterMap (C_Compiler * inCompiler
+GALGAS_getterMap GALGAS_unifiedTypeMap_2D_proxy::getter_mGetterMap (C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_getterMap result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mGetterMap" COMMA_THERE) ;
@@ -9283,7 +9283,7 @@ GALGAS_getterMap GALGAS_unifiedTypeMap_2D_proxy::reader_mGetterMap (C_Compiler *
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_setterMap GALGAS_unifiedTypeMap_2D_proxy::reader_mModifierMap (C_Compiler * inCompiler
+GALGAS_setterMap GALGAS_unifiedTypeMap_2D_proxy::getter_mModifierMap (C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_setterMap result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mModifierMap" COMMA_THERE) ;
@@ -9296,7 +9296,7 @@ GALGAS_setterMap GALGAS_unifiedTypeMap_2D_proxy::reader_mModifierMap (C_Compiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_instanceMethodMap GALGAS_unifiedTypeMap_2D_proxy::reader_mInstanceMethodMap (C_Compiler * inCompiler
+GALGAS_instanceMethodMap GALGAS_unifiedTypeMap_2D_proxy::getter_mInstanceMethodMap (C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_instanceMethodMap result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mInstanceMethodMap" COMMA_THERE) ;
@@ -9309,7 +9309,7 @@ GALGAS_instanceMethodMap GALGAS_unifiedTypeMap_2D_proxy::reader_mInstanceMethodM
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_classMethodMap GALGAS_unifiedTypeMap_2D_proxy::reader_mClassMethodMap (C_Compiler * inCompiler
+GALGAS_classMethodMap GALGAS_unifiedTypeMap_2D_proxy::getter_mClassMethodMap (C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_classMethodMap result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mClassMethodMap" COMMA_THERE) ;
@@ -9322,7 +9322,7 @@ GALGAS_classMethodMap GALGAS_unifiedTypeMap_2D_proxy::reader_mClassMethodMap (C_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumerationDescriptorList GALGAS_unifiedTypeMap_2D_proxy::reader_mEnumerationDescriptor (C_Compiler * inCompiler
+GALGAS_enumerationDescriptorList GALGAS_unifiedTypeMap_2D_proxy::getter_mEnumerationDescriptor (C_Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_enumerationDescriptorList result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mEnumerationDescriptor" COMMA_THERE) ;
@@ -9335,7 +9335,7 @@ GALGAS_enumerationDescriptorList GALGAS_unifiedTypeMap_2D_proxy::reader_mEnumera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_unifiedTypeMap_2D_proxy::reader_mEnumeratorVariants (C_Compiler * inCompiler
+GALGAS_stringlist GALGAS_unifiedTypeMap_2D_proxy::getter_mEnumeratorVariants (C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mEnumeratorVariants" COMMA_THERE) ;
@@ -9348,7 +9348,7 @@ GALGAS_stringlist GALGAS_unifiedTypeMap_2D_proxy::reader_mEnumeratorVariants (C_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_unifiedTypeMap_2D_proxy::reader_mHandledOperatorFlags (C_Compiler * inCompiler
+GALGAS_uint GALGAS_unifiedTypeMap_2D_proxy::getter_mHandledOperatorFlags (C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mHandledOperatorFlags" COMMA_THERE) ;
@@ -9361,7 +9361,7 @@ GALGAS_uint GALGAS_unifiedTypeMap_2D_proxy::reader_mHandledOperatorFlags (C_Comp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionSignature GALGAS_unifiedTypeMap_2D_proxy::reader_mAddAssignOperatorArguments (C_Compiler * inCompiler
+GALGAS_functionSignature GALGAS_unifiedTypeMap_2D_proxy::getter_mAddAssignOperatorArguments (C_Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GALGAS_functionSignature result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mAddAssignOperatorArguments" COMMA_THERE) ;
@@ -9374,7 +9374,7 @@ GALGAS_functionSignature GALGAS_unifiedTypeMap_2D_proxy::reader_mAddAssignOperat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_constantIndexMap GALGAS_unifiedTypeMap_2D_proxy::reader_mEnumConstantMap (C_Compiler * inCompiler
+GALGAS_constantIndexMap GALGAS_unifiedTypeMap_2D_proxy::getter_mEnumConstantMap (C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   GALGAS_constantIndexMap result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mEnumConstantMap" COMMA_THERE) ;
@@ -9387,7 +9387,7 @@ GALGAS_constantIndexMap GALGAS_unifiedTypeMap_2D_proxy::reader_mEnumConstantMap 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantList GALGAS_unifiedTypeMap_2D_proxy::reader_mEnumConstantList (C_Compiler * inCompiler
+GALGAS_enumConstantList GALGAS_unifiedTypeMap_2D_proxy::getter_mEnumConstantList (C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_enumConstantList result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mEnumConstantList" COMMA_THERE) ;
@@ -9400,7 +9400,7 @@ GALGAS_enumConstantList GALGAS_unifiedTypeMap_2D_proxy::reader_mEnumConstantList
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap_2D_proxy::reader_mMapSearchMethodList (C_Compiler * inCompiler
+GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap_2D_proxy::getter_mMapSearchMethodList (C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   GALGAS_mapSearchMethodListAST result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mMapSearchMethodList" COMMA_THERE) ;
@@ -9413,7 +9413,7 @@ GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap_2D_proxy::reader_mMapSearchM
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap_2D_proxy::reader_mMapProxySearchConstructorList (C_Compiler * inCompiler
+GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap_2D_proxy::getter_mMapProxySearchConstructorList (C_Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_mapSearchMethodListAST result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mMapProxySearchConstructorList" COMMA_THERE) ;
@@ -9426,7 +9426,7 @@ GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap_2D_proxy::reader_mMapProxySe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mGenerateHeaderInSeparateFile (C_Compiler * inCompiler
+GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::getter_mGenerateHeaderInSeparateFile (C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mGenerateHeaderInSeparateFile" COMMA_THERE) ;
@@ -9439,7 +9439,7 @@ GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mGenerateHeaderInSeparateFile
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_proxy::reader_mTypeForEnumeratedElement (C_Compiler * inCompiler
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_proxy::getter_mTypeForEnumeratedElement (C_Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mTypeForEnumeratedElement" COMMA_THERE) ;
@@ -9452,7 +9452,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_proxy::reader_mTypeForEn
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_unifiedTypeMap_2D_proxy::reader_mDefaultConstructorName (C_Compiler * inCompiler
+GALGAS_string GALGAS_unifiedTypeMap_2D_proxy::getter_mDefaultConstructorName (C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mDefaultConstructorName" COMMA_THERE) ;
@@ -9465,7 +9465,7 @@ GALGAS_string GALGAS_unifiedTypeMap_2D_proxy::reader_mDefaultConstructorName (C_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_unifiedTypeMap_2D_proxy::reader_mHeaderFileName (C_Compiler * inCompiler
+GALGAS_string GALGAS_unifiedTypeMap_2D_proxy::getter_mHeaderFileName (C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mHeaderFileName" COMMA_THERE) ;
@@ -9478,7 +9478,7 @@ GALGAS_string GALGAS_unifiedTypeMap_2D_proxy::reader_mHeaderFileName (C_Compiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_headerKind GALGAS_unifiedTypeMap_2D_proxy::reader_mHeaderKind (C_Compiler * inCompiler
+GALGAS_headerKind GALGAS_unifiedTypeMap_2D_proxy::getter_mHeaderKind (C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_headerKind result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mHeaderKind" COMMA_THERE) ;
@@ -9752,7 +9752,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler *
                                 GALGAS_galgas_33_ProjectComponentAST &  parameter_1
                                 COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
-    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;
+    const GALGAS_string filePathAsString = inFilePath.getter_string (HERE) ;
     C_String filePath = filePathAsString.stringValue () ;
     if (! C_FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
@@ -9770,14 +9770,14 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler *
       }else{
         C_String message ;
         message << "the '" << filePath << "' file exists, but cannot be read" ;
-        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;
+        const GALGAS_location errorLocation (inFilePath.getter_location (THERE)) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       C_String message ;
       message << "the '" << filePath << "' file does not exist" ;
-      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;
+      const GALGAS_location errorLocation (inFilePath.getter_location (THERE)) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;
     }
   }
@@ -41023,7 +41023,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
                                 GALGAS_galgas_33_DeclarationAST &  parameter_1
                                 COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
-    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;
+    const GALGAS_string filePathAsString = inFilePath.getter_string (HERE) ;
     C_String filePath = filePathAsString.stringValue () ;
     if (! C_FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
@@ -41042,14 +41042,14 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
       }else{
         C_String message ;
         message << "the '" << filePath << "' file exists, but cannot be read" ;
-        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;
+        const GALGAS_location errorLocation (inFilePath.getter_location (THERE)) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       C_String message ;
       message << "the '" << filePath << "' file does not exist" ;
-      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;
+      const GALGAS_location errorLocation (inFilePath.getter_location (THERE)) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;
     }
   }

@@ -117,7 +117,7 @@ end
 for () in CURRENT_ATTRIBUTE_LIST do
   if mHasGetter then
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
     %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
     %  if (NULL != mObjectPtr) {\n%
     %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
@@ -127,7 +127,7 @@ for () in CURRENT_ATTRIBUTE_LIST do
     %  return result ;\n%
     %}\n\n%
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
     %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     %}\n\n%
   end

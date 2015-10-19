@@ -114,7 +114,7 @@ end
 
 %for () in ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 

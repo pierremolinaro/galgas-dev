@@ -26,7 +26,7 @@
 %
   for () in CURRENT_ATTRIBUTE_LIST do
     if mHasGetter then
-      %  public : VIRTUAL_IN_DEBUG GALGAS_%![mAttributeTypeProxy identifierRepresentation]% reader_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+      %  public : VIRTUAL_IN_DEBUG GALGAS_%![mAttributeTypeProxy identifierRepresentation]% getter_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
     end
     if mHasSetter then
       %  public : VIRTUAL_IN_DEBUG void modifier_set%![[mAttributeName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%

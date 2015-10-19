@@ -42,8 +42,8 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_branchListForGrammarAnalysis reader_mRepeatBranchList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mAddedNonTerminalSymbolIndex (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_branchListForGrammarAnalysis getter_mRepeatBranchList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mAddedNonTerminalSymbolIndex (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

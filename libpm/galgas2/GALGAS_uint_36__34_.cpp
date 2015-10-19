@@ -249,7 +249,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::multiply_operation (const GALGAS_uint_3
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_uint_36__34_::reader_canMultiply (const GALGAS_uint_36__34_ & inOperand
+GALGAS_bool GALGAS_uint_36__34_::getter_canMultiply (const GALGAS_uint_36__34_ & inOperand
                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inOperand.isValid ()) {
@@ -278,7 +278,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::divide_operation (const GALGAS_uint_36_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_uint_36__34_::reader_canDivide (const GALGAS_uint_36__34_ & inOperand
+GALGAS_bool GALGAS_uint_36__34_::getter_canDivide (const GALGAS_uint_36__34_ & inOperand
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inOperand.isValid ()) {
@@ -367,7 +367,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::add_operation (const GALGAS_uint_36__34
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_uint_36__34_::reader_canAdd (const GALGAS_uint_36__34_ & inOperand
+GALGAS_bool GALGAS_uint_36__34_::getter_canAdd (const GALGAS_uint_36__34_ & inOperand
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inOperand.isValid ()) {
@@ -418,7 +418,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::substract_operation (const GALGAS_uint_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_uint_36__34_::reader_canSubstract (const GALGAS_uint_36__34_ & inOperand
+GALGAS_bool GALGAS_uint_36__34_::getter_canSubstract (const GALGAS_uint_36__34_ & inOperand
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inOperand.isValid ()) {
@@ -451,7 +451,7 @@ typeComparisonResult GALGAS_uint_36__34_::objectCompare (const GALGAS_uint_36__3
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sint_36__34_ GALGAS_uint_36__34_::reader_sint_36__34_ (C_Compiler * inCompiler
+GALGAS_sint_36__34_ GALGAS_uint_36__34_::getter_sint_36__34_ (C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (mUInt64Value > ((uint64_t) INT64_MAX)) {
@@ -464,7 +464,7 @@ GALGAS_sint_36__34_ GALGAS_uint_36__34_::reader_sint_36__34_ (C_Compiler * inCom
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sint GALGAS_uint_36__34_::reader_sint (C_Compiler * inCompiler
+GALGAS_sint GALGAS_uint_36__34_::getter_sint (C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (mUInt64Value > ((uint64_t) INT32_MAX)) {
@@ -477,7 +477,7 @@ GALGAS_sint GALGAS_uint_36__34_::reader_sint (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_uint_36__34_::reader_uint (C_Compiler * inCompiler
+GALGAS_uint GALGAS_uint_36__34_::getter_uint (C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (mUInt64Value > ((uint64_t) UINT32_MAX)) {
@@ -490,7 +490,7 @@ GALGAS_uint GALGAS_uint_36__34_::reader_uint (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigint GALGAS_uint_36__34_::reader_bigint (UNUSED_LOCATION_ARGS) const {
+GALGAS_bigint GALGAS_uint_36__34_::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
     result = GALGAS_bigint (C_BigInt (mUInt64Value, false)) ;
@@ -500,13 +500,13 @@ GALGAS_bigint GALGAS_uint_36__34_::reader_bigint (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_double GALGAS_uint_36__34_::reader_double (UNUSED_LOCATION_ARGS) const {
+GALGAS_double GALGAS_uint_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {
   return GALGAS_double ((double) mUInt64Value) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_uint_36__34_::reader_string (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_uint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
   C_String s ;
   s.appendUnsigned (mUInt64Value) ;
   return GALGAS_string (s) ;
@@ -514,7 +514,7 @@ GALGAS_string GALGAS_uint_36__34_::reader_string (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_uint_36__34_::reader_hexString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_uint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
   C_String s ;
   s.appendCString ("0x") ;
   s.appendUnsignedHex16 (mUInt64Value) ;
@@ -523,7 +523,7 @@ GALGAS_string GALGAS_uint_36__34_::reader_hexString (UNUSED_LOCATION_ARGS) const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_uint_36__34_::reader_xString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_uint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
   C_String s ;
   s.appendUnsignedHex16 (mUInt64Value) ;
   return GALGAS_string (s) ;
@@ -544,7 +544,7 @@ void GALGAS_uint_36__34_::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_uint_36__34_::reader_uintSlice (const GALGAS_uint & inStartBit,
+GALGAS_uint GALGAS_uint_36__34_::getter_uintSlice (const GALGAS_uint & inStartBit,
                                                    const GALGAS_uint & inBitCount,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {

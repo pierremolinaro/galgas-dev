@@ -365,7 +365,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (%?^%const GALGAS_range & inRange,
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListWithRange (%?^%const GALGAS_range & inRange,
                                                %!^%C_Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
@@ -375,7 +375,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (%?
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListFromIndex (%?^%const GALGAS_uint & inIndex,
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListFromIndex (%?^%const GALGAS_uint & inIndex,
                                                %!^%C_Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
@@ -409,7 +409,7 @@ for () in ATTRIBUTE_LIST do index IDX
 
   if mHasGetter then
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
     %                                              %!^%C_Compiler * inCompiler\n%
     %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
     %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%

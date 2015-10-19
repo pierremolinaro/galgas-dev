@@ -257,7 +257,7 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_axisCount (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_axisCount (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint (%![DIMENSION string]%) ;
@@ -267,7 +267,7 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_axisCount (UNUSED_LOCATION_ARGS) c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::reader_rangeForAxis (%?^%const GALGAS_uint & inAxisIndex,
+GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::getter_rangeForAxis (%?^%const GALGAS_uint & inAxisIndex,
                %!^%C_Compiler * inCompiler
                %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_range result ;
@@ -288,7 +288,7 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_sizeForAxis (%?^%const GALGAS_uint & inAxisIndex,
+GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_sizeForAxis (%?^%const GALGAS_uint & inAxisIndex,
                %!^%C_Compiler * inCompiler
                %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
@@ -309,7 +309,7 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::reader_isValueValidAtIndex (%?^
+GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_isValueValidAtIndex (%?^
 for () in DIMENSION_LIST
  do !^%const GALGAS_uint & inIndex%!mValue%,\n%
  end
@@ -333,7 +333,7 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_valueAtIndex (%?^
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_valueAtIndex (%?^
 for () in DIMENSION_LIST
  do !^%const GALGAS_uint & inIndex%!mValue%,\n%
  end

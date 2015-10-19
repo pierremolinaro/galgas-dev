@@ -137,7 +137,7 @@ GALGAS_bool GALGAS_bool::operator_not (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_bool::reader_cString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_bool::getter_cString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     result = GALGAS_string (mBoolValue ? "true" : "false") ;
@@ -147,7 +147,7 @@ GALGAS_string GALGAS_bool::reader_cString (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_bool::reader_ocString (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_bool::getter_ocString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     result = GALGAS_string (mBoolValue ? "YES" : "NO") ;
@@ -157,7 +157,7 @@ GALGAS_string GALGAS_bool::reader_ocString (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_bool::reader_uint (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_bool::getter_uint (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint ((uint32_t) (mBoolValue ? 1 : 0)) ;
@@ -167,7 +167,7 @@ GALGAS_uint GALGAS_bool::reader_uint (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigint GALGAS_bool::reader_bigint (UNUSED_LOCATION_ARGS) const {
+GALGAS_bigint GALGAS_bool::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
     result = GALGAS_bigint (C_BigInt ((uint32_t) (mBoolValue ? 1 : 0))) ;
@@ -177,7 +177,7 @@ GALGAS_bigint GALGAS_bool::reader_bigint (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sint GALGAS_bool::reader_sint (UNUSED_LOCATION_ARGS) const {
+GALGAS_sint GALGAS_bool::getter_sint (UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid ()) {
     result = GALGAS_sint (mBoolValue ? 1 : 0) ;
@@ -187,7 +187,7 @@ GALGAS_sint GALGAS_bool::reader_sint (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_ GALGAS_bool::reader_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint_36__34_ GALGAS_bool::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (isValid ()) {
     result = GALGAS_uint_36__34_ (mBoolValue ? 1 : 0) ;
@@ -197,7 +197,7 @@ GALGAS_uint_36__34_ GALGAS_bool::reader_uint_36__34_ (UNUSED_LOCATION_ARGS) cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sint_36__34_ GALGAS_bool::reader_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
+GALGAS_sint_36__34_ GALGAS_bool::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
   if (isValid ()) {
     result = GALGAS_sint_36__34_ (mBoolValue ? 1 : 0) ;

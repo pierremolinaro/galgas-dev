@@ -360,7 +360,7 @@ void C_Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
       if (UNICODE_VALUE (c) == 'K') {
         message << key ;
       }else if (UNICODE_VALUE (c) == 'L') {
-        message << inExistingKeyLocation.reader_locationString (this COMMA_THERE) ; // §§
+        message << inExistingKeyLocation.getter_locationString (this COMMA_THERE) ; // §§
       }
       perCentFound = false ;
     }else if (UNICODE_VALUE (c) == '%') {
@@ -595,8 +595,8 @@ void C_Compiler::enterPragma (const GALGAS_lstring & inPragmaName,
                               const GALGAS_lstring & inPragmaArgument
                               COMMA_LOCATION_ARGS) {
   if (inPragmaName.isValid () && inPragmaArgument.isValid ()) {
-    const C_String pragmaName = inPragmaName.reader_string (THERE).stringValue () ;
-    const C_String pragmaArgument = inPragmaArgument.reader_string (THERE).stringValue () ;
+    const C_String pragmaName = inPragmaName.getter_string (THERE).stringValue () ;
+    const C_String pragmaArgument = inPragmaArgument.getter_string (THERE).stringValue () ;
     if (pragmaName == "traceVariableState") {
       if (pragmaArgument.length () == 0) {
         mCheckedVariableList.free () ;
@@ -604,7 +604,7 @@ void C_Compiler::enterPragma (const GALGAS_lstring & inPragmaName,
         mCheckedVariableList.addObject (pragmaArgument) ;
       }
     }else{
-      semanticErrorAtLocation (inPragmaName.reader_location (THERE), "invalid name: only 'traceVariableState' is allowed here" COMMA_HERE) ;
+      semanticErrorAtLocation (inPragmaName.getter_location (THERE), "invalid name: only 'traceVariableState' is allowed here" COMMA_HERE) ;
     }
   }
 }

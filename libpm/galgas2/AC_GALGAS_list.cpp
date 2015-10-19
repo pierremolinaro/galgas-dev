@@ -540,7 +540,7 @@ uint32_t AC_GALGAS_list::count () const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint AC_GALGAS_list::reader_length (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint AC_GALGAS_list::getter_length (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint (mSharedList->count ()) ;
@@ -550,7 +550,7 @@ GALGAS_uint AC_GALGAS_list::reader_length (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range AC_GALGAS_list::reader_range (UNUSED_LOCATION_ARGS) const {
+GALGAS_range AC_GALGAS_list::getter_range (UNUSED_LOCATION_ARGS) const {
   GALGAS_range result ;
   if (isValid ()) {
     result = GALGAS_range (GALGAS_uint (0), GALGAS_uint (mSharedList->count ())) ;
@@ -880,7 +880,7 @@ uint32_t AC_GALGAS_listmap::count (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint AC_GALGAS_listmap::reader_count (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint AC_GALGAS_listmap::getter_count (UNUSED_LOCATION_ARGS) const {
   return GALGAS_uint (count ()) ;
 }
 
@@ -902,7 +902,7 @@ static void enterAllKeys (const cListMapNode * inNode, GALGAS_stringset & ioResu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset AC_GALGAS_listmap::reader_allKeys (LOCATION_ARGS) const {
+GALGAS_stringset AC_GALGAS_listmap::getter_allKeys (LOCATION_ARGS) const {
   GALGAS_stringset result ;
   if (isValid ()) {
     result = GALGAS_stringset::constructor_emptySet (THERE) ;
@@ -923,7 +923,7 @@ static void enterKeyList (const cListMapNode * inNode, GALGAS_stringlist & ioRes
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist AC_GALGAS_listmap::reader_keyList (LOCATION_ARGS) const {
+GALGAS_stringlist AC_GALGAS_listmap::getter_keyList (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
