@@ -28,14 +28,14 @@ static GALGAS_string categoryReader_abstractCategoryMethodAST_keyRepresentation 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_abstractCategoryMethodAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_abstractCategoryMethodAST.mSlotID,
+static void defineCategoryGetter_abstractCategoryMethodAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_abstractCategoryMethodAST.mSlotID,
                                          categoryReader_abstractCategoryMethodAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractCategoryMethodAST_keyRepresentation (defineCategoryReader_abstractCategoryMethodAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_abstractCategoryMethodAST_keyRepresentation (defineCategoryGetter_abstractCategoryMethodAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -57,14 +57,14 @@ static GALGAS_string categoryReader_categoryMethodAST_keyRepresentation (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_categoryMethodAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_categoryMethodAST.mSlotID,
+static void defineCategoryGetter_categoryMethodAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_categoryMethodAST.mSlotID,
                                          categoryReader_categoryMethodAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_categoryMethodAST_keyRepresentation (defineCategoryReader_categoryMethodAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_categoryMethodAST_keyRepresentation (defineCategoryGetter_categoryMethodAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -86,14 +86,14 @@ static GALGAS_string categoryReader_overridingCategoryMethodAST_keyRepresentatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_overridingCategoryMethodAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_overridingCategoryMethodAST.mSlotID,
+static void defineCategoryGetter_overridingCategoryMethodAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_overridingCategoryMethodAST.mSlotID,
                                          categoryReader_overridingCategoryMethodAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingCategoryMethodAST_keyRepresentation (defineCategoryReader_overridingCategoryMethodAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_overridingCategoryMethodAST_keyRepresentation (defineCategoryGetter_overridingCategoryMethodAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -115,28 +115,28 @@ static GALGAS_string categoryReader_overridingAbstractCategoryMethodAST_keyRepre
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_overridingAbstractCategoryMethodAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_overridingAbstractCategoryMethodAST.mSlotID,
+static void defineCategoryGetter_overridingAbstractCategoryMethodAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_overridingAbstractCategoryMethodAST.mSlotID,
                                          categoryReader_overridingAbstractCategoryMethodAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingAbstractCategoryMethodAST_keyRepresentation (defineCategoryReader_overridingAbstractCategoryMethodAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_overridingAbstractCategoryMethodAST_keyRepresentation (defineCategoryGetter_overridingAbstractCategoryMethodAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category reader '@abstractCategoryReaderAST keyRepresentation'                      *
+//                      Overriding category reader '@abstractCategoryGetterAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_abstractCategoryReaderAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+static GALGAS_string categoryReader_abstractCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
                                                                                  C_Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
-  const cPtr_abstractCategoryReaderAST * object = (const cPtr_abstractCategoryReaderAST *) inObject ;
-  macroValidSharedObject (object, cPtr_abstractCategoryReaderAST) ;
-  result_outString = GALGAS_string ("abstract category getter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 389)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 389)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 389)).add_operation (object->mAttribute_mAbstractCategoryReaderName.reader_string (SOURCE_FILE ("semanticContext.galgas", 389)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 389)) ;
+  const cPtr_abstractCategoryGetterAST * object = (const cPtr_abstractCategoryGetterAST *) inObject ;
+  macroValidSharedObject (object, cPtr_abstractCategoryGetterAST) ;
+  result_outString = GALGAS_string ("abstract category getter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 389)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 389)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 389)).add_operation (object->mAttribute_mAbstractCategoryGetterName.reader_string (SOURCE_FILE ("semanticContext.galgas", 389)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 389)) ;
 //---
   return result_outString ;
 }
@@ -144,14 +144,14 @@ static GALGAS_string categoryReader_abstractCategoryReaderAST_keyRepresentation 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_abstractCategoryReaderAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_abstractCategoryReaderAST.mSlotID,
-                                         categoryReader_abstractCategoryReaderAST_keyRepresentation) ;
+static void defineCategoryGetter_abstractCategoryGetterAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_abstractCategoryGetterAST.mSlotID,
+                                         categoryReader_abstractCategoryGetterAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractCategoryReaderAST_keyRepresentation (defineCategoryReader_abstractCategoryReaderAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_abstractCategoryGetterAST_keyRepresentation (defineCategoryGetter_abstractCategoryGetterAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -165,7 +165,7 @@ static GALGAS_string categoryReader_categoryGetterAST_keyRepresentation (const c
   GALGAS_string result_outString ; // Returned variable
   const cPtr_categoryGetterAST * object = (const cPtr_categoryGetterAST *) inObject ;
   macroValidSharedObject (object, cPtr_categoryGetterAST) ;
-  result_outString = GALGAS_string ("category getter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 396)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 396)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 396)).add_operation (object->mAttribute_mCategoryReaderName.reader_string (SOURCE_FILE ("semanticContext.galgas", 396)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 396)) ;
+  result_outString = GALGAS_string ("category getter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 396)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 396)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 396)).add_operation (object->mAttribute_mCategoryGetterName.reader_string (SOURCE_FILE ("semanticContext.galgas", 396)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 396)) ;
 //---
   return result_outString ;
 }
@@ -173,28 +173,28 @@ static GALGAS_string categoryReader_categoryGetterAST_keyRepresentation (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_categoryGetterAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_categoryGetterAST.mSlotID,
+static void defineCategoryGetter_categoryGetterAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_categoryGetterAST.mSlotID,
                                          categoryReader_categoryGetterAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_categoryGetterAST_keyRepresentation (defineCategoryReader_categoryGetterAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_categoryGetterAST_keyRepresentation (defineCategoryGetter_categoryGetterAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category reader '@overridingCategoryReaderAST keyRepresentation'                     *
+//                     Overriding category reader '@overridingCategoryGetterAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_overridingCategoryReaderAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+static GALGAS_string categoryReader_overridingCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
-  const cPtr_overridingCategoryReaderAST * object = (const cPtr_overridingCategoryReaderAST *) inObject ;
-  macroValidSharedObject (object, cPtr_overridingCategoryReaderAST) ;
-  result_outString = GALGAS_string ("overriding category getter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 403)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 403)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 403)).add_operation (object->mAttribute_mOverridingCategoryReaderName.reader_string (SOURCE_FILE ("semanticContext.galgas", 403)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 403)) ;
+  const cPtr_overridingCategoryGetterAST * object = (const cPtr_overridingCategoryGetterAST *) inObject ;
+  macroValidSharedObject (object, cPtr_overridingCategoryGetterAST) ;
+  result_outString = GALGAS_string ("overriding category getter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 403)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 403)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 403)).add_operation (object->mAttribute_mOverridingCategoryGetterName.reader_string (SOURCE_FILE ("semanticContext.galgas", 403)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 403)) ;
 //---
   return result_outString ;
 }
@@ -202,28 +202,28 @@ static GALGAS_string categoryReader_overridingCategoryReaderAST_keyRepresentatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_overridingCategoryReaderAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_overridingCategoryReaderAST.mSlotID,
-                                         categoryReader_overridingCategoryReaderAST_keyRepresentation) ;
+static void defineCategoryGetter_overridingCategoryGetterAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_overridingCategoryGetterAST.mSlotID,
+                                         categoryReader_overridingCategoryGetterAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingCategoryReaderAST_keyRepresentation (defineCategoryReader_overridingCategoryReaderAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_overridingCategoryGetterAST_keyRepresentation (defineCategoryGetter_overridingCategoryGetterAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category reader '@overridingAbstractCategoryReaderAST keyRepresentation'                 *
+//                 Overriding category reader '@overridingAbstractCategoryGetterAST keyRepresentation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_overridingAbstractCategoryReaderAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+static GALGAS_string categoryReader_overridingAbstractCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
                                                                                            C_Compiler * inCompiler
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
-  const cPtr_overridingAbstractCategoryReaderAST * object = (const cPtr_overridingAbstractCategoryReaderAST *) inObject ;
-  macroValidSharedObject (object, cPtr_overridingAbstractCategoryReaderAST) ;
-  result_outString = GALGAS_string ("overriding category getter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 410)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 410)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 410)).add_operation (object->mAttribute_mAbstractCategoryReaderName.reader_string (SOURCE_FILE ("semanticContext.galgas", 410)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 410)) ;
+  const cPtr_overridingAbstractCategoryGetterAST * object = (const cPtr_overridingAbstractCategoryGetterAST *) inObject ;
+  macroValidSharedObject (object, cPtr_overridingAbstractCategoryGetterAST) ;
+  result_outString = GALGAS_string ("overriding category getter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 410)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 410)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 410)).add_operation (object->mAttribute_mAbstractCategoryGetterName.reader_string (SOURCE_FILE ("semanticContext.galgas", 410)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 410)) ;
 //---
   return result_outString ;
 }
@@ -231,14 +231,14 @@ static GALGAS_string categoryReader_overridingAbstractCategoryReaderAST_keyRepre
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_overridingAbstractCategoryReaderAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_overridingAbstractCategoryReaderAST.mSlotID,
-                                         categoryReader_overridingAbstractCategoryReaderAST_keyRepresentation) ;
+static void defineCategoryGetter_overridingAbstractCategoryGetterAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_overridingAbstractCategoryGetterAST.mSlotID,
+                                         categoryReader_overridingAbstractCategoryGetterAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingAbstractCategoryReaderAST_keyRepresentation (defineCategoryReader_overridingAbstractCategoryReaderAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_overridingAbstractCategoryGetterAST_keyRepresentation (defineCategoryGetter_overridingAbstractCategoryGetterAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -260,14 +260,14 @@ static GALGAS_string categoryReader_predefinedTypeAST_keyRepresentation (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_predefinedTypeAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+static void defineCategoryGetter_predefinedTypeAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
                                          categoryReader_predefinedTypeAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_predefinedTypeAST_keyRepresentation (defineCategoryReader_predefinedTypeAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_predefinedTypeAST_keyRepresentation (defineCategoryGetter_predefinedTypeAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -289,14 +289,14 @@ static GALGAS_string categoryReader_mapDeclarationAST_keyRepresentation (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_mapDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_mapDeclarationAST.mSlotID,
+static void defineCategoryGetter_mapDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_mapDeclarationAST.mSlotID,
                                          categoryReader_mapDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_mapDeclarationAST_keyRepresentation (defineCategoryReader_mapDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_mapDeclarationAST_keyRepresentation (defineCategoryGetter_mapDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -318,14 +318,14 @@ static GALGAS_string categoryReader_mapProxyDeclarationAST_keyRepresentation (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_mapProxyDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_mapProxyDeclarationAST.mSlotID,
+static void defineCategoryGetter_mapProxyDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_mapProxyDeclarationAST.mSlotID,
                                          categoryReader_mapProxyDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_mapProxyDeclarationAST_keyRepresentation (defineCategoryReader_mapProxyDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_mapProxyDeclarationAST_keyRepresentation (defineCategoryGetter_mapProxyDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -347,14 +347,14 @@ static GALGAS_string categoryReader_enumDeclarationAST_keyRepresentation (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_enumDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_enumDeclarationAST.mSlotID,
+static void defineCategoryGetter_enumDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_enumDeclarationAST.mSlotID,
                                          categoryReader_enumDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_enumDeclarationAST_keyRepresentation (defineCategoryReader_enumDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_enumDeclarationAST_keyRepresentation (defineCategoryGetter_enumDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -376,14 +376,14 @@ static GALGAS_string categoryReader_sortedListDeclarationAST_keyRepresentation (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_sortedListDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_sortedListDeclarationAST.mSlotID,
+static void defineCategoryGetter_sortedListDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_sortedListDeclarationAST.mSlotID,
                                          categoryReader_sortedListDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_sortedListDeclarationAST_keyRepresentation (defineCategoryReader_sortedListDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_sortedListDeclarationAST_keyRepresentation (defineCategoryGetter_sortedListDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -405,14 +405,14 @@ static GALGAS_string categoryReader_structDeclarationAST_keyRepresentation (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_structDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_structDeclarationAST.mSlotID,
+static void defineCategoryGetter_structDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_structDeclarationAST.mSlotID,
                                          categoryReader_structDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_structDeclarationAST_keyRepresentation (defineCategoryReader_structDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_structDeclarationAST_keyRepresentation (defineCategoryGetter_structDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -434,14 +434,14 @@ static GALGAS_string categoryReader_listDeclarationAST_keyRepresentation (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_listDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_listDeclarationAST.mSlotID,
+static void defineCategoryGetter_listDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_listDeclarationAST.mSlotID,
                                          categoryReader_listDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_listDeclarationAST_keyRepresentation (defineCategoryReader_listDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_listDeclarationAST_keyRepresentation (defineCategoryGetter_listDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -463,14 +463,14 @@ static GALGAS_string categoryReader_classDeclarationAST_keyRepresentation (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_classDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_classDeclarationAST.mSlotID,
+static void defineCategoryGetter_classDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_classDeclarationAST.mSlotID,
                                          categoryReader_classDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_classDeclarationAST_keyRepresentation (defineCategoryReader_classDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_classDeclarationAST_keyRepresentation (defineCategoryGetter_classDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -492,14 +492,14 @@ static GALGAS_string categoryReader_arrayDeclarationAST_keyRepresentation (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_arrayDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_arrayDeclarationAST.mSlotID,
+static void defineCategoryGetter_arrayDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_arrayDeclarationAST.mSlotID,
                                          categoryReader_arrayDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_arrayDeclarationAST_keyRepresentation (defineCategoryReader_arrayDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_arrayDeclarationAST_keyRepresentation (defineCategoryGetter_arrayDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -521,14 +521,14 @@ static GALGAS_string categoryReader_listmapDeclarationAST_keyRepresentation (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_listmapDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_listmapDeclarationAST.mSlotID,
+static void defineCategoryGetter_listmapDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_listmapDeclarationAST.mSlotID,
                                          categoryReader_listmapDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_listmapDeclarationAST_keyRepresentation (defineCategoryReader_listmapDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_listmapDeclarationAST_keyRepresentation (defineCategoryGetter_listmapDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -550,14 +550,14 @@ static GALGAS_string categoryReader_filewrapperDeclarationAST_keyRepresentation 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_filewrapperDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_filewrapperDeclarationAST.mSlotID,
+static void defineCategoryGetter_filewrapperDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_filewrapperDeclarationAST.mSlotID,
                                          categoryReader_filewrapperDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_filewrapperDeclarationAST_keyRepresentation (defineCategoryReader_filewrapperDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_filewrapperDeclarationAST_keyRepresentation (defineCategoryGetter_filewrapperDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -579,14 +579,14 @@ static GALGAS_string categoryReader_optionComponentDeclarationAST_keyRepresentat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_optionComponentDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_optionComponentDeclarationAST.mSlotID,
+static void defineCategoryGetter_optionComponentDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_optionComponentDeclarationAST.mSlotID,
                                          categoryReader_optionComponentDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_optionComponentDeclarationAST_keyRepresentation (defineCategoryReader_optionComponentDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_optionComponentDeclarationAST_keyRepresentation (defineCategoryGetter_optionComponentDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -608,14 +608,14 @@ static GALGAS_string categoryReader_graphDeclarationAST_keyRepresentation (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_graphDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_graphDeclarationAST.mSlotID,
+static void defineCategoryGetter_graphDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_graphDeclarationAST.mSlotID,
                                          categoryReader_graphDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_graphDeclarationAST_keyRepresentation (defineCategoryReader_graphDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_graphDeclarationAST_keyRepresentation (defineCategoryGetter_graphDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -637,14 +637,14 @@ static GALGAS_string categoryReader_externTypeDeclarationAST_keyRepresentation (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_externTypeDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_externTypeDeclarationAST.mSlotID,
+static void defineCategoryGetter_externTypeDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_externTypeDeclarationAST.mSlotID,
                                          categoryReader_externTypeDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_externTypeDeclarationAST_keyRepresentation (defineCategoryReader_externTypeDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_externTypeDeclarationAST_keyRepresentation (defineCategoryGetter_externTypeDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -666,14 +666,14 @@ static GALGAS_string categoryReader_onceFunctionDeclarationAST_keyRepresentation
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_onceFunctionDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_onceFunctionDeclarationAST.mSlotID,
+static void defineCategoryGetter_onceFunctionDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_onceFunctionDeclarationAST.mSlotID,
                                          categoryReader_onceFunctionDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_onceFunctionDeclarationAST_keyRepresentation (defineCategoryReader_onceFunctionDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_onceFunctionDeclarationAST_keyRepresentation (defineCategoryGetter_onceFunctionDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -695,14 +695,14 @@ static GALGAS_string categoryReader_externFunctionDeclarationAST_keyRepresentati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_externFunctionDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_externFunctionDeclarationAST.mSlotID,
+static void defineCategoryGetter_externFunctionDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_externFunctionDeclarationAST.mSlotID,
                                          categoryReader_externFunctionDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_externFunctionDeclarationAST_keyRepresentation (defineCategoryReader_externFunctionDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_externFunctionDeclarationAST_keyRepresentation (defineCategoryGetter_externFunctionDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -724,14 +724,14 @@ static GALGAS_string categoryReader_externRoutineDeclarationAST_keyRepresentatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_externRoutineDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_externRoutineDeclarationAST.mSlotID,
+static void defineCategoryGetter_externRoutineDeclarationAST_keyRepresentation (void) {
+  enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_externRoutineDeclarationAST.mSlotID,
                                          categoryReader_externRoutineDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_externRoutineDeclarationAST_keyRepresentation (defineCategoryReader_externRoutineDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gReader_externRoutineDeclarationAST_keyRepresentation (defineCategoryGetter_externRoutineDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -741,7 +741,7 @@ C_PrologueEpilogue gReader_externRoutineDeclarationAST_keyRepresentation (define
 
 static void categoryMethod_abstractCategoryMethodAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                              const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                             const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                             const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                              const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                              GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                              C_Compiler * /* inCompiler */
@@ -766,7 +766,7 @@ C_PrologueEpilogue gMethod_abstractCategoryMethodAST_enterInSemanticContext (def
 
 static void categoryMethod_categoryMethodAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                      const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                     const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                     const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                      const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                      GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                      C_Compiler * /* inCompiler */
@@ -791,7 +791,7 @@ C_PrologueEpilogue gMethod_categoryMethodAST_enterInSemanticContext (defineCateg
 
 static void categoryMethod_overridingCategoryMethodAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                                const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                               const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                               const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                                C_Compiler * /* inCompiler */
@@ -816,7 +816,7 @@ C_PrologueEpilogue gMethod_overridingCategoryMethodAST_enterInSemanticContext (d
 
 static void categoryMethod_overridingAbstractCategoryMethodAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                                        const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                        const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                        GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                                        C_Compiler * /* inCompiler */
@@ -841,7 +841,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryMethodAST_enterInSemanticCo
 
 static void categoryMethod_abstractCategoryModifierAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                                const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                               const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                               const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                                C_Compiler * /* inCompiler */
@@ -866,7 +866,7 @@ C_PrologueEpilogue gMethod_abstractCategoryModifierAST_enterInSemanticContext (d
 
 static void categoryMethod_categoryModifierAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                        const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                        const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                        GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                        C_Compiler * /* inCompiler */
@@ -891,7 +891,7 @@ C_PrologueEpilogue gMethod_categoryModifierAST_enterInSemanticContext (defineCat
 
 static void categoryMethod_overridingCategoryModifierAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                                  const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                 const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                                 const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                  const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                  GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                                  C_Compiler * /* inCompiler */
@@ -916,7 +916,7 @@ C_PrologueEpilogue gMethod_overridingCategoryModifierAST_enterInSemanticContext 
 
 static void categoryMethod_overridingAbstractCategoryModifierAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                                          const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                         const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                                         const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                          const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                          GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                                          C_Compiler * /* inCompiler */
@@ -935,13 +935,13 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryModifierAST_enterInSemantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@abstractCategoryReaderAST enterInSemanticContext'                    *
+//                   Overriding category method '@abstractCategoryGetterAST enterInSemanticContext'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_abstractCategoryReaderAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
+static void categoryMethod_abstractCategoryGetterAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                              const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                             const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                             const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                              const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                              GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                              C_Compiler * /* inCompiler */
@@ -949,14 +949,14 @@ static void categoryMethod_abstractCategoryReaderAST_enterInSemanticContext (con
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_abstractCategoryReaderAST_enterInSemanticContext (void) {
-  enterCategoryMethod_enterInSemanticContext (kTypeDescriptor_GALGAS_abstractCategoryReaderAST.mSlotID,
-                                              categoryMethod_abstractCategoryReaderAST_enterInSemanticContext) ;
+static void defineCategoryMethod_abstractCategoryGetterAST_enterInSemanticContext (void) {
+  enterCategoryMethod_enterInSemanticContext (kTypeDescriptor_GALGAS_abstractCategoryGetterAST.mSlotID,
+                                              categoryMethod_abstractCategoryGetterAST_enterInSemanticContext) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_abstractCategoryReaderAST_enterInSemanticContext (defineCategoryMethod_abstractCategoryReaderAST_enterInSemanticContext, NULL) ;
+C_PrologueEpilogue gMethod_abstractCategoryGetterAST_enterInSemanticContext (defineCategoryMethod_abstractCategoryGetterAST_enterInSemanticContext, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -966,7 +966,7 @@ C_PrologueEpilogue gMethod_abstractCategoryReaderAST_enterInSemanticContext (def
 
 static void categoryMethod_categoryGetterAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                      const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                     const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                     const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                      const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                      GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                      C_Compiler * /* inCompiler */
@@ -985,13 +985,13 @@ C_PrologueEpilogue gMethod_categoryGetterAST_enterInSemanticContext (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@overridingCategoryReaderAST enterInSemanticContext'                   *
+//                  Overriding category method '@overridingCategoryGetterAST enterInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_overridingCategoryReaderAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
+static void categoryMethod_overridingCategoryGetterAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                                const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                               const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                               const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                                C_Compiler * /* inCompiler */
@@ -999,24 +999,24 @@ static void categoryMethod_overridingCategoryReaderAST_enterInSemanticContext (c
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_overridingCategoryReaderAST_enterInSemanticContext (void) {
-  enterCategoryMethod_enterInSemanticContext (kTypeDescriptor_GALGAS_overridingCategoryReaderAST.mSlotID,
-                                              categoryMethod_overridingCategoryReaderAST_enterInSemanticContext) ;
+static void defineCategoryMethod_overridingCategoryGetterAST_enterInSemanticContext (void) {
+  enterCategoryMethod_enterInSemanticContext (kTypeDescriptor_GALGAS_overridingCategoryGetterAST.mSlotID,
+                                              categoryMethod_overridingCategoryGetterAST_enterInSemanticContext) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_overridingCategoryReaderAST_enterInSemanticContext (defineCategoryMethod_overridingCategoryReaderAST_enterInSemanticContext, NULL) ;
+C_PrologueEpilogue gMethod_overridingCategoryGetterAST_enterInSemanticContext (defineCategoryMethod_overridingCategoryGetterAST_enterInSemanticContext, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@overridingAbstractCategoryReaderAST enterInSemanticContext'               *
+//              Overriding category method '@overridingAbstractCategoryGetterAST enterInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_overridingAbstractCategoryReaderAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
+static void categoryMethod_overridingAbstractCategoryGetterAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
                                                                                        const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                        const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                        GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                                        C_Compiler * /* inCompiler */
@@ -1024,14 +1024,14 @@ static void categoryMethod_overridingAbstractCategoryReaderAST_enterInSemanticCo
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_overridingAbstractCategoryReaderAST_enterInSemanticContext (void) {
-  enterCategoryMethod_enterInSemanticContext (kTypeDescriptor_GALGAS_overridingAbstractCategoryReaderAST.mSlotID,
-                                              categoryMethod_overridingAbstractCategoryReaderAST_enterInSemanticContext) ;
+static void defineCategoryMethod_overridingAbstractCategoryGetterAST_enterInSemanticContext (void) {
+  enterCategoryMethod_enterInSemanticContext (kTypeDescriptor_GALGAS_overridingAbstractCategoryGetterAST.mSlotID,
+                                              categoryMethod_overridingAbstractCategoryGetterAST_enterInSemanticContext) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_overridingAbstractCategoryReaderAST_enterInSemanticContext (defineCategoryMethod_overridingAbstractCategoryReaderAST_enterInSemanticContext, NULL) ;
+C_PrologueEpilogue gMethod_overridingAbstractCategoryGetterAST_enterInSemanticContext (defineCategoryMethod_overridingAbstractCategoryGetterAST_enterInSemanticContext, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1041,7 +1041,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryReaderAST_enterInSemanticCo
 
 static void categoryMethod_predefinedTypeAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                      const GALGAS_categoryMethodMapForBuildingContext constinArgument_inCategoryMethodMapForBuildingContext,
-                                                                     const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryReaderMapForBuildingContext,
+                                                                     const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryGetterMapForBuildingContext,
                                                                      const GALGAS_categoryModifierMapForBuildingContext constinArgument_inCategoryModifierMapForBuildingContext,
                                                                      GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                      C_Compiler * inCompiler
@@ -1053,7 +1053,7 @@ static void categoryMethod_predefinedTypeAST_enterInSemanticContext (const cPtr_
   callCategoryMethod_getConstructorMap ((const cPtr_predefinedTypeAST *) temp_0.ptr (), ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_constructorMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 770)) ;
   GALGAS_getterMap var_getterMap ;
   const GALGAS_predefinedTypeAST temp_1 = object ;
-  callCategoryMethod_getReaderMap ((const cPtr_predefinedTypeAST *) temp_1.ptr (), ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 771)) ;
+  callCategoryMethod_getGetterMap ((const cPtr_predefinedTypeAST *) temp_1.ptr (), ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 771)) ;
   GALGAS_setterMap var_modifierMap ;
   const GALGAS_predefinedTypeAST temp_2 = object ;
   callCategoryMethod_getModifierMap ((const cPtr_predefinedTypeAST *) temp_2.ptr (), ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_modifierMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 772)) ;
@@ -1085,11 +1085,11 @@ static void categoryMethod_predefinedTypeAST_enterInSemanticContext (const cPtr_
     }
   }
   {
-  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryReaderMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, GALGAS_lstring::constructor_new (object->mAttribute_mPredefinedTypeName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 800))  COMMA_SOURCE_FILE ("semanticContext.galgas", 800)), var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 795)) ;
+  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryGetterMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, GALGAS_lstring::constructor_new (object->mAttribute_mPredefinedTypeName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 800))  COMMA_SOURCE_FILE ("semanticContext.galgas", 800)), var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 795)) ;
   }
   {
   const GALGAS_predefinedTypeAST temp_8 = object ;
-  ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (GALGAS_lstring::constructor_new (object->mAttribute_mPredefinedTypeName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 807))  COMMA_SOURCE_FILE ("semanticContext.galgas", 807)), object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 810)), GALGAS_typeKindEnum::constructor_predefinedType (SOURCE_FILE ("semanticContext.galgas", 811)), GALGAS_bool (kIsEqual, object->mAttribute_mPredefinedTypeName.objectCompare (GALGAS_string ("stringset"))), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 813)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 814)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 815)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, var_classMethodMap, var_enumerationList, var_enumerationVariants, callCategoryReader_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_8.ptr (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 823)), var_addAssignArgumentList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 825)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 826)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 827)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 828)), GALGAS_bool (false), var_enumeratedTypeProxy, categoryReader_defaultConstructorName (object->mAttribute_mKind, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 831)), GALGAS_string ("galgas2/predefined-types"), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticContext.galgas", 833)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 806)) ;
+  ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (GALGAS_lstring::constructor_new (object->mAttribute_mPredefinedTypeName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 807))  COMMA_SOURCE_FILE ("semanticContext.galgas", 807)), object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 810)), GALGAS_typeKindEnum::constructor_predefinedType (SOURCE_FILE ("semanticContext.galgas", 811)), GALGAS_bool (kIsEqual, object->mAttribute_mPredefinedTypeName.objectCompare (GALGAS_string ("stringset"))), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 813)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 814)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 815)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, var_classMethodMap, var_enumerationList, var_enumerationVariants, callCategoryGetter_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_8.ptr (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 823)), var_addAssignArgumentList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 825)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 826)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 827)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 828)), GALGAS_bool (false), var_enumeratedTypeProxy, categoryReader_defaultConstructorName (object->mAttribute_mKind, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 831)), GALGAS_string ("galgas2/predefined-types"), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticContext.galgas", 833)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 806)) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1111,7 +1111,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_enterInSemanticContext (defineCateg
 
 static void categoryMethod_mapDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                      const GALGAS_categoryMethodMapForBuildingContext constinArgument_inCategoryMethodMapForBuildingContext,
-                                                                     const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryReaderMapForBuildingContext,
+                                                                     const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryGetterMapForBuildingContext,
                                                                      const GALGAS_categoryModifierMapForBuildingContext constinArgument_inCategoryModifierMapForBuildingContext,
                                                                      GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                      C_Compiler * inCompiler
@@ -1162,7 +1162,7 @@ static void categoryMethod_mapDeclarationAST_enterInSemanticContext (const cPtr_
   GALGAS_constructorMap var_constructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 883)) ;
   GALGAS_getterMap var_getterMap ;
   {
-  routine_commonReaderMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 884)) ;
+  routine_commonGetterMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 884)) ;
   }
   GALGAS_setterMap var_modifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 885)) ;
   GALGAS_instanceMethodMap var_instanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 886)) ;
@@ -1176,7 +1176,7 @@ static void categoryMethod_mapDeclarationAST_enterInSemanticContext (const cPtr_
   routine_enterInheritedGetterWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("levels"), GALGAS_string ("uint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 891)) ;
   }
   {
-  routine_enterInheritedReaderWith_32_Arguments (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("hasKeyAtLevel"), GALGAS_string ("string"), GALGAS_string ("inKey"), GALGAS_string ("uint"), GALGAS_string ("inLevel"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 898)) ;
+  routine_enterInheritedGetterWith_32_Arguments (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("hasKeyAtLevel"), GALGAS_string ("string"), GALGAS_string ("inKey"), GALGAS_string ("uint"), GALGAS_string ("inLevel"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 898)) ;
   }
   {
   routine_enterInheritedGetterWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("keySet"), GALGAS_string ("stringset"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 909)) ;
@@ -1191,7 +1191,7 @@ static void categoryMethod_mapDeclarationAST_enterInSemanticContext (const cPtr_
   routine_enterInheritedGetterWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("locationForKey"), GALGAS_string ("string"), GALGAS_string ("inKey"), GALGAS_string ("location"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 932)) ;
   }
   {
-  routine_enterBaseReaderWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("overriddenMap"), object->mAttribute_mMapTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 941)), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 941)) ;
+  routine_enterBaseGetterWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("overriddenMap"), object->mAttribute_mMapTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 941)), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 941)) ;
   }
   {
   routine_enterInheritedGetterWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("count"), GALGAS_string ("uint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 942)) ;
@@ -1319,7 +1319,7 @@ static void categoryMethod_mapDeclarationAST_enterInSemanticContext (const cPtr_
     enumerator_49105.gotoNextObject () ;
   }
   {
-  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryReaderMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mMapTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1073)) ;
+  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryGetterMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mMapTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1073)) ;
   }
   GALGAS_unifiedTypeMap_2D_proxy var_elementTypeProxy ;
   {
@@ -1348,7 +1348,7 @@ C_PrologueEpilogue gMethod_mapDeclarationAST_enterInSemanticContext (defineCateg
 
 static void categoryMethod_externTypeDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                             const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                            const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                            const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                             const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                             GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                             C_Compiler * inCompiler
@@ -1357,7 +1357,7 @@ static void categoryMethod_externTypeDeclarationAST_enterInSemanticContext (cons
   macroValidSharedObject (object, cPtr_externTypeDeclarationAST) ;
   GALGAS_getterMap var_getterMap ;
   {
-  routine_commonReaderMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1129)) ;
+  routine_commonGetterMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1129)) ;
   }
   GALGAS_constructorMap var_constructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1130)) ;
   GALGAS_setterMap var_modifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1131)) ;
@@ -1384,7 +1384,7 @@ static void categoryMethod_externTypeDeclarationAST_enterInSemanticContext (cons
     }
     enumerator_52149.gotoNextObject () ;
   }
-  cEnumerator_externTypeReaderList enumerator_52850 (object->mAttribute_mExternTypeReaderList, kEnumeration_up) ;
+  cEnumerator_externTypeGetterList enumerator_52850 (object->mAttribute_mExternTypeGetterList, kEnumeration_up) ;
   while (enumerator_52850.hasCurrentObject ()) {
     GALGAS_unifiedTypeMap_2D_proxy var_returnedTypeProxy ;
     {
@@ -1462,7 +1462,7 @@ C_PrologueEpilogue gMethod_externTypeDeclarationAST_enterInSemanticContext (defi
 
 static void categoryMethod_graphDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                        const GALGAS_categoryMethodMapForBuildingContext constinArgument_inCategoryMethodMapForBuildingContext,
-                                                                       const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryReaderMapForBuildingContext,
+                                                                       const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryGetterMapForBuildingContext,
                                                                        const GALGAS_categoryModifierMapForBuildingContext constinArgument_inCategoryModifierMapForBuildingContext,
                                                                        GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                        C_Compiler * inCompiler
@@ -1491,7 +1491,7 @@ static void categoryMethod_graphDeclarationAST_enterInSemanticContext (const cPt
   }
   GALGAS_getterMap var_getterMap ;
   {
-  routine_commonReaderMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1290)) ;
+  routine_commonGetterMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1290)) ;
   }
   GALGAS_constructorMap var_constructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1291)) ;
   GALGAS_setterMap var_modifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1292)) ;
@@ -1550,10 +1550,10 @@ static void categoryMethod_graphDeclarationAST_enterInSemanticContext (const cPt
   routine_enterInheritedGetterWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("edges"), GALGAS_string ("2stringlist"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1443)) ;
   }
   {
-  routine_enterBaseReaderWith_32_Arguments (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("subgraphFromNodes"), GALGAS_string ("lstringlist"), GALGAS_string ("inStartNodeLStringList"), GALGAS_string ("stringset"), GALGAS_string ("inNodesToExclude"), object->mAttribute_mGraphTypeName.mAttribute_string, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1451)) ;
+  routine_enterBaseGetterWith_32_Arguments (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("subgraphFromNodes"), GALGAS_string ("lstringlist"), GALGAS_string ("inStartNodeLStringList"), GALGAS_string ("stringset"), GALGAS_string ("inNodesToExclude"), object->mAttribute_mGraphTypeName.mAttribute_string, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1451)) ;
   }
   {
-  routine_enterBaseReaderWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("accessibleNodesFromNodes"), GALGAS_string ("lstringlist"), GALGAS_string ("inStartNodeStringList"), GALGAS_string ("lstringlist"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1463)) ;
+  routine_enterBaseGetterWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("accessibleNodesFromNodes"), GALGAS_string ("lstringlist"), GALGAS_string ("inStartNodeStringList"), GALGAS_string ("lstringlist"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1463)) ;
   }
   {
   var_constructorMap.modifier_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("emptyGraph"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1474))  COMMA_SOURCE_FILE ("semanticContext.galgas", 1474)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1475)), GALGAS_bool (false), var_graphTypeProxy, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1473)) ;
@@ -1596,7 +1596,7 @@ static void categoryMethod_graphDeclarationAST_enterInSemanticContext (const cPt
   }
   var_formalParameterList.drop () ; // drop instruction
   {
-  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryReaderMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mGraphTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1551)) ;
+  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryGetterMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mGraphTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1551)) ;
   }
   {
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (object->mAttribute_mGraphTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 1566)), GALGAS_typeKindEnum::constructor_graphType (SOURCE_FILE ("semanticContext.galgas", 1567)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1569)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1570)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1571)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1576)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1577)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1578)), function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1579)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1580)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1581)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1582)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1583)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1584)), GALGAS_bool (false), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 1586)), GALGAS_string ("emptyGraph"), GALGAS_string ("graph-").add_operation (object->mAttribute_mGraphTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 1588)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1588)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("semanticContext.galgas", 1589)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1562)) ;
@@ -1621,7 +1621,7 @@ C_PrologueEpilogue gMethod_graphDeclarationAST_enterInSemanticContext (defineCat
 
 static void categoryMethod_filewrapperDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                              const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                             const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                             const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                              const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                              GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                              C_Compiler * inCompiler
@@ -1713,7 +1713,7 @@ C_PrologueEpilogue gMethod_filewrapperDeclarationAST_enterInSemanticContext (def
 
 static void categoryMethod_optionComponentDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                                  const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                 const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                                 const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                  const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                  GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                                  C_Compiler * inCompiler
@@ -1816,7 +1816,7 @@ C_PrologueEpilogue gMethod_optionComponentDeclarationAST_enterInSemanticContext 
 
 static void categoryMethod_classDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                        const GALGAS_categoryMethodMapForBuildingContext constinArgument_inCategoryMethodMapForBuildingContext,
-                                                                       const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryReaderMapForBuildingContext,
+                                                                       const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryGetterMapForBuildingContext,
                                                                        const GALGAS_categoryModifierMapForBuildingContext constinArgument_inCategoryModifierMapForBuildingContext,
                                                                        GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                        C_Compiler * inCompiler
@@ -1838,7 +1838,7 @@ static void categoryMethod_classDeclarationAST_enterInSemanticContext (const cPt
   if (kBoolTrue == test_0) {
     var_superClassIndex = GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 1834)) ;
     {
-    routine_commonReaderMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1835)) ;
+    routine_commonGetterMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1835)) ;
     }
     var_modifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1836)) ;
     var_instanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1837)) ;
@@ -1858,7 +1858,7 @@ static void categoryMethod_classDeclarationAST_enterInSemanticContext (const cPt
     GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioSemanticContext.mAttribute_mTypeMap, object->mAttribute_mSuperClassName, var_superClassIndex COMMA_SOURCE_FILE ("semanticContext.galgas", 1847)) ;
     }
     GALGAS_typeKindEnum var_typeKindEnum ;
-    GALGAS_getterMap var_inheritedReaderMap ;
+    GALGAS_getterMap var_inheritedGetterMap ;
     GALGAS_setterMap var_inheritedModifierMap ;
     GALGAS_instanceMethodMap var_inheritedMethodMap ;
     GALGAS_bool joker_77018_3 ; // Joker input parameter
@@ -1880,7 +1880,7 @@ static void categoryMethod_classDeclarationAST_enterInSemanticContext (const cPt
     GALGAS_string joker_77248_3 ; // Joker input parameter
     GALGAS_string joker_77248_2 ; // Joker input parameter
     GALGAS_headerKind joker_77248_1 ; // Joker input parameter
-    ioArgument_ioSemanticContext.mAttribute_mTypeMap.method_searchKey (object->mAttribute_mSuperClassName, joker_77018_3, joker_77018_2, joker_77018_1, var_typeKindEnum, joker_77048, var_inheritedTypedAttributeList, var_attributeMap, joker_77112_2, joker_77112_1, var_inheritedReaderMap, var_inheritedModifierMap, var_inheritedMethodMap, joker_77202_9, joker_77202_8, joker_77202_7, joker_77202_6, joker_77202_5, joker_77202_4, joker_77202_3, joker_77202_2, joker_77202_1, var_generateHeaderInSeparateFile, joker_77248_4, joker_77248_3, joker_77248_2, joker_77248_1, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1852)) ;
+    ioArgument_ioSemanticContext.mAttribute_mTypeMap.method_searchKey (object->mAttribute_mSuperClassName, joker_77018_3, joker_77018_2, joker_77018_1, var_typeKindEnum, joker_77048, var_inheritedTypedAttributeList, var_attributeMap, joker_77112_2, joker_77112_1, var_inheritedGetterMap, var_inheritedModifierMap, var_inheritedMethodMap, joker_77202_9, joker_77202_8, joker_77202_7, joker_77202_6, joker_77202_5, joker_77202_4, joker_77202_3, joker_77202_2, joker_77202_1, var_generateHeaderInSeparateFile, joker_77248_4, joker_77248_3, joker_77248_2, joker_77248_1, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1852)) ;
     const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_typeKindEnum.objectCompare (GALGAS_typeKindEnum::constructor_classType (SOURCE_FILE ("semanticContext.galgas", 1868)))).boolEnum () ;
     if (kBoolTrue == test_2) {
       GALGAS_location location_3 (object->mAttribute_mSuperClassName.reader_location (HERE)) ; // Implicit use of 'location' getter
@@ -1895,7 +1895,7 @@ static void categoryMethod_classDeclarationAST_enterInSemanticContext (const cPt
       enumerator_77521.gotoNextObject () ;
     }
     var_getterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1884)) ;
-    cEnumerator_getterMap enumerator_77832 (var_inheritedReaderMap, kEnumeration_up) ;
+    cEnumerator_getterMap enumerator_77832 (var_inheritedGetterMap, kEnumeration_up) ;
     while (enumerator_77832.hasCurrentObject ()) {
       {
       var_getterMap.modifier_insertKey (enumerator_77832.current_lkey (HERE), enumerator_77832.current_mKind (HERE), enumerator_77832.current_mArgumentTypeList (HERE), enumerator_77832.current_mDeclarationLocation (HERE), enumerator_77832.current_mHasCompilerArgument (HERE), enumerator_77832.current_mReturnedType (HERE), GALGAS_methodQualifier::constructor_isInherited (SOURCE_FILE ("semanticContext.galgas", 1893)), enumerator_77832.current_mErrorMessage (HERE), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1886)) ;
@@ -1991,7 +1991,7 @@ static void categoryMethod_classDeclarationAST_enterInSemanticContext (const cPt
     enumerator_80861.gotoNextObject () ;
   }
   {
-  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryReaderMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mClassTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1989)) ;
+  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryGetterMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mClassTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 1989)) ;
   }
   GALGAS_string var_defaultConstructorName ;
   const enumGalgasBool test_12 = var_superClassIndex.reader_isNull (SOURCE_FILE ("semanticContext.galgas", 2001)).boolEnum () ;
@@ -2037,7 +2037,7 @@ C_PrologueEpilogue gMethod_classDeclarationAST_enterInSemanticContext (defineCat
 
 static void categoryMethod_externRoutineDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                                const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                               const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                               const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                                C_Compiler * inCompiler
@@ -2077,7 +2077,7 @@ C_PrologueEpilogue gMethod_externRoutineDeclarationAST_enterInSemanticContext (d
 
 static void categoryMethod_routineDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                          const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                         const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                         const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                          const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                          GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                          C_Compiler * inCompiler
@@ -2118,7 +2118,7 @@ C_PrologueEpilogue gMethod_routineDeclarationAST_enterInSemanticContext (defineC
 
 static void categoryMethod_externFunctionDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                                 const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                                const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                 const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                 GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                                 C_Compiler * inCompiler
@@ -2162,7 +2162,7 @@ C_PrologueEpilogue gMethod_externFunctionDeclarationAST_enterInSemanticContext (
 
 static void categoryMethod_onceFunctionDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                               const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                              const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                              const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                               const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                               GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                               C_Compiler * inCompiler
@@ -2196,7 +2196,7 @@ C_PrologueEpilogue gMethod_onceFunctionDeclarationAST_enterInSemanticContext (de
 
 static void categoryMethod_arrayDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                        const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                        const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                        GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                        C_Compiler * inCompiler
@@ -2219,7 +2219,7 @@ static void categoryMethod_arrayDeclarationAST_enterInSemanticContext (const cPt
   GALGAS_constructorMap var_constructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2144)) ;
   GALGAS_getterMap var_getterMap ;
   {
-  routine_commonReaderMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2145)) ;
+  routine_commonGetterMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2145)) ;
   }
   GALGAS_setterMap var_modifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2146)) ;
   GALGAS_instanceMethodMap var_instanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2147)) ;
@@ -2256,13 +2256,13 @@ static void categoryMethod_arrayDeclarationAST_enterInSemanticContext (const cPt
   var_constructorMap.modifier_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("new"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2163))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2163)), var_uintArgs, GALGAS_bool (false), var_arrayTypeIndex, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2162)) ;
   }
   {
-  routine_enterBaseReaderWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("axisCount"), GALGAS_string ("uint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2169)) ;
+  routine_enterBaseGetterWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("axisCount"), GALGAS_string ("uint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2169)) ;
   }
   {
-  routine_enterBaseReaderWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("sizeForAxis"), GALGAS_string ("uint"), GALGAS_string ("inAxisIndex"), GALGAS_string ("uint"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2170)) ;
+  routine_enterBaseGetterWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("sizeForAxis"), GALGAS_string ("uint"), GALGAS_string ("inAxisIndex"), GALGAS_string ("uint"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2170)) ;
   }
   {
-  routine_enterBaseReaderWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("rangeForAxis"), GALGAS_string ("uint"), GALGAS_string ("inAxisIndex"), GALGAS_string ("range"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2171)) ;
+  routine_enterBaseGetterWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("rangeForAxis"), GALGAS_string ("uint"), GALGAS_string ("inAxisIndex"), GALGAS_string ("range"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2171)) ;
   }
   {
   var_getterMap.modifier_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("isValueValidAtIndex"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2173))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2173)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticContext.galgas", 2174)), var_uintArgs, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2176)), GALGAS_bool (true), var_boolType, GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("semanticContext.galgas", 2179)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticContext.galgas", 2172)) ;
@@ -2340,7 +2340,7 @@ C_PrologueEpilogue gMethod_arrayDeclarationAST_enterInSemanticContext (defineCat
 
 static void categoryMethod_listmapDeclarationAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                          const GALGAS_categoryMethodMapForBuildingContext constinArgument_inCategoryMethodMapForBuildingContext,
-                                                                         const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryReaderMapForBuildingContext,
+                                                                         const GALGAS_categoryGetterMapForBuildingContext constinArgument_inCategoryGetterMapForBuildingContext,
                                                                          const GALGAS_categoryModifierMapForBuildingContext constinArgument_inCategoryModifierMapForBuildingContext,
                                                                          GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                          C_Compiler * inCompiler
@@ -2383,7 +2383,7 @@ static void categoryMethod_listmapDeclarationAST_enterInSemanticContext (const c
   GALGAS_constructorMap var_constructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2297)) ;
   GALGAS_getterMap var_getterMap ;
   {
-  routine_commonReaderMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2298)) ;
+  routine_commonGetterMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2298)) ;
   }
   GALGAS_setterMap var_modifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2299)) ;
   GALGAS_instanceMethodMap var_instanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2300)) ;
@@ -2405,7 +2405,7 @@ static void categoryMethod_listmapDeclarationAST_enterInSemanticContext (const c
   routine_enterInheritedGetterWithoutArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("keyList"), GALGAS_string ("stringlist"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2320)) ;
   }
   {
-  routine_enterBaseReaderWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("listForKey"), GALGAS_string ("string"), GALGAS_string ("inKey"), object->mAttribute_mAssociatedListTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2333)), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2327)) ;
+  routine_enterBaseGetterWithArgument (var_getterMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("listForKey"), GALGAS_string ("string"), GALGAS_string ("inKey"), object->mAttribute_mAssociatedListTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2333)), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2327)) ;
   }
   {
   routine_enterConstructorWithoutArgument (var_constructorMap, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("emptyMap"), object->mAttribute_mListmapTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2337)), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2337)) ;
@@ -2424,7 +2424,7 @@ static void categoryMethod_listmapDeclarationAST_enterInSemanticContext (const c
   var_enumerationVariants.addAssign_operation (GALGAS_string ("up")  COMMA_SOURCE_FILE ("semanticContext.galgas", 2350)) ;
   var_enumerationVariants.addAssign_operation (GALGAS_string ("down")  COMMA_SOURCE_FILE ("semanticContext.galgas", 2351)) ;
   {
-  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryReaderMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mListmapTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2353)) ;
+  routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryGetterMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mListmapTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 2353)) ;
   }
   GALGAS_unifiedTypeMap_2D_proxy var_listElementTypeIndex ;
   {
@@ -2453,7 +2453,7 @@ C_PrologueEpilogue gMethod_listmapDeclarationAST_enterInSemanticContext (defineC
 
 static void categoryMethod_galgas_33_SyntaxComponentAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                                 const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                                const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                 const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                 GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                                 C_Compiler * inCompiler
@@ -2483,7 +2483,7 @@ C_PrologueEpilogue gMethod_galgas_33_SyntaxComponentAST_enterInSemanticContext (
 
 static void categoryMethod_galgas_33_GrammarComponentAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                                  const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                 const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                                 const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                                  const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                                  GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                                  C_Compiler * inCompiler
@@ -2531,7 +2531,7 @@ C_PrologueEpilogue gMethod_galgas_33_GrammarComponentAST_enterInSemanticContext 
 
 static void categoryMethod_lexiqueComponentAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                                        const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
+                                                                       const GALGAS_categoryGetterMapForBuildingContext /* constinArgument_inCategoryGetterMapForBuildingContext */,
                                                                        const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
                                                                        GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                        C_Compiler * inCompiler
@@ -3203,11 +3203,11 @@ C_PrologueEpilogue gMethod_overridingCategoryModifierAST_enterDeclarationInGraph
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@overridingAbstractCategoryReaderAST enterDeclarationInGraph'              *
+//              Overriding category method '@overridingAbstractCategoryGetterAST enterDeclarationInGraph'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_overridingAbstractCategoryReaderAST_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
+static void categoryMethod_overridingAbstractCategoryGetterAST_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
                                                                                         GALGAS_semanticTypePrecedenceGraph & /* ioArgument_ioSemanticTypePrecedenceGraph */,
                                                                                         GALGAS_categoryMethodMapForBuildingContext & /* ioArgument_ioCategoryMethodMapForBuildingContext */,
                                                                                         GALGAS_categoryGetterMapForBuildingContext & /* ioArgument_ioCategoryGetterMapForBuildingContext */,
@@ -3215,21 +3215,21 @@ static void categoryMethod_overridingAbstractCategoryReaderAST_enterDeclarationI
                                                                                         GALGAS_semanticDeclarationListAST & ioArgument_ioCategoryOverrideDefinitionList,
                                                                                         C_Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_overridingAbstractCategoryReaderAST * object = (const cPtr_overridingAbstractCategoryReaderAST *) inObject ;
-  macroValidSharedObject (object, cPtr_overridingAbstractCategoryReaderAST) ;
-  const GALGAS_overridingAbstractCategoryReaderAST temp_0 = object ;
+  const cPtr_overridingAbstractCategoryGetterAST * object = (const cPtr_overridingAbstractCategoryGetterAST *) inObject ;
+  macroValidSharedObject (object, cPtr_overridingAbstractCategoryGetterAST) ;
+  const GALGAS_overridingAbstractCategoryGetterAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2752)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_overridingAbstractCategoryReaderAST_enterDeclarationInGraph (void) {
-  enterCategoryMethod_enterDeclarationInGraph (kTypeDescriptor_GALGAS_overridingAbstractCategoryReaderAST.mSlotID,
-                                               categoryMethod_overridingAbstractCategoryReaderAST_enterDeclarationInGraph) ;
+static void defineCategoryMethod_overridingAbstractCategoryGetterAST_enterDeclarationInGraph (void) {
+  enterCategoryMethod_enterDeclarationInGraph (kTypeDescriptor_GALGAS_overridingAbstractCategoryGetterAST.mSlotID,
+                                               categoryMethod_overridingAbstractCategoryGetterAST_enterDeclarationInGraph) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_overridingAbstractCategoryReaderAST_enterDeclarationInGraph (defineCategoryMethod_overridingAbstractCategoryReaderAST_enterDeclarationInGraph, NULL) ;
+C_PrologueEpilogue gMethod_overridingAbstractCategoryGetterAST_enterDeclarationInGraph (defineCategoryMethod_overridingAbstractCategoryGetterAST_enterDeclarationInGraph, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3307,7 +3307,7 @@ static void categoryMethod_categoryGetterAST_enterDeclarationInGraph (const cPtr
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_categoryGetterAST * object = (const cPtr_categoryGetterAST *) inObject ;
   macroValidSharedObject (object, cPtr_categoryGetterAST) ;
-  GALGAS_lstring var_key = GALGAS_lstring::constructor_new (GALGAS_string ("category reader @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2785)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2785)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2785)).add_operation (object->mAttribute_mCategoryReaderName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2785)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2785)), object->mAttribute_mCategoryReaderName.reader_location (SOURCE_FILE ("semanticContext.galgas", 2785))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2785)) ;
+  GALGAS_lstring var_key = GALGAS_lstring::constructor_new (GALGAS_string ("category reader @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2785)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2785)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2785)).add_operation (object->mAttribute_mCategoryGetterName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2785)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2785)), object->mAttribute_mCategoryGetterName.reader_location (SOURCE_FILE ("semanticContext.galgas", 2785))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2785)) ;
   {
   const GALGAS_categoryGetterAST temp_0 = object ;
   ioArgument_ioSemanticTypePrecedenceGraph.modifier_addNode (var_key, temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2786)) ;
@@ -3325,7 +3325,7 @@ static void categoryMethod_categoryGetterAST_enterDeclarationInGraph (const cPtr
   if (NULL != objectArray_118363) {
       macroValidSharedObject (objectArray_118363, cMapElement_categoryGetterMapForBuildingContext) ;
     {
-    objectArray_118363->mAttribute_mCategoryReaderMapForType.modifier_insertKey (object->mAttribute_mCategoryReaderName, object->mAttribute_mCategoryReaderReturnedTypeName, object->mAttribute_mCategoryReaderFormalInputParameterList, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2796)) ;
+    objectArray_118363->mAttribute_mCategoryGetterMapForType.modifier_insertKey (object->mAttribute_mCategoryGetterName, object->mAttribute_mCategoryGetterReturnedTypeName, object->mAttribute_mCategoryGetterFormalInputParameterList, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2796)) ;
     }
   }
 }
@@ -3440,11 +3440,11 @@ C_PrologueEpilogue gMethod_categoryModifierAST_enterDeclarationInGraph (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@overridingCategoryReaderAST enterDeclarationInGraph'                  *
+//                  Overriding category method '@overridingCategoryGetterAST enterDeclarationInGraph'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_overridingCategoryReaderAST_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
+static void categoryMethod_overridingCategoryGetterAST_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
                                                                                 GALGAS_semanticTypePrecedenceGraph & /* ioArgument_ioSemanticTypePrecedenceGraph */,
                                                                                 GALGAS_categoryMethodMapForBuildingContext & /* ioArgument_ioCategoryMethodMapForBuildingContext */,
                                                                                 GALGAS_categoryGetterMapForBuildingContext & /* ioArgument_ioCategoryGetterMapForBuildingContext */,
@@ -3452,29 +3452,29 @@ static void categoryMethod_overridingCategoryReaderAST_enterDeclarationInGraph (
                                                                                 GALGAS_semanticDeclarationListAST & ioArgument_ioCategoryOverrideDefinitionList,
                                                                                 C_Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_overridingCategoryReaderAST * object = (const cPtr_overridingCategoryReaderAST *) inObject ;
-  macroValidSharedObject (object, cPtr_overridingCategoryReaderAST) ;
-  const GALGAS_overridingCategoryReaderAST temp_0 = object ;
+  const cPtr_overridingCategoryGetterAST * object = (const cPtr_overridingCategoryGetterAST *) inObject ;
+  macroValidSharedObject (object, cPtr_overridingCategoryGetterAST) ;
+  const GALGAS_overridingCategoryGetterAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2864)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_overridingCategoryReaderAST_enterDeclarationInGraph (void) {
-  enterCategoryMethod_enterDeclarationInGraph (kTypeDescriptor_GALGAS_overridingCategoryReaderAST.mSlotID,
-                                               categoryMethod_overridingCategoryReaderAST_enterDeclarationInGraph) ;
+static void defineCategoryMethod_overridingCategoryGetterAST_enterDeclarationInGraph (void) {
+  enterCategoryMethod_enterDeclarationInGraph (kTypeDescriptor_GALGAS_overridingCategoryGetterAST.mSlotID,
+                                               categoryMethod_overridingCategoryGetterAST_enterDeclarationInGraph) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_overridingCategoryReaderAST_enterDeclarationInGraph (defineCategoryMethod_overridingCategoryReaderAST_enterDeclarationInGraph, NULL) ;
+C_PrologueEpilogue gMethod_overridingCategoryGetterAST_enterDeclarationInGraph (defineCategoryMethod_overridingCategoryGetterAST_enterDeclarationInGraph, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@abstractCategoryReaderAST enterDeclarationInGraph'                   *
+//                   Overriding category method '@abstractCategoryGetterAST enterDeclarationInGraph'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_abstractCategoryReaderAST_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
+static void categoryMethod_abstractCategoryGetterAST_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
                                                                               GALGAS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
                                                                               GALGAS_categoryMethodMapForBuildingContext & /* ioArgument_ioCategoryMethodMapForBuildingContext */,
                                                                               GALGAS_categoryGetterMapForBuildingContext & ioArgument_ioCategoryGetterMapForBuildingContext,
@@ -3482,11 +3482,11 @@ static void categoryMethod_abstractCategoryReaderAST_enterDeclarationInGraph (co
                                                                               GALGAS_semanticDeclarationListAST & /* ioArgument_ioCategoryOverrideDefinitionList */,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_abstractCategoryReaderAST * object = (const cPtr_abstractCategoryReaderAST *) inObject ;
-  macroValidSharedObject (object, cPtr_abstractCategoryReaderAST) ;
-  GALGAS_lstring var_key = GALGAS_lstring::constructor_new (GALGAS_string ("category reader @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2875)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2875)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2875)).add_operation (object->mAttribute_mAbstractCategoryReaderName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2875)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2875)), object->mAttribute_mAbstractCategoryReaderName.reader_location (SOURCE_FILE ("semanticContext.galgas", 2875))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2875)) ;
+  const cPtr_abstractCategoryGetterAST * object = (const cPtr_abstractCategoryGetterAST *) inObject ;
+  macroValidSharedObject (object, cPtr_abstractCategoryGetterAST) ;
+  GALGAS_lstring var_key = GALGAS_lstring::constructor_new (GALGAS_string ("category reader @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2875)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2875)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2875)).add_operation (object->mAttribute_mAbstractCategoryGetterName.reader_string (SOURCE_FILE ("semanticContext.galgas", 2875)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2875)), object->mAttribute_mAbstractCategoryGetterName.reader_location (SOURCE_FILE ("semanticContext.galgas", 2875))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2875)) ;
   {
-  const GALGAS_abstractCategoryReaderAST temp_0 = object ;
+  const GALGAS_abstractCategoryGetterAST temp_0 = object ;
   ioArgument_ioSemanticTypePrecedenceGraph.modifier_addNode (var_key, temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2876)) ;
   }
   {
@@ -3502,20 +3502,20 @@ static void categoryMethod_abstractCategoryReaderAST_enterDeclarationInGraph (co
   if (NULL != objectArray_122928) {
       macroValidSharedObject (objectArray_122928, cMapElement_categoryGetterMapForBuildingContext) ;
     {
-    objectArray_122928->mAttribute_mCategoryReaderMapForType.modifier_insertKey (object->mAttribute_mAbstractCategoryReaderName, object->mAttribute_mAbstractCategoryReaderReturnedTypeName, object->mAttribute_mAbstractCategoryReaderFormalInputParameterList, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2886)) ;
+    objectArray_122928->mAttribute_mCategoryGetterMapForType.modifier_insertKey (object->mAttribute_mAbstractCategoryGetterName, object->mAttribute_mAbstractCategoryGetterReturnedTypeName, object->mAttribute_mAbstractCategoryGetterFormalInputParameterList, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2886)) ;
     }
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_abstractCategoryReaderAST_enterDeclarationInGraph (void) {
-  enterCategoryMethod_enterDeclarationInGraph (kTypeDescriptor_GALGAS_abstractCategoryReaderAST.mSlotID,
-                                               categoryMethod_abstractCategoryReaderAST_enterDeclarationInGraph) ;
+static void defineCategoryMethod_abstractCategoryGetterAST_enterDeclarationInGraph (void) {
+  enterCategoryMethod_enterDeclarationInGraph (kTypeDescriptor_GALGAS_abstractCategoryGetterAST.mSlotID,
+                                               categoryMethod_abstractCategoryGetterAST_enterDeclarationInGraph) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_abstractCategoryReaderAST_enterDeclarationInGraph (defineCategoryMethod_abstractCategoryReaderAST_enterDeclarationInGraph, NULL) ;
+C_PrologueEpilogue gMethod_abstractCategoryGetterAST_enterDeclarationInGraph (defineCategoryMethod_abstractCategoryGetterAST_enterDeclarationInGraph, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3695,14 +3695,14 @@ static GALGAS_string categoryReader_semanticTypeForGeneration_implementationCppF
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticTypeForGeneration_implementationCppFileName (void) {
-  enterCategoryReader_implementationCppFileName (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
+static void defineCategoryGetter_semanticTypeForGeneration_implementationCppFileName (void) {
+  enterCategoryGetter_implementationCppFileName (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
                                                  categoryReader_semanticTypeForGeneration_implementationCppFileName) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_implementationCppFileName (defineCategoryReader_semanticTypeForGeneration_implementationCppFileName, NULL) ;
+C_PrologueEpilogue gReader_semanticTypeForGeneration_implementationCppFileName (defineCategoryGetter_semanticTypeForGeneration_implementationCppFileName, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3722,14 +3722,14 @@ static GALGAS_bool categoryReader_semanticTypeForGeneration_hasCppHeaderFile (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticTypeForGeneration_hasCppHeaderFile (void) {
-  enterCategoryReader_hasCppHeaderFile (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
+static void defineCategoryGetter_semanticTypeForGeneration_hasCppHeaderFile (void) {
+  enterCategoryGetter_hasCppHeaderFile (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
                                         categoryReader_semanticTypeForGeneration_hasCppHeaderFile) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_hasCppHeaderFile (defineCategoryReader_semanticTypeForGeneration_hasCppHeaderFile, NULL) ;
+C_PrologueEpilogue gReader_semanticTypeForGeneration_hasCppHeaderFile (defineCategoryGetter_semanticTypeForGeneration_hasCppHeaderFile, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3751,14 +3751,14 @@ static GALGAS_bool categoryReader_semanticTypeForGeneration_isPredefined (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticTypeForGeneration_isPredefined (void) {
-  enterCategoryReader_isPredefined (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
+static void defineCategoryGetter_semanticTypeForGeneration_isPredefined (void) {
+  enterCategoryGetter_isPredefined (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
                                     categoryReader_semanticTypeForGeneration_isPredefined) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_isPredefined (defineCategoryReader_semanticTypeForGeneration_isPredefined, NULL) ;
+C_PrologueEpilogue gReader_semanticTypeForGeneration_isPredefined (defineCategoryGetter_semanticTypeForGeneration_isPredefined, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3780,14 +3780,14 @@ static GALGAS_headerKind categoryReader_semanticTypeForGeneration_headerKind (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticTypeForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
+static void defineCategoryGetter_semanticTypeForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
                                   categoryReader_semanticTypeForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_headerKind (defineCategoryReader_semanticTypeForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_semanticTypeForGeneration_headerKind (defineCategoryGetter_semanticTypeForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3809,14 +3809,14 @@ static GALGAS_string categoryReader_semanticDeclarationWithHeaderForGeneration_i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (void) {
-  enterCategoryReader_implementationCppFileName (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
+static void defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (void) {
+  enterCategoryGetter_implementationCppFileName (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
                                                  categoryReader_semanticDeclarationWithHeaderForGeneration_implementationCppFileName) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (defineCategoryReader_semanticDeclarationWithHeaderForGeneration_implementationCppFileName, NULL) ;
+C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_implementationCppFileName, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3838,14 +3838,14 @@ static GALGAS_bool categoryReader_semanticDeclarationWithHeaderForGeneration_has
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (void) {
-  enterCategoryReader_hasCppHeaderFile (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
+static void defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (void) {
+  enterCategoryGetter_hasCppHeaderFile (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
                                         categoryReader_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (defineCategoryReader_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile, NULL) ;
+C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3865,14 +3865,14 @@ static GALGAS_headerKind categoryReader_semanticDeclarationWithHeaderForGenerati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticDeclarationWithHeaderForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
+static void defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
                                   categoryReader_semanticDeclarationWithHeaderForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_headerKind (defineCategoryReader_semanticDeclarationWithHeaderForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_headerKind (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3892,14 +3892,14 @@ static GALGAS_bool categoryReader_semanticDeclarationWithHeaderForGeneration_isP
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticDeclarationWithHeaderForGeneration_isPredefined (void) {
-  enterCategoryReader_isPredefined (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
+static void defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_isPredefined (void) {
+  enterCategoryGetter_isPredefined (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
                                     categoryReader_semanticDeclarationWithHeaderForGeneration_isPredefined) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_isPredefined (defineCategoryReader_semanticDeclarationWithHeaderForGeneration_isPredefined, NULL) ;
+C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_isPredefined (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_isPredefined, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4938,23 +4938,23 @@ static void categoryMethod_optionExpressionAST_analyzeSemanticExpression (const 
   }
   const enumGalgasBool test_3 = var_found.boolEnum () ;
   if (kBoolTrue == test_3) {
-    const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, object->mAttribute_mOptionReaderName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 993)).objectCompare (GALGAS_string ("value"))).boolEnum () ;
+    const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, object->mAttribute_mOptionGetterName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 993)).objectCompare (GALGAS_string ("value"))).boolEnum () ;
     if (kBoolTrue == test_4) {
       outArgument_outExpression = GALGAS_optionValueExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mOptionComponentName.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 996)), var_optionComponentIsPredefined, object->mAttribute_mOptionComponentName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 998)), object->mAttribute_mOptionEntryName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 999))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 994)) ;
     }else if (kBoolFalse == test_4) {
-      const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, object->mAttribute_mOptionReaderName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1000)).objectCompare (GALGAS_string ("char"))).boolEnum () ;
+      const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, object->mAttribute_mOptionGetterName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1000)).objectCompare (GALGAS_string ("char"))).boolEnum () ;
       if (kBoolTrue == test_5) {
         outArgument_outExpression = GALGAS_optionCharExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mCharType, object->mAttribute_mOptionComponentName.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1003)), var_optionComponentIsPredefined, object->mAttribute_mOptionComponentName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1005)), object->mAttribute_mOptionEntryName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1006))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1001)) ;
       }else if (kBoolFalse == test_5) {
-        const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, object->mAttribute_mOptionReaderName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1007)).objectCompare (GALGAS_string ("string"))).boolEnum () ;
+        const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, object->mAttribute_mOptionGetterName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1007)).objectCompare (GALGAS_string ("string"))).boolEnum () ;
         if (kBoolTrue == test_6) {
           outArgument_outExpression = GALGAS_optionStringExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mStringType, object->mAttribute_mOptionComponentName.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1010)), var_optionComponentIsPredefined, object->mAttribute_mOptionComponentName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1012)), object->mAttribute_mOptionEntryName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1013))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1008)) ;
         }else if (kBoolFalse == test_6) {
-          const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, object->mAttribute_mOptionReaderName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1014)).objectCompare (GALGAS_string ("comment"))).boolEnum () ;
+          const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, object->mAttribute_mOptionGetterName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1014)).objectCompare (GALGAS_string ("comment"))).boolEnum () ;
           if (kBoolTrue == test_7) {
             outArgument_outExpression = GALGAS_optionCommentExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mStringType, object->mAttribute_mOptionComponentName.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1017)), var_optionComponentIsPredefined, object->mAttribute_mOptionComponentName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1019)), object->mAttribute_mOptionEntryName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1020))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1015)) ;
           }else if (kBoolFalse == test_7) {
-            GALGAS_location location_8 (object->mAttribute_mOptionReaderName.reader_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_8 (object->mAttribute_mOptionGetterName.reader_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_8, GALGAS_string ("only the 'value', 'char', 'string' and 'comment' getters are defined for an option")  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1022)) ;
             outArgument_outExpression.drop () ; // Release error dropped variable
           }

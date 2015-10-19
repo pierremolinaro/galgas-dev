@@ -138,12 +138,12 @@ typedef class GALGAS_headerKind (*categoryReaderSignature_semanticDeclarationFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_headerKind (const int32_t inClassIndex,
+void enterCategoryGetter_headerKind (const int32_t inClassIndex,
                                      categoryReaderSignature_semanticDeclarationForGeneration_headerKind inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_headerKind callCategoryReader_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
+class GALGAS_headerKind callCategoryGetter_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
@@ -159,12 +159,12 @@ typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationForGene
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_implementationCppFileName (const int32_t inClassIndex,
+void enterCategoryGetter_implementationCppFileName (const int32_t inClassIndex,
                                                     categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryReader_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
+class GALGAS_string callCategoryGetter_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
@@ -180,12 +180,12 @@ typedef class GALGAS_bool (*categoryReaderSignature_semanticDeclarationForGenera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_isPredefined (const int32_t inClassIndex,
+void enterCategoryGetter_isPredefined (const int32_t inClassIndex,
                                        categoryReaderSignature_semanticDeclarationForGeneration_isPredefined inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bool callCategoryReader_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
+class GALGAS_bool callCategoryGetter_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
@@ -224,12 +224,12 @@ typedef class GALGAS_bool (*categoryReaderSignature_semanticDeclarationForGenera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_hasCppHeaderFile (const int32_t inClassIndex,
+void enterCategoryGetter_hasCppHeaderFile (const int32_t inClassIndex,
                                            categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bool callCategoryReader_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
+class GALGAS_bool callCategoryGetter_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 

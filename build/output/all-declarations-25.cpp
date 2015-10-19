@@ -677,7 +677,7 @@ static void categoryMethod_getterCallExpressionForGeneration_generateExpression 
       }
       const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, object->mAttribute_mReceiverExpression.reader_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1181)).reader_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1181)).objectCompare (GALGAS_typeKindEnum::constructor_classType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1181)))).boolEnum () ;
       if (kBoolTrue == test_2) {
-        outArgument_outCppExpression = GALGAS_string ("callCategoryReader_").add_operation (object->mAttribute_mGetterName.reader_identifierRepresentation (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1182)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1182)).add_operation (GALGAS_string (" ((const cPtr_"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1182)).add_operation (object->mAttribute_mReceiverExpression.reader_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)).add_operation (GALGAS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)).add_operation (var_receiverCppName, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)).add_operation (GALGAS_string (".ptr (), "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)) ;
+        outArgument_outCppExpression = GALGAS_string ("callCategoryGetter_").add_operation (object->mAttribute_mGetterName.reader_identifierRepresentation (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1182)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1182)).add_operation (GALGAS_string (" ((const cPtr_"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1182)).add_operation (object->mAttribute_mReceiverExpression.reader_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)).add_operation (GALGAS_string (" *) "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)).add_operation (var_receiverCppName, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)).add_operation (GALGAS_string (".ptr (), "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1183)) ;
       }else if (kBoolFalse == test_2) {
         categoryMethod_addHeaderFileName (object->mAttribute_mReceiverExpression.reader_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1185)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1185)) ;
         outArgument_outCppExpression = GALGAS_string ("categoryReader_").add_operation (object->mAttribute_mGetterName.reader_identifierRepresentation (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1186)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1186)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1186)).add_operation (var_receiverCppName, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1186)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1186)) ;
@@ -919,7 +919,7 @@ static void categoryMethod_lexiqueIntrospectionForGeneration_generateExpression 
   const cPtr_lexiqueIntrospectionForGeneration * object = (const cPtr_lexiqueIntrospectionForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_lexiqueIntrospectionForGeneration) ;
   ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("lexique-").add_operation (object->mAttribute_mLexiqueComponentName, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1312))  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1312)) ;
-  outArgument_outCppExpression = GALGAS_string ("C_Lexique_").add_operation (object->mAttribute_mLexiqueComponentName.reader_identifierRepresentation (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1313)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1313)).add_operation (GALGAS_string ("::"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1313)).add_operation (object->mAttribute_mLexiqueReaderName.reader_identifierRepresentation (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1314)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1313)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1314)).add_operation (categoryReader_sourceFile (object->mAttribute_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1315)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1315)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1315)) ;
+  outArgument_outCppExpression = GALGAS_string ("C_Lexique_").add_operation (object->mAttribute_mLexiqueComponentName.reader_identifierRepresentation (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1313)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1313)).add_operation (GALGAS_string ("::"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1313)).add_operation (object->mAttribute_mLexiqueGetterName.reader_identifierRepresentation (SOURCE_FILE ("semanticExpressionGeneration.galgas", 1314)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1313)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1314)).add_operation (categoryReader_sourceFile (object->mAttribute_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1315)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1315)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 1315)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1543,14 +1543,14 @@ static GALGAS_string categoryReader_grammarForGeneration_implementationCppFileNa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_grammarForGeneration_implementationCppFileName (void) {
-  enterCategoryReader_implementationCppFileName (kTypeDescriptor_GALGAS_grammarForGeneration.mSlotID,
+static void defineCategoryGetter_grammarForGeneration_implementationCppFileName (void) {
+  enterCategoryGetter_implementationCppFileName (kTypeDescriptor_GALGAS_grammarForGeneration.mSlotID,
                                                  categoryReader_grammarForGeneration_implementationCppFileName) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_grammarForGeneration_implementationCppFileName (defineCategoryReader_grammarForGeneration_implementationCppFileName, NULL) ;
+C_PrologueEpilogue gReader_grammarForGeneration_implementationCppFileName (defineCategoryGetter_grammarForGeneration_implementationCppFileName, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1570,14 +1570,14 @@ static GALGAS_bool categoryReader_grammarForGeneration_hasCppHeaderFile (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_grammarForGeneration_hasCppHeaderFile (void) {
-  enterCategoryReader_hasCppHeaderFile (kTypeDescriptor_GALGAS_grammarForGeneration.mSlotID,
+static void defineCategoryGetter_grammarForGeneration_hasCppHeaderFile (void) {
+  enterCategoryGetter_hasCppHeaderFile (kTypeDescriptor_GALGAS_grammarForGeneration.mSlotID,
                                         categoryReader_grammarForGeneration_hasCppHeaderFile) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_grammarForGeneration_hasCppHeaderFile (defineCategoryReader_grammarForGeneration_hasCppHeaderFile, NULL) ;
+C_PrologueEpilogue gReader_grammarForGeneration_hasCppHeaderFile (defineCategoryGetter_grammarForGeneration_hasCppHeaderFile, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1597,14 +1597,14 @@ static GALGAS_headerKind categoryReader_grammarForGeneration_headerKind (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_grammarForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_grammarForGeneration.mSlotID,
+static void defineCategoryGetter_grammarForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_grammarForGeneration.mSlotID,
                                   categoryReader_grammarForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_grammarForGeneration_headerKind (defineCategoryReader_grammarForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_grammarForGeneration_headerKind (defineCategoryGetter_grammarForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1624,14 +1624,14 @@ static GALGAS_bool categoryReader_grammarForGeneration_isPredefined (const cPtr_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_grammarForGeneration_isPredefined (void) {
-  enterCategoryReader_isPredefined (kTypeDescriptor_GALGAS_grammarForGeneration.mSlotID,
+static void defineCategoryGetter_grammarForGeneration_isPredefined (void) {
+  enterCategoryGetter_isPredefined (kTypeDescriptor_GALGAS_grammarForGeneration.mSlotID,
                                     categoryReader_grammarForGeneration_isPredefined) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_grammarForGeneration_isPredefined (defineCategoryReader_grammarForGeneration_isPredefined, NULL) ;
+C_PrologueEpilogue gReader_grammarForGeneration_isPredefined (defineCategoryGetter_grammarForGeneration_isPredefined, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1653,14 +1653,14 @@ static GALGAS_string categoryReader_syntaxDeclarationForGeneration_implementatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_syntaxDeclarationForGeneration_implementationCppFileName (void) {
-  enterCategoryReader_implementationCppFileName (kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_syntaxDeclarationForGeneration_implementationCppFileName (void) {
+  enterCategoryGetter_implementationCppFileName (kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration.mSlotID,
                                                  categoryReader_syntaxDeclarationForGeneration_implementationCppFileName) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_syntaxDeclarationForGeneration_implementationCppFileName (defineCategoryReader_syntaxDeclarationForGeneration_implementationCppFileName, NULL) ;
+C_PrologueEpilogue gReader_syntaxDeclarationForGeneration_implementationCppFileName (defineCategoryGetter_syntaxDeclarationForGeneration_implementationCppFileName, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1680,14 +1680,14 @@ static GALGAS_bool categoryReader_syntaxDeclarationForGeneration_hasCppHeaderFil
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_syntaxDeclarationForGeneration_hasCppHeaderFile (void) {
-  enterCategoryReader_hasCppHeaderFile (kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_syntaxDeclarationForGeneration_hasCppHeaderFile (void) {
+  enterCategoryGetter_hasCppHeaderFile (kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration.mSlotID,
                                         categoryReader_syntaxDeclarationForGeneration_hasCppHeaderFile) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_syntaxDeclarationForGeneration_hasCppHeaderFile (defineCategoryReader_syntaxDeclarationForGeneration_hasCppHeaderFile, NULL) ;
+C_PrologueEpilogue gReader_syntaxDeclarationForGeneration_hasCppHeaderFile (defineCategoryGetter_syntaxDeclarationForGeneration_hasCppHeaderFile, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1707,14 +1707,14 @@ static GALGAS_headerKind categoryReader_syntaxDeclarationForGeneration_headerKin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_syntaxDeclarationForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_syntaxDeclarationForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration.mSlotID,
                                   categoryReader_syntaxDeclarationForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_syntaxDeclarationForGeneration_headerKind (defineCategoryReader_syntaxDeclarationForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_syntaxDeclarationForGeneration_headerKind (defineCategoryGetter_syntaxDeclarationForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1734,14 +1734,14 @@ static GALGAS_bool categoryReader_syntaxDeclarationForGeneration_isPredefined (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_syntaxDeclarationForGeneration_isPredefined (void) {
-  enterCategoryReader_isPredefined (kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_syntaxDeclarationForGeneration_isPredefined (void) {
+  enterCategoryGetter_isPredefined (kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration.mSlotID,
                                     categoryReader_syntaxDeclarationForGeneration_isPredefined) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_syntaxDeclarationForGeneration_isPredefined (defineCategoryReader_syntaxDeclarationForGeneration_isPredefined, NULL) ;
+C_PrologueEpilogue gReader_syntaxDeclarationForGeneration_isPredefined (defineCategoryGetter_syntaxDeclarationForGeneration_isPredefined, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1885,14 +1885,14 @@ static GALGAS_headerKind categoryReader_routinePrototypeDeclarationForGeneration
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_routinePrototypeDeclarationForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_routinePrototypeDeclarationForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration.mSlotID,
                                   categoryReader_routinePrototypeDeclarationForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_routinePrototypeDeclarationForGeneration_headerKind (defineCategoryReader_routinePrototypeDeclarationForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_routinePrototypeDeclarationForGeneration_headerKind (defineCategoryGetter_routinePrototypeDeclarationForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1938,14 +1938,14 @@ static GALGAS_headerKind categoryReader_functionPrototypeDeclarationForGeneratio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_functionPrototypeDeclarationForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_functionPrototypeDeclarationForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration.mSlotID,
                                   categoryReader_functionPrototypeDeclarationForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_functionPrototypeDeclarationForGeneration_headerKind (defineCategoryReader_functionPrototypeDeclarationForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_functionPrototypeDeclarationForGeneration_headerKind (defineCategoryGetter_functionPrototypeDeclarationForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1991,14 +1991,14 @@ static GALGAS_headerKind categoryReader_onceFunctionDeclarationForGeneration_hea
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_onceFunctionDeclarationForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_onceFunctionDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_onceFunctionDeclarationForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_onceFunctionDeclarationForGeneration.mSlotID,
                                   categoryReader_onceFunctionDeclarationForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_onceFunctionDeclarationForGeneration_headerKind (defineCategoryReader_onceFunctionDeclarationForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_onceFunctionDeclarationForGeneration_headerKind (defineCategoryGetter_onceFunctionDeclarationForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2073,14 +2073,14 @@ static GALGAS_string categoryReader_semanticTypeForGeneration_appendTypeGenericI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticTypeForGeneration_appendTypeGenericImplementation (void) {
-  enterCategoryReader_appendTypeGenericImplementation (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
+static void defineCategoryGetter_semanticTypeForGeneration_appendTypeGenericImplementation (void) {
+  enterCategoryGetter_appendTypeGenericImplementation (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
                                                        categoryReader_semanticTypeForGeneration_appendTypeGenericImplementation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_appendTypeGenericImplementation (defineCategoryReader_semanticTypeForGeneration_appendTypeGenericImplementation, NULL) ;
+C_PrologueEpilogue gReader_semanticTypeForGeneration_appendTypeGenericImplementation (defineCategoryGetter_semanticTypeForGeneration_appendTypeGenericImplementation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2665,14 +2665,14 @@ static GALGAS_headerKind categoryReader_abstractCategoryMethodForGeneration_head
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_abstractCategoryMethodForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_abstractCategoryMethodForGeneration.mSlotID,
+static void defineCategoryGetter_abstractCategoryMethodForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_abstractCategoryMethodForGeneration.mSlotID,
                                   categoryReader_abstractCategoryMethodForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractCategoryMethodForGeneration_headerKind (defineCategoryReader_abstractCategoryMethodForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_abstractCategoryMethodForGeneration_headerKind (defineCategoryGetter_abstractCategoryMethodForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2726,14 +2726,14 @@ static GALGAS_headerKind categoryReader_categoryMethodForGeneration_headerKind (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_categoryMethodForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_categoryMethodForGeneration.mSlotID,
+static void defineCategoryGetter_categoryMethodForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_categoryMethodForGeneration.mSlotID,
                                   categoryReader_categoryMethodForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_categoryMethodForGeneration_headerKind (defineCategoryReader_categoryMethodForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_categoryMethodForGeneration_headerKind (defineCategoryGetter_categoryMethodForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2866,14 +2866,14 @@ static GALGAS_headerKind categoryReader_overridingCategoryMethodForGeneration_he
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_overridingCategoryMethodForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_overridingCategoryMethodForGeneration.mSlotID,
+static void defineCategoryGetter_overridingCategoryMethodForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_overridingCategoryMethodForGeneration.mSlotID,
                                   categoryReader_overridingCategoryMethodForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingCategoryMethodForGeneration_headerKind (defineCategoryReader_overridingCategoryMethodForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_overridingCategoryMethodForGeneration_headerKind (defineCategoryGetter_overridingCategoryMethodForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2924,14 +2924,14 @@ static GALGAS_headerKind categoryReader_abstractCategoryModifierForGeneration_he
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_abstractCategoryModifierForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_abstractCategoryModifierForGeneration.mSlotID,
+static void defineCategoryGetter_abstractCategoryModifierForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_abstractCategoryModifierForGeneration.mSlotID,
                                   categoryReader_abstractCategoryModifierForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractCategoryModifierForGeneration_headerKind (defineCategoryReader_abstractCategoryModifierForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_abstractCategoryModifierForGeneration_headerKind (defineCategoryGetter_abstractCategoryModifierForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3006,14 +3006,14 @@ static GALGAS_headerKind categoryReader_categoryModifierForGeneration_headerKind
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_categoryModifierForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_categoryModifierForGeneration.mSlotID,
+static void defineCategoryGetter_categoryModifierForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_categoryModifierForGeneration.mSlotID,
                                   categoryReader_categoryModifierForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_categoryModifierForGeneration_headerKind (defineCategoryReader_categoryModifierForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_categoryModifierForGeneration_headerKind (defineCategoryGetter_categoryModifierForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3141,14 +3141,14 @@ static GALGAS_headerKind categoryReader_overridingCategoryModifierForGeneration_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_overridingCategoryModifierForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_overridingCategoryModifierForGeneration.mSlotID,
+static void defineCategoryGetter_overridingCategoryModifierForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_overridingCategoryModifierForGeneration.mSlotID,
                                   categoryReader_overridingCategoryModifierForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingCategoryModifierForGeneration_headerKind (defineCategoryReader_overridingCategoryModifierForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_overridingCategoryModifierForGeneration_headerKind (defineCategoryGetter_overridingCategoryModifierForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3215,11 +3215,11 @@ C_PrologueEpilogue gMethod_overridingCategoryModifierForGeneration_appendSpecifi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category reader '@abstractCategoryReaderForGeneration headerKind'                     *
+//                    Overriding category reader '@abstractCategoryGetterForGeneration headerKind'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_headerKind categoryReader_abstractCategoryReaderForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+static GALGAS_headerKind categoryReader_abstractCategoryGetterForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * /* inObject */,
                                                                                         C_Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_headerKind result_outResult ; // Returned variable
@@ -3231,75 +3231,75 @@ static GALGAS_headerKind categoryReader_abstractCategoryReaderForGeneration_head
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_abstractCategoryReaderForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_abstractCategoryReaderForGeneration.mSlotID,
-                                  categoryReader_abstractCategoryReaderForGeneration_headerKind) ;
+static void defineCategoryGetter_abstractCategoryGetterForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_abstractCategoryGetterForGeneration.mSlotID,
+                                  categoryReader_abstractCategoryGetterForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractCategoryReaderForGeneration_headerKind (defineCategoryReader_abstractCategoryReaderForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_abstractCategoryGetterForGeneration_headerKind (defineCategoryGetter_abstractCategoryGetterForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@abstractCategoryReaderForGeneration appendDeclaration1'                 *
+//                Overriding category method '@abstractCategoryGetterForGeneration appendDeclaration1'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_abstractCategoryReaderForGeneration_appendDeclaration_31_ (const cPtr_semanticDeclarationForGeneration * inObject,
+static void categoryMethod_abstractCategoryGetterForGeneration_appendDeclaration_31_ (const cPtr_semanticDeclarationForGeneration * inObject,
                                                                                       GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                                       GALGAS_string & outArgument_outHeader,
                                                                                       C_Compiler * inCompiler
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_abstractCategoryReaderForGeneration * object = (const cPtr_abstractCategoryReaderForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_abstractCategoryReaderForGeneration) ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryGetterDeclaration (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1959)), object->mAttribute_mAbstractCategoryReaderName, object->mAttribute_mAbstractCategoryReaderFormalParameterList, object->mAttribute_mResultType COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1958))) ;
+  const cPtr_abstractCategoryGetterForGeneration * object = (const cPtr_abstractCategoryGetterForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_abstractCategoryGetterForGeneration) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryGetterDeclaration (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1959)), object->mAttribute_mAbstractCategoryGetterName, object->mAttribute_mAbstractCategoryGetterFormalParameterList, object->mAttribute_mResultType COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1958))) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_abstractCategoryReaderForGeneration_appendDeclaration_31_ (void) {
-  enterCategoryMethod_appendDeclaration_31_ (kTypeDescriptor_GALGAS_abstractCategoryReaderForGeneration.mSlotID,
-                                             categoryMethod_abstractCategoryReaderForGeneration_appendDeclaration_31_) ;
+static void defineCategoryMethod_abstractCategoryGetterForGeneration_appendDeclaration_31_ (void) {
+  enterCategoryMethod_appendDeclaration_31_ (kTypeDescriptor_GALGAS_abstractCategoryGetterForGeneration.mSlotID,
+                                             categoryMethod_abstractCategoryGetterForGeneration_appendDeclaration_31_) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_abstractCategoryReaderForGeneration_appendDeclaration_31_ (defineCategoryMethod_abstractCategoryReaderForGeneration_appendDeclaration_31_, NULL) ;
+C_PrologueEpilogue gMethod_abstractCategoryGetterForGeneration_appendDeclaration_31_ (defineCategoryMethod_abstractCategoryGetterForGeneration_appendDeclaration_31_, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@abstractCategoryReaderForGeneration appendSpecificImplementation'            *
+//           Overriding category method '@abstractCategoryGetterForGeneration appendSpecificImplementation'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_abstractCategoryReaderForGeneration_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+static void categoryMethod_abstractCategoryGetterForGeneration_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
                                                                                              const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
                                                                                              GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                                              GALGAS_string & outArgument_outImplementation,
                                                                                              C_Compiler * inCompiler
                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_abstractCategoryReaderForGeneration * object = (const cPtr_abstractCategoryReaderForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_abstractCategoryReaderForGeneration) ;
-  ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("getter-").add_operation (object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973)).add_operation (object->mAttribute_mAbstractCategoryReaderName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973)) ;
+  const cPtr_abstractCategoryGetterForGeneration * object = (const cPtr_abstractCategoryGetterForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_abstractCategoryGetterForGeneration) ;
+  ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("getter-").add_operation (object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973)).add_operation (object->mAttribute_mAbstractCategoryGetterName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1973)) ;
   categoryMethod_addHeaderFileName (object->mAttribute_mResultType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1974)) ;
   categoryMethod_addHeaderFileName (object->mAttribute_mReceiverType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1975)) ;
-  cEnumerator_formalInputParameterListForGeneration enumerator_77938 (object->mAttribute_mAbstractCategoryReaderFormalParameterList, kEnumeration_up) ;
+  cEnumerator_formalInputParameterListForGeneration enumerator_77938 (object->mAttribute_mAbstractCategoryGetterFormalParameterList, kEnumeration_up) ;
   while (enumerator_77938.hasCurrentObject ()) {
     categoryMethod_addHeaderFileName (enumerator_77938.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1977)) ;
     enumerator_77938.gotoNextObject () ;
   }
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryGetterImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1980)), object->mAttribute_mAbstractCategoryReaderName, object->mAttribute_mAbstractCategoryReaderFormalParameterList, object->mAttribute_mResultType COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1979))) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryGetterImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1980)), object->mAttribute_mAbstractCategoryGetterName, object->mAttribute_mAbstractCategoryGetterFormalParameterList, object->mAttribute_mResultType COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1979))) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_abstractCategoryReaderForGeneration_appendSpecificImplementation (void) {
-  enterCategoryMethod_appendSpecificImplementation (kTypeDescriptor_GALGAS_abstractCategoryReaderForGeneration.mSlotID,
-                                                    categoryMethod_abstractCategoryReaderForGeneration_appendSpecificImplementation) ;
+static void defineCategoryMethod_abstractCategoryGetterForGeneration_appendSpecificImplementation (void) {
+  enterCategoryMethod_appendSpecificImplementation (kTypeDescriptor_GALGAS_abstractCategoryGetterForGeneration.mSlotID,
+                                                    categoryMethod_abstractCategoryGetterForGeneration_appendSpecificImplementation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_abstractCategoryReaderForGeneration_appendSpecificImplementation (defineCategoryMethod_abstractCategoryReaderForGeneration_appendSpecificImplementation, NULL) ;
+C_PrologueEpilogue gMethod_abstractCategoryGetterForGeneration_appendSpecificImplementation (defineCategoryMethod_abstractCategoryGetterForGeneration_appendSpecificImplementation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3319,14 +3319,14 @@ static GALGAS_headerKind categoryReader_categoryReaderForGeneration_headerKind (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_categoryReaderForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_categoryReaderForGeneration.mSlotID,
+static void defineCategoryGetter_categoryReaderForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_categoryReaderForGeneration.mSlotID,
                                   categoryReader_categoryReaderForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_categoryReaderForGeneration_headerKind (defineCategoryReader_categoryReaderForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_categoryReaderForGeneration_headerKind (defineCategoryGetter_categoryReaderForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3343,9 +3343,9 @@ static void categoryMethod_categoryReaderForGeneration_appendDeclaration_31_ (co
   macroValidSharedObject (object, cPtr_categoryReaderForGeneration) ;
   const enumGalgasBool test_0 = object->mAttribute_mImplementedAsFunction.boolEnum () ;
   if (kBoolTrue == test_0) {
-    outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterAsFunctionDeclaration (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2000)), object->mAttribute_mCategoryReaderName, object->mAttribute_mCategoryReaderFormalParameterList, object->mAttribute_mResultType.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2003)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1999))) ;
+    outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterAsFunctionDeclaration (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2000)), object->mAttribute_mCategoryGetterName, object->mAttribute_mCategoryGetterFormalParameterList, object->mAttribute_mResultType.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2003)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1999))) ;
   }else if (kBoolFalse == test_0) {
-    outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterDeclaration (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2007)), object->mAttribute_mCategoryReaderName, object->mAttribute_mCategoryReaderFormalParameterList, object->mAttribute_mResultType COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2006))) ;
+    outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterDeclaration (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2007)), object->mAttribute_mCategoryGetterName, object->mAttribute_mCategoryGetterFormalParameterList, object->mAttribute_mResultType COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2006))) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3375,20 +3375,20 @@ static void categoryMethod_categoryReaderForGeneration_appendSpecificImplementat
   macroValidSharedObject (object, cPtr_categoryReaderForGeneration) ;
   const enumGalgasBool test_0 = object->mAttribute_mImplementedAsFunction.boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_formalInputParameterListForGeneration var_categoryReaderFormalParameterList = object->mAttribute_mCategoryReaderFormalParameterList ;
+    GALGAS_formalInputParameterListForGeneration var_categoryReaderFormalParameterList = object->mAttribute_mCategoryGetterFormalParameterList ;
     {
     var_categoryReaderFormalParameterList.modifier_insertAtIndex (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("semanticGeneration.galgas", 2024)), object->mAttribute_mReceiverType, GALGAS_string ("inObject"), GALGAS_lstring::constructor_new (GALGAS_string ("self"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2027))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2027)), GALGAS_bool (true), GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2023)) ;
     }
-    ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("getter-").add_operation (object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031)).add_operation (object->mAttribute_mCategoryReaderName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031)) ;
+    ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("getter-").add_operation (object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031)).add_operation (object->mAttribute_mCategoryGetterName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2031)) ;
     GALGAS_string var_code ;
     {
-    routine_generateFunction (GALGAS_string ("categoryReader_").add_operation (object->mAttribute_mCategoryReaderName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2033)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2033)), ioArgument_ioInclusionSet, var_categoryReaderFormalParameterList, object->mAttribute_mSemanticInstructionListForGeneration, GALGAS_string ("C_Compiler"), object->mAttribute_mResultType, object->mAttribute_mResultVarCppName, GALGAS_bool (false), var_code, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2032)) ;
+    routine_generateFunction (GALGAS_string ("categoryReader_").add_operation (object->mAttribute_mCategoryGetterName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2033)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2033)), ioArgument_ioInclusionSet, var_categoryReaderFormalParameterList, object->mAttribute_mSemanticInstructionListForGeneration, GALGAS_string ("C_Compiler"), object->mAttribute_mResultType, object->mAttribute_mResultVarCppName, GALGAS_bool (false), var_code, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2032)) ;
     }
-    outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterAsFunctionImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2044)), object->mAttribute_mCategoryReaderName, var_code COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2043))) ;
+    outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterAsFunctionImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2044)), object->mAttribute_mCategoryGetterName, var_code COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2043))) ;
   }else if (kBoolFalse == test_0) {
     categoryMethod_addHeaderFileName (object->mAttribute_mResultType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2049)) ;
     categoryMethod_addHeaderFileName (object->mAttribute_mReceiverType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2050)) ;
-    cEnumerator_formalInputParameterListForGeneration enumerator_80647 (object->mAttribute_mCategoryReaderFormalParameterList, kEnumeration_up) ;
+    cEnumerator_formalInputParameterListForGeneration enumerator_80647 (object->mAttribute_mCategoryGetterFormalParameterList, kEnumeration_up) ;
     while (enumerator_80647.hasCurrentObject ()) {
       categoryMethod_addHeaderFileName (enumerator_80647.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2052)) ;
       enumerator_80647.gotoNextObject () ;
@@ -3411,7 +3411,7 @@ static void categoryMethod_categoryReaderForGeneration_appendSpecificImplementat
           variant_80808 -- ;
           const enumGalgasBool test_1 = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2057)).reader_isNull (SOURCE_FILE ("semanticGeneration.galgas", 2057)).operator_not (SOURCE_FILE ("semanticGeneration.galgas", 2057)).boolEnum () ;
           if (kBoolTrue == test_1) {
-            const enumGalgasBool test_2 = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2058)).reader_mGetterMap (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2058)).reader_hasKey (object->mAttribute_mCategoryReaderName COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2058)).boolEnum () ;
+            const enumGalgasBool test_2 = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2058)).reader_mGetterMap (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2058)).reader_hasKey (object->mAttribute_mCategoryGetterName COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2058)).boolEnum () ;
             if (kBoolTrue == test_2) {
               var_baseType = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2059)) ;
             }else if (kBoolFalse == test_2) {
@@ -3423,12 +3423,12 @@ static void categoryMethod_categoryReaderForGeneration_appendSpecificImplementat
         }
       }
     }
-    ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("getter-").add_operation (var_baseType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067)).add_operation (object->mAttribute_mCategoryReaderName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067)) ;
+    ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("getter-").add_operation (var_baseType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067)).add_operation (object->mAttribute_mCategoryGetterName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2067)) ;
     GALGAS_string var_categoryReaderCode ;
     {
-    routine_generateCategoryReader (object->mAttribute_mReceiverType, GALGAS_string::makeEmptyString (), ioArgument_ioInclusionSet, object->mAttribute_mCategoryReaderName, object->mAttribute_mCategoryReaderFormalParameterList, object->mAttribute_mSemanticInstructionListForGeneration, GALGAS_string ("C_Compiler"), object->mAttribute_mResultType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2076)), object->mAttribute_mResultVarCppName, var_categoryReaderCode, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2068)) ;
+    routine_generateCategoryGetter (object->mAttribute_mReceiverType, GALGAS_string::makeEmptyString (), ioArgument_ioInclusionSet, object->mAttribute_mCategoryGetterName, object->mAttribute_mCategoryGetterFormalParameterList, object->mAttribute_mSemanticInstructionListForGeneration, GALGAS_string ("C_Compiler"), object->mAttribute_mResultType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2076)), object->mAttribute_mResultVarCppName, var_categoryReaderCode, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2068)) ;
     }
-    outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2081)), object->mAttribute_mCategoryReaderName, object->mAttribute_mCategoryReaderFormalParameterList, object->mAttribute_mResultType, var_categoryReaderCode COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2080))) ;
+    outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2081)), object->mAttribute_mCategoryGetterName, object->mAttribute_mCategoryGetterFormalParameterList, object->mAttribute_mResultType, var_categoryReaderCode COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2080))) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3444,11 +3444,11 @@ C_PrologueEpilogue gMethod_categoryReaderForGeneration_appendSpecificImplementat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category reader '@overrideCategoryReaderForGeneration headerKind'                     *
+//                    Overriding category reader '@overrideCategoryGetterForGeneration headerKind'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_headerKind categoryReader_overrideCategoryReaderForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+static GALGAS_headerKind categoryReader_overrideCategoryGetterForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * /* inObject */,
                                                                                         C_Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_headerKind result_outResult ; // Returned variable
@@ -3460,45 +3460,45 @@ static GALGAS_headerKind categoryReader_overrideCategoryReaderForGeneration_head
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_overrideCategoryReaderForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_overrideCategoryReaderForGeneration.mSlotID,
-                                  categoryReader_overrideCategoryReaderForGeneration_headerKind) ;
+static void defineCategoryGetter_overrideCategoryGetterForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_overrideCategoryGetterForGeneration.mSlotID,
+                                  categoryReader_overrideCategoryGetterForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overrideCategoryReaderForGeneration_headerKind (defineCategoryReader_overrideCategoryReaderForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_overrideCategoryGetterForGeneration_headerKind (defineCategoryGetter_overrideCategoryGetterForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@overrideCategoryReaderForGeneration appendSpecificImplementation'            *
+//           Overriding category method '@overrideCategoryGetterForGeneration appendSpecificImplementation'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_overrideCategoryReaderForGeneration_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+static void categoryMethod_overrideCategoryGetterForGeneration_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
                                                                                              const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
                                                                                              GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                                              GALGAS_string & outArgument_outImplementation,
                                                                                              C_Compiler * inCompiler
                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_overrideCategoryReaderForGeneration * object = (const cPtr_overrideCategoryReaderForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_overrideCategoryReaderForGeneration) ;
+  const cPtr_overrideCategoryGetterForGeneration * object = (const cPtr_overrideCategoryGetterForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_overrideCategoryGetterForGeneration) ;
   GALGAS_string var_categoryReaderCode ;
   {
-  routine_generateCategoryReader (object->mAttribute_mReceiverType, object->mAttribute_mBaseTypeName, ioArgument_ioInclusionSet, object->mAttribute_mOverridingCategoryReaderName, object->mAttribute_mOverridingCategoryReaderFormalParameterList, object->mAttribute_mSemanticInstructionListForGeneration, GALGAS_string ("C_Compiler"), object->mAttribute_mResultType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2110)), object->mAttribute_mResultVarCppName, var_categoryReaderCode, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2102)) ;
+  routine_generateCategoryGetter (object->mAttribute_mReceiverType, object->mAttribute_mBaseTypeName, ioArgument_ioInclusionSet, object->mAttribute_mOverridingCategoryGetterName, object->mAttribute_mOverridingCategoryGetterFormalParameterList, object->mAttribute_mSemanticInstructionListForGeneration, GALGAS_string ("C_Compiler"), object->mAttribute_mResultType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2110)), object->mAttribute_mResultVarCppName, var_categoryReaderCode, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2102)) ;
   }
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryGetterImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2115)), object->mAttribute_mOverridingCategoryReaderName, object->mAttribute_mResultType, var_categoryReaderCode COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2114))) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryGetterImplementation (inCompiler, object->mAttribute_mReceiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2115)), object->mAttribute_mOverridingCategoryGetterName, object->mAttribute_mResultType, var_categoryReaderCode COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2114))) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_overrideCategoryReaderForGeneration_appendSpecificImplementation (void) {
-  enterCategoryMethod_appendSpecificImplementation (kTypeDescriptor_GALGAS_overrideCategoryReaderForGeneration.mSlotID,
-                                                    categoryMethod_overrideCategoryReaderForGeneration_appendSpecificImplementation) ;
+static void defineCategoryMethod_overrideCategoryGetterForGeneration_appendSpecificImplementation (void) {
+  enterCategoryMethod_appendSpecificImplementation (kTypeDescriptor_GALGAS_overrideCategoryGetterForGeneration.mSlotID,
+                                                    categoryMethod_overrideCategoryGetterForGeneration_appendSpecificImplementation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_overrideCategoryReaderForGeneration_appendSpecificImplementation (defineCategoryMethod_overrideCategoryReaderForGeneration_appendSpecificImplementation, NULL) ;
+C_PrologueEpilogue gMethod_overrideCategoryGetterForGeneration_appendSpecificImplementation (defineCategoryMethod_overrideCategoryGetterForGeneration_appendSpecificImplementation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3520,14 +3520,14 @@ static GALGAS_bool categoryReader_optionComponentForGeneration_isPredefined (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_optionComponentForGeneration_isPredefined (void) {
-  enterCategoryReader_isPredefined (kTypeDescriptor_GALGAS_optionComponentForGeneration.mSlotID,
+static void defineCategoryGetter_optionComponentForGeneration_isPredefined (void) {
+  enterCategoryGetter_isPredefined (kTypeDescriptor_GALGAS_optionComponentForGeneration.mSlotID,
                                     categoryReader_optionComponentForGeneration_isPredefined) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_optionComponentForGeneration_isPredefined (defineCategoryReader_optionComponentForGeneration_isPredefined, NULL) ;
+C_PrologueEpilogue gReader_optionComponentForGeneration_isPredefined (defineCategoryGetter_optionComponentForGeneration_isPredefined, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3556,14 +3556,14 @@ static GALGAS_headerKind categoryReader_optionComponentForGeneration_headerKind 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_optionComponentForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_optionComponentForGeneration.mSlotID,
+static void defineCategoryGetter_optionComponentForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_optionComponentForGeneration.mSlotID,
                                   categoryReader_optionComponentForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_optionComponentForGeneration_headerKind (defineCategoryReader_optionComponentForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_optionComponentForGeneration_headerKind (defineCategoryGetter_optionComponentForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3692,14 +3692,14 @@ static GALGAS_headerKind categoryReader_lexiqueDeclarationForGeneration_headerKi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_lexiqueDeclarationForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_lexiqueDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_lexiqueDeclarationForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_lexiqueDeclarationForGeneration.mSlotID,
                                   categoryReader_lexiqueDeclarationForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexiqueDeclarationForGeneration_headerKind (defineCategoryReader_lexiqueDeclarationForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_lexiqueDeclarationForGeneration_headerKind (defineCategoryGetter_lexiqueDeclarationForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3811,14 +3811,14 @@ static GALGAS_headerKind categoryReader_programComponentForGeneration_headerKind
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_programComponentForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_programComponentForGeneration.mSlotID,
+static void defineCategoryGetter_programComponentForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_programComponentForGeneration.mSlotID,
                                   categoryReader_programComponentForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_programComponentForGeneration_headerKind (defineCategoryReader_programComponentForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_programComponentForGeneration_headerKind (defineCategoryGetter_programComponentForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3866,14 +3866,14 @@ static GALGAS_headerKind categoryReader_filewrapperDeclarationForGeneration_head
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_filewrapperDeclarationForGeneration_headerKind (void) {
-  enterCategoryReader_headerKind (kTypeDescriptor_GALGAS_filewrapperDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_filewrapperDeclarationForGeneration_headerKind (void) {
+  enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_filewrapperDeclarationForGeneration.mSlotID,
                                   categoryReader_filewrapperDeclarationForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_filewrapperDeclarationForGeneration_headerKind (defineCategoryReader_filewrapperDeclarationForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gReader_filewrapperDeclarationForGeneration_headerKind (defineCategoryGetter_filewrapperDeclarationForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4082,14 +4082,14 @@ static GALGAS_string categoryReader_primitiveTypeForGeneration_appendPrimitiveTy
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_primitiveTypeForGeneration_appendPrimitiveTypeDeclaration (void) {
-  enterCategoryReader_appendPrimitiveTypeDeclaration (kTypeDescriptor_GALGAS_primitiveTypeForGeneration.mSlotID,
+static void defineCategoryGetter_primitiveTypeForGeneration_appendPrimitiveTypeDeclaration (void) {
+  enterCategoryGetter_appendPrimitiveTypeDeclaration (kTypeDescriptor_GALGAS_primitiveTypeForGeneration.mSlotID,
                                                       categoryReader_primitiveTypeForGeneration_appendPrimitiveTypeDeclaration) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_primitiveTypeForGeneration_appendPrimitiveTypeDeclaration (defineCategoryReader_primitiveTypeForGeneration_appendPrimitiveTypeDeclaration, NULL) ;
+C_PrologueEpilogue gReader_primitiveTypeForGeneration_appendPrimitiveTypeDeclaration (defineCategoryGetter_primitiveTypeForGeneration_appendPrimitiveTypeDeclaration, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5238,7 +5238,7 @@ static void categoryMethod_forInstructionForGeneration_generateInstruction (cons
     enumerator_24103.gotoNextObject () ;
     enumerator_24136.gotoNextObject () ;
   }
-  GALGAS_bool var_whileExpressionIsAllwaysTrue = callCategoryReader_isTrueExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mWhileExpression.ptr (), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 632)) ;
+  GALGAS_bool var_whileExpressionIsAllwaysTrue = callCategoryGetter_isTrueExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mWhileExpression.ptr (), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 632)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, object->mAttribute_mBeforeInstructionList.reader_length (SOURCE_FILE ("instruction-for.galgas", 634)).add_operation (object->mAttribute_mAfterInstructionList.reader_length (SOURCE_FILE ("instruction-for.galgas", 634)), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 634)).objectCompare (GALGAS_uint ((uint32_t) 0U))).operator_or (var_whileExpressionIsAllwaysTrue.operator_not (SOURCE_FILE ("instruction-for.galgas", 634)) COMMA_SOURCE_FILE ("instruction-for.galgas", 634)).boolEnum () ;
   if (kBoolTrue == test_0) {
     const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, object->mAttribute_mIndexVariableCppName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;

@@ -28,7 +28,7 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
 
 override method @mapProxyDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a map
@@ -48,7 +48,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
@@ -141,11 +141,11 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !true
   )
 #--- Enter associated map attribute names as getters
-  let @getterMap inheritedReaderMap = getterMap
+  let @getterMap inheritedGetterMap = getterMap
   for () in mapTypedAttributeList do
-    if [inheritedReaderMap hasKey ![mAttributeName string]] then
+    if [inheritedGetterMap hasKey ![mAttributeName string]] then
       @string s = ""
-      for () in [inheritedReaderMap keySet]
+      for () in [inheritedGetterMap keySet]
         do s += "'" + key + "'"
         between s += ", "
       end
@@ -167,7 +167,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mMapProxyTypeName

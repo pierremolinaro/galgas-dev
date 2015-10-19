@@ -240,7 +240,7 @@ proc printFeaturesOfType
   ?let @typeKindEnum inTypeKindEnum
   ?let @typedPropertyList inAllTypedAttributeList
   ?let @constructorMap inConstructorMap
-  ?let @getterMap inReaderMap
+  ?let @getterMap inGetterMap
   ?let @setterMap inSetterMap
   ?let @instanceMethodMap inInstanceMethodMap
   ?let @classMethodMap inClassMethodMap
@@ -267,7 +267,7 @@ proc printFeaturesOfType
     s += " -> @" + [mReturnedType key] + "\n"
   end
 #---
-  for () in inReaderMap
+  for () in inGetterMap
   before
     s += " - getters(s):\n"
   do

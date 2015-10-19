@@ -60,7 +60,7 @@ override method @structDeclarationAST enterDeclarationInGraph
 
 override method @structDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Struct type index
@@ -93,7 +93,7 @@ override method @structDeclarationAST enterInSemanticContext
   ]
 #--- Readers
   @getterMap getterMap
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
   for () in typedAttributeList do
     enterBaseFinalGetterWithoutArgument (
       !?getterMap
@@ -110,7 +110,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mStructTypeName

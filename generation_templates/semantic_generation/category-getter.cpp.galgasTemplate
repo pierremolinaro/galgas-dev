@@ -4,18 +4,18 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%> gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% ;
+static TC_UniqueArray <categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%> gCategoryGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
+void enterCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% inReader) {
-  gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then
@@ -33,18 +33,18 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![GETTER_NA
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% f = NULL ;
-    if (classIndex < gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.count ()) {
-      f = gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.count ()) {
+      f = gCategoryGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.count ()) {
-           f = gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.count ()) {
+           f = gCategoryGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -64,19 +64,19 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![GETTER_NA
 %!GETTER_IMPLEMENTATION%
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (void) {
-  enterCategoryReader_%![GETTER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
+static void defineCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (void) {
+  enterCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
         %!^%categoryReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (void) {
-  gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.free () ;
+static void freeCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (void) {
+  gCategoryGetterTable_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (%?^%defineCategoryReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%,
-       %!^%freeCategoryReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) ;
+C_PrologueEpilogue gReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (%?^%defineCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%,
+       %!^%freeCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) ;
 

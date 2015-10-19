@@ -651,11 +651,11 @@ proc generateCategoryMethod
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc generateCategoryReader
+proc generateCategoryGetter
   ?let @unifiedTypeMap-proxy inReceiverType
   ?let @string inBaseClassName
   ?!@stringset ioInclusionSet
-  ?let @string inReaderName
+  ?let @string inGetterName
   ?let @formalInputParameterListForGeneration inFormalArgumentList
   ?let @semanticInstructionListForGeneration inInstructionList
   ?let @string inCompilerTypeName
@@ -690,7 +690,7 @@ proc generateCategoryReader
   @bool searching = true
   loop( @uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
-      if [[[baseType mSuperType] mGetterMap] hasKey !inReaderName] then
+      if [[[baseType mSuperType] mGetterMap] hasKey !inGetterName] then
         baseType = [baseType mSuperType]
       else
         searching = false
@@ -699,14 +699,14 @@ proc generateCategoryReader
       searching = false
     end  
   end
-  ioInclusionSet += !"getter-" + [baseType key] + "-" + inReaderName
+  ioInclusionSet += !"getter-" + [baseType key] + "-" + inGetterName
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for () in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
   outGeneratedCode = "static GALGAS_" + [inResultTypeName identifierRepresentation] + " categoryReader_"
-  outGeneratedCode += [className identifierRepresentation] + "_" + [inReaderName identifierRepresentation] + " ("
+  outGeneratedCode += [className identifierRepresentation] + "_" + [inGetterName identifierRepresentation] + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
   if inBaseClassName == "" then
     outGeneratedCode += "const cPtr_" + [className identifierRepresentation] + " * "
@@ -913,32 +913,32 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
 }{
 }{
 #------------ Category reader
-  template abstractCategoryGetterDeclaration "abstract-category-reader.h.galgasTemplate"
+  template abstractCategoryGetterDeclaration "abstract-category-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template abstractCategoryGetterImplementation "abstract-category-reader.cpp.galgasTemplate"
+  template abstractCategoryGetterImplementation "abstract-category-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template categoryGetterDeclaration "category-reader.h.galgasTemplate"
+  template categoryGetterDeclaration "category-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
 
-  template categoryGetterImplementation "category-reader.cpp.galgasTemplate"
+  template categoryGetterImplementation "category-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
-  template overridingCategoryGetterImplementation "overriding-category-reader.cpp.galgasTemplate"
+  template overridingCategoryGetterImplementation "overriding-category-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@unifiedTypeMap-proxy RETURN_TYPE
@@ -1011,13 +1011,13 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string FILEWRAPPER_IMPLEMENTATION
   
 #--- Category getter implemented as function
-  template categoryGetterAsFunctionDeclaration "category-reader-as-function-declaration.h.galgasTemplate"
+  template categoryGetterAsFunctionDeclaration "category-getter-as-function-declaration.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
-  template categoryGetterAsFunctionImplementation "category-reader-as-function-implementation.cpp.galgasTemplate"
+  template categoryGetterAsFunctionImplementation "category-getter-as-function-implementation.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string GETTER_NAME
     ?@string FUNCTION_IMPLEMENTATION
@@ -1945,41 +1945,41 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @abstractCategoryReaderForGeneration headerKind ->@headerKind outResult {
+override getter @abstractCategoryGetterForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderForGeneration appendDeclaration1
+override method @abstractCategoryGetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
   outHeader = [filewrapper semanticComponentGenerationTemplate.abstractCategoryGetterDeclaration
     ![mReceiverType key]
-    !mAbstractCategoryReaderName
-    !mAbstractCategoryReaderFormalParameterList
+    !mAbstractCategoryGetterName
+    !mAbstractCategoryGetterFormalParameterList
     !mResultType
   ] 
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderForGeneration appendSpecificImplementation
+override method @abstractCategoryGetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mAbstractCategoryReaderName
+  ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mAbstractCategoryGetterName
   [mResultType addHeaderFileName !?ioInclusionSet]
   [mReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in mAbstractCategoryReaderFormalParameterList do
+  for () in mAbstractCategoryGetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractCategoryGetterImplementation
     ![mReceiverType key]
-    !mAbstractCategoryReaderName
-    !mAbstractCategoryReaderFormalParameterList
+    !mAbstractCategoryGetterName
+    !mAbstractCategoryGetterFormalParameterList
     !mResultType
   ] 
 }
@@ -1998,15 +1998,15 @@ override method @categoryReaderForGeneration appendDeclaration1
   if mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.categoryGetterAsFunctionDeclaration
       ![mReceiverType key]
-      !mCategoryReaderName
-      !mCategoryReaderFormalParameterList
+      !mCategoryGetterName
+      !mCategoryGetterFormalParameterList
       ![mResultType identifierRepresentation]
     ] 
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.categoryGetterDeclaration
       ![mReceiverType key]
-      !mCategoryReaderName
-      !mCategoryReaderFormalParameterList
+      !mCategoryGetterName
+      !mCategoryGetterFormalParameterList
       !mResultType
     ]
   end 
@@ -2019,7 +2019,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   if mImplementedAsFunction then
-    @formalInputParameterListForGeneration categoryReaderFormalParameterList = mCategoryReaderFormalParameterList
+    @formalInputParameterListForGeneration categoryReaderFormalParameterList = mCategoryGetterFormalParameterList
     [!?categoryReaderFormalParameterList insertAtIndex
       !["" nowhere]
       !mReceiverType
@@ -2028,9 +2028,9 @@ override method @categoryReaderForGeneration appendSpecificImplementation
       !true  
       !0    
     ]
-    ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mCategoryReaderName
+    ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mCategoryGetterName
     generateFunction (
-      !"categoryReader_" + [mCategoryReaderName identifierRepresentation]
+      !"categoryReader_" + [mCategoryGetterName identifierRepresentation]
       !?ioInclusionSet
       !categoryReaderFormalParameterList
       !mSemanticInstructionListForGeneration
@@ -2042,20 +2042,20 @@ override method @categoryReaderForGeneration appendSpecificImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryGetterAsFunctionImplementation
       ![mReceiverType key]
-      !mCategoryReaderName
+      !mCategoryGetterName
       !code
     ] 
   else
     [mResultType addHeaderFileName !?ioInclusionSet] 
     [mReceiverType addHeaderFileName !?ioInclusionSet]
-    for () in mCategoryReaderFormalParameterList do
+    for () in mCategoryGetterFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
     @unifiedTypeMap-proxy baseType = mReceiverType
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mGetterMap] hasKey !mCategoryReaderName] then
+        if [[[baseType mSuperType] mGetterMap] hasKey !mCategoryGetterName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -2064,13 +2064,13 @@ override method @categoryReaderForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [baseType key]+ "-" + mCategoryReaderName
-    generateCategoryReader (
+    ioInclusionSet += !"getter-" + [baseType key]+ "-" + mCategoryGetterName
+    generateCategoryGetter (
       !mReceiverType
       !""
       !?ioInclusionSet
-      !mCategoryReaderName
-      !mCategoryReaderFormalParameterList
+      !mCategoryGetterName
+      !mCategoryGetterFormalParameterList
       !mSemanticInstructionListForGeneration
       !"C_Compiler"
       ![mResultType key]
@@ -2079,8 +2079,8 @@ override method @categoryReaderForGeneration appendSpecificImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryGetterImplementation
       ![mReceiverType key]
-      !mCategoryReaderName
-      !mCategoryReaderFormalParameterList
+      !mCategoryGetterName
+      !mCategoryGetterFormalParameterList
       !mResultType
       !categoryReaderCode
     ]
@@ -2089,22 +2089,22 @@ override method @categoryReaderForGeneration appendSpecificImplementation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @overrideCategoryReaderForGeneration headerKind ->@headerKind outResult {
+override getter @overrideCategoryGetterForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. noHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overrideCategoryReaderForGeneration appendSpecificImplementation
+override method @overrideCategoryGetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  generateCategoryReader (
+  generateCategoryGetter (
     !mReceiverType
     !mBaseTypeName
     !?ioInclusionSet
-    !mOverridingCategoryReaderName
-    !mOverridingCategoryReaderFormalParameterList
+    !mOverridingCategoryGetterName
+    !mOverridingCategoryGetterFormalParameterList
     !mSemanticInstructionListForGeneration
     !"C_Compiler"
     ![mResultType key]
@@ -2113,7 +2113,7 @@ override method @overrideCategoryReaderForGeneration appendSpecificImplementatio
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingCategoryGetterImplementation
     ![mReceiverType key]
-    !mOverridingCategoryReaderName
+    !mOverridingCategoryGetterName
     !mResultType
     !categoryReaderCode
   ] 

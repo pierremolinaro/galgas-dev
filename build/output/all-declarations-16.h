@@ -2164,7 +2164,7 @@ class GALGAS_lexiqueIntrospectionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mLexiqueComponentName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mLexiqueReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mLexiqueGetterName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -2186,13 +2186,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectio
 class cPtr_lexiqueIntrospectionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
   public : GALGAS_string mAttribute_mLexiqueComponentName ;
-  public : GALGAS_string mAttribute_mLexiqueReaderName ;
+  public : GALGAS_string mAttribute_mLexiqueGetterName ;
 
 //--- Constructor
   public : cPtr_lexiqueIntrospectionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                    const GALGAS_location & in_mLocation,
                                                    const GALGAS_string & in_mLexiqueComponentName,
-                                                   const GALGAS_string & in_mLexiqueReaderName
+                                                   const GALGAS_string & in_mLexiqueGetterName
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -2200,7 +2200,7 @@ class cPtr_lexiqueIntrospectionForGeneration : public cPtr_semanticExpressionFor
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mLexiqueComponentName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mLexiqueReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mLexiqueGetterName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

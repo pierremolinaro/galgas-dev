@@ -36,10 +36,10 @@ method @semanticDeclarationAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -53,10 +53,10 @@ override method @abstractCategoryModifierAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
   ioAbstractCategoryModifierListMapAST +=
     ![mTypeName string]
     !mAbstractCategoryModifierName
@@ -73,10 +73,10 @@ override method @categoryModifierAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
   ioCategoryModifierListMap +=
     ![mTypeName string]
     !mCategoryModifierName
@@ -93,10 +93,10 @@ override method @overridingCategoryModifierAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
   ioOverridingCategoryModifierListMap +=
     ![mTypeName string]
     !mOverridingCategoryModifierName
@@ -113,10 +113,10 @@ override method @overridingAbstractCategoryModifierAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
   ioOverridingAbstractCategoryModifierListMap +=
     ![mTypeName string]
     !mOverridingCategoryModifierName
@@ -133,10 +133,10 @@ override method @abstractCategoryMethodAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
   ioAbstractCategoryMethodListMapAST +=
     ![mTypeName string]
     !mAbstractCategoryMethodName
@@ -153,10 +153,10 @@ override method @categoryMethodAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
   ioCategoryMethodListMap +=
     ![mTypeName string]
     !mCategoryMethodName
@@ -173,10 +173,10 @@ override method @overridingCategoryMethodAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
   ioOverridingCategoryMethodListMap +=
     ![mTypeName string]
     !mOverridingCategoryMethodName
@@ -193,10 +193,10 @@ override method @overridingAbstractCategoryMethodAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
   ioOverridingAbstractCategoryMethodListMap +=
     ![mTypeName string]
     !mOverridingCategoryMethodName
@@ -204,7 +204,7 @@ override method @overridingAbstractCategoryMethodAST buildCategoryListMaps
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderAST buildCategoryListMaps
+override method @abstractCategoryGetterAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
   ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
@@ -213,13 +213,13 @@ override method @abstractCategoryReaderAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
-  ioAbstractCategoryReaderListMap +=
+  ?!@genericCategoryMethodListMap ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
+  ioAbstractCategoryGetterListMap +=
     ![mTypeName string]
-    !mAbstractCategoryReaderName
+    !mAbstractCategoryGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -233,18 +233,18 @@ override method @categoryGetterAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
-  ioCategoryReaderListMap +=
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
+  ioCategoryGetterListMap +=
     ![mTypeName string]
-    !mCategoryReaderName
+    !mCategoryGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryReaderAST buildCategoryListMaps
+override method @overridingCategoryGetterAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
   ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
@@ -253,18 +253,18 @@ override method @overridingCategoryReaderAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
-  ioOverridingCategoryReaderListMap +=
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
+  ioOverridingCategoryGetterListMap +=
     ![mTypeName string]
-    !mOverridingCategoryReaderName
+    !mOverridingCategoryGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryReaderAST buildCategoryListMaps
+override method @overridingAbstractCategoryGetterAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
   ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
@@ -273,13 +273,13 @@ override method @overridingAbstractCategoryReaderAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
   ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
-  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryReaderListMap {
-  ioOverridingAbstractCategoryReaderListMap +=
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
+  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryGetterListMap {
+  ioOverridingAbstractCategoryGetterListMap +=
     ![mTypeName string]
-    !mAbstractCategoryReaderName
+    !mAbstractCategoryGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -410,33 +410,33 @@ proc checkCategoryMethodDefinitionForClass
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc checkCategoryReaderDefinitionForClass
+proc checkCategoryGetterDefinitionForClass
   ?let @string inClassNameForErrorSignaling
   ?let @string inClassName
-  ?let @lstring inAbstractCategoryReaderName
+  ?let @lstring inAbstractCategoryGetterName
   ?let @descendantClassListMap inDescendantClassListMap
-  ?let @genericCategoryMethodListMap inOverridingCategoryReaderListMap
+  ?let @genericCategoryMethodListMap inOverridingCategoryGetterListMap
   ?let @unifiedTypeMap inUnifiedTypeMap {
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     @lstring descendantClassName = [mType lkey]
-    @lstringlist overridingReaders = [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]]
+    @lstringlist overridingReaders = [inOverridingCategoryGetterListMap listForKey ![descendantClassName string]]
     @bool found = false
     for () in overridingReaders while not found do
-      found = [inAbstractCategoryReaderName string] == [mValue string]
+      found = [inAbstractCategoryGetterName string] == [mValue string]
     end
     if not found then
       if not [mType mIsConcrete] then
-        checkCategoryReaderDefinitionForClass (
+        checkCategoryGetterDefinitionForClass (
           !inClassNameForErrorSignaling
           ![descendantClassName string]
-          !inAbstractCategoryReaderName
+          !inAbstractCategoryGetterName
           !inDescendantClassListMap
-          !inOverridingCategoryReaderListMap
+          !inOverridingCategoryGetterListMap
           !inUnifiedTypeMap
         )
       else
-        error inAbstractCategoryReaderName: "an abstract category getter '" + inAbstractCategoryReaderName + "' is defined for abstract class '@"
+        error inAbstractCategoryGetterName: "an abstract category getter '" + inAbstractCategoryGetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
         + "', but concrete descendant class '@" + descendantClassName + "' does not implement this getter" 
       end
@@ -467,10 +467,10 @@ proc performGalgas3ProjectGlobalCheckings
   var categoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
   var overridingCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
   var overridingAbstractCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
-  var abstractCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var abstractCategoryGetterListMap =@genericCategoryMethodListMap.emptyMap{}
   var categoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
-  var overridingCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
-  var overridingAbstractCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingCategoryGetterListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingAbstractCategoryGetterListMap =@genericCategoryMethodListMap.emptyMap{}
   var abstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
   var categoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
   var overridingCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
@@ -485,10 +485,10 @@ proc performGalgas3ProjectGlobalCheckings
       !?categoryMethodListMap
       !?overridingCategoryMethodListMap
       !?overridingAbstractCategoryMethodListMap
-      !?abstractCategoryReaderListMap
+      !?abstractCategoryGetterListMap
       !?categoryReaderListMap
-      !?overridingCategoryReaderListMap
-      !?overridingAbstractCategoryReaderListMap
+      !?overridingCategoryGetterListMap
+      !?overridingAbstractCategoryGetterListMap
     ]
   end
 #------ Check Category
@@ -605,48 +605,48 @@ proc performGalgas3ProjectGlobalCheckings
 ##--- Check that for every abstract category getter, an overridden category getter
 ##    defined in an concrete subclass
   #--- A given abstract category getter is defined only once for a class
-    for () in abstractCategoryReaderListMap do
-      var CategoryReaderMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
+    for () in abstractCategoryGetterListMap do
+      var CategoryGetterMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?CategoryReaderMap insertKey !mValue]
+        [!?CategoryGetterMap insertKey !mValue]
       end
     end  
   #--- A given base category getter is defined only once for a class
     for () in categoryReaderListMap do
-      var CategoryReaderMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
+      var CategoryGetterMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?CategoryReaderMap insertKey !mValue]
+        [!?CategoryGetterMap insertKey !mValue]
       end
     end  
   #--- A given overriding category getter is defined only once for a class
-    for () in overridingCategoryReaderListMap do
-      var CategoryReaderMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
+    for () in overridingCategoryGetterListMap do
+      var CategoryGetterMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?CategoryReaderMap insertKey !mValue]
+        [!?CategoryGetterMap insertKey !mValue]
       end
     end  
   #--- Check every abstract category getter is implemented by every inherited concrete type
-    for () in abstractCategoryReaderListMap do
+    for () in abstractCategoryGetterListMap do
       for () in mList do
-        checkCategoryReaderDefinitionForClass (
+        checkCategoryGetterDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingCategoryReaderListMap
+          !overridingCategoryGetterListMap
           !inSemanticContext.mTypeMap
         )
       end
     end
   #--- Check every abstract category reader is implemented by every inherited concrete type
-    for () in overridingAbstractCategoryReaderListMap do
+    for () in overridingAbstractCategoryGetterListMap do
       for () in mList do
-        checkCategoryReaderDefinitionForClass (
+        checkCategoryGetterDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingCategoryReaderListMap
+          !overridingCategoryGetterListMap
           !inSemanticContext.mTypeMap
         )
       end

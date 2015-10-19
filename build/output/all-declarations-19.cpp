@@ -883,29 +883,29 @@ GALGAS_string categoryReader_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum &
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalExpressionAST_generateConditionCode> gCategoryReaderTable_lexicalExpressionAST_generateConditionCode ;
+static TC_UniqueArray <categoryReaderSignature_lexicalExpressionAST_generateConditionCode> gCategoryGetterTable_lexicalExpressionAST_generateConditionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateConditionCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateConditionCode (const int32_t inClassIndex,
                                                 categoryReaderSignature_lexicalExpressionAST_generateConditionCode inReader) {
-  gCategoryReaderTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_lexicalExpressionAST_generateConditionCode (void) {
-  gCategoryReaderTable_lexicalExpressionAST_generateConditionCode.free () ;
+static void freeCategoryGetter_lexicalExpressionAST_generateConditionCode (void) {
+  gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_lexicalExpressionAST_generateConditionCode (NULL,
-                                                                       freeCategoryReader_lexicalExpressionAST_generateConditionCode) ;
+                                                                       freeCategoryGetter_lexicalExpressionAST_generateConditionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
+GALGAS_string callCategoryGetter_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
                                                         GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
@@ -916,18 +916,18 @@ GALGAS_string callCategoryReader_generateConditionCode (const cPtr_lexicalExpres
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_lexicalExpressionAST_generateConditionCode f = NULL ;
-    if (classIndex < gCategoryReaderTable_lexicalExpressionAST_generateConditionCode.count ()) {
-      f = gCategoryReaderTable_lexicalExpressionAST_generateConditionCode (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.count ()) {
+      f = gCategoryGetterTable_lexicalExpressionAST_generateConditionCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_lexicalExpressionAST_generateConditionCode.count ()) {
-           f = gCategoryReaderTable_lexicalExpressionAST_generateConditionCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.count ()) {
+           f = gCategoryGetterTable_lexicalExpressionAST_generateConditionCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -944,29 +944,29 @@ GALGAS_string callCategoryReader_generateConditionCode (const cPtr_lexicalExpres
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument> gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument ;
+static TC_UniqueArray <categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument> gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateRoutineOrFunctionArgument (const int32_t inClassIndex,
+void enterCategoryGetter_generateRoutineOrFunctionArgument (const int32_t inClassIndex,
                                                             categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument inReader) {
-  gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (void) {
-  gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.free () ;
+static void freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (void) {
+  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (NULL,
-                                                                                                             freeCategoryReader_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument) ;
+                                                                                                             freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+GALGAS_string callCategoryGetter_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -976,18 +976,18 @@ GALGAS_string callCategoryReader_generateRoutineOrFunctionArgument (const cPtr_l
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument f = NULL ;
-    if (classIndex < gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
-      f = gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
+      f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
-           f = gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
+           f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1004,29 +1004,29 @@ GALGAS_string callCategoryReader_generateRoutineOrFunctionArgument (const cPtr_l
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument> gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument ;
+static TC_UniqueArray <categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument> gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateRoutineArgument (const int32_t inClassIndex,
+void enterCategoryGetter_generateRoutineArgument (const int32_t inClassIndex,
                                                   categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument inReader) {
-  gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (void) {
-  gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.free () ;
+static void freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (void) {
+  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (NULL,
-                                                                                            freeCategoryReader_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument) ;
+                                                                                            freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+GALGAS_string callCategoryGetter_generateRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -1036,18 +1036,18 @@ GALGAS_string callCategoryReader_generateRoutineArgument (const cPtr_abstractLex
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument f = NULL ;
-    if (classIndex < gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
-      f = gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
+      f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
-           f = gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
+           f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1064,29 +1064,29 @@ GALGAS_string callCategoryReader_generateRoutineArgument (const cPtr_abstractLex
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalSendDefaultActionAST_generateDefaultSendCode> gCategoryReaderTable_lexicalSendDefaultActionAST_generateDefaultSendCode ;
+static TC_UniqueArray <categoryReaderSignature_lexicalSendDefaultActionAST_generateDefaultSendCode> gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateDefaultSendCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateDefaultSendCode (const int32_t inClassIndex,
                                                   categoryReaderSignature_lexicalSendDefaultActionAST_generateDefaultSendCode inReader) {
-  gCategoryReaderTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_lexicalSendDefaultActionAST_generateDefaultSendCode (void) {
-  gCategoryReaderTable_lexicalSendDefaultActionAST_generateDefaultSendCode.free () ;
+static void freeCategoryGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (void) {
+  gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_lexicalSendDefaultActionAST_generateDefaultSendCode (NULL,
-                                                                                freeCategoryReader_lexicalSendDefaultActionAST_generateDefaultSendCode) ;
+                                                                                freeCategoryGetter_lexicalSendDefaultActionAST_generateDefaultSendCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
+GALGAS_string callCategoryGetter_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
                                                           GALGAS_string in_inScannerClassName,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -1097,18 +1097,18 @@ GALGAS_string callCategoryReader_generateDefaultSendCode (const cPtr_lexicalSend
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_lexicalSendDefaultActionAST_generateDefaultSendCode f = NULL ;
-    if (classIndex < gCategoryReaderTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
-      f = gCategoryReaderTable_lexicalSendDefaultActionAST_generateDefaultSendCode (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
+      f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
-           f = gCategoryReaderTable_lexicalSendDefaultActionAST_generateDefaultSendCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
+           f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1125,29 +1125,29 @@ GALGAS_string callCategoryReader_generateDefaultSendCode (const cPtr_lexicalSend
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalInstructionAST_generateInstructionCode> gCategoryReaderTable_lexicalInstructionAST_generateInstructionCode ;
+static TC_UniqueArray <categoryReaderSignature_lexicalInstructionAST_generateInstructionCode> gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateInstructionCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateInstructionCode (const int32_t inClassIndex,
                                                   categoryReaderSignature_lexicalInstructionAST_generateInstructionCode inReader) {
-  gCategoryReaderTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_lexicalInstructionAST_generateInstructionCode (void) {
-  gCategoryReaderTable_lexicalInstructionAST_generateInstructionCode.free () ;
+static void freeCategoryGetter_lexicalInstructionAST_generateInstructionCode (void) {
+  gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_lexicalInstructionAST_generateInstructionCode (NULL,
-                                                                          freeCategoryReader_lexicalInstructionAST_generateInstructionCode) ;
+                                                                          freeCategoryGetter_lexicalInstructionAST_generateInstructionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
+GALGAS_string callCategoryGetter_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
                                                           GALGAS_string in_inScannerClassName,
                                                           GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                           C_Compiler * inCompiler
@@ -1159,18 +1159,18 @@ GALGAS_string callCategoryReader_generateInstructionCode (const cPtr_lexicalInst
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_lexicalInstructionAST_generateInstructionCode f = NULL ;
-    if (classIndex < gCategoryReaderTable_lexicalInstructionAST_generateInstructionCode.count ()) {
-      f = gCategoryReaderTable_lexicalInstructionAST_generateInstructionCode (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.count ()) {
+      f = gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_lexicalInstructionAST_generateInstructionCode.count ()) {
-           f = gCategoryReaderTable_lexicalInstructionAST_generateInstructionCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.count ()) {
+           f = gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1187,29 +1187,29 @@ GALGAS_string callCategoryReader_generateInstructionCode (const cPtr_lexicalInst
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_abstractLexicalRuleAST_generateCode> gCategoryReaderTable_abstractLexicalRuleAST_generateCode ;
+static TC_UniqueArray <categoryReaderSignature_abstractLexicalRuleAST_generateCode> gCategoryGetterTable_abstractLexicalRuleAST_generateCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateCode (const int32_t inClassIndex,
                                        categoryReaderSignature_abstractLexicalRuleAST_generateCode inReader) {
-  gCategoryReaderTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_abstractLexicalRuleAST_generateCode (void) {
-  gCategoryReaderTable_abstractLexicalRuleAST_generateCode.free () ;
+static void freeCategoryGetter_abstractLexicalRuleAST_generateCode (void) {
+  gCategoryGetterTable_abstractLexicalRuleAST_generateCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_abstractLexicalRuleAST_generateCode (NULL,
-                                                                freeCategoryReader_abstractLexicalRuleAST_generateCode) ;
+                                                                freeCategoryGetter_abstractLexicalRuleAST_generateCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateCode (const cPtr_abstractLexicalRuleAST * inObject,
+GALGAS_string callCategoryGetter_generateCode (const cPtr_abstractLexicalRuleAST * inObject,
                                                GALGAS_string in_inScannerClassName,
                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                C_Compiler * inCompiler
@@ -1221,18 +1221,18 @@ GALGAS_string callCategoryReader_generateCode (const cPtr_abstractLexicalRuleAST
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_abstractLexicalRuleAST_generateCode f = NULL ;
-    if (classIndex < gCategoryReaderTable_abstractLexicalRuleAST_generateCode.count ()) {
-      f = gCategoryReaderTable_abstractLexicalRuleAST_generateCode (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_abstractLexicalRuleAST_generateCode.count ()) {
+      f = gCategoryGetterTable_abstractLexicalRuleAST_generateCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_abstractLexicalRuleAST_generateCode.count ()) {
-           f = gCategoryReaderTable_abstractLexicalRuleAST_generateCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_abstractLexicalRuleAST_generateCode.count ()) {
+           f = gCategoryGetterTable_abstractLexicalRuleAST_generateCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1249,29 +1249,29 @@ GALGAS_string callCategoryReader_generateCode (const cPtr_abstractLexicalRuleAST
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalExpressionAST_generateCocoaConditionCode> gCategoryReaderTable_lexicalExpressionAST_generateCocoaConditionCode ;
+static TC_UniqueArray <categoryReaderSignature_lexicalExpressionAST_generateCocoaConditionCode> gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaConditionCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateCocoaConditionCode (const int32_t inClassIndex,
                                                      categoryReaderSignature_lexicalExpressionAST_generateCocoaConditionCode inReader) {
-  gCategoryReaderTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_lexicalExpressionAST_generateCocoaConditionCode (void) {
-  gCategoryReaderTable_lexicalExpressionAST_generateCocoaConditionCode.free () ;
+static void freeCategoryGetter_lexicalExpressionAST_generateCocoaConditionCode (void) {
+  gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_lexicalExpressionAST_generateCocoaConditionCode (NULL,
-                                                                            freeCategoryReader_lexicalExpressionAST_generateCocoaConditionCode) ;
+                                                                            freeCategoryGetter_lexicalExpressionAST_generateCocoaConditionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateCocoaConditionCode (const cPtr_lexicalExpressionAST * inObject,
+GALGAS_string callCategoryGetter_generateCocoaConditionCode (const cPtr_lexicalExpressionAST * inObject,
                                                              GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
@@ -1282,18 +1282,18 @@ GALGAS_string callCategoryReader_generateCocoaConditionCode (const cPtr_lexicalE
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_lexicalExpressionAST_generateCocoaConditionCode f = NULL ;
-    if (classIndex < gCategoryReaderTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
-      f = gCategoryReaderTable_lexicalExpressionAST_generateCocoaConditionCode (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
+      f = gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
-           f = gCategoryReaderTable_lexicalExpressionAST_generateCocoaConditionCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
+           f = gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1310,29 +1310,29 @@ GALGAS_string callCategoryReader_generateCocoaConditionCode (const cPtr_lexicalE
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument> gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument ;
+static TC_UniqueArray <categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument> gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaRoutineOrFunctionArgument (const int32_t inClassIndex,
+void enterCategoryGetter_generateCocoaRoutineOrFunctionArgument (const int32_t inClassIndex,
                                                                  categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument inReader) {
-  gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (void) {
-  gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.free () ;
+static void freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (void) {
+  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (NULL,
-                                                                                                                  freeCategoryReader_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument) ;
+                                                                                                                  freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateCocoaRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+GALGAS_string callCategoryGetter_generateCocoaRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -1342,18 +1342,18 @@ GALGAS_string callCategoryReader_generateCocoaRoutineOrFunctionArgument (const c
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument f = NULL ;
-    if (classIndex < gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
-      f = gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
+      f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
-           f = gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
+           f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1370,29 +1370,29 @@ GALGAS_string callCategoryReader_generateCocoaRoutineOrFunctionArgument (const c
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument> gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument ;
+static TC_UniqueArray <categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument> gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaRoutineArgument (const int32_t inClassIndex,
+void enterCategoryGetter_generateCocoaRoutineArgument (const int32_t inClassIndex,
                                                        categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument inReader) {
-  gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (void) {
-  gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.free () ;
+static void freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (void) {
+  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (NULL,
-                                                                                                 freeCategoryReader_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument) ;
+                                                                                                 freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+GALGAS_string callCategoryGetter_generateCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
@@ -1403,18 +1403,18 @@ GALGAS_string callCategoryReader_generateCocoaRoutineArgument (const cPtr_abstra
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument f = NULL ;
-    if (classIndex < gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
-      f = gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
+      f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
-           f = gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
+           f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1431,29 +1431,29 @@ GALGAS_string callCategoryReader_generateCocoaRoutineArgument (const cPtr_abstra
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode> gCategoryReaderTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode ;
+static TC_UniqueArray <categoryReaderSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode> gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaDefaultSendCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateCocoaDefaultSendCode (const int32_t inClassIndex,
                                                        categoryReaderSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode inReader) {
-  gCategoryReaderTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (void) {
-  gCategoryReaderTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.free () ;
+static void freeCategoryGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (void) {
+  gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (NULL,
-                                                                                     freeCategoryReader_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode) ;
+                                                                                     freeCategoryGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateCocoaDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
+GALGAS_string callCategoryGetter_generateCocoaDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
                                                                GALGAS_string in_inScannerClassName,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
@@ -1464,18 +1464,18 @@ GALGAS_string callCategoryReader_generateCocoaDefaultSendCode (const cPtr_lexica
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode f = NULL ;
-    if (classIndex < gCategoryReaderTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
-      f = gCategoryReaderTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
+      f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
-           f = gCategoryReaderTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
+           f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1492,29 +1492,29 @@ GALGAS_string callCategoryReader_generateCocoaDefaultSendCode (const cPtr_lexica
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalInstructionAST_generateCocoaInstructionCode> gCategoryReaderTable_lexicalInstructionAST_generateCocoaInstructionCode ;
+static TC_UniqueArray <categoryReaderSignature_lexicalInstructionAST_generateCocoaInstructionCode> gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaInstructionCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateCocoaInstructionCode (const int32_t inClassIndex,
                                                        categoryReaderSignature_lexicalInstructionAST_generateCocoaInstructionCode inReader) {
-  gCategoryReaderTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_lexicalInstructionAST_generateCocoaInstructionCode (void) {
-  gCategoryReaderTable_lexicalInstructionAST_generateCocoaInstructionCode.free () ;
+static void freeCategoryGetter_lexicalInstructionAST_generateCocoaInstructionCode (void) {
+  gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_lexicalInstructionAST_generateCocoaInstructionCode (NULL,
-                                                                               freeCategoryReader_lexicalInstructionAST_generateCocoaInstructionCode) ;
+                                                                               freeCategoryGetter_lexicalInstructionAST_generateCocoaInstructionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateCocoaInstructionCode (const cPtr_lexicalInstructionAST * inObject,
+GALGAS_string callCategoryGetter_generateCocoaInstructionCode (const cPtr_lexicalInstructionAST * inObject,
                                                                GALGAS_string in_inScannerClassName,
                                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                                C_Compiler * inCompiler
@@ -1526,18 +1526,18 @@ GALGAS_string callCategoryReader_generateCocoaInstructionCode (const cPtr_lexica
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_lexicalInstructionAST_generateCocoaInstructionCode f = NULL ;
-    if (classIndex < gCategoryReaderTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
-      f = gCategoryReaderTable_lexicalInstructionAST_generateCocoaInstructionCode (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
+      f = gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
-           f = gCategoryReaderTable_lexicalInstructionAST_generateCocoaInstructionCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
+           f = gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1554,29 +1554,29 @@ GALGAS_string callCategoryReader_generateCocoaInstructionCode (const cPtr_lexica
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode> gCategoryReaderTable_abstractLexicalRuleAST_generateCocoaCode ;
+static TC_UniqueArray <categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode> gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateCocoaCode (const int32_t inClassIndex,
                                             categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode inReader) {
-  gCategoryReaderTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_abstractLexicalRuleAST_generateCocoaCode (void) {
-  gCategoryReaderTable_abstractLexicalRuleAST_generateCocoaCode.free () ;
+static void freeCategoryGetter_abstractLexicalRuleAST_generateCocoaCode (void) {
+  gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_abstractLexicalRuleAST_generateCocoaCode (NULL,
-                                                                     freeCategoryReader_abstractLexicalRuleAST_generateCocoaCode) ;
+                                                                     freeCategoryGetter_abstractLexicalRuleAST_generateCocoaCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_generateCocoaCode (const cPtr_abstractLexicalRuleAST * inObject,
+GALGAS_string callCategoryGetter_generateCocoaCode (const cPtr_abstractLexicalRuleAST * inObject,
                                                     GALGAS_string in_inScannerClassName,
                                                     GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                     C_Compiler * inCompiler
@@ -1588,18 +1588,18 @@ GALGAS_string callCategoryReader_generateCocoaCode (const cPtr_abstractLexicalRu
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode f = NULL ;
-    if (classIndex < gCategoryReaderTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
-      f = gCategoryReaderTable_abstractLexicalRuleAST_generateCocoaCode (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
+      f = gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
-           f = gCategoryReaderTable_abstractLexicalRuleAST_generateCocoaCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
+           f = gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -3550,79 +3550,79 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getConstructorMap (defineCategoryMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category method '@predefinedTypeAST getReaderMap'                                  *
+//                                  Category method '@predefinedTypeAST getGetterMap'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getReaderMap> gCategoryMethodTable_predefinedTypeAST_getReaderMap ;
+static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getGetterMap> gCategoryMethodTable_predefinedTypeAST_getGetterMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_getReaderMap (const int32_t inClassIndex,
-                                       categoryMethodSignature_predefinedTypeAST_getReaderMap inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getReaderMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterCategoryMethod_getGetterMap (const int32_t inClassIndex,
+                                       categoryMethodSignature_predefinedTypeAST_getGetterMap inMethod) {
+  gCategoryMethodTable_predefinedTypeAST_getGetterMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_getReaderMap (const cPtr_predefinedTypeAST * inObject,
+void callCategoryMethod_getGetterMap (const cPtr_predefinedTypeAST * inObject,
                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                      GALGAS_getterMap & out_outReaderMap,
+                                      GALGAS_getterMap & out_outGetterMap,
                                       C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
-  out_outReaderMap.drop () ;
+  out_outGetterMap.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getReaderMap f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getReaderMap.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getReaderMap (classIndex COMMA_HERE) ;
+    categoryMethodSignature_predefinedTypeAST_getGetterMap f = NULL ;
+    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getGetterMap.count ()) {
+      f = gCategoryMethodTable_predefinedTypeAST_getGetterMap (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getReaderMap.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getReaderMap (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getGetterMap.count ()) {
+           f = gCategoryMethodTable_predefinedTypeAST_getGetterMap (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_predefinedTypeAST_getReaderMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryMethodTable_predefinedTypeAST_getGetterMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioUnifiedTypeMap, out_outReaderMap, inCompiler COMMA_THERE) ;
+      f (inObject, io_ioUnifiedTypeMap, out_outGetterMap, inCompiler COMMA_THERE) ;
     }
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_predefinedTypeAST_getReaderMap (const cPtr_predefinedTypeAST * /* inObject */,
+static void categoryMethod_predefinedTypeAST_getGetterMap (const cPtr_predefinedTypeAST * /* inObject */,
                                                            GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                           GALGAS_getterMap & outArgument_outReaderMap,
+                                                           GALGAS_getterMap & outArgument_outGetterMap,
                                                            C_Compiler * /* inCompiler */
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outReaderMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 449)) ;
+  outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 449)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_predefinedTypeAST_getReaderMap (void) {
-  enterCategoryMethod_getReaderMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                    categoryMethod_predefinedTypeAST_getReaderMap) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeCategoryMethod_predefinedTypeAST_getReaderMap (void) {
-  gCategoryMethodTable_predefinedTypeAST_getReaderMap.free () ;
+static void defineCategoryMethod_predefinedTypeAST_getGetterMap (void) {
+  enterCategoryMethod_getGetterMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                    categoryMethod_predefinedTypeAST_getGetterMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getReaderMap (defineCategoryMethod_predefinedTypeAST_getReaderMap,
-                                                           freeCategoryMethod_predefinedTypeAST_getReaderMap) ;
+static void freeCategoryMethod_predefinedTypeAST_getGetterMap (void) {
+  gCategoryMethodTable_predefinedTypeAST_getGetterMap.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_predefinedTypeAST_getGetterMap (defineCategoryMethod_predefinedTypeAST_getGetterMap,
+                                                           freeCategoryMethod_predefinedTypeAST_getGetterMap) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3858,18 +3858,18 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getClassMethodMap (defineCategoryMe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_predefinedTypeAST_getSupportedOperatorFlags> gCategoryReaderTable_predefinedTypeAST_getSupportedOperatorFlags ;
+static TC_UniqueArray <categoryReaderSignature_predefinedTypeAST_getSupportedOperatorFlags> gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_getSupportedOperatorFlags (const int32_t inClassIndex,
+void enterCategoryGetter_getSupportedOperatorFlags (const int32_t inClassIndex,
                                                     categoryReaderSignature_predefinedTypeAST_getSupportedOperatorFlags inReader) {
-  gCategoryReaderTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint callCategoryReader_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
+GALGAS_uint callCategoryGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   GALGAS_uint result ;
@@ -3879,18 +3879,18 @@ GALGAS_uint callCategoryReader_getSupportedOperatorFlags (const cPtr_predefinedT
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_predefinedTypeAST_getSupportedOperatorFlags f = NULL ;
-    if (classIndex < gCategoryReaderTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
-      f = gCategoryReaderTable_predefinedTypeAST_getSupportedOperatorFlags (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
+      f = gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
-           f = gCategoryReaderTable_predefinedTypeAST_getSupportedOperatorFlags (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
+           f = gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -3915,21 +3915,21 @@ static GALGAS_uint categoryReader_predefinedTypeAST_getSupportedOperatorFlags (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_predefinedTypeAST_getSupportedOperatorFlags (void) {
-  enterCategoryReader_getSupportedOperatorFlags (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+static void defineCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags (void) {
+  enterCategoryGetter_getSupportedOperatorFlags (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
                                                  categoryReader_predefinedTypeAST_getSupportedOperatorFlags) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_predefinedTypeAST_getSupportedOperatorFlags (void) {
-  gCategoryReaderTable_predefinedTypeAST_getSupportedOperatorFlags.free () ;
+static void freeCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags (void) {
+  gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_predefinedTypeAST_getSupportedOperatorFlags (defineCategoryReader_predefinedTypeAST_getSupportedOperatorFlags,
-                                                                        freeCategoryReader_predefinedTypeAST_getSupportedOperatorFlags) ;
+C_PrologueEpilogue gReader_predefinedTypeAST_getSupportedOperatorFlags (defineCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags,
+                                                                        freeCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4300,29 +4300,29 @@ void categoryMethod_enterInSemanticContext (const GALGAS_actualOutputExpressionL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationAST_keyRepresentation> gCategoryReaderTable_semanticDeclarationAST_keyRepresentation ;
+static TC_UniqueArray <categoryReaderSignature_semanticDeclarationAST_keyRepresentation> gCategoryGetterTable_semanticDeclarationAST_keyRepresentation ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_keyRepresentation (const int32_t inClassIndex,
+void enterCategoryGetter_keyRepresentation (const int32_t inClassIndex,
                                             categoryReaderSignature_semanticDeclarationAST_keyRepresentation inReader) {
-  gCategoryReaderTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticDeclarationAST_keyRepresentation (void) {
-  gCategoryReaderTable_semanticDeclarationAST_keyRepresentation.free () ;
+static void freeCategoryGetter_semanticDeclarationAST_keyRepresentation (void) {
+  gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_semanticDeclarationAST_keyRepresentation (NULL,
-                                                                     freeCategoryReader_semanticDeclarationAST_keyRepresentation) ;
+                                                                     freeCategoryGetter_semanticDeclarationAST_keyRepresentation) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+GALGAS_string callCategoryGetter_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -4332,18 +4332,18 @@ GALGAS_string callCategoryReader_keyRepresentation (const cPtr_semanticDeclarati
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticDeclarationAST_keyRepresentation f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticDeclarationAST_keyRepresentation.count ()) {
-      f = gCategoryReaderTable_semanticDeclarationAST_keyRepresentation (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.count ()) {
+      f = gCategoryGetterTable_semanticDeclarationAST_keyRepresentation (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationAST_keyRepresentation.count ()) {
-           f = gCategoryReaderTable_semanticDeclarationAST_keyRepresentation (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.count ()) {
+           f = gCategoryGetterTable_semanticDeclarationAST_keyRepresentation (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -4384,7 +4384,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationAST_enterInSemanticContext (NULL,
 
 void callCategoryMethod_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                 const GALGAS_categoryMethodMapForBuildingContext constin_inCategoryMethodMapForBuildingContext,
-                                                const GALGAS_categoryGetterMapForBuildingContext constin_inCategoryReaderMapForBuildingContext,
+                                                const GALGAS_categoryGetterMapForBuildingContext constin_inCategoryGetterMapForBuildingContext,
                                                 const GALGAS_categoryModifierMapForBuildingContext constin_inCategoryModifierMapForBuildingContext,
                                                 GALGAS_semanticContext & io_ioSemanticContext,
                                                 C_Compiler * inCompiler
@@ -4412,7 +4412,7 @@ void callCategoryMethod_enterInSemanticContext (const cPtr_semanticDeclarationAS
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, constin_inCategoryMethodMapForBuildingContext, constin_inCategoryReaderMapForBuildingContext, constin_inCategoryModifierMapForBuildingContext, io_ioSemanticContext, inCompiler COMMA_THERE) ;
+      f (inObject, constin_inCategoryMethodMapForBuildingContext, constin_inCategoryGetterMapForBuildingContext, constin_inCategoryModifierMapForBuildingContext, io_ioSemanticContext, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -4712,18 +4712,18 @@ void callCategoryMethod_generateInstruction (const cPtr_semanticInstructionForGe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration> gCategoryReaderTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration ;
+static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration> gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
+void enterCategoryGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
                                                          categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inReader) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
+GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -4733,18 +4733,18 @@ GALGAS_string callCategoryReader_appendPrimitiveTypeDeclaration (const cPtr_sema
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
-      f = gCategoryReaderTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
+      f = gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
-           f = gCategoryReaderTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
+           f = gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -4769,21 +4769,21 @@ static GALGAS_string categoryReader_semanticDeclarationForGeneration_appendPrimi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
-  enterCategoryReader_appendPrimitiveTypeDeclaration (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
+  enterCategoryGetter_appendPrimitiveTypeDeclaration (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
                                                       categoryReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.free () ;
+static void freeCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (defineCategoryReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration,
-                                                                                            freeCategoryReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
+C_PrologueEpilogue gReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (defineCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration,
+                                                                                            freeCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4791,29 +4791,29 @@ C_PrologueEpilogue gReader_semanticDeclarationForGeneration_appendPrimitiveTypeD
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName> gCategoryReaderTable_semanticDeclarationForGeneration_implementationCppFileName ;
+static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName> gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_implementationCppFileName (const int32_t inClassIndex,
+void enterCategoryGetter_implementationCppFileName (const int32_t inClassIndex,
                                                     categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName inReader) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticDeclarationForGeneration_implementationCppFileName (void) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_implementationCppFileName.free () ;
+static void freeCategoryGetter_semanticDeclarationForGeneration_implementationCppFileName (void) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_semanticDeclarationForGeneration_implementationCppFileName (NULL,
-                                                                                       freeCategoryReader_semanticDeclarationForGeneration_implementationCppFileName) ;
+                                                                                       freeCategoryGetter_semanticDeclarationForGeneration_implementationCppFileName) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_implementationCppFileName (const cPtr_semanticDeclarationForGeneration * inObject,
+GALGAS_string callCategoryGetter_implementationCppFileName (const cPtr_semanticDeclarationForGeneration * inObject,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -4823,18 +4823,18 @@ GALGAS_string callCategoryReader_implementationCppFileName (const cPtr_semanticD
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
-      f = gCategoryReaderTable_semanticDeclarationForGeneration_implementationCppFileName (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
+      f = gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
-           f = gCategoryReaderTable_semanticDeclarationForGeneration_implementationCppFileName (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
+           f = gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -4851,29 +4851,29 @@ GALGAS_string callCategoryReader_implementationCppFileName (const cPtr_semanticD
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile> gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile ;
+static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile> gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_hasCppHeaderFile (const int32_t inClassIndex,
+void enterCategoryGetter_hasCppHeaderFile (const int32_t inClassIndex,
                                            categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile inReader) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticDeclarationForGeneration_hasCppHeaderFile (void) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile.free () ;
+static void freeCategoryGetter_semanticDeclarationForGeneration_hasCppHeaderFile (void) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_semanticDeclarationForGeneration_hasCppHeaderFile (NULL,
-                                                                              freeCategoryReader_semanticDeclarationForGeneration_hasCppHeaderFile) ;
+                                                                              freeCategoryGetter_semanticDeclarationForGeneration_hasCppHeaderFile) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool callCategoryReader_hasCppHeaderFile (const cPtr_semanticDeclarationForGeneration * inObject,
+GALGAS_bool callCategoryGetter_hasCppHeaderFile (const cPtr_semanticDeclarationForGeneration * inObject,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   GALGAS_bool result ;
@@ -4883,18 +4883,18 @@ GALGAS_bool callCategoryReader_hasCppHeaderFile (const cPtr_semanticDeclarationF
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
-      f = gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
+      f = gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
-           f = gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
+           f = gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -4911,29 +4911,29 @@ GALGAS_bool callCategoryReader_hasCppHeaderFile (const cPtr_semanticDeclarationF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_isPredefined> gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined ;
+static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_isPredefined> gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_isPredefined (const int32_t inClassIndex,
+void enterCategoryGetter_isPredefined (const int32_t inClassIndex,
                                        categoryReaderSignature_semanticDeclarationForGeneration_isPredefined inReader) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticDeclarationForGeneration_isPredefined (void) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.free () ;
+static void freeCategoryGetter_semanticDeclarationForGeneration_isPredefined (void) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_semanticDeclarationForGeneration_isPredefined (NULL,
-                                                                          freeCategoryReader_semanticDeclarationForGeneration_isPredefined) ;
+                                                                          freeCategoryGetter_semanticDeclarationForGeneration_isPredefined) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool callCategoryReader_isPredefined (const cPtr_semanticDeclarationForGeneration * inObject,
+GALGAS_bool callCategoryGetter_isPredefined (const cPtr_semanticDeclarationForGeneration * inObject,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   GALGAS_bool result ;
@@ -4943,18 +4943,18 @@ GALGAS_bool callCategoryReader_isPredefined (const cPtr_semanticDeclarationForGe
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticDeclarationForGeneration_isPredefined f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.count ()) {
-      f = gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.count ()) {
+      f = gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.count ()) {
-           f = gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.count ()) {
+           f = gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -4971,29 +4971,29 @@ GALGAS_bool callCategoryReader_isPredefined (const cPtr_semanticDeclarationForGe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_headerKind> gCategoryReaderTable_semanticDeclarationForGeneration_headerKind ;
+static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_headerKind> gCategoryGetterTable_semanticDeclarationForGeneration_headerKind ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_headerKind (const int32_t inClassIndex,
+void enterCategoryGetter_headerKind (const int32_t inClassIndex,
                                      categoryReaderSignature_semanticDeclarationForGeneration_headerKind inReader) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticDeclarationForGeneration_headerKind (void) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.free () ;
+static void freeCategoryGetter_semanticDeclarationForGeneration_headerKind (void) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_semanticDeclarationForGeneration_headerKind (NULL,
-                                                                        freeCategoryReader_semanticDeclarationForGeneration_headerKind) ;
+                                                                        freeCategoryGetter_semanticDeclarationForGeneration_headerKind) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_headerKind callCategoryReader_headerKind (const cPtr_semanticDeclarationForGeneration * inObject,
+GALGAS_headerKind callCategoryGetter_headerKind (const cPtr_semanticDeclarationForGeneration * inObject,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   GALGAS_headerKind result ;
@@ -5003,18 +5003,18 @@ GALGAS_headerKind callCategoryReader_headerKind (const cPtr_semanticDeclarationF
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticDeclarationForGeneration_headerKind f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.count ()) {
-      f = gCategoryReaderTable_semanticDeclarationForGeneration_headerKind (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.count ()) {
+      f = gCategoryGetterTable_semanticDeclarationForGeneration_headerKind (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.count ()) {
-           f = gCategoryReaderTable_semanticDeclarationForGeneration_headerKind (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.count ()) {
+           f = gCategoryGetterTable_semanticDeclarationForGeneration_headerKind (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -5187,18 +5187,18 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_32
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation> gCategoryReaderTable_semanticDeclarationForGeneration_appendTypeGenericImplementation ;
+static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation> gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_appendTypeGenericImplementation (const int32_t inClassIndex,
+void enterCategoryGetter_appendTypeGenericImplementation (const int32_t inClassIndex,
                                                           categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inReader) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryReader_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+GALGAS_string callCategoryGetter_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -5208,18 +5208,18 @@ GALGAS_string callCategoryReader_appendTypeGenericImplementation (const cPtr_sem
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
-      f = gCategoryReaderTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
+      f = gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
-           f = gCategoryReaderTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
+           f = gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -5244,21 +5244,21 @@ static GALGAS_string categoryReader_semanticDeclarationForGeneration_appendTypeG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
-  enterCategoryReader_appendTypeGenericImplementation (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
+static void defineCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
+  enterCategoryGetter_appendTypeGenericImplementation (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
                                                        categoryReader_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.free () ;
+static void freeCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_appendTypeGenericImplementation (defineCategoryReader_semanticDeclarationForGeneration_appendTypeGenericImplementation,
-                                                                                             freeCategoryReader_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
+C_PrologueEpilogue gReader_semanticDeclarationForGeneration_appendTypeGenericImplementation (defineCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation,
+                                                                                             freeCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6486,18 +6486,18 @@ C_PrologueEpilogue gMethod_semanticInstructionForGeneration_appendSyntaxSignatur
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction> gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction ;
+static TC_UniqueArray <categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction> gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_compareSyntaxInstruction (const int32_t inClassIndex,
+void enterCategoryGetter_compareSyntaxInstruction (const int32_t inClassIndex,
                                                    categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction inReader) {
-  gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool callCategoryReader_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
+GALGAS_bool callCategoryGetter_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
                                                          const GALGAS_semanticInstructionForGeneration & in_inTestedInstruction,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
@@ -6508,18 +6508,18 @@ GALGAS_bool callCategoryReader_compareSyntaxInstruction (const cPtr_semanticInst
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
-      f = gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
+      f = gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
-           f = gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
+           f = gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -6545,21 +6545,21 @@ static GALGAS_bool categoryReader_semanticInstructionForGeneration_compareSyntax
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
-  enterCategoryReader_compareSyntaxInstruction (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
+static void defineCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
+  enterCategoryGetter_compareSyntaxInstruction (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
                                                 categoryReader_semanticInstructionForGeneration_compareSyntaxInstruction) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
-  gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction.free () ;
+static void freeCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
+  gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticInstructionForGeneration_compareSyntaxInstruction (defineCategoryReader_semanticInstructionForGeneration_compareSyntaxInstruction,
-                                                                                      freeCategoryReader_semanticInstructionForGeneration_compareSyntaxInstruction) ;
+C_PrologueEpilogue gReader_semanticInstructionForGeneration_compareSyntaxInstruction (defineCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction,
+                                                                                      freeCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6650,10 +6650,10 @@ void callCategoryMethod_buildCategoryListMaps (const cPtr_semanticDeclarationAST
                                                GALGAS_genericCategoryMethodListMap & io_ioCategoryMethodListMap,
                                                GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryMethodListMap,
                                                GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryMethodListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryReaderListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryReaderListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryReaderListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryReaderListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryGetterListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryGetterListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryGetterListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryGetterListMap,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   if (NULL != inObject) {
@@ -6677,7 +6677,7 @@ void callCategoryMethod_buildCategoryListMaps (const cPtr_semanticDeclarationAST
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioAbstractCategoryModifierListMapAST, io_ioCategoryModifierListMap, io_ioOverridingCategoryModifierListMap, io_ioOverridingAbstractCategoryModifierListMap, io_ioAbstractCategoryMethodListMapAST, io_ioCategoryMethodListMap, io_ioOverridingCategoryMethodListMap, io_ioOverridingAbstractCategoryMethodListMap, io_ioAbstractCategoryReaderListMap, io_ioCategoryReaderListMap, io_ioOverridingCategoryReaderListMap, io_ioOverridingAbstractCategoryReaderListMap, inCompiler COMMA_THERE) ;
+      f (inObject, io_ioAbstractCategoryModifierListMapAST, io_ioCategoryModifierListMap, io_ioOverridingCategoryModifierListMap, io_ioOverridingAbstractCategoryModifierListMap, io_ioAbstractCategoryMethodListMapAST, io_ioCategoryMethodListMap, io_ioOverridingCategoryMethodListMap, io_ioOverridingAbstractCategoryMethodListMap, io_ioAbstractCategoryGetterListMap, io_ioCategoryGetterListMap, io_ioOverridingCategoryGetterListMap, io_ioOverridingAbstractCategoryGetterListMap, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -6693,10 +6693,10 @@ static void categoryMethod_semanticDeclarationAST_buildCategoryListMaps (const c
                                                                          GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryMethodListMap */,
                                                                          GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryMethodListMap */,
                                                                          GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryMethodListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioAbstractCategoryReaderListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryReaderListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryReaderListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryReaderListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioAbstractCategoryGetterListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryGetterListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryGetterListMap */,
+                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryGetterListMap */,
                                                                          C_Compiler * /* inCompiler */
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
 }

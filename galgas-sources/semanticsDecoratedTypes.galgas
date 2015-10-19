@@ -332,7 +332,7 @@ class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGene
 
 class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
   @string mLexiqueComponentName
-  @string mLexiqueReaderName
+  @string mLexiqueGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1055,11 +1055,11 @@ class @overridingCategoryModifierForGeneration : @semanticDeclarationWithHeaderF
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @abstractCategoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @abstractCategoryGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
-  @string mAbstractCategoryReaderName
+  @string mAbstractCategoryGetterName
   @unifiedTypeMap-proxy mResultType
-  @formalInputParameterListForGeneration mAbstractCategoryReaderFormalParameterList
+  @formalInputParameterListForGeneration mAbstractCategoryGetterFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1070,11 +1070,11 @@ class @abstractCategoryReaderForGeneration : @semanticDeclarationWithHeaderForGe
 
 class @categoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
-  @string mCategoryReaderName
+  @string mCategoryGetterName
   @bool mImplementedAsFunction
   @unifiedTypeMap-proxy mResultType
   @string mResultVarCppName
-  @formalInputParameterListForGeneration mCategoryReaderFormalParameterList
+  @formalInputParameterListForGeneration mCategoryGetterFormalParameterList
   @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
@@ -1085,13 +1085,13 @@ class @categoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overrideCategoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @overrideCategoryGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
   @string mBaseTypeName
-  @string mOverridingCategoryReaderName
+  @string mOverridingCategoryGetterName
   @unifiedTypeMap-proxy mResultType
   @string mResultVarCppName
-  @formalInputParameterListForGeneration mOverridingCategoryReaderFormalParameterList
+  @formalInputParameterListForGeneration mOverridingCategoryGetterFormalParameterList
   @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }

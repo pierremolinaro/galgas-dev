@@ -380,12 +380,12 @@ typedef class GALGAS_bool (*categoryReaderSignature_semanticInstructionForGenera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_compareSyntaxInstruction (const int32_t inClassIndex,
+void enterCategoryGetter_compareSyntaxInstruction (const int32_t inClassIndex,
                                                    categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction inReader) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bool callCategoryReader_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
+class GALGAS_bool callCategoryGetter_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
                                                                const GALGAS_semanticInstructionForGeneration & constin_inTestedInstruction,
                                                                class C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
@@ -1444,11 +1444,11 @@ void routine_checkCategoryMethodDefinitionForClass (const class GALGAS_string co
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Routine 'checkCategoryReaderDefinitionForClass'                                   *
+//                                   Routine 'checkCategoryGetterDefinitionForClass'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_checkCategoryReaderDefinitionForClass (const class GALGAS_string constinArgument0,
+void routine_checkCategoryGetterDefinitionForClass (const class GALGAS_string constinArgument0,
                                                     const class GALGAS_string constinArgument1,
                                                     const class GALGAS_lstring constinArgument2,
                                                     const class GALGAS_descendantClassListMap constinArgument3,
@@ -1495,10 +1495,10 @@ void callCategoryMethod_buildCategoryListMaps (const class cPtr_semanticDeclarat
                                                GALGAS_genericCategoryMethodListMap & io_ioCategoryMethodListMap,
                                                GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryMethodListMap,
                                                GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryMethodListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryReaderListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryReaderListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryReaderListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryReaderListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryGetterListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryGetterListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryGetterListMap,
+                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryGetterListMap,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 

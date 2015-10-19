@@ -292,7 +292,7 @@ map @categoryGetterMapForType {
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @categoryGetterMapForBuildingContext {
-  @categoryGetterMapForType mCategoryReaderMapForType
+  @categoryGetterMapForType mCategoryGetterMapForType
   insert insertKey error message "internal error"
   search searchKey error message "internal error"
 }
@@ -384,30 +384,30 @@ override getter @overridingAbstractCategoryMethodAST keyRepresentation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @abstractCategoryReaderAST keyRepresentation
+override getter @abstractCategoryGetterAST keyRepresentation
   ->@string outString {
-  outString = "abstract category getter @" + mTypeName + " " + mAbstractCategoryReaderName
+  outString = "abstract category getter @" + mTypeName + " " + mAbstractCategoryGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @categoryGetterAST keyRepresentation
   ->@string outString {
-  outString = "category getter @" + mTypeName + " " + mCategoryReaderName
+  outString = "category getter @" + mTypeName + " " + mCategoryGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @overridingCategoryReaderAST keyRepresentation
+override getter @overridingCategoryGetterAST keyRepresentation
   ->@string outString {
-  outString = "overriding category getter @" + mTypeName + " " + mOverridingCategoryReaderName
+  outString = "overriding category getter @" + mTypeName + " " + mOverridingCategoryGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @overridingAbstractCategoryReaderAST keyRepresentation
+override getter @overridingAbstractCategoryGetterAST keyRepresentation
   ->@string outString {
-  outString = "overriding category getter @" + mTypeName + " " + mAbstractCategoryReaderName
+  outString = "overriding category getter @" + mTypeName + " " + mAbstractCategoryGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -537,11 +537,11 @@ override getter @externRoutineDeclarationAST keyRepresentation
 
 proc addCategories
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
   ?let @lstring inTypeName
-  ?!@getterMap ioReaderMap
+  ?!@getterMap ioGetterMap
   ?!@setterMap ioModifierMap
   ?!@instanceMethodMap ioInstanceMethodMap {
 #------------------------  Category methods
@@ -570,10 +570,10 @@ proc addCategories
     end
   end
 #------------------------  Category getters
-  if [inCategoryReaderMapForBuildingContext hasKey ![inTypeName string]] then
-    @categoryGetterMapForType categoryReaderMapForType
-    [inCategoryReaderMapForBuildingContext searchKey !inTypeName ?categoryReaderMapForType]
-    for () in categoryReaderMapForType do
+  if [inCategoryGetterMapForBuildingContext hasKey ![inTypeName string]] then
+    @categoryGetterMapForType categoryGetterMapForType
+    [inCategoryGetterMapForBuildingContext searchKey !inTypeName ?categoryGetterMapForType]
+    for () in categoryGetterMapForType do
       var formalArgumentList =@functionSignature.emptyList{}
       for () in mInputFormalParameterList do
         @unifiedTypeMap-proxy typeIndex
@@ -582,7 +582,7 @@ proc addCategories
       end
       @unifiedTypeMap-proxy returnedType
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedType]
-      [!?ioReaderMap insertKey
+      [!?ioGetterMap insertKey
         !lkey
         !@methodKind.definedAsCategory
         !formalArgumentList
@@ -625,7 +625,7 @@ proc addCategories
 
 abstract method @semanticDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 
@@ -633,7 +633,7 @@ abstract method @semanticDeclarationAST enterInSemanticContext
 
 override method @abstractCategoryMethodAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -642,7 +642,7 @@ override method @abstractCategoryMethodAST enterInSemanticContext
 
 override method @categoryMethodAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -651,7 +651,7 @@ override method @categoryMethodAST enterInSemanticContext
 
 override method @overridingCategoryMethodAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -660,7 +660,7 @@ override method @overridingCategoryMethodAST enterInSemanticContext
 
 override method @overridingAbstractCategoryMethodAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -669,7 +669,7 @@ override method @overridingAbstractCategoryMethodAST enterInSemanticContext
 
 override method @abstractCategoryModifierAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -678,7 +678,7 @@ override method @abstractCategoryModifierAST enterInSemanticContext
 
 override method @categoryModifierAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -687,7 +687,7 @@ override method @categoryModifierAST enterInSemanticContext
 
 override method @overridingCategoryModifierAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -696,16 +696,16 @@ override method @overridingCategoryModifierAST enterInSemanticContext
 
 override method @overridingAbstractCategoryModifierAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderAST enterInSemanticContext
+override method @abstractCategoryGetterAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -714,25 +714,25 @@ override method @abstractCategoryReaderAST enterInSemanticContext
 
 override method @categoryGetterAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryReaderAST enterInSemanticContext
+override method @overridingCategoryGetterAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryReaderAST enterInSemanticContext
+override method @overridingAbstractCategoryGetterAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
@@ -764,11 +764,11 @@ getter @predefinedTypeKindEnum defaultConstructorName
 
 override method @predefinedTypeAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
   [self getConstructorMap !?ioSemanticContext.mTypeMap ?var @constructorMap constructorMap]
-  [self getReaderMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
+  [self getGetterMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
   [self getModifierMap !?ioSemanticContext.mTypeMap ?var @setterMap modifierMap]
   [self getInstanceMethodMap !?ioSemanticContext.mTypeMap ?var @instanceMethodMap instanceMethodMap]
   [self getClassMethodMap !?ioSemanticContext.mTypeMap ?var @classMethodMap classMethodMap]
@@ -794,7 +794,7 @@ override method @predefinedTypeAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !@lstring.new {!mPredefinedTypeName !@location.here}
@@ -844,7 +844,7 @@ func %once elementTypeNameSuffix ->@string outResult {
 
 override method @mapDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- bool type index
@@ -881,13 +881,13 @@ override method @mapDeclarationAST enterInSemanticContext
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Constructors
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false )
   enterConstructorWithArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] !"inMap" ![mMapTypeName string] !false )
-#--- Readers
+#--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -895,7 +895,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !returnedTypeName:"uint"
     !false
   )
-  enterInheritedReaderWith2Arguments (
+  enterInheritedGetterWith2Arguments (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"hasKeyAtLevel"
@@ -938,7 +938,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !returnedTypeName:"location"
     !true
   )
-  enterBaseReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
+  enterBaseGetterWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1072,7 +1072,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mMapTypeName
@@ -1122,11 +1122,11 @@ override method @mapDeclarationAST enterInSemanticContext
 
 override method @externTypeDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var constructorMap =@constructorMap.emptyMap{}
   var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
@@ -1150,8 +1150,8 @@ override method @externTypeDeclarationAST enterInSemanticContext
       !returnedTypeProxy
     ]
   end
-#--- Readers
-  for () in mExternTypeReaderList do
+#--- Getters
+  for () in mExternTypeGetterList do
     @unifiedTypeMap-proxy returnedTypeProxy
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedTypeProxy]
   #---
@@ -1253,7 +1253,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
 
 override method @graphDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- string type proxy
@@ -1287,7 +1287,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ?let @unifiedTypeMap-proxy lstringListTypeProxy
   ]
 #---
-  commonReaderMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var constructorMap =@constructorMap.emptyMap{}
   var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
@@ -1448,7 +1448,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !false # No compiler argument
   )
 #--- Reader 'subgraphFromNodes'
-  enterBaseReaderWith2Arguments (
+  enterBaseGetterWith2Arguments (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"subgraphFromNodes"
@@ -1460,7 +1460,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !true # has compiler argument
   )
 #--- Reader 'accessibleNodesFromNodes'
-  enterBaseReaderWithArgument (
+  enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"accessibleNodesFromNodes"
@@ -1550,7 +1550,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mGraphTypeName
@@ -1665,7 +1665,7 @@ proc recursivelyEnumerateDirectories
 
 override method @filewrapperDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Templates
@@ -1740,7 +1740,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
 
 override method @optionComponentDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
@@ -1816,7 +1816,7 @@ override method @optionComponentDeclarationAST enterInSemanticContext
 
 override method @classDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
   @unifiedTypeMap-proxy uintType
@@ -1832,7 +1832,7 @@ override method @classDeclarationAST enterInSemanticContext
   @bool generateHeaderInSeparateFile
   if [mSuperClassName string] == "" then
     superClassIndex = @unifiedTypeMap-proxy. null
-    commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
+    commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
     modifierMap = @setterMap. emptyMap
     instanceMethodMap = @instanceMethodMap. emptyMap
     inheritedTypedAttributeList = @typedPropertyList. emptyList
@@ -1846,7 +1846,7 @@ override method @classDeclarationAST enterInSemanticContext
   else
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSuperClassName ?superClassIndex]
     @typeKindEnum typeKindEnum
-    @getterMap inheritedReaderMap
+    @getterMap inheritedGetterMap
     @setterMap inheritedModifierMap
     @instanceMethodMap inheritedMethodMap
     [ioSemanticContext.mTypeMap searchKey
@@ -1857,7 +1857,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedTypedAttributeList
       ?attributeMap
       ?2*
-      ?inheritedReaderMap
+      ?inheritedGetterMap
       ?inheritedModifierMap
       ?inheritedMethodMap
       ?9*
@@ -1882,7 +1882,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   #--- Mark all getters as inherited
     getterMap = @getterMap. emptyMap
-    for () in inheritedReaderMap do
+    for () in inheritedGetterMap do
       [!?getterMap insertKey
         !lkey
         !mKind
@@ -1988,7 +1988,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mClassTypeName
@@ -2044,7 +2044,7 @@ override method @classDeclarationAST enterInSemanticContext
 
 override method @externRoutineDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
@@ -2065,7 +2065,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
 
 override method @routineDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
@@ -2088,7 +2088,7 @@ override method @routineDeclarationAST enterInSemanticContext
 
 override method @externFunctionDeclarationAST enterInSemanticContext # Handles also function declaration
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
@@ -2114,7 +2114,7 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
 
 override method @onceFunctionDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Result type
@@ -2127,7 +2127,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
 
 override method @arrayDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
@@ -2142,7 +2142,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mElementTypeName ?elementTypeIndex]
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- 
@@ -2166,9 +2166,9 @@ override method @arrayDeclarationAST enterInSemanticContext
     !arrayTypeIndex
   ]
 #--- Readers
-  enterBaseReaderWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"axisCount" !returnedTypeName:"uint" !false )
-  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"uint" !true )
-  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
+  enterBaseGetterWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"axisCount" !returnedTypeName:"uint" !false )
+  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"uint" !true )
+  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
   [!?getterMap insertOrReplace
     !@lstring.new {!"isValueValidAtIndex" !@location.here}
     !@methodKind.definedAsMember
@@ -2277,7 +2277,7 @@ override method @arrayDeclarationAST enterInSemanticContext
 
 override method @listmapDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
@@ -2295,7 +2295,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   end
 #---
   var constructorMap =@constructorMap.emptyMap{}
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Associated map type index
@@ -2324,7 +2324,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !returnedTypeName:"stringlist"
     !false
   )
-  enterBaseReaderWithArgument (
+  enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"listForKey"
@@ -2352,7 +2352,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mListmapTypeName
@@ -2402,7 +2402,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 
 override method @galgas3SyntaxComponentAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
   [!?ioSemanticContext.mSyntaxComponentMapForSemanticAnalysis insertKey
@@ -2418,7 +2418,7 @@ override method @galgas3SyntaxComponentAST enterInSemanticContext
 
 override method @galgas3GrammarComponentAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Analyze start symbol labels
@@ -2452,7 +2452,7 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
 
 override method @lexiqueComponentAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext unused inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--------------------------------------- Build lexical attribute map
@@ -2743,7 +2743,7 @@ override method @overridingCategoryModifierAST enterDeclarationInGraph
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryReaderAST enterDeclarationInGraph
+override method @overridingAbstractCategoryGetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
@@ -2782,7 +2782,7 @@ override method @categoryGetterAST enterDeclarationInGraph
   ?!@categoryGetterMapForBuildingContext ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring.new {!"category reader @" + mTypeName + " " + mCategoryReaderName ![mCategoryReaderName location]}
+  let key = @lstring.new {!"category reader @" + mTypeName + " " + mCategoryGetterName ![mCategoryGetterName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -2793,10 +2793,10 @@ override method @categoryGetterAST enterDeclarationInGraph
     ]
   end
   with mTypeName in !?ioCategoryGetterMapForBuildingContext error message searchKey  do
-    [!?mCategoryReaderMapForType insertKey
-      !mCategoryReaderName
-      !mCategoryReaderReturnedTypeName
-      !mCategoryReaderFormalInputParameterList
+    [!?mCategoryGetterMapForType insertKey
+      !mCategoryGetterName
+      !mCategoryGetterReturnedTypeName
+      !mCategoryGetterFormalInputParameterList
     ]
   end
 }
@@ -2855,7 +2855,7 @@ override method @categoryModifierAST enterDeclarationInGraph
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryReaderAST enterDeclarationInGraph
+override method @overridingCategoryGetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
@@ -2866,13 +2866,13 @@ override method @overridingCategoryReaderAST enterDeclarationInGraph
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderAST enterDeclarationInGraph
+override method @abstractCategoryGetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryGetterMapForBuildingContext ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring.new {!"category reader @" + mTypeName + " " + mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]}
+  let key = @lstring.new {!"category reader @" + mTypeName + " " + mAbstractCategoryGetterName ![mAbstractCategoryGetterName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -2883,10 +2883,10 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
     ]
   end
   with mTypeName in !?ioCategoryGetterMapForBuildingContext error message searchKey  do
-    [!?mCategoryReaderMapForType insertKey
-      !mAbstractCategoryReaderName
-      !mAbstractCategoryReaderReturnedTypeName
-      !mAbstractCategoryReaderFormalInputParameterList
+    [!?mCategoryGetterMapForType insertKey
+      !mAbstractCategoryGetterName
+      !mAbstractCategoryGetterReturnedTypeName
+      !mAbstractCategoryGetterFormalInputParameterList
     ]
   end
 }
@@ -3016,14 +3016,14 @@ proc buildSemanticContext
 #  - a list map appears after its associated list
   var semanticTypePrecedenceGraph =@semanticTypePrecedenceGraph.emptyGraph{}
   var categoryMethodMapForBuildingContext =@categoryMethodMapForBuildingContext.emptyMap{}
-  var categoryReaderMapForBuildingContext =@categoryGetterMapForBuildingContext.emptyMap{}
+  var categoryGetterMapForBuildingContext =@categoryGetterMapForBuildingContext.emptyMap{}
   var categoryModifierMapForBuildingContext =@categoryModifierMapForBuildingContext.emptyMap{}
   var categoryOverrideDefinitionList =@semanticDeclarationListAST.emptyList{}
   for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
       !?categoryMethodMapForBuildingContext
-      !?categoryReaderMapForBuildingContext
+      !?categoryGetterMapForBuildingContext
       !?categoryModifierMapForBuildingContext
       !?categoryOverrideDefinitionList
     ]  
@@ -3055,7 +3055,7 @@ proc buildSemanticContext
       for () in sortedSemanticDeclarationListAST do
         [mSemanticDeclaration enterInSemanticContext
           !categoryMethodMapForBuildingContext
-          !categoryReaderMapForBuildingContext
+          !categoryGetterMapForBuildingContext
           !categoryModifierMapForBuildingContext
           !?outSemanticContext
         ]

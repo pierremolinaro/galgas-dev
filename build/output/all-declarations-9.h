@@ -883,12 +883,12 @@ typedef class GALGAS_string (*categoryReaderSignature_abstractLexicalRuleAST_gen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateCocoaCode (const int32_t inClassIndex,
                                             categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryReader_generateCocoaCode (const class cPtr_abstractLexicalRuleAST * inObject,
+class GALGAS_string callCategoryGetter_generateCocoaCode (const class cPtr_abstractLexicalRuleAST * inObject,
                                                           GALGAS_string in_inScannerClassName,
                                                           GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                           C_Compiler * inCompiler
@@ -908,12 +908,12 @@ typedef class GALGAS_string (*categoryReaderSignature_abstractLexicalRuleAST_gen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCode (const int32_t inClassIndex,
+void enterCategoryGetter_generateCode (const int32_t inClassIndex,
                                        categoryReaderSignature_abstractLexicalRuleAST_generateCode inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryReader_generateCode (const class cPtr_abstractLexicalRuleAST * inObject,
+class GALGAS_string callCategoryGetter_generateCode (const class cPtr_abstractLexicalRuleAST * inObject,
                                                      GALGAS_string in_inScannerClassName,
                                                      GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                      C_Compiler * inCompiler
@@ -1698,11 +1698,11 @@ void routine_enterInheritedGetterWithArgument (class GALGAS_getterMap & ioArgume
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                    Routine 'enterInheritedReaderWith2Arguments'                                     *
+//                                    Routine 'enterInheritedGetterWith2Arguments'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+void routine_enterInheritedGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
                                                     class GALGAS_unifiedTypeMap & ioArgument1,
                                                     const class GALGAS_string constinArgument2,
                                                     const class GALGAS_string constinArgument3,
@@ -1716,11 +1716,11 @@ void routine_enterInheritedReaderWith_32_Arguments (class GALGAS_getterMap & ioA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      Routine 'enterBaseReaderWithoutArgument'                                       *
+//                                      Routine 'enterBaseGetterWithoutArgument'                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithoutArgument (class GALGAS_getterMap & ioArgument0,
+void routine_enterBaseGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
                                              class GALGAS_unifiedTypeMap & ioArgument1,
                                              const class GALGAS_string constinArgument2,
                                              const class GALGAS_string constinArgument3,
@@ -1730,11 +1730,11 @@ void routine_enterBaseReaderWithoutArgument (class GALGAS_getterMap & ioArgument
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        Routine 'enterBaseReaderWithArgument'                                        *
+//                                        Routine 'enterBaseGetterWithArgument'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithArgument (class GALGAS_getterMap & ioArgument0,
+void routine_enterBaseGetterWithArgument (class GALGAS_getterMap & ioArgument0,
                                           class GALGAS_unifiedTypeMap & ioArgument1,
                                           const class GALGAS_string constinArgument2,
                                           const class GALGAS_string constinArgument3,
@@ -1746,11 +1746,11 @@ void routine_enterBaseReaderWithArgument (class GALGAS_getterMap & ioArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Routine 'enterBaseFinalReaderWithArgument'                                      *
+//                                     Routine 'enterBaseFinalGetterWithArgument'                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWithArgument (class GALGAS_getterMap & ioArgument0,
+void routine_enterBaseFinalGetterWithArgument (class GALGAS_getterMap & ioArgument0,
                                                class GALGAS_unifiedTypeMap & ioArgument1,
                                                const class GALGAS_string constinArgument2,
                                                const class GALGAS_string constinArgument3,
@@ -1762,11 +1762,11 @@ void routine_enterBaseFinalReaderWithArgument (class GALGAS_getterMap & ioArgume
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Routine 'enterBaseReaderWith2Arguments'                                       *
+//                                       Routine 'enterBaseGetterWith2Arguments'                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+void routine_enterBaseGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
                                                class GALGAS_unifiedTypeMap & ioArgument1,
                                                const class GALGAS_string constinArgument2,
                                                const class GALGAS_string constinArgument3,
@@ -1780,11 +1780,11 @@ void routine_enterBaseReaderWith_32_Arguments (class GALGAS_getterMap & ioArgume
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                    Routine 'enterBaseFinalReaderWith2Arguments'                                     *
+//                                    Routine 'enterBaseFinalGetterWith2Arguments'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+void routine_enterBaseFinalGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
                                                     class GALGAS_unifiedTypeMap & ioArgument1,
                                                     const class GALGAS_string constinArgument2,
                                                     const class GALGAS_string constinArgument3,
@@ -1798,31 +1798,11 @@ void routine_enterBaseFinalReaderWith_32_Arguments (class GALGAS_getterMap & ioA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Routine 'enterBaseReaderWith3Arguments'                                       *
+//                                    Routine 'enterBaseFinalGetterWith3Arguments'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith_33_Arguments (class GALGAS_getterMap & ioArgument0,
-                                               class GALGAS_unifiedTypeMap & ioArgument1,
-                                               const class GALGAS_string constinArgument2,
-                                               const class GALGAS_string constinArgument3,
-                                               const class GALGAS_string constinArgument4,
-                                               const class GALGAS_string constinArgument5,
-                                               const class GALGAS_string constinArgument6,
-                                               const class GALGAS_string constinArgument7,
-                                               const class GALGAS_string constinArgument8,
-                                               const class GALGAS_string constinArgument9,
-                                               const class GALGAS_bool constinArgument10,
-                                               class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Routine 'enterBaseFinalReaderWith3Arguments'                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_enterBaseFinalReaderWith_33_Arguments (class GALGAS_getterMap & ioArgument0,
+void routine_enterBaseFinalGetterWith_33_Arguments (class GALGAS_getterMap & ioArgument0,
                                                     class GALGAS_unifiedTypeMap & ioArgument1,
                                                     const class GALGAS_string constinArgument2,
                                                     const class GALGAS_string constinArgument3,
@@ -1838,11 +1818,11 @@ void routine_enterBaseFinalReaderWith_33_Arguments (class GALGAS_getterMap & ioA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        Routine 'commonReaderMapForAllTypes'                                         *
+//                                        Routine 'commonGetterMapForAllTypes'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_commonReaderMapForAllTypes (class GALGAS_unifiedTypeMap & ioArgument0,
+void routine_commonGetterMapForAllTypes (class GALGAS_unifiedTypeMap & ioArgument0,
                                          class GALGAS_getterMap & outArgument1,
                                          class C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
@@ -2065,12 +2045,12 @@ typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationAST_key
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_keyRepresentation (const int32_t inClassIndex,
+void enterCategoryGetter_keyRepresentation (const int32_t inClassIndex,
                                             categoryReaderSignature_semanticDeclarationAST_keyRepresentation inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryReader_keyRepresentation (const class cPtr_semanticDeclarationAST * inObject,
+class GALGAS_string callCategoryGetter_keyRepresentation (const class cPtr_semanticDeclarationAST * inObject,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
@@ -2151,7 +2131,7 @@ void enterCategoryMethod_enterInSemanticContext (const int32_t inClassIndex,
 
 void callCategoryMethod_enterInSemanticContext (const class cPtr_semanticDeclarationAST * inObject,
                                                 const GALGAS_categoryMethodMapForBuildingContext constin_inCategoryMethodMapForBuildingContext,
-                                                const GALGAS_categoryGetterMapForBuildingContext constin_inCategoryReaderMapForBuildingContext,
+                                                const GALGAS_categoryGetterMapForBuildingContext constin_inCategoryGetterMapForBuildingContext,
                                                 const GALGAS_categoryModifierMapForBuildingContext constin_inCategoryModifierMapForBuildingContext,
                                                 GALGAS_semanticContext & io_ioSemanticContext,
                                                 C_Compiler * inCompiler
@@ -3115,5 +3095,21 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
                                class GALGAS_string & outArgument8,
                                class C_Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         Routine 'generateCategoryModifier'                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateCategoryModifier (const class GALGAS_string constinArgument0,
+                                       const class GALGAS_string constinArgument1,
+                                       const class GALGAS_string constinArgument2,
+                                       class GALGAS_stringset & ioArgument3,
+                                       const class GALGAS_formalParameterListForGeneration constinArgument4,
+                                       const class GALGAS_semanticInstructionListForGeneration constinArgument5,
+                                       class GALGAS_string & outArgument6,
+                                       class C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 
 #endif
