@@ -105,7 +105,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
 
 override method @enumDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
@@ -158,9 +158,9 @@ override method @enumDeclarationAST enterInSemanticContext
     end
   end
 #--- getters
-  commonReaderMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
   for () in mConstantList do
-    enterBaseReaderWithoutArgument (
+    enterBaseGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap
       !"is" + [mConstantName stringByCapitalizingFirstCharacter]
@@ -171,7 +171,7 @@ override method @enumDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mEnumTypeName

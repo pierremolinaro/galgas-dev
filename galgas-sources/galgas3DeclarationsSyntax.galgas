@@ -521,13 +521,13 @@ rule <declaration>
   $abstract$
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mGetterName indexing abstractCategoryReaderDefinition
+  $identifier$ ?var  @lstring mGetterName indexing abstractCategoryGetterDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
   $type_name$ ?var  @lstring mReturnedTypeName
   $identifier$ ? *
-  ioDeclarations.mDeclarationList += !@abstractCategoryReaderAST.new {
+  ioDeclarations.mDeclarationList += !@abstractCategoryGetterAST.new {
     !false # Is not predefined
     !className
     !mGetterName
@@ -548,7 +548,7 @@ rule <declaration>
 rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mMethodName indexing categoryReaderDefinition
+  $identifier$ ?var  @lstring mMethodName indexing categoryGetterDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
@@ -584,7 +584,7 @@ rule <declaration>
   $override$
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mMethodName indexing overrideCategoryReaderDefinition
+  $identifier$ ?var  @lstring mMethodName indexing overrideCategoryGetterDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
@@ -594,7 +594,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfInstructionList = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@overridingCategoryReaderAST.new {
+  ioDeclarations.mDeclarationList += !@overridingCategoryGetterAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -621,13 +621,13 @@ rule <declaration>
   $abstract$
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mGetterName indexing overrideAbstractCategoryReaderDefinition
+  $identifier$ ?var  @lstring mGetterName indexing overrideAbstractCategoryGetterDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
   $type_name$ ?var  @lstring mReturnedTypeName
   $identifier$ ? *
-  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryReaderAST.new {
+  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryGetterAST.new {
     !false # Is not predefined
     !className
     !mGetterName
@@ -811,7 +811,7 @@ rule <declaration>
   $}$
   ${$
   var externTypeConstructorList =@externTypeConstructorList.emptyList{}
-  var externTypeReaderList =@externTypeReaderList.emptyList{}
+  @externTypeGetterList externTypeGetterList = {}
   var externTypeModifierList =@externTypeModifierList.emptyList{}
   var externTypeMethodList =@externTypeMethodList.emptyList{}
   repeat
@@ -845,7 +845,7 @@ rule <declaration>
     end
     $->$
     $type_name$ ?var  @lstring resultTypeName
-    externTypeReaderList +=
+    externTypeGetterList +=
       !getterName
       !resultTypeName
       !argumentTypeList
@@ -872,7 +872,7 @@ rule <declaration>
     !cppPredeclarationCode
     !cppClassCode
     !externTypeConstructorList
-    !externTypeReaderList
+    !externTypeGetterList
     !externTypeModifierList
     !externTypeMethodList}
 }

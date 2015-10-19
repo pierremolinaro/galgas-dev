@@ -3354,15 +3354,15 @@ GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::extractObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Class for element of '@externTypeReaderList' list                                  *
+//                                  Class for element of '@externTypeGetterList' list                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cCollectionElement_externTypeReaderList : public cCollectionElement {
-  public : GALGAS_externTypeReaderList_2D_element mObject ;
+class cCollectionElement_externTypeGetterList : public cCollectionElement {
+  public : GALGAS_externTypeGetterList_2D_element mObject ;
 
 //--- Constructor
-  public : cCollectionElement_externTypeReaderList (const GALGAS_lstring & in_mGetterName,
+  public : cCollectionElement_externTypeGetterList (const GALGAS_lstring & in_mGetterName,
                                                     const GALGAS_lstring & in_mResultTypeName,
                                                     const GALGAS_typeNameFormalParameterNameList & in_mParameterList
                                                     COMMA_LOCATION_ARGS) ;
@@ -3382,7 +3382,7 @@ class cCollectionElement_externTypeReaderList : public cCollectionElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement_externTypeReaderList::cCollectionElement_externTypeReaderList (const GALGAS_lstring & in_mGetterName,
+cCollectionElement_externTypeGetterList::cCollectionElement_externTypeGetterList (const GALGAS_lstring & in_mGetterName,
                                                                                   const GALGAS_lstring & in_mResultTypeName,
                                                                                   const GALGAS_typeNameFormalParameterNameList & in_mParameterList
                                                                                   COMMA_LOCATION_ARGS) :
@@ -3392,21 +3392,21 @@ mObject (in_mGetterName, in_mResultTypeName, in_mParameterList) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cCollectionElement_externTypeReaderList::isValid (void) const {
+bool cCollectionElement_externTypeGetterList::isValid (void) const {
   return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement * cCollectionElement_externTypeReaderList::copy (void) {
+cCollectionElement * cCollectionElement_externTypeGetterList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_externTypeReaderList (mObject.mAttribute_mGetterName, mObject.mAttribute_mResultTypeName, mObject.mAttribute_mParameterList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_externTypeGetterList (mObject.mAttribute_mGetterName, mObject.mAttribute_mResultTypeName, mObject.mAttribute_mParameterList COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cCollectionElement_externTypeReaderList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_externTypeGetterList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mGetterName" ":" ;
@@ -3423,21 +3423,21 @@ void cCollectionElement_externTypeReaderList::description (C_String & ioString, 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cCollectionElement_externTypeReaderList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_externTypeReaderList * operand = (cCollectionElement_externTypeReaderList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_externTypeReaderList) ;
+typeComparisonResult cCollectionElement_externTypeGetterList::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_externTypeGetterList * operand = (cCollectionElement_externTypeGetterList *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_externTypeGetterList) ;
   return mObject.objectCompare (operand->mObject) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList::GALGAS_externTypeReaderList (void) :
+GALGAS_externTypeGetterList::GALGAS_externTypeGetterList (void) :
 AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList::GALGAS_externTypeReaderList (cSharedList * inSharedListPtr) :
+GALGAS_externTypeGetterList::GALGAS_externTypeGetterList (cSharedList * inSharedListPtr) :
 AC_GALGAS_list (inSharedListPtr) {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
@@ -3446,23 +3446,23 @@ AC_GALGAS_list (inSharedListPtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList GALGAS_externTypeReaderList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_externTypeReaderList result ;
+GALGAS_externTypeGetterList GALGAS_externTypeGetterList::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_externTypeGetterList result ;
   result.createNewEmptyList (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList GALGAS_externTypeReaderList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+GALGAS_externTypeGetterList GALGAS_externTypeGetterList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                     const GALGAS_lstring & inOperand1,
                                                                                     const GALGAS_typeNameFormalParameterNameList & inOperand2
                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_externTypeReaderList result ;
+  GALGAS_externTypeGetterList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
-    GALGAS_externTypeReaderList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    GALGAS_externTypeGetterList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.addObject (attributes) ;
   }
   return result ;
@@ -3470,13 +3470,13 @@ GALGAS_externTypeReaderList GALGAS_externTypeReaderList::constructor_listWithVal
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GALGAS_externTypeGetterList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                              const GALGAS_lstring & in_mGetterName,
                                                              const GALGAS_lstring & in_mResultTypeName,
                                                              const GALGAS_typeNameFormalParameterNameList & in_mParameterList
                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement_externTypeReaderList * p = NULL ;
-  macroMyNew (p, cCollectionElement_externTypeReaderList (in_mGetterName,
+  cCollectionElement_externTypeGetterList * p = NULL ;
+  macroMyNew (p, cCollectionElement_externTypeGetterList (in_mGetterName,
                                                           in_mResultTypeName,
                                                           in_mParameterList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
@@ -3485,13 +3485,13 @@ void GALGAS_externTypeReaderList::makeAttributesFromObjects (capCollectionElemen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::addAssign_operation (const GALGAS_lstring & inOperand0,
+void GALGAS_externTypeGetterList::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                        const GALGAS_lstring & inOperand1,
                                                        const GALGAS_typeNameFormalParameterNameList & inOperand2
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_externTypeReaderList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_externTypeGetterList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -3501,7 +3501,7 @@ void GALGAS_externTypeReaderList::addAssign_operation (const GALGAS_lstring & in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+void GALGAS_externTypeGetterList::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
                                                           const GALGAS_lstring inOperand1,
                                                           const GALGAS_typeNameFormalParameterNameList inOperand2,
                                                           const GALGAS_uint inInsertionIndex,
@@ -3509,7 +3509,7 @@ void GALGAS_externTypeReaderList::modifier_insertAtIndex (const GALGAS_lstring i
                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_externTypeReaderList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_externTypeGetterList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -3519,7 +3519,7 @@ void GALGAS_externTypeReaderList::modifier_insertAtIndex (const GALGAS_lstring i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+void GALGAS_externTypeGetterList::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
                                                           GALGAS_lstring & outOperand1,
                                                           GALGAS_typeNameFormalParameterNameList & outOperand2,
                                                           const GALGAS_uint inRemoveIndex,
@@ -3528,13 +3528,13 @@ void GALGAS_externTypeReaderList::modifier_removeAtIndex (GALGAS_lstring & outOp
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_externTypeReaderList * p = (cCollectionElement_externTypeReaderList *) attributes.ptr () ;
+    cCollectionElement_externTypeGetterList * p = (cCollectionElement_externTypeGetterList *) attributes.ptr () ;
     if (NULL == p) {
       outOperand0.drop () ;
       outOperand1.drop () ;
       outOperand2.drop () ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+      macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
       outOperand0 = p->mObject.mAttribute_mGetterName ;
       outOperand1 = p->mObject.mAttribute_mResultTypeName ;
       outOperand2 = p->mObject.mAttribute_mParameterList ;
@@ -3544,20 +3544,20 @@ void GALGAS_externTypeReaderList::modifier_removeAtIndex (GALGAS_lstring & outOp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::modifier_popFirst (GALGAS_lstring & outOperand0,
+void GALGAS_externTypeGetterList::modifier_popFirst (GALGAS_lstring & outOperand0,
                                                      GALGAS_lstring & outOperand1,
                                                      GALGAS_typeNameFormalParameterNameList & outOperand2,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeReaderList * p = (cCollectionElement_externTypeReaderList *) attributes.ptr () ;
+  cCollectionElement_externTypeGetterList * p = (cCollectionElement_externTypeGetterList *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+    macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
     outOperand0 = p->mObject.mAttribute_mGetterName ;
     outOperand1 = p->mObject.mAttribute_mResultTypeName ;
     outOperand2 = p->mObject.mAttribute_mParameterList ;
@@ -3566,20 +3566,20 @@ void GALGAS_externTypeReaderList::modifier_popFirst (GALGAS_lstring & outOperand
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::modifier_popLast (GALGAS_lstring & outOperand0,
+void GALGAS_externTypeGetterList::modifier_popLast (GALGAS_lstring & outOperand0,
                                                     GALGAS_lstring & outOperand1,
                                                     GALGAS_typeNameFormalParameterNameList & outOperand2,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeReaderList * p = (cCollectionElement_externTypeReaderList *) attributes.ptr () ;
+  cCollectionElement_externTypeGetterList * p = (cCollectionElement_externTypeGetterList *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+    macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
     outOperand0 = p->mObject.mAttribute_mGetterName ;
     outOperand1 = p->mObject.mAttribute_mResultTypeName ;
     outOperand2 = p->mObject.mAttribute_mParameterList ;
@@ -3588,20 +3588,20 @@ void GALGAS_externTypeReaderList::modifier_popLast (GALGAS_lstring & outOperand0
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::method_first (GALGAS_lstring & outOperand0,
+void GALGAS_externTypeGetterList::method_first (GALGAS_lstring & outOperand0,
                                                 GALGAS_lstring & outOperand1,
                                                 GALGAS_typeNameFormalParameterNameList & outOperand2,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeReaderList * p = (cCollectionElement_externTypeReaderList *) attributes.ptr () ;
+  cCollectionElement_externTypeGetterList * p = (cCollectionElement_externTypeGetterList *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+    macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
     outOperand0 = p->mObject.mAttribute_mGetterName ;
     outOperand1 = p->mObject.mAttribute_mResultTypeName ;
     outOperand2 = p->mObject.mAttribute_mParameterList ;
@@ -3610,20 +3610,20 @@ void GALGAS_externTypeReaderList::method_first (GALGAS_lstring & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::method_last (GALGAS_lstring & outOperand0,
+void GALGAS_externTypeGetterList::method_last (GALGAS_lstring & outOperand0,
                                                GALGAS_lstring & outOperand1,
                                                GALGAS_typeNameFormalParameterNameList & outOperand2,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeReaderList * p = (cCollectionElement_externTypeReaderList *) attributes.ptr () ;
+  cCollectionElement_externTypeGetterList * p = (cCollectionElement_externTypeGetterList *) attributes.ptr () ;
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+    macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
     outOperand0 = p->mObject.mAttribute_mGetterName ;
     outOperand1 = p->mObject.mAttribute_mResultTypeName ;
     outOperand2 = p->mObject.mAttribute_mParameterList ;
@@ -3632,9 +3632,9 @@ void GALGAS_externTypeReaderList::method_last (GALGAS_lstring & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList GALGAS_externTypeReaderList::operator_concat (const GALGAS_externTypeReaderList & inOperand
+GALGAS_externTypeGetterList GALGAS_externTypeGetterList::operator_concat (const GALGAS_externTypeGetterList & inOperand
                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_externTypeReaderList result ;
+  GALGAS_externTypeGetterList result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.appendList (inOperand) ;
@@ -3644,10 +3644,10 @@ GALGAS_externTypeReaderList GALGAS_externTypeReaderList::operator_concat (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList GALGAS_externTypeReaderList::add_operation (const GALGAS_externTypeReaderList & inOperand,
+GALGAS_externTypeGetterList GALGAS_externTypeGetterList::add_operation (const GALGAS_externTypeGetterList & inOperand,
                                                                         C_Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_externTypeReaderList result ;
+  GALGAS_externTypeGetterList result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.appendList (inOperand) ;
@@ -3657,41 +3657,41 @@ GALGAS_externTypeReaderList GALGAS_externTypeReaderList::add_operation (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList GALGAS_externTypeReaderList::reader_subListWithRange (const GALGAS_range & inRange,
+GALGAS_externTypeGetterList GALGAS_externTypeGetterList::reader_subListWithRange (const GALGAS_range & inRange,
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_externTypeReaderList result = GALGAS_externTypeReaderList::constructor_emptyList (THERE) ;
+  GALGAS_externTypeGetterList result = GALGAS_externTypeGetterList::constructor_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList GALGAS_externTypeReaderList::reader_subListFromIndex (const GALGAS_uint & inIndex,
+GALGAS_externTypeGetterList GALGAS_externTypeGetterList::reader_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_externTypeReaderList result = GALGAS_externTypeReaderList::constructor_emptyList (THERE) ;
+  GALGAS_externTypeGetterList result = GALGAS_externTypeGetterList::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList::dotAssign_operation (const GALGAS_externTypeReaderList inOperand
+void GALGAS_externTypeGetterList::dotAssign_operation (const GALGAS_externTypeGetterList inOperand
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeReaderList::reader_mGetterNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_lstring GALGAS_externTypeGetterList::reader_mGetterNameAtIndex (const GALGAS_uint & inIndex,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeReaderList * p = (cCollectionElement_externTypeReaderList *) attributes.ptr () ;
+  cCollectionElement_externTypeGetterList * p = (cCollectionElement_externTypeGetterList *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+    macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
     result = p->mObject.mAttribute_mGetterName ;
   }
   return result ;
@@ -3699,14 +3699,14 @@ GALGAS_lstring GALGAS_externTypeReaderList::reader_mGetterNameAtIndex (const GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeReaderList::reader_mResultTypeNameAtIndex (const GALGAS_uint & inIndex,
+GALGAS_lstring GALGAS_externTypeGetterList::reader_mResultTypeNameAtIndex (const GALGAS_uint & inIndex,
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeReaderList * p = (cCollectionElement_externTypeReaderList *) attributes.ptr () ;
+  cCollectionElement_externTypeGetterList * p = (cCollectionElement_externTypeGetterList *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+    macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
     result = p->mObject.mAttribute_mResultTypeName ;
   }
   return result ;
@@ -3714,14 +3714,14 @@ GALGAS_lstring GALGAS_externTypeReaderList::reader_mResultTypeNameAtIndex (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList GALGAS_externTypeReaderList::reader_mParameterListAtIndex (const GALGAS_uint & inIndex,
+GALGAS_typeNameFormalParameterNameList GALGAS_externTypeGetterList::reader_mParameterListAtIndex (const GALGAS_uint & inIndex,
                                                                                                   C_Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeReaderList * p = (cCollectionElement_externTypeReaderList *) attributes.ptr () ;
+  cCollectionElement_externTypeGetterList * p = (cCollectionElement_externTypeGetterList *) attributes.ptr () ;
   GALGAS_typeNameFormalParameterNameList result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+    macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
     result = p->mObject.mAttribute_mParameterList ;
   }
   return result ;
@@ -3731,7 +3731,7 @@ GALGAS_typeNameFormalParameterNameList GALGAS_externTypeReaderList::reader_mPara
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cEnumerator_externTypeReaderList::cEnumerator_externTypeReaderList (const GALGAS_externTypeReaderList & inEnumeratedObject,
+cEnumerator_externTypeGetterList::cEnumerator_externTypeGetterList (const GALGAS_externTypeGetterList & inEnumeratedObject,
                                                                     const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
@@ -3739,34 +3739,34 @@ cGenericAbstractEnumerator () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList_2D_element cEnumerator_externTypeReaderList::current (LOCATION_ARGS) const {
-  const cCollectionElement_externTypeReaderList * p = (const cCollectionElement_externTypeReaderList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+GALGAS_externTypeGetterList_2D_element cEnumerator_externTypeGetterList::current (LOCATION_ARGS) const {
+  const cCollectionElement_externTypeGetterList * p = (const cCollectionElement_externTypeGetterList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
   return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_externTypeReaderList::current_mGetterName (LOCATION_ARGS) const {
-  const cCollectionElement_externTypeReaderList * p = (const cCollectionElement_externTypeReaderList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+GALGAS_lstring cEnumerator_externTypeGetterList::current_mGetterName (LOCATION_ARGS) const {
+  const cCollectionElement_externTypeGetterList * p = (const cCollectionElement_externTypeGetterList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
   return p->mObject.mAttribute_mGetterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_externTypeReaderList::current_mResultTypeName (LOCATION_ARGS) const {
-  const cCollectionElement_externTypeReaderList * p = (const cCollectionElement_externTypeReaderList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+GALGAS_lstring cEnumerator_externTypeGetterList::current_mResultTypeName (LOCATION_ARGS) const {
+  const cCollectionElement_externTypeGetterList * p = (const cCollectionElement_externTypeGetterList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
   return p->mObject.mAttribute_mResultTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList cEnumerator_externTypeReaderList::current_mParameterList (LOCATION_ARGS) const {
-  const cCollectionElement_externTypeReaderList * p = (const cCollectionElement_externTypeReaderList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_externTypeReaderList) ;
+GALGAS_typeNameFormalParameterNameList cEnumerator_externTypeGetterList::current_mParameterList (LOCATION_ARGS) const {
+  const cCollectionElement_externTypeGetterList * p = (const cCollectionElement_externTypeGetterList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_externTypeGetterList) ;
   return p->mObject.mAttribute_mParameterList ;
 }
 
@@ -3775,42 +3775,42 @@ GALGAS_typeNameFormalParameterNameList cEnumerator_externTypeReaderList::current
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                             @externTypeReaderList type                                              *
+//                                             @externTypeGetterList type                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeReaderList ("externTypeReaderList",
+kTypeDescriptor_GALGAS_externTypeGetterList ("externTypeGetterList",
                                              NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_externTypeReaderList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_externTypeReaderList ;
+const C_galgas_type_descriptor * GALGAS_externTypeGetterList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externTypeGetterList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_externTypeReaderList::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_externTypeGetterList::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_externTypeReaderList (*this)) ;
+    macroMyNew (result, GALGAS_externTypeGetterList (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList GALGAS_externTypeReaderList::extractObject (const GALGAS_object & inObject,
+GALGAS_externTypeGetterList GALGAS_externTypeGetterList::extractObject (const GALGAS_object & inObject,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_externTypeReaderList result ;
-  const GALGAS_externTypeReaderList * p = (const GALGAS_externTypeReaderList *) inObject.embeddedObject () ;
+  GALGAS_externTypeGetterList result ;
+  const GALGAS_externTypeGetterList * p = (const GALGAS_externTypeGetterList *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_externTypeReaderList *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_externTypeGetterList *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("externTypeReaderList", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("externTypeGetterList", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -1405,7 +1405,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderAST semanticAnalysis
+override method @abstractCategoryGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -1414,13 +1414,13 @@ override method @abstractCategoryReaderAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum.classType then
-    error mAbstractCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mAbstractCategoryGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryReaderName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractCategoryGetterName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
   var formalParameterListForGeneration = @formalInputParameterListForGeneration.emptyList{}
-  for () in mAbstractCategoryReaderFormalInputParameterList do
+  for () in mAbstractCategoryGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -1430,13 +1430,13 @@ override method @abstractCategoryReaderAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"abstract extension getter " + mAbstractCategoryReaderName
-    !@abstractCategoryReaderForGeneration.new {
+    !"abstract extension getter " + mAbstractCategoryGetterName
+    !@abstractCategoryGetterForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + mTypeName + "-" + mAbstractCategoryReaderName
+      !"getter-" + mTypeName + "-" + mAbstractCategoryGetterName
       !selfType
-      ![mAbstractCategoryReaderName string]
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractCategoryReaderReturnedTypeName}
+      ![mAbstractCategoryGetterName string]
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractCategoryGetterReturnedTypeName}
       !formalParameterListForGeneration
     }
     !"~"
@@ -1479,15 +1479,15 @@ override method @categoryGetterAST semanticAnalysis
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   analyzeFunctionBody (
     !analysisContext
-    !mCategoryReaderFormalInputParameterList
+    !mCategoryGetterFormalInputParameterList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType) | ([selfType mTypeKindEnum] == @typeKindEnum. mapProxyType)
        then [selfType mAllTypedAttributeList]
        else @typedPropertyList. emptyList
      end
     !selfObjectAccessor
-    !mCategoryReaderInstructionList
-    !mCategoryReaderReturnedVariableName
-    !mCategoryReaderReturnedTypeName
+    !mCategoryGetterInstructionList
+    !mCategoryGetterReturnedVariableName
+    !mCategoryGetterReturnedTypeName
     !mEndOfReaderLocation
     ?formalParameterListForGeneration
     ?returnType
@@ -1496,12 +1496,12 @@ override method @categoryGetterAST semanticAnalysis
   )
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"extension getter " + mCategoryReaderName
+    !"extension getter " + mCategoryGetterName
     !@categoryReaderForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + [selfType key] + "-" + mCategoryReaderName
+      !"getter-" + [selfType key] + "-" + mCategoryGetterName
       !selfType
-      ![mCategoryReaderName string]
+      ![mCategoryGetterName string]
       !implementedAsFunction
       !returnType
       !returnVariableCppName
@@ -1513,7 +1513,7 @@ override method @categoryGetterAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryReaderAST semanticAnalysis
+override method @overridingCategoryGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1522,7 +1522,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mOverridingCategoryGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1532,9 +1532,9 @@ override method @overridingCategoryReaderAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey ![mOverridingCategoryReaderName string]] then
+    if [[superType mGetterMap] hasKey ![mOverridingCategoryGetterName string]] then
       [[superType mGetterMap] searchKey
-        !mOverridingCategoryReaderName
+        !mOverridingCategoryGetterName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
@@ -1550,7 +1550,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingCategoryReaderName:"this getter is not declared by a super class"
+    error mOverridingCategoryGetterName:"this getter is not declared by a super class"
   end
 #--- Analyze instruction list
   let analysisContext = @analysisContext.new {
@@ -1561,15 +1561,15 @@ override method @overridingCategoryReaderAST semanticAnalysis
     !@unifiedTypeMap-proxy. null}
   analyzeFunctionBody (
     !analysisContext
-    !mOverridingCategoryReaderFormalInputParameterList
+    !mOverridingCategoryGetterFormalInputParameterList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
        else @typedPropertyList. emptyList
      end
     !"object->"
-    !mOverridingCategoryReaderInstructionList
-    !mOverridingCategoryReaderReturnedVariableName
-    !mOverridingCategoryReaderReturnedTypeName
+    !mOverridingCategoryGetterInstructionList
+    !mOverridingCategoryGetterReturnedVariableName
+    !mOverridingCategoryGetterReturnedTypeName
     !mEndOfReaderLocation
     ?let @formalInputParameterListForGeneration formalParameterListForGeneration
     ?let @unifiedTypeMap-proxy returnType
@@ -1581,7 +1581,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     checkReaderSignatures (
       !formalParameterListForGeneration
       !returnType
-      ![mOverridingCategoryReaderName location]
+      ![mOverridingCategoryGetterName location]
       !inheritedSignature
       !inheritedReturnType
       !inheritedDeclarationLocation
@@ -1589,13 +1589,13 @@ override method @overridingCategoryReaderAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"override extension getter " + mOverridingCategoryReaderName
-    !@overrideCategoryReaderForGeneration.new {
+    !"override extension getter " + mOverridingCategoryGetterName
+    !@overrideCategoryGetterForGeneration.new {
       !false # Do not generate Cpp header file
-      !"getter-" + mTypeName + "-" + mOverridingCategoryReaderName
+      !"getter-" + mTypeName + "-" + mOverridingCategoryGetterName
       !selfType
       !baseTypeName
-      ![mOverridingCategoryReaderName string]
+      ![mOverridingCategoryGetterName string]
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
@@ -1606,7 +1606,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryReaderAST semanticAnalysis
+override method @overridingAbstractCategoryGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -1614,12 +1614,12 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Return type
-  let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractCategoryReaderReturnedTypeName}
+  let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractCategoryGetterReturnedTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractCategoryReaderName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mAbstractCategoryGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryReaderName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractCategoryGetterName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1629,10 +1629,10 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey ![mAbstractCategoryReaderName string]] then
+    if [[superType mGetterMap] hasKey ![mAbstractCategoryGetterName string]] then
       @methodQualifier qualifier
       [[superType mGetterMap] searchKey
-        !mAbstractCategoryReaderName
+        !mAbstractCategoryGetterName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
@@ -1648,12 +1648,12 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mAbstractCategoryReaderName:"this getter is not declared by a super class"
+    error mAbstractCategoryGetterName:"this getter is not declared by a super class"
   end
 #--- Check Signature
   if baseTypeName != "" then
     var formalParameterListForGeneration =@formalInputParameterListForGeneration.emptyList{}
-    for () in mAbstractCategoryReaderFormalInputParameterList do
+    for () in mAbstractCategoryGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
         !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -1664,7 +1664,7 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
     checkReaderSignatures (
       !formalParameterListForGeneration
       !returnType
-      ![mAbstractCategoryReaderName location]
+      ![mAbstractCategoryGetterName location]
       !inheritedSignature
       !inheritedReturnType
       !inheritedDeclarationLocation

@@ -934,21 +934,21 @@ override method @getterCallExpressionAST analyzeSemanticExpression
 #----------------------------------------------------------------------------------------------------------------------*
 
 func checkReaderImplementationInSuperClasses
-  ?let @lstring inReaderName
+  ?let @lstring inGetterName
   ?let @unifiedTypeMap-proxy inSuperClass
   -> @string outResult {
   if [inSuperClass isNull] then
     outResult = ""
   else
     @methodQualifier qualifier
-    [[inSuperClass mGetterMap] searchKey !inReaderName ?5* ?qualifier ?*]
+    [[inSuperClass mGetterMap] searchKey !inGetterName ?5* ?qualifier ?*]
     switch qualifier
     case isAbstract :
       outResult = ""
     case isBasic, isBasicFinal, isOverriding : # Ok
       outResult = [inSuperClass key]
     case isInherited, isOverridingAbstract :
-      outResult = checkReaderImplementationInSuperClasses (!inReaderName ![inSuperClass mSuperType])
+      outResult = checkReaderImplementationInSuperClasses (!inGetterName ![inSuperClass mSuperType])
     end
   end
 }
@@ -990,28 +990,28 @@ override method @optionExpressionAST analyzeSemanticExpression
     returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
-    if [mOptionReaderName string] == "value" then
+    if [mOptionGetterName string] == "value" then
       outExpression = @optionValueExpressionForGeneration.new {
         !returnedType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]}
-    elsif [mOptionReaderName string] == "char" then
+    elsif [mOptionGetterName string] == "char" then
       outExpression = @optionCharExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mCharType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]}
-    elsif [mOptionReaderName string] == "string" then
+    elsif [mOptionGetterName string] == "string" then
       outExpression = @optionStringExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]}
-    elsif [mOptionReaderName string] == "comment" then
+    elsif [mOptionGetterName string] == "comment" then
       outExpression = @optionCommentExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
@@ -1019,7 +1019,7 @@ override method @optionExpressionAST analyzeSemanticExpression
         ![mOptionComponentName string]
         ![mOptionEntryName string]}
     else
-      error mOptionReaderName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
+      error mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
     @string s = ""
@@ -2979,15 +2979,15 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
     ?3*
   ]
 #--- Check reader name
-  if mLexiqueReaderName.string != "symbols" then
-    error mLexiqueReaderName:"unknown reader"
+  if mLexiqueGetterName.string != "symbols" then
+    error mLexiqueGetterName:"unknown reader"
   end
 #---
   outExpression = @lexiqueIntrospectionForGeneration.new {
     !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["stringlist" nowhere]}
     !mLexiqueComponentName.location
     !mLexiqueComponentName.string
-    !mLexiqueReaderName.string}
+    !mLexiqueGetterName.string}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -6812,7 +6812,7 @@ class GALGAS_categoryGetterMapForBuildingContext : public AC_GALGAS_map {
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMCategoryReaderMapForTypeForKey (class GALGAS_categoryGetterMapForType constinArgument0,
+  public : VIRTUAL_IN_DEBUG void modifier_setMCategoryGetterMapForTypeForKey (class GALGAS_categoryGetterMapForType constinArgument0,
                                                                               class GALGAS_string constinArgument1,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
@@ -6827,7 +6827,7 @@ class GALGAS_categoryGetterMapForBuildingContext : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForType reader_mCategoryReaderMapForTypeForKey (const class GALGAS_string & constinOperand0,
+  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForType reader_mCategoryGetterMapForTypeForKey (const class GALGAS_string & constinOperand0,
                                                                                                           C_Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const ;
 
@@ -6857,7 +6857,7 @@ class cEnumerator_categoryGetterMapForBuildingContext : public cGenericAbstractE
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public : class GALGAS_categoryGetterMapForType current_mCategoryReaderMapForType (LOCATION_ARGS) const ;
+  public : class GALGAS_categoryGetterMapForType current_mCategoryGetterMapForType (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_categoryGetterMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -6874,11 +6874,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapFo
 
 class cMapElement_categoryGetterMapForBuildingContext : public cMapElement {
 //--- Map attributes
-  public : GALGAS_categoryGetterMapForType mAttribute_mCategoryReaderMapForType ;
+  public : GALGAS_categoryGetterMapForType mAttribute_mCategoryGetterMapForType ;
 
 //--- Constructor
   public : cMapElement_categoryGetterMapForBuildingContext (const GALGAS_lstring & inKey,
-                                                            const GALGAS_categoryGetterMapForType & in_mCategoryReaderMapForType
+                                                            const GALGAS_categoryGetterMapForType & in_mCategoryGetterMapForType
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -6903,7 +6903,7 @@ class cMapElement_categoryGetterMapForBuildingContext : public cMapElement {
 class GALGAS_categoryGetterMapForBuildingContext_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_categoryGetterMapForType mAttribute_mCategoryReaderMapForType ;
+  public : GALGAS_categoryGetterMapForType mAttribute_mCategoryGetterMapForType ;
 
 
 //--------------------------------- Accessors
@@ -6921,7 +6921,7 @@ class GALGAS_categoryGetterMapForBuildingContext_2D_element : public AC_GALGAS_r
 
 //--------------------------------- Native constructor
   public : GALGAS_categoryGetterMapForBuildingContext_2D_element (const GALGAS_lstring & in_lkey,
-                                                                  const GALGAS_categoryGetterMapForType & in_mCategoryReaderMapForType) ;
+                                                                  const GALGAS_categoryGetterMapForType & in_mCategoryGetterMapForType) ;
 
 //-- Start of generic part --*
 
@@ -6952,7 +6952,7 @@ class GALGAS_categoryGetterMapForBuildingContext_2D_element : public AC_GALGAS_r
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_lkey (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForType reader_mCategoryReaderMapForType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForType reader_mCategoryGetterMapForType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

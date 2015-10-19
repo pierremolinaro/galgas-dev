@@ -3022,7 +3022,7 @@ class GALGAS_lexiqueIntrospectionExpressionAST : public GALGAS_semanticExpressio
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLexiqueComponentName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLexiqueReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mLexiqueGetterName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -3044,11 +3044,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectio
 class cPtr_lexiqueIntrospectionExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mLexiqueComponentName ;
-  public : GALGAS_lstring mAttribute_mLexiqueReaderName ;
+  public : GALGAS_lstring mAttribute_mLexiqueGetterName ;
 
 //--- Constructor
   public : cPtr_lexiqueIntrospectionExpressionAST (const GALGAS_lstring & in_mLexiqueComponentName,
-                                                   const GALGAS_lstring & in_mLexiqueReaderName
+                                                   const GALGAS_lstring & in_mLexiqueGetterName
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -3056,7 +3056,7 @@ class cPtr_lexiqueIntrospectionExpressionAST : public cPtr_semanticExpressionAST
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLexiqueComponentName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLexiqueReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLexiqueGetterName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -4522,7 +4522,7 @@ class GALGAS_optionExpressionAST : public GALGAS_semanticExpressionAST {
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOptionEntryName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOptionReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOptionGetterName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -4545,12 +4545,12 @@ class cPtr_optionExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mOptionComponentName ;
   public : GALGAS_lstring mAttribute_mOptionEntryName ;
-  public : GALGAS_lstring mAttribute_mOptionReaderName ;
+  public : GALGAS_lstring mAttribute_mOptionGetterName ;
 
 //--- Constructor
   public : cPtr_optionExpressionAST (const GALGAS_lstring & in_mOptionComponentName,
                                      const GALGAS_lstring & in_mOptionEntryName,
-                                     const GALGAS_lstring & in_mOptionReaderName
+                                     const GALGAS_lstring & in_mOptionGetterName
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -4559,7 +4559,7 @@ class cPtr_optionExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOptionComponentName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOptionEntryName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOptionReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOptionGetterName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -13155,6 +13155,110 @@ class cParser_galgas_33_DeclarationsSyntax {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                          @abstractCategoryGetterAST class                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_abstractCategoryGetterAST : public GALGAS_semanticDeclarationAST {
+//--- Constructor
+  public : GALGAS_abstractCategoryGetterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_abstractCategoryGetterAST constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_abstractCategoryGetterAST * ptr (void) const { return (const cPtr_abstractCategoryGetterAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_abstractCategoryGetterAST (const cPtr_abstractCategoryGetterAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_abstractCategoryGetterAST extractObject (const GALGAS_object & inObject,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_abstractCategoryGetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_lstring & inOperand1,
+                                                                    const class GALGAS_lstring & inOperand2,
+                                                                    const class GALGAS_formalInputParameterListAST & inOperand3,
+                                                                    const class GALGAS_lstring & inOperand4
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_abstractCategoryGetterAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST reader_mAbstractCategoryGetterFormalInputParameterList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAbstractCategoryGetterName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAbstractCategoryGetterReturnedTypeName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_abstractCategoryGetterAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractCategoryGetterAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Pointer class for @abstractCategoryGetterAST class                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_abstractCategoryGetterAST : public cPtr_semanticDeclarationAST {
+//--- Attributes
+  public : GALGAS_lstring mAttribute_mTypeName ;
+  public : GALGAS_lstring mAttribute_mAbstractCategoryGetterName ;
+  public : GALGAS_formalInputParameterListAST mAttribute_mAbstractCategoryGetterFormalInputParameterList ;
+  public : GALGAS_lstring mAttribute_mAbstractCategoryGetterReturnedTypeName ;
+
+//--- Constructor
+  public : cPtr_abstractCategoryGetterAST (const GALGAS_bool & in_mIsPredefined,
+                                           const GALGAS_lstring & in_mTypeName,
+                                           const GALGAS_lstring & in_mAbstractCategoryGetterName,
+                                           const GALGAS_formalInputParameterListAST & in_mAbstractCategoryGetterFormalInputParameterList,
+                                           const GALGAS_lstring & in_mAbstractCategoryGetterReturnedTypeName
+                                           COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryGetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST reader_mAbstractCategoryGetterFormalInputParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryGetterReturnedTypeName (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                          @abstractCategoryMethodAST class                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13351,110 +13455,6 @@ class cPtr_abstractCategoryModifierAST : public cPtr_semanticDeclarationAST {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          @abstractCategoryReaderAST class                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_abstractCategoryReaderAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
-  public : GALGAS_abstractCategoryReaderAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_abstractCategoryReaderAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_abstractCategoryReaderAST * ptr (void) const { return (const cPtr_abstractCategoryReaderAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_abstractCategoryReaderAST (const cPtr_abstractCategoryReaderAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_abstractCategoryReaderAST extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_abstractCategoryReaderAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                    const class GALGAS_lstring & inOperand1,
-                                                                    const class GALGAS_lstring & inOperand2,
-                                                                    const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                                    const class GALGAS_lstring & inOperand4
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_abstractCategoryReaderAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST reader_mAbstractCategoryReaderFormalInputParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAbstractCategoryReaderName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAbstractCategoryReaderReturnedTypeName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_abstractCategoryReaderAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractCategoryReaderAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Pointer class for @abstractCategoryReaderAST class                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_abstractCategoryReaderAST : public cPtr_semanticDeclarationAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mAbstractCategoryReaderName ;
-  public : GALGAS_formalInputParameterListAST mAttribute_mAbstractCategoryReaderFormalInputParameterList ;
-  public : GALGAS_lstring mAttribute_mAbstractCategoryReaderReturnedTypeName ;
-
-//--- Constructor
-  public : cPtr_abstractCategoryReaderAST (const GALGAS_bool & in_mIsPredefined,
-                                           const GALGAS_lstring & in_mTypeName,
-                                           const GALGAS_lstring & in_mAbstractCategoryReaderName,
-                                           const GALGAS_formalInputParameterListAST & in_mAbstractCategoryReaderFormalInputParameterList,
-                                           const GALGAS_lstring & in_mAbstractCategoryReaderReturnedTypeName
-                                           COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryReaderName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST reader_mAbstractCategoryReaderFormalInputParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryReaderReturnedTypeName (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                             @arrayDeclarationAST class                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13600,15 +13600,15 @@ class GALGAS_categoryGetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST reader_mCategoryReaderFormalInputParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST reader_mCategoryGetterFormalInputParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST reader_mCategoryReaderInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST reader_mCategoryGetterInstructionList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mCategoryReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mCategoryGetterName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mCategoryReaderReturnedTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mCategoryGetterReturnedTypeName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mCategoryReaderReturnedVariableName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mCategoryGetterReturnedVariableName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfReaderLocation (LOCATION_ARGS) const ;
 
@@ -13634,21 +13634,21 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterAST ;
 class cPtr_categoryGetterAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mCategoryReaderName ;
-  public : GALGAS_formalInputParameterListAST mAttribute_mCategoryReaderFormalInputParameterList ;
-  public : GALGAS_lstring mAttribute_mCategoryReaderReturnedTypeName ;
-  public : GALGAS_lstring mAttribute_mCategoryReaderReturnedVariableName ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mCategoryReaderInstructionList ;
+  public : GALGAS_lstring mAttribute_mCategoryGetterName ;
+  public : GALGAS_formalInputParameterListAST mAttribute_mCategoryGetterFormalInputParameterList ;
+  public : GALGAS_lstring mAttribute_mCategoryGetterReturnedTypeName ;
+  public : GALGAS_lstring mAttribute_mCategoryGetterReturnedVariableName ;
+  public : GALGAS_semanticInstructionListAST mAttribute_mCategoryGetterInstructionList ;
   public : GALGAS_location mAttribute_mEndOfReaderLocation ;
 
 //--- Constructor
   public : cPtr_categoryGetterAST (const GALGAS_bool & in_mIsPredefined,
                                    const GALGAS_lstring & in_mTypeName,
-                                   const GALGAS_lstring & in_mCategoryReaderName,
-                                   const GALGAS_formalInputParameterListAST & in_mCategoryReaderFormalInputParameterList,
-                                   const GALGAS_lstring & in_mCategoryReaderReturnedTypeName,
-                                   const GALGAS_lstring & in_mCategoryReaderReturnedVariableName,
-                                   const GALGAS_semanticInstructionListAST & in_mCategoryReaderInstructionList,
+                                   const GALGAS_lstring & in_mCategoryGetterName,
+                                   const GALGAS_formalInputParameterListAST & in_mCategoryGetterFormalInputParameterList,
+                                   const GALGAS_lstring & in_mCategoryGetterReturnedTypeName,
+                                   const GALGAS_lstring & in_mCategoryGetterReturnedVariableName,
+                                   const GALGAS_semanticInstructionListAST & in_mCategoryGetterInstructionList,
                                    const GALGAS_location & in_mEndOfReaderLocation
                                    COMMA_LOCATION_ARGS) ;
 
@@ -13657,11 +13657,11 @@ class cPtr_categoryGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mCategoryReaderName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST reader_mCategoryReaderFormalInputParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mCategoryReaderReturnedTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mCategoryReaderReturnedVariableName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST reader_mCategoryReaderInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mCategoryGetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST reader_mCategoryGetterFormalInputParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mCategoryGetterReturnedTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mCategoryGetterReturnedVariableName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST reader_mCategoryGetterInstructionList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfReaderLocation (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
@@ -14115,7 +14115,7 @@ class GALGAS_externTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                    const class GALGAS_string & inOperand2,
                                                                    const class GALGAS_string & inOperand3,
                                                                    const class GALGAS_externTypeConstructorList & inOperand4,
-                                                                   const class GALGAS_externTypeReaderList & inOperand5,
+                                                                   const class GALGAS_externTypeGetterList & inOperand5,
                                                                    const class GALGAS_externTypeModifierList & inOperand6,
                                                                    const class GALGAS_externTypeMethodList & inOperand7
                                                                    COMMA_LOCATION_ARGS) ;
@@ -14135,13 +14135,13 @@ class GALGAS_externTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public : VIRTUAL_IN_DEBUG class GALGAS_externTypeConstructorList reader_mExternTypeConstructorList (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_externTypeGetterList reader_mExternTypeGetterList (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_externTypeMethodList reader_mExternTypeMethodList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_externTypeModifierList reader_mExternTypeModifierList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mExternTypeName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_externTypeReaderList reader_mExternTypeReaderList (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -14166,7 +14166,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   public : GALGAS_string mAttribute_mCppPreDeclarationCode ;
   public : GALGAS_string mAttribute_mCppClassCode ;
   public : GALGAS_externTypeConstructorList mAttribute_mExternTypeConstructorList ;
-  public : GALGAS_externTypeReaderList mAttribute_mExternTypeReaderList ;
+  public : GALGAS_externTypeGetterList mAttribute_mExternTypeGetterList ;
   public : GALGAS_externTypeModifierList mAttribute_mExternTypeModifierList ;
   public : GALGAS_externTypeMethodList mAttribute_mExternTypeMethodList ;
 
@@ -14176,7 +14176,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
                                           const GALGAS_string & in_mCppPreDeclarationCode,
                                           const GALGAS_string & in_mCppClassCode,
                                           const GALGAS_externTypeConstructorList & in_mExternTypeConstructorList,
-                                          const GALGAS_externTypeReaderList & in_mExternTypeReaderList,
+                                          const GALGAS_externTypeGetterList & in_mExternTypeGetterList,
                                           const GALGAS_externTypeModifierList & in_mExternTypeModifierList,
                                           const GALGAS_externTypeMethodList & in_mExternTypeMethodList
                                           COMMA_LOCATION_ARGS) ;
@@ -14189,7 +14189,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mCppPreDeclarationCode (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mCppClassCode (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_externTypeConstructorList reader_mExternTypeConstructorList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_externTypeReaderList reader_mExternTypeReaderList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_externTypeGetterList reader_mExternTypeGetterList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_externTypeModifierList reader_mExternTypeModifierList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_externTypeMethodList reader_mExternTypeMethodList (LOCATION_ARGS) const ;
 //--- Description
@@ -14816,6 +14816,110 @@ class cPtr_mapProxyDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                     @overridingAbstractCategoryGetterAST class                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_overridingAbstractCategoryGetterAST : public GALGAS_semanticDeclarationAST {
+//--- Constructor
+  public : GALGAS_overridingAbstractCategoryGetterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_overridingAbstractCategoryGetterAST constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_overridingAbstractCategoryGetterAST * ptr (void) const { return (const cPtr_overridingAbstractCategoryGetterAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_overridingAbstractCategoryGetterAST (const cPtr_overridingAbstractCategoryGetterAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_overridingAbstractCategoryGetterAST extractObject (const GALGAS_object & inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_overridingAbstractCategoryGetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                              const class GALGAS_lstring & inOperand1,
+                                                                              const class GALGAS_lstring & inOperand2,
+                                                                              const class GALGAS_formalInputParameterListAST & inOperand3,
+                                                                              const class GALGAS_lstring & inOperand4
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_overridingAbstractCategoryGetterAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST reader_mAbstractCategoryGetterFormalInputParameterList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAbstractCategoryGetterName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAbstractCategoryGetterReturnedTypeName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_overridingAbstractCategoryGetterAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractCategoryGetterAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                            Pointer class for @overridingAbstractCategoryGetterAST class                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_overridingAbstractCategoryGetterAST : public cPtr_semanticDeclarationAST {
+//--- Attributes
+  public : GALGAS_lstring mAttribute_mTypeName ;
+  public : GALGAS_lstring mAttribute_mAbstractCategoryGetterName ;
+  public : GALGAS_formalInputParameterListAST mAttribute_mAbstractCategoryGetterFormalInputParameterList ;
+  public : GALGAS_lstring mAttribute_mAbstractCategoryGetterReturnedTypeName ;
+
+//--- Constructor
+  public : cPtr_overridingAbstractCategoryGetterAST (const GALGAS_bool & in_mIsPredefined,
+                                                     const GALGAS_lstring & in_mTypeName,
+                                                     const GALGAS_lstring & in_mAbstractCategoryGetterName,
+                                                     const GALGAS_formalInputParameterListAST & in_mAbstractCategoryGetterFormalInputParameterList,
+                                                     const GALGAS_lstring & in_mAbstractCategoryGetterReturnedTypeName
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryGetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST reader_mAbstractCategoryGetterFormalInputParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryGetterReturnedTypeName (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                     @overridingAbstractCategoryMethodAST class                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15012,22 +15116,22 @@ class cPtr_overridingAbstractCategoryModifierAST : public cPtr_semanticDeclarati
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     @overridingAbstractCategoryReaderAST class                                      *
+//                                         @overridingCategoryGetterAST class                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_overridingAbstractCategoryReaderAST : public GALGAS_semanticDeclarationAST {
+class GALGAS_overridingCategoryGetterAST : public GALGAS_semanticDeclarationAST {
 //--- Constructor
-  public : GALGAS_overridingAbstractCategoryReaderAST (void) ;
+  public : GALGAS_overridingCategoryGetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_overridingAbstractCategoryReaderAST constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_overridingCategoryGetterAST constructor_default (LOCATION_ARGS) ;
 
 //---
-  public : inline const class cPtr_overridingAbstractCategoryReaderAST * ptr (void) const { return (const cPtr_overridingAbstractCategoryReaderAST *) mObjectPtr ; }
+  public : inline const class cPtr_overridingCategoryGetterAST * ptr (void) const { return (const cPtr_overridingCategoryGetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_overridingAbstractCategoryReaderAST (const cPtr_overridingAbstractCategoryReaderAST * inSourcePtr) ;
+  public : GALGAS_overridingCategoryGetterAST (const cPtr_overridingCategoryGetterAST * inSourcePtr) ;
 
 //-- Start of generic part --*
 
@@ -15035,20 +15139,23 @@ class GALGAS_overridingAbstractCategoryReaderAST : public GALGAS_semanticDeclara
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_overridingAbstractCategoryReaderAST extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_overridingCategoryGetterAST extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_overridingAbstractCategoryReaderAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                              const class GALGAS_lstring & inOperand1,
-                                                                              const class GALGAS_lstring & inOperand2,
-                                                                              const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                                              const class GALGAS_lstring & inOperand4
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_overridingCategoryGetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                      const class GALGAS_lstring & inOperand1,
+                                                                      const class GALGAS_lstring & inOperand2,
+                                                                      const class GALGAS_formalInputParameterListAST & inOperand3,
+                                                                      const class GALGAS_lstring & inOperand4,
+                                                                      const class GALGAS_lstring & inOperand5,
+                                                                      const class GALGAS_semanticInstructionListAST & inOperand6,
+                                                                      const class GALGAS_location & inOperand7
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_overridingAbstractCategoryReaderAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_overridingCategoryGetterAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -15056,11 +15163,17 @@ class GALGAS_overridingAbstractCategoryReaderAST : public GALGAS_semanticDeclara
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST reader_mAbstractCategoryReaderFormalInputParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfReaderLocation (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAbstractCategoryReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST reader_mOverridingCategoryGetterFormalInputParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAbstractCategoryReaderReturnedTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST reader_mOverridingCategoryGetterInstructionList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOverridingCategoryGetterName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOverridingCategoryGetterReturnedTypeName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOverridingCategoryGetterReturnedVariableName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
 
@@ -15068,42 +15181,51 @@ class GALGAS_overridingAbstractCategoryReaderAST : public GALGAS_semanticDeclara
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_overridingAbstractCategoryReaderAST class
+} ; // End of GALGAS_overridingCategoryGetterAST class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractCategoryReaderAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingCategoryGetterAST ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Pointer class for @overridingAbstractCategoryReaderAST class                             *
+//                                Pointer class for @overridingCategoryGetterAST class                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_overridingAbstractCategoryReaderAST : public cPtr_semanticDeclarationAST {
+class cPtr_overridingCategoryGetterAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mAbstractCategoryReaderName ;
-  public : GALGAS_formalInputParameterListAST mAttribute_mAbstractCategoryReaderFormalInputParameterList ;
-  public : GALGAS_lstring mAttribute_mAbstractCategoryReaderReturnedTypeName ;
+  public : GALGAS_lstring mAttribute_mOverridingCategoryGetterName ;
+  public : GALGAS_formalInputParameterListAST mAttribute_mOverridingCategoryGetterFormalInputParameterList ;
+  public : GALGAS_lstring mAttribute_mOverridingCategoryGetterReturnedTypeName ;
+  public : GALGAS_lstring mAttribute_mOverridingCategoryGetterReturnedVariableName ;
+  public : GALGAS_semanticInstructionListAST mAttribute_mOverridingCategoryGetterInstructionList ;
+  public : GALGAS_location mAttribute_mEndOfReaderLocation ;
 
 //--- Constructor
-  public : cPtr_overridingAbstractCategoryReaderAST (const GALGAS_bool & in_mIsPredefined,
-                                                     const GALGAS_lstring & in_mTypeName,
-                                                     const GALGAS_lstring & in_mAbstractCategoryReaderName,
-                                                     const GALGAS_formalInputParameterListAST & in_mAbstractCategoryReaderFormalInputParameterList,
-                                                     const GALGAS_lstring & in_mAbstractCategoryReaderReturnedTypeName
-                                                     COMMA_LOCATION_ARGS) ;
+  public : cPtr_overridingCategoryGetterAST (const GALGAS_bool & in_mIsPredefined,
+                                             const GALGAS_lstring & in_mTypeName,
+                                             const GALGAS_lstring & in_mOverridingCategoryGetterName,
+                                             const GALGAS_formalInputParameterListAST & in_mOverridingCategoryGetterFormalInputParameterList,
+                                             const GALGAS_lstring & in_mOverridingCategoryGetterReturnedTypeName,
+                                             const GALGAS_lstring & in_mOverridingCategoryGetterReturnedVariableName,
+                                             const GALGAS_semanticInstructionListAST & in_mOverridingCategoryGetterInstructionList,
+                                             const GALGAS_location & in_mEndOfReaderLocation
+                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryReaderName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST reader_mAbstractCategoryReaderFormalInputParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryReaderReturnedTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOverridingCategoryGetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST reader_mOverridingCategoryGetterFormalInputParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOverridingCategoryGetterReturnedTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOverridingCategoryGetterReturnedVariableName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST reader_mOverridingCategoryGetterInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfReaderLocation (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -15324,128 +15446,6 @@ class cPtr_overridingCategoryModifierAST : public cPtr_semanticDeclarationAST {
   public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST reader_mOverridingCategoryModifierFormalParameterList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST reader_mOverridingCategoryModifierInstructionList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfModifierLocation (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @overridingCategoryReaderAST class                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_overridingCategoryReaderAST : public GALGAS_semanticDeclarationAST {
-//--- Constructor
-  public : GALGAS_overridingCategoryReaderAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_overridingCategoryReaderAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_overridingCategoryReaderAST * ptr (void) const { return (const cPtr_overridingCategoryReaderAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_overridingCategoryReaderAST (const cPtr_overridingCategoryReaderAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_overridingCategoryReaderAST extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_overridingCategoryReaderAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                      const class GALGAS_lstring & inOperand1,
-                                                                      const class GALGAS_lstring & inOperand2,
-                                                                      const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                                      const class GALGAS_lstring & inOperand4,
-                                                                      const class GALGAS_lstring & inOperand5,
-                                                                      const class GALGAS_semanticInstructionListAST & inOperand6,
-                                                                      const class GALGAS_location & inOperand7
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_overridingCategoryReaderAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfReaderLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST reader_mOverridingCategoryReaderFormalInputParameterList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST reader_mOverridingCategoryReaderInstructionList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOverridingCategoryReaderName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOverridingCategoryReaderReturnedTypeName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOverridingCategoryReaderReturnedVariableName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_overridingCategoryReaderAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingCategoryReaderAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Pointer class for @overridingCategoryReaderAST class                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_overridingCategoryReaderAST : public cPtr_semanticDeclarationAST {
-//--- Attributes
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mOverridingCategoryReaderName ;
-  public : GALGAS_formalInputParameterListAST mAttribute_mOverridingCategoryReaderFormalInputParameterList ;
-  public : GALGAS_lstring mAttribute_mOverridingCategoryReaderReturnedTypeName ;
-  public : GALGAS_lstring mAttribute_mOverridingCategoryReaderReturnedVariableName ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mOverridingCategoryReaderInstructionList ;
-  public : GALGAS_location mAttribute_mEndOfReaderLocation ;
-
-//--- Constructor
-  public : cPtr_overridingCategoryReaderAST (const GALGAS_bool & in_mIsPredefined,
-                                             const GALGAS_lstring & in_mTypeName,
-                                             const GALGAS_lstring & in_mOverridingCategoryReaderName,
-                                             const GALGAS_formalInputParameterListAST & in_mOverridingCategoryReaderFormalInputParameterList,
-                                             const GALGAS_lstring & in_mOverridingCategoryReaderReturnedTypeName,
-                                             const GALGAS_lstring & in_mOverridingCategoryReaderReturnedVariableName,
-                                             const GALGAS_semanticInstructionListAST & in_mOverridingCategoryReaderInstructionList,
-                                             const GALGAS_location & in_mEndOfReaderLocation
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOverridingCategoryReaderName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST reader_mOverridingCategoryReaderFormalInputParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOverridingCategoryReaderReturnedTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOverridingCategoryReaderReturnedVariableName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST reader_mOverridingCategoryReaderInstructionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfReaderLocation (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

@@ -8781,7 +8781,7 @@ typeComparisonResult cPtr_lexiqueIntrospectionExpressionAST::dynamicObjectCompar
     result = mAttribute_mLexiqueComponentName.objectCompare (p->mAttribute_mLexiqueComponentName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLexiqueReaderName.objectCompare (p->mAttribute_mLexiqueReaderName) ;
+    result = mAttribute_mLexiqueGetterName.objectCompare (p->mAttribute_mLexiqueGetterName) ;
   }
   return result ;
 }
@@ -8829,11 +8829,11 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexiqueIntrospectionExpressionAST GALGAS_lexiqueIntrospectionExpressionAST::constructor_new (const GALGAS_lstring & inAttribute_mLexiqueComponentName,
-                                                                                                    const GALGAS_lstring & inAttribute_mLexiqueReaderName
+                                                                                                    const GALGAS_lstring & inAttribute_mLexiqueGetterName
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueIntrospectionExpressionAST result ;
-  if (inAttribute_mLexiqueComponentName.isValid () && inAttribute_mLexiqueReaderName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexiqueIntrospectionExpressionAST (inAttribute_mLexiqueComponentName, inAttribute_mLexiqueReaderName COMMA_THERE)) ;
+  if (inAttribute_mLexiqueComponentName.isValid () && inAttribute_mLexiqueGetterName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexiqueIntrospectionExpressionAST (inAttribute_mLexiqueComponentName, inAttribute_mLexiqueGetterName COMMA_THERE)) ;
   }
   return result ;
 }
@@ -8858,20 +8858,20 @@ GALGAS_lstring cPtr_lexiqueIntrospectionExpressionAST::reader_mLexiqueComponentN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_lexiqueIntrospectionExpressionAST::reader_mLexiqueReaderName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_lexiqueIntrospectionExpressionAST::reader_mLexiqueGetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_lexiqueIntrospectionExpressionAST * p = (const cPtr_lexiqueIntrospectionExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueIntrospectionExpressionAST) ;
-    result = p->mAttribute_mLexiqueReaderName ;
+    result = p->mAttribute_mLexiqueGetterName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_lexiqueIntrospectionExpressionAST::reader_mLexiqueReaderName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLexiqueReaderName ;
+GALGAS_lstring cPtr_lexiqueIntrospectionExpressionAST::reader_mLexiqueGetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLexiqueGetterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8879,11 +8879,11 @@ GALGAS_lstring cPtr_lexiqueIntrospectionExpressionAST::reader_mLexiqueReaderName
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_lexiqueIntrospectionExpressionAST::cPtr_lexiqueIntrospectionExpressionAST (const GALGAS_lstring & in_mLexiqueComponentName,
-                                                                                const GALGAS_lstring & in_mLexiqueReaderName
+                                                                                const GALGAS_lstring & in_mLexiqueGetterName
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (THERE),
 mAttribute_mLexiqueComponentName (in_mLexiqueComponentName),
-mAttribute_mLexiqueReaderName (in_mLexiqueReaderName) {
+mAttribute_mLexiqueGetterName (in_mLexiqueGetterName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8897,7 +8897,7 @@ void cPtr_lexiqueIntrospectionExpressionAST::description (C_String & ioString,
   ioString << "[@lexiqueIntrospectionExpressionAST:" ;
   mAttribute_mLexiqueComponentName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLexiqueReaderName.description (ioString, inIndentation+1) ;
+  mAttribute_mLexiqueGetterName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8905,7 +8905,7 @@ void cPtr_lexiqueIntrospectionExpressionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_lexiqueIntrospectionExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lexiqueIntrospectionExpressionAST (mAttribute_mLexiqueComponentName, mAttribute_mLexiqueReaderName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexiqueIntrospectionExpressionAST (mAttribute_mLexiqueComponentName, mAttribute_mLexiqueGetterName COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -11796,7 +11796,7 @@ typeComparisonResult cPtr_optionExpressionAST::dynamicObjectCompare (const acPtr
     result = mAttribute_mOptionEntryName.objectCompare (p->mAttribute_mOptionEntryName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mOptionReaderName.objectCompare (p->mAttribute_mOptionReaderName) ;
+    result = mAttribute_mOptionGetterName.objectCompare (p->mAttribute_mOptionGetterName) ;
   }
   return result ;
 }
@@ -11846,11 +11846,11 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 
 GALGAS_optionExpressionAST GALGAS_optionExpressionAST::constructor_new (const GALGAS_lstring & inAttribute_mOptionComponentName,
                                                                         const GALGAS_lstring & inAttribute_mOptionEntryName,
-                                                                        const GALGAS_lstring & inAttribute_mOptionReaderName
+                                                                        const GALGAS_lstring & inAttribute_mOptionGetterName
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_optionExpressionAST result ;
-  if (inAttribute_mOptionComponentName.isValid () && inAttribute_mOptionEntryName.isValid () && inAttribute_mOptionReaderName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_optionExpressionAST (inAttribute_mOptionComponentName, inAttribute_mOptionEntryName, inAttribute_mOptionReaderName COMMA_THERE)) ;
+  if (inAttribute_mOptionComponentName.isValid () && inAttribute_mOptionEntryName.isValid () && inAttribute_mOptionGetterName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_optionExpressionAST (inAttribute_mOptionComponentName, inAttribute_mOptionEntryName, inAttribute_mOptionGetterName COMMA_THERE)) ;
   }
   return result ;
 }
@@ -11893,20 +11893,20 @@ GALGAS_lstring cPtr_optionExpressionAST::reader_mOptionEntryName (UNUSED_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_optionExpressionAST::reader_mOptionReaderName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_optionExpressionAST::reader_mOptionGetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_optionExpressionAST * p = (const cPtr_optionExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_optionExpressionAST) ;
-    result = p->mAttribute_mOptionReaderName ;
+    result = p->mAttribute_mOptionGetterName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_optionExpressionAST::reader_mOptionReaderName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOptionReaderName ;
+GALGAS_lstring cPtr_optionExpressionAST::reader_mOptionGetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOptionGetterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11915,12 +11915,12 @@ GALGAS_lstring cPtr_optionExpressionAST::reader_mOptionReaderName (UNUSED_LOCATI
 
 cPtr_optionExpressionAST::cPtr_optionExpressionAST (const GALGAS_lstring & in_mOptionComponentName,
                                                     const GALGAS_lstring & in_mOptionEntryName,
-                                                    const GALGAS_lstring & in_mOptionReaderName
+                                                    const GALGAS_lstring & in_mOptionGetterName
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (THERE),
 mAttribute_mOptionComponentName (in_mOptionComponentName),
 mAttribute_mOptionEntryName (in_mOptionEntryName),
-mAttribute_mOptionReaderName (in_mOptionReaderName) {
+mAttribute_mOptionGetterName (in_mOptionGetterName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11936,7 +11936,7 @@ void cPtr_optionExpressionAST::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mOptionEntryName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mOptionReaderName.description (ioString, inIndentation+1) ;
+  mAttribute_mOptionGetterName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -11944,7 +11944,7 @@ void cPtr_optionExpressionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_optionExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_optionExpressionAST (mAttribute_mOptionComponentName, mAttribute_mOptionEntryName, mAttribute_mOptionReaderName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionExpressionAST (mAttribute_mOptionComponentName, mAttribute_mOptionEntryName, mAttribute_mOptionGetterName COMMA_THERE)) ;
   return ptr ;
 }
 

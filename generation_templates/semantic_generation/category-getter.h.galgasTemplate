@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//%!["Abstract category reader '@" + CLASS_NAME + " " + GETTER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//%!["Category reader '@" + CLASS_NAME + " " + GETTER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14,17 +14,17 @@ typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*categoryReaderS
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
     end
   end
-  %,\n%!^%class C_Compiler * inCompiler%
+  %,\n%!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% inMethod) ;
+void enterCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
+               %!^%categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% inReader) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![GETTER_NAME identifierRepresentation]% (%?^%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+class GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then
@@ -33,6 +33,6 @@ class GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![GET
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%C_Compiler * inCompiler%
+  %,\n%!^%class C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

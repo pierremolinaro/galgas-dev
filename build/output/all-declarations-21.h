@@ -52,12 +52,12 @@ typedef class GALGAS_bool (*categoryReaderSignature_semanticExpressionForGenerat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_isTrueExpression (const int32_t inClassIndex,
+void enterCategoryGetter_isTrueExpression (const int32_t inClassIndex,
                                            categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression inReader) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bool callCategoryReader_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
+class GALGAS_bool callCategoryGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
                                                        class C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 

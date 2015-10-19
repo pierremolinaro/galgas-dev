@@ -4725,7 +4725,7 @@ typeComparisonResult cPtr_lexiqueIntrospectionForGeneration::dynamicObjectCompar
     result = mAttribute_mLexiqueComponentName.objectCompare (p->mAttribute_mLexiqueComponentName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLexiqueReaderName.objectCompare (p->mAttribute_mLexiqueReaderName) ;
+    result = mAttribute_mLexiqueGetterName.objectCompare (p->mAttribute_mLexiqueGetterName) ;
   }
   return result ;
 }
@@ -4777,11 +4777,11 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                     const GALGAS_string & inAttribute_mLexiqueComponentName,
-                                                                                                    const GALGAS_string & inAttribute_mLexiqueReaderName
+                                                                                                    const GALGAS_string & inAttribute_mLexiqueGetterName
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueIntrospectionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mLexiqueReaderName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexiqueIntrospectionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLexiqueComponentName, inAttribute_mLexiqueReaderName COMMA_THERE)) ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mLexiqueGetterName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexiqueIntrospectionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLexiqueComponentName, inAttribute_mLexiqueGetterName COMMA_THERE)) ;
   }
   return result ;
 }
@@ -4806,20 +4806,20 @@ GALGAS_string cPtr_lexiqueIntrospectionForGeneration::reader_mLexiqueComponentNa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_lexiqueIntrospectionForGeneration::reader_mLexiqueReaderName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_lexiqueIntrospectionForGeneration::reader_mLexiqueGetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_lexiqueIntrospectionForGeneration * p = (const cPtr_lexiqueIntrospectionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueIntrospectionForGeneration) ;
-    result = p->mAttribute_mLexiqueReaderName ;
+    result = p->mAttribute_mLexiqueGetterName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_lexiqueIntrospectionForGeneration::reader_mLexiqueReaderName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLexiqueReaderName ;
+GALGAS_string cPtr_lexiqueIntrospectionForGeneration::reader_mLexiqueGetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLexiqueGetterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4829,11 +4829,11 @@ GALGAS_string cPtr_lexiqueIntrospectionForGeneration::reader_mLexiqueReaderName 
 cPtr_lexiqueIntrospectionForGeneration::cPtr_lexiqueIntrospectionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                 const GALGAS_location & in_mLocation,
                                                                                 const GALGAS_string & in_mLexiqueComponentName,
-                                                                                const GALGAS_string & in_mLexiqueReaderName
+                                                                                const GALGAS_string & in_mLexiqueGetterName
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
 mAttribute_mLexiqueComponentName (in_mLexiqueComponentName),
-mAttribute_mLexiqueReaderName (in_mLexiqueReaderName) {
+mAttribute_mLexiqueGetterName (in_mLexiqueGetterName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4851,7 +4851,7 @@ void cPtr_lexiqueIntrospectionForGeneration::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mLexiqueComponentName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLexiqueReaderName.description (ioString, inIndentation+1) ;
+  mAttribute_mLexiqueGetterName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -4859,7 +4859,7 @@ void cPtr_lexiqueIntrospectionForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_lexiqueIntrospectionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lexiqueIntrospectionForGeneration (mAttribute_mResultType, mAttribute_mLocation, mAttribute_mLexiqueComponentName, mAttribute_mLexiqueReaderName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexiqueIntrospectionForGeneration (mAttribute_mResultType, mAttribute_mLocation, mAttribute_mLexiqueComponentName, mAttribute_mLexiqueGetterName COMMA_THERE)) ;
   return ptr ;
 }
 

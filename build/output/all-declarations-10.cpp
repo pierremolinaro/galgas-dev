@@ -10,128 +10,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         Routine 'generateCategoryModifier'                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_generateCategoryModifier (const GALGAS_string constinArgument_inClassName,
-                                       const GALGAS_string constinArgument_inBaseClassName,
-                                       const GALGAS_string constinArgument_inMethodName,
-                                       GALGAS_stringset & ioArgument_ioInclusionSet,
-                                       const GALGAS_formalParameterListForGeneration constinArgument_inFormalArgumentList,
-                                       const GALGAS_semanticInstructionListForGeneration constinArgument_inInstructionList,
-                                       GALGAS_string & outArgument_outGeneratedCode,
-                                       C_Compiler * inCompiler
-                                       COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outGeneratedCode.drop () ; // Release 'out' argument
-  GALGAS_stringset var_unusedVariableCppNameSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 451)) ;
-  var_unusedVariableCppNameSet.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 452))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 452)) ;
-  var_unusedVariableCppNameSet.addAssign_operation (GALGAS_string ("object")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 453)) ;
-  cEnumerator_formalParameterListForGeneration enumerator_19633 (constinArgument_inFormalArgumentList, kEnumeration_up) ;
-  while (enumerator_19633.hasCurrentObject ()) {
-    var_unusedVariableCppNameSet.addAssign_operation (enumerator_19633.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 455)) ;
-    enumerator_19633.gotoNextObject () ;
-  }
-  GALGAS_uint var_temporaryVariableIndex = GALGAS_uint ((uint32_t) 0U) ;
-  GALGAS_string var_routineBody = GALGAS_string::makeEmptyString () ;
-  {
-  var_routineBody.modifier_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 460)) ;
-  }
-  cEnumerator_semanticInstructionListForGeneration enumerator_19839 (constinArgument_inInstructionList, kEnumeration_up) ;
-  while (enumerator_19839.hasCurrentObject ()) {
-    callCategoryMethod_generateInstruction ((const cPtr_semanticInstructionForGeneration *) enumerator_19839.current_mInstruction (HERE).ptr (), ioArgument_ioInclusionSet, var_temporaryVariableIndex, var_unusedVariableCppNameSet, GALGAS_bool (false), var_routineBody, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 462)) ;
-    enumerator_19839.gotoNextObject () ;
-  }
-  {
-  var_routineBody.modifier_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 470)) ;
-  }
-  outArgument_outGeneratedCode = GALGAS_string ("static void categoryModifier_").add_operation (constinArgument_inClassName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 472)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 472)).add_operation (constinArgument_inMethodName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 472)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 472)) ;
-  GALGAS_uint var_colRef = outArgument_outGeneratedCode.reader_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 473)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("cPtr_").add_operation (constinArgument_inClassName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 475)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 475)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 475))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 475)) ;
-  }else if (kBoolFalse == test_0) {
-    outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("cPtr_").add_operation (constinArgument_inBaseClassName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 477)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 477)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 477))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 477)) ;
-  }
-  GALGAS_bool var_currentObjectIsUnused = var_unusedVariableCppNameSet.reader_hasKey (GALGAS_string ("object") COMMA_SOURCE_FILE ("semanticGeneration.galgas", 479)) ;
-  const enumGalgasBool test_1 = var_currentObjectIsUnused.boolEnum () ;
-  if (kBoolTrue == test_1) {
-    outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("/* inObject */")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 481)) ;
-  }else if (kBoolFalse == test_1) {
-    outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("inObject")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 483)) ;
-  }
-  cEnumerator_formalParameterListForGeneration enumerator_20766 (constinArgument_inFormalArgumentList, kEnumeration_up) ;
-  while (enumerator_20766.hasCurrentObject ()) {
-    outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string (",\n")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 487)) ;
-    {
-    outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 488)) ;
-    }
-    switch (enumerator_20766.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
-    case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
-      break ;
-    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
-      {
-        outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("const GALGAS_").add_operation (enumerator_20766.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)) ;
-      }
-      break ;
-    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
-      {
-        outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("GALGAS_").add_operation (enumerator_20766.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 493)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 493)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 493))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 493)) ;
-      }
-      break ;
-    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
-      {
-        outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("GALGAS_").add_operation (enumerator_20766.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 495)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 495)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 495))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 495)) ;
-      }
-      break ;
-    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
-      {
-        outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("GALGAS_").add_operation (enumerator_20766.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 497)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 497)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 497))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 497)) ;
-      }
-      break ;
-    }
-    const enumGalgasBool test_2 = var_unusedVariableCppNameSet.reader_hasKey (enumerator_20766.current_mFormalArgumentCppName (HERE) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 499)).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("/* ").add_operation (enumerator_20766.current_mFormalArgumentCppName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 500)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 500))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 500)) ;
-    }else if (kBoolFalse == test_2) {
-      outArgument_outGeneratedCode.dotAssign_operation (enumerator_20766.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 502)) ;
-    }
-    enumerator_20766.gotoNextObject () ;
-  }
-  outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string (",\n")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 506)) ;
-  {
-  outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 507)) ;
-  }
-  outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("C_Compiler * ")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 508)) ;
-  const enumGalgasBool test_3 = var_unusedVariableCppNameSet.reader_hasKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 509)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 509)).boolEnum () ;
-  if (kBoolTrue == test_3) {
-    outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("/* ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 510)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 510)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 510))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 510)) ;
-  }else if (kBoolFalse == test_3) {
-    outArgument_outGeneratedCode.dotAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 512))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 512)) ;
-  }
-  outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("\n")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 514)) ;
-  {
-  outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 515)) ;
-  }
-  outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("COMMA_UNUSED_LOCATION_ARGS")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 516)) ;
-  outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string (") {\n")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 517)) ;
-  const enumGalgasBool test_4 = var_currentObjectIsUnused.operator_not (SOURCE_FILE ("semanticGeneration.galgas", 519)).boolEnum () ;
-  if (kBoolTrue == test_4) {
-    const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_5) {
-      outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("  cPtr_").add_operation (constinArgument_inClassName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 521)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 521)).add_operation (GALGAS_string (" * object = inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 521))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 521)) ;
-    }else if (kBoolFalse == test_5) {
-      outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("  cPtr_").add_operation (constinArgument_inClassName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 523)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)).add_operation (GALGAS_string (" * object = (cPtr_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)).add_operation (constinArgument_inClassName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 523)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)).add_operation (GALGAS_string (" *) inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)) ;
-    }
-    outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("  macroValidSharedObject (object, cPtr_").add_operation (constinArgument_inClassName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 525)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 525)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 525))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 525)) ;
-  }
-  outArgument_outGeneratedCode.dotAssign_operation (var_routineBody  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 527)) ;
-  outArgument_outGeneratedCode.dotAssign_operation (GALGAS_string ("}")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 529)) ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                          Routine 'generateCategoryMethod'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -292,14 +170,14 @@ void routine_generateCategoryMethod (const GALGAS_unifiedTypeMap_2D_proxy consti
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Routine 'generateCategoryReader'                                           *
+//                                          Routine 'generateCategoryGetter'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_generateCategoryReader (const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inReceiverType,
+void routine_generateCategoryGetter (const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inReceiverType,
                                      const GALGAS_string constinArgument_inBaseClassName,
                                      GALGAS_stringset & ioArgument_ioInclusionSet,
-                                     const GALGAS_string constinArgument_inReaderName,
+                                     const GALGAS_string constinArgument_inGetterName,
                                      const GALGAS_formalInputParameterListForGeneration constinArgument_inFormalArgumentList,
                                      const GALGAS_semanticInstructionListForGeneration constinArgument_inInstructionList,
                                      const GALGAS_string constinArgument_inCompilerTypeName,
@@ -350,7 +228,7 @@ void routine_generateCategoryReader (const GALGAS_unifiedTypeMap_2D_proxy consti
         variant_29335 -- ;
         const enumGalgasBool test_0 = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 692)).reader_isNull (SOURCE_FILE ("semanticGeneration.galgas", 692)).operator_not (SOURCE_FILE ("semanticGeneration.galgas", 692)).boolEnum () ;
         if (kBoolTrue == test_0) {
-          const enumGalgasBool test_1 = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 693)).reader_mGetterMap (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 693)).reader_hasKey (constinArgument_inReaderName COMMA_SOURCE_FILE ("semanticGeneration.galgas", 693)).boolEnum () ;
+          const enumGalgasBool test_1 = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 693)).reader_mGetterMap (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 693)).reader_hasKey (constinArgument_inGetterName COMMA_SOURCE_FILE ("semanticGeneration.galgas", 693)).boolEnum () ;
           if (kBoolTrue == test_1) {
             var_baseType = var_baseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 694)) ;
           }else if (kBoolFalse == test_1) {
@@ -362,7 +240,7 @@ void routine_generateCategoryReader (const GALGAS_unifiedTypeMap_2D_proxy consti
       }
     }
   }
-  ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("getter-").add_operation (var_baseType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702)).add_operation (constinArgument_inReaderName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702)) ;
+  ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("getter-").add_operation (var_baseType.reader_key (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702)).add_operation (constinArgument_inGetterName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 702)) ;
   categoryMethod_addHeaderFileName (constinArgument_inReceiverType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 703)) ;
   cEnumerator_formalInputParameterListForGeneration enumerator_29779 (constinArgument_inFormalArgumentList, kEnumeration_up) ;
   while (enumerator_29779.hasCurrentObject ()) {
@@ -370,7 +248,7 @@ void routine_generateCategoryReader (const GALGAS_unifiedTypeMap_2D_proxy consti
     enumerator_29779.gotoNextObject () ;
   }
   outArgument_outGeneratedCode = GALGAS_string ("static GALGAS_").add_operation (constinArgument_inResultTypeName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 708)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 708)).add_operation (GALGAS_string (" categoryReader_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 708)) ;
-  outArgument_outGeneratedCode.dotAssign_operation (var_className.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (constinArgument_inReaderName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 709)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)) ;
+  outArgument_outGeneratedCode.dotAssign_operation (var_className.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (constinArgument_inGetterName.reader_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 709)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)) ;
   GALGAS_uint var_colRef = outArgument_outGeneratedCode.reader_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 710)) ;
   const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_2) {
@@ -5441,21 +5319,21 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Abstract category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Abstract category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typedef class GALGAS_" ;
-  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 7)).stringValue () ;
+  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 7)).stringValue () ;
   result << " (*categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 7)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 7)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 7)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 7)).stringValue () ;
   result << ") (" ;
   columnMarker = result.currentColumn () ;
   result << "const class cPtr_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 8)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 8)).stringValue () ;
   result << " * inObject" ;
   GALGAS_uint index_893_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
@@ -5466,14 +5344,14 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
       const enumGalgasBool test_0 = enumerator_893.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_893.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 12)).stringValue () ;
+        result << enumerator_893.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 12)).stringValue () ;
         result << " & constinArgument" ;
-        result << index_893_IDX.reader_string (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 12)).stringValue () ;
+        result << index_893_IDX.reader_string (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 12)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "class GALGAS_" ;
-        result << enumerator_893.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 14)).stringValue () ;
+        result << enumerator_893.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 14)).stringValue () ;
         result << " inArgument" ;
-        result << index_893_IDX.reader_string (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 14)).stringValue () ;
+        result << index_893_IDX.reader_string (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 14)).stringValue () ;
       }
       index_893_IDX.increment () ;
       enumerator_893.gotoNextObject () ;
@@ -5488,29 +5366,29 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "void enterCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 22)).stringValue () ;
+    "void enterCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 22)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const int32_t inClassIndex,\n"
     "               " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 23)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 23)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 23)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 23)).stringValue () ;
   result << " inMethod) ;\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
-  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 27)).stringValue () ;
-  result << " callCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 27)).stringValue () ;
+  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 27)).stringValue () ;
+  result << " callCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 27)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const class cPtr_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 27)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 27)).stringValue () ;
   result << " * inObject" ;
   GALGAS_uint index_1946_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
@@ -5521,14 +5399,14 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
       const enumGalgasBool test_1 = enumerator_1946.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "const GALGAS_" ;
-        result << enumerator_1946.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1946.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 31)).stringValue () ;
         result << " & constin_" ;
-        result << enumerator_1946.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1946.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 31)).stringValue () ;
       }else if (kBoolFalse == test_1) {
         result << "GALGAS_" ;
-        result << enumerator_1946.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1946.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 33)).stringValue () ;
         result << " in_" ;
-        result << enumerator_1946.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1946.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 33)).stringValue () ;
       }
       index_1946_.increment () ;
       enumerator_1946.gotoNextObject () ;
@@ -5560,83 +5438,83 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Abstract category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Abstract category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static TC_UniqueArray <categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 7)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 7)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 7)).stringValue () ;
-  result << "> gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 7)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 7)).stringValue () ;
+  result << "> gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 7)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 7)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 7)).stringValue () ;
   result << " ;\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "void enterCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 11)).stringValue () ;
+    "void enterCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 11)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const int32_t inClassIndex,\n"
     "               " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 12)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 12)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 12)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 12)).stringValue () ;
   result << " inReader) {\n"
-    "  gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 13)).stringValue () ;
+    "  gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 13)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 13)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 13)).stringValue () ;
   result << ".forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "static void freeCategoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 18)).stringValue () ;
+    "static void freeCategoryGetter_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 18)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 18)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 18)).stringValue () ;
   result << " (void) {\n"
-    "  gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 19)).stringValue () ;
+    "  gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 19)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 19)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 19)).stringValue () ;
   result << ".free () ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 24)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 24)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 24)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 24)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "NULL,\n"
     "       " ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result << "freeCategoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 25)).stringValue () ;
+  result << "freeCategoryGetter_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 25)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 25)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 25)).stringValue () ;
   result << ") ;\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
-  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 29)).stringValue () ;
-  result << " callCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 29)).stringValue () ;
+  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 29)).stringValue () ;
+  result << " callCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 29)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const cPtr_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 29)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 29)).stringValue () ;
   result << " * inObject" ;
   GALGAS_uint index_2429_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
@@ -5647,14 +5525,14 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
       const enumGalgasBool test_0 = enumerator_2429.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const GALGAS_" ;
-        result << enumerator_2429.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_2429.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 33)).stringValue () ;
         result << " & in_" ;
-        result << enumerator_2429.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_2429.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 33)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "GALGAS_" ;
-        result << enumerator_2429.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2429.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 35)).stringValue () ;
         result << " in_" ;
-        result << enumerator_2429.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2429.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 35)).stringValue () ;
       }
       index_2429_.increment () ;
       enumerator_2429.gotoNextObject () ;
@@ -5666,51 +5544,51 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  GALGAS_" ;
-  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 40)).stringValue () ;
+  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 40)).stringValue () ;
   result << " result ;\n"
     "//--- Find Reader\n"
     "  if (NULL != inObject) {\n"
     "    macroValidSharedObject (inObject, cPtr_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 43)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 43)).stringValue () ;
   result << ") ;\n"
     "    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;\n"
     "    const int32_t classIndex = info->mSlotID ;\n"
     "    categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 46)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 46)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 46)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 46)).stringValue () ;
   result << " f = NULL ;\n"
-    "    if (classIndex < gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 47)).stringValue () ;
+    "    if (classIndex < gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 47)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 47)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 47)).stringValue () ;
   result << ".count ()) {\n"
-    "      f = gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 48)).stringValue () ;
+    "      f = gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 48)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 48)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 48)).stringValue () ;
   result << " (classIndex COMMA_HERE) ;\n"
     "    }\n"
     "    if (NULL == f) {\n"
     "       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;\n"
     "       while ((NULL == f) && (NULL != p)) {\n"
-    "         if (p->mSlotID < gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 53)).stringValue () ;
+    "         if (p->mSlotID < gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 53)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 53)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 53)).stringValue () ;
   result << ".count ()) {\n"
-    "           f = gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 54)).stringValue () ;
+    "           f = gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 54)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 54)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 54)).stringValue () ;
   result << " (p->mSlotID COMMA_HERE) ;\n"
     "         }\n"
     "         p = p->mSuperclassDescriptor ;\n"
     "       }\n"
-    "       gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 58)).stringValue () ;
+    "       gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 58)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 58)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 58)).stringValue () ;
   result << ".forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;\n"
     "    }\n"
     "    if (NULL == f) {\n"
@@ -5722,7 +5600,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
     cEnumerator_formalInputParameterListForGeneration enumerator_4348 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
     while (enumerator_4348.hasCurrentObject ()) {
       result << "in_" ;
-      result << enumerator_4348.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-reader.cpp.galgasTemplate", 65)).stringValue () ;
+      result << enumerator_4348.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 65)).stringValue () ;
       result << ", " ;
       index_4348_.increment () ;
       enumerator_4348.gotoNextObject () ;
@@ -5754,21 +5632,21 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typedef class GALGAS_" ;
-  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 7)).stringValue () ;
+  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 7)).stringValue () ;
   result << " (*categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 7)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 7)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 7)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 7)).stringValue () ;
   result << ") (" ;
   columnMarker = result.currentColumn () ;
   result << "const class cPtr_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 8)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 8)).stringValue () ;
   result << " * inObject" ;
   GALGAS_uint index_884_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
@@ -5779,14 +5657,14 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
       const enumGalgasBool test_0 = enumerator_884.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_884.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 12)).stringValue () ;
+        result << enumerator_884.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 12)).stringValue () ;
         result << " & constinArgument" ;
-        result << index_884_IDX.reader_string (SOURCE_FILE ("category-reader.h.galgasTemplate", 12)).stringValue () ;
+        result << index_884_IDX.reader_string (SOURCE_FILE ("category-getter.h.galgasTemplate", 12)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "class GALGAS_" ;
-        result << enumerator_884.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 14)).stringValue () ;
+        result << enumerator_884.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 14)).stringValue () ;
         result << " inArgument" ;
-        result << index_884_IDX.reader_string (SOURCE_FILE ("category-reader.h.galgasTemplate", 14)).stringValue () ;
+        result << index_884_IDX.reader_string (SOURCE_FILE ("category-getter.h.galgasTemplate", 14)).stringValue () ;
       }
       index_884_IDX.increment () ;
       enumerator_884.gotoNextObject () ;
@@ -5801,29 +5679,29 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "void enterCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 22)).stringValue () ;
+    "void enterCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 22)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const int32_t inClassIndex,\n"
     "               " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 23)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 23)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 23)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 23)).stringValue () ;
   result << " inReader) ;\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
-  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 27)).stringValue () ;
-  result << " callCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 27)).stringValue () ;
+  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 27)).stringValue () ;
+  result << " callCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 27)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const cPtr_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 27)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 27)).stringValue () ;
   result << " * inObject" ;
   GALGAS_uint index_1925_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
@@ -5834,14 +5712,14 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
       const enumGalgasBool test_1 = enumerator_1925.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "const GALGAS_" ;
-        result << enumerator_1925.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1925.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 31)).stringValue () ;
         result << " & constin_" ;
-        result << enumerator_1925.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1925.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 31)).stringValue () ;
       }else if (kBoolFalse == test_1) {
         result << "GALGAS_" ;
-        result << enumerator_1925.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1925.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 33)).stringValue () ;
         result << " in_" ;
-        result << enumerator_1925.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-reader.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1925.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 33)).stringValue () ;
       }
       index_1925_.increment () ;
       enumerator_1925.gotoNextObject () ;
@@ -5874,52 +5752,52 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static TC_UniqueArray <categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 7)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 7)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 7)).stringValue () ;
-  result << "> gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 7)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 7)).stringValue () ;
+  result << "> gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 7)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 7)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 7)).stringValue () ;
   result << " ;\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "void enterCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 11)).stringValue () ;
+    "void enterCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 11)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const int32_t inClassIndex,\n"
     "               " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 12)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 12)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 12)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 12)).stringValue () ;
   result << " inReader) {\n"
-    "  gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 13)).stringValue () ;
+    "  gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 13)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 13)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 13)).stringValue () ;
   result << ".forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
-  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 18)).stringValue () ;
-  result << " callCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 18)).stringValue () ;
+  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 18)).stringValue () ;
+  result << " callCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 18)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const cPtr_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 18)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 18)).stringValue () ;
   result << " * inObject" ;
   GALGAS_uint index_1696_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
@@ -5930,14 +5808,14 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
       const enumGalgasBool test_0 = enumerator_1696.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const GALGAS_" ;
-        result << enumerator_1696.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 22)).stringValue () ;
+        result << enumerator_1696.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 22)).stringValue () ;
         result << " & in_" ;
-        result << enumerator_1696.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 22)).stringValue () ;
+        result << enumerator_1696.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 22)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "GALGAS_" ;
-        result << enumerator_1696.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 24)).stringValue () ;
+        result << enumerator_1696.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 24)).stringValue () ;
         result << " in_" ;
-        result << enumerator_1696.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 24)).stringValue () ;
+        result << enumerator_1696.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 24)).stringValue () ;
       }
       index_1696_.increment () ;
       enumerator_1696.gotoNextObject () ;
@@ -5949,51 +5827,51 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  GALGAS_" ;
-  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader.cpp.galgasTemplate", 29)).stringValue () ;
+  result << in_RETURN_5F_TYPE.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 29)).stringValue () ;
   result << " result ;\n"
     "//--- Find Reader\n"
     "  if (NULL != inObject) {\n"
     "    macroValidSharedObject (inObject, cPtr_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 32)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 32)).stringValue () ;
   result << ") ;\n"
     "    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;\n"
     "    const int32_t classIndex = info->mSlotID ;\n"
     "    categoryReaderSignature_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 35)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 35)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 35)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 35)).stringValue () ;
   result << " f = NULL ;\n"
-    "    if (classIndex < gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 36)).stringValue () ;
+    "    if (classIndex < gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 36)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 36)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 36)).stringValue () ;
   result << ".count ()) {\n"
-    "      f = gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 37)).stringValue () ;
+    "      f = gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 37)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 37)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 37)).stringValue () ;
   result << " (classIndex COMMA_HERE) ;\n"
     "    }\n"
     "    if (NULL == f) {\n"
     "       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;\n"
     "       while ((NULL == f) && (NULL != p)) {\n"
-    "         if (p->mSlotID < gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 42)).stringValue () ;
+    "         if (p->mSlotID < gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 42)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 42)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 42)).stringValue () ;
   result << ".count ()) {\n"
-    "           f = gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 43)).stringValue () ;
+    "           f = gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 43)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 43)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 43)).stringValue () ;
   result << " (p->mSlotID COMMA_HERE) ;\n"
     "         }\n"
     "         p = p->mSuperclassDescriptor ;\n"
     "       }\n"
-    "       gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 47)).stringValue () ;
+    "       gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 47)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 47)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 47)).stringValue () ;
   result << ".forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;\n"
     "    }\n"
     "    if (NULL == f) {\n"
@@ -6005,7 +5883,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
     cEnumerator_formalInputParameterListForGeneration enumerator_3615 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
     while (enumerator_3615.hasCurrentObject ()) {
       result << "in_" ;
-      result << enumerator_3615.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 54)).stringValue () ;
+      result << enumerator_3615.current_mFormalArgumentName (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 54)).stringValue () ;
       result << ", " ;
       index_3615_.increment () ;
       enumerator_3615.gotoNextObject () ;
@@ -6023,60 +5901,60 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "static void defineCategoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 67)).stringValue () ;
+    "static void defineCategoryGetter_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 67)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 67)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 67)).stringValue () ;
   result << " (void) {\n"
-    "  enterCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 68)).stringValue () ;
+    "  enterCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 68)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "kTypeDescriptor_GALGAS_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 68)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 68)).stringValue () ;
   result << ".mSlotID,\n"
     "        " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "categoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 69)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 69)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 69)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 69)).stringValue () ;
   result << ") ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "static void freeCategoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 74)).stringValue () ;
+    "static void freeCategoryGetter_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 74)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 74)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 74)).stringValue () ;
   result << " (void) {\n"
-    "  gCategoryReaderTable_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 75)).stringValue () ;
+    "  gCategoryGetterTable_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 75)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 75)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 75)).stringValue () ;
   result << ".free () ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 80)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 80)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 80)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 80)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
-  result << "defineCategoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 80)).stringValue () ;
+  result << "defineCategoryGetter_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 80)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 80)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 80)).stringValue () ;
   result << ",\n"
     "       " ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result << "freeCategoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 81)).stringValue () ;
+  result << "freeCategoryGetter_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 81)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader.cpp.galgasTemplate", 81)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 81)).stringValue () ;
   result << ") ;\n"
     "\n" ;
   return GALGAS_string (result) ;
@@ -6099,7 +5977,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Overriding category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Overriding category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -6108,37 +5986,37 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   result << "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "static void defineCategoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 10)).stringValue () ;
+    "static void defineCategoryGetter_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 10)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 10)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 10)).stringValue () ;
   result << " (void) {\n"
-    "  enterCategoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 11)).stringValue () ;
+    "  enterCategoryGetter_" ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 11)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "kTypeDescriptor_GALGAS_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 11)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 11)).stringValue () ;
   result << ".mSlotID,\n"
     "        " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "categoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 12)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 12)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 12)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 12)).stringValue () ;
   result << ") ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 17)).stringValue () ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 17)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 17)).stringValue () ;
-  result << " (defineCategoryReader_" ;
-  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 17)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 17)).stringValue () ;
+  result << " (defineCategoryGetter_" ;
+  result << in_CLASS_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 17)).stringValue () ;
   result << "_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-reader.cpp.galgasTemplate", 17)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 17)).stringValue () ;
   result << ", NULL) ;\n"
     "\n" ;
   return GALGAS_string (result) ;
@@ -7980,7 +7858,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category Getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string ("' (as function)"), inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Category Getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string ("' (as function)"), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -7988,11 +7866,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
     "class GALGAS_" ;
   result << in_RETURN_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " categoryReader_" ;
-  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 7)).stringValue () ;
+  result << in_GETTER_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 7)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "const class GALGAS_" ;
-  result << in_TYPE_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 7)).stringValue () ;
+  result << in_TYPE_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 7)).stringValue () ;
   result << " & inObject" ;
   GALGAS_uint index_820_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
@@ -8003,14 +7881,14 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
       const enumGalgasBool test_0 = enumerator_820.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_820.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 11)).stringValue () ;
+        result << enumerator_820.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 11)).stringValue () ;
         result << " & constinArgument" ;
-        result << index_820_IDX.reader_string (SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 11)).stringValue () ;
+        result << index_820_IDX.reader_string (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 11)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "class GALGAS_" ;
-        result << enumerator_820.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 13)).stringValue () ;
+        result << enumerator_820.current_mFormalArgumentType (HERE).reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 13)).stringValue () ;
         result << " inArgument" ;
-        result << index_820_IDX.reader_string (SOURCE_FILE ("category-reader-as-function-declaration.h.galgasTemplate", 13)).stringValue () ;
+        result << index_820_IDX.reader_string (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 13)).stringValue () ;
       }
       index_820_IDX.increment () ;
       enumerator_820.gotoNextObject () ;
@@ -8040,7 +7918,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category Reader '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-reader-as-function-implementation.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-reader-as-function-implementation.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Category Reader '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -10027,7 +9905,7 @@ void routine_generatePredefinedTypeFiles (const GALGAS_string constinArgument_in
       GALGAS_string var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (inCompiler, var_semanticContext.mAttribute_mTypeMap.reader_allKeys (SOURCE_FILE ("semanticGeneration.galgas", 2655)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2654))) ;
       cEnumerator_semanticDeclarationSortedListForGeneration enumerator_104979 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
       while (enumerator_104979.hasCurrentObject ()) {
-        var_generatedCode.dotAssign_operation (callCategoryReader_appendPrimitiveTypeDeclaration ((const cPtr_semanticDeclarationForGeneration *) enumerator_104979.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658)) ;
+        var_generatedCode.dotAssign_operation (callCategoryGetter_appendPrimitiveTypeDeclaration ((const cPtr_semanticDeclarationForGeneration *) enumerator_104979.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2658)) ;
         enumerator_104979.gotoNextObject () ;
       }
       cEnumerator_semanticDeclarationSortedListForGeneration enumerator_105117 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
@@ -10058,7 +9936,7 @@ void routine_generatePredefinedTypeFiles (const GALGAS_string constinArgument_in
       var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2685))) ;
       cEnumerator_semanticDeclarationSortedListForGeneration enumerator_106305 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
       while (enumerator_106305.hasCurrentObject ()) {
-        var_generatedCode.dotAssign_operation (callCategoryReader_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106305.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2687))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2687)) ;
+        var_generatedCode.dotAssign_operation (callCategoryGetter_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106305.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2687))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2687)) ;
         GALGAS_stringset var_unusedInclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2688)) ;
         GALGAS_string var_code ;
         callCategoryMethod_appendSpecificImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106305.current_mDeclaration (HERE).ptr (), GALGAS_unifiedTypeMap::constructor_emptyMap (SOURCE_FILE ("semanticGeneration.galgas", 2689)), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2689)) ;
@@ -10428,7 +10306,7 @@ void routine_printFeaturesOfType (const GALGAS_string constinArgument_inTypeName
                                   const GALGAS_typeKindEnum constinArgument_inTypeKindEnum,
                                   const GALGAS_typedPropertyList constinArgument_inAllTypedAttributeList,
                                   const GALGAS_constructorMap constinArgument_inConstructorMap,
-                                  const GALGAS_getterMap constinArgument_inReaderMap,
+                                  const GALGAS_getterMap constinArgument_inGetterMap,
                                   const GALGAS_setterMap constinArgument_inSetterMap,
                                   const GALGAS_instanceMethodMap constinArgument_inInstanceMethodMap,
                                   const GALGAS_classMethodMap constinArgument_inClassMethodMap,
@@ -10469,7 +10347,7 @@ void routine_printFeaturesOfType (const GALGAS_string constinArgument_inTypeName
       enumerator_13166.gotoNextObject () ;
     }
   }
-  cEnumerator_getterMap enumerator_13489 (constinArgument_inReaderMap, kEnumeration_up) ;
+  cEnumerator_getterMap enumerator_13489 (constinArgument_inGetterMap, kEnumeration_up) ;
   const bool bool_4 = true ;
   if (enumerator_13489.hasCurrentObject () && bool_4) {
     var_s.dotAssign_operation (GALGAS_string (" - getters(s):\n")  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 272)) ;

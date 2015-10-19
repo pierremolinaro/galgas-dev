@@ -14146,7 +14146,7 @@ GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList_2D_element::GALGAS_externTypeReaderList_2D_element (void) :
+GALGAS_externTypeGetterList_2D_element::GALGAS_externTypeGetterList_2D_element (void) :
 mAttribute_mGetterName (),
 mAttribute_mResultTypeName (),
 mAttribute_mParameterList () {
@@ -14154,12 +14154,12 @@ mAttribute_mParameterList () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList_2D_element::~ GALGAS_externTypeReaderList_2D_element (void) {
+GALGAS_externTypeGetterList_2D_element::~ GALGAS_externTypeGetterList_2D_element (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList_2D_element::GALGAS_externTypeReaderList_2D_element (const GALGAS_lstring & inOperand0,
+GALGAS_externTypeGetterList_2D_element::GALGAS_externTypeGetterList_2D_element (const GALGAS_lstring & inOperand0,
                                                                                 const GALGAS_lstring & inOperand1,
                                                                                 const GALGAS_typeNameFormalParameterNameList & inOperand2) :
 mAttribute_mGetterName (inOperand0),
@@ -14169,28 +14169,28 @@ mAttribute_mParameterList (inOperand2) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList_2D_element GALGAS_externTypeReaderList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_externTypeReaderList_2D_element (GALGAS_lstring::constructor_default (HERE),
+GALGAS_externTypeGetterList_2D_element GALGAS_externTypeGetterList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_externTypeGetterList_2D_element (GALGAS_lstring::constructor_default (HERE),
                                                  GALGAS_lstring::constructor_default (HERE),
                                                  GALGAS_typeNameFormalParameterNameList::constructor_emptyList (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList_2D_element GALGAS_externTypeReaderList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+GALGAS_externTypeGetterList_2D_element GALGAS_externTypeGetterList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                                 const GALGAS_lstring & inOperand1,
                                                                                                 const GALGAS_typeNameFormalParameterNameList & inOperand2 
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_externTypeReaderList_2D_element result ;
+  GALGAS_externTypeGetterList_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_externTypeReaderList_2D_element (inOperand0, inOperand1, inOperand2) ;
+    result = GALGAS_externTypeGetterList_2D_element (inOperand0, inOperand1, inOperand2) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_externTypeReaderList_2D_element::objectCompare (const GALGAS_externTypeReaderList_2D_element & inOperand) const {
+typeComparisonResult GALGAS_externTypeGetterList_2D_element::objectCompare (const GALGAS_externTypeGetterList_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mGetterName.objectCompare (inOperand.mAttribute_mGetterName) ;
@@ -14206,13 +14206,13 @@ typeComparisonResult GALGAS_externTypeReaderList_2D_element::objectCompare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool GALGAS_externTypeReaderList_2D_element::isValid (void) const {
+bool GALGAS_externTypeGetterList_2D_element::isValid (void) const {
   return mAttribute_mGetterName.isValid () && mAttribute_mResultTypeName.isValid () && mAttribute_mParameterList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList_2D_element::drop (void) {
+void GALGAS_externTypeGetterList_2D_element::drop (void) {
   mAttribute_mGetterName.drop () ;
   mAttribute_mResultTypeName.drop () ;
   mAttribute_mParameterList.drop () ;
@@ -14220,9 +14220,9 @@ void GALGAS_externTypeReaderList_2D_element::drop (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeReaderList_2D_element::description (C_String & ioString,
+void GALGAS_externTypeGetterList_2D_element::description (C_String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString << "<struct @externTypeReaderList-element:" ;
+  ioString << "<struct @externTypeGetterList-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -14237,19 +14237,19 @@ void GALGAS_externTypeReaderList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeReaderList_2D_element::reader_mGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeGetterList_2D_element::reader_mGetterName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mGetterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_externTypeReaderList_2D_element::reader_mResultTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeGetterList_2D_element::reader_mResultTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mResultTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList GALGAS_externTypeReaderList_2D_element::reader_mParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typeNameFormalParameterNameList GALGAS_externTypeGetterList_2D_element::reader_mParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mParameterList ;
 }
 
@@ -14257,42 +14257,42 @@ GALGAS_typeNameFormalParameterNameList GALGAS_externTypeReaderList_2D_element::r
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         @externTypeReaderList-element type                                          *
+//                                         @externTypeGetterList-element type                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeReaderList_2D_element ("externTypeReaderList-element",
+kTypeDescriptor_GALGAS_externTypeGetterList_2D_element ("externTypeGetterList-element",
                                                         NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_externTypeReaderList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_externTypeReaderList_2D_element ;
+const C_galgas_type_descriptor * GALGAS_externTypeGetterList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externTypeGetterList_2D_element ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_externTypeReaderList_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_externTypeGetterList_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_externTypeReaderList_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_externTypeGetterList_2D_element (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeReaderList_2D_element GALGAS_externTypeReaderList_2D_element::extractObject (const GALGAS_object & inObject,
+GALGAS_externTypeGetterList_2D_element GALGAS_externTypeGetterList_2D_element::extractObject (const GALGAS_object & inObject,
                                                                                               C_Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_externTypeReaderList_2D_element result ;
-  const GALGAS_externTypeReaderList_2D_element * p = (const GALGAS_externTypeReaderList_2D_element *) inObject.embeddedObject () ;
+  GALGAS_externTypeGetterList_2D_element result ;
+  const GALGAS_externTypeGetterList_2D_element * p = (const GALGAS_externTypeGetterList_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_externTypeReaderList_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_externTypeGetterList_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("externTypeReaderList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("externTypeGetterList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

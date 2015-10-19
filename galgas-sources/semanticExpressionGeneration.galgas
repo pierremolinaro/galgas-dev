@@ -1179,7 +1179,7 @@ override method @getterCallExpressionForGeneration generateExpression
     ioInclusionSet += !"getter-" + [baseType key] + "-" + mGetterName
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
     if [[mReceiverExpression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
-      outCppExpression = "callCategoryReader_" + [mGetterName identifierRepresentation]
+      outCppExpression = "callCategoryGetter_" + [mGetterName identifierRepresentation]
          + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else
       [[mReceiverExpression mResultType] addHeaderFileName !?ioInclusionSet]
@@ -1311,7 +1311,7 @@ override method @lexiqueIntrospectionForGeneration generateExpression
 #---
   ioInclusionSet += !"lexique-" + mLexiqueComponentName
   outCppExpression = "C_Lexique_" + [mLexiqueComponentName identifierRepresentation] + "::"
-  + [mLexiqueReaderName identifierRepresentation]
+  + [mLexiqueGetterName identifierRepresentation]
   + "(" + [mLocation sourceFile] + ")"
 }
 

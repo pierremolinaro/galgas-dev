@@ -284,7 +284,7 @@ override getter @sharedMapDeclarationAST keyRepresentation
 
 override method @sharedMapDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
@@ -313,7 +313,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   end
 #---
   @constructorMap constructorMap = {}
-  commonReaderMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   @setterMap modifierMap = {}
   @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
@@ -559,7 +559,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mMapTypeName

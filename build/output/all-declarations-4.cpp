@@ -11384,23 +11384,23 @@ GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForType::extractObject (
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement_categoryGetterMapForBuildingContext::cMapElement_categoryGetterMapForBuildingContext (const GALGAS_lstring & inKey,
-                                                                                                  const GALGAS_categoryGetterMapForType & in_mCategoryReaderMapForType
+                                                                                                  const GALGAS_categoryGetterMapForType & in_mCategoryGetterMapForType
                                                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mCategoryReaderMapForType (in_mCategoryReaderMapForType) {
+mAttribute_mCategoryGetterMapForType (in_mCategoryGetterMapForType) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_categoryGetterMapForBuildingContext::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mCategoryReaderMapForType.isValid () ;
+  return mAttribute_lkey.isValid () && mAttribute_mCategoryGetterMapForType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_categoryGetterMapForBuildingContext::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_categoryGetterMapForBuildingContext (mAttribute_lkey, mAttribute_mCategoryReaderMapForType COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_categoryGetterMapForBuildingContext (mAttribute_lkey, mAttribute_mCategoryGetterMapForType COMMA_HERE)) ;
   return result ;
 }
 
@@ -11409,8 +11409,8 @@ cMapElement * cMapElement_categoryGetterMapForBuildingContext::copy (void) {
 void cMapElement_categoryGetterMapForBuildingContext::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mCategoryReaderMapForType" ":" ;
-  mAttribute_mCategoryReaderMapForType.description (ioString, inIndentation) ;
+  ioString << "mCategoryGetterMapForType" ":" ;
+  mAttribute_mCategoryGetterMapForType.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11419,7 +11419,7 @@ typeComparisonResult cMapElement_categoryGetterMapForBuildingContext::compare (c
   cMapElement_categoryGetterMapForBuildingContext * operand = (cMapElement_categoryGetterMapForBuildingContext *) inOperand ;
   typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mCategoryReaderMapForType.objectCompare (operand->mAttribute_mCategoryReaderMapForType) ;
+    result = mAttribute_mCategoryGetterMapForType.objectCompare (operand->mAttribute_mCategoryGetterMapForType) ;
   }
   return result ;
 }
@@ -11519,13 +11519,13 @@ void GALGAS_categoryGetterMapForBuildingContext::method_searchKey (GALGAS_lstrin
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
-    outArgument0 = p->mAttribute_mCategoryReaderMapForType ;
+    outArgument0 = p->mAttribute_mCategoryGetterMapForType ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForBuildingContext::reader_mCategoryReaderMapForTypeForKey (const GALGAS_string & inKey,
+GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForBuildingContext::reader_mCategoryGetterMapForTypeForKey (const GALGAS_string & inKey,
                                                                                                                     C_Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -11533,14 +11533,14 @@ GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForBuildingContext::read
   GALGAS_categoryGetterMapForType result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
-    result = p->mAttribute_mCategoryReaderMapForType ;
+    result = p->mAttribute_mCategoryGetterMapForType ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryGetterMapForBuildingContext::modifier_setMCategoryReaderMapForTypeForKey (GALGAS_categoryGetterMapForType inAttributeValue,
+void GALGAS_categoryGetterMapForBuildingContext::modifier_setMCategoryGetterMapForTypeForKey (GALGAS_categoryGetterMapForType inAttributeValue,
                                                                                               GALGAS_string inKey,
                                                                                               C_Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
@@ -11548,7 +11548,7 @@ void GALGAS_categoryGetterMapForBuildingContext::modifier_setMCategoryReaderMapF
   cMapElement_categoryGetterMapForBuildingContext * p = (cMapElement_categoryGetterMapForBuildingContext *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
-    p->mAttribute_mCategoryReaderMapForType = inAttributeValue ;
+    p->mAttribute_mCategoryGetterMapForType = inAttributeValue ;
   }
 }
 
@@ -11575,7 +11575,7 @@ cGenericAbstractEnumerator () {
 GALGAS_categoryGetterMapForBuildingContext_2D_element cEnumerator_categoryGetterMapForBuildingContext::current (LOCATION_ARGS) const {
   const cMapElement_categoryGetterMapForBuildingContext * p = (const cMapElement_categoryGetterMapForBuildingContext *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
-  return GALGAS_categoryGetterMapForBuildingContext_2D_element (p->mAttribute_lkey, p->mAttribute_mCategoryReaderMapForType) ;
+  return GALGAS_categoryGetterMapForBuildingContext_2D_element (p->mAttribute_lkey, p->mAttribute_mCategoryGetterMapForType) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11588,10 +11588,10 @@ GALGAS_lstring cEnumerator_categoryGetterMapForBuildingContext::current_lkey (LO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryGetterMapForType cEnumerator_categoryGetterMapForBuildingContext::current_mCategoryReaderMapForType (LOCATION_ARGS) const {
+GALGAS_categoryGetterMapForType cEnumerator_categoryGetterMapForBuildingContext::current_mCategoryGetterMapForType (LOCATION_ARGS) const {
   const cMapElement_categoryGetterMapForBuildingContext * p = (const cMapElement_categoryGetterMapForBuildingContext *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
-  return p->mAttribute_mCategoryReaderMapForType ;
+  return p->mAttribute_mCategoryGetterMapForType ;
 }
 
 

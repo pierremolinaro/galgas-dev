@@ -443,10 +443,10 @@ method @predefinedTypeAST getConstructorMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-method @predefinedTypeAST getReaderMap
+method @predefinedTypeAST getGetterMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@getterMap outReaderMap {
-  outReaderMap = @getterMap. emptyMap
+  !@getterMap outGetterMap {
+  outGetterMap = @getterMap. emptyMap
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

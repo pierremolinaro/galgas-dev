@@ -11,22 +11,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         Routine 'generateCategoryModifier'                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_generateCategoryModifier (const class GALGAS_string constinArgument0,
-                                       const class GALGAS_string constinArgument1,
-                                       const class GALGAS_string constinArgument2,
-                                       class GALGAS_stringset & ioArgument3,
-                                       const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                       const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                       class GALGAS_string & outArgument6,
-                                       class C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                          Routine 'generateCategoryMethod'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -43,11 +27,11 @@ void routine_generateCategoryMethod (const class GALGAS_unifiedTypeMap_2D_proxy 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Routine 'generateCategoryReader'                                           *
+//                                          Routine 'generateCategoryGetter'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_generateCategoryReader (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+void routine_generateCategoryGetter (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
                                      const class GALGAS_string constinArgument1,
                                      class GALGAS_stringset & ioArgument2,
                                      const class GALGAS_string constinArgument3,
@@ -958,12 +942,12 @@ typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationForGene
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
+void enterCategoryGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
                                                          categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inReader) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryReader_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
+class GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
                                                                        class C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -979,12 +963,12 @@ typedef class GALGAS_string (*categoryReaderSignature_semanticDeclarationForGene
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_appendTypeGenericImplementation (const int32_t inClassIndex,
+void enterCategoryGetter_appendTypeGenericImplementation (const int32_t inClassIndex,
                                                           categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inReader) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryReader_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+class GALGAS_string callCategoryGetter_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
                                                                         class C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 

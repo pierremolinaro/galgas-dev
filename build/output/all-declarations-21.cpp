@@ -6141,7 +6141,7 @@ GALGAS_categoryGetterMapForType_2D_element GALGAS_categoryGetterMapForType_2D_el
 
 GALGAS_categoryGetterMapForBuildingContext_2D_element::GALGAS_categoryGetterMapForBuildingContext_2D_element (void) :
 mAttribute_lkey (),
-mAttribute_mCategoryReaderMapForType () {
+mAttribute_mCategoryGetterMapForType () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6154,7 +6154,7 @@ GALGAS_categoryGetterMapForBuildingContext_2D_element::~ GALGAS_categoryGetterMa
 GALGAS_categoryGetterMapForBuildingContext_2D_element::GALGAS_categoryGetterMapForBuildingContext_2D_element (const GALGAS_lstring & inOperand0,
                                                                                                               const GALGAS_categoryGetterMapForType & inOperand1) :
 mAttribute_lkey (inOperand0),
-mAttribute_mCategoryReaderMapForType (inOperand1) {
+mAttribute_mCategoryGetterMapForType (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6184,7 +6184,7 @@ typeComparisonResult GALGAS_categoryGetterMapForBuildingContext_2D_element::obje
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mCategoryReaderMapForType.objectCompare (inOperand.mAttribute_mCategoryReaderMapForType) ;
+    result = mAttribute_mCategoryGetterMapForType.objectCompare (inOperand.mAttribute_mCategoryGetterMapForType) ;
   }
   return result ;
 }
@@ -6192,14 +6192,14 @@ typeComparisonResult GALGAS_categoryGetterMapForBuildingContext_2D_element::obje
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_categoryGetterMapForBuildingContext_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mCategoryReaderMapForType.isValid () ;
+  return mAttribute_lkey.isValid () && mAttribute_mCategoryGetterMapForType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_categoryGetterMapForBuildingContext_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
-  mAttribute_mCategoryReaderMapForType.drop () ;
+  mAttribute_mCategoryGetterMapForType.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6212,7 +6212,7 @@ void GALGAS_categoryGetterMapForBuildingContext_2D_element::description (C_Strin
   }else{
     mAttribute_lkey.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mCategoryReaderMapForType.description (ioString, inIndentation+1) ;
+    mAttribute_mCategoryGetterMapForType.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6225,8 +6225,8 @@ GALGAS_lstring GALGAS_categoryGetterMapForBuildingContext_2D_element::reader_lke
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForBuildingContext_2D_element::reader_mCategoryReaderMapForType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryReaderMapForType ;
+GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForBuildingContext_2D_element::reader_mCategoryGetterMapForType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mCategoryGetterMapForType ;
 }
 
 
@@ -13414,18 +13414,18 @@ void callCategoryMethod_generateExpression (const cPtr_semanticExpressionForGene
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression> gCategoryReaderTable_semanticExpressionForGeneration_isTrueExpression ;
+static TC_UniqueArray <categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression> gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryReader_isTrueExpression (const int32_t inClassIndex,
+void enterCategoryGetter_isTrueExpression (const int32_t inClassIndex,
                                            categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression inReader) {
-  gCategoryReaderTable_semanticExpressionForGeneration_isTrueExpression.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+  gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool callCategoryReader_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
+GALGAS_bool callCategoryGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   GALGAS_bool result ;
@@ -13435,18 +13435,18 @@ GALGAS_bool callCategoryReader_isTrueExpression (const cPtr_semanticExpressionFo
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticExpressionForGeneration_isTrueExpression.count ()) {
-      f = gCategoryReaderTable_semanticExpressionForGeneration_isTrueExpression (classIndex COMMA_HERE) ;
+    if (classIndex < gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression.count ()) {
+      f = gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticExpressionForGeneration_isTrueExpression.count ()) {
-           f = gCategoryReaderTable_semanticExpressionForGeneration_isTrueExpression (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression.count ()) {
+           f = gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryReaderTable_semanticExpressionForGeneration_isTrueExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -13471,21 +13471,21 @@ static GALGAS_bool categoryReader_semanticExpressionForGeneration_isTrueExpressi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryReader_semanticExpressionForGeneration_isTrueExpression (void) {
-  enterCategoryReader_isTrueExpression (kTypeDescriptor_GALGAS_semanticExpressionForGeneration.mSlotID,
+static void defineCategoryGetter_semanticExpressionForGeneration_isTrueExpression (void) {
+  enterCategoryGetter_isTrueExpression (kTypeDescriptor_GALGAS_semanticExpressionForGeneration.mSlotID,
                                         categoryReader_semanticExpressionForGeneration_isTrueExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryReader_semanticExpressionForGeneration_isTrueExpression (void) {
-  gCategoryReaderTable_semanticExpressionForGeneration_isTrueExpression.free () ;
+static void freeCategoryGetter_semanticExpressionForGeneration_isTrueExpression (void) {
+  gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticExpressionForGeneration_isTrueExpression (defineCategoryReader_semanticExpressionForGeneration_isTrueExpression,
-                                                                             freeCategoryReader_semanticExpressionForGeneration_isTrueExpression) ;
+C_PrologueEpilogue gReader_semanticExpressionForGeneration_isTrueExpression (defineCategoryGetter_semanticExpressionForGeneration_isTrueExpression,
+                                                                             freeCategoryGetter_semanticExpressionForGeneration_isTrueExpression) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

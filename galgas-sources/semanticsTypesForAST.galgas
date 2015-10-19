@@ -137,14 +137,14 @@ class @getterCallExpressionAST : @semanticExpressionAST {
 class @optionExpressionAST : @semanticExpressionAST {
   @lstring mOptionComponentName
   @lstring mOptionEntryName
-  @lstring mOptionReaderName
+  @lstring mOptionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
   @lstring mLexiqueComponentName
-  @lstring mLexiqueReaderName
+  @lstring mLexiqueGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -739,11 +739,11 @@ class @overridingAbstractCategoryModifierAST : @semanticDeclarationAST {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @abstractCategoryReaderAST : @semanticDeclarationAST {
+class @abstractCategoryGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mAbstractCategoryReaderName
-  @formalInputParameterListAST mAbstractCategoryReaderFormalInputParameterList
-  @lstring mAbstractCategoryReaderReturnedTypeName
+  @lstring mAbstractCategoryGetterName
+  @formalInputParameterListAST mAbstractCategoryGetterFormalInputParameterList
+  @lstring mAbstractCategoryGetterReturnedTypeName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -754,11 +754,11 @@ class @abstractCategoryReaderAST : @semanticDeclarationAST {
 
 class @categoryGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mCategoryReaderName
-  @formalInputParameterListAST mCategoryReaderFormalInputParameterList
-  @lstring mCategoryReaderReturnedTypeName
-  @lstring mCategoryReaderReturnedVariableName
-  @semanticInstructionListAST mCategoryReaderInstructionList
+  @lstring mCategoryGetterName
+  @formalInputParameterListAST mCategoryGetterFormalInputParameterList
+  @lstring mCategoryGetterReturnedTypeName
+  @lstring mCategoryGetterReturnedVariableName
+  @semanticInstructionListAST mCategoryGetterInstructionList
   @location mEndOfReaderLocation
 }
 
@@ -768,13 +768,13 @@ class @categoryGetterAST : @semanticDeclarationAST {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingCategoryReaderAST : @semanticDeclarationAST {
+class @overridingCategoryGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mOverridingCategoryReaderName
-  @formalInputParameterListAST mOverridingCategoryReaderFormalInputParameterList
-  @lstring mOverridingCategoryReaderReturnedTypeName
-  @lstring mOverridingCategoryReaderReturnedVariableName
-  @semanticInstructionListAST mOverridingCategoryReaderInstructionList
+  @lstring mOverridingCategoryGetterName
+  @formalInputParameterListAST mOverridingCategoryGetterFormalInputParameterList
+  @lstring mOverridingCategoryGetterReturnedTypeName
+  @lstring mOverridingCategoryGetterReturnedVariableName
+  @semanticInstructionListAST mOverridingCategoryGetterInstructionList
   @location mEndOfReaderLocation
 }
 
@@ -784,11 +784,11 @@ class @overridingCategoryReaderAST : @semanticDeclarationAST {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingAbstractCategoryReaderAST : @semanticDeclarationAST {
+class @overridingAbstractCategoryGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mAbstractCategoryReaderName
-  @formalInputParameterListAST mAbstractCategoryReaderFormalInputParameterList
-  @lstring mAbstractCategoryReaderReturnedTypeName
+  @lstring mAbstractCategoryGetterName
+  @formalInputParameterListAST mAbstractCategoryGetterFormalInputParameterList
+  @lstring mAbstractCategoryGetterReturnedTypeName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -963,7 +963,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
   @string mCppPreDeclarationCode
   @string mCppClassCode
   @externTypeConstructorList mExternTypeConstructorList
-  @externTypeReaderList mExternTypeReaderList
+  @externTypeGetterList mExternTypeGetterList
   @externTypeModifierList mExternTypeModifierList
   @externTypeMethodList mExternTypeMethodList
 }
@@ -986,7 +986,7 @@ list @externTypeConstructorList {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-list @externTypeReaderList {
+list @externTypeGetterList {
   @lstring mGetterName
   @lstring mResultTypeName
   @typeNameFormalParameterNameList mParameterList

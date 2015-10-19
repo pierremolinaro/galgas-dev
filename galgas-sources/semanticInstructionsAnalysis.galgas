@@ -971,9 +971,9 @@ proc checkExpressionIsBoolean
   else
     with "bool" in [expressionType mGetterMap]  do
       if mReturnedType != boolType then
-        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' reader, but it does not return a '@bool' value" : outExpression
+        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" : outExpression
       elsif [mArgumentTypeList length] > 0 then
-        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' reader that requires argument(s)" : outExpression
+        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter that requires argument(s)" : outExpression
       elsif mErrorMessage != "" then
         error inErrorLocation : mErrorMessage : outExpression
       else
@@ -982,7 +982,7 @@ proc checkExpressionIsBoolean
           !inErrorLocation
           !mKind
           !inExpression
-          !@stringlist. emptyList
+          !{}
           !"bool"
           !@semanticExpressionListForGeneration. emptyList
           !mHasCompilerArgument}
@@ -990,7 +990,7 @@ proc checkExpressionIsBoolean
     else
       if [[expressionType mGetterMap] count] == 0 then
         error inErrorLocation
-        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' reader"
+        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' getter"
         : outExpression
       else
         @string s = ""
@@ -1002,8 +1002,8 @@ proc checkExpressionIsBoolean
           s += " -> @" + [mReturnedType key]
         end
         error inErrorLocation
-        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' reader; available "
-        + if [[expressionType mGetterMap] count] > 1 then "readers are" else "reader is" end
+        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' getter; available "
+        + if [[expressionType mGetterMap] count] > 1 then "getters are" else "getter is" end
         + ":" + s
         : outExpression
       end

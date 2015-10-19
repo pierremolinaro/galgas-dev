@@ -58,7 +58,7 @@ override method @listDeclarationAST enterDeclarationInGraph
 
 override method @listDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Handle attributes
@@ -107,7 +107,7 @@ override method @listDeclarationAST enterInSemanticContext
     !listTypeIndex
   ]
 #--- Readers
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -122,8 +122,8 @@ override method @listDeclarationAST enterInSemanticContext
     !returnedTypeName:"range"
     !false
   )
-  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" !"inIndex" !returnedTypeName:[mListTypeName string] !true )
-  enterBaseReaderWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"range" !"inRange" !returnedTypeName:[mListTypeName string] !true )
+  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" !"inIndex" !returnedTypeName:[mListTypeName string] !true )
+  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"range" !"inRange" !returnedTypeName:[mListTypeName string] !true )
   for () in typedAttributeList do
     if mHasGetter then
       [!?getterMap insertOrReplace
@@ -219,7 +219,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mListTypeName

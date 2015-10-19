@@ -95,7 +95,7 @@ override method @sortedListDeclarationAST addAssociatedElement
 
 override method @sortedListDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Type index
@@ -130,7 +130,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !listTypeIndex
   ]
 #--- Readers
-  commonReaderMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -183,7 +183,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 #--- Add Categories
   addCategories (
     !inCategoryMethodMapForBuildingContext
-    !inCategoryReaderMapForBuildingContext
+    !inCategoryGetterMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
     !mSortedListTypeName

@@ -1859,16 +1859,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                             @externTypeReaderList list                                              *
+//                                             @externTypeGetterList list                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_externTypeReaderList : public AC_GALGAS_list {
+class GALGAS_externTypeGetterList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_externTypeReaderList (void) ;
+  public : GALGAS_externTypeGetterList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_externTypeReaderList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_externTypeGetterList (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -1883,20 +1883,20 @@ class GALGAS_externTypeReaderList : public AC_GALGAS_list {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_externTypeReaderList extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_externTypeGetterList extractObject (const GALGAS_object & inObject,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_externTypeReaderList constructor_emptyList (LOCATION_ARGS) ;
+  public : static GALGAS_externTypeGetterList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_externTypeReaderList constructor_listWithValue (const class GALGAS_lstring & inOperand0,
+  public : static GALGAS_externTypeGetterList constructor_listWithValue (const class GALGAS_lstring & inOperand0,
                                                                          const class GALGAS_lstring & inOperand1,
                                                                          const class GALGAS_typeNameFormalParameterNameList & inOperand2
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_externTypeReaderList inOperand
+  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_externTypeGetterList inOperand
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -1905,11 +1905,11 @@ class GALGAS_externTypeReaderList : public AC_GALGAS_list {
                                                       const class GALGAS_typeNameFormalParameterNameList & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_externTypeReaderList operator_concat (const GALGAS_externTypeReaderList & inOperand
+  public : VIRTUAL_IN_DEBUG GALGAS_externTypeGetterList operator_concat (const GALGAS_externTypeGetterList & inOperand
                                                                          COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- + operator
-  public : VIRTUAL_IN_DEBUG GALGAS_externTypeReaderList add_operation (const GALGAS_externTypeReaderList & inOperand,
+  public : VIRTUAL_IN_DEBUG GALGAS_externTypeGetterList add_operation (const GALGAS_externTypeGetterList & inOperand,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
@@ -1970,11 +1970,11 @@ class GALGAS_externTypeReaderList : public AC_GALGAS_list {
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_externTypeReaderList reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
+  public : VIRTUAL_IN_DEBUG class GALGAS_externTypeGetterList reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_externTypeReaderList reader_subListWithRange (const class GALGAS_range & constinOperand0,
+  public : VIRTUAL_IN_DEBUG class GALGAS_externTypeGetterList reader_subListWithRange (const class GALGAS_range & constinOperand0,
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
@@ -1983,16 +1983,16 @@ class GALGAS_externTypeReaderList : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
 
-  friend class cEnumerator_externTypeReaderList ;
+  friend class cEnumerator_externTypeGetterList ;
  
-} ; // End of GALGAS_externTypeReaderList class
+} ; // End of GALGAS_externTypeGetterList class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_externTypeReaderList : public cGenericAbstractEnumerator {
-  public : cEnumerator_externTypeReaderList (const GALGAS_externTypeReaderList & inEnumeratedObject,
+class cEnumerator_externTypeGetterList : public cGenericAbstractEnumerator {
+  public : cEnumerator_externTypeGetterList (const GALGAS_externTypeGetterList & inEnumeratedObject,
                                              const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
@@ -2000,20 +2000,20 @@ class cEnumerator_externTypeReaderList : public cGenericAbstractEnumerator {
   public : class GALGAS_lstring current_mResultTypeName (LOCATION_ARGS) const ;
   public : class GALGAS_typeNameFormalParameterNameList current_mParameterList (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_externTypeReaderList_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_externTypeGetterList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeReaderList ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterList ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       @externTypeReaderList_2D_element struct                                       *
+//                                       @externTypeGetterList_2D_element struct                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_externTypeReaderList_2D_element : public AC_GALGAS_root {
+class GALGAS_externTypeGetterList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_mGetterName ;
   public : GALGAS_lstring mAttribute_mResultTypeName ;
@@ -2025,16 +2025,16 @@ class GALGAS_externTypeReaderList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_externTypeReaderList_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_externTypeGetterList_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_externTypeReaderList_2D_element (void) ;
+  public : GALGAS_externTypeGetterList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_externTypeReaderList_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_externTypeGetterList_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_externTypeReaderList_2D_element (const GALGAS_lstring & in_mGetterName,
+  public : GALGAS_externTypeGetterList_2D_element (const GALGAS_lstring & in_mGetterName,
                                                    const GALGAS_lstring & in_mResultTypeName,
                                                    const GALGAS_typeNameFormalParameterNameList & in_mParameterList) ;
 
@@ -2044,12 +2044,12 @@ class GALGAS_externTypeReaderList_2D_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_externTypeReaderList_2D_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_externTypeGetterList_2D_element extractObject (const GALGAS_object & inObject,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_externTypeReaderList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+  public : static GALGAS_externTypeGetterList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                           const class GALGAS_lstring & inOperand1,
                                                                           const class GALGAS_typeNameFormalParameterNameList & inOperand2
                                                                           COMMA_LOCATION_ARGS) ;
@@ -2058,7 +2058,7 @@ class GALGAS_externTypeReaderList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_externTypeReaderList_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_externTypeGetterList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2076,12 +2076,12 @@ class GALGAS_externTypeReaderList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_externTypeReaderList_2D_element class
+} ; // End of GALGAS_externTypeGetterList_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeReaderList_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterList_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
