@@ -1872,7 +1872,7 @@ class GALGAS_externTypeReaderList : public AC_GALGAS_list {
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                  const class GALGAS_lstring & in_mReaderName,
+                                                  const class GALGAS_lstring & in_mGetterName,
                                                   const class GALGAS_lstring & in_mResultTypeName,
                                                   const class GALGAS_typeNameFormalParameterNameList & in_mParameterList
                                                   COMMA_LOCATION_ARGS) ;
@@ -1958,13 +1958,13 @@ class GALGAS_externTypeReaderList : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mGetterNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_typeNameFormalParameterNameList reader_mParameterListAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                                        C_Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mReaderNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mResultTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                 C_Compiler * inCompiler
@@ -1996,7 +1996,7 @@ class cEnumerator_externTypeReaderList : public cGenericAbstractEnumerator {
                                              const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
-  public : class GALGAS_lstring current_mReaderName (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mGetterName (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mResultTypeName (LOCATION_ARGS) const ;
   public : class GALGAS_typeNameFormalParameterNameList current_mParameterList (LOCATION_ARGS) const ;
 //--- Current element access
@@ -2015,7 +2015,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeReaderLis
 
 class GALGAS_externTypeReaderList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mReaderName ;
+  public : GALGAS_lstring mAttribute_mGetterName ;
   public : GALGAS_lstring mAttribute_mResultTypeName ;
   public : GALGAS_typeNameFormalParameterNameList mAttribute_mParameterList ;
 
@@ -2034,7 +2034,7 @@ class GALGAS_externTypeReaderList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG ~ GALGAS_externTypeReaderList_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_externTypeReaderList_2D_element (const GALGAS_lstring & in_mReaderName,
+  public : GALGAS_externTypeReaderList_2D_element (const GALGAS_lstring & in_mGetterName,
                                                    const GALGAS_lstring & in_mResultTypeName,
                                                    const GALGAS_typeNameFormalParameterNameList & in_mParameterList) ;
 
@@ -2066,9 +2066,9 @@ class GALGAS_externTypeReaderList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_typeNameFormalParameterNameList reader_mParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mGetterName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_typeNameFormalParameterNameList reader_mParameterList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mResultTypeName (LOCATION_ARGS) const ;
 

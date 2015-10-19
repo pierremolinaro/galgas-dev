@@ -301,7 +301,7 @@ end
 %
 //--------------------------------- Getters
 %
-for () in READER_MAP do
+for () in GETTER_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public : VIRTUAL_IN_DEBUG class GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![[lkey string] identifierRepresentation] % (%?^

@@ -298,7 +298,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
   GALGAS_stringlist var_candidateProjectFiles = var_parentDirectory.reader_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 67)) ;
   const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 68)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
-    GALGAS_location location_2 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' reader
+    GALGAS_location location_2 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_2, GALGAS_string ("no project file in parent directory of source file")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 69)) ;
   }else if (kBoolFalse == test_1) {
     const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 70)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
@@ -310,7 +310,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
           "  - ").add_operation (enumerator_4461.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 73))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 73)) ;
         enumerator_4461.gotoNextObject () ;
       }
-      GALGAS_location location_4 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' reader
+      GALGAS_location location_4 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_4, var_s  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 75)) ;
     }else if (kBoolFalse == test_3) {
       GALGAS_string var_projectFilePath = var_parentDirectory.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)).add_operation (var_candidateProjectFiles.reader_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)) ;
@@ -4384,7 +4384,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationAST_enterInSemanticContext (NULL,
 
 void callCategoryMethod_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                 const GALGAS_categoryMethodMapForBuildingContext constin_inCategoryMethodMapForBuildingContext,
-                                                const GALGAS_categoryReaderMapForBuildingContext constin_inCategoryReaderMapForBuildingContext,
+                                                const GALGAS_categoryGetterMapForBuildingContext constin_inCategoryReaderMapForBuildingContext,
                                                 const GALGAS_categoryModifierMapForBuildingContext constin_inCategoryModifierMapForBuildingContext,
                                                 GALGAS_semanticContext & io_ioSemanticContext,
                                                 C_Compiler * inCompiler
@@ -4537,7 +4537,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationAST_enterDeclarationInGraph (NULL,
 void callCategoryMethod_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
                                                  GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
                                                  GALGAS_categoryMethodMapForBuildingContext & io_ioCategoryMethodMapForBuildingContext,
-                                                 GALGAS_categoryReaderMapForBuildingContext & io_ioCategoryReaderMapForBuildingContext,
+                                                 GALGAS_categoryGetterMapForBuildingContext & io_ioCategoryGetterMapForBuildingContext,
                                                  GALGAS_categoryModifierMapForBuildingContext & io_ioCategoryModifierMapForBuildingContext,
                                                  GALGAS_semanticDeclarationListAST & io_ioCategoryOverrideDefinitionList,
                                                  C_Compiler * inCompiler
@@ -4565,7 +4565,7 @@ void callCategoryMethod_enterDeclarationInGraph (const cPtr_semanticDeclarationA
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioSemanticTypePrecedenceGraph, io_ioCategoryMethodMapForBuildingContext, io_ioCategoryReaderMapForBuildingContext, io_ioCategoryModifierMapForBuildingContext, io_ioCategoryOverrideDefinitionList, inCompiler COMMA_THERE) ;
+      f (inObject, io_ioSemanticTypePrecedenceGraph, io_ioCategoryMethodMapForBuildingContext, io_ioCategoryGetterMapForBuildingContext, io_ioCategoryModifierMapForBuildingContext, io_ioCategoryOverrideDefinitionList, inCompiler COMMA_THERE) ;
     }
   }
 }

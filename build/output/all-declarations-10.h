@@ -88,7 +88,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                   const class GALGAS_bool & in_IS_5F_CONCRETE,
                                                                                   const class GALGAS_constructorMap & in_CONSTRUCTOR_5F_MAP,
-                                                                                  const class GALGAS_getterMap & in_READER_5F_MAP,
+                                                                                  const class GALGAS_getterMap & in_GETTER_5F_MAP,
                                                                                   const class GALGAS_setterMap & in_MODIFIER_5F_MAP,
                                                                                   const class GALGAS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
                                                                                   const class GALGAS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
@@ -319,68 +319,68 @@ extern const cDirectoryWrapper gWrapperDirectory_0_semanticComponentGenerationTe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryReaderDeclaration'             *
+//            Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryGetterDeclaration'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryReaderDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryGetterDeclaration (class C_Compiler * inCompiler,
                                                                                                          const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                         const class GALGAS_string & in_READER_5F_NAME,
+                                                                                                         const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                          const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
                                                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryReaderImplementation'           *
+//           Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryGetterImplementation'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryReaderImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryGetterImplementation (class C_Compiler * inCompiler,
                                                                                                             const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                            const class GALGAS_string & in_READER_5F_NAME,
+                                                                                                            const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                             const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
                                                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
                                                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Filewrapper template 'semanticComponentGenerationTemplate categoryReaderDeclaration'                 *
+//                Filewrapper template 'semanticComponentGenerationTemplate categoryGetterDeclaration'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryReaderDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterDeclaration (class C_Compiler * inCompiler,
                                                                                                  const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                 const class GALGAS_string & in_READER_5F_NAME,
+                                                                                                 const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                  const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
                                                                                                  const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Filewrapper template 'semanticComponentGenerationTemplate categoryReaderImplementation'               *
+//               Filewrapper template 'semanticComponentGenerationTemplate categoryGetterImplementation'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryReaderImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterImplementation (class C_Compiler * inCompiler,
                                                                                                     const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                    const class GALGAS_string & in_READER_5F_NAME,
+                                                                                                    const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                     const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
                                                                                                     const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE,
-                                                                                                    const class GALGAS_string & in_READER_5F_IMPLEMENTATION
+                                                                                                    const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION
                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Filewrapper template 'semanticComponentGenerationTemplate overridingCategoryReaderImplementation'          *
+//          Filewrapper template 'semanticComponentGenerationTemplate overridingCategoryGetterImplementation'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryReaderImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryGetterImplementation (class C_Compiler * inCompiler,
                                                                                                               const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                              const class GALGAS_string & in_READER_5F_NAME,
+                                                                                                              const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                               const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE,
-                                                                                                              const class GALGAS_string & in_READER_5F_IMPLEMENTATION
+                                                                                                              const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION
                                                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -532,26 +532,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Filewrapper template 'semanticComponentGenerationTemplate categoryReaderAsFunctionDeclaration'            *
+//           Filewrapper template 'semanticComponentGenerationTemplate categoryGetterAsFunctionDeclaration'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryReaderAsFunctionDeclaration (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterAsFunctionDeclaration (class C_Compiler * inCompiler,
                                                                                                            const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                                           const class GALGAS_string & in_READER_5F_NAME,
+                                                                                                           const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                            const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
                                                                                                            const class GALGAS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Filewrapper template 'semanticComponentGenerationTemplate categoryReaderAsFunctionImplementation'          *
+//          Filewrapper template 'semanticComponentGenerationTemplate categoryGetterAsFunctionImplementation'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryReaderAsFunctionImplementation (class C_Compiler * inCompiler,
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGetterAsFunctionImplementation (class C_Compiler * inCompiler,
                                                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                                              const class GALGAS_string & in_READER_5F_NAME,
+                                                                                                              const class GALGAS_string & in_GETTER_5F_NAME,
                                                                                                               const class GALGAS_string & in_FUNCTION_5F_IMPLEMENTATION
                                                                                                               COMMA_LOCATION_ARGS) ;
 

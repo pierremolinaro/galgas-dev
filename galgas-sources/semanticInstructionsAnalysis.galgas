@@ -969,7 +969,7 @@ proc checkExpressionIsBoolean
       : outExpression
     end
   else
-    with "bool" in [expressionType mReaderMap]  do
+    with "bool" in [expressionType mGetterMap]  do
       if mReturnedType != boolType then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' reader, but it does not return a '@bool' value" : outExpression
       elsif [mArgumentTypeList length] > 0 then
@@ -977,7 +977,7 @@ proc checkExpressionIsBoolean
       elsif mErrorMessage != "" then
         error inErrorLocation : mErrorMessage : outExpression
       else
-        outExpression = @readerCallExpressionForGeneration.new {
+        outExpression = @getterCallExpressionForGeneration.new {
           !boolType
           !inErrorLocation
           !mKind
@@ -988,13 +988,13 @@ proc checkExpressionIsBoolean
           !mHasCompilerArgument}
       end
     else
-      if [[expressionType mReaderMap] count] == 0 then
+      if [[expressionType mGetterMap] count] == 0 then
         error inErrorLocation
         : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' reader"
         : outExpression
       else
         @string s = ""
-        for () in [expressionType mReaderMap] do
+        for () in [expressionType mGetterMap] do
           s += "\n  - " + lkey
           for () in mArgumentTypeList do
             s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
@@ -1003,7 +1003,7 @@ proc checkExpressionIsBoolean
         end
         error inErrorLocation
         : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' reader; available "
-        + if [[expressionType mReaderMap] count] > 1 then "readers are" else "reader is" end
+        + if [[expressionType mGetterMap] count] > 1 then "readers are" else "reader is" end
         + ":" + s
         : outExpression
       end

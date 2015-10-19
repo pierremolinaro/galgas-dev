@@ -2326,6 +2326,11 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
+  public : VIRTUAL_IN_DEBUG void modifier_setMGetterMapForKey (class GALGAS_getterMap constinArgument0,
+                                                               class GALGAS_string constinArgument1,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void modifier_setMHandledOperatorFlagsForKey (class GALGAS_uint constinArgument0,
                                                                           class GALGAS_string constinArgument1,
                                                                           C_Compiler * inCompiler
@@ -2370,11 +2375,6 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                  class GALGAS_string constinArgument1,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void modifier_setMReaderMapForKey (class GALGAS_getterMap constinArgument0,
-                                                               class GALGAS_string constinArgument1,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void modifier_setMSuperTypeForKey (class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
                                                                class GALGAS_string constinArgument1,
@@ -2479,6 +2479,10 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                           C_Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_getterMap reader_mGetterMapForKey (const class GALGAS_string & constinOperand0,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mHandledOperatorFlagsForKey (const class GALGAS_string & constinOperand0,
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const ;
@@ -2514,10 +2518,6 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
   public : VIRTUAL_IN_DEBUG class GALGAS_setterMap reader_mModifierMapForKey (const class GALGAS_string & constinOperand0,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_getterMap reader_mReaderMapForKey (const class GALGAS_string & constinOperand0,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSuperTypeForKey (const class GALGAS_string & constinOperand0,
                                                                                           C_Compiler * inCompiler
@@ -2567,7 +2567,7 @@ class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
   public : class GALGAS_attributeMap current_mAttributeMap (LOCATION_ARGS) const ;
   public : class GALGAS_typedPropertyList current_mCurrentTypedAttributeList (LOCATION_ARGS) const ;
   public : class GALGAS_constructorMap current_mConstructorMap (LOCATION_ARGS) const ;
-  public : class GALGAS_getterMap current_mReaderMap (LOCATION_ARGS) const ;
+  public : class GALGAS_getterMap current_mGetterMap (LOCATION_ARGS) const ;
   public : class GALGAS_setterMap current_mModifierMap (LOCATION_ARGS) const ;
   public : class GALGAS_instanceMethodMap current_mInstanceMethodMap (LOCATION_ARGS) const ;
   public : class GALGAS_classMethodMap current_mClassMethodMap (LOCATION_ARGS) const ;
@@ -2607,7 +2607,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
   public : GALGAS_attributeMap mAttribute_mAttributeMap ;
   public : GALGAS_typedPropertyList mAttribute_mCurrentTypedAttributeList ;
   public : GALGAS_constructorMap mAttribute_mConstructorMap ;
-  public : GALGAS_getterMap mAttribute_mReaderMap ;
+  public : GALGAS_getterMap mAttribute_mGetterMap ;
   public : GALGAS_setterMap mAttribute_mModifierMap ;
   public : GALGAS_instanceMethodMap mAttribute_mInstanceMethodMap ;
   public : GALGAS_classMethodMap mAttribute_mClassMethodMap ;
@@ -2636,7 +2636,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
                                        const GALGAS_attributeMap & in_mAttributeMap,
                                        const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
                                        const GALGAS_constructorMap & in_mConstructorMap,
-                                       const GALGAS_getterMap & in_mReaderMap,
+                                       const GALGAS_getterMap & in_mGetterMap,
                                        const GALGAS_setterMap & in_mModifierMap,
                                        const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
                                        const GALGAS_classMethodMap & in_mClassMethodMap,
@@ -6551,21 +6551,21 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryModifierMap
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            @categoryReaderMapForType map                                            *
+//                                            @categoryGetterMapForType map                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryReaderMapForType ;
+class cMapElement_categoryGetterMapForType ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryReaderMapForType : public AC_GALGAS_map {
+class GALGAS_categoryGetterMapForType : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public : GALGAS_categoryReaderMapForType (void) ;
+  public : GALGAS_categoryGetterMapForType (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_categoryReaderMapForType (const GALGAS_categoryReaderMapForType & inSource) ;
-  public : GALGAS_categoryReaderMapForType & operator = (const GALGAS_categoryReaderMapForType & inSource) ;
+  public : GALGAS_categoryGetterMapForType (const GALGAS_categoryGetterMapForType & inSource) ;
+  public : GALGAS_categoryGetterMapForType & operator = (const GALGAS_categoryGetterMapForType & inSource) ;
 
 //-- Start of generic part --*
 
@@ -6573,14 +6573,14 @@ class GALGAS_categoryReaderMapForType : public AC_GALGAS_map {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryReaderMapForType extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_categoryGetterMapForType extractObject (const GALGAS_object & inObject,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryReaderMapForType constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_categoryGetterMapForType constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_categoryReaderMapForType constructor_mapWithMapToOverride (const class GALGAS_categoryReaderMapForType & inOperand0
+  public : static GALGAS_categoryGetterMapForType constructor_mapWithMapToOverride (const class GALGAS_categoryGetterMapForType & inOperand0
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -6620,28 +6620,28 @@ class GALGAS_categoryReaderMapForType : public AC_GALGAS_map {
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryReaderMapForType reader_overriddenMap (C_Compiler * inCompiler
+  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForType reader_overriddenMap (C_Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_categoryReaderMapForType * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public : VIRTUAL_IN_DEBUG cMapElement_categoryGetterMapForType * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                       const GALGAS_string & inKey
                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_categoryReaderMapForType ;
+  friend class cEnumerator_categoryGetterMapForType ;
  
-} ; // End of GALGAS_categoryReaderMapForType class
+} ; // End of GALGAS_categoryGetterMapForType class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_categoryReaderMapForType : public cGenericAbstractEnumerator {
-  public : cEnumerator_categoryReaderMapForType (const GALGAS_categoryReaderMapForType & inEnumeratedObject,
+class cEnumerator_categoryGetterMapForType : public cGenericAbstractEnumerator {
+  public : cEnumerator_categoryGetterMapForType (const GALGAS_categoryGetterMapForType & inEnumeratedObject,
                                                  const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
@@ -6649,26 +6649,26 @@ class cEnumerator_categoryReaderMapForType : public cGenericAbstractEnumerator {
   public : class GALGAS_lstring current_mResultTypeName (LOCATION_ARGS) const ;
   public : class GALGAS_formalInputParameterListAST current_mInputFormalParameterList (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_categoryReaderMapForType_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_categoryGetterMapForType_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryReaderMapForType ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapForType ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Class for element of '@categoryReaderMapForType' map                                 *
+//                                Class for element of '@categoryGetterMapForType' map                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryReaderMapForType : public cMapElement {
+class cMapElement_categoryGetterMapForType : public cMapElement {
 //--- Map attributes
   public : GALGAS_lstring mAttribute_mResultTypeName ;
   public : GALGAS_formalInputParameterListAST mAttribute_mInputFormalParameterList ;
 
 //--- Constructor
-  public : cMapElement_categoryReaderMapForType (const GALGAS_lstring & inKey,
+  public : cMapElement_categoryGetterMapForType (const GALGAS_lstring & inKey,
                                                  const GALGAS_lstring & in_mResultTypeName,
                                                  const GALGAS_formalInputParameterListAST & in_mInputFormalParameterList
                                                  COMMA_LOCATION_ARGS) ;
@@ -6688,11 +6688,11 @@ class cMapElement_categoryReaderMapForType : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     @categoryReaderMapForType_2D_element struct                                     *
+//                                     @categoryGetterMapForType_2D_element struct                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryReaderMapForType_2D_element : public AC_GALGAS_root {
+class GALGAS_categoryGetterMapForType_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
   public : GALGAS_lstring mAttribute_mResultTypeName ;
@@ -6704,16 +6704,16 @@ class GALGAS_categoryReaderMapForType_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_categoryReaderMapForType_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_categoryGetterMapForType_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_categoryReaderMapForType_2D_element (void) ;
+  public : GALGAS_categoryGetterMapForType_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryReaderMapForType_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryGetterMapForType_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_categoryReaderMapForType_2D_element (const GALGAS_lstring & in_lkey,
+  public : GALGAS_categoryGetterMapForType_2D_element (const GALGAS_lstring & in_lkey,
                                                        const GALGAS_lstring & in_mResultTypeName,
                                                        const GALGAS_formalInputParameterListAST & in_mInputFormalParameterList) ;
 
@@ -6723,12 +6723,12 @@ class GALGAS_categoryReaderMapForType_2D_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryReaderMapForType_2D_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_categoryGetterMapForType_2D_element extractObject (const GALGAS_object & inObject,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryReaderMapForType_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+  public : static GALGAS_categoryGetterMapForType_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                               const class GALGAS_lstring & inOperand1,
                                                                               const class GALGAS_formalInputParameterListAST & inOperand2
                                                                               COMMA_LOCATION_ARGS) ;
@@ -6737,7 +6737,7 @@ class GALGAS_categoryReaderMapForType_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_categoryReaderMapForType_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_categoryGetterMapForType_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6755,34 +6755,34 @@ class GALGAS_categoryReaderMapForType_2D_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_categoryReaderMapForType_2D_element class
+} ; // End of GALGAS_categoryGetterMapForType_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryReaderMapForType_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapForType_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @categoryReaderMapForBuildingContext map                                       *
+//                                      @categoryGetterMapForBuildingContext map                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryReaderMapForBuildingContext ;
+class cMapElement_categoryGetterMapForBuildingContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const char * kSearchErrorMessage_categoryReaderMapForBuildingContext_searchKey ;
+extern const char * kSearchErrorMessage_categoryGetterMapForBuildingContext_searchKey ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryReaderMapForBuildingContext : public AC_GALGAS_map {
+class GALGAS_categoryGetterMapForBuildingContext : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public : GALGAS_categoryReaderMapForBuildingContext (void) ;
+  public : GALGAS_categoryGetterMapForBuildingContext (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_categoryReaderMapForBuildingContext (const GALGAS_categoryReaderMapForBuildingContext & inSource) ;
-  public : GALGAS_categoryReaderMapForBuildingContext & operator = (const GALGAS_categoryReaderMapForBuildingContext & inSource) ;
+  public : GALGAS_categoryGetterMapForBuildingContext (const GALGAS_categoryGetterMapForBuildingContext & inSource) ;
+  public : GALGAS_categoryGetterMapForBuildingContext & operator = (const GALGAS_categoryGetterMapForBuildingContext & inSource) ;
 
 //-- Start of generic part --*
 
@@ -6790,29 +6790,29 @@ class GALGAS_categoryReaderMapForBuildingContext : public AC_GALGAS_map {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryReaderMapForBuildingContext extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_categoryGetterMapForBuildingContext extractObject (const GALGAS_object & inObject,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryReaderMapForBuildingContext constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_categoryGetterMapForBuildingContext constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_categoryReaderMapForBuildingContext constructor_mapWithMapToOverride (const class GALGAS_categoryReaderMapForBuildingContext & inOperand0
+  public : static GALGAS_categoryGetterMapForBuildingContext constructor_mapWithMapToOverride (const class GALGAS_categoryGetterMapForBuildingContext & inOperand0
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                      const class GALGAS_categoryReaderMapForType & inOperand1,
+                                                      const class GALGAS_categoryGetterMapForType & inOperand1,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
-                                                     class GALGAS_categoryReaderMapForType constinArgument1,
+                                                     class GALGAS_categoryGetterMapForType constinArgument1,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMCategoryReaderMapForTypeForKey (class GALGAS_categoryReaderMapForType constinArgument0,
+  public : VIRTUAL_IN_DEBUG void modifier_setMCategoryReaderMapForTypeForKey (class GALGAS_categoryGetterMapForType constinArgument0,
                                                                               class GALGAS_string constinArgument1,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
@@ -6820,65 +6820,65 @@ class GALGAS_categoryReaderMapForBuildingContext : public AC_GALGAS_map {
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_categoryReaderMapForType & outArgument1,
+                                                   class GALGAS_categoryGetterMapForType & outArgument1,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryReaderMapForType reader_mCategoryReaderMapForTypeForKey (const class GALGAS_string & constinOperand0,
+  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForType reader_mCategoryReaderMapForTypeForKey (const class GALGAS_string & constinOperand0,
                                                                                                           C_Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryReaderMapForBuildingContext reader_overriddenMap (C_Compiler * inCompiler
+  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForBuildingContext reader_overriddenMap (C_Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_categoryReaderMapForBuildingContext * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+  public : VIRTUAL_IN_DEBUG cMapElement_categoryGetterMapForBuildingContext * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                                  const GALGAS_string & inKey
                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_categoryReaderMapForBuildingContext ;
+  friend class cEnumerator_categoryGetterMapForBuildingContext ;
  
-} ; // End of GALGAS_categoryReaderMapForBuildingContext class
+} ; // End of GALGAS_categoryGetterMapForBuildingContext class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_categoryReaderMapForBuildingContext : public cGenericAbstractEnumerator {
-  public : cEnumerator_categoryReaderMapForBuildingContext (const GALGAS_categoryReaderMapForBuildingContext & inEnumeratedObject,
+class cEnumerator_categoryGetterMapForBuildingContext : public cGenericAbstractEnumerator {
+  public : cEnumerator_categoryGetterMapForBuildingContext (const GALGAS_categoryGetterMapForBuildingContext & inEnumeratedObject,
                                                             const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public : class GALGAS_categoryReaderMapForType current_mCategoryReaderMapForType (LOCATION_ARGS) const ;
+  public : class GALGAS_categoryGetterMapForType current_mCategoryReaderMapForType (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_categoryReaderMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_categoryGetterMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryReaderMapForBuildingContext ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapForBuildingContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Class for element of '@categoryReaderMapForBuildingContext' map                           *
+//                           Class for element of '@categoryGetterMapForBuildingContext' map                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryReaderMapForBuildingContext : public cMapElement {
+class cMapElement_categoryGetterMapForBuildingContext : public cMapElement {
 //--- Map attributes
-  public : GALGAS_categoryReaderMapForType mAttribute_mCategoryReaderMapForType ;
+  public : GALGAS_categoryGetterMapForType mAttribute_mCategoryReaderMapForType ;
 
 //--- Constructor
-  public : cMapElement_categoryReaderMapForBuildingContext (const GALGAS_lstring & inKey,
-                                                            const GALGAS_categoryReaderMapForType & in_mCategoryReaderMapForType
+  public : cMapElement_categoryGetterMapForBuildingContext (const GALGAS_lstring & inKey,
+                                                            const GALGAS_categoryGetterMapForType & in_mCategoryReaderMapForType
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -6896,14 +6896,14 @@ class cMapElement_categoryReaderMapForBuildingContext : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               @categoryReaderMapForBuildingContext_2D_element struct                                *
+//                               @categoryGetterMapForBuildingContext_2D_element struct                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryReaderMapForBuildingContext_2D_element : public AC_GALGAS_root {
+class GALGAS_categoryGetterMapForBuildingContext_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_categoryReaderMapForType mAttribute_mCategoryReaderMapForType ;
+  public : GALGAS_categoryGetterMapForType mAttribute_mCategoryReaderMapForType ;
 
 
 //--------------------------------- Accessors
@@ -6911,17 +6911,17 @@ class GALGAS_categoryReaderMapForBuildingContext_2D_element : public AC_GALGAS_r
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_categoryReaderMapForBuildingContext_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_categoryGetterMapForBuildingContext_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_categoryReaderMapForBuildingContext_2D_element (void) ;
+  public : GALGAS_categoryGetterMapForBuildingContext_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryReaderMapForBuildingContext_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryGetterMapForBuildingContext_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_categoryReaderMapForBuildingContext_2D_element (const GALGAS_lstring & in_lkey,
-                                                                  const GALGAS_categoryReaderMapForType & in_mCategoryReaderMapForType) ;
+  public : GALGAS_categoryGetterMapForBuildingContext_2D_element (const GALGAS_lstring & in_lkey,
+                                                                  const GALGAS_categoryGetterMapForType & in_mCategoryReaderMapForType) ;
 
 //-- Start of generic part --*
 
@@ -6929,20 +6929,20 @@ class GALGAS_categoryReaderMapForBuildingContext_2D_element : public AC_GALGAS_r
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryReaderMapForBuildingContext_2D_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_categoryGetterMapForBuildingContext_2D_element extractObject (const GALGAS_object & inObject,
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryReaderMapForBuildingContext_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                         const class GALGAS_categoryReaderMapForType & inOperand1
+  public : static GALGAS_categoryGetterMapForBuildingContext_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                         const class GALGAS_categoryGetterMapForType & inOperand1
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_categoryReaderMapForBuildingContext_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_categoryGetterMapForBuildingContext_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6952,18 +6952,18 @@ class GALGAS_categoryReaderMapForBuildingContext_2D_element : public AC_GALGAS_r
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_lkey (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryReaderMapForType reader_mCategoryReaderMapForType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForType reader_mCategoryReaderMapForType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_categoryReaderMapForBuildingContext_2D_element class
+} ; // End of GALGAS_categoryGetterMapForBuildingContext_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryReaderMapForBuildingContext_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapForBuildingContext_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

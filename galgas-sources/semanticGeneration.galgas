@@ -690,7 +690,7 @@ proc generateCategoryReader
   @bool searching = true
   loop( @uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
-      if [[[baseType mSuperType] mReaderMap] hasKey !inReaderName] then
+      if [[[baseType mSuperType] mGetterMap] hasKey !inReaderName] then
         baseType = [baseType mSuperType]
       else
         searching = false
@@ -790,7 +790,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@bool IS_CONCRETE # false if abstract class
     ?@constructorMap CONSTRUCTOR_MAP
-    ?@getterMap READER_MAP
+    ?@getterMap GETTER_MAP
     ?@setterMap MODIFIER_MAP
     ?@instanceMethodMap INSTANCE_METHOD_MAP
     ?@classMethodMap CLASS_METHOD_MAP
@@ -913,36 +913,36 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
 }{
 }{
 #------------ Category reader
-  template abstractCategoryReaderDeclaration "abstract-category-reader.h.galgasTemplate"
+  template abstractCategoryGetterDeclaration "abstract-category-reader.h.galgasTemplate"
     ?@string CLASS_NAME
-    ?@string READER_NAME
+    ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template abstractCategoryReaderImplementation "abstract-category-reader.cpp.galgasTemplate"
+  template abstractCategoryGetterImplementation "abstract-category-reader.cpp.galgasTemplate"
     ?@string CLASS_NAME
-    ?@string READER_NAME
+    ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template categoryReaderDeclaration "category-reader.h.galgasTemplate"
+  template categoryGetterDeclaration "category-reader.h.galgasTemplate"
     ?@string CLASS_NAME
-    ?@string READER_NAME
+    ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
 
-  template categoryReaderImplementation "category-reader.cpp.galgasTemplate"
+  template categoryGetterImplementation "category-reader.cpp.galgasTemplate"
     ?@string CLASS_NAME
-    ?@string READER_NAME
+    ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
-    ?@string READER_IMPLEMENTATION
+    ?@string GETTER_IMPLEMENTATION
   
-  template overridingCategoryReaderImplementation "overriding-category-reader.cpp.galgasTemplate"
+  template overridingCategoryGetterImplementation "overriding-category-reader.cpp.galgasTemplate"
     ?@string CLASS_NAME
-    ?@string READER_NAME
+    ?@string GETTER_NAME
     ?@unifiedTypeMap-proxy RETURN_TYPE
-    ?@string READER_IMPLEMENTATION
+    ?@string GETTER_IMPLEMENTATION
   
 #------------ Category modifier
   template abstractCategoryModifierDeclaration "abstract-category-modifier.h.galgasTemplate"
@@ -1010,16 +1010,16 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string FILEWRAPPER_NAME
     ?@string FILEWRAPPER_IMPLEMENTATION
   
-#--- Category reader implemented as function
-  template categoryReaderAsFunctionDeclaration "category-reader-as-function-declaration.h.galgasTemplate"
+#--- Category getter implemented as function
+  template categoryGetterAsFunctionDeclaration "category-reader-as-function-declaration.h.galgasTemplate"
     ?@string TYPE_NAME
-    ?@string READER_NAME
+    ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
-  template categoryReaderAsFunctionImplementation "category-reader-as-function-implementation.cpp.galgasTemplate"
+  template categoryGetterAsFunctionImplementation "category-reader-as-function-implementation.cpp.galgasTemplate"
     ?@string TYPE_NAME
-    ?@string READER_NAME
+    ?@string GETTER_NAME
     ?@string FUNCTION_IMPLEMENTATION
 
 #--- Category method implemented as function
@@ -1163,7 +1163,7 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
@@ -1205,7 +1205,7 @@ override method @arrayTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
@@ -1261,7 +1261,7 @@ override method @listmapTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
@@ -1310,7 +1310,7 @@ override method @mapTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
@@ -1373,7 +1373,7 @@ override method @graphDeclarationForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
@@ -1425,7 +1425,7 @@ override method @classTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
@@ -1955,7 +1955,7 @@ override method @abstractCategoryReaderForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderDeclaration
+  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractCategoryGetterDeclaration
     ![mReceiverType key]
     !mAbstractCategoryReaderName
     !mAbstractCategoryReaderFormalParameterList
@@ -1976,7 +1976,7 @@ override method @abstractCategoryReaderForGeneration appendSpecificImplementatio
   for () in mAbstractCategoryReaderFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractCategoryGetterImplementation
     ![mReceiverType key]
     !mAbstractCategoryReaderName
     !mAbstractCategoryReaderFormalParameterList
@@ -1996,14 +1996,14 @@ override method @categoryReaderForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   if mImplementedAsFunction then
-    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionDeclaration
+    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryGetterAsFunctionDeclaration
       ![mReceiverType key]
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
       ![mResultType identifierRepresentation]
     ] 
   else
-    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryReaderDeclaration
+    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryGetterDeclaration
       ![mReceiverType key]
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
@@ -2040,7 +2040,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
       !false # is not static
       ?let @string code
     )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionImplementation
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryGetterAsFunctionImplementation
       ![mReceiverType key]
       !mCategoryReaderName
       !code
@@ -2055,7 +2055,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mReaderMap] hasKey !mCategoryReaderName] then
+        if [[[baseType mSuperType] mGetterMap] hasKey !mCategoryReaderName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -2077,7 +2077,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
       !mResultVarCppName
       ?let @string categoryReaderCode
     )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryReaderImplementation
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryGetterImplementation
       ![mReceiverType key]
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
@@ -2111,7 +2111,7 @@ override method @overrideCategoryReaderForGeneration appendSpecificImplementatio
     !mResultVarCppName
     ?let @string categoryReaderCode
   )
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingCategoryReaderImplementation
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingCategoryGetterImplementation
     ![mReceiverType key]
     !mOverridingCategoryReaderName
     !mResultType
@@ -2612,7 +2612,7 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]

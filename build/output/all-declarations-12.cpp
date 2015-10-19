@@ -116,7 +116,7 @@ void routine_compileSemanticDeclarationsGalgas_33_ (const GALGAS_string constinA
   }
   cEnumerator_lstringlist enumerator_4397 (outArgument_outSemanticContext.mAttribute_mTypeMap.reader_unsolvedProxyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 77)), kEnumeration_up) ;
   while (enumerator_4397.hasCurrentObject ()) {
-    GALGAS_location location_2 (enumerator_4397.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+    GALGAS_location location_2 (enumerator_4397.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_2, GALGAS_string ("the '@").add_operation (enumerator_4397.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)).add_operation (GALGAS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 78)) ;
     enumerator_4397.gotoNextObject () ;
   }
@@ -155,7 +155,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
   }
   GALGAS_semanticTypePrecedenceGraph var_semanticTypePrecedenceGraph = GALGAS_semanticTypePrecedenceGraph::constructor_emptyGraph (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 116)) ;
   GALGAS_categoryMethodMapForBuildingContext var_categoryMethodMapForBuildingContext = GALGAS_categoryMethodMapForBuildingContext::constructor_emptyMap (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 117)) ;
-  GALGAS_categoryReaderMapForBuildingContext var_categoryReaderMapForBuildingContext = GALGAS_categoryReaderMapForBuildingContext::constructor_emptyMap (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 118)) ;
+  GALGAS_categoryGetterMapForBuildingContext var_categoryReaderMapForBuildingContext = GALGAS_categoryGetterMapForBuildingContext::constructor_emptyMap (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 118)) ;
   GALGAS_categoryModifierMapForBuildingContext var_categoryModifierMapForBuildingContext = GALGAS_categoryModifierMapForBuildingContext::constructor_emptyMap (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 119)) ;
   GALGAS_semanticDeclarationListAST var_categoryOverrideDefinitionList = GALGAS_semanticDeclarationListAST::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 120)) ;
   cEnumerator_semanticDeclarationListAST enumerator_6759 (var_semanticDeclarationList, kEnumeration_up) ;
@@ -175,7 +175,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
   if (kBoolTrue == test_1) {
     cEnumerator_lstringlist enumerator_7377 (var_semanticTypePrecedenceGraph.reader_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 138)), kEnumeration_up) ;
     while (enumerator_7377.hasCurrentObject ()) {
-      GALGAS_location location_2 (enumerator_7377.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+      GALGAS_location location_2 (enumerator_7377.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_2, GALGAS_string ("the '").add_operation (enumerator_7377.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)).add_operation (GALGAS_string ("' type is not defined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)) ;
       enumerator_7377.gotoNextObject () ;
     }
@@ -332,12 +332,12 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
         {
           const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, var_headerIncludes_31_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_3) {
-            GALGAS_location location_4 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305)).reader_location (HERE)) ; // Implicit use of 'location' reader
+            GALGAS_location location_4 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305)).reader_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_4, GALGAS_string ("'noHeader' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes1' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 305)) ;
           }
           const enumGalgasBool test_5 = GALGAS_bool (kIsNotEqual, var_headerIncludes_32_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_5) {
-            GALGAS_location location_6 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308)).reader_location (HERE)) ; // Implicit use of 'location' reader
+            GALGAS_location location_6 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308)).reader_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_6, GALGAS_string ("'noHeader' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes2' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 308)) ;
           }
         }
@@ -346,12 +346,12 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
         {
           const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, var_headerIncludes_31_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_7) {
-            GALGAS_location location_8 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312)).reader_location (HERE)) ; // Implicit use of 'location' reader
+            GALGAS_location location_8 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312)).reader_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_8, GALGAS_string ("'oneHeader' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes1' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 312)) ;
           }
           const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, var_headerIncludes_32_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_9) {
-            GALGAS_location location_10 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315)).reader_location (HERE)) ; // Implicit use of 'location' reader
+            GALGAS_location location_10 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315)).reader_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticWarning (location_10, GALGAS_string ("'oneHeader' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes2' string is not empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 315)) ;
           }
         }
@@ -360,12 +360,12 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
         {
           const enumGalgasBool test_11 = GALGAS_bool (kIsEqual, var_headerIncludes_31_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_11) {
-            GALGAS_location location_12 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319)).reader_location (HERE)) ; // Implicit use of 'location' reader
+            GALGAS_location location_12 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319)).reader_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticWarning (location_12, GALGAS_string ("'twoHeaders' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes1' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 319)) ;
           }
           const enumGalgasBool test_13 = GALGAS_bool (kIsEqual, var_headerIncludes_32_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_13) {
-            GALGAS_location location_14 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322)).reader_location (HERE)) ; // Implicit use of 'location' reader
+            GALGAS_location location_14 (GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322)).reader_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticWarning (location_14, GALGAS_string ("'twoHeaders' setting for the '").add_operation (enumerator_12754.current_mMessage (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322)).add_operation (GALGAS_string ("' declaration, and 'headerIncludes2' string is empty"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 322)) ;
           }
         }
@@ -11598,7 +11598,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       macroValidSharedObject (objectArray_17965, cMapElement_projectQualifiedFeatureMap) ;
     const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, objectArray_17965->mAttribute_mFeatureValue.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_location location_1 (objectArray_17965->mAttribute_mFeatureValue.reader_location (HERE)) ; // Implicit use of 'location' reader
+      GALGAS_location location_1 (objectArray_17965->mAttribute_mFeatureValue.reader_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_1, GALGAS_string ("the libpm path should not be empty")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 346)) ;
       var_libpmPath.drop () ; // Release error dropped variable
     }else if (kBoolFalse == test_0) {
@@ -11639,7 +11639,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     if (kBoolTrue == test_2) {
       const enumGalgasBool test_3 = var_generationFeatures.reader_hasKey (enumerator_19782.current_mValue (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 387)).boolEnum () ;
       if (kBoolTrue == test_3) {
-        GALGAS_location location_4 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+        GALGAS_location location_4 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
         inCompiler->emitSemanticError (location_4, GALGAS_string ("duplicate '").add_operation (enumerator_19782.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)) ;
       }
       GALGAS_string var_macOsDuplicateMessage = GALGAS_string ("the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\", \"Yosemite\", \"ElCapitanYosemite\" and \"ElCapitan\", \"LatestMacOS\" are exclusive") ;
@@ -11647,7 +11647,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       if (kBoolTrue == test_5) {
         const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_6) {
-          GALGAS_location location_7 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+          GALGAS_location location_7 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
           inCompiler->emitSemanticError (location_7, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401)) ;
         }
         var_SDK = GALGAS_string ("macosx10.6") ;
@@ -11657,7 +11657,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
         if (kBoolTrue == test_8) {
           const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_9) {
-            GALGAS_location location_10 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+            GALGAS_location location_10 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_10, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 408)) ;
           }
           var_SDK = GALGAS_string ("macosx10.7") ;
@@ -11667,7 +11667,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
           if (kBoolTrue == test_11) {
             const enumGalgasBool test_12 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_12) {
-              GALGAS_location location_13 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+              GALGAS_location location_13 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
               inCompiler->emitSemanticError (location_13, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 415)) ;
             }
             var_SDK = GALGAS_string ("macosx10.8") ;
@@ -11677,7 +11677,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
             if (kBoolTrue == test_14) {
               const enumGalgasBool test_15 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
               if (kBoolTrue == test_15) {
-                GALGAS_location location_16 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+                GALGAS_location location_16 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
                 inCompiler->emitSemanticError (location_16, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 422)) ;
               }
               var_SDK = GALGAS_string ("macosx10.9") ;
@@ -11687,7 +11687,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
               if (kBoolTrue == test_17) {
                 const enumGalgasBool test_18 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                 if (kBoolTrue == test_18) {
-                  GALGAS_location location_19 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+                  GALGAS_location location_19 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
                   inCompiler->emitSemanticError (location_19, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 429)) ;
                 }
                 var_SDK = GALGAS_string ("macosx10.10") ;
@@ -11697,7 +11697,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                 if (kBoolTrue == test_20) {
                   const enumGalgasBool test_21 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                   if (kBoolTrue == test_21) {
-                    GALGAS_location location_22 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+                    GALGAS_location location_22 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
                     inCompiler->emitSemanticError (location_22, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 436)) ;
                   }
                   var_SDK = GALGAS_string ("macosx10.11") ;
@@ -11707,7 +11707,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                   if (kBoolTrue == test_23) {
                     const enumGalgasBool test_24 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                     if (kBoolTrue == test_24) {
-                      GALGAS_location location_25 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+                      GALGAS_location location_25 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
                       inCompiler->emitSemanticError (location_25, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 443)) ;
                     }
                     var_SDK = GALGAS_string ("macosx10.11") ;
@@ -11717,7 +11717,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                     if (kBoolTrue == test_26) {
                       const enumGalgasBool test_27 = GALGAS_bool (kIsNotEqual, var_SDK.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                       if (kBoolTrue == test_27) {
-                        GALGAS_location location_28 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+                        GALGAS_location location_28 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
                         inCompiler->emitSemanticError (location_28, var_macOsDuplicateMessage  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 450)) ;
                       }
                       var_SDK = GALGAS_string ("macosx") ;
@@ -11739,7 +11739,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
           "  - '").add_operation (enumerator_22278.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459)) ;
         enumerator_22278.gotoNextObject () ;
       }
-      GALGAS_location location_29 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+      GALGAS_location location_29 (enumerator_19782.current_mValue (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_29, GALGAS_string ("unknown '").add_operation (enumerator_19782.current_mValue (HERE).reader_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)).add_operation (GALGAS_string ("' feature; available features are:"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)) ;
     }
     enumerator_19782.gotoNextObject () ;

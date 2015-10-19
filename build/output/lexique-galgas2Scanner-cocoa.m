@@ -139,7 +139,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_cocoa_lexique_table_entry ktable_for_galgas_32_Scanner_galgasKeyWordList [100] = {
+static const C_cocoa_lexique_table_entry ktable_for_galgas_32_Scanner_galgasKeyWordList [98] = {
   {"do", galgas2Scanner_1_do},
   {"if", galgas2Scanner_1_if},
   {"in", galgas2Scanner_1_in},
@@ -199,7 +199,6 @@ static const C_cocoa_lexique_table_entry ktable_for_galgas_32_Scanner_galgasKeyW
   {"insert", galgas2Scanner_1_insert},
   {"method", galgas2Scanner_1_method},
   {"option", galgas2Scanner_1_option},
-  {"reader", galgas2Scanner_1_reader},
   {"remove", galgas2Scanner_1_remove},
   {"repeat", galgas2Scanner_1_repeat},
   {"rewind", galgas2Scanner_1_rewind},
@@ -220,7 +219,6 @@ static const C_cocoa_lexique_table_entry ktable_for_galgas_32_Scanner_galgasKeyW
   {"listmap", galgas2Scanner_1_listmap},
   {"message", galgas2Scanner_1_message},
   {"private", galgas2Scanner_1_private},
-  {"program", galgas2Scanner_1_program},
   {"project", galgas2Scanner_1_project},
   {"replace", galgas2Scanner_1_replace},
   {"routine", galgas2Scanner_1_routine},
@@ -243,7 +241,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgas_32_Scanner_galgasKeyW
 } ;
 
 static NSInteger search_into_galgas_32_Scanner_galgasKeyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_galgas_32_Scanner_galgasKeyWordList, 100) ;
+  return searchStringInTable (inSearchedString, ktable_for_galgas_32_Scanner_galgasKeyWordList, 98) ;
 }
 
 
@@ -919,7 +917,7 @@ static NSInteger search_into_galgas_32_Scanner_galgasKeyWordList (NSString * inS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) terminalVocabularyCount {
-  return 165 ;
+  return 163 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -949,7 +947,7 @@ static NSInteger search_into_galgas_32_Scanner_galgasKeyWordList (NSString * inS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [166] = {0,
+  static const NSUInteger kTerminalSymbolStyles [164] = {0,
     0 /* galgas2Scanner_1_identifier */,
     9 /* galgas2Scanner_1_literal_5F_double */,
     7 /* galgas2Scanner_1_unsigned_5F_literal_5F_integer */,
@@ -1044,8 +1042,6 @@ static NSInteger search_into_galgas_32_Scanner_galgasKeyWordList (NSString * inS
     1 /* galgas2Scanner_1_private */,
     1 /* galgas2Scanner_1_proc */,
     1 /* galgas2Scanner_1_project */,
-    1 /* galgas2Scanner_1_program */,
-    1 /* galgas2Scanner_1_reader */,
     1 /* galgas2Scanner_1_remove */,
     1 /* galgas2Scanner_1_replace */,
     1 /* galgas2Scanner_1_repeat */,
@@ -1126,7 +1122,7 @@ static NSInteger search_into_galgas_32_Scanner_galgasKeyWordList (NSString * inS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [166] = {NO,
+  static const BOOL kTerminalAtomicSelection [164] = {NO,
     YES /* galgas2Scanner_1_identifier */,
     YES /* galgas2Scanner_1_literal_5F_double */,
     YES /* galgas2Scanner_1_unsigned_5F_literal_5F_integer */,
@@ -1221,8 +1217,6 @@ static NSInteger search_into_galgas_32_Scanner_galgasKeyWordList (NSString * inS
     YES /* galgas2Scanner_1_private */,
     YES /* galgas2Scanner_1_proc */,
     YES /* galgas2Scanner_1_project */,
-    YES /* galgas2Scanner_1_program */,
-    YES /* galgas2Scanner_1_reader */,
     YES /* galgas2Scanner_1_remove */,
     YES /* galgas2Scanner_1_replace */,
     YES /* galgas2Scanner_1_repeat */,

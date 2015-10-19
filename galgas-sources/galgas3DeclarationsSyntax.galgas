@@ -521,7 +521,7 @@ rule <declaration>
   $abstract$
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mReaderName indexing abstractCategoryReaderDefinition
+  $identifier$ ?var  @lstring mGetterName indexing abstractCategoryReaderDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
@@ -530,7 +530,7 @@ rule <declaration>
   ioDeclarations.mDeclarationList += !@abstractCategoryReaderAST.new {
     !false # Is not predefined
     !className
-    !mReaderName
+    !mGetterName
     !mFormalInputParameterList
     !mReturnedTypeName}
 }
@@ -545,8 +545,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations {
+rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   $getter$
   $type_name$ ?var  @lstring className
   $identifier$ ?var  @lstring mMethodName indexing categoryReaderDefinition
@@ -559,7 +558,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfInstructionList = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@categoryReaderAST.new {
+  ioDeclarations.mDeclarationList += !@categoryGetterAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -572,7 +571,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N                                           *
+#O V E R R I D I N G   C A T E G O R Y   G E T T E R   D E C L A R A T I O N                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -622,7 +621,7 @@ rule <declaration>
   $abstract$
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mReaderName indexing overrideAbstractCategoryReaderDefinition
+  $identifier$ ?var  @lstring mGetterName indexing overrideAbstractCategoryReaderDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
@@ -631,7 +630,7 @@ rule <declaration>
   ioDeclarations.mDeclarationList += !@overridingAbstractCategoryReaderAST.new {
     !false # Is not predefined
     !className
-    !mReaderName
+    !mGetterName
     !mFormalInputParameterList
     !mReturnedTypeName}
 }
@@ -835,7 +834,7 @@ rule <declaration>
       !argumentTypeList
   while
     $getter$
-    $identifier$ ?var  @lstring readerName
+    $identifier$ ?var  @lstring getterName
     var argumentTypeList =@typeNameFormalParameterNameList.emptyList{}
     repeat
     while
@@ -847,7 +846,7 @@ rule <declaration>
     $->$
     $type_name$ ?var  @lstring resultTypeName
     externTypeReaderList +=
-      !readerName
+      !getterName
       !resultTypeName
       !argumentTypeList
   while

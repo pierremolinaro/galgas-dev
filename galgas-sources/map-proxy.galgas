@@ -14,7 +14,7 @@ class @mapProxyDeclarationAST : @semanticDeclarationAST {
 override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mMapProxyTypeName ![mMapProxyTypeName location]}
@@ -28,7 +28,7 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
 
 override method @mapProxyDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a map
@@ -97,7 +97,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
       !mapProxyTypeProxy
     ]
   end
-#--- readers
+#--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -140,7 +140,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !returnedTypeName:"string"
     !true
   )
-#--- Enter associated map attribute names as readers
+#--- Enter associated map attribute names as getters
   let @getterMap inheritedReaderMap = getterMap
   for () in mapTypedAttributeList do
     if [inheritedReaderMap hasKey ![mAttributeName string]] then
@@ -149,7 +149,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
         do s += "'" + key + "'"
         between s += ", "
       end
-      error mAttributeName : "the map has a associated map proxy, which has predefined readers: " + s
+      error mAttributeName : "the map has a associated map proxy, which has predefined getters: " + s
        + "; you cannot use theses names for naming an attribute of this map"
     else
       [!?getterMap insertKey
@@ -279,7 +279,7 @@ override method @mapProxyTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]

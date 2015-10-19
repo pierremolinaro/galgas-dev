@@ -42,7 +42,7 @@ syntax extension galgas3DeclarationsSyntax {
 override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mListTypeName ![mListTypeName location]}
@@ -58,7 +58,7 @@ override method @listDeclarationAST enterDeclarationInGraph
 
 override method @listDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Handle attributes
@@ -368,7 +368,7 @@ override method @listTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]

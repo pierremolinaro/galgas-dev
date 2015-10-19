@@ -182,9 +182,9 @@ if [type_mConstructorMap count] > 0 then
   end
 end
 #--- Readers
-if [type_mReaderMap count] > 0 then
+if [type_mGetterMap count] > 0 then
   %<tr class="result_line"><td>Getters</td><td>%
-  for () in type_mReaderMap do
+  for () in type_mGetterMap do
     switch mKind
     case definedAsMember :
     case definedAsCategory : %(extension) %

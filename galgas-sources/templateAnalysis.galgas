@@ -48,25 +48,25 @@ abstract method @templateExpressionAST templateExpressionAnalysis
 #   R E A D E R    C A L L    O P E R A N D                                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @templateReaderCallInExpressionAST templateExpressionAnalysis
+override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   @semanticExpressionForGeneration receiverExpression
   [mReceiverExpression templateExpressionAnalysis !inAnalysisContext ?receiverExpression]
   let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
-#--- Get reader map
-  let @getterMap getterMap = [receiverType mReaderMap]
+#--- Get getter map
+  let @getterMap getterMap = [receiverType mGetterMap]
 #--- Search contructor
-  @functionSignature readerFormalArgumentTypeList
+  @functionSignature getterFormalArgumentTypeList
   @methodKind kind
   @bool hasCompilerArgument
   @unifiedTypeMap-proxy returnedType
   var fieldList =@stringlist.emptyList{}
-  if [getterMap hasKey ![mReaderName string]] then
-    [getterMap searchKey !mReaderName
+  if [getterMap hasKey ![mGetterName string]] then
+    [getterMap searchKey !mGetterName
       ?kind
-      ?readerFormalArgumentTypeList
+      ?getterFormalArgumentTypeList
       ?*
       ?hasCompilerArgument
       ?returnedType
@@ -75,15 +75,15 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
   else
     @uint matchingReaderCount = 0
     if [receiverType mTypeKindEnum] == @typeKindEnum. structType then
-      readerFormalArgumentTypeList ={}
+      getterFormalArgumentTypeList ={}
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-proxy. null
       kind = @methodKind. definedAsMember
       for () in [receiverType mCurrentTypedAttributeList] do
-        let @getterMap aMap = [mAttributeTypeProxy mReaderMap]
-        with [mReaderName string] in aMap  do
+        let @getterMap aMap = [mAttributeTypeProxy mGetterMap]
+        with [mGetterName string] in aMap  do
           matchingReaderCount ++
-          readerFormalArgumentTypeList = mArgumentTypeList
+          getterFormalArgumentTypeList = mArgumentTypeList
           hasCompilerArgument = mHasCompilerArgument
           returnedType = mReturnedType
           kind = mKind
@@ -91,25 +91,25 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
         end
       end
       if matchingReaderCount == 0 then
-        error mReaderName
-        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mReaderName string]
-        + "' reader, and none of its fields defines it"
-        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+        error mGetterName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mGetterName string]
+        + "' getter, and none of its fields defines it"
+        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
         @string s = ""
         for () in fieldList
           do s += mValue
           between s += ", "
         end
-        error mReaderName
-        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mReaderName string]
-        + "' reader, and several of its fields defines it:" + s + " (exactly one field should define it)"
-        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+        error mGetterName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mGetterName string]
+        + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
+        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       end
     elsif [getterMap count] == 0 then
-      error mReaderName
-      : "the '@"+ [receiverType key] + "' type does not define any reader"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      error mGetterName
+      : "the '@"+ [receiverType key] + "' type does not define any getter"
+      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     else
       @string s = ""
       for () in getterMap do
@@ -119,21 +119,21 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
         end
         s += " -> @" + [mReturnedType key]
       end
-      error mReaderName
-      : "the '@"+ [receiverType key] + "' type does not define the '" + mReaderName + "' reader; available "
-      + if [getterMap count] > 1 then "readers are" else "reader is" end
+      error mGetterName
+      : "the '@"+ [receiverType key] + "' type does not define the '" + mGetterName + "' getter; available "
+      + if [getterMap count] > 1 then "getters are" else "getter is" end
       + ":" + s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     end
   end
 #--- Analysis arguments
-  if [mExpressionList length] != [readerFormalArgumentTypeList length] then
-    error mReaderName: "calling the '" + mReaderName + "' reader of '@" + [receiverType key] + "' requires "
-    + [[readerFormalArgumentTypeList length] string] + " parameter(s), while this call has "
+  if [mExpressionList length] != [getterFormalArgumentTypeList length] then
+    error mGetterName: "calling the '" + mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+    + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[mExpressionList length] string] + " parameter(s)" : outExpression
   else
     var constructorEffectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
-    for () in mExpressionList, () in readerFormalArgumentTypeList do
+    for () in mExpressionList, () in getterFormalArgumentTypeList do
       [mExpression templateExpressionAnalysis !inAnalysisContext ?let @semanticExpressionForGeneration exp]
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
@@ -141,13 +141,13 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
       constructorEffectiveParameterList += !exp
     end
-    outExpression = @readerCallExpressionForGeneration.new {
+    outExpression = @getterCallExpressionForGeneration.new {
       !returnedType
-      ![mReaderName location]
+      ![mGetterName location]
       !kind
       !receiverExpression
       !fieldList
-      ![mReaderName string]
+      ![mGetterName string]
       !constructorEffectiveParameterList
       !hasCompilerArgument}
   end
@@ -533,28 +533,28 @@ override method @templateOptionAccessAST templateExpressionAnalysis
     returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
-    if [mReaderName string] == "value" then
+    if [mGetterName string] == "value" then
       outExpression = @optionValueExpressionForGeneration.new {
         !returnedType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]}
-    elsif [mReaderName string] == "char" then
+    elsif [mGetterName string] == "char" then
       outExpression = @optionCharExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mCharType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]}
-    elsif [mReaderName string] == "string" then
+    elsif [mGetterName string] == "string" then
       outExpression = @optionStringExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]}
-    elsif [mReaderName string] == "comment" then
+    elsif [mGetterName string] == "comment" then
       outExpression = @optionCommentExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
@@ -562,7 +562,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
         ![mOptionComponentName string]
         ![mOptionName string]}
     else
-      error mReaderName:"only the 'value', 'char', 'string' and 'comment' readers are defined for an option" :outExpression
+      error mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
     @string s = ""

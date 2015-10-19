@@ -224,7 +224,7 @@ override method @abstractCategoryReaderAST buildCategoryListMaps
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryReaderAST buildCategoryListMaps
+override method @categoryGetterAST buildCategoryListMaps
   ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
   ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
   ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
@@ -314,12 +314,12 @@ map @categoryModifierMapForGlobalCheckings {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  C A T E G O R Y    R E A D E R    M A P                                                                             *
+#  C A T E G O R Y    G E T T E R    M A P                                                                             *
 #                                                                                                                      *
 # Used for checking a category-method is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @categoryReaderMapForGlobalCheckings {
+map @categoryGetterMapForGlobalCheckings {
   insert insertKey error message "the '%K' category getter is already declared in %L"
 }
 
@@ -601,31 +601,31 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #------ Check Category readers
-##--- Check that for every abstract category reader, an overridden category reader
+  #------ Check Category getters
+##--- Check that for every abstract category getter, an overridden category getter
 ##    defined in an concrete subclass
-  #--- A given abstract category reader is defined only once for a class
+  #--- A given abstract category getter is defined only once for a class
     for () in abstractCategoryReaderListMap do
-      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      var CategoryReaderMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
-  #--- A given base category reader is defined only once for a class
+  #--- A given base category getter is defined only once for a class
     for () in categoryReaderListMap do
-      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      var CategoryReaderMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
-  #--- A given overriding category reader is defined only once for a class
+  #--- A given overriding category getter is defined only once for a class
     for () in overridingCategoryReaderListMap do
-      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      var CategoryReaderMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?CategoryReaderMap insertKey !mValue]
       end
     end  
-  #--- Check every abstract category reader is implemented by every inherited concrete type
+  #--- Check every abstract category getter is implemented by every inherited concrete type
     for () in abstractCategoryReaderListMap do
       for () in mList do
         checkCategoryReaderDefinitionForClass (

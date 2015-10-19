@@ -5985,7 +5985,7 @@ GALGAS_categoryModifierMapForBuildingContext_2D_element GALGAS_categoryModifierM
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType_2D_element::GALGAS_categoryReaderMapForType_2D_element (void) :
+GALGAS_categoryGetterMapForType_2D_element::GALGAS_categoryGetterMapForType_2D_element (void) :
 mAttribute_lkey (),
 mAttribute_mResultTypeName (),
 mAttribute_mInputFormalParameterList () {
@@ -5993,12 +5993,12 @@ mAttribute_mInputFormalParameterList () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType_2D_element::~ GALGAS_categoryReaderMapForType_2D_element (void) {
+GALGAS_categoryGetterMapForType_2D_element::~ GALGAS_categoryGetterMapForType_2D_element (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType_2D_element::GALGAS_categoryReaderMapForType_2D_element (const GALGAS_lstring & inOperand0,
+GALGAS_categoryGetterMapForType_2D_element::GALGAS_categoryGetterMapForType_2D_element (const GALGAS_lstring & inOperand0,
                                                                                         const GALGAS_lstring & inOperand1,
                                                                                         const GALGAS_formalInputParameterListAST & inOperand2) :
 mAttribute_lkey (inOperand0),
@@ -6008,28 +6008,28 @@ mAttribute_mInputFormalParameterList (inOperand2) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType_2D_element GALGAS_categoryReaderMapForType_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_categoryReaderMapForType_2D_element (GALGAS_lstring::constructor_default (HERE),
+GALGAS_categoryGetterMapForType_2D_element GALGAS_categoryGetterMapForType_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_categoryGetterMapForType_2D_element (GALGAS_lstring::constructor_default (HERE),
                                                      GALGAS_lstring::constructor_default (HERE),
                                                      GALGAS_formalInputParameterListAST::constructor_emptyList (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType_2D_element GALGAS_categoryReaderMapForType_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+GALGAS_categoryGetterMapForType_2D_element GALGAS_categoryGetterMapForType_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                                         const GALGAS_lstring & inOperand1,
                                                                                                         const GALGAS_formalInputParameterListAST & inOperand2 
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForType_2D_element result ;
+  GALGAS_categoryGetterMapForType_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_categoryReaderMapForType_2D_element (inOperand0, inOperand1, inOperand2) ;
+    result = GALGAS_categoryGetterMapForType_2D_element (inOperand0, inOperand1, inOperand2) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_categoryReaderMapForType_2D_element::objectCompare (const GALGAS_categoryReaderMapForType_2D_element & inOperand) const {
+typeComparisonResult GALGAS_categoryGetterMapForType_2D_element::objectCompare (const GALGAS_categoryGetterMapForType_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
@@ -6045,13 +6045,13 @@ typeComparisonResult GALGAS_categoryReaderMapForType_2D_element::objectCompare (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool GALGAS_categoryReaderMapForType_2D_element::isValid (void) const {
+bool GALGAS_categoryGetterMapForType_2D_element::isValid (void) const {
   return mAttribute_lkey.isValid () && mAttribute_mResultTypeName.isValid () && mAttribute_mInputFormalParameterList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForType_2D_element::drop (void) {
+void GALGAS_categoryGetterMapForType_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
   mAttribute_mResultTypeName.drop () ;
   mAttribute_mInputFormalParameterList.drop () ;
@@ -6059,9 +6059,9 @@ void GALGAS_categoryReaderMapForType_2D_element::drop (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForType_2D_element::description (C_String & ioString,
+void GALGAS_categoryGetterMapForType_2D_element::description (C_String & ioString,
                                                               const int32_t inIndentation) const {
-  ioString << "<struct @categoryReaderMapForType-element:" ;
+  ioString << "<struct @categoryGetterMapForType-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -6076,19 +6076,19 @@ void GALGAS_categoryReaderMapForType_2D_element::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_categoryReaderMapForType_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_categoryGetterMapForType_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_categoryReaderMapForType_2D_element::reader_mResultTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_categoryGetterMapForType_2D_element::reader_mResultTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mResultTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListAST GALGAS_categoryReaderMapForType_2D_element::reader_mInputFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST GALGAS_categoryGetterMapForType_2D_element::reader_mInputFormalParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mInputFormalParameterList ;
 }
 
@@ -6096,42 +6096,42 @@ GALGAS_formalInputParameterListAST GALGAS_categoryReaderMapForType_2D_element::r
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       @categoryReaderMapForType-element type                                        *
+//                                       @categoryGetterMapForType-element type                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryReaderMapForType_2D_element ("categoryReaderMapForType-element",
+kTypeDescriptor_GALGAS_categoryGetterMapForType_2D_element ("categoryGetterMapForType-element",
                                                             NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_categoryReaderMapForType_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryReaderMapForType_2D_element ;
+const C_galgas_type_descriptor * GALGAS_categoryGetterMapForType_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_categoryGetterMapForType_2D_element ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_categoryReaderMapForType_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_categoryGetterMapForType_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryReaderMapForType_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_categoryGetterMapForType_2D_element (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType_2D_element GALGAS_categoryReaderMapForType_2D_element::extractObject (const GALGAS_object & inObject,
+GALGAS_categoryGetterMapForType_2D_element GALGAS_categoryGetterMapForType_2D_element::extractObject (const GALGAS_object & inObject,
                                                                                                       C_Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForType_2D_element result ;
-  const GALGAS_categoryReaderMapForType_2D_element * p = (const GALGAS_categoryReaderMapForType_2D_element *) inObject.embeddedObject () ;
+  GALGAS_categoryGetterMapForType_2D_element result ;
+  const GALGAS_categoryGetterMapForType_2D_element * p = (const GALGAS_categoryGetterMapForType_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryReaderMapForType_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_categoryGetterMapForType_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("categoryReaderMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("categoryGetterMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6139,46 +6139,46 @@ GALGAS_categoryReaderMapForType_2D_element GALGAS_categoryReaderMapForType_2D_el
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext_2D_element::GALGAS_categoryReaderMapForBuildingContext_2D_element (void) :
+GALGAS_categoryGetterMapForBuildingContext_2D_element::GALGAS_categoryGetterMapForBuildingContext_2D_element (void) :
 mAttribute_lkey (),
 mAttribute_mCategoryReaderMapForType () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext_2D_element::~ GALGAS_categoryReaderMapForBuildingContext_2D_element (void) {
+GALGAS_categoryGetterMapForBuildingContext_2D_element::~ GALGAS_categoryGetterMapForBuildingContext_2D_element (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext_2D_element::GALGAS_categoryReaderMapForBuildingContext_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                              const GALGAS_categoryReaderMapForType & inOperand1) :
+GALGAS_categoryGetterMapForBuildingContext_2D_element::GALGAS_categoryGetterMapForBuildingContext_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                                              const GALGAS_categoryGetterMapForType & inOperand1) :
 mAttribute_lkey (inOperand0),
 mAttribute_mCategoryReaderMapForType (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext_2D_element GALGAS_categoryReaderMapForBuildingContext_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_categoryReaderMapForBuildingContext_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                                GALGAS_categoryReaderMapForType::constructor_emptyMap (HERE)) ;
+GALGAS_categoryGetterMapForBuildingContext_2D_element GALGAS_categoryGetterMapForBuildingContext_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_categoryGetterMapForBuildingContext_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                                GALGAS_categoryGetterMapForType::constructor_emptyMap (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext_2D_element GALGAS_categoryReaderMapForBuildingContext_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                              const GALGAS_categoryReaderMapForType & inOperand1 
+GALGAS_categoryGetterMapForBuildingContext_2D_element GALGAS_categoryGetterMapForBuildingContext_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                                              const GALGAS_categoryGetterMapForType & inOperand1 
                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForBuildingContext_2D_element result ;
+  GALGAS_categoryGetterMapForBuildingContext_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_categoryReaderMapForBuildingContext_2D_element (inOperand0, inOperand1) ;
+    result = GALGAS_categoryGetterMapForBuildingContext_2D_element (inOperand0, inOperand1) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_categoryReaderMapForBuildingContext_2D_element::objectCompare (const GALGAS_categoryReaderMapForBuildingContext_2D_element & inOperand) const {
+typeComparisonResult GALGAS_categoryGetterMapForBuildingContext_2D_element::objectCompare (const GALGAS_categoryGetterMapForBuildingContext_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
@@ -6191,22 +6191,22 @@ typeComparisonResult GALGAS_categoryReaderMapForBuildingContext_2D_element::obje
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool GALGAS_categoryReaderMapForBuildingContext_2D_element::isValid (void) const {
+bool GALGAS_categoryGetterMapForBuildingContext_2D_element::isValid (void) const {
   return mAttribute_lkey.isValid () && mAttribute_mCategoryReaderMapForType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForBuildingContext_2D_element::drop (void) {
+void GALGAS_categoryGetterMapForBuildingContext_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
   mAttribute_mCategoryReaderMapForType.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForBuildingContext_2D_element::description (C_String & ioString,
+void GALGAS_categoryGetterMapForBuildingContext_2D_element::description (C_String & ioString,
                                                                          const int32_t inIndentation) const {
-  ioString << "<struct @categoryReaderMapForBuildingContext-element:" ;
+  ioString << "<struct @categoryGetterMapForBuildingContext-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -6219,13 +6219,13 @@ void GALGAS_categoryReaderMapForBuildingContext_2D_element::description (C_Strin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_categoryReaderMapForBuildingContext_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_categoryGetterMapForBuildingContext_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForBuildingContext_2D_element::reader_mCategoryReaderMapForType (UNUSED_LOCATION_ARGS) const {
+GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForBuildingContext_2D_element::reader_mCategoryReaderMapForType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCategoryReaderMapForType ;
 }
 
@@ -6233,42 +6233,42 @@ GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForBuildingContext_2D_el
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  @categoryReaderMapForBuildingContext-element type                                  *
+//                                  @categoryGetterMapForBuildingContext-element type                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryReaderMapForBuildingContext_2D_element ("categoryReaderMapForBuildingContext-element",
+kTypeDescriptor_GALGAS_categoryGetterMapForBuildingContext_2D_element ("categoryGetterMapForBuildingContext-element",
                                                                        NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_categoryReaderMapForBuildingContext_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryReaderMapForBuildingContext_2D_element ;
+const C_galgas_type_descriptor * GALGAS_categoryGetterMapForBuildingContext_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_categoryGetterMapForBuildingContext_2D_element ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_categoryReaderMapForBuildingContext_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_categoryGetterMapForBuildingContext_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryReaderMapForBuildingContext_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_categoryGetterMapForBuildingContext_2D_element (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext_2D_element GALGAS_categoryReaderMapForBuildingContext_2D_element::extractObject (const GALGAS_object & inObject,
+GALGAS_categoryGetterMapForBuildingContext_2D_element GALGAS_categoryGetterMapForBuildingContext_2D_element::extractObject (const GALGAS_object & inObject,
                                                                                                                             C_Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForBuildingContext_2D_element result ;
-  const GALGAS_categoryReaderMapForBuildingContext_2D_element * p = (const GALGAS_categoryReaderMapForBuildingContext_2D_element *) inObject.embeddedObject () ;
+  GALGAS_categoryGetterMapForBuildingContext_2D_element result ;
+  const GALGAS_categoryGetterMapForBuildingContext_2D_element * p = (const GALGAS_categoryGetterMapForBuildingContext_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryReaderMapForBuildingContext_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_categoryGetterMapForBuildingContext_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("categoryReaderMapForBuildingContext-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("categoryGetterMapForBuildingContext-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12506,41 +12506,41 @@ GALGAS_categoryModifierMapForGlobalCheckings_2D_element GALGAS_categoryModifierM
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings_2D_element::GALGAS_categoryReaderMapForGlobalCheckings_2D_element (void) :
+GALGAS_categoryGetterMapForGlobalCheckings_2D_element::GALGAS_categoryGetterMapForGlobalCheckings_2D_element (void) :
 mAttribute_lkey () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings_2D_element::~ GALGAS_categoryReaderMapForGlobalCheckings_2D_element (void) {
+GALGAS_categoryGetterMapForGlobalCheckings_2D_element::~ GALGAS_categoryGetterMapForGlobalCheckings_2D_element (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings_2D_element::GALGAS_categoryReaderMapForGlobalCheckings_2D_element (const GALGAS_lstring & inOperand0) :
+GALGAS_categoryGetterMapForGlobalCheckings_2D_element::GALGAS_categoryGetterMapForGlobalCheckings_2D_element (const GALGAS_lstring & inOperand0) :
 mAttribute_lkey (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings_2D_element GALGAS_categoryReaderMapForGlobalCheckings_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_categoryReaderMapForGlobalCheckings_2D_element (GALGAS_lstring::constructor_default (HERE)) ;
+GALGAS_categoryGetterMapForGlobalCheckings_2D_element GALGAS_categoryGetterMapForGlobalCheckings_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_categoryGetterMapForGlobalCheckings_2D_element (GALGAS_lstring::constructor_default (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings_2D_element GALGAS_categoryReaderMapForGlobalCheckings_2D_element::constructor_new (const GALGAS_lstring & inOperand0 
+GALGAS_categoryGetterMapForGlobalCheckings_2D_element GALGAS_categoryGetterMapForGlobalCheckings_2D_element::constructor_new (const GALGAS_lstring & inOperand0 
                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForGlobalCheckings_2D_element result ;
+  GALGAS_categoryGetterMapForGlobalCheckings_2D_element result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_categoryReaderMapForGlobalCheckings_2D_element (inOperand0) ;
+    result = GALGAS_categoryGetterMapForGlobalCheckings_2D_element (inOperand0) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_categoryReaderMapForGlobalCheckings_2D_element::objectCompare (const GALGAS_categoryReaderMapForGlobalCheckings_2D_element & inOperand) const {
+typeComparisonResult GALGAS_categoryGetterMapForGlobalCheckings_2D_element::objectCompare (const GALGAS_categoryGetterMapForGlobalCheckings_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
@@ -12550,21 +12550,21 @@ typeComparisonResult GALGAS_categoryReaderMapForGlobalCheckings_2D_element::obje
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool GALGAS_categoryReaderMapForGlobalCheckings_2D_element::isValid (void) const {
+bool GALGAS_categoryGetterMapForGlobalCheckings_2D_element::isValid (void) const {
   return mAttribute_lkey.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForGlobalCheckings_2D_element::drop (void) {
+void GALGAS_categoryGetterMapForGlobalCheckings_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForGlobalCheckings_2D_element::description (C_String & ioString,
+void GALGAS_categoryGetterMapForGlobalCheckings_2D_element::description (C_String & ioString,
                                                                          const int32_t inIndentation) const {
-  ioString << "<struct @categoryReaderMapForGlobalCheckings-element:" ;
+  ioString << "<struct @categoryGetterMapForGlobalCheckings-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -12575,7 +12575,7 @@ void GALGAS_categoryReaderMapForGlobalCheckings_2D_element::description (C_Strin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_categoryReaderMapForGlobalCheckings_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_categoryGetterMapForGlobalCheckings_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
@@ -12583,42 +12583,42 @@ GALGAS_lstring GALGAS_categoryReaderMapForGlobalCheckings_2D_element::reader_lke
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  @categoryReaderMapForGlobalCheckings-element type                                  *
+//                                  @categoryGetterMapForGlobalCheckings-element type                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryReaderMapForGlobalCheckings_2D_element ("categoryReaderMapForGlobalCheckings-element",
+kTypeDescriptor_GALGAS_categoryGetterMapForGlobalCheckings_2D_element ("categoryGetterMapForGlobalCheckings-element",
                                                                        NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_categoryReaderMapForGlobalCheckings_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryReaderMapForGlobalCheckings_2D_element ;
+const C_galgas_type_descriptor * GALGAS_categoryGetterMapForGlobalCheckings_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_categoryGetterMapForGlobalCheckings_2D_element ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_categoryReaderMapForGlobalCheckings_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_categoryGetterMapForGlobalCheckings_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryReaderMapForGlobalCheckings_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_categoryGetterMapForGlobalCheckings_2D_element (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings_2D_element GALGAS_categoryReaderMapForGlobalCheckings_2D_element::extractObject (const GALGAS_object & inObject,
+GALGAS_categoryGetterMapForGlobalCheckings_2D_element GALGAS_categoryGetterMapForGlobalCheckings_2D_element::extractObject (const GALGAS_object & inObject,
                                                                                                                             C_Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForGlobalCheckings_2D_element result ;
-  const GALGAS_categoryReaderMapForGlobalCheckings_2D_element * p = (const GALGAS_categoryReaderMapForGlobalCheckings_2D_element *) inObject.embeddedObject () ;
+  GALGAS_categoryGetterMapForGlobalCheckings_2D_element result ;
+  const GALGAS_categoryGetterMapForGlobalCheckings_2D_element * p = (const GALGAS_categoryGetterMapForGlobalCheckings_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryReaderMapForGlobalCheckings_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_categoryGetterMapForGlobalCheckings_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("categoryReaderMapForGlobalCheckings-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("categoryGetterMapForGlobalCheckings-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13898,48 +13898,48 @@ GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element GALGAS_forInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateReaderCallInExpressionAST templateExpressionAnalysis'              *
+//             Overriding category method '@templateGetterCallInExpressionAST templateExpressionAnalysis'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_templateReaderCallInExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+static void categoryMethod_templateGetterCallInExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
                                                                                          const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
                                                                                          GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                                          C_Compiler * inCompiler
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateReaderCallInExpressionAST * object = (const cPtr_templateReaderCallInExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateReaderCallInExpressionAST) ;
+  const cPtr_templateGetterCallInExpressionAST * object = (const cPtr_templateGetterCallInExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateGetterCallInExpressionAST) ;
   GALGAS_semanticExpressionForGeneration var_receiverExpression ;
   callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) object->mAttribute_mReceiverExpression.ptr (), constinArgument_inAnalysisContext, var_receiverExpression, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 56)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_receiverType = var_receiverExpression.reader_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 57)) ;
-  GALGAS_getterMap var_getterMap = var_receiverType.reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 59)) ;
-  GALGAS_functionSignature var_readerFormalArgumentTypeList ;
+  GALGAS_getterMap var_getterMap = var_receiverType.reader_mGetterMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 59)) ;
+  GALGAS_functionSignature var_getterFormalArgumentTypeList ;
   GALGAS_methodKind var_kind ;
   GALGAS_bool var_hasCompilerArgument ;
   GALGAS_unifiedTypeMap_2D_proxy var_returnedType ;
   GALGAS_stringlist var_fieldList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 65)) ;
-  const enumGalgasBool test_0 = var_getterMap.reader_hasKey (object->mAttribute_mReaderName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 66)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 66)).boolEnum () ;
+  const enumGalgasBool test_0 = var_getterMap.reader_hasKey (object->mAttribute_mGetterName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 66)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 66)).boolEnum () ;
   if (kBoolTrue == test_0) {
     GALGAS_location joker_4907 ; // Joker input parameter
     GALGAS_methodQualifier joker_4963_2 ; // Joker input parameter
     GALGAS_string joker_4963_1 ; // Joker input parameter
-    var_getterMap.method_searchKey (object->mAttribute_mReaderName, var_kind, var_readerFormalArgumentTypeList, joker_4907, var_hasCompilerArgument, var_returnedType, joker_4963_2, joker_4963_1, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 67)) ;
+    var_getterMap.method_searchKey (object->mAttribute_mGetterName, var_kind, var_getterFormalArgumentTypeList, joker_4907, var_hasCompilerArgument, var_returnedType, joker_4963_2, joker_4963_1, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 67)) ;
   }else if (kBoolFalse == test_0) {
     GALGAS_uint var_matchingReaderCount = GALGAS_uint ((uint32_t) 0U) ;
     const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_receiverType.reader_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 77)).objectCompare (GALGAS_typeKindEnum::constructor_structType (SOURCE_FILE ("templateAnalysis.galgas", 77)))).boolEnum () ;
     if (kBoolTrue == test_1) {
-      var_readerFormalArgumentTypeList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 78)) ;
+      var_getterFormalArgumentTypeList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 78)) ;
       var_hasCompilerArgument = GALGAS_bool (true) ;
       var_returnedType = GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("templateAnalysis.galgas", 80)) ;
       var_kind = GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("templateAnalysis.galgas", 81)) ;
       cEnumerator_typedPropertyList enumerator_5303 (var_receiverType.reader_mCurrentTypedAttributeList (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 82)), kEnumeration_up) ;
       while (enumerator_5303.hasCurrentObject ()) {
-        GALGAS_getterMap var_aMap = enumerator_5303.current_mAttributeTypeProxy (HERE).reader_mReaderMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 83)) ;
-        const cMapElement_getterMap * objectArray_5382 = (const cMapElement_getterMap *) var_aMap.readAccessForWithInstruction (object->mAttribute_mReaderName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 84))) ;
+        GALGAS_getterMap var_aMap = enumerator_5303.current_mAttributeTypeProxy (HERE).reader_mGetterMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 83)) ;
+        const cMapElement_getterMap * objectArray_5382 = (const cMapElement_getterMap *) var_aMap.readAccessForWithInstruction (object->mAttribute_mGetterName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 84))) ;
         if (NULL != objectArray_5382) {
             macroValidSharedObject (objectArray_5382, cMapElement_getterMap) ;
           var_matchingReaderCount.increment_operation (inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 85)) ;
-          var_readerFormalArgumentTypeList = objectArray_5382->mAttribute_mArgumentTypeList ;
+          var_getterFormalArgumentTypeList = objectArray_5382->mAttribute_mArgumentTypeList ;
           var_hasCompilerArgument = objectArray_5382->mAttribute_mHasCompilerArgument ;
           var_returnedType = objectArray_5382->mAttribute_mReturnedType ;
           var_kind = objectArray_5382->mAttribute_mKind ;
@@ -13949,9 +13949,9 @@ static void categoryMethod_templateReaderCallInExpressionAST_templateExpressionA
       }
       const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, var_matchingReaderCount.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_2) {
-        GALGAS_location location_3 (object->mAttribute_mReaderName.reader_location (HERE)) ; // Implicit use of 'location' reader
-        inCompiler->emitSemanticError (location_3, GALGAS_string ("the '@").add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95)).add_operation (object->mAttribute_mReaderName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 95)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95)).add_operation (GALGAS_string ("' reader, and none of its fields defines it"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 94)) ;
-        var_readerFormalArgumentTypeList.drop () ; // Release error dropped variable
+        GALGAS_location location_3 (object->mAttribute_mGetterName.reader_location (HERE)) ; // Implicit use of 'location' getter
+        inCompiler->emitSemanticError (location_3, GALGAS_string ("the '@").add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95)).add_operation (object->mAttribute_mGetterName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 95)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95)).add_operation (GALGAS_string ("' getter, and none of its fields defines it"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 95))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 94)) ;
+        var_getterFormalArgumentTypeList.drop () ; // Release error dropped variable
         var_hasCompilerArgument.drop () ; // Release error dropped variable
         var_returnedType.drop () ; // Release error dropped variable
         var_kind.drop () ; // Release error dropped variable
@@ -13967,9 +13967,9 @@ static void categoryMethod_templateReaderCallInExpressionAST_templateExpressionA
             }
             enumerator_6087.gotoNextObject () ;
           }
-          GALGAS_location location_5 (object->mAttribute_mReaderName.reader_location (HERE)) ; // Implicit use of 'location' reader
-          inCompiler->emitSemanticError (location_5, GALGAS_string ("the '@").add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).add_operation (object->mAttribute_mReaderName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 105)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).add_operation (GALGAS_string ("' reader, and several of its fields defines it:"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 106)).add_operation (GALGAS_string (" (exactly one field should define it)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 106))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 104)) ;
-          var_readerFormalArgumentTypeList.drop () ; // Release error dropped variable
+          GALGAS_location location_5 (object->mAttribute_mGetterName.reader_location (HERE)) ; // Implicit use of 'location' getter
+          inCompiler->emitSemanticError (location_5, GALGAS_string ("the '@").add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).add_operation (GALGAS_string ("' struct type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).add_operation (object->mAttribute_mGetterName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 105)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).add_operation (GALGAS_string ("' getter, and several of its fields defines it:"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 105)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 106)).add_operation (GALGAS_string (" (exactly one field should define it)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 106))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 104)) ;
+          var_getterFormalArgumentTypeList.drop () ; // Release error dropped variable
           var_hasCompilerArgument.drop () ; // Release error dropped variable
           var_returnedType.drop () ; // Release error dropped variable
           var_kind.drop () ; // Release error dropped variable
@@ -13978,9 +13978,9 @@ static void categoryMethod_templateReaderCallInExpressionAST_templateExpressionA
     }else if (kBoolFalse == test_1) {
       const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, var_getterMap.reader_count (SOURCE_FILE ("templateAnalysis.galgas", 109)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_6) {
-        GALGAS_location location_7 (object->mAttribute_mReaderName.reader_location (HERE)) ; // Implicit use of 'location' reader
-        inCompiler->emitSemanticError (location_7, GALGAS_string ("the '@").add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 111)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 111)).add_operation (GALGAS_string ("' type does not define any reader"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 111))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 110)) ;
-        var_readerFormalArgumentTypeList.drop () ; // Release error dropped variable
+        GALGAS_location location_7 (object->mAttribute_mGetterName.reader_location (HERE)) ; // Implicit use of 'location' getter
+        inCompiler->emitSemanticError (location_7, GALGAS_string ("the '@").add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 111)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 111)).add_operation (GALGAS_string ("' type does not define any getter"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 111))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 110)) ;
+        var_getterFormalArgumentTypeList.drop () ; // Release error dropped variable
         var_hasCompilerArgument.drop () ; // Release error dropped variable
         var_returnedType.drop () ; // Release error dropped variable
         var_kind.drop () ; // Release error dropped variable
@@ -14001,28 +14001,28 @@ static void categoryMethod_templateReaderCallInExpressionAST_templateExpressionA
         GALGAS_string temp_8 ;
         const enumGalgasBool test_9 = GALGAS_bool (kIsStrictSup, var_getterMap.reader_count (SOURCE_FILE ("templateAnalysis.galgas", 124)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
         if (kBoolTrue == test_9) {
-          temp_8 = GALGAS_string ("readers are") ;
+          temp_8 = GALGAS_string ("getters are") ;
         }else if (kBoolFalse == test_9) {
-          temp_8 = GALGAS_string ("reader is") ;
+          temp_8 = GALGAS_string ("getter is") ;
         }
-        GALGAS_location location_10 (object->mAttribute_mReaderName.reader_location (HERE)) ; // Implicit use of 'location' reader
-        inCompiler->emitSemanticError (location_10, GALGAS_string ("the '@").add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (object->mAttribute_mReaderName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 123)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (GALGAS_string ("' reader; available "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (temp_8, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 124)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 125))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 122)) ;
-        var_readerFormalArgumentTypeList.drop () ; // Release error dropped variable
+        GALGAS_location location_10 (object->mAttribute_mGetterName.reader_location (HERE)) ; // Implicit use of 'location' getter
+        inCompiler->emitSemanticError (location_10, GALGAS_string ("the '@").add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (object->mAttribute_mGetterName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 123)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (GALGAS_string ("' getter; available "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (temp_8, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 123)).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 124)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 125))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 122)) ;
+        var_getterFormalArgumentTypeList.drop () ; // Release error dropped variable
         var_hasCompilerArgument.drop () ; // Release error dropped variable
         var_returnedType.drop () ; // Release error dropped variable
         var_kind.drop () ; // Release error dropped variable
       }
     }
   }
-  const enumGalgasBool test_11 = GALGAS_bool (kIsNotEqual, object->mAttribute_mExpressionList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 130)).objectCompare (var_readerFormalArgumentTypeList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 130)))).boolEnum () ;
+  const enumGalgasBool test_11 = GALGAS_bool (kIsNotEqual, object->mAttribute_mExpressionList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 130)).objectCompare (var_getterFormalArgumentTypeList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 130)))).boolEnum () ;
   if (kBoolTrue == test_11) {
-    GALGAS_location location_12 (object->mAttribute_mReaderName.reader_location (HERE)) ; // Implicit use of 'location' reader
-    inCompiler->emitSemanticError (location_12, GALGAS_string ("calling the '").add_operation (object->mAttribute_mReaderName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (GALGAS_string ("' reader of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (var_readerFormalArgumentTypeList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 132)).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 132)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 132)).add_operation (object->mAttribute_mExpressionList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 133)).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 133)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 132)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 133))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)) ;
+    GALGAS_location location_12 (object->mAttribute_mGetterName.reader_location (HERE)) ; // Implicit use of 'location' getter
+    inCompiler->emitSemanticError (location_12, GALGAS_string ("calling the '").add_operation (object->mAttribute_mGetterName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (GALGAS_string ("' getter of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (var_receiverType.reader_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (var_getterFormalArgumentTypeList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 132)).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 132)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 132)).add_operation (object->mAttribute_mExpressionList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 133)).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 133)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 132)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 133))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 131)) ;
     outArgument_outExpression.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_11) {
     GALGAS_semanticExpressionListForGeneration var_constructorEffectiveParameterList = GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 135)) ;
     cEnumerator_templateExpressionListAST enumerator_7751 (object->mAttribute_mExpressionList, kEnumeration_up) ;
-    cEnumerator_functionSignature enumerator_7787 (var_readerFormalArgumentTypeList, kEnumeration_up) ;
+    cEnumerator_functionSignature enumerator_7787 (var_getterFormalArgumentTypeList, kEnumeration_up) ;
     while (enumerator_7751.hasCurrentObject () && enumerator_7787.hasCurrentObject ()) {
       GALGAS_semanticExpressionForGeneration var_exp ;
       callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) enumerator_7751.current_mExpression (HERE).ptr (), constinArgument_inAnalysisContext, var_exp, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 137)) ;
@@ -14035,7 +14035,7 @@ static void categoryMethod_templateReaderCallInExpressionAST_templateExpressionA
         }else if (kBoolFalse == test_15) {
           temp_14 = GALGAS_string::makeEmptyString () ;
         }
-        GALGAS_location location_16 (enumerator_7751.current_mActualSelector (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+        GALGAS_location location_16 (enumerator_7751.current_mActualSelector (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
         inCompiler->emitSemanticError (location_16, GALGAS_string ("the selector should be '!").add_operation (enumerator_7787.current_mFormalSelector (HERE).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 139)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 139)).add_operation (temp_14, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 139)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 139))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 139)) ;
       }
       {
@@ -14045,19 +14045,19 @@ static void categoryMethod_templateReaderCallInExpressionAST_templateExpressionA
       enumerator_7751.gotoNextObject () ;
       enumerator_7787.gotoNextObject () ;
     }
-    outArgument_outExpression = GALGAS_readerCallExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mReaderName.reader_location (SOURCE_FILE ("templateAnalysis.galgas", 146)), var_kind, var_receiverExpression, var_fieldList, object->mAttribute_mReaderName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 150)), var_constructorEffectiveParameterList, var_hasCompilerArgument  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 144)) ;
+    outArgument_outExpression = GALGAS_getterCallExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mGetterName.reader_location (SOURCE_FILE ("templateAnalysis.galgas", 146)), var_kind, var_receiverExpression, var_fieldList, object->mAttribute_mGetterName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 150)), var_constructorEffectiveParameterList, var_hasCompilerArgument  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 144)) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_templateReaderCallInExpressionAST_templateExpressionAnalysis (void) {
-  enterCategoryMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateReaderCallInExpressionAST.mSlotID,
-                                                  categoryMethod_templateReaderCallInExpressionAST_templateExpressionAnalysis) ;
+static void defineCategoryMethod_templateGetterCallInExpressionAST_templateExpressionAnalysis (void) {
+  enterCategoryMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST.mSlotID,
+                                                  categoryMethod_templateGetterCallInExpressionAST_templateExpressionAnalysis) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_templateReaderCallInExpressionAST_templateExpressionAnalysis (defineCategoryMethod_templateReaderCallInExpressionAST_templateExpressionAnalysis, NULL) ;
+C_PrologueEpilogue gMethod_templateGetterCallInExpressionAST_templateExpressionAnalysis (defineCategoryMethod_templateGetterCallInExpressionAST_templateExpressionAnalysis, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -14086,7 +14086,7 @@ static void categoryMethod_templateConstructorAST_templateExpressionAnalysis (co
   }else{
     const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_constructorMap.reader_count (SOURCE_FILE ("templateAnalysis.galgas", 175)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_location location_1 (object->mAttribute_mConstructorName.reader_location (HERE)) ; // Implicit use of 'location' reader
+      GALGAS_location location_1 (object->mAttribute_mConstructorName.reader_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_1, GALGAS_string ("the '@").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 177)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 177)).add_operation (GALGAS_string ("' type does not define any constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 177))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 176)) ;
       var_constructorFormalArgumentTypeList.drop () ; // Release error dropped variable
       var_hasCompilerArgument.drop () ; // Release error dropped variable
@@ -14119,7 +14119,7 @@ static void categoryMethod_templateConstructorAST_templateExpressionAnalysis (co
       }else if (kBoolFalse == test_5) {
         temp_4 = GALGAS_string ("available constructor is") ;
       }
-      GALGAS_location location_6 (object->mAttribute_mConstructorName.reader_location (HERE)) ; // Implicit use of 'location' reader
+      GALGAS_location location_6 (object->mAttribute_mConstructorName.reader_location (HERE)) ; // Implicit use of 'location' getter
       inCompiler->emitSemanticError (location_6, GALGAS_string ("the '@").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (object->mAttribute_mConstructorName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (GALGAS_string ("' constructor; "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (temp_4, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 190)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 191))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 188)) ;
       var_constructorFormalArgumentTypeList.drop () ; // Release error dropped variable
       var_hasCompilerArgument.drop () ; // Release error dropped variable
@@ -14129,7 +14129,7 @@ static void categoryMethod_templateConstructorAST_templateExpressionAnalysis (co
   GALGAS_semanticExpressionListForGeneration var_constructorEffectiveParameterList ;
   const enumGalgasBool test_7 = GALGAS_bool (kIsNotEqual, object->mAttribute_mExpressionList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 197)).objectCompare (var_constructorFormalArgumentTypeList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 197)))).boolEnum () ;
   if (kBoolTrue == test_7) {
-    GALGAS_location location_8 (object->mAttribute_mConstructorName.reader_location (HERE)) ; // Implicit use of 'location' reader
+    GALGAS_location location_8 (object->mAttribute_mConstructorName.reader_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_8, GALGAS_string ("calling the '").add_operation (object->mAttribute_mConstructorName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 199)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (GALGAS_string ("' constructor of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("templateAnalysis.galgas", 199)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (var_constructorFormalArgumentTypeList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 200)).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 200)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 200)).add_operation (object->mAttribute_mExpressionList.reader_length (SOURCE_FILE ("templateAnalysis.galgas", 201)).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 201)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 200)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 201))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 198)) ;
     var_constructorEffectiveParameterList.drop () ; // Release error dropped variable
   }else if (kBoolFalse == test_7) {
@@ -14148,7 +14148,7 @@ static void categoryMethod_templateConstructorAST_templateExpressionAnalysis (co
         }else if (kBoolFalse == test_11) {
           temp_10 = GALGAS_string::makeEmptyString () ;
         }
-        GALGAS_location location_12 (enumerator_11173.current_mActualSelector (HERE).reader_location (HERE)) ; // Implicit use of 'location' reader
+        GALGAS_location location_12 (enumerator_11173.current_mActualSelector (HERE).reader_location (HERE)) ; // Implicit use of 'location' getter
         inCompiler->emitSemanticError (location_12, GALGAS_string ("the selector should be '!").add_operation (enumerator_11214.current_mFormalSelector (HERE).reader_string (SOURCE_FILE ("templateAnalysis.galgas", 209)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 209)).add_operation (temp_10, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 209)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 209))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 209)) ;
       }
       {
@@ -14185,7 +14185,7 @@ static void categoryMethod_templateFileWrapperWithStaticPathAST_templateExpressi
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateFileWrapperWithStaticPathAST * object = (const cPtr_templateFileWrapperWithStaticPathAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateFileWrapperWithStaticPathAST) ;
-  GALGAS_location location_0 (object->mAttribute_mFileWrapperName.reader_location (HERE)) ; // Implicit use of 'location' reader
+  GALGAS_location location_0 (object->mAttribute_mFileWrapperName.reader_location (HERE)) ; // Implicit use of 'location' getter
   inCompiler->emitSemanticError (location_0, GALGAS_string ("unhandled @templateFileWrapperWithStaticPathAST templateExpressionAnalysis")  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 232)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
@@ -14213,7 +14213,7 @@ static void categoryMethod_templateFileWrapperTemplateCallAST_templateExpression
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_templateFileWrapperTemplateCallAST * object = (const cPtr_templateFileWrapperTemplateCallAST *) inObject ;
   macroValidSharedObject (object, cPtr_templateFileWrapperTemplateCallAST) ;
-  GALGAS_location location_0 (object->mAttribute_mFileWrapperName.reader_location (HERE)) ; // Implicit use of 'location' reader
+  GALGAS_location location_0 (object->mAttribute_mFileWrapperName.reader_location (HERE)) ; // Implicit use of 'location' getter
   inCompiler->emitSemanticError (location_0, GALGAS_string ("unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis")  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }

@@ -3629,7 +3629,7 @@ cMapElement_unifiedTypeMap::cMapElement_unifiedTypeMap (const GALGAS_lstring & i
                                                         const GALGAS_attributeMap & in_mAttributeMap,
                                                         const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
                                                         const GALGAS_constructorMap & in_mConstructorMap,
-                                                        const GALGAS_getterMap & in_mReaderMap,
+                                                        const GALGAS_getterMap & in_mGetterMap,
                                                         const GALGAS_setterMap & in_mModifierMap,
                                                         const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
                                                         const GALGAS_classMethodMap & in_mClassMethodMap,
@@ -3657,7 +3657,7 @@ mAttribute_mAllTypedAttributeList (in_mAllTypedAttributeList),
 mAttribute_mAttributeMap (in_mAttributeMap),
 mAttribute_mCurrentTypedAttributeList (in_mCurrentTypedAttributeList),
 mAttribute_mConstructorMap (in_mConstructorMap),
-mAttribute_mReaderMap (in_mReaderMap),
+mAttribute_mGetterMap (in_mGetterMap),
 mAttribute_mModifierMap (in_mModifierMap),
 mAttribute_mInstanceMethodMap (in_mInstanceMethodMap),
 mAttribute_mClassMethodMap (in_mClassMethodMap),
@@ -3679,14 +3679,14 @@ mAttribute_mHeaderKind (in_mHeaderKind) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_unifiedTypeMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mIsConcrete.isValid () && mAttribute_mSuperType.isValid () && mAttribute_mTypeKindEnum.isValid () && mAttribute_mSupportCollectionValue.isValid () && mAttribute_mAllTypedAttributeList.isValid () && mAttribute_mAttributeMap.isValid () && mAttribute_mCurrentTypedAttributeList.isValid () && mAttribute_mConstructorMap.isValid () && mAttribute_mReaderMap.isValid () && mAttribute_mModifierMap.isValid () && mAttribute_mInstanceMethodMap.isValid () && mAttribute_mClassMethodMap.isValid () && mAttribute_mEnumerationDescriptor.isValid () && mAttribute_mEnumeratorVariants.isValid () && mAttribute_mHandledOperatorFlags.isValid () && mAttribute_mAddAssignOperatorArguments.isValid () && mAttribute_mEnumConstantMap.isValid () && mAttribute_mEnumConstantList.isValid () && mAttribute_mMapSearchMethodList.isValid () && mAttribute_mMapProxySearchConstructorList.isValid () && mAttribute_mGenerateHeaderInSeparateFile.isValid () && mAttribute_mTypeForEnumeratedElement.isValid () && mAttribute_mDefaultConstructorName.isValid () && mAttribute_mHeaderFileName.isValid () && mAttribute_mHeaderKind.isValid () ;
+  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mIsConcrete.isValid () && mAttribute_mSuperType.isValid () && mAttribute_mTypeKindEnum.isValid () && mAttribute_mSupportCollectionValue.isValid () && mAttribute_mAllTypedAttributeList.isValid () && mAttribute_mAttributeMap.isValid () && mAttribute_mCurrentTypedAttributeList.isValid () && mAttribute_mConstructorMap.isValid () && mAttribute_mGetterMap.isValid () && mAttribute_mModifierMap.isValid () && mAttribute_mInstanceMethodMap.isValid () && mAttribute_mClassMethodMap.isValid () && mAttribute_mEnumerationDescriptor.isValid () && mAttribute_mEnumeratorVariants.isValid () && mAttribute_mHandledOperatorFlags.isValid () && mAttribute_mAddAssignOperatorArguments.isValid () && mAttribute_mEnumConstantMap.isValid () && mAttribute_mEnumConstantList.isValid () && mAttribute_mMapSearchMethodList.isValid () && mAttribute_mMapProxySearchConstructorList.isValid () && mAttribute_mGenerateHeaderInSeparateFile.isValid () && mAttribute_mTypeForEnumeratedElement.isValid () && mAttribute_mDefaultConstructorName.isValid () && mAttribute_mHeaderFileName.isValid () && mAttribute_mHeaderKind.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_unifiedTypeMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_unifiedTypeMap (mAttribute_lkey, mAttribute_mIsPredefined, mAttribute_mIsConcrete, mAttribute_mSuperType, mAttribute_mTypeKindEnum, mAttribute_mSupportCollectionValue, mAttribute_mAllTypedAttributeList, mAttribute_mAttributeMap, mAttribute_mCurrentTypedAttributeList, mAttribute_mConstructorMap, mAttribute_mReaderMap, mAttribute_mModifierMap, mAttribute_mInstanceMethodMap, mAttribute_mClassMethodMap, mAttribute_mEnumerationDescriptor, mAttribute_mEnumeratorVariants, mAttribute_mHandledOperatorFlags, mAttribute_mAddAssignOperatorArguments, mAttribute_mEnumConstantMap, mAttribute_mEnumConstantList, mAttribute_mMapSearchMethodList, mAttribute_mMapProxySearchConstructorList, mAttribute_mGenerateHeaderInSeparateFile, mAttribute_mTypeForEnumeratedElement, mAttribute_mDefaultConstructorName, mAttribute_mHeaderFileName, mAttribute_mHeaderKind COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_unifiedTypeMap (mAttribute_lkey, mAttribute_mIsPredefined, mAttribute_mIsConcrete, mAttribute_mSuperType, mAttribute_mTypeKindEnum, mAttribute_mSupportCollectionValue, mAttribute_mAllTypedAttributeList, mAttribute_mAttributeMap, mAttribute_mCurrentTypedAttributeList, mAttribute_mConstructorMap, mAttribute_mGetterMap, mAttribute_mModifierMap, mAttribute_mInstanceMethodMap, mAttribute_mClassMethodMap, mAttribute_mEnumerationDescriptor, mAttribute_mEnumeratorVariants, mAttribute_mHandledOperatorFlags, mAttribute_mAddAssignOperatorArguments, mAttribute_mEnumConstantMap, mAttribute_mEnumConstantList, mAttribute_mMapSearchMethodList, mAttribute_mMapProxySearchConstructorList, mAttribute_mGenerateHeaderInSeparateFile, mAttribute_mTypeForEnumeratedElement, mAttribute_mDefaultConstructorName, mAttribute_mHeaderFileName, mAttribute_mHeaderKind COMMA_HERE)) ;
   return result ;
 }
 
@@ -3731,8 +3731,8 @@ void cMapElement_unifiedTypeMap::description (C_String & ioString, const int32_t
   mAttribute_mConstructorMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mReaderMap" ":" ;
-  mAttribute_mReaderMap.description (ioString, inIndentation) ;
+  ioString << "mGetterMap" ":" ;
+  mAttribute_mGetterMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mModifierMap" ":" ;
@@ -3832,7 +3832,7 @@ typeComparisonResult cMapElement_unifiedTypeMap::compare (const cCollectionEleme
     result = mAttribute_mConstructorMap.objectCompare (operand->mAttribute_mConstructorMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mReaderMap.objectCompare (operand->mAttribute_mReaderMap) ;
+    result = mAttribute_mGetterMap.objectCompare (operand->mAttribute_mGetterMap) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mModifierMap.objectCompare (operand->mAttribute_mModifierMap) ;
@@ -4066,7 +4066,7 @@ void GALGAS_unifiedTypeMap::method_searchKey (GALGAS_lstring inKey,
     outArgument6 = p->mAttribute_mAttributeMap ;
     outArgument7 = p->mAttribute_mCurrentTypedAttributeList ;
     outArgument8 = p->mAttribute_mConstructorMap ;
-    outArgument9 = p->mAttribute_mReaderMap ;
+    outArgument9 = p->mAttribute_mGetterMap ;
     outArgument10 = p->mAttribute_mModifierMap ;
     outArgument11 = p->mAttribute_mInstanceMethodMap ;
     outArgument12 = p->mAttribute_mClassMethodMap ;
@@ -4223,7 +4223,7 @@ GALGAS_constructorMap GALGAS_unifiedTypeMap::reader_mConstructorMapForKey (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_getterMap GALGAS_unifiedTypeMap::reader_mReaderMapForKey (const GALGAS_string & inKey,
+GALGAS_getterMap GALGAS_unifiedTypeMap::reader_mGetterMapForKey (const GALGAS_string & inKey,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -4231,7 +4231,7 @@ GALGAS_getterMap GALGAS_unifiedTypeMap::reader_mReaderMapForKey (const GALGAS_st
   GALGAS_getterMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mReaderMap ;
+    result = p->mAttribute_mGetterMap ;
   }
   return result ;
 }
@@ -4604,7 +4604,7 @@ void GALGAS_unifiedTypeMap::modifier_setMConstructorMapForKey (GALGAS_constructo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_unifiedTypeMap::modifier_setMReaderMapForKey (GALGAS_getterMap inAttributeValue,
+void GALGAS_unifiedTypeMap::modifier_setMGetterMapForKey (GALGAS_getterMap inAttributeValue,
                                                           GALGAS_string inKey,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -4612,7 +4612,7 @@ void GALGAS_unifiedTypeMap::modifier_setMReaderMapForKey (GALGAS_getterMap inAtt
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mReaderMap = inAttributeValue ;
+    p->mAttribute_mGetterMap = inAttributeValue ;
   }
 }
 
@@ -4940,10 +4940,10 @@ GALGAS_constructorMap cEnumerator_unifiedTypeMap::current_mConstructorMap (LOCAT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_getterMap cEnumerator_unifiedTypeMap::current_mReaderMap (LOCATION_ARGS) const {
+GALGAS_getterMap cEnumerator_unifiedTypeMap::current_mGetterMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mReaderMap ;
+  return p->mAttribute_mGetterMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11099,7 +11099,7 @@ GALGAS_categoryModifierMapForBuildingContext GALGAS_categoryModifierMapForBuildi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_categoryReaderMapForType::cMapElement_categoryReaderMapForType (const GALGAS_lstring & inKey,
+cMapElement_categoryGetterMapForType::cMapElement_categoryGetterMapForType (const GALGAS_lstring & inKey,
                                                                             const GALGAS_lstring & in_mResultTypeName,
                                                                             const GALGAS_formalInputParameterListAST & in_mInputFormalParameterList
                                                                             COMMA_LOCATION_ARGS) :
@@ -11110,21 +11110,21 @@ mAttribute_mInputFormalParameterList (in_mInputFormalParameterList) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cMapElement_categoryReaderMapForType::isValid (void) const {
+bool cMapElement_categoryGetterMapForType::isValid (void) const {
   return mAttribute_lkey.isValid () && mAttribute_mResultTypeName.isValid () && mAttribute_mInputFormalParameterList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement * cMapElement_categoryReaderMapForType::copy (void) {
+cMapElement * cMapElement_categoryGetterMapForType::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_categoryReaderMapForType (mAttribute_lkey, mAttribute_mResultTypeName, mAttribute_mInputFormalParameterList COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_categoryGetterMapForType (mAttribute_lkey, mAttribute_mResultTypeName, mAttribute_mInputFormalParameterList COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cMapElement_categoryReaderMapForType::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_categoryGetterMapForType::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mResultTypeName" ":" ;
@@ -11137,8 +11137,8 @@ void cMapElement_categoryReaderMapForType::description (C_String & ioString, con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cMapElement_categoryReaderMapForType::compare (const cCollectionElement * inOperand) const {
-  cMapElement_categoryReaderMapForType * operand = (cMapElement_categoryReaderMapForType *) inOperand ;
+typeComparisonResult cMapElement_categoryGetterMapForType::compare (const cCollectionElement * inOperand) const {
+  cMapElement_categoryGetterMapForType * operand = (cMapElement_categoryGetterMapForType *) inOperand ;
   typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mResultTypeName.objectCompare (operand->mAttribute_mResultTypeName) ;
@@ -11151,75 +11151,75 @@ typeComparisonResult cMapElement_categoryReaderMapForType::compare (const cColle
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType::GALGAS_categoryReaderMapForType (void) :
+GALGAS_categoryGetterMapForType::GALGAS_categoryGetterMapForType (void) :
 AC_GALGAS_map () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType::GALGAS_categoryReaderMapForType (const GALGAS_categoryReaderMapForType & inSource) :
+GALGAS_categoryGetterMapForType::GALGAS_categoryGetterMapForType (const GALGAS_categoryGetterMapForType & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType & GALGAS_categoryReaderMapForType::operator = (const GALGAS_categoryReaderMapForType & inSource) {
+GALGAS_categoryGetterMapForType & GALGAS_categoryGetterMapForType::operator = (const GALGAS_categoryGetterMapForType & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForType::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForType result ;
+GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForType::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_categoryGetterMapForType result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForType::constructor_mapWithMapToOverride (const GALGAS_categoryReaderMapForType & inMapToOverride
+GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForType::constructor_mapWithMapToOverride (const GALGAS_categoryGetterMapForType & inMapToOverride
                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForType result ;
+  GALGAS_categoryGetterMapForType result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForType::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForType::reader_overriddenMap (C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
-  GALGAS_categoryReaderMapForType result ;
+  GALGAS_categoryGetterMapForType result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForType::addAssign_operation (const GALGAS_lstring & inKey,
+void GALGAS_categoryGetterMapForType::addAssign_operation (const GALGAS_lstring & inKey,
                                                            const GALGAS_lstring & inArgument0,
                                                            const GALGAS_formalInputParameterListAST & inArgument1,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForType * p = NULL ;
-  macroMyNew (p, cMapElement_categoryReaderMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  cMapElement_categoryGetterMapForType * p = NULL ;
+  macroMyNew (p, cMapElement_categoryGetterMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@categoryReaderMapForType insert error: '%K' already in map" ;
+  const char * kInsertErrorMessage = "@categoryGetterMapForType insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForType::modifier_insertKey (GALGAS_lstring inKey,
+void GALGAS_categoryGetterMapForType::modifier_insertKey (GALGAS_lstring inKey,
                                                           GALGAS_lstring inArgument0,
                                                           GALGAS_formalInputParameterListAST inArgument1,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForType * p = NULL ;
-  macroMyNew (p, cMapElement_categoryReaderMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  cMapElement_categoryGetterMapForType * p = NULL ;
+  macroMyNew (p, cMapElement_categoryGetterMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -11230,14 +11230,14 @@ void GALGAS_categoryReaderMapForType::modifier_insertKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_categoryReaderMapForType::reader_mResultTypeNameForKey (const GALGAS_string & inKey,
+GALGAS_lstring GALGAS_categoryGetterMapForType::reader_mResultTypeNameForKey (const GALGAS_string & inKey,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_categoryReaderMapForType * p = (const cMapElement_categoryReaderMapForType *) attributes ;
+  const cMapElement_categoryGetterMapForType * p = (const cMapElement_categoryGetterMapForType *) attributes ;
   GALGAS_lstring result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_categoryReaderMapForType) ;
+    macroValidSharedObject (p, cMapElement_categoryGetterMapForType) ;
     result = p->mAttribute_mResultTypeName ;
   }
   return result ;
@@ -11245,14 +11245,14 @@ GALGAS_lstring GALGAS_categoryReaderMapForType::reader_mResultTypeNameForKey (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListAST GALGAS_categoryReaderMapForType::reader_mInputFormalParameterListForKey (const GALGAS_string & inKey,
+GALGAS_formalInputParameterListAST GALGAS_categoryGetterMapForType::reader_mInputFormalParameterListForKey (const GALGAS_string & inKey,
                                                                                                             C_Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_categoryReaderMapForType * p = (const cMapElement_categoryReaderMapForType *) attributes ;
+  const cMapElement_categoryGetterMapForType * p = (const cMapElement_categoryGetterMapForType *) attributes ;
   GALGAS_formalInputParameterListAST result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_categoryReaderMapForType) ;
+    macroValidSharedObject (p, cMapElement_categoryGetterMapForType) ;
     result = p->mAttribute_mInputFormalParameterList ;
   }
   return result ;
@@ -11260,45 +11260,45 @@ GALGAS_formalInputParameterListAST GALGAS_categoryReaderMapForType::reader_mInpu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForType::modifier_setMResultTypeNameForKey (GALGAS_lstring inAttributeValue,
+void GALGAS_categoryGetterMapForType::modifier_setMResultTypeNameForKey (GALGAS_lstring inAttributeValue,
                                                                          GALGAS_string inKey,
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_categoryReaderMapForType * p = (cMapElement_categoryReaderMapForType *) attributes ;
+  cMapElement_categoryGetterMapForType * p = (cMapElement_categoryGetterMapForType *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_categoryReaderMapForType) ;
+    macroValidSharedObject (p, cMapElement_categoryGetterMapForType) ;
     p->mAttribute_mResultTypeName = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForType::modifier_setMInputFormalParameterListForKey (GALGAS_formalInputParameterListAST inAttributeValue,
+void GALGAS_categoryGetterMapForType::modifier_setMInputFormalParameterListForKey (GALGAS_formalInputParameterListAST inAttributeValue,
                                                                                    GALGAS_string inKey,
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_categoryReaderMapForType * p = (cMapElement_categoryReaderMapForType *) attributes ;
+  cMapElement_categoryGetterMapForType * p = (cMapElement_categoryGetterMapForType *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_categoryReaderMapForType) ;
+    macroValidSharedObject (p, cMapElement_categoryGetterMapForType) ;
     p->mAttribute_mInputFormalParameterList = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_categoryReaderMapForType * GALGAS_categoryReaderMapForType::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+cMapElement_categoryGetterMapForType * GALGAS_categoryGetterMapForType::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                            const GALGAS_string & inKey
                                                                                                            COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForType * result = (cMapElement_categoryReaderMapForType *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_categoryReaderMapForType) ;
+  cMapElement_categoryGetterMapForType * result = (cMapElement_categoryGetterMapForType *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_categoryGetterMapForType) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cEnumerator_categoryReaderMapForType::cEnumerator_categoryReaderMapForType (const GALGAS_categoryReaderMapForType & inEnumeratedObject,
+cEnumerator_categoryGetterMapForType::cEnumerator_categoryGetterMapForType (const GALGAS_categoryGetterMapForType & inEnumeratedObject,
                                                                             const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
@@ -11306,15 +11306,15 @@ cGenericAbstractEnumerator () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType_2D_element cEnumerator_categoryReaderMapForType::current (LOCATION_ARGS) const {
-  const cMapElement_categoryReaderMapForType * p = (const cMapElement_categoryReaderMapForType *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_categoryReaderMapForType) ;
-  return GALGAS_categoryReaderMapForType_2D_element (p->mAttribute_lkey, p->mAttribute_mResultTypeName, p->mAttribute_mInputFormalParameterList) ;
+GALGAS_categoryGetterMapForType_2D_element cEnumerator_categoryGetterMapForType::current (LOCATION_ARGS) const {
+  const cMapElement_categoryGetterMapForType * p = (const cMapElement_categoryGetterMapForType *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_categoryGetterMapForType) ;
+  return GALGAS_categoryGetterMapForType_2D_element (p->mAttribute_lkey, p->mAttribute_mResultTypeName, p->mAttribute_mInputFormalParameterList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_categoryReaderMapForType::current_lkey (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_categoryGetterMapForType::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mAttribute_lkey ;
@@ -11322,17 +11322,17 @@ GALGAS_lstring cEnumerator_categoryReaderMapForType::current_lkey (LOCATION_ARGS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_categoryReaderMapForType::current_mResultTypeName (LOCATION_ARGS) const {
-  const cMapElement_categoryReaderMapForType * p = (const cMapElement_categoryReaderMapForType *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_categoryReaderMapForType) ;
+GALGAS_lstring cEnumerator_categoryGetterMapForType::current_mResultTypeName (LOCATION_ARGS) const {
+  const cMapElement_categoryGetterMapForType * p = (const cMapElement_categoryGetterMapForType *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_categoryGetterMapForType) ;
   return p->mAttribute_mResultTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListAST cEnumerator_categoryReaderMapForType::current_mInputFormalParameterList (LOCATION_ARGS) const {
-  const cMapElement_categoryReaderMapForType * p = (const cMapElement_categoryReaderMapForType *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_categoryReaderMapForType) ;
+GALGAS_formalInputParameterListAST cEnumerator_categoryGetterMapForType::current_mInputFormalParameterList (LOCATION_ARGS) const {
+  const cMapElement_categoryGetterMapForType * p = (const cMapElement_categoryGetterMapForType *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_categoryGetterMapForType) ;
   return p->mAttribute_mInputFormalParameterList ;
 }
 
@@ -11340,42 +11340,42 @@ GALGAS_formalInputParameterListAST cEnumerator_categoryReaderMapForType::current
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           @categoryReaderMapForType type                                            *
+//                                           @categoryGetterMapForType type                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryReaderMapForType ("categoryReaderMapForType",
+kTypeDescriptor_GALGAS_categoryGetterMapForType ("categoryGetterMapForType",
                                                  NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_categoryReaderMapForType::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryReaderMapForType ;
+const C_galgas_type_descriptor * GALGAS_categoryGetterMapForType::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_categoryGetterMapForType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_categoryReaderMapForType::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_categoryGetterMapForType::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryReaderMapForType (*this)) ;
+    macroMyNew (result, GALGAS_categoryGetterMapForType (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForType::extractObject (const GALGAS_object & inObject,
+GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForType::extractObject (const GALGAS_object & inObject,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForType result ;
-  const GALGAS_categoryReaderMapForType * p = (const GALGAS_categoryReaderMapForType *) inObject.embeddedObject () ;
+  GALGAS_categoryGetterMapForType result ;
+  const GALGAS_categoryGetterMapForType * p = (const GALGAS_categoryGetterMapForType *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryReaderMapForType *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_categoryGetterMapForType *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("categoryReaderMapForType", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("categoryGetterMapForType", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11383,8 +11383,8 @@ GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForType::extractObject (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_categoryReaderMapForBuildingContext::cMapElement_categoryReaderMapForBuildingContext (const GALGAS_lstring & inKey,
-                                                                                                  const GALGAS_categoryReaderMapForType & in_mCategoryReaderMapForType
+cMapElement_categoryGetterMapForBuildingContext::cMapElement_categoryGetterMapForBuildingContext (const GALGAS_lstring & inKey,
+                                                                                                  const GALGAS_categoryGetterMapForType & in_mCategoryReaderMapForType
                                                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mAttribute_mCategoryReaderMapForType (in_mCategoryReaderMapForType) {
@@ -11392,21 +11392,21 @@ mAttribute_mCategoryReaderMapForType (in_mCategoryReaderMapForType) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cMapElement_categoryReaderMapForBuildingContext::isValid (void) const {
+bool cMapElement_categoryGetterMapForBuildingContext::isValid (void) const {
   return mAttribute_lkey.isValid () && mAttribute_mCategoryReaderMapForType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement * cMapElement_categoryReaderMapForBuildingContext::copy (void) {
+cMapElement * cMapElement_categoryGetterMapForBuildingContext::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_categoryReaderMapForBuildingContext (mAttribute_lkey, mAttribute_mCategoryReaderMapForType COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_categoryGetterMapForBuildingContext (mAttribute_lkey, mAttribute_mCategoryReaderMapForType COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cMapElement_categoryReaderMapForBuildingContext::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_categoryGetterMapForBuildingContext::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCategoryReaderMapForType" ":" ;
@@ -11415,8 +11415,8 @@ void cMapElement_categoryReaderMapForBuildingContext::description (C_String & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cMapElement_categoryReaderMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
-  cMapElement_categoryReaderMapForBuildingContext * operand = (cMapElement_categoryReaderMapForBuildingContext *) inOperand ;
+typeComparisonResult cMapElement_categoryGetterMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
+  cMapElement_categoryGetterMapForBuildingContext * operand = (cMapElement_categoryGetterMapForBuildingContext *) inOperand ;
   typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mCategoryReaderMapForType.objectCompare (operand->mAttribute_mCategoryReaderMapForType) ;
@@ -11426,73 +11426,73 @@ typeComparisonResult cMapElement_categoryReaderMapForBuildingContext::compare (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext::GALGAS_categoryReaderMapForBuildingContext (void) :
+GALGAS_categoryGetterMapForBuildingContext::GALGAS_categoryGetterMapForBuildingContext (void) :
 AC_GALGAS_map () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext::GALGAS_categoryReaderMapForBuildingContext (const GALGAS_categoryReaderMapForBuildingContext & inSource) :
+GALGAS_categoryGetterMapForBuildingContext::GALGAS_categoryGetterMapForBuildingContext (const GALGAS_categoryGetterMapForBuildingContext & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext & GALGAS_categoryReaderMapForBuildingContext::operator = (const GALGAS_categoryReaderMapForBuildingContext & inSource) {
+GALGAS_categoryGetterMapForBuildingContext & GALGAS_categoryGetterMapForBuildingContext::operator = (const GALGAS_categoryGetterMapForBuildingContext & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext GALGAS_categoryReaderMapForBuildingContext::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForBuildingContext result ;
+GALGAS_categoryGetterMapForBuildingContext GALGAS_categoryGetterMapForBuildingContext::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_categoryGetterMapForBuildingContext result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext GALGAS_categoryReaderMapForBuildingContext::constructor_mapWithMapToOverride (const GALGAS_categoryReaderMapForBuildingContext & inMapToOverride
+GALGAS_categoryGetterMapForBuildingContext GALGAS_categoryGetterMapForBuildingContext::constructor_mapWithMapToOverride (const GALGAS_categoryGetterMapForBuildingContext & inMapToOverride
                                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForBuildingContext result ;
+  GALGAS_categoryGetterMapForBuildingContext result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext GALGAS_categoryReaderMapForBuildingContext::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_categoryGetterMapForBuildingContext GALGAS_categoryGetterMapForBuildingContext::reader_overriddenMap (C_Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_categoryReaderMapForBuildingContext result ;
+  GALGAS_categoryGetterMapForBuildingContext result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForBuildingContext::addAssign_operation (const GALGAS_lstring & inKey,
-                                                                      const GALGAS_categoryReaderMapForType & inArgument0,
+void GALGAS_categoryGetterMapForBuildingContext::addAssign_operation (const GALGAS_lstring & inKey,
+                                                                      const GALGAS_categoryGetterMapForType & inArgument0,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForBuildingContext * p = NULL ;
-  macroMyNew (p, cMapElement_categoryReaderMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
+  cMapElement_categoryGetterMapForBuildingContext * p = NULL ;
+  macroMyNew (p, cMapElement_categoryGetterMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@categoryReaderMapForBuildingContext insert error: '%K' already in map" ;
+  const char * kInsertErrorMessage = "@categoryGetterMapForBuildingContext insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForBuildingContext::modifier_insertKey (GALGAS_lstring inKey,
-                                                                     GALGAS_categoryReaderMapForType inArgument0,
+void GALGAS_categoryGetterMapForBuildingContext::modifier_insertKey (GALGAS_lstring inKey,
+                                                                     GALGAS_categoryGetterMapForType inArgument0,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForBuildingContext * p = NULL ;
-  macroMyNew (p, cMapElement_categoryReaderMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
+  cMapElement_categoryGetterMapForBuildingContext * p = NULL ;
+  macroMyNew (p, cMapElement_categoryGetterMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -11503,36 +11503,36 @@ void GALGAS_categoryReaderMapForBuildingContext::modifier_insertKey (GALGAS_lstr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const char * kSearchErrorMessage_categoryReaderMapForBuildingContext_searchKey = "internal error" ;
+const char * kSearchErrorMessage_categoryGetterMapForBuildingContext_searchKey = "internal error" ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForBuildingContext::method_searchKey (GALGAS_lstring inKey,
-                                                                   GALGAS_categoryReaderMapForType & outArgument0,
+void GALGAS_categoryGetterMapForBuildingContext::method_searchKey (GALGAS_lstring inKey,
+                                                                   GALGAS_categoryGetterMapForType & outArgument0,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  const cMapElement_categoryReaderMapForBuildingContext * p = (const cMapElement_categoryReaderMapForBuildingContext *) performSearch (inKey,
+  const cMapElement_categoryGetterMapForBuildingContext * p = (const cMapElement_categoryGetterMapForBuildingContext *) performSearch (inKey,
                                                                                                                                          inCompiler,
-                                                                                                                                         kSearchErrorMessage_categoryReaderMapForBuildingContext_searchKey
+                                                                                                                                         kSearchErrorMessage_categoryGetterMapForBuildingContext_searchKey
                                                                                                                                          COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_categoryReaderMapForBuildingContext) ;
+    macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
     outArgument0 = p->mAttribute_mCategoryReaderMapForType ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForBuildingContext::reader_mCategoryReaderMapForTypeForKey (const GALGAS_string & inKey,
+GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForBuildingContext::reader_mCategoryReaderMapForTypeForKey (const GALGAS_string & inKey,
                                                                                                                     C_Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_categoryReaderMapForBuildingContext * p = (const cMapElement_categoryReaderMapForBuildingContext *) attributes ;
-  GALGAS_categoryReaderMapForType result ;
+  const cMapElement_categoryGetterMapForBuildingContext * p = (const cMapElement_categoryGetterMapForBuildingContext *) attributes ;
+  GALGAS_categoryGetterMapForType result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_categoryReaderMapForBuildingContext) ;
+    macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
     result = p->mAttribute_mCategoryReaderMapForType ;
   }
   return result ;
@@ -11540,31 +11540,31 @@ GALGAS_categoryReaderMapForType GALGAS_categoryReaderMapForBuildingContext::read
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForBuildingContext::modifier_setMCategoryReaderMapForTypeForKey (GALGAS_categoryReaderMapForType inAttributeValue,
+void GALGAS_categoryGetterMapForBuildingContext::modifier_setMCategoryReaderMapForTypeForKey (GALGAS_categoryGetterMapForType inAttributeValue,
                                                                                               GALGAS_string inKey,
                                                                                               C_Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_categoryReaderMapForBuildingContext * p = (cMapElement_categoryReaderMapForBuildingContext *) attributes ;
+  cMapElement_categoryGetterMapForBuildingContext * p = (cMapElement_categoryGetterMapForBuildingContext *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_categoryReaderMapForBuildingContext) ;
+    macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
     p->mAttribute_mCategoryReaderMapForType = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_categoryReaderMapForBuildingContext * GALGAS_categoryReaderMapForBuildingContext::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+cMapElement_categoryGetterMapForBuildingContext * GALGAS_categoryGetterMapForBuildingContext::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                                                  const GALGAS_string & inKey
                                                                                                                                  COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForBuildingContext * result = (cMapElement_categoryReaderMapForBuildingContext *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_categoryReaderMapForBuildingContext) ;
+  cMapElement_categoryGetterMapForBuildingContext * result = (cMapElement_categoryGetterMapForBuildingContext *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_categoryGetterMapForBuildingContext) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cEnumerator_categoryReaderMapForBuildingContext::cEnumerator_categoryReaderMapForBuildingContext (const GALGAS_categoryReaderMapForBuildingContext & inEnumeratedObject,
+cEnumerator_categoryGetterMapForBuildingContext::cEnumerator_categoryGetterMapForBuildingContext (const GALGAS_categoryGetterMapForBuildingContext & inEnumeratedObject,
                                                                                                   const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
@@ -11572,15 +11572,15 @@ cGenericAbstractEnumerator () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext_2D_element cEnumerator_categoryReaderMapForBuildingContext::current (LOCATION_ARGS) const {
-  const cMapElement_categoryReaderMapForBuildingContext * p = (const cMapElement_categoryReaderMapForBuildingContext *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_categoryReaderMapForBuildingContext) ;
-  return GALGAS_categoryReaderMapForBuildingContext_2D_element (p->mAttribute_lkey, p->mAttribute_mCategoryReaderMapForType) ;
+GALGAS_categoryGetterMapForBuildingContext_2D_element cEnumerator_categoryGetterMapForBuildingContext::current (LOCATION_ARGS) const {
+  const cMapElement_categoryGetterMapForBuildingContext * p = (const cMapElement_categoryGetterMapForBuildingContext *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
+  return GALGAS_categoryGetterMapForBuildingContext_2D_element (p->mAttribute_lkey, p->mAttribute_mCategoryReaderMapForType) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_categoryReaderMapForBuildingContext::current_lkey (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_categoryGetterMapForBuildingContext::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mAttribute_lkey ;
@@ -11588,9 +11588,9 @@ GALGAS_lstring cEnumerator_categoryReaderMapForBuildingContext::current_lkey (LO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForType cEnumerator_categoryReaderMapForBuildingContext::current_mCategoryReaderMapForType (LOCATION_ARGS) const {
-  const cMapElement_categoryReaderMapForBuildingContext * p = (const cMapElement_categoryReaderMapForBuildingContext *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_categoryReaderMapForBuildingContext) ;
+GALGAS_categoryGetterMapForType cEnumerator_categoryGetterMapForBuildingContext::current_mCategoryReaderMapForType (LOCATION_ARGS) const {
+  const cMapElement_categoryGetterMapForBuildingContext * p = (const cMapElement_categoryGetterMapForBuildingContext *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_categoryGetterMapForBuildingContext) ;
   return p->mAttribute_mCategoryReaderMapForType ;
 }
 
@@ -11598,42 +11598,42 @@ GALGAS_categoryReaderMapForType cEnumerator_categoryReaderMapForBuildingContext:
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @categoryReaderMapForBuildingContext type                                      *
+//                                      @categoryGetterMapForBuildingContext type                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryReaderMapForBuildingContext ("categoryReaderMapForBuildingContext",
+kTypeDescriptor_GALGAS_categoryGetterMapForBuildingContext ("categoryGetterMapForBuildingContext",
                                                             NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_categoryReaderMapForBuildingContext::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryReaderMapForBuildingContext ;
+const C_galgas_type_descriptor * GALGAS_categoryGetterMapForBuildingContext::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_categoryGetterMapForBuildingContext ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_categoryReaderMapForBuildingContext::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_categoryGetterMapForBuildingContext::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryReaderMapForBuildingContext (*this)) ;
+    macroMyNew (result, GALGAS_categoryGetterMapForBuildingContext (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForBuildingContext GALGAS_categoryReaderMapForBuildingContext::extractObject (const GALGAS_object & inObject,
+GALGAS_categoryGetterMapForBuildingContext GALGAS_categoryGetterMapForBuildingContext::extractObject (const GALGAS_object & inObject,
                                                                                                       C_Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForBuildingContext result ;
-  const GALGAS_categoryReaderMapForBuildingContext * p = (const GALGAS_categoryReaderMapForBuildingContext *) inObject.embeddedObject () ;
+  GALGAS_categoryGetterMapForBuildingContext result ;
+  const GALGAS_categoryGetterMapForBuildingContext * p = (const GALGAS_categoryGetterMapForBuildingContext *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryReaderMapForBuildingContext *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_categoryGetterMapForBuildingContext *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("categoryReaderMapForBuildingContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("categoryGetterMapForBuildingContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

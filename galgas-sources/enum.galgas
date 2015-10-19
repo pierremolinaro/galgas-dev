@@ -69,7 +69,7 @@ syntax extension galgas3DeclarationsSyntax {
 override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
   let key = @lstring.new {!"@" + mEnumTypeName ![mEnumTypeName location]}
@@ -105,7 +105,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
 
 override method @enumDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ?let @categoryGetterMapForBuildingContext inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
@@ -309,7 +309,7 @@ override method @enumTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mGetterMap]
     ![mTypeProxy mModifierMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]

@@ -2006,7 +2006,7 @@ class GALGAS_string function_syntaxDirectedTranslationResultVarName (class C_Com
 //---------------------------------------------------------------------------------------------------------------------*
 
 void routine_addCategories (const class GALGAS_categoryMethodMapForBuildingContext constinArgument0,
-                            const class GALGAS_categoryReaderMapForBuildingContext constinArgument1,
+                            const class GALGAS_categoryGetterMapForBuildingContext constinArgument1,
                             const class GALGAS_categoryModifierMapForBuildingContext constinArgument2,
                             class GALGAS_semanticContext & ioArgument3,
                             const class GALGAS_lstring constinArgument4,
@@ -2106,7 +2106,7 @@ void callCategoryMethod_addAssociatedElement (const class cPtr_semanticDeclarati
 typedef void (*categoryMethodSignature_semanticDeclarationAST_enterDeclarationInGraph) (const class cPtr_semanticDeclarationAST * inObject,
                                                                                         class GALGAS_semanticTypePrecedenceGraph & ioArgument0,
                                                                                         class GALGAS_categoryMethodMapForBuildingContext & ioArgument1,
-                                                                                        class GALGAS_categoryReaderMapForBuildingContext & ioArgument2,
+                                                                                        class GALGAS_categoryGetterMapForBuildingContext & ioArgument2,
                                                                                         class GALGAS_categoryModifierMapForBuildingContext & ioArgument3,
                                                                                         class GALGAS_semanticDeclarationListAST & ioArgument4,
                                                                                         class C_Compiler * inCompiler
@@ -2122,7 +2122,7 @@ void enterCategoryMethod_enterDeclarationInGraph (const int32_t inClassIndex,
 void callCategoryMethod_enterDeclarationInGraph (const class cPtr_semanticDeclarationAST * inObject,
                                                  GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
                                                  GALGAS_categoryMethodMapForBuildingContext & io_ioCategoryMethodMapForBuildingContext,
-                                                 GALGAS_categoryReaderMapForBuildingContext & io_ioCategoryReaderMapForBuildingContext,
+                                                 GALGAS_categoryGetterMapForBuildingContext & io_ioCategoryGetterMapForBuildingContext,
                                                  GALGAS_categoryModifierMapForBuildingContext & io_ioCategoryModifierMapForBuildingContext,
                                                  GALGAS_semanticDeclarationListAST & io_ioCategoryOverrideDefinitionList,
                                                  C_Compiler * inCompiler
@@ -2136,7 +2136,7 @@ void callCategoryMethod_enterDeclarationInGraph (const class cPtr_semanticDeclar
 
 typedef void (*categoryMethodSignature_semanticDeclarationAST_enterInSemanticContext) (const class cPtr_semanticDeclarationAST * inObject,
                                                                                        const class GALGAS_categoryMethodMapForBuildingContext constinArgument0,
-                                                                                       const class GALGAS_categoryReaderMapForBuildingContext constinArgument1,
+                                                                                       const class GALGAS_categoryGetterMapForBuildingContext constinArgument1,
                                                                                        const class GALGAS_categoryModifierMapForBuildingContext constinArgument2,
                                                                                        class GALGAS_semanticContext & ioArgument3,
                                                                                        class C_Compiler * inCompiler
@@ -2151,7 +2151,7 @@ void enterCategoryMethod_enterInSemanticContext (const int32_t inClassIndex,
 
 void callCategoryMethod_enterInSemanticContext (const class cPtr_semanticDeclarationAST * inObject,
                                                 const GALGAS_categoryMethodMapForBuildingContext constin_inCategoryMethodMapForBuildingContext,
-                                                const GALGAS_categoryReaderMapForBuildingContext constin_inCategoryReaderMapForBuildingContext,
+                                                const GALGAS_categoryGetterMapForBuildingContext constin_inCategoryReaderMapForBuildingContext,
                                                 const GALGAS_categoryModifierMapForBuildingContext constin_inCategoryModifierMapForBuildingContext,
                                                 GALGAS_semanticContext & io_ioSemanticContext,
                                                 C_Compiler * inCompiler
@@ -2377,19 +2377,19 @@ void routine_checkDiadicOperator (const class GALGAS_unifiedTypeMap_2D_proxy con
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @readerCallExpressionForGeneration class                                       *
+//                                      @getterCallExpressionForGeneration class                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_readerCallExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
+class GALGAS_getterCallExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
-  public : GALGAS_readerCallExpressionForGeneration (void) ;
+  public : GALGAS_getterCallExpressionForGeneration (void) ;
 
 //---
-  public : inline const class cPtr_readerCallExpressionForGeneration * ptr (void) const { return (const cPtr_readerCallExpressionForGeneration *) mObjectPtr ; }
+  public : inline const class cPtr_getterCallExpressionForGeneration * ptr (void) const { return (const cPtr_getterCallExpressionForGeneration *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_readerCallExpressionForGeneration (const cPtr_readerCallExpressionForGeneration * inSourcePtr) ;
+  public : GALGAS_getterCallExpressionForGeneration (const cPtr_getterCallExpressionForGeneration * inSourcePtr) ;
 
 //-- Start of generic part --*
 
@@ -2397,12 +2397,12 @@ class GALGAS_readerCallExpressionForGeneration : public GALGAS_semanticExpressio
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_readerCallExpressionForGeneration extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_getterCallExpressionForGeneration extractObject (const GALGAS_object & inObject,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_readerCallExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+  public : static GALGAS_getterCallExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                             const class GALGAS_location & inOperand1,
                                                                             const class GALGAS_methodKind & inOperand2,
                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand3,
@@ -2413,7 +2413,7 @@ class GALGAS_readerCallExpressionForGeneration : public GALGAS_semanticExpressio
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_readerCallExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_getterCallExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2425,11 +2425,11 @@ class GALGAS_readerCallExpressionForGeneration : public GALGAS_semanticExpressio
 
   public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mFieldList (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mGetterName (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mReaderName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
 
@@ -2437,35 +2437,35 @@ class GALGAS_readerCallExpressionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_readerCallExpressionForGeneration class
+} ; // End of GALGAS_getterCallExpressionForGeneration class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readerCallExpressionForGeneration ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionForGeneration ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Pointer class for @readerCallExpressionForGeneration class                              *
+//                             Pointer class for @getterCallExpressionForGeneration class                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cPtr_readerCallExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
+class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
   public : GALGAS_methodKind mAttribute_mKind ;
   public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
   public : GALGAS_stringlist mAttribute_mFieldList ;
-  public : GALGAS_string mAttribute_mReaderName ;
+  public : GALGAS_string mAttribute_mGetterName ;
   public : GALGAS_semanticExpressionListForGeneration mAttribute_mExpressions ;
   public : GALGAS_bool mAttribute_mHasCompilerArgument ;
 
 //--- Constructor
-  public : cPtr_readerCallExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+  public : cPtr_getterCallExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                    const GALGAS_location & in_mLocation,
                                                    const GALGAS_methodKind & in_mKind,
                                                    const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                    const GALGAS_stringlist & in_mFieldList,
-                                                   const GALGAS_string & in_mReaderName,
+                                                   const GALGAS_string & in_mGetterName,
                                                    const GALGAS_semanticExpressionListForGeneration & in_mExpressions,
                                                    const GALGAS_bool & in_mHasCompilerArgument
                                                    COMMA_LOCATION_ARGS) ;
@@ -2477,7 +2477,7 @@ class cPtr_readerCallExpressionForGeneration : public cPtr_semanticExpressionFor
   public : VIRTUAL_IN_DEBUG GALGAS_methodKind reader_mKind (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration reader_mReceiverExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_mFieldList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mGetterName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionListForGeneration reader_mExpressions (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasCompilerArgument (LOCATION_ARGS) const ;
 //--- Description

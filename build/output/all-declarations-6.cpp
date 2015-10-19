@@ -11801,105 +11801,105 @@ GALGAS_categoryModifierMapForGlobalCheckings GALGAS_categoryModifierMapForGlobal
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_categoryReaderMapForGlobalCheckings::cMapElement_categoryReaderMapForGlobalCheckings (const GALGAS_lstring & inKey
+cMapElement_categoryGetterMapForGlobalCheckings::cMapElement_categoryGetterMapForGlobalCheckings (const GALGAS_lstring & inKey
                                                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cMapElement_categoryReaderMapForGlobalCheckings::isValid (void) const {
+bool cMapElement_categoryGetterMapForGlobalCheckings::isValid (void) const {
   return mAttribute_lkey.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement * cMapElement_categoryReaderMapForGlobalCheckings::copy (void) {
+cMapElement * cMapElement_categoryGetterMapForGlobalCheckings::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_categoryReaderMapForGlobalCheckings (mAttribute_lkey COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_categoryGetterMapForGlobalCheckings (mAttribute_lkey COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cMapElement_categoryReaderMapForGlobalCheckings::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
+void cMapElement_categoryGetterMapForGlobalCheckings::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cMapElement_categoryReaderMapForGlobalCheckings::compare (const cCollectionElement * inOperand) const {
-  cMapElement_categoryReaderMapForGlobalCheckings * operand = (cMapElement_categoryReaderMapForGlobalCheckings *) inOperand ;
+typeComparisonResult cMapElement_categoryGetterMapForGlobalCheckings::compare (const cCollectionElement * inOperand) const {
+  cMapElement_categoryGetterMapForGlobalCheckings * operand = (cMapElement_categoryGetterMapForGlobalCheckings *) inOperand ;
   typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings::GALGAS_categoryReaderMapForGlobalCheckings (void) :
+GALGAS_categoryGetterMapForGlobalCheckings::GALGAS_categoryGetterMapForGlobalCheckings (void) :
 AC_GALGAS_map () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings::GALGAS_categoryReaderMapForGlobalCheckings (const GALGAS_categoryReaderMapForGlobalCheckings & inSource) :
+GALGAS_categoryGetterMapForGlobalCheckings::GALGAS_categoryGetterMapForGlobalCheckings (const GALGAS_categoryGetterMapForGlobalCheckings & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings & GALGAS_categoryReaderMapForGlobalCheckings::operator = (const GALGAS_categoryReaderMapForGlobalCheckings & inSource) {
+GALGAS_categoryGetterMapForGlobalCheckings & GALGAS_categoryGetterMapForGlobalCheckings::operator = (const GALGAS_categoryGetterMapForGlobalCheckings & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings GALGAS_categoryReaderMapForGlobalCheckings::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForGlobalCheckings result ;
+GALGAS_categoryGetterMapForGlobalCheckings GALGAS_categoryGetterMapForGlobalCheckings::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_categoryGetterMapForGlobalCheckings result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings GALGAS_categoryReaderMapForGlobalCheckings::constructor_mapWithMapToOverride (const GALGAS_categoryReaderMapForGlobalCheckings & inMapToOverride
+GALGAS_categoryGetterMapForGlobalCheckings GALGAS_categoryGetterMapForGlobalCheckings::constructor_mapWithMapToOverride (const GALGAS_categoryGetterMapForGlobalCheckings & inMapToOverride
                                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForGlobalCheckings result ;
+  GALGAS_categoryGetterMapForGlobalCheckings result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings GALGAS_categoryReaderMapForGlobalCheckings::reader_overriddenMap (C_Compiler * inCompiler
+GALGAS_categoryGetterMapForGlobalCheckings GALGAS_categoryGetterMapForGlobalCheckings::reader_overriddenMap (C_Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_categoryReaderMapForGlobalCheckings result ;
+  GALGAS_categoryGetterMapForGlobalCheckings result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForGlobalCheckings::addAssign_operation (const GALGAS_lstring & inKey,
+void GALGAS_categoryGetterMapForGlobalCheckings::addAssign_operation (const GALGAS_lstring & inKey,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForGlobalCheckings * p = NULL ;
-  macroMyNew (p, cMapElement_categoryReaderMapForGlobalCheckings (inKey COMMA_HERE)) ;
+  cMapElement_categoryGetterMapForGlobalCheckings * p = NULL ;
+  macroMyNew (p, cMapElement_categoryGetterMapForGlobalCheckings (inKey COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@categoryReaderMapForGlobalCheckings insert error: '%K' already in map" ;
+  const char * kInsertErrorMessage = "@categoryGetterMapForGlobalCheckings insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryReaderMapForGlobalCheckings::modifier_insertKey (GALGAS_lstring inKey,
+void GALGAS_categoryGetterMapForGlobalCheckings::modifier_insertKey (GALGAS_lstring inKey,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForGlobalCheckings * p = NULL ;
-  macroMyNew (p, cMapElement_categoryReaderMapForGlobalCheckings (inKey COMMA_HERE)) ;
+  cMapElement_categoryGetterMapForGlobalCheckings * p = NULL ;
+  macroMyNew (p, cMapElement_categoryGetterMapForGlobalCheckings (inKey COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -11910,17 +11910,17 @@ void GALGAS_categoryReaderMapForGlobalCheckings::modifier_insertKey (GALGAS_lstr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_categoryReaderMapForGlobalCheckings * GALGAS_categoryReaderMapForGlobalCheckings::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+cMapElement_categoryGetterMapForGlobalCheckings * GALGAS_categoryGetterMapForGlobalCheckings::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                                                  const GALGAS_string & inKey
                                                                                                                                  COMMA_LOCATION_ARGS) {
-  cMapElement_categoryReaderMapForGlobalCheckings * result = (cMapElement_categoryReaderMapForGlobalCheckings *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_categoryReaderMapForGlobalCheckings) ;
+  cMapElement_categoryGetterMapForGlobalCheckings * result = (cMapElement_categoryGetterMapForGlobalCheckings *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_categoryGetterMapForGlobalCheckings) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cEnumerator_categoryReaderMapForGlobalCheckings::cEnumerator_categoryReaderMapForGlobalCheckings (const GALGAS_categoryReaderMapForGlobalCheckings & inEnumeratedObject,
+cEnumerator_categoryGetterMapForGlobalCheckings::cEnumerator_categoryGetterMapForGlobalCheckings (const GALGAS_categoryGetterMapForGlobalCheckings & inEnumeratedObject,
                                                                                                   const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
@@ -11928,15 +11928,15 @@ cGenericAbstractEnumerator () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings_2D_element cEnumerator_categoryReaderMapForGlobalCheckings::current (LOCATION_ARGS) const {
-  const cMapElement_categoryReaderMapForGlobalCheckings * p = (const cMapElement_categoryReaderMapForGlobalCheckings *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_categoryReaderMapForGlobalCheckings) ;
-  return GALGAS_categoryReaderMapForGlobalCheckings_2D_element (p->mAttribute_lkey) ;
+GALGAS_categoryGetterMapForGlobalCheckings_2D_element cEnumerator_categoryGetterMapForGlobalCheckings::current (LOCATION_ARGS) const {
+  const cMapElement_categoryGetterMapForGlobalCheckings * p = (const cMapElement_categoryGetterMapForGlobalCheckings *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_categoryGetterMapForGlobalCheckings) ;
+  return GALGAS_categoryGetterMapForGlobalCheckings_2D_element (p->mAttribute_lkey) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_categoryReaderMapForGlobalCheckings::current_lkey (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_categoryGetterMapForGlobalCheckings::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mAttribute_lkey ;
@@ -11946,42 +11946,42 @@ GALGAS_lstring cEnumerator_categoryReaderMapForGlobalCheckings::current_lkey (LO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @categoryReaderMapForGlobalCheckings type                                      *
+//                                      @categoryGetterMapForGlobalCheckings type                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryReaderMapForGlobalCheckings ("categoryReaderMapForGlobalCheckings",
+kTypeDescriptor_GALGAS_categoryGetterMapForGlobalCheckings ("categoryGetterMapForGlobalCheckings",
                                                             NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_categoryReaderMapForGlobalCheckings::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryReaderMapForGlobalCheckings ;
+const C_galgas_type_descriptor * GALGAS_categoryGetterMapForGlobalCheckings::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_categoryGetterMapForGlobalCheckings ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_categoryReaderMapForGlobalCheckings::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_categoryGetterMapForGlobalCheckings::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryReaderMapForGlobalCheckings (*this)) ;
+    macroMyNew (result, GALGAS_categoryGetterMapForGlobalCheckings (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderMapForGlobalCheckings GALGAS_categoryReaderMapForGlobalCheckings::extractObject (const GALGAS_object & inObject,
+GALGAS_categoryGetterMapForGlobalCheckings GALGAS_categoryGetterMapForGlobalCheckings::extractObject (const GALGAS_object & inObject,
                                                                                                       C_Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_categoryReaderMapForGlobalCheckings result ;
-  const GALGAS_categoryReaderMapForGlobalCheckings * p = (const GALGAS_categoryReaderMapForGlobalCheckings *) inObject.embeddedObject () ;
+  GALGAS_categoryGetterMapForGlobalCheckings result ;
+  const GALGAS_categoryGetterMapForGlobalCheckings * p = (const GALGAS_categoryGetterMapForGlobalCheckings *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryReaderMapForGlobalCheckings *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_categoryGetterMapForGlobalCheckings *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("categoryReaderMapForGlobalCheckings", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("categoryGetterMapForGlobalCheckings", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
