@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//%!["Overriding category reader '@" + CLASS_NAME + " " + GETTER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//%!["Overriding category getter '@" + CLASS_NAME + " " + GETTER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -9,10 +9,10 @@
 
 static void defineCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (void) {
   enterCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
-        %!^%categoryReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) ;
+        %!^%extensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (defineCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%, NULL) ;
+C_PrologueEpilogue gGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (defineCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%, NULL) ;
 

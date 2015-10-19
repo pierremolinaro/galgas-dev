@@ -285,7 +285,7 @@ func %once supportWithAccessor                            -> @uint outMask { out
 func %once plusEqualOperatorWithFieldListNeedsCompilerArg -> @uint outMask { outMask = 1 << 27 }
 func %once generateEnumerationHelperMethods               -> @uint outMask { outMask = 1 << 28 }
 func %once doNotGenererateObjectCompare                   -> @uint outMask { outMask = 1 << 29 }
-func %once generateDescriptionReaderUtilityMethod         -> @uint outMask { outMask = 1 << 30 }
+func %once generateDescriptionGetterUtilityMethod         -> @uint outMask { outMask = 1 << 30 }
 func %once generateCopyConstructorAndAssignmentOperator   -> @uint outMask { outMask = 1 << 31 }
 
 #----------------------------------------------------------------------------------------------------------------------*

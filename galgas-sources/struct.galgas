@@ -154,7 +154,7 @@ override method @structDeclarationAST enterInSemanticContext
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList. emptyList
     !@stringlist. emptyList
-    !generateDescriptionReaderUtilityMethod ()
+    !generateDescriptionGetterUtilityMethod ()
     !@functionSignature. emptyList
     !{}
     !{}

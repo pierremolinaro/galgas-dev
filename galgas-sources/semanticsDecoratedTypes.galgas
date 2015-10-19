@@ -1064,11 +1064,11 @@ class @abstractCategoryGetterForGeneration : @semanticDeclarationWithHeaderForGe
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                                              *
+# C A T E G O R Y    G E T T E R    D E C L A R A T I O N                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @categoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @categoryGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
   @string mCategoryGetterName
   @bool mImplementedAsFunction

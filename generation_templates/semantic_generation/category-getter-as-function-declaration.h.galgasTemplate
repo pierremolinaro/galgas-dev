@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//%!["Category Getter '@" + TYPE_NAME + " " + GETTER_NAME + "' (as function)" stringByLeftAndRightPadding !117 !' ']%*
+//%!["Category getter '@" + TYPE_NAME + " " + GETTER_NAME + "' (as function)" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_%!RETURN_TYPE_IDENTIFIER% categoryReader_%![GETTER_NAME identifierRepresentation]% (%?^%const class GALGAS_%![TYPE_NAME identifierRepresentation]% & inObject%
+class GALGAS_%!RETURN_TYPE_IDENTIFIER% extensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const class GALGAS_%![TYPE_NAME identifierRepresentation]% & inObject%
   for () in FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
     if mIsConstant then

@@ -1183,7 +1183,7 @@ override method @getterCallExpressionForGeneration generateExpression
          + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else
       [[mReceiverExpression mResultType] addHeaderFileName !?ioInclusionSet]
-      outCppExpression = "categoryReader_" + [mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
+      outCppExpression = "extensionGetter_" + [mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
     end
   case definedAsMember :
     outCppExpression = receiverCppName

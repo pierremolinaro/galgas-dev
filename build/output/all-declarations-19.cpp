@@ -689,13 +689,13 @@ void callCategoryMethod_templateCodeGeneration (const cPtr_templateInstructionFo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category Reader '@lexicalArgumentModeAST lexicalFormalModeName'                           *
+//                           Category Getter '@lexicalArgumentModeAST lexicalFormalModeName'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_lexicalFormalModeName (const GALGAS_lexicalArgumentModeAST & inObject,
-                                                    C_Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_lexicalFormalModeName (const GALGAS_lexicalArgumentModeAST & inObject,
+                                                     C_Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -721,13 +721,13 @@ GALGAS_string categoryReader_lexicalFormalModeName (const GALGAS_lexicalArgument
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Category Reader '@lexicalArgumentModeAST cppConstInFormalArgument'                          *
+//                         Category Getter '@lexicalArgumentModeAST cppConstInFormalArgument'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_cppConstInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
-                                                       C_Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_cppConstInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
+                                                        C_Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -753,13 +753,13 @@ GALGAS_string categoryReader_cppConstInFormalArgument (const GALGAS_lexicalArgum
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category Reader '@lexicalArgumentModeAST cppReferenceInFormalArgument'                        *
+//                       Category Getter '@lexicalArgumentModeAST cppReferenceInFormalArgument'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_cppReferenceInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
-                                                           C_Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_cppReferenceInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -785,13 +785,13 @@ GALGAS_string categoryReader_cppReferenceInFormalArgument (const GALGAS_lexicalA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category Reader '@lexicalArgumentModeAST cocoaPointerInFormalArgument'                        *
+//                       Category Getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_cocoaPointerInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
-                                                           C_Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -817,13 +817,13 @@ GALGAS_string categoryReader_cocoaPointerInFormalArgument (const GALGAS_lexicalA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category Reader '@lexicalTypeEnum lexicalTypeBaseName'                                *
+//                               Category Getter '@lexicalTypeEnum lexicalTypeBaseName'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum & inObject,
-                                                  C_Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum & inObject,
+                                                   C_Compiler * /* inCompiler */
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -879,17 +879,17 @@ GALGAS_string categoryReader_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum &
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Abstract category reader '@lexicalExpressionAST generateConditionCode'                        *
+//                       Abstract category getter '@lexicalExpressionAST generateConditionCode'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalExpressionAST_generateConditionCode> gCategoryGetterTable_lexicalExpressionAST_generateConditionCode ;
+static TC_UniqueArray <categoryGetterSignature_lexicalExpressionAST_generateConditionCode> gCategoryGetterTable_lexicalExpressionAST_generateConditionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateConditionCode (const int32_t inClassIndex,
-                                                categoryReaderSignature_lexicalExpressionAST_generateConditionCode inReader) {
-  gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                categoryGetterSignature_lexicalExpressionAST_generateConditionCode inGetter) {
+  gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -900,7 +900,7 @@ static void freeCategoryGetter_lexicalExpressionAST_generateConditionCode (void)
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexicalExpressionAST_generateConditionCode (NULL,
+C_PrologueEpilogue gGetter_lexicalExpressionAST_generateConditionCode (NULL,
                                                                        freeCategoryGetter_lexicalExpressionAST_generateConditionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -915,7 +915,7 @@ GALGAS_string callCategoryGetter_generateConditionCode (const cPtr_lexicalExpres
     macroValidSharedObject (inObject, cPtr_lexicalExpressionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_lexicalExpressionAST_generateConditionCode f = NULL ;
+    categoryGetterSignature_lexicalExpressionAST_generateConditionCode f = NULL ;
     if (classIndex < gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.count ()) {
       f = gCategoryGetterTable_lexicalExpressionAST_generateConditionCode (classIndex COMMA_HERE) ;
     }
@@ -940,17 +940,17 @@ GALGAS_string callCategoryGetter_generateConditionCode (const cPtr_lexicalExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//    Abstract category reader '@lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument'     *
+//    Abstract category getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument'     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument> gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument ;
+static TC_UniqueArray <categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument> gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateRoutineOrFunctionArgument (const int32_t inClassIndex,
-                                                            categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument inReader) {
-  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                            categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument inGetter) {
+  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -961,7 +961,7 @@ static void freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_ge
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (NULL,
+C_PrologueEpilogue gGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (NULL,
                                                                                                              freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -975,7 +975,7 @@ GALGAS_string callCategoryGetter_generateRoutineOrFunctionArgument (const cPtr_l
     macroValidSharedObject (inObject, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument f = NULL ;
+    categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument f = NULL ;
     if (classIndex < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
       f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
     }
@@ -1000,17 +1000,17 @@ GALGAS_string callCategoryGetter_generateRoutineOrFunctionArgument (const cPtr_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Abstract category reader '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'             *
+//             Abstract category getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument> gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument ;
+static TC_UniqueArray <categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument> gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateRoutineArgument (const int32_t inClassIndex,
-                                                  categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument inReader) {
-  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                  categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument inGetter) {
+  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1021,7 +1021,7 @@ static void freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateR
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (NULL,
+C_PrologueEpilogue gGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (NULL,
                                                                                             freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1035,7 +1035,7 @@ GALGAS_string callCategoryGetter_generateRoutineArgument (const cPtr_abstractLex
     macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument f = NULL ;
+    categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument f = NULL ;
     if (classIndex < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
       f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (classIndex COMMA_HERE) ;
     }
@@ -1060,17 +1060,17 @@ GALGAS_string callCategoryGetter_generateRoutineArgument (const cPtr_abstractLex
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category reader '@lexicalSendDefaultActionAST generateDefaultSendCode'                   *
+//                   Abstract category getter '@lexicalSendDefaultActionAST generateDefaultSendCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalSendDefaultActionAST_generateDefaultSendCode> gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode ;
+static TC_UniqueArray <categoryGetterSignature_lexicalSendDefaultActionAST_generateDefaultSendCode> gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateDefaultSendCode (const int32_t inClassIndex,
-                                                  categoryReaderSignature_lexicalSendDefaultActionAST_generateDefaultSendCode inReader) {
-  gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                  categoryGetterSignature_lexicalSendDefaultActionAST_generateDefaultSendCode inGetter) {
+  gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1081,7 +1081,7 @@ static void freeCategoryGetter_lexicalSendDefaultActionAST_generateDefaultSendCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexicalSendDefaultActionAST_generateDefaultSendCode (NULL,
+C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (NULL,
                                                                                 freeCategoryGetter_lexicalSendDefaultActionAST_generateDefaultSendCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1096,7 +1096,7 @@ GALGAS_string callCategoryGetter_generateDefaultSendCode (const cPtr_lexicalSend
     macroValidSharedObject (inObject, cPtr_lexicalSendDefaultActionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_lexicalSendDefaultActionAST_generateDefaultSendCode f = NULL ;
+    categoryGetterSignature_lexicalSendDefaultActionAST_generateDefaultSendCode f = NULL ;
     if (classIndex < gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
       f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (classIndex COMMA_HERE) ;
     }
@@ -1121,17 +1121,17 @@ GALGAS_string callCategoryGetter_generateDefaultSendCode (const cPtr_lexicalSend
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category reader '@lexicalInstructionAST generateInstructionCode'                      *
+//                      Abstract category getter '@lexicalInstructionAST generateInstructionCode'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalInstructionAST_generateInstructionCode> gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode ;
+static TC_UniqueArray <categoryGetterSignature_lexicalInstructionAST_generateInstructionCode> gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateInstructionCode (const int32_t inClassIndex,
-                                                  categoryReaderSignature_lexicalInstructionAST_generateInstructionCode inReader) {
-  gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                  categoryGetterSignature_lexicalInstructionAST_generateInstructionCode inGetter) {
+  gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1142,7 +1142,7 @@ static void freeCategoryGetter_lexicalInstructionAST_generateInstructionCode (vo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexicalInstructionAST_generateInstructionCode (NULL,
+C_PrologueEpilogue gGetter_lexicalInstructionAST_generateInstructionCode (NULL,
                                                                           freeCategoryGetter_lexicalInstructionAST_generateInstructionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1158,7 +1158,7 @@ GALGAS_string callCategoryGetter_generateInstructionCode (const cPtr_lexicalInst
     macroValidSharedObject (inObject, cPtr_lexicalInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_lexicalInstructionAST_generateInstructionCode f = NULL ;
+    categoryGetterSignature_lexicalInstructionAST_generateInstructionCode f = NULL ;
     if (classIndex < gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.count ()) {
       f = gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode (classIndex COMMA_HERE) ;
     }
@@ -1183,17 +1183,17 @@ GALGAS_string callCategoryGetter_generateInstructionCode (const cPtr_lexicalInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Abstract category reader '@abstractLexicalRuleAST generateCode'                           *
+//                           Abstract category getter '@abstractLexicalRuleAST generateCode'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_abstractLexicalRuleAST_generateCode> gCategoryGetterTable_abstractLexicalRuleAST_generateCode ;
+static TC_UniqueArray <categoryGetterSignature_abstractLexicalRuleAST_generateCode> gCategoryGetterTable_abstractLexicalRuleAST_generateCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCode (const int32_t inClassIndex,
-                                       categoryReaderSignature_abstractLexicalRuleAST_generateCode inReader) {
-  gCategoryGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                       categoryGetterSignature_abstractLexicalRuleAST_generateCode inGetter) {
+  gCategoryGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1204,7 +1204,7 @@ static void freeCategoryGetter_abstractLexicalRuleAST_generateCode (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractLexicalRuleAST_generateCode (NULL,
+C_PrologueEpilogue gGetter_abstractLexicalRuleAST_generateCode (NULL,
                                                                 freeCategoryGetter_abstractLexicalRuleAST_generateCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1220,7 +1220,7 @@ GALGAS_string callCategoryGetter_generateCode (const cPtr_abstractLexicalRuleAST
     macroValidSharedObject (inObject, cPtr_abstractLexicalRuleAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_abstractLexicalRuleAST_generateCode f = NULL ;
+    categoryGetterSignature_abstractLexicalRuleAST_generateCode f = NULL ;
     if (classIndex < gCategoryGetterTable_abstractLexicalRuleAST_generateCode.count ()) {
       f = gCategoryGetterTable_abstractLexicalRuleAST_generateCode (classIndex COMMA_HERE) ;
     }
@@ -1245,17 +1245,17 @@ GALGAS_string callCategoryGetter_generateCode (const cPtr_abstractLexicalRuleAST
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Abstract category reader '@lexicalExpressionAST generateCocoaConditionCode'                     *
+//                     Abstract category getter '@lexicalExpressionAST generateCocoaConditionCode'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalExpressionAST_generateCocoaConditionCode> gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode ;
+static TC_UniqueArray <categoryGetterSignature_lexicalExpressionAST_generateCocoaConditionCode> gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCocoaConditionCode (const int32_t inClassIndex,
-                                                     categoryReaderSignature_lexicalExpressionAST_generateCocoaConditionCode inReader) {
-  gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                     categoryGetterSignature_lexicalExpressionAST_generateCocoaConditionCode inGetter) {
+  gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1266,7 +1266,7 @@ static void freeCategoryGetter_lexicalExpressionAST_generateCocoaConditionCode (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexicalExpressionAST_generateCocoaConditionCode (NULL,
+C_PrologueEpilogue gGetter_lexicalExpressionAST_generateCocoaConditionCode (NULL,
                                                                             freeCategoryGetter_lexicalExpressionAST_generateCocoaConditionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1281,7 +1281,7 @@ GALGAS_string callCategoryGetter_generateCocoaConditionCode (const cPtr_lexicalE
     macroValidSharedObject (inObject, cPtr_lexicalExpressionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_lexicalExpressionAST_generateCocoaConditionCode f = NULL ;
+    categoryGetterSignature_lexicalExpressionAST_generateCocoaConditionCode f = NULL ;
     if (classIndex < gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
       f = gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode (classIndex COMMA_HERE) ;
     }
@@ -1306,17 +1306,17 @@ GALGAS_string callCategoryGetter_generateCocoaConditionCode (const cPtr_lexicalE
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Abstract category reader '@lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument'  *
+//  Abstract category getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument'  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument> gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument ;
+static TC_UniqueArray <categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument> gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCocoaRoutineOrFunctionArgument (const int32_t inClassIndex,
-                                                                 categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument inReader) {
-  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                                 categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument inGetter) {
+  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1327,7 +1327,7 @@ static void freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_ge
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (NULL,
+C_PrologueEpilogue gGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (NULL,
                                                                                                                   freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1341,7 +1341,7 @@ GALGAS_string callCategoryGetter_generateCocoaRoutineOrFunctionArgument (const c
     macroValidSharedObject (inObject, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument f = NULL ;
+    categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument f = NULL ;
     if (classIndex < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
       f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
     }
@@ -1366,17 +1366,17 @@ GALGAS_string callCategoryGetter_generateCocoaRoutineOrFunctionArgument (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Abstract category reader '@abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument'           *
+//          Abstract category getter '@abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument> gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument ;
+static TC_UniqueArray <categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument> gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCocoaRoutineArgument (const int32_t inClassIndex,
-                                                       categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument inReader) {
-  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                       categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument inGetter) {
+  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1387,7 +1387,7 @@ static void freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (NULL,
+C_PrologueEpilogue gGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (NULL,
                                                                                                  freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1402,7 +1402,7 @@ GALGAS_string callCategoryGetter_generateCocoaRoutineArgument (const cPtr_abstra
     macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument f = NULL ;
+    categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument f = NULL ;
     if (classIndex < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
       f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (classIndex COMMA_HERE) ;
     }
@@ -1427,17 +1427,17 @@ GALGAS_string callCategoryGetter_generateCocoaRoutineArgument (const cPtr_abstra
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Abstract category reader '@lexicalSendDefaultActionAST generateCocoaDefaultSendCode'                 *
+//                Abstract category getter '@lexicalSendDefaultActionAST generateCocoaDefaultSendCode'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode> gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode ;
+static TC_UniqueArray <categoryGetterSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode> gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCocoaDefaultSendCode (const int32_t inClassIndex,
-                                                       categoryReaderSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode inReader) {
-  gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                       categoryGetterSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode inGetter) {
+  gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1448,7 +1448,7 @@ static void freeCategoryGetter_lexicalSendDefaultActionAST_generateCocoaDefaultS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (NULL,
+C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (NULL,
                                                                                      freeCategoryGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1463,7 +1463,7 @@ GALGAS_string callCategoryGetter_generateCocoaDefaultSendCode (const cPtr_lexica
     macroValidSharedObject (inObject, cPtr_lexicalSendDefaultActionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode f = NULL ;
+    categoryGetterSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode f = NULL ;
     if (classIndex < gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
       f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (classIndex COMMA_HERE) ;
     }
@@ -1488,17 +1488,17 @@ GALGAS_string callCategoryGetter_generateCocoaDefaultSendCode (const cPtr_lexica
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category reader '@lexicalInstructionAST generateCocoaInstructionCode'                    *
+//                   Abstract category getter '@lexicalInstructionAST generateCocoaInstructionCode'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_lexicalInstructionAST_generateCocoaInstructionCode> gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode ;
+static TC_UniqueArray <categoryGetterSignature_lexicalInstructionAST_generateCocoaInstructionCode> gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCocoaInstructionCode (const int32_t inClassIndex,
-                                                       categoryReaderSignature_lexicalInstructionAST_generateCocoaInstructionCode inReader) {
-  gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                       categoryGetterSignature_lexicalInstructionAST_generateCocoaInstructionCode inGetter) {
+  gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1509,7 +1509,7 @@ static void freeCategoryGetter_lexicalInstructionAST_generateCocoaInstructionCod
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_lexicalInstructionAST_generateCocoaInstructionCode (NULL,
+C_PrologueEpilogue gGetter_lexicalInstructionAST_generateCocoaInstructionCode (NULL,
                                                                                freeCategoryGetter_lexicalInstructionAST_generateCocoaInstructionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1525,7 +1525,7 @@ GALGAS_string callCategoryGetter_generateCocoaInstructionCode (const cPtr_lexica
     macroValidSharedObject (inObject, cPtr_lexicalInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_lexicalInstructionAST_generateCocoaInstructionCode f = NULL ;
+    categoryGetterSignature_lexicalInstructionAST_generateCocoaInstructionCode f = NULL ;
     if (classIndex < gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
       f = gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode (classIndex COMMA_HERE) ;
     }
@@ -1550,17 +1550,17 @@ GALGAS_string callCategoryGetter_generateCocoaInstructionCode (const cPtr_lexica
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category reader '@abstractLexicalRuleAST generateCocoaCode'                         *
+//                        Abstract category getter '@abstractLexicalRuleAST generateCocoaCode'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode> gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode ;
+static TC_UniqueArray <categoryGetterSignature_abstractLexicalRuleAST_generateCocoaCode> gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_generateCocoaCode (const int32_t inClassIndex,
-                                            categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode inReader) {
-  gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                            categoryGetterSignature_abstractLexicalRuleAST_generateCocoaCode inGetter) {
+  gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1571,7 +1571,7 @@ static void freeCategoryGetter_abstractLexicalRuleAST_generateCocoaCode (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractLexicalRuleAST_generateCocoaCode (NULL,
+C_PrologueEpilogue gGetter_abstractLexicalRuleAST_generateCocoaCode (NULL,
                                                                      freeCategoryGetter_abstractLexicalRuleAST_generateCocoaCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1587,7 +1587,7 @@ GALGAS_string callCategoryGetter_generateCocoaCode (const cPtr_abstractLexicalRu
     macroValidSharedObject (inObject, cPtr_abstractLexicalRuleAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode f = NULL ;
+    categoryGetterSignature_abstractLexicalRuleAST_generateCocoaCode f = NULL ;
     if (classIndex < gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
       f = gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode (classIndex COMMA_HERE) ;
     }
@@ -1612,13 +1612,13 @@ GALGAS_string callCategoryGetter_generateCocoaCode (const cPtr_abstractLexicalRu
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Category Reader '@lexicalTypeEnum cppTypeName'                                    *
+//                                   Category Getter '@lexicalTypeEnum cppTypeName'                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_cppTypeName (const GALGAS_lexicalTypeEnum & inObject,
-                                          C_Compiler * /* inCompiler */
-                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_cppTypeName (const GALGAS_lexicalTypeEnum & inObject,
+                                           C_Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -1674,13 +1674,13 @@ GALGAS_string categoryReader_cppTypeName (const GALGAS_lexicalTypeEnum & inObjec
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category Reader '@lexicalTypeEnum appendMethodName'                                 *
+//                                 Category Getter '@lexicalTypeEnum appendMethodName'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_appendMethodName (const GALGAS_lexicalTypeEnum & inObject,
-                                               C_Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_appendMethodName (const GALGAS_lexicalTypeEnum & inObject,
+                                                C_Compiler * /* inCompiler */
+                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -1736,13 +1736,13 @@ GALGAS_string categoryReader_appendMethodName (const GALGAS_lexicalTypeEnum & in
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category Reader '@lexicalTypeEnum appendArgumentOfMethod'                              *
+//                              Category Getter '@lexicalTypeEnum appendArgumentOfMethod'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_appendArgumentOfMethod (const GALGAS_lexicalTypeEnum & inObject,
-                                                     C_Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_appendArgumentOfMethod (const GALGAS_lexicalTypeEnum & inObject,
+                                                      C_Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -1798,13 +1798,13 @@ GALGAS_string categoryReader_appendArgumentOfMethod (const GALGAS_lexicalTypeEnu
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category Reader '@lexicalTypeEnum initialization'                                  *
+//                                  Category Getter '@lexicalTypeEnum initialization'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_initialization (const GALGAS_lexicalTypeEnum & inObject,
-                                             C_Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inObject,
+                                              C_Compiler * /* inCompiler */
+                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -1860,13 +1860,13 @@ GALGAS_string categoryReader_initialization (const GALGAS_lexicalTypeEnum & inOb
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category Reader '@lexicalTypeEnum cocoaTypeName'                                   *
+//                                  Category Getter '@lexicalTypeEnum cocoaTypeName'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_cocoaTypeName (const GALGAS_lexicalTypeEnum & inObject,
-                                            C_Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_cocoaTypeName (const GALGAS_lexicalTypeEnum & inObject,
+                                             C_Compiler * /* inCompiler */
+                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -1922,13 +1922,13 @@ GALGAS_string categoryReader_cocoaTypeName (const GALGAS_lexicalTypeEnum & inObj
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Reader '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'                        *
+//                        Category Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool categoryReader_needsReferenceInInputOutputInCocoa (const GALGAS_lexicalTypeEnum & inObject,
-                                                               C_Compiler * /* inCompiler */
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GALGAS_lexicalTypeEnum & inObject,
+                                                                C_Compiler * /* inCompiler */
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -1984,13 +1984,13 @@ GALGAS_bool categoryReader_needsReferenceInInputOutputInCocoa (const GALGAS_lexi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category Reader '@lexicalTypeEnum cocoaInitializationCode'                              *
+//                             Category Getter '@lexicalTypeEnum cocoaInitializationCode'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_cocoaInitializationCode (const GALGAS_lexicalTypeEnum & inObject,
-                                                      C_Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_cocoaInitializationCode (const GALGAS_lexicalTypeEnum & inObject,
+                                                       C_Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -2046,13 +2046,13 @@ GALGAS_string categoryReader_cocoaInitializationCode (const GALGAS_lexicalTypeEn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category Reader '@lexicalTypeEnum cocoaResetPrefix'                                 *
+//                                 Category Getter '@lexicalTypeEnum cocoaResetPrefix'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & inObject,
-                                               C_Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & inObject,
+                                                C_Compiler * /* inCompiler */
+                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -2108,13 +2108,13 @@ GALGAS_string categoryReader_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & in
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                    Category Reader '@lexicalTypeEnum cocoaReset'                                    *
+//                                    Category Getter '@lexicalTypeEnum cocoaReset'                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_cocoaReset (const GALGAS_lexicalTypeEnum & inObject,
-                                         C_Compiler * /* inCompiler */
-                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_cocoaReset (const GALGAS_lexicalTypeEnum & inObject,
+                                          C_Compiler * /* inCompiler */
+                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -3039,13 +3039,13 @@ GALGAS_parsedComponentStruct GALGAS_parsedComponentStruct::extractObject (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category Reader '@formalArgumentPassingModeAST string'                                *
+//                               Category Getter '@formalArgumentPassingModeAST string'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_string (const GALGAS_formalArgumentPassingModeAST & inObject,
-                                     C_Compiler * /* inCompiler */
-                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_string (const GALGAS_formalArgumentPassingModeAST & inObject,
+                                      C_Compiler * /* inCompiler */
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -3081,13 +3081,13 @@ GALGAS_string categoryReader_string (const GALGAS_formalArgumentPassingModeAST &
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Reader '@formalArgumentPassingModeAST formalArgumentMessage'                        *
+//                        Category Getter '@formalArgumentPassingModeAST formalArgumentMessage'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_formalArgumentMessage (const GALGAS_formalArgumentPassingModeAST & inObject,
-                                                    C_Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_formalArgumentMessage (const GALGAS_formalArgumentPassingModeAST & inObject,
+                                                     C_Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -3123,13 +3123,13 @@ GALGAS_string categoryReader_formalArgumentMessage (const GALGAS_formalArgumentP
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Reader '@formalArgumentPassingModeAST formalArgumentString'                         *
+//                        Category Getter '@formalArgumentPassingModeAST formalArgumentString'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_formalArgumentString (const GALGAS_formalArgumentPassingModeAST & inObject,
-                                                   C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_formalArgumentString (const GALGAS_formalArgumentPassingModeAST & inObject,
+                                                    C_Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -3387,13 +3387,13 @@ GALGAS_galgas_33_DeclarationAST GALGAS_galgas_33_DeclarationAST::extractObject (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        Category Reader '@typeKindEnum kind'                                         *
+//                                        Category Getter '@typeKindEnum kind'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_kind (const GALGAS_typeKindEnum & inObject,
-                                   C_Compiler * /* inCompiler */
-                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
+                                    C_Compiler * /* inCompiler */
+                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_typeKindEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -3854,17 +3854,17 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getClassMethodMap (defineCategoryMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category reader '@predefinedTypeAST getSupportedOperatorFlags'                            *
+//                           Category getter '@predefinedTypeAST getSupportedOperatorFlags'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_predefinedTypeAST_getSupportedOperatorFlags> gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags ;
+static TC_UniqueArray <categoryGetterSignature_predefinedTypeAST_getSupportedOperatorFlags> gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_getSupportedOperatorFlags (const int32_t inClassIndex,
-                                                    categoryReaderSignature_predefinedTypeAST_getSupportedOperatorFlags inReader) {
-  gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                    categoryGetterSignature_predefinedTypeAST_getSupportedOperatorFlags inGetter) {
+  gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3878,7 +3878,7 @@ GALGAS_uint callCategoryGetter_getSupportedOperatorFlags (const cPtr_predefinedT
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_predefinedTypeAST_getSupportedOperatorFlags f = NULL ;
+    categoryGetterSignature_predefinedTypeAST_getSupportedOperatorFlags f = NULL ;
     if (classIndex < gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
       f = gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags (classIndex COMMA_HERE) ;
     }
@@ -3903,9 +3903,9 @@ GALGAS_uint callCategoryGetter_getSupportedOperatorFlags (const cPtr_predefinedT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint categoryReader_predefinedTypeAST_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * /* inObject */,
-                                                                               C_Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint extensionGetter_predefinedTypeAST_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * /* inObject */,
+                                                                                C_Compiler * /* inCompiler */
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outFlags ; // Returned variable
   result_outFlags = GALGAS_uint ((uint32_t) 0U) ;
 //---
@@ -3917,7 +3917,7 @@ static GALGAS_uint categoryReader_predefinedTypeAST_getSupportedOperatorFlags (c
 
 static void defineCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags (void) {
   enterCategoryGetter_getSupportedOperatorFlags (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                                 categoryReader_predefinedTypeAST_getSupportedOperatorFlags) ;
+                                                 extensionGetter_predefinedTypeAST_getSupportedOperatorFlags) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3928,7 +3928,7 @@ static void freeCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags (void
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_predefinedTypeAST_getSupportedOperatorFlags (defineCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags,
+C_PrologueEpilogue gGetter_predefinedTypeAST_getSupportedOperatorFlags (defineCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags,
                                                                         freeCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4093,13 +4093,13 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getEnumerationList (defineCategoryM
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Category Reader '@location sourceFile'                                        *
+//                                       Category Getter '@location sourceFile'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_sourceFile (const GALGAS_location & inObject,
-                                         C_Compiler * inCompiler
-                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_sourceFile (const GALGAS_location & inObject,
+                                          C_Compiler * inCompiler
+                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_location temp_0 = inObject ;
   const enumGalgasBool test_1 = temp_0.reader_isNowhere (SOURCE_FILE ("semanticContext.galgas", 19)).boolEnum () ;
@@ -4119,16 +4119,16 @@ GALGAS_string categoryReader_sourceFile (const GALGAS_location & inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Category Reader '@location commaSourceFile'                                     *
+//                                     Category Getter '@location commaSourceFile'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_commaSourceFile (const GALGAS_location & inObject,
-                                              C_Compiler * inCompiler
-                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_commaSourceFile (const GALGAS_location & inObject,
+                                               C_Compiler * inCompiler
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_location temp_0 = inObject ;
-  result_outResult = GALGAS_string (" COMMA_").add_operation (categoryReader_sourceFile (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)) ;
+  result_outResult = GALGAS_string (" COMMA_").add_operation (extensionGetter_sourceFile (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)) ;
 //---
   return result_outResult ;
 }
@@ -4296,17 +4296,17 @@ void categoryMethod_enterInSemanticContext (const GALGAS_actualOutputExpressionL
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category reader '@semanticDeclarationAST keyRepresentation'                         *
+//                        Abstract category getter '@semanticDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationAST_keyRepresentation> gCategoryGetterTable_semanticDeclarationAST_keyRepresentation ;
+static TC_UniqueArray <categoryGetterSignature_semanticDeclarationAST_keyRepresentation> gCategoryGetterTable_semanticDeclarationAST_keyRepresentation ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_keyRepresentation (const int32_t inClassIndex,
-                                            categoryReaderSignature_semanticDeclarationAST_keyRepresentation inReader) {
-  gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                            categoryGetterSignature_semanticDeclarationAST_keyRepresentation inGetter) {
+  gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4317,7 +4317,7 @@ static void freeCategoryGetter_semanticDeclarationAST_keyRepresentation (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationAST_keyRepresentation (NULL,
+C_PrologueEpilogue gGetter_semanticDeclarationAST_keyRepresentation (NULL,
                                                                      freeCategoryGetter_semanticDeclarationAST_keyRepresentation) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4331,7 +4331,7 @@ GALGAS_string callCategoryGetter_keyRepresentation (const cPtr_semanticDeclarati
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticDeclarationAST_keyRepresentation f = NULL ;
+    categoryGetterSignature_semanticDeclarationAST_keyRepresentation f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.count ()) {
       f = gCategoryGetterTable_semanticDeclarationAST_keyRepresentation (classIndex COMMA_HERE) ;
     }
@@ -4419,13 +4419,13 @@ void callCategoryMethod_enterInSemanticContext (const cPtr_semanticDeclarationAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Category Reader '@predefinedTypeKindEnum defaultConstructorName'                           *
+//                          Category Getter '@predefinedTypeKindEnum defaultConstructorName'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_defaultConstructorName (const GALGAS_predefinedTypeKindEnum & inObject,
-                                                     C_Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_defaultConstructorName (const GALGAS_predefinedTypeKindEnum & inObject,
+                                                      C_Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outName ; // Returned variable
   const GALGAS_predefinedTypeKindEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -4708,17 +4708,17 @@ void callCategoryMethod_generateInstruction (const cPtr_semanticInstructionForGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category reader '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'                  *
+//                 Category getter '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration> gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration ;
+static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration> gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
-                                                         categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inReader) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                         categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inGetter) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4732,7 +4732,7 @@ GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPtr_sema
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration f = NULL ;
+    categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
       f = gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (classIndex COMMA_HERE) ;
     }
@@ -4757,9 +4757,9 @@ GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPtr_sema
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                                     C_Compiler * /* inCompiler */
-                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                                      C_Compiler * /* inCompiler */
+                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outHeader ; // Returned variable
   result_outHeader = GALGAS_string::makeEmptyString () ;
 //---
@@ -4771,7 +4771,7 @@ static GALGAS_string categoryReader_semanticDeclarationForGeneration_appendPrimi
 
 static void defineCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
   enterCategoryGetter_appendPrimitiveTypeDeclaration (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
-                                                      categoryReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
+                                                      extensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4782,22 +4782,22 @@ static void freeCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (defineCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration,
+C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (defineCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration,
                                                                                             freeCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Abstract category reader '@semanticDeclarationForGeneration implementationCppFileName'                *
+//               Abstract category getter '@semanticDeclarationForGeneration implementationCppFileName'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName> gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName ;
+static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName> gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_implementationCppFileName (const int32_t inClassIndex,
-                                                    categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName inReader) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                    categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName inGetter) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4808,7 +4808,7 @@ static void freeCategoryGetter_semanticDeclarationForGeneration_implementationCp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_implementationCppFileName (NULL,
+C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_implementationCppFileName (NULL,
                                                                                        freeCategoryGetter_semanticDeclarationForGeneration_implementationCppFileName) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4822,7 +4822,7 @@ GALGAS_string callCategoryGetter_implementationCppFileName (const cPtr_semanticD
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticDeclarationForGeneration_implementationCppFileName f = NULL ;
+    categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
       f = gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName (classIndex COMMA_HERE) ;
     }
@@ -4847,17 +4847,17 @@ GALGAS_string callCategoryGetter_implementationCppFileName (const cPtr_semanticD
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Abstract category reader '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
+//                    Abstract category getter '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile> gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile ;
+static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile> gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_hasCppHeaderFile (const int32_t inClassIndex,
-                                           categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile inReader) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                           categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile inGetter) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4868,7 +4868,7 @@ static void freeCategoryGetter_semanticDeclarationForGeneration_hasCppHeaderFile
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_hasCppHeaderFile (NULL,
+C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_hasCppHeaderFile (NULL,
                                                                               freeCategoryGetter_semanticDeclarationForGeneration_hasCppHeaderFile) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4882,7 +4882,7 @@ GALGAS_bool callCategoryGetter_hasCppHeaderFile (const cPtr_semanticDeclarationF
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticDeclarationForGeneration_hasCppHeaderFile f = NULL ;
+    categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
       f = gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile (classIndex COMMA_HERE) ;
     }
@@ -4907,17 +4907,17 @@ GALGAS_bool callCategoryGetter_hasCppHeaderFile (const cPtr_semanticDeclarationF
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category reader '@semanticDeclarationForGeneration isPredefined'                      *
+//                      Abstract category getter '@semanticDeclarationForGeneration isPredefined'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_isPredefined> gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined ;
+static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_isPredefined> gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_isPredefined (const int32_t inClassIndex,
-                                       categoryReaderSignature_semanticDeclarationForGeneration_isPredefined inReader) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                       categoryGetterSignature_semanticDeclarationForGeneration_isPredefined inGetter) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4928,7 +4928,7 @@ static void freeCategoryGetter_semanticDeclarationForGeneration_isPredefined (vo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_isPredefined (NULL,
+C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_isPredefined (NULL,
                                                                           freeCategoryGetter_semanticDeclarationForGeneration_isPredefined) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4942,7 +4942,7 @@ GALGAS_bool callCategoryGetter_isPredefined (const cPtr_semanticDeclarationForGe
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticDeclarationForGeneration_isPredefined f = NULL ;
+    categoryGetterSignature_semanticDeclarationForGeneration_isPredefined f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.count ()) {
       f = gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined (classIndex COMMA_HERE) ;
     }
@@ -4967,17 +4967,17 @@ GALGAS_bool callCategoryGetter_isPredefined (const cPtr_semanticDeclarationForGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Abstract category reader '@semanticDeclarationForGeneration headerKind'                       *
+//                       Abstract category getter '@semanticDeclarationForGeneration headerKind'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_headerKind> gCategoryGetterTable_semanticDeclarationForGeneration_headerKind ;
+static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_headerKind> gCategoryGetterTable_semanticDeclarationForGeneration_headerKind ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_headerKind (const int32_t inClassIndex,
-                                     categoryReaderSignature_semanticDeclarationForGeneration_headerKind inReader) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                     categoryGetterSignature_semanticDeclarationForGeneration_headerKind inGetter) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4988,7 +4988,7 @@ static void freeCategoryGetter_semanticDeclarationForGeneration_headerKind (void
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_headerKind (NULL,
+C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_headerKind (NULL,
                                                                         freeCategoryGetter_semanticDeclarationForGeneration_headerKind) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5002,7 +5002,7 @@ GALGAS_headerKind callCategoryGetter_headerKind (const cPtr_semanticDeclarationF
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticDeclarationForGeneration_headerKind f = NULL ;
+    categoryGetterSignature_semanticDeclarationForGeneration_headerKind f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.count ()) {
       f = gCategoryGetterTable_semanticDeclarationForGeneration_headerKind (classIndex COMMA_HERE) ;
     }
@@ -5183,17 +5183,17 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_32
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category reader '@semanticDeclarationForGeneration appendTypeGenericImplementation'                 *
+//                 Category getter '@semanticDeclarationForGeneration appendTypeGenericImplementation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation> gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation ;
+static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation> gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_appendTypeGenericImplementation (const int32_t inClassIndex,
-                                                          categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inReader) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                          categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inGetter) {
+  gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5207,7 +5207,7 @@ GALGAS_string callCategoryGetter_appendTypeGenericImplementation (const cPtr_sem
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation f = NULL ;
+    categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
       f = gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (classIndex COMMA_HERE) ;
     }
@@ -5232,9 +5232,9 @@ GALGAS_string callCategoryGetter_appendTypeGenericImplementation (const cPtr_sem
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_semanticDeclarationForGeneration_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                                      C_Compiler * /* inCompiler */
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                                       C_Compiler * /* inCompiler */
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outImplementation ; // Returned variable
   result_outImplementation = GALGAS_string::makeEmptyString () ;
 //---
@@ -5246,7 +5246,7 @@ static GALGAS_string categoryReader_semanticDeclarationForGeneration_appendTypeG
 
 static void defineCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
   enterCategoryGetter_appendTypeGenericImplementation (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
-                                                       categoryReader_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
+                                                       extensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5257,7 +5257,7 @@ static void freeCategoryGetter_semanticDeclarationForGeneration_appendTypeGeneri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_appendTypeGenericImplementation (defineCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation,
+C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (defineCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation,
                                                                                              freeCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5730,13 +5730,13 @@ void callCategoryMethod_checkAgainstFormalArgument (const cPtr_actualParameterAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Category Reader '@formalArgumentPassingModeAST correspondingEffectiveParameterString'                *
+//                Category Getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string categoryReader_correspondingEffectiveParameterString (const GALGAS_formalArgumentPassingModeAST & inObject,
-                                                                    C_Compiler * /* inCompiler */
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGAS_formalArgumentPassingModeAST & inObject,
+                                                                     C_Compiler * /* inCompiler */
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
@@ -6482,17 +6482,17 @@ C_PrologueEpilogue gMethod_semanticInstructionForGeneration_appendSyntaxSignatur
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Category reader '@semanticInstructionForGeneration compareSyntaxInstruction'                     *
+//                    Category getter '@semanticInstructionForGeneration compareSyntaxInstruction'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction> gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction ;
+static TC_UniqueArray <categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction> gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_compareSyntaxInstruction (const int32_t inClassIndex,
-                                                   categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction inReader) {
-  gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                                   categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction inGetter) {
+  gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6507,7 +6507,7 @@ GALGAS_bool callCategoryGetter_compareSyntaxInstruction (const cPtr_semanticInst
     macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction f = NULL ;
+    categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
       f = gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction (classIndex COMMA_HERE) ;
     }
@@ -6532,10 +6532,10 @@ GALGAS_bool callCategoryGetter_compareSyntaxInstruction (const cPtr_semanticInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_bool categoryReader_semanticInstructionForGeneration_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * /* inObject */,
-                                                                                             const GALGAS_semanticInstructionForGeneration & /* constinArgument_inTestedInstruction */,
-                                                                                             C_Compiler * /* inCompiler */
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_bool extensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * /* inObject */,
+                                                                                              const GALGAS_semanticInstructionForGeneration & /* constinArgument_inTestedInstruction */,
+                                                                                              C_Compiler * /* inCompiler */
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outOk ; // Returned variable
   result_outOk = GALGAS_bool (true) ;
 //---
@@ -6547,7 +6547,7 @@ static GALGAS_bool categoryReader_semanticInstructionForGeneration_compareSyntax
 
 static void defineCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
   enterCategoryGetter_compareSyntaxInstruction (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
-                                                categoryReader_semanticInstructionForGeneration_compareSyntaxInstruction) ;
+                                                extensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6558,7 +6558,7 @@ static void freeCategoryGetter_semanticInstructionForGeneration_compareSyntaxIns
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticInstructionForGeneration_compareSyntaxInstruction (defineCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction,
+C_PrologueEpilogue gGetter_semanticInstructionForGeneration_compareSyntaxInstruction (defineCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction,
                                                                                       freeCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*

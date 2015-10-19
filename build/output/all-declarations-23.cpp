@@ -10,13 +10,13 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category reader '@abstractCategoryMethodAST keyRepresentation'                      *
+//                      Overriding category getter '@abstractCategoryMethodAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_abstractCategoryMethodAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_abstractCategoryMethodAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_abstractCategoryMethodAST * object = (const cPtr_abstractCategoryMethodAST *) inObject ;
   macroValidSharedObject (object, cPtr_abstractCategoryMethodAST) ;
@@ -30,22 +30,22 @@ static GALGAS_string categoryReader_abstractCategoryMethodAST_keyRepresentation 
 
 static void defineCategoryGetter_abstractCategoryMethodAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_abstractCategoryMethodAST.mSlotID,
-                                         categoryReader_abstractCategoryMethodAST_keyRepresentation) ;
+                                         extensionGetter_abstractCategoryMethodAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractCategoryMethodAST_keyRepresentation (defineCategoryGetter_abstractCategoryMethodAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_abstractCategoryMethodAST_keyRepresentation (defineCategoryGetter_abstractCategoryMethodAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category reader '@categoryMethodAST keyRepresentation'                          *
+//                          Overriding category getter '@categoryMethodAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_categoryMethodAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_categoryMethodAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_categoryMethodAST * object = (const cPtr_categoryMethodAST *) inObject ;
   macroValidSharedObject (object, cPtr_categoryMethodAST) ;
@@ -59,22 +59,22 @@ static GALGAS_string categoryReader_categoryMethodAST_keyRepresentation (const c
 
 static void defineCategoryGetter_categoryMethodAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_categoryMethodAST.mSlotID,
-                                         categoryReader_categoryMethodAST_keyRepresentation) ;
+                                         extensionGetter_categoryMethodAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_categoryMethodAST_keyRepresentation (defineCategoryGetter_categoryMethodAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_categoryMethodAST_keyRepresentation (defineCategoryGetter_categoryMethodAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category reader '@overridingCategoryMethodAST keyRepresentation'                     *
+//                     Overriding category getter '@overridingCategoryMethodAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_overridingCategoryMethodAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_overridingCategoryMethodAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_overridingCategoryMethodAST * object = (const cPtr_overridingCategoryMethodAST *) inObject ;
   macroValidSharedObject (object, cPtr_overridingCategoryMethodAST) ;
@@ -88,22 +88,22 @@ static GALGAS_string categoryReader_overridingCategoryMethodAST_keyRepresentatio
 
 static void defineCategoryGetter_overridingCategoryMethodAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_overridingCategoryMethodAST.mSlotID,
-                                         categoryReader_overridingCategoryMethodAST_keyRepresentation) ;
+                                         extensionGetter_overridingCategoryMethodAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingCategoryMethodAST_keyRepresentation (defineCategoryGetter_overridingCategoryMethodAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_overridingCategoryMethodAST_keyRepresentation (defineCategoryGetter_overridingCategoryMethodAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category reader '@overridingAbstractCategoryMethodAST keyRepresentation'                 *
+//                 Overriding category getter '@overridingAbstractCategoryMethodAST keyRepresentation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_overridingAbstractCategoryMethodAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_overridingAbstractCategoryMethodAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_overridingAbstractCategoryMethodAST * object = (const cPtr_overridingAbstractCategoryMethodAST *) inObject ;
   macroValidSharedObject (object, cPtr_overridingAbstractCategoryMethodAST) ;
@@ -117,22 +117,22 @@ static GALGAS_string categoryReader_overridingAbstractCategoryMethodAST_keyRepre
 
 static void defineCategoryGetter_overridingAbstractCategoryMethodAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_overridingAbstractCategoryMethodAST.mSlotID,
-                                         categoryReader_overridingAbstractCategoryMethodAST_keyRepresentation) ;
+                                         extensionGetter_overridingAbstractCategoryMethodAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingAbstractCategoryMethodAST_keyRepresentation (defineCategoryGetter_overridingAbstractCategoryMethodAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_overridingAbstractCategoryMethodAST_keyRepresentation (defineCategoryGetter_overridingAbstractCategoryMethodAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category reader '@abstractCategoryGetterAST keyRepresentation'                      *
+//                      Overriding category getter '@abstractCategoryGetterAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_abstractCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_abstractCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_abstractCategoryGetterAST * object = (const cPtr_abstractCategoryGetterAST *) inObject ;
   macroValidSharedObject (object, cPtr_abstractCategoryGetterAST) ;
@@ -146,22 +146,22 @@ static GALGAS_string categoryReader_abstractCategoryGetterAST_keyRepresentation 
 
 static void defineCategoryGetter_abstractCategoryGetterAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_abstractCategoryGetterAST.mSlotID,
-                                         categoryReader_abstractCategoryGetterAST_keyRepresentation) ;
+                                         extensionGetter_abstractCategoryGetterAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_abstractCategoryGetterAST_keyRepresentation (defineCategoryGetter_abstractCategoryGetterAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_abstractCategoryGetterAST_keyRepresentation (defineCategoryGetter_abstractCategoryGetterAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category reader '@categoryGetterAST keyRepresentation'                          *
+//                          Overriding category getter '@categoryGetterAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_categoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_categoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_categoryGetterAST * object = (const cPtr_categoryGetterAST *) inObject ;
   macroValidSharedObject (object, cPtr_categoryGetterAST) ;
@@ -175,22 +175,22 @@ static GALGAS_string categoryReader_categoryGetterAST_keyRepresentation (const c
 
 static void defineCategoryGetter_categoryGetterAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_categoryGetterAST.mSlotID,
-                                         categoryReader_categoryGetterAST_keyRepresentation) ;
+                                         extensionGetter_categoryGetterAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_categoryGetterAST_keyRepresentation (defineCategoryGetter_categoryGetterAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_categoryGetterAST_keyRepresentation (defineCategoryGetter_categoryGetterAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category reader '@overridingCategoryGetterAST keyRepresentation'                     *
+//                     Overriding category getter '@overridingCategoryGetterAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_overridingCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_overridingCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_overridingCategoryGetterAST * object = (const cPtr_overridingCategoryGetterAST *) inObject ;
   macroValidSharedObject (object, cPtr_overridingCategoryGetterAST) ;
@@ -204,22 +204,22 @@ static GALGAS_string categoryReader_overridingCategoryGetterAST_keyRepresentatio
 
 static void defineCategoryGetter_overridingCategoryGetterAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_overridingCategoryGetterAST.mSlotID,
-                                         categoryReader_overridingCategoryGetterAST_keyRepresentation) ;
+                                         extensionGetter_overridingCategoryGetterAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingCategoryGetterAST_keyRepresentation (defineCategoryGetter_overridingCategoryGetterAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_overridingCategoryGetterAST_keyRepresentation (defineCategoryGetter_overridingCategoryGetterAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category reader '@overridingAbstractCategoryGetterAST keyRepresentation'                 *
+//                 Overriding category getter '@overridingAbstractCategoryGetterAST keyRepresentation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_overridingAbstractCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_overridingAbstractCategoryGetterAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_overridingAbstractCategoryGetterAST * object = (const cPtr_overridingAbstractCategoryGetterAST *) inObject ;
   macroValidSharedObject (object, cPtr_overridingAbstractCategoryGetterAST) ;
@@ -233,22 +233,22 @@ static GALGAS_string categoryReader_overridingAbstractCategoryGetterAST_keyRepre
 
 static void defineCategoryGetter_overridingAbstractCategoryGetterAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_overridingAbstractCategoryGetterAST.mSlotID,
-                                         categoryReader_overridingAbstractCategoryGetterAST_keyRepresentation) ;
+                                         extensionGetter_overridingAbstractCategoryGetterAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_overridingAbstractCategoryGetterAST_keyRepresentation (defineCategoryGetter_overridingAbstractCategoryGetterAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_overridingAbstractCategoryGetterAST_keyRepresentation (defineCategoryGetter_overridingAbstractCategoryGetterAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category reader '@predefinedTypeAST keyRepresentation'                          *
+//                          Overriding category getter '@predefinedTypeAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_predefinedTypeAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_predefinedTypeAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_predefinedTypeAST * object = (const cPtr_predefinedTypeAST *) inObject ;
   macroValidSharedObject (object, cPtr_predefinedTypeAST) ;
@@ -262,22 +262,22 @@ static GALGAS_string categoryReader_predefinedTypeAST_keyRepresentation (const c
 
 static void defineCategoryGetter_predefinedTypeAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                         categoryReader_predefinedTypeAST_keyRepresentation) ;
+                                         extensionGetter_predefinedTypeAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_predefinedTypeAST_keyRepresentation (defineCategoryGetter_predefinedTypeAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_predefinedTypeAST_keyRepresentation (defineCategoryGetter_predefinedTypeAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category reader '@mapDeclarationAST keyRepresentation'                          *
+//                          Overriding category getter '@mapDeclarationAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_mapDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_mapDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_mapDeclarationAST * object = (const cPtr_mapDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_mapDeclarationAST) ;
@@ -291,22 +291,22 @@ static GALGAS_string categoryReader_mapDeclarationAST_keyRepresentation (const c
 
 static void defineCategoryGetter_mapDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_mapDeclarationAST.mSlotID,
-                                         categoryReader_mapDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_mapDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_mapDeclarationAST_keyRepresentation (defineCategoryGetter_mapDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_mapDeclarationAST_keyRepresentation (defineCategoryGetter_mapDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category reader '@mapProxyDeclarationAST keyRepresentation'                        *
+//                       Overriding category getter '@mapProxyDeclarationAST keyRepresentation'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_mapProxyDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_mapProxyDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_mapProxyDeclarationAST * object = (const cPtr_mapProxyDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_mapProxyDeclarationAST) ;
@@ -320,22 +320,22 @@ static GALGAS_string categoryReader_mapProxyDeclarationAST_keyRepresentation (co
 
 static void defineCategoryGetter_mapProxyDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_mapProxyDeclarationAST.mSlotID,
-                                         categoryReader_mapProxyDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_mapProxyDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_mapProxyDeclarationAST_keyRepresentation (defineCategoryGetter_mapProxyDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_mapProxyDeclarationAST_keyRepresentation (defineCategoryGetter_mapProxyDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@enumDeclarationAST keyRepresentation'                          *
+//                         Overriding category getter '@enumDeclarationAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_enumDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_enumDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_enumDeclarationAST * object = (const cPtr_enumDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_enumDeclarationAST) ;
@@ -349,22 +349,22 @@ static GALGAS_string categoryReader_enumDeclarationAST_keyRepresentation (const 
 
 static void defineCategoryGetter_enumDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_enumDeclarationAST.mSlotID,
-                                         categoryReader_enumDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_enumDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_enumDeclarationAST_keyRepresentation (defineCategoryGetter_enumDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_enumDeclarationAST_keyRepresentation (defineCategoryGetter_enumDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category reader '@sortedListDeclarationAST keyRepresentation'                       *
+//                      Overriding category getter '@sortedListDeclarationAST keyRepresentation'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_sortedListDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_sortedListDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_sortedListDeclarationAST * object = (const cPtr_sortedListDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_sortedListDeclarationAST) ;
@@ -378,22 +378,22 @@ static GALGAS_string categoryReader_sortedListDeclarationAST_keyRepresentation (
 
 static void defineCategoryGetter_sortedListDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_sortedListDeclarationAST.mSlotID,
-                                         categoryReader_sortedListDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_sortedListDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_sortedListDeclarationAST_keyRepresentation (defineCategoryGetter_sortedListDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_sortedListDeclarationAST_keyRepresentation (defineCategoryGetter_sortedListDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category reader '@structDeclarationAST keyRepresentation'                         *
+//                        Overriding category getter '@structDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_structDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_structDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_structDeclarationAST * object = (const cPtr_structDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_structDeclarationAST) ;
@@ -407,22 +407,22 @@ static GALGAS_string categoryReader_structDeclarationAST_keyRepresentation (cons
 
 static void defineCategoryGetter_structDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_structDeclarationAST.mSlotID,
-                                         categoryReader_structDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_structDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_structDeclarationAST_keyRepresentation (defineCategoryGetter_structDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_structDeclarationAST_keyRepresentation (defineCategoryGetter_structDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@listDeclarationAST keyRepresentation'                          *
+//                         Overriding category getter '@listDeclarationAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_listDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_listDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_listDeclarationAST * object = (const cPtr_listDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_listDeclarationAST) ;
@@ -436,22 +436,22 @@ static GALGAS_string categoryReader_listDeclarationAST_keyRepresentation (const 
 
 static void defineCategoryGetter_listDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_listDeclarationAST.mSlotID,
-                                         categoryReader_listDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_listDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_listDeclarationAST_keyRepresentation (defineCategoryGetter_listDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_listDeclarationAST_keyRepresentation (defineCategoryGetter_listDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@classDeclarationAST keyRepresentation'                         *
+//                         Overriding category getter '@classDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_classDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_classDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_classDeclarationAST * object = (const cPtr_classDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_classDeclarationAST) ;
@@ -465,22 +465,22 @@ static GALGAS_string categoryReader_classDeclarationAST_keyRepresentation (const
 
 static void defineCategoryGetter_classDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_classDeclarationAST.mSlotID,
-                                         categoryReader_classDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_classDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_classDeclarationAST_keyRepresentation (defineCategoryGetter_classDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_classDeclarationAST_keyRepresentation (defineCategoryGetter_classDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@arrayDeclarationAST keyRepresentation'                         *
+//                         Overriding category getter '@arrayDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_arrayDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_arrayDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_arrayDeclarationAST * object = (const cPtr_arrayDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_arrayDeclarationAST) ;
@@ -494,22 +494,22 @@ static GALGAS_string categoryReader_arrayDeclarationAST_keyRepresentation (const
 
 static void defineCategoryGetter_arrayDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_arrayDeclarationAST.mSlotID,
-                                         categoryReader_arrayDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_arrayDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_arrayDeclarationAST_keyRepresentation (defineCategoryGetter_arrayDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_arrayDeclarationAST_keyRepresentation (defineCategoryGetter_arrayDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category reader '@listmapDeclarationAST keyRepresentation'                        *
+//                        Overriding category getter '@listmapDeclarationAST keyRepresentation'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_listmapDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_listmapDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_listmapDeclarationAST * object = (const cPtr_listmapDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_listmapDeclarationAST) ;
@@ -523,22 +523,22 @@ static GALGAS_string categoryReader_listmapDeclarationAST_keyRepresentation (con
 
 static void defineCategoryGetter_listmapDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_listmapDeclarationAST.mSlotID,
-                                         categoryReader_listmapDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_listmapDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_listmapDeclarationAST_keyRepresentation (defineCategoryGetter_listmapDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_listmapDeclarationAST_keyRepresentation (defineCategoryGetter_listmapDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category reader '@filewrapperDeclarationAST keyRepresentation'                      *
+//                      Overriding category getter '@filewrapperDeclarationAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_filewrapperDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_filewrapperDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_filewrapperDeclarationAST * object = (const cPtr_filewrapperDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_filewrapperDeclarationAST) ;
@@ -552,22 +552,22 @@ static GALGAS_string categoryReader_filewrapperDeclarationAST_keyRepresentation 
 
 static void defineCategoryGetter_filewrapperDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_filewrapperDeclarationAST.mSlotID,
-                                         categoryReader_filewrapperDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_filewrapperDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_filewrapperDeclarationAST_keyRepresentation (defineCategoryGetter_filewrapperDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_filewrapperDeclarationAST_keyRepresentation (defineCategoryGetter_filewrapperDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category reader '@optionComponentDeclarationAST keyRepresentation'                    *
+//                    Overriding category getter '@optionComponentDeclarationAST keyRepresentation'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_optionComponentDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_optionComponentDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_optionComponentDeclarationAST * object = (const cPtr_optionComponentDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_optionComponentDeclarationAST) ;
@@ -581,22 +581,22 @@ static GALGAS_string categoryReader_optionComponentDeclarationAST_keyRepresentat
 
 static void defineCategoryGetter_optionComponentDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_optionComponentDeclarationAST.mSlotID,
-                                         categoryReader_optionComponentDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_optionComponentDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_optionComponentDeclarationAST_keyRepresentation (defineCategoryGetter_optionComponentDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_optionComponentDeclarationAST_keyRepresentation (defineCategoryGetter_optionComponentDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@graphDeclarationAST keyRepresentation'                         *
+//                         Overriding category getter '@graphDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_graphDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_graphDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_graphDeclarationAST * object = (const cPtr_graphDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_graphDeclarationAST) ;
@@ -610,22 +610,22 @@ static GALGAS_string categoryReader_graphDeclarationAST_keyRepresentation (const
 
 static void defineCategoryGetter_graphDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_graphDeclarationAST.mSlotID,
-                                         categoryReader_graphDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_graphDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_graphDeclarationAST_keyRepresentation (defineCategoryGetter_graphDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_graphDeclarationAST_keyRepresentation (defineCategoryGetter_graphDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category reader '@externTypeDeclarationAST keyRepresentation'                       *
+//                      Overriding category getter '@externTypeDeclarationAST keyRepresentation'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_externTypeDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_externTypeDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_externTypeDeclarationAST * object = (const cPtr_externTypeDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_externTypeDeclarationAST) ;
@@ -639,22 +639,22 @@ static GALGAS_string categoryReader_externTypeDeclarationAST_keyRepresentation (
 
 static void defineCategoryGetter_externTypeDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_externTypeDeclarationAST.mSlotID,
-                                         categoryReader_externTypeDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_externTypeDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_externTypeDeclarationAST_keyRepresentation (defineCategoryGetter_externTypeDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_externTypeDeclarationAST_keyRepresentation (defineCategoryGetter_externTypeDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category reader '@onceFunctionDeclarationAST keyRepresentation'                      *
+//                     Overriding category getter '@onceFunctionDeclarationAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_onceFunctionDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_onceFunctionDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_onceFunctionDeclarationAST * object = (const cPtr_onceFunctionDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_onceFunctionDeclarationAST) ;
@@ -668,22 +668,22 @@ static GALGAS_string categoryReader_onceFunctionDeclarationAST_keyRepresentation
 
 static void defineCategoryGetter_onceFunctionDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_onceFunctionDeclarationAST.mSlotID,
-                                         categoryReader_onceFunctionDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_onceFunctionDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_onceFunctionDeclarationAST_keyRepresentation (defineCategoryGetter_onceFunctionDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_onceFunctionDeclarationAST_keyRepresentation (defineCategoryGetter_onceFunctionDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category reader '@externFunctionDeclarationAST keyRepresentation'                     *
+//                    Overriding category getter '@externFunctionDeclarationAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_externFunctionDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_externFunctionDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                     C_Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_externFunctionDeclarationAST * object = (const cPtr_externFunctionDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_externFunctionDeclarationAST) ;
@@ -697,22 +697,22 @@ static GALGAS_string categoryReader_externFunctionDeclarationAST_keyRepresentati
 
 static void defineCategoryGetter_externFunctionDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_externFunctionDeclarationAST.mSlotID,
-                                         categoryReader_externFunctionDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_externFunctionDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_externFunctionDeclarationAST_keyRepresentation (defineCategoryGetter_externFunctionDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_externFunctionDeclarationAST_keyRepresentation (defineCategoryGetter_externFunctionDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category reader '@externRoutineDeclarationAST keyRepresentation'                     *
+//                     Overriding category getter '@externRoutineDeclarationAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_externRoutineDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_externRoutineDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outString ; // Returned variable
   const cPtr_externRoutineDeclarationAST * object = (const cPtr_externRoutineDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_externRoutineDeclarationAST) ;
@@ -726,12 +726,12 @@ static GALGAS_string categoryReader_externRoutineDeclarationAST_keyRepresentatio
 
 static void defineCategoryGetter_externRoutineDeclarationAST_keyRepresentation (void) {
   enterCategoryGetter_keyRepresentation (kTypeDescriptor_GALGAS_externRoutineDeclarationAST.mSlotID,
-                                         categoryReader_externRoutineDeclarationAST_keyRepresentation) ;
+                                         extensionGetter_externRoutineDeclarationAST_keyRepresentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_externRoutineDeclarationAST_keyRepresentation (defineCategoryGetter_externRoutineDeclarationAST_keyRepresentation, NULL) ;
+C_PrologueEpilogue gGetter_externRoutineDeclarationAST_keyRepresentation (defineCategoryGetter_externRoutineDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1089,7 +1089,7 @@ static void categoryMethod_predefinedTypeAST_enterInSemanticContext (const cPtr_
   }
   {
   const GALGAS_predefinedTypeAST temp_8 = object ;
-  ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (GALGAS_lstring::constructor_new (object->mAttribute_mPredefinedTypeName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 807))  COMMA_SOURCE_FILE ("semanticContext.galgas", 807)), object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 810)), GALGAS_typeKindEnum::constructor_predefinedType (SOURCE_FILE ("semanticContext.galgas", 811)), GALGAS_bool (kIsEqual, object->mAttribute_mPredefinedTypeName.objectCompare (GALGAS_string ("stringset"))), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 813)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 814)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 815)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, var_classMethodMap, var_enumerationList, var_enumerationVariants, callCategoryGetter_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_8.ptr (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 823)), var_addAssignArgumentList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 825)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 826)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 827)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 828)), GALGAS_bool (false), var_enumeratedTypeProxy, categoryReader_defaultConstructorName (object->mAttribute_mKind, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 831)), GALGAS_string ("galgas2/predefined-types"), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticContext.galgas", 833)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 806)) ;
+  ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (GALGAS_lstring::constructor_new (object->mAttribute_mPredefinedTypeName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 807))  COMMA_SOURCE_FILE ("semanticContext.galgas", 807)), object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 810)), GALGAS_typeKindEnum::constructor_predefinedType (SOURCE_FILE ("semanticContext.galgas", 811)), GALGAS_bool (kIsEqual, object->mAttribute_mPredefinedTypeName.objectCompare (GALGAS_string ("stringset"))), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 813)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 814)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 815)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, var_classMethodMap, var_enumerationList, var_enumerationVariants, callCategoryGetter_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_8.ptr (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 823)), var_addAssignArgumentList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 825)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 826)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 827)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 828)), GALGAS_bool (false), var_enumeratedTypeProxy, extensionGetter_defaultConstructorName (object->mAttribute_mKind, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 831)), GALGAS_string ("galgas2/predefined-types"), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticContext.galgas", 833)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 806)) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3677,13 +3677,13 @@ C_PrologueEpilogue gMethod_listmapDeclarationAST_addAssociatedElement (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category reader '@semanticTypeForGeneration implementationCppFileName'                  *
+//                  Overriding category getter '@semanticTypeForGeneration implementationCppFileName'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_semanticTypeForGeneration_implementationCppFileName (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_semanticTypeForGeneration_implementationCppFileName (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outName ; // Returned variable
   const cPtr_semanticTypeForGeneration * object = (const cPtr_semanticTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_semanticTypeForGeneration) ;
@@ -3697,22 +3697,22 @@ static GALGAS_string categoryReader_semanticTypeForGeneration_implementationCppF
 
 static void defineCategoryGetter_semanticTypeForGeneration_implementationCppFileName (void) {
   enterCategoryGetter_implementationCppFileName (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
-                                                 categoryReader_semanticTypeForGeneration_implementationCppFileName) ;
+                                                 extensionGetter_semanticTypeForGeneration_implementationCppFileName) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_implementationCppFileName (defineCategoryGetter_semanticTypeForGeneration_implementationCppFileName, NULL) ;
+C_PrologueEpilogue gGetter_semanticTypeForGeneration_implementationCppFileName (defineCategoryGetter_semanticTypeForGeneration_implementationCppFileName, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category reader '@semanticTypeForGeneration hasCppHeaderFile'                       *
+//                      Overriding category getter '@semanticTypeForGeneration hasCppHeaderFile'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_bool categoryReader_semanticTypeForGeneration_hasCppHeaderFile (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                              C_Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_bool extensionGetter_semanticTypeForGeneration_hasCppHeaderFile (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                               C_Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outHasHeader ; // Returned variable
   result_outHasHeader = GALGAS_bool (true) ;
 //---
@@ -3724,22 +3724,22 @@ static GALGAS_bool categoryReader_semanticTypeForGeneration_hasCppHeaderFile (co
 
 static void defineCategoryGetter_semanticTypeForGeneration_hasCppHeaderFile (void) {
   enterCategoryGetter_hasCppHeaderFile (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
-                                        categoryReader_semanticTypeForGeneration_hasCppHeaderFile) ;
+                                        extensionGetter_semanticTypeForGeneration_hasCppHeaderFile) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_hasCppHeaderFile (defineCategoryGetter_semanticTypeForGeneration_hasCppHeaderFile, NULL) ;
+C_PrologueEpilogue gGetter_semanticTypeForGeneration_hasCppHeaderFile (defineCategoryGetter_semanticTypeForGeneration_hasCppHeaderFile, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category reader '@semanticTypeForGeneration isPredefined'                         *
+//                        Overriding category getter '@semanticTypeForGeneration isPredefined'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_bool categoryReader_semanticTypeForGeneration_isPredefined (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_bool extensionGetter_semanticTypeForGeneration_isPredefined (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outResult ; // Returned variable
   const cPtr_semanticTypeForGeneration * object = (const cPtr_semanticTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_semanticTypeForGeneration) ;
@@ -3753,22 +3753,22 @@ static GALGAS_bool categoryReader_semanticTypeForGeneration_isPredefined (const 
 
 static void defineCategoryGetter_semanticTypeForGeneration_isPredefined (void) {
   enterCategoryGetter_isPredefined (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
-                                    categoryReader_semanticTypeForGeneration_isPredefined) ;
+                                    extensionGetter_semanticTypeForGeneration_isPredefined) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_isPredefined (defineCategoryGetter_semanticTypeForGeneration_isPredefined, NULL) ;
+C_PrologueEpilogue gGetter_semanticTypeForGeneration_isPredefined (defineCategoryGetter_semanticTypeForGeneration_isPredefined, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category reader '@semanticTypeForGeneration headerKind'                          *
+//                         Overriding category getter '@semanticTypeForGeneration headerKind'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_headerKind categoryReader_semanticTypeForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_headerKind extensionGetter_semanticTypeForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_headerKind result_outHeaderKind ; // Returned variable
   const cPtr_semanticTypeForGeneration * object = (const cPtr_semanticTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_semanticTypeForGeneration) ;
@@ -3782,22 +3782,22 @@ static GALGAS_headerKind categoryReader_semanticTypeForGeneration_headerKind (co
 
 static void defineCategoryGetter_semanticTypeForGeneration_headerKind (void) {
   enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_semanticTypeForGeneration.mSlotID,
-                                  categoryReader_semanticTypeForGeneration_headerKind) ;
+                                  extensionGetter_semanticTypeForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticTypeForGeneration_headerKind (defineCategoryGetter_semanticTypeForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gGetter_semanticTypeForGeneration_headerKind (defineCategoryGetter_semanticTypeForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Overriding category reader '@semanticDeclarationWithHeaderForGeneration implementationCppFileName'          *
+//         Overriding category getter '@semanticDeclarationWithHeaderForGeneration implementationCppFileName'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_string categoryReader_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                          C_Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_string extensionGetter_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                           C_Compiler * /* inCompiler */
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outName ; // Returned variable
   const cPtr_semanticDeclarationWithHeaderForGeneration * object = (const cPtr_semanticDeclarationWithHeaderForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_semanticDeclarationWithHeaderForGeneration) ;
@@ -3811,22 +3811,22 @@ static GALGAS_string categoryReader_semanticDeclarationWithHeaderForGeneration_i
 
 static void defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (void) {
   enterCategoryGetter_implementationCppFileName (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
-                                                 categoryReader_semanticDeclarationWithHeaderForGeneration_implementationCppFileName) ;
+                                                 extensionGetter_semanticDeclarationWithHeaderForGeneration_implementationCppFileName) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_implementationCppFileName, NULL) ;
+C_PrologueEpilogue gGetter_semanticDeclarationWithHeaderForGeneration_implementationCppFileName (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_implementationCppFileName, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category reader '@semanticDeclarationWithHeaderForGeneration hasCppHeaderFile'              *
+//              Overriding category getter '@semanticDeclarationWithHeaderForGeneration hasCppHeaderFile'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_bool categoryReader_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                               C_Compiler * /* inCompiler */
-                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_bool extensionGetter_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                C_Compiler * /* inCompiler */
+                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outHasHeader ; // Returned variable
   const cPtr_semanticDeclarationWithHeaderForGeneration * object = (const cPtr_semanticDeclarationWithHeaderForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_semanticDeclarationWithHeaderForGeneration) ;
@@ -3840,22 +3840,22 @@ static GALGAS_bool categoryReader_semanticDeclarationWithHeaderForGeneration_has
 
 static void defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (void) {
   enterCategoryGetter_hasCppHeaderFile (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
-                                        categoryReader_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile) ;
+                                        extensionGetter_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile, NULL) ;
+C_PrologueEpilogue gGetter_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_hasCppHeaderFile, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category reader '@semanticDeclarationWithHeaderForGeneration headerKind'                 *
+//                 Overriding category getter '@semanticDeclarationWithHeaderForGeneration headerKind'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_headerKind categoryReader_semanticDeclarationWithHeaderForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                               C_Compiler * /* inCompiler */
-                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_headerKind extensionGetter_semanticDeclarationWithHeaderForGeneration_headerKind (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                                C_Compiler * /* inCompiler */
+                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_headerKind result_outHeaderKind ; // Returned variable
   result_outHeaderKind = GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticsDecoratedTypes.galgas", 549)) ;
 //---
@@ -3867,22 +3867,22 @@ static GALGAS_headerKind categoryReader_semanticDeclarationWithHeaderForGenerati
 
 static void defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_headerKind (void) {
   enterCategoryGetter_headerKind (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
-                                  categoryReader_semanticDeclarationWithHeaderForGeneration_headerKind) ;
+                                  extensionGetter_semanticDeclarationWithHeaderForGeneration_headerKind) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_headerKind (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_headerKind, NULL) ;
+C_PrologueEpilogue gGetter_semanticDeclarationWithHeaderForGeneration_headerKind (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_headerKind, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category reader '@semanticDeclarationWithHeaderForGeneration isPredefined'                *
+//                Overriding category getter '@semanticDeclarationWithHeaderForGeneration isPredefined'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_bool categoryReader_semanticDeclarationWithHeaderForGeneration_isPredefined (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                           C_Compiler * /* inCompiler */
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_bool extensionGetter_semanticDeclarationWithHeaderForGeneration_isPredefined (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                            C_Compiler * /* inCompiler */
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outResult ; // Returned variable
   result_outResult = GALGAS_bool (false) ;
 //---
@@ -3894,12 +3894,12 @@ static GALGAS_bool categoryReader_semanticDeclarationWithHeaderForGeneration_isP
 
 static void defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_isPredefined (void) {
   enterCategoryGetter_isPredefined (kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration.mSlotID,
-                                    categoryReader_semanticDeclarationWithHeaderForGeneration_isPredefined) ;
+                                    extensionGetter_semanticDeclarationWithHeaderForGeneration_isPredefined) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticDeclarationWithHeaderForGeneration_isPredefined (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_isPredefined, NULL) ;
+C_PrologueEpilogue gGetter_semanticDeclarationWithHeaderForGeneration_isPredefined (defineCategoryGetter_semanticDeclarationWithHeaderForGeneration_isPredefined, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

@@ -705,7 +705,7 @@ proc generateCategoryGetter
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
-  outGeneratedCode = "static GALGAS_" + [inResultTypeName identifierRepresentation] + " categoryReader_"
+  outGeneratedCode = "static GALGAS_" + [inResultTypeName identifierRepresentation] + " extensionGetter_"
   outGeneratedCode += [className identifierRepresentation] + "_" + [inGetterName identifierRepresentation] + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
   if inBaseClassName == "" then
@@ -1986,13 +1986,13 @@ override method @abstractCategoryGetterForGeneration appendSpecificImplementatio
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @categoryReaderForGeneration headerKind ->@headerKind outResult {
+override getter @categoryGetterForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryReaderForGeneration appendDeclaration1
+override method @categoryGetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   if mImplementedAsFunction then
@@ -2014,7 +2014,7 @@ override method @categoryReaderForGeneration appendDeclaration1
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryReaderForGeneration appendSpecificImplementation
+override method @categoryGetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
@@ -2030,7 +2030,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
     ]
     ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mCategoryGetterName
     generateFunction (
-      !"categoryReader_" + [mCategoryGetterName identifierRepresentation]
+      !"extensionGetter_" + [mCategoryGetterName identifierRepresentation]
       !?ioInclusionSet
       !categoryReaderFormalParameterList
       !mSemanticInstructionListForGeneration

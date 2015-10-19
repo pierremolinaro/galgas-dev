@@ -197,7 +197,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList. emptyList
     !@stringlist. emptyList
-    !generateDescriptionReaderUtilityMethod () | isComparable ()
+    !generateDescriptionGetterUtilityMethod () | isComparable ()
     !@functionSignature. emptyList
     !constantMap
     !mConstantList

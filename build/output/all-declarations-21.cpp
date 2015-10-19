@@ -13410,17 +13410,17 @@ void callCategoryMethod_generateExpression (const cPtr_semanticExpressionForGene
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Category reader '@semanticExpressionForGeneration isTrueExpression'                         *
+//                         Category getter '@semanticExpressionForGeneration isTrueExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression> gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression ;
+static TC_UniqueArray <categoryGetterSignature_semanticExpressionForGeneration_isTrueExpression> gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryGetter_isTrueExpression (const int32_t inClassIndex,
-                                           categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression inReader) {
-  gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+                                           categoryGetterSignature_semanticExpressionForGeneration_isTrueExpression inGetter) {
+  gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13434,7 +13434,7 @@ GALGAS_bool callCategoryGetter_isTrueExpression (const cPtr_semanticExpressionFo
     macroValidSharedObject (inObject, cPtr_semanticExpressionForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression f = NULL ;
+    categoryGetterSignature_semanticExpressionForGeneration_isTrueExpression f = NULL ;
     if (classIndex < gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression.count ()) {
       f = gCategoryGetterTable_semanticExpressionForGeneration_isTrueExpression (classIndex COMMA_HERE) ;
     }
@@ -13459,9 +13459,9 @@ GALGAS_bool callCategoryGetter_isTrueExpression (const cPtr_semanticExpressionFo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_bool categoryReader_semanticExpressionForGeneration_isTrueExpression (const cPtr_semanticExpressionForGeneration * /* inObject */,
-                                                                                    C_Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_bool extensionGetter_semanticExpressionForGeneration_isTrueExpression (const cPtr_semanticExpressionForGeneration * /* inObject */,
+                                                                                     C_Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outResult ; // Returned variable
   result_outResult = GALGAS_bool (false) ;
 //---
@@ -13473,7 +13473,7 @@ static GALGAS_bool categoryReader_semanticExpressionForGeneration_isTrueExpressi
 
 static void defineCategoryGetter_semanticExpressionForGeneration_isTrueExpression (void) {
   enterCategoryGetter_isTrueExpression (kTypeDescriptor_GALGAS_semanticExpressionForGeneration.mSlotID,
-                                        categoryReader_semanticExpressionForGeneration_isTrueExpression) ;
+                                        extensionGetter_semanticExpressionForGeneration_isTrueExpression) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13484,7 +13484,7 @@ static void freeCategoryGetter_semanticExpressionForGeneration_isTrueExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gReader_semanticExpressionForGeneration_isTrueExpression (defineCategoryGetter_semanticExpressionForGeneration_isTrueExpression,
+C_PrologueEpilogue gGetter_semanticExpressionForGeneration_isTrueExpression (defineCategoryGetter_semanticExpressionForGeneration_isTrueExpression,
                                                                              freeCategoryGetter_semanticExpressionForGeneration_isTrueExpression) ;
 
 //---------------------------------------------------------------------------------------------------------------------*

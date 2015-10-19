@@ -1373,7 +1373,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
   drop formalParameterList
-#--- Reader 'reversedGraph'
+#--- Getter 'reversedGraph'
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1381,7 +1381,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:mGraphTypeName.string
     !false # No compiler argument
   )
-#--- Reader 'undefinedNodeCount'
+#--- Getter 'undefinedNodeCount'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1389,7 +1389,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"uint"
     !false # No compiler argument
   )
-#--- Reader 'undefinedNodeKeyList'
+#--- Getter 'undefinedNodeKeyList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1397,7 +1397,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"stringlist"
     !false # No compiler argument
   )
-#--- Reader 'undefinedNodeReferenceList'
+#--- Getter 'undefinedNodeReferenceList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1405,7 +1405,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"lstringlist"
     !false # No compiler argument
   )
-#--- Reader 'graphviz'
+#--- Getter 'graphviz'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1413,7 +1413,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"string"
     !false # No compiler argument
   )
-#--- Reader 'isNodeDefined'
+#--- Getter 'isNodeDefined'
   enterInheritedGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1423,7 +1423,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"bool"
     !false # No compiler argument
   )
-#--- Reader 'keyList'
+#--- Getter 'keyList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1431,7 +1431,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"stringlist"
     !false # No compiler argument
   )
-#--- Reader 'lkeyList'
+#--- Getter 'lkeyList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1439,7 +1439,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"lstringlist"
     !false # No compiler argument
   )
-#--- Reader 'egdes'
+#--- Getter 'egdes'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1447,7 +1447,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"2stringlist"
     !false # No compiler argument
   )
-#--- Reader 'subgraphFromNodes'
+#--- Getter 'subgraphFromNodes'
   enterBaseGetterWith2Arguments (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -1459,7 +1459,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:mGraphTypeName.string
     !true # has compiler argument
   )
-#--- Reader 'accessibleNodesFromNodes'
+#--- Getter 'accessibleNodesFromNodes'
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -2165,7 +2165,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !false
     !arrayTypeIndex
   ]
-#--- Readers
+#--- Getters
   enterBaseGetterWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"axisCount" !returnedTypeName:"uint" !false )
   enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"uint" !true )
   enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
