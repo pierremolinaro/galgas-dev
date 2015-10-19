@@ -788,7 +788,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
   }
   const enumGalgasBool test_28 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_generateDescriptionGetterUtilityMethod (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 180)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 180)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_28) {
-    result << "//--------------------------------- Implementation of reader 'description'\n"
+    result << "//--------------------------------- Implementation of getter 'description'\n"
       "  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,\n"
       "                                              const int32_t inIndentation) const ;\n" ;
   }else if (kBoolFalse == test_28) {
@@ -2620,7 +2620,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << in_DIMENSION.getter_string (SOURCE_FILE ("GALGAS_array.cpp.galgasTemplate", 276)).stringValue () ;
   result << ") {\n"
     "      C_String s ;\n"
-    "      s << \"reader @ptrint sizeForAxis: argument >= dimension\" ;\n"
+    "      s << \"getter @ptrint sizeForAxis: argument >= dimension\" ;\n"
     "      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n" ;
   GALGAS_uint index_10452_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
@@ -2661,7 +2661,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << in_DIMENSION.getter_string (SOURCE_FILE ("GALGAS_array.cpp.galgasTemplate", 297)).stringValue () ;
   result << ") {\n"
     "      C_String s ;\n"
-    "      s << \"reader @ptrint sizeForAxis: argument >= dimension\" ;\n"
+    "      s << \"getter @ptrint sizeForAxis: argument >= dimension\" ;\n"
     "      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n" ;
   GALGAS_uint index_11284_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
@@ -2811,7 +2811,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "      result = mSharedObject->objectAtAbsoluteIndex (idx) ;\n"
     "      if (! result.isValid ()) {\n"
     "        C_String s ;\n"
-    "        s << \"reader @ptrint valueAtIndex: object at index (\"" ;
+    "        s << \"getter @ptrint valueAtIndex: object at index (\"" ;
   GALGAS_uint index_13407_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
     cEnumerator_stringlist enumerator_13407 (in_DIMENSION_5F_LIST, kEnumeration_up) ;
@@ -5632,7 +5632,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category reader '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Category getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"

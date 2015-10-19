@@ -6740,7 +6740,7 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
                                                                    const class GALGAS_prologueEpilogueList & inOperand6
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison

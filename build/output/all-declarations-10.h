@@ -932,7 +932,7 @@ void routine_generatePredefinedTypeFiles (const class GALGAS_string constinArgum
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category reader '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'                  *
+//                 Category getter '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -953,7 +953,7 @@ class GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPt
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category reader '@semanticDeclarationForGeneration appendTypeGenericImplementation'                 *
+//                 Category getter '@semanticDeclarationForGeneration appendTypeGenericImplementation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1171,7 +1171,7 @@ class GALGAS_parsedComponentStruct : public AC_GALGAS_root {
                                                                 const class GALGAS_parsedGuiComponentMap & inOperand6
                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison

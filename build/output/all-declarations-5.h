@@ -328,7 +328,7 @@ class GALGAS_collectionValueElementListForGeneration_2D_element : public AC_GALG
   public : static GALGAS_collectionValueElementListForGeneration_2D_element constructor_new (const class GALGAS_abstractCollectionValueElementForGeneration & inOperand0
                                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -567,7 +567,7 @@ class GALGAS_localConstantList_2D_element : public AC_GALGAS_root {
                                                                        const class GALGAS_string & inOperand3
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -795,7 +795,7 @@ class GALGAS_localInitializedVariableList_2D_element : public AC_GALGAS_root {
                                                                                   const class GALGAS_string & inOperand2
                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -1000,7 +1000,7 @@ class GALGAS_attributeIndexMap_2D_element : public AC_GALGAS_root {
                                                                        const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -1177,7 +1177,7 @@ class GALGAS_insertMethodMap_2D_element : public AC_GALGAS_root {
   public : static GALGAS_insertMethodMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0
                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -1352,7 +1352,7 @@ class GALGAS_searchMethodMap_2D_element : public AC_GALGAS_root {
   public : static GALGAS_searchMethodMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0
                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -1527,7 +1527,7 @@ class GALGAS_declaredMethodMap_2D_element : public AC_GALGAS_root {
   public : static GALGAS_declaredMethodMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -1764,7 +1764,7 @@ class GALGAS_nonterminalLabelMap_2D_element : public AC_GALGAS_root {
                                                                          const class GALGAS_location & inOperand3
                                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -1971,7 +1971,7 @@ class GALGAS_nonterminalMap_2D_element : public AC_GALGAS_root {
                                                                     const class GALGAS_nonterminalLabelMap & inOperand1
                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -2229,7 +2229,7 @@ class GALGAS_ruleLabelImplementationList_2D_element : public AC_GALGAS_root {
                                                                                  const class GALGAS_semanticInstructionListForGeneration & inOperand4
                                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -2459,7 +2459,7 @@ class GALGAS_ruleDeclarationList_2D_element : public AC_GALGAS_root {
                                                                          const class GALGAS_ruleLabelImplementationList & inOperand2
                                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -2805,7 +2805,7 @@ class GALGAS_syntaxListForGeneration_2D_element : public AC_GALGAS_root {
                                                                              const class GALGAS_bool & inOperand2
                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -2972,7 +2972,7 @@ class GALGAS_keySortedList_2D_element : public AC_GALGAS_root {
                                                                    const class GALGAS_uint & inOperand1
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -3310,7 +3310,7 @@ class GALGAS_castInstructionBranchListAST_2D_element : public AC_GALGAS_root {
                                                                                   const class GALGAS_location & inOperand4
                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -3554,7 +3554,7 @@ class GALGAS_castInstructionBranchListForGeneration_2D_element : public AC_GALGA
                                                                                             const class GALGAS_semanticInstructionListForGeneration & inOperand3
                                                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -3757,7 +3757,7 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC
                                                                                                   const class GALGAS_lstring & inOperand1
                                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -4030,7 +4030,7 @@ class GALGAS_forInstructionEnumeratedObjectListAST_2D_element : public AC_GALGAS
                                                                                            const class GALGAS_abstractEnumeratedCollectionAST & inOperand1
                                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -4251,7 +4251,7 @@ class GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element : public
                                                                                                      const class GALGAS_string & inOperand2
                                                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -4320,7 +4320,7 @@ class GALGAS_incDecKind : public AC_GALGAS_root {
 
   public : static GALGAS_incDecKind constructor_increment (LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -4524,7 +4524,7 @@ class GALGAS_logListAST_2D_element : public AC_GALGAS_root {
                                                                 const class GALGAS_semanticExpressionAST & inOperand1
                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -4736,7 +4736,7 @@ class GALGAS_matchEntryListAST_2D_element : public AC_GALGAS_root {
                                                                        const class GALGAS_lstring & inOperand2
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -4963,7 +4963,7 @@ class GALGAS_matchInstructionBranchListAST_2D_element : public AC_GALGAS_root {
                                                                                    const class GALGAS_location & inOperand3
                                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -5191,7 +5191,7 @@ class GALGAS_matchListForGeneration_2D_element : public AC_GALGAS_root {
                                                                             const class GALGAS_string & inOperand2
                                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -5400,7 +5400,7 @@ class GALGAS_matchInstructionBranchListForGeneration_2D_element : public AC_GALG
                                                                                              const class GALGAS_semanticInstructionListForGeneration & inOperand1
                                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -5624,7 +5624,7 @@ class GALGAS_switchExtractedValuesListAST_2D_element : public AC_GALGAS_root {
                                                                                   const class GALGAS_bool & inOperand2
                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -5867,7 +5867,7 @@ class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
                                                                        const class GALGAS_location & inOperand3
                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -6095,7 +6095,7 @@ class GALGAS_extractedAssociatedValuesForGeneration_2D_element : public AC_GALGA
                                                                                             const class GALGAS_uint & inOperand2
                                                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -6338,7 +6338,7 @@ class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
                                                                                  const class GALGAS_semanticInstructionListForGeneration & inOperand3
                                                                                  COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -6549,7 +6549,7 @@ class GALGAS_enumConstantListForGeneration_2D_element : public AC_GALGAS_root {
                                                                                    const class GALGAS_unifiedTypeMapProxyList & inOperand1
                                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -6619,7 +6619,7 @@ class GALGAS_mapAutomatonMessageKind : public AC_GALGAS_root {
 
   public : static GALGAS_mapAutomatonMessageKind constructor_warningMessage (LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -6843,7 +6843,7 @@ class GALGAS_mapStateTransitionList_2D_element : public AC_GALGAS_root {
                                                                             const class GALGAS_lstring & inOperand3
                                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -7069,7 +7069,7 @@ class GALGAS_mapStateList_2D_element : public AC_GALGAS_root {
                                                                   const class GALGAS_mapStateTransitionList & inOperand3
                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -7308,7 +7308,7 @@ class GALGAS_mapOverrideBlockDescriptorAST_2D_element : public AC_GALGAS_root {
                                                                                    const class GALGAS_lstring & inOperand4
                                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -7526,7 +7526,7 @@ class GALGAS_mapOverrideBlockListAST_2D_element : public AC_GALGAS_root {
                                                                              const class GALGAS_mapOverrideBlockDescriptorAST & inOperand2
                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
@@ -7730,7 +7730,7 @@ class GALGAS_mapStateTransitionSortedList_2D_element : public AC_GALGAS_root {
                                                                                   const class GALGAS_string & inOperand5
                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of reader 'description'
+//--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison

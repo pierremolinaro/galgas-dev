@@ -912,7 +912,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 }{
 }{
-#------------ Category reader
+#------------ Category getter
   template abstractCategoryGetterDeclaration "abstract-category-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME

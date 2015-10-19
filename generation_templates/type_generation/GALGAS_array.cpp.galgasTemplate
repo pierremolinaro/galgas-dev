@@ -275,7 +275,7 @@ GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::getter_rangeForAxis (%?^%const GALGAS_ui
     const uint32_t axisIndex = inAxisIndex.uintValue () ;
     if (axisIndex >= %![DIMENSION string]%) {
       C_String s ;
-      s << "reader @ptrint sizeForAxis: argument >= dimension" ;
+      s << "getter @ptrint sizeForAxis: argument >= dimension" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
 % for () in DIMENSION_LIST do
 %    }else if (%!mValue% == axisIndex) {\n%
@@ -296,7 +296,7 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_sizeForAxis (%?^%const GALGAS_uint
     const uint32_t axisIndex = inAxisIndex.uintValue () ;
     if (axisIndex >= %![DIMENSION string]%) {
       C_String s ;
-      s << "reader @ptrint sizeForAxis: argument >= dimension" ;
+      s << "getter @ptrint sizeForAxis: argument >= dimension" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
 % for () in DIMENSION_LIST do
 %    }else if (%!mValue% == axisIndex) {\n%
@@ -352,7 +352,7 @@ end
       result = mSharedObject->objectAtAbsoluteIndex (idx) ;
       if (! result.isValid ()) {
         C_String s ;
-        s << "reader @ptrint valueAtIndex: object at index ("%
+        s << "getter @ptrint valueAtIndex: object at index ("%
 for () in DIMENSION_LIST
 do %\n             << cStringWithUnsigned (mSharedObject->size%!mValue% ())%
 between % << ", "%
