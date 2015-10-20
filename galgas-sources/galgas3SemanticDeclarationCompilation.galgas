@@ -18,16 +18,17 @@ proc compileSemanticDeclarationsGalgas3
   ?let @location inEndOfProjectSourceFile
   ?let @semanticDeclarationListAST inSemanticDeclarationList
   !@semanticContext outSemanticContext
-  !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration {
+  !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
+{
   if [option.verbose_output value] then
-    message "*** Building context\n"
+    message "*** Building semantic context\n"
   end
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = inSemanticDeclarationList
   appendPredefinedTypesASTs ( !?semanticDeclarationListWithPredefinedTypes )
 #---- Add predefined option component
   @commandLineOptionListAST options = {}
-  for () in @application. boolOptionNameList do
+  for () in @application.boolOptionNameList do
     options +=
       !["bool" nowhere]
       !@lstring.new {!mValue1 !@location.here}
@@ -37,7 +38,7 @@ proc compileSemanticDeclarationsGalgas3
       !["" nowhere]
       !@optionDefaultValueEnumAST. noDefaultValue
   end
-  for () in @application. uintOptionNameList do
+  for () in @application.uintOptionNameList do
     options +=
       !["uint" nowhere]
       !@lstring.new {!mValue1 !@location.here}
@@ -47,7 +48,7 @@ proc compileSemanticDeclarationsGalgas3
       !["" nowhere]
       !@optionDefaultValueEnumAST. noDefaultValue
   end
-  for () in @application. stringOptionNameList do
+  for () in @application.stringOptionNameList do
     options +=
       !["string" nowhere]
       !@lstring.new {!mValue1 !@location.here}

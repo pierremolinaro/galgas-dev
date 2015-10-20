@@ -908,7 +908,7 @@ LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
 
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Checking LL(1) condition... " ;
+    co << "  LL(1) condition... " ;
     co.flush () ;
   }
 //--- Print in BNF file

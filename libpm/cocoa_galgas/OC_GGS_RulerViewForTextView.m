@@ -68,6 +68,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s %p [%g, %g ; %g, %g]", __PRETTY_FUNCTION__, self, inRect.origin.x, inRect.origin.y, inRect.size.width, inRect.size.height) ;
   #endif
+  // NSDate * startDate = [NSDate date] ;
   const NSRect viewBounds = self.bounds ;
 //-------- Draw background
   [[NSColor windowBackgroundColor] setFill] ;
@@ -87,7 +88,8 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   NSString * sourceString = textView.string ;
   const NSUInteger sourceStringLength = sourceString.length ;
 //-------- Compute layout
-  [lm ensureLayoutForCharacterRange:NSMakeRange (0, sourceStringLength)] ;
+ // [lm ensureLayoutForCharacterRange:NSMakeRange (0, sourceStringLength)] ;
+  [lm ensureLayoutForTextContainer:textContainer] ;
 //-------- Find the characters that are currently visible
   const NSRange visibleGlyphRange = [lm
     glyphRangeForBoundingRect:self.scrollView.contentView.bounds
@@ -174,6 +176,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
   #endif
+//  NSLog (@"%f", [[NSDate date] timeIntervalSinceDate:startDate]) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

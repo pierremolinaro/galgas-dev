@@ -248,7 +248,7 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Computing the FOLLOW sets... " ;
+    co << "  FOLLOW sets... " ;
     co.flush () ;
   }
 //--- Print in BNF file

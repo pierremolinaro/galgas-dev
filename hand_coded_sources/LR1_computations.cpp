@@ -1718,7 +1718,7 @@ LR1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
                   const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Building LR(1) automaton... " ;
+    co << "  LR(1) automaton... " ;
     co.flush () ;
   }
 //--- Print in BNF file

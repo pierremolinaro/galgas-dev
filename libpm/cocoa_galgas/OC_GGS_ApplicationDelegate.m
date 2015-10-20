@@ -355,7 +355,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  #define kDefaultColorCount 7
+  #define kDefaultColorCount (7)
   NSColor * defaultColorArray [kDefaultColorCount] = {
     [NSColor blackColor],
     [NSColor blueColor],
