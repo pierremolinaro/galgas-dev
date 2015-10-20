@@ -73,7 +73,7 @@ GALGAS_complex GALGAS_complex::constructor_new (const GALGAS_double & inReal,
 
 //---------------------------------------------------------------------------*
 
-GALGAS_double GALGAS_complex::reader_real (C_Compiler * /* inCompiler */
+GALGAS_double GALGAS_complex::getter_real (C_Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
@@ -84,7 +84,7 @@ GALGAS_double GALGAS_complex::reader_real (C_Compiler * /* inCompiler */
 
 //---------------------------------------------------------------------------*
 
-GALGAS_double GALGAS_complex::reader_imaginary (C_Compiler * /* inCompiler */
+GALGAS_double GALGAS_complex::getter_imaginary (C_Compiler * /* inCompiler */
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
