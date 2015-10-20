@@ -234,18 +234,17 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void
-FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                     C_HTMLString & ioHTMLFileContents,
-                     const cVocabulary & inVocabulary,
-                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                     const C_Relation & inUsefulSymbols,
-                     const C_Relation & inFIRSTsets,
-                     const C_Relation & inNonterminalSymbolsFollowedByEmpty,
-                     C_Relation & outFOLLOWsets,
-                     TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
-                     bool & outOk,
-                     const bool inVerboseOptionOn) {
+void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
+                          C_HTMLString & ioHTMLFileContents,
+                          const cVocabulary & inVocabulary,
+                          const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                          const C_Relation & inUsefulSymbols,
+                          const C_Relation & inFIRSTsets,
+                          const C_Relation & inNonterminalSymbolsFollowedByEmpty,
+                          C_Relation & outFOLLOWsets,
+                          TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
+                          bool & outOk,
+                          const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
     co << "  FOLLOW sets... " ;
