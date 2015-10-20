@@ -39,7 +39,7 @@ def remplacerAnneeEtVersionGALGAS (annee, versionGALGAS, filename) :
   contents = f.read ()
   f.close ()
   contents = contents.replace ("!AN!", annee)
-  contents = contents.replace ("GALGASBETAVERSION", versionGALGAS)
+  contents = contents.replace ("GALGAS_BETA_VERSION", versionGALGAS)
   writeFile (contents, filename)
 
 #------------------------------------------------------------------------------*
