@@ -183,7 +183,7 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
                             const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Searching for nonterminal symbols deriving in empty string... " ;
+    co << "  Nonterminal symbols deriving in empty... " ;
     co.flush () ;
   }
 //--- Print in BNF file

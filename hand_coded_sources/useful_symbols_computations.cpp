@@ -194,7 +194,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Searching for useful nonterminal symbols... " ;
+    co << "  Useful nonterminal symbols... " ;
     co.flush () ;
   }
 //--- Print in BNF file

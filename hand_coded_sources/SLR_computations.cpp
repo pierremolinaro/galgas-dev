@@ -1251,7 +1251,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
                   const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Building SLR automaton... " ;
+    co << "  SLR automaton... " ;
     co.flush () ;
   }
 //--- Print in BNF file

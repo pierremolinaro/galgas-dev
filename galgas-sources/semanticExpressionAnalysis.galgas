@@ -3096,9 +3096,7 @@ class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @collectionValueAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for () in mElementList do
     [mElement enterInSemanticContext !?ioTypeMap]
   end

@@ -383,7 +383,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     outHTMLHelperFileContents.appendCppTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (outHTMLHelperFileContents, vocabulary, pureBNFproductions) ;
     if (verboseOptionOn) {
-      co << cStringWithSigned (pureBNFproductions.length ()) << " productions.\n" ;
+      co << cStringWithSigned (pureBNFproductions.length ()) << ".\n" ;
       co.flush () ;
     }
   }
@@ -399,13 +399,13 @@ analyzeGrammar (C_Compiler * inCompiler,
   #endif
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
-      co << "  Searching for identical productions... " ;
+      co << "  Identical productions... " ;
     }
     const bool step2ok = searchForIdenticalProductions (pureBNFproductions, outHTMLHelperFileContents) ;
     if (! step2ok) {
       errorFlag = kError ;
       if (! verboseOptionOn) {
-        co << "  Searching for identical productions... " ;
+        co << "  Identical productions... " ;
       }
       co << "error.\n" ;
     }else if (verboseOptionOn) {

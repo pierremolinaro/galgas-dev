@@ -583,6 +583,7 @@
 
 - (void) updateSyntaxColoringForEditedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
+  // NSDate * startDate = [NSDate date] ;
   const NSUInteger textLength = mSourceTextStorage.string.length ;
   if (textLength > 0) {
     #ifdef DEBUG_MESSAGES
@@ -656,11 +657,13 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s DONE", __PRETTY_FUNCTION__) ;
   #endif
+  //NSLog (@"%f", [[NSDate date] timeIntervalSinceDate:startDate]) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) textStorageDidProcessEditingNotification: (NSNotification *) inNotification {
+//  NSDate * startDate = [NSDate date] ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -688,6 +691,7 @@
       forMode:NSDefaultRunLoopMode
     ] ;
   }
+//  NSLog (@"%f", [[NSDate date] timeIntervalSinceDate:startDate]) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -765,7 +769,7 @@
 //                       U N C O M M E N T R A N G E                                                                   *
 //                                                                                                                     *
 // Cette méthode a plusieurs rôles :                                                                                   *
-//   - supprimer les marques de commentaires des lignes concernées par la sélection, uniquement quand ces le           *
+//   - supprimer les marques de commentaires des lignes concernées par la sélection, uniquement quand le               *
 //     commentaire commence une ligne ;                                                                                *
 //   - ajuster la sélection en conséquence ; en effet, dès que la méthode replaceCharactersInRange:withString: est     *
 //     appelée, Cocoa ramène la sélection à un point d'insertion. La sélection est ajustée et maintenue dans la        *
@@ -775,7 +779,7 @@
 //   - le nombre beforeSelectionCharacterCount de caractères du commentaire supprimé qui sont avant la sélection ; si  *
 //     ce nombre est > 0, on le début de la sélection du min entre ce nombre et le nombre de caractères du             *
 //     commentaire ;                                                                                                   *
-//   - le nombre withinSelectionCharacterCount de caractères du commentair supprimé qui sont à l'intérieur de la       *
+//   - le nombre withinSelectionCharacterCount de caractères du commentaire supprimé qui sont à l'intérieur de la      *
 //     sélection ; si ce nombre est > 0, on le retranche de la longueur de la sélection.                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

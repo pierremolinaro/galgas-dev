@@ -200,7 +200,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
   const C_RelationConfiguration vocabularyConfiguration = inUsefulSymbols.configuration () ;
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Computing the FIRST sets... " ;
+    co << "  FIRST sets... " ;
     co.flush () ;
   }
 //--- Print in BNF file

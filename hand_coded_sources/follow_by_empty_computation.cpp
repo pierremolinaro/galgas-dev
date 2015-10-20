@@ -123,7 +123,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Nonterminal symbols followed by empty string... " ;
+    co << "  Nonterminal symbols followed by empty... " ;
     co.flush () ;
   }
 //--- Print in BNF file

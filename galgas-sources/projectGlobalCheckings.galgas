@@ -325,9 +325,7 @@ map @categoryGetterMapForGlobalCheckings {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func outputDirectory
-  ?let @lstring inSourceFile
-  ->  @string outOuputDirectory {
+func outputDirectory ?let @lstring inSourceFile ->  @string outOuputDirectory {
   if [inSourceFile characterAtIndex !0] == '/' then
     outOuputDirectory = [inSourceFile stringByDeletingLastPathComponent]
     outOuputDirectory += "/GALGAS_OUTPUT"
@@ -380,7 +378,8 @@ proc checkCategoryMethodDefinitionForClass
   ?let @lstring inAbstractCategoryMethodName
   ?let @descendantClassListMap inDescendantClassListMap
   ?let @genericCategoryMethodListMap inOverridingCategoryMethodListMap
-  ?let @unifiedTypeMap inUnifiedTypeMap {
+  ?let @unifiedTypeMap inUnifiedTypeMap
+{
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
@@ -416,7 +415,8 @@ proc checkCategoryGetterDefinitionForClass
   ?let @lstring inAbstractCategoryGetterName
   ?let @descendantClassListMap inDescendantClassListMap
   ?let @genericCategoryMethodListMap inOverridingCategoryGetterListMap
-  ?let @unifiedTypeMap inUnifiedTypeMap {
+  ?let @unifiedTypeMap inUnifiedTypeMap
+{
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     @lstring descendantClassName = [mType lkey]
@@ -492,7 +492,7 @@ proc performGalgas3ProjectGlobalCheckings
     ]
   end
 #------ Check Category
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
   #--- A given abstract category modifier is defined only once for a class
     for () in abstractCategoryModifierListMap do
       var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}

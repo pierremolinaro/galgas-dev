@@ -199,7 +199,9 @@
     [bp stroke] ;
   }
 //--- Draw text
+  // NSDate * startDate = [NSDate date] ;
   [super drawRect:inRect] ;
+  // NSLog (@"%f", [[NSDate date] timeIntervalSinceDate:startDate]) ;
 //--- Draw issues
   NSBezierPath * errorHiliteBezierPath = [NSBezierPath bezierPath] ;
   NSBezierPath * errorBulletBezierPath = [NSBezierPath bezierPath] ;
