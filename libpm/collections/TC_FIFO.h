@@ -9,7 +9,7 @@
 //                                                                                                                     *
 //  Copyright (C) 2001 Pierre Molinaro.                                                                                *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
-//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes                                          *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
 //  ECN, Ecole Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
 //  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General  *
