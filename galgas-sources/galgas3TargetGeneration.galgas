@@ -376,9 +376,7 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"ElCapitanYosemite"
   availableGenerationFeatures += !"ElCapitan"
   availableGenerationFeatures += !"LatestMacOS"
-#  availableGenerationFeatures += !"multi-threading"
   var generationFeatures =@stringset.emptySet{}
-#  @bool multiThreadingEnabled = false
 #--- Check xcode target architectures
   @string SDK = ""
   @string MACOSX_DEPLOYMENT_TARGET = ""
@@ -389,12 +387,6 @@ proc updateGalgas3Targets
       end
       let macOsDuplicateMessage = "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\","
           " \"Yosemite\", \"ElCapitanYosemite\" and \"ElCapitan\", \"LatestMacOS\" are exclusive"
-    #--- Multi-threading
-#      if mValue.string == "multi-threading" then
-#        if multiThreadingEnabled then
-#          error mValue: "duplicate '" + mValue + "' feature"
-#        end
-#        multiThreadingEnabled = true
     #--- SnowLeopard
       if mValue.string == "SnowLeopard" then
         if (SDK != "") then
@@ -1357,7 +1349,6 @@ proc updateGalgas3Targets
         !"F_GetPrime.h",
         !"M_machine.h",
         !"M_SourceLocation.h",
-        !"M_Threads.h",
         !"md5.cpp",
         !"md5.h",
         !"MF_Assert.cpp",
@@ -1366,8 +1357,6 @@ proc updateGalgas3Targets
         !"MF_MemoryControl.h",
         !"PMUInt128.cpp",
         !"PMUInt128.h",
-        !"TF_inf.h",
-        !"TF_sup.h",
         !"TF_Swap.h"
       }
       !?cFileRefs:buildCFileRefListForTool

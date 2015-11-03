@@ -777,8 +777,6 @@
 		CF825A7408536B780077AEAF /* MF_Assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MF_Assert.h; sourceTree = "<group>"; };
 		CF825A7508536B780077AEAF /* MF_MemoryControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = MF_MemoryControl.cpp; sourceTree = "<group>"; };
 		CF825A7608536B780077AEAF /* MF_MemoryControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MF_MemoryControl.h; sourceTree = "<group>"; };
-		CF825A7708536B780077AEAF /* TF_inf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TF_inf.h; sourceTree = "<group>"; };
-		CF825A7808536B780077AEAF /* TF_sup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TF_sup.h; sourceTree = "<group>"; };
 		CF825A7908536B780077AEAF /* TF_Swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TF_Swap.h; sourceTree = "<group>"; };
 		CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_CommandLineOption.cpp; sourceTree = "<group>"; };
 		CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_CommandLineOption.h; sourceTree = "<group>"; };
@@ -2106,8 +2104,6 @@
 				CF825A7608536B780077AEAF /* MF_MemoryControl.h */,
 				CFC1042A161DFE2000253307 /* PMUInt128.cpp */,
 				CFC1042B161DFE2000253307 /* PMUInt128.h */,
-				CF825A7708536B780077AEAF /* TF_inf.h */,
-				CF825A7808536B780077AEAF /* TF_sup.h */,
 				CF825A7908536B780077AEAF /* TF_Swap.h */,
 			);
 			path = utilities;
