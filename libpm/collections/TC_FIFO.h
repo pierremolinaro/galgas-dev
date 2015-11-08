@@ -2,8 +2,7 @@
 //                                                                                                                     *
 //  Declaration of the template class 'TC_FIFO'.                                                                       *
 //                                                                                                                     *
-//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR                                             *
-//  AND ASSIGNMENT OPERATOR.                                                                                           *
+//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR AND ASSIGNMENT OPERATOR.                    *
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
