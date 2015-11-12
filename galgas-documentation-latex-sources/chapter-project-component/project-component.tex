@@ -55,7 +55,7 @@ L'en-tête d'un projet définit deux informations :
   \item le nom des exécutables engendrés.
 \end{itemize}
 
-\subsection{Version du projet}
+\subsectionLabel{Version du projet}{versionProjet}
 
 \begin{galgas}
 project (1:2:3) -> "logo" {
@@ -64,6 +64,7 @@ project (1:2:3) -> "logo" {
 \end{galgas}
 
 La version du projet apparaît sous la forme d'un triplet qui suit le mot-clé \ggs!project! : \ggs!1:2:3! dans le code ci-dessus. C'est ce triplet (sous la forme \texttt{1.2.3}) qui apparaît lorsque l'on invoque l'option \texttt{-{}-version} sur l'utilitaire ligne de commande engendré.
+Dans le code, cette information peut être obtenu par le \refConstructorPage{application}{projectVersionString}.
 
 
 \subsection{Nom des exécutables engendrés}
