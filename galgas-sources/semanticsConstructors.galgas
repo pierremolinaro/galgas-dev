@@ -134,7 +134,7 @@ override method @stringPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"homeDirectory" !"string" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"retrieveAndResetTemplateString" !"string" !true)
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"stringWithSymbolicLinkContents" !"string" !"inPath" !"string" !true)
-  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithVersionString" !"string" !false)
+#  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithVersionString" !"string" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithSourceFilePath" !"string" !true)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithCurrentDirectory" !"string" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithMainFirstArgument" !"string" !false)

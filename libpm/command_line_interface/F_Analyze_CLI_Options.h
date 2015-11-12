@@ -36,7 +36,6 @@
 
 void F_Analyze_CLI_Options (const int argv,
                             const char * argc [],
-                            const char * inVersionString,
                             TC_UniqueArray <C_String> & outSourceFileArray,
                             const char * inExtensions [],
                             const char * inHelpMessages [],
@@ -44,7 +43,7 @@ void F_Analyze_CLI_Options (const int argv,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const char * compilerVersionString (void) ;
+const char * projectVersionString (void) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
