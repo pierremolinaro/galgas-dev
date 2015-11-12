@@ -1,0 +1,31 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapitreTypePredefiniLabelIndex{application}
+
+Le \ggs+@application+ ne définit que des constructeurs qui permettent d'obtenir des informations sur le programme courant.
+
+
+\section{Constructeurs}
+
+\subsectionConstructor{projectVersionString}{application}
+
+\begin{galgasbox}
+constructor @application projectVersionString -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la version du projet GALGAS dont la compilation fournit cet exécutable. C'est l'information qui apparaît après le mot réservé \ggs+project+ (voir \refSubsectionPage{versionProjet}), en utilisant le point « . » comme séparateur. Par exemple, si l'en-tête du projet est :
+
+\begin{galgas}
+project (1:2:3) -> "logo" {
+  ...
+}
+\end{galgas}
+
+La chaîne renvoyée est \ggs+"1.2.3"+:
+\begin{galgas}
+let s = @application.projectVersionString # "1.2.3"
+\end{galgas}
+
+
+
