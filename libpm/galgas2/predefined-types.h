@@ -1815,8 +1815,6 @@ class GALGAS_string : public AC_GALGAS_root
                                                                             class C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
-  public : static GALGAS_string constructor_stringWithVersionString (LOCATION_ARGS) ;
-
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_string inOperand
                                                       COMMA_LOCATION_ARGS) ;

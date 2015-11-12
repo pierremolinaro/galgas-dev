@@ -979,9 +979,9 @@ GALGAS_string GALGAS_string::constructor_stringWithMainFirstArgument (UNUSED_LOC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_string::constructor_stringWithVersionString (UNUSED_LOCATION_ARGS) {
+/* GALGAS_string GALGAS_string::constructor_stringWithVersionString (UNUSED_LOCATION_ARGS) {
   return GALGAS_string (C_String (compilerVersionString ())) ;
-}
+} */
 
 //---------------------------------------------------------------------------------------------------------------------*
 
