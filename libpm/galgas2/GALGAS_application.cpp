@@ -3,7 +3,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2010, ..., 2015 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -24,6 +24,7 @@
 #include "command_line_interface/C_BoolCommandLineOption.h"
 #include "command_line_interface/C_UIntCommandLineOption.h"
 #include "command_line_interface/C_StringCommandLineOption.h"
+#include "command_line_interface/F_mainForLIBPM.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -216,6 +217,12 @@ GALGAS_string GALGAS_application::constructor_stringOptionCommentString (const G
     result = GALGAS_string (s) ;
   }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_application::constructor_projectVersionString (UNUSED_LOCATION_ARGS) {
+  return GALGAS_string (projectVersionString ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -60,12 +60,12 @@ proc enterConstructorWithArgument
 proc enterConstructorWith2Arguments
   ?!@constructorMap ioConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inConstructorName
+  ?name:let @string inConstructorName
   ?let @string inArgument1TypeName
   ?let @string inArgument1Name
   ?let @string inArgument2TypeName
   ?let @string inArgument2Name
-  ?let @string inReturnedTypeName
+  ?resultType:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments {
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
@@ -146,8 +146,24 @@ override method @stringPredefinedTypeAST getConstructorMap
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"CppTitleComment" !"string" !"inString" !"string" !false)
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"CppString" !"string" !"inString" !"string" !false)
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"CppChar" !"char" !"inChar" !"string" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"componentsJoinedByString" !"stringlist" !"inComponents" !"string" !"inString" !"string" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringWithSequenceOfCharacters" !"char" !"inChar" !"uint" !"inCount" !"string" !false)
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap 
+    !name:"componentsJoinedByString"
+    !"stringlist" !"inComponents"
+    !"string" !"inString"
+    !resultType:"string"
+    !false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"stringWithSequenceOfCharacters" 
+    !"char" !"inChar"
+    !"uint" !"inCount"
+    !resultType:"string"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -157,20 +173,95 @@ override method @applicationPredefinedTypeAST getConstructorMap
   !@constructorMap outMap {
   outMap = {}
 #--- Constructors for "bool" options
+  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"projectVersionString" !"string" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"boolOptionNameList" !"2stringlist" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"boolOptionInvocationLetter" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"char" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"boolOptionInvocationString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"boolOptionCommentString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false)
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"boolOptionInvocationLetter"
+    !"string" !"inOptionComponentName"
+    !"string" !"inOptionName"
+    !resultType:"char"
+    !false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"boolOptionInvocationString"
+    !"string" !"inOptionComponentName"
+    !"string" !"inOptionName"
+    !resultType:"string"
+    !false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"boolOptionCommentString"
+    !"string" !"inOptionComponentName"
+    !"string" !"inOptionName"
+    !resultType:"string"
+    !false
+  )
 #--- Constructors for "uint" options
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"uintOptionNameList" !"2stringlist" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"uintOptionInvocationLetter" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"char" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"uintOptionInvocationString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"uintOptionCommentString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false)
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"uintOptionInvocationLetter"
+    !"string" !"inOptionComponentName"
+    !"string" !"inOptionName"
+    !resultType:"char"
+    !false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"uintOptionInvocationString"
+    !"string" !"inOptionComponentName"
+    !"string" !"inOptionName"
+    !resultType:"string"
+    !false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"uintOptionCommentString"
+    !"string" !"inOptionComponentName"
+    !"string" !"inOptionName"
+    !resultType:"string"
+    !false
+  )
 #--- Constructors for "string" options
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringOptionNameList" !"2stringlist" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringOptionInvocationLetter" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"char" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringOptionInvocationString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"stringOptionCommentString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false)
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"stringOptionInvocationLetter"
+    !"string" !"inOptionComponentName"
+    !"string" !"inOptionName"
+    !resultType:"char"
+    !false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"stringOptionInvocationString"
+    !"string" !"inOptionComponentName"
+    !"string" !"inOptionName"
+    !resultType:"string"
+    !false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"stringOptionCommentString"
+    !"string"
+    !"inOptionComponentName"
+    !"string"
+    !"inOptionName"
+    !resultType:"string"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -193,7 +284,15 @@ override method @uintPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"max" !"uint" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"errorCount" !"uint" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"warningCount" !"uint" !false)
-  enterConstructorWith2Arguments (!?outMap !?ioUnifiedTypeMap !"valueWithMask" !"uint" !"inLowerIndex" !"uint" !"inUpperIndex" !"uint" !true)
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"valueWithMask"
+    !"uint" !"inLowerIndex"
+    !"uint" !"inUpperIndex"
+    !resultType:"uint"
+    !true
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
