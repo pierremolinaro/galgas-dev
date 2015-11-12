@@ -733,7 +733,8 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
                                                                                            const class GALGAS_string & in_COMPONENT_5F_NAME,
                                                                                            const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST,
                                                                                            const class GALGAS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
-                                                                                           const class GALGAS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST
+                                                                                           const class GALGAS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST,
+                                                                                           const class GALGAS_string & in_PROJECT_5F_VERSION_5F_STRING
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1137,7 +1138,8 @@ void routine_compileProgramComponentGalgas_33_ (const class GALGAS_prologueEpilo
                                                 const class GALGAS_programRuleList constinArgument1,
                                                 const class GALGAS_prologueEpilogueList constinArgument2,
                                                 const class GALGAS_semanticContext constinArgument3,
-                                                class GALGAS_programComponentForGeneration & outArgument4,
+                                                const class GALGAS_string constinArgument4,
+                                                class GALGAS_programComponentForGeneration & outArgument5,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 

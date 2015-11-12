@@ -44,6 +44,12 @@ end
   static const char * kVersionString = "version " PROJECT_VERSION_STRING ;
 #endif
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+const char * projectVersionString (void) {
+  return %![PROJECT_VERSION_STRING utf8Representation]% ;
+}
+
 %!BEFORE_AFTER_RULE_IMPLEMENTATION_STRING
 %//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

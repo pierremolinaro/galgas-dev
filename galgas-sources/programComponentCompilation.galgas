@@ -32,6 +32,7 @@ private filewrapper programFileGenerationTemplate in "../generation_templates/pr
     ?@stringlist IMPORTED_COMPONENT_LIST
     ?@string BEFORE_AFTER_RULE_IMPLEMENTATION_STRING
     ?@programRuleList PROGRAM_RULE_LIST
+    ?@string PROJECT_VERSION_STRING
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -170,6 +171,7 @@ proc compileProgramComponentGalgas3
   ?let @programRuleList inProgramRules
   ?let @prologueEpilogueList inEpilogueList
   ?let @semanticContext inSemanticContext
+  ?let @string inProjectVersionString
   !@programComponentForGeneration outProgramComponentForGeneration
 {
 #  const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
@@ -218,6 +220,7 @@ proc compileProgramComponentGalgas3
     !{} # [inclusionSet stringList]
     !beforeAfterRulesString
     !inProgramRules
+    !inProjectVersionString
   ]
 #---
   outProgramComponentForGeneration = @programComponentForGeneration.new {
