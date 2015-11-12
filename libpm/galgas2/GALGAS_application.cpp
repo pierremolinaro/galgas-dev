@@ -226,3 +226,9 @@ GALGAS_string GALGAS_application::constructor_projectVersionString (UNUSED_LOCAT
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_application::constructor_galgasVersionString (UNUSED_LOCATION_ARGS) {
+  return GALGAS_string (galgasVersionString ()) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*

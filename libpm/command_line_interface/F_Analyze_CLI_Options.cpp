@@ -392,7 +392,11 @@ void F_Analyze_CLI_Options (const int argv,
   #endif
 //--- Print version ?
   if (gOption_generic_5F_cli_5F_options_display_5F_version.mValue) {
-    co << argc [0] << " : " << projectVersionString () << "\n" ;
+    co << argc [0] << " : " << projectVersionString () ;
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      co << " [DEBUG]" ;
+    #endif
+    co << ", build with GALGAS " << galgasVersionString () << "\n" ;
   }
 //--- Print Help ?
   if (gOption_generic_5F_cli_5F_options_display_5F_help.mValue) {

@@ -172,8 +172,9 @@ override method @applicationPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap {
   outMap = {}
-#--- Constructors for "bool" options
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"projectVersionString" !"string" !false)
+  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"galgasVersionString" !"string" !false)
+#--- Constructors for "bool" options
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"boolOptionNameList" !"2stringlist" !false)
   enterConstructorWith2Arguments (
     !?outMap

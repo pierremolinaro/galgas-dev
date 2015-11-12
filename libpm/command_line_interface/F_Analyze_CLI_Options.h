@@ -45,6 +45,8 @@ void F_Analyze_CLI_Options (const int argv,
 
 const char * projectVersionString (void) ;
 
+const char * galgasVersionString (void) ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cocoaOutput (void) ;
