@@ -154,7 +154,7 @@ runCommand ([DIR + "/galgas/-verifier-create-galgas.command"])
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-documentation-latex-sources"):
   for filename in files:
     (base, extension) = os.path.splitext (filename)
-    if (extension == ".tex") :
+    if extension == ".tex" :
       remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
 runHiddenCommand ([DIR + "/galgas/galgas-documentation-latex-sources/-build.command"])
 runCommand (["cp", "galgas/galgas-documentation-latex-sources/galgas-book.pdf", "galgas-book.pdf"])
