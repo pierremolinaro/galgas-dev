@@ -194,7 +194,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>GALGAS_BETA_VERSION</string>
+	<string>GALGASBETAVERSION</string>
 	<key>CFBundleSignature</key>
 	<string>GGSX</string>
 	<key>CFBundleVersion</key>
