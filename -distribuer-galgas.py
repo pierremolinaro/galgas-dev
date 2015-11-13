@@ -124,16 +124,13 @@ remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcod
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-sources"):
   for filename in files:
     (base, extension) = os.path.splitext (filename)
-    ok = extension == ".galgas"
-    if not ok:
-      ok = extension == ".galgasProject"
-    if not ok:
-      ok = extension == ".h"
-    if not ok:
-      ok = extension == ".cpp"
-    if not ok:
-      ok = extension == ".m"
-    remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
+    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") :
+      remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
+for root, dirs, files in os.walk (DIR + "/galgas/build"):
+  for filename in files:
+    (base, extension) = os.path.splitext (filename)
+    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") :
+      remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
 #-------------------- Creer l'archive des sources de galgas
 runCommand (["eolc", "-unix", "-D" + DIR + "/galgas", "-Eh", "-Ec", "-Ecpp", "-Em", "-Emm", "-Epy", "-Ebat"])
 os.chdir (DIR)
