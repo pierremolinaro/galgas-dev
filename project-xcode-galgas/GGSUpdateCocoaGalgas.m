@@ -247,47 +247,38 @@
         NSLog (@"Forced GALGAS version: %@", galgasVersion) ;
         NSLog (@"Last Available version: %@", mLastAvailableVersion) ;
       #endif
-      if (! [galgasVersion isEqualToString:@"GALGASBETAVERSION"]) {
-        const NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:mLastAvailableVersion] ;
-        if (r == NSOrderedAscending) {
-        //--- Display change log in Web View
-          NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
-          [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-          NSString * s = [NSString stringWithFormat:
-            @"Current version is %@; the %@ version can be downloaded.",
-            galgasVersion,
-            mLastAvailableVersion
-          ] ;
-          [mNewVersionTextField setStringValue:s] ;
-          s = [NSString stringWithFormat:@"Install and Launch Version %@", mLastAvailableVersion] ;
-          [mPerformUpdateButton setTitle:s] ;
-          [mCheckNowButton setEnabled:NO] ;
-          dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
-            const NSInteger returnCode = [NSApp runModalForWindow:self.mNewAvailableVersionPanel];
-            [self newVersionIsAvailableAlertDidEndWithReturnCode:returnCode] ;
-          }) ;
- /*         [NSApp
-            beginSheet:mNewAvailableVersionPanel
-            modalForWindow:nil
-            modalDelegate:self
-            didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
-            contextInfo:NULL
-          ] ;*/
-        }else if (! mSearchForUpdatesInBackground) {
-          NSAlert * alert = [NSAlert
-            alertWithMessageText:@"GALGAS is up to date."
-            defaultButton:@"Ok"
-            alternateButton:nil
-            otherButton:nil
-            informativeTextWithFormat:@"There is no new version at this time."
-          ] ;
-          [alert
-            beginSheetModalForWindow:[mCheckNowButton window]
-            modalDelegate:nil
-            didEndSelector:NULL
-            contextInfo:NULL
-          ] ;
-        }
+      const NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:mLastAvailableVersion] ;
+      if (r == NSOrderedAscending) {
+      //--- Display change log in Web View
+        NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
+        [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
+        NSString * s = [NSString stringWithFormat:
+          @"Current version is %@; the %@ version can be downloaded.",
+          galgasVersion,
+          mLastAvailableVersion
+        ] ;
+        [mNewVersionTextField setStringValue:s] ;
+        s = [NSString stringWithFormat:@"Install and Launch Version %@", mLastAvailableVersion] ;
+        [mPerformUpdateButton setTitle:s] ;
+        [mCheckNowButton setEnabled:NO] ;
+        dispatch_after (DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+          const NSInteger returnCode = [NSApp runModalForWindow:self.mNewAvailableVersionPanel];
+          [self newVersionIsAvailableAlertDidEndWithReturnCode:returnCode] ;
+        }) ;
+      }else if (! mSearchForUpdatesInBackground) {
+        NSAlert * alert = [NSAlert
+          alertWithMessageText:@"GALGAS is up to date."
+          defaultButton:@"Ok"
+          alternateButton:nil
+          otherButton:nil
+          informativeTextWithFormat:@"There is no new version at this time."
+        ] ;
+        [alert
+          beginSheetModalForWindow:[mCheckNowButton window]
+          modalDelegate:nil
+          didEndSelector:NULL
+          contextInfo:NULL
+        ] ;
       }
     }else if (! mSearchForUpdatesInBackground) {
       NSAlert * alert = [NSAlert
