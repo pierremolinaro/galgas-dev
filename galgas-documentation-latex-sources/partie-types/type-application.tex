@@ -6,7 +6,7 @@
 Le \ggs+@application+ ne définit que des constructeurs qui permettent d'obtenir des informations sur le programme courant.
 
 
-\section{Constructeurs}
+\section{Constructeurs relatifs aux numéros de version}
 
 \subsectionConstructor{galgasVersionString}{application}
 
@@ -45,5 +45,42 @@ La chaîne renvoyée est \ggs+"1.2.3"+:
 let s = @application.projectVersionString # "1.2.3"
 \end{galgas}
 
+
+
+
+
+
+
+
+
+
+\section{Constructeurs relatifs aux arguments de la ligne de commande}
+
+
+\subsectionConstructor{commandLineArgumentCount}{application}
+
+\begin{galgasbox}
+constructor @application commandLineArgumentCount -> @uint
+\end{galgasbox}
+
+Ce constructeur renvoie le nombre d'arguments de la ligne de commande.
+
+
+\subsectionConstructor{commandLineArgumentAtIndex}{application}
+
+\begin{galgasbox}
+constructor @application commandLineArgumentAtIndex ?@uint inIndex -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie l'argument d'indice \ggs+inIndex+ de la ligne de commande. Les arguments sont indexés à partir de zéro, aussi la valeur de \ggs+inIndex+ doit être strictement inférieur à la valeur retournée par \ggs+@application.commandLineArgumentCount+.
+
+À titre d'exemple, voici comment imprimer tous les arguments de la ligne de commande :
+\begin{galgas}
+  for idx in 0 ..< @application.commandLineArgumentCount do
+    message "Argument " + idx + ": '"
+      + @application.commandLineArgumentAtIndex {!idx} + "'\n"
+  end
+}
+\end{galgas}
 
 

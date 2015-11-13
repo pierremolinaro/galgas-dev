@@ -134,10 +134,8 @@ override method @stringPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"homeDirectory" !"string" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"retrieveAndResetTemplateString" !"string" !true)
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"stringWithSymbolicLinkContents" !"string" !"inPath" !"string" !true)
-#  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithVersionString" !"string" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithSourceFilePath" !"string" !true)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithCurrentDirectory" !"string" !false)
-  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithMainFirstArgument" !"string" !false)
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"stringWithContentsOfFile" !"string" !"inFilePath" !"string" !true)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"stringWithCurrentDateTime" !"string" !false)
   enterConstructorWithArgument (!?outMap !?ioUnifiedTypeMap !"stringWithEnvironmentVariable" !"string" !"inEnvironmentVariable" !"string" !true)
@@ -174,6 +172,15 @@ override method @applicationPredefinedTypeAST getConstructorMap
   outMap = {}
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"projectVersionString" !"string" !false)
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"galgasVersionString" !"string" !false)
+  enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"commandLineArgumentCount" !"uint" !false)
+  enterConstructorWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"commandLineArgumentAtIndex"
+    !"uint" !"inIndex"
+    !"string"
+    !true
+  )
 #--- Constructors for "bool" options
   enterConstructorWithoutArgument (!?outMap !?ioUnifiedTypeMap !"boolOptionNameList" !"2stringlist" !false)
   enterConstructorWith2Arguments (

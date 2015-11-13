@@ -220,6 +220,8 @@ GALGAS_string GALGAS_application::constructor_stringOptionCommentString (const G
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//  Version strings
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_application::constructor_projectVersionString (UNUSED_LOCATION_ARGS) {
   return GALGAS_string (projectVersionString ()) ;
@@ -229,6 +231,36 @@ GALGAS_string GALGAS_application::constructor_projectVersionString (UNUSED_LOCAT
 
 GALGAS_string GALGAS_application::constructor_galgasVersionString (UNUSED_LOCATION_ARGS) {
   return GALGAS_string (galgasVersionString ()) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//  Command line arguments
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_application::constructor_commandLineArgumentCount (UNUSED_LOCATION_ARGS) {
+  return GALGAS_uint (commandLineArgumentCount ()) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_application::constructor_commandLineArgumentAtIndex (const GALGAS_uint & inIndex,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < commandLineArgumentCount ()) {
+      result = GALGAS_string (commandLineArgumentAtIndex (idx)) ;
+    }else{
+      C_String message ;
+      message << "@application.commandLineArgumentAtIndex: index "
+              << cStringWithUnsigned (idx)
+              << " >= argument count = "
+              << cStringWithUnsigned (commandLineArgumentCount ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -239,6 +239,13 @@ const char * projectVersionString (void) {
 static void routine_before (C_Compiler * inCompiler
                             COMMA_UNUSED_LOCATION_ARGS) {
   {
+    cEnumerator_range enumerator_6488 (GALGAS_range (GALGAS_uint ((uint32_t) 0U), GALGAS_application::constructor_commandLineArgumentCount (SOURCE_FILE ("semanticsConstructors.galgas", 131)).substract_operation (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 131))), kEnumeration_up) ;
+    while (enumerator_6488.hasCurrentObject ()) {
+      inCompiler->printMessage (GALGAS_string ("Argument ").add_operation (enumerator_6488.current (HERE).getter_string (SOURCE_FILE ("semanticsConstructors.galgas", 132)), inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 132)).add_operation (GALGAS_string (": '"), inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 132)).add_operation (GALGAS_application::constructor_commandLineArgumentAtIndex (enumerator_6488.current (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 132)), inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 132)).add_operation (GALGAS_string ("'\n"), inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 132))  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 132)) ;
+      enumerator_6488.gotoNextObject () ;
+    }
+  }
+  {
     GALGAS_string var_creationProjectName = GALGAS_string (gOption_galgas_5F_cli_5F_options_create_5F_project.getter_value ()) ;
     {
     routine_projectCreation (var_creationProjectName, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 20)) ;
