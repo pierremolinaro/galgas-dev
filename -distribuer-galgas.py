@@ -39,7 +39,7 @@ def remplacerAnneeEtVersionGALGAS (annee, versionGALGAS, filename) :
   contents = f.read ()
   f.close ()
   contents = contents.replace ("!AN!", annee)
-  contents = contents.replace ("GALGAS_BETA_VERSION", versionGALGAS)
+  contents = contents.replace ("GALGASBETAVERSION", versionGALGAS)
   writeFile (contents, filename)
 
 #------------------------------------------------------------------------------*
@@ -151,7 +151,11 @@ runCommand (["rm", "-fr", DIR + "/galgas/testsuite"])
 #-------------------- Vérifier la création de projet
 runCommand ([DIR + "/galgas/-verifier-create-galgas.command"])
 #-------------------- Construire la documentation Latex
-remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/galgas-documentation-latex-sources/galgas-book.tex")
+for root, dirs, files in os.walk (DIR + "/galgas/galgas-documentation-latex-sources"):
+  for filename in files:
+    (base, extension) = os.path.splitext (filename)
+    if (extension == ".tex") :
+      remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
 runHiddenCommand ([DIR + "/galgas/galgas-documentation-latex-sources/-build.command"])
 runCommand (["cp", "galgas/galgas-documentation-latex-sources/galgas-book.pdf", "galgas-book.pdf"])
 runCommand (["rm", "-fr", "galgas/galgas-documentation-latex-sources"])

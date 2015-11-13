@@ -247,7 +247,7 @@
         NSLog (@"Forced GALGAS version: %@", galgasVersion) ;
         NSLog (@"Last Available version: %@", mLastAvailableVersion) ;
       #endif
-      if (! [galgasVersion isEqualToString:@"GALGAS_BETA_VERSION"]) {
+      if (! [galgasVersion isEqualToString:@"GALGASBETAVERSION"]) {
         const NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:mLastAvailableVersion] ;
         if (r == NSOrderedAscending) {
         //--- Display change log in Web View
