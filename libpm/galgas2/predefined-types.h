@@ -194,6 +194,12 @@ class GALGAS_application : public AC_GALGAS_root {
 
   public : static GALGAS__32_stringlist constructor_boolOptionNameList (LOCATION_ARGS) ;
 
+  public : static GALGAS_string constructor_commandLineArgumentAtIndex (const class GALGAS_uint & inOperand0,
+                                                                        class C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+  public : static GALGAS_uint constructor_commandLineArgumentCount (LOCATION_ARGS) ;
+
   public : static GALGAS_string constructor_galgasVersionString (LOCATION_ARGS) ;
 
   public : static GALGAS_string constructor_projectVersionString (LOCATION_ARGS) ;
@@ -1803,8 +1809,6 @@ class GALGAS_string : public AC_GALGAS_root
 
   public : static GALGAS_string constructor_stringWithEnvironmentVariableOrEmpty (const class GALGAS_string & inOperand0
                                                                                   COMMA_LOCATION_ARGS) ;
-
-  public : static GALGAS_string constructor_stringWithMainFirstArgument (LOCATION_ARGS) ;
 
   public : static GALGAS_string constructor_stringWithSequenceOfCharacters (const class GALGAS_char & inOperand0,
                                                                             const class GALGAS_uint & inOperand1
