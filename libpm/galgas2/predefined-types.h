@@ -184,9 +184,9 @@ class GALGAS_application : public AC_GALGAS_root {
                                                                      const class GALGAS_string & inOperand1
                                                                      COMMA_LOCATION_ARGS) ;
 
-  public : static GALGAS_char constructor_boolOptionInvocationLetter (const class GALGAS_string & inOperand0,
-                                                                      const class GALGAS_string & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_char constructor_boolOptionInvocationCharacter (const class GALGAS_string & inOperand0,
+                                                                         const class GALGAS_string & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
 
   public : static GALGAS_string constructor_boolOptionInvocationString (const class GALGAS_string & inOperand0,
                                                                         const class GALGAS_string & inOperand1
@@ -208,9 +208,9 @@ class GALGAS_application : public AC_GALGAS_root {
                                                                        const class GALGAS_string & inOperand1
                                                                        COMMA_LOCATION_ARGS) ;
 
-  public : static GALGAS_char constructor_stringOptionInvocationLetter (const class GALGAS_string & inOperand0,
-                                                                        const class GALGAS_string & inOperand1
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_char constructor_stringOptionInvocationCharacter (const class GALGAS_string & inOperand0,
+                                                                           const class GALGAS_string & inOperand1
+                                                                           COMMA_LOCATION_ARGS) ;
 
   public : static GALGAS_string constructor_stringOptionInvocationString (const class GALGAS_string & inOperand0,
                                                                           const class GALGAS_string & inOperand1
@@ -222,9 +222,9 @@ class GALGAS_application : public AC_GALGAS_root {
                                                                      const class GALGAS_string & inOperand1
                                                                      COMMA_LOCATION_ARGS) ;
 
-  public : static GALGAS_char constructor_uintOptionInvocationLetter (const class GALGAS_string & inOperand0,
-                                                                      const class GALGAS_string & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_char constructor_uintOptionInvocationCharacter (const class GALGAS_string & inOperand0,
+                                                                         const class GALGAS_string & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
 
   public : static GALGAS_string constructor_uintOptionInvocationString (const class GALGAS_string & inOperand0,
                                                                         const class GALGAS_string & inOperand1

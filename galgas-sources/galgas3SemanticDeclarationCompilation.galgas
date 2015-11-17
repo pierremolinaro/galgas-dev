@@ -32,7 +32,7 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["bool" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationLetter {!mValue0 !mValue1} !@location. nowhere}
+      !@lchar.new {!@application. boolOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
       ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
       ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
@@ -42,7 +42,7 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["uint" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationLetter {!mValue0 !mValue1} !@location. nowhere}
+      !@lchar.new {!@application. boolOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
       ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
       ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
@@ -52,7 +52,7 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["string" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationLetter {!mValue0 !mValue1} !@location. nowhere}
+      !@lchar.new {!@application. boolOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
       ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
       ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]

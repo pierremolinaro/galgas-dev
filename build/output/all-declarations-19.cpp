@@ -220,12 +220,6 @@ static const char * kSourceFileHelpMessages [] = {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const char * galgasVersionString (void) {
-  return "GALGASBETAVERSION" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 const char * projectVersionString (void) {
   return "3.1.3" ;
 }

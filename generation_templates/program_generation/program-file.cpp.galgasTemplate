@@ -38,12 +38,6 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const char * galgasVersionString (void) {
-  return "GALGASBETAVERSION" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 const char * projectVersionString (void) {
   return %![PROJECT_VERSION_STRING utf8Representation]% ;
 }
