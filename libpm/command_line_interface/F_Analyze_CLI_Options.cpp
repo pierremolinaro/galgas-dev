@@ -67,13 +67,18 @@ bool cocoaOutput (void) {
 static const uint32_t kDisplayLength = 20 ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+const char * galgasVersionString (void) {
+  return "GALGASBETAVERSION" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //     print_usage                                                                                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void print_usage (int argv,
-                         const char * argc []) {
+static void print_usage (int argv, const char * argc []) {
   co.setForeColor (kMagentaForeColor) ;
   co.setTextAttribute (kBoldTextAttribute) ;
   co << "Usage:\n" ;

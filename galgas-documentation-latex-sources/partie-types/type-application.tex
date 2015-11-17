@@ -3,10 +3,10 @@
 
 \chapitreTypePredefiniLabelIndex{application}
 
-Le \ggs+@application+ ne définit que des constructeurs qui permettent d'obtenir des informations sur le programme courant.
+Le type \ggs+@application+ ne définit que des constructeurs qui permettent d'obtenir des informations sur le programme courant.
 
 
-\section{Constructeurs relatifs aux numéros de version}
+\section{Numéros de version}
 
 \subsectionConstructor{galgasVersionString}{application}
 
@@ -54,7 +54,7 @@ let s = @application.projectVersionString # "1.2.3"
 
 
 
-\section{Constructeurs relatifs aux arguments de la ligne de commande}
+\section{Arguments de la ligne de commande}
 
 
 \subsectionConstructor{commandLineArgumentCount}{application}
@@ -72,15 +72,305 @@ Ce constructeur renvoie le nombre d'arguments de la ligne de commande.
 constructor @application commandLineArgumentAtIndex ?@uint inIndex -> @string
 \end{galgasbox}
 
-Ce constructeur renvoie l'argument d'indice \ggs+inIndex+ de la ligne de commande. Les arguments sont indexés à partir de zéro, aussi la valeur de \ggs+inIndex+ doit être strictement inférieur à la valeur retournée par \ggs+@application.commandLineArgumentCount+.
+Ce constructeur renvoie l'argument d'indice \ggs+inIndex+ de la ligne de commande. Les arguments sont indexés à partir de zéro, aussi la valeur de \ggs+inIndex+ doit être strictement inférieur à la valeur retournée par \ggs+@application.commandLineArgumentCount+. Une erreur d'exécution est déclenchée dans le cas contraire.
 
 À titre d'exemple, voici comment imprimer tous les arguments de la ligne de commande :
 \begin{galgas}
-  for idx in 0 ..< @application.commandLineArgumentCount do
-    message "Argument " + idx + ": '"
-      + @application.commandLineArgumentAtIndex {!idx} + "'\n"
-  end
+for idx in 0 ..< @application.commandLineArgumentCount do
+  message "Argument " + idx + ": '"
+    + @application.commandLineArgumentAtIndex {!idx} + "'\n"
+end
 }
 \end{galgas}
 
+
+
+
+
+
+
+
+
+
+\section{Options booléennes de la ligne de commande}
+
+\subsectionConstructor{boolOptionNameList}{application}
+
+\begin{galgasbox}
+constructor @application boolOptionNameList -> @2stringlist
+\end{galgasbox}
+
+Ce constructeur renvoie la liste des options booléennes définie par l'application, que ces options soient nommées dans la ligne de commande ou non. Chaque option est définie par un couple, son nom de domaine et son identificateur. À titre d'exemple, voici comment imprimer la liste des options booléennes :
+\begin{galgas}
+for (domain identifier) in @application.boolOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+end
+}
+\end{galgas}
+
+
+\subsectionConstructor{boolOptionCommentString}{application}
+
+\begin{galgasbox}
+constructor @application boolOptionCommentString
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la chaîne de commentaires associée à l'option booléenne spécifiée par son nom de domaine et son identificateur. Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.boolOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "Comment: '"
+    + @application.boolOptionCommentString {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
+
+
+\subsectionConstructor{boolOptionInvocationCharacter}{application}
+
+\begin{galgasbox}
+constructor @application boolOptionInvocationCharacter
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @char
+\end{galgasbox}
+
+Ce constructeur renvoie le caractère d'activation associé à l'option booléenne spécifiée par son nom de domaine et son identificateur.
+
+Le caractère d'activation est le caractère qui, précédé de « \texttt{-} » permet l'activation de l'option sur la ligne de commande. Si l'option ne définit pas de caractère d'activation, la valeur renvoyée est \texttt{NUL}.
+
+ Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.boolOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "InvocationLetter: '"
+    + @application.boolOptionInvocationCharacter {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et le caractère renvoyé n'est pas construit.
+
+
+\subsectionConstructor{boolOptionInvocationString}{application}
+
+\begin{galgasbox}
+constructor @application boolOptionInvocationString
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la chaîne d'activation associée à l'option booléenne spécifiée par son nom de domaine et son identificateur.
+
+La chaîne d'activation est la chaîne qui, précédée de « \texttt{-{}-} » permet l'activation de l'option sur la ligne de commande. Si l'option ne définit pas de chaîne d'activation, la valeur renvoyée est la chaîne vide.
+
+ Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.boolOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "InvocationLetter: '"
+    + @application.boolOptionInvocationString {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
+
+
+
+
+
+
+
+
+
+
+
+\section{Options entières de la ligne de commande}
+
+\subsectionConstructor{uintOptionNameList}{application}
+
+\begin{galgasbox}
+constructor @application uintOptionNameList -> @2stringlist
+\end{galgasbox}
+
+Ce constructeur renvoie la liste des options entières définie par l'application, que ces options soient nommées dans la ligne de commande ou non. Chaque option est définie par un couple, son nom de domaine et son identificateur. Par d'exemple :
+\begin{galgas}
+for (domain identifier) in @application.uintOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+end
+}
+\end{galgas}
+
+
+\subsectionConstructor{uintOptionCommentString}{application}
+
+\begin{galgasbox}
+constructor @application uintOptionCommentString
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la chaîne de commentaires associée à l'option entière spécifiée par son nom de domaine et son identificateur. Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.uintOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "Comment: '"
+    + @application.uintOptionCommentString {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
+
+
+\subsectionConstructor{uintOptionInvocationCharacter}{application}
+
+\begin{galgasbox}
+constructor @application uintOptionInvocationCharacter
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @char
+\end{galgasbox}
+
+Ce constructeur renvoie le caractère d'activation associé à l'option entière spécifiée par son nom de domaine et son identificateur.
+
+Le caractère d'activation est le caractère qui, précédé de « \texttt{-} » permet l'activation de l'option sur la ligne de commande. Si l'option ne définit pas de caractère d'activation, la valeur renvoyée est \texttt{NUL}.
+
+ Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.uintOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "InvocationLetter: '"
+    + @application.uintOptionInvocationCharacter {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et le caractère renvoyé n'est pas construit.
+
+
+\subsectionConstructor{uintOptionInvocationString}{application}
+
+\begin{galgasbox}
+constructor @application uintOptionInvocationString
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la chaîne d'activation associée à l'option entière spécifiée par son nom de domaine et son identificateur.
+
+La chaîne d'activation est la chaîne qui, précédée de « \texttt{-{}-} » permet l'activation de l'option sur la ligne de commande. Si l'option ne définit pas de chaîne d'activation, la valeur renvoyée est la chaîne vide.
+
+ Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.uintOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "InvocationLetter: '"
+    + @application.uintOptionInvocationString {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Options chaînes de caractères de la ligne de commande}
+
+\subsectionConstructor{stringOptionNameList}{application}
+
+\begin{galgasbox}
+constructor @application stringOptionNameList -> @2stringlist
+\end{galgasbox}
+
+Ce constructeur renvoie la liste des options chaînes de caractères définie par l'application, que ces options soient nommées dans la ligne de commande ou non. Chaque option est définie par un couple, son nom de domaine et son identificateur. Par d'exemple :
+\begin{galgas}
+for (domain identifier) in @application.stringOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+end
+}
+\end{galgas}
+
+
+\subsectionConstructor{stringOptionCommentString}{application}
+
+\begin{galgasbox}
+constructor @application stringOptionCommentString
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la chaîne de commentaires associée à l'option chaîne de caractères spécifiée par son nom de domaine et son identificateur. Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.stringOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "Comment: '"
+    + @application.stringOptionCommentString {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
+
+
+\subsectionConstructor{stringOptionInvocationCharacter}{application}
+
+\begin{galgasbox}
+constructor @application stringOptionInvocationCharacter
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @char
+\end{galgasbox}
+
+Ce constructeur renvoie le caractère d'activation associé à l'option chaîne de caractères spécifiée par son nom de domaine et son identificateur.
+
+Le caractère d'activation est le caractère qui, précédé de « \texttt{-} » permet l'activation de l'option sur la ligne de commande. Si l'option ne définit pas de caractère d'activation, la valeur renvoyée est \texttt{NUL}.
+
+ Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.stringOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "InvocationLetter: '"
+    + @application.uintOptionInvocationCharacter {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et le caractère renvoyé n'est pas construit.
+
+
+\subsectionConstructor{stringOptionInvocationString}{application}
+
+\begin{galgasbox}
+constructor @application stringOptionInvocationString
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la chaîne d'activation associée à l'option chaîne de caractères spécifiée par son nom de domaine et son identificateur.
+
+La chaîne d'activation est la chaîne qui, précédée de « \texttt{-{}-} » permet l'activation de l'option sur la ligne de commande. Si l'option ne définit pas de chaîne d'activation, la valeur renvoyée est la chaîne vide.
+
+ Par exemple :
+\begin{galgas}
+for (domain identifier) in @application.stringOptionNameList do
+  message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
+  message "InvocationLetter: '"
+    + @application.stringOptionInvocationString {!domain !identifier} + "'\n"
+end
+}
+\end{galgas}
+
+Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
 

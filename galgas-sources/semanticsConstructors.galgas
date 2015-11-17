@@ -186,7 +186,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
   enterConstructorWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !name:"boolOptionInvocationLetter"
+    !name:"boolOptionInvocationCharacter"
     !"string" !"inOptionComponentName"
     !"string" !"inOptionName"
     !resultType:"char"
@@ -215,7 +215,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
   enterConstructorWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !name:"uintOptionInvocationLetter"
+    !name:"uintOptionInvocationCharacter"
     !"string" !"inOptionComponentName"
     !"string" !"inOptionName"
     !resultType:"char"
@@ -244,7 +244,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
   enterConstructorWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !name:"stringOptionInvocationLetter"
+    !name:"stringOptionInvocationCharacter"
     !"string" !"inOptionComponentName"
     !"string" !"inOptionName"
     !resultType:"char"
