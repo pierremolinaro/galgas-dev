@@ -885,8 +885,22 @@ override method @mapDeclarationAST enterInSemanticContext
   var modifierMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Constructors
-  enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false )
-  enterConstructorWithArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] !"inMap" ![mMapTypeName string] !false )
+  enterConstructorWithoutArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap
+    !name:"emptyMap"
+    !resultTypeName:[mMapTypeName string]
+    !hasLexiqueAndLocationArgs:false
+  )
+  enterConstructorWithArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap
+    !name:"mapWithMapToOverride"
+    !argTypeName:[mMapTypeName string]
+    !argName:"inMap"
+    !resultTypeName:[mMapTypeName string]
+    !hasLexiqueAndLocationArgs:false
+  )
 #--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
@@ -2334,7 +2348,13 @@ override method @listmapDeclarationAST enterInSemanticContext
     !false
   )
 #--- Constructors
-  enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mListmapTypeName string] !false )
+  enterConstructorWithoutArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap
+    !name:"emptyMap"
+    !resultTypeName:[mListmapTypeName string]
+    !hasLexiqueAndLocationArgs:false
+  )
 #--- Enumerator description
   var enumeratorDescriptor =@enumerationDescriptorList.emptyList{}
   enumeratorDescriptor += !stringTypeIndex !"key"

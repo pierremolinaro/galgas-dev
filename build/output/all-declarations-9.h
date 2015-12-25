@@ -1861,25 +1861,6 @@ void routine_enterModifierWith_32_InputArguments (class GALGAS_setterMap & ioArg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Routine 'enterModifierWith3InputArguments'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_enterModifierWith_33_InputArguments (class GALGAS_setterMap & ioArgument0,
-                                                  class GALGAS_unifiedTypeMap & ioArgument1,
-                                                  const class GALGAS_string constinArgument2,
-                                                  const class GALGAS_string constinArgument3,
-                                                  const class GALGAS_string constinArgument4,
-                                                  const class GALGAS_string constinArgument5,
-                                                  const class GALGAS_string constinArgument6,
-                                                  const class GALGAS_string constinArgument7,
-                                                  const class GALGAS_string constinArgument8,
-                                                  const class GALGAS_bool constinArgument9,
-                                                  class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                       Routine 'enterModifierWithoutArgument'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

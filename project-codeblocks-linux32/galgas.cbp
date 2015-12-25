@@ -29,7 +29,6 @@
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
-
     </Compiler>
    </Target>
    <Target title="Debug">
@@ -55,7 +54,6 @@
      <Add option="-std=c++98" />
      <Add option="-Wall" />
      <Add option="-W" />
-
     </Compiler>
    </Target>
   </Build>

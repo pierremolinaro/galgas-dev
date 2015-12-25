@@ -80,7 +80,6 @@ for idx in 0 ..< @application.commandLineArgumentCount do
   message "Argument " + idx + ": '"
     + @application.commandLineArgumentAtIndex {!idx} + "'\n"
 end
-}
 \end{galgas}
 
 
@@ -105,7 +104,6 @@ Ce constructeur renvoie la liste des options booléennes définie par l'applicat
 for (domain identifier) in @application.boolOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
 end
-}
 \end{galgas}
 
 
@@ -124,7 +122,6 @@ for (domain identifier) in @application.boolOptionNameList do
   message "Comment: '"
     + @application.boolOptionCommentString {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
@@ -146,10 +143,9 @@ Le caractère d'activation est le caractère qui, précédé de « \texttt{-} »
 \begin{galgas}
 for (domain identifier) in @application.boolOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
-  message "InvocationLetter: '"
+  message "Invocation character: '"
     + @application.boolOptionInvocationCharacter {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et le caractère renvoyé n'est pas construit.
@@ -171,10 +167,9 @@ La chaîne d'activation est la chaîne qui, précédée de « \texttt{-{}-} » p
 \begin{galgas}
 for (domain identifier) in @application.boolOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
-  message "InvocationLetter: '"
+  message "Invocation string: '"
     + @application.boolOptionInvocationString {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
@@ -202,7 +197,6 @@ Ce constructeur renvoie la liste des options entières définie par l'applicatio
 for (domain identifier) in @application.uintOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
 end
-}
 \end{galgas}
 
 
@@ -221,7 +215,6 @@ for (domain identifier) in @application.uintOptionNameList do
   message "Comment: '"
     + @application.uintOptionCommentString {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
@@ -243,10 +236,9 @@ Le caractère d'activation est le caractère qui, précédé de « \texttt{-} »
 \begin{galgas}
 for (domain identifier) in @application.uintOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
-  message "InvocationLetter: '"
+  message "Invocation character: '"
     + @application.uintOptionInvocationCharacter {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et le caractère renvoyé n'est pas construit.
@@ -268,10 +260,9 @@ La chaîne d'activation est la chaîne qui, précédée de « \texttt{-{}-} » p
 \begin{galgas}
 for (domain identifier) in @application.uintOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
-  message "InvocationLetter: '"
+  message "Invocation string: '"
     + @application.uintOptionInvocationString {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
@@ -300,7 +291,6 @@ Ce constructeur renvoie la liste des options chaînes de caractères définie pa
 for (domain identifier) in @application.stringOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
 end
-}
 \end{galgas}
 
 
@@ -319,7 +309,6 @@ for (domain identifier) in @application.stringOptionNameList do
   message "Comment: '"
     + @application.stringOptionCommentString {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
@@ -341,10 +330,9 @@ Le caractère d'activation est le caractère qui, précédé de « \texttt{-} »
 \begin{galgas}
 for (domain identifier) in @application.stringOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
-  message "InvocationLetter: '"
+  message "Invocation character: '"
     + @application.uintOptionInvocationCharacter {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et le caractère renvoyé n'est pas construit.
@@ -366,10 +354,9 @@ La chaîne d'activation est la chaîne qui, précédée de « \texttt{-{}-} » p
 \begin{galgas}
 for (domain identifier) in @application.stringOptionNameList do
   message "Domain: '" + domain + "', identifier: '" + identifier + "'\n"
-  message "InvocationLetter: '"
+  message "Invocation string: '"
     + @application.stringOptionInvocationString {!domain !identifier} + "'\n"
 end
-}
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.

@@ -35,19 +35,19 @@ see https://www.gnu.org/licenses/.  */
 #include <cstdio>
 #endif
 
-#ifndef __cplusplus
-#pragma GCC diagnostic ignored "-Wconversion"
-#pragma GCC diagnostic ignored "-Wsign-compare"
-#pragma GCC diagnostic ignored "-Wunused-value"
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#pragma GCC diagnostic ignored "-Wmissing-prototypes"
-#pragma GCC diagnostic ignored "-Wparentheses"
-#pragma GCC diagnostic ignored "-Wall"
-#pragma GCC diagnostic ignored "-Wpointer-arith"
-#pragma GCC diagnostic ignored "-Werror"
-#pragma GCC diagnostic ignored "-Wundef"
-#pragma GCC diagnostic error "-w"
-#endif
+//#ifndef __cplusplus
+//#pragma GCC diagnostic ignored "-Wconversion"
+//#pragma GCC diagnostic ignored "-Wsign-compare"
+//#pragma GCC diagnostic ignored "-Wunused-value"
+//#pragma GCC diagnostic ignored "-Wunused-parameter"
+//#pragma GCC diagnostic ignored "-Wmissing-prototypes"
+//#pragma GCC diagnostic ignored "-Wparentheses"
+//#pragma GCC diagnostic ignored "-Wall"
+//#pragma GCC diagnostic ignored "-Wpointer-arith"
+//#pragma GCC diagnostic ignored "-Werror"
+//#pragma GCC diagnostic ignored "-Wundef"
+//#pragma GCC diagnostic error "-w"
+//#endif
 
 /* Instantiated by configure. */
 /*--- Deleted by PM */

@@ -99,7 +99,13 @@ override method @listDeclarationAST enterInSemanticContext
   end
 #--- Constructors
   var constructorMap =@constructorMap.emptyMap{}
-  enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyList" ![mListTypeName string] !false )
+  enterConstructorWithoutArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap 
+    !name:"emptyList"
+    !resultTypeName:[mListTypeName string]
+    !hasLexiqueAndLocationArgs:false
+  )
   [!?constructorMap insertKey
     !@lstring.new {!"listWithValue" !@location.here}
     !constructorAttributeTypeList
@@ -122,8 +128,27 @@ override method @listDeclarationAST enterInSemanticContext
     !returnedTypeName:"range"
     !false
   )
-  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListFromIndex" !"uint" !"inIndex" !returnedTypeName:[mListTypeName string] !true )
-  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"subListWithRange" !"range" !"inRange" !returnedTypeName:[mListTypeName string] !true )
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"subListFromIndex" !"uint" !"inIndex"
+    !returnedTypeName:[mListTypeName string]
+    !true
+  )
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"subListToIndex" !"uint" !"inIndex"
+    !returnedTypeName:[mListTypeName string]
+    !true
+  )
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"subListWithRange" !"range" !"inRange"
+    !returnedTypeName:[mListTypeName string]
+    !true
+  )
   for () in typedAttributeList do
     if mHasGetter then
       [!?getterMap insertOrReplace

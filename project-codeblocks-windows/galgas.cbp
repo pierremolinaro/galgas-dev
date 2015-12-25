@@ -29,7 +29,6 @@
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
-     <Add option="-D_WIN32_WINNT=0x0501" />
     </Compiler>
    </Target>
    <Target title="Debug">
@@ -55,7 +54,6 @@
      <Add option="-std=c++98" />
      <Add option="-Wall" />
      <Add option="-W" />
-     <Add option="-D_WIN32_WINNT=0x0501" />
     </Compiler>
    </Target>
   </Build>
@@ -69,7 +67,7 @@
   <Add directory="../hand_coded_sources" />
   </Compiler>
   <Linker>
-   <Add library="comdlg32" /><Add library="Ws2_32" />
+   <Add library="Ws2_32" />
   </Linker>
   <Unit filename="../libpm/all-libpm.cpp" />
   <Unit filename="../libpm/galgas2/all-galgas.cpp" />

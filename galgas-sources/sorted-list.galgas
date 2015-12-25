@@ -121,8 +121,14 @@ override method @sortedListDeclarationAST enterInSemanticContext
     modifierFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
   end
 #--- Constructors
-  var constructorMap =@constructorMap.emptyMap{}
-  enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptySortedList" ![mSortedListTypeName string] !false )
+  var constructorMap = @constructorMap.emptyMap{}
+  enterConstructorWithoutArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap
+    !name:"emptySortedList"
+    !resultTypeName:[mSortedListTypeName string]
+    !hasLexiqueAndLocationArgs:false
+  )
   [!?constructorMap insertKey
     !@lstring.new {!"sortedListWithValue" !@location.here}
     !constructorAttributeTypeList
