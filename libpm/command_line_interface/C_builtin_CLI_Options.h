@@ -40,12 +40,6 @@ extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_display_5F_vers
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef COMPILE_FOR_WIN32
-  extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_nodialog ;
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 #ifndef COMPILE_FOR_WIN32
   extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_no_5F_color ;
 #endif

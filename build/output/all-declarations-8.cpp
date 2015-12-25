@@ -1588,7 +1588,7 @@ class cCollectionElement_XCodeGroupList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1913,6 +1913,16 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListFromIndex (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_XCodeGroupList result = GALGAS_XCodeGroupList::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_XCodeGroupList::dotAssign_operation (const GALGAS_XCodeGroupList inOperand
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -2108,7 +2118,7 @@ class cCollectionElement_XCodeToolTargetList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2608,6 +2618,16 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListFromIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_XCodeToolTargetList result = GALGAS_XCodeToolTargetList::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_XCodeToolTargetList::dotAssign_operation (const GALGAS_XCodeToolTargetList inOperand
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -2967,7 +2987,7 @@ class cCollectionElement_XCodeAppTargetList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3542,6 +3562,16 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListFromIndex (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_XCodeAppTargetList result = GALGAS_XCodeAppTargetList::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_XCodeAppTargetList::dotAssign_operation (const GALGAS_XCodeAppTargetList inOperand
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -3959,7 +3989,7 @@ class cCollectionElement_BuildFileList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4254,6 +4284,16 @@ GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListFromIndex (const GALGAS
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_BuildFileList result = GALGAS_BuildFileList::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  GALGAS_BuildFileList result = GALGAS_BuildFileList::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 

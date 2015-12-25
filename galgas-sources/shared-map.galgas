@@ -317,7 +317,13 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   @setterMap modifierMap = {}
   @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
-  enterConstructorWithoutArgument (!?constructorMap !?ioSemanticContext.mTypeMap !"emptyMap" ![mMapTypeName string] !false )
+  enterConstructorWithoutArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap
+    !name:"emptyMap"
+    !resultTypeName:[mMapTypeName string]
+    !hasLexiqueAndLocationArgs:false
+  )
 #--- Readers
   enterInheritedGetterWithoutArgument (
     !?getterMap

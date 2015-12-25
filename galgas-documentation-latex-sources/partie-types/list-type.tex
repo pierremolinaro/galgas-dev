@@ -189,7 +189,7 @@ If the list is empty when \ggs+last+ is invoked, a run-time error is raised and 
 getter length -> @uint ;
 \end{galgas}
 
-Le getter \ggs+length+ getter retourne le nombre d'éléments du receveur.
+Le \emph{getter} \ggs+length+ retourne le nombre d'éléments du récepteur.
 
 
 \subsection{Le getter \texttt{range}}
@@ -212,6 +212,21 @@ getter subListFromIndex ?@uint inIndex -> @self
 This getter returns a new list containing the elements of the receiver from the one at a given index to the end. The  \ggs+inIndex+ value should be lower or equal to the length of the receiver's value. If \ggs+inIndex+ is equal to the length of the receiver, the getter returns an empty list.
 
 
+
+
+
+
+\subsection{Le getter \texttt{subListToIndex}}
+
+\begin{galgas}
+getter subListToIndex ?@uint inIndex -> @self
+\end{galgas}
+
+Ce \emph{getter} retourne une liste comprenant les éléments du récepteur à partir de l'indice $0$ jusqu'à l'indice \ggs+inIndex+ compris. Si \ggs+inIndex+ est supérieur ou égal au nombre d'éléments de la liste, une erreur d'exécution est déclenchée.
+
+
+
+
 \subsection{Le getter \texttt{subListWithRange}}
 
 \begin{galgas}
@@ -226,7 +241,7 @@ This getter returns a list containing the elements of the receiver that lie with
 
 
 
-\section{Enumerating a list with a foreach instruction}
+\section{Enumerating a list with a \texttt{for} instruction}
 
 The \ggs+for+ instruction can be used for enumerating list objects. By default, lists are enumerated in the insertion order; enumeration in the reverse order is performed using the \ggs+>+ qualifier.
 
@@ -250,12 +265,12 @@ list @MyList {
 For every attribute, a constant of the same name is available in the \ggs+do+ instruction list. Theses constants receive the value of the corresponding attribute of the current element.
 
 \begin{galgas}
-foreach aList do
+for () in aList do
   # the mFirstAttribute constant receives the value
   # of the mFirstAttribute attribute of the current element,
   # and the mSecondAttribute constant receives the value
   # of the mSecondAttribute attribute of the current element.
-end foreach ;
+end
 \end{galgas}
 
 \subsection{Enumeration using the explicitly declared constants}
@@ -264,12 +279,12 @@ The \ggs+for+ header declares a sequence of constants, corresponding to the attr
 
 
 \begin{galgas}
-foreach aList (@string kString @bool kBool) do
+for (kString kBool) in aList do
   # the kString constant receives the value
   # of the mFirstAttribute attribute of the current element,
   # and the kBool constant receives the value
   # of the mSecondAttribute attribute of the current element.
-end foreach ;
+end
 \end{galgas}
 
 \subsection{Enumeration in the reverse order}
@@ -277,9 +292,9 @@ end foreach ;
 In GALGAS 1.7.3 and later, you can enumerate a list in the reverse order using the \ggs+>+ qualifier:
 
 \begin{galgas}
-foreach > aList (@string kString @bool kBool) do
+for > (kString kBool) in aList do
   ...
-end foreach ;
+end
 \end{galgas}
 
 

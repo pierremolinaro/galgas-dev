@@ -34,10 +34,10 @@ mLexicalAttribute_uint_36__34_value () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
-                const C_String & inDependencyFileExtension,
-                const C_String & inDependencyFilePath,
-                const C_String & inSourceFileName
-                COMMA_LOCATION_ARGS) :
+                                                                  const C_String & inDependencyFileExtension,
+                                                                  const C_String & inDependencyFilePath,
+                                                                  const C_String & inSourceFileName
+                                                                  COMMA_LOCATION_ARGS) :
 C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
@@ -45,9 +45,9 @@ mMatchedTemplateDelimiterIndex (-1) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
-                const C_String & inSourceString,
-                const C_String & inStringForError
-                COMMA_LOCATION_ARGS) :
+                                                                  const C_String & inSourceString,
+                                                                  const C_String & inStringForError
+                                                                  COMMA_LOCATION_ARGS) :
 C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
@@ -8418,7 +8418,7 @@ class cCollectionElement_templateInstructionListAST : public cCollectionElement 
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8668,6 +8668,16 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionListAST result = GALGAS_templateInstructionListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_templateInstructionListAST::dotAssign_operation (const GALGAS_templateInstructionListAST inOperand
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -8786,7 +8796,7 @@ class cCollectionElement_templateExpressionListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9086,6 +9096,16 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_templateExpressionListAST result = GALGAS_templateExpressionListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_templateExpressionListAST::dotAssign_operation (const GALGAS_templateExpressionListAST inOperand
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -9249,7 +9269,7 @@ class cCollectionElement_templateInstructionIfBranchListAST : public cCollection
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9524,6 +9544,16 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionIfBranchListAST result = GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_templateInstructionIfBranchListAST::dotAssign_operation (const GALGAS_templateInstructionIfBranchListAST inOperand
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -9664,7 +9694,7 @@ class cCollectionElement_templateInstructionSwitchBranchListAST : public cCollec
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9934,6 +9964,16 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBr
                                                                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionSwitchBranchListAST result = GALGAS_templateInstructionSwitchBranchListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBranchListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                                    C_Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionSwitchBranchListAST result = GALGAS_templateInstructionSwitchBranchListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -11579,7 +11619,7 @@ class cCollectionElement_templateInstructionListForGeneration : public cCollecti
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11829,6 +11869,16 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                                C_Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionListForGeneration result = GALGAS_templateInstructionListForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_templateInstructionListForGeneration::dotAssign_operation (const GALGAS_templateInstructionListForGeneration inOperand
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -11946,7 +11996,7 @@ class cCollectionElement_templateInstructionIfBranchListForGeneration : public c
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12221,6 +12271,16 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIfBranchListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                                                C_Compiler * inCompiler
+                                                                                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionIfBranchListForGeneration result = GALGAS_templateInstructionIfBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_templateInstructionIfBranchListForGeneration::dotAssign_operation (const GALGAS_templateInstructionIfBranchListForGeneration inOperand
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -12361,7 +12421,7 @@ class cCollectionElement_templateInstructionSwitchBranchListForGeneration : publ
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12631,6 +12691,16 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
                                                                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_templateInstructionSwitchBranchListForGeneration result = GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                                                        C_Compiler * inCompiler
+                                                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionSwitchBranchListForGeneration result = GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -13084,7 +13154,7 @@ class cCollectionElement_lexicalInstructionListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13334,6 +13404,16 @@ GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::getter_subLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalInstructionListAST result = GALGAS_lexicalInstructionListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_lexicalInstructionListAST::dotAssign_operation (const GALGAS_lexicalInstructionListAST inOperand
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -13437,7 +13517,7 @@ class cCollectionElement_metamodelTemplateDelimitorListAST : public cCollectionE
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13737,6 +13817,16 @@ GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                          C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_metamodelTemplateDelimitorListAST result = GALGAS_metamodelTemplateDelimitorListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_metamodelTemplateDelimitorListAST::dotAssign_operation (const GALGAS_metamodelTemplateDelimitorListAST inOperand
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -13856,7 +13946,7 @@ class cCollectionElement_templateReplacementListAST : public cCollectionElement 
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14156,6 +14246,16 @@ GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::getter_subL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_templateReplacementListAST result = GALGAS_templateReplacementListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_templateReplacementListAST::dotAssign_operation (const GALGAS_templateReplacementListAST inOperand
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -14273,7 +14373,7 @@ class cCollectionElement_lexicalRuleListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14523,6 +14623,16 @@ GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::getter_subListFromIndex (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalRuleListAST result = GALGAS_lexicalRuleListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_lexicalRuleListAST::dotAssign_operation (const GALGAS_lexicalRuleListAST inOperand
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -14625,7 +14735,7 @@ class cCollectionElement_lexicalMessageDeclarationListAST : public cCollectionEl
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14900,6 +15010,16 @@ GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalMessageDeclarationListAST result = GALGAS_lexicalMessageDeclarationListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_lexicalMessageDeclarationListAST::dotAssign_operation (const GALGAS_lexicalMessageDeclarationListAST inOperand
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -15010,7 +15130,7 @@ class cCollectionElement_lexicalAttributeListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15285,6 +15405,16 @@ GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::getter_subListFro
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalAttributeListAST result = GALGAS_lexicalAttributeListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_lexicalAttributeListAST::dotAssign_operation (const GALGAS_lexicalAttributeListAST inOperand
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -15395,7 +15525,7 @@ class cCollectionElement_lexicalStyleListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15670,6 +15800,16 @@ GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::getter_subListFromIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalStyleListAST result = GALGAS_lexicalStyleListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_lexicalStyleListAST::dotAssign_operation (const GALGAS_lexicalStyleListAST inOperand
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -15783,7 +15923,7 @@ class cCollectionElement_terminalDeclarationListAST : public cCollectionElement 
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16133,6 +16273,16 @@ GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::getter_subL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_terminalDeclarationListAST result = GALGAS_terminalDeclarationListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_terminalDeclarationListAST::dotAssign_operation (const GALGAS_terminalDeclarationListAST inOperand
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -16267,7 +16417,7 @@ class cCollectionElement_sentLexicalAttributeListAST : public cCollectionElement
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16542,6 +16692,16 @@ GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::getter_su
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_sentLexicalAttributeListAST result = GALGAS_sentLexicalAttributeListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_sentLexicalAttributeListAST::dotAssign_operation (const GALGAS_sentLexicalAttributeListAST inOperand
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -16683,7 +16843,7 @@ class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16983,6 +17143,16 @@ GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::getter_subListFro
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalListEntryListAST result = GALGAS_lexicalListEntryListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_lexicalListEntryListAST::dotAssign_operation (const GALGAS_lexicalListEntryListAST inOperand
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
@@ -17104,7 +17274,7 @@ class cCollectionElement_lexicalListDeclarationListAST : public cCollectionEleme
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17449,6 +17619,16 @@ GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::gette
                                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalListDeclarationListAST result = GALGAS_lexicalListDeclarationListAST::constructor_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result = GALGAS_lexicalListDeclarationListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 

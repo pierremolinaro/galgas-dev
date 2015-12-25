@@ -32,9 +32,9 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["bool" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
-      ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
-      ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
+      !@lchar.new {!@application.boolOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
+      ![@application.boolOptionInvocationString {!mValue0 !mValue1} nowhere]
+      ![@application.boolOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
       !@optionDefaultValueEnumAST. noDefaultValue
   end
@@ -42,9 +42,9 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["uint" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
-      ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
-      ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
+      !@lchar.new {!@application.uintOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
+      ![@application.uintOptionInvocationString {!mValue0 !mValue1} nowhere]
+      ![@application.uintOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
       !@optionDefaultValueEnumAST. noDefaultValue
   end
@@ -52,9 +52,9 @@ proc compileSemanticDeclarationsGalgas3
     options +=
       !["string" nowhere]
       !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application. boolOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
-      ![@application. boolOptionInvocationString {!mValue0 !mValue1} nowhere]
-      ![@application. boolOptionCommentString {!mValue0 !mValue1} nowhere]
+      !@lchar.new {!@application.stringOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
+      ![@application.stringOptionInvocationString {!mValue0 !mValue1} nowhere]
+      ![@application.stringOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
       !@optionDefaultValueEnumAST.noDefaultValue
   end
