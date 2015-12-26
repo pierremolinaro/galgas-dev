@@ -1469,6 +1469,15 @@ class GALGAS_uint function_plusEqualOperatorWithExpression (class C_Compiler * i
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                     Function 'minusEqualOperatorWithExpression'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_uint function_minusEqualOperatorWithExpression (class C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                               Function 'isComparable'                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3076,21 +3085,5 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
                                class GALGAS_string & outArgument8,
                                class C_Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         Routine 'generateCategoryModifier'                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_generateCategoryModifier (const class GALGAS_string constinArgument0,
-                                       const class GALGAS_string constinArgument1,
-                                       const class GALGAS_string constinArgument2,
-                                       class GALGAS_stringset & ioArgument3,
-                                       const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                       const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                       class GALGAS_string & outArgument6,
-                                       class C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
 
 #endif

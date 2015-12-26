@@ -1464,8 +1464,9 @@ void GALGAS_string::modifier_setCharacterAtIndex (GALGAS_char inCharacter,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_string::dotAssign_operation (GALGAS_string inOperand
-                                         COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_string::plusAssign_operation (GALGAS_string inOperand,
+                                          C_Compiler *
+                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mString << inOperand.mString ;
   }

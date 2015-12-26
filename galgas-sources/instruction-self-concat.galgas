@@ -12,6 +12,11 @@ class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mExpression
 }
 
+#·····················································································································*
+
+class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mExpression
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
 #! SYNTAX
@@ -21,8 +26,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #····················································································································*
 
-  rule <semantic_instruction>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $+=$
@@ -35,13 +39,25 @@ syntax extension galgas3InstructionsSyntax {
   
   #····················································································································*
   
-  rule <semantic_instruction>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $+=$
     <expression> ?let @semanticExpressionAST expression
     outInstruction = @selfPlusEqualExpressionInstructionAST.new {
+      !instructionLocation
+      !expression
+    }
+  }  
+
+  #····················································································································*
+  
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $self$
+    let instructionLocation = @location.here
+    $-=$
+    <expression> ?let @semanticExpressionAST expression
+    outInstruction = @selfMinusEqualExpressionInstructionAST.new {
       !instructionLocation
       !expression
     }
@@ -56,6 +72,12 @@ syntax extension galgas3InstructionsSyntax {
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
@@ -149,13 +171,54 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !selfTypeProxy ![expression mResultType] !mInstructionLocation )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@concatInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@plusEqualInstructionForGeneration.new {
     !mInstructionLocation
     !selfTypeProxy
     !selfObjectCppName
     !""
-    !@lstringlist. emptyList
-    !expression}
+    !{}
+    !expression
+  }
+}
+
+#·····················································································································*
+
+override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target variable type support '-= exp' operator
+  if ([selfTypeProxy mHandledOperatorFlags] & minusEqualOperatorWithExpression ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '-=' operator"
+  end
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !selfTypeProxy
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !selfTypeProxy ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@minusEqualInstructionForGeneration.new {
+    !mInstructionLocation
+    !selfTypeProxy
+    !selfObjectCppName
+    !""
+    !{}
+    !expression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

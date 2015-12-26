@@ -26,9 +26,9 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   !@string outEnumeratedType {
   @unifiedTypeMap-proxy stringTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringTypeIndex]
-  outEnumerationList = @enumerationDescriptorList. emptyList
+  outEnumerationList = {}
   outEnumerationList += !stringTypeIndex !"key"
-  outEnumerationVariant = @stringlist. emptyList
+  outEnumerationVariant = {}
   outEnumerationVariant += !"up"
   outEnumerationVariant += !"down"
   outEnumeratedType = "string"
@@ -43,9 +43,9 @@ override method @dataPredefinedTypeAST getEnumerationList
   !@string outEnumeratedType {
   @unifiedTypeMap-proxy uintTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?uintTypeIndex]
-  outEnumerationList = @enumerationDescriptorList. emptyList
+  outEnumerationList = {}
   outEnumerationList += !uintTypeIndex !"data"
-  outEnumerationVariant = @stringlist. emptyList
+  outEnumerationVariant = {}
   outEnumerationVariant += !"up"
   outEnumerationVariant += !"down"
   outEnumeratedType = "uint"
@@ -59,7 +59,8 @@ override method @dataPredefinedTypeAST getEnumerationList
 
 override method @stringsetPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@setterMap outModifierMap {
+  !@setterMap outModifierMap
+{
   @unifiedTypeMap-proxy stringType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
   outModifierMap = @setterMap. emptyMap
@@ -79,7 +80,7 @@ override method @stringsetPredefinedTypeAST getModifierMap
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @applicationPredefinedTypeAST getSupportedOperatorFlags ->@uint outFlags {
+override getter @applicationPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionGetterUtilityMethod ()
 }
 
@@ -101,84 +102,79 @@ override getter @timerPredefinedTypeAST getSupportedOperatorFlags -> @uint outFl
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @objectPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @objectPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionGetterUtilityMethod ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @stringPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @stringPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = binaryConcatOperator () | plusEqualOperatorWithExpression () | binaryAddOperator ()
     | generateDescriptionGetterUtilityMethod () | isComparable ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @charPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @charPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionGetterUtilityMethod () | isComparable ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @boolPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @boolPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryNotOperator ()
     | generateDescriptionGetterUtilityMethod () | isComparable ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @uintPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @uintPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
     | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | generateDescriptionGetterUtilityMethod () | incDecOperator () | incDecOperatorNoOVF () | isComparable ()
     | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
+    | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @sintPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @sintPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
     | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
     | unaryMinusOperator () | unaryMinusOperatorNoOVF ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | generateDescriptionGetterUtilityMethod ()  | incDecOperator () | incDecOperatorNoOVF () | isComparable ()
     | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
+    | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @uint64PredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @uint64PredefinedTypeAST getSupportedOperatorFlags ->@uint outFlags {
   outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
     | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | generateDescriptionGetterUtilityMethod () | incDecOperator () | incDecOperatorNoOVF () | isComparable ()
     | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
+    | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @sint64PredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @sint64PredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
     | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
     | unaryMinusOperator () | unaryMinusOperatorNoOVF ()
     | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
     | incDecOperator () | incDecOperatorNoOVF () | generateDescriptionGetterUtilityMethod () | isComparable ()
     | binaryAddOperatorNoOVF () | binarySubOperatorNoOVF () | binaryMulOperatorNoOVF () | binaryDivOperatorNoOVF ()
+    | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @doublePredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
     | unaryPlusOperator () | unaryMinusOperator () | binaryModOperator ()
     | generateDescriptionGetterUtilityMethod () | isComparable ()
@@ -186,8 +182,7 @@ override getter @doublePredefinedTypeAST getSupportedOperatorFlags
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = binarySubOperator ()
     | binaryAndOperator () | binaryOrOperator ()
     | generateDescriptionGetterUtilityMethod () | plusEqualOperatorWithExpression ()
@@ -197,8 +192,7 @@ override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = binaryAndOperator () | binaryOrOperator () | binaryXorOperator ()
     | unaryTildeOperator () | binaryShiftOperator ()
     | generateDescriptionGetterUtilityMethod ()
@@ -206,37 +200,32 @@ override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @typePredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @typePredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionGetterUtilityMethod ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @dataPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @dataPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionGetterUtilityMethod ()
     | generateEnumerationHelperMethods ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @functionPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @functionPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionGetterUtilityMethod ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @locationPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @locationPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionGetterUtilityMethod ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @filewrapperPredefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
+override getter @filewrapperPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
   outFlags = generateDescriptionGetterUtilityMethod ()
 }
 
