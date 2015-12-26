@@ -1342,7 +1342,10 @@ override method @expressionCollectionValueForGeneration generateCollectionElemen
     ?let @string sourceVar
   ]
   ioGeneratedCode += inCppTargetVar
-  ioGeneratedCode += ".dotAssign_operation (" + sourceVar + " " + [mExpressionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += ".plusAssign_operation (" + sourceVar
+  ioGeneratedCode += ", " + compilerCppName ()
+  ioGeneratedCode += " " + [mExpressionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
