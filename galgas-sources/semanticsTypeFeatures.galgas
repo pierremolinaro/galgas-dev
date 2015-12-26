@@ -178,6 +178,7 @@ override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @uint outF
   outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
     | unaryPlusOperator () | unaryMinusOperator () | binaryModOperator ()
     | generateDescriptionGetterUtilityMethod () | isComparable ()
+    | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
