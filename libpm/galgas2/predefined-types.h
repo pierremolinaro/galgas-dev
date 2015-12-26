@@ -1667,6 +1667,16 @@ class GALGAS_double : public AC_GALGAS_root {
 
   public : static GALGAS_double constructor_pi (LOCATION_ARGS) ;
 
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_double inOperand,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- -= operator (with expression)
+  public : VIRTUAL_IN_DEBUG void minusAssign_operation (const GALGAS_double inOperand,
+                                                        class C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_double add_operation (const GALGAS_double & inOperand,
                                                          C_Compiler * inCompiler
