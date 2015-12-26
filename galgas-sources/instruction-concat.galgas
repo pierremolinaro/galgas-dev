@@ -16,6 +16,14 @@ class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mExpression
 }
 
+#······················································································································*
+
+class @minusEqualExpressionInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+  @semanticExpressionAST mExpression
+}
+
 #----------------------------------------------------------------------------------------------------------------------*
 #! SYNTAX
 #----------------------------------------------------------------------------------------------------------------------*
@@ -24,40 +32,50 @@ syntax extension galgas3InstructionsSyntax {
 
   #····················································································································*
 
-  rule <semantic_instruction>
-    !@semanticInstructionAST outInstruction {
-    @lstring mReceiverName
-    $identifier$ ? mReceiverName
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $identifier$ ?let @lstring mReceiverName
     let instructionLocation = @location.here
-    var mStructAttributeList = @lstringlist.emptyList{}
+    @lstringlist mStructAttributeList = {}
     repeat
     while
       $.$
       $identifier$ ?let attributeName
       mStructAttributeList += !attributeName
     end
-    $+=$
     select
-      <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
-      outInstruction = @plusEqualElementsInstructionAST.new {
-        !instructionLocation
-        !mReceiverName
-        !mStructAttributeList
-        !expressionList}
-    or
+      $-=$
       <expression> ?let @semanticExpressionAST expression
-      outInstruction = @plusEqualExpressionInstructionAST.new {
+      outInstruction = @minusEqualExpressionInstructionAST.new {
         !instructionLocation
         !mReceiverName
         !mStructAttributeList
-        !expression}
+        !expression
+      }
+    or
+      $+=$
+      select
+        <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+        outInstruction = @plusEqualElementsInstructionAST.new {
+          !instructionLocation
+          !mReceiverName
+          !mStructAttributeList
+          !expressionList
+        }
+      or
+        <expression> ?let @semanticExpressionAST expression
+        outInstruction = @plusEqualExpressionInstructionAST.new {
+          !instructionLocation
+          !mReceiverName
+          !mStructAttributeList
+          !expression
+        }
+      end
     end
   }  
 
   #····················································································································*
 
-  rule <non_empty_output_expression_list>
-    !@actualOutputExpressionList outExpressionList {
+  rule <non_empty_output_expression_list> !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
     repeat
       $!$ ?let selector
@@ -77,6 +95,12 @@ override method @plusEqualExpressionInstructionAST enterInstructionInSemanticCon
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @minusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
 #·····················································································································*
 
 override method @plusEqualElementsInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
@@ -90,22 +114,21 @@ override method @plusEqualElementsInstructionAST enterInstructionInSemanticConte
 override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@variableMap ioVariableMap
+{
 #--- Check target variable
-  @unifiedTypeMap-proxy targetType
-  @string targetVariableCppName
-  @string nameForCheckingFormalParameterUsing
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+  [!?ioVariableMap searchForReadWriteAccess
+    !mReceiverName 
+    ?@unifiedTypeMap-proxy targetType
+    ?@string targetVariableCppName
+    ?@string nameForCheckingFormalParameterUsing
+  ]
   for () in mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
-#      ??@bool isPrivate
       ?targetType
     ]
-#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-#      error mValue : "this field is private" ;
-#    end if ;
   end
 #--- Check target variable type support '+= exp' operator
   if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
@@ -120,9 +143,54 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@concatInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@plusEqualInstructionForGeneration.new {
+    !mInstructionLocation
+    !targetType
+    !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
+    !mStructAttributeList
+    !expression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction # -= exp
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+#--- Check target variable
+  [!?ioVariableMap searchForReadWriteAccess
+    !mReceiverName 
+    ?@unifiedTypeMap-proxy targetType
+    ?@string targetVariableCppName
+    ?@string nameForCheckingFormalParameterUsing
+  ]
+  for () in mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey
+      !mValue
+      ?targetType
+    ]
+  end
+#--- Check target variable type support '-= exp' operator
+  if ([targetType mHandledOperatorFlags] & minusEqualOperatorWithExpression ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '-=' operator"
+  end
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
+#--- Generate instruction
+  ioInstructionListForGeneration += !@minusEqualInstructionForGeneration.new {
     !mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -246,7 +314,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
 
 #·····················································································································*
 
-class @concatInstructionForGeneration : @semanticInstructionForGeneration {
+class @plusEqualInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @unifiedTypeMap-proxy mTargetType
   @string mTargetVariableCppName
@@ -257,7 +325,18 @@ class @concatInstructionForGeneration : @semanticInstructionForGeneration {
 
 #·····················································································································*
 
-override method @concatInstructionForGeneration generateInstruction
+class @minusEqualInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @unifiedTypeMap-proxy mTargetType
+  @string mTargetVariableCppName
+  @string mNameForCheckingFormalParameterUsing
+  @lstringlist mStructAttributeList
+  @semanticExpressionForGeneration mSourceExpression
+}
+
+#·····················································································································*
+
+override method @plusEqualInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
@@ -276,7 +355,39 @@ override method @concatInstructionForGeneration generateInstruction
   for () in mStructAttributeList do
     ioGeneratedCode += ".mAttribute_" + mValue
   end
-  ioGeneratedCode += ".dotAssign_operation (" + sourceVar + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += ".plusAssign_operation (" + sourceVar
+  ioGeneratedCode += ", " + compilerCppName ()
+  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName]
 }
+
+#·····················································································································*
+
+override method @minusEqualInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  [mSourceExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string sourceVar
+  ]
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+  ioGeneratedCode += mTargetVariableCppName
+  for () in mStructAttributeList do
+    ioGeneratedCode += ".mAttribute_" + mValue
+  end
+  ioGeneratedCode += ".minusAssign_operation (" + sourceVar
+  ioGeneratedCode += ", " + compilerCppName ()
+  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName]
+}
+
 #----------------------------------------------------------------------------------------------------------------------*

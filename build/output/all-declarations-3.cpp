@@ -343,8 +343,9 @@ GALGAS_externTypeMethodList GALGAS_externTypeMethodList::getter_subListToIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeMethodList::dotAssign_operation (const GALGAS_externTypeMethodList inOperand
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_externTypeMethodList::plusAssign_operation (const GALGAS_externTypeMethodList inOperand,
+                                                        C_Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -817,8 +818,9 @@ GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::g
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_typeNameFormalParameterNameList::dotAssign_operation (const GALGAS_typeNameFormalParameterNameList inOperand
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_typeNameFormalParameterNameList::plusAssign_operation (const GALGAS_typeNameFormalParameterNameList inOperand,
+                                                                   C_Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -1239,8 +1241,9 @@ GALGAS_syntaxInstructionList GALGAS_syntaxInstructionList::getter_subListToIndex
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxInstructionList::dotAssign_operation (const GALGAS_syntaxInstructionList inOperand
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_syntaxInstructionList::plusAssign_operation (const GALGAS_syntaxInstructionList inOperand,
+                                                         C_Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -1652,8 +1655,9 @@ GALGAS_nonTerminalLabelListAST GALGAS_nonTerminalLabelListAST::getter_subListToI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalLabelListAST::dotAssign_operation (const GALGAS_nonTerminalLabelListAST inOperand
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_nonTerminalLabelListAST::plusAssign_operation (const GALGAS_nonTerminalLabelListAST inOperand,
+                                                           C_Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2055,8 +2059,9 @@ GALGAS_nonterminalDeclarationListAST GALGAS_nonterminalDeclarationListAST::gette
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonterminalDeclarationListAST::dotAssign_operation (const GALGAS_nonterminalDeclarationListAST inOperand
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_nonterminalDeclarationListAST::plusAssign_operation (const GALGAS_nonterminalDeclarationListAST inOperand,
+                                                                 C_Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2528,8 +2533,9 @@ GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleLabelListAST::getter_subListToInd
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxRuleLabelListAST::dotAssign_operation (const GALGAS_syntaxRuleLabelListAST inOperand
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_syntaxRuleLabelListAST::plusAssign_operation (const GALGAS_syntaxRuleLabelListAST inOperand,
+                                                          C_Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2947,8 +2953,9 @@ GALGAS_syntaxRuleListAST GALGAS_syntaxRuleListAST::getter_subListToIndex (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxRuleListAST::dotAssign_operation (const GALGAS_syntaxRuleListAST inOperand
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_syntaxRuleListAST::plusAssign_operation (const GALGAS_syntaxRuleListAST inOperand,
+                                                     C_Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3342,8 +3349,9 @@ GALGAS_listOfSyntaxInstructionList GALGAS_listOfSyntaxInstructionList::getter_su
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_listOfSyntaxInstructionList::dotAssign_operation (const GALGAS_listOfSyntaxInstructionList inOperand
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_listOfSyntaxInstructionList::plusAssign_operation (const GALGAS_listOfSyntaxInstructionList inOperand,
+                                                               C_Compiler * /* inCompiler */
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3711,8 +3719,9 @@ GALGAS_collectionValueElementList GALGAS_collectionValueElementList::getter_subL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_collectionValueElementList::dotAssign_operation (const GALGAS_collectionValueElementList inOperand
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_collectionValueElementList::plusAssign_operation (const GALGAS_collectionValueElementList inOperand,
+                                                              C_Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4243,8 +4252,9 @@ GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_galgas_33_SyntaxComponentListAST::dotAssign_operation (const GALGAS_galgas_33_SyntaxComponentListAST inOperand
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_galgas_33_SyntaxComponentListAST::plusAssign_operation (const GALGAS_galgas_33_SyntaxComponentListAST inOperand,
+                                                                    C_Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4809,8 +4819,9 @@ GALGAS_galgas_33_SyntaxExtensionListAST GALGAS_galgas_33_SyntaxExtensionListAST:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_galgas_33_SyntaxExtensionListAST::dotAssign_operation (const GALGAS_galgas_33_SyntaxExtensionListAST inOperand
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_galgas_33_SyntaxExtensionListAST::plusAssign_operation (const GALGAS_galgas_33_SyntaxExtensionListAST inOperand,
+                                                                    C_Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -5523,8 +5534,9 @@ GALGAS_galgas_33_GrammarComponentListAST GALGAS_galgas_33_GrammarComponentListAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_galgas_33_GrammarComponentListAST::dotAssign_operation (const GALGAS_galgas_33_GrammarComponentListAST inOperand
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_galgas_33_GrammarComponentListAST::plusAssign_operation (const GALGAS_galgas_33_GrammarComponentListAST inOperand,
+                                                                     C_Compiler * /* inCompiler */
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6086,8 +6098,9 @@ GALGAS_prologueEpilogueList GALGAS_prologueEpilogueList::getter_subListToIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_prologueEpilogueList::dotAssign_operation (const GALGAS_prologueEpilogueList inOperand
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_prologueEpilogueList::plusAssign_operation (const GALGAS_prologueEpilogueList inOperand,
+                                                        C_Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6641,8 +6654,9 @@ GALGAS_programRuleList GALGAS_programRuleList::getter_subListToIndex (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_programRuleList::dotAssign_operation (const GALGAS_programRuleList inOperand
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_programRuleList::plusAssign_operation (const GALGAS_programRuleList inOperand,
+                                                   C_Compiler * /* inCompiler */
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7233,8 +7247,9 @@ GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_GUIComponentListAST::gette
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_galgas_33_GUIComponentListAST::dotAssign_operation (const GALGAS_galgas_33_GUIComponentListAST inOperand
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_galgas_33_GUIComponentListAST::plusAssign_operation (const GALGAS_galgas_33_GUIComponentListAST inOperand,
+                                                                 C_Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7730,8 +7745,9 @@ GALGAS_functionSignature GALGAS_functionSignature::getter_subListToIndex (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionSignature::dotAssign_operation (const GALGAS_functionSignature inOperand
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_functionSignature::plusAssign_operation (const GALGAS_functionSignature inOperand,
+                                                     C_Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -8152,8 +8168,9 @@ GALGAS_unifiedTypeMapProxyList GALGAS_unifiedTypeMapProxyList::getter_subListToI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_unifiedTypeMapProxyList::dotAssign_operation (const GALGAS_unifiedTypeMapProxyList inOperand
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapProxyList::plusAssign_operation (const GALGAS_unifiedTypeMapProxyList inOperand,
+                                                           C_Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -8554,8 +8571,9 @@ GALGAS_unifiedTypeMapProxyAndParameterList GALGAS_unifiedTypeMapProxyAndParamete
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_unifiedTypeMapProxyAndParameterList::dotAssign_operation (const GALGAS_unifiedTypeMapProxyAndParameterList inOperand
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_unifiedTypeMapProxyAndParameterList::plusAssign_operation (const GALGAS_unifiedTypeMapProxyAndParameterList inOperand,
+                                                                       C_Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -10267,8 +10285,9 @@ GALGAS_formalParameterSignature GALGAS_formalParameterSignature::getter_subListT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalParameterSignature::dotAssign_operation (const GALGAS_formalParameterSignature inOperand
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_formalParameterSignature::plusAssign_operation (const GALGAS_formalParameterSignature inOperand,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12090,8 +12109,9 @@ GALGAS_enumerationDescriptorList GALGAS_enumerationDescriptorList::getter_subLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_enumerationDescriptorList::dotAssign_operation (const GALGAS_enumerationDescriptorList inOperand
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_enumerationDescriptorList::plusAssign_operation (const GALGAS_enumerationDescriptorList inOperand,
+                                                             C_Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12567,8 +12587,9 @@ GALGAS_typedPropertyList GALGAS_typedPropertyList::getter_subListToIndex (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_typedPropertyList::dotAssign_operation (const GALGAS_typedPropertyList inOperand
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_typedPropertyList::plusAssign_operation (const GALGAS_typedPropertyList inOperand,
+                                                     C_Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 

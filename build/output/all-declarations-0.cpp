@@ -8678,8 +8678,9 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::getter_subL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateInstructionListAST::dotAssign_operation (const GALGAS_templateInstructionListAST inOperand
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_templateInstructionListAST::plusAssign_operation (const GALGAS_templateInstructionListAST inOperand,
+                                                              C_Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -9106,8 +9107,9 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::getter_subLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateExpressionListAST::dotAssign_operation (const GALGAS_templateExpressionListAST inOperand
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_templateExpressionListAST::plusAssign_operation (const GALGAS_templateExpressionListAST inOperand,
+                                                             C_Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -9554,8 +9556,9 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateInstructionIfBranchListAST::dotAssign_operation (const GALGAS_templateInstructionIfBranchListAST inOperand
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_templateInstructionIfBranchListAST::plusAssign_operation (const GALGAS_templateInstructionIfBranchListAST inOperand,
+                                                                      C_Compiler * /* inCompiler */
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -9979,8 +9982,9 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateInstructionSwitchBranchListAST::dotAssign_operation (const GALGAS_templateInstructionSwitchBranchListAST inOperand
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_templateInstructionSwitchBranchListAST::plusAssign_operation (const GALGAS_templateInstructionSwitchBranchListAST inOperand,
+                                                                          C_Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -11879,8 +11883,9 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateInstructionListForGeneration::dotAssign_operation (const GALGAS_templateInstructionListForGeneration inOperand
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_templateInstructionListForGeneration::plusAssign_operation (const GALGAS_templateInstructionListForGeneration inOperand,
+                                                                        C_Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12281,8 +12286,9 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateInstructionIfBranchListForGeneration::dotAssign_operation (const GALGAS_templateInstructionIfBranchListForGeneration inOperand
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_templateInstructionIfBranchListForGeneration::plusAssign_operation (const GALGAS_templateInstructionIfBranchListForGeneration inOperand,
+                                                                                C_Compiler * /* inCompiler */
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -12706,8 +12712,9 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateInstructionSwitchBranchListForGeneration::dotAssign_operation (const GALGAS_templateInstructionSwitchBranchListForGeneration inOperand
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_templateInstructionSwitchBranchListForGeneration::plusAssign_operation (const GALGAS_templateInstructionSwitchBranchListForGeneration inOperand,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13414,8 +13421,9 @@ GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::getter_subLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalInstructionListAST::dotAssign_operation (const GALGAS_lexicalInstructionListAST inOperand
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_lexicalInstructionListAST::plusAssign_operation (const GALGAS_lexicalInstructionListAST inOperand,
+                                                             C_Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13827,8 +13835,9 @@ GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_metamodelTemplateDelimitorListAST::dotAssign_operation (const GALGAS_metamodelTemplateDelimitorListAST inOperand
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_metamodelTemplateDelimitorListAST::plusAssign_operation (const GALGAS_metamodelTemplateDelimitorListAST inOperand,
+                                                                     C_Compiler * /* inCompiler */
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -14256,8 +14265,9 @@ GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::getter_subL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateReplacementListAST::dotAssign_operation (const GALGAS_templateReplacementListAST inOperand
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_templateReplacementListAST::plusAssign_operation (const GALGAS_templateReplacementListAST inOperand,
+                                                              C_Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -14633,8 +14643,9 @@ GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::getter_subListToIndex (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalRuleListAST::dotAssign_operation (const GALGAS_lexicalRuleListAST inOperand
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_lexicalRuleListAST::plusAssign_operation (const GALGAS_lexicalRuleListAST inOperand,
+                                                      C_Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -15020,8 +15031,9 @@ GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalMessageDeclarationListAST::dotAssign_operation (const GALGAS_lexicalMessageDeclarationListAST inOperand
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_lexicalMessageDeclarationListAST::plusAssign_operation (const GALGAS_lexicalMessageDeclarationListAST inOperand,
+                                                                    C_Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -15415,8 +15427,9 @@ GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::getter_subListToI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalAttributeListAST::dotAssign_operation (const GALGAS_lexicalAttributeListAST inOperand
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_lexicalAttributeListAST::plusAssign_operation (const GALGAS_lexicalAttributeListAST inOperand,
+                                                           C_Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -15810,8 +15823,9 @@ GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::getter_subListToIndex (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalStyleListAST::dotAssign_operation (const GALGAS_lexicalStyleListAST inOperand
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_lexicalStyleListAST::plusAssign_operation (const GALGAS_lexicalStyleListAST inOperand,
+                                                       C_Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -16283,8 +16297,9 @@ GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::getter_subL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_terminalDeclarationListAST::dotAssign_operation (const GALGAS_terminalDeclarationListAST inOperand
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_terminalDeclarationListAST::plusAssign_operation (const GALGAS_terminalDeclarationListAST inOperand,
+                                                              C_Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -16702,8 +16717,9 @@ GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::getter_su
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_sentLexicalAttributeListAST::dotAssign_operation (const GALGAS_sentLexicalAttributeListAST inOperand
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_sentLexicalAttributeListAST::plusAssign_operation (const GALGAS_sentLexicalAttributeListAST inOperand,
+                                                               C_Compiler * /* inCompiler */
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -17153,8 +17169,9 @@ GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::getter_subListToI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalListEntryListAST::dotAssign_operation (const GALGAS_lexicalListEntryListAST inOperand
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_lexicalListEntryListAST::plusAssign_operation (const GALGAS_lexicalListEntryListAST inOperand,
+                                                           C_Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -17634,8 +17651,9 @@ GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::gette
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalListDeclarationListAST::dotAssign_operation (const GALGAS_lexicalListDeclarationListAST inOperand
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_lexicalListDeclarationListAST::plusAssign_operation (const GALGAS_lexicalListDeclarationListAST inOperand,
+                                                                 C_Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 

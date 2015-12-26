@@ -901,7 +901,7 @@ class cCollectionElement_luintlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1151,8 +1151,19 @@ GALGAS_luintlist GALGAS_luintlist::getter_subListFromIndex (const GALGAS_uint & 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_luintlist::dotAssign_operation (const GALGAS_luintlist inOperand
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luintlist GALGAS_luintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_luintlist result = GALGAS_luintlist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_luintlist::plusAssign_operation (const GALGAS_luintlist inOperand,
+                                             C_Compiler * /* inCompiler */
+                                             COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -1281,7 +1292,7 @@ class cCollectionElement_uintlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1531,8 +1542,19 @@ GALGAS_uintlist GALGAS_uintlist::getter_subListFromIndex (const GALGAS_uint & in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_uintlist::dotAssign_operation (const GALGAS_uintlist inOperand
-                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uintlist GALGAS_uintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_uintlist result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_uintlist::plusAssign_operation (const GALGAS_uintlist inOperand,
+                                            C_Compiler * /* inCompiler */
+                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -1661,7 +1683,7 @@ class cCollectionElement_uint_36__34_list : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1911,8 +1933,19 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListFromIndex (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_uint_36__34_list::dotAssign_operation (const GALGAS_uint_36__34_list inOperand
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_uint_36__34_list::plusAssign_operation (const GALGAS_uint_36__34_list inOperand,
+                                                    C_Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2041,7 +2074,7 @@ class cCollectionElement_functionlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2291,8 +2324,19 @@ GALGAS_functionlist GALGAS_functionlist::getter_subListFromIndex (const GALGAS_u
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionlist::dotAssign_operation (const GALGAS_functionlist inOperand
-                                               COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_functionlist GALGAS_functionlist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_functionlist::plusAssign_operation (const GALGAS_functionlist inOperand,
+                                                C_Compiler * /* inCompiler */
+                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2421,7 +2465,7 @@ class cCollectionElement_stringlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2671,8 +2715,19 @@ GALGAS_stringlist GALGAS_stringlist::getter_subListFromIndex (const GALGAS_uint 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_stringlist::dotAssign_operation (const GALGAS_stringlist inOperand
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_stringlist GALGAS_stringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_stringlist::plusAssign_operation (const GALGAS_stringlist inOperand,
+                                              C_Compiler * /* inCompiler */
+                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2801,7 +2856,7 @@ class cCollectionElement_lstringlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3051,8 +3106,19 @@ GALGAS_lstringlist GALGAS_lstringlist::getter_subListFromIndex (const GALGAS_uin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lstringlist::dotAssign_operation (const GALGAS_lstringlist inOperand
-                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lstringlist GALGAS_lstringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lstringlist::plusAssign_operation (const GALGAS_lstringlist inOperand,
+                                               C_Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3181,7 +3247,7 @@ class cCollectionElement_typelist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3431,8 +3497,19 @@ GALGAS_typelist GALGAS_typelist::getter_subListFromIndex (const GALGAS_uint & in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_typelist::dotAssign_operation (const GALGAS_typelist inOperand
-                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_typelist GALGAS_typelist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_typelist::plusAssign_operation (const GALGAS_typelist inOperand,
+                                            C_Compiler * /* inCompiler */
+                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3561,7 +3638,7 @@ class cCollectionElement_objectlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3811,8 +3888,19 @@ GALGAS_objectlist GALGAS_objectlist::getter_subListFromIndex (const GALGAS_uint 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_objectlist::dotAssign_operation (const GALGAS_objectlist inOperand
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_objectlist GALGAS_objectlist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_objectlist result = GALGAS_objectlist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_objectlist::plusAssign_operation (const GALGAS_objectlist inOperand,
+                                              C_Compiler * /* inCompiler */
+                                              COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3942,7 +4030,7 @@ class cCollectionElement__32_stringlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4217,8 +4305,19 @@ GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListFromIndex (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS__32_stringlist::dotAssign_operation (const GALGAS__32_stringlist inOperand
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS__32_stringlist result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS__32_stringlist::plusAssign_operation (const GALGAS__32_stringlist inOperand,
+                                                  C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4385,7 +4484,7 @@ class cCollectionElement__32_lstringlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4660,8 +4759,19 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListFromIndex (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS__32_lstringlist::dotAssign_operation (const GALGAS__32_lstringlist inOperand
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS__32_lstringlist GALGAS__32_lstringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS__32_lstringlist result = GALGAS__32_lstringlist::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS__32_lstringlist::plusAssign_operation (const GALGAS__32_lstringlist inOperand,
+                                                   C_Compiler * /* inCompiler */
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 

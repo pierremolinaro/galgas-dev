@@ -172,8 +172,9 @@ void GALGAS_mapStateTransitionSortedList::addAssign_operation (const GALGAS_uint
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_mapStateTransitionSortedList::dotAssign_operation (const GALGAS_mapStateTransitionSortedList inOperand
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_mapStateTransitionSortedList::plusAssign_operation (const GALGAS_mapStateTransitionSortedList inOperand,
+                                                                C_Compiler * /* inCompiler */
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     appendSortedList (inOperand) ;
   }
@@ -581,8 +582,9 @@ void GALGAS_mapStateSortedList::addAssign_operation (const GALGAS_uint & inOpera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_mapStateSortedList::dotAssign_operation (const GALGAS_mapStateSortedList inOperand
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_mapStateSortedList::plusAssign_operation (const GALGAS_mapStateSortedList inOperand,
+                                                      C_Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     appendSortedList (inOperand) ;
   }
@@ -1564,8 +1566,9 @@ void GALGAS_branchBehaviourSortedListForMapOverride::addAssign_operation (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_branchBehaviourSortedListForMapOverride::dotAssign_operation (const GALGAS_branchBehaviourSortedListForMapOverride inOperand
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_branchBehaviourSortedListForMapOverride::plusAssign_operation (const GALGAS_branchBehaviourSortedListForMapOverride inOperand,
+                                                                           C_Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     appendSortedList (inOperand) ;
   }
@@ -2192,8 +2195,9 @@ GALGAS_mapOverrideList GALGAS_mapOverrideList::getter_subListToIndex (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_mapOverrideList::dotAssign_operation (const GALGAS_mapOverrideList inOperand
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_mapOverrideList::plusAssign_operation (const GALGAS_mapOverrideList inOperand,
+                                                   C_Compiler * /* inCompiler */
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2640,8 +2644,9 @@ GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::g
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_sortedListSortDescriptorListAST::dotAssign_operation (const GALGAS_sortedListSortDescriptorListAST inOperand
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_sortedListSortDescriptorListAST::plusAssign_operation (const GALGAS_sortedListSortDescriptorListAST inOperand,
+                                                                   C_Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3061,8 +3066,9 @@ GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::g
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_sortDescriptorListForGeneration::dotAssign_operation (const GALGAS_sortDescriptorListForGeneration inOperand
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_sortDescriptorListForGeneration::plusAssign_operation (const GALGAS_sortDescriptorListForGeneration inOperand,
+                                                                   C_Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3483,8 +3489,9 @@ GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxInstructionListForGrammarAnalysis::dotAssign_operation (const GALGAS_syntaxInstructionListForGrammarAnalysis inOperand
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_syntaxInstructionListForGrammarAnalysis::plusAssign_operation (const GALGAS_syntaxInstructionListForGrammarAnalysis inOperand,
+                                                                           C_Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -3937,8 +3944,9 @@ GALGAS_productionRuleListForGrammarAnalysis GALGAS_productionRuleListForGrammarA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_productionRuleListForGrammarAnalysis::dotAssign_operation (const GALGAS_productionRuleListForGrammarAnalysis inOperand
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_productionRuleListForGrammarAnalysis::plusAssign_operation (const GALGAS_productionRuleListForGrammarAnalysis inOperand,
+                                                                        C_Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -4475,8 +4483,9 @@ void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::addAssign_operation (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::dotAssign_operation (const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inOperand
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::plusAssign_operation (const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inOperand,
+                                                                                 C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     appendSortedList (inOperand) ;
   }
@@ -4951,8 +4960,9 @@ GALGAS_branchListForGrammarAnalysis GALGAS_branchListForGrammarAnalysis::getter_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_branchListForGrammarAnalysis::dotAssign_operation (const GALGAS_branchListForGrammarAnalysis inOperand
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_branchListForGrammarAnalysis::plusAssign_operation (const GALGAS_branchListForGrammarAnalysis inOperand,
+                                                                C_Compiler * /* inCompiler */
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -5353,8 +5363,9 @@ GALGAS_syntaxComponentListForGrammarAnalysis GALGAS_syntaxComponentListForGramma
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxComponentListForGrammarAnalysis::dotAssign_operation (const GALGAS_syntaxComponentListForGrammarAnalysis inOperand
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_syntaxComponentListForGrammarAnalysis::plusAssign_operation (const GALGAS_syntaxComponentListForGrammarAnalysis inOperand,
+                                                                         C_Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6010,8 +6021,9 @@ GALGAS_programListForGeneration GALGAS_programListForGeneration::getter_subListT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_programListForGeneration::dotAssign_operation (const GALGAS_programListForGeneration inOperand
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_programListForGeneration::plusAssign_operation (const GALGAS_programListForGeneration inOperand,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -10839,6 +10851,29 @@ static const utf32 gSyntaxErrorMessage_galgas_33_Scanner__2B__3D_ [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Syntax error message for terminal '$-=$' :
+static const utf32 gSyntaxErrorMessage_galgas_33_Scanner__2D__3D_ [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
 //--- Syntax error message for terminal '$|$' :
 static const utf32 gSyntaxErrorMessage_galgas_33_Scanner__7C_ [] = {
   TO_UNICODE ('t'),
@@ -11206,7 +11241,7 @@ static const utf32 gSyntaxErrorMessage_galgas_33_Scanner__26__2B__2B_ [] = {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [146] = {kEndOfSourceLexicalErrorMessage,
+  static const utf32 * syntaxErrorMessageArray [147] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgas_33_Scanner_identifier,
     gSyntaxErrorMessage_galgas_33_Scanner_literal_5F_double,
     gSyntaxErrorMessage_galgas_33_Scanner_unsigned_5F_literal_5F_integer,
@@ -11336,6 +11371,7 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
     gSyntaxErrorMessage_galgas_33_Scanner__5B_,
     gSyntaxErrorMessage_galgas_33_Scanner__5D_,
     gSyntaxErrorMessage_galgas_33_Scanner__2B__3D_,
+    gSyntaxErrorMessage_galgas_33_Scanner__2D__3D_,
     gSyntaxErrorMessage_galgas_33_Scanner__7C_,
     gSyntaxErrorMessage_galgas_33_Scanner__2F_,
     gSyntaxErrorMessage_galgas_33_Scanner__21__3D_,
@@ -11477,6 +11513,13 @@ static const utf32 kUnicodeString_galgas_33_Scanner__2D_ [] = {
 static const utf32 kUnicodeString_galgas_33_Scanner__2D__2D_ [] = {
   TO_UNICODE ('-'),
   TO_UNICODE ('-'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_2D__3D_$'
+static const utf32 kUnicodeString_galgas_33_Scanner__2D__3D_ [] = {
+  TO_UNICODE ('-'),
+  TO_UNICODE ('='),
   TO_UNICODE (0)
 } ;
 
@@ -12482,7 +12525,7 @@ static const utf32 kUnicodeString_galgas_33_Scanner__7E_ [] = {
 //             Key words table 'galgasDelimitorsList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgas_33_Scanner_galgasDelimitorsList = 37 ;
+static const int32_t ktable_size_galgas_33_Scanner_galgasDelimitorsList = 38 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasDelimitorsList [ktable_size_galgas_33_Scanner_galgasDelimitorsList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner__26_, 1, C_Lexique_galgas_33_Scanner::kToken__26_),
@@ -12514,6 +12557,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasDe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner__2B__2B_, 2, C_Lexique_galgas_33_Scanner::kToken__2B__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner__2B__3D_, 2, C_Lexique_galgas_33_Scanner::kToken__2B__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner__2D__2D_, 2, C_Lexique_galgas_33_Scanner::kToken__2D__2D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner__2D__3D_, 2, C_Lexique_galgas_33_Scanner::kToken__2D__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner__2D__3E_, 2, C_Lexique_galgas_33_Scanner::kToken__2D__3E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner__3A__3E_, 2, C_Lexique_galgas_33_Scanner::kToken__3A__3E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner__3D__3D_, 2, C_Lexique_galgas_33_Scanner::kToken__3D__3D_),
@@ -13320,6 +13364,11 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
       s.appendCString ("+=") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
+    case kToken__2D__3D_:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("-=") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
     case kToken__7C_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("|") ;
@@ -13761,6 +13810,9 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
         enterToken (token) ;
       }else if (testForInputUTF32String (kUnicodeString_galgas_33_Scanner__2D__3E_, 2, true)) {
         token.mTokenCode = kToken__2D__3E_ ;
+        enterToken (token) ;
+      }else if (testForInputUTF32String (kUnicodeString_galgas_33_Scanner__2D__3D_, 2, true)) {
+        token.mTokenCode = kToken__2D__3D_ ;
         enterToken (token) ;
       }else if (testForInputUTF32String (kUnicodeString_galgas_33_Scanner__2D__2D_, 2, true)) {
         token.mTokenCode = kToken__2D__2D_ ;
@@ -14481,6 +14533,7 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("[") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("]") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("+=") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("-=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("|") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("/") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!=") COMMA_THERE) ;
@@ -14505,7 +14558,7 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [146] = {0,
+  static const uint32_t kTerminalSymbolStyles [147] = {0,
     0 /* galgas3Scanner_1_identifier */,
     8 /* galgas3Scanner_1_literal_5F_double */,
     6 /* galgas3Scanner_1_unsigned_5F_literal_5F_integer */,
@@ -14635,6 +14688,7 @@ uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTer
     2 /* galgas3Scanner_1__5B_ */,
     2 /* galgas3Scanner_1__5D_ */,
     2 /* galgas3Scanner_1__2B__3D_ */,
+    2 /* galgas3Scanner_1__2D__3D_ */,
     2 /* galgas3Scanner_1__7C_ */,
     2 /* galgas3Scanner_1__2F_ */,
     2 /* galgas3Scanner_1__21__3D_ */,
@@ -15136,8 +15190,9 @@ GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::get
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_galgas_33_QualifiedFeatureList::dotAssign_operation (const GALGAS_galgas_33_QualifiedFeatureList inOperand
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_galgas_33_QualifiedFeatureList::plusAssign_operation (const GALGAS_galgas_33_QualifiedFeatureList inOperand,
+                                                                  C_Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 

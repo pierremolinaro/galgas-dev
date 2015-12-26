@@ -412,6 +412,39 @@ GALGAS_bool GALGAS_uint::getter_canAdd (const GALGAS_uint & inOperand
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_uint::plusAssign_operation (const GALGAS_uint inOperand,
+                                        C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    const uint32_t r = mUIntValue + inOperand.mUIntValue ;
+    const bool ovf = r < mUIntValue ;
+    if (ovf) {
+      inCompiler->onTheFlyRunTimeError ("@uint += operation overflow" COMMA_THERE) ;
+      mIsValid = false ;
+    }else{
+      mUIntValue = r ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_uint::minusAssign_operation (const GALGAS_uint inOperand,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    const bool ovf = mUIntValue < inOperand.mUIntValue ;
+    if (ovf) {
+      inCompiler->onTheFlyRunTimeError ("@uint -= operation overflow" COMMA_THERE) ;
+      mIsValid = false ;
+    }else{
+      mUIntValue -= inOperand.mUIntValue ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_uint::add_operation_no_ovf (const GALGAS_uint & inOperand) const {
   GALGAS_uint result ;
   if (isValid () && inOperand.isValid ()) {

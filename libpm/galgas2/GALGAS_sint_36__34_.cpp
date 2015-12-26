@@ -216,6 +216,43 @@ void GALGAS_sint_36__34_::decrement_operation (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_sint_36__34_::plusAssign_operation (const GALGAS_sint_36__34_ inOperand,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    const int64_t r = mSInt64Value + inOperand.mSInt64Value ;
+    const bool signA = mSInt64Value >= 0 ;
+    const bool signB = inOperand.mSInt64Value >= 0 ;
+    const bool signR = r >= 0 ;
+    const bool ovf = (signA == signB) && (signA != signR) ;
+    if (ovf) {
+      inCompiler->onTheFlyRunTimeError ("@sint64 += operation overflow" COMMA_THERE) ;
+      mIsValid = false ;
+    }else{
+      mSInt64Value = r ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_sint_36__34_::minusAssign_operation (const GALGAS_sint_36__34_ inOperand,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    const int64_t r = mSInt64Value - inOperand.mSInt64Value ;
+    const bool ovf = (mSInt64Value >= inOperand.mSInt64Value) != (r >= 0) ;
+    if (ovf) {
+      inCompiler->onTheFlyRunTimeError ("@sint64 -= operation overflow" COMMA_THERE) ;
+      mIsValid = false ;
+    }else{
+      mSInt64Value = r ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_sint_36__34_ GALGAS_sint_36__34_::add_operation_no_ovf (const GALGAS_sint_36__34_ & inOperand) const {
   GALGAS_sint_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
