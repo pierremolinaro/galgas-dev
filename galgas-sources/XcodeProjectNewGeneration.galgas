@@ -359,10 +359,10 @@ setter @XcodeProjectDescriptor getReferenceKey
   !ref:@string outRef {
   if mProjectObjectReference == "" then
     mProjectObjectReference = [[[mSequenceNumber string] md5] rightSubString!24]
-    mSequenceNumber ++
+    mSequenceNumber += 1
   end
   outRef = [[[mSequenceNumber string] md5] rightSubString!24]
-  mSequenceNumber ++
+  mSequenceNumber += 1
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

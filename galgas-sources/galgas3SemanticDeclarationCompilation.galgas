@@ -496,7 +496,7 @@ private proc generateFewImplementationFiles
       end
       implementationString += code
       implementationString += [mDeclaration appendTypeGenericImplementation]
-      n ++
+      n += 1
       if n >= definitionGroupAmount () then
         if useOneHugeHeader then
           inclusionSet = {!"all-declarations"}

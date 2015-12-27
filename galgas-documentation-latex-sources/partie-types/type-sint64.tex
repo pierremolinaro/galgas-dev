@@ -116,56 +116,61 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 
 
-\section{Incrementation and decrementation}
 
-The \refTypePredefini{sint64} supports incrementation and decrementation instructions.
+\section{Arithmétique}
 
-\texttt{@sint64 n = ... ; n ++ ; \# Incrementation}
+\subsection{Opérateurs infixés}
 
-\texttt{@sint64 p = ... ; p -- ; \# Decrementation}\newline
+Le type \ggs+@sint64+ accepte les opérateurs arithmétiques infixés suivants :
+\begin{itemize}
+  \item \ggs!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!&+!, addition, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&-!, soustraction, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&*!, multiplication, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&/!, division, qui retourne zéro si le diviseur est nul.
+\end{itemize}
 
-The incrementation instruction raises an error if receiver's value is equal to $2^{63}-1$.\newline
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggs+@sint64+. 
 
-The decrementation instruction raises an error if receiver's value is equal to $-2^{63}$.\newline
+\subsection{Opérateurs préfixés}
+Le type \ggs+@sint64+ accepte les opérateurs arithmétiques préfixés suivants :
+\begin{itemize}
+  \item \ggs!+!, qui retourne simplement la valeur de l'opérande ;
+  \item \ggs!-!, négation arithmétique, une erreur d'exécution est déclenchée si l'opérande est égal à $-2^{63}$ ;
+  \item \ggs!&-!, négation arithmétique, sans détection de débordement : la négation de $-2^{63}$ est $-2^{63}$.
+\end{itemize}
 
-Note that incrementation and decrementation are not available within an expression.
+La valeur renvoyée est du même type  \ggs+@sint64+.
 
 
+\subsection{Instructions}
 
+Le type \ggs+@sint64+ accepte les instructions arithmétiques suivantes :
+\begin{itemize}
+  \item \ggs!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!&++!, incrémentation, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&--!, décrémentation, le résultat étant silencieusement tronqué sur 64 bits.
+\end{itemize}
 
-\section{Arithmetic Operators}
+\ggs!x+=y! est équivalent à \ggs!x=x+y! ; \ggs!x-=y! est équivalent à \ggs!x=x-y!.
+La variable cible \ggs!x!, comme l'expression source \ggs!y! doivent être du même type \ggs+@sint64+. 
 
-The \ggs+@sint64+ type supports the five arithmetic diadic operators:\newline
+Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
+\begin{galgas}
+@sint64 n = ... ; n ++ # Incrémentation
+\end{galgas}
 
-\begin{tabular}{|c|c|}
-\hline
-$+$ & Addition \\
-\hline
-$-$ & Substraction \\
-\hline
-$*$ & Multiplication \\
-\hline
-$/$ & Division \\
-\hline
-\ggs+mod+ & Modulo \\
-\hline
-\end{tabular}
+\begin{galgas}
+@sint64 n = ... ; n -- # Décrémentation
+\end{galgas}
 
-Theses operators require both arguments to be \ggs+@sint64+ objects.\newline
-
-A run-time error is raised if the operation leads to a 64-bit signed overflow.
-
-The \ggs+@sint+ type supports the following arithmetic unary operators:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-$+$ & No operation \\
-\hline
-$-$ & Negate \\
-\hline
-\end{tabular}
-
-This operator returns the receiver's value (an \ggs+@sint+ object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{63}$.
 
 
 

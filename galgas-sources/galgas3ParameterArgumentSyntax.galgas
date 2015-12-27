@@ -93,7 +93,7 @@ rule <actual_parameter_list>
         loop( n)
         while n > 0 do
           outActualParameterList += !@inputJokerActualParameterAST.new {!selector.location !n}
-          n --
+          n -= 1
         end
       end
     end
@@ -140,7 +140,7 @@ rule <actual_parameter_list>
       loop( n)
       while n > 0 do
         outActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
-        n --
+        n -= 1
       end
     end
   while # input parameter, existing variable

@@ -312,62 +312,62 @@ proc printFeaturesOfType
   end
 #---
   s += " - operators(s):\n"
-  if (inHandledOperatorFlags & binaryAddOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixAddOperator ()) != 0 then
     s += "    @" + inTypeName + " + @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryAddOperatorNoOVF ()) != 0 then
+  if (inHandledOperatorFlags & infixAddOperatorNoOVF ()) != 0 then
     s += "    @" + inTypeName + " &+ @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binarySubOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixSubOperator ()) != 0 then
     s += "    @" + inTypeName + " - @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binarySubOperatorNoOVF ()) != 0 then
+  if (inHandledOperatorFlags & infixSubOperatorNoOVF ()) != 0 then
     s += "    @" + inTypeName + " &- @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryMulOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixMulOperator ()) != 0 then
     s += "    @" + inTypeName + " * @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryMulOperatorNoOVF ()) != 0 then
+  if (inHandledOperatorFlags & infixMulOperatorNoOVF ()) != 0 then
     s += "    @" + inTypeName + " &* @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryDivOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixDivOperator ()) != 0 then
     s += "    @" + inTypeName + " / @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryDivOperatorNoOVF ()) != 0 then
+  if (inHandledOperatorFlags & infixDivOperatorNoOVF ()) != 0 then
     s += "    @" + inTypeName + " &/ @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryModOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixModOperator ()) != 0 then
     s += "    @" + inTypeName + " mod @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryAndOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixAndOperator ()) != 0 then
     s += "    @" + inTypeName + " & @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryOrOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixOrOperator ()) != 0 then
     s += "    @" + inTypeName + " | @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryXorOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixXorOperator ()) != 0 then
     s += "    @" + inTypeName + " ^ @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryConcatOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixConcatOperator ()) != 0 then
     s += "    @" + inTypeName + " . @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & binaryShiftOperator ()) != 0 then
+  if (inHandledOperatorFlags & infixShiftOperator ()) != 0 then
     s += "    @" + inTypeName + " >> @uint -> @" + inTypeName + "\n"
     s += "    @" + inTypeName + " << @uint -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & unaryPlusOperator ()) != 0 then
+  if (inHandledOperatorFlags & prefixPlusOperator ()) != 0 then
     s += "    + @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & unaryMinusOperator ()) != 0 then
+  if (inHandledOperatorFlags & prefixMinusOperator ()) != 0 then
     s += "    - @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & unaryMinusOperatorNoOVF ()) != 0 then
+  if (inHandledOperatorFlags & prefixMinusOperatorNoOVF ()) != 0 then
     s += "    &- @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & unaryTildeOperator ()) != 0 then
+  if (inHandledOperatorFlags & prefixTildeOperator ()) != 0 then
     s += "    ~ @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & unaryNotOperator ()) != 0 then
+  if (inHandledOperatorFlags & prefixNotOperator ()) != 0 then
     s += "    not @" + inTypeName + " -> @" + inTypeName + "\n"
   end
   if (inHandledOperatorFlags & incDecOperator ()) != 0 then

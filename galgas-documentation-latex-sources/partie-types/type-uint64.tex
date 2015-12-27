@@ -210,60 +210,58 @@ Returns an hexadecimal string representation of the receiver's value (without an
 
 
 
-\section{Incrementation and decrementation}
 
-The \refTypePredefini{uint64} supports incrementation and decrementation instructions.
 
+
+
+\section{Arithmétique}
+
+\subsection{Opérateurs infixés}
+
+Le type \ggs+@uint64+ accepte les opérateurs arithmétiques infixés suivants :
+\begin{itemize}
+  \item \ggs!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!&+!, addition, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&-!, soustraction, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&*!, multiplication, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&/!, division, qui retourne zéro si le diviseur est nul.
+\end{itemize}
+
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggs+@uint64+. 
+
+\subsection{Opérateur préfixé}
+Le type \ggs+@uint64+ accepte un opérateur arithmétique préfixé :
+\begin{itemize}
+  \item \ggs!+!, qui retourne simplement la valeur de l'opérande.
+\end{itemize}
+
+\subsection{Instructions}
+
+Le type \ggs+@uint64+ accepte les instructions arithmétiques suivantes :
+\begin{itemize}
+  \item \ggs!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!&++!, incrémentation, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggs!&--!, décrémentation, le résultat étant silencieusement tronqué sur 64 bits.
+\end{itemize}
+
+\ggs!x+=y! est équivalent à \ggs!x=x+y! ; \ggs!x-=y! est équivalent à \ggs!x=x-y!.
+La variable cible \ggs!x!, comme l'expression source \ggs!y! doivent être du même type \ggs+@uint64+. 
+
+Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
 \begin{galgas}
-@uint64 n = ... ; n ++ # Incrementation
+@uint64 n = ... ; n ++ # Incrémentation
 \end{galgas}
 
 \begin{galgas}
-@uint64 n = ... ; n -- # Decrementation
+@uint64 n = ... ; n -- # Décrémentation
 \end{galgas}
-
-The incrementation instruction raises an error if receiver's value is equal to $2^{64}-1$.
-
-The incrementation instruction raises an error if receiver's value is equal to 0.
-
-Note that incrementation and decrementation are not available within an expression.
-
-
-
-
-\section{Arithmetic Operators}
-
-The \ggs+@uint64+ type supports the five arithmetic diadic operators:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-\ggs*+* & Addition \\
-\hline
-\ggs+-+ & Substraction \\
-\hline
-\ggs+*+ & Multiplication \\
-\hline
-\ggs+/+ & Division \\
-\hline
-\ggs+mod+ & Modulo \\
-\hline
-\end{tabular}
-
-Theses operators require both arguments to be \ggs+@uint64+ objects.\newline
-
-A run-time error is raised if the operation leads to a 64-bit unsigned overflow.
-
-The \ggs+@uint64+ type supports the following arithmetic unary operator:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-\ggs*+* & No operation \\
-\hline
-\end{tabular}
-
-This operator returns the receiver's value (an  \ggs+@uint64+ object).
-
-
 
 
 \section{Shift Operators}

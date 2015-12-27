@@ -3393,7 +3393,7 @@ static void categoryMethod_listDeclarationAST_enterInSemanticContext (const cPtr
   routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryGetterMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mListTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("list.galgas", 245)) ;
   }
   {
-  ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (object->mAttribute_mListTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("list.galgas", 260)), GALGAS_typeKindEnum::constructor_listType (SOURCE_FILE ("list.galgas", 261)), GALGAS_bool (true), var_typedAttributeList, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 264)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("list.galgas", 265)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 270)), var_enumerationDescriptor, var_enumerationVariants, function_binaryConcatOperator (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)).operator_or (function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)) COMMA_SOURCE_FILE ("list.galgas", 273)).operator_or (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)) COMMA_SOURCE_FILE ("list.galgas", 273)).operator_or (function_binaryAddOperator (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)) COMMA_SOURCE_FILE ("list.galgas", 273)), var_constructorAttributeTypeList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 275)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("list.galgas", 276)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("list.galgas", 277)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("list.galgas", 278)), GALGAS_bool (false), var_listElementTypeIndex, GALGAS_string ("emptyList"), GALGAS_string ("list-").add_operation (object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("list.galgas", 282)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 282)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("list.galgas", 283)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 256)) ;
+  ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (object->mAttribute_mListTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("list.galgas", 260)), GALGAS_typeKindEnum::constructor_listType (SOURCE_FILE ("list.galgas", 261)), GALGAS_bool (true), var_typedAttributeList, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 264)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("list.galgas", 265)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 270)), var_enumerationDescriptor, var_enumerationVariants, function_infixConcatOperator (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)).operator_or (function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)) COMMA_SOURCE_FILE ("list.galgas", 273)).operator_or (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)) COMMA_SOURCE_FILE ("list.galgas", 273)).operator_or (function_infixAddOperator (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)) COMMA_SOURCE_FILE ("list.galgas", 273)), var_constructorAttributeTypeList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 275)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("list.galgas", 276)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("list.galgas", 277)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("list.galgas", 278)), GALGAS_bool (false), var_listElementTypeIndex, GALGAS_string ("emptyList"), GALGAS_string ("list-").add_operation (object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("list.galgas", 282)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 282)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("list.galgas", 283)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 256)) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3420,10 +3420,10 @@ static void categoryMethod_listDeclarationAST_addAssociatedElement (const cPtr_s
   const cPtr_listDeclarationAST * object = (const cPtr_listDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_listDeclarationAST) ;
   GALGAS_propertyInCollectionListAST var_structAttributeList = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("list.galgas", 292)) ;
-  cEnumerator_propertyInCollectionListAST enumerator_11253 (object->mAttribute_mAttributeList, kEnumeration_up) ;
-  while (enumerator_11253.hasCurrentObject ()) {
-    var_structAttributeList.addAssign_operation (enumerator_11253.current_mPropertyTypeName (HERE), enumerator_11253.current_mPropertyName (HERE), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("list.galgas", 297))  COMMA_SOURCE_FILE ("list.galgas", 294)) ;
-    enumerator_11253.gotoNextObject () ;
+  cEnumerator_propertyInCollectionListAST enumerator_11251 (object->mAttribute_mAttributeList, kEnumeration_up) ;
+  while (enumerator_11251.hasCurrentObject ()) {
+    var_structAttributeList.addAssign_operation (enumerator_11251.current_mPropertyTypeName (HERE), enumerator_11251.current_mPropertyName (HERE), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("list.galgas", 297))  COMMA_SOURCE_FILE ("list.galgas", 294)) ;
+    enumerator_11251.gotoNextObject () ;
   }
   ioArgument_ioSemanticDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::constructor_new (object->mAttribute_mIsPredefined, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("list.galgas", 301)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 301)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("list.galgas", 301)), var_structAttributeList, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("list.galgas", 299))  COMMA_SOURCE_FILE ("list.galgas", 299)) ;
 }
@@ -3455,42 +3455,42 @@ static void categoryMethod_listDeclarationAST_semanticAnalysis (const cPtr_seman
   macroValidSharedObject (object, cPtr_listDeclarationAST) ;
   GALGAS_typedPropertyList var_typedAttributeList = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("list.galgas", 317)) ;
   GALGAS_attributeIndexMap var_attributeMap = GALGAS_attributeIndexMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 318)) ;
-  cEnumerator_propertyInCollectionListAST enumerator_12322 (object->mAttribute_mAttributeList, kEnumeration_up) ;
-  while (enumerator_12322.hasCurrentObject ()) {
-    GALGAS_unifiedTypeMap_2D_proxy var_t = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, enumerator_12322.current_mPropertyTypeName (HERE), inCompiler  COMMA_SOURCE_FILE ("list.galgas", 320)) ;
+  cEnumerator_propertyInCollectionListAST enumerator_12320 (object->mAttribute_mAttributeList, kEnumeration_up) ;
+  while (enumerator_12320.hasCurrentObject ()) {
+    GALGAS_unifiedTypeMap_2D_proxy var_t = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, enumerator_12320.current_mPropertyTypeName (HERE), inCompiler  COMMA_SOURCE_FILE ("list.galgas", 320)) ;
     GALGAS_bool var_hasGetter = GALGAS_bool (true) ;
     GALGAS_bool var_hasSetter = GALGAS_bool (false) ;
-    cEnumerator_lstringlist enumerator_12496 (enumerator_12322.current_mFeatureList (HERE), kEnumeration_up) ;
-    while (enumerator_12496.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_12496.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("nogetter"))).boolEnum () ;
+    cEnumerator_lstringlist enumerator_12494 (enumerator_12320.current_mFeatureList (HERE), kEnumeration_up) ;
+    while (enumerator_12494.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_12494.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("nogetter"))).boolEnum () ;
       if (kBoolTrue == test_0) {
         const enumGalgasBool test_1 = var_hasGetter.operator_not (SOURCE_FILE ("list.galgas", 325)).boolEnum () ;
         if (kBoolTrue == test_1) {
-          GALGAS_location location_2 (enumerator_12496.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+          GALGAS_location location_2 (enumerator_12494.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
           inCompiler->emitSemanticError (location_2, GALGAS_string ("duplicate feature")  COMMA_SOURCE_FILE ("list.galgas", 326)) ;
         }
         var_hasGetter = GALGAS_bool (false) ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_12496.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("setter"))).boolEnum () ;
+        const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_12494.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("setter"))).boolEnum () ;
         if (kBoolTrue == test_3) {
           const enumGalgasBool test_4 = var_hasSetter.boolEnum () ;
           if (kBoolTrue == test_4) {
-            GALGAS_location location_5 (enumerator_12496.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+            GALGAS_location location_5 (enumerator_12494.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
             inCompiler->emitSemanticError (location_5, GALGAS_string ("duplicate feature")  COMMA_SOURCE_FILE ("list.galgas", 331)) ;
           }
           var_hasSetter = GALGAS_bool (true) ;
         }else if (kBoolFalse == test_3) {
-          GALGAS_location location_6 (enumerator_12496.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+          GALGAS_location location_6 (enumerator_12494.current_mValue (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
           inCompiler->emitSemanticError (location_6, GALGAS_string ("unknown feature; the features available here are: 'nogetter', 'setter'")  COMMA_SOURCE_FILE ("list.galgas", 335)) ;
         }
       }
-      enumerator_12496.gotoNextObject () ;
+      enumerator_12494.gotoNextObject () ;
     }
-    var_typedAttributeList.addAssign_operation (var_t, enumerator_12322.current_mPropertyName (HERE), var_hasSetter, var_hasGetter  COMMA_SOURCE_FILE ("list.galgas", 338)) ;
+    var_typedAttributeList.addAssign_operation (var_t, enumerator_12320.current_mPropertyName (HERE), var_hasSetter, var_hasGetter  COMMA_SOURCE_FILE ("list.galgas", 338)) ;
     {
-    var_attributeMap.modifier_insertKey (enumerator_12322.current_mPropertyName (HERE), var_t, inCompiler COMMA_SOURCE_FILE ("list.galgas", 343)) ;
+    var_attributeMap.modifier_insertKey (enumerator_12320.current_mPropertyName (HERE), var_t, inCompiler COMMA_SOURCE_FILE ("list.galgas", 343)) ;
     }
-    enumerator_12322.gotoNextObject () ;
+    enumerator_12320.gotoNextObject () ;
   }
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("list type ").add_operation (object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("list.galgas", 347)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 347)), GALGAS_listTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mListTypeName, inCompiler  COMMA_SOURCE_FILE ("list.galgas", 349)), GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("list.galgas", 350)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 350)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("list.galgas", 350)), inCompiler  COMMA_SOURCE_FILE ("list.galgas", 350)), var_typedAttributeList  COMMA_SOURCE_FILE ("list.galgas", 348)), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("list.galgas", 346)) ;
 }
@@ -3546,10 +3546,10 @@ static void categoryMethod_listTypeForGeneration_appendSpecificImplementation (c
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_listTypeForGeneration * object = (const cPtr_listTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_listTypeForGeneration) ;
-  cEnumerator_typedPropertyList enumerator_15704 (object->mAttribute_mTypedAttributeList, kEnumeration_up) ;
-  while (enumerator_15704.hasCurrentObject ()) {
-    categoryMethod_addHeaderFileName (enumerator_15704.current_mAttributeTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("list.galgas", 414)) ;
-    enumerator_15704.gotoNextObject () ;
+  cEnumerator_typedPropertyList enumerator_15702 (object->mAttribute_mTypedAttributeList, kEnumeration_up) ;
+  while (enumerator_15702.hasCurrentObject ()) {
+    categoryMethod_addHeaderFileName (enumerator_15702.current_mAttributeTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("list.galgas", 414)) ;
+    enumerator_15702.gotoNextObject () ;
   }
   categoryMethod_addHeaderFileName (object->mAttribute_mListElementTypeIndex, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("list.galgas", 416)) ;
   categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("list.galgas", 417)) ;
@@ -3976,7 +3976,7 @@ static void categoryMethod_sortedListDeclarationAST_enterInSemanticContext (cons
   routine_addCategories (constinArgument_inCategoryMethodMapForBuildingContext, constinArgument_inCategoryGetterMapForBuildingContext, constinArgument_inCategoryModifierMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mSortedListTypeName, var_getterMap, var_modifierMap, var_instanceMethodMap, inCompiler  COMMA_SOURCE_FILE ("sorted-list.galgas", 190)) ;
   }
   {
-  ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (object->mAttribute_mSortedListTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("sorted-list.galgas", 205)), GALGAS_typeKindEnum::constructor_sortedListType (SOURCE_FILE ("sorted-list.galgas", 206)), GALGAS_bool (true), var_typedAttributeList, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 209)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 210)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 215)), var_enumerationDescriptor, var_enumerationVariants, function_binaryConcatOperator (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 218)).operator_or (function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 218)) COMMA_SOURCE_FILE ("sorted-list.galgas", 218)).operator_or (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 218)) COMMA_SOURCE_FILE ("sorted-list.galgas", 218)), var_constructorAttributeTypeList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 220)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 221)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 222)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 223)), GALGAS_bool (false), var_listElementTypeIndex, GALGAS_string ("emptySortedList"), GALGAS_string ("sortedlist-").add_operation (object->mAttribute_mSortedListTypeName.getter_string (SOURCE_FILE ("sorted-list.galgas", 229)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 229)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("sorted-list.galgas", 230)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 201)) ;
+  ioArgument_ioSemanticContext.mAttribute_mTypeMap.modifier_insertKey (object->mAttribute_mSortedListTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("sorted-list.galgas", 205)), GALGAS_typeKindEnum::constructor_sortedListType (SOURCE_FILE ("sorted-list.galgas", 206)), GALGAS_bool (true), var_typedAttributeList, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 209)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 210)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 215)), var_enumerationDescriptor, var_enumerationVariants, function_infixConcatOperator (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 218)).operator_or (function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 218)) COMMA_SOURCE_FILE ("sorted-list.galgas", 218)).operator_or (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 218)) COMMA_SOURCE_FILE ("sorted-list.galgas", 218)), var_constructorAttributeTypeList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 220)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 221)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 222)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 223)), GALGAS_bool (false), var_listElementTypeIndex, GALGAS_string ("emptySortedList"), GALGAS_string ("sortedlist-").add_operation (object->mAttribute_mSortedListTypeName.getter_string (SOURCE_FILE ("sorted-list.galgas", 229)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 229)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("sorted-list.galgas", 230)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 201)) ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4007,31 +4007,31 @@ static void categoryMethod_sortedListDeclarationAST_semanticAnalysis (const cPtr
   macroValidSharedObject (object, cPtr_sortedListDeclarationAST) ;
   GALGAS_typedPropertyList var_typedAttributeList = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 244)) ;
   GALGAS_attributeIndexMap var_attributeMap = GALGAS_attributeIndexMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 245)) ;
-  cEnumerator_propertyInCollectionListAST enumerator_9744 (object->mAttribute_mAttributeList, kEnumeration_up) ;
-  while (enumerator_9744.hasCurrentObject ()) {
-    GALGAS_unifiedTypeMap_2D_proxy var_t = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, enumerator_9744.current_mPropertyTypeName (HERE), inCompiler  COMMA_SOURCE_FILE ("sorted-list.galgas", 247)) ;
+  cEnumerator_propertyInCollectionListAST enumerator_9743 (object->mAttribute_mAttributeList, kEnumeration_up) ;
+  while (enumerator_9743.hasCurrentObject ()) {
+    GALGAS_unifiedTypeMap_2D_proxy var_t = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, enumerator_9743.current_mPropertyTypeName (HERE), inCompiler  COMMA_SOURCE_FILE ("sorted-list.galgas", 247)) ;
     GALGAS_bool var_hasSetter = GALGAS_bool (true) ;
     GALGAS_bool var_hasGetter = GALGAS_bool (true) ;
-    var_typedAttributeList.addAssign_operation (var_t, enumerator_9744.current_mPropertyName (HERE), var_hasSetter, var_hasGetter  COMMA_SOURCE_FILE ("sorted-list.galgas", 250)) ;
+    var_typedAttributeList.addAssign_operation (var_t, enumerator_9743.current_mPropertyName (HERE), var_hasSetter, var_hasGetter  COMMA_SOURCE_FILE ("sorted-list.galgas", 250)) ;
     {
-    var_attributeMap.modifier_insertKey (enumerator_9744.current_mPropertyName (HERE), var_t, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 255)) ;
+    var_attributeMap.modifier_insertKey (enumerator_9743.current_mPropertyName (HERE), var_t, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 255)) ;
     }
-    enumerator_9744.gotoNextObject () ;
+    enumerator_9743.gotoNextObject () ;
   }
   GALGAS_stringset var_attributesUsedForSorting = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("sorted-list.galgas", 258)) ;
   GALGAS_sortDescriptorListForGeneration var_sortDescriptorList = GALGAS_sortDescriptorListForGeneration::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 259)) ;
-  cEnumerator_sortedListSortDescriptorListAST enumerator_10217 (object->mAttribute_mSortDescriptorList, kEnumeration_up) ;
-  while (enumerator_10217.hasCurrentObject ()) {
+  cEnumerator_sortedListSortDescriptorListAST enumerator_10216 (object->mAttribute_mSortDescriptorList, kEnumeration_up) ;
+  while (enumerator_10216.hasCurrentObject ()) {
     GALGAS_unifiedTypeMap_2D_proxy var_type ;
-    var_attributeMap.method_searchKey (enumerator_10217.current_mSortedAttributeName (HERE), var_type, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 261)) ;
-    var_sortDescriptorList.addAssign_operation (var_type, enumerator_10217.current_mSortedAttributeName (HERE).getter_string (SOURCE_FILE ("sorted-list.galgas", 262)), enumerator_10217.current_mAscending (HERE)  COMMA_SOURCE_FILE ("sorted-list.galgas", 262)) ;
-    const enumGalgasBool test_0 = var_attributesUsedForSorting.getter_hasKey (enumerator_10217.current_mSortedAttributeName (HERE).getter_string (SOURCE_FILE ("sorted-list.galgas", 263)) COMMA_SOURCE_FILE ("sorted-list.galgas", 263)).boolEnum () ;
+    var_attributeMap.method_searchKey (enumerator_10216.current_mSortedAttributeName (HERE), var_type, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 261)) ;
+    var_sortDescriptorList.addAssign_operation (var_type, enumerator_10216.current_mSortedAttributeName (HERE).getter_string (SOURCE_FILE ("sorted-list.galgas", 262)), enumerator_10216.current_mAscending (HERE)  COMMA_SOURCE_FILE ("sorted-list.galgas", 262)) ;
+    const enumGalgasBool test_0 = var_attributesUsedForSorting.getter_hasKey (enumerator_10216.current_mSortedAttributeName (HERE).getter_string (SOURCE_FILE ("sorted-list.galgas", 263)) COMMA_SOURCE_FILE ("sorted-list.galgas", 263)).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_location location_1 (enumerator_10217.current_mSortedAttributeName (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_1, GALGAS_string ("the '").add_operation (enumerator_10217.current_mSortedAttributeName (HERE).getter_string (SOURCE_FILE ("sorted-list.galgas", 264)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 264)).add_operation (GALGAS_string ("' is already used for sorting"), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 264))  COMMA_SOURCE_FILE ("sorted-list.galgas", 264)) ;
+      GALGAS_location location_1 (enumerator_10216.current_mSortedAttributeName (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+      inCompiler->emitSemanticError (location_1, GALGAS_string ("the '").add_operation (enumerator_10216.current_mSortedAttributeName (HERE).getter_string (SOURCE_FILE ("sorted-list.galgas", 264)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 264)).add_operation (GALGAS_string ("' is already used for sorting"), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 264))  COMMA_SOURCE_FILE ("sorted-list.galgas", 264)) ;
     }
-    var_attributesUsedForSorting.addAssign_operation (enumerator_10217.current_mSortedAttributeName (HERE).getter_string (SOURCE_FILE ("sorted-list.galgas", 266))  COMMA_SOURCE_FILE ("sorted-list.galgas", 266)) ;
-    enumerator_10217.gotoNextObject () ;
+    var_attributesUsedForSorting.addAssign_operation (enumerator_10216.current_mSortedAttributeName (HERE).getter_string (SOURCE_FILE ("sorted-list.galgas", 266))  COMMA_SOURCE_FILE ("sorted-list.galgas", 266)) ;
+    enumerator_10216.gotoNextObject () ;
   }
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("sorted list ").add_operation (object->mAttribute_mSortedListTypeName.getter_string (SOURCE_FILE ("sorted-list.galgas", 270)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 270)), GALGAS_sortedListTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mSortedListTypeName, inCompiler  COMMA_SOURCE_FILE ("sorted-list.galgas", 272)), GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (object->mAttribute_mSortedListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 273)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 273)), object->mAttribute_mSortedListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("sorted-list.galgas", 273)), inCompiler  COMMA_SOURCE_FILE ("sorted-list.galgas", 273)), var_typedAttributeList, var_sortDescriptorList  COMMA_SOURCE_FILE ("sorted-list.galgas", 271)), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("sorted-list.galgas", 269)) ;
 }
@@ -4087,10 +4087,10 @@ static void categoryMethod_sortedListTypeForGeneration_appendSpecificImplementat
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_sortedListTypeForGeneration * object = (const cPtr_sortedListTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_sortedListTypeForGeneration) ;
-  cEnumerator_typedPropertyList enumerator_13746 (object->mAttribute_mTypedAttributeList, kEnumeration_up) ;
-  while (enumerator_13746.hasCurrentObject ()) {
-    categoryMethod_addHeaderFileName (enumerator_13746.current_mAttributeTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 347)) ;
-    enumerator_13746.gotoNextObject () ;
+  cEnumerator_typedPropertyList enumerator_13745 (object->mAttribute_mTypedAttributeList, kEnumeration_up) ;
+  while (enumerator_13745.hasCurrentObject ()) {
+    categoryMethod_addHeaderFileName (enumerator_13745.current_mAttributeTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 347)) ;
+    enumerator_13745.gotoNextObject () ;
   }
   categoryMethod_addHeaderFileName (object->mAttribute_mListElementTypeIndex, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 349)) ;
   categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 350)) ;

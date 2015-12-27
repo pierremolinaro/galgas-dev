@@ -37,7 +37,7 @@ if (SUPPORTED_OPERATORS & generateCopyConstructorAndAssignmentOperator ()) != 0 
   public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryShiftOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixShiftOperator ()) != 0 then
   %//--------------------------------- << and >> shift operators\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_uint inShiftOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
@@ -73,103 +73,103 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %
 end
 
-if (SUPPORTED_OPERATORS & binaryAndOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixAndOperator ()) != 0 then
   %//--------------------------------- & operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_and (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryOrOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixOrOperator ()) != 0 then
   %//--------------------------------- | operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_or (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryXorOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixXorOperator ()) != 0 then
   %//--------------------------------- ^ operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_xor (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & unaryNotOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & prefixNotOperator ()) != 0 then
   %//--------------------------------- not operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_not (LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & unaryTildeOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & prefixTildeOperator ()) != 0 then
   %//--------------------------------- ~ operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_tilde (LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryConcatOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixConcatOperator ()) != 0 then
   %//--------------------------------- . (concat) operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_concat (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
        !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryAddOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixAddOperator ()) != 0 then
   %//--------------------------------- + operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryAddOperatorNoOVF ()) != 0 then
+if (SUPPORTED_OPERATORS & infixAddOperatorNoOVF ()) != 0 then
   %//--------------------------------- &+ operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binarySubOperatorNoOVF ()) != 0 then
+if (SUPPORTED_OPERATORS & infixSubOperatorNoOVF ()) != 0 then
   %//--------------------------------- &- operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binarySubOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixSubOperator ()) != 0 then
   %//--------------------------------- - operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryMulOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixMulOperator ()) != 0 then
   %//--------------------------------- * operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryMulOperatorNoOVF ()) != 0 then
+if (SUPPORTED_OPERATORS & infixMulOperatorNoOVF ()) != 0 then
   %//--------------------------------- &* operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryDivOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixDivOperator ()) != 0 then
   %//--------------------------------- / operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryDivOperatorNoOVF ()) != 0 then
+if (SUPPORTED_OPERATORS & infixDivOperatorNoOVF ()) != 0 then
   %//--------------------------------- &/ operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & binaryModOperator ()) != 0 then
+if (SUPPORTED_OPERATORS & infixModOperator ()) != 0 then
   %//--------------------------------- mod operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% modulo_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & unaryMinusOperator ()) != 0 then
-  %//--------------------------------- unary - operator\n%
+if (SUPPORTED_OPERATORS & prefixMinusOperator ()) != 0 then
+  %//--------------------------------- prefix - operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & unaryMinusOperatorNoOVF ()) != 0 then
-  %//--------------------------------- unary &- operator\n%
+if (SUPPORTED_OPERATORS & prefixMinusOperatorNoOVF ()) != 0 then
+  %//--------------------------------- prefix &- operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus_no_ovf (void) const ;\n\n%
 end
 

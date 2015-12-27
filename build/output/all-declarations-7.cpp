@@ -207,7 +207,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
               if (loop_4815) {
                 variant_4815 -- ;
                 outArgument_outActualParameterList.addAssign_operation (GALGAS_inputJokerActualParameterAST::constructor_new (var_selector.mAttribute_location, var_n  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 95))  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 95)) ;
-                var_n.decrement_operation (inCompiler  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 96)) ;
+                var_n.minusAssign_operation (GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 96)) ;
               }
             }
           }
@@ -272,21 +272,21 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
         inCompiler->emitSemanticError (location_9, GALGAS_string ("the count value should be > 0")  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 138)) ;
       }else if (kBoolFalse == test_8) {
         if (var_n.isValid ()) {
-          uint32_t variant_6130 = var_n.uintValue () ;
-          bool loop_6130 = true ;
-          while (loop_6130) {
-            loop_6130 = GALGAS_bool (kIsStrictSup, var_n.objectCompare (GALGAS_uint ((uint32_t) 0U))).isValid () ;
-            if (loop_6130) {
-              loop_6130 = GALGAS_bool (kIsStrictSup, var_n.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolValue () ;
+          uint32_t variant_6132 = var_n.uintValue () ;
+          bool loop_6132 = true ;
+          while (loop_6132) {
+            loop_6132 = GALGAS_bool (kIsStrictSup, var_n.objectCompare (GALGAS_uint ((uint32_t) 0U))).isValid () ;
+            if (loop_6132) {
+              loop_6132 = GALGAS_bool (kIsStrictSup, var_n.objectCompare (GALGAS_uint ((uint32_t) 0U))).boolValue () ;
             }
-            if (loop_6130 && (0 == variant_6130)) {
-              loop_6130 = false ;
+            if (loop_6132 && (0 == variant_6132)) {
+              loop_6132 = false ;
               inCompiler->loopRunTimeVariantError (SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 140)) ;
             }
-            if (loop_6130) {
-              variant_6130 -- ;
+            if (loop_6132) {
+              variant_6132 -- ;
               outArgument_outActualParameterList.addAssign_operation (GALGAS_outputInputJokerParameterAST::constructor_new (var_selector.mAttribute_location, var_n  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 142))  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 142)) ;
-              var_n.decrement_operation (inCompiler  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 143)) ;
+              var_n.minusAssign_operation (GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("galgas3ParameterArgumentSyntax.galgas", 143)) ;
             }
           }
         }

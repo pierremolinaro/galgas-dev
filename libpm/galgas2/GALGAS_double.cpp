@@ -424,6 +424,16 @@ GALGAS_double GALGAS_double::divide_operation (const GALGAS_double & inOperand2,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_double GALGAS_double::divide_operation_no_ovf (const GALGAS_double & inOperand) const {
+  GALGAS_double result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_double ((inOperand.mDoubleValue == 0.0) ? 0.0 : (mDoubleValue / inOperand.mDoubleValue)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_double GALGAS_double::operator_unary_minus (C_Compiler * /* inCompiler */
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;

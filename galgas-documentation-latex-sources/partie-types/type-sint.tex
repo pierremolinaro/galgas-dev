@@ -120,56 +120,60 @@ This getter is the only way to convert an \refTypePredefini{sint} object into an
 
 
 
-\section{Incrementation and decrementation}
+\section{Arithmétique}
 
-The \refTypePredefini{sint} supports incrementation and decrementation instructions.
+\subsection{Opérateurs infixés}
 
-\texttt{@sint n = ... ; n ++ ; \# Incrementation}
+Le type \ggs+@sint+ accepte les opérateurs arithmétiques infixés suivants :
+\begin{itemize}
+  \item \ggs!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!&+!, addition, le résultat étant silencieusement tronqué sur 32 bits ;
+  \item \ggs!&-!, soustraction, le résultat étant silencieusement tronqué sur 32 bits ;
+  \item \ggs!&*!, multiplication, le résultat étant silencieusement tronqué sur 32 bits ;
+  \item \ggs!&/!, division, qui retourne zéro si le diviseur est nul.
+\end{itemize}
 
-\texttt{@sint p = ... ; p -- ; \# Decrementation}\newline
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggs+@sint+. 
 
-The incrementation instruction raises an error if receiver's value is equal to $2^{31}-1$.\newline
+\subsection{Opérateurs préfixés}
+Le type \ggs+@sint+ accepte les opérateurs arithmétiques préfixés suivants :
+\begin{itemize}
+  \item \ggs!+!, qui retourne simplement la valeur de l'opérande ;
+  \item \ggs!-!, négation arithmétique, une erreur d'exécution est déclenchée si l'opérande est égal à $-2^{31}$ ;
+  \item \ggs!&-!, négation arithmétique, sans détection de débordement : la négation de $-2^{31}$ est $-2^{31}$.
+\end{itemize}
 
-The decrementation instruction raises an error if receiver's value is equal to $-2^{31}$.\newline
-
-Note that incrementation and decrementation are not available within an expression.
+La valeur renvoyée est du même type  \ggs+@sint+.
 
 
+\subsection{Instructions}
 
+Le type \ggs+@sint+ accepte les instructions arithmétiques suivantes :
+\begin{itemize}
+  \item \ggs!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggs!&++!, incrémentation, le résultat étant silencieusement tronqué sur 32 bits ;
+  \item \ggs!&--!, décrémentation, le résultat étant silencieusement tronqué sur 32 bits.
+\end{itemize}
 
-\section{Arithmetic Operators}
+\ggs!x+=y! est équivalent à \ggs!x=x+y! ; \ggs!x-=y! est équivalent à \ggs!x=x-y!.
+La variable cible \ggs!x!, comme l'expression source \ggs!y! doivent être du même type \ggs+@sint+. 
 
-The \ggs+@sint+ type supports the five arithmetic diadic operators:\newline
+Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
+\begin{galgas}
+@sint n = ... ; n ++ # Incrémentation
+\end{galgas}
 
-\begin{tabular}{|c|c|}
-\hline
-$+$ & Addition \\
-\hline
-$-$ & Substraction \\
-\hline
-$*$ & Multiplication \\
-\hline
-$/$ & Division \\
-\hline
-\ggs+mod+ & Modulo \\
-\hline
-\end{tabular}
+\begin{galgas}
+@sint n = ... ; n -- # Décrémentation
+\end{galgas}
 
-Theses operators require both arguments to be \ggs+@sint+ objects.\newline
-
-A run-time error is raised if the operation leads to a 32-bit signed overflow.
-
-The \ggs+@sint+ type supports the following arithmetic unary operators:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-$+$ & No operation \\
-\hline
-$-$ & Negate \\
-\hline
-\end{tabular}
-
-This operator returns the receiver's value (an \ggs+@sint+ object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{31}$.
 
 
 
