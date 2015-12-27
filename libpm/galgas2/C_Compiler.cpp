@@ -675,7 +675,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
       }
       f.close () ;
       if (inMakeExecutable) {
-        #ifndef COMPILE_FOR_WIN32
+        #if COMPILE_FOR_WINDOWS == 0
           struct stat fileStat ;
           ::stat (fileName.cString (HERE), & fileStat) ;
             // printf ("FILE MODE 0x%X\n", fileStat.st_mode) ;
@@ -737,7 +737,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
       }
       f.close () ;
       if (inMakeExecutable) {
-        #ifndef COMPILE_FOR_WIN32
+        #if COMPILE_FOR_WINDOWS == 0
           struct stat fileStat ;
           ::stat (fullPathName.cString (HERE), & fileStat) ;
             // printf ("FILE MODE 0x%X\n", fileStat.st_mode) ;

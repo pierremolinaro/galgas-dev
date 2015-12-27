@@ -335,6 +335,9 @@ proc projectGeneration
     message "*** Generating files\n"
   end
   @stringset allProductFileSet = {}
+#---------------------------------- Create build/user-headers if does not exist
+  let userHeadersDir = inProductDirectory + "/../user-headers"
+  [userHeadersDir makeDirectory] ;
 #---------------------------------- Generate GUI components
 #  message "*** Generate GUI\n" ;
   if @uint.errorCount == 0 then

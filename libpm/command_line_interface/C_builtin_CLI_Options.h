@@ -32,6 +32,12 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#ifndef COMPILE_FOR_WINDOWS
+  #error COMPILE_FOR_WINDOWS is undefined
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_display_5F_help ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -40,7 +46,7 @@ extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_display_5F_vers
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 0
   extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_no_5F_color ;
 #endif
 
